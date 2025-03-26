@@ -88,10 +88,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.AITeacherExpansionPracticeTaskGenerateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.AITeacherExpansionPracticeTaskGenerateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.AITeacherExpansionPracticeTaskGenerateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def a_iteacher_expansion_practice_task_generate_with_options_async(
         self,
@@ -140,10 +146,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.AITeacherExpansionPracticeTaskGenerateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.AITeacherExpansionPracticeTaskGenerateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.AITeacherExpansionPracticeTaskGenerateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def a_iteacher_expansion_practice_task_generate(
         self,
@@ -220,10 +232,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.AITeacherSyncPracticeTaskGenerateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.AITeacherSyncPracticeTaskGenerateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.AITeacherSyncPracticeTaskGenerateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def a_iteacher_sync_practice_task_generate_with_options_async(
         self,
@@ -272,10 +290,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.AITeacherSyncPracticeTaskGenerateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.AITeacherSyncPracticeTaskGenerateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.AITeacherSyncPracticeTaskGenerateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def a_iteacher_sync_practice_task_generate(
         self,
@@ -331,10 +355,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def aliyun_console_open_api_query_aliyun_console_servcie_list_with_options_async(
         self,
@@ -362,10 +392,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def aliyun_console_open_api_query_aliyun_console_servcie_list(self) -> ai_content_20240611_models.AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponse:
         """
@@ -406,17 +442,23 @@ class Client(OpenApiClient):
             action='AliyunConsoleOpenApiQueryAliyunConsoleServiceList',
             version='20240611',
             protocol='HTTPS',
-            pathname=f'/api/v1/aliyunconsole/queryAliyunConsoleServiceList',
+            pathname=f'/api/v1/aliyunConsole/queryAliyunConsoleServiceList',
             method='GET',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def aliyun_console_open_api_query_aliyun_console_service_list_with_options_async(
         self,
@@ -437,17 +479,23 @@ class Client(OpenApiClient):
             action='AliyunConsoleOpenApiQueryAliyunConsoleServiceList',
             version='20240611',
             protocol='HTTPS',
-            pathname=f'/api/v1/aliyunconsole/queryAliyunConsoleServiceList',
+            pathname=f'/api/v1/aliyunConsole/queryAliyunConsoleServiceList',
             method='GET',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def aliyun_console_open_api_query_aliyun_console_service_list(self) -> ai_content_20240611_models.AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse:
         """
@@ -468,6 +516,716 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.aliyun_console_open_api_query_aliyun_console_service_list_with_options_async(headers, runtime)
+
+    def create_access_warrant_with_options(
+        self,
+        request: ai_content_20240611_models.CreateAccessWarrantRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.CreateAccessWarrantResponse:
+        """
+        @summary 阿里云控制台/授权凭证创建
+        
+        @param request: CreateAccessWarrantRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccessWarrantResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['appId'] = request.app_id
+        if not UtilClient.is_unset(request.request_sign):
+            body['requestSign'] = request.request_sign
+        if not UtilClient.is_unset(request.timestamp):
+            body['timestamp'] = request.timestamp
+        if not UtilClient.is_unset(request.user_client_ip):
+            body['userClientIp'] = request.user_client_ip
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        if not UtilClient.is_unset(request.warrant_available):
+            body['warrantAvailable'] = request.warrant_available
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAccessWarrant',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aliyunConsole/createAccessWarrant',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.CreateAccessWarrantResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.CreateAccessWarrantResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_access_warrant_with_options_async(
+        self,
+        request: ai_content_20240611_models.CreateAccessWarrantRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.CreateAccessWarrantResponse:
+        """
+        @summary 阿里云控制台/授权凭证创建
+        
+        @param request: CreateAccessWarrantRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccessWarrantResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['appId'] = request.app_id
+        if not UtilClient.is_unset(request.request_sign):
+            body['requestSign'] = request.request_sign
+        if not UtilClient.is_unset(request.timestamp):
+            body['timestamp'] = request.timestamp
+        if not UtilClient.is_unset(request.user_client_ip):
+            body['userClientIp'] = request.user_client_ip
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        if not UtilClient.is_unset(request.warrant_available):
+            body['warrantAvailable'] = request.warrant_available
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAccessWarrant',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aliyunConsole/createAccessWarrant',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.CreateAccessWarrantResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.CreateAccessWarrantResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_access_warrant(
+        self,
+        request: ai_content_20240611_models.CreateAccessWarrantRequest,
+    ) -> ai_content_20240611_models.CreateAccessWarrantResponse:
+        """
+        @summary 阿里云控制台/授权凭证创建
+        
+        @param request: CreateAccessWarrantRequest
+        @return: CreateAccessWarrantResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_access_warrant_with_options(request, headers, runtime)
+
+    async def create_access_warrant_async(
+        self,
+        request: ai_content_20240611_models.CreateAccessWarrantRequest,
+    ) -> ai_content_20240611_models.CreateAccessWarrantResponse:
+        """
+        @summary 阿里云控制台/授权凭证创建
+        
+        @param request: CreateAccessWarrantRequest
+        @return: CreateAccessWarrantResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_access_warrant_with_options_async(request, headers, runtime)
+
+    def create_project_with_options(
+        self,
+        request: ai_content_20240611_models.CreateProjectRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.CreateProjectResponse:
+        """
+        @summary 阿里云控制台/创建项目
+        
+        @param request: CreateProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_name):
+            body['projectName'] = request.project_name
+        if not UtilClient.is_unset(request.project_type):
+            body['projectType'] = request.project_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateProject',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aliyunConsole/createProject',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.CreateProjectResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.CreateProjectResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_project_with_options_async(
+        self,
+        request: ai_content_20240611_models.CreateProjectRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.CreateProjectResponse:
+        """
+        @summary 阿里云控制台/创建项目
+        
+        @param request: CreateProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_name):
+            body['projectName'] = request.project_name
+        if not UtilClient.is_unset(request.project_type):
+            body['projectType'] = request.project_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateProject',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aliyunConsole/createProject',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.CreateProjectResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.CreateProjectResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_project(
+        self,
+        request: ai_content_20240611_models.CreateProjectRequest,
+    ) -> ai_content_20240611_models.CreateProjectResponse:
+        """
+        @summary 阿里云控制台/创建项目
+        
+        @param request: CreateProjectRequest
+        @return: CreateProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_project_with_options(request, headers, runtime)
+
+    async def create_project_async(
+        self,
+        request: ai_content_20240611_models.CreateProjectRequest,
+    ) -> ai_content_20240611_models.CreateProjectResponse:
+        """
+        @summary 阿里云控制台/创建项目
+        
+        @param request: CreateProjectRequest
+        @return: CreateProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_project_with_options_async(request, headers, runtime)
+
+    def execute_aiteacher_chinese_composition_tutoring_workflow_run_with_options(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest,
+        headers: ai_content_20240611_models.ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse:
+        """
+        @summary 中文作文辅导
+        
+        @param request: ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest
+        @param headers: ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.essay_outline):
+            body['essayOutline'] = request.essay_outline
+        if not UtilClient.is_unset(request.essay_requirements):
+            body['essayRequirements'] = request.essay_requirements
+        if not UtilClient.is_unset(request.essay_topic):
+            body['essayTopic'] = request.essay_topic
+        if not UtilClient.is_unset(request.essay_type):
+            body['essayType'] = request.essay_type
+        if not UtilClient.is_unset(request.essay_word_count):
+            body['essayWordCount'] = request.essay_word_count
+        if not UtilClient.is_unset(request.grade):
+            body['grade'] = request.grade
+        if not UtilClient.is_unset(request.response_mode):
+            body['responseMode'] = request.response_mode
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.caller_parent_id):
+            real_headers['callerParentId'] = UtilClient.to_jsonstring(headers.caller_parent_id)
+        if not UtilClient.is_unset(headers.caller_type):
+            real_headers['callerType'] = UtilClient.to_jsonstring(headers.caller_type)
+        if not UtilClient.is_unset(headers.caller_uid):
+            real_headers['callerUid'] = UtilClient.to_jsonstring(headers.caller_uid)
+        if not UtilClient.is_unset(headers.sts_token_caller_uid):
+            real_headers['stsTokenCallerUid'] = UtilClient.to_jsonstring(headers.sts_token_caller_uid)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteAITeacherChineseCompositionTutoringWorkflowRun',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/pop/api/v1/intelligentAgent/chineseCompositionTutoring/workflowRun',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def execute_aiteacher_chinese_composition_tutoring_workflow_run_with_options_async(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest,
+        headers: ai_content_20240611_models.ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse:
+        """
+        @summary 中文作文辅导
+        
+        @param request: ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest
+        @param headers: ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.essay_outline):
+            body['essayOutline'] = request.essay_outline
+        if not UtilClient.is_unset(request.essay_requirements):
+            body['essayRequirements'] = request.essay_requirements
+        if not UtilClient.is_unset(request.essay_topic):
+            body['essayTopic'] = request.essay_topic
+        if not UtilClient.is_unset(request.essay_type):
+            body['essayType'] = request.essay_type
+        if not UtilClient.is_unset(request.essay_word_count):
+            body['essayWordCount'] = request.essay_word_count
+        if not UtilClient.is_unset(request.grade):
+            body['grade'] = request.grade
+        if not UtilClient.is_unset(request.response_mode):
+            body['responseMode'] = request.response_mode
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.caller_parent_id):
+            real_headers['callerParentId'] = UtilClient.to_jsonstring(headers.caller_parent_id)
+        if not UtilClient.is_unset(headers.caller_type):
+            real_headers['callerType'] = UtilClient.to_jsonstring(headers.caller_type)
+        if not UtilClient.is_unset(headers.caller_uid):
+            real_headers['callerUid'] = UtilClient.to_jsonstring(headers.caller_uid)
+        if not UtilClient.is_unset(headers.sts_token_caller_uid):
+            real_headers['stsTokenCallerUid'] = UtilClient.to_jsonstring(headers.sts_token_caller_uid)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteAITeacherChineseCompositionTutoringWorkflowRun',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/pop/api/v1/intelligentAgent/chineseCompositionTutoring/workflowRun',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def execute_aiteacher_chinese_composition_tutoring_workflow_run(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest,
+    ) -> ai_content_20240611_models.ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse:
+        """
+        @summary 中文作文辅导
+        
+        @param request: ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest
+        @return: ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ai_content_20240611_models.ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders()
+        return self.execute_aiteacher_chinese_composition_tutoring_workflow_run_with_options(request, headers, runtime)
+
+    async def execute_aiteacher_chinese_composition_tutoring_workflow_run_async(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest,
+    ) -> ai_content_20240611_models.ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse:
+        """
+        @summary 中文作文辅导
+        
+        @param request: ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest
+        @return: ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ai_content_20240611_models.ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders()
+        return await self.execute_aiteacher_chinese_composition_tutoring_workflow_run_with_options_async(request, headers, runtime)
+
+    def execute_aiteacher_english_composition_tutoring_workflow_run_with_options(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse:
+        """
+        @summary 英语作文辅导
+        
+        @param request: ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.essay_outline):
+            body['essayOutline'] = request.essay_outline
+        if not UtilClient.is_unset(request.essay_requirements):
+            body['essayRequirements'] = request.essay_requirements
+        if not UtilClient.is_unset(request.essay_topic):
+            body['essayTopic'] = request.essay_topic
+        if not UtilClient.is_unset(request.essay_type):
+            body['essayType'] = request.essay_type
+        if not UtilClient.is_unset(request.essay_word_count):
+            body['essayWordCount'] = request.essay_word_count
+        if not UtilClient.is_unset(request.grade):
+            body['grade'] = request.grade
+        if not UtilClient.is_unset(request.response_mode):
+            body['responseMode'] = request.response_mode
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteAITeacherEnglishCompositionTutoringWorkflowRun',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/pop/api/v1/intelligentAgent/englishCompositionTutoring/workflowRun',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def execute_aiteacher_english_composition_tutoring_workflow_run_with_options_async(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse:
+        """
+        @summary 英语作文辅导
+        
+        @param request: ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.essay_outline):
+            body['essayOutline'] = request.essay_outline
+        if not UtilClient.is_unset(request.essay_requirements):
+            body['essayRequirements'] = request.essay_requirements
+        if not UtilClient.is_unset(request.essay_topic):
+            body['essayTopic'] = request.essay_topic
+        if not UtilClient.is_unset(request.essay_type):
+            body['essayType'] = request.essay_type
+        if not UtilClient.is_unset(request.essay_word_count):
+            body['essayWordCount'] = request.essay_word_count
+        if not UtilClient.is_unset(request.grade):
+            body['grade'] = request.grade
+        if not UtilClient.is_unset(request.response_mode):
+            body['responseMode'] = request.response_mode
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteAITeacherEnglishCompositionTutoringWorkflowRun',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/pop/api/v1/intelligentAgent/englishCompositionTutoring/workflowRun',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def execute_aiteacher_english_composition_tutoring_workflow_run(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest,
+    ) -> ai_content_20240611_models.ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse:
+        """
+        @summary 英语作文辅导
+        
+        @param request: ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest
+        @return: ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_aiteacher_english_composition_tutoring_workflow_run_with_options(request, headers, runtime)
+
+    async def execute_aiteacher_english_composition_tutoring_workflow_run_async(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest,
+    ) -> ai_content_20240611_models.ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse:
+        """
+        @summary 英语作文辅导
+        
+        @param request: ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest
+        @return: ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_aiteacher_english_composition_tutoring_workflow_run_with_options_async(request, headers, runtime)
+
+    def execute_aiteacher_english_paraphrase_chat_message_with_options(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherEnglishParaphraseChatMessageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteAITeacherEnglishParaphraseChatMessageResponse:
+        """
+        @summary 英文释义
+        
+        @param request: ExecuteAITeacherEnglishParaphraseChatMessageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteAITeacherEnglishParaphraseChatMessageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.grade):
+            body['grade'] = request.grade
+        if not UtilClient.is_unset(request.question_id):
+            body['questionId'] = request.question_id
+        if not UtilClient.is_unset(request.question_info):
+            body['questionInfo'] = request.question_info
+        if not UtilClient.is_unset(request.response_mode):
+            body['responseMode'] = request.response_mode
+        if not UtilClient.is_unset(request.user_answer):
+            body['userAnswer'] = request.user_answer
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteAITeacherEnglishParaphraseChatMessage',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/pop/api/v1/intelligentAgent/englishParaphrase/chatMessage',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherEnglishParaphraseChatMessageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherEnglishParaphraseChatMessageResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def execute_aiteacher_english_paraphrase_chat_message_with_options_async(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherEnglishParaphraseChatMessageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteAITeacherEnglishParaphraseChatMessageResponse:
+        """
+        @summary 英文释义
+        
+        @param request: ExecuteAITeacherEnglishParaphraseChatMessageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteAITeacherEnglishParaphraseChatMessageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.grade):
+            body['grade'] = request.grade
+        if not UtilClient.is_unset(request.question_id):
+            body['questionId'] = request.question_id
+        if not UtilClient.is_unset(request.question_info):
+            body['questionInfo'] = request.question_info
+        if not UtilClient.is_unset(request.response_mode):
+            body['responseMode'] = request.response_mode
+        if not UtilClient.is_unset(request.user_answer):
+            body['userAnswer'] = request.user_answer
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteAITeacherEnglishParaphraseChatMessage',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/pop/api/v1/intelligentAgent/englishParaphrase/chatMessage',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherEnglishParaphraseChatMessageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherEnglishParaphraseChatMessageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def execute_aiteacher_english_paraphrase_chat_message(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherEnglishParaphraseChatMessageRequest,
+    ) -> ai_content_20240611_models.ExecuteAITeacherEnglishParaphraseChatMessageResponse:
+        """
+        @summary 英文释义
+        
+        @param request: ExecuteAITeacherEnglishParaphraseChatMessageRequest
+        @return: ExecuteAITeacherEnglishParaphraseChatMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_aiteacher_english_paraphrase_chat_message_with_options(request, headers, runtime)
+
+    async def execute_aiteacher_english_paraphrase_chat_message_async(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherEnglishParaphraseChatMessageRequest,
+    ) -> ai_content_20240611_models.ExecuteAITeacherEnglishParaphraseChatMessageResponse:
+        """
+        @summary 英文释义
+        
+        @param request: ExecuteAITeacherEnglishParaphraseChatMessageRequest
+        @return: ExecuteAITeacherEnglishParaphraseChatMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_aiteacher_english_paraphrase_chat_message_with_options_async(request, headers, runtime)
 
     def execute_aiteacher_expansion_dialogue_with_options(
         self,
@@ -516,10 +1274,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteAITeacherExpansionDialogueResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherExpansionDialogueResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherExpansionDialogueResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def execute_aiteacher_expansion_dialogue_with_options_async(
         self,
@@ -568,10 +1332,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteAITeacherExpansionDialogueResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherExpansionDialogueResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherExpansionDialogueResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def execute_aiteacher_expansion_dialogue(
         self,
@@ -648,10 +1418,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteAITeacherExpansionDialogueRefineResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherExpansionDialogueRefineResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherExpansionDialogueRefineResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def execute_aiteacher_expansion_dialogue_refine_with_options_async(
         self,
@@ -700,10 +1476,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteAITeacherExpansionDialogueRefineResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherExpansionDialogueRefineResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherExpansionDialogueRefineResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def execute_aiteacher_expansion_dialogue_refine(
         self,
@@ -778,10 +1560,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteAITeacherExpansionDialogueTranslateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherExpansionDialogueTranslateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherExpansionDialogueTranslateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def execute_aiteacher_expansion_dialogue_translate_with_options_async(
         self,
@@ -828,10 +1616,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteAITeacherExpansionDialogueTranslateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherExpansionDialogueTranslateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherExpansionDialogueTranslateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def execute_aiteacher_expansion_dialogue_translate(
         self,
@@ -896,10 +1690,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteAITeacherGrammarCheckResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherGrammarCheckResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherGrammarCheckResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def execute_aiteacher_grammar_check_with_options_async(
         self,
@@ -936,10 +1736,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteAITeacherGrammarCheckResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherGrammarCheckResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherGrammarCheckResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def execute_aiteacher_grammar_check(
         self,
@@ -1008,10 +1814,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteAITeacherSyncDialogueResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherSyncDialogueResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherSyncDialogueResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def execute_aiteacher_sync_dialogue_with_options_async(
         self,
@@ -1052,10 +1864,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteAITeacherSyncDialogueResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherSyncDialogueResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherSyncDialogueResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def execute_aiteacher_sync_dialogue(
         self,
@@ -1122,10 +1940,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteAITeacherSyncDialogueTranslateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherSyncDialogueTranslateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherSyncDialogueTranslateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def execute_aiteacher_sync_dialogue_translate_with_options_async(
         self,
@@ -1164,10 +1988,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteAITeacherSyncDialogueTranslateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherSyncDialogueTranslateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteAITeacherSyncDialogueTranslateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def execute_aiteacher_sync_dialogue_translate(
         self,
@@ -1236,10 +2066,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteTextbookAssistantDialogueResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantDialogueResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantDialogueResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def execute_textbook_assistant_dialogue_with_options_async(
         self,
@@ -1280,10 +2116,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteTextbookAssistantDialogueResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantDialogueResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantDialogueResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def execute_textbook_assistant_dialogue(
         self,
@@ -1354,10 +2196,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteTextbookAssistantDifficultyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantDifficultyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantDifficultyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def execute_textbook_assistant_difficulty_with_options_async(
         self,
@@ -1400,10 +2248,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteTextbookAssistantDifficultyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantDifficultyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantDifficultyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def execute_textbook_assistant_difficulty(
         self,
@@ -1472,10 +2326,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteTextbookAssistantGrammarCheckResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantGrammarCheckResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantGrammarCheckResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def execute_textbook_assistant_grammar_check_with_options_async(
         self,
@@ -1516,10 +2376,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteTextbookAssistantGrammarCheckResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantGrammarCheckResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantGrammarCheckResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def execute_textbook_assistant_grammar_check(
         self,
@@ -1588,10 +2454,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteTextbookAssistantRefineByContextResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantRefineByContextResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantRefineByContextResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def execute_textbook_assistant_refine_by_context_with_options_async(
         self,
@@ -1632,10 +2504,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteTextbookAssistantRefineByContextResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantRefineByContextResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantRefineByContextResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def execute_textbook_assistant_refine_by_context(
         self,
@@ -1704,10 +2582,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteTextbookAssistantRetryConversationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantRetryConversationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantRetryConversationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def execute_textbook_assistant_retry_conversation_with_options_async(
         self,
@@ -1748,10 +2632,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteTextbookAssistantRetryConversationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantRetryConversationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantRetryConversationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def execute_textbook_assistant_retry_conversation(
         self,
@@ -1818,10 +2708,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteTextbookAssistantStartConversationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantStartConversationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantStartConversationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def execute_textbook_assistant_start_conversation_with_options_async(
         self,
@@ -1860,10 +2756,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteTextbookAssistantStartConversationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantStartConversationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantStartConversationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def execute_textbook_assistant_start_conversation(
         self,
@@ -1932,10 +2834,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteTextbookAssistantSuggestionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantSuggestionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantSuggestionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def execute_textbook_assistant_suggestion_with_options_async(
         self,
@@ -1976,10 +2884,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteTextbookAssistantSuggestionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantSuggestionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantSuggestionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def execute_textbook_assistant_suggestion(
         self,
@@ -2048,10 +2962,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteTextbookAssistantTranslateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantTranslateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantTranslateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def execute_textbook_assistant_translate_with_options_async(
         self,
@@ -2092,10 +3012,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ExecuteTextbookAssistantTranslateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantTranslateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ExecuteTextbookAssistantTranslateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def execute_textbook_assistant_translate(
         self,
@@ -2172,10 +3098,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.GetAITeacherExpansionDialogueSuggestionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.GetAITeacherExpansionDialogueSuggestionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.GetAITeacherExpansionDialogueSuggestionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_aiteacher_expansion_dialogue_suggestion_with_options_async(
         self,
@@ -2224,10 +3156,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.GetAITeacherExpansionDialogueSuggestionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.GetAITeacherExpansionDialogueSuggestionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.GetAITeacherExpansionDialogueSuggestionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_aiteacher_expansion_dialogue_suggestion(
         self,
@@ -2296,10 +3234,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.GetAITeacherSyncDialogueSuggestionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.GetAITeacherSyncDialogueSuggestionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.GetAITeacherSyncDialogueSuggestionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_aiteacher_sync_dialogue_suggestion_with_options_async(
         self,
@@ -2340,10 +3284,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.GetAITeacherSyncDialogueSuggestionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.GetAITeacherSyncDialogueSuggestionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.GetAITeacherSyncDialogueSuggestionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_aiteacher_sync_dialogue_suggestion(
         self,
@@ -2408,10 +3358,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.GetTextbookAssistantTokenResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.GetTextbookAssistantTokenResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.GetTextbookAssistantTokenResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_textbook_assistant_token_with_options_async(
         self,
@@ -2448,10 +3404,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.GetTextbookAssistantTokenResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.GetTextbookAssistantTokenResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.GetTextbookAssistantTokenResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_textbook_assistant_token(
         self,
@@ -2516,10 +3478,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ListTextbookAssistantArticlesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ListTextbookAssistantArticlesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ListTextbookAssistantArticlesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_textbook_assistant_articles_with_options_async(
         self,
@@ -2556,10 +3524,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ListTextbookAssistantArticlesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ListTextbookAssistantArticlesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ListTextbookAssistantArticlesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_textbook_assistant_articles(
         self,
@@ -2626,10 +3600,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ListTextbookAssistantBookDirectoriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ListTextbookAssistantBookDirectoriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ListTextbookAssistantBookDirectoriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_textbook_assistant_book_directories_with_options_async(
         self,
@@ -2668,10 +3648,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ListTextbookAssistantBookDirectoriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ListTextbookAssistantBookDirectoriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ListTextbookAssistantBookDirectoriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_textbook_assistant_book_directories(
         self,
@@ -2746,10 +3732,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ListTextbookAssistantBooksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ListTextbookAssistantBooksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ListTextbookAssistantBooksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_textbook_assistant_books_with_options_async(
         self,
@@ -2796,10 +3788,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ListTextbookAssistantBooksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ListTextbookAssistantBooksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ListTextbookAssistantBooksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_textbook_assistant_books(
         self,
@@ -2864,10 +3862,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ListTextbookAssistantGradeVolumesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ListTextbookAssistantGradeVolumesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ListTextbookAssistantGradeVolumesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_textbook_assistant_grade_volumes_with_options_async(
         self,
@@ -2904,10 +3908,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.ListTextbookAssistantGradeVolumesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.ListTextbookAssistantGradeVolumesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.ListTextbookAssistantGradeVolumesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_textbook_assistant_grade_volumes(
         self,
@@ -2980,10 +3990,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.PersonalizedTextToImageAddInferenceJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.PersonalizedTextToImageAddInferenceJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.PersonalizedTextToImageAddInferenceJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def personalized_text_to_image_add_inference_job_with_options_async(
         self,
@@ -3028,10 +4044,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.PersonalizedTextToImageAddInferenceJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.PersonalizedTextToImageAddInferenceJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.PersonalizedTextToImageAddInferenceJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def personalized_text_to_image_add_inference_job(
         self,
@@ -3096,10 +4118,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='any'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.PersonalizedTextToImageQueryImageAssetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.PersonalizedTextToImageQueryImageAssetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.PersonalizedTextToImageQueryImageAssetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def personalized_text_to_image_query_image_asset_with_options_async(
         self,
@@ -3136,10 +4164,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='any'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.PersonalizedTextToImageQueryImageAssetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.PersonalizedTextToImageQueryImageAssetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.PersonalizedTextToImageQueryImageAssetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def personalized_text_to_image_query_image_asset(
         self,
@@ -3202,10 +4236,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def personalized_text_to_image_query_pre_model_inference_job_info_with_options_async(
         self,
@@ -3240,10 +4280,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def personalized_text_to_image_query_pre_model_inference_job_info(
         self,
@@ -3312,10 +4358,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.Personalizedtxt2imgAddInferenceJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgAddInferenceJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgAddInferenceJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def personalizedtxt_2img_add_inference_job_with_options_async(
         self,
@@ -3356,10 +4408,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.Personalizedtxt2imgAddInferenceJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgAddInferenceJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgAddInferenceJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def personalizedtxt_2img_add_inference_job(
         self,
@@ -3428,10 +4486,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.Personalizedtxt2imgAddModelTrainJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgAddModelTrainJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgAddModelTrainJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def personalizedtxt_2img_add_model_train_job_with_options_async(
         self,
@@ -3472,10 +4536,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.Personalizedtxt2imgAddModelTrainJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgAddModelTrainJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgAddModelTrainJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def personalizedtxt_2img_add_model_train_job(
         self,
@@ -3544,10 +4614,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='any'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.Personalizedtxt2imgQueryImageAssetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgQueryImageAssetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgQueryImageAssetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def personalizedtxt_2img_query_image_asset_with_options_async(
         self,
@@ -3588,10 +4664,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='any'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.Personalizedtxt2imgQueryImageAssetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgQueryImageAssetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgQueryImageAssetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def personalizedtxt_2img_query_image_asset(
         self,
@@ -3654,10 +4736,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.Personalizedtxt2imgQueryInferenceJobInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgQueryInferenceJobInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgQueryInferenceJobInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def personalizedtxt_2img_query_inference_job_info_with_options_async(
         self,
@@ -3692,10 +4780,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.Personalizedtxt2imgQueryInferenceJobInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgQueryInferenceJobInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgQueryInferenceJobInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def personalizedtxt_2img_query_inference_job_info(
         self,
@@ -3751,10 +4845,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.Personalizedtxt2imgQueryModelTrainJobListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgQueryModelTrainJobListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgQueryModelTrainJobListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def personalizedtxt_2img_query_model_train_job_list_with_options_async(
         self,
@@ -3782,10 +4882,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.Personalizedtxt2imgQueryModelTrainJobListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgQueryModelTrainJobListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgQueryModelTrainJobListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def personalizedtxt_2img_query_model_train_job_list(self) -> ai_content_20240611_models.Personalizedtxt2imgQueryModelTrainJobListResponse:
         """
@@ -3840,10 +4946,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.Personalizedtxt2imgQueryModelTrainStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgQueryModelTrainStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgQueryModelTrainStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def personalizedtxt_2img_query_model_train_status_with_options_async(
         self,
@@ -3878,10 +4990,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ai_content_20240611_models.Personalizedtxt2imgQueryModelTrainStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgQueryModelTrainStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.Personalizedtxt2imgQueryModelTrainStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def personalizedtxt_2img_query_model_train_status(
         self,
@@ -3910,3 +5028,543 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.personalizedtxt_2img_query_model_train_status_with_options_async(request, headers, runtime)
+
+    def query_application_access_id_with_options(
+        self,
+        request: ai_content_20240611_models.QueryApplicationAccessIdRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.QueryApplicationAccessIdResponse:
+        """
+        @summary 阿里云控制台/获取应用访问识别码(appkey)信息
+        
+        @param request: QueryApplicationAccessIdRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryApplicationAccessIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_access_id):
+            query['applicationAccessId'] = request.application_access_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryApplicationAccessId',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aliyunConsole/queryApplicationAccessId',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.QueryApplicationAccessIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.QueryApplicationAccessIdResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def query_application_access_id_with_options_async(
+        self,
+        request: ai_content_20240611_models.QueryApplicationAccessIdRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.QueryApplicationAccessIdResponse:
+        """
+        @summary 阿里云控制台/获取应用访问识别码(appkey)信息
+        
+        @param request: QueryApplicationAccessIdRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryApplicationAccessIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_access_id):
+            query['applicationAccessId'] = request.application_access_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryApplicationAccessId',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aliyunConsole/queryApplicationAccessId',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.QueryApplicationAccessIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.QueryApplicationAccessIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def query_application_access_id(
+        self,
+        request: ai_content_20240611_models.QueryApplicationAccessIdRequest,
+    ) -> ai_content_20240611_models.QueryApplicationAccessIdResponse:
+        """
+        @summary 阿里云控制台/获取应用访问识别码(appkey)信息
+        
+        @param request: QueryApplicationAccessIdRequest
+        @return: QueryApplicationAccessIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_application_access_id_with_options(request, headers, runtime)
+
+    async def query_application_access_id_async(
+        self,
+        request: ai_content_20240611_models.QueryApplicationAccessIdRequest,
+    ) -> ai_content_20240611_models.QueryApplicationAccessIdResponse:
+        """
+        @summary 阿里云控制台/获取应用访问识别码(appkey)信息
+        
+        @param request: QueryApplicationAccessIdRequest
+        @return: QueryApplicationAccessIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_application_access_id_with_options_async(request, headers, runtime)
+
+    def query_project_with_options(
+        self,
+        request: ai_content_20240611_models.QueryProjectRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.QueryProjectResponse:
+        """
+        @summary 阿里云控制台/获取项目列表
+        
+        @param request: QueryProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryProjectResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_id):
+            query['projectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryProject',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aliyunConsole/queryProject',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.QueryProjectResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.QueryProjectResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def query_project_with_options_async(
+        self,
+        request: ai_content_20240611_models.QueryProjectRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.QueryProjectResponse:
+        """
+        @summary 阿里云控制台/获取项目列表
+        
+        @param request: QueryProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryProjectResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_id):
+            query['projectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryProject',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aliyunConsole/queryProject',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.QueryProjectResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.QueryProjectResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def query_project(
+        self,
+        request: ai_content_20240611_models.QueryProjectRequest,
+    ) -> ai_content_20240611_models.QueryProjectResponse:
+        """
+        @summary 阿里云控制台/获取项目列表
+        
+        @param request: QueryProjectRequest
+        @return: QueryProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_project_with_options(request, headers, runtime)
+
+    async def query_project_async(
+        self,
+        request: ai_content_20240611_models.QueryProjectRequest,
+    ) -> ai_content_20240611_models.QueryProjectResponse:
+        """
+        @summary 阿里云控制台/获取项目列表
+        
+        @param request: QueryProjectRequest
+        @return: QueryProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_project_with_options_async(request, headers, runtime)
+
+    def query_project_list_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.QueryProjectListResponse:
+        """
+        @summary 阿里云控制台/获取项目列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryProjectListResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='QueryProjectList',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aliyunConsole/queryProjectList',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.QueryProjectListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.QueryProjectListResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def query_project_list_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.QueryProjectListResponse:
+        """
+        @summary 阿里云控制台/获取项目列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryProjectListResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='QueryProjectList',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aliyunConsole/queryProjectList',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.QueryProjectListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.QueryProjectListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def query_project_list(self) -> ai_content_20240611_models.QueryProjectListResponse:
+        """
+        @summary 阿里云控制台/获取项目列表
+        
+        @return: QueryProjectListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_project_list_with_options(headers, runtime)
+
+    async def query_project_list_async(self) -> ai_content_20240611_models.QueryProjectListResponse:
+        """
+        @summary 阿里云控制台/获取项目列表
+        
+        @return: QueryProjectListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_project_list_with_options_async(headers, runtime)
+
+    def query_purchased_service_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.QueryPurchasedServiceResponse:
+        """
+        @summary 阿里云控制台/已经购买过的服务项目
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPurchasedServiceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='QueryPurchasedService',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aliyunConsole/queryPurchasedService',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.QueryPurchasedServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.QueryPurchasedServiceResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def query_purchased_service_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.QueryPurchasedServiceResponse:
+        """
+        @summary 阿里云控制台/已经购买过的服务项目
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPurchasedServiceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='QueryPurchasedService',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aliyunConsole/queryPurchasedService',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.QueryPurchasedServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.QueryPurchasedServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def query_purchased_service(self) -> ai_content_20240611_models.QueryPurchasedServiceResponse:
+        """
+        @summary 阿里云控制台/已经购买过的服务项目
+        
+        @return: QueryPurchasedServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_purchased_service_with_options(headers, runtime)
+
+    async def query_purchased_service_async(self) -> ai_content_20240611_models.QueryPurchasedServiceResponse:
+        """
+        @summary 阿里云控制台/已经购买过的服务项目
+        
+        @return: QueryPurchasedServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_purchased_service_with_options_async(headers, runtime)
+
+    def update_project_with_options(
+        self,
+        request: ai_content_20240611_models.UpdateProjectRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.UpdateProjectResponse:
+        """
+        @summary 阿里云控制台/更新项目信息
+        
+        @param request: UpdateProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['projectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_name):
+            body['projectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateProject',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aliyunConsole/updateProject',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.UpdateProjectResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.UpdateProjectResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_project_with_options_async(
+        self,
+        request: ai_content_20240611_models.UpdateProjectRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.UpdateProjectResponse:
+        """
+        @summary 阿里云控制台/更新项目信息
+        
+        @param request: UpdateProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['projectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_name):
+            body['projectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateProject',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aliyunConsole/updateProject',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_content_20240611_models.UpdateProjectResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_content_20240611_models.UpdateProjectResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_project(
+        self,
+        request: ai_content_20240611_models.UpdateProjectRequest,
+    ) -> ai_content_20240611_models.UpdateProjectResponse:
+        """
+        @summary 阿里云控制台/更新项目信息
+        
+        @param request: UpdateProjectRequest
+        @return: UpdateProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_project_with_options(request, headers, runtime)
+
+    async def update_project_async(
+        self,
+        request: ai_content_20240611_models.UpdateProjectRequest,
+    ) -> ai_content_20240611_models.UpdateProjectResponse:
+        """
+        @summary 阿里云控制台/更新项目信息
+        
+        @param request: UpdateProjectRequest
+        @return: UpdateProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_project_with_options_async(request, headers, runtime)

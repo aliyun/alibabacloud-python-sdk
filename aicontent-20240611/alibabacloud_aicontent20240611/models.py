@@ -4,6 +4,63 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any
 
 
+class AliyunConsoleServiceInfoDTO(TeaModel):
+    def __init__(
+        self,
+        buy_url: str = None,
+        document_url: str = None,
+        free_concurrency_count: int = None,
+        free_count: int = None,
+        service_code: str = None,
+        service_name: str = None,
+    ):
+        self.buy_url = buy_url
+        self.document_url = document_url
+        self.free_concurrency_count = free_concurrency_count
+        self.free_count = free_count
+        self.service_code = service_code
+        self.service_name = service_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.buy_url is not None:
+            result['buyUrl'] = self.buy_url
+        if self.document_url is not None:
+            result['documentUrl'] = self.document_url
+        if self.free_concurrency_count is not None:
+            result['freeConcurrencyCount'] = self.free_concurrency_count
+        if self.free_count is not None:
+            result['freeCount'] = self.free_count
+        if self.service_code is not None:
+            result['serviceCode'] = self.service_code
+        if self.service_name is not None:
+            result['serviceName'] = self.service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('buyUrl') is not None:
+            self.buy_url = m.get('buyUrl')
+        if m.get('documentUrl') is not None:
+            self.document_url = m.get('documentUrl')
+        if m.get('freeConcurrencyCount') is not None:
+            self.free_concurrency_count = m.get('freeConcurrencyCount')
+        if m.get('freeCount') is not None:
+            self.free_count = m.get('freeCount')
+        if m.get('serviceCode') is not None:
+            self.service_code = m.get('serviceCode')
+        if m.get('serviceName') is not None:
+            self.service_name = m.get('serviceName')
+        return self
+
+
 class OpenApiMultiResponseDataInferenceJobList(TeaModel):
     def __init__(
         self,
@@ -1223,55 +1280,10 @@ class AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponse(TeaModel):
         return self
 
 
-class AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        free_concurrency_count: int = None,
-        free_count: int = None,
-        service_code: str = None,
-        service_name: str = None,
-    ):
-        self.free_concurrency_count = free_concurrency_count
-        self.free_count = free_count
-        self.service_code = service_code
-        self.service_name = service_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.free_concurrency_count is not None:
-            result['FreeConcurrencyCount'] = self.free_concurrency_count
-        if self.free_count is not None:
-            result['FreeCount'] = self.free_count
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.service_name is not None:
-            result['ServiceName'] = self.service_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('FreeConcurrencyCount') is not None:
-            self.free_concurrency_count = m.get('FreeConcurrencyCount')
-        if m.get('FreeCount') is not None:
-            self.free_count = m.get('FreeCount')
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('ServiceName') is not None:
-            self.service_name = m.get('ServiceName')
-        return self
-
-
 class AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody(TeaModel):
     def __init__(
         self,
-        data: List[AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData] = None,
+        data: List[AliyunConsoleServiceInfoDTO] = None,
         err_code: str = None,
         err_message: str = None,
         http_status_code: int = None,
@@ -1318,7 +1330,7 @@ class AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody(TeaModel):
         self.data = []
         if m.get('data') is not None:
             for k in m.get('data'):
-                temp_model = AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData()
+                temp_model = AliyunConsoleServiceInfoDTO()
                 self.data.append(temp_model.from_map(k))
         if m.get('errCode') is not None:
             self.err_code = m.get('errCode')
@@ -1370,6 +1382,1079 @@ class AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateAccessWarrantRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_sign: str = None,
+        timestamp: str = None,
+        user_client_ip: str = None,
+        user_id: str = None,
+        warrant_available: int = None,
+    ):
+        self.app_id = app_id
+        self.request_sign = request_sign
+        self.timestamp = timestamp
+        self.user_client_ip = user_client_ip
+        self.user_id = user_id
+        self.warrant_available = warrant_available
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['appId'] = self.app_id
+        if self.request_sign is not None:
+            result['requestSign'] = self.request_sign
+        if self.timestamp is not None:
+            result['timestamp'] = self.timestamp
+        if self.user_client_ip is not None:
+            result['userClientIp'] = self.user_client_ip
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.warrant_available is not None:
+            result['warrantAvailable'] = self.warrant_available
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('appId') is not None:
+            self.app_id = m.get('appId')
+        if m.get('requestSign') is not None:
+            self.request_sign = m.get('requestSign')
+        if m.get('timestamp') is not None:
+            self.timestamp = m.get('timestamp')
+        if m.get('userClientIp') is not None:
+            self.user_client_ip = m.get('userClientIp')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('warrantAvailable') is not None:
+            self.warrant_available = m.get('warrantAvailable')
+        return self
+
+
+class CreateAccessWarrantResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        access_warrant_id: str = None,
+        application_access_id: str = None,
+        create_time: str = None,
+        expire_time: str = None,
+        user_id: str = None,
+    ):
+        self.access_token = access_token
+        self.access_warrant_id = access_warrant_id
+        self.application_access_id = application_access_id
+        self.create_time = create_time
+        self.expire_time = expire_time
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['AccessToken'] = self.access_token
+        if self.access_warrant_id is not None:
+            result['AccessWarrantId'] = self.access_warrant_id
+        if self.application_access_id is not None:
+            result['ApplicationAccessId'] = self.application_access_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessToken') is not None:
+            self.access_token = m.get('AccessToken')
+        if m.get('AccessWarrantId') is not None:
+            self.access_warrant_id = m.get('AccessWarrantId')
+        if m.get('ApplicationAccessId') is not None:
+            self.application_access_id = m.get('ApplicationAccessId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class CreateAccessWarrantResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateAccessWarrantResponseBodyData = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = CreateAccessWarrantResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateAccessWarrantResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAccessWarrantResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAccessWarrantResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateProjectRequest(TeaModel):
+    def __init__(
+        self,
+        project_name: str = None,
+        project_type: str = None,
+    ):
+        self.project_name = project_name
+        self.project_type = project_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_name is not None:
+            result['projectName'] = self.project_name
+        if self.project_type is not None:
+            result['projectType'] = self.project_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('projectName') is not None:
+            self.project_name = m.get('projectName')
+        if m.get('projectType') is not None:
+            self.project_type = m.get('projectType')
+        return self
+
+
+class CreateProjectResponseBodyDataProjectAppsApplicationAccessIds(TeaModel):
+    def __init__(
+        self,
+        application_access_id: str = None,
+        application_access_secret: str = None,
+    ):
+        self.application_access_id = application_access_id
+        self.application_access_secret = application_access_secret
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_access_id is not None:
+            result['applicationAccessId'] = self.application_access_id
+        if self.application_access_secret is not None:
+            result['applicationAccessSecret'] = self.application_access_secret
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationAccessId') is not None:
+            self.application_access_id = m.get('applicationAccessId')
+        if m.get('applicationAccessSecret') is not None:
+            self.application_access_secret = m.get('applicationAccessSecret')
+        return self
+
+
+class CreateProjectResponseBodyDataProjectApps(TeaModel):
+    def __init__(
+        self,
+        application_access_ids: List[CreateProjectResponseBodyDataProjectAppsApplicationAccessIds] = None,
+        id: str = None,
+        project_id: str = None,
+    ):
+        self.application_access_ids = application_access_ids
+        self.id = id
+        self.project_id = project_id
+
+    def validate(self):
+        if self.application_access_ids:
+            for k in self.application_access_ids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApplicationAccessIds'] = []
+        if self.application_access_ids is not None:
+            for k in self.application_access_ids:
+                result['ApplicationAccessIds'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_access_ids = []
+        if m.get('ApplicationAccessIds') is not None:
+            for k in m.get('ApplicationAccessIds'):
+                temp_model = CreateProjectResponseBodyDataProjectAppsApplicationAccessIds()
+                self.application_access_ids.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class CreateProjectResponseBodyDataProjectSDK(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        demo_url: str = None,
+        deploy_mode: str = None,
+        develop_language: str = None,
+        doc_url: str = None,
+        sdk_name: str = None,
+        sdk_url: str = None,
+        sdk_version: str = None,
+    ):
+        self.create_time = create_time
+        self.demo_url = demo_url
+        self.deploy_mode = deploy_mode
+        self.develop_language = develop_language
+        self.doc_url = doc_url
+        self.sdk_name = sdk_name
+        self.sdk_url = sdk_url
+        self.sdk_version = sdk_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.demo_url is not None:
+            result['DemoUrl'] = self.demo_url
+        if self.deploy_mode is not None:
+            result['DeployMode'] = self.deploy_mode
+        if self.develop_language is not None:
+            result['DevelopLanguage'] = self.develop_language
+        if self.doc_url is not None:
+            result['DocUrl'] = self.doc_url
+        if self.sdk_name is not None:
+            result['SdkName'] = self.sdk_name
+        if self.sdk_url is not None:
+            result['SdkUrl'] = self.sdk_url
+        if self.sdk_version is not None:
+            result['SdkVersion'] = self.sdk_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DemoUrl') is not None:
+            self.demo_url = m.get('DemoUrl')
+        if m.get('DeployMode') is not None:
+            self.deploy_mode = m.get('DeployMode')
+        if m.get('DevelopLanguage') is not None:
+            self.develop_language = m.get('DevelopLanguage')
+        if m.get('DocUrl') is not None:
+            self.doc_url = m.get('DocUrl')
+        if m.get('SdkName') is not None:
+            self.sdk_name = m.get('SdkName')
+        if m.get('SdkUrl') is not None:
+            self.sdk_url = m.get('SdkUrl')
+        if m.get('SdkVersion') is not None:
+            self.sdk_version = m.get('SdkVersion')
+        return self
+
+
+class CreateProjectResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        project_apps: List[CreateProjectResponseBodyDataProjectApps] = None,
+        project_id: str = None,
+        project_name: str = None,
+        project_sdk: List[CreateProjectResponseBodyDataProjectSDK] = None,
+        project_type: str = None,
+    ):
+        self.create_time = create_time
+        self.project_apps = project_apps
+        self.project_id = project_id
+        self.project_name = project_name
+        self.project_sdk = project_sdk
+        self.project_type = project_type
+
+    def validate(self):
+        if self.project_apps:
+            for k in self.project_apps:
+                if k:
+                    k.validate()
+        if self.project_sdk:
+            for k in self.project_sdk:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        result['ProjectApps'] = []
+        if self.project_apps is not None:
+            for k in self.project_apps:
+                result['ProjectApps'].append(k.to_map() if k else None)
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        result['ProjectSDK'] = []
+        if self.project_sdk is not None:
+            for k in self.project_sdk:
+                result['ProjectSDK'].append(k.to_map() if k else None)
+        if self.project_type is not None:
+            result['ProjectType'] = self.project_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        self.project_apps = []
+        if m.get('ProjectApps') is not None:
+            for k in m.get('ProjectApps'):
+                temp_model = CreateProjectResponseBodyDataProjectApps()
+                self.project_apps.append(temp_model.from_map(k))
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        self.project_sdk = []
+        if m.get('ProjectSDK') is not None:
+            for k in m.get('ProjectSDK'):
+                temp_model = CreateProjectResponseBodyDataProjectSDK()
+                self.project_sdk.append(temp_model.from_map(k))
+        if m.get('ProjectType') is not None:
+            self.project_type = m.get('ProjectType')
+        return self
+
+
+class CreateProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateProjectResponseBodyData = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = CreateProjectResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        caller_parent_id: int = None,
+        caller_type: str = None,
+        caller_uid: int = None,
+        sts_token_caller_uid: int = None,
+    ):
+        self.common_headers = common_headers
+        self.caller_parent_id = caller_parent_id
+        self.caller_type = caller_type
+        self.caller_uid = caller_uid
+        self.sts_token_caller_uid = sts_token_caller_uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.caller_parent_id is not None:
+            result['callerParentId'] = self.caller_parent_id
+        if self.caller_type is not None:
+            result['callerType'] = self.caller_type
+        if self.caller_uid is not None:
+            result['callerUid'] = self.caller_uid
+        if self.sts_token_caller_uid is not None:
+            result['stsTokenCallerUid'] = self.sts_token_caller_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('callerParentId') is not None:
+            self.caller_parent_id = m.get('callerParentId')
+        if m.get('callerType') is not None:
+            self.caller_type = m.get('callerType')
+        if m.get('callerUid') is not None:
+            self.caller_uid = m.get('callerUid')
+        if m.get('stsTokenCallerUid') is not None:
+            self.sts_token_caller_uid = m.get('stsTokenCallerUid')
+        return self
+
+
+class ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest(TeaModel):
+    def __init__(
+        self,
+        essay_outline: str = None,
+        essay_requirements: str = None,
+        essay_topic: str = None,
+        essay_type: str = None,
+        essay_word_count: int = None,
+        grade: int = None,
+        response_mode: str = None,
+        user_id: str = None,
+    ):
+        self.essay_outline = essay_outline
+        self.essay_requirements = essay_requirements
+        self.essay_topic = essay_topic
+        self.essay_type = essay_type
+        self.essay_word_count = essay_word_count
+        self.grade = grade
+        self.response_mode = response_mode
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.essay_outline is not None:
+            result['essayOutline'] = self.essay_outline
+        if self.essay_requirements is not None:
+            result['essayRequirements'] = self.essay_requirements
+        if self.essay_topic is not None:
+            result['essayTopic'] = self.essay_topic
+        if self.essay_type is not None:
+            result['essayType'] = self.essay_type
+        if self.essay_word_count is not None:
+            result['essayWordCount'] = self.essay_word_count
+        if self.grade is not None:
+            result['grade'] = self.grade
+        if self.response_mode is not None:
+            result['responseMode'] = self.response_mode
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('essayOutline') is not None:
+            self.essay_outline = m.get('essayOutline')
+        if m.get('essayRequirements') is not None:
+            self.essay_requirements = m.get('essayRequirements')
+        if m.get('essayTopic') is not None:
+            self.essay_topic = m.get('essayTopic')
+        if m.get('essayType') is not None:
+            self.essay_type = m.get('essayType')
+        if m.get('essayWordCount') is not None:
+            self.essay_word_count = m.get('essayWordCount')
+        if m.get('grade') is not None:
+            self.grade = m.get('grade')
+        if m.get('responseMode') is not None:
+            self.response_mode = m.get('responseMode')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        event: str = None,
+        request_id: str = None,
+    ):
+        self.content = content
+        self.event = event
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.event is not None:
+            result['event'] = self.event
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('event') is not None:
+            self.event = m.get('event')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest(TeaModel):
+    def __init__(
+        self,
+        essay_outline: str = None,
+        essay_requirements: str = None,
+        essay_topic: str = None,
+        essay_type: str = None,
+        essay_word_count: int = None,
+        grade: int = None,
+        response_mode: str = None,
+        user_id: str = None,
+    ):
+        self.essay_outline = essay_outline
+        # This parameter is required.
+        self.essay_requirements = essay_requirements
+        # This parameter is required.
+        self.essay_topic = essay_topic
+        self.essay_type = essay_type
+        self.essay_word_count = essay_word_count
+        # This parameter is required.
+        self.grade = grade
+        # This parameter is required.
+        self.response_mode = response_mode
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.essay_outline is not None:
+            result['essayOutline'] = self.essay_outline
+        if self.essay_requirements is not None:
+            result['essayRequirements'] = self.essay_requirements
+        if self.essay_topic is not None:
+            result['essayTopic'] = self.essay_topic
+        if self.essay_type is not None:
+            result['essayType'] = self.essay_type
+        if self.essay_word_count is not None:
+            result['essayWordCount'] = self.essay_word_count
+        if self.grade is not None:
+            result['grade'] = self.grade
+        if self.response_mode is not None:
+            result['responseMode'] = self.response_mode
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('essayOutline') is not None:
+            self.essay_outline = m.get('essayOutline')
+        if m.get('essayRequirements') is not None:
+            self.essay_requirements = m.get('essayRequirements')
+        if m.get('essayTopic') is not None:
+            self.essay_topic = m.get('essayTopic')
+        if m.get('essayType') is not None:
+            self.essay_type = m.get('essayType')
+        if m.get('essayWordCount') is not None:
+            self.essay_word_count = m.get('essayWordCount')
+        if m.get('grade') is not None:
+            self.grade = m.get('grade')
+        if m.get('responseMode') is not None:
+            self.response_mode = m.get('responseMode')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        event: str = None,
+        request_id: str = None,
+    ):
+        self.content = content
+        self.event = event
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.event is not None:
+            result['event'] = self.event
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('event') is not None:
+            self.event = m.get('event')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExecuteAITeacherEnglishParaphraseChatMessageRequest(TeaModel):
+    def __init__(
+        self,
+        chat_id: str = None,
+        content: str = None,
+        grade: int = None,
+        question_id: str = None,
+        question_info: str = None,
+        response_mode: str = None,
+        user_answer: str = None,
+        user_id: str = None,
+    ):
+        self.chat_id = chat_id
+        self.content = content
+        self.grade = grade
+        self.question_id = question_id
+        self.question_info = question_info
+        self.response_mode = response_mode
+        self.user_answer = user_answer
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chat_id is not None:
+            result['chatId'] = self.chat_id
+        if self.content is not None:
+            result['content'] = self.content
+        if self.grade is not None:
+            result['grade'] = self.grade
+        if self.question_id is not None:
+            result['questionId'] = self.question_id
+        if self.question_info is not None:
+            result['questionInfo'] = self.question_info
+        if self.response_mode is not None:
+            result['responseMode'] = self.response_mode
+        if self.user_answer is not None:
+            result['userAnswer'] = self.user_answer
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('chatId') is not None:
+            self.chat_id = m.get('chatId')
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('grade') is not None:
+            self.grade = m.get('grade')
+        if m.get('questionId') is not None:
+            self.question_id = m.get('questionId')
+        if m.get('questionInfo') is not None:
+            self.question_info = m.get('questionInfo')
+        if m.get('responseMode') is not None:
+            self.response_mode = m.get('responseMode')
+        if m.get('userAnswer') is not None:
+            self.user_answer = m.get('userAnswer')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class ExecuteAITeacherEnglishParaphraseChatMessageResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        event: str = None,
+        request_id: str = None,
+    ):
+        self.content = content
+        self.event = event
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.event is not None:
+            result['event'] = self.event
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('event') is not None:
+            self.event = m.get('event')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ExecuteAITeacherEnglishParaphraseChatMessageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteAITeacherEnglishParaphraseChatMessageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteAITeacherEnglishParaphraseChatMessageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8584,6 +9669,1307 @@ class Personalizedtxt2imgQueryModelTrainStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = Personalizedtxt2imgQueryModelTrainStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryApplicationAccessIdRequest(TeaModel):
+    def __init__(
+        self,
+        application_access_id: str = None,
+    ):
+        self.application_access_id = application_access_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_access_id is not None:
+            result['applicationAccessId'] = self.application_access_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationAccessId') is not None:
+            self.application_access_id = m.get('applicationAccessId')
+        return self
+
+
+class QueryApplicationAccessIdResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        application_access_id: str = None,
+        application_access_secret: str = None,
+    ):
+        self.application_access_id = application_access_id
+        self.application_access_secret = application_access_secret
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_access_id is not None:
+            result['applicationAccessId'] = self.application_access_id
+        if self.application_access_secret is not None:
+            result['applicationAccessSecret'] = self.application_access_secret
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationAccessId') is not None:
+            self.application_access_id = m.get('applicationAccessId')
+        if m.get('applicationAccessSecret') is not None:
+            self.application_access_secret = m.get('applicationAccessSecret')
+        return self
+
+
+class QueryApplicationAccessIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: QueryApplicationAccessIdResponseBodyData = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = QueryApplicationAccessIdResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class QueryApplicationAccessIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryApplicationAccessIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryApplicationAccessIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryProjectRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: str = None,
+    ):
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        return self
+
+
+class QueryProjectResponseBodyDataProjectAppsApplicationAccessIds(TeaModel):
+    def __init__(
+        self,
+        application_access_id: str = None,
+        application_access_secret: str = None,
+    ):
+        self.application_access_id = application_access_id
+        self.application_access_secret = application_access_secret
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_access_id is not None:
+            result['applicationAccessId'] = self.application_access_id
+        if self.application_access_secret is not None:
+            result['applicationAccessSecret'] = self.application_access_secret
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationAccessId') is not None:
+            self.application_access_id = m.get('applicationAccessId')
+        if m.get('applicationAccessSecret') is not None:
+            self.application_access_secret = m.get('applicationAccessSecret')
+        return self
+
+
+class QueryProjectResponseBodyDataProjectApps(TeaModel):
+    def __init__(
+        self,
+        application_access_ids: List[QueryProjectResponseBodyDataProjectAppsApplicationAccessIds] = None,
+        id: str = None,
+        project_id: str = None,
+    ):
+        self.application_access_ids = application_access_ids
+        self.id = id
+        self.project_id = project_id
+
+    def validate(self):
+        if self.application_access_ids:
+            for k in self.application_access_ids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApplicationAccessIds'] = []
+        if self.application_access_ids is not None:
+            for k in self.application_access_ids:
+                result['ApplicationAccessIds'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_access_ids = []
+        if m.get('ApplicationAccessIds') is not None:
+            for k in m.get('ApplicationAccessIds'):
+                temp_model = QueryProjectResponseBodyDataProjectAppsApplicationAccessIds()
+                self.application_access_ids.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class QueryProjectResponseBodyDataProjectSDK(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        demo_url: str = None,
+        deploy_mode: str = None,
+        develop_language: str = None,
+        doc_url: str = None,
+        sdk_name: str = None,
+        sdk_url: str = None,
+        sdk_version: str = None,
+    ):
+        self.create_time = create_time
+        self.demo_url = demo_url
+        self.deploy_mode = deploy_mode
+        self.develop_language = develop_language
+        self.doc_url = doc_url
+        self.sdk_name = sdk_name
+        self.sdk_url = sdk_url
+        self.sdk_version = sdk_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.demo_url is not None:
+            result['DemoUrl'] = self.demo_url
+        if self.deploy_mode is not None:
+            result['DeployMode'] = self.deploy_mode
+        if self.develop_language is not None:
+            result['DevelopLanguage'] = self.develop_language
+        if self.doc_url is not None:
+            result['DocUrl'] = self.doc_url
+        if self.sdk_name is not None:
+            result['SdkName'] = self.sdk_name
+        if self.sdk_url is not None:
+            result['SdkUrl'] = self.sdk_url
+        if self.sdk_version is not None:
+            result['SdkVersion'] = self.sdk_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DemoUrl') is not None:
+            self.demo_url = m.get('DemoUrl')
+        if m.get('DeployMode') is not None:
+            self.deploy_mode = m.get('DeployMode')
+        if m.get('DevelopLanguage') is not None:
+            self.develop_language = m.get('DevelopLanguage')
+        if m.get('DocUrl') is not None:
+            self.doc_url = m.get('DocUrl')
+        if m.get('SdkName') is not None:
+            self.sdk_name = m.get('SdkName')
+        if m.get('SdkUrl') is not None:
+            self.sdk_url = m.get('SdkUrl')
+        if m.get('SdkVersion') is not None:
+            self.sdk_version = m.get('SdkVersion')
+        return self
+
+
+class QueryProjectResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        project_apps: List[QueryProjectResponseBodyDataProjectApps] = None,
+        project_id: str = None,
+        project_name: str = None,
+        project_sdk: List[QueryProjectResponseBodyDataProjectSDK] = None,
+        project_type: str = None,
+    ):
+        self.create_time = create_time
+        self.project_apps = project_apps
+        self.project_id = project_id
+        self.project_name = project_name
+        self.project_sdk = project_sdk
+        self.project_type = project_type
+
+    def validate(self):
+        if self.project_apps:
+            for k in self.project_apps:
+                if k:
+                    k.validate()
+        if self.project_sdk:
+            for k in self.project_sdk:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        result['ProjectApps'] = []
+        if self.project_apps is not None:
+            for k in self.project_apps:
+                result['ProjectApps'].append(k.to_map() if k else None)
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        result['ProjectSDK'] = []
+        if self.project_sdk is not None:
+            for k in self.project_sdk:
+                result['ProjectSDK'].append(k.to_map() if k else None)
+        if self.project_type is not None:
+            result['ProjectType'] = self.project_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        self.project_apps = []
+        if m.get('ProjectApps') is not None:
+            for k in m.get('ProjectApps'):
+                temp_model = QueryProjectResponseBodyDataProjectApps()
+                self.project_apps.append(temp_model.from_map(k))
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        self.project_sdk = []
+        if m.get('ProjectSDK') is not None:
+            for k in m.get('ProjectSDK'):
+                temp_model = QueryProjectResponseBodyDataProjectSDK()
+                self.project_sdk.append(temp_model.from_map(k))
+        if m.get('ProjectType') is not None:
+            self.project_type = m.get('ProjectType')
+        return self
+
+
+class QueryProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: QueryProjectResponseBodyData = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = QueryProjectResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class QueryProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryProjectListResponseBodyDataProjectAppsApplicationAccessIds(TeaModel):
+    def __init__(
+        self,
+        application_access_id: str = None,
+        application_access_secret: str = None,
+    ):
+        self.application_access_id = application_access_id
+        self.application_access_secret = application_access_secret
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_access_id is not None:
+            result['applicationAccessId'] = self.application_access_id
+        if self.application_access_secret is not None:
+            result['applicationAccessSecret'] = self.application_access_secret
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationAccessId') is not None:
+            self.application_access_id = m.get('applicationAccessId')
+        if m.get('applicationAccessSecret') is not None:
+            self.application_access_secret = m.get('applicationAccessSecret')
+        return self
+
+
+class QueryProjectListResponseBodyDataProjectApps(TeaModel):
+    def __init__(
+        self,
+        application_access_ids: List[QueryProjectListResponseBodyDataProjectAppsApplicationAccessIds] = None,
+        id: str = None,
+        project_id: str = None,
+    ):
+        self.application_access_ids = application_access_ids
+        self.id = id
+        self.project_id = project_id
+
+    def validate(self):
+        if self.application_access_ids:
+            for k in self.application_access_ids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApplicationAccessIds'] = []
+        if self.application_access_ids is not None:
+            for k in self.application_access_ids:
+                result['ApplicationAccessIds'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_access_ids = []
+        if m.get('ApplicationAccessIds') is not None:
+            for k in m.get('ApplicationAccessIds'):
+                temp_model = QueryProjectListResponseBodyDataProjectAppsApplicationAccessIds()
+                self.application_access_ids.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class QueryProjectListResponseBodyDataProjectSDK(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        demo_url: str = None,
+        deploy_mode: str = None,
+        develop_language: str = None,
+        doc_url: str = None,
+        sdk_name: str = None,
+        sdk_url: str = None,
+        sdk_version: str = None,
+    ):
+        self.create_time = create_time
+        self.demo_url = demo_url
+        self.deploy_mode = deploy_mode
+        self.develop_language = develop_language
+        self.doc_url = doc_url
+        self.sdk_name = sdk_name
+        self.sdk_url = sdk_url
+        self.sdk_version = sdk_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.demo_url is not None:
+            result['DemoUrl'] = self.demo_url
+        if self.deploy_mode is not None:
+            result['DeployMode'] = self.deploy_mode
+        if self.develop_language is not None:
+            result['DevelopLanguage'] = self.develop_language
+        if self.doc_url is not None:
+            result['DocUrl'] = self.doc_url
+        if self.sdk_name is not None:
+            result['SdkName'] = self.sdk_name
+        if self.sdk_url is not None:
+            result['SdkUrl'] = self.sdk_url
+        if self.sdk_version is not None:
+            result['SdkVersion'] = self.sdk_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DemoUrl') is not None:
+            self.demo_url = m.get('DemoUrl')
+        if m.get('DeployMode') is not None:
+            self.deploy_mode = m.get('DeployMode')
+        if m.get('DevelopLanguage') is not None:
+            self.develop_language = m.get('DevelopLanguage')
+        if m.get('DocUrl') is not None:
+            self.doc_url = m.get('DocUrl')
+        if m.get('SdkName') is not None:
+            self.sdk_name = m.get('SdkName')
+        if m.get('SdkUrl') is not None:
+            self.sdk_url = m.get('SdkUrl')
+        if m.get('SdkVersion') is not None:
+            self.sdk_version = m.get('SdkVersion')
+        return self
+
+
+class QueryProjectListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        project_apps: List[QueryProjectListResponseBodyDataProjectApps] = None,
+        project_id: str = None,
+        project_name: str = None,
+        project_sdk: List[QueryProjectListResponseBodyDataProjectSDK] = None,
+        project_type: str = None,
+    ):
+        self.create_time = create_time
+        self.project_apps = project_apps
+        self.project_id = project_id
+        self.project_name = project_name
+        self.project_sdk = project_sdk
+        self.project_type = project_type
+
+    def validate(self):
+        if self.project_apps:
+            for k in self.project_apps:
+                if k:
+                    k.validate()
+        if self.project_sdk:
+            for k in self.project_sdk:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        result['ProjectApps'] = []
+        if self.project_apps is not None:
+            for k in self.project_apps:
+                result['ProjectApps'].append(k.to_map() if k else None)
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        result['ProjectSDK'] = []
+        if self.project_sdk is not None:
+            for k in self.project_sdk:
+                result['ProjectSDK'].append(k.to_map() if k else None)
+        if self.project_type is not None:
+            result['ProjectType'] = self.project_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        self.project_apps = []
+        if m.get('ProjectApps') is not None:
+            for k in m.get('ProjectApps'):
+                temp_model = QueryProjectListResponseBodyDataProjectApps()
+                self.project_apps.append(temp_model.from_map(k))
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        self.project_sdk = []
+        if m.get('ProjectSDK') is not None:
+            for k in m.get('ProjectSDK'):
+                temp_model = QueryProjectListResponseBodyDataProjectSDK()
+                self.project_sdk.append(temp_model.from_map(k))
+        if m.get('ProjectType') is not None:
+            self.project_type = m.get('ProjectType')
+        return self
+
+
+class QueryProjectListResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[QueryProjectListResponseBodyData] = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = QueryProjectListResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class QueryProjectListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryProjectListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryProjectListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryPurchasedServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[AliyunConsoleServiceInfoDTO] = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = AliyunConsoleServiceInfoDTO()
+                self.data.append(temp_model.from_map(k))
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class QueryPurchasedServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryPurchasedServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryPurchasedServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateProjectRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: str = None,
+        project_name: str = None,
+    ):
+        self.project_id = project_id
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        if self.project_name is not None:
+            result['projectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        if m.get('projectName') is not None:
+            self.project_name = m.get('projectName')
+        return self
+
+
+class UpdateProjectResponseBodyDataProjectAppsApplicationAccessIds(TeaModel):
+    def __init__(
+        self,
+        application_access_id: str = None,
+        application_access_secret: str = None,
+    ):
+        self.application_access_id = application_access_id
+        self.application_access_secret = application_access_secret
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_access_id is not None:
+            result['applicationAccessId'] = self.application_access_id
+        if self.application_access_secret is not None:
+            result['applicationAccessSecret'] = self.application_access_secret
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationAccessId') is not None:
+            self.application_access_id = m.get('applicationAccessId')
+        if m.get('applicationAccessSecret') is not None:
+            self.application_access_secret = m.get('applicationAccessSecret')
+        return self
+
+
+class UpdateProjectResponseBodyDataProjectApps(TeaModel):
+    def __init__(
+        self,
+        application_access_ids: List[UpdateProjectResponseBodyDataProjectAppsApplicationAccessIds] = None,
+        id: str = None,
+        project_id: str = None,
+    ):
+        self.application_access_ids = application_access_ids
+        self.id = id
+        self.project_id = project_id
+
+    def validate(self):
+        if self.application_access_ids:
+            for k in self.application_access_ids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApplicationAccessIds'] = []
+        if self.application_access_ids is not None:
+            for k in self.application_access_ids:
+                result['ApplicationAccessIds'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_access_ids = []
+        if m.get('ApplicationAccessIds') is not None:
+            for k in m.get('ApplicationAccessIds'):
+                temp_model = UpdateProjectResponseBodyDataProjectAppsApplicationAccessIds()
+                self.application_access_ids.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class UpdateProjectResponseBodyDataProjectSDK(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        demo_url: str = None,
+        deploy_mode: str = None,
+        develop_language: str = None,
+        doc_url: str = None,
+        sdk_name: str = None,
+        sdk_url: str = None,
+        sdk_version: str = None,
+    ):
+        self.create_time = create_time
+        self.demo_url = demo_url
+        self.deploy_mode = deploy_mode
+        self.develop_language = develop_language
+        self.doc_url = doc_url
+        self.sdk_name = sdk_name
+        self.sdk_url = sdk_url
+        self.sdk_version = sdk_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.demo_url is not None:
+            result['DemoUrl'] = self.demo_url
+        if self.deploy_mode is not None:
+            result['DeployMode'] = self.deploy_mode
+        if self.develop_language is not None:
+            result['DevelopLanguage'] = self.develop_language
+        if self.doc_url is not None:
+            result['DocUrl'] = self.doc_url
+        if self.sdk_name is not None:
+            result['SdkName'] = self.sdk_name
+        if self.sdk_url is not None:
+            result['SdkUrl'] = self.sdk_url
+        if self.sdk_version is not None:
+            result['SdkVersion'] = self.sdk_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DemoUrl') is not None:
+            self.demo_url = m.get('DemoUrl')
+        if m.get('DeployMode') is not None:
+            self.deploy_mode = m.get('DeployMode')
+        if m.get('DevelopLanguage') is not None:
+            self.develop_language = m.get('DevelopLanguage')
+        if m.get('DocUrl') is not None:
+            self.doc_url = m.get('DocUrl')
+        if m.get('SdkName') is not None:
+            self.sdk_name = m.get('SdkName')
+        if m.get('SdkUrl') is not None:
+            self.sdk_url = m.get('SdkUrl')
+        if m.get('SdkVersion') is not None:
+            self.sdk_version = m.get('SdkVersion')
+        return self
+
+
+class UpdateProjectResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        project_apps: List[UpdateProjectResponseBodyDataProjectApps] = None,
+        project_id: str = None,
+        project_name: str = None,
+        project_sdk: List[UpdateProjectResponseBodyDataProjectSDK] = None,
+        project_type: str = None,
+    ):
+        self.create_time = create_time
+        self.project_apps = project_apps
+        self.project_id = project_id
+        self.project_name = project_name
+        self.project_sdk = project_sdk
+        self.project_type = project_type
+
+    def validate(self):
+        if self.project_apps:
+            for k in self.project_apps:
+                if k:
+                    k.validate()
+        if self.project_sdk:
+            for k in self.project_sdk:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        result['ProjectApps'] = []
+        if self.project_apps is not None:
+            for k in self.project_apps:
+                result['ProjectApps'].append(k.to_map() if k else None)
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        result['ProjectSDK'] = []
+        if self.project_sdk is not None:
+            for k in self.project_sdk:
+                result['ProjectSDK'].append(k.to_map() if k else None)
+        if self.project_type is not None:
+            result['ProjectType'] = self.project_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        self.project_apps = []
+        if m.get('ProjectApps') is not None:
+            for k in m.get('ProjectApps'):
+                temp_model = UpdateProjectResponseBodyDataProjectApps()
+                self.project_apps.append(temp_model.from_map(k))
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        self.project_sdk = []
+        if m.get('ProjectSDK') is not None:
+            for k in m.get('ProjectSDK'):
+                temp_model = UpdateProjectResponseBodyDataProjectSDK()
+                self.project_sdk.append(temp_model.from_map(k))
+        if m.get('ProjectType') is not None:
+            self.project_type = m.get('ProjectType')
+        return self
+
+
+class UpdateProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: UpdateProjectResponseBodyData = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = UpdateProjectResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdateProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateProjectResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
