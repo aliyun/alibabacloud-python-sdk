@@ -1,3 +1,44 @@
+2025-03-26 Version: 11.0.0
+- Support API DescribeRCSecurityGroupList.
+- Support API MigrateDBNodes.
+- Support API RebootRCInstances.
+- Support API StartRCInstances.
+- Support API StopRCInstances.
+- Support API SwitchReplicationLink.
+- Update API AuthorizeRCSecurityGroupPermission: update request parameters SecurityGroupPermissions.$.Priority' type has changed.
+- Update API AuthorizeRCSecurityGroupPermission: update request parameters SecurityGroupPermissions.$.Priority' format has changed.
+- Update API CreateDdrInstance: add request parameters BackupSetRegion.
+- Update API CreateRCDisk: add request parameters InstanceId.
+- Update API CreateReplicationLink: add request parameters TargetAddress.
+- Update API DescribeRCImageList: add response parameters Body.Images.$.DiskDeviceMappings.
+- Update API DescribeRCInstanceAttribute: add response parameters Body.CreateMode.
+- Update API DescribeRCInstances: add request parameters HostIp.
+- Update API DescribeRCInstances: add request parameters InstanceIds.
+- Update API DescribeRCInstances: add request parameters PublicIp.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.InstanceType.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.InstanceTypeFamily.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.PublicIp.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.SecurityGroupId.
+- Update API DescribeRCMetricList: add request parameters Dimensions.
+- Update API DescribeRCSecurityGroupPermission: add response parameters Body.SecurityGroupPermissions.$.CreateTime.
+- Update API MigrateToOtherZone: add request parameters DBInstanceStorageType.
+- Update API ModifyRCInstanceChargeType: add request parameters AutoRenew.
+- Update API ModifyRCInstanceChargeType: add request parameters AutoUseCoupon.
+- Update API ModifyRCInstanceChargeType: add request parameters BusinessInfo.
+- Update API ModifyRCInstanceChargeType: add request parameters ClientToken.
+- Update API ModifyRCInstanceChargeType: add request parameters InstanceId.
+- Update API ModifyRCInstanceChargeType: add request parameters PayType.
+- Update API ModifyRCInstanceChargeType: add request parameters Period.
+- Update API ModifyRCInstanceChargeType: add request parameters PromotionCode.
+- Update API ModifyRCInstanceChargeType: add request parameters UsedTime.
+- Update API ModifyRCInstanceChargeType: add response parameters Body.ChargeType.
+- Update API ModifyRCInstanceChargeType: add response parameters Body.ExpiredTime.
+- Update API ModifyRCInstanceChargeType: add response parameters Body.InstanceIds.
+- Update API RunRCInstances: add request parameters UserDataInBase64.
+- Update API RunRCInstances: add request parameters DataDisk.$.Device.
+- Update API RunRCInstances: add request parameters DataDisk.$.SnapshotId.
+
+
 2025-02-28 Version: 10.1.0
 - Support API AuthorizeRCSecurityGroupPermission.
 - Support API DescribeDBInstanceReplication.
