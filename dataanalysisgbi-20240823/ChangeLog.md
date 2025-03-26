@@ -1,3 +1,8 @@
+2025-03-26 Version: 1.3.8
+- Update API RunDataAnalysis: add response parameters Body.data.chat.
+- Update API RunSqlGeneration: add response parameters Body.data.chat.
+
+
 2025-03-18 Version: 1.3.7
 - Update API RunDataAnalysis: update response param.
 

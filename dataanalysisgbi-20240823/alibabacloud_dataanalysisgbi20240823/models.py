@@ -2452,6 +2452,33 @@ class RunDataAnalysisRequest(TeaModel):
         return self
 
 
+class RunDataAnalysisResponseBodyDataChat(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
 class RunDataAnalysisResponseBodyDataSqlData(TeaModel):
     def __init__(
         self,
@@ -2575,6 +2602,7 @@ class RunDataAnalysisResponseBodyData(TeaModel):
     def __init__(
         self,
         attempts: List[Any] = None,
+        chat: RunDataAnalysisResponseBodyDataChat = None,
         error_message: str = None,
         event: str = None,
         evidence: str = None,
@@ -2589,6 +2617,7 @@ class RunDataAnalysisResponseBodyData(TeaModel):
         visualization: RunDataAnalysisResponseBodyDataVisualization = None,
     ):
         self.attempts = attempts
+        self.chat = chat
         self.error_message = error_message
         self.event = event
         self.evidence = evidence
@@ -2603,6 +2632,8 @@ class RunDataAnalysisResponseBodyData(TeaModel):
         self.visualization = visualization
 
     def validate(self):
+        if self.chat:
+            self.chat.validate()
         if self.sql_data:
             self.sql_data.validate()
         if self.visualization:
@@ -2616,6 +2647,8 @@ class RunDataAnalysisResponseBodyData(TeaModel):
         result = dict()
         if self.attempts is not None:
             result['attempts'] = self.attempts
+        if self.chat is not None:
+            result['chat'] = self.chat.to_map()
         if self.error_message is not None:
             result['errorMessage'] = self.error_message
         if self.event is not None:
@@ -2646,6 +2679,9 @@ class RunDataAnalysisResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('attempts') is not None:
             self.attempts = m.get('attempts')
+        if m.get('chat') is not None:
+            temp_model = RunDataAnalysisResponseBodyDataChat()
+            self.chat = temp_model.from_map(m['chat'])
         if m.get('errorMessage') is not None:
             self.error_message = m.get('errorMessage')
         if m.get('event') is not None:
@@ -3095,9 +3131,37 @@ class RunSqlGenerationRequest(TeaModel):
         return self
 
 
+class RunSqlGenerationResponseBodyDataChat(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
 class RunSqlGenerationResponseBodyData(TeaModel):
     def __init__(
         self,
+        chat: RunSqlGenerationResponseBodyDataChat = None,
         error_message: str = None,
         event: str = None,
         evidence: str = None,
@@ -3108,6 +3172,7 @@ class RunSqlGenerationResponseBodyData(TeaModel):
         sql: str = None,
         sql_error: str = None,
     ):
+        self.chat = chat
         self.error_message = error_message
         self.event = event
         self.evidence = evidence
@@ -3119,7 +3184,8 @@ class RunSqlGenerationResponseBodyData(TeaModel):
         self.sql_error = sql_error
 
     def validate(self):
-        pass
+        if self.chat:
+            self.chat.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3127,6 +3193,8 @@ class RunSqlGenerationResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.chat is not None:
+            result['chat'] = self.chat.to_map()
         if self.error_message is not None:
             result['errorMessage'] = self.error_message
         if self.event is not None:
@@ -3149,6 +3217,9 @@ class RunSqlGenerationResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('chat') is not None:
+            temp_model = RunSqlGenerationResponseBodyDataChat()
+            self.chat = temp_model.from_map(m['chat'])
         if m.get('errorMessage') is not None:
             self.error_message = m.get('errorMessage')
         if m.get('event') is not None:
