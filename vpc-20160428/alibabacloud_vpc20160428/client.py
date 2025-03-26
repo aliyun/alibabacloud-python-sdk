@@ -1528,6 +1528,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_protection_types):
             query['SecurityProtectionTypes'] = request.security_protection_types
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.zone):
             query['Zone'] = request.zone
         req = open_api_models.OpenApiRequest(
@@ -1616,6 +1618,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_protection_types):
             query['SecurityProtectionTypes'] = request.security_protection_types
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.zone):
             query['Zone'] = request.zone
         req = open_api_models.OpenApiRequest(
@@ -1727,6 +1731,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_protection_types):
             query['SecurityProtectionTypes'] = request.security_protection_types
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1804,6 +1810,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_protection_types):
             query['SecurityProtectionTypes'] = request.security_protection_types
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1861,6 +1869,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AllocateEipSegmentAddressResponse:
         """
+        @deprecated OpenAPI AllocateEipSegmentAddress is deprecated
+        
         @summary Applies for contiguous elastic IP addresses (EIPs).
         
         @description *AllocateEipSegmentAddress** is an asynchronous operation. After a request is sent, the system returns the ID of a contiguous EIP group and runs the task in the background. You can call the [DescribeEipSegment](https://help.aliyun.com/document_detail/156063.html) operation to query the status of the task.
@@ -1870,6 +1880,7 @@ class Client(OpenApiClient):
         @param request: AllocateEipSegmentAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AllocateEipSegmentAddressResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -1930,6 +1941,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AllocateEipSegmentAddressResponse:
         """
+        @deprecated OpenAPI AllocateEipSegmentAddress is deprecated
+        
         @summary Applies for contiguous elastic IP addresses (EIPs).
         
         @description *AllocateEipSegmentAddress** is an asynchronous operation. After a request is sent, the system returns the ID of a contiguous EIP group and runs the task in the background. You can call the [DescribeEipSegment](https://help.aliyun.com/document_detail/156063.html) operation to query the status of the task.
@@ -1939,6 +1952,7 @@ class Client(OpenApiClient):
         @param request: AllocateEipSegmentAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AllocateEipSegmentAddressResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -1998,6 +2012,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AllocateEipSegmentAddressRequest,
     ) -> vpc_20160428_models.AllocateEipSegmentAddressResponse:
         """
+        @deprecated OpenAPI AllocateEipSegmentAddress is deprecated
+        
         @summary Applies for contiguous elastic IP addresses (EIPs).
         
         @description *AllocateEipSegmentAddress** is an asynchronous operation. After a request is sent, the system returns the ID of a contiguous EIP group and runs the task in the background. You can call the [DescribeEipSegment](https://help.aliyun.com/document_detail/156063.html) operation to query the status of the task.
@@ -2006,6 +2022,7 @@ class Client(OpenApiClient):
         
         @param request: AllocateEipSegmentAddressRequest
         @return: AllocateEipSegmentAddressResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.allocate_eip_segment_address_with_options(request, runtime)
@@ -2015,6 +2032,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AllocateEipSegmentAddressRequest,
     ) -> vpc_20160428_models.AllocateEipSegmentAddressResponse:
         """
+        @deprecated OpenAPI AllocateEipSegmentAddress is deprecated
+        
         @summary Applies for contiguous elastic IP addresses (EIPs).
         
         @description *AllocateEipSegmentAddress** is an asynchronous operation. After a request is sent, the system returns the ID of a contiguous EIP group and runs the task in the background. You can call the [DescribeEipSegment](https://help.aliyun.com/document_detail/156063.html) operation to query the status of the task.
@@ -2023,6 +2042,7 @@ class Client(OpenApiClient):
         
         @param request: AllocateEipSegmentAddressRequest
         @return: AllocateEipSegmentAddressResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.allocate_eip_segment_address_with_options_async(request, runtime)
@@ -6505,6 +6525,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_protection_types):
             query['SecurityProtectionTypes'] = request.security_protection_types
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.zone):
             query['Zone'] = request.zone
         req = open_api_models.OpenApiRequest(
@@ -6574,6 +6596,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_protection_types):
             query['SecurityProtectionTypes'] = request.security_protection_types
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.zone):
             query['Zone'] = request.zone
         req = open_api_models.OpenApiRequest(

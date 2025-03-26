@@ -1,3 +1,9 @@
+2025-03-26 Version: 6.11.3
+- Update API AllocateEipAddress: add request parameters Tag.
+- Update API AllocateEipAddressPro: add request parameters Tag.
+- Update API CreateCommonBandwidthPackage: add request parameters Tag.
+
+
 2025-02-27 Version: 6.11.2
 - Generated python 2016-04-28 for Vpc.
 

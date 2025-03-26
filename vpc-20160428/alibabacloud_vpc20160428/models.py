@@ -1409,6 +1409,39 @@ class AddSourcesToTrafficMirrorSessionResponse(TeaModel):
         return self
 
 
+class AllocateEipAddressRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class AllocateEipAddressRequest(TeaModel):
     def __init__(
         self,
@@ -1434,6 +1467,7 @@ class AllocateEipAddressRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_protection_types: List[str] = None,
+        tag: List[AllocateEipAddressRequestTag] = None,
         zone: str = None,
     ):
         # The promotion code. This parameter is not required.
@@ -1555,6 +1589,7 @@ class AllocateEipAddressRequest(TeaModel):
         # 
         # You can specify up to 10 editions of Anti-DDoS.
         self.security_protection_types = security_protection_types
+        self.tag = tag
         # The zone of the EIP.
         # 
         # When the service type of the IP address pool specified by **PublicIpAddressPoolId** is CloudBox, the default value is the zone of the IP address pool.
@@ -1563,7 +1598,10 @@ class AllocateEipAddressRequest(TeaModel):
         self.zone = zone
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1615,6 +1653,10 @@ class AllocateEipAddressRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.security_protection_types is not None:
             result['SecurityProtectionTypes'] = self.security_protection_types
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.zone is not None:
             result['Zone'] = self.zone
         return result
@@ -1665,6 +1707,11 @@ class AllocateEipAddressRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SecurityProtectionTypes') is not None:
             self.security_protection_types = m.get('SecurityProtectionTypes')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = AllocateEipAddressRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('Zone') is not None:
             self.zone = m.get('Zone')
         return self
@@ -1767,6 +1814,39 @@ class AllocateEipAddressResponse(TeaModel):
         return self
 
 
+class AllocateEipAddressProRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class AllocateEipAddressProRequest(TeaModel):
     def __init__(
         self,
@@ -1789,6 +1869,7 @@ class AllocateEipAddressProRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_protection_types: List[str] = None,
+        tag: List[AllocateEipAddressProRequestTag] = None,
     ):
         # Specifies whether to enable automatic payment. Default value: true. Valid values:
         # 
@@ -1898,9 +1979,13 @@ class AllocateEipAddressProRequest(TeaModel):
         # 
         # You can configure Anti-DDoS editions for up to 10 EIPs.
         self.security_protection_types = security_protection_types
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1946,6 +2031,10 @@ class AllocateEipAddressProRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.security_protection_types is not None:
             result['SecurityProtectionTypes'] = self.security_protection_types
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1988,6 +2077,11 @@ class AllocateEipAddressProRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SecurityProtectionTypes') is not None:
             self.security_protection_types = m.get('SecurityProtectionTypes')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = AllocateEipAddressProRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -7110,9 +7204,9 @@ class CreateBgpPeerRequest(TeaModel):
     ):
         # The BFD hop count. Valid values: **1** to **255**.
         # 
-        # This parameter is required only if you enable BFD.
+        # This parameter is required only if you enable BFD. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. Set a value based on your network topology.
         # 
-        # The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. Set a value based on your network topology.
+        # > If you use BFD in a multi-cloud environment or a fiber-optic direct connection network without any bridge device, you need to change the default BFD hop count from **255** to **1**.
         self.bfd_multi_hop = bfd_multi_hop
         # The ID of the BGP group.
         # 
@@ -7283,6 +7377,39 @@ class CreateBgpPeerResponse(TeaModel):
         return self
 
 
+class CreateCommonBandwidthPackageRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateCommonBandwidthPackageRequest(TeaModel):
     def __init__(
         self,
@@ -7300,6 +7427,7 @@ class CreateCommonBandwidthPackageRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_protection_types: List[str] = None,
+        tag: List[CreateCommonBandwidthPackageRequestTag] = None,
         zone: str = None,
     ):
         # The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
@@ -7357,11 +7485,15 @@ class CreateCommonBandwidthPackageRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_protection_types = security_protection_types
+        self.tag = tag
         # The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
         self.zone = zone
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7397,6 +7529,10 @@ class CreateCommonBandwidthPackageRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.security_protection_types is not None:
             result['SecurityProtectionTypes'] = self.security_protection_types
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.zone is not None:
             result['Zone'] = self.zone
         return result
@@ -7431,6 +7567,11 @@ class CreateCommonBandwidthPackageRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SecurityProtectionTypes') is not None:
             self.security_protection_types = m.get('SecurityProtectionTypes')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateCommonBandwidthPackageRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('Zone') is not None:
             self.zone = m.get('Zone')
         return self
@@ -28842,6 +28983,8 @@ class DeleteRouteEntriesRequest(TeaModel):
         # The region ID of the route table.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
