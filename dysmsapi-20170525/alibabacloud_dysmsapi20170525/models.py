@@ -4611,6 +4611,7 @@ class GetSmsTemplateResponseBody(TeaModel):
         template_tag: int = None,
         template_type: str = None,
         variable_attribute: str = None,
+        vendor_audit_status: Dict[str, Any] = None,
     ):
         # Application scenario content.
         self.apply_scene = apply_scene
@@ -4676,6 +4677,7 @@ class GetSmsTemplateResponseBody(TeaModel):
         # 
         # For detailed rules of template variables, refer to the [Example Document](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example).
         self.variable_attribute = variable_attribute
+        self.vendor_audit_status = vendor_audit_status
 
     def validate(self):
         if self.audit_info:
@@ -4729,6 +4731,8 @@ class GetSmsTemplateResponseBody(TeaModel):
             result['TemplateType'] = self.template_type
         if self.variable_attribute is not None:
             result['VariableAttribute'] = self.variable_attribute
+        if self.vendor_audit_status is not None:
+            result['VendorAuditStatus'] = self.vendor_audit_status
         return result
 
     def from_map(self, m: dict = None):
@@ -4774,6 +4778,8 @@ class GetSmsTemplateResponseBody(TeaModel):
             self.template_type = m.get('TemplateType')
         if m.get('VariableAttribute') is not None:
             self.variable_attribute = m.get('VariableAttribute')
+        if m.get('VendorAuditStatus') is not None:
+            self.vendor_audit_status = m.get('VendorAuditStatus')
         return self
 
 
