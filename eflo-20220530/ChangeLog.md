@@ -1,3 +1,8 @@
+2025-03-26 Version: 2.0.3
+- Update API GetLniPrivateIpAddress: add response parameters Body.Content.SubnetId.
+- Update API GetVcc: add response parameters Body.Content.Bandwidth.
+
+
 2025-02-21 Version: 2.0.2
 - Update API AssignLeniPrivateIpAddress: update response param.
 - Update API AssignPrivateIpAddress: update response param.

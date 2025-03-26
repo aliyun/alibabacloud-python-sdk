@@ -108,6 +108,9 @@ class AssignLeniPrivateIpAddressResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
+        # 
+        # >  This parameter is returned only if Resource Access Management (RAM) permission verification failed.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -326,6 +329,7 @@ class AssignPrivateIpAddressResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The detailed reason why the access was denied.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -500,6 +504,7 @@ class AssociateVpdCidrBlockResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The detailed reason why the access was denied.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -646,6 +651,7 @@ class AttachElasticNetworkInterfaceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The detailed reason why the access was denied.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -867,6 +873,7 @@ class CreateElasticNetworkInterfaceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial. This parameter is returned only if Resource Access Management (RAM) permission verification failed.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -1055,6 +1062,7 @@ class CreateErResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The detailed information about the failed permission verification.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -1273,6 +1281,7 @@ class CreateErAttachmentResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The detailed information about the failed permission verification.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -1533,6 +1542,7 @@ class CreateErRouteMapResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial. This parameter is returned only if Resource Access Management (RAM) authentication failed.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -1799,6 +1809,7 @@ class CreateSubnetResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The detailed information about the failed permission verification.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -2132,6 +2143,7 @@ class CreateVccResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The detailed information about the failed permission verification.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -2315,6 +2327,7 @@ class CreateVccGrantRuleResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial. This parameter is returned only if Resource Access Management (RAM) permission verification failed.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -2483,6 +2496,7 @@ class CreateVccRouteEntryResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The detailed information about the failed permission verification.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -2813,6 +2827,7 @@ class CreateVpdResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the failed permission verification.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -2996,6 +3011,7 @@ class CreateVpdGrantRuleResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -3175,6 +3191,7 @@ class DeleteElasticNetworkInterfaceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -3312,6 +3329,7 @@ class DeleteErResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -3456,6 +3474,7 @@ class DeleteErAttachmentResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # 访问被拒绝的详细原因。
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -3600,6 +3619,7 @@ class DeleteErRouteMapResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -3753,6 +3773,7 @@ class DeleteSubnetResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The detailed reason why the access was denied.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -3902,6 +3923,9 @@ class DeleteVccGrantRuleResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
+        # 
+        # >  This parameter is returned only if Resource Access Management (RAM) permission verification failed.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -4047,6 +4071,7 @@ class DeleteVccRouteEntryResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -4182,6 +4207,7 @@ class DeleteVpdResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The detailed reason why the access was denied.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -4338,6 +4364,7 @@ class DeleteVpdGrantRuleResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -4490,6 +4517,7 @@ class DescribeSlrResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The information about the request denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -4635,6 +4663,7 @@ class DetachElasticNetworkInterfaceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The detailed reason why the access was denied.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -4792,6 +4821,7 @@ class GetDestinationCidrBlockResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code
         self.code = code
@@ -5288,6 +5318,7 @@ class GetElasticNetworkInterfaceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -5993,6 +6024,7 @@ class GetErResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -6290,6 +6322,7 @@ class GetErAttachmentResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -6534,6 +6567,7 @@ class GetErRouteEntryResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -6871,6 +6905,7 @@ class GetErRouteMapResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -7148,6 +7183,7 @@ class GetFabricTopologyResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -7378,6 +7414,7 @@ class GetLeniPrivateIpAddressResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -7527,6 +7564,7 @@ class GetLniPrivateIpAddressResponseBodyContent(TeaModel):
         private_ip_address: str = None,
         region_id: str = None,
         status: str = None,
+        subnet_id: str = None,
     ):
         # The instance description.
         self.description = description
@@ -7546,6 +7584,8 @@ class GetLniPrivateIpAddressResponseBodyContent(TeaModel):
         self.region_id = region_id
         # The state of the rule.
         self.status = status
+        # The subnet instance ID.
+        self.subnet_id = subnet_id
 
     def validate(self):
         pass
@@ -7574,6 +7614,8 @@ class GetLniPrivateIpAddressResponseBodyContent(TeaModel):
             result['RegionId'] = self.region_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.subnet_id is not None:
+            result['SubnetId'] = self.subnet_id
         return result
 
     def from_map(self, m: dict = None):
@@ -7596,6 +7638,8 @@ class GetLniPrivateIpAddressResponseBodyContent(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SubnetId') is not None:
+            self.subnet_id = m.get('SubnetId')
         return self
 
 
@@ -7608,6 +7652,7 @@ class GetLniPrivateIpAddressResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -8085,6 +8130,7 @@ class GetNetworkInterfaceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -8313,6 +8359,7 @@ class GetNodeInfoForPodResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the failed permission verification.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -8731,6 +8778,7 @@ class GetSubnetResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -9399,6 +9447,7 @@ class GetVccResponseBodyContent(TeaModel):
         access_point_id: str = None,
         aliyun_router_info: List[GetVccResponseBodyContentAliyunRouterInfo] = None,
         attach_er_status: bool = None,
+        bandwidth: int = None,
         bandwidth_str: str = None,
         bgp_asn: str = None,
         bgp_cidr: str = None,
@@ -9446,6 +9495,8 @@ class GetVccResponseBodyContent(TeaModel):
         # *   **true**: Bound
         # *   **false**: unbound
         self.attach_er_status = attach_er_status
+        # bandwidth
+        self.bandwidth = bandwidth
         # The bandwidth of the port.
         self.bandwidth_str = bandwidth_str
         # BGP AS number
@@ -9586,6 +9637,8 @@ class GetVccResponseBodyContent(TeaModel):
                 result['AliyunRouterInfo'].append(k.to_map() if k else None)
         if self.attach_er_status is not None:
             result['AttachErStatus'] = self.attach_er_status
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
         if self.bandwidth_str is not None:
             result['BandwidthStr'] = self.bandwidth_str
         if self.bgp_asn is not None:
@@ -9675,6 +9728,8 @@ class GetVccResponseBodyContent(TeaModel):
                 self.aliyun_router_info.append(temp_model.from_map(k))
         if m.get('AttachErStatus') is not None:
             self.attach_er_status = m.get('AttachErStatus')
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
         if m.get('BandwidthStr') is not None:
             self.bandwidth_str = m.get('BandwidthStr')
         if m.get('BgpAsn') is not None:
@@ -9768,6 +9823,7 @@ class GetVccResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -10030,6 +10086,7 @@ class GetVccGrantRuleResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -10281,6 +10338,7 @@ class GetVccRouteEntryResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -10758,6 +10816,7 @@ class GetVpdResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -11017,6 +11076,7 @@ class GetVpdGrantRuleResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -11261,6 +11321,7 @@ class GetVpdRouteEntryResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -11424,6 +11485,7 @@ class InitializeVccResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -11835,6 +11897,7 @@ class ListElasticNetworkInterfacesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -12261,6 +12324,7 @@ class ListErAttachmentsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -12626,6 +12690,7 @@ class ListErRouteEntriesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -13099,6 +13164,7 @@ class ListErRouteMapsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -13451,6 +13517,7 @@ class ListErsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -13708,6 +13775,7 @@ class ListInstancesByNcdResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -14005,6 +14073,7 @@ class ListLeniPrivateIpAddressesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -14309,6 +14378,7 @@ class ListLniPrivateIpAddressResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -14870,6 +14940,7 @@ class ListNetworkInterfacesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -15110,6 +15181,7 @@ class ListNodeInfosForPodResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The information about the request denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -15693,6 +15765,7 @@ class ListSubnetsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -15974,6 +16047,7 @@ class ListVccFlowInfosResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # 访问被拒绝的详细原因。
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -16322,6 +16396,7 @@ class ListVccGrantRulesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -16691,6 +16766,7 @@ class ListVccRouteEntriesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -17482,6 +17558,7 @@ class ListVccsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -17826,6 +17903,7 @@ class ListVpdGrantRulesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
@@ -18191,6 +18269,7 @@ class ListVpdRouteEntriesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -18834,6 +18913,7 @@ class ListVpdsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -19048,6 +19128,7 @@ class QueryInstanceNcdResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -19181,6 +19262,9 @@ class RefundVccResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
+        # 
+        # >  This parameter is returned only if Resource Access Management (RAM) permission verification failed.
         self.access_denied_detail = access_denied_detail
         # The response status code
         self.code = code
@@ -19312,6 +19396,7 @@ class RetryVccResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -19514,6 +19599,7 @@ class UnAssignPrivateIpAddressResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -19688,6 +19774,7 @@ class UnAssociateVpdCidrBlockResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # 访问被拒绝详细信息。
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -19876,6 +19963,7 @@ class UnassignLeniPrivateIpAddressResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -20069,6 +20157,7 @@ class UpdateElasticNetworkInterfaceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -20220,6 +20309,7 @@ class UpdateErResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -20371,6 +20461,7 @@ class UpdateErAttachmentResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -20522,6 +20613,7 @@ class UpdateErRouteMapResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -20710,6 +20802,7 @@ class UpdateLeniPrivateIpAddressResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -20900,6 +20993,7 @@ class UpdateSubnetResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -21084,6 +21178,7 @@ class UpdateVccResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
@@ -21256,6 +21351,7 @@ class UpdateVpdResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
