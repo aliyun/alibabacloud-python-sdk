@@ -14939,22 +14939,46 @@ class ListHotelOrderResponseBodyPage(TeaModel):
 class ListHotelOrderResponseBodyResult(TeaModel):
     def __init__(
         self,
+        amt: int = None,
         apply_amt: int = None,
+        delivery_method: str = None,
+        delivery_room_name: str = None,
+        delivery_time: int = None,
         gmt_create: int = None,
+        icon: str = None,
+        item_id: int = None,
+        item_type: str = None,
+        name: str = None,
         order_no: str = None,
+        order_status: str = None,
+        payment_method: str = None,
         quantity: int = None,
         room_no: str = None,
+        start_time: int = None,
         status: str = None,
+        sum_amt: int = None,
         type: str = None,
         type_icon_url: str = None,
         type_name: str = None,
     ):
+        self.amt = amt
         self.apply_amt = apply_amt
+        self.delivery_method = delivery_method
+        self.delivery_room_name = delivery_room_name
+        self.delivery_time = delivery_time
         self.gmt_create = gmt_create
+        self.icon = icon
+        self.item_id = item_id
+        self.item_type = item_type
+        self.name = name
         self.order_no = order_no
+        self.order_status = order_status
+        self.payment_method = payment_method
         self.quantity = quantity
         self.room_no = room_no
+        self.start_time = start_time
         self.status = status
+        self.sum_amt = sum_amt
         self.type = type
         self.type_icon_url = type_icon_url
         self.type_name = type_name
@@ -14968,18 +14992,42 @@ class ListHotelOrderResponseBodyResult(TeaModel):
             return _map
 
         result = dict()
+        if self.amt is not None:
+            result['Amt'] = self.amt
         if self.apply_amt is not None:
             result['ApplyAmt'] = self.apply_amt
+        if self.delivery_method is not None:
+            result['DeliveryMethod'] = self.delivery_method
+        if self.delivery_room_name is not None:
+            result['DeliveryRoomName'] = self.delivery_room_name
+        if self.delivery_time is not None:
+            result['DeliveryTime'] = self.delivery_time
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
+        if self.icon is not None:
+            result['Icon'] = self.icon
+        if self.item_id is not None:
+            result['ItemId'] = self.item_id
+        if self.item_type is not None:
+            result['ItemType'] = self.item_type
+        if self.name is not None:
+            result['Name'] = self.name
         if self.order_no is not None:
             result['OrderNo'] = self.order_no
+        if self.order_status is not None:
+            result['OrderStatus'] = self.order_status
+        if self.payment_method is not None:
+            result['PaymentMethod'] = self.payment_method
         if self.quantity is not None:
             result['Quantity'] = self.quantity
         if self.room_no is not None:
             result['RoomNo'] = self.room_no
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         if self.status is not None:
             result['Status'] = self.status
+        if self.sum_amt is not None:
+            result['SumAmt'] = self.sum_amt
         if self.type is not None:
             result['Type'] = self.type
         if self.type_icon_url is not None:
@@ -14990,18 +15038,42 @@ class ListHotelOrderResponseBodyResult(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Amt') is not None:
+            self.amt = m.get('Amt')
         if m.get('ApplyAmt') is not None:
             self.apply_amt = m.get('ApplyAmt')
+        if m.get('DeliveryMethod') is not None:
+            self.delivery_method = m.get('DeliveryMethod')
+        if m.get('DeliveryRoomName') is not None:
+            self.delivery_room_name = m.get('DeliveryRoomName')
+        if m.get('DeliveryTime') is not None:
+            self.delivery_time = m.get('DeliveryTime')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
+        if m.get('Icon') is not None:
+            self.icon = m.get('Icon')
+        if m.get('ItemId') is not None:
+            self.item_id = m.get('ItemId')
+        if m.get('ItemType') is not None:
+            self.item_type = m.get('ItemType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('OrderNo') is not None:
             self.order_no = m.get('OrderNo')
+        if m.get('OrderStatus') is not None:
+            self.order_status = m.get('OrderStatus')
+        if m.get('PaymentMethod') is not None:
+            self.payment_method = m.get('PaymentMethod')
         if m.get('Quantity') is not None:
             self.quantity = m.get('Quantity')
         if m.get('RoomNo') is not None:
             self.room_no = m.get('RoomNo')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SumAmt') is not None:
+            self.sum_amt = m.get('SumAmt')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('TypeIconUrl') is not None:
@@ -23800,11 +23872,13 @@ class SubmitHotelOrderRequestPayloadItemList(TeaModel):
         self,
         item_id: int = None,
         quantity: int = None,
+        remark: str = None,
     ):
         # This parameter is required.
         self.item_id = item_id
         # This parameter is required.
         self.quantity = quantity
+        self.remark = remark
 
     def validate(self):
         pass
@@ -23819,6 +23893,8 @@ class SubmitHotelOrderRequestPayloadItemList(TeaModel):
             result['ItemId'] = self.item_id
         if self.quantity is not None:
             result['Quantity'] = self.quantity
+        if self.remark is not None:
+            result['Remark'] = self.remark
         return result
 
     def from_map(self, m: dict = None):
@@ -23827,6 +23903,8 @@ class SubmitHotelOrderRequestPayloadItemList(TeaModel):
             self.item_id = m.get('ItemId')
         if m.get('Quantity') is not None:
             self.quantity = m.get('Quantity')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         return self
 
 

@@ -1,3 +1,19 @@
+2025-03-27 Version: 2.8.3
+- Update API ListHotelOrder: add response parameters Body.Result.$.Amt.
+- Update API ListHotelOrder: add response parameters Body.Result.$.DeliveryMethod.
+- Update API ListHotelOrder: add response parameters Body.Result.$.DeliveryRoomName.
+- Update API ListHotelOrder: add response parameters Body.Result.$.DeliveryTime.
+- Update API ListHotelOrder: add response parameters Body.Result.$.Icon.
+- Update API ListHotelOrder: add response parameters Body.Result.$.ItemId.
+- Update API ListHotelOrder: add response parameters Body.Result.$.ItemType.
+- Update API ListHotelOrder: add response parameters Body.Result.$.Name.
+- Update API ListHotelOrder: add response parameters Body.Result.$.OrderStatus.
+- Update API ListHotelOrder: add response parameters Body.Result.$.PaymentMethod.
+- Update API ListHotelOrder: add response parameters Body.Result.$.StartTime.
+- Update API ListHotelOrder: add response parameters Body.Result.$.SumAmt.
+- Update API SubmitHotelOrder: add request parameters Payload.ItemList.$.Remark.
+
+
 2025-02-20 Version: 2.8.2
 - Update API InvokeRobotPush: add param RoomName.
 - Update API InvokeRobotPush: update param HotelId.
