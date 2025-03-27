@@ -3743,7 +3743,7 @@ class CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels(TeaModel)
         channels: List[str] = None,
         severity: str = None,
     ):
-        # The alert notification methods. Valid values:
+        # The alert notification method. Valid values:
         # 
         # *   Mail
         # *   Phone
@@ -3826,9 +3826,9 @@ class CreateDIAlarmRuleRequestNotificationSettings(TeaModel):
         notification_channels: List[CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels] = None,
         notification_receivers: List[CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers] = None,
     ):
-        # The duration of the alert suppression interval. Default value: 5. Unit: minutes.
+        # This parameter is deprecated and replaced by the MuteInterval parameter.
         self.inhibition_interval = inhibition_interval
-        # 告警抑制间隔时长，单位分钟，默认5分钟。
+        # The duration of the alert suppression interval. Default value: 5. Unit: minutes.
         self.mute_interval = mute_interval
         # The alert notification methods.
         self.notification_channels = notification_channels
@@ -3893,9 +3893,9 @@ class CreateDIAlarmRuleRequestTriggerConditions(TeaModel):
         severity: str = None,
         threshold: int = None,
     ):
-        # The types of DDL operations for which the alert rule takes effect.
+        # This parameter is deprecated and replaced by the DdlTypes parameter.
         self.ddl_report_tags = ddl_report_tags
-        # 在DDL通知的时候才生效，需要生效的DDL列表。
+        # The types of DDL operations for which the alert rule takes effect.
         self.ddl_types = ddl_types
         # The time interval for alert calculation. Unit: minutes.
         self.duration = duration
@@ -4389,8 +4389,8 @@ class CreateDIJobRequestJobSettingsRuntimeSettings(TeaModel):
         # *   runtime.offline.concurrent: specifies the maximum number of parallel threads that are allowed for a batch synchronization task.
         # *   runtime.enable.auto.create.schema: specifies whether schemas are automatically created in the destination of a synchronization task.
         # *   runtime.realtime.concurrent: specifies the maximum number of parallel threads that are allowed for a real-time synchronization task.
-        # *   runtime.realtime.failover.minute.dataxcdc: The maximum waiting duration before a synchronization task retries the next restart if the previous restart fails after failover occurs. Unit: minutes.
-        # *   runtime.realtime.failover.times.dataxcdc: The maximum number of failures that are allowed for restarting a synchronization task after failovers occur.
+        # *   runtime.realtime.failover.minute.dataxcdc: specifies the maximum waiting duration before a synchronization task retries the next restart if the previous restart fails after failover occurs. Unit: minutes.
+        # *   runtime.realtime.failover.times.dataxcdc: specifies the maximum number of failures that are allowed for restarting a synchronization task after failovers occur.
         self.name = name
         # The value of the configuration item.
         self.value = value
@@ -4430,19 +4430,19 @@ class CreateDIJobRequestJobSettings(TeaModel):
     ):
         # The channel control settings for the synchronization task. You can configure special channel control settings for the following synchronization links: data synchronization between Hologres data sources and data synchronization from Hologres to Kafka.
         # 
-        # 1.  Data synchronization from Hologres to Kafka
+        # 1.  Holo2Kafka
         # 
         # *   Example: {"destinationChannelSettings":{"kafkaClientProperties":[{"key":"linger.ms","value":"100"}],"keyColumns":["col3"],"writeMode":"canal"}}
         # *   kafkaClientProperties: the parameters related to a Kafka producer, which are used when you write data to a Kafka data source.
         # *   keyColumns: the names of Kafka columns to which you want to write data.
-        # *   writeMode: the writing format. Valid values: json and canal.
+        # *   writeMode: the writing format of the Kafka data source. Valid values: json and canal.
         # 
-        # 2.  Data synchronization between Hologres data sources
+        # 2.  Holo2Holo
         # 
         # *   Example: {"destinationChannelSettings":{"conflictMode":"replace","dynamicColumnAction":"replay","writeMode":"replay"}}
         # *   conflictMode: the policy used to handle a conflict that occurs during data writing to Hologres. Valid values: replace and ignore.
         # *   writeMode: the mode in which you want to write data to Hologres. Valid values: replay and insert.
-        # *   dynamicColumnAction: the method used to write data to dynamic columns in a Hologres table. Valid values: replay, insert, and ignore.
+        # *   dynamicColumnAction: the mode in which you want to write data to dynamic columns in a Hologres table. Valid values: replay, insert, and ignore.
         self.channel_settings = channel_settings
         # The data type mappings between source fields and destination fields.
         # 
@@ -5021,6 +5021,7 @@ class CreateDIJobRequest(TeaModel):
         destination_data_source_type: str = None,
         job_name: str = None,
         job_settings: CreateDIJobRequestJobSettings = None,
+        job_type: str = None,
         migration_type: str = None,
         name: str = None,
         project_id: int = None,
@@ -5044,6 +5045,7 @@ class CreateDIJobRequest(TeaModel):
         self.job_name = job_name
         # The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
         self.job_settings = job_settings
+        self.job_type = job_type
         # The synchronization type. Valid values:
         # 
         # *   FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
@@ -5123,6 +5125,8 @@ class CreateDIJobRequest(TeaModel):
             result['JobName'] = self.job_name
         if self.job_settings is not None:
             result['JobSettings'] = self.job_settings.to_map()
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
         if self.migration_type is not None:
             result['MigrationType'] = self.migration_type
         if self.name is not None:
@@ -5163,6 +5167,8 @@ class CreateDIJobRequest(TeaModel):
         if m.get('JobSettings') is not None:
             temp_model = CreateDIJobRequestJobSettings()
             self.job_settings = temp_model.from_map(m['JobSettings'])
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
         if m.get('MigrationType') is not None:
             self.migration_type = m.get('MigrationType')
         if m.get('Name') is not None:
@@ -5200,6 +5206,7 @@ class CreateDIJobShrinkRequest(TeaModel):
         destination_data_source_type: str = None,
         job_name: str = None,
         job_settings_shrink: str = None,
+        job_type: str = None,
         migration_type: str = None,
         name: str = None,
         project_id: int = None,
@@ -5223,6 +5230,7 @@ class CreateDIJobShrinkRequest(TeaModel):
         self.job_name = job_name
         # The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
         self.job_settings_shrink = job_settings_shrink
+        self.job_type = job_type
         # The synchronization type. Valid values:
         # 
         # *   FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
@@ -5281,6 +5289,8 @@ class CreateDIJobShrinkRequest(TeaModel):
             result['JobName'] = self.job_name
         if self.job_settings_shrink is not None:
             result['JobSettings'] = self.job_settings_shrink
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
         if self.migration_type is not None:
             result['MigrationType'] = self.migration_type
         if self.name is not None:
@@ -5311,6 +5321,8 @@ class CreateDIJobShrinkRequest(TeaModel):
             self.job_name = m.get('JobName')
         if m.get('JobSettings') is not None:
             self.job_settings_shrink = m.get('JobSettings')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
         if m.get('MigrationType') is not None:
             self.migration_type = m.get('MigrationType')
         if m.get('Name') is not None:
@@ -6320,10 +6332,14 @@ class CreateDataQualityEvaluationTaskRequestTarget(TeaModel):
         # *   starrocks
         # *   emr
         # *   analyticdb_for_postgresql
+        # 
+        # This parameter is required.
         self.database_type = database_type
         # The configuration of the partitioned table.
         self.partition_spec = partition_spec
         # The ID of the table in Data Map.
+        # 
+        # This parameter is required.
         self.table_guid = table_guid
 
     def validate(self):
@@ -6409,6 +6425,8 @@ class CreateDataQualityEvaluationTaskRequest(TeaModel):
         # The list of monitoring rules that are associated with the monitor. If you configure the ID of a monitoring rule by using the DataQualityRule.Id parameter, the system associates the rule with a created monitor. If you do not configure the ID of a monitoring rule, the system creates a new monitoring rule by using other fields and associates the rule with a created monitor.
         self.data_quality_rules = data_quality_rules
         # The data source ID. You can call the [ListDataSources](https://help.aliyun.com/document_detail/211431.html) operation to query the ID.
+        # 
+        # This parameter is required.
         self.data_source_id = data_source_id
         # The description of the monitor.
         self.description = description
@@ -6423,6 +6441,8 @@ class CreateDataQualityEvaluationTaskRequest(TeaModel):
         # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
         # 
         # You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
+        # 
+        # This parameter is required.
         self.project_id = project_id
         # The extended configurations in JSON-formatted strings. You can use this parameter only for monitors that are used to monitor the quality of E-MapReduce (EMR) data.
         # 
@@ -6434,6 +6454,8 @@ class CreateDataQualityEvaluationTaskRequest(TeaModel):
         #     *   SPARK_SQL
         self.runtime_conf = runtime_conf
         # The monitored object of the monitor.
+        # 
+        # This parameter is required.
         self.target = target
         # The trigger configuration of the monitor.
         self.trigger = trigger
@@ -6537,6 +6559,8 @@ class CreateDataQualityEvaluationTaskShrinkRequest(TeaModel):
         # The list of monitoring rules that are associated with the monitor. If you configure the ID of a monitoring rule by using the DataQualityRule.Id parameter, the system associates the rule with a created monitor. If you do not configure the ID of a monitoring rule, the system creates a new monitoring rule by using other fields and associates the rule with a created monitor.
         self.data_quality_rules_shrink = data_quality_rules_shrink
         # The data source ID. You can call the [ListDataSources](https://help.aliyun.com/document_detail/211431.html) operation to query the ID.
+        # 
+        # This parameter is required.
         self.data_source_id = data_source_id
         # The description of the monitor.
         self.description = description
@@ -6551,6 +6575,8 @@ class CreateDataQualityEvaluationTaskShrinkRequest(TeaModel):
         # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
         # 
         # You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
+        # 
+        # This parameter is required.
         self.project_id = project_id
         # The extended configurations in JSON-formatted strings. You can use this parameter only for monitors that are used to monitor the quality of E-MapReduce (EMR) data.
         # 
@@ -6562,6 +6588,8 @@ class CreateDataQualityEvaluationTaskShrinkRequest(TeaModel):
         #     *   SPARK_SQL
         self.runtime_conf = runtime_conf
         # The monitored object of the monitor.
+        # 
+        # This parameter is required.
         self.target_shrink = target_shrink
         # The trigger configuration of the monitor.
         self.trigger_shrink = trigger_shrink
@@ -10120,15 +10148,17 @@ class CreateWorkflowInstancesRequestDefaultRunPropertiesAlert(TeaModel):
         notice_type: str = None,
         type: str = None,
     ):
-        # The notification method.
-        # - Sms: Sms only
-        # - Mail: Mail only
-        # - SmsMail: SMS and email.
+        # The alert notification method. Valid values:
+        # 
+        # *   Sms
+        # *   Mail
+        # *   SmsMail
         self.notice_type = notice_type
-        # The alert policy.
-        # - Success: successful alert
-        # - Failure: failed alarm
-        # - SuccessFailure: alerts for both success and failure
+        # The alerting policy. Valid values:
+        # 
+        # *   SUCCESS: An alert is reported when data backfill succeeds.
+        # *   FAILURE: An alert is reported when data backfill fails.
+        # *   SuccessFailure: An alert is reported regardless of whether data backfill succeeds or fails.
         self.type = type
 
     def validate(self):
@@ -10161,9 +10191,9 @@ class CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis(TeaModel):
         blocked: bool = None,
         enabled: bool = None,
     ):
-        # Whether to block the operation if the analysis fails.
+        # Specifies whether to block the running of the instance if the analysis fails.
         self.blocked = blocked
-        # Whether to enable analysis.
+        # Specifies whether to enable the analysis feature.
         self.enabled = enabled
 
     def validate(self):
@@ -10198,15 +10228,16 @@ class CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy(TeaModel):
         start_time: str = None,
         type: str = None,
     ):
-        # The end runtime. This field is required if the policy is set.
+        # The time when the instance finishes running. This parameter is required if you specify the RunPolicy parameter.
         self.end_time = end_time
-        # The default value is false.
+        # Specifies whether the instance can be run immediately during the time period in the future. Default value: false.
         self.immediately = immediately
-        # The start time. This field is required if the policy is set.
+        # The time when the instance starts to run. This parameter is required if you specify the RunPolicy parameter.
         self.start_time = start_time
-        # The type of the time period. This field is required if the policy is set.
-        # - Daily: every day
-        # - Weekend: Weekends only
+        # The type of the time period during which the data is backfilled. This parameter is required if you specify the RunPolicy parameter. Valid values:
+        # 
+        # *   Daily
+        # *   Weekend
         self.type = type
 
     def validate(self):
@@ -10257,35 +10288,37 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(TeaModel):
         run_policy: CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy = None,
         runtime_resource: str = None,
     ):
-        # Alarm configuration.
+        # The alert settings.
         self.alert = alert
-        # Analyze the configuration.
+        # The analysis of the configurations.
         self.analysis = analysis
-        # The list of project IDs that do not need to be run.
+        # The IDs of the projects that do not need to be run.
         self.exclude_project_ids = exclude_project_ids
-        # The list of task IDs that you do not want to run.
+        # The IDs of the tasks that do not need to be run.
         self.exclude_task_ids = exclude_task_ids
-        # The list of project IDs to be run.
+        # The IDs of the projects that need to be run.
         self.include_project_ids = include_project_ids
-        # The list of task IDs to be run.
+        # The IDs of the tasks that need to be run.
         self.include_task_ids = include_task_ids
-        # The data replenishment mode. The default value is ManualSelection.
-        # - General: In normal mode, only one \\"roottaskkids\\" can be filled in, and \\"IncludeTaskIds\\" is optional. If not, the content in \\"roottaskkids\\" will be included by default.
-        # - ManualSelection: manually select, \\"roottaskkids\\" can be filled in multiple, \\"IncludeTaskIds\\" optional, if not, the content in \\"roottaskkids\\" will be included by default.
-        # - Chain: the link, \\"roottaskkids\\" is empty, and \\"IncludeTaskIds\\" is filled with two IDs, which are the start and end tasks respectively.
-        # - AllDownstream: all downstream, \\"roottaskkids\\" can only be filled in one
+        # The data backfill mode. Default value: ManualSelection. Valid values:
+        # 
+        # *   General: You can specify only one root task ID. The `IncludeTaskIds` parameter is optional. If you do not specify the IncludeTaskIds parameter, the tasks that are specified by the `RootTaskIds` parameter are included by default.``
+        # *   ManualSelection: You can specify multiple root tasks IDs. The `IncludeTaskIds` parameter is optional. If you do not specify the IncludeTaskIds parameter, the tasks that are specified by the `RootTaskIds` parameter are included by default.``
+        # *   Chain: The value of the `RootTaskIds` parameter is left empty. You must set the `IncludeTaskIds` parameter to the start task ID and the end task ID.
+        # *   AllDownstream: You can specify only one root task ID.``
         self.mode = mode
-        # The running sequence. Default value: Asc.
-        # - Asc: ascending order by business date.
-        # - Desc: descending order by business date.
+        # The running order. Default value: Asc. Valid values:
+        # 
+        # *   Asc: The tasks are sorted by data timestamp in ascending order.
+        # *   Desc: The tasks are sorted by data timestamp in descending order.
         self.order = order
-        # The number of rows that the task has. Values from 2 to 10 are parallelism and 1 is serial.
+        # The number of tasks that can be run in parallel. If you specify the value to 2 to 10, the value indicates the number of tasks that can be run in parallel. If you specify the value to 1, the tasks are run one by one.
         self.parallelism = parallelism
-        # The ID list of the root task.
+        # The root task IDs.
         self.root_task_ids = root_task_ids
-        # Run the policy. If this field is empty, the task configuration is followed.
+        # The data backfill policy. If you leave this parameter empty, the runtime configuration is used.
         self.run_policy = run_policy
-        # The identifier of the custom scheduling Resource Group. If this field is empty, the task configuration is followed.
+        # The identifier of the custom resource group for scheduling. If you leave this parameter empty, the runtime configuration is used.
         self.runtime_resource = runtime_resource
 
     def validate(self):
@@ -10474,11 +10507,12 @@ class CreateWorkflowInstancesRequest(TeaModel):
         self.auto_start_enabled = auto_start_enabled
         # The reason for the creation.
         self.comment = comment
-        # Runtime configuration.
+        # The runtime configuration.
         self.default_run_properties = default_run_properties
-        # The project environment.
-        # - Prod (production)
-        # - Dev
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod: production environment
+        # *   Dev: development environment
         self.env_type = env_type
         # The name.
         # 
@@ -10492,10 +10526,10 @@ class CreateWorkflowInstancesRequest(TeaModel):
         self.project_id = project_id
         # The task-specific parameters. The value is in the JSON format. The key specifies the task ID. You can call the GetTask operation to obtain the format of the value by querying the script parameters.
         self.task_parameters = task_parameters
-        # The type of the workflow instance.
+        # The type of the workflow instance. Valid values:
         # 
-        # - SupplementData: Retroactive data
-        # - ManualWorkflow: manual workflow
+        # *   SupplementData
+        # *   ManualWorkflow
         # 
         # This parameter is required.
         self.type = type
@@ -10590,11 +10624,12 @@ class CreateWorkflowInstancesShrinkRequest(TeaModel):
         self.auto_start_enabled = auto_start_enabled
         # The reason for the creation.
         self.comment = comment
-        # Runtime configuration.
+        # The runtime configuration.
         self.default_run_properties_shrink = default_run_properties_shrink
-        # The project environment.
-        # - Prod (production)
-        # - Dev
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod: production environment
+        # *   Dev: development environment
         self.env_type = env_type
         # The name.
         # 
@@ -10608,10 +10643,10 @@ class CreateWorkflowInstancesShrinkRequest(TeaModel):
         self.project_id = project_id
         # The task-specific parameters. The value is in the JSON format. The key specifies the task ID. You can call the GetTask operation to obtain the format of the value by querying the script parameters.
         self.task_parameters = task_parameters
-        # The type of the workflow instance.
+        # The type of the workflow instance. Valid values:
         # 
-        # - SupplementData: Retroactive data
-        # - ManualWorkflow: manual workflow
+        # *   SupplementData
+        # *   ManualWorkflow
         # 
         # This parameter is required.
         self.type = type
@@ -10868,8 +10903,11 @@ class DeleteCertificateRequest(TeaModel):
         id: int = None,
         project_id: int = None,
     ):
+        # The ID of the certificate file.
+        # 
         # This parameter is required.
         self.id = id
+        # The ID of the workspace to which the certificate file belongs.
         self.project_id = project_id
 
     def validate(self):
@@ -10902,7 +10940,9 @@ class DeleteCertificateResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -12371,7 +12411,7 @@ class DeleteProjectMemberRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account used by the member in the workspace.
+        # The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the **Tenant Members and Roles** page, view the ID of the account used by the member in the workspace.
         # 
         # This parameter is required.
         self.user_id = user_id
@@ -16201,6 +16241,7 @@ class GetDIJobResponseBodyPagingInfo(TeaModel):
         job_name: str = None,
         job_settings: GetDIJobResponseBodyPagingInfoJobSettings = None,
         job_status: str = None,
+        job_type: str = None,
         migration_type: str = None,
         project_id: int = None,
         resource_settings: GetDIJobResponseBodyPagingInfoResourceSettings = None,
@@ -16215,7 +16256,7 @@ class GetDIJobResponseBodyPagingInfo(TeaModel):
         self.description = description
         # The properties of the destination.
         self.destination_data_source_settings = destination_data_source_settings
-        # The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, Loghub, STARROCKS, Datahub, ANALYTICDB_FOR_MYSQL, Kafka, and Hive.
+        # The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, LogHub, StarRocks, DataHub, AnalyticDB_For_MySQL, Kafka, Hive.
         self.destination_data_source_type = destination_data_source_type
         # The ID of the synchronization task.
         self.id = id
@@ -16225,6 +16266,7 @@ class GetDIJobResponseBodyPagingInfo(TeaModel):
         self.job_settings = job_settings
         # The status of the job.
         self.job_status = job_status
+        self.job_type = job_type
         # The synchronization type. Valid values:
         # 
         # *   FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
@@ -16241,7 +16283,7 @@ class GetDIJobResponseBodyPagingInfo(TeaModel):
         self.resource_settings = resource_settings
         # The settings of the source. Only a single source is supported.
         self.source_data_source_settings = source_data_source_settings
-        # The source type. Valid values: PolarDB, MySQL, Kafka, Loghub, Hologres, Oracle, OceanBase, MongoDB, RedShift, Hive, SqlServer, Doris, and ClickHouse.
+        # The source type. Valid values: PolarDB, MySQL, Kafka, LogHub, Hologres, Oracle, OceanBase, MongoDB, RedShift, Hive, SQLServer, Doris, ClickHouse.
         self.source_data_source_type = source_data_source_type
         # The list of mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. Each entry in the list displays a mapping between a rule used to select synchronization objects and a transformation rule applied to the selected synchronization objects.
         # 
@@ -16298,6 +16340,8 @@ class GetDIJobResponseBodyPagingInfo(TeaModel):
             result['JobSettings'] = self.job_settings.to_map()
         if self.job_status is not None:
             result['JobStatus'] = self.job_status
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
         if self.migration_type is not None:
             result['MigrationType'] = self.migration_type
         if self.project_id is not None:
@@ -16342,6 +16386,8 @@ class GetDIJobResponseBodyPagingInfo(TeaModel):
             self.job_settings = temp_model.from_map(m['JobSettings'])
         if m.get('JobStatus') is not None:
             self.job_status = m.get('JobStatus')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
         if m.get('MigrationType') is not None:
             self.migration_type = m.get('MigrationType')
         if m.get('ProjectId') is not None:
@@ -16465,10 +16511,10 @@ class GetDIJobLogRequest(TeaModel):
         self.id = id
         # The instance ID.
         self.instance_id = instance_id
-        # Node type. Currently, it is only applicable in the view resource group 2.0 task:
+        # The type of the node. This parameter is applicable only to the tasks that are run on serverless resource groups. Valid values:
         # 
-        # - MASTER: obtains logs of JobManager.
-        # - WORKER: obtains logs of TaskManager.
+        # *   **MASTER**: the master node, which is used to query the logs of JobManagers.
+        # *   **WORKER**: the worker node, which is used to query the logs of TaskManagers.
         self.node_type = node_type
         # The page number of the pagination query. The value is a positive integer greater than or equal to 1.
         self.page_number = page_number
@@ -17162,10 +17208,10 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         condition: str = None,
         type: str = None,
     ):
-        # Hook trigger condition. When this condition is met, hook action is triggered. Currently, only two conditional expressions are supported:
+        # The hook trigger condition. When this condition is met, the hook action is triggered. Only two conditional expressions are supported:
         # 
-        # - Specify only one set of rule severity types AND rule verification status, such as `${severity} = = "High" AND ${status} = = "Critical"`, which indicates that in the executed rule, if the rule verification result of severity High is Critical, the condition is met.
-        # - Specify multiple sets of rule severity types AND rule verification status, such as `(${severity} = = "High" AND ${status} = "Critical") OR (${severity} = "Normal" AND ${status} = "Critical") OR (${severity} = "Normal" AND ${status} = "Error")`, if the rule verification result of severity High is Critical, the rule verification result of severity Normal is Critical, or the rule verification result of severity Normal is Error, the enumeration that satisfies the condition expression severity is consistent with the enumeration DataQualityRule in severity, and the enumeration of status is consistent with the status in DataQualityResult.
+        # *   Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
+        # *   Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High"AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
         self.condition = condition
         # Hook type. Currently, only one type is supported:
         # 
@@ -17326,10 +17372,10 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         condition: str = None,
         notifications: List[GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotifications] = None,
     ):
-        # The notification trigger condition. When this condition is met, a message notification is triggered. Currently, only two conditional expressions are supported:
+        # The notification trigger condition. When this condition is met, the alert notification is triggered. Only two conditional expressions are supported:
         # 
-        # - Specify only one set of rule severity types AND rule verification status, such as `${severity} = = "High" AND ${status} = = "Critical"`, which indicates that in the executed rule, if the rule verification result of severity High is Critical, the condition is met.
-        # - Specify multiple sets of rule severity types AND rule verification status, such as `(${severity} = = "High" AND ${status} = "Critical") OR (${severity} = "Normal" AND ${status} = "Critical") OR (${severity} = "Normal" AND ${status} = "Error")`, if the rule verification result of severity High is Critical, the rule verification result of severity Normal is Critical, or the rule verification result of severity Normal is Error, the enumeration that satisfies the condition expression severity is consistent with the enumeration DataQualityRule in severity, and the enumeration of status is consistent with the status in DataQualityResult.
+        # *   Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
+        # *   Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High"AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
         self.condition = condition
         # The alert notification methods.
         self.notifications = notifications
@@ -17424,10 +17470,10 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
     ):
         # The Id list of the scheduled task, which is valid when the Type is ByScheduledTaskInstance.
         self.task_ids = task_ids
-        # Quality Monitoring trigger type:
+        # The trigger type of the monitor. Valid values:
         # 
-        # - ByManual: manually triggered. Default value
-        # - ByScheduledTaskInstance: triggered by associated scheduling tasks
+        # *   ByManual (default): The monitor is manually triggered.
+        # *   ByScheduledTaskInstance: The monitor is triggered by the associated scheduling tasks.
         self.type = type
 
     def validate(self):
@@ -17469,7 +17515,7 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
     ):
         # The description of the monitor.
         self.description = description
-        # Callback settings.
+        # The hook.
         self.hooks = hooks
         # The ID of the data quality monitor.
         self.id = id
@@ -17486,9 +17532,9 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         #   - HIVE_ SQL
         #   - SPARK_ SQL
         self.runtime_conf = runtime_conf
-        # For more information, see DataQualityTarget monitoring objects for the sample data quality verification task. For more information, see DataQualityTarget.
+        # The monitored object of the monitor.
         self.target = target
-        # The trigger configuration of the data quality verification task.
+        # The trigger configuration of the monitor.
         self.trigger = trigger
 
     def validate(self):
@@ -20212,7 +20258,7 @@ class GetProjectMemberRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The ID of the account used by the member. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
+        # The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account used by the member in the workspace.
         # 
         # This parameter is required.
         self.user_id = user_id
@@ -24496,8 +24542,8 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(TeaModel):
         self.create_user = create_user
         # The environment of the workspace. Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # *   Prod
+        # *   Dev
         self.env_type = env_type
         # The time when the instance finished running.
         self.finished_time = finished_time
@@ -27854,7 +27900,7 @@ class ListDIJobsResponseBodyPagingInfoDIJobs(TeaModel):
     ):
         # This parameter is deprecated. Use the Id parameter instead.
         self.dijob_id = dijob_id
-        # The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, Loghub, STARROCKS, Datahub, ANALYTICDB_FOR_MYSQL, Kafka, and Hive. If you do not configure this parameter, the API operation returns synchronization tasks that use all type of destinations.
+        # The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, Loghub, STARROCKS, DataHub, ANALYTICDB_FOR_MYSQL, Kafka, and Hive.
         self.destination_data_source_type = destination_data_source_type
         # The ID of the synchronization task.
         self.id = id
@@ -32413,7 +32459,7 @@ class ListDataSourcesRequest(TeaModel):
         # *   Desc: descending order
         # *   Asc: ascending order
         # 
-        # Default value: Asc
+        # Default value: Desc
         self.order = order
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -32431,12 +32477,12 @@ class ListDataSourcesRequest(TeaModel):
         # *   Id
         # *   Name
         # 
-        # Default value: Id
+        # Default value: CreateTime
         self.sort_by = sort_by
         # The tag of the data source. This parameter specifies a filter condition.
         # 
         # *   You can specify multiple tags, which are in the logical AND relation. For example, you can query the data sources that contain the following tags: `["tag1", "tag2", "tag3"]`.
-        # *   If you do not configure this parameter, tag-based filtering is not performed.
+        # *   If you do not configure this parameter, tag-based filtering is not performed. You can specify up to 10 tags.
         self.tags = tags
         # The data source types. This parameter specifies a filter condition. You can specify multiple data source types.
         self.types = types
@@ -32518,7 +32564,7 @@ class ListDataSourcesShrinkRequest(TeaModel):
         # *   Desc: descending order
         # *   Asc: ascending order
         # 
-        # Default value: Asc
+        # Default value: Desc
         self.order = order
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -32536,12 +32582,12 @@ class ListDataSourcesShrinkRequest(TeaModel):
         # *   Id
         # *   Name
         # 
-        # Default value: Id
+        # Default value: CreateTime
         self.sort_by = sort_by
         # The tag of the data source. This parameter specifies a filter condition.
         # 
         # *   You can specify multiple tags, which are in the logical AND relation. For example, you can query the data sources that contain the following tags: `["tag1", "tag2", "tag3"]`.
-        # *   If you do not configure this parameter, tag-based filtering is not performed.
+        # *   If you do not configure this parameter, tag-based filtering is not performed. You can specify up to 10 tags.
         self.tags = tags
         # The data source types. This parameter specifies a filter condition. You can specify multiple data source types.
         self.types_shrink = types_shrink
@@ -32618,7 +32664,10 @@ class ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource(TeaModel):
         # 
         # The parameters that you need to configure for the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/document_detail/2852465.html).
         self.connection_properties = connection_properties
-        # The mode in which the data source is added. The mode varies based on the data source type. Valid values: InstanceMode, UrlMode, and CdhMode. The value InstanceMode indicates the instance mode. The value UrlMode indicates the connection string mode. The value CdhMode indicates the CDH cluster mode.
+        # The mode in which the data source is added. The mode varies based on the data source type. Valid values:
+        # 
+        # *   InstanceMode: instance mode
+        # *   UrlMode: connection string mode
         self.connection_properties_mode = connection_properties_mode
         # The time when the data source was added. This value is a UNIX timestamp.
         self.create_time = create_time
@@ -33909,9 +33958,6 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
         # The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
         self.priority = priority
         # The environment of the workspace. This parameter is deprecated and replaced by the EnvType parameter. Valid values:
-        # 
-        # *   Prod: production environment
-        # *   Dev: development environment
         self.project_env = project_env
         # The workspace ID.
         self.project_id = project_id
@@ -38506,8 +38552,8 @@ class ListProjectMembersResponseBodyPagingInfoProjectMembersRoles(TeaModel):
         self.name = name
         # The type of the role. Valid values:
         # 
-        # *   UserCustom: custom role
-        # *   System: built-in role
+        # *   UserCustom: user-defined role
+        # *   System: system role
         self.type = type
 
     def validate(self):
@@ -39146,18 +39192,6 @@ class ListProjectsRequest(TeaModel):
         # *   Frozen
         # *   Updating
         # *   UpdateFailed
-        # 
-        # <!---->
-        # 
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
         self.status = status
 
     def validate(self):
@@ -39278,18 +39312,6 @@ class ListProjectsShrinkRequest(TeaModel):
         # *   Frozen
         # *   Updating
         # *   UpdateFailed
-        # 
-        # <!---->
-        # 
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
         self.status = status
 
     def validate(self):
@@ -42422,7 +42444,28 @@ class ListTasksRequest(TeaModel):
         # 
         #     Default value: `Id Desc`.
         self.sort_by = sort_by
-        # The type of the task.
+        # The type of the task. Valid values:
+        # 
+        # *   ODPS_SQL
+        # *   SPARK
+        # *   PY_ODPS
+        # *   PY_ODPS3
+        # *   ODPS_SCRIPT
+        # *   ODPS_MR
+        # *   COMPONENT_SQL
+        # *   EMR_HIVE
+        # *   EMR_MR
+        # *   EMR_SPARK_SQL
+        # *   EMR_SPARK
+        # *   EMR_SHELL
+        # *   EMR_PRESTO
+        # *   EMR_IMPALA
+        # *   SPARK_STREAMING
+        # *   EMR_KYUUBI
+        # *   EMR_TRINO
+        # *   HOLOGRES_SQL
+        # *   HOLOGRES_SYNC_DDL
+        # *   HOLOGRES_SYNC_DATA
         self.task_type = task_type
         # The running mode of the task after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler.
         # 
@@ -42560,7 +42603,28 @@ class ListTasksShrinkRequest(TeaModel):
         # 
         #     Default value: `Id Desc`.
         self.sort_by = sort_by
-        # The type of the task.
+        # The type of the task. Valid values:
+        # 
+        # *   ODPS_SQL
+        # *   SPARK
+        # *   PY_ODPS
+        # *   PY_ODPS3
+        # *   ODPS_SCRIPT
+        # *   ODPS_MR
+        # *   COMPONENT_SQL
+        # *   EMR_HIVE
+        # *   EMR_MR
+        # *   EMR_SPARK_SQL
+        # *   EMR_SPARK
+        # *   EMR_SHELL
+        # *   EMR_PRESTO
+        # *   EMR_IMPALA
+        # *   SPARK_STREAMING
+        # *   EMR_KYUUBI
+        # *   EMR_TRINO
+        # *   HOLOGRES_SQL
+        # *   HOLOGRES_SYNC_DDL
+        # *   HOLOGRES_SYNC_DATA
         self.task_type = task_type
         # The running mode of the task after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler.
         # 
@@ -43325,8 +43389,8 @@ class ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
         self.description = description
         # The environment of the workspace. Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # *   Prod
+        # *   Dev
         self.env_type = env_type
         # The time when the instance finished running.
         self.finished_time = finished_time
@@ -44181,9 +44245,7 @@ class ListUpstreamTasksRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The environment of the workspace.
-        # 
-        # Valid values:
+        # The environment of the workspace. Valid values:
         # 
         # *   Prod: production environment
         # *   Dev: development environment
@@ -44412,9 +44474,8 @@ class ListUpstreamTasksResponseBodyPagingInfoTasks(TeaModel):
         self.id = id
         # The instance generation mode. Valid values:
         # 
-        # T+1
-        # 
-        # Immediately
+        # *   T+1
+        # *   Immediately
         self.instance_mode = instance_mode
         # The modification time.
         self.modify_time = modify_time
@@ -44451,9 +44512,8 @@ class ListUpstreamTasksResponseBodyPagingInfoTasks(TeaModel):
         self.runtime_resource = runtime_resource
         # The scheduling dependency type. Valid values:
         # 
-        # Normal: same-cycle scheduling dependency
-        # 
-        # CrossCycle: cross-cycle scheduling dependency
+        # *   Normal: same-cycle scheduling dependency
+        # *   CrossCycle: cross-cycle scheduling dependency
         self.step_type = step_type
         # The timeout period of task running. Unit: seconds.
         self.timeout = timeout
@@ -49575,10 +49635,16 @@ class TestDataSourceConnectivityRequest(TeaModel):
         project_id: int = None,
         resource_group_id: str = None,
     ):
+        # The ID of the data source for which you want to test the network connectivity.
+        # 
         # This parameter is required.
         self.data_source_id = data_source_id
+        # The DataWorks workspace ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The resource group ID.
+        # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
 
@@ -49618,9 +49684,13 @@ class TestDataSourceConnectivityResponseBodyConnectivityDetailLogs(TeaModel):
         message: str = None,
         start_time: int = None,
     ):
+        # The code of the test item.
         self.code = code
+        # The end time of a step.
         self.end_time = end_time
+        # The name of the step.
         self.message = message
+        # The start time of a step.
         self.start_time = start_time
 
     def validate(self):
@@ -49662,8 +49732,11 @@ class TestDataSourceConnectivityResponseBodyConnectivity(TeaModel):
         connect_state: str = None,
         detail_logs: List[TestDataSourceConnectivityResponseBodyConnectivityDetailLogs] = None,
     ):
+        # The error message returned if the connectivity test fails. No such a message is returned if the connectivity test is successful.
         self.connect_message = connect_message
+        # The result of the connectivity test. Valid values: Connectable: The network can be connected. ConfigError: The network can be connected, but the configurations are incorrect. Unreachable: The network cannot be connected. Unsupport: An error is reported due to other causes. For example, the desired resource group is being initialized.
         self.connect_state = connect_state
+        # The detailed logs of each step in the connectivity test.
         self.detail_logs = detail_logs
 
     def validate(self):
@@ -49708,7 +49781,9 @@ class TestDataSourceConnectivityResponseBody(TeaModel):
         connectivity: TestDataSourceConnectivityResponseBodyConnectivity = None,
         request_id: str = None,
     ):
+        # The details of the connectivity test.
         self.connectivity = connectivity
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51036,7 +51111,7 @@ class UpdateDIAlarmRuleRequestNotificationSettings(TeaModel):
         notification_channels: List[UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels] = None,
         notification_receivers: List[UpdateDIAlarmRuleRequestNotificationSettingsNotificationReceivers] = None,
     ):
-        # The duration of the alert suppression interval. Default value: 5. Unit: minutes.
+        # This parameter is deprecated and replaced by the MuteInterval parameter.
         self.inhibition_interval = inhibition_interval
         # The duration of the alert suppression interval. Default value: 5. Unit: minutes.
         self.mute_interval = mute_interval
@@ -51103,7 +51178,7 @@ class UpdateDIAlarmRuleRequestTriggerConditions(TeaModel):
         severity: str = None,
         threshold: int = None,
     ):
-        # The types of DDL operations for which the alert rule takes effect.
+        # This parameter is deprecated and replaced by the DdlTypes parameter.
         self.ddl_report_tags = ddl_report_tags
         # The types of DDL operations for which the alert rule takes effect.
         self.ddl_types = ddl_types
@@ -51433,9 +51508,9 @@ class UpdateDIJobRequestJobSettingsColumnDataTypeSettings(TeaModel):
         destination_data_type: str = None,
         source_data_type: str = None,
     ):
-        # The data type of the destination field.
+        # The data type of the destination field. Valid values: bigint, boolean, string, text, datetime, timestamp, decimal, and binary. Different types of data sources support different data types.
         self.destination_data_type = destination_data_type
-        # The data type of the source field.
+        # The data type of the source field. Valid values: Valid values: bigint, boolean, string, text, datetime, timestamp, decimal, and binary. Different types of data sources support different data types.
         self.source_data_type = source_data_type
 
     def validate(self):
@@ -51545,14 +51620,14 @@ class UpdateDIJobRequestJobSettingsRuntimeSettings(TeaModel):
     ):
         # The name of the configuration item. Valid values:
         # 
-        # *   runtime.offline.speed.limit.mb: indicates the maximum transmission rate that is allowed for a batch synchronization task. This configuration item takes effect only when runtime.offline.speed.limit.enable is set to true.
-        # *   runtime.offline.speed.limit.enable: indicates whether throttling is enabled for a batch synchronization task.
-        # *   dst.offline.connection.max: indicates the maximum number of connections that are allowed for writing data to the destination of a batch synchronization task.
-        # *   runtime.offline.concurrent: indicates the maximum number of parallel threads that are allowed for a batch synchronization task.
-        # *   dst.realtime.connection.max: indicates the maximum number of connections that are allowed for writing data to the destination of a real-time synchronization task.
-        # *   runtime.enable.auto.create.schema: indicates whether schemas are automatically created in the destination of a synchronization task.
-        # *   src.offline.datasource.max.connection: indicates the maximum number of connections that are allowed for reading data from the source of a batch synchronization task.
-        # *   runtime.realtime.concurrent: indicates the maximum number of parallel threads that are allowed for a real-time synchronization task.
+        # *   src.offline.datasource.max.connection: specifies the maximum number of connections that are allowed for reading data from the source of a batch synchronization task.
+        # *   dst.offline.truncate: specifies whether to clear the destination table before data writing.
+        # *   runtime.offline.speed.limit.enable: specifies whether throttling is enabled for a batch synchronization task.
+        # *   runtime.offline.concurrent: specifies the maximum number of parallel threads that are allowed for a batch synchronization task.
+        # *   runtime.enable.auto.create.schema: specifies whether schemas are automatically created in the destination of a synchronization task.
+        # *   runtime.realtime.concurrent: specifies the maximum number of parallel threads that are allowed for a real-time synchronization task.
+        # *   runtime.realtime.failover.minute.dataxcdc: specifies the maximum waiting duration before a synchronization task retries the next restart if the previous restart fails after failover occurs. Unit: minutes.
+        # *   runtime.realtime.failover.times.dataxcdc: specifies the maximum number of failures that are allowed for restarting a synchronization task after failovers occur.
         self.name = name
         # The value of the configuration item.
         self.value = value
@@ -51590,13 +51665,31 @@ class UpdateDIJobRequestJobSettings(TeaModel):
         ddl_handling_settings: List[UpdateDIJobRequestJobSettingsDdlHandlingSettings] = None,
         runtime_settings: List[UpdateDIJobRequestJobSettingsRuntimeSettings] = None,
     ):
-        # The channel control settings for the synchronization task. The value of this parameter must be a JSON string.
+        # The channel control settings for the synchronization task. You can configure special channel control settings for the following synchronization links: data synchronization between Hologres data sources and data synchronization from Hologres to Kafka.
+        # 
+        # 1.  Holo2Kafka
+        # 
+        # *   Example: {"destinationChannelSettings":{"kafkaClientProperties":[{"key":"linger.ms","value":"100"}],"keyColumns":["col3"],"writeMode":"canal"}}
+        # *   kafkaClientProperties: the parameters related to a Kafka producer, which are used when you read data from a Kafka data source.
+        # *   keyColumns: the names of Kafka columns to which you want to write data.
+        # *   writeMode: the writing format. Valid values: json and canal.
+        # 
+        # 2.  Holo2Holo
+        # 
+        # *   Example: {"destinationChannelSettings":{"conflictMode":"replace","dynamicColumnAction":"replay","writeMode":"replay"}}
+        # *   conflictMode: the policy used to handle a conflict that occurs during data writing to Hologres. Valid values: replace and ignore.
+        # *   writeMode: the mode in which you want to write data to Hologres. Valid values: replay and insert.
+        # *   dynamicColumnAction: the mode in which you want to write data to dynamic columns in a Hologres table. Valid values: replay, insert, and ignore.
         self.channel_settings = channel_settings
         # The data type mappings between source fields and destination fields.
+        # 
+        # >  "ColumnDataTypeSettings":[ { "SourceDataType":"Bigint", "DestinationDataType":"Text" } ]
         self.column_data_type_settings = column_data_type_settings
         # The settings for periodic scheduling.
         self.cycle_schedule_settings = cycle_schedule_settings
         # The processing settings for DDL messages.
+        # 
+        # >  "DDLHandlingSettings":[ { "Type":"Insert", "Action":"Normal" } ]
         self.ddl_handling_settings = ddl_handling_settings
         # The runtime settings.
         self.runtime_settings = runtime_settings
@@ -51838,6 +51931,7 @@ class UpdateDIJobRequestTableMappingsSourceObjectSelectionRules(TeaModel):
         # The object type. Valid values:
         # 
         # *   Table
+        # *   Schema
         # *   Database
         self.object_type = object_type
 
@@ -51893,6 +51987,7 @@ class UpdateDIJobRequestTableMappingsTransformationRules(TeaModel):
         # 
         # *   Table
         # *   Schema
+        # *   Database
         self.rule_target_type = rule_target_type
 
     def validate(self):
@@ -51929,9 +52024,9 @@ class UpdateDIJobRequestTableMappings(TeaModel):
         source_object_selection_rules: List[UpdateDIJobRequestTableMappingsSourceObjectSelectionRules] = None,
         transformation_rules: List[UpdateDIJobRequestTableMappingsTransformationRules] = None,
     ):
-        # The list of rules used to select synchronization objects in the source. The objects can be databases or tables.
+        # The list of rules that you want to use to select synchronization objects in the source.
         self.source_object_selection_rules = source_object_selection_rules
-        # The list of transformation rules that you want to apply to the synchronization objects selected from the source. Each entry in the list defines a transformation rule.
+        # The transformation rules that you want to apply to the synchronization objects selected from the source.
         self.transformation_rules = transformation_rules
 
     def validate(self):
@@ -51989,18 +52084,54 @@ class UpdateDIJobRequestTransformationRules(TeaModel):
         # *   Rename
         # *   AddColumn
         # *   HandleDml
+        # *   DefineIncrementalCondition
+        # *   DefineCycleScheduleSettings
+        # *   DefinePartitionKey
         self.rule_action_type = rule_action_type
         # The expression of the rule. The expression must be a JSON string.
         # 
-        # Example of a renaming rule: {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922","variables":[{"variableName":"srcDatabaseName","variableRules":[{"from":"fromdb","to":"todb"}]}]}.
+        # 1.  Example of a renaming rule
         # 
-        # expression: the expression of the renaming rule. The expression may contain the following variables: ${srcDatasourceName}, ${srcDatabaseName}, and ${srcTableName}. ${srcDatasourceName} indicates the name of the source. ${srcDatabaseName} indicates the name of a source database. ${srcTableName} indicates the name of a source table. variables: the generation rule for a variable used in the expression of the renaming rule. The default value of the specified variable is the original value of the object indicated by the variable. You can define a group of string replacement rules to change the original values based on your business requirements. variableName: the name of the variable. The variable name cannot be enclosed in ${}. variableRules: the string replacement rules for variables. The system runs the string replacement rules in sequence. from specifies the original string. to specifies the new string. Example of a rule used to add a specific field to the destination and assign a value to the field: {"columns":[{"columnName":"my_add_column","columnValueType":"Constant","columnValue":"123"}]}.
+        # *   Example: {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922" }
+        # *   expression: the expression of the renaming rule. You can use the following variables in an expression: ${srcDatasourceName}, ${srcDatabaseName}, and ${srcTableName}. ${srcDatasourceName} specifies the name of the source. ${srcDatabaseName} specifies the name of a source database. ${srcTableName} specifies the name of a source table.
         # 
-        # If you do not configure such a rule, no fields are added to the destination and no values are assigned by default. columnName: the name of the field that you want to add. columnValueType: the value type of the field. Valid values: Constant and Variable. columnValue: the value of the field. If you set the valueType parameter to Constant, set the columnValue parameter to a custom constant of the STRING type. If you set the valueType parameter to Variable, set the columnValue to a built-in variable. The following built-in variables are supported: EXECUTE_TIME (LONG data type), DB_NAME_SRC (STRING data type), DATASOURCE_NAME_SRC (STRING data type), TABLE_NAME_SRC (STRING data type), DB_NAME_DEST (STRING data type), DATASOURCE_NAME_DEST (STRING data type), TABLE_NAME_DEST (STRING data type), and DB_NAME_SRC_TRANSED (STRING data type). EXECUTE_TIME specifies the execution time. DB_NAME_SRC indicates the name of a source database. DATASOURCE_NAME_SRC specifies the name of the source. TABLE_NAME_SRC specifies the name of a source table. DB_NAME_DEST specifies the name of a destination database. DATASOURCE_NAME_DEST specifies the name of the destination. TABLE_NAME_DEST specifies the name of a destination table. DB_NAME_SRC_TRANSED specifies the database name obtained after a transformation. Example of a rule used to specify primary key fields for a destination table: {"columns":["ukcolumn1","ukcolumn2"]}.
+        # 2.  Example of a column addition rule
         # 
-        # If you do not configure such a rule, the primary key fields in the mapped source table are used for the destination table by default. If the destination table is an existing table, Data Integration does not modify the schema of the destination table. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run. If the destination table is automatically created by the system, Data Integration automatically creates the schema of the destination table. The schema contains the primary key fields that you specify. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run. Example of a rule used to process DML messages: {"dmlPolicies":[{"dmlType":"Delete","dmlAction":"Filter","filterCondition":"id > 1"}]}.
+        # *   Example: {"columns":[{"columnName":"my_add_column","columnValueType":"Constant","columnValue":"123"}]}
+        # *   If you do not configure such a rule, no fields are added to the destination and no values are assigned by default.
+        # *   columnName: the name of the field that is added.
+        # *   columnValueType: the value type of the field. Valid values: Constant and Variable.
+        # *   columnValue: the value of the field. If the columnValueType parameter is set to Constant, set the columnValue parameter to a constant of the STRING data type. If the columnValueType parameter is set to Variable, set the columnValue parameter to a built-in variable. The following built-in variables are supported: EXECUTE_TIME (LONG data type), DB_NAME_SRC (STRING data type), DATASOURCE_NAME_SRC (STRING data type), TABLE_NAME_SRC (STRING data type), DB_NAME_DEST (STRING data type), DATASOURCE_NAME_DEST (STRING data type), TABLE_NAME_DEST (STRING data type), and DB_NAME_SRC_TRANSED (STRING data type). EXECUTE_TIME specifies the execution time. DB_NAME_SRC specifies the name of a source database. DATASOURCE_NAME_SRC specifies the name of the source. TABLE_NAME_SRC specifies the name of a source table. DB_NAME_DEST specifies the name of a destination database. DATASOURCE_NAME_DEST specifies the name of the destination. TABLE_NAME_DEST specifies the name of a destination table. DB_NAME_SRC_TRANSED specifies the database name obtained after a transformation.
         # 
-        # If you do not configure such a rule, the default processing policy for messages generated for insert, update, and delete operations is Normal. dmlType: the DML operation. Valid values: Insert, Update, and Delete. dmlAction: the processing policy for DML messages. Valid values: Normal, Ignore, Filter, and LogicalDelete. Filter indicates conditional processing. You can set the dmlAction parameter to Filter only when the dmlType parameter is set to Update or Delete. filterCondition: the condition used to filter DML messages. This parameter is required only when the dmlAction parameter is set to Filter.
+        # 3.  Example of a rule used to specify primary key fields for a destination table
+        # 
+        # *   Example: {"columns":["ukcolumn1","ukcolumn2"]}
+        # *   If you do not configure such a rule, the primary key fields in the mapped source table are used for the destination table by default.
+        # *   If the destination table is an existing table, Data Integration does not modify the schema of the destination table. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run.
+        # *   If the destination table is automatically created by the system, Data Integration automatically creates the schema of the destination table. The schema contains the primary key fields that you specify. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run.
+        # 
+        # 4.  Example of a rule used to process DML messages
+        # 
+        # *   Example: {"dmlPolicies":[{"dmlType":"Delete","dmlAction":"Filter","filterCondition":"id > 1"}]}
+        # *   If you do not configure such a rule, the default processing policy for messages generated for insert, update, and delete operations is Normal.
+        # *   dmlType: the DML operation. Valid values: Insert, Update, and Delete.
+        # *   dmlAction: the processing policy for DML messages. Valid values: Normal, Ignore, Filter, and LogicalDelete. Filter indicates conditional processing. You can set the dmlAction parameter to Filter only when the dmlType parameter is set to Update or Delete.
+        # *   filterCondition: the condition used to filter DML messages. This parameter is required only when the dmlAction parameter is set to Filter.
+        # 
+        # 5.  Example of a rule used to perform incremental synchronization
+        # 
+        # *   Example: {"where":"id > 0"}
+        # *   You can configure such a rule to perform incremental synchronization.
+        # 
+        # 6.  Example of a rule used to configure scheduling parameters for an auto triggered task
+        # 
+        # *   Example: {"cronExpress":" \\* \\* \\* \\* \\* \\*", "cycleType":"1"}
+        # *   You can configure such a rule to configure scheduling parameters for an auto triggered task.
+        # 
+        # 7.  Example of a rule used to specify a partition key
+        # 
+        # *   Example: {"columns":["id"]}
+        # *   You can configure such a rule to specify a partition key.
         self.rule_expression = rule_expression
         # The name of the rule. If the values of the RuleActionType parameter and the RuleTargetType parameter are the same for multiple transformation rules, you must make sure that the transformation rule names are unique.
         self.rule_name = rule_name
@@ -52008,6 +52139,7 @@ class UpdateDIJobRequestTransformationRules(TeaModel):
         # 
         # *   Table
         # *   Schema
+        # *   Database
         self.rule_target_type = rule_target_type
 
     def validate(self):
@@ -52069,8 +52201,12 @@ class UpdateDIJobRequest(TeaModel):
         # The resource settings.
         self.resource_settings = resource_settings
         # The list of mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. Each entry in the list displays a mapping between a rule used to select synchronization objects and a transformation rule applied to the selected synchronization objects.
+        # 
+        # >  [ { "SourceObjectSelectionRules":[ { "ObjectType":"Database", "Action":"Include", "ExpressionType":"Exact", "Expression":"biz_db" }, { "ObjectType":"Schema", "Action":"Include", "ExpressionType":"Exact", "Expression":"s1" }, { "ObjectType":"Table", "Action":"Include", "ExpressionType":"Exact", "Expression":"table1" } ], "TransformationRuleNames":[ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema" } ] } ]
         self.table_mappings = table_mappings
-        # The list of transformation rules for objects involved in the synchronization task. Each entry in the list defines a transformation rule.
+        # The list of transformation rules for objects involved in the synchronization task.
+        # 
+        # >  [ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema", "RuleExpression":"{"expression":"${srcDatasoureName}_${srcDatabaseName}"}" } ]
         self.transformation_rules = transformation_rules
 
     def validate(self):
@@ -52171,8 +52307,12 @@ class UpdateDIJobShrinkRequest(TeaModel):
         # The resource settings.
         self.resource_settings_shrink = resource_settings_shrink
         # The list of mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. Each entry in the list displays a mapping between a rule used to select synchronization objects and a transformation rule applied to the selected synchronization objects.
+        # 
+        # >  [ { "SourceObjectSelectionRules":[ { "ObjectType":"Database", "Action":"Include", "ExpressionType":"Exact", "Expression":"biz_db" }, { "ObjectType":"Schema", "Action":"Include", "ExpressionType":"Exact", "Expression":"s1" }, { "ObjectType":"Table", "Action":"Include", "ExpressionType":"Exact", "Expression":"table1" } ], "TransformationRuleNames":[ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema" } ] } ]
         self.table_mappings_shrink = table_mappings_shrink
-        # The list of transformation rules for objects involved in the synchronization task. Each entry in the list defines a transformation rule.
+        # The list of transformation rules for objects involved in the synchronization task.
+        # 
+        # >  [ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema", "RuleExpression":"{"expression":"${srcDatasoureName}_${srcDatabaseName}"}" } ]
         self.transformation_rules_shrink = transformation_rules_shrink
 
     def validate(self):
@@ -53986,7 +54126,7 @@ class UpdateDataQualityRuleRequest(TeaModel):
         self.project_id = project_id
         # The sampling settings.
         self.sampling_config = sampling_config
-        # The strength of the rule.
+        # The strength of the rule. Valid values:
         # 
         # *   Normal
         # *   High
@@ -54096,7 +54236,7 @@ class UpdateDataQualityRuleShrinkRequest(TeaModel):
         self.project_id = project_id
         # The sampling settings.
         self.sampling_config_shrink = sampling_config_shrink
-        # The strength of the rule.
+        # The strength of the rule. Valid values:
         # 
         # *   Normal
         # *   High
@@ -57226,8 +57366,8 @@ class UpdateWorkflowRequestTasksTrigger(TeaModel):
         self.recurrence = recurrence
         # The trigger type. Valid values:
         # 
-        # *   Scheduler: periodic scheduling
-        # *   Manual: manual scheduling
+        # *   Scheduler: scheduling cycle-based trigger
+        # *   Manual: manual trigger
         self.type = type
 
     def validate(self):

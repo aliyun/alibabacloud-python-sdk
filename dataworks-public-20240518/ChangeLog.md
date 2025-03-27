@@ -1,3 +1,8 @@
+2025-03-27 Version: 6.1.1
+- Update API CreateDIJob: add request parameters JobType.
+- Update API GetDIJob: add response parameters Body.PagingInfo.JobType.
+
+
 2025-03-20 Version: 6.1.0
 - Support API DeleteCertificate.
 - Support API GetCertificate.

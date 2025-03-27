@@ -1415,7 +1415,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceResponse:
         """
-        @summary Creates a monitor instance
+        @summary Creates a monitor instance.
         
         @param tmp_req: CreateDataQualityEvaluationTaskInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1466,7 +1466,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceResponse:
         """
-        @summary Creates a monitor instance
+        @summary Creates a monitor instance.
         
         @param tmp_req: CreateDataQualityEvaluationTaskInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1516,7 +1516,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceRequest,
     ) -> dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceResponse:
         """
-        @summary Creates a monitor instance
+        @summary Creates a monitor instance.
         
         @param request: CreateDataQualityEvaluationTaskInstanceRequest
         @return: CreateDataQualityEvaluationTaskInstanceResponse
@@ -1529,7 +1529,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceRequest,
     ) -> dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceResponse:
         """
-        @summary Creates a monitor instance
+        @summary Creates a monitor instance.
         
         @param request: CreateDataQualityEvaluationTaskInstanceRequest
         @return: CreateDataQualityEvaluationTaskInstanceResponse
@@ -3603,7 +3603,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteAlertRuleResponse:
         """
-        @summary Deletes a custom alert monitoring rule.
+        @summary Deletes a custom monitoring alert rule.
         
         @param request: DeleteAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3644,7 +3644,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteAlertRuleResponse:
         """
-        @summary Deletes a custom alert monitoring rule.
+        @summary Deletes a custom monitoring alert rule.
         
         @param request: DeleteAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3684,7 +3684,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteAlertRuleRequest,
     ) -> dataworks_public_20240518_models.DeleteAlertRuleResponse:
         """
-        @summary Deletes a custom alert monitoring rule.
+        @summary Deletes a custom monitoring alert rule.
         
         @param request: DeleteAlertRuleRequest
         @return: DeleteAlertRuleResponse
@@ -3697,7 +3697,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteAlertRuleRequest,
     ) -> dataworks_public_20240518_models.DeleteAlertRuleResponse:
         """
-        @summary Deletes a custom alert monitoring rule.
+        @summary Deletes a custom monitoring alert rule.
         
         @param request: DeleteAlertRuleRequest
         @return: DeleteAlertRuleResponse
@@ -3711,7 +3711,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteCertificateResponse:
         """
-        @summary 删除认证文件
+        @summary Deletes a certificate file.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M.
         
         @param request: DeleteCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3754,7 +3757,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteCertificateResponse:
         """
-        @summary 删除认证文件
+        @summary Deletes a certificate file.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M.
         
         @param request: DeleteCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3796,7 +3802,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteCertificateRequest,
     ) -> dataworks_public_20240518_models.DeleteCertificateResponse:
         """
-        @summary 删除认证文件
+        @summary Deletes a certificate file.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M.
         
         @param request: DeleteCertificateRequest
         @return: DeleteCertificateResponse
@@ -3809,7 +3818,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteCertificateRequest,
     ) -> dataworks_public_20240518_models.DeleteCertificateResponse:
         """
-        @summary 删除认证文件
+        @summary Deletes a certificate file.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M.
         
         @param request: DeleteCertificateRequest
         @return: DeleteCertificateResponse
@@ -9683,7 +9695,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ImportCertificateResponse:
         """
-        @summary 验证用
+        @summary Imports a certificate file.
         
         @param request: ImportCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9730,7 +9742,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ImportCertificateResponse:
         """
-        @summary 验证用
+        @summary Imports a certificate file.
         
         @param request: ImportCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9776,7 +9788,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ImportCertificateRequest,
     ) -> dataworks_public_20240518_models.ImportCertificateResponse:
         """
-        @summary 验证用
+        @summary Imports a certificate file.
         
         @param request: ImportCertificateRequest
         @return: ImportCertificateResponse
@@ -9789,7 +9801,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ImportCertificateRequest,
     ) -> dataworks_public_20240518_models.ImportCertificateResponse:
         """
-        @summary 验证用
+        @summary Imports a certificate file.
         
         @param request: ImportCertificateRequest
         @return: ImportCertificateResponse
@@ -17147,7 +17159,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.TestDataSourceConnectivityResponse:
         """
-        @summary 测试数据源在资源组上的连通性
+        @summary Tests the network connectivity between a resource group and a data source.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  Your account must be assigned one of the following roles of the desired workspace: Tenant Owner, Workspace Administrator, Deploy, Develop, Workspace Owner, and O\\&M
         
         @param request: TestDataSourceConnectivityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17192,7 +17207,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.TestDataSourceConnectivityResponse:
         """
-        @summary 测试数据源在资源组上的连通性
+        @summary Tests the network connectivity between a resource group and a data source.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  Your account must be assigned one of the following roles of the desired workspace: Tenant Owner, Workspace Administrator, Deploy, Develop, Workspace Owner, and O\\&M
         
         @param request: TestDataSourceConnectivityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17236,7 +17254,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.TestDataSourceConnectivityRequest,
     ) -> dataworks_public_20240518_models.TestDataSourceConnectivityResponse:
         """
-        @summary 测试数据源在资源组上的连通性
+        @summary Tests the network connectivity between a resource group and a data source.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  Your account must be assigned one of the following roles of the desired workspace: Tenant Owner, Workspace Administrator, Deploy, Develop, Workspace Owner, and O\\&M
         
         @param request: TestDataSourceConnectivityRequest
         @return: TestDataSourceConnectivityResponse
@@ -17249,7 +17270,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.TestDataSourceConnectivityRequest,
     ) -> dataworks_public_20240518_models.TestDataSourceConnectivityResponse:
         """
-        @summary 测试数据源在资源组上的连通性
+        @summary Tests the network connectivity between a resource group and a data source.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  Your account must be assigned one of the following roles of the desired workspace: Tenant Owner, Workspace Administrator, Deploy, Develop, Workspace Owner, and O\\&M
         
         @param request: TestDataSourceConnectivityRequest
         @return: TestDataSourceConnectivityResponse
