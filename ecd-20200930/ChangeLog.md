@@ -1,3 +1,9 @@
+2025-03-27 Version: 4.7.1
+- Update API CreateConfigGroup: add request parameters ConfigTimers.$.NotificationTime.
+- Update API DescribeTimerGroup: add response parameters Body.Data.ConfigTimers.$.NotificationTime.
+- Update API ModifyTimerGroup: add request parameters ConfigTimers.$.NotificationTime.
+
+
 2025-03-26 Version: 4.7.0
 - Support API CloneCenterPolicy.
 - Support API CreateCenterPolicy.

@@ -7375,29 +7375,82 @@ class CreateCloudDriveServiceRequest(TeaModel):
         user_count: int = None,
         user_max_size: int = None,
     ):
+        # Specifies whether to enable the auto-payment feature.
+        # 
+        # Valid values:
+        # 
+        # *   true: enables the auto-payment feature. Ensure your Alibaba Cloud account has sufficient balance. Insufficient balance may result in abnormal orders.
+        # *   false (default): disables the auto-payment feature. The order is generated, but payment must be made manually. You can log on to the Alibaba Cloud Management Console and complete the payment based on the order ID on the Orders page.
         self.auto_pay = auto_pay
+        # Optional. Specifies whether to enable the auto-renewal feature. This parameter takes effect only if you set CdsChargeType to `Prepaid`.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.auto_renew = auto_renew
-        # The business type.
+        # >  This parameter is not publicly available.
         self.biz_type = biz_type
+        # The billing method of the enterprise drive.
+        # 
+        # Valid values:
+        # 
+        # *   PostPaid: pay-as-you-go.
+        # *   PrePaid: subscription.
         self.cds_charge_type = cds_charge_type
+        # The ID of the Cloud Enterprise Network (CEN) instance. This parameter takes effect only if you set `OfficeSiteType` to `AD_CONNECTOR`. If you have configured `OfficeSiteId`, you can leave this parameter empty.
         self.cen_id = cen_id
+        # The domain name of the enterprise AD office network. This parameter takes effect only if you set `OfficeSiteType` to `AD_CONNECTOR`. If you have configured `OfficeSiteId`, you can leave this parameter empty.
         self.domain_name = domain_name
+        # The user IDs.
         self.end_user_id = end_user_id
+        # The maximum storage capacity of the enterprise drive.
+        # 
+        # *   For a pay-as-you-go enterprise drive, the unit is bytes.
+        # *   For a subscription enterprise drive, the unit is GiB. For example, to create a 500 GiB subscription drive, set the value to 500 GiB. To create a 2 TiB subscription drive, set the value to 2048 GiB.
+        # 
         # This parameter is required.
         self.max_size = max_size
-        # The name of the cloud disk that you want to create in Cloud Drive Service.
+        # The name of the enterprise drive
         self.name = name
+        # The ID of the office network. This parameter takes effect only if you set OfficeSiteType to `AD_CONNECTOR`.
         self.office_site_id = office_site_id
+        # The type of the office network.
+        # 
+        # Valid values:
+        # 
+        # *   SIMPLE: convenience office network.
+        # *   AD_CONNECTOR: enterprise Active Directory (AD) office network.
         self.office_site_type = office_site_type
+        # The subscription duration. The unit is specified by `PeriodUnit`. This parameter takes effect only if you set `CdsChargeType` to `PrePaid`.
+        # 
+        # Valid values:
+        # 
+        # *   1
+        # *   2
+        # *   3
         self.period = period
+        # Required. The unit of the subscription duration. This parameter takes effect only if you set `CdsChargeType` to `PrePaid`.
+        # 
+        # Valid value:
+        # 
+        # *   Year
         self.period_unit = period_unit
-        # The region ID.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Enterprise Drive Service is available.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The solution ID.
+        # >  This parameter is not publicly available.
         self.solution_id = solution_id
+        # Required. The maximum number of users allowed on the enterprise drive. This parameter takes effect only if you set `CdsChargeType` to `PrePaid`.
+        # 
+        # Valid values:
+        # 
+        # *   5 when the value of MaxSize is 500 GiB.
+        # *   20 when the value of MaxSize is 2048 GiB.
+        # *   50 when the value of MaxSize is 5120 GiB.
         self.user_count = user_count
+        # The maximum storage capacity of the user\\"s personal disk when allocated. Unit: bytes.
         self.user_max_size = user_max_size
 
     def validate(self):
@@ -7490,7 +7543,9 @@ class CreateCloudDriveServiceResponseBodyConflictCdsAndOrderConflictCds(TeaModel
         cds_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the enterprise drive.
         self.cds_id = cds_id
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         self.region_id = region_id
 
     def validate(self):
@@ -7524,8 +7579,11 @@ class CreateCloudDriveServiceResponseBodyConflictCdsAndOrderConflictOrder(TeaMod
         order_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the enterprise drive. The enterprise drive cannot be used if the order is unpaid.
         self.cds_id = cds_id
+        # The ID of the order. You can obtain an order ID on the **Orders** page in the Expenses and Costs console.
         self.order_id = order_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -7562,7 +7620,9 @@ class CreateCloudDriveServiceResponseBodyConflictCdsAndOrder(TeaModel):
         conflict_cds: List[CreateCloudDriveServiceResponseBodyConflictCdsAndOrderConflictCds] = None,
         conflict_order: List[CreateCloudDriveServiceResponseBodyConflictCdsAndOrderConflictOrder] = None,
     ):
+        # The conflicting enterprise drive.
         self.conflict_cds = conflict_cds
+        # The subscription orders of the conflicting enterprise drives that are unpaid.
         self.conflict_order = conflict_order
 
     def validate(self):
@@ -7620,17 +7680,30 @@ class CreateCloudDriveServiceResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the attached cloud disk.
+        # The ID of the enterprise drive.
         self.cds_id = cds_id
         # The name of the cloud disk that is created in Cloud Drive Service.
         self.cds_name = cds_name
+        # The ID of the CEN instance.
+        # 
+        # >  To allow end users to connect to cloud computers via virtual private clouds (VPCs), attach your office network to a CEN instance. The CEN instance connects to your on-premises network through VPN Gateway or Express Connect.
         self.cen_id = cen_id
+        # The existing enterprise drive or its order that conflicts with the enterprise drive being created.
         self.conflict_cds_and_order = conflict_cds_and_order
+        # The domain name of the enterprise AD office network.
         self.domain_name = domain_name
+        # The error code.
         self.error_code = error_code
-        # The maximum capacity of each instance in Cloud Drive Service. Unit: GiB
+        # The maximum storage capacity of the enterprise drive. Unit: bytes.
         self.max_size = max_size
+        # The type of the office network.
+        # 
+        # Valid values:
+        # 
+        # *   SIMPLE: convenience office network.
+        # *   AD_CONNECTOR: enterprise AD office network.
         self.office_site_type = office_site_type
+        # The ID of the order. You can obtain an order ID on the Orders page in the Expenses and Costs console.
         self.order_id = order_id
         # The ID of the request.
         self.request_id = request_id
@@ -7867,6 +7940,7 @@ class CreateConfigGroupRequestConfigTimers(TeaModel):
         cron_expression: str = None,
         enforce: bool = None,
         interval: int = None,
+        notification_time: int = None,
         operation_type: str = None,
         process_whitelist: List[str] = None,
         reset_type: str = None,
@@ -7883,6 +7957,7 @@ class CreateConfigGroupRequestConfigTimers(TeaModel):
         self.enforce = enforce
         # The interval at which the scheduled task is executed. Unit: minutes.
         self.interval = interval
+        self.notification_time = notification_time
         # The type of the scheduled operation. If you set TimerType to NoConnect, you can specify this parameter.
         # 
         # Valid values:
@@ -7941,6 +8016,8 @@ class CreateConfigGroupRequestConfigTimers(TeaModel):
             result['Enforce'] = self.enforce
         if self.interval is not None:
             result['Interval'] = self.interval
+        if self.notification_time is not None:
+            result['NotificationTime'] = self.notification_time
         if self.operation_type is not None:
             result['OperationType'] = self.operation_type
         if self.process_whitelist is not None:
@@ -7963,6 +8040,8 @@ class CreateConfigGroupRequestConfigTimers(TeaModel):
             self.enforce = m.get('Enforce')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
+        if m.get('NotificationTime') is not None:
+            self.notification_time = m.get('NotificationTime')
         if m.get('OperationType') is not None:
             self.operation_type = m.get('OperationType')
         if m.get('ProcessWhitelist') is not None:
@@ -20795,9 +20874,9 @@ class DescribeDesktopGroupsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. If you specify the `Tag` parameter, you must also specify the `Key` parameter. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`. You cannot specify an empty string as a tag key.
+        # The tag key. You cannot specify an empty string as a tag key. A tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The value of the tag. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
+        # The tag value. You can specify an empty string as a tag key. A tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -20849,13 +20928,13 @@ class DescribeDesktopGroupsRequest(TeaModel):
     ):
         # The IDs of the cloud computer templates.
         self.bundle_id = bundle_id
-        # The ID of the cloud computer pool.
+        # The ID of the cloud computer share.
         self.desktop_group_id = desktop_group_id
         # The IDs of the cloud computer pool.
         self.desktop_group_ids = desktop_group_ids
-        # The name of the cloud computer pool to query. Fuzzy search is supported.
+        # The name of the cloud computer share that you want to query. Fuzzy search is supported.
         self.desktop_group_name = desktop_group_name
-        # The authorized user IDs of cloud computer pools.
+        # The IDs of the users who can access the cloud computer share.
         self.end_user_ids = end_user_ids
         # The authorized users that you want to exclude.
         self.excluded_end_user_ids = excluded_end_user_ids
@@ -20872,27 +20951,27 @@ class DescribeDesktopGroupsRequest(TeaModel):
         self.multi_resource = multi_resource
         # The pagination token that is used in the next request to retrieve a new page of results. If the NextToken parameter is empty, no next page exists.
         self.next_token = next_token
-        # The ID of the office network to which the cloud computer pool belongs.
+        # The ID of the office network in which the cloud computer share resides.
         self.office_site_id = office_site_id
-        # The type of the cloud computer pool.
+        # The type of the cloud computer share.
         # 
         # >  This parameter is not publicly available.
         # 
         # Valid values:
         # 
-        # *   0: individual (single session)
-        # *   1: shared (multiple sessions)
+        # *   0: a single-session many-to-many share.
+        # *   1: a multi-session many-to-many share.
         self.own_type = own_type
-        # The subscription duration of the cloud computer pool. The unit is specified by the `PeriodUnit` parameter.
+        # The subscription duration of the cloud computer share. The unit is specified by `PeriodUnit`.
         # 
-        # *   Valid values if the `PeriodUnit` parameter is set to `Month`:
+        # *   Valid values if you set `PeriodUnit` to `Month`:
         # 
         #     *   1
         #     *   2
         #     *   3
         #     *   6
         # 
-        # *   Valid values if the `PeriodUnit` parameter is set to `Year`:
+        # *   Valid values if you set `PeriodUnit` to `Year`:
         # 
         #     *   1
         #     *   2
@@ -20902,7 +20981,7 @@ class DescribeDesktopGroupsRequest(TeaModel):
         self.period = period
         # The unit of the subscription duration.
         self.period_unit = period_unit
-        # The ID of the policy that you want to associate with the cloud computer pool.
+        # The ID of the applied policy.
         self.policy_group_id = policy_group_id
         # The protocol type.
         # 
@@ -20928,15 +21007,15 @@ class DescribeDesktopGroupsRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The payment status of the cloud computer pool.
+        # The status of the cloud computer share.
         # 
         # Valid values:
         # 
-        # *   0: unpaid
-        # *   1: paid
-        # *   2: overdue or expired
+        # *   0: The cloud computer share is unpaid.
+        # *   1: The cloud computer share is normal.
+        # *   2: The cloud computer share expired, or your account has an overdue payment.
         self.status = status
-        # The tags attached to the cloud computer pool. You can specify 1 to 20 tags.
+        # The tags that you want to add to the cloud computer share. You can specify 1 to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -21146,9 +21225,9 @@ class DescribeDesktopGroupsResponseBodyDesktopGroupsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -21228,10 +21307,10 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         volume_encryption_enabled: bool = None,
         volume_encryption_key: str = None,
     ):
-        # The number of concurrent sessions that is allowed for each cloud computer pool in a multi-session cloud computer pool.
+        # The number of concurrent sessions per cloud computer within the multi-session many-to-many share.
         self.bind_amount = bind_amount
-        # *   This parameter has different meanings based on the billing method of the cloud computer pool. For a subscription pool, this parameter specifies the number of cloud computers to purchase in the pool. Valid values: 0 to 200.
-        # *   For a pay-as-you-go pool, this parameter specifies the minimum number of cloud computers to create in the pool. Valid values: 0 to `MaxDesktopsCount`. Default value: 1.
+        # *   For subscription cloud computer shares, this parameter indicates the number of purchased cloud computers. Valid values: 0 to 200.
+        # *   For pay-as-you-go cloud computer shares, this parameter indicates the minimum number of cloud computers created in the initial batch. Default value: 1. Valid values: 0 to `MaxDesktopsCount`.
         self.buy_desktops_count = buy_desktops_count
         # The remarks.
         self.comments = comments
@@ -21257,15 +21336,15 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         self.data_disk_size = data_disk_size
         # The number of cloud computers that are created.
         self.desktop_count = desktop_count
-        # The ID of the cloud computer pool.
+        # The ID of the cloud computer share.
         self.desktop_group_id = desktop_group_id
-        # The name of the cloud computer pool.
+        # The name of the cloud computer share.
         self.desktop_group_name = desktop_group_name
         # The cloud computer type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the IDs of the cloud computer types supported by WUYING Workspace.
         self.desktop_type = desktop_type
-        # The number of users that are granted permissions to use the cloud computer pool.
+        # The number of users who can access the cloud computer share.
         self.end_user_count = end_user_count
-        # The time when the subscription cloud computer pool expires.
+        # The expiration date of the subscription cloud computer share.
         self.expired_time = expired_time
         # The number of GPUs.
         self.gpu_count = gpu_count
@@ -21281,22 +21360,22 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # 
         # When a session is disconnected, take note of the following situations: If an end user does not resume the session within the specified duration, the session is closed and all unsaved data is cleared. If the end user resumes the session within the specified duration, the end user can continue to access data of the session.
         self.keep_duration = keep_duration
-        # The load balancing policy of the multi-session cloud computer pool.
+        # The load balancing policy for the multi-session many-to-many share.
         # 
         # Valid values:
         # 
         # *   0: depth-first
         # *   1: breadth-first
         self.load_policy = load_policy
-        # The maximum number of cloud computers that can be housed in the pay-as-you-go cloud computer pool.
+        # The maximum number of cloud computers allowed in the pay-as-you-go cloud computer share.
         self.max_desktops_count = max_desktops_count
         # The memory size. Unit: MiB.
         self.memory = memory
-        # The maximum number of cloud computers that can be automatically created in the subscription cloud computer pool.
+        # The maximum number of cloud computers that can be automatically created in the subscription cloud computer share.
         self.min_desktops_count = min_desktops_count
-        # The name of the office network in which the cloud computer pool resides.
+        # The ID of the office network in which the cloud computer network resides.
         self.office_site_id = office_site_id
-        # The ID of the office network to which the cloud computer pool belongs.
+        # The ID of the office network in which the cloud computer share resides.
         self.office_site_name = office_site_name
         # The account type of the office network.
         # 
@@ -21331,12 +21410,12 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         self.own_bundle_id = own_bundle_id
         # The name of the cloud computer template.
         self.own_bundle_name = own_bundle_name
-        # The type of the cloud computer pool.
+        # The type of the cloud computer share.
         # 
         # Valid values:
         # 
-        # *   0: individual (single session)
-        # *   1: shared (multiple sessions)
+        # *   0: a single-session many-to-many share.
+        # *   1: a multi-session many-to-many share.
         self.own_type = own_type
         # The billing method of the cloud computer pool.
         # 
@@ -21345,9 +21424,9 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # *   PostPaid: pay-as-you-go
         # *   PrePaid: subscription
         self.pay_type = pay_type
-        # The ID of the policy that is associated with the cloud computer pool.
+        # The ID of the applied policy.
         self.policy_group_id = policy_group_id
-        # The name of the policy that is associated with the cloud computer pool.
+        # The name of the applied policy.
         self.policy_group_name = policy_group_name
         # The protocol type.
         # 
@@ -21369,28 +21448,28 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # 
         #     <!-- -->
         self.protocol_type = protocol_type
-        # The threshold for the ratio of connected sessions. This parameter indicates the condition that triggers auto scaling in a multi-session cloud computer pool. The ratio of connected sessions is calculated by using the following formula:
+        # The threshold for the ratio of connected sessions, which triggers automatic scaling of cloud computers within the multi-session many-to-many share. To calculate the ratio of connected sessions, use the following formula:
         # 
         # `Ratio of connected sessions = Number of connected sessions/(Total number of cloud computers × Maximum number of sessions allowed for each cloud computer) × 100%`.
         # 
-        # When the specified threshold is reached, new cloud computers are automatically created. When the specified threshold is not reached, idle cloud computers are released.
+        # If the session ratio exceeds the threshold, new cloud computers are provisioned. If it falls below the threshold, additional cloud computers are removed.
         self.ratio_threshold = ratio_threshold
-        # The disk reset type of the cloud computer pool.
+        # The reset option for the cloud computer share.
         # 
         # Valid values:
         # 
-        # *   0: does not reset disks
-        # *   1: resets only the system disks
-        # *   2: resets only the user disks
-        # *   3: resets the system disks and user disks
+        # *   0: does not reset any disk.
+        # *   1: resets only the system disk.
+        # *   2: resets only the data disk.
+        # *   3: resets the system disk and data disk.
         self.reset_type = reset_type
-        # The payment status of the cloud computer pool.
+        # The status of the cloud computer share.
         # 
         # Valid values:
         # 
-        # *   0: unpaid
-        # *   1: paid
-        # *   2: overdue or expired
+        # *   0: The cloud computer share is unpaid.
+        # *   1: The cloud computer share is normal.
+        # *   2: The cloud computer share expired, or your account has an overdue payment.
         self.status = status
         # The period of time after which an idle cloud computer is stopped. When the specified period of time is reached, the cloud computer is automatically stopped. If an end user connects to the stopped cloud computer, the cloud computer is automatically started. Unit: milliseconds.
         self.stop_duration = stop_duration
@@ -21406,10 +21485,11 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         self.system_disk_category = system_disk_category
         # The system disk capacity. Unit: GiB.
         self.system_disk_size = system_disk_size
-        # The tags attached to the cloud computer pool.
+        # The tags.
         self.tags = tags
+        # 用户组织单元路径。
         self.user_ou_path = user_ou_path
-        # The version number of the cloud computer pool.
+        # The version number of the cloud computer share.
         self.version = version
         # Indicates whether disk encryption is enabled.
         self.volume_encryption_enabled = volume_encryption_enabled
@@ -21652,7 +21732,7 @@ class DescribeDesktopGroupsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The cloud computer pools.
+        # The cloud computer shares.
         self.desktop_groups = desktop_groups
         # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -29866,13 +29946,54 @@ class DescribeModificationPriceRequest(TeaModel):
         root_disk_size_gib: int = None,
         user_disk_size_gib: int = None,
     ):
+        # The maximum public bandwidth. Unit: Mbit/s.
+        # 
+        # >  Valid values when PayByTraffic is set to PayByBandwidth: 10 to 1000.
         self.bandwidth = bandwidth
+        # The ID of either the monthly subscription cloud computer with unlimited hours or the premium bandwidth plan.
         self.instance_id = instance_id
+        # The specifications.
+        # 
+        # *   Valid values when you set `ResourceType` to `Desktop`:
+        # 
+        #     *   ecd.basic.small
+        #     *   ecd.basic.large
+        #     *   ecd.advanced.large
+        #     *   ecd.advanced.xlarge
+        #     *   ecd.performance.2xlarge
+        #     *   ecd.graphics.xlarge
+        #     *   ecd.graphics.2xlarge
+        #     *   ecd.advanced.xlarge_s8d2
+        #     *   ecd.advanced.xlarge_s8d7
+        #     *   ecd.graphics.1g72c
+        #     *   eds.general.2c2g
+        #     *   eds.general.2c4g
+        #     *   eds.general.2c8g
+        #     *   eds.general.4c8g
+        #     *   eds.general.4c16g
+        #     *   eds.general.8c16g
+        #     *   eds.general.8c32g
+        #     *   eds.general.16c32g
+        # 
+        # *   You can skip this parameter if `ResourceType` is set to `NetworkPackage`.
         self.instance_type = instance_type
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource type. The required parameters depend on the resource type.
+        # 
+        # *   When `ResourceType` is set to `Desktop`, the required parameters are `InstanceType`, `RootDiskSizeGib`, and `UserDiskSizeGib`.
+        # *   When `ResourceType` is set to `NetworkPackage`, the required parameter is `Bandwidth`.
+        # 
+        # Valid values:
+        # 
+        # *   Desktop (default): cloud computers.
+        # *   NetworkPackage: premium bandwidth plans.
         self.resource_type = resource_type
+        # The size of the system disk. Unit: GiB.
         self.root_disk_size_gib = root_disk_size_gib
+        # The size of the data disk. Unit: GiB.
         self.user_disk_size_gib = user_disk_size_gib
 
     def validate(self):
@@ -29928,10 +30049,15 @@ class DescribeModificationPriceResponseBodyPriceInfoPricePromotions(TeaModel):
         promotion_name: str = None,
         selected: bool = None,
     ):
+        # The description of the promotion rule.
         self.option_code = option_code
+        # The promotion description.
         self.promotion_desc = promotion_desc
+        # The ID of the promotion activity.
         self.promotion_id = promotion_id
+        # The name of the promotion activity.
         self.promotion_name = promotion_name
+        # Indicates whether an item is selected.
         self.selected = selected
 
     def validate(self):
@@ -29980,11 +30106,17 @@ class DescribeModificationPriceResponseBodyPriceInfoPrice(TeaModel):
         promotions: List[DescribeModificationPriceResponseBodyPriceInfoPricePromotions] = None,
         trade_price: float = None,
     ):
+        # The unit of currency (USD).
         self.currency = currency
+        # The discounted amount.
         self.discount_price = discount_price
+        # The orders.
         self.order_lines = order_lines
+        # The original price.
         self.original_price = original_price
+        # The promotion activities.
         self.promotions = promotions
+        # The actual price. The actual price is the original price minus the discount.
         self.trade_price = trade_price
 
     def validate(self):
@@ -30041,7 +30173,9 @@ class DescribeModificationPriceResponseBodyPriceInfoRules(TeaModel):
         description: str = None,
         rule_id: int = None,
     ):
+        # The rule description.
         self.description = description
+        # The rule ID.
         self.rule_id = rule_id
 
     def validate(self):
@@ -30074,7 +30208,9 @@ class DescribeModificationPriceResponseBodyPriceInfo(TeaModel):
         price: DescribeModificationPriceResponseBodyPriceInfoPrice = None,
         rules: List[DescribeModificationPriceResponseBodyPriceInfoRules] = None,
     ):
+        # The price information.
         self.price = price
+        # The promotion rules.
         self.rules = rules
 
     def validate(self):
@@ -30118,7 +30254,9 @@ class DescribeModificationPriceResponseBody(TeaModel):
         price_info: DescribeModificationPriceResponseBodyPriceInfo = None,
         request_id: str = None,
     ):
+        # The price details.
         self.price_info = price_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -35291,12 +35429,39 @@ class DescribeRenewalPriceRequest(TeaModel):
         region_id: str = None,
         resource_type: str = None,
     ):
+        # The instance ID. The value you specify depends on the resource type (ResourceType) you\\"re querying the renewal price for.
+        # 
+        # *   When `ResourceType` is set to `Desktop`, you must provide the cloud computer ID as the value of `InstanceId`.
+        # *   When `ResourceType` is set to `DesktopGroup`, you must provide the share ID as the value of `InstanceId`.
+        # *   When `ResourceType` is set to `Bandwidth`, you must provide the ID of the premium bandwidth plan as the value of `InstanceId`.
         self.instance_id = instance_id
+        # The instance IDs. The value you specify depends on the resource type (ResourceType) you\\"re querying the renewal price for.
         self.instance_ids = instance_ids
+        # The renewal duration. The valid values for this parameter depend on the value of `PeriodUnit`.
+        # 
+        # *   If you set `PeriodUnit` to `Month`, set the value of this parameter to 1, 2, 3, or 6.
+        # *   If you set `PeriodUnit` to `Year`, set the value of this parameter to 1, 2, or 3.
+        # 
+        # Default value: 1.
         self.period = period
+        # The unit of the renewal duration specified by `Period`.
+        # 
+        # Valid values:
+        # 
+        # *   Month (default)
+        # *   Year
         self.period_unit = period_unit
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource type.
+        # 
+        # Valid values:
+        # 
+        # *   Desktop (default): cloud computers.
+        # *   Bandwidth: premium bandwidth plans.
+        # *   DesktopGroup: cloud computer shares.
         self.resource_type = resource_type
 
     def validate(self):
@@ -35348,10 +35513,15 @@ class DescribeRenewalPriceResponseBodyPriceInfoPricePromotions(TeaModel):
         promotion_name: str = None,
         selected: bool = None,
     ):
+        # The description of the promotion rule.
         self.option_code = option_code
+        # The promotion description.
         self.promotion_desc = promotion_desc
+        # The promotion ID.
         self.promotion_id = promotion_id
+        # The promotion name.
         self.promotion_name = promotion_name
+        # Indicates whether an item is selected.
         self.selected = selected
 
     def validate(self):
@@ -35400,11 +35570,17 @@ class DescribeRenewalPriceResponseBodyPriceInfoPrice(TeaModel):
         promotions: List[DescribeRenewalPriceResponseBodyPriceInfoPricePromotions] = None,
         trade_price: float = None,
     ):
+        # The unit of currency (USD).
         self.currency = currency
+        # The discounted amount.
         self.discount_price = discount_price
+        # The orders.
         self.order_lines = order_lines
+        # The original price.
         self.original_price = original_price
+        # The promotions.
         self.promotions = promotions
+        # The actual price. The actual price is the original price minus the discount.
         self.trade_price = trade_price
 
     def validate(self):
@@ -35461,7 +35637,9 @@ class DescribeRenewalPriceResponseBodyPriceInfoRules(TeaModel):
         description: str = None,
         rule_id: int = None,
     ):
+        # The rule description.
         self.description = description
+        # The rule ID.
         self.rule_id = rule_id
 
     def validate(self):
@@ -35494,7 +35672,9 @@ class DescribeRenewalPriceResponseBodyPriceInfo(TeaModel):
         price: DescribeRenewalPriceResponseBodyPriceInfoPrice = None,
         rules: List[DescribeRenewalPriceResponseBodyPriceInfoRules] = None,
     ):
+        # The price.
         self.price = price
+        # The promotion rules.
         self.rules = rules
 
     def validate(self):
@@ -35538,7 +35718,9 @@ class DescribeRenewalPriceResponseBody(TeaModel):
         price_info: DescribeRenewalPriceResponseBodyPriceInfo = None,
         request_id: str = None,
     ):
+        # The price details.
         self.price_info = price_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -36661,6 +36843,7 @@ class DescribeTimerGroupResponseBodyDataConfigTimers(TeaModel):
         cron_expression: str = None,
         enforce: bool = None,
         interval: int = None,
+        notification_time: int = None,
         operation_type: str = None,
         process_whitelist: List[str] = None,
         reset_type: str = None,
@@ -36675,6 +36858,7 @@ class DescribeTimerGroupResponseBodyDataConfigTimers(TeaModel):
         self.enforce = enforce
         # The interval at which the scheduled task is executed. Unit: minutes.
         self.interval = interval
+        self.notification_time = notification_time
         # The type of the scheduled disconnection task.
         # 
         # Valid values:
@@ -36731,6 +36915,8 @@ class DescribeTimerGroupResponseBodyDataConfigTimers(TeaModel):
             result['Enforce'] = self.enforce
         if self.interval is not None:
             result['Interval'] = self.interval
+        if self.notification_time is not None:
+            result['NotificationTime'] = self.notification_time
         if self.operation_type is not None:
             result['OperationType'] = self.operation_type
         if self.process_whitelist is not None:
@@ -36753,6 +36939,8 @@ class DescribeTimerGroupResponseBodyDataConfigTimers(TeaModel):
             self.enforce = m.get('Enforce')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
+        if m.get('NotificationTime') is not None:
+            self.notification_time = m.get('NotificationTime')
         if m.get('OperationType') is not None:
             self.operation_type = m.get('OperationType')
         if m.get('ProcessWhitelist') is not None:
@@ -41270,7 +41458,7 @@ class GetDesktopGroupDetailRequest(TeaModel):
         desktop_group_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the cloud computer pool.
+        # The ID of the cloud computer share.
         # 
         # This parameter is required.
         self.desktop_group_id = desktop_group_id
@@ -41323,22 +41511,22 @@ class GetDesktopGroupDetailResponseBodyDesktopsScaleTimerInfos(TeaModel):
         # 
         # When a session is disconnected, take note of the following situations: If an end user does not resume the session within the specified duration, the session is closed and all unsaved data is cleared. If the end user resumes the session within the specified duration, the end user can still access data of the session.
         self.keep_duration = keep_duration
-        # The load balancing policy of the multi-session cloud computer pool.
+        # The load balancing policy for the multi-session many-to-many share.
         # 
         # Valid values:
         # 
-        # *   0: depth-first
-        # *   1: breadth-first
+        # *   0: depth-first.
+        # *   1: breadth-first.
         self.load_policy = load_policy
         # The maximum number of cloud computers in the cloud computer pool. This parameter is one of the auto scaling parameters. Valid values: 0 to 200.
         self.max_res_amount = max_res_amount
         # The minimum number of cloud computers in the cloud computer pool. This parameter is one of the auto scaling parameters. Valid values: 0 to 200.
         self.min_res_amount = min_res_amount
-        # The threshold for the ratio of connected sessions. This parameter is the condition that triggers auto scaling in a multi-session cloud computer pool. To calculate the ratio of connected sessions, use the following formula:
+        # The threshold for the ratio of connected sessions, which triggers automatic scaling of cloud computers within the multi-session many-to-many share. To calculate the ratio of connected sessions, use the following formula:
         # 
-        # `Ratio of connected sessions = Number of connected sessions/(Total number of cloud computers × Maximum number of sessions allowed for each cloud computer) × 100%`
+        # `Ratio of connected sessions = Number of connected sessions/(Total number of cloud computers × Maximum number of sessions allowed for each cloud computer) × 100%`.
         # 
-        # If the ratio of connected sessions is greater than the specified value, new cloud computers are created. If the ratio of connected sessions is smaller than the specified value, idle cloud computers are deleted.
+        # If the session ratio exceeds the threshold, new cloud computers are provisioned. If it falls below the threshold, additional cloud computers are removed.
         self.ratio_threshold = ratio_threshold
         # The type of the scheduled task.
         # 
@@ -41514,22 +41702,22 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
         timing_strategy_info: str = None,
         version: int = None,
     ):
-        # Indicates whether cloud computers can be automatically created in the subscription cloud computer pool.
+        # Specifies whether to enable batch-based automatic creation of cloud computers in the subscription cloud computer share.
         # 
         # Valid values:
         # 
-        # *   0: false
-        # *   1: true
+        # *   0: enables batch-based automatic creation of cloud computers.
+        # *   1: disables batch-based automatic creation of cloud computers.
         self.allow_auto_setup = allow_auto_setup
-        # The number of cloud computers that is allowed to be reserved in the pay-as-you-go cloud computer pool. Valid values:
+        # This parameter applies to pay-as-you-go cloud computer shares and specifies the number of standby cloud computers that can be reserved per cloud computer share. Valid values:
         # 
-        # *   0: does not allow the system to reserve cloud computers.
-        # *   N: allows the system to reserve N cloud computers. (1≤ N ≤ 100)
+        # *   0: does not reserve any cloud computers.
+        # *   N: reserves N cloud computers (1≤ N ≤ 100).
         self.allow_buffer_count = allow_buffer_count
-        # The number of concurrent sessions that is allowed for each cloud computer in a multi-session cloud computer pool.
+        # The maximum number of concurrent sessions allowed per cloud computer within the multi-session many-to-many share.
         self.bind_amount = bind_amount
-        # *   This parameter has different meanings based on the billing method of the cloud computer pool. For a subscription pool, this parameter indicates the number of cloud computers that you purchase in the pool. Valid values: 0 to 200.
-        # *   For a pay-as-you-go pool, this parameter indicates the minimum number of cloud computers that you can create in the pool. Default value: 1. Valid values: 0 to `MaxDesktopsCount`.
+        # *   The number of purchased cloud computers in the subscription share. Valid values: 0 to 200.
+        # *   The minimum initial number of cloud computers created in the pay-as-you-go share. Default value: 1. Valid values: 0 to `MaxDesktopsCount`.
         self.buy_desktops_count = buy_desktops_count
         # The remarks.
         self.comments = comments
@@ -41545,15 +41733,15 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
         self.data_disk_category = data_disk_category
         # The user disk capacity. Unit: GiB.
         self.data_disk_size = data_disk_size
-        # The ID of the cloud computer pool.
+        # The ID of the cloud computer share.
         self.desktop_group_id = desktop_group_id
-        # The name of the cloud computer pool that is queried.
+        # The name of the cloud computer share.
         self.desktop_group_name = desktop_group_name
         # The ID of the directory or office network.
         self.directory_id = directory_id
         # The type of the directory.
         self.directory_type = directory_type
-        # The time when the subscription cloud computer pool expires.
+        # The expiration date of the subscription cloud computer share.
         self.expired_time = expired_time
         # The number of vGPUs.
         self.gpu_count = gpu_count
@@ -41567,18 +41755,18 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
         # 
         # When a session is disconnected, take note of the following situations: If an end user does not resume the session within the specified duration, the session is closed and all unsaved data is cleared. If the end user resumes the session within the specified duration, the end user can still access data of the session.
         self.keep_duration = keep_duration
-        # The load balancing policy of the multi-session cloud computer pool.
+        # The load balancing policy for the multi-session many-to-many share.
         # 
         # Valid values:
         # 
-        # *   0: depth-first
-        # *   1: breadth-first
+        # *   0: depth-first.
+        # *   1: breadth-first.
         self.load_policy = load_policy
-        # The maximum number of cloud computers that can be housed in the pay-as-you-go cloud computer pool.
+        # The maximum number of cloud computers allowed in the pay-as-you-go cloud computer share.
         self.max_desktops_count = max_desktops_count
         # The memory size. Unit: MiB.
         self.memory = memory
-        # The maximum number of cloud computers that can be automatically created in the subscription cloud computer pool.
+        # The number of cloud computers created in the initial batch within the subscription cloud computer share.
         self.min_desktops_count = min_desktops_count
         # The ID of the File Storage NAS (NAS) file system for the user data roaming feature.
         self.nas_file_system_id = nas_file_system_id
@@ -41586,7 +41774,7 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
         self.nas_file_system_name = nas_file_system_name
         # The ID of the office network.
         self.office_site_id = office_site_id
-        # The name of the office network in which the cloud computer pool resides.
+        # The name of the office network in which the cloud computer resides.
         self.office_site_name = office_site_name
         # The office network type.
         # 
@@ -41601,12 +41789,12 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
         self.own_bundle_id = own_bundle_id
         # The name of the cloud computer template.
         self.own_bundle_name = own_bundle_name
-        # The type of the cloud computer pool.
+        # The type of the cloud computer share.
         # 
         # Valid values:
         # 
-        # *   0: individual (single session)
-        # *   1: shared (multiple sessions)
+        # *   0: a one-to-many share.
+        # *   1: a many-to-many share.
         self.own_type = own_type
         # The billing method.
         # 
@@ -41616,21 +41804,21 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
         # 
         # *   PrePaid: subscription.
         self.pay_type = pay_type
-        # The ID of the policy that is associated with the cloud computer pool.
+        # The ID of the applied policy.
         self.policy_group_id = policy_group_id
-        # The IDs of policies that are associated with the cloud computer pool.
+        # The IDs of the applied policies.
         self.policy_group_ids = policy_group_ids
-        # The name of the policy that is associated with the cloud computer pool.
+        # The name of the applied policy.
         self.policy_group_name = policy_group_name
-        # The names of policies that are associated with the cloud computer pool.
+        # The names of the applied policies.
         self.policy_group_names = policy_group_names
         # Indicates whether user data roaming is enabled.
         self.profile_follow_switch = profile_follow_switch
-        # The threshold for the ratio of connected sessions. This parameter is the condition that triggers auto scaling in a multi-session cloud computer pool. To calculate the ratio of connected sessions, use the following formula:
+        # The threshold for the ratio of connected sessions, which triggers automatic scaling of cloud computers within the multi-session many-to-many share. To calculate the ratio of connected sessions, use the following formula:
         # 
-        # `Ratio of connected sessions = Number of connected sessions/(Total number of cloud computers × Maximum number of sessions allowed for each cloud computer) × 100%`
+        # `Ratio of connected sessions = Number of connected sessions/(Total number of cloud computers × Maximum number of sessions allowed for each cloud computer) × 100%`.
         # 
-        # If the ratio of connected sessions is greater than the specified value, new cloud computers are created. If the ratio of connected sessions is smaller than the specified value, idle cloud computers are deleted.
+        # If the session ratio exceeds the threshold, new cloud computers are provisioned. If it falls below the threshold, additional cloud computers are removed.
         self.ratio_threshold = ratio_threshold
         # The type of the resource. Only Elastic Compute Service (ECS) instances are supported.
         # 
@@ -41647,15 +41835,15 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
         # *   2: resets only the user disk.
         # *   3: resets the system disk and the user disk.
         self.reset_type = reset_type
-        # Details of the scheduled tasks.
+        # The scheduled tasks.
         self.scale_timer_infos = scale_timer_infos
-        # The payment status of the cloud computer pool.
+        # The status of the cloud computer share.
         # 
         # Valid values:
         # 
-        # *   0: unpaid
-        # *   1: paid
-        # *   2: overdue or expired
+        # *   0: The cloud computer share is unpaid.
+        # *   1: The cloud computer share is normal.
+        # *   2: The cloud computer share expired, or your account has an overdue payment.
         self.status = status
         # The period of time before the idle cloud computer enters the Stopped state. If the specified value is reached, the cloud computer is automatically stopped. If an end user connects to the stopped cloud computer, the cloud computer automatically starts. Unit: milliseconds.
         self.stop_duration = stop_duration
@@ -41667,7 +41855,7 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
         self.timer_infos = timer_infos
         # The information about the scheduling policy.
         self.timing_strategy_info = timing_strategy_info
-        # The version number of the cloud computer pool.
+        # The version number of the cloud computer share.
         self.version = version
 
     def validate(self):
@@ -41909,7 +42097,7 @@ class GetDesktopGroupDetailResponseBody(TeaModel):
         desktops: GetDesktopGroupDetailResponseBodyDesktops = None,
         request_id: str = None,
     ):
-        # The information about the cloud computer pool.
+        # The cloud computers within the share.
         self.desktops = desktops
         # The ID of the request.
         self.request_id = request_id
@@ -48574,58 +48762,45 @@ class ModifyDesktopGroupRequest(TeaModel):
         scale_strategy_id: str = None,
         stop_duration: int = None,
     ):
-        # Specifies whether cloud computers can be automatically created in the subscription cloud computer pool. This parameter takes effect and is required only if you set `ChargeType` to `PrePaid`.
+        # Specifies whether to enable auto-creation of cloud computers for the subscription cloud computer share. You must specify this parameter when `ChargeType` is set to `PrePaid`.
         # 
         # Valid values:
         # 
-        # *   0: false
-        # *   1: true
+        # *   0: disable auto-creation of cloud computers.
+        # *   1: enables auto-creation of cloud computers.
         self.allow_auto_setup = allow_auto_setup
-        # The number of cloud computers that can be reserved in the pay-as-you-go cloud computer pool. This parameter takes effect and is required only if you set `ChargeType` to `PostPaid`. Valid values:
+        # The maximum number of standby cloud computers that can be reserved within the pay-as-you-go cloud computer share. You must specify this property only when `ChargeType` is set to `PostPaid`. Valid values:
         # 
-        # *   0: does not allow the system to reserve cloud computers.
-        # *   N: allows the system to reserve N cloud computers (1≤ N ≤ 100).
+        # *   0: does not reserve any cloud computer.
+        # *   N: reserves N cloud computers (1≤ N ≤ 100).
         # 
-        # >  If you set this parameter to 0, the system must create and start cloud computers and then assign the cloud computers to end users when the end users request cloud computers. This process is time-consuming. To improve user experience, we recommend that you reserve a specific number of cloud computers.
+        # >  Setting this parameter to 0 means no cloud computers will be reserved within the cloud computer share. In this case, the system must create, start, and assign cloud computers to end users upon request, which can be time-consuming. To improve user experience, we recommend that you reserve a specific number of cloud computers.
         self.allow_buffer_count = allow_buffer_count
-        # The number of concurrent sessions that is allowed for each cloud computer in a multi-session cloud computer pool.
+        # The number of concurrent sessions allowed for each cloud computer within the multi-session many-to-many share.
         # 
-        # >  This parameter is unavailable.
+        # >  This parameter is not publicly available.
         self.bind_amount = bind_amount
-        # *   This parameter has different meanings based on the billing method of the cloud computer pool. For a subscription pool, this parameter specifies the number of cloud computers to purchase in the pool. Valid values: 0 to 200.
-        # *   For a pay-as-you-go pool, this parameter specifies the minimum number of cloud computers to create in the pool. Default value: 1. Valid values: 0 to `MaxDesktopsCount`.
+        # *   For subscription cloud computer shares, this parameter specifies the number of purchased cloud computers. Valid values: 0 to 200.
+        # *   For pay-as-you-go cloud computer shares, this parameter specifies the minimum number of cloud computers created in the initial batch. Default value: 1. Valid values: 0 to `MaxDesktopsCount`.
         self.buy_desktops_count = buy_desktops_count
-        # The role that uses the cloud computer pool.
+        # The type of the cloud computer share.
         # 
-        # >  This parameter is unavailable.
+        # >  This parameter is not publicly available.
         # 
         # Valid values:
         # 
-        # *   teacher
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   student
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # *   teacher: teacher-oriented.
+        # *   student: student-oriented.
         self.classify = classify
         # The remarks.
         self.comments = comments
         # The maximum period of time during which the session is connected. When the specified maximum period of time is reached, the session is automatically disconnected. Unit: milliseconds. Valid values: 900000 to 345600000. That is, the session can be connected for 15 to 5,760 minutes (4 days).
         self.connect_duration = connect_duration
-        # The ID of the cloud computer pool.
+        # The ID of the cloud computer share.
         # 
         # This parameter is required.
         self.desktop_group_id = desktop_group_id
-        # The name of the cloud computer pool.
+        # The name of the cloud computer share.
         self.desktop_group_name = desktop_group_name
         # Specifies whether to disable session management.
         self.disable_session_config = disable_session_config
@@ -48645,18 +48820,18 @@ class ModifyDesktopGroupRequest(TeaModel):
         # 
         # When a session is disconnected, take note of the following situations: If an end user does not resume the session within the specified duration, the session is closed and all unsaved data is cleared. If the end user resumes the session within the specified duration, the end user can continue to access data of the session.
         self.keep_duration = keep_duration
-        # The load balancing policy of the multi-session cloud computer pool.
+        # The load balancing policy for the multi-session many-to-many share.
         # 
-        # >  This parameter is unavailable.
+        # >  This parameter is not publicly available.
         # 
         # Valid values:
         # 
-        # *   0: depth-first
-        # *   1: breadth-first
+        # *   0: depth first.
+        # *   1: breadth first.
         self.load_policy = load_policy
-        # The maximum number of cloud computers that can be housed in the pay-as-you-go cloud computer pool. Valid values: 0 to 500.
+        # The maximum number of cloud computers allowed in the pay-as-you-go cloud computer share. Valid values: 0 to 500.
         self.max_desktops_count = max_desktops_count
-        # The maximum number of cloud computers that can be automatically created in the subscription cloud computer pool. This parameter takes effect and is required only if you set `ChargeType` to `PrePaid`. Default value: 1. Valid values: 0 to `MaxDesktopsCount`.
+        # The maximum number of auto-created cloud computers allowed in the subscription cloud computer share. You must specify this parameter when `ChargeType` is set to `PrePaid`. Default value: 1. Valid values: 0 to `MaxDesktopsCount`.
         self.min_desktops_count = min_desktops_count
         # The ID of the cloud computer template.
         self.own_bundle_id = own_bundle_id
@@ -48668,13 +48843,13 @@ class ModifyDesktopGroupRequest(TeaModel):
         # 
         # >  This parameter is unavailable.
         self.profile_follow_switch = profile_follow_switch
-        # The threshold for the ratio of connected sessions. This parameter indicates the condition that triggers auto scaling in a multi-session cloud computer pool. The ratio of connected sessions IS calculated by using the following formula:
+        # The threshold for the ratio of connected sessions, which triggers automatic scaling of cloud computers within the multi-session many-to-many share. To calculate the ratio of connected sessions, use the following formula:
         # 
         # `Ratio of connected sessions = Number of connected sessions/(Total number of cloud computers × Maximum number of sessions allowed for each cloud computer) × 100%`
         # 
-        # If the ratio of connected sessions is greater than the specified value, new cloud computers are created. If the ratio of connected sessions is smaller than the specified value, idle cloud computers are deleted.
+        # If the session ratio exceeds the threshold, new cloud computers are provisioned. If it falls below the threshold, additional cloud computers are removed.
         # 
-        # >  This parameter is unavailable.
+        # >  This parameter is not publicly available.
         self.ratio_threshold = ratio_threshold
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
         # 
@@ -53454,6 +53629,7 @@ class ModifyTimerGroupRequestConfigTimers(TeaModel):
         cron_expression: str = None,
         enforce: bool = None,
         interval: int = None,
+        notification_time: int = None,
         operation_type: str = None,
         process_whitelist: List[str] = None,
         reset_type: str = None,
@@ -53470,6 +53646,7 @@ class ModifyTimerGroupRequestConfigTimers(TeaModel):
         self.enforce = enforce
         # The interval at which the scheduled task is executed. Unit: minutes.
         self.interval = interval
+        self.notification_time = notification_time
         # The type of the scheduled operation. If you set TimerType to NoConnect, you can specify this parameter.
         # 
         # Valid values:
@@ -53526,6 +53703,8 @@ class ModifyTimerGroupRequestConfigTimers(TeaModel):
             result['Enforce'] = self.enforce
         if self.interval is not None:
             result['Interval'] = self.interval
+        if self.notification_time is not None:
+            result['NotificationTime'] = self.notification_time
         if self.operation_type is not None:
             result['OperationType'] = self.operation_type
         if self.process_whitelist is not None:
@@ -53548,6 +53727,8 @@ class ModifyTimerGroupRequestConfigTimers(TeaModel):
             self.enforce = m.get('Enforce')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
+        if m.get('NotificationTime') is not None:
+            self.notification_time = m.get('NotificationTime')
         if m.get('OperationType') is not None:
             self.operation_type = m.get('OperationType')
         if m.get('ProcessWhitelist') is not None:

@@ -4884,7 +4884,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateCloudDriveServiceResponse:
         """
-        @summary Creates a cloud disk.
+        @summary Creates an enterprise drive.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and pricing of Enterprise Drive Service (formerly Cloud Drive Service). For more information, see [Overview](https://help.aliyun.com/document_detail/386301.html).
         
         @param request: CreateCloudDriveServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4957,7 +4959,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateCloudDriveServiceResponse:
         """
-        @summary Creates a cloud disk.
+        @summary Creates an enterprise drive.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and pricing of Enterprise Drive Service (formerly Cloud Drive Service). For more information, see [Overview](https://help.aliyun.com/document_detail/386301.html).
         
         @param request: CreateCloudDriveServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5029,7 +5033,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateCloudDriveServiceRequest,
     ) -> ecd_20200930_models.CreateCloudDriveServiceResponse:
         """
-        @summary Creates a cloud disk.
+        @summary Creates an enterprise drive.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and pricing of Enterprise Drive Service (formerly Cloud Drive Service). For more information, see [Overview](https://help.aliyun.com/document_detail/386301.html).
         
         @param request: CreateCloudDriveServiceRequest
         @return: CreateCloudDriveServiceResponse
@@ -5042,7 +5048,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateCloudDriveServiceRequest,
     ) -> ecd_20200930_models.CreateCloudDriveServiceResponse:
         """
-        @summary Creates a cloud disk.
+        @summary Creates an enterprise drive.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and pricing of Enterprise Drive Service (formerly Cloud Drive Service). For more information, see [Overview](https://help.aliyun.com/document_detail/386301.html).
         
         @param request: CreateCloudDriveServiceRequest
         @return: CreateCloudDriveServiceResponse
@@ -11456,7 +11464,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopGroupsResponse:
         """
-        @summary Queries a list of desktop groups.
+        @summary Queries cloud computer shares.
         
         @param request: DescribeDesktopGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11533,7 +11541,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopGroupsResponse:
         """
-        @summary Queries a list of desktop groups.
+        @summary Queries cloud computer shares.
         
         @param request: DescribeDesktopGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11609,7 +11617,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopGroupsRequest,
     ) -> ecd_20200930_models.DescribeDesktopGroupsResponse:
         """
-        @summary Queries a list of desktop groups.
+        @summary Queries cloud computer shares.
         
         @param request: DescribeDesktopGroupsRequest
         @return: DescribeDesktopGroupsResponse
@@ -11622,7 +11630,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopGroupsRequest,
     ) -> ecd_20200930_models.DescribeDesktopGroupsResponse:
         """
-        @summary Queries a list of desktop groups.
+        @summary Queries cloud computer shares.
         
         @param request: DescribeDesktopGroupsRequest
         @return: DescribeDesktopGroupsResponse
@@ -14428,6 +14436,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeModificationPriceResponse:
         """
+        @summary Queries the price for changing the specifications of a monthly subscription cloud computer with unlimited hours or a premium bandwidth plan.
+        
         @param request: DescribeModificationPriceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeModificationPriceResponse
@@ -14479,6 +14489,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeModificationPriceResponse:
         """
+        @summary Queries the price for changing the specifications of a monthly subscription cloud computer with unlimited hours or a premium bandwidth plan.
+        
         @param request: DescribeModificationPriceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeModificationPriceResponse
@@ -14529,6 +14541,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeModificationPriceRequest,
     ) -> ecd_20200930_models.DescribeModificationPriceResponse:
         """
+        @summary Queries the price for changing the specifications of a monthly subscription cloud computer with unlimited hours or a premium bandwidth plan.
+        
         @param request: DescribeModificationPriceRequest
         @return: DescribeModificationPriceResponse
         """
@@ -14540,6 +14554,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeModificationPriceRequest,
     ) -> ecd_20200930_models.DescribeModificationPriceResponse:
         """
+        @summary Queries the price for changing the specifications of a monthly subscription cloud computer with unlimited hours or a premium bandwidth plan.
+        
         @param request: DescribeModificationPriceRequest
         @return: DescribeModificationPriceResponse
         """
@@ -16000,6 +16016,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeRenewalPriceResponse:
         """
+        @summary Queries the renewal price of an Alibaba Cloud Workspace service.
+        
         @param request: DescribeRenewalPriceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeRenewalPriceResponse
@@ -16049,6 +16067,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeRenewalPriceResponse:
         """
+        @summary Queries the renewal price of an Alibaba Cloud Workspace service.
+        
         @param request: DescribeRenewalPriceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeRenewalPriceResponse
@@ -16097,6 +16117,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeRenewalPriceRequest,
     ) -> ecd_20200930_models.DescribeRenewalPriceResponse:
         """
+        @summary Queries the renewal price of an Alibaba Cloud Workspace service.
+        
         @param request: DescribeRenewalPriceRequest
         @return: DescribeRenewalPriceResponse
         """
@@ -16108,6 +16130,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeRenewalPriceRequest,
     ) -> ecd_20200930_models.DescribeRenewalPriceResponse:
         """
+        @summary Queries the renewal price of an Alibaba Cloud Workspace service.
+        
         @param request: DescribeRenewalPriceRequest
         @return: DescribeRenewalPriceResponse
         """
@@ -19172,7 +19196,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.GetDesktopGroupDetailResponse:
         """
-        @summary Queries the information about a cloud computer pool.
+        @summary Queries the information about a cloud computer share.
         
         @param request: GetDesktopGroupDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19215,7 +19239,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.GetDesktopGroupDetailResponse:
         """
-        @summary Queries the information about a cloud computer pool.
+        @summary Queries the information about a cloud computer share.
         
         @param request: GetDesktopGroupDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19257,7 +19281,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.GetDesktopGroupDetailRequest,
     ) -> ecd_20200930_models.GetDesktopGroupDetailResponse:
         """
-        @summary Queries the information about a cloud computer pool.
+        @summary Queries the information about a cloud computer share.
         
         @param request: GetDesktopGroupDetailRequest
         @return: GetDesktopGroupDetailResponse
@@ -19270,7 +19294,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.GetDesktopGroupDetailRequest,
     ) -> ecd_20200930_models.GetDesktopGroupDetailResponse:
         """
-        @summary Queries the information about a cloud computer pool.
+        @summary Queries the information about a cloud computer share.
         
         @param request: GetDesktopGroupDetailRequest
         @return: GetDesktopGroupDetailResponse
@@ -23232,9 +23256,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopGroupResponse:
         """
-        @summary Modifies the configurations of a cloud computer pool.
+        @summary Modifies a cloud computer share.
         
-        @description After a cloud computer pool is created, the system creates a specific number of cloud computers in the pool based on the auto scaling policy and user connections. Cloud computers are created by using the same cloud computer template and security policy. You can modify the configurations of the pool, including the pool name, cloud computer template, and policy, in different business scenarios.
+        @description Once a cloud computer share is created, the system automatically provisions cloud computers according to the auto-scaling policy and user connections, all based on the same template and security policy. You can adjust the cloud computer share\\"s configurations, including the share name, template, and policy, for different business scenarios.
         
         @param request: ModifyDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23325,9 +23349,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopGroupResponse:
         """
-        @summary Modifies the configurations of a cloud computer pool.
+        @summary Modifies a cloud computer share.
         
-        @description After a cloud computer pool is created, the system creates a specific number of cloud computers in the pool based on the auto scaling policy and user connections. Cloud computers are created by using the same cloud computer template and security policy. You can modify the configurations of the pool, including the pool name, cloud computer template, and policy, in different business scenarios.
+        @description Once a cloud computer share is created, the system automatically provisions cloud computers according to the auto-scaling policy and user connections, all based on the same template and security policy. You can adjust the cloud computer share\\"s configurations, including the share name, template, and policy, for different business scenarios.
         
         @param request: ModifyDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23417,9 +23441,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopGroupRequest,
     ) -> ecd_20200930_models.ModifyDesktopGroupResponse:
         """
-        @summary Modifies the configurations of a cloud computer pool.
+        @summary Modifies a cloud computer share.
         
-        @description After a cloud computer pool is created, the system creates a specific number of cloud computers in the pool based on the auto scaling policy and user connections. Cloud computers are created by using the same cloud computer template and security policy. You can modify the configurations of the pool, including the pool name, cloud computer template, and policy, in different business scenarios.
+        @description Once a cloud computer share is created, the system automatically provisions cloud computers according to the auto-scaling policy and user connections, all based on the same template and security policy. You can adjust the cloud computer share\\"s configurations, including the share name, template, and policy, for different business scenarios.
         
         @param request: ModifyDesktopGroupRequest
         @return: ModifyDesktopGroupResponse
@@ -23432,9 +23456,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopGroupRequest,
     ) -> ecd_20200930_models.ModifyDesktopGroupResponse:
         """
-        @summary Modifies the configurations of a cloud computer pool.
+        @summary Modifies a cloud computer share.
         
-        @description After a cloud computer pool is created, the system creates a specific number of cloud computers in the pool based on the auto scaling policy and user connections. Cloud computers are created by using the same cloud computer template and security policy. You can modify the configurations of the pool, including the pool name, cloud computer template, and policy, in different business scenarios.
+        @description Once a cloud computer share is created, the system automatically provisions cloud computers according to the auto-scaling policy and user connections, all based on the same template and security policy. You can adjust the cloud computer share\\"s configurations, including the share name, template, and policy, for different business scenarios.
         
         @param request: ModifyDesktopGroupRequest
         @return: ModifyDesktopGroupResponse
