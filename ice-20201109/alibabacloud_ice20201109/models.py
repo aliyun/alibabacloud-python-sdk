@@ -1865,6 +1865,188 @@ class LicenseInstanceAppDTO(TeaModel):
         return self
 
 
+class LiveManifestConfig(TeaModel):
+    def __init__(
+        self,
+        ad_markers: str = None,
+        date_time_interval: int = None,
+        manifest_name: str = None,
+        max_video_bitrate: int = None,
+        min_buffer_time: int = None,
+        min_video_bitrate: int = None,
+        protocol: str = None,
+        segment_num: int = None,
+        stream_order: str = None,
+        use_audio_rendition_groups: bool = None,
+    ):
+        self.ad_markers = ad_markers
+        self.date_time_interval = date_time_interval
+        self.manifest_name = manifest_name
+        self.max_video_bitrate = max_video_bitrate
+        self.min_buffer_time = min_buffer_time
+        self.min_video_bitrate = min_video_bitrate
+        self.protocol = protocol
+        self.segment_num = segment_num
+        self.stream_order = stream_order
+        self.use_audio_rendition_groups = use_audio_rendition_groups
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ad_markers is not None:
+            result['AdMarkers'] = self.ad_markers
+        if self.date_time_interval is not None:
+            result['DateTimeInterval'] = self.date_time_interval
+        if self.manifest_name is not None:
+            result['ManifestName'] = self.manifest_name
+        if self.max_video_bitrate is not None:
+            result['MaxVideoBitrate'] = self.max_video_bitrate
+        if self.min_buffer_time is not None:
+            result['MinBufferTime'] = self.min_buffer_time
+        if self.min_video_bitrate is not None:
+            result['MinVideoBitrate'] = self.min_video_bitrate
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.segment_num is not None:
+            result['SegmentNum'] = self.segment_num
+        if self.stream_order is not None:
+            result['StreamOrder'] = self.stream_order
+        if self.use_audio_rendition_groups is not None:
+            result['UseAudioRenditionGroups'] = self.use_audio_rendition_groups
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdMarkers') is not None:
+            self.ad_markers = m.get('AdMarkers')
+        if m.get('DateTimeInterval') is not None:
+            self.date_time_interval = m.get('DateTimeInterval')
+        if m.get('ManifestName') is not None:
+            self.manifest_name = m.get('ManifestName')
+        if m.get('MaxVideoBitrate') is not None:
+            self.max_video_bitrate = m.get('MaxVideoBitrate')
+        if m.get('MinBufferTime') is not None:
+            self.min_buffer_time = m.get('MinBufferTime')
+        if m.get('MinVideoBitrate') is not None:
+            self.min_video_bitrate = m.get('MinVideoBitrate')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('SegmentNum') is not None:
+            self.segment_num = m.get('SegmentNum')
+        if m.get('StreamOrder') is not None:
+            self.stream_order = m.get('StreamOrder')
+        if m.get('UseAudioRenditionGroups') is not None:
+            self.use_audio_rendition_groups = m.get('UseAudioRenditionGroups')
+        return self
+
+
+class LivePackagingConfigDrmConfig(TeaModel):
+    def __init__(
+        self,
+        encryption_method: str = None,
+        iv: str = None,
+        system_ids: List[str] = None,
+        url: str = None,
+    ):
+        self.encryption_method = encryption_method
+        self.iv = iv
+        self.system_ids = system_ids
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encryption_method is not None:
+            result['EncryptionMethod'] = self.encryption_method
+        if self.iv is not None:
+            result['IV'] = self.iv
+        if self.system_ids is not None:
+            result['SystemIds'] = self.system_ids
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncryptionMethod') is not None:
+            self.encryption_method = m.get('EncryptionMethod')
+        if m.get('IV') is not None:
+            self.iv = m.get('IV')
+        if m.get('SystemIds') is not None:
+            self.system_ids = m.get('SystemIds')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class LivePackagingConfig(TeaModel):
+    def __init__(
+        self,
+        drm_config: LivePackagingConfigDrmConfig = None,
+        live_manifest_configs: List[LiveManifestConfig] = None,
+        segment_duration: int = None,
+        use_audio_rendition_groups: bool = None,
+    ):
+        self.drm_config = drm_config
+        self.live_manifest_configs = live_manifest_configs
+        self.segment_duration = segment_duration
+        self.use_audio_rendition_groups = use_audio_rendition_groups
+
+    def validate(self):
+        if self.drm_config:
+            self.drm_config.validate()
+        if self.live_manifest_configs:
+            for k in self.live_manifest_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drm_config is not None:
+            result['DrmConfig'] = self.drm_config.to_map()
+        result['LiveManifestConfigs'] = []
+        if self.live_manifest_configs is not None:
+            for k in self.live_manifest_configs:
+                result['LiveManifestConfigs'].append(k.to_map() if k else None)
+        if self.segment_duration is not None:
+            result['SegmentDuration'] = self.segment_duration
+        if self.use_audio_rendition_groups is not None:
+            result['UseAudioRenditionGroups'] = self.use_audio_rendition_groups
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DrmConfig') is not None:
+            temp_model = LivePackagingConfigDrmConfig()
+            self.drm_config = temp_model.from_map(m['DrmConfig'])
+        self.live_manifest_configs = []
+        if m.get('LiveManifestConfigs') is not None:
+            for k in m.get('LiveManifestConfigs'):
+                temp_model = LiveManifestConfig()
+                self.live_manifest_configs.append(temp_model.from_map(k))
+        if m.get('SegmentDuration') is not None:
+            self.segment_duration = m.get('SegmentDuration')
+        if m.get('UseAudioRenditionGroups') is not None:
+            self.use_audio_rendition_groups = m.get('UseAudioRenditionGroups')
+        return self
+
+
 class MediaConvertAudio(TeaModel):
     def __init__(
         self,
@@ -72180,6 +72362,7 @@ class SubmitBatchMediaProducingJobRequest(TeaModel):
         editing_config: str = None,
         input_config: str = None,
         output_config: str = None,
+        template_config: str = None,
         user_data: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
@@ -72190,6 +72373,7 @@ class SubmitBatchMediaProducingJobRequest(TeaModel):
         self.input_config = input_config
         # The output configurations. For more information, see [OutputConfig](~~2692547#447b928fcbuoa~~).
         self.output_config = output_config
+        self.template_config = template_config
         # The user-defined data, including the business and callback configurations. For more information, see [UserData](https://help.aliyun.com/document_detail/357745.html).
         self.user_data = user_data
 
@@ -72210,6 +72394,8 @@ class SubmitBatchMediaProducingJobRequest(TeaModel):
             result['InputConfig'] = self.input_config
         if self.output_config is not None:
             result['OutputConfig'] = self.output_config
+        if self.template_config is not None:
+            result['TemplateConfig'] = self.template_config
         if self.user_data is not None:
             result['UserData'] = self.user_data
         return result
@@ -72224,6 +72410,8 @@ class SubmitBatchMediaProducingJobRequest(TeaModel):
             self.input_config = m.get('InputConfig')
         if m.get('OutputConfig') is not None:
             self.output_config = m.get('OutputConfig')
+        if m.get('TemplateConfig') is not None:
+            self.template_config = m.get('TemplateConfig')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
         return self

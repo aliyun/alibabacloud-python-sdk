@@ -31918,6 +31918,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.output_config):
             query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.template_config):
+            query['TemplateConfig'] = request.template_config
         if not UtilClient.is_unset(request.user_data):
             query['UserData'] = request.user_data
         body = {}
@@ -31969,6 +31971,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.output_config):
             query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.template_config):
+            query['TemplateConfig'] = request.template_config
         if not UtilClient.is_unset(request.user_data):
             query['UserData'] = request.user_data
         body = {}

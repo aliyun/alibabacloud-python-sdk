@@ -1,3 +1,7 @@
+2025-03-27 Version: 5.0.1
+- Update API SubmitBatchMediaProducingJob: add request parameters TemplateConfig.
+
+
 2025-03-27 Version: 5.0.0
 - Update API ListSmartVoiceGroups: add request parameters VoiceType.
 - Update API ListSmartVoiceGroups: add request The number of query or body parameters has changed from zero to many.
