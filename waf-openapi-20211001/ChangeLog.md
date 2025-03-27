@@ -7,6 +7,15 @@
 - Update API DescribeDefenseRules: add response parameters Body.Rules.$.RuleType.
 
 
+2025-03-27 Version: 5.1.1
+- Update API DescribeDefenseRules: add response parameters Body.Rules.$.ActionExternal.
+- Update API DescribeDefenseRules: add response parameters Body.Rules.$.Description.
+- Update API DescribeDefenseRules: add response parameters Body.Rules.$.DetailRuleIds.
+- Update API DescribeDefenseRules: add response parameters Body.Rules.$.ExternalInfo.
+- Update API DescribeDefenseRules: add response parameters Body.Rules.$.GmtCreate.
+- Update API DescribeDefenseRules: add response parameters Body.Rules.$.RuleType.
+
+
 2025-03-27 Version: 5.1.0
 - Support API DescribeNetworkFlowTimeSeriesMetric.
 - Support API DescribeNetworkFlowTopNMetric.
