@@ -1,3 +1,8 @@
+2025-03-27 Version: 5.0.0
+- Update API ListSmartVoiceGroups: add request parameters VoiceType.
+- Update API ListSmartVoiceGroups: add request The number of query or body parameters has changed from zero to many.
+
+
 2025-03-14 Version: 4.2.0
 - Support API SubmitSegmentationJob.
 

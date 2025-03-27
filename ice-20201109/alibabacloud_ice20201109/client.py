@@ -3704,8 +3704,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a MediaLive channel.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param tmp_req: CreateMediaLiveChannelRequest
@@ -3767,8 +3766,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a MediaLive channel.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param tmp_req: CreateMediaLiveChannelRequest
@@ -3829,8 +3827,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a MediaLive channel.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: CreateMediaLiveChannelRequest
@@ -3846,8 +3843,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a MediaLive channel.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: CreateMediaLiveChannelRequest
@@ -3864,8 +3860,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a MediaLive input.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param tmp_req: CreateMediaLiveInputRequest
@@ -3921,8 +3916,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a MediaLive input.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param tmp_req: CreateMediaLiveInputRequest
@@ -3977,8 +3971,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a MediaLive input.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: CreateMediaLiveInputRequest
@@ -3994,8 +3987,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a MediaLive input.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: CreateMediaLiveInputRequest
@@ -4012,8 +4004,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a security group in MediaLive.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param tmp_req: CreateMediaLiveInputSecurityGroupRequest
@@ -4063,8 +4054,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a security group in MediaLive.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param tmp_req: CreateMediaLiveInputSecurityGroupRequest
@@ -4113,8 +4103,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a security group in MediaLive.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: CreateMediaLiveInputSecurityGroupRequest
@@ -4130,8 +4119,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a security group in MediaLive.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: CreateMediaLiveInputSecurityGroupRequest
@@ -8552,9 +8540,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a MediaLive channel.
         
-        @description
-        You can only delete a channel that is not running.
-        ## [](#qps-)QPS limit
+        @description   You can only delete a channel that is not running.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: DeleteMediaLiveChannelRequest
@@ -8598,9 +8585,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a MediaLive channel.
         
-        @description
-        You can only delete a channel that is not running.
-        ## [](#qps-)QPS limit
+        @description   You can only delete a channel that is not running.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: DeleteMediaLiveChannelRequest
@@ -8643,9 +8629,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a MediaLive channel.
         
-        @description
-        You can only delete a channel that is not running.
-        ## [](#qps-)QPS limit
+        @description   You can only delete a channel that is not running.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: DeleteMediaLiveChannelRequest
@@ -8661,9 +8646,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a MediaLive channel.
         
-        @description
-        You can only delete a channel that is not running.
-        ## [](#qps-)QPS limit
+        @description   You can only delete a channel that is not running.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: DeleteMediaLiveChannelRequest
@@ -8680,9 +8664,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a MediaLive input.
         
-        @description
-        You can delete an input only when it is not associated with a MediaLive channel.
-        ## [](#qps-)QPS limit
+        @description    You can delete an input only when it is not associated with a MediaLive channel.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: DeleteMediaLiveInputRequest
@@ -8726,9 +8709,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a MediaLive input.
         
-        @description
-        You can delete an input only when it is not associated with a MediaLive channel.
-        ## [](#qps-)QPS limit
+        @description    You can delete an input only when it is not associated with a MediaLive channel.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: DeleteMediaLiveInputRequest
@@ -8771,9 +8753,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a MediaLive input.
         
-        @description
-        You can delete an input only when it is not associated with a MediaLive channel.
-        ## [](#qps-)QPS limit
+        @description    You can delete an input only when it is not associated with a MediaLive channel.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: DeleteMediaLiveInputRequest
@@ -8789,9 +8770,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a MediaLive input.
         
-        @description
-        You can delete an input only when it is not associated with a MediaLive channel.
-        ## [](#qps-)QPS limit
+        @description    You can delete an input only when it is not associated with a MediaLive channel.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: DeleteMediaLiveInputRequest
@@ -8808,9 +8788,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a security group in MediaLive.
         
-        @description
-        You can only delete a security group not associated with an input.
-        ## [](#qps-)QPS limit
+        @description    You can only delete a security group not associated with an input.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: DeleteMediaLiveInputSecurityGroupRequest
@@ -8854,9 +8833,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a security group in MediaLive.
         
-        @description
-        You can only delete a security group not associated with an input.
-        ## [](#qps-)QPS limit
+        @description    You can only delete a security group not associated with an input.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: DeleteMediaLiveInputSecurityGroupRequest
@@ -8899,9 +8877,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a security group in MediaLive.
         
-        @description
-        You can only delete a security group not associated with an input.
-        ## [](#qps-)QPS limit
+        @description    You can only delete a security group not associated with an input.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: DeleteMediaLiveInputSecurityGroupRequest
@@ -8917,9 +8894,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a security group in MediaLive.
         
-        @description
-        You can only delete a security group not associated with an input.
-        ## [](#qps-)QPS limit
+        @description    You can only delete a security group not associated with an input.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: DeleteMediaLiveInputSecurityGroupRequest
@@ -15696,8 +15672,7 @@ class Client(OpenApiClient):
         """
         @summary Queries a MediaLive channel.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: GetMediaLiveChannelRequest
@@ -15741,8 +15716,7 @@ class Client(OpenApiClient):
         """
         @summary Queries a MediaLive channel.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: GetMediaLiveChannelRequest
@@ -15785,8 +15759,7 @@ class Client(OpenApiClient):
         """
         @summary Queries a MediaLive channel.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: GetMediaLiveChannelRequest
@@ -15802,8 +15775,7 @@ class Client(OpenApiClient):
         """
         @summary Queries a MediaLive channel.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: GetMediaLiveChannelRequest
@@ -15820,8 +15792,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of a MediaLive input.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: GetMediaLiveInputRequest
@@ -15865,8 +15836,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of a MediaLive input.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: GetMediaLiveInputRequest
@@ -15909,8 +15879,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of a MediaLive input.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: GetMediaLiveInputRequest
@@ -15926,8 +15895,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of a MediaLive input.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: GetMediaLiveInputRequest
@@ -15944,8 +15912,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of a security group in MediaLive.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: GetMediaLiveInputSecurityGroupRequest
@@ -15989,8 +15956,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of a security group in MediaLive.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: GetMediaLiveInputSecurityGroupRequest
@@ -16033,8 +15999,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of a security group in MediaLive.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: GetMediaLiveInputSecurityGroupRequest
@@ -16050,8 +16015,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of a security group in MediaLive.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: GetMediaLiveInputSecurityGroupRequest
@@ -22796,8 +22760,7 @@ class Client(OpenApiClient):
         """
         @summary Queries MediaLive channels.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: ListMediaLiveChannelsRequest
@@ -22851,8 +22814,7 @@ class Client(OpenApiClient):
         """
         @summary Queries MediaLive channels.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: ListMediaLiveChannelsRequest
@@ -22905,8 +22867,7 @@ class Client(OpenApiClient):
         """
         @summary Queries MediaLive channels.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: ListMediaLiveChannelsRequest
@@ -22922,8 +22883,7 @@ class Client(OpenApiClient):
         """
         @summary Queries MediaLive channels.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: ListMediaLiveChannelsRequest
@@ -22940,8 +22900,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the security groups in MediaLive.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: ListMediaLiveInputSecurityGroupsRequest
@@ -22993,8 +22952,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the security groups in MediaLive.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: ListMediaLiveInputSecurityGroupsRequest
@@ -23045,8 +23003,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the security groups in MediaLive.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: ListMediaLiveInputSecurityGroupsRequest
@@ -23062,8 +23019,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the security groups in MediaLive.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: ListMediaLiveInputSecurityGroupsRequest
@@ -23080,8 +23036,7 @@ class Client(OpenApiClient):
         """
         @summary Queries MediaLive inputs.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: ListMediaLiveInputsRequest
@@ -23135,8 +23090,7 @@ class Client(OpenApiClient):
         """
         @summary Queries MediaLive inputs.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: ListMediaLiveInputsRequest
@@ -23189,8 +23143,7 @@ class Client(OpenApiClient):
         """
         @summary Queries MediaLive inputs.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: ListMediaLiveInputsRequest
@@ -23206,8 +23159,7 @@ class Client(OpenApiClient):
         """
         @summary Queries MediaLive inputs.
         
-        @description
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: ListMediaLiveInputsRequest
@@ -24422,6 +24374,7 @@ class Client(OpenApiClient):
 
     def list_smart_voice_groups_with_options(
         self,
+        request: ice20201109_models.ListSmartVoiceGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSmartVoiceGroupsResponse:
         """
@@ -24431,7 +24384,11 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListSmartVoiceGroupsResponse
         """
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='ListSmartVoiceGroups',
             version='2020-11-09',
@@ -24456,6 +24413,7 @@ class Client(OpenApiClient):
 
     async def list_smart_voice_groups_with_options_async(
         self,
+        request: ice20201109_models.ListSmartVoiceGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSmartVoiceGroupsResponse:
         """
@@ -24465,7 +24423,11 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListSmartVoiceGroupsResponse
         """
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='ListSmartVoiceGroups',
             version='2020-11-09',
@@ -24488,23 +24450,31 @@ class Client(OpenApiClient):
                 await self.execute_async(params, req, runtime)
             )
 
-    def list_smart_voice_groups(self) -> ice20201109_models.ListSmartVoiceGroupsResponse:
+    def list_smart_voice_groups(
+        self,
+        request: ice20201109_models.ListSmartVoiceGroupsRequest,
+    ) -> ice20201109_models.ListSmartVoiceGroupsResponse:
         """
         @summary Queries a list of speaker groups, including the name, gender, and sample audio of each speaker. The list is grouped by scenario.
         
+        @param request: ListSmartVoiceGroupsRequest
         @return: ListSmartVoiceGroupsResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.list_smart_voice_groups_with_options(runtime)
+        return self.list_smart_voice_groups_with_options(request, runtime)
 
-    async def list_smart_voice_groups_async(self) -> ice20201109_models.ListSmartVoiceGroupsResponse:
+    async def list_smart_voice_groups_async(
+        self,
+        request: ice20201109_models.ListSmartVoiceGroupsRequest,
+    ) -> ice20201109_models.ListSmartVoiceGroupsResponse:
         """
         @summary Queries a list of speaker groups, including the name, gender, and sample audio of each speaker. The list is grouped by scenario.
         
+        @param request: ListSmartVoiceGroupsRequest
         @return: ListSmartVoiceGroupsResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.list_smart_voice_groups_with_options_async(runtime)
+        return await self.list_smart_voice_groups_with_options_async(request, runtime)
 
     def list_snapshot_jobs_with_options(
         self,
@@ -30590,9 +30560,8 @@ class Client(OpenApiClient):
         """
         @summary Starts a MediaLive channel.
         
-        @description
-        You can call this operation only when the channel is idle. You cannot start a channel repeatedly.
-        ## [](#qps-)QPS limit
+        @description    You can call this operation only when the channel is idle. You cannot start a channel repeatedly.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: StartMediaLiveChannelRequest
@@ -30636,9 +30605,8 @@ class Client(OpenApiClient):
         """
         @summary Starts a MediaLive channel.
         
-        @description
-        You can call this operation only when the channel is idle. You cannot start a channel repeatedly.
-        ## [](#qps-)QPS limit
+        @description    You can call this operation only when the channel is idle. You cannot start a channel repeatedly.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: StartMediaLiveChannelRequest
@@ -30681,9 +30649,8 @@ class Client(OpenApiClient):
         """
         @summary Starts a MediaLive channel.
         
-        @description
-        You can call this operation only when the channel is idle. You cannot start a channel repeatedly.
-        ## [](#qps-)QPS limit
+        @description    You can call this operation only when the channel is idle. You cannot start a channel repeatedly.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: StartMediaLiveChannelRequest
@@ -30699,9 +30666,8 @@ class Client(OpenApiClient):
         """
         @summary Starts a MediaLive channel.
         
-        @description
-        You can call this operation only when the channel is idle. You cannot start a channel repeatedly.
-        ## [](#qps-)QPS limit
+        @description    You can call this operation only when the channel is idle. You cannot start a channel repeatedly.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: StartMediaLiveChannelRequest
@@ -31214,9 +31180,7 @@ class Client(OpenApiClient):
         """
         @summary Stops a MediaLive channel.
         
-        @description
-        
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: StopMediaLiveChannelRequest
@@ -31260,9 +31224,7 @@ class Client(OpenApiClient):
         """
         @summary Stops a MediaLive channel.
         
-        @description
-        
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: StopMediaLiveChannelRequest
@@ -31305,9 +31267,7 @@ class Client(OpenApiClient):
         """
         @summary Stops a MediaLive channel.
         
-        @description
-        
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: StopMediaLiveChannelRequest
@@ -31323,9 +31283,7 @@ class Client(OpenApiClient):
         """
         @summary Stops a MediaLive channel.
         
-        @description
-        
-        ## [](#qps-)QPS limit
+        @description ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: StopMediaLiveChannelRequest
@@ -39454,9 +39412,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies a MediaLive channel.
         
-        @description
-        You can modify a MediaLive channel only when it is not running.
-        ## [](#qps-)QPS limit
+        @description    You can modify a MediaLive channel only when it is not running.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param tmp_req: UpdateMediaLiveChannelRequest
@@ -39520,9 +39477,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies a MediaLive channel.
         
-        @description
-        You can modify a MediaLive channel only when it is not running.
-        ## [](#qps-)QPS limit
+        @description    You can modify a MediaLive channel only when it is not running.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param tmp_req: UpdateMediaLiveChannelRequest
@@ -39585,9 +39541,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies a MediaLive channel.
         
-        @description
-        You can modify a MediaLive channel only when it is not running.
-        ## [](#qps-)QPS limit
+        @description    You can modify a MediaLive channel only when it is not running.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: UpdateMediaLiveChannelRequest
@@ -39603,9 +39558,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies a MediaLive channel.
         
-        @description
-        You can modify a MediaLive channel only when it is not running.
-        ## [](#qps-)QPS limit
+        @description    You can modify a MediaLive channel only when it is not running.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: UpdateMediaLiveChannelRequest
@@ -39622,9 +39576,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies an input of MediaLive.
         
-        @description
-        You can modify an input only when it is not associated with a MediaLive channel.
-        ## [](#qps-)QPS limit
+        @description    You can modify an input only when it is not associated with a MediaLive channel.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param tmp_req: UpdateMediaLiveInputRequest
@@ -39682,9 +39635,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies an input of MediaLive.
         
-        @description
-        You can modify an input only when it is not associated with a MediaLive channel.
-        ## [](#qps-)QPS limit
+        @description    You can modify an input only when it is not associated with a MediaLive channel.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param tmp_req: UpdateMediaLiveInputRequest
@@ -39741,9 +39693,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies an input of MediaLive.
         
-        @description
-        You can modify an input only when it is not associated with a MediaLive channel.
-        ## [](#qps-)QPS limit
+        @description    You can modify an input only when it is not associated with a MediaLive channel.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: UpdateMediaLiveInputRequest
@@ -39759,9 +39710,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies an input of MediaLive.
         
-        @description
-        You can modify an input only when it is not associated with a MediaLive channel.
-        ## [](#qps-)QPS limit
+        @description    You can modify an input only when it is not associated with a MediaLive channel.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: UpdateMediaLiveInputRequest
@@ -39778,9 +39728,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies a security group created in MediaLive.
         
-        @description
-        You can modify a security group only when it is not associated with a MediaLive input.
-        ## [](#qps-)QPS limit
+        @description    You can modify a security group only when it is not associated with a MediaLive input.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param tmp_req: UpdateMediaLiveInputSecurityGroupRequest
@@ -39832,9 +39781,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies a security group created in MediaLive.
         
-        @description
-        You can modify a security group only when it is not associated with a MediaLive input.
-        ## [](#qps-)QPS limit
+        @description    You can modify a security group only when it is not associated with a MediaLive input.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param tmp_req: UpdateMediaLiveInputSecurityGroupRequest
@@ -39885,9 +39833,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies a security group created in MediaLive.
         
-        @description
-        You can modify a security group only when it is not associated with a MediaLive input.
-        ## [](#qps-)QPS limit
+        @description    You can modify a security group only when it is not associated with a MediaLive input.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: UpdateMediaLiveInputSecurityGroupRequest
@@ -39903,9 +39850,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies a security group created in MediaLive.
         
-        @description
-        You can modify a security group only when it is not associated with a MediaLive input.
-        ## [](#qps-)QPS limit
+        @description    You can modify a security group only when it is not associated with a MediaLive input.
+        ## QPS limit
         This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: UpdateMediaLiveInputSecurityGroupRequest

@@ -55579,6 +55579,33 @@ class ListSmartSysAvatarModelsResponse(TeaModel):
         return self
 
 
+class ListSmartVoiceGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        voice_type: str = None,
+    ):
+        self.voice_type = voice_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.voice_type is not None:
+            result['VoiceType'] = self.voice_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VoiceType') is not None:
+            self.voice_type = m.get('VoiceType')
+        return self
+
+
 class ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList(TeaModel):
     def __init__(
         self,
