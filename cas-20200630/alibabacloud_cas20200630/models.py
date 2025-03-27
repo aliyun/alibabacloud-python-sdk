@@ -467,12 +467,16 @@ class CreateClientCertificateWithCsrRequest(TeaModel):
 class CreateClientCertificateWithCsrResponseBody(TeaModel):
     def __init__(
         self,
+        cert_kmc_rep_1: str = None,
+        cert_sign_buf_kmc: str = None,
         certificate_chain: str = None,
         identifier: str = None,
         request_id: str = None,
         serial_number: str = None,
         x_509certificate: str = None,
     ):
+        self.cert_kmc_rep_1 = cert_kmc_rep_1
+        self.cert_sign_buf_kmc = cert_sign_buf_kmc
         # The certificate chain of the client certificate.
         self.certificate_chain = certificate_chain
         # The unique identifier of the client certificate.
@@ -493,6 +497,10 @@ class CreateClientCertificateWithCsrResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.cert_kmc_rep_1 is not None:
+            result['CertKmcRep1'] = self.cert_kmc_rep_1
+        if self.cert_sign_buf_kmc is not None:
+            result['CertSignBufKmc'] = self.cert_sign_buf_kmc
         if self.certificate_chain is not None:
             result['CertificateChain'] = self.certificate_chain
         if self.identifier is not None:
@@ -507,6 +515,10 @@ class CreateClientCertificateWithCsrResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CertKmcRep1') is not None:
+            self.cert_kmc_rep_1 = m.get('CertKmcRep1')
+        if m.get('CertSignBufKmc') is not None:
+            self.cert_sign_buf_kmc = m.get('CertSignBufKmc')
         if m.get('CertificateChain') is not None:
             self.certificate_chain = m.get('CertificateChain')
         if m.get('Identifier') is not None:

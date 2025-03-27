@@ -1,3 +1,8 @@
+2025-03-27 Version: 1.0.17
+- Update API CreateClientCertificateWithCsr: add response parameters Body.CertKmcRep1.
+- Update API CreateClientCertificateWithCsr: add response parameters Body.CertSignBufKmc.
+
+
 2025-01-21 Version: 1.0.16
 - Update API CreateClientCertificate: add param EnableCrl.
 - Update API CreateClientCertificate: delete param Csr.
