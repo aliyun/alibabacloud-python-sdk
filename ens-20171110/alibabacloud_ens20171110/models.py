@@ -1139,161 +1139,6 @@ class AddBackendServersResponse(TeaModel):
         return self
 
 
-class AddDeviceInternetPortRequest(TeaModel):
-    def __init__(
-        self,
-        isp: str = None,
-        instance_id: str = None,
-        internal_ip: str = None,
-        internal_port: str = None,
-        nat_type: str = None,
-        region_id: str = None,
-    ):
-        # The Internet service provider (ISP). If you leave this parameter empty, the system automatically allows a random ISP. Valid values:
-        # 
-        # *   telecom: China Telecom
-        # *   cmcc: China Mobile
-        # *   unicom: China Unicom
-        # *   cbn: China Broadcasting Network (CBN)
-        self.isp = isp
-        # The ID of the instance. You can specify the ID of the server or container.
-        # 
-        # This parameter is required.
-        self.instance_id = instance_id
-        # The private IP address of the simple application server.
-        # 
-        # This parameter is required.
-        self.internal_ip = internal_ip
-        # The internal port number. Specify this parameter in the following format: first port/last port. Separate multiple port number groups with commas (,). Example: 1026/2001,2005/2005. This parameter is required if you set NatType to DNAT. If you set NatType to SNAT, the value of this parameter is invalid.
-        self.internal_port = internal_port
-        # The type of the NAT gateway. The value of this parameter is of the enumerated data type. Valid values:
-        # 
-        # *   SNAT
-        # *   DNAT
-        # 
-        # This parameter is required.
-        self.nat_type = nat_type
-        # The ID of the Edge Node Service (ENS) node.
-        # 
-        # This parameter is required.
-        self.region_id = region_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.isp is not None:
-            result['ISP'] = self.isp
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.internal_ip is not None:
-            result['InternalIp'] = self.internal_ip
-        if self.internal_port is not None:
-            result['InternalPort'] = self.internal_port
-        if self.nat_type is not None:
-            result['NatType'] = self.nat_type
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ISP') is not None:
-            self.isp = m.get('ISP')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('InternalIp') is not None:
-            self.internal_ip = m.get('InternalIp')
-        if m.get('InternalPort') is not None:
-            self.internal_port = m.get('InternalPort')
-        if m.get('NatType') is not None:
-            self.nat_type = m.get('NatType')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        return self
-
-
-class AddDeviceInternetPortResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        rule_ids: List[str] = None,
-    ):
-        # The ID of the request.
-        self.request_id = request_id
-        # The list of rules.
-        self.rule_ids = rule_ids
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.rule_ids is not None:
-            result['RuleIds'] = self.rule_ids
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('RuleIds') is not None:
-            self.rule_ids = m.get('RuleIds')
-        return self
-
-
-class AddDeviceInternetPortResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: AddDeviceInternetPortResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = AddDeviceInternetPortResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class AddNetworkInterfaceToInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -5993,6 +5838,7 @@ class CreateImageRequest(TeaModel):
         instance_id: str = None,
         snapshot_id: str = None,
         target_ossregion_id: str = None,
+        with_data_disks: bool = None,
     ):
         # Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: false. Valid values:
         # 
@@ -6010,6 +5856,7 @@ class CreateImageRequest(TeaModel):
         self.snapshot_id = snapshot_id
         # The region of the target OSS where the image is to be stored.
         self.target_ossregion_id = target_ossregion_id
+        self.with_data_disks = with_data_disks
 
     def validate(self):
         pass
@@ -6030,6 +5877,8 @@ class CreateImageRequest(TeaModel):
             result['SnapshotId'] = self.snapshot_id
         if self.target_ossregion_id is not None:
             result['TargetOSSRegionId'] = self.target_ossregion_id
+        if self.with_data_disks is not None:
+            result['WithDataDisks'] = self.with_data_disks
         return result
 
     def from_map(self, m: dict = None):
@@ -6044,6 +5893,8 @@ class CreateImageRequest(TeaModel):
             self.snapshot_id = m.get('SnapshotId')
         if m.get('TargetOSSRegionId') is not None:
             self.target_ossregion_id = m.get('TargetOSSRegionId')
+        if m.get('WithDataDisks') is not None:
+            self.with_data_disks = m.get('WithDataDisks')
         return self
 
 
@@ -10800,133 +10651,6 @@ class DeleteBucketLifecycleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteBucketLifecycleResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DeleteDeviceInternetPortRequest(TeaModel):
-    def __init__(
-        self,
-        instance_id: str = None,
-        nat_type: str = None,
-        rule_id: str = None,
-    ):
-        # The ID of the instance. You can specify the ID of the server or container.
-        # 
-        # This parameter is required.
-        self.instance_id = instance_id
-        # The type of the NAT gateway. The value must be of the enumerated data type. Valid values:
-        # 
-        # *   SNAT
-        # *   DNAT
-        # 
-        # This parameter is required.
-        self.nat_type = nat_type
-        # The ID of the rule.
-        # 
-        # This parameter is required.
-        self.rule_id = rule_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.nat_type is not None:
-            result['NatType'] = self.nat_type
-        if self.rule_id is not None:
-            result['RuleId'] = self.rule_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('NatType') is not None:
-            self.nat_type = m.get('NatType')
-        if m.get('RuleId') is not None:
-            self.rule_id = m.get('RuleId')
-        return self
-
-
-class DeleteDeviceInternetPortResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        rule_ids: List[str] = None,
-    ):
-        # The ID of the request.
-        self.request_id = request_id
-        # The list of rules.
-        self.rule_ids = rule_ids
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.rule_ids is not None:
-            result['RuleIds'] = self.rule_ids
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('RuleIds') is not None:
-            self.rule_ids = m.get('RuleIds')
-        return self
-
-
-class DeleteDeviceInternetPortResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DeleteDeviceInternetPortResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DeleteDeviceInternetPortResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16960,10 +16684,10 @@ class DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportR
         self.can_buy_count = can_buy_count
         # The type of the disk.
         # 
-        # *   cloud_efficiency: ultra disk.
-        # *   cloud_ssd: all-flash disk.
-        # *   local_hdd: local HDD.
-        # *   local_ssd: local SSD.
+        # *   cloud_efficiency:ultra disk.
+        # *   cloud_ssd:all-flash disk.
+        # *   local_hdd:local HDD.
+        # *   local_ssd:local SSD.
         self.category = category
         # The default size of the disk. Unit: GiB.
         self.default_disk_size = default_disk_size
@@ -20856,6 +20580,7 @@ class DescribeEnsEipAddressesRequest(TeaModel):
         eip_address: str = None,
         eip_name: str = None,
         ens_region_id: str = None,
+        ens_region_ids: List[str] = None,
         page_number: int = None,
         page_size: int = None,
         standby: str = None,
@@ -20875,6 +20600,7 @@ class DescribeEnsEipAddressesRequest(TeaModel):
         self.eip_name = eip_name
         # The ID of the Edge Node Service (ENS) node.
         self.ens_region_id = ens_region_id
+        self.ens_region_ids = ens_region_ids
         # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Maximum value: 100. Default value: 10.
@@ -20906,6 +20632,8 @@ class DescribeEnsEipAddressesRequest(TeaModel):
             result['EipName'] = self.eip_name
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        if self.ens_region_ids is not None:
+            result['EnsRegionIds'] = self.ens_region_ids
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -20928,6 +20656,8 @@ class DescribeEnsEipAddressesRequest(TeaModel):
             self.eip_name = m.get('EipName')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        if m.get('EnsRegionIds') is not None:
+            self.ens_region_ids = m.get('EnsRegionIds')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -27115,6 +26845,7 @@ class DescribeHaVipsRequest(TeaModel):
     def __init__(
         self,
         ens_region_id: str = None,
+        ens_region_ids: List[str] = None,
         ha_vip_address: str = None,
         ha_vip_id: str = None,
         name: str = None,
@@ -27126,6 +26857,7 @@ class DescribeHaVipsRequest(TeaModel):
     ):
         # The ID of the region.
         self.ens_region_id = ens_region_id
+        self.ens_region_ids = ens_region_ids
         # The IP address of the HAVIP.
         self.ha_vip_address = ha_vip_address
         # The ID of the HAVIP.
@@ -27159,6 +26891,8 @@ class DescribeHaVipsRequest(TeaModel):
         result = dict()
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        if self.ens_region_ids is not None:
+            result['EnsRegionIds'] = self.ens_region_ids
         if self.ha_vip_address is not None:
             result['HaVipAddress'] = self.ha_vip_address
         if self.ha_vip_id is not None:
@@ -27181,6 +26915,8 @@ class DescribeHaVipsRequest(TeaModel):
         m = m or dict()
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        if m.get('EnsRegionIds') is not None:
+            self.ens_region_ids = m.get('EnsRegionIds')
         if m.get('HaVipAddress') is not None:
             self.ha_vip_address = m.get('HaVipAddress')
         if m.get('HaVipId') is not None:
@@ -28934,6 +28670,175 @@ class DescribeInstanceBandwidthDetailResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeInstanceBandwidthDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeInstanceBootConfigurationRequest(TeaModel):
+    def __init__(
+        self,
+        boot_set: str = None,
+        boot_type: str = None,
+        disk_set: str = None,
+        instance_id: str = None,
+    ):
+        self.boot_set = boot_set
+        self.boot_type = boot_type
+        self.disk_set = disk_set
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.boot_set is not None:
+            result['BootSet'] = self.boot_set
+        if self.boot_type is not None:
+            result['BootType'] = self.boot_type
+        if self.disk_set is not None:
+            result['DiskSet'] = self.disk_set
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BootSet') is not None:
+            self.boot_set = m.get('BootSet')
+        if m.get('BootType') is not None:
+            self.boot_type = m.get('BootType')
+        if m.get('DiskSet') is not None:
+            self.disk_set = m.get('DiskSet')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DescribeInstanceBootConfigurationResponseBodyInstances(TeaModel):
+    def __init__(
+        self,
+        boot_set: str = None,
+        boot_type: str = None,
+        disk_set: str = None,
+        instance_id: str = None,
+    ):
+        self.boot_set = boot_set
+        self.boot_type = boot_type
+        self.disk_set = disk_set
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.boot_set is not None:
+            result['BootSet'] = self.boot_set
+        if self.boot_type is not None:
+            result['BootType'] = self.boot_type
+        if self.disk_set is not None:
+            result['DiskSet'] = self.disk_set
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BootSet') is not None:
+            self.boot_set = m.get('BootSet')
+        if m.get('BootType') is not None:
+            self.boot_type = m.get('BootType')
+        if m.get('DiskSet') is not None:
+            self.disk_set = m.get('DiskSet')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DescribeInstanceBootConfigurationResponseBody(TeaModel):
+    def __init__(
+        self,
+        instances: DescribeInstanceBootConfigurationResponseBodyInstances = None,
+        request_id: str = None,
+    ):
+        # Schema of Response
+        self.instances = instances
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instances:
+            self.instances.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instances is not None:
+            result['Instances'] = self.instances.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Instances') is not None:
+            temp_model = DescribeInstanceBootConfigurationResponseBodyInstances()
+            self.instances = temp_model.from_map(m['Instances'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeInstanceBootConfigurationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInstanceBootConfigurationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInstanceBootConfigurationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -42817,6 +42722,7 @@ class DescribeSecondaryPublicIpAddressesRequest(TeaModel):
     def __init__(
         self,
         ens_region_id: str = None,
+        ens_region_ids: List[str] = None,
         isp: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -42825,6 +42731,7 @@ class DescribeSecondaryPublicIpAddressesRequest(TeaModel):
     ):
         # The ID of the edge node.
         self.ens_region_id = ens_region_id
+        self.ens_region_ids = ens_region_ids
         # The Internet service provider. Valid values:
         # 
         # *   cmcc: China Mobile.
@@ -42851,6 +42758,8 @@ class DescribeSecondaryPublicIpAddressesRequest(TeaModel):
         result = dict()
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        if self.ens_region_ids is not None:
+            result['EnsRegionIds'] = self.ens_region_ids
         if self.isp is not None:
             result['Isp'] = self.isp
         if self.page_number is not None:
@@ -42867,6 +42776,8 @@ class DescribeSecondaryPublicIpAddressesRequest(TeaModel):
         m = m or dict()
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        if m.get('EnsRegionIds') is not None:
+            self.ens_region_ids = m.get('EnsRegionIds')
         if m.get('Isp') is not None:
             self.isp = m.get('Isp')
         if m.get('PageNumber') is not None:
@@ -48833,209 +48744,6 @@ class GetBucketLifecycleResponse(TeaModel):
         return self
 
 
-class GetDeviceInternetPortRequest(TeaModel):
-    def __init__(
-        self,
-        instance_id: str = None,
-        nat_type: str = None,
-        rule_id: str = None,
-    ):
-        # The ID of the instance. You can specify the ID of the server or container. You can specify only one ID.
-        # 
-        # This parameter is required.
-        self.instance_id = instance_id
-        # The type of the NAT gateway. The value must be of the enumerated data type. Valid values:
-        # 
-        # *   SNAT
-        # *   DNAT
-        # 
-        # This parameter is required.
-        self.nat_type = nat_type
-        # The ID of the rule. If you leave this parameter empty, all rules are queried.
-        self.rule_id = rule_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.nat_type is not None:
-            result['NatType'] = self.nat_type
-        if self.rule_id is not None:
-            result['RuleId'] = self.rule_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('NatType') is not None:
-            self.nat_type = m.get('NatType')
-        if m.get('RuleId') is not None:
-            self.rule_id = m.get('RuleId')
-        return self
-
-
-class GetDeviceInternetPortResponseBodyNetworkInfo(TeaModel):
-    def __init__(
-        self,
-        external_ip: str = None,
-        external_port: str = None,
-        isp: str = None,
-        internal_ip: str = None,
-        internal_port: str = None,
-        status: str = None,
-    ):
-        # The public IP address.
-        self.external_ip = external_ip
-        # The external port number.
-        self.external_port = external_port
-        # The Internet service provider (ISP).
-        self.isp = isp
-        # The internal IP address.
-        self.internal_ip = internal_ip
-        # The internal port number.
-        self.internal_port = internal_port
-        # The status of the external port.
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.external_ip is not None:
-            result['ExternalIp'] = self.external_ip
-        if self.external_port is not None:
-            result['ExternalPort'] = self.external_port
-        if self.isp is not None:
-            result['ISP'] = self.isp
-        if self.internal_ip is not None:
-            result['InternalIp'] = self.internal_ip
-        if self.internal_port is not None:
-            result['InternalPort'] = self.internal_port
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ExternalIp') is not None:
-            self.external_ip = m.get('ExternalIp')
-        if m.get('ExternalPort') is not None:
-            self.external_port = m.get('ExternalPort')
-        if m.get('ISP') is not None:
-            self.isp = m.get('ISP')
-        if m.get('InternalIp') is not None:
-            self.internal_ip = m.get('InternalIp')
-        if m.get('InternalPort') is not None:
-            self.internal_port = m.get('InternalPort')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class GetDeviceInternetPortResponseBody(TeaModel):
-    def __init__(
-        self,
-        instance_id: str = None,
-        network_info: List[GetDeviceInternetPortResponseBodyNetworkInfo] = None,
-        request_id: str = None,
-    ):
-        # The ID of the instance. The value is the ID of the server or container.
-        self.instance_id = instance_id
-        # The network mapping information about the instance.
-        self.network_info = network_info
-        # The ID of the request.
-        self.request_id = request_id
-
-    def validate(self):
-        if self.network_info:
-            for k in self.network_info:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        result['NetworkInfo'] = []
-        if self.network_info is not None:
-            for k in self.network_info:
-                result['NetworkInfo'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        self.network_info = []
-        if m.get('NetworkInfo') is not None:
-            for k in m.get('NetworkInfo'):
-                temp_model = GetDeviceInternetPortResponseBodyNetworkInfo()
-                self.network_info.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class GetDeviceInternetPortResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetDeviceInternetPortResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetDeviceInternetPortResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class GetOssStorageAndAccByBucketsRequest(TeaModel):
     def __init__(
         self,
@@ -49395,6 +49103,328 @@ class GetOssUsageDataResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetOssUsageDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ImportImageRequestDiskDeviceMapping(TeaModel):
+    def __init__(
+        self,
+        ossbucket: str = None,
+        ossobject: str = None,
+        ossregion: str = None,
+    ):
+        self.ossbucket = ossbucket
+        self.ossobject = ossobject
+        self.ossregion = ossregion
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ossbucket is not None:
+            result['OSSBucket'] = self.ossbucket
+        if self.ossobject is not None:
+            result['OSSObject'] = self.ossobject
+        if self.ossregion is not None:
+            result['OSSRegion'] = self.ossregion
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OSSBucket') is not None:
+            self.ossbucket = m.get('OSSBucket')
+        if m.get('OSSObject') is not None:
+            self.ossobject = m.get('OSSObject')
+        if m.get('OSSRegion') is not None:
+            self.ossregion = m.get('OSSRegion')
+        return self
+
+
+class ImportImageRequest(TeaModel):
+    def __init__(
+        self,
+        architecture: str = None,
+        compute_type: str = None,
+        disk_device_mapping: List[ImportImageRequestDiskDeviceMapping] = None,
+        image_format: str = None,
+        image_name: str = None,
+        ossbucket: str = None,
+        ossobject: str = None,
+        ossregion: str = None,
+        ostype: str = None,
+        osversion: str = None,
+        platform: str = None,
+        target_ossregion_id: str = None,
+    ):
+        # This parameter is required.
+        self.architecture = architecture
+        # This parameter is required.
+        self.compute_type = compute_type
+        self.disk_device_mapping = disk_device_mapping
+        # This parameter is required.
+        self.image_format = image_format
+        # This parameter is required.
+        self.image_name = image_name
+        self.ossbucket = ossbucket
+        self.ossobject = ossobject
+        self.ossregion = ossregion
+        # This parameter is required.
+        self.ostype = ostype
+        # This parameter is required.
+        self.osversion = osversion
+        # This parameter is required.
+        self.platform = platform
+        self.target_ossregion_id = target_ossregion_id
+
+    def validate(self):
+        if self.disk_device_mapping:
+            for k in self.disk_device_mapping:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.architecture is not None:
+            result['Architecture'] = self.architecture
+        if self.compute_type is not None:
+            result['ComputeType'] = self.compute_type
+        result['DiskDeviceMapping'] = []
+        if self.disk_device_mapping is not None:
+            for k in self.disk_device_mapping:
+                result['DiskDeviceMapping'].append(k.to_map() if k else None)
+        if self.image_format is not None:
+            result['ImageFormat'] = self.image_format
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+        if self.ossbucket is not None:
+            result['OSSBucket'] = self.ossbucket
+        if self.ossobject is not None:
+            result['OSSObject'] = self.ossobject
+        if self.ossregion is not None:
+            result['OSSRegion'] = self.ossregion
+        if self.ostype is not None:
+            result['OSType'] = self.ostype
+        if self.osversion is not None:
+            result['OSVersion'] = self.osversion
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        if self.target_ossregion_id is not None:
+            result['TargetOSSRegionId'] = self.target_ossregion_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Architecture') is not None:
+            self.architecture = m.get('Architecture')
+        if m.get('ComputeType') is not None:
+            self.compute_type = m.get('ComputeType')
+        self.disk_device_mapping = []
+        if m.get('DiskDeviceMapping') is not None:
+            for k in m.get('DiskDeviceMapping'):
+                temp_model = ImportImageRequestDiskDeviceMapping()
+                self.disk_device_mapping.append(temp_model.from_map(k))
+        if m.get('ImageFormat') is not None:
+            self.image_format = m.get('ImageFormat')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+        if m.get('OSSBucket') is not None:
+            self.ossbucket = m.get('OSSBucket')
+        if m.get('OSSObject') is not None:
+            self.ossobject = m.get('OSSObject')
+        if m.get('OSSRegion') is not None:
+            self.ossregion = m.get('OSSRegion')
+        if m.get('OSType') is not None:
+            self.ostype = m.get('OSType')
+        if m.get('OSVersion') is not None:
+            self.osversion = m.get('OSVersion')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        if m.get('TargetOSSRegionId') is not None:
+            self.target_ossregion_id = m.get('TargetOSSRegionId')
+        return self
+
+
+class ImportImageShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        architecture: str = None,
+        compute_type: str = None,
+        disk_device_mapping_shrink: str = None,
+        image_format: str = None,
+        image_name: str = None,
+        ossbucket: str = None,
+        ossobject: str = None,
+        ossregion: str = None,
+        ostype: str = None,
+        osversion: str = None,
+        platform: str = None,
+        target_ossregion_id: str = None,
+    ):
+        # This parameter is required.
+        self.architecture = architecture
+        # This parameter is required.
+        self.compute_type = compute_type
+        self.disk_device_mapping_shrink = disk_device_mapping_shrink
+        # This parameter is required.
+        self.image_format = image_format
+        # This parameter is required.
+        self.image_name = image_name
+        self.ossbucket = ossbucket
+        self.ossobject = ossobject
+        self.ossregion = ossregion
+        # This parameter is required.
+        self.ostype = ostype
+        # This parameter is required.
+        self.osversion = osversion
+        # This parameter is required.
+        self.platform = platform
+        self.target_ossregion_id = target_ossregion_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.architecture is not None:
+            result['Architecture'] = self.architecture
+        if self.compute_type is not None:
+            result['ComputeType'] = self.compute_type
+        if self.disk_device_mapping_shrink is not None:
+            result['DiskDeviceMapping'] = self.disk_device_mapping_shrink
+        if self.image_format is not None:
+            result['ImageFormat'] = self.image_format
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+        if self.ossbucket is not None:
+            result['OSSBucket'] = self.ossbucket
+        if self.ossobject is not None:
+            result['OSSObject'] = self.ossobject
+        if self.ossregion is not None:
+            result['OSSRegion'] = self.ossregion
+        if self.ostype is not None:
+            result['OSType'] = self.ostype
+        if self.osversion is not None:
+            result['OSVersion'] = self.osversion
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        if self.target_ossregion_id is not None:
+            result['TargetOSSRegionId'] = self.target_ossregion_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Architecture') is not None:
+            self.architecture = m.get('Architecture')
+        if m.get('ComputeType') is not None:
+            self.compute_type = m.get('ComputeType')
+        if m.get('DiskDeviceMapping') is not None:
+            self.disk_device_mapping_shrink = m.get('DiskDeviceMapping')
+        if m.get('ImageFormat') is not None:
+            self.image_format = m.get('ImageFormat')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+        if m.get('OSSBucket') is not None:
+            self.ossbucket = m.get('OSSBucket')
+        if m.get('OSSObject') is not None:
+            self.ossobject = m.get('OSSObject')
+        if m.get('OSSRegion') is not None:
+            self.ossregion = m.get('OSSRegion')
+        if m.get('OSType') is not None:
+            self.ostype = m.get('OSType')
+        if m.get('OSVersion') is not None:
+            self.osversion = m.get('OSVersion')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        if m.get('TargetOSSRegionId') is not None:
+            self.target_ossregion_id = m.get('TargetOSSRegionId')
+        return self
+
+
+class ImportImageResponseBody(TeaModel):
+    def __init__(
+        self,
+        image_id: str = None,
+        request_id: str = None,
+    ):
+        self.image_id = image_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ImportImageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ImportImageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ImportImageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -58211,123 +58241,6 @@ class ResetAICInstanceResponse(TeaModel):
         return self
 
 
-class ResetDeviceInstanceRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        image_id: str = None,
-        instance_id: str = None,
-    ):
-        # The ID of the application. To obtain the application ID, call the ListApplications operation. For more information, see the API documentation of ListApplications.
-        # 
-        # This parameter is required.
-        self.app_id = app_id
-        # The ID of the image.
-        # 
-        # This parameter is required.
-        self.image_id = image_id
-        # The ID of the instance.
-        # 
-        # This parameter is required.
-        self.instance_id = instance_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.image_id is not None:
-            result['ImageId'] = self.image_id
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('ImageId') is not None:
-            self.image_id = m.get('ImageId')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        return self
-
-
-class ResetDeviceInstanceResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # The ID of the request.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ResetDeviceInstanceResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ResetDeviceInstanceResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ResetDeviceInstanceResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ResetDiskRequest(TeaModel):
     def __init__(
         self,
@@ -58547,114 +58460,6 @@ class ResizeDiskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ResizeDiskResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class RestartDeviceInstanceRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        instance_id: str = None,
-    ):
-        # The ID of the application. To obtain the application ID, call the ListApplications operation. For more information, see the API documentation of ListApplications.
-        # 
-        # This parameter is required.
-        self.app_id = app_id
-        # The ID of the instance.
-        # 
-        # This parameter is required.
-        self.instance_id = instance_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        return self
-
-
-class RestartDeviceInstanceResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # The ID of the request.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class RestartDeviceInstanceResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: RestartDeviceInstanceResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = RestartDeviceInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

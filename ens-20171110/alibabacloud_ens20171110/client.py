@@ -285,110 +285,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_backend_servers_with_options_async(request, runtime)
 
-    def add_device_internet_port_with_options(
-        self,
-        request: ens_20171110_models.AddDeviceInternetPortRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.AddDeviceInternetPortResponse:
-        """
-        @summary Configures Network Address Translation (NAT) rules for an instance. This operation is an asynchronous API operation. For more information about the configurations, see the API documentation of GetDeviceInternetPort.
-        
-        @param request: AddDeviceInternetPortRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddDeviceInternetPortResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AddDeviceInternetPort',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ens_20171110_models.AddDeviceInternetPortResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ens_20171110_models.AddDeviceInternetPortResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def add_device_internet_port_with_options_async(
-        self,
-        request: ens_20171110_models.AddDeviceInternetPortRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.AddDeviceInternetPortResponse:
-        """
-        @summary Configures Network Address Translation (NAT) rules for an instance. This operation is an asynchronous API operation. For more information about the configurations, see the API documentation of GetDeviceInternetPort.
-        
-        @param request: AddDeviceInternetPortRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddDeviceInternetPortResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AddDeviceInternetPort',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ens_20171110_models.AddDeviceInternetPortResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ens_20171110_models.AddDeviceInternetPortResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def add_device_internet_port(
-        self,
-        request: ens_20171110_models.AddDeviceInternetPortRequest,
-    ) -> ens_20171110_models.AddDeviceInternetPortResponse:
-        """
-        @summary Configures Network Address Translation (NAT) rules for an instance. This operation is an asynchronous API operation. For more information about the configurations, see the API documentation of GetDeviceInternetPort.
-        
-        @param request: AddDeviceInternetPortRequest
-        @return: AddDeviceInternetPortResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.add_device_internet_port_with_options(request, runtime)
-
-    async def add_device_internet_port_async(
-        self,
-        request: ens_20171110_models.AddDeviceInternetPortRequest,
-    ) -> ens_20171110_models.AddDeviceInternetPortResponse:
-        """
-        @summary Configures Network Address Translation (NAT) rules for an instance. This operation is an asynchronous API operation. For more information about the configurations, see the API documentation of GetDeviceInternetPort.
-        
-        @param request: AddDeviceInternetPortRequest
-        @return: AddDeviceInternetPortResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.add_device_internet_port_with_options_async(request, runtime)
-
     def add_network_interface_to_instance_with_options(
         self,
         request: ens_20171110_models.AddNetworkInterfaceToInstanceRequest,
@@ -3877,6 +3773,8 @@ class Client(OpenApiClient):
             query['SnapshotId'] = request.snapshot_id
         if not UtilClient.is_unset(request.target_ossregion_id):
             query['TargetOSSRegionId'] = request.target_ossregion_id
+        if not UtilClient.is_unset(request.with_data_disks):
+            query['WithDataDisks'] = request.with_data_disks
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3926,6 +3824,8 @@ class Client(OpenApiClient):
             query['SnapshotId'] = request.snapshot_id
         if not UtilClient.is_unset(request.target_ossregion_id):
             query['TargetOSSRegionId'] = request.target_ossregion_id
+        if not UtilClient.is_unset(request.with_data_disks):
+            query['WithDataDisks'] = request.with_data_disks
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7348,110 +7248,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_bucket_lifecycle_with_options_async(request, runtime)
-
-    def delete_device_internet_port_with_options(
-        self,
-        request: ens_20171110_models.DeleteDeviceInternetPortRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.DeleteDeviceInternetPortResponse:
-        """
-        @summary Deletes Network Address Translation (NAT) rules for a server or container based on the ID.
-        
-        @param request: DeleteDeviceInternetPortRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteDeviceInternetPortResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteDeviceInternetPort',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ens_20171110_models.DeleteDeviceInternetPortResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ens_20171110_models.DeleteDeviceInternetPortResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def delete_device_internet_port_with_options_async(
-        self,
-        request: ens_20171110_models.DeleteDeviceInternetPortRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.DeleteDeviceInternetPortResponse:
-        """
-        @summary Deletes Network Address Translation (NAT) rules for a server or container based on the ID.
-        
-        @param request: DeleteDeviceInternetPortRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteDeviceInternetPortResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteDeviceInternetPort',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ens_20171110_models.DeleteDeviceInternetPortResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ens_20171110_models.DeleteDeviceInternetPortResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def delete_device_internet_port(
-        self,
-        request: ens_20171110_models.DeleteDeviceInternetPortRequest,
-    ) -> ens_20171110_models.DeleteDeviceInternetPortResponse:
-        """
-        @summary Deletes Network Address Translation (NAT) rules for a server or container based on the ID.
-        
-        @param request: DeleteDeviceInternetPortRequest
-        @return: DeleteDeviceInternetPortResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.delete_device_internet_port_with_options(request, runtime)
-
-    async def delete_device_internet_port_async(
-        self,
-        request: ens_20171110_models.DeleteDeviceInternetPortRequest,
-    ) -> ens_20171110_models.DeleteDeviceInternetPortResponse:
-        """
-        @summary Deletes Network Address Translation (NAT) rules for a server or container based on the ID.
-        
-        @param request: DeleteDeviceInternetPortRequest
-        @return: DeleteDeviceInternetPortResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_device_internet_port_with_options_async(request, runtime)
 
     def delete_disk_with_options(
         self,
@@ -13169,6 +12965,8 @@ class Client(OpenApiClient):
             query['EipName'] = request.eip_name
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.ens_region_ids):
+            query['EnsRegionIds'] = request.ens_region_ids
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -13226,6 +13024,8 @@ class Client(OpenApiClient):
             query['EipName'] = request.eip_name
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.ens_region_ids):
+            query['EnsRegionIds'] = request.ens_region_ids
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -16464,6 +16264,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_bandwidth_detail_with_options_async(request, runtime)
+
+    def describe_instance_boot_configuration_with_options(
+        self,
+        request: ens_20171110_models.DescribeInstanceBootConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeInstanceBootConfigurationResponse:
+        """
+        @summary 修改启动配置，只支持异构实例(PCFarm裸金属)。
+        
+        @param request: DescribeInstanceBootConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceBootConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.boot_set):
+            query['BootSet'] = request.boot_set
+        if not UtilClient.is_unset(request.boot_type):
+            query['BootType'] = request.boot_type
+        if not UtilClient.is_unset(request.disk_set):
+            query['DiskSet'] = request.disk_set
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceBootConfiguration',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ens_20171110_models.DescribeInstanceBootConfigurationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ens_20171110_models.DescribeInstanceBootConfigurationResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_instance_boot_configuration_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeInstanceBootConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeInstanceBootConfigurationResponse:
+        """
+        @summary 修改启动配置，只支持异构实例(PCFarm裸金属)。
+        
+        @param request: DescribeInstanceBootConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceBootConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.boot_set):
+            query['BootSet'] = request.boot_set
+        if not UtilClient.is_unset(request.boot_type):
+            query['BootType'] = request.boot_type
+        if not UtilClient.is_unset(request.disk_set):
+            query['DiskSet'] = request.disk_set
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceBootConfiguration',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ens_20171110_models.DescribeInstanceBootConfigurationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ens_20171110_models.DescribeInstanceBootConfigurationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_instance_boot_configuration(
+        self,
+        request: ens_20171110_models.DescribeInstanceBootConfigurationRequest,
+    ) -> ens_20171110_models.DescribeInstanceBootConfigurationResponse:
+        """
+        @summary 修改启动配置，只支持异构实例(PCFarm裸金属)。
+        
+        @param request: DescribeInstanceBootConfigurationRequest
+        @return: DescribeInstanceBootConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_boot_configuration_with_options(request, runtime)
+
+    async def describe_instance_boot_configuration_async(
+        self,
+        request: ens_20171110_models.DescribeInstanceBootConfigurationRequest,
+    ) -> ens_20171110_models.DescribeInstanceBootConfigurationResponse:
+        """
+        @summary 修改启动配置，只支持异构实例(PCFarm裸金属)。
+        
+        @param request: DescribeInstanceBootConfigurationRequest
+        @return: DescribeInstanceBootConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_boot_configuration_with_options_async(request, runtime)
 
     def describe_instance_monitor_data_with_options(
         self,
@@ -20435,6 +20355,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.ens_region_ids):
+            query['EnsRegionIds'] = request.ens_region_ids
         if not UtilClient.is_unset(request.isp):
             query['Isp'] = request.isp
         if not UtilClient.is_unset(request.page_number):
@@ -20486,6 +20408,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.ens_region_ids):
+            query['EnsRegionIds'] = request.ens_region_ids
         if not UtilClient.is_unset(request.isp):
             query['Isp'] = request.isp
         if not UtilClient.is_unset(request.page_number):
@@ -23383,110 +23307,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_bucket_lifecycle_with_options_async(request, runtime)
 
-    def get_device_internet_port_with_options(
-        self,
-        request: ens_20171110_models.GetDeviceInternetPortRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.GetDeviceInternetPortResponse:
-        """
-        @summary Queries the network address translation (NAT) rule details of a device such as a server or container by its ID.
-        
-        @param request: GetDeviceInternetPortRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetDeviceInternetPortResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetDeviceInternetPort',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ens_20171110_models.GetDeviceInternetPortResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ens_20171110_models.GetDeviceInternetPortResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def get_device_internet_port_with_options_async(
-        self,
-        request: ens_20171110_models.GetDeviceInternetPortRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.GetDeviceInternetPortResponse:
-        """
-        @summary Queries the network address translation (NAT) rule details of a device such as a server or container by its ID.
-        
-        @param request: GetDeviceInternetPortRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetDeviceInternetPortResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetDeviceInternetPort',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ens_20171110_models.GetDeviceInternetPortResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ens_20171110_models.GetDeviceInternetPortResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def get_device_internet_port(
-        self,
-        request: ens_20171110_models.GetDeviceInternetPortRequest,
-    ) -> ens_20171110_models.GetDeviceInternetPortResponse:
-        """
-        @summary Queries the network address translation (NAT) rule details of a device such as a server or container by its ID.
-        
-        @param request: GetDeviceInternetPortRequest
-        @return: GetDeviceInternetPortResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.get_device_internet_port_with_options(request, runtime)
-
-    async def get_device_internet_port_async(
-        self,
-        request: ens_20171110_models.GetDeviceInternetPortRequest,
-    ) -> ens_20171110_models.GetDeviceInternetPortResponse:
-        """
-        @summary Queries the network address translation (NAT) rule details of a device such as a server or container by its ID.
-        
-        @param request: GetDeviceInternetPortRequest
-        @return: GetDeviceInternetPortResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.get_device_internet_port_with_options_async(request, runtime)
-
     def get_oss_storage_and_acc_by_buckets_with_options(
         self,
         request: ens_20171110_models.GetOssStorageAndAccByBucketsRequest,
@@ -23702,6 +23522,166 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_oss_usage_data_with_options_async(request, runtime)
+
+    def import_image_with_options(
+        self,
+        tmp_req: ens_20171110_models.ImportImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ImportImageResponse:
+        """
+        @summary 调用ImportImage导入一份您的镜像文件到云服务器。
+        
+        @param tmp_req: ImportImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportImageResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.ImportImageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.disk_device_mapping):
+            request.disk_device_mapping_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.disk_device_mapping, 'DiskDeviceMapping', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.architecture):
+            query['Architecture'] = request.architecture
+        if not UtilClient.is_unset(request.compute_type):
+            query['ComputeType'] = request.compute_type
+        if not UtilClient.is_unset(request.disk_device_mapping_shrink):
+            query['DiskDeviceMapping'] = request.disk_device_mapping_shrink
+        if not UtilClient.is_unset(request.image_format):
+            query['ImageFormat'] = request.image_format
+        if not UtilClient.is_unset(request.image_name):
+            query['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.ossbucket):
+            query['OSSBucket'] = request.ossbucket
+        if not UtilClient.is_unset(request.ossobject):
+            query['OSSObject'] = request.ossobject
+        if not UtilClient.is_unset(request.ossregion):
+            query['OSSRegion'] = request.ossregion
+        if not UtilClient.is_unset(request.ostype):
+            query['OSType'] = request.ostype
+        if not UtilClient.is_unset(request.osversion):
+            query['OSVersion'] = request.osversion
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.target_ossregion_id):
+            query['TargetOSSRegionId'] = request.target_ossregion_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportImage',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ens_20171110_models.ImportImageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ens_20171110_models.ImportImageResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def import_image_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.ImportImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ImportImageResponse:
+        """
+        @summary 调用ImportImage导入一份您的镜像文件到云服务器。
+        
+        @param tmp_req: ImportImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportImageResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.ImportImageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.disk_device_mapping):
+            request.disk_device_mapping_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.disk_device_mapping, 'DiskDeviceMapping', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.architecture):
+            query['Architecture'] = request.architecture
+        if not UtilClient.is_unset(request.compute_type):
+            query['ComputeType'] = request.compute_type
+        if not UtilClient.is_unset(request.disk_device_mapping_shrink):
+            query['DiskDeviceMapping'] = request.disk_device_mapping_shrink
+        if not UtilClient.is_unset(request.image_format):
+            query['ImageFormat'] = request.image_format
+        if not UtilClient.is_unset(request.image_name):
+            query['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.ossbucket):
+            query['OSSBucket'] = request.ossbucket
+        if not UtilClient.is_unset(request.ossobject):
+            query['OSSObject'] = request.ossobject
+        if not UtilClient.is_unset(request.ossregion):
+            query['OSSRegion'] = request.ossregion
+        if not UtilClient.is_unset(request.ostype):
+            query['OSType'] = request.ostype
+        if not UtilClient.is_unset(request.osversion):
+            query['OSVersion'] = request.osversion
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.target_ossregion_id):
+            query['TargetOSSRegionId'] = request.target_ossregion_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportImage',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ens_20171110_models.ImportImageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ens_20171110_models.ImportImageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def import_image(
+        self,
+        request: ens_20171110_models.ImportImageRequest,
+    ) -> ens_20171110_models.ImportImageResponse:
+        """
+        @summary 调用ImportImage导入一份您的镜像文件到云服务器。
+        
+        @param request: ImportImageRequest
+        @return: ImportImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.import_image_with_options(request, runtime)
+
+    async def import_image_async(
+        self,
+        request: ens_20171110_models.ImportImageRequest,
+    ) -> ens_20171110_models.ImportImageResponse:
+        """
+        @summary 调用ImportImage导入一份您的镜像文件到云服务器。
+        
+        @param request: ImportImageRequest
+        @return: ImportImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.import_image_with_options_async(request, runtime)
 
     def import_key_pair_with_options(
         self,
@@ -30853,110 +30833,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reset_aicinstance_with_options_async(request, runtime)
 
-    def reset_device_instance_with_options(
-        self,
-        request: ens_20171110_models.ResetDeviceInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.ResetDeviceInstanceResponse:
-        """
-        @summary Resets an instance including its image.
-        
-        @param request: ResetDeviceInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ResetDeviceInstanceResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ResetDeviceInstance',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ens_20171110_models.ResetDeviceInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ens_20171110_models.ResetDeviceInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def reset_device_instance_with_options_async(
-        self,
-        request: ens_20171110_models.ResetDeviceInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.ResetDeviceInstanceResponse:
-        """
-        @summary Resets an instance including its image.
-        
-        @param request: ResetDeviceInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ResetDeviceInstanceResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ResetDeviceInstance',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ens_20171110_models.ResetDeviceInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ens_20171110_models.ResetDeviceInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def reset_device_instance(
-        self,
-        request: ens_20171110_models.ResetDeviceInstanceRequest,
-    ) -> ens_20171110_models.ResetDeviceInstanceResponse:
-        """
-        @summary Resets an instance including its image.
-        
-        @param request: ResetDeviceInstanceRequest
-        @return: ResetDeviceInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.reset_device_instance_with_options(request, runtime)
-
-    async def reset_device_instance_async(
-        self,
-        request: ens_20171110_models.ResetDeviceInstanceRequest,
-    ) -> ens_20171110_models.ResetDeviceInstanceResponse:
-        """
-        @summary Resets an instance including its image.
-        
-        @param request: ResetDeviceInstanceRequest
-        @return: ResetDeviceInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.reset_device_instance_with_options_async(request, runtime)
-
     def reset_disk_with_options(
         self,
         request: ens_20171110_models.ResetDiskRequest,
@@ -31204,110 +31080,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.resize_disk_with_options_async(request, runtime)
-
-    def restart_device_instance_with_options(
-        self,
-        request: ens_20171110_models.RestartDeviceInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.RestartDeviceInstanceResponse:
-        """
-        @summary Restarts applications deployed on an instance and returns the restart results in a synchronous manner.
-        
-        @param request: RestartDeviceInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RestartDeviceInstanceResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RestartDeviceInstance',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ens_20171110_models.RestartDeviceInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ens_20171110_models.RestartDeviceInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def restart_device_instance_with_options_async(
-        self,
-        request: ens_20171110_models.RestartDeviceInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.RestartDeviceInstanceResponse:
-        """
-        @summary Restarts applications deployed on an instance and returns the restart results in a synchronous manner.
-        
-        @param request: RestartDeviceInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RestartDeviceInstanceResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RestartDeviceInstance',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ens_20171110_models.RestartDeviceInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ens_20171110_models.RestartDeviceInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def restart_device_instance(
-        self,
-        request: ens_20171110_models.RestartDeviceInstanceRequest,
-    ) -> ens_20171110_models.RestartDeviceInstanceResponse:
-        """
-        @summary Restarts applications deployed on an instance and returns the restart results in a synchronous manner.
-        
-        @param request: RestartDeviceInstanceRequest
-        @return: RestartDeviceInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.restart_device_instance_with_options(request, runtime)
-
-    async def restart_device_instance_async(
-        self,
-        request: ens_20171110_models.RestartDeviceInstanceRequest,
-    ) -> ens_20171110_models.RestartDeviceInstanceResponse:
-        """
-        @summary Restarts applications deployed on an instance and returns the restart results in a synchronous manner.
-        
-        @param request: RestartDeviceInstanceRequest
-        @return: RestartDeviceInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.restart_device_instance_with_options_async(request, runtime)
 
     def revoke_security_group_with_options(
         self,

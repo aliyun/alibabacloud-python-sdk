@@ -1,3 +1,17 @@
+2025-03-27 Version: 9.0.0
+- Support API DescribeInstanceBootConfiguration.
+- Support API ImportImage.
+- Delete API AddDeviceInternetPort.
+- Delete API DeleteDeviceInternetPort.
+- Delete API GetDeviceInternetPort.
+- Delete API ResetDeviceInstance.
+- Delete API RestartDeviceInstance.
+- Update API CreateImage: add request parameters WithDataDisks.
+- Update API DescribeEnsEipAddresses: add request parameters EnsRegionIds.
+- Update API DescribeHaVips: add request parameters EnsRegionIds.
+- Update API DescribeSecondaryPublicIpAddresses: add request parameters EnsRegionIds.
+
+
 2025-03-18 Version: 8.0.0
 - Support API DescribeVSwitchAttributes.
 - Support API ListProductAbilities.
