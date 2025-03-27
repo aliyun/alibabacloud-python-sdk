@@ -23,23 +23,43 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
+            'cn-qingdao': 'antiddos.aliyuncs.com',
+            'cn-beijing': 'antiddos.aliyuncs.com',
+            'cn-zhangjiakou': 'antiddos-openapi.cn-zhangjiakou.aliyuncs.com',
+            'cn-huhehaote': 'antiddos-openapi.cn-huhehaote.aliyuncs.com',
+            'cn-wulanchabu': 'antiddos-openapi.cn-wulanchabu.aliyuncs.com',
+            'cn-hangzhou': 'antiddos.aliyuncs.com',
+            'cn-shanghai': 'antiddos.aliyuncs.com',
+            'cn-nanjing': 'antiddos-openapi.cn-hangzhou-cloudstone.aliyuncs.com',
+            'cn-shenzhen': 'antiddos.aliyuncs.com',
+            'cn-heyuan': 'antiddos-openapi.cn-heyuan.aliyuncs.com',
+            'cn-guangzhou': 'antiddos-openapi.cn-guangzhou.aliyuncs.com',
+            'cn-chengdu': 'antiddos-openapi.cn-chengdu.aliyuncs.com',
+            'cn-hongkong': 'antiddos.aliyuncs.com',
             'ap-northeast-1': 'antiddos-openapi.ap-northeast-1.aliyuncs.com',
-            'ap-northeast-2-pop': 'antiddos.aliyuncs.com',
-            'ap-south-1': 'antiddos-openapi.ap-south-1.aliyuncs.com',
+            'ap-northeast-2': 'antiddos-openapi.ap-northeast-2.aliyuncs.com',
             'ap-southeast-1': 'antiddos.aliyuncs.com',
             'ap-southeast-2': 'antiddos-openapi.ap-southeast-2.aliyuncs.com',
             'ap-southeast-3': 'antiddos-openapi.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-5': 'antiddos-openapi-vpc.ap-southeast-5.aliyuncs.com',
-            'cn-beijing': 'antiddos-openapi-vpc.cn-beijing.aliyuncs.com',
+            'ap-southeast-5': 'antiddos-openapi.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-6': 'antiddos-openapi.ap-southeast-6.aliyuncs.com',
+            'us-east-1': 'antiddos.aliyuncs.com',
+            'us-west-1': 'antiddos.aliyuncs.com',
+            'eu-west-1': 'antiddos-openapi.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'antiddos-openapi.eu-central-1.aliyuncs.com',
+            'ap-south-1': 'antiddos-openapi.ap-south-1.aliyuncs.com',
+            'me-east-1': 'antiddos-openapi.me-east-1.aliyuncs.com',
+            'cn-shanghai-finance-1': 'antiddos.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'antiddos.aliyuncs.com',
+            'cn-north-2-gov-1': 'antiddos.aliyuncs.com',
+            'ap-northeast-2-pop': 'antiddos.aliyuncs.com',
             'cn-beijing-finance-1': 'antiddos.aliyuncs.com',
             'cn-beijing-finance-pop': 'antiddos.aliyuncs.com',
             'cn-beijing-gov-1': 'antiddos.aliyuncs.com',
             'cn-beijing-nu16-b01': 'antiddos.aliyuncs.com',
-            'cn-chengdu': 'antiddos-openapi.cn-chengdu.aliyuncs.com',
             'cn-edge-1': 'antiddos.aliyuncs.com',
             'cn-fujian': 'antiddos.aliyuncs.com',
             'cn-haidian-cm12-c01': 'antiddos.aliyuncs.com',
-            'cn-hangzhou': 'antiddos-openapi-vpc.cn-hangzhou.aliyuncs.com',
             'cn-hangzhou-bj-b01': 'antiddos.aliyuncs.com',
             'cn-hangzhou-finance': 'antiddos.aliyuncs.com',
             'cn-hangzhou-internal-prod-1': 'antiddos.aliyuncs.com',
@@ -47,39 +67,24 @@ class Client(OpenApiClient):
             'cn-hangzhou-internal-test-2': 'antiddos.aliyuncs.com',
             'cn-hangzhou-internal-test-3': 'antiddos.aliyuncs.com',
             'cn-hangzhou-test-306': 'antiddos.aliyuncs.com',
-            'cn-hongkong': 'antiddos-openapi-vpc.cn-hongkong.aliyuncs.com',
             'cn-hongkong-finance-pop': 'antiddos.aliyuncs.com',
-            'cn-huhehaote': 'antiddos-openapi.cn-huhehaote.aliyuncs.com',
             'cn-huhehaote-nebula-1': 'antiddos.aliyuncs.com',
-            'cn-north-2-gov-1': 'antiddos.aliyuncs.com',
-            'cn-qingdao': 'antiddos-openapi-vpc.cn-qingdao.aliyuncs.com',
             'cn-qingdao-nebula': 'antiddos.aliyuncs.com',
-            'cn-shanghai': 'antiddos-openapi-vpc.cn-shanghai.aliyuncs.com',
             'cn-shanghai-et15-b01': 'antiddos.aliyuncs.com',
             'cn-shanghai-et2-b01': 'antiddos.aliyuncs.com',
-            'cn-shanghai-finance-1': 'antiddos.aliyuncs.com',
             'cn-shanghai-inner': 'antiddos.aliyuncs.com',
             'cn-shanghai-internal-test-1': 'antiddos.aliyuncs.com',
-            'cn-shenzhen': 'antiddos.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'antiddos.aliyuncs.com',
             'cn-shenzhen-inner': 'antiddos.aliyuncs.com',
             'cn-shenzhen-st4-d01': 'antiddos.aliyuncs.com',
             'cn-shenzhen-su18-b01': 'antiddos.aliyuncs.com',
             'cn-wuhan': 'antiddos.aliyuncs.com',
-            'cn-wulanchabu': 'antiddos-openapi.cn-wulanchabu.aliyuncs.com',
             'cn-yushanfang': 'antiddos.aliyuncs.com',
             'cn-zhangbei': 'antiddos.aliyuncs.com',
             'cn-zhangbei-na61-b01': 'antiddos.aliyuncs.com',
-            'cn-zhangjiakou': 'antiddos-openapi.cn-zhangjiakou.aliyuncs.com',
-            'cn-zhangjiakou-na62-a01': 'antiddos.aliyuncs.com',
+            'cn-zhangjiakou-na62-a01': 'antiddos-openapi.cn-zhangjiakou.aliyuncs.com',
             'cn-zhengzhou-nebula-1': 'antiddos.aliyuncs.com',
-            'eu-central-1': 'antiddos-openapi.eu-central-1.aliyuncs.com',
-            'eu-west-1': 'antiddos-openapi.eu-west-1.aliyuncs.com',
             'eu-west-1-oxs': 'antiddos.aliyuncs.com',
-            'me-east-1': 'antiddos-openapi.me-east-1.aliyuncs.com',
-            'rus-west-1-pop': 'antiddos.aliyuncs.com',
-            'us-east-1': 'antiddos.aliyuncs.com',
-            'us-west-1': 'antiddos.aliyuncs.com'
+            'rus-west-1-pop': 'antiddos.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('antiddos-public', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -106,10 +111,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeBgpPackByIpResponse:
         """
-        @summary Queries the configurations of the Anti-DDoS Origin Basic instance that is associated with an asset. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+        @summary Queries the configurations of the Anti-DDoS Origin instance that is associated with an asset. The asset is assigned a public IP address.
         
         @description You can call the DescribeBgpPackByIp operation to query the configurations of the Anti-DDoS Origin instance that is associated with an asset. The configurations include the basic protection threshold, burstable protection threshold, and expiration time.
-        ## Limits
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeBgpPackByIpRequest
@@ -136,10 +141,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeBgpPackByIpResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeBgpPackByIpResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeBgpPackByIpResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_bgp_pack_by_ip_with_options_async(
         self,
@@ -147,10 +158,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeBgpPackByIpResponse:
         """
-        @summary Queries the configurations of the Anti-DDoS Origin Basic instance that is associated with an asset. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+        @summary Queries the configurations of the Anti-DDoS Origin instance that is associated with an asset. The asset is assigned a public IP address.
         
         @description You can call the DescribeBgpPackByIp operation to query the configurations of the Anti-DDoS Origin instance that is associated with an asset. The configurations include the basic protection threshold, burstable protection threshold, and expiration time.
-        ## Limits
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeBgpPackByIpRequest
@@ -177,20 +188,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeBgpPackByIpResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeBgpPackByIpResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeBgpPackByIpResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_bgp_pack_by_ip(
         self,
         request: antiddos_public_20170518_models.DescribeBgpPackByIpRequest,
     ) -> antiddos_public_20170518_models.DescribeBgpPackByIpResponse:
         """
-        @summary Queries the configurations of the Anti-DDoS Origin Basic instance that is associated with an asset. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+        @summary Queries the configurations of the Anti-DDoS Origin instance that is associated with an asset. The asset is assigned a public IP address.
         
         @description You can call the DescribeBgpPackByIp operation to query the configurations of the Anti-DDoS Origin instance that is associated with an asset. The configurations include the basic protection threshold, burstable protection threshold, and expiration time.
-        ## Limits
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeBgpPackByIpRequest
@@ -204,10 +221,10 @@ class Client(OpenApiClient):
         request: antiddos_public_20170518_models.DescribeBgpPackByIpRequest,
     ) -> antiddos_public_20170518_models.DescribeBgpPackByIpResponse:
         """
-        @summary Queries the configurations of the Anti-DDoS Origin Basic instance that is associated with an asset. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+        @summary Queries the configurations of the Anti-DDoS Origin instance that is associated with an asset. The asset is assigned a public IP address.
         
         @description You can call the DescribeBgpPackByIp operation to query the configurations of the Anti-DDoS Origin instance that is associated with an asset. The configurations include the basic protection threshold, burstable protection threshold, and expiration time.
-        ## Limits
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeBgpPackByIpRequest
@@ -258,10 +275,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeCapResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeCapResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeCapResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_cap_with_options_async(
         self,
@@ -305,10 +328,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeCapResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeCapResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeCapResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_cap(
         self,
@@ -350,10 +379,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeDdosCountResponse:
         """
-        @summary Queries the number of assets that are under DDoS attacks in a specific region. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+        @summary Queries the number of assets that are under DDoS attacks in a specific region. The assets are assigned public IP addresses.
         
-        @description You can call the DescribeDdosCount operation to query the number of assets that are under DDoS attacks in a specific region.
-        ## Limits
+        @description ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeDdosCountRequest
@@ -380,10 +408,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeDdosCountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeDdosCountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeDdosCountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_ddos_count_with_options_async(
         self,
@@ -391,10 +425,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeDdosCountResponse:
         """
-        @summary Queries the number of assets that are under DDoS attacks in a specific region. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+        @summary Queries the number of assets that are under DDoS attacks in a specific region. The assets are assigned public IP addresses.
         
-        @description You can call the DescribeDdosCount operation to query the number of assets that are under DDoS attacks in a specific region.
-        ## Limits
+        @description ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeDdosCountRequest
@@ -421,20 +454,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeDdosCountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeDdosCountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeDdosCountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_ddos_count(
         self,
         request: antiddos_public_20170518_models.DescribeDdosCountRequest,
     ) -> antiddos_public_20170518_models.DescribeDdosCountResponse:
         """
-        @summary Queries the number of assets that are under DDoS attacks in a specific region. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+        @summary Queries the number of assets that are under DDoS attacks in a specific region. The assets are assigned public IP addresses.
         
-        @description You can call the DescribeDdosCount operation to query the number of assets that are under DDoS attacks in a specific region.
-        ## Limits
+        @description ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeDdosCountRequest
@@ -448,10 +486,9 @@ class Client(OpenApiClient):
         request: antiddos_public_20170518_models.DescribeDdosCountRequest,
     ) -> antiddos_public_20170518_models.DescribeDdosCountResponse:
         """
-        @summary Queries the number of assets that are under DDoS attacks in a specific region. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+        @summary Queries the number of assets that are under DDoS attacks in a specific region. The assets are assigned public IP addresses.
         
-        @description You can call the DescribeDdosCount operation to query the number of assets that are under DDoS attacks in a specific region.
-        ## Limits
+        @description ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeDdosCountRequest
@@ -494,10 +531,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeDdosCreditResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeDdosCreditResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeDdosCreditResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_ddos_credit_with_options_async(
         self,
@@ -533,10 +576,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeDdosCreditResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeDdosCreditResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeDdosCreditResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_ddos_credit(
         self,
@@ -578,10 +627,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeDdosEventListResponse:
         """
-        @summary Queries the details of the DDoS attack events that occur on an asset. The asset can be an Elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+        @summary Queries the details of the DDoS attack events that occur on an asset. The asset is assigned a public IP address.
         
         @description You can call the DescribeDdosEventList operation to query the details of the DDoS attack events that occur on an asset by page. The details include the start time, end time, and status of each DDoS attack event.
-        ## Limits
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeDdosEventListRequest
@@ -616,10 +665,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeDdosEventListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeDdosEventListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeDdosEventListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_ddos_event_list_with_options_async(
         self,
@@ -627,10 +682,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeDdosEventListResponse:
         """
-        @summary Queries the details of the DDoS attack events that occur on an asset. The asset can be an Elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+        @summary Queries the details of the DDoS attack events that occur on an asset. The asset is assigned a public IP address.
         
         @description You can call the DescribeDdosEventList operation to query the details of the DDoS attack events that occur on an asset by page. The details include the start time, end time, and status of each DDoS attack event.
-        ## Limits
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeDdosEventListRequest
@@ -665,20 +720,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeDdosEventListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeDdosEventListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeDdosEventListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_ddos_event_list(
         self,
         request: antiddos_public_20170518_models.DescribeDdosEventListRequest,
     ) -> antiddos_public_20170518_models.DescribeDdosEventListResponse:
         """
-        @summary Queries the details of the DDoS attack events that occur on an asset. The asset can be an Elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+        @summary Queries the details of the DDoS attack events that occur on an asset. The asset is assigned a public IP address.
         
         @description You can call the DescribeDdosEventList operation to query the details of the DDoS attack events that occur on an asset by page. The details include the start time, end time, and status of each DDoS attack event.
-        ## Limits
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeDdosEventListRequest
@@ -692,10 +753,10 @@ class Client(OpenApiClient):
         request: antiddos_public_20170518_models.DescribeDdosEventListRequest,
     ) -> antiddos_public_20170518_models.DescribeDdosEventListResponse:
         """
-        @summary Queries the details of the DDoS attack events that occur on an asset. The asset can be an Elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+        @summary Queries the details of the DDoS attack events that occur on an asset. The asset is assigned a public IP address.
         
         @description You can call the DescribeDdosEventList operation to query the details of the DDoS attack events that occur on an asset by page. The details include the start time, end time, and status of each DDoS attack event.
-        ## Limits
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeDdosEventListRequest
@@ -744,10 +805,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeDdosThresholdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeDdosThresholdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeDdosThresholdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_ddos_threshold_with_options_async(
         self,
@@ -789,10 +856,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeDdosThresholdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeDdosThresholdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeDdosThresholdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_ddos_threshold(
         self,
@@ -834,10 +907,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeInstanceResponse:
         """
-        @summary Queries the details of the assets within the current Alibaba Cloud account. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+        @summary Queries the details of the assets within the current Alibaba Cloud account. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses. This operation is phased out. We recommend that you use the DescribeInstanceIpAddress operation.
         
-        @description You can call the DescribeInstance operation to query the details of the assets that are within the current Alibaba Cloud account by page. The details include the IDs and IP addresses of the assets, the basic protection thresholds and traffic scrubbing thresholds that are configured for the assets in Anti-DDoS Origin Basic, and whether the assets are associated with Anti-DDoS Origin Basic instances.
-        ### Limits
+        @description You can call the DescribeInstance operation to query the details of the assets that are within the current Alibaba Cloud account by page. The details include the IDs and IP addresses of the assets, the basic protection thresholds and traffic scrubbing thresholds that are configured for the assets in Anti-DDoS Origin, and whether the assets are associated with Anti-DDoS Origin instances.
+        ### [](#qps-)Limits
         You can call this operation up to 200 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeInstanceRequest
@@ -876,10 +949,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_instance_with_options_async(
         self,
@@ -887,10 +966,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeInstanceResponse:
         """
-        @summary Queries the details of the assets within the current Alibaba Cloud account. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+        @summary Queries the details of the assets within the current Alibaba Cloud account. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses. This operation is phased out. We recommend that you use the DescribeInstanceIpAddress operation.
         
-        @description You can call the DescribeInstance operation to query the details of the assets that are within the current Alibaba Cloud account by page. The details include the IDs and IP addresses of the assets, the basic protection thresholds and traffic scrubbing thresholds that are configured for the assets in Anti-DDoS Origin Basic, and whether the assets are associated with Anti-DDoS Origin Basic instances.
-        ### Limits
+        @description You can call the DescribeInstance operation to query the details of the assets that are within the current Alibaba Cloud account by page. The details include the IDs and IP addresses of the assets, the basic protection thresholds and traffic scrubbing thresholds that are configured for the assets in Anti-DDoS Origin, and whether the assets are associated with Anti-DDoS Origin instances.
+        ### [](#qps-)Limits
         You can call this operation up to 200 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeInstanceRequest
@@ -929,20 +1008,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_instance(
         self,
         request: antiddos_public_20170518_models.DescribeInstanceRequest,
     ) -> antiddos_public_20170518_models.DescribeInstanceResponse:
         """
-        @summary Queries the details of the assets within the current Alibaba Cloud account. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+        @summary Queries the details of the assets within the current Alibaba Cloud account. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses. This operation is phased out. We recommend that you use the DescribeInstanceIpAddress operation.
         
-        @description You can call the DescribeInstance operation to query the details of the assets that are within the current Alibaba Cloud account by page. The details include the IDs and IP addresses of the assets, the basic protection thresholds and traffic scrubbing thresholds that are configured for the assets in Anti-DDoS Origin Basic, and whether the assets are associated with Anti-DDoS Origin Basic instances.
-        ### Limits
+        @description You can call the DescribeInstance operation to query the details of the assets that are within the current Alibaba Cloud account by page. The details include the IDs and IP addresses of the assets, the basic protection thresholds and traffic scrubbing thresholds that are configured for the assets in Anti-DDoS Origin, and whether the assets are associated with Anti-DDoS Origin instances.
+        ### [](#qps-)Limits
         You can call this operation up to 200 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeInstanceRequest
@@ -956,10 +1041,10 @@ class Client(OpenApiClient):
         request: antiddos_public_20170518_models.DescribeInstanceRequest,
     ) -> antiddos_public_20170518_models.DescribeInstanceResponse:
         """
-        @summary Queries the details of the assets within the current Alibaba Cloud account. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+        @summary Queries the details of the assets within the current Alibaba Cloud account. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses. This operation is phased out. We recommend that you use the DescribeInstanceIpAddress operation.
         
-        @description You can call the DescribeInstance operation to query the details of the assets that are within the current Alibaba Cloud account by page. The details include the IDs and IP addresses of the assets, the basic protection thresholds and traffic scrubbing thresholds that are configured for the assets in Anti-DDoS Origin Basic, and whether the assets are associated with Anti-DDoS Origin Basic instances.
-        ### Limits
+        @description You can call the DescribeInstance operation to query the details of the assets that are within the current Alibaba Cloud account by page. The details include the IDs and IP addresses of the assets, the basic protection thresholds and traffic scrubbing thresholds that are configured for the assets in Anti-DDoS Origin, and whether the assets are associated with Anti-DDoS Origin instances.
+        ### [](#qps-)Limits
         You can call this operation up to 200 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeInstanceRequest
@@ -1016,10 +1101,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeInstanceIpAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeInstanceIpAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeInstanceIpAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_instance_ip_address_with_options_async(
         self,
@@ -1069,10 +1160,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeInstanceIpAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeInstanceIpAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeInstanceIpAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_instance_ip_address(
         self,
@@ -1150,10 +1247,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeIpDdosThresholdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeIpDdosThresholdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeIpDdosThresholdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_ip_ddos_threshold_with_options_async(
         self,
@@ -1197,10 +1300,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeIpDdosThresholdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeIpDdosThresholdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeIpDdosThresholdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_ip_ddos_threshold(
         self,
@@ -1242,10 +1351,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeIpLocationServiceResponse:
         """
-        @summary Queries the region in which an asset within the current Alibaba Cloud account resides. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+        @summary Queries the region to which the public IP address of the asset within the current Alibaba Cloud account belongs. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
         
         @description You can call the DescribeIpLocationService operation to query the region of the public IP address for a specified asset that is within the current Alibaba Cloud account. You can also query the details of the Anti-DDoS Origin instance to which the asset is added. The details include the ID and name.
-        ## Limits
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeIpLocationServiceRequest
@@ -1270,10 +1379,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeIpLocationServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeIpLocationServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeIpLocationServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_ip_location_service_with_options_async(
         self,
@@ -1281,10 +1396,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeIpLocationServiceResponse:
         """
-        @summary Queries the region in which an asset within the current Alibaba Cloud account resides. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+        @summary Queries the region to which the public IP address of the asset within the current Alibaba Cloud account belongs. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
         
         @description You can call the DescribeIpLocationService operation to query the region of the public IP address for a specified asset that is within the current Alibaba Cloud account. You can also query the details of the Anti-DDoS Origin instance to which the asset is added. The details include the ID and name.
-        ## Limits
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeIpLocationServiceRequest
@@ -1309,20 +1424,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeIpLocationServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeIpLocationServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeIpLocationServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_ip_location_service(
         self,
         request: antiddos_public_20170518_models.DescribeIpLocationServiceRequest,
     ) -> antiddos_public_20170518_models.DescribeIpLocationServiceResponse:
         """
-        @summary Queries the region in which an asset within the current Alibaba Cloud account resides. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+        @summary Queries the region to which the public IP address of the asset within the current Alibaba Cloud account belongs. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
         
         @description You can call the DescribeIpLocationService operation to query the region of the public IP address for a specified asset that is within the current Alibaba Cloud account. You can also query the details of the Anti-DDoS Origin instance to which the asset is added. The details include the ID and name.
-        ## Limits
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeIpLocationServiceRequest
@@ -1336,10 +1457,10 @@ class Client(OpenApiClient):
         request: antiddos_public_20170518_models.DescribeIpLocationServiceRequest,
     ) -> antiddos_public_20170518_models.DescribeIpLocationServiceResponse:
         """
-        @summary Queries the region in which an asset within the current Alibaba Cloud account resides. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+        @summary Queries the region to which the public IP address of the asset within the current Alibaba Cloud account belongs. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
         
         @description You can call the DescribeIpLocationService operation to query the region of the public IP address for a specified asset that is within the current Alibaba Cloud account. You can also query the details of the Anti-DDoS Origin instance to which the asset is added. The details include the ID and name.
-        ## Limits
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeIpLocationServiceRequest
@@ -1375,10 +1496,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeRegionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeRegionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeRegionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_regions_with_options_async(
         self,
@@ -1407,10 +1534,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.DescribeRegionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeRegionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.DescribeRegionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_regions(self) -> antiddos_public_20170518_models.DescribeRegionsResponse:
         """
@@ -1444,10 +1577,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.ModifyDefenseThresholdResponse:
         """
-        @summary Changes the scrubbing thresholds for an asset. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+        @summary Changes the scrubbing thresholds for an asset that is assigned a public IP address.
         
-        @description You can call the ModifyDefenseThreshold operation to change the scrubbing thresholds for an asset.
-        ## Limits
+        @description ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: ModifyDefenseThresholdRequest
@@ -1458,6 +1590,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.bps):
             query['Bps'] = request.bps
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.ddos_region_id):
             query['DdosRegionId'] = request.ddos_region_id
         if not UtilClient.is_unset(request.instance_id):
@@ -1484,10 +1618,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.ModifyDefenseThresholdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.ModifyDefenseThresholdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.ModifyDefenseThresholdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_defense_threshold_with_options_async(
         self,
@@ -1495,10 +1635,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.ModifyDefenseThresholdResponse:
         """
-        @summary Changes the scrubbing thresholds for an asset. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+        @summary Changes the scrubbing thresholds for an asset that is assigned a public IP address.
         
-        @description You can call the ModifyDefenseThreshold operation to change the scrubbing thresholds for an asset.
-        ## Limits
+        @description ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: ModifyDefenseThresholdRequest
@@ -1509,6 +1648,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.bps):
             query['Bps'] = request.bps
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.ddos_region_id):
             query['DdosRegionId'] = request.ddos_region_id
         if not UtilClient.is_unset(request.instance_id):
@@ -1535,20 +1676,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.ModifyDefenseThresholdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.ModifyDefenseThresholdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.ModifyDefenseThresholdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_defense_threshold(
         self,
         request: antiddos_public_20170518_models.ModifyDefenseThresholdRequest,
     ) -> antiddos_public_20170518_models.ModifyDefenseThresholdResponse:
         """
-        @summary Changes the scrubbing thresholds for an asset. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+        @summary Changes the scrubbing thresholds for an asset that is assigned a public IP address.
         
-        @description You can call the ModifyDefenseThreshold operation to change the scrubbing thresholds for an asset.
-        ## Limits
+        @description ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: ModifyDefenseThresholdRequest
@@ -1562,10 +1708,9 @@ class Client(OpenApiClient):
         request: antiddos_public_20170518_models.ModifyDefenseThresholdRequest,
     ) -> antiddos_public_20170518_models.ModifyDefenseThresholdResponse:
         """
-        @summary Changes the scrubbing thresholds for an asset. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+        @summary Changes the scrubbing thresholds for an asset that is assigned a public IP address.
         
-        @description You can call the ModifyDefenseThreshold operation to change the scrubbing thresholds for an asset.
-        ## Limits
+        @description ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: ModifyDefenseThresholdRequest
@@ -1580,7 +1725,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.ModifyIpDefenseThresholdResponse:
         """
-        @summary Changes the traffic scrubbing thresholds for an asset. The asset can be an elastic IP addresses (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+        @summary Modifies the scrubbing thresholds for an asset that is assigned a public IP address. This operation is a synchronous operation that supports Terraform.
         
         @description ### Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -1619,10 +1764,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.ModifyIpDefenseThresholdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.ModifyIpDefenseThresholdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.ModifyIpDefenseThresholdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_ip_defense_threshold_with_options_async(
         self,
@@ -1630,7 +1781,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.ModifyIpDefenseThresholdResponse:
         """
-        @summary Changes the traffic scrubbing thresholds for an asset. The asset can be an elastic IP addresses (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+        @summary Modifies the scrubbing thresholds for an asset that is assigned a public IP address. This operation is a synchronous operation that supports Terraform.
         
         @description ### Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -1669,17 +1820,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            antiddos_public_20170518_models.ModifyIpDefenseThresholdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.ModifyIpDefenseThresholdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                antiddos_public_20170518_models.ModifyIpDefenseThresholdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_ip_defense_threshold(
         self,
         request: antiddos_public_20170518_models.ModifyIpDefenseThresholdRequest,
     ) -> antiddos_public_20170518_models.ModifyIpDefenseThresholdResponse:
         """
-        @summary Changes the traffic scrubbing thresholds for an asset. The asset can be an elastic IP addresses (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+        @summary Modifies the scrubbing thresholds for an asset that is assigned a public IP address. This operation is a synchronous operation that supports Terraform.
         
         @description ### Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -1695,7 +1852,7 @@ class Client(OpenApiClient):
         request: antiddos_public_20170518_models.ModifyIpDefenseThresholdRequest,
     ) -> antiddos_public_20170518_models.ModifyIpDefenseThresholdResponse:
         """
-        @summary Changes the traffic scrubbing thresholds for an asset. The asset can be an elastic IP addresses (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+        @summary Modifies the scrubbing thresholds for an asset that is assigned a public IP address. This operation is a synchronous operation that supports Terraform.
         
         @description ### Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.

@@ -18,7 +18,7 @@ class DescribeBgpPackByIpRequest(TeaModel):
         self.ddos_region_id = ddos_region_id
         # The IP address of the asset to query.
         # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/354191.html) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+        # >  You can call the [DescribeInstanceIpAddress](https://help.aliyun.com/document_detail/472620.html) operation to query the IDs of Elastic Compute Service (ECS) instances, Server Load Balancer (SLB) instances, and elastic IP addresses (EIPs) within the current Alibaba Cloud account.
         # 
         # This parameter is required.
         self.ip = ip
@@ -227,11 +227,15 @@ class DescribeCapRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The type of the asset that is under DDoS attacks. Valid values:
+        # The type of the asset that is under DDoS attacks. The asset is assigned a public IP address. Valid values:
         # 
-        # *   **ecs**: ECS instance
-        # *   **slb**: SLB instance
-        # *   **eip**: EIP
+        # *   **ecs**: an Elastic Compute Service (ECS) instance.
+        # *   **slb**: a Server Load Balancer (SLB) instance.
+        # *   **eip**: an elastic IP address (EIP).
+        # *   **ipv6**: an IPv6 gateway.
+        # *   **swas**: a simple application server.
+        # *   **waf**: a Web Application Firewall (WAF) instance of the Exclusive edition.
+        # *   **ga_basic**: a Global Accelerator (GA) instance.
         # 
         # This parameter is required.
         self.instance_type = instance_type
@@ -394,9 +398,13 @@ class DescribeDdosCountRequest(TeaModel):
         self.ddos_region_id = ddos_region_id
         # The type of the asset to query. Valid values:
         # 
-        # *   **ecs**: ECS instance
-        # *   **slb**: SLB instance
-        # *   **eip**: EIP
+        # *   **ecs**: Elastic Compute Service (ECS) instances.
+        # *   **slb**: Server Load Balancer (SLB) instances.
+        # *   **eip**: elastic IP addresses (EIPs).
+        # *   **ipv6**: IPv6 gateways.
+        # *   **swas**: simple application servers.
+        # *   **waf**: Web Application Firewall (WAF) instances of the Exclusive edition.
+        # *   **ga_basic**: Global Accelerator (GA) instances.
         # 
         # This parameter is required.
         self.instance_type = instance_type
@@ -740,9 +748,13 @@ class DescribeDdosEventListRequest(TeaModel):
         self.instance_id = instance_id
         # The type of the asset to query. Valid values:
         # 
-        # *   **ecs**: ECS instance
-        # *   **slb**: SLB instance
-        # *   **eip**: EIP
+        # *   **ecs**: an Elastic Compute Service (ECS) instance.
+        # *   **slb**: a Server Load Balancer (SLB) instance.
+        # *   **eip**: an elastic IP address (EIP).
+        # *   **ipv6**: an IPv6 gateway.
+        # *   **swas**: a simple application server.
+        # *   **waf**: a Web Application Firewall (WAF) instance of the Exclusive edition.
+        # *   **ga_basic**: a Global Accelerator (GA) instance.
         # 
         # This parameter is required.
         self.instance_type = instance_type
@@ -907,7 +919,7 @@ class DescribeDdosEventListResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
-        # An array that consists of the details of a DDoS attack event.
+        # The details of the DDoS attack events.
         self.ddos_event_list = ddos_event_list
         # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
@@ -1010,11 +1022,15 @@ class DescribeDdosThresholdRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
-        # The type of the asset. Valid values:
+        # The type of the asset that is assigned a public IP address. Valid values:
         # 
-        # *   **ecs**: ECS instance
-        # *   **slb**: SLB instance
-        # *   **eip**: EIP
+        # *   **ecs**: ECS instances.
+        # *   **slb**: SLB instances.
+        # *   **eip**: EIPs.
+        # *   **ipv6**: IPv6 gateways.
+        # *   **swas**: simple application servers.
+        # *   **waf**: Web Application Firewall (WAF) instances of the Exclusive edition.
+        # *   **ga_basic**: Global Accelerator (GA) instances.
         # 
         # This parameter is required.
         self.instance_type = instance_type
@@ -1296,11 +1312,15 @@ class DescribeInstanceRequest(TeaModel):
         self.instance_ip = instance_ip
         # The name of the asset.
         self.instance_name = instance_name
-        # The type of the asset. Valid values:
+        # The type of the asset to query. Valid values:
         # 
-        # *   **ecs**: ECS instance
-        # *   **slb**: SLB instance
-        # *   **eip**: EIP
+        # *   **ecs**: ECS instances.
+        # *   **slb**: SLB instances.
+        # *   **eip**: EIPs.
+        # *   **ipv6**: IPv6 gateways.
+        # *   **swas**: simple application servers.
+        # *   **waf**: Web Application Firewall (WAF) instances of the Exclusive edition.
+        # *   **ga_basic**: Global Accelerator (GA) instances.
         # 
         # This parameter is required.
         self.instance_type = instance_type
@@ -1390,11 +1410,7 @@ class DescribeInstanceResponseBodyInstanceListInstance(TeaModel):
         # *   **blackholed**: indicates that blackhole filtering is triggered for the asset.
         # *   **normal**: indicates that the instance is normal.
         self.instance_status = instance_status
-        # The type of the asset. Valid values:
-        # 
-        # *   **ecs**: ECS instance
-        # *   **slb**: SLB instance
-        # *   **eip**: EIP
+        # The type of the asset.
         self.instance_type = instance_type
         # The IP protocol that is supported by the asset. Valid values:
         # 
@@ -1509,7 +1525,7 @@ class DescribeInstanceResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
-        # An array that consists of the details of the asset.
+        # The details of the assets.
         self.instance_list = instance_list
         # The ID of the request.
         self.request_id = request_id
@@ -1618,11 +1634,15 @@ class DescribeInstanceIpAddressRequest(TeaModel):
         self.instance_ip = instance_ip
         # The name of the asset.
         self.instance_name = instance_name
-        # The type of the asset. Valid values:
+        # The type of the asset that is assigned a public IP address. Valid values:
         # 
-        # *   **ecs**: ECS instance
-        # *   **slb**: SLB instance
-        # *   **eip**: EIP
+        # *   **ecs**: ECS instances.
+        # *   **slb**: SLB instances.
+        # *   **eip**: EIPs.
+        # *   **ipv6**: IPv6 gateways.
+        # *   **swas**: simple application servers.
+        # *   **waf**: Web Application Firewall (WAF) instances of the Exclusive edition.
+        # *   **ga_basic**: Global Accelerator (GA) instances.
         # 
         # This parameter is required.
         self.instance_type = instance_type
@@ -1693,9 +1713,9 @@ class DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig(TeaModel)
     ):
         # The basic protection threshold for the asset. Unit: Mbit/s.
         self.blackhole_threshold = blackhole_threshold
-        # The traffic scrubbing threshold for the asset. Unit: Mbit/s.
+        # The traffic scrubbing threshold for the asset measured in Mbit/s. Unit: Mbit/s.
         self.defense_bps_threshold = defense_bps_threshold
-        # The packet scrubbing threshold for the asset. Unit: packets per second (pps).
+        # The traffic scrubbing threshold for the asset measured in packets per second (PPS). Unit: PPS.
         self.defense_pps_threshold = defense_pps_threshold
         # The burstable protection threshold for the asset. Unit: Mbit/s.
         self.elastic_threshold = elastic_threshold
@@ -1703,20 +1723,24 @@ class DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig(TeaModel)
         self.instance_ip = instance_ip
         # The DDoS mitigation status of the asset. Valid values:
         # 
-        # *   **defense**: indicates that traffic scrubbing is performed on the asset.
-        # *   **blackhole**: indicates that blackhole filtering is triggered for the asset.
+        # *   **mitigating**: indicates that traffic scrubbing is in progress.
+        # *   **blackholed**: indicates that blackhole filtering is triggered for the asset.
         # *   **normal**: indicates that no DDoS attacks are launched against the asset.
         self.ip_status = ip_status
-        # The IP protocol that is supported by the asset. Valid values:
+        # The IP version of the IP address. Valid values:
         # 
-        # *   **v4**: IPv4
-        # *   **v6**: IPv6
+        # *   **v4**: IPv4.
+        # *   **v6**: IPv6.
         self.ip_version = ip_version
         # Indicates whether the asset is added to the instance. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.is_bgppack = is_bgppack
+        # Indicates whether best-effort protection is enabled for the asset. Valid values:
+        # 
+        # *   **0**: no.
+        # *   **1**: yes.
         self.is_full_protection = is_full_protection
         # The region code of the asset.
         self.region_id = region_id
@@ -1792,14 +1816,14 @@ class DescribeInstanceIpAddressResponseBodyInstanceList(TeaModel):
         self.instance_name = instance_name
         # The DDoS mitigation status of the instance. Valid values:
         # 
-        # *   **normal**: normal
-        # *   **abnormal**: under DDoS attacks
+        # *   **normal**: not under DDoS attacks.
+        # *   **abnormal**: under DDoS attacks.
         self.instance_status = instance_status
         # The type of the asset. Valid values:
         # 
-        # *   **ecs**: ECS instance
-        # *   **slb**: SLB instance
-        # *   **eip**: EIP
+        # *   **ecs**\
+        # *   **slb**\
+        # *   **eip**\
         self.instance_type = instance_type
         # An array that consists of the details of the asset.
         self.ip_address_config = ip_address_config
@@ -1967,11 +1991,15 @@ class DescribeIpDdosThresholdRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The type of the asset. Valid values:
+        # The type of the asset that is assigned a public IP address. Valid values:
         # 
-        # *   **ecs**: ECS instance
-        # *   **slb**: SLB instance
-        # *   **eip**: EIP
+        # *   **ecs**: ECS instances.
+        # *   **slb**: SLB instances.
+        # *   **eip**: EIPs.
+        # *   **ipv6**: IPv6 gateways.
+        # *   **swas**: simple application servers.
+        # *   **waf**: Web Application Firewall (WAF) instances of the Exclusive edition.
+        # *   **ga_basic**: Global Accelerator (GA) instances.
         # 
         # This parameter is required.
         self.instance_type = instance_type
@@ -2235,9 +2263,13 @@ class DescribeIpLocationServiceResponseBodyInstance(TeaModel):
         self.instance_name = instance_name
         # The type of the asset. Valid values:
         # 
-        # *   ecs: ECS instance
-        # *   slb: SLB instance
-        # *   EIP: EIP
+        # *   **ecs**: an ECS instance.
+        # *   **slb**: an SLB instance.
+        # *   **eip**: an EIP.
+        # *   **ipv6**: an IPv6 gateway.
+        # *   **swas**: a simple application server.
+        # *   **waf**: a Web Application Firewall (WAF) instance of the Exclusive edition.
+        # *   **ga_basic**: a Global Accelerator (GA) instance.
         self.instance_type = instance_type
         # The IP address of the asset.
         self.internet_ip = internet_ip
@@ -2524,6 +2556,7 @@ class ModifyDefenseThresholdRequest(TeaModel):
     def __init__(
         self,
         bps: int = None,
+        client_token: str = None,
         ddos_region_id: str = None,
         instance_id: str = None,
         instance_type: str = None,
@@ -2531,13 +2564,14 @@ class ModifyDefenseThresholdRequest(TeaModel):
         is_auto: bool = None,
         pps: int = None,
     ):
-        # Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
+        # The traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset. When you modify Bps, Pps is required. Otherwise, Bps does not take effect.
         # 
         # You can use the monitoring tool that is provided by the asset to query the Internet traffic of the asset:
         # 
-        # *   For more information about how to query the Internet traffic of an ECS instance, see [Query monitoring information of an instance](https://help.aliyun.com/document_detail/25482.html).
-        # *   For more information about how to query the number of packets of an SLB instance, see [View monitoring data in the console](https://help.aliyun.com/document_detail/85982.html).
+        # *   If the asset is an ECS instance, see [View instance monitoring information](https://help.aliyun.com/document_detail/25482.html).
+        # *   If the asset is an SLB instance, see [View monitoring data](https://help.aliyun.com/document_detail/85982.html).
         self.bps = bps
+        self.client_token = client_token
         # The region ID of the asset for which you want to change the scrubbing thresholds.
         # 
         # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
@@ -2552,9 +2586,13 @@ class ModifyDefenseThresholdRequest(TeaModel):
         self.instance_id = instance_id
         # The type of the asset. Valid values:
         # 
-        # *   **ecs**: ECS instance
-        # *   **slb**: SLB instance
-        # *   **eip**: EIP
+        # *   **ecs**: an Elastic Compute Service (ECS) instance.
+        # *   **slb**: a Server Load Balancer (SLB) instance.
+        # *   **eip**: an elastic IP address (EIP).
+        # *   **ipv6**: an IPv6 gateway.
+        # *   **swas**: a simple application server.
+        # *   **waf**: a Web Application Firewall (WAF) instance of the Exclusive edition.
+        # *   **ga_basic**: a Global Accelerator (GA) instance.
         # 
         # This parameter is required.
         self.instance_type = instance_type
@@ -2567,12 +2605,12 @@ class ModifyDefenseThresholdRequest(TeaModel):
         # 
         # Default value: false.
         self.is_auto = is_auto
-        # Specifies the packet scrubbing threshold. Unit: packets per second (pps).
+        # The packet scrubbing threshold. Unit: packets per second (PPS). When you modify Pps, Bps is required. Otherwise, Pps does not take effect.
         # 
         # The packet scrubbing threshold cannot exceed the peak number of inbound or outbound packets, whichever is larger, of the asset. You can use the monitoring tool that is provided by the asset to query the number of packets of the asset:
         # 
-        # *   For more information about how to query the number of packets of an ECS instance, see [Query monitoring information of an instance](https://help.aliyun.com/document_detail/25482.html).
-        # *   For more information about how to query the number of packets of an SLB instance, see [View monitoring data in the console](https://help.aliyun.com/document_detail/85982.html).
+        # *   If the asset is an ECS instance, see [View instance monitoring information](https://help.aliyun.com/document_detail/25482.html).
+        # *   If the asset is an SLB instance, see [View monitoring data](https://help.aliyun.com/document_detail/85982.html).
         self.pps = pps
 
     def validate(self):
@@ -2586,6 +2624,8 @@ class ModifyDefenseThresholdRequest(TeaModel):
         result = dict()
         if self.bps is not None:
             result['Bps'] = self.bps
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.ddos_region_id is not None:
             result['DdosRegionId'] = self.ddos_region_id
         if self.instance_id is not None:
@@ -2604,6 +2644,8 @@ class ModifyDefenseThresholdRequest(TeaModel):
         m = m or dict()
         if m.get('Bps') is not None:
             self.bps = m.get('Bps')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('DdosRegionId') is not None:
             self.ddos_region_id = m.get('DdosRegionId')
         if m.get('InstanceId') is not None:
@@ -2699,12 +2741,13 @@ class ModifyIpDefenseThresholdRequest(TeaModel):
         is_auto: bool = None,
         pps: int = None,
     ):
-        # Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
+        # The traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset. When you modify Bps, Pps is required. Otherwise, Bps does not take effect.
         # 
         # You can use the monitoring tool that is provided by the asset to query the Internet traffic of the asset:
         # 
-        # *   For more information about how to query the Internet traffic of an ECS instance, see [Query monitoring information of an instance](https://help.aliyun.com/document_detail/25482.html).
-        # *   For more information about how to query the number of packets of an SLB instance, see [View monitoring data in the console](https://help.aliyun.com/document_detail/85982.html).
+        # *   If the asset is an ECS instance, see [View instance monitoring information](https://help.aliyun.com/document_detail/25482.html).
+        # *   If the asset is an SLB instance, see [View monitoring data](https://help.aliyun.com/document_detail/85982.html).
+        # *   If the asset is an EIP, see [View monitoring data](https://help.aliyun.com/document_detail/85354.html).
         self.bps = bps
         # The region ID of the asset.
         # 
@@ -2720,9 +2763,13 @@ class ModifyIpDefenseThresholdRequest(TeaModel):
         self.instance_id = instance_id
         # The type of the asset. Valid values:
         # 
-        # *   **ecs**: ECS instance
-        # *   **slb**: SLB instance
-        # *   **eip**: EIP
+        # *   **ecs**: an Elastic Compute Service (ECS) instance.
+        # *   **slb**: a Server Load Balancer (SLB) instance.
+        # *   **eip**: an elastic IP address (EIP).
+        # *   **ipv6**: an IPv6 gateway.
+        # *   **swas**: a simple application server.
+        # *   **waf**: a Web Application Firewall (WAF) instance of the Exclusive edition.
+        # *   **ga_basic**: a Global Accelerator (GA) instance.
         # 
         # This parameter is required.
         self.instance_type = instance_type
@@ -2735,12 +2782,13 @@ class ModifyIpDefenseThresholdRequest(TeaModel):
         # *   **true**: automatically adjusts the scrubbing threshold. You do not need to configure the **Bps** and **Pps** parameters.
         # *   **false**: The scrubbing threshold is not automatically adjusted. You must configure the **Bps** and **Pps** parameters. This is the default value.
         self.is_auto = is_auto
-        # Specifies the packet scrubbing threshold. Unit: packets per second (pps).
+        # The packet scrubbing threshold. Unit: packets per second (PPS). When you modify Pps, Bps is required. Otherwise, Pps does not take effect.
         # 
         # The packet scrubbing threshold cannot exceed the peak number of inbound or outbound packets, whichever is larger, of the asset. You can use the monitoring tool that is provided by the asset to query the number of packets of the asset:
         # 
-        # *   For more information about how to query the number of packets of an ECS instance, see [Query monitoring information of an instance](https://help.aliyun.com/document_detail/25482.html).
-        # *   For more information about how to query the number of packets of an SLB instance, see [View monitoring data in the console](https://help.aliyun.com/document_detail/85982.html).
+        # *   If the asset is an ECS instance, see [View instance monitoring information](https://help.aliyun.com/document_detail/25482.html).
+        # *   If the asset is an SLB instance, see [View monitoring data](https://help.aliyun.com/document_detail/85982.html).
+        # *   If the asset is an EIP, see [View monitoring data](https://help.aliyun.com/document_detail/85354.html).
         self.pps = pps
 
     def validate(self):

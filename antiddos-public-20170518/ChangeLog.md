@@ -1,3 +1,7 @@
+2025-03-27 Version: 1.0.4
+- Update API ModifyDefenseThreshold: add request parameters ClientToken.
+
+
 2024-05-13 Version: 1.0.3
 - Generated python 2017-05-18 for antiddos-public.
 
