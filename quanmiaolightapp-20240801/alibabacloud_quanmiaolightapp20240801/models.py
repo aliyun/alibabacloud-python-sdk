@@ -7133,6 +7133,7 @@ class RunVideoAnalysisRequestVideoRoles(TeaModel):
 class RunVideoAnalysisRequest(TeaModel):
     def __init__(
         self,
+        exclude_generate_options: List[str] = None,
         face_identity_similarity_min_score: float = None,
         frame_sample_method: RunVideoAnalysisRequestFrameSampleMethod = None,
         generate_options: List[str] = None,
@@ -7152,6 +7153,7 @@ class RunVideoAnalysisRequest(TeaModel):
         video_shot_face_identity_count: int = None,
         video_url: str = None,
     ):
+        self.exclude_generate_options = exclude_generate_options
         self.face_identity_similarity_min_score = face_identity_similarity_min_score
         self.frame_sample_method = frame_sample_method
         self.generate_options = generate_options
@@ -7189,6 +7191,8 @@ class RunVideoAnalysisRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.exclude_generate_options is not None:
+            result['excludeGenerateOptions'] = self.exclude_generate_options
         if self.face_identity_similarity_min_score is not None:
             result['faceIdentitySimilarityMinScore'] = self.face_identity_similarity_min_score
         if self.frame_sample_method is not None:
@@ -7233,6 +7237,8 @@ class RunVideoAnalysisRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('excludeGenerateOptions') is not None:
+            self.exclude_generate_options = m.get('excludeGenerateOptions')
         if m.get('faceIdentitySimilarityMinScore') is not None:
             self.face_identity_similarity_min_score = m.get('faceIdentitySimilarityMinScore')
         if m.get('frameSampleMethod') is not None:
@@ -7282,6 +7288,7 @@ class RunVideoAnalysisRequest(TeaModel):
 class RunVideoAnalysisShrinkRequest(TeaModel):
     def __init__(
         self,
+        exclude_generate_options_shrink: str = None,
         face_identity_similarity_min_score: float = None,
         frame_sample_method_shrink: str = None,
         generate_options_shrink: str = None,
@@ -7301,6 +7308,7 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
         video_shot_face_identity_count: int = None,
         video_url: str = None,
     ):
+        self.exclude_generate_options_shrink = exclude_generate_options_shrink
         self.face_identity_similarity_min_score = face_identity_similarity_min_score
         self.frame_sample_method_shrink = frame_sample_method_shrink
         self.generate_options_shrink = generate_options_shrink
@@ -7329,6 +7337,8 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.exclude_generate_options_shrink is not None:
+            result['excludeGenerateOptions'] = self.exclude_generate_options_shrink
         if self.face_identity_similarity_min_score is not None:
             result['faceIdentitySimilarityMinScore'] = self.face_identity_similarity_min_score
         if self.frame_sample_method_shrink is not None:
@@ -7369,6 +7379,8 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('excludeGenerateOptions') is not None:
+            self.exclude_generate_options_shrink = m.get('excludeGenerateOptions')
         if m.get('faceIdentitySimilarityMinScore') is not None:
             self.face_identity_similarity_min_score = m.get('faceIdentitySimilarityMinScore')
         if m.get('frameSampleMethod') is not None:
@@ -9018,6 +9030,8 @@ class SubmitVideoAnalysisTaskRequestVideoRoles(TeaModel):
 class SubmitVideoAnalysisTaskRequest(TeaModel):
     def __init__(
         self,
+        deduplication_id: str = None,
+        exclude_generate_options: List[str] = None,
         face_identity_similarity_min_score: float = None,
         frame_sample_method: SubmitVideoAnalysisTaskRequestFrameSampleMethod = None,
         generate_options: List[str] = None,
@@ -9035,6 +9049,8 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
         video_shot_face_identity_count: int = None,
         video_url: str = None,
     ):
+        self.deduplication_id = deduplication_id
+        self.exclude_generate_options = exclude_generate_options
         self.face_identity_similarity_min_score = face_identity_similarity_min_score
         self.frame_sample_method = frame_sample_method
         self.generate_options = generate_options
@@ -9071,6 +9087,10 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.deduplication_id is not None:
+            result['deduplicationId'] = self.deduplication_id
+        if self.exclude_generate_options is not None:
+            result['excludeGenerateOptions'] = self.exclude_generate_options
         if self.face_identity_similarity_min_score is not None:
             result['faceIdentitySimilarityMinScore'] = self.face_identity_similarity_min_score
         if self.frame_sample_method is not None:
@@ -9111,6 +9131,10 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('deduplicationId') is not None:
+            self.deduplication_id = m.get('deduplicationId')
+        if m.get('excludeGenerateOptions') is not None:
+            self.exclude_generate_options = m.get('excludeGenerateOptions')
         if m.get('faceIdentitySimilarityMinScore') is not None:
             self.face_identity_similarity_min_score = m.get('faceIdentitySimilarityMinScore')
         if m.get('frameSampleMethod') is not None:
@@ -9156,6 +9180,8 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
 class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
     def __init__(
         self,
+        deduplication_id: str = None,
+        exclude_generate_options_shrink: str = None,
         face_identity_similarity_min_score: float = None,
         frame_sample_method_shrink: str = None,
         generate_options_shrink: str = None,
@@ -9173,6 +9199,8 @@ class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
         video_shot_face_identity_count: int = None,
         video_url: str = None,
     ):
+        self.deduplication_id = deduplication_id
+        self.exclude_generate_options_shrink = exclude_generate_options_shrink
         self.face_identity_similarity_min_score = face_identity_similarity_min_score
         self.frame_sample_method_shrink = frame_sample_method_shrink
         self.generate_options_shrink = generate_options_shrink
@@ -9200,6 +9228,10 @@ class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.deduplication_id is not None:
+            result['deduplicationId'] = self.deduplication_id
+        if self.exclude_generate_options_shrink is not None:
+            result['excludeGenerateOptions'] = self.exclude_generate_options_shrink
         if self.face_identity_similarity_min_score is not None:
             result['faceIdentitySimilarityMinScore'] = self.face_identity_similarity_min_score
         if self.frame_sample_method_shrink is not None:
@@ -9236,6 +9268,10 @@ class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('deduplicationId') is not None:
+            self.deduplication_id = m.get('deduplicationId')
+        if m.get('excludeGenerateOptions') is not None:
+            self.exclude_generate_options_shrink = m.get('excludeGenerateOptions')
         if m.get('faceIdentitySimilarityMinScore') is not None:
             self.face_identity_similarity_min_score = m.get('faceIdentitySimilarityMinScore')
         if m.get('frameSampleMethod') is not None:

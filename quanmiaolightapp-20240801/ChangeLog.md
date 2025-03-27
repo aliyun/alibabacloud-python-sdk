@@ -1,3 +1,9 @@
+2025-03-27 Version: 2.6.4
+- Update API RunVideoAnalysis: add request parameters excludeGenerateOptions.
+- Update API SubmitVideoAnalysisTask: add request parameters deduplicationId.
+- Update API SubmitVideoAnalysisTask: add request parameters excludeGenerateOptions.
+
+
 2025-03-18 Version: 2.6.3
 - Update API RunVideoAnalysis: add param splitInterval.
 - Update API SubmitVideoAnalysisTask: add param splitInterval.

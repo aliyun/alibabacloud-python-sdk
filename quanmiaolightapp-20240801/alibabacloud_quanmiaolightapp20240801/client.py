@@ -2381,6 +2381,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = quan_miao_light_app_20240801_models.RunVideoAnalysisShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.exclude_generate_options):
+            request.exclude_generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exclude_generate_options, 'excludeGenerateOptions', 'json')
         if not UtilClient.is_unset(tmp_req.frame_sample_method):
             request.frame_sample_method_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.frame_sample_method, 'frameSampleMethod', 'json')
         if not UtilClient.is_unset(tmp_req.generate_options):
@@ -2390,6 +2392,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.video_roles):
             request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
+        if not UtilClient.is_unset(request.exclude_generate_options_shrink):
+            body['excludeGenerateOptions'] = request.exclude_generate_options_shrink
         if not UtilClient.is_unset(request.face_identity_similarity_min_score):
             body['faceIdentitySimilarityMinScore'] = request.face_identity_similarity_min_score
         if not UtilClient.is_unset(request.frame_sample_method_shrink):
@@ -2470,6 +2474,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = quan_miao_light_app_20240801_models.RunVideoAnalysisShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.exclude_generate_options):
+            request.exclude_generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exclude_generate_options, 'excludeGenerateOptions', 'json')
         if not UtilClient.is_unset(tmp_req.frame_sample_method):
             request.frame_sample_method_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.frame_sample_method, 'frameSampleMethod', 'json')
         if not UtilClient.is_unset(tmp_req.generate_options):
@@ -2479,6 +2485,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.video_roles):
             request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
+        if not UtilClient.is_unset(request.exclude_generate_options_shrink):
+            body['excludeGenerateOptions'] = request.exclude_generate_options_shrink
         if not UtilClient.is_unset(request.face_identity_similarity_min_score):
             body['faceIdentitySimilarityMinScore'] = request.face_identity_similarity_min_score
         if not UtilClient.is_unset(request.frame_sample_method_shrink):
@@ -2749,6 +2757,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.exclude_generate_options):
+            request.exclude_generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exclude_generate_options, 'excludeGenerateOptions', 'json')
         if not UtilClient.is_unset(tmp_req.frame_sample_method):
             request.frame_sample_method_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.frame_sample_method, 'frameSampleMethod', 'json')
         if not UtilClient.is_unset(tmp_req.generate_options):
@@ -2758,6 +2768,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.video_roles):
             request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
+        if not UtilClient.is_unset(request.deduplication_id):
+            body['deduplicationId'] = request.deduplication_id
+        if not UtilClient.is_unset(request.exclude_generate_options_shrink):
+            body['excludeGenerateOptions'] = request.exclude_generate_options_shrink
         if not UtilClient.is_unset(request.face_identity_similarity_min_score):
             body['faceIdentitySimilarityMinScore'] = request.face_identity_similarity_min_score
         if not UtilClient.is_unset(request.frame_sample_method_shrink):
@@ -2834,6 +2848,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.exclude_generate_options):
+            request.exclude_generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exclude_generate_options, 'excludeGenerateOptions', 'json')
         if not UtilClient.is_unset(tmp_req.frame_sample_method):
             request.frame_sample_method_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.frame_sample_method, 'frameSampleMethod', 'json')
         if not UtilClient.is_unset(tmp_req.generate_options):
@@ -2843,6 +2859,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.video_roles):
             request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
+        if not UtilClient.is_unset(request.deduplication_id):
+            body['deduplicationId'] = request.deduplication_id
+        if not UtilClient.is_unset(request.exclude_generate_options_shrink):
+            body['excludeGenerateOptions'] = request.exclude_generate_options_shrink
         if not UtilClient.is_unset(request.face_identity_similarity_min_score):
             body['faceIdentitySimilarityMinScore'] = request.face_identity_similarity_min_score
         if not UtilClient.is_unset(request.frame_sample_method_shrink):
