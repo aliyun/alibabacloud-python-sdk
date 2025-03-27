@@ -22,13 +22,13 @@ class ChangeResourceGroupRequest(TeaModel):
         # *   **cn-hangzhou**: Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the protected object in Web Application Firewall (WAF) that you want to manage.
+        # The ID of the protected object that you want to manage.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The resource type. The value is fixed as defenseresource.
+        # The resource type. Set the value to defenseresource.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -579,7 +579,7 @@ class CreateCloudResourceRequestListenCertificates(TeaModel):
         applied_type: str = None,
         certificate_id: str = None,
     ):
-        # The type of the HTTPS certificate. Valid values:
+        # The type of the certificate. Valid values:
         # 
         # *   **default**: default certificate.
         # *   **extension**: additional certificate.
@@ -627,12 +627,12 @@ class CreateCloudResourceRequestListen(TeaModel):
         resource_product: str = None,
         tlsversion: str = None,
     ):
-        # An array of certificates.
+        # The certificates.
         self.certificates = certificates
         # The type of the cipher suites that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
         # *   **1**: all cipher suites.
-        # *   **2**: strong cipher suites. You can set the parameter to this value only if you set **TLSVersion** to **tlsv1.2**.
+        # *   **2**: strong cipher suites. This value is available only if you set **TLSVersion** to **tlsv1.2**.
         # *   **99**: custom cipher suites.
         self.cipher_suite = cipher_suite
         # The custom cipher suites that you want to add. This parameter is available only if you set **CipherSuite** to **99**.
@@ -647,30 +647,31 @@ class CreateCloudResourceRequestListen(TeaModel):
         # *   **true**\
         # *   **false** (default)
         self.http_2enabled = http_2enabled
-        # The port of the resource that you want to add to WAF.
+        # The port of the cloud service.
         # 
         # This parameter is required.
         self.port = port
-        # The type of the protocol. Valid values:
+        # The protocol type. Valid values:
         # 
         # *   **http**\
         # *   **https**\
         # 
         # This parameter is required.
         self.protocol = protocol
-        # The ID of the resource.
+        # The instance ID of the cloud service.
         # 
         # This parameter is required.
         self.resource_instance_id = resource_instance_id
-        # The cloud service. Valid values:
+        # The type of the cloud service that you want to add. Valid values:
         # 
         # *   **clb4**: Layer 4 CLB.
         # *   **clb7**: Layer 7 CLB.
         # *   **ecs**: ECS.
+        # *   **nlb**: Network Load Balancer (NLB).
         # 
         # This parameter is required.
         self.resource_product = resource_product
-        # The Transport Layer Security (TLS) version. This parameter is available only if you specify **HttpsPorts**. Valid values:
+        # The Transport Layer Security (TLS) version that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
         # *   **tlsv1**\
         # *   **tlsv1.1**\
@@ -792,25 +793,25 @@ class CreateCloudResourceRequestRedirect(TeaModel):
         # Specifies whether to enable the persistent connection feature. Valid values:
         # 
         # *   **true** (default)
-        # *   **false:**\
+        # *   **false**\
         self.keepalive = keepalive
-        # The number of requests that reuse persistent connections. Valid values: 60 to 1000.
+        # The number of reused persistent connections. Valid values: 60 to 1000.
         # 
-        # >  This parameter specifies the number of requests that can reuse persistent connections after you enable the persistent connection feature.
+        # >  This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
         self.keepalive_requests = keepalive_requests
-        # The timeout period for idle persistent connections. Valid values: 10 to 3600. Default value: 3600. Unit: seconds.
+        # The timeout period of idle persistent connections. Valid values: 10 to 3600. Default value: 3600. Unit: seconds.
         # 
-        # >  If no new requests are initiated over the idle persistent connection within the specified timeout period, the connection is closed
+        # >  This parameter specifies the period of time after which an idle persistent connection is closed.
         self.keepalive_timeout = keepalive_timeout
-        # The timeout period for read connections. Unit: seconds. Valid values: 1 to 3600.
+        # The timeout period of read connections. Unit: seconds. Valid values: 1 to 3600.
         self.read_timeout = read_timeout
-        # The custom header fields. Specify the value in the [**{"k":"*key*","v":"*value*"}**] format. ***key*** specifies the key of the custom header field. ***value*** specifies the value of the custom header field.
+        # The custom header fields. Specify the value in the [**{"k":"*key*","v":"*value*"}**] format. ***key*** specifies the key of a custom header field. ***value*** specifies the value of a custom header field.
         # 
-        # >  If the request contains the custom header field, WAF overwrites the original value of the field with the specified value.
+        # >  If a request contains a custom header field, WAF overwrites the original value of the field with the specified value.
         self.request_headers = request_headers
-        # The timeout period for write connections. Unit: seconds. Valid values: 1 to 3600.
+        # The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600.
         self.write_timeout = write_timeout
-        # The method that WAF uses to obtain the originating IP address of a client. Valid values:
+        # The method that is used to obtain the originating IP address of a client. Valid values:
         # 
         # *   **0**: No Layer 7 proxies are deployed in front of WAF.
         # *   **1**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the originating IP address of the client.
@@ -820,7 +821,7 @@ class CreateCloudResourceRequestRedirect(TeaModel):
         # 
         # >  This parameter is required only if you set **XffHeaderMode** to 2.
         self.xff_headers = xff_headers
-        # Specifies whether to use the X-Forward-For-Proto header to identify the protocol used by WAF to forward requests to the origin server. Valid values:
+        # Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
         # 
         # *   **true** (default)
         # *   **false**\
@@ -892,9 +893,9 @@ class CreateCloudResourceRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the resource. Valid values of N: 1 to 20.
+        # The key of the tag.
         self.key = key
-        # The value of tag N to add to the resource. Valid values of N: 1 to 20.
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -938,13 +939,13 @@ class CreateCloudResourceRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The configurations of the listeners.
+        # The listener configurations.
         # 
         # This parameter is required.
         self.listen = listen
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.owner_user_id = owner_user_id
-        # The configurations of the forwarding rule.
+        # The forwarding configurations.
         self.redirect = redirect
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -955,7 +956,7 @@ class CreateCloudResourceRequest(TeaModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The tags to add to the resource.
+        # The tags. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -1022,9 +1023,9 @@ class CreateCloudResourceShrinkRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the resource. Valid values of N: 1 to 20.
+        # The key of the tag.
         self.key = key
-        # The value of tag N to add to the resource. Valid values of N: 1 to 20.
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -1068,13 +1069,13 @@ class CreateCloudResourceShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The configurations of the listeners.
+        # The listener configurations.
         # 
         # This parameter is required.
         self.listen_shrink = listen_shrink
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.owner_user_id = owner_user_id
-        # The configurations of the forwarding rule.
+        # The forwarding configurations.
         self.redirect_shrink = redirect_shrink
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -1085,7 +1086,7 @@ class CreateCloudResourceShrinkRequest(TeaModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The tags to add to the resource.
+        # The tags. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -1240,10 +1241,10 @@ class CreateDefenseResourceGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance resides. Valid values:
+        # The region of the WAF instance. Valid values:
         # 
-        # *   **cn-hangzhou:** the Chinese mainland.
-        # *   **ap-southeast-1:** outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -2696,13 +2697,13 @@ class CreateMajorProtectionBlackIpRequest(TeaModel):
     ):
         # The description of the IP address blacklist.
         self.description = description
-        # The time after which the IP address blacklist becomes invalid. Unit: seconds.
+        # The timestamp after which the IP address blacklist becomes invalid. Unit: seconds.
         # 
-        # >  If you set the value to **0**, the blacklist is permanently valid.
+        # >  If you set the parameter to **0**, the IP address blacklist is always valid.
         # 
         # This parameter is required.
         self.expired_time = expired_time
-        # The ID of the Web Application Firewall (WAF) instance.
+        # The ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -2710,10 +2711,10 @@ class CreateMajorProtectionBlackIpRequest(TeaModel):
         # 
         # This parameter is required.
         self.ip_list = ip_list
-        # The region where the WAF instance resides. Valid values:
+        # The region ID of the WAF instance. Valid values:
         # 
-        # *   **cn-hangzhou:** the Chinese mainland.
-        # *   **ap-southeast-1:** outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -2779,7 +2780,7 @@ class CreateMajorProtectionBlackIpResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2983,9 +2984,9 @@ class CreatePostpaidInstanceRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+        # The region ID of the WAF instance. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland
         # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
@@ -5166,8 +5167,9 @@ class DescribeApisecAbnormalsRequest(TeaModel):
         self.matched_host = matched_host
         # The name of the sorting field. Valid values:
         # 
-        # * **firstTime (default)**: first detection time
-        # * **abnormalLevel**: risk level
+        # *   **discoverTime** (default): indicates the time when a risk was first detected.
+        # *   **abnormalLevel**: indicates the level of a risk.
+        # *   **latestDiscoverTime**: indicates the time when a risk was last detected.
         self.order_key = order_key
         # The sorting method. Valid values:
         # 
@@ -5183,7 +5185,7 @@ class DescribeApisecAbnormalsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the WAF instance. Valid value:
+        # The region ID of the WAF instance. Valid values:
         # 
         # *   **cn-hangzhou**: Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
@@ -5348,11 +5350,11 @@ class DescribeApisecAbnormalsResponseBodyData(TeaModel):
         # 
         # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
         self.api_tag = api_tag
-        # The time at which the risk was detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # The time at which the risk was first detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.discover_time = discover_time
         # The risk-related samples.
         self.examples = examples
-        # The time at which the risk was first detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # The time at which the API was first detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.first_time = first_time
         # Indicates whether the API is followed. Valid values:
         # 
@@ -5361,8 +5363,9 @@ class DescribeApisecAbnormalsResponseBodyData(TeaModel):
         self.follow = follow
         # The time at which the risk was marked as ignored. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.ignore_time = ignore_time
-        # The time at which the risk was last active. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # The time at which the API was last accessed. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.lastest_time = lastest_time
+        # The time at which the risk was last detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.latest_discover_time = latest_discover_time
         # The domain name or IP address of the API.
         self.matched_host = matched_host
@@ -5619,7 +5622,7 @@ class DescribeApisecApiResourcesRequest(TeaModel):
         self.api_status = api_status
         # The business purpose of the API.
         # 
-        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purpose of the API.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
         self.api_tag = api_tag
         # The service object. Valid values:
         # 
@@ -5633,7 +5636,8 @@ class DescribeApisecApiResourcesRequest(TeaModel):
         # * **1**: Authentication is not required.
         self.auth_flag = auth_flag
         # The ID of the hybrid cloud cluster.
-        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+        # 
+        # >  This parameter is available only in hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud clusters.
         self.cluster_id = cluster_id
         # The end of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
         self.end_time = end_time
@@ -5671,10 +5675,10 @@ class DescribeApisecApiResourcesRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Default value: **10**.
         self.page_size = page_size
-        # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+        # The region ID of the WAF instance. Value:
         # 
-        # * **cn-hangzhou**: Chinese mainland
-        # * **ap-southeast-1**: outside the Chinese mainland
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The sensitive data type in the request.
         # 
@@ -5880,7 +5884,7 @@ class DescribeApisecApiResourcesResponseBodyData(TeaModel):
         self.api_status = api_status
         # The business purpose of the API.
         # 
-        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purpose of the API.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
         self.api_tag = api_tag
         # The service object. Valid values:
         # 
@@ -5908,7 +5912,7 @@ class DescribeApisecApiResourcesResponseBodyData(TeaModel):
         # *   **1**: follows the API.
         # *   **0**: does not follow the API.
         self.follow = follow
-        # The most recent access time of the API. This value is a UNIX timestamp in UTC. Unit: seconds.
+        # The time at which the API was last accessed. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.lastest_ts = lastest_ts
         # The domain name or IP address of the API.
         self.matched_host = matched_host
@@ -6591,12 +6595,13 @@ class DescribeApisecEventsRequest(TeaModel):
         self.api_id = api_id
         # The business purpose of the API.
         # 
-        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purpose of the API.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
         self.api_tag = api_tag
         # The Attack source IP.
         self.attack_ip = attack_ip
         # The ID of the hybrid cloud cluster.
-        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+        # 
+        # >  This parameter is available only in hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud clusters.
         self.cluster_id = cluster_id
         # The end of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
         self.end_ts = end_ts
@@ -6640,7 +6645,7 @@ class DescribeApisecEventsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Default value: **10**.
         self.page_size = page_size
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region ID of the WAF instance. Value:
         # 
         # *   **cn-hangzhou**: Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
@@ -6789,7 +6794,7 @@ class DescribeApisecEventsResponseBodyData(TeaModel):
         self.api_id = api_id
         # The business purpose of the API.
         # 
-        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purpose of the API.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
         self.api_tag = api_tag
         # The client that is attacked.
         self.attack_client = attack_client
@@ -7484,7 +7489,7 @@ class DescribeApisecProtectionGroupsRequest(TeaModel):
     ):
         # The switch of the API security module.
         self.apisec_status = apisec_status
-        # The ID of the WAF instance.
+        # The ID of the Web Application Firewall (WAF) instance.
         # 
         # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
@@ -8741,7 +8746,8 @@ class DescribeApisecStatisticsRequest(TeaModel):
         type: str = None,
     ):
         # The ID of the hybrid cloud cluster.
-        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+        # 
+        # >  This parameter is available only in hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud clusters.
         self.cluster_id = cluster_id
         # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
         # 
@@ -8750,17 +8756,17 @@ class DescribeApisecStatisticsRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+        # The region ID of the WAF instance. Valid values:
         # 
         # *   **cn-hangzhou**: Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The type of statistics to be detected. Valid values:
+        # The type of the statistics. Valid values:
         # 
-        # *   **risk**: risk impact statistics
-        # *   **event**: attack impact statistics
+        # *   **risk**: risk-related statistics.
+        # *   **event**: event-related statistics.
         self.type = type
 
     def validate(self):
@@ -8938,7 +8944,7 @@ class DescribeApisecStatisticsResponseBody(TeaModel):
         data: DescribeApisecStatisticsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The check results.
+        # The returned results.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -11479,10 +11485,10 @@ class DescribeDefenseResourceRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region ID of the WAF instance. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # *   **cn-hangzhou**: The Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
         self.region_id = region_id
         # The name of the protected object that you want to query. Only exact queries are supported.
         # 
@@ -11529,7 +11535,9 @@ class DescribeDefenseResourceResponseBodyResourceResponseHeaders(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Specifies the key for a custom response header.
         self.key = key
+        # Specifies the value for a custom response header.
         self.value = value
 
     def validate(self):
@@ -11621,6 +11629,7 @@ class DescribeDefenseResourceResponseBodyResource(TeaModel):
         # *   **custom**\
         # *   **access**\
         self.resource_origin = resource_origin
+        # The response header.
         self.response_headers = response_headers
         # Indicates whether a Layer 7 proxy is deployed in front of WAF, such as Anti-DDoS Proxy and Alibaba Cloud CDN. Valid values:
         # 
@@ -11728,7 +11737,7 @@ class DescribeDefenseResourceResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the protected object.
+        # The protected object.
         self.resource = resource
 
     def validate(self):
@@ -12860,18 +12869,18 @@ class DescribeDefenseResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return. Default value: **1**.
+        # The page number of the paginated results Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**.
+        # The number of results per page. Default value: **10**.
         self.page_size = page_size
         # The query conditions. Specify the value of this parameter as a string in the JSON format.
         # 
         # >  The results vary based on the query condition. For more information, see the "**Query parameters**" section in this topic.
         self.query = query
-        # The region where the WAF instance resides. Valid values:
+        # The region ID of the WAF instance. Valid values:
         # 
-        # *   **cn-hangzhou:** the Chinese mainland.
-        # *   **ap-southeast-1:** outside the Chinese mainland.
+        # *   **cn-hangzhou**: The Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -12936,7 +12945,9 @@ class DescribeDefenseResourcesResponseBodyResourcesResponseHeaders(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Specifies the key for a custom response header.
         self.key = key
+        # Specifies the value for a custom response header.
         self.value = value
 
     def validate(self):
@@ -13023,6 +13034,7 @@ class DescribeDefenseResourcesResponseBodyResources(TeaModel):
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The origin of the protected object.
         self.resource_origin = resource_origin
+        # The response header.
         self.response_headers = response_headers
         # Indicates whether the X-Forwarded-For (XFF) header is used.
         self.xff_status = xff_status
@@ -13225,10 +13237,10 @@ class DescribeDefenseRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance resides. Valid values:
+        # The region of the WAF instance. Valid values:
         # 
-        # *   **cn-hangzhou:** the Chinese mainland
-        # *   **ap-southeast-1:** outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -13539,7 +13551,21 @@ class DescribeDefenseRulesResponseBodyRules(TeaModel):
         # *   **custom:** The protection rule is created by the user.
         # *   **system:** The protection rule is automatically generated by the system.
         self.defense_origin = defense_origin
-        # The scenario in which the protection rule is used. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+        # The protection module for which the protection rule is created. Valid values:
+        # 
+        # *   **waf_group**: the basic protection rule module.
+        # *   **waf_base_compliance**: the protocol compliance feature of the basic protection rule module.
+        # *   **waf_base_sema**: the semantic analysis feature of the basic protection rule module.
+        # *   **cc**: the HTTP flood protection module.
+        # *   **antiscan_dirscan**: the directory traversal blocking feature of the scan protection module.
+        # *   **antiscan_highfreq**: the high-frequency scanning blocking feature of the scan protection module.
+        # *   **antiscan_scantools**: the scanner blocking feature of the scan protection module.
+        # *   **ip_blacklist**: the IP address blacklist module.
+        # *   **custom_acl**: the custom rule module.
+        # *   **region_block**: the region blacklist module.
+        # *   **tamperproof**: the website tamper-proofing module.
+        # *   **dlp**: the data leakage prevention module.
+        # *   **custom_response_block**: the custom response module.
         self.defense_scene = defense_scene
         # The most recent time when the protection rule was modified.
         self.gmt_modified = gmt_modified
@@ -13612,7 +13638,7 @@ class DescribeDefenseRulesResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # An array of protection rules.
+        # The protection rules.
         self.rules = rules
         # The total number of returned entries.
         self.total_count = total_count
@@ -13708,10 +13734,10 @@ class DescribeDefenseTemplateRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance resides. Valid values:
+        # The region of the WAF instance. Valid values:
         # 
-        # *   **cn-hangzhou:** the Chinese mainland.
-        # *   **ap-southeast-1:** outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -19212,10 +19238,10 @@ class DescribeInstanceRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The region where the WAF instance resides. Valid values:
+        # The region ID of the WAF instance. Valid values:
         # 
-        # *   **cn-hangzhou:** the Chinese mainland
-        # *   **ap-southeast-1:** outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -20280,6 +20306,1013 @@ class DescribeMemberAccountsResponse(TeaModel):
         return self
 
 
+class DescribeNetworkFlowTimeSeriesMetricRequestFilterConditions(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        op_value: str = None,
+        values: Any = None,
+    ):
+        # The filter field. Valid values:
+        # 
+        # *   matched_host: The protected object.
+        # *   cluster: The protected cluster.
+        self.key = key
+        # The filter operator.
+        self.op_value = op_value
+        # Specifies the values to filter by.
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.op_value is not None:
+            result['OpValue'] = self.op_value
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('OpValue') is not None:
+            self.op_value = m.get('OpValue')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class DescribeNetworkFlowTimeSeriesMetricRequestFilterDateRange(TeaModel):
+    def __init__(
+        self,
+        end_date: int = None,
+        start_date: int = None,
+    ):
+        # End time of the query range (UNIX timestamp, seconds).
+        # 
+        # This parameter is required.
+        self.end_date = end_date
+        # Start time of the query range (UNIX timestamp, seconds).
+        # 
+        # This parameter is required.
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class DescribeNetworkFlowTimeSeriesMetricRequestFilter(TeaModel):
+    def __init__(
+        self,
+        conditions: List[DescribeNetworkFlowTimeSeriesMetricRequestFilterConditions] = None,
+        date_range: DescribeNetworkFlowTimeSeriesMetricRequestFilterDateRange = None,
+    ):
+        # An array of filter conditions. Multiple filter parameters use AND logic.
+        self.conditions = conditions
+        # Specifies the date range for the query.
+        # 
+        # This parameter is required.
+        self.date_range = date_range
+
+    def validate(self):
+        if self.conditions:
+            for k in self.conditions:
+                if k:
+                    k.validate()
+        if self.date_range:
+            self.date_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Conditions'] = []
+        if self.conditions is not None:
+            for k in self.conditions:
+                result['Conditions'].append(k.to_map() if k else None)
+        if self.date_range is not None:
+            result['DateRange'] = self.date_range.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.conditions = []
+        if m.get('Conditions') is not None:
+            for k in m.get('Conditions'):
+                temp_model = DescribeNetworkFlowTimeSeriesMetricRequestFilterConditions()
+                self.conditions.append(temp_model.from_map(k))
+        if m.get('DateRange') is not None:
+            temp_model = DescribeNetworkFlowTimeSeriesMetricRequestFilterDateRange()
+            self.date_range = temp_model.from_map(m['DateRange'])
+        return self
+
+
+class DescribeNetworkFlowTimeSeriesMetricRequest(TeaModel):
+    def __init__(
+        self,
+        filter: DescribeNetworkFlowTimeSeriesMetricRequestFilter = None,
+        instance_id: str = None,
+        metric: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # Specifies filtering conditions. Multiple filter parameters use AND logic.
+        # 
+        # This parameter is required.
+        self.filter = filter
+        # The Web Application Firewall (WAF) instance ID.
+        # 
+        # >  Call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to get the WAF instance ID.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # Specifies the type of data returned by each metric. Valid values:
+        # 
+        # *   qps: Queries per second (QPS) of requests processed by WAF.
+        # *   total_requests: Total number of requests processed by WAF.
+        # *   top5_status: The top 5 HTTP status codes returned by WAF, along with their counts.
+        # *   top 5_upstream_status: The top 5 HTTP status codes returned by the origin server, along with their counts.
+        # 
+        # This parameter is required.
+        self.metric = metric
+        # The region ID of the WAF instance. Valid values:
+        # 
+        # *   **cn-hangzhou**: The Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        self.region_id = region_id
+        # The resource group ID.
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        if self.filter:
+            self.filter.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter is not None:
+            result['Filter'] = self.filter.to_map()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.metric is not None:
+            result['Metric'] = self.metric
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filter') is not None:
+            temp_model = DescribeNetworkFlowTimeSeriesMetricRequestFilter()
+            self.filter = temp_model.from_map(m['Filter'])
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Metric') is not None:
+            self.metric = m.get('Metric')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeNetworkFlowTimeSeriesMetricShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        filter_shrink: str = None,
+        instance_id: str = None,
+        metric: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # Specifies filtering conditions. Multiple filter parameters use AND logic.
+        # 
+        # This parameter is required.
+        self.filter_shrink = filter_shrink
+        # The Web Application Firewall (WAF) instance ID.
+        # 
+        # >  Call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to get the WAF instance ID.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # Specifies the type of data returned by each metric. Valid values:
+        # 
+        # *   qps: Queries per second (QPS) of requests processed by WAF.
+        # *   total_requests: Total number of requests processed by WAF.
+        # *   top5_status: The top 5 HTTP status codes returned by WAF, along with their counts.
+        # *   top 5_upstream_status: The top 5 HTTP status codes returned by the origin server, along with their counts.
+        # 
+        # This parameter is required.
+        self.metric = metric
+        # The region ID of the WAF instance. Valid values:
+        # 
+        # *   **cn-hangzhou**: The Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        self.region_id = region_id
+        # The resource group ID.
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_shrink is not None:
+            result['Filter'] = self.filter_shrink
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.metric is not None:
+            result['Metric'] = self.metric
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filter') is not None:
+            self.filter_shrink = m.get('Filter')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Metric') is not None:
+            self.metric = m.get('Metric')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries(TeaModel):
+    def __init__(
+        self,
+        metric: str = None,
+        timestamps: List[str] = None,
+        values: List[int] = None,
+    ):
+        # The metric name, consistent with the Metric request parameter.
+        self.metric = metric
+        # The array of timestamps (seconds) marking the start of each time interval.
+        self.timestamps = timestamps
+        # The array of counts, each representing the count for the corresponding time interval.
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric is not None:
+            result['Metric'] = self.metric
+        if self.timestamps is not None:
+            result['Timestamps'] = self.timestamps
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Metric') is not None:
+            self.metric = m.get('Metric')
+        if m.get('Timestamps') is not None:
+            self.timestamps = m.get('Timestamps')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange(TeaModel):
+    def __init__(
+        self,
+        end_date: int = None,
+        start_date: int = None,
+    ):
+        # The end time of the query range (in UNIX timestamp, seconds). Same as the EndDate request parameter.
+        self.end_date = end_date
+        # The start time of the query range (in UNIX timestamp, seconds). It is the same as the StartDate request parameter.
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData(TeaModel):
+    def __init__(
+        self,
+        aggregate_interval: str = None,
+        date_range: DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange = None,
+        units: str = None,
+    ):
+        # The time granularity. For example, "15m" indicates that each data point is counted every 15 minutes. For details, see **Time granularity of time series data points**.
+        self.aggregate_interval = aggregate_interval
+        # The query time range.
+        self.date_range = date_range
+        # The unit of the returned data. Defaults to the value: request.
+        self.units = units
+
+    def validate(self):
+        if self.date_range:
+            self.date_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregate_interval is not None:
+            result['AggregateInterval'] = self.aggregate_interval
+        if self.date_range is not None:
+            result['DateRange'] = self.date_range.to_map()
+        if self.units is not None:
+            result['Units'] = self.units
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregateInterval') is not None:
+            self.aggregate_interval = m.get('AggregateInterval')
+        if m.get('DateRange') is not None:
+            temp_model = DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange()
+            self.date_range = temp_model.from_map(m['DateRange'])
+        if m.get('Units') is not None:
+            self.units = m.get('Units')
+        return self
+
+
+class DescribeNetworkFlowTimeSeriesMetricResponseBody(TeaModel):
+    def __init__(
+        self,
+        network_flow_time_series: List[DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries] = None,
+        request_id: str = None,
+        time_series_meta_data: DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData = None,
+    ):
+        # The array of time-series data. Supports returning data with multiple values.
+        self.network_flow_time_series = network_flow_time_series
+        # The request ID.
+        self.request_id = request_id
+        # The time series metadata.
+        self.time_series_meta_data = time_series_meta_data
+
+    def validate(self):
+        if self.network_flow_time_series:
+            for k in self.network_flow_time_series:
+                if k:
+                    k.validate()
+        if self.time_series_meta_data:
+            self.time_series_meta_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NetworkFlowTimeSeries'] = []
+        if self.network_flow_time_series is not None:
+            for k in self.network_flow_time_series:
+                result['NetworkFlowTimeSeries'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.time_series_meta_data is not None:
+            result['TimeSeriesMetaData'] = self.time_series_meta_data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.network_flow_time_series = []
+        if m.get('NetworkFlowTimeSeries') is not None:
+            for k in m.get('NetworkFlowTimeSeries'):
+                temp_model = DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries()
+                self.network_flow_time_series.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TimeSeriesMetaData') is not None:
+            temp_model = DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData()
+            self.time_series_meta_data = temp_model.from_map(m['TimeSeriesMetaData'])
+        return self
+
+
+class DescribeNetworkFlowTimeSeriesMetricResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeNetworkFlowTimeSeriesMetricResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeNetworkFlowTimeSeriesMetricResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeNetworkFlowTopNMetricRequestFilterConditions(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        op_value: str = None,
+        values: Any = None,
+    ):
+        # The filter fields. Valid values:
+        # 
+        # *   matched_host: The protected object.
+        # *   cluster: The protected cluster.
+        self.key = key
+        # The filter operator.
+        self.op_value = op_value
+        # The filter content.
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.op_value is not None:
+            result['OpValue'] = self.op_value
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('OpValue') is not None:
+            self.op_value = m.get('OpValue')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class DescribeNetworkFlowTopNMetricRequestFilterDateRange(TeaModel):
+    def __init__(
+        self,
+        end_date: int = None,
+        start_date: int = None,
+    ):
+        # End time of the query range (UNIX timestamp, seconds).
+        # 
+        # This parameter is required.
+        self.end_date = end_date
+        # Start time of the query range (UNIX timestamp, seconds).
+        # 
+        # This parameter is required.
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class DescribeNetworkFlowTopNMetricRequestFilter(TeaModel):
+    def __init__(
+        self,
+        conditions: List[DescribeNetworkFlowTopNMetricRequestFilterConditions] = None,
+        date_range: DescribeNetworkFlowTopNMetricRequestFilterDateRange = None,
+    ):
+        # An array of filter conditions. Multiple filter parameters use AND logic.
+        self.conditions = conditions
+        # Specifies the date range for the query.
+        # 
+        # This parameter is required.
+        self.date_range = date_range
+
+    def validate(self):
+        if self.conditions:
+            for k in self.conditions:
+                if k:
+                    k.validate()
+        if self.date_range:
+            self.date_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Conditions'] = []
+        if self.conditions is not None:
+            for k in self.conditions:
+                result['Conditions'].append(k.to_map() if k else None)
+        if self.date_range is not None:
+            result['DateRange'] = self.date_range.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.conditions = []
+        if m.get('Conditions') is not None:
+            for k in m.get('Conditions'):
+                temp_model = DescribeNetworkFlowTopNMetricRequestFilterConditions()
+                self.conditions.append(temp_model.from_map(k))
+        if m.get('DateRange') is not None:
+            temp_model = DescribeNetworkFlowTopNMetricRequestFilterDateRange()
+            self.date_range = temp_model.from_map(m['DateRange'])
+        return self
+
+
+class DescribeNetworkFlowTopNMetricRequest(TeaModel):
+    def __init__(
+        self,
+        filter: DescribeNetworkFlowTopNMetricRequestFilter = None,
+        instance_id: str = None,
+        limit: int = None,
+        metric: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # Specifies filtering conditions. Multiple filter parameters use AND logic.
+        # 
+        # This parameter is required.
+        self.filter = filter
+        # The Web Application Firewall (WAF) instance ID.
+        # 
+        # >  Call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to retrieve the WAF instance ID.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # Returns up to 10 data entries, sorted in descending order.
+        # 
+        # This parameter is required.
+        self.limit = limit
+        # Specifies the type of data returned by each metric. Valid values:
+        # 
+        # *   real_client_ip: The top N requests, sorted in descending order by source IP address, aggregated from all the user\\"s WAF requests.
+        # *   request_path: The top N requests, sorted in descending order by user-agent, aggregated from all the current user\\"s WAF requests.
+        # *   request_path: The top N URLs, sorted in descending order by frequency, aggregated from all the current user\\"s WAF requests.
+        # *   matched_host_by_total_requests: The top N protected objects with their request counts for the current user.
+        # *   matched_host_by_qps: The top N protected objects and their queries per second (QPS) values.
+        # *   matched_host_by_status: When using it, you must specify status in the Conditions field of the Filter parameter. If the HTTP response code returned by WAF matches the status specified in Conditions, then the top N data is returned, sorted by protected objects. The format for specifying the status is as follows:\\
+        #     {"Key":"status","OpValue":"eq","Values":"200"}
+        # *   matched_host_by_upstream_status: When using it, you must specify a upstream_status in the Conditions field of the Filter parameter. If the HTTP response code returned by the origin server matches the upstream_status specified by Conditions, the top N data is returned, sorted by protected objects. The format for specifying the upstream_status is as follows:\\
+        #     {"Key":"upstream_status","OpValue":"eq","Values":"200"}
+        # 
+        # This parameter is required.
+        self.metric = metric
+        # The region ID of the WAF instance. Valid values:
+        # 
+        # *   **cn-hangzhou**: The Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        self.region_id = region_id
+        # The resource group ID.
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        if self.filter:
+            self.filter.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter is not None:
+            result['Filter'] = self.filter.to_map()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.metric is not None:
+            result['Metric'] = self.metric
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filter') is not None:
+            temp_model = DescribeNetworkFlowTopNMetricRequestFilter()
+            self.filter = temp_model.from_map(m['Filter'])
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('Metric') is not None:
+            self.metric = m.get('Metric')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeNetworkFlowTopNMetricShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        filter_shrink: str = None,
+        instance_id: str = None,
+        limit: int = None,
+        metric: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # Specifies filtering conditions. Multiple filter parameters use AND logic.
+        # 
+        # This parameter is required.
+        self.filter_shrink = filter_shrink
+        # The Web Application Firewall (WAF) instance ID.
+        # 
+        # >  Call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to retrieve the WAF instance ID.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # Returns up to 10 data entries, sorted in descending order.
+        # 
+        # This parameter is required.
+        self.limit = limit
+        # Specifies the type of data returned by each metric. Valid values:
+        # 
+        # *   real_client_ip: The top N requests, sorted in descending order by source IP address, aggregated from all the user\\"s WAF requests.
+        # *   request_path: The top N requests, sorted in descending order by user-agent, aggregated from all the current user\\"s WAF requests.
+        # *   request_path: The top N URLs, sorted in descending order by frequency, aggregated from all the current user\\"s WAF requests.
+        # *   matched_host_by_total_requests: The top N protected objects with their request counts for the current user.
+        # *   matched_host_by_qps: The top N protected objects and their queries per second (QPS) values.
+        # *   matched_host_by_status: When using it, you must specify status in the Conditions field of the Filter parameter. If the HTTP response code returned by WAF matches the status specified in Conditions, then the top N data is returned, sorted by protected objects. The format for specifying the status is as follows:\\
+        #     {"Key":"status","OpValue":"eq","Values":"200"}
+        # *   matched_host_by_upstream_status: When using it, you must specify a upstream_status in the Conditions field of the Filter parameter. If the HTTP response code returned by the origin server matches the upstream_status specified by Conditions, the top N data is returned, sorted by protected objects. The format for specifying the upstream_status is as follows:\\
+        #     {"Key":"upstream_status","OpValue":"eq","Values":"200"}
+        # 
+        # This parameter is required.
+        self.metric = metric
+        # The region ID of the WAF instance. Valid values:
+        # 
+        # *   **cn-hangzhou**: The Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        self.region_id = region_id
+        # The resource group ID.
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_shrink is not None:
+            result['Filter'] = self.filter_shrink
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.metric is not None:
+            result['Metric'] = self.metric
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filter') is not None:
+            self.filter_shrink = m.get('Filter')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('Metric') is not None:
+            self.metric = m.get('Metric')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeNetworkFlowTopNMetricResponseBodyNetworkFlowTopNValues(TeaModel):
+    def __init__(
+        self,
+        attribute: str = None,
+        name: str = None,
+        value: int = None,
+    ):
+        # Returns additional information, such as the country, province, and city to which an IP address belongs. It\\"s currently empty.
+        self.attribute = attribute
+        # The value of this field varies depending on the queried Metric.
+        self.name = name
+        # Counts for top ranking.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attribute is not None:
+            result['Attribute'] = self.attribute
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attribute') is not None:
+            self.attribute = m.get('Attribute')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeNetworkFlowTopNMetricResponseBodyTopNMetaDataDateRange(TeaModel):
+    def __init__(
+        self,
+        end_date: int = None,
+        start_date: int = None,
+    ):
+        # The end time of the query range (in UNIX timestamp, seconds). Same as the EndDate request parameter.
+        self.end_date = end_date
+        # The start time of the query range (in UNIX timestamp, seconds). Same as the StartDate request parameter.
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData(TeaModel):
+    def __init__(
+        self,
+        date_range: DescribeNetworkFlowTopNMetricResponseBodyTopNMetaDataDateRange = None,
+        units: str = None,
+    ):
+        # The query time range.
+        self.date_range = date_range
+        # The unit of the returned data. Defaults to the value: request.
+        self.units = units
+
+    def validate(self):
+        if self.date_range:
+            self.date_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date_range is not None:
+            result['DateRange'] = self.date_range.to_map()
+        if self.units is not None:
+            result['Units'] = self.units
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DateRange') is not None:
+            temp_model = DescribeNetworkFlowTopNMetricResponseBodyTopNMetaDataDateRange()
+            self.date_range = temp_model.from_map(m['DateRange'])
+        if m.get('Units') is not None:
+            self.units = m.get('Units')
+        return self
+
+
+class DescribeNetworkFlowTopNMetricResponseBody(TeaModel):
+    def __init__(
+        self,
+        network_flow_top_nvalues: List[DescribeNetworkFlowTopNMetricResponseBodyNetworkFlowTopNValues] = None,
+        request_id: str = None,
+        top_nmeta_data: DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData = None,
+    ):
+        # The top statistical data array returned.
+        self.network_flow_top_nvalues = network_flow_top_nvalues
+        # The request ID.
+        self.request_id = request_id
+        # The metadata of the returned data.
+        self.top_nmeta_data = top_nmeta_data
+
+    def validate(self):
+        if self.network_flow_top_nvalues:
+            for k in self.network_flow_top_nvalues:
+                if k:
+                    k.validate()
+        if self.top_nmeta_data:
+            self.top_nmeta_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NetworkFlowTopNValues'] = []
+        if self.network_flow_top_nvalues is not None:
+            for k in self.network_flow_top_nvalues:
+                result['NetworkFlowTopNValues'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.top_nmeta_data is not None:
+            result['TopNMetaData'] = self.top_nmeta_data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.network_flow_top_nvalues = []
+        if m.get('NetworkFlowTopNValues') is not None:
+            for k in m.get('NetworkFlowTopNValues'):
+                temp_model = DescribeNetworkFlowTopNMetricResponseBodyNetworkFlowTopNValues()
+                self.network_flow_top_nvalues.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TopNMetaData') is not None:
+            temp_model = DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData()
+            self.top_nmeta_data = temp_model.from_map(m['TopNMetaData'])
+        return self
+
+
+class DescribeNetworkFlowTopNMetricResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeNetworkFlowTopNMetricResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeNetworkFlowTopNMetricResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribePauseProtectionStatusRequest(TeaModel):
     def __init__(
         self,
@@ -21073,6 +22106,10 @@ class DescribePunishedDomainsRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The type of punishment. Valid values:
+        # 
+        # *   **beian** (default): the filing center.
+        # *   **punishCenter**: the punishment center.
         self.punish_type = punish_type
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -21752,9 +22789,9 @@ class DescribeResourceRegionIdRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region ID of the WAF instance. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland
         # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
@@ -21796,7 +22833,7 @@ class DescribeResourceRegionIdResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The region IDs.
+        # The region IDs of the resources that are added to Web Application Firewall (WAF) by using the SDK integration mode.
         self.resource_region_ids = resource_region_ids
 
     def validate(self):
@@ -23703,6 +24740,1470 @@ class DescribeRuleHitsTopUrlResponse(TeaModel):
         return self
 
 
+class DescribeSecurityEventLogsRequestFilterConditions(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        op_value: str = None,
+        values: Any = None,
+    ):
+        # The field name. This operation supports all fields.
+        self.key = key
+        # The operator.
+        self.op_value = op_value
+        # The field content.
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.op_value is not None:
+            result['OpValue'] = self.op_value
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('OpValue') is not None:
+            self.op_value = m.get('OpValue')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class DescribeSecurityEventLogsRequestFilterDateRange(TeaModel):
+    def __init__(
+        self,
+        end_date: int = None,
+        start_date: int = None,
+    ):
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
+        self.end_date = end_date
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class DescribeSecurityEventLogsRequestFilter(TeaModel):
+    def __init__(
+        self,
+        conditions: List[DescribeSecurityEventLogsRequestFilterConditions] = None,
+        date_range: DescribeSecurityEventLogsRequestFilterDateRange = None,
+    ):
+        # The filter conditions. Multiple conditions are evaluated by using a logical AND.
+        self.conditions = conditions
+        # The time range for the query.
+        # 
+        # This parameter is required.
+        self.date_range = date_range
+
+    def validate(self):
+        if self.conditions:
+            for k in self.conditions:
+                if k:
+                    k.validate()
+        if self.date_range:
+            self.date_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Conditions'] = []
+        if self.conditions is not None:
+            for k in self.conditions:
+                result['Conditions'].append(k.to_map() if k else None)
+        if self.date_range is not None:
+            result['DateRange'] = self.date_range.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.conditions = []
+        if m.get('Conditions') is not None:
+            for k in m.get('Conditions'):
+                temp_model = DescribeSecurityEventLogsRequestFilterConditions()
+                self.conditions.append(temp_model.from_map(k))
+        if m.get('DateRange') is not None:
+            temp_model = DescribeSecurityEventLogsRequestFilterDateRange()
+            self.date_range = temp_model.from_map(m['DateRange'])
+        return self
+
+
+class DescribeSecurityEventLogsRequest(TeaModel):
+    def __init__(
+        self,
+        filter: DescribeSecurityEventLogsRequestFilter = None,
+        instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # The filter parameters for the query. Multiple parameters are evaluated by using a logical AND.
+        # 
+        # This parameter is required.
+        self.filter = filter
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The page number. Default value: **1**.
+        # 
+        # This parameter is required.
+        self.page_number = page_number
+        # The number of entries per page. Maximum value: **100**.
+        # 
+        # This parameter is required.
+        self.page_size = page_size
+        # The region ID of the WAF instance. Valid values:
+        # 
+        # *   **cn-hangzhou**: The Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        if self.filter:
+            self.filter.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter is not None:
+            result['Filter'] = self.filter.to_map()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filter') is not None:
+            temp_model = DescribeSecurityEventLogsRequestFilter()
+            self.filter = temp_model.from_map(m['Filter'])
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeSecurityEventLogsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        filter_shrink: str = None,
+        instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # The filter parameters for the query. Multiple parameters are evaluated by using a logical AND.
+        # 
+        # This parameter is required.
+        self.filter_shrink = filter_shrink
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The page number. Default value: **1**.
+        # 
+        # This parameter is required.
+        self.page_number = page_number
+        # The number of entries per page. Maximum value: **100**.
+        # 
+        # This parameter is required.
+        self.page_size = page_size
+        # The region ID of the WAF instance. Valid values:
+        # 
+        # *   **cn-hangzhou**: The Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_shrink is not None:
+            result['Filter'] = self.filter_shrink
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filter') is not None:
+            self.filter_shrink = m.get('Filter')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeSecurityEventLogsResponseBodySecurityEventMetaDataDateRange(TeaModel):
+    def __init__(
+        self,
+        end_date: int = None,
+        start_date: int = None,
+    ):
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the value of EndDate in the request parameters.
+        self.end_date = end_date
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the value of StartDate in the request parameters.
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class DescribeSecurityEventLogsResponseBodySecurityEventMetaData(TeaModel):
+    def __init__(
+        self,
+        date_range: DescribeSecurityEventLogsResponseBodySecurityEventMetaDataDateRange = None,
+        units: str = None,
+    ):
+        # The time range that is used for the query.
+        self.date_range = date_range
+        # The unit of the returned data. Defaults to the value: requests.
+        self.units = units
+
+    def validate(self):
+        if self.date_range:
+            self.date_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date_range is not None:
+            result['DateRange'] = self.date_range.to_map()
+        if self.units is not None:
+            result['Units'] = self.units
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DateRange') is not None:
+            temp_model = DescribeSecurityEventLogsResponseBodySecurityEventMetaDataDateRange()
+            self.date_range = temp_model.from_map(m['DateRange'])
+        if m.get('Units') is not None:
+            self.units = m.get('Units')
+        return self
+
+
+class DescribeSecurityEventLogsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        security_event_logs: List[Any] = None,
+        security_event_logs_total_count: int = None,
+        security_event_meta_data: DescribeSecurityEventLogsResponseBodySecurityEventMetaData = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # The attack logs returned.
+        self.security_event_logs = security_event_logs
+        # The total number of logs returned.
+        self.security_event_logs_total_count = security_event_logs_total_count
+        # The metadata of logs returned.
+        self.security_event_meta_data = security_event_meta_data
+
+    def validate(self):
+        if self.security_event_meta_data:
+            self.security_event_meta_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.security_event_logs is not None:
+            result['SecurityEventLogs'] = self.security_event_logs
+        if self.security_event_logs_total_count is not None:
+            result['SecurityEventLogsTotalCount'] = self.security_event_logs_total_count
+        if self.security_event_meta_data is not None:
+            result['SecurityEventMetaData'] = self.security_event_meta_data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SecurityEventLogs') is not None:
+            self.security_event_logs = m.get('SecurityEventLogs')
+        if m.get('SecurityEventLogsTotalCount') is not None:
+            self.security_event_logs_total_count = m.get('SecurityEventLogsTotalCount')
+        if m.get('SecurityEventMetaData') is not None:
+            temp_model = DescribeSecurityEventLogsResponseBodySecurityEventMetaData()
+            self.security_event_meta_data = temp_model.from_map(m['SecurityEventMetaData'])
+        return self
+
+
+class DescribeSecurityEventLogsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSecurityEventLogsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSecurityEventLogsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSecurityEventTimeSeriesMetricRequestFilterConditions(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        op_value: str = None,
+        values: Any = None,
+    ):
+        # The field name. This operation supports all fields.
+        self.key = key
+        # The operator.
+        self.op_value = op_value
+        # The field content.
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.op_value is not None:
+            result['OpValue'] = self.op_value
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('OpValue') is not None:
+            self.op_value = m.get('OpValue')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class DescribeSecurityEventTimeSeriesMetricRequestFilterDateRange(TeaModel):
+    def __init__(
+        self,
+        end_date: int = None,
+        start_date: int = None,
+    ):
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
+        self.end_date = end_date
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class DescribeSecurityEventTimeSeriesMetricRequestFilter(TeaModel):
+    def __init__(
+        self,
+        conditions: List[DescribeSecurityEventTimeSeriesMetricRequestFilterConditions] = None,
+        date_range: DescribeSecurityEventTimeSeriesMetricRequestFilterDateRange = None,
+    ):
+        # The filter conditions. Multiple conditions are evaluated by using a logical AND.
+        self.conditions = conditions
+        # The time range for the query.
+        # 
+        # This parameter is required.
+        self.date_range = date_range
+
+    def validate(self):
+        if self.conditions:
+            for k in self.conditions:
+                if k:
+                    k.validate()
+        if self.date_range:
+            self.date_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Conditions'] = []
+        if self.conditions is not None:
+            for k in self.conditions:
+                result['Conditions'].append(k.to_map() if k else None)
+        if self.date_range is not None:
+            result['DateRange'] = self.date_range.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.conditions = []
+        if m.get('Conditions') is not None:
+            for k in m.get('Conditions'):
+                temp_model = DescribeSecurityEventTimeSeriesMetricRequestFilterConditions()
+                self.conditions.append(temp_model.from_map(k))
+        if m.get('DateRange') is not None:
+            temp_model = DescribeSecurityEventTimeSeriesMetricRequestFilterDateRange()
+            self.date_range = temp_model.from_map(m['DateRange'])
+        return self
+
+
+class DescribeSecurityEventTimeSeriesMetricRequest(TeaModel):
+    def __init__(
+        self,
+        filter: DescribeSecurityEventTimeSeriesMetricRequestFilter = None,
+        instance_id: str = None,
+        metric: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # The filter parameters for the query. Multiple parameters are evaluated by using a logical AND.
+        # 
+        # This parameter is required.
+        self.filter = filter
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The metric whose time series data you want to return. The following metrics are supported:
+        # 
+        # *   mitigated_requests: The system returns the time series data of requests that are blocked.
+        # *   monitored_requests: The system returns the time series data of requests that match Monitor protection rules.
+        # *   mitigated_requests_group_by_defense_scene: The system returns the number of requests that match each protection module. The returned results are grouped by protection module and can be used to generate time series charts. A request can match multiple protection modules. Therefore, the total number of matched requests is inconsistent with the total number of requests.
+        # *   mitigated_requests_group_by_block_defense_scene: The system returns the number of requests that are blocked by each protection module. The returned results are grouped by protection module and can be used to generate time series charts. A request can be blocked by only one protection module. Therefore, the total number of blocked requests is consistent with the total number of requests.
+        # 
+        # This parameter is required.
+        self.metric = metric
+        # The region ID of the WAF instance. Valid values:
+        # 
+        # *   **cn-hangzhou**: The Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        if self.filter:
+            self.filter.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter is not None:
+            result['Filter'] = self.filter.to_map()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.metric is not None:
+            result['Metric'] = self.metric
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filter') is not None:
+            temp_model = DescribeSecurityEventTimeSeriesMetricRequestFilter()
+            self.filter = temp_model.from_map(m['Filter'])
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Metric') is not None:
+            self.metric = m.get('Metric')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeSecurityEventTimeSeriesMetricShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        filter_shrink: str = None,
+        instance_id: str = None,
+        metric: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # The filter parameters for the query. Multiple parameters are evaluated by using a logical AND.
+        # 
+        # This parameter is required.
+        self.filter_shrink = filter_shrink
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The metric whose time series data you want to return. The following metrics are supported:
+        # 
+        # *   mitigated_requests: The system returns the time series data of requests that are blocked.
+        # *   monitored_requests: The system returns the time series data of requests that match Monitor protection rules.
+        # *   mitigated_requests_group_by_defense_scene: The system returns the number of requests that match each protection module. The returned results are grouped by protection module and can be used to generate time series charts. A request can match multiple protection modules. Therefore, the total number of matched requests is inconsistent with the total number of requests.
+        # *   mitigated_requests_group_by_block_defense_scene: The system returns the number of requests that are blocked by each protection module. The returned results are grouped by protection module and can be used to generate time series charts. A request can be blocked by only one protection module. Therefore, the total number of blocked requests is consistent with the total number of requests.
+        # 
+        # This parameter is required.
+        self.metric = metric
+        # The region ID of the WAF instance. Valid values:
+        # 
+        # *   **cn-hangzhou**: The Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_shrink is not None:
+            result['Filter'] = self.filter_shrink
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.metric is not None:
+            result['Metric'] = self.metric
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filter') is not None:
+            self.filter_shrink = m.get('Filter')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Metric') is not None:
+            self.metric = m.get('Metric')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries(TeaModel):
+    def __init__(
+        self,
+        metric: str = None,
+        timestamps: List[str] = None,
+        values: List[int] = None,
+    ):
+        # The metric. This value is the same as the value of Metric in the request parameters.
+        self.metric = metric
+        # The time points. Each point represents a time range.
+        self.timestamps = timestamps
+        # The data points. Each point represents a count for a time range.
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric is not None:
+            result['Metric'] = self.metric
+        if self.timestamps is not None:
+            result['Timestamps'] = self.timestamps
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Metric') is not None:
+            self.metric = m.get('Metric')
+        if m.get('Timestamps') is not None:
+            self.timestamps = m.get('Timestamps')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange(TeaModel):
+    def __init__(
+        self,
+        end_date: int = None,
+        start_date: int = None,
+    ):
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the value of EndDate in the request parameters.
+        self.end_date = end_date
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the value of StartDate in the request parameters.
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData(TeaModel):
+    def __init__(
+        self,
+        aggregate_interval: str = None,
+        date_range: DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange = None,
+        units: str = None,
+    ):
+        # The time granularity of data points in the time series data returned. For example, a value of 15m indicates that data points are collected at 15-minute intervals. For more information about the supported time granularities, see the "**Time granularities for data points in time series records**" section of the **DescribeNetworkFlowTimeSeriesMetric** topic.
+        self.aggregate_interval = aggregate_interval
+        # The time range that is used for the query.
+        self.date_range = date_range
+        # The unit of the returned data. Defaults to the value: request.
+        self.units = units
+
+    def validate(self):
+        if self.date_range:
+            self.date_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregate_interval is not None:
+            result['AggregateInterval'] = self.aggregate_interval
+        if self.date_range is not None:
+            result['DateRange'] = self.date_range.to_map()
+        if self.units is not None:
+            result['Units'] = self.units
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregateInterval') is not None:
+            self.aggregate_interval = m.get('AggregateInterval')
+        if m.get('DateRange') is not None:
+            temp_model = DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange()
+            self.date_range = temp_model.from_map(m['DateRange'])
+        if m.get('Units') is not None:
+            self.units = m.get('Units')
+        return self
+
+
+class DescribeSecurityEventTimeSeriesMetricResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        security_event_time_series: List[DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries] = None,
+        time_series_meta_data: DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # The time series data returned. This operation can return time series for multiple metrics.
+        self.security_event_time_series = security_event_time_series
+        # The metadata of the time series data returned.
+        self.time_series_meta_data = time_series_meta_data
+
+    def validate(self):
+        if self.security_event_time_series:
+            for k in self.security_event_time_series:
+                if k:
+                    k.validate()
+        if self.time_series_meta_data:
+            self.time_series_meta_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SecurityEventTimeSeries'] = []
+        if self.security_event_time_series is not None:
+            for k in self.security_event_time_series:
+                result['SecurityEventTimeSeries'].append(k.to_map() if k else None)
+        if self.time_series_meta_data is not None:
+            result['TimeSeriesMetaData'] = self.time_series_meta_data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.security_event_time_series = []
+        if m.get('SecurityEventTimeSeries') is not None:
+            for k in m.get('SecurityEventTimeSeries'):
+                temp_model = DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries()
+                self.security_event_time_series.append(temp_model.from_map(k))
+        if m.get('TimeSeriesMetaData') is not None:
+            temp_model = DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData()
+            self.time_series_meta_data = temp_model.from_map(m['TimeSeriesMetaData'])
+        return self
+
+
+class DescribeSecurityEventTimeSeriesMetricResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSecurityEventTimeSeriesMetricResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSecurityEventTimeSeriesMetricResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSecurityEventTopNMetricRequestFilterConditions(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        op_value: str = None,
+        values: Any = None,
+    ):
+        # The field name. This operation supports all fields.
+        self.key = key
+        # The filter operator.
+        self.op_value = op_value
+        # The field content.
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.op_value is not None:
+            result['OpValue'] = self.op_value
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('OpValue') is not None:
+            self.op_value = m.get('OpValue')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class DescribeSecurityEventTopNMetricRequestFilterDateRange(TeaModel):
+    def __init__(
+        self,
+        end_date: int = None,
+        start_date: int = None,
+    ):
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
+        self.end_date = end_date
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class DescribeSecurityEventTopNMetricRequestFilter(TeaModel):
+    def __init__(
+        self,
+        conditions: List[DescribeSecurityEventTopNMetricRequestFilterConditions] = None,
+        date_range: DescribeSecurityEventTopNMetricRequestFilterDateRange = None,
+    ):
+        # The filter conditions. Multiple conditions are evaluated by using a logical AND.
+        self.conditions = conditions
+        # The time range for the query.
+        # 
+        # This parameter is required.
+        self.date_range = date_range
+
+    def validate(self):
+        if self.conditions:
+            for k in self.conditions:
+                if k:
+                    k.validate()
+        if self.date_range:
+            self.date_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Conditions'] = []
+        if self.conditions is not None:
+            for k in self.conditions:
+                result['Conditions'].append(k.to_map() if k else None)
+        if self.date_range is not None:
+            result['DateRange'] = self.date_range.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.conditions = []
+        if m.get('Conditions') is not None:
+            for k in m.get('Conditions'):
+                temp_model = DescribeSecurityEventTopNMetricRequestFilterConditions()
+                self.conditions.append(temp_model.from_map(k))
+        if m.get('DateRange') is not None:
+            temp_model = DescribeSecurityEventTopNMetricRequestFilterDateRange()
+            self.date_range = temp_model.from_map(m['DateRange'])
+        return self
+
+
+class DescribeSecurityEventTopNMetricRequest(TeaModel):
+    def __init__(
+        self,
+        filter: DescribeSecurityEventTopNMetricRequestFilter = None,
+        instance_id: str = None,
+        limit: int = None,
+        metric: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # The filter parameters for the query. Multiple parameters are evaluated by using a logical AND.
+        # 
+        # This parameter is required.
+        self.filter = filter
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The number of data entries that can be returned. Data entries are sorted in descending order before they are returned. Maximum value: 10.
+        # 
+        # This parameter is required.
+        self.limit = limit
+        # The metric whose top N data entries you want to return. The following metrics are supported:
+        # 
+        # >  For more information about attack requests, see the "Usage notes" section of this topic.
+        # 
+        # *   real_client_ip: The system aggregates the source IP addresses of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+        # *   http_user_agent: The system aggregates the User-Agent header field of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+        # *   matched_host: The system aggregates the protected objects that are matched by attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+        # *   remote_region_id: The system aggregates the countries to which the source IP addresses of attack requests belong to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+        # *   request_path: The system aggregates the URLs of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries. The URLs exclude query strings.
+        # *   block_defense_scene: The system aggregates the protection modules that block attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries. The requests match protection rules whose actions are not set to Monitor.
+        # *   defense_scene: The system aggregates the protection modules that are matched by attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+        # *   defense_scene_rule_id: The system returns the IDs of top N protection rules that are matched by attack requests and also the related protection modules. Only protection rules whose actions are not set to Monitor are counted. The system returns the value in the following format:\\
+        #     `{ "Attribute": "waf_base", "Value": 140, "Name": "111034" }`
+        # *   defense_scene_with_rule_id: The system returns the IDs of top N protection rules that are matched by attack requests and also the related protection modules. The IDs and protection modules are connected by using hyphens (-). Protection rules whose actions are set to Monitor and Block are counted. The system returns the value in the following format:\\
+        #     `{ "Attribute": "", "Value": 1, "Name": "120075-waf_base" }`
+        # *   defense_scene_top_rule_id: The system returns top N matched protection rules of a specific protection module. You can specify Conditions in Filter to configure filter conditions. For example, you can use the following condition to query top N matched protection rules of the custom rule module:\\
+        #     `{ "Key": "defense_scene_map", "OpValue": "contain", "Values": "custom_acl" }`
+        # *   defense_scene_rule_type: The system returns top N matched protection rules of the core web protection module. This metric is supported only by the core web protection module because only this module supports subtypes of protection rules. You must specify Conditions in Filter to configure filter conditions. Example:\\
+        #     `{ "Key": "defense_scene", "OpValue": "eq", "Values": "waf_base" }`
+        # 
+        # This parameter is required.
+        self.metric = metric
+        # The region ID of the WAF instance. Valid values:
+        # 
+        # *   **cn-hangzhou**: The Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        if self.filter:
+            self.filter.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter is not None:
+            result['Filter'] = self.filter.to_map()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.metric is not None:
+            result['Metric'] = self.metric
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filter') is not None:
+            temp_model = DescribeSecurityEventTopNMetricRequestFilter()
+            self.filter = temp_model.from_map(m['Filter'])
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('Metric') is not None:
+            self.metric = m.get('Metric')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeSecurityEventTopNMetricShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        filter_shrink: str = None,
+        instance_id: str = None,
+        limit: int = None,
+        metric: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # The filter parameters for the query. Multiple parameters are evaluated by using a logical AND.
+        # 
+        # This parameter is required.
+        self.filter_shrink = filter_shrink
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The number of data entries that can be returned. Data entries are sorted in descending order before they are returned. Maximum value: 10.
+        # 
+        # This parameter is required.
+        self.limit = limit
+        # The metric whose top N data entries you want to return. The following metrics are supported:
+        # 
+        # >  For more information about attack requests, see the "Usage notes" section of this topic.
+        # 
+        # *   real_client_ip: The system aggregates the source IP addresses of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+        # *   http_user_agent: The system aggregates the User-Agent header field of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+        # *   matched_host: The system aggregates the protected objects that are matched by attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+        # *   remote_region_id: The system aggregates the countries to which the source IP addresses of attack requests belong to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+        # *   request_path: The system aggregates the URLs of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries. The URLs exclude query strings.
+        # *   block_defense_scene: The system aggregates the protection modules that block attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries. The requests match protection rules whose actions are not set to Monitor.
+        # *   defense_scene: The system aggregates the protection modules that are matched by attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+        # *   defense_scene_rule_id: The system returns the IDs of top N protection rules that are matched by attack requests and also the related protection modules. Only protection rules whose actions are not set to Monitor are counted. The system returns the value in the following format:\\
+        #     `{ "Attribute": "waf_base", "Value": 140, "Name": "111034" }`
+        # *   defense_scene_with_rule_id: The system returns the IDs of top N protection rules that are matched by attack requests and also the related protection modules. The IDs and protection modules are connected by using hyphens (-). Protection rules whose actions are set to Monitor and Block are counted. The system returns the value in the following format:\\
+        #     `{ "Attribute": "", "Value": 1, "Name": "120075-waf_base" }`
+        # *   defense_scene_top_rule_id: The system returns top N matched protection rules of a specific protection module. You can specify Conditions in Filter to configure filter conditions. For example, you can use the following condition to query top N matched protection rules of the custom rule module:\\
+        #     `{ "Key": "defense_scene_map", "OpValue": "contain", "Values": "custom_acl" }`
+        # *   defense_scene_rule_type: The system returns top N matched protection rules of the core web protection module. This metric is supported only by the core web protection module because only this module supports subtypes of protection rules. You must specify Conditions in Filter to configure filter conditions. Example:\\
+        #     `{ "Key": "defense_scene", "OpValue": "eq", "Values": "waf_base" }`
+        # 
+        # This parameter is required.
+        self.metric = metric
+        # The region ID of the WAF instance. Valid values:
+        # 
+        # *   **cn-hangzhou**: The Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_shrink is not None:
+            result['Filter'] = self.filter_shrink
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.metric is not None:
+            result['Metric'] = self.metric
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filter') is not None:
+            self.filter_shrink = m.get('Filter')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('Metric') is not None:
+            self.metric = m.get('Metric')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeSecurityEventTopNMetricResponseBodySecurityEventTopNValues(TeaModel):
+    def __init__(
+        self,
+        attribute: str = None,
+        name: str = None,
+        value: int = None,
+    ):
+        # The additional information, such as the protection module for a protection rule whose ID is returned.
+        self.attribute = attribute
+        # The field value, which varies based on the metric.
+        self.name = name
+        # The count for the data entry.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attribute is not None:
+            result['Attribute'] = self.attribute
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attribute') is not None:
+            self.attribute = m.get('Attribute')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeSecurityEventTopNMetricResponseBodyTopNMetaDataDateRange(TeaModel):
+    def __init__(
+        self,
+        end_date: int = None,
+        start_date: int = None,
+    ):
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the value of EndDate in the request parameters.
+        self.end_date = end_date
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the value of StartDate in the request parameters.
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class DescribeSecurityEventTopNMetricResponseBodyTopNMetaData(TeaModel):
+    def __init__(
+        self,
+        date_range: DescribeSecurityEventTopNMetricResponseBodyTopNMetaDataDateRange = None,
+        units: str = None,
+    ):
+        # The time range that is used for the query.
+        self.date_range = date_range
+        # The unit of the returned data. Defaults to the value: request.
+        self.units = units
+
+    def validate(self):
+        if self.date_range:
+            self.date_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date_range is not None:
+            result['DateRange'] = self.date_range.to_map()
+        if self.units is not None:
+            result['Units'] = self.units
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DateRange') is not None:
+            temp_model = DescribeSecurityEventTopNMetricResponseBodyTopNMetaDataDateRange()
+            self.date_range = temp_model.from_map(m['DateRange'])
+        if m.get('Units') is not None:
+            self.units = m.get('Units')
+        return self
+
+
+class DescribeSecurityEventTopNMetricResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        security_event_top_nvalues: List[DescribeSecurityEventTopNMetricResponseBodySecurityEventTopNValues] = None,
+        top_nmeta_data: DescribeSecurityEventTopNMetricResponseBodyTopNMetaData = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # The top N data entries returned.
+        self.security_event_top_nvalues = security_event_top_nvalues
+        # The metadata of the data entries returned.
+        self.top_nmeta_data = top_nmeta_data
+
+    def validate(self):
+        if self.security_event_top_nvalues:
+            for k in self.security_event_top_nvalues:
+                if k:
+                    k.validate()
+        if self.top_nmeta_data:
+            self.top_nmeta_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SecurityEventTopNValues'] = []
+        if self.security_event_top_nvalues is not None:
+            for k in self.security_event_top_nvalues:
+                result['SecurityEventTopNValues'].append(k.to_map() if k else None)
+        if self.top_nmeta_data is not None:
+            result['TopNMetaData'] = self.top_nmeta_data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.security_event_top_nvalues = []
+        if m.get('SecurityEventTopNValues') is not None:
+            for k in m.get('SecurityEventTopNValues'):
+                temp_model = DescribeSecurityEventTopNMetricResponseBodySecurityEventTopNValues()
+                self.security_event_top_nvalues.append(temp_model.from_map(k))
+        if m.get('TopNMetaData') is not None:
+            temp_model = DescribeSecurityEventTopNMetricResponseBodyTopNMetaData()
+            self.top_nmeta_data = temp_model.from_map(m['TopNMetaData'])
+        return self
+
+
+class DescribeSecurityEventTopNMetricResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSecurityEventTopNMetricResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSecurityEventTopNMetricResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSensitiveApiStatisticRequest(TeaModel):
     def __init__(
         self,
@@ -25097,7 +27598,7 @@ class DescribeSensitiveRequestLogRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the WAF instance. Valid value:
+        # The region ID of the WAF instance. Valid values:
         # 
         # *   **cn-hangzhou**: Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
@@ -25208,8 +27709,9 @@ class DescribeSensitiveRequestLogResponseBodyData(TeaModel):
         self.remote_country_id = remote_country_id
         # The time when the request was initiated. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.request_time = request_time
-        # The sensitive data. The value of this parameter is a JSON string that contains multiple parameters. The Key of JSON is the sensitive information type identifier (including default and custom types), and the Value is the sensitive information data list.
-        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data.
+        # The details of sensitive data. The value is a string that consists of a JSON struct. The JSON struct contains key-value pairs. In a key-value pair, a key indicates the identifier of a sensitive data type, including built-in and custom types, and a value indicates specific sensitive data.
+        # 
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
         self.sensitive_list = sensitive_list
         # The trace ID.
         self.trace_id = trace_id
@@ -29358,7 +31860,8 @@ class ModifyApisecAbnormalsRequest(TeaModel):
         # This parameter is required.
         self.abnormal_ids = abnormal_ids
         # The ID of the hybrid cloud cluster.
-        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+        # 
+        # >  This parameter is available only in hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud clusters.
         self.cluster_id = cluster_id
         # The ID of the Web Application Firewall (WAF) instance.
         # 
@@ -29373,7 +31876,6 @@ class ModifyApisecAbnormalsRequest(TeaModel):
         # *   **cn-hangzhou**: the Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # 阿里云资源组ID。
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The risk status. Valid values:
         # 
@@ -30415,7 +32917,7 @@ class ModifyCloudResourceRequestListenCertificates(TeaModel):
         applied_type: str = None,
         certificate_id: str = None,
     ):
-        # The type of the HTTPS certificate. Valid values:
+        # The type of the certificate. Valid values:
         # 
         # *   **default**: default certificate.
         # *   **extension**: additional certificate.
@@ -30461,15 +32963,15 @@ class ModifyCloudResourceRequestListen(TeaModel):
         resource_product: str = None,
         tlsversion: str = None,
     ):
-        # An array of certificates.
+        # The certificates.
         self.certificates = certificates
         # The type of the cipher suites that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
         # *   **1**: all cipher suites.
-        # *   **2**: strong cipher suites. You can set the parameter to this value only if you set **TLSVersion** to **tlsv1.2**.
+        # *   **2**: strong cipher suites. This value is available only if you set **TLSVersion** to **tlsv1.2**.
         # *   **99**: custom cipher suites.
         self.cipher_suite = cipher_suite
-        # An array of custom cipher suites.
+        # The custom cipher suites that you want to add.
         self.custom_ciphers = custom_ciphers
         # Specifies whether to support TLS 1.3. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
@@ -30481,30 +32983,31 @@ class ModifyCloudResourceRequestListen(TeaModel):
         # *   **true**\
         # *   **false** (default)
         self.http_2enabled = http_2enabled
-        # The port of the resource that you want to add to WAF.
+        # The port of the cloud service instance that is added to WAF.
         # 
         # This parameter is required.
         self.port = port
-        # The type of the protocol. Valid values:
+        # The protocol type. Valid values:
         # 
         # *   **http**\
         # *   **https**\
         # 
         # This parameter is required.
         self.protocol = protocol
-        # The ID of the resource.
+        # The ID of the cloud service instance that is added to WAF.
         # 
         # This parameter is required.
         self.resource_instance_id = resource_instance_id
-        # The cloud service. Valid values:
+        # The type of the cloud service. Valid values:
         # 
         # *   **clb4**: Layer 4 Classic Load Balancer (CLB).
         # *   **clb7**: Layer 7 CLB.
         # *   **ecs**: Elastic Compute Service (ECS).
+        # *   **nlb**: Network Load Balancer (NLB).
         # 
         # This parameter is required.
         self.resource_product = resource_product
-        # The Transport Layer Security (TLS) version. This parameter is available only if you specify **HttpsPorts**. Valid values:
+        # The Transport Layer Security (TLS) version that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
         # *   **tlsv1**\
         # *   **tlsv1.1**\
@@ -30626,33 +33129,33 @@ class ModifyCloudResourceRequestRedirect(TeaModel):
         # Specifies whether to enable the persistent connection feature. Valid values:
         # 
         # *   **true** (default)
-        # *   **false:**\
+        # *   **false**\
         self.keepalive = keepalive
-        # The number of requests that reuse persistent connections. Valid values: 60 to 1000.
+        # The number of reused persistent connections. Valid values: 60 to 1000.
         # 
-        # >  This parameter specifies the number of requests that can reuse persistent connections after you enable the persistent connection feature.
+        # >  This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
         self.keepalive_requests = keepalive_requests
-        # The timeout period for idle persistent connections. Valid values: 10 to 3600. Default value: 3600. Unit: seconds.
+        # The timeout period of idle persistent connections. Valid values: 10 to 3600. Default value: 3600. Unit: seconds.
         # 
-        # >  If no new requests are initiated over the idle persistent connection within the specified timeout period, the connection is closed.
+        # >  This parameter specifies the period of time after which an idle persistent connection is closed.
         self.keepalive_timeout = keepalive_timeout
-        # The timeout period for read connections. Unit: seconds. Valid values: 1 to 3600.
+        # The timeout period of read connections. Unit: seconds. Valid values: 1 to 3600.
         self.read_timeout = read_timeout
-        # The custom header field that you want to use to label requests that are processed by WAF.
+        # The custom header fields, which are key-value pairs. The fields are used to mark requests that pass through WAF.
         self.request_headers = request_headers
-        # The timeout period for write connections. Unit: seconds. Valid values: 1 to 3600.
+        # The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600.
         self.write_timeout = write_timeout
-        # The method that WAF uses to obtain the originating IP address of a client. Valid values:
+        # The method that is used to obtain the originating IP address of a client. Valid values:
         # 
         # *   **0**: No Layer 7 proxies are deployed in front of WAF.
         # *   **1**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the originating IP address of the client.
         # *   **2**: WAF reads the value of a custom header field as the originating IP address of the client.
         self.xff_header_mode = xff_header_mode
-        # The custom header field that is used to obtain the originating IP address of a client. Specify the value in the ["header1","header2",...] format.
+        # The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the ["header1","header2",...] format.
         # 
         # >  This parameter is required only if you set **XffHeaderMode** to 2.
         self.xff_headers = xff_headers
-        # Specifies whether to use the X-Forward-For-Proto header to identify the protocol used by WAF to forward requests to the origin server. Valid values:
+        # Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
         # 
         # *   **true** (default)
         # *   **false**\
@@ -30733,11 +33236,11 @@ class ModifyCloudResourceRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The configurations of the listeners.
+        # The listener configurations.
         # 
         # This parameter is required.
         self.listen = listen
-        # The configurations of the forwarding rule.
+        # The forwarding configurations.
         self.redirect = redirect
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -30805,11 +33308,11 @@ class ModifyCloudResourceShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The configurations of the listeners.
+        # The listener configurations.
         # 
         # This parameter is required.
         self.listen_shrink = listen_shrink
-        # The configurations of the forwarding rule.
+        # The forwarding configurations.
         self.redirect_shrink = redirect_shrink
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -31255,7 +33758,9 @@ class ModifyDefenseResourceXffRequestResponseHeaders(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Specifies the key for a custom response header.
         self.key = key
+        # Specifies the value for a custom response header.
         self.value = value
 
     def validate(self):
@@ -31332,6 +33837,7 @@ class ModifyDefenseResourceXffRequest(TeaModel):
         self.resource = resource
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The response header.
         self.response_headers = response_headers
         # Specifies whether a Layer 7 proxy is deployed in front of WAF. Layer 7 proxies include Anti-DDoS Proxy and Alibaba Cloud CDN. Valid values:
         # 
@@ -32883,10 +35389,10 @@ class ModifyDomainPunishStatusRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region of the WAF instance. Valid values:
         # 
         # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -33154,10 +35660,10 @@ class ModifyHybridCloudClusterRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region of the WAF instance. Valid value:
         # 
         # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -33470,9 +35976,9 @@ class ModifyHybridCloudGroupExpansionServerRequest(TeaModel):
         # 
         # This parameter is required.
         self.mids = mids
-        # The region in which the WAF instance is deployed. Valid value:
+        # The region ID of the WAF instance. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland
         # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
@@ -33615,10 +36121,10 @@ class ModifyHybridCloudGroupShrinkServerRequest(TeaModel):
         # 
         # This parameter is required.
         self.mids = mids
-        # The region in which the WAF instance is deployed. Valid value:
+        # The region of the WAF instance. Valid values:
         # 
         # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -33892,10 +36398,10 @@ class ModifyHybridCloudServerRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_code = region_code
-        # The region in which the WAF instance is deployed. Valid value:
+        # The region of the WAF instance. Valid values:
         # 
         # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -34614,9 +37120,9 @@ class ModifyTemplateResourcesRequest(TeaModel):
         unbind_resource_groups: List[str] = None,
         unbind_resources: List[str] = None,
     ):
-        # The protected object groups that you want to associate with the protection rule template. Specify the value of this parameter in the ["group1","group2",...] format.
+        # The protected object groups that you want to associate with the template. Specify the value in the [**"group1","group2",...**] format.
         self.bind_resource_groups = bind_resource_groups
-        # The protected objects that you want to associate with the protection rule template. Specify the value of this parameter in the ["XX1","XX2",...] format.
+        # The protected objects that you want to associate with the template. Specify the value in the [**"XX1","XX2",...**] format.
         self.bind_resources = bind_resources
         # The ID of the Web Application Firewall (WAF) instance.
         # 
@@ -34624,10 +37130,10 @@ class ModifyTemplateResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance resides. Valid values:
+        # The region ID of the WAF instance. Valid values:
         # 
-        # *   **cn-hangzhou:** the Chinese mainland.
-        # *   **ap-southeast-1:** outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -34635,9 +37141,9 @@ class ModifyTemplateResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.template_id = template_id
-        # The protected object groups that you want to disassociate from the protection rule template. Specify the value of this parameter in the ["group1","group2",...] format.
+        # The protected object groups that you want to disassociate from the template. Specify the value in the [**"group1","group2",...**] format.
         self.unbind_resource_groups = unbind_resource_groups
-        # The protected objects that you want to disassociate from the protection rule template. Specify the value of this parameter in the ["XX1","XX2",...] format.
+        # The protected objects that you want to disassociate from the template. Specify the value in the [**"XX1","XX2",...**] format.
         self.unbind_resources = unbind_resources
 
     def validate(self):
@@ -34693,7 +37199,7 @@ class ModifyTemplateResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -34764,9 +37270,9 @@ class ReleaseInstanceRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The ID of the Web Application Firewall (WAF) instance.
+        # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # >  Obtain the ID of the WAF instance by calling the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -34890,12 +37396,11 @@ class SyncProductInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region of the WAF instance. Valid values:
         # 
         # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
         self.region_id = region_id
-        # 阿里云资源组ID。
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

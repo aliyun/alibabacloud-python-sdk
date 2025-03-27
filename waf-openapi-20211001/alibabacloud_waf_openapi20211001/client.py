@@ -10731,6 +10731,274 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_member_accounts_with_options_async(request, runtime)
 
+    def describe_network_flow_time_series_metric_with_options(
+        self,
+        tmp_req: waf_openapi_20211001_models.DescribeNetworkFlowTimeSeriesMetricRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeNetworkFlowTimeSeriesMetricResponse:
+        """
+        @summary Retrieves time-series data for all network traffic, including both malicious and legitimate requests.
+        
+        @param tmp_req: DescribeNetworkFlowTimeSeriesMetricRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetworkFlowTimeSeriesMetricResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = waf_openapi_20211001_models.DescribeNetworkFlowTimeSeriesMetricShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.metric):
+            query['Metric'] = request.metric
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNetworkFlowTimeSeriesMetric',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                waf_openapi_20211001_models.DescribeNetworkFlowTimeSeriesMetricResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                waf_openapi_20211001_models.DescribeNetworkFlowTimeSeriesMetricResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_network_flow_time_series_metric_with_options_async(
+        self,
+        tmp_req: waf_openapi_20211001_models.DescribeNetworkFlowTimeSeriesMetricRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeNetworkFlowTimeSeriesMetricResponse:
+        """
+        @summary Retrieves time-series data for all network traffic, including both malicious and legitimate requests.
+        
+        @param tmp_req: DescribeNetworkFlowTimeSeriesMetricRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetworkFlowTimeSeriesMetricResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = waf_openapi_20211001_models.DescribeNetworkFlowTimeSeriesMetricShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.metric):
+            query['Metric'] = request.metric
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNetworkFlowTimeSeriesMetric',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                waf_openapi_20211001_models.DescribeNetworkFlowTimeSeriesMetricResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                waf_openapi_20211001_models.DescribeNetworkFlowTimeSeriesMetricResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_network_flow_time_series_metric(
+        self,
+        request: waf_openapi_20211001_models.DescribeNetworkFlowTimeSeriesMetricRequest,
+    ) -> waf_openapi_20211001_models.DescribeNetworkFlowTimeSeriesMetricResponse:
+        """
+        @summary Retrieves time-series data for all network traffic, including both malicious and legitimate requests.
+        
+        @param request: DescribeNetworkFlowTimeSeriesMetricRequest
+        @return: DescribeNetworkFlowTimeSeriesMetricResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_network_flow_time_series_metric_with_options(request, runtime)
+
+    async def describe_network_flow_time_series_metric_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeNetworkFlowTimeSeriesMetricRequest,
+    ) -> waf_openapi_20211001_models.DescribeNetworkFlowTimeSeriesMetricResponse:
+        """
+        @summary Retrieves time-series data for all network traffic, including both malicious and legitimate requests.
+        
+        @param request: DescribeNetworkFlowTimeSeriesMetricRequest
+        @return: DescribeNetworkFlowTimeSeriesMetricResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_network_flow_time_series_metric_with_options_async(request, runtime)
+
+    def describe_network_flow_top_nmetric_with_options(
+        self,
+        tmp_req: waf_openapi_20211001_models.DescribeNetworkFlowTopNMetricRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeNetworkFlowTopNMetricResponse:
+        """
+        @summary Retrieves top aggregated traffic statistics, sorted by various dimensions, including malicious and legitimate requests.
+        
+        @param tmp_req: DescribeNetworkFlowTopNMetricRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetworkFlowTopNMetricResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = waf_openapi_20211001_models.DescribeNetworkFlowTopNMetricShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.metric):
+            query['Metric'] = request.metric
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNetworkFlowTopNMetric',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                waf_openapi_20211001_models.DescribeNetworkFlowTopNMetricResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                waf_openapi_20211001_models.DescribeNetworkFlowTopNMetricResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_network_flow_top_nmetric_with_options_async(
+        self,
+        tmp_req: waf_openapi_20211001_models.DescribeNetworkFlowTopNMetricRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeNetworkFlowTopNMetricResponse:
+        """
+        @summary Retrieves top aggregated traffic statistics, sorted by various dimensions, including malicious and legitimate requests.
+        
+        @param tmp_req: DescribeNetworkFlowTopNMetricRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetworkFlowTopNMetricResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = waf_openapi_20211001_models.DescribeNetworkFlowTopNMetricShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.metric):
+            query['Metric'] = request.metric
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNetworkFlowTopNMetric',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                waf_openapi_20211001_models.DescribeNetworkFlowTopNMetricResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                waf_openapi_20211001_models.DescribeNetworkFlowTopNMetricResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_network_flow_top_nmetric(
+        self,
+        request: waf_openapi_20211001_models.DescribeNetworkFlowTopNMetricRequest,
+    ) -> waf_openapi_20211001_models.DescribeNetworkFlowTopNMetricResponse:
+        """
+        @summary Retrieves top aggregated traffic statistics, sorted by various dimensions, including malicious and legitimate requests.
+        
+        @param request: DescribeNetworkFlowTopNMetricRequest
+        @return: DescribeNetworkFlowTopNMetricResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_network_flow_top_nmetric_with_options(request, runtime)
+
+    async def describe_network_flow_top_nmetric_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeNetworkFlowTopNMetricRequest,
+    ) -> waf_openapi_20211001_models.DescribeNetworkFlowTopNMetricResponse:
+        """
+        @summary Retrieves top aggregated traffic statistics, sorted by various dimensions, including malicious and legitimate requests.
+        
+        @param request: DescribeNetworkFlowTopNMetricRequest
+        @return: DescribeNetworkFlowTopNMetricResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_network_flow_top_nmetric_with_options_async(request, runtime)
+
     def describe_pause_protection_status_with_options(
         self,
         request: waf_openapi_20211001_models.DescribePauseProtectionStatusRequest,
@@ -11633,7 +11901,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeResourceRegionIdResponse:
         """
-        @summary Queries the region IDs of the resources that are added to Web Application Firewall (WAF) in cloud native mode. The resources include Application Load Balancer (ALB) instances, Microservices Engine (MSE) instances, and custom domain names bound to web applications in Function Compute.
+        @summary Queries the region IDs of the resources that are added to Web Application Firewall (WAF) by using the SDK integration mode. The resources refer to Application Load Balancer (ALB) and Microservices Engine (MSE) instances.
         
         @param request: DescribeResourceRegionIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11678,7 +11946,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeResourceRegionIdResponse:
         """
-        @summary Queries the region IDs of the resources that are added to Web Application Firewall (WAF) in cloud native mode. The resources include Application Load Balancer (ALB) instances, Microservices Engine (MSE) instances, and custom domain names bound to web applications in Function Compute.
+        @summary Queries the region IDs of the resources that are added to Web Application Firewall (WAF) by using the SDK integration mode. The resources refer to Application Load Balancer (ALB) and Microservices Engine (MSE) instances.
         
         @param request: DescribeResourceRegionIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11722,7 +11990,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeResourceRegionIdRequest,
     ) -> waf_openapi_20211001_models.DescribeResourceRegionIdResponse:
         """
-        @summary Queries the region IDs of the resources that are added to Web Application Firewall (WAF) in cloud native mode. The resources include Application Load Balancer (ALB) instances, Microservices Engine (MSE) instances, and custom domain names bound to web applications in Function Compute.
+        @summary Queries the region IDs of the resources that are added to Web Application Firewall (WAF) by using the SDK integration mode. The resources refer to Application Load Balancer (ALB) and Microservices Engine (MSE) instances.
         
         @param request: DescribeResourceRegionIdRequest
         @return: DescribeResourceRegionIdResponse
@@ -11735,7 +12003,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeResourceRegionIdRequest,
     ) -> waf_openapi_20211001_models.DescribeResourceRegionIdResponse:
         """
-        @summary Queries the region IDs of the resources that are added to Web Application Firewall (WAF) in cloud native mode. The resources include Application Load Balancer (ALB) instances, Microservices Engine (MSE) instances, and custom domain names bound to web applications in Function Compute.
+        @summary Queries the region IDs of the resources that are added to Web Application Firewall (WAF) by using the SDK integration mode. The resources refer to Application Load Balancer (ALB) and Microservices Engine (MSE) instances.
         
         @param request: DescribeResourceRegionIdRequest
         @return: DescribeResourceRegionIdResponse
@@ -12914,6 +13182,470 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_rule_hits_top_url_with_options_async(request, runtime)
+
+    def describe_security_event_logs_with_options(
+        self,
+        tmp_req: waf_openapi_20211001_models.DescribeSecurityEventLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSecurityEventLogsResponse:
+        """
+        @summary Queries the logs of attack traffic. Each log records the details of a request that matches protection rules.
+        
+        @description Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
+        Requests that match the protection rules of the whitelist module.
+        Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
+        Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
+        
+        @param tmp_req: DescribeSecurityEventLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityEventLogsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = waf_openapi_20211001_models.DescribeSecurityEventLogsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecurityEventLogs',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                waf_openapi_20211001_models.DescribeSecurityEventLogsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                waf_openapi_20211001_models.DescribeSecurityEventLogsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_security_event_logs_with_options_async(
+        self,
+        tmp_req: waf_openapi_20211001_models.DescribeSecurityEventLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSecurityEventLogsResponse:
+        """
+        @summary Queries the logs of attack traffic. Each log records the details of a request that matches protection rules.
+        
+        @description Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
+        Requests that match the protection rules of the whitelist module.
+        Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
+        Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
+        
+        @param tmp_req: DescribeSecurityEventLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityEventLogsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = waf_openapi_20211001_models.DescribeSecurityEventLogsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecurityEventLogs',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                waf_openapi_20211001_models.DescribeSecurityEventLogsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                waf_openapi_20211001_models.DescribeSecurityEventLogsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_security_event_logs(
+        self,
+        request: waf_openapi_20211001_models.DescribeSecurityEventLogsRequest,
+    ) -> waf_openapi_20211001_models.DescribeSecurityEventLogsResponse:
+        """
+        @summary Queries the logs of attack traffic. Each log records the details of a request that matches protection rules.
+        
+        @description Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
+        Requests that match the protection rules of the whitelist module.
+        Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
+        Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
+        
+        @param request: DescribeSecurityEventLogsRequest
+        @return: DescribeSecurityEventLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_security_event_logs_with_options(request, runtime)
+
+    async def describe_security_event_logs_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeSecurityEventLogsRequest,
+    ) -> waf_openapi_20211001_models.DescribeSecurityEventLogsResponse:
+        """
+        @summary Queries the logs of attack traffic. Each log records the details of a request that matches protection rules.
+        
+        @description Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
+        Requests that match the protection rules of the whitelist module.
+        Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
+        Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
+        
+        @param request: DescribeSecurityEventLogsRequest
+        @return: DescribeSecurityEventLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_security_event_logs_with_options_async(request, runtime)
+
+    def describe_security_event_time_series_metric_with_options(
+        self,
+        tmp_req: waf_openapi_20211001_models.DescribeSecurityEventTimeSeriesMetricRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSecurityEventTimeSeriesMetricResponse:
+        """
+        @summary Queries the time series data of attack traffic. Attack requests refer to requests that match protection rules and are identified as risky.
+        
+        @description Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
+        Requests that match the protection rules of the whitelist module.
+        Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
+        Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
+        
+        @param tmp_req: DescribeSecurityEventTimeSeriesMetricRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityEventTimeSeriesMetricResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = waf_openapi_20211001_models.DescribeSecurityEventTimeSeriesMetricShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.metric):
+            query['Metric'] = request.metric
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecurityEventTimeSeriesMetric',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                waf_openapi_20211001_models.DescribeSecurityEventTimeSeriesMetricResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                waf_openapi_20211001_models.DescribeSecurityEventTimeSeriesMetricResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_security_event_time_series_metric_with_options_async(
+        self,
+        tmp_req: waf_openapi_20211001_models.DescribeSecurityEventTimeSeriesMetricRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSecurityEventTimeSeriesMetricResponse:
+        """
+        @summary Queries the time series data of attack traffic. Attack requests refer to requests that match protection rules and are identified as risky.
+        
+        @description Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
+        Requests that match the protection rules of the whitelist module.
+        Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
+        Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
+        
+        @param tmp_req: DescribeSecurityEventTimeSeriesMetricRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityEventTimeSeriesMetricResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = waf_openapi_20211001_models.DescribeSecurityEventTimeSeriesMetricShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.metric):
+            query['Metric'] = request.metric
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecurityEventTimeSeriesMetric',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                waf_openapi_20211001_models.DescribeSecurityEventTimeSeriesMetricResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                waf_openapi_20211001_models.DescribeSecurityEventTimeSeriesMetricResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_security_event_time_series_metric(
+        self,
+        request: waf_openapi_20211001_models.DescribeSecurityEventTimeSeriesMetricRequest,
+    ) -> waf_openapi_20211001_models.DescribeSecurityEventTimeSeriesMetricResponse:
+        """
+        @summary Queries the time series data of attack traffic. Attack requests refer to requests that match protection rules and are identified as risky.
+        
+        @description Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
+        Requests that match the protection rules of the whitelist module.
+        Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
+        Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
+        
+        @param request: DescribeSecurityEventTimeSeriesMetricRequest
+        @return: DescribeSecurityEventTimeSeriesMetricResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_security_event_time_series_metric_with_options(request, runtime)
+
+    async def describe_security_event_time_series_metric_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeSecurityEventTimeSeriesMetricRequest,
+    ) -> waf_openapi_20211001_models.DescribeSecurityEventTimeSeriesMetricResponse:
+        """
+        @summary Queries the time series data of attack traffic. Attack requests refer to requests that match protection rules and are identified as risky.
+        
+        @description Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
+        Requests that match the protection rules of the whitelist module.
+        Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
+        Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
+        
+        @param request: DescribeSecurityEventTimeSeriesMetricRequest
+        @return: DescribeSecurityEventTimeSeriesMetricResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_security_event_time_series_metric_with_options_async(request, runtime)
+
+    def describe_security_event_top_nmetric_with_options(
+        self,
+        tmp_req: waf_openapi_20211001_models.DescribeSecurityEventTopNMetricRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSecurityEventTopNMetricResponse:
+        """
+        @summary Queries top N data entries of attack traffic. The system performs statistical aggregation on attack traffic from specific dimensions and returns top N data entries.
+        
+        @description Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
+        Requests that match the protection rules of the whitelist module.
+        Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
+        Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
+        
+        @param tmp_req: DescribeSecurityEventTopNMetricRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityEventTopNMetricResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = waf_openapi_20211001_models.DescribeSecurityEventTopNMetricShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.metric):
+            query['Metric'] = request.metric
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecurityEventTopNMetric',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                waf_openapi_20211001_models.DescribeSecurityEventTopNMetricResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                waf_openapi_20211001_models.DescribeSecurityEventTopNMetricResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_security_event_top_nmetric_with_options_async(
+        self,
+        tmp_req: waf_openapi_20211001_models.DescribeSecurityEventTopNMetricRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSecurityEventTopNMetricResponse:
+        """
+        @summary Queries top N data entries of attack traffic. The system performs statistical aggregation on attack traffic from specific dimensions and returns top N data entries.
+        
+        @description Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
+        Requests that match the protection rules of the whitelist module.
+        Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
+        Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
+        
+        @param tmp_req: DescribeSecurityEventTopNMetricRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityEventTopNMetricResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = waf_openapi_20211001_models.DescribeSecurityEventTopNMetricShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.metric):
+            query['Metric'] = request.metric
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecurityEventTopNMetric',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                waf_openapi_20211001_models.DescribeSecurityEventTopNMetricResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                waf_openapi_20211001_models.DescribeSecurityEventTopNMetricResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_security_event_top_nmetric(
+        self,
+        request: waf_openapi_20211001_models.DescribeSecurityEventTopNMetricRequest,
+    ) -> waf_openapi_20211001_models.DescribeSecurityEventTopNMetricResponse:
+        """
+        @summary Queries top N data entries of attack traffic. The system performs statistical aggregation on attack traffic from specific dimensions and returns top N data entries.
+        
+        @description Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
+        Requests that match the protection rules of the whitelist module.
+        Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
+        Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
+        
+        @param request: DescribeSecurityEventTopNMetricRequest
+        @return: DescribeSecurityEventTopNMetricResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_security_event_top_nmetric_with_options(request, runtime)
+
+    async def describe_security_event_top_nmetric_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeSecurityEventTopNMetricRequest,
+    ) -> waf_openapi_20211001_models.DescribeSecurityEventTopNMetricResponse:
+        """
+        @summary Queries top N data entries of attack traffic. The system performs statistical aggregation on attack traffic from specific dimensions and returns top N data entries.
+        
+        @description Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
+        Requests that match the protection rules of the whitelist module.
+        Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
+        Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
+        
+        @param request: DescribeSecurityEventTopNMetricRequest
+        @return: DescribeSecurityEventTopNMetricResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_security_event_top_nmetric_with_options_async(request, runtime)
 
     def describe_sensitive_api_statistic_with_options(
         self,
