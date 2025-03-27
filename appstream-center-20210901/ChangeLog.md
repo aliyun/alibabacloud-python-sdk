@@ -1,3 +1,9 @@
+2025-03-27 Version: 3.1.1
+- Update API AuthorizeInstanceGroup: add request parameters AppInstancePersistentId.
+- Update API CreateAppInstanceGroup: add request parameters AuthMode.
+- Update API CreateAppInstanceGroup: add request parameters RuntimePolicy.PersistentAppInstanceScheduleMode.
+
+
 2025-03-13 Version: 3.1.0
 - Support API ListNodes.
 - Support API ListTagCloudResources.

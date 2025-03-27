@@ -568,6 +568,7 @@ class AuthorizeInstanceGroupRequest(TeaModel):
     def __init__(
         self,
         app_instance_group_id: str = None,
+        app_instance_persistent_id: str = None,
         authorize_user_ids: List[str] = None,
         product_type: str = None,
         un_authorize_user_ids: List[str] = None,
@@ -575,6 +576,7 @@ class AuthorizeInstanceGroupRequest(TeaModel):
     ):
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        self.app_instance_persistent_id = app_instance_persistent_id
         self.authorize_user_ids = authorize_user_ids
         # This parameter is required.
         self.product_type = product_type
@@ -593,6 +595,8 @@ class AuthorizeInstanceGroupRequest(TeaModel):
         result = dict()
         if self.app_instance_group_id is not None:
             result['AppInstanceGroupId'] = self.app_instance_group_id
+        if self.app_instance_persistent_id is not None:
+            result['AppInstancePersistentId'] = self.app_instance_persistent_id
         if self.authorize_user_ids is not None:
             result['AuthorizeUserIds'] = self.authorize_user_ids
         if self.product_type is not None:
@@ -607,6 +611,8 @@ class AuthorizeInstanceGroupRequest(TeaModel):
         m = m or dict()
         if m.get('AppInstanceGroupId') is not None:
             self.app_instance_group_id = m.get('AppInstanceGroupId')
+        if m.get('AppInstancePersistentId') is not None:
+            self.app_instance_persistent_id = m.get('AppInstancePersistentId')
         if m.get('AuthorizeUserIds') is not None:
             self.authorize_user_ids = m.get('AuthorizeUserIds')
         if m.get('ProductType') is not None:
@@ -623,6 +629,7 @@ class AuthorizeInstanceGroupShrinkRequest(TeaModel):
     def __init__(
         self,
         app_instance_group_id: str = None,
+        app_instance_persistent_id: str = None,
         authorize_user_ids: List[str] = None,
         product_type: str = None,
         un_authorize_user_ids: List[str] = None,
@@ -630,6 +637,7 @@ class AuthorizeInstanceGroupShrinkRequest(TeaModel):
     ):
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        self.app_instance_persistent_id = app_instance_persistent_id
         self.authorize_user_ids = authorize_user_ids
         # This parameter is required.
         self.product_type = product_type
@@ -647,6 +655,8 @@ class AuthorizeInstanceGroupShrinkRequest(TeaModel):
         result = dict()
         if self.app_instance_group_id is not None:
             result['AppInstanceGroupId'] = self.app_instance_group_id
+        if self.app_instance_persistent_id is not None:
+            result['AppInstancePersistentId'] = self.app_instance_persistent_id
         if self.authorize_user_ids is not None:
             result['AuthorizeUserIds'] = self.authorize_user_ids
         if self.product_type is not None:
@@ -661,6 +671,8 @@ class AuthorizeInstanceGroupShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AppInstanceGroupId') is not None:
             self.app_instance_group_id = m.get('AppInstanceGroupId')
+        if m.get('AppInstancePersistentId') is not None:
+            self.app_instance_persistent_id = m.get('AppInstancePersistentId')
         if m.get('AuthorizeUserIds') is not None:
             self.authorize_user_ids = m.get('AuthorizeUserIds')
         if m.get('ProductType') is not None:
@@ -1411,12 +1423,14 @@ class CreateAppInstanceGroupRequestRuntimePolicy(TeaModel):
         self,
         debug_mode: str = None,
         per_session_per_app: bool = None,
+        persistent_app_instance_schedule_mode: str = None,
         session_pre_open: str = None,
         session_type: str = None,
         session_user_generation_mode: str = None,
     ):
         self.debug_mode = debug_mode
         self.per_session_per_app = per_session_per_app
+        self.persistent_app_instance_schedule_mode = persistent_app_instance_schedule_mode
         self.session_pre_open = session_pre_open
         # 会话类型。
         self.session_type = session_type
@@ -1435,6 +1449,8 @@ class CreateAppInstanceGroupRequestRuntimePolicy(TeaModel):
             result['DebugMode'] = self.debug_mode
         if self.per_session_per_app is not None:
             result['PerSessionPerApp'] = self.per_session_per_app
+        if self.persistent_app_instance_schedule_mode is not None:
+            result['PersistentAppInstanceScheduleMode'] = self.persistent_app_instance_schedule_mode
         if self.session_pre_open is not None:
             result['SessionPreOpen'] = self.session_pre_open
         if self.session_type is not None:
@@ -1449,6 +1465,8 @@ class CreateAppInstanceGroupRequestRuntimePolicy(TeaModel):
             self.debug_mode = m.get('DebugMode')
         if m.get('PerSessionPerApp') is not None:
             self.per_session_per_app = m.get('PerSessionPerApp')
+        if m.get('PersistentAppInstanceScheduleMode') is not None:
+            self.persistent_app_instance_schedule_mode = m.get('PersistentAppInstanceScheduleMode')
         if m.get('SessionPreOpen') is not None:
             self.session_pre_open = m.get('SessionPreOpen')
         if m.get('SessionType') is not None:
@@ -1683,6 +1701,7 @@ class CreateAppInstanceGroupRequest(TeaModel):
         app_instance_group_name: str = None,
         app_package_type: str = None,
         app_policy_id: str = None,
+        auth_mode: str = None,
         auto_pay: bool = None,
         auto_renew: bool = None,
         biz_region_id: str = None,
@@ -1711,6 +1730,7 @@ class CreateAppInstanceGroupRequest(TeaModel):
         self.app_instance_group_name = app_instance_group_name
         self.app_package_type = app_package_type
         self.app_policy_id = app_policy_id
+        self.auth_mode = auth_mode
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
         # This parameter is required.
@@ -1773,6 +1793,8 @@ class CreateAppInstanceGroupRequest(TeaModel):
             result['AppPackageType'] = self.app_package_type
         if self.app_policy_id is not None:
             result['AppPolicyId'] = self.app_policy_id
+        if self.auth_mode is not None:
+            result['AuthMode'] = self.auth_mode
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
@@ -1829,6 +1851,8 @@ class CreateAppInstanceGroupRequest(TeaModel):
             self.app_package_type = m.get('AppPackageType')
         if m.get('AppPolicyId') is not None:
             self.app_policy_id = m.get('AppPolicyId')
+        if m.get('AuthMode') is not None:
+            self.auth_mode = m.get('AuthMode')
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
@@ -1891,6 +1915,7 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
         app_instance_group_name: str = None,
         app_package_type: str = None,
         app_policy_id: str = None,
+        auth_mode: str = None,
         auto_pay: bool = None,
         auto_renew: bool = None,
         biz_region_id: str = None,
@@ -1919,6 +1944,7 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
         self.app_instance_group_name = app_instance_group_name
         self.app_package_type = app_package_type
         self.app_policy_id = app_policy_id
+        self.auth_mode = auth_mode
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
         # This parameter is required.
@@ -1966,6 +1992,8 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
             result['AppPackageType'] = self.app_package_type
         if self.app_policy_id is not None:
             result['AppPolicyId'] = self.app_policy_id
+        if self.auth_mode is not None:
+            result['AuthMode'] = self.auth_mode
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
@@ -2022,6 +2050,8 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
             self.app_package_type = m.get('AppPackageType')
         if m.get('AppPolicyId') is not None:
             self.app_policy_id = m.get('AppPolicyId')
+        if m.get('AuthMode') is not None:
+            self.auth_mode = m.get('AuthMode')
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
@@ -5421,8 +5451,11 @@ class ListAppInstanceGroupRequest(TeaModel):
         region_id: str = None,
         status: List[str] = None,
     ):
+        # The image ID of the app. You can obtain the ID from the Images page in the App Streaming console.
         self.app_center_image_id = app_center_image_id
+        # The ID of the delivery group.
         self.app_instance_group_id = app_instance_group_id
+        # The name of the delivery groups to query. Fuzzy match is used for queries. For example, if you set this parameter to `Office App`, all delivery groups whose names contain `Office App` are queried, such as `My Office Apps` and `Office App A`.
         self.app_instance_group_name = app_instance_group_name
         # The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
         # 
@@ -5434,13 +5467,21 @@ class ListAppInstanceGroupRequest(TeaModel):
         # The ID of the resource specification that you purchase. You can call the [ListNodeInstanceType](~~ListNodeInstanceType~~) operation to obtain the ID.
         self.node_instance_type = node_instance_type
         self.office_site_id = office_site_id
+        # The page number.
         self.page_number = page_number
         # The number of entries per page. The value cannot be greater than `100`.
         self.page_size = page_size
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
-        # The region ID.
+        # The region ID
         self.region_id = region_id
+        # The status of the delivery groups.
         self.status = status
 
     def validate(self):
@@ -5512,10 +5553,15 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps(TeaModel):
         app_version: str = None,
         app_version_name: str = None,
     ):
+        # The app icon.
         self.app_icon = app_icon
+        # The app ID.
         self.app_id = app_id
+        # The app name.
         self.app_name = app_name
+        # The app version.
         self.app_version = app_version
+        # The name of the app version.
         self.app_version_name = app_version_name
 
     def validate(self):
@@ -5561,8 +5607,11 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSc
         end_time: str = None,
         start_time: str = None,
     ):
+        # The number of destination resources.
         self.amount = amount
+        # The time when the scaling policy ends. Format: HH:mm.
         self.end_time = end_time
+        # The time when the scaling policy starts. Format: HH:mm.
         self.start_time = start_time
 
     def validate(self):
@@ -5600,8 +5649,15 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSc
         recurrence_values: List[int] = None,
         timer_periods: List[ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods] = None,
     ):
+        # The schedule type of the scaling policy. This parameter must be configured together with `RecurrenceValues`.``
+        # 
+        # Valid value:
+        # 
+        # *   weekly: The scaling policy is executed on specific days each week.
         self.recurrence_type = recurrence_type
+        # The days of each week on which the scaling policy is executed.
         self.recurrence_values = recurrence_values
+        # The time periods during which the scaling policy can be executed.
         self.timer_periods = timer_periods
 
     def validate(self):
@@ -5663,25 +5719,57 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool(TeaModel):
         strategy_type: str = None,
         warm_up: bool = None,
     ):
+        # The number of resources purchased when the delivery group was created.
         self.amount = amount
-        # The maximum number of idle sessions. After you specify a value for this parameter, auto scaling is triggered only if the number of idle sessions in the delivery group is smaller than the specified value and the session usage exceeds the value specified for `ScalingUsageThreshold`. Otherwise, the system determines that the idle sessions in the delivery group are sufficient and does not perform auto scaling.`` You can use this parameter to flexibly manage auto scaling and reduce costs.
+        # The maximum number of idle sessions. After you specify a value for this parameter, auto scale-out is triggered only if the number of idle sessions in the delivery group is smaller than the specified value and the session usage exceeds the value specified for `ScalingUsageThreshold`. Otherwise, the system determines that idle sessions in the delivery group are sufficient and does not perform auto scale-out.`` You can use this parameter to flexibly manage auto scaling and reduce costs.
         self.max_idle_app_instance_amount = max_idle_app_instance_amount
+        # The maximum number of resources that can be created for scale-out.
         self.max_scaling_amount = max_scaling_amount
+        # The total number of subscription resources.
         self.node_amount = node_amount
+        # The maximum number of sessions that can be connected to a resource at the same time. If a resource connects to a large number of sessions at the same time, user experience can be compromised. The value range varies based on the resource specification. The following items describe the value ranges of different resource types:
+        # 
+        # *   appstreaming.general.4c8g: 1 to 2
+        # *   appstreaming.general.8c16g: 1 to 4
+        # *   appstreaming.vgpu.8c16g.4g: 1 to 4
+        # *   appstreaming.vgpu.8c31g.16g: 1 to 4
+        # *   appstreaming.vgpu.14c93g.12g: 1 to 6
         self.node_capacity = node_capacity
+        # The ID of the resource specification that you purchase.
         self.node_instance_type = node_instance_type
+        # The ID of the resource group.
         self.node_pool_id = node_pool_id
+        # The name of the resource specification.
         self.node_type_name = node_type_name
+        # The number of subscription resources that are in use.
         self.node_used = node_used
+        # The intervals at which the scaling policy is executed.
         self.recurrence_schedules = recurrence_schedules
+        # The duration for which no session is connected. Unit: minutes. If no session is connected in the resources after the specified duration elapses, auto scale-in is triggered. Default value: 5.
         self.scaling_down_after_idle_minutes = scaling_down_after_idle_minutes
+        # The total number of scalable resources.
         self.scaling_node_amount = scaling_node_amount
+        # The number of scalable resources that are in use.
         self.scaling_node_used = scaling_node_used
+        # The number of resources that are created each time resources are scaled out. Valid values: 1 to 10.
         self.scaling_step = scaling_step
+        # The upper limit of session usage. If the session usage exceeds the specified upper limit, auto scale-out is triggered. The session usage is calculated by using the following formula: `Session usage = Number of current sessions/(Total number of resources × Number of concurrent sessions) × 100%`.
         self.scaling_usage_threshold = scaling_usage_threshold
+        # The expiration date of the scaling policy. Format: yyyy-MM-dd.
         self.strategy_disable_date = strategy_disable_date
+        # The effective date of the scaling policy. Format: yyyy-MM-dd.
         self.strategy_enable_date = strategy_enable_date
+        # The type of the scaling policy.
+        # 
+        # >  `NODE_SCALING_BY_USAGE` is returned for this parameter only if ChargeType is set to `PrePaid`. `NODE_SCALING_BY_SCHEDULE` is returned for this parameter only if ChargeType is set to `PostPaid`.
+        # 
+        # Valid values:
+        # 
+        # *   NODE_FIXED: No scalable resources are used.
+        # *   NODE_SCALING_BY_SCHEDULE: Scheduled scaling is used.
+        # *   NODE_SCALING_BY_USAGE: Resources are scaled based on usage.
         self.strategy_type = strategy_type
+        # Indicates whether resource prefetch is enabled.
         self.warm_up = warm_up
 
     def validate(self):
@@ -5791,8 +5879,11 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo(TeaModel):
         ota_version: str = None,
         task_id: str = None,
     ):
+        # The new OTA version. A null value indicates that no new version is available.
         self.new_ota_version = new_ota_version
+        # The current OTA version.
         self.ota_version = ota_version
+        # The ID of the OTA update task.
         self.task_id = task_id
 
     def validate(self):
@@ -5832,7 +5923,7 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags(TeaMode
     ):
         # The tag key.
         self.key = key
-        # The tag type. Valid values: Custom and System.
+        # The tag type. Valid values: Custom System
         self.scope = scope
         # The tag value.
         self.value = value
@@ -5902,20 +5993,43 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
         spec_id: str = None,
         status: str = None,
     ):
+        # The number of subscription resources. Minimum value: 1.
         self.amount = amount
+        # The image ID of the app.
         self.app_center_image_id = app_center_image_id
+        # The ID of the delivery group.
         self.app_instance_group_id = app_instance_group_id
+        # The name of the delivery group.
         self.app_instance_group_name = app_instance_group_name
+        # The resource type of the delivery group.
         self.app_instance_type = app_instance_type
+        # The policy ID.
         self.app_policy_id = app_policy_id
         self.app_policy_image_check = app_policy_image_check
         self.app_policy_version = app_policy_version
+        # The apps.
         self.apps = apps
+        # The sales mode.
+        # 
+        # Valid values:
+        # 
+        # *   AppInstance: by session
+        # *   Node: by resource
         self.charge_resource_mode = charge_resource_mode
+        # The billing method.
+        # 
+        # Valid values:
+        # 
+        # *   PostPaid: pay-as-you-go
+        # *   PrePaid: subscription
         self.charge_type = charge_type
+        # The time when the delivery group expires.
         self.expired_time = expired_time
+        # The time when the delivery group was created.
         self.gmt_create = gmt_create
+        # The maximum number of instances. Minimum value: 1.
         self.max_amount = max_amount
+        # The minimum number of instances. Minimum value: 1.
         self.min_amount = min_amount
         # The resource groups.
         self.node_pool = node_pool
@@ -5926,21 +6040,64 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
         # 
         # *   Windows
         self.os_type = os_type
+        # The information about the over-the-air (OTA) update task.
         self.ota_info = ota_info
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
         self.product_type = product_type
+        # The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
         self.region_id = region_id
+        # The percentage of reserved instances. The value indicates the percentage of unused sessions in the delivery group. Valid values: 0 to 99.
         self.reserve_amount_ratio = reserve_amount_ratio
+        # The maximum number of reserved instances. The value indicates the maximum number of unused sessions in the delivery group. Minimum value: 1.
         self.reserve_max_amount = reserve_max_amount
+        # The minimum number of reserved instances. The value indicates the minimum number of unused sessions in the delivery group. Minimum value: 1.
         self.reserve_min_amount = reserve_min_amount
+        # The resource status.
+        # 
+        # Valid values:
+        # 
+        # *   AVAILABLE
+        # *   RELEASED
+        # *   EXPIRED_IN_7_DAYS
+        # *   UNAVAILABLE
+        # *   UPGRADING
+        # *   CREATING
         self.resource_status = resource_status
-        # The tags added to the resources.
+        # The resource tags.
         self.resource_tags = resource_tags
+        # The duration for which no session is connected. Unit: minutes. If no session is connected in the resources after the specified duration elapses, auto scale-in is triggered. Minimum value: 0.
         self.scaling_down_after_idle_minutes = scaling_down_after_idle_minutes
+        # The number of sessions that are created each time the delivery group is scaled out. Minimum value: 1.
         self.scaling_step = scaling_step
+        # The upper limit of session usage. If the session usage exceeds the specified upper limit, auto scale-out is triggered. The session usage rate is calculated by using the following formula: Session usage rate = Number of sessions in use/Total number of sessions × 100%. Valid values: 0 to 99.
         self.scaling_usage_threshold = scaling_usage_threshold
+        # The duration for which sessions are retained after disconnection. Unit: minutes. After an end user disconnects from a session, the session is closed only after the specified duration elapses. If you want to permanently retain sessions, set this parameter to `-1`. Valid values:-1 and 3 to 300. Default value: `15`.
         self.session_timeout = session_timeout
+        # Indicates whether user permission verification is skipped.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false: This is the default value.
         self.skip_user_auth_check = skip_user_auth_check
+        # The specification ID that uniquely corresponds to the ID of the delivery group.
         self.spec_id = spec_id
+        # The status of the delivery group.
+        # 
+        # Valid values:
+        # 
+        # *   PUBLISHED: The delivery group is published.
+        # *   FAILED: The delivery group failed to be published.
+        # *   MAINTAIN_FAILED: The delivery group failed to be updated.
+        # *   EXPIRED: The delivery group is expired.
+        # *   MAINTAINING: The delivery group is being updated.
+        # *   CEASED: The delivery group has overdue payments.
+        # *   EXPIRED_RECYCLING: The delivery group is expired and being recycled.
+        # *   DEPLOYING: The delivery group is being published.
         self.status = status
 
     def validate(self):
@@ -6131,9 +6288,13 @@ class ListAppInstanceGroupResponseBody(TeaModel):
     ):
         # The delivery groups.
         self.app_instance_group_models = app_instance_group_models
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7131,12 +7292,24 @@ class ListNodesRequest(TeaModel):
         page_size: int = None,
         product_type: str = None,
     ):
+        # The ID of the delivery group.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The page number. Pages start from page 1.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 200.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
 
@@ -7178,7 +7351,18 @@ class ListNodesResponseBodyNodeModels(TeaModel):
         charge_type: str = None,
         node_id: str = None,
     ):
+        # The billing method of the resource node.
+        # 
+        # >  This parameter is returned only if the ChargeResourceMode parameter of the delivery group to which the resource node belongs is set to Node.
+        # 
+        # Valid values:
+        # 
+        # *   PostPaid: pay-as-you-go
+        # *   Prepaid: subscription
         self.charge_type = charge_type
+        # The ID of the resource node.
+        # 
+        # >  This parameter is returned only if the ChargeResourceMode parameter of the delivery group to which the resource node belongs is set to Node.
         self.node_id = node_id
 
     def validate(self):
@@ -7214,10 +7398,15 @@ class ListNodesResponseBody(TeaModel):
         request_id: str = None,
         to_page: int = None,
     ):
+        # The total number of entries returned.
         self.count = count
+        # The resource nodes.
         self.node_models = node_models
+        # The number of entries per page.
         self.per_page_size = per_page_size
+        # The request ID.
         self.request_id = request_id
+        # The page number.
         self.to_page = to_page
 
     def validate(self):
@@ -9392,9 +9581,17 @@ class ModifyNodePoolAmountRequestNodePool(TeaModel):
         pre_paid_node_amount_modify_mode: str = None,
         pre_paid_node_amount_modify_node_ids: List[str] = None,
     ):
+        # The total number of subscription nodes after the change.
+        # 
         # This parameter is required.
         self.node_amount = node_amount
+        # The change mode of subscription nodes.
+        # 
+        # Valid value:
+        # 
+        # *   EXPAND_FROM_POST_PAID_EXPLICIT: changes from specified pay-as-you-go nodes
         self.pre_paid_node_amount_modify_mode = pre_paid_node_amount_modify_mode
+        # The nodes for which you want to change the billing method.
         self.pre_paid_node_amount_modify_node_ids = pre_paid_node_amount_modify_node_ids
 
     def validate(self):
@@ -9432,10 +9629,20 @@ class ModifyNodePoolAmountRequest(TeaModel):
         node_pool: ModifyNodePoolAmountRequestNodePool = None,
         product_type: str = None,
     ):
+        # The ID of the delivery group.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The parameters related to the configuration change of the node pool.
+        # 
         # This parameter is required.
         self.node_pool = node_pool
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
 
@@ -9476,10 +9683,20 @@ class ModifyNodePoolAmountShrinkRequest(TeaModel):
         node_pool_shrink: str = None,
         product_type: str = None,
     ):
+        # The ID of the delivery group.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The parameters related to the configuration change of the node pool.
+        # 
         # This parameter is required.
         self.node_pool_shrink = node_pool_shrink
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
 
@@ -9516,6 +9733,7 @@ class ModifyNodePoolAmountResponseBodyData(TeaModel):
         self,
         order_id: str = None,
     ):
+        # The order ID.
         self.order_id = order_id
 
     def validate(self):
@@ -9544,7 +9762,9 @@ class ModifyNodePoolAmountResponseBody(TeaModel):
         data: ModifyNodePoolAmountResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

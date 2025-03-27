@@ -446,6 +446,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
             body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.app_instance_persistent_id):
+            body['AppInstancePersistentId'] = request.app_instance_persistent_id
         body_flat = {}
         if not UtilClient.is_unset(request.authorize_user_ids):
             body_flat['AuthorizeUserIds'] = request.authorize_user_ids
@@ -502,6 +504,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
             body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.app_instance_persistent_id):
+            body['AppInstancePersistentId'] = request.app_instance_persistent_id
         body_flat = {}
         if not UtilClient.is_unset(request.authorize_user_ids):
             body_flat['AuthorizeUserIds'] = request.authorize_user_ids
@@ -883,6 +887,8 @@ class Client(OpenApiClient):
             body['AppPackageType'] = request.app_package_type
         if not UtilClient.is_unset(request.app_policy_id):
             body['AppPolicyId'] = request.app_policy_id
+        if not UtilClient.is_unset(request.auth_mode):
+            body['AuthMode'] = request.auth_mode
         if not UtilClient.is_unset(request.auto_pay):
             body['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
@@ -994,6 +1000,8 @@ class Client(OpenApiClient):
             body['AppPackageType'] = request.app_package_type
         if not UtilClient.is_unset(request.app_policy_id):
             body['AppPolicyId'] = request.app_policy_id
+        if not UtilClient.is_unset(request.auth_mode):
+            body['AuthMode'] = request.auth_mode
         if not UtilClient.is_unset(request.auto_pay):
             body['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
@@ -3138,7 +3146,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListNodesResponse:
         """
-        @summary 查询节点列表
+        @summary Queries resource nodes.
         
         @param request: ListNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3185,7 +3193,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListNodesResponse:
         """
-        @summary 查询节点列表
+        @summary Queries resource nodes.
         
         @param request: ListNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3231,7 +3239,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListNodesRequest,
     ) -> appstream_center_20210901_models.ListNodesResponse:
         """
-        @summary 查询节点列表
+        @summary Queries resource nodes.
         
         @param request: ListNodesRequest
         @return: ListNodesResponse
@@ -3244,7 +3252,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListNodesRequest,
     ) -> appstream_center_20210901_models.ListNodesResponse:
         """
-        @summary 查询节点列表
+        @summary Queries resource nodes.
         
         @param request: ListNodesRequest
         @return: ListNodesResponse
@@ -4256,7 +4264,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ModifyNodePoolAmountResponse:
         """
-        @summary 包年包月交付组节点数量升级
+        @summary Changes the number of nodes in a subscription delivery group.
         
         @param tmp_req: ModifyNodePoolAmountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4305,7 +4313,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ModifyNodePoolAmountResponse:
         """
-        @summary 包年包月交付组节点数量升级
+        @summary Changes the number of nodes in a subscription delivery group.
         
         @param tmp_req: ModifyNodePoolAmountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4353,7 +4361,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ModifyNodePoolAmountRequest,
     ) -> appstream_center_20210901_models.ModifyNodePoolAmountResponse:
         """
-        @summary 包年包月交付组节点数量升级
+        @summary Changes the number of nodes in a subscription delivery group.
         
         @param request: ModifyNodePoolAmountRequest
         @return: ModifyNodePoolAmountResponse
@@ -4366,7 +4374,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ModifyNodePoolAmountRequest,
     ) -> appstream_center_20210901_models.ModifyNodePoolAmountResponse:
         """
-        @summary 包年包月交付组节点数量升级
+        @summary Changes the number of nodes in a subscription delivery group.
         
         @param request: ModifyNodePoolAmountRequest
         @return: ModifyNodePoolAmountResponse
