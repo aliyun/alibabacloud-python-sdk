@@ -13535,15 +13535,22 @@ class DescribeDefenseRulesRequest(TeaModel):
 class DescribeDefenseRulesResponseBodyRules(TeaModel):
     def __init__(
         self,
+        action_external: str = None,
         config: str = None,
         defense_origin: str = None,
         defense_scene: str = None,
+        description: str = None,
+        detail_rule_ids: str = None,
+        external_info: str = None,
+        gmt_create: int = None,
         gmt_modified: int = None,
         rule_id: int = None,
         rule_name: str = None,
+        rule_type: str = None,
         status: int = None,
         template_id: int = None,
     ):
+        self.action_external = action_external
         # The details of the protection rule. The value is a string that contains multiple parameters in the JSON format. For more information, see the "**Rule parameters**" section in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
         self.config = config
         # The origin of the protection rule. Valid values:
@@ -13567,12 +13574,17 @@ class DescribeDefenseRulesResponseBodyRules(TeaModel):
         # *   **dlp**: the data leakage prevention module.
         # *   **custom_response_block**: the custom response module.
         self.defense_scene = defense_scene
+        self.description = description
+        self.detail_rule_ids = detail_rule_ids
+        self.external_info = external_info
+        self.gmt_create = gmt_create
         # The most recent time when the protection rule was modified.
         self.gmt_modified = gmt_modified
         # The ID of the protection rule.
         self.rule_id = rule_id
         # The name of the protection rule.
         self.rule_name = rule_name
+        self.rule_type = rule_type
         # The status of the protection rule. Valid values:
         # 
         # *   **0:** disabled.
@@ -13590,18 +13602,30 @@ class DescribeDefenseRulesResponseBodyRules(TeaModel):
             return _map
 
         result = dict()
+        if self.action_external is not None:
+            result['ActionExternal'] = self.action_external
         if self.config is not None:
             result['Config'] = self.config
         if self.defense_origin is not None:
             result['DefenseOrigin'] = self.defense_origin
         if self.defense_scene is not None:
             result['DefenseScene'] = self.defense_scene
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.detail_rule_ids is not None:
+            result['DetailRuleIds'] = self.detail_rule_ids
+        if self.external_info is not None:
+            result['ExternalInfo'] = self.external_info
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
         if self.status is not None:
             result['Status'] = self.status
         if self.template_id is not None:
@@ -13610,18 +13634,30 @@ class DescribeDefenseRulesResponseBodyRules(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActionExternal') is not None:
+            self.action_external = m.get('ActionExternal')
         if m.get('Config') is not None:
             self.config = m.get('Config')
         if m.get('DefenseOrigin') is not None:
             self.defense_origin = m.get('DefenseOrigin')
         if m.get('DefenseScene') is not None:
             self.defense_scene = m.get('DefenseScene')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DetailRuleIds') is not None:
+            self.detail_rule_ids = m.get('DetailRuleIds')
+        if m.get('ExternalInfo') is not None:
+            self.external_info = m.get('ExternalInfo')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TemplateId') is not None:
