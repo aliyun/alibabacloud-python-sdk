@@ -990,6 +990,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.enable_authoritative_dns):
+            query['EnableAuthoritativeDns'] = request.enable_authoritative_dns
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.vpc_id):
@@ -1038,6 +1040,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.enable_authoritative_dns):
+            query['EnableAuthoritativeDns'] = request.enable_authoritative_dns
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.vpc_id):
@@ -4881,7 +4885,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeMachineSpecResponse:
         """
-        @summary 查询可用机器规格
+        @summary Queries a list of instance types for an available instance in a shared resource group.
         
         @param tmp_req: DescribeMachineSpecRequest
         @param headers: map
@@ -4929,7 +4933,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeMachineSpecResponse:
         """
-        @summary 查询可用机器规格
+        @summary Queries a list of instance types for an available instance in a shared resource group.
         
         @param tmp_req: DescribeMachineSpecRequest
         @param headers: map
@@ -4975,7 +4979,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.DescribeMachineSpecRequest,
     ) -> eas_20210701_models.DescribeMachineSpecResponse:
         """
-        @summary 查询可用机器规格
+        @summary Queries a list of instance types for an available instance in a shared resource group.
         
         @param request: DescribeMachineSpecRequest
         @return: DescribeMachineSpecResponse
@@ -4989,7 +4993,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.DescribeMachineSpecRequest,
     ) -> eas_20210701_models.DescribeMachineSpecResponse:
         """
-        @summary 查询可用机器规格
+        @summary Queries a list of instance types for an available instance in a shared resource group.
         
         @param request: DescribeMachineSpecRequest
         @return: DescribeMachineSpecResponse
@@ -4997,6 +5001,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_machine_spec_with_options_async(request, headers, runtime)
+
+    def describe_regions_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeRegionsResponse:
+        """
+        @summary 查询可用的地域信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eas_20210701_models.DescribeRegionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eas_20210701_models.DescribeRegionsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_regions_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeRegionsResponse:
+        """
+        @summary 查询可用的地域信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eas_20210701_models.DescribeRegionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eas_20210701_models.DescribeRegionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_regions(self) -> eas_20210701_models.DescribeRegionsResponse:
+        """
+        @summary 查询可用的地域信息
+        
+        @return: DescribeRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_regions_with_options(headers, runtime)
+
+    async def describe_regions_async(self) -> eas_20210701_models.DescribeRegionsResponse:
+        """
+        @summary 查询可用的地域信息
+        
+        @return: DescribeRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_regions_with_options_async(headers, runtime)
 
     def describe_resource_with_options(
         self,
@@ -8972,6 +9070,8 @@ class Client(OpenApiClient):
             query['QuotaId'] = request.quota_id
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.role):
             query['Role'] = request.role
         if not UtilClient.is_unset(request.service_name):
@@ -9052,6 +9152,8 @@ class Client(OpenApiClient):
             query['QuotaId'] = request.quota_id
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.role):
             query['Role'] = request.role
         if not UtilClient.is_unset(request.service_name):

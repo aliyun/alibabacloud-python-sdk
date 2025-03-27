@@ -799,6 +799,7 @@ class Service(TeaModel):
         create_time: str = None,
         current_version: int = None,
         extra_data: str = None,
+        gateway: str = None,
         gpu: int = None,
         image: str = None,
         internet_endpoint: str = None,
@@ -810,6 +811,7 @@ class Service(TeaModel):
         namespace: str = None,
         parent_uid: str = None,
         pending_instance: int = None,
+        quota_id: str = None,
         reason: str = None,
         region: str = None,
         request_id: str = None,
@@ -844,6 +846,7 @@ class Service(TeaModel):
         self.create_time = create_time
         self.current_version = current_version
         self.extra_data = extra_data
+        self.gateway = gateway
         self.gpu = gpu
         self.image = image
         self.internet_endpoint = internet_endpoint
@@ -855,6 +858,7 @@ class Service(TeaModel):
         self.namespace = namespace
         self.parent_uid = parent_uid
         self.pending_instance = pending_instance
+        self.quota_id = quota_id
         self.reason = reason
         self.region = region
         self.request_id = request_id
@@ -911,6 +915,8 @@ class Service(TeaModel):
             result['CurrentVersion'] = self.current_version
         if self.extra_data is not None:
             result['ExtraData'] = self.extra_data
+        if self.gateway is not None:
+            result['Gateway'] = self.gateway
         if self.gpu is not None:
             result['Gpu'] = self.gpu
         if self.image is not None:
@@ -935,6 +941,8 @@ class Service(TeaModel):
             result['ParentUid'] = self.parent_uid
         if self.pending_instance is not None:
             result['PendingInstance'] = self.pending_instance
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
         if self.reason is not None:
             result['Reason'] = self.reason
         if self.region is not None:
@@ -1005,6 +1013,8 @@ class Service(TeaModel):
             self.current_version = m.get('CurrentVersion')
         if m.get('ExtraData') is not None:
             self.extra_data = m.get('ExtraData')
+        if m.get('Gateway') is not None:
+            self.gateway = m.get('Gateway')
         if m.get('Gpu') is not None:
             self.gpu = m.get('Gpu')
         if m.get('Image') is not None:
@@ -1030,6 +1040,8 @@ class Service(TeaModel):
             self.parent_uid = m.get('ParentUid')
         if m.get('PendingInstance') is not None:
             self.pending_instance = m.get('PendingInstance')
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
         if m.get('Reason') is not None:
             self.reason = m.get('Reason')
         if m.get('Region') is not None:
@@ -2255,9 +2267,11 @@ class CreateGatewayResponse(TeaModel):
 class CreateGatewayIntranetLinkedVpcRequest(TeaModel):
     def __init__(
         self,
+        enable_authoritative_dns: bool = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        self.enable_authoritative_dns = enable_authoritative_dns
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
         # The virtual private cloud (VPC) ID.
@@ -2272,6 +2286,8 @@ class CreateGatewayIntranetLinkedVpcRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_authoritative_dns is not None:
+            result['EnableAuthoritativeDns'] = self.enable_authoritative_dns
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -2280,6 +2296,8 @@ class CreateGatewayIntranetLinkedVpcRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableAuthoritativeDns') is not None:
+            self.enable_authoritative_dns = m.get('EnableAuthoritativeDns')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
@@ -6792,6 +6810,7 @@ class DescribeMachineSpecRequest(TeaModel):
         self,
         instance_types: List[str] = None,
     ):
+        # This parameter is deprecated.
         self.instance_types = instance_types
 
     def validate(self):
@@ -6819,6 +6838,7 @@ class DescribeMachineSpecShrinkRequest(TeaModel):
         self,
         instance_types_shrink: str = None,
     ):
+        # This parameter is deprecated.
         self.instance_types_shrink = instance_types_shrink
 
     def validate(self):
@@ -6856,16 +6876,39 @@ class DescribeMachineSpecResponseBodyInstanceMetas(TeaModel):
         stock_status: str = None,
         vendor: str = None,
     ):
+        # The number of CPU cores in the instance type.
         self.cpu = cpu
+        # The GPU type in the instance type. If the instance type is not a GPU-based instance type, this parameter does not exist.
         self.gpu = gpu
+        # The number of GPUs in the instance type.
         self.gpuamount = gpuamount
+        # The GPU memory in the instance type. Unit: GB.
         self.gpumemory = gpumemory
+        # The name of the instance type.
         self.instance_type = instance_type
+        # Indicates whether the instance type is available.
         self.is_available = is_available
+        # The memory size in the instance type. Unit: GB.
         self.memory = memory
+        # The minimum discount that can be accepted when the preemptible instance type does not include a usage duration. 0.1 indicates one fold. If this parameter is not returned, the bidding feature is not supported.
         self.non_protect_spot_discount = non_protect_spot_discount
+        # The minimum discount that can be accepted when the preemptible instance type has the 1-hour protection duration. 0.1 indicates one fold. If this parameter is not returned, the bidding feature is not supported.
         self.spot_discount = spot_discount
+        # The inventory status of the instance type.
+        # 
+        # Valid values:
+        # 
+        # *   WithStock
+        # *   ClosedWithStock
+        # *   NoStock
         self.stock_status = stock_status
+        # The source of the instance type.
+        # 
+        # Valid values:
+        # 
+        # *   ECS
+        # *   BareMetal
+        # *   Lingjun
         self.vendor = vendor
 
     def validate(self):
@@ -6934,7 +6977,9 @@ class DescribeMachineSpecResponseBodyTypes(TeaModel):
         cpu: int = None,
         memory: List[int] = None,
     ):
+        # Valid values:
         self.cpu = cpu
+        # The optional values for memory when CPU is set to a specific value as above.
         self.memory = memory
 
     def validate(self):
@@ -6968,8 +7013,11 @@ class DescribeMachineSpecResponseBody(TeaModel):
         request_id: str = None,
         types: List[DescribeMachineSpecResponseBodyTypes] = None,
     ):
+        # The instance types when the resources are specified.
         self.instance_metas = instance_metas
+        # The request ID.
         self.request_id = request_id
+        # The values that can be supported when the number of CPUs and memory size are specified for deployment.
         self.types = types
 
     def validate(self):
@@ -7054,6 +7102,121 @@ class DescribeMachineSpecResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMachineSpecResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRegionsResponseBodyRegions(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        region_name: str = None,
+    ):
+        self.region_id = region_id
+        self.region_name = region_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.region_name is not None:
+            result['RegionName'] = self.region_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RegionName') is not None:
+            self.region_name = m.get('RegionName')
+        return self
+
+
+class DescribeRegionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        regions: List[DescribeRegionsResponseBodyRegions] = None,
+        request_id: str = None,
+    ):
+        self.regions = regions
+        self.request_id = request_id
+
+    def validate(self):
+        if self.regions:
+            for k in self.regions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Regions'] = []
+        if self.regions is not None:
+            for k in self.regions:
+                result['Regions'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.regions = []
+        if m.get('Regions') is not None:
+            for k in m.get('Regions'):
+                temp_model = DescribeRegionsResponseBodyRegions()
+                self.regions.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeRegionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRegionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRegionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10621,12 +10784,14 @@ class ListGatewayDomainsResponse(TeaModel):
 class ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList(TeaModel):
     def __init__(
         self,
+        authoritative_dns_enabled: bool = None,
         ip: str = None,
         security_group_id: str = None,
         status: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        self.authoritative_dns_enabled = authoritative_dns_enabled
         # The IP address.
         self.ip = ip
         # The security group ID.
@@ -10673,6 +10838,8 @@ class ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList(TeaModel):
             return _map
 
         result = dict()
+        if self.authoritative_dns_enabled is not None:
+            result['AuthoritativeDnsEnabled'] = self.authoritative_dns_enabled
         if self.ip is not None:
             result['Ip'] = self.ip
         if self.security_group_id is not None:
@@ -10687,6 +10854,8 @@ class ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthoritativeDnsEnabled') is not None:
+            self.authoritative_dns_enabled = m.get('AuthoritativeDnsEnabled')
         if m.get('Ip') is not None:
             self.ip = m.get('Ip')
         if m.get('SecurityGroupId') is not None:
@@ -13010,6 +13179,7 @@ class ListServicesRequest(TeaModel):
         parent_service_uid: str = None,
         quota_id: str = None,
         resource_name: str = None,
+        resource_type: str = None,
         role: str = None,
         service_name: str = None,
         service_status: str = None,
@@ -13041,6 +13211,7 @@ class ListServicesRequest(TeaModel):
         self.quota_id = quota_id
         # The name or ID of the resource group to which the service belongs.
         self.resource_name = resource_name
+        self.resource_type = resource_type
         # The server role.
         # 
         # Valid values:
@@ -13282,6 +13453,8 @@ class ListServicesRequest(TeaModel):
             result['QuotaId'] = self.quota_id
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.role is not None:
             result['Role'] = self.role
         if self.service_name is not None:
@@ -13320,6 +13493,8 @@ class ListServicesRequest(TeaModel):
             self.quota_id = m.get('QuotaId')
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('Role') is not None:
             self.role = m.get('Role')
         if m.get('ServiceName') is not None:
@@ -13350,6 +13525,7 @@ class ListServicesShrinkRequest(TeaModel):
         parent_service_uid: str = None,
         quota_id: str = None,
         resource_name: str = None,
+        resource_type: str = None,
         role: str = None,
         service_name: str = None,
         service_status: str = None,
@@ -13381,6 +13557,7 @@ class ListServicesShrinkRequest(TeaModel):
         self.quota_id = quota_id
         # The name or ID of the resource group to which the service belongs.
         self.resource_name = resource_name
+        self.resource_type = resource_type
         # The server role.
         # 
         # Valid values:
@@ -13622,6 +13799,8 @@ class ListServicesShrinkRequest(TeaModel):
             result['QuotaId'] = self.quota_id
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.role is not None:
             result['Role'] = self.role
         if self.service_name is not None:
@@ -13660,6 +13839,8 @@ class ListServicesShrinkRequest(TeaModel):
             self.quota_id = m.get('QuotaId')
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('Role') is not None:
             self.role = m.get('Role')
         if m.get('ServiceName') is not None:

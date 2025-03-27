@@ -1,3 +1,10 @@
+2025-03-27 Version: 6.7.0
+- Support API DescribeRegions.
+- Update API CreateGatewayIntranetLinkedVpc: add request parameters EnableAuthoritativeDns.
+- Update API ListGatewayIntranetLinkedVpc: add response parameters Body.IntranetLinkedVpcList.$.AuthoritativeDnsEnabled.
+- Update API ListServices: add request parameters ResourceType.
+
+
 2025-02-25 Version: 6.6.0
 - Support API DescribeMachineSpec.
 
