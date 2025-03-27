@@ -495,6 +495,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_create_records_with_options_async(request, runtime)
 
+    def batch_create_waf_rules_with_options(
+        self,
+        tmp_req: esa20240910_models.BatchCreateWafRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.BatchCreateWafRulesResponse:
+        """
+        @summary Batch Create WAF Rules
+        
+        @param tmp_req: BatchCreateWafRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchCreateWafRulesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.BatchCreateWafRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.configs):
+            request.configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configs, 'Configs', 'json')
+        if not UtilClient.is_unset(tmp_req.shared):
+            request.shared_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.shared, 'Shared', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        body = {}
+        if not UtilClient.is_unset(request.configs_shrink):
+            body['Configs'] = request.configs_shrink
+        if not UtilClient.is_unset(request.phase):
+            body['Phase'] = request.phase
+        if not UtilClient.is_unset(request.ruleset_id):
+            body['RulesetId'] = request.ruleset_id
+        if not UtilClient.is_unset(request.shared_shrink):
+            body['Shared'] = request.shared_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchCreateWafRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.BatchCreateWafRulesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.BatchCreateWafRulesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def batch_create_waf_rules_with_options_async(
+        self,
+        tmp_req: esa20240910_models.BatchCreateWafRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.BatchCreateWafRulesResponse:
+        """
+        @summary Batch Create WAF Rules
+        
+        @param tmp_req: BatchCreateWafRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchCreateWafRulesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.BatchCreateWafRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.configs):
+            request.configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configs, 'Configs', 'json')
+        if not UtilClient.is_unset(tmp_req.shared):
+            request.shared_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.shared, 'Shared', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        body = {}
+        if not UtilClient.is_unset(request.configs_shrink):
+            body['Configs'] = request.configs_shrink
+        if not UtilClient.is_unset(request.phase):
+            body['Phase'] = request.phase
+        if not UtilClient.is_unset(request.ruleset_id):
+            body['RulesetId'] = request.ruleset_id
+        if not UtilClient.is_unset(request.shared_shrink):
+            body['Shared'] = request.shared_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchCreateWafRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.BatchCreateWafRulesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.BatchCreateWafRulesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def batch_create_waf_rules(
+        self,
+        request: esa20240910_models.BatchCreateWafRulesRequest,
+    ) -> esa20240910_models.BatchCreateWafRulesResponse:
+        """
+        @summary Batch Create WAF Rules
+        
+        @param request: BatchCreateWafRulesRequest
+        @return: BatchCreateWafRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.batch_create_waf_rules_with_options(request, runtime)
+
+    async def batch_create_waf_rules_async(
+        self,
+        request: esa20240910_models.BatchCreateWafRulesRequest,
+    ) -> esa20240910_models.BatchCreateWafRulesResponse:
+        """
+        @summary Batch Create WAF Rules
+        
+        @param request: BatchCreateWafRulesRequest
+        @return: BatchCreateWafRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_create_waf_rules_with_options_async(request, runtime)
+
     def batch_delete_kv_with_options(
         self,
         tmp_req: esa20240910_models.BatchDeleteKvRequest,
@@ -1025,7 +1169,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.BatchGetExpressionFieldsResponse:
         """
-        @summary Batch queries the objects that match specific expressions.
+        @summary Batch Get Expression Matches
         
         @param tmp_req: BatchGetExpressionFieldsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1076,7 +1220,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.BatchGetExpressionFieldsResponse:
         """
-        @summary Batch queries the objects that match specific expressions.
+        @summary Batch Get Expression Matches
         
         @param tmp_req: BatchGetExpressionFieldsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1126,7 +1270,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.BatchGetExpressionFieldsRequest,
     ) -> esa20240910_models.BatchGetExpressionFieldsResponse:
         """
-        @summary Batch queries the objects that match specific expressions.
+        @summary Batch Get Expression Matches
         
         @param request: BatchGetExpressionFieldsRequest
         @return: BatchGetExpressionFieldsResponse
@@ -1139,7 +1283,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.BatchGetExpressionFieldsRequest,
     ) -> esa20240910_models.BatchGetExpressionFieldsResponse:
         """
-        @summary Batch queries the objects that match specific expressions.
+        @summary Batch Get Expression Matches
         
         @param request: BatchGetExpressionFieldsRequest
         @return: BatchGetExpressionFieldsResponse
@@ -1702,6 +1846,150 @@ class Client(OpenApiClient):
             batch_put_kv_with_high_capacity_req.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         batch_put_kv_with_high_capacity_resp = await self.batch_put_kv_with_high_capacity_with_options_async(batch_put_kv_with_high_capacity_req, runtime)
         return batch_put_kv_with_high_capacity_resp
+
+    def batch_update_waf_rules_with_options(
+        self,
+        tmp_req: esa20240910_models.BatchUpdateWafRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.BatchUpdateWafRulesResponse:
+        """
+        @summary Modifies multiple rules in a specific Web Application Firewall (WAF) ruleset at a time.
+        
+        @param tmp_req: BatchUpdateWafRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUpdateWafRulesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.BatchUpdateWafRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.configs):
+            request.configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configs, 'Configs', 'json')
+        if not UtilClient.is_unset(tmp_req.shared):
+            request.shared_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.shared, 'Shared', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        body = {}
+        if not UtilClient.is_unset(request.configs_shrink):
+            body['Configs'] = request.configs_shrink
+        if not UtilClient.is_unset(request.phase):
+            body['Phase'] = request.phase
+        if not UtilClient.is_unset(request.ruleset_id):
+            body['RulesetId'] = request.ruleset_id
+        if not UtilClient.is_unset(request.shared_shrink):
+            body['Shared'] = request.shared_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchUpdateWafRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.BatchUpdateWafRulesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.BatchUpdateWafRulesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def batch_update_waf_rules_with_options_async(
+        self,
+        tmp_req: esa20240910_models.BatchUpdateWafRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.BatchUpdateWafRulesResponse:
+        """
+        @summary Modifies multiple rules in a specific Web Application Firewall (WAF) ruleset at a time.
+        
+        @param tmp_req: BatchUpdateWafRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUpdateWafRulesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.BatchUpdateWafRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.configs):
+            request.configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configs, 'Configs', 'json')
+        if not UtilClient.is_unset(tmp_req.shared):
+            request.shared_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.shared, 'Shared', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        body = {}
+        if not UtilClient.is_unset(request.configs_shrink):
+            body['Configs'] = request.configs_shrink
+        if not UtilClient.is_unset(request.phase):
+            body['Phase'] = request.phase
+        if not UtilClient.is_unset(request.ruleset_id):
+            body['RulesetId'] = request.ruleset_id
+        if not UtilClient.is_unset(request.shared_shrink):
+            body['Shared'] = request.shared_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchUpdateWafRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.BatchUpdateWafRulesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.BatchUpdateWafRulesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def batch_update_waf_rules(
+        self,
+        request: esa20240910_models.BatchUpdateWafRulesRequest,
+    ) -> esa20240910_models.BatchUpdateWafRulesResponse:
+        """
+        @summary Modifies multiple rules in a specific Web Application Firewall (WAF) ruleset at a time.
+        
+        @param request: BatchUpdateWafRulesRequest
+        @return: BatchUpdateWafRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.batch_update_waf_rules_with_options(request, runtime)
+
+    async def batch_update_waf_rules_async(
+        self,
+        request: esa20240910_models.BatchUpdateWafRulesRequest,
+    ) -> esa20240910_models.BatchUpdateWafRulesResponse:
+        """
+        @summary Modifies multiple rules in a specific Web Application Firewall (WAF) ruleset at a time.
+        
+        @param request: BatchUpdateWafRulesRequest
+        @return: BatchUpdateWafRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_update_waf_rules_with_options_async(request, runtime)
 
     def block_object_with_options(
         self,
@@ -2399,6 +2687,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.serve_stale):
             query['ServeStale'] = request.serve_stale
         if not UtilClient.is_unset(request.site_id):
@@ -2488,6 +2778,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.serve_stale):
             query['ServeStale'] = request.serve_stale
         if not UtilClient.is_unset(request.site_id):
@@ -2701,6 +2993,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -2756,6 +3050,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -3367,6 +3663,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -3422,6 +3720,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -3503,6 +3803,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -3558,6 +3860,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -3653,6 +3957,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -3722,6 +4028,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -3809,6 +4117,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.tls_10):
@@ -3876,6 +4186,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.tls_10):
@@ -3959,6 +4271,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -4010,6 +4324,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -4525,6 +4841,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -4584,6 +4902,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -4929,6 +5249,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -4998,6 +5320,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -5355,6 +5679,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -5412,6 +5738,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -5499,6 +5827,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -5556,6 +5886,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -6978,6 +7310,266 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_user_delivery_task_with_options_async(request, runtime)
+
+    def create_waf_rule_with_options(
+        self,
+        tmp_req: esa20240910_models.CreateWafRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateWafRuleResponse:
+        """
+        @summary Create WAF Rule
+        
+        @param tmp_req: CreateWafRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWafRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.CreateWafRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.config):
+            request.config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config, 'Config', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        body = {}
+        if not UtilClient.is_unset(request.config_shrink):
+            body['Config'] = request.config_shrink
+        if not UtilClient.is_unset(request.phase):
+            body['Phase'] = request.phase
+        if not UtilClient.is_unset(request.ruleset_id):
+            body['RulesetId'] = request.ruleset_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWafRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.CreateWafRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.CreateWafRuleResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_waf_rule_with_options_async(
+        self,
+        tmp_req: esa20240910_models.CreateWafRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateWafRuleResponse:
+        """
+        @summary Create WAF Rule
+        
+        @param tmp_req: CreateWafRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWafRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.CreateWafRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.config):
+            request.config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config, 'Config', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        body = {}
+        if not UtilClient.is_unset(request.config_shrink):
+            body['Config'] = request.config_shrink
+        if not UtilClient.is_unset(request.phase):
+            body['Phase'] = request.phase
+        if not UtilClient.is_unset(request.ruleset_id):
+            body['RulesetId'] = request.ruleset_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWafRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.CreateWafRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.CreateWafRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_waf_rule(
+        self,
+        request: esa20240910_models.CreateWafRuleRequest,
+    ) -> esa20240910_models.CreateWafRuleResponse:
+        """
+        @summary Create WAF Rule
+        
+        @param request: CreateWafRuleRequest
+        @return: CreateWafRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_waf_rule_with_options(request, runtime)
+
+    async def create_waf_rule_async(
+        self,
+        request: esa20240910_models.CreateWafRuleRequest,
+    ) -> esa20240910_models.CreateWafRuleResponse:
+        """
+        @summary Create WAF Rule
+        
+        @param request: CreateWafRuleRequest
+        @return: CreateWafRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_waf_rule_with_options_async(request, runtime)
+
+    def create_waf_ruleset_with_options(
+        self,
+        request: esa20240910_models.CreateWafRulesetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateWafRulesetResponse:
+        """
+        @summary Create WAF Ruleset
+        
+        @param request: CreateWafRulesetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWafRulesetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.phase):
+            body['Phase'] = request.phase
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWafRuleset',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.CreateWafRulesetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.CreateWafRulesetResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_waf_ruleset_with_options_async(
+        self,
+        request: esa20240910_models.CreateWafRulesetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateWafRulesetResponse:
+        """
+        @summary Create WAF Ruleset
+        
+        @param request: CreateWafRulesetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWafRulesetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.phase):
+            body['Phase'] = request.phase
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWafRuleset',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.CreateWafRulesetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.CreateWafRulesetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_waf_ruleset(
+        self,
+        request: esa20240910_models.CreateWafRulesetRequest,
+    ) -> esa20240910_models.CreateWafRulesetResponse:
+        """
+        @summary Create WAF Ruleset
+        
+        @param request: CreateWafRulesetRequest
+        @return: CreateWafRulesetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_waf_ruleset_with_options(request, runtime)
+
+    async def create_waf_ruleset_async(
+        self,
+        request: esa20240910_models.CreateWafRulesetRequest,
+    ) -> esa20240910_models.CreateWafRulesetResponse:
+        """
+        @summary Create WAF Ruleset
+        
+        @param request: CreateWafRulesetRequest
+        @return: CreateWafRulesetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_waf_ruleset_with_options_async(request, runtime)
 
     def create_waiting_room_with_options(
         self,
@@ -9675,6 +10267,214 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_network_optimization_with_options_async(request, runtime)
 
+    def delete_origin_ca_certificate_with_options(
+        self,
+        request: esa20240910_models.DeleteOriginCaCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteOriginCaCertificateResponse:
+        """
+        @summary 删除源服务器CA证书
+        
+        @param request: DeleteOriginCaCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteOriginCaCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOriginCaCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.DeleteOriginCaCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.DeleteOriginCaCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_origin_ca_certificate_with_options_async(
+        self,
+        request: esa20240910_models.DeleteOriginCaCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteOriginCaCertificateResponse:
+        """
+        @summary 删除源服务器CA证书
+        
+        @param request: DeleteOriginCaCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteOriginCaCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOriginCaCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.DeleteOriginCaCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.DeleteOriginCaCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_origin_ca_certificate(
+        self,
+        request: esa20240910_models.DeleteOriginCaCertificateRequest,
+    ) -> esa20240910_models.DeleteOriginCaCertificateResponse:
+        """
+        @summary 删除源服务器CA证书
+        
+        @param request: DeleteOriginCaCertificateRequest
+        @return: DeleteOriginCaCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_origin_ca_certificate_with_options(request, runtime)
+
+    async def delete_origin_ca_certificate_async(
+        self,
+        request: esa20240910_models.DeleteOriginCaCertificateRequest,
+    ) -> esa20240910_models.DeleteOriginCaCertificateResponse:
+        """
+        @summary 删除源服务器CA证书
+        
+        @param request: DeleteOriginCaCertificateRequest
+        @return: DeleteOriginCaCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_origin_ca_certificate_with_options_async(request, runtime)
+
+    def delete_origin_client_certificate_with_options(
+        self,
+        request: esa20240910_models.DeleteOriginClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteOriginClientCertificateResponse:
+        """
+        @summary 删除域名回源客户端证书
+        
+        @param request: DeleteOriginClientCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteOriginClientCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOriginClientCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.DeleteOriginClientCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.DeleteOriginClientCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_origin_client_certificate_with_options_async(
+        self,
+        request: esa20240910_models.DeleteOriginClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteOriginClientCertificateResponse:
+        """
+        @summary 删除域名回源客户端证书
+        
+        @param request: DeleteOriginClientCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteOriginClientCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOriginClientCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.DeleteOriginClientCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.DeleteOriginClientCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_origin_client_certificate(
+        self,
+        request: esa20240910_models.DeleteOriginClientCertificateRequest,
+    ) -> esa20240910_models.DeleteOriginClientCertificateResponse:
+        """
+        @summary 删除域名回源客户端证书
+        
+        @param request: DeleteOriginClientCertificateRequest
+        @return: DeleteOriginClientCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_origin_client_certificate_with_options(request, runtime)
+
+    async def delete_origin_client_certificate_async(
+        self,
+        request: esa20240910_models.DeleteOriginClientCertificateRequest,
+    ) -> esa20240910_models.DeleteOriginClientCertificateResponse:
+        """
+        @summary 删除域名回源客户端证书
+        
+        @param request: DeleteOriginClientCertificateRequest
+        @return: DeleteOriginClientCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_origin_client_certificate_with_options_async(request, runtime)
+
     def delete_origin_pool_with_options(
         self,
         request: esa20240910_models.DeleteOriginPoolRequest,
@@ -11355,6 +12155,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_site_delivery_task_with_options_async(request, runtime)
 
+    def delete_site_origin_client_certificate_with_options(
+        self,
+        request: esa20240910_models.DeleteSiteOriginClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteSiteOriginClientCertificateResponse:
+        """
+        @summary 删除站点回源客户端证书
+        
+        @param request: DeleteSiteOriginClientCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSiteOriginClientCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSiteOriginClientCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.DeleteSiteOriginClientCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.DeleteSiteOriginClientCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_site_origin_client_certificate_with_options_async(
+        self,
+        request: esa20240910_models.DeleteSiteOriginClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteSiteOriginClientCertificateResponse:
+        """
+        @summary 删除站点回源客户端证书
+        
+        @param request: DeleteSiteOriginClientCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSiteOriginClientCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSiteOriginClientCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.DeleteSiteOriginClientCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.DeleteSiteOriginClientCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_site_origin_client_certificate(
+        self,
+        request: esa20240910_models.DeleteSiteOriginClientCertificateRequest,
+    ) -> esa20240910_models.DeleteSiteOriginClientCertificateResponse:
+        """
+        @summary 删除站点回源客户端证书
+        
+        @param request: DeleteSiteOriginClientCertificateRequest
+        @return: DeleteSiteOriginClientCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_site_origin_client_certificate_with_options(request, runtime)
+
+    async def delete_site_origin_client_certificate_async(
+        self,
+        request: esa20240910_models.DeleteSiteOriginClientCertificateRequest,
+    ) -> esa20240910_models.DeleteSiteOriginClientCertificateResponse:
+        """
+        @summary 删除站点回源客户端证书
+        
+        @param request: DeleteSiteOriginClientCertificateRequest
+        @return: DeleteSiteOriginClientCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_site_origin_client_certificate_with_options_async(request, runtime)
+
     def delete_user_delivery_task_with_options(
         self,
         request: esa20240910_models.DeleteUserDeliveryTaskRequest,
@@ -11482,6 +12386,246 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_delivery_task_with_options_async(request, runtime)
+
+    def delete_waf_rule_with_options(
+        self,
+        request: esa20240910_models.DeleteWafRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteWafRuleResponse:
+        """
+        @summary Delete WAF Rule
+        
+        @param request: DeleteWafRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWafRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteWafRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.DeleteWafRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.DeleteWafRuleResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_waf_rule_with_options_async(
+        self,
+        request: esa20240910_models.DeleteWafRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteWafRuleResponse:
+        """
+        @summary Delete WAF Rule
+        
+        @param request: DeleteWafRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWafRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteWafRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.DeleteWafRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.DeleteWafRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_waf_rule(
+        self,
+        request: esa20240910_models.DeleteWafRuleRequest,
+    ) -> esa20240910_models.DeleteWafRuleResponse:
+        """
+        @summary Delete WAF Rule
+        
+        @param request: DeleteWafRuleRequest
+        @return: DeleteWafRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_waf_rule_with_options(request, runtime)
+
+    async def delete_waf_rule_async(
+        self,
+        request: esa20240910_models.DeleteWafRuleRequest,
+    ) -> esa20240910_models.DeleteWafRuleResponse:
+        """
+        @summary Delete WAF Rule
+        
+        @param request: DeleteWafRuleRequest
+        @return: DeleteWafRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_waf_rule_with_options_async(request, runtime)
+
+    def delete_waf_ruleset_with_options(
+        self,
+        request: esa20240910_models.DeleteWafRulesetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteWafRulesetResponse:
+        """
+        @summary Delete WAF Ruleset
+        
+        @param request: DeleteWafRulesetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWafRulesetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteWafRuleset',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.DeleteWafRulesetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.DeleteWafRulesetResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_waf_ruleset_with_options_async(
+        self,
+        request: esa20240910_models.DeleteWafRulesetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteWafRulesetResponse:
+        """
+        @summary Delete WAF Ruleset
+        
+        @param request: DeleteWafRulesetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWafRulesetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteWafRuleset',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.DeleteWafRulesetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.DeleteWafRulesetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_waf_ruleset(
+        self,
+        request: esa20240910_models.DeleteWafRulesetRequest,
+    ) -> esa20240910_models.DeleteWafRulesetResponse:
+        """
+        @summary Delete WAF Ruleset
+        
+        @param request: DeleteWafRulesetRequest
+        @return: DeleteWafRulesetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_waf_ruleset_with_options(request, runtime)
+
+    async def delete_waf_ruleset_async(
+        self,
+        request: esa20240910_models.DeleteWafRulesetRequest,
+    ) -> esa20240910_models.DeleteWafRulesetResponse:
+        """
+        @summary Delete WAF Ruleset
+        
+        @param request: DeleteWafRulesetRequest
+        @return: DeleteWafRulesetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_waf_ruleset_with_options_async(request, runtime)
 
     def delete_waiting_room_with_options(
         self,
@@ -13135,7 +14279,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.EditSiteWafSettingsResponse:
         """
-        @summary Modifies the Web Application Firewall (WAF) configuration of a website, such as the client IP address that is identified by WAF.
+        @summary Edit WAF Configuration for a Site
         
         @param tmp_req: EditSiteWafSettingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13186,7 +14330,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.EditSiteWafSettingsResponse:
         """
-        @summary Modifies the Web Application Firewall (WAF) configuration of a website, such as the client IP address that is identified by WAF.
+        @summary Edit WAF Configuration for a Site
         
         @param tmp_req: EditSiteWafSettingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13236,7 +14380,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.EditSiteWafSettingsRequest,
     ) -> esa20240910_models.EditSiteWafSettingsResponse:
         """
-        @summary Modifies the Web Application Firewall (WAF) configuration of a website, such as the client IP address that is identified by WAF.
+        @summary Edit WAF Configuration for a Site
         
         @param request: EditSiteWafSettingsRequest
         @return: EditSiteWafSettingsResponse
@@ -13249,7 +14393,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.EditSiteWafSettingsRequest,
     ) -> esa20240910_models.EditSiteWafSettingsResponse:
         """
-        @summary Modifies the Web Application Firewall (WAF) configuration of a website, such as the client IP address that is identified by WAF.
+        @summary Edit WAF Configuration for a Site
         
         @param request: EditSiteWafSettingsRequest
         @return: EditSiteWafSettingsResponse
@@ -16897,6 +18041,318 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_network_optimization_with_options_async(request, runtime)
 
+    def get_origin_ca_certificate_with_options(
+        self,
+        request: esa20240910_models.GetOriginCaCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetOriginCaCertificateResponse:
+        """
+        @summary 获取源服务器CA证书信息
+        
+        @param request: GetOriginCaCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOriginCaCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOriginCaCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetOriginCaCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetOriginCaCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_origin_ca_certificate_with_options_async(
+        self,
+        request: esa20240910_models.GetOriginCaCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetOriginCaCertificateResponse:
+        """
+        @summary 获取源服务器CA证书信息
+        
+        @param request: GetOriginCaCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOriginCaCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOriginCaCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetOriginCaCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetOriginCaCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_origin_ca_certificate(
+        self,
+        request: esa20240910_models.GetOriginCaCertificateRequest,
+    ) -> esa20240910_models.GetOriginCaCertificateResponse:
+        """
+        @summary 获取源服务器CA证书信息
+        
+        @param request: GetOriginCaCertificateRequest
+        @return: GetOriginCaCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_origin_ca_certificate_with_options(request, runtime)
+
+    async def get_origin_ca_certificate_async(
+        self,
+        request: esa20240910_models.GetOriginCaCertificateRequest,
+    ) -> esa20240910_models.GetOriginCaCertificateResponse:
+        """
+        @summary 获取源服务器CA证书信息
+        
+        @param request: GetOriginCaCertificateRequest
+        @return: GetOriginCaCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_origin_ca_certificate_with_options_async(request, runtime)
+
+    def get_origin_client_certificate_with_options(
+        self,
+        request: esa20240910_models.GetOriginClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetOriginClientCertificateResponse:
+        """
+        @summary 获取域名回源客户端证书信息
+        
+        @param request: GetOriginClientCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOriginClientCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOriginClientCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetOriginClientCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetOriginClientCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_origin_client_certificate_with_options_async(
+        self,
+        request: esa20240910_models.GetOriginClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetOriginClientCertificateResponse:
+        """
+        @summary 获取域名回源客户端证书信息
+        
+        @param request: GetOriginClientCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOriginClientCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOriginClientCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetOriginClientCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetOriginClientCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_origin_client_certificate(
+        self,
+        request: esa20240910_models.GetOriginClientCertificateRequest,
+    ) -> esa20240910_models.GetOriginClientCertificateResponse:
+        """
+        @summary 获取域名回源客户端证书信息
+        
+        @param request: GetOriginClientCertificateRequest
+        @return: GetOriginClientCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_origin_client_certificate_with_options(request, runtime)
+
+    async def get_origin_client_certificate_async(
+        self,
+        request: esa20240910_models.GetOriginClientCertificateRequest,
+    ) -> esa20240910_models.GetOriginClientCertificateResponse:
+        """
+        @summary 获取域名回源客户端证书信息
+        
+        @param request: GetOriginClientCertificateRequest
+        @return: GetOriginClientCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_origin_client_certificate_with_options_async(request, runtime)
+
+    def get_origin_client_certificate_hostnames_with_options(
+        self,
+        request: esa20240910_models.GetOriginClientCertificateHostnamesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetOriginClientCertificateHostnamesResponse:
+        """
+        @summary 获取域名回源客户端证书绑定的域名列表
+        
+        @param request: GetOriginClientCertificateHostnamesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOriginClientCertificateHostnamesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOriginClientCertificateHostnames',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetOriginClientCertificateHostnamesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetOriginClientCertificateHostnamesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_origin_client_certificate_hostnames_with_options_async(
+        self,
+        request: esa20240910_models.GetOriginClientCertificateHostnamesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetOriginClientCertificateHostnamesResponse:
+        """
+        @summary 获取域名回源客户端证书绑定的域名列表
+        
+        @param request: GetOriginClientCertificateHostnamesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOriginClientCertificateHostnamesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOriginClientCertificateHostnames',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetOriginClientCertificateHostnamesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetOriginClientCertificateHostnamesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_origin_client_certificate_hostnames(
+        self,
+        request: esa20240910_models.GetOriginClientCertificateHostnamesRequest,
+    ) -> esa20240910_models.GetOriginClientCertificateHostnamesResponse:
+        """
+        @summary 获取域名回源客户端证书绑定的域名列表
+        
+        @param request: GetOriginClientCertificateHostnamesRequest
+        @return: GetOriginClientCertificateHostnamesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_origin_client_certificate_hostnames_with_options(request, runtime)
+
+    async def get_origin_client_certificate_hostnames_async(
+        self,
+        request: esa20240910_models.GetOriginClientCertificateHostnamesRequest,
+    ) -> esa20240910_models.GetOriginClientCertificateHostnamesResponse:
+        """
+        @summary 获取域名回源客户端证书绑定的域名列表
+        
+        @param request: GetOriginClientCertificateHostnamesRequest
+        @return: GetOriginClientCertificateHostnamesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_origin_client_certificate_hostnames_with_options_async(request, runtime)
+
     def get_origin_pool_with_options(
         self,
         request: esa20240910_models.GetOriginPoolRequest,
@@ -19121,6 +20577,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_site_name_exclusive_with_options_async(request, runtime)
 
+    def get_site_origin_client_certificate_with_options(
+        self,
+        request: esa20240910_models.GetSiteOriginClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetSiteOriginClientCertificateResponse:
+        """
+        @summary 获取站点回源客户端证书信息
+        
+        @param request: GetSiteOriginClientCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSiteOriginClientCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSiteOriginClientCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetSiteOriginClientCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetSiteOriginClientCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_site_origin_client_certificate_with_options_async(
+        self,
+        request: esa20240910_models.GetSiteOriginClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetSiteOriginClientCertificateResponse:
+        """
+        @summary 获取站点回源客户端证书信息
+        
+        @param request: GetSiteOriginClientCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSiteOriginClientCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSiteOriginClientCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetSiteOriginClientCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetSiteOriginClientCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_site_origin_client_certificate(
+        self,
+        request: esa20240910_models.GetSiteOriginClientCertificateRequest,
+    ) -> esa20240910_models.GetSiteOriginClientCertificateResponse:
+        """
+        @summary 获取站点回源客户端证书信息
+        
+        @param request: GetSiteOriginClientCertificateRequest
+        @return: GetSiteOriginClientCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_site_origin_client_certificate_with_options(request, runtime)
+
+    async def get_site_origin_client_certificate_async(
+        self,
+        request: esa20240910_models.GetSiteOriginClientCertificateRequest,
+    ) -> esa20240910_models.GetSiteOriginClientCertificateResponse:
+        """
+        @summary 获取站点回源客户端证书信息
+        
+        @param request: GetSiteOriginClientCertificateRequest
+        @return: GetSiteOriginClientCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_site_origin_client_certificate_with_options_async(request, runtime)
+
     def get_site_pause_with_options(
         self,
         request: esa20240910_models.GetSitePauseRequest,
@@ -19231,7 +20791,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetSiteWafSettingsResponse:
         """
-        @summary Queries the Web Application Firewall (WAF) configurations of a website.
+        @summary Get WAF Configuration for a Site
         
         @param request: GetSiteWafSettingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19276,7 +20836,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetSiteWafSettingsResponse:
         """
-        @summary Queries the Web Application Firewall (WAF) configurations of a website.
+        @summary Get WAF Configuration for a Site
         
         @param request: GetSiteWafSettingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19320,7 +20880,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetSiteWafSettingsRequest,
     ) -> esa20240910_models.GetSiteWafSettingsResponse:
         """
-        @summary Queries the Web Application Firewall (WAF) configurations of a website.
+        @summary Get WAF Configuration for a Site
         
         @param request: GetSiteWafSettingsRequest
         @return: GetSiteWafSettingsResponse
@@ -19333,7 +20893,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetSiteWafSettingsRequest,
     ) -> esa20240910_models.GetSiteWafSettingsResponse:
         """
-        @summary Queries the Web Application Firewall (WAF) configurations of a website.
+        @summary Get WAF Configuration for a Site
         
         @param request: GetSiteWafSettingsRequest
         @return: GetSiteWafSettingsResponse
@@ -20094,6 +21654,234 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_waf_quota_with_options_async(request, runtime)
+
+    def get_waf_rule_with_options(
+        self,
+        request: esa20240910_models.GetWafRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetWafRuleResponse:
+        """
+        @summary Get Details of a Single WAF Rule
+        
+        @param request: GetWafRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWafRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWafRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetWafRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetWafRuleResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_waf_rule_with_options_async(
+        self,
+        request: esa20240910_models.GetWafRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetWafRuleResponse:
+        """
+        @summary Get Details of a Single WAF Rule
+        
+        @param request: GetWafRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWafRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWafRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetWafRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetWafRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_waf_rule(
+        self,
+        request: esa20240910_models.GetWafRuleRequest,
+    ) -> esa20240910_models.GetWafRuleResponse:
+        """
+        @summary Get Details of a Single WAF Rule
+        
+        @param request: GetWafRuleRequest
+        @return: GetWafRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_waf_rule_with_options(request, runtime)
+
+    async def get_waf_rule_async(
+        self,
+        request: esa20240910_models.GetWafRuleRequest,
+    ) -> esa20240910_models.GetWafRuleResponse:
+        """
+        @summary Get Details of a Single WAF Rule
+        
+        @param request: GetWafRuleRequest
+        @return: GetWafRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_waf_rule_with_options_async(request, runtime)
+
+    def get_waf_ruleset_with_options(
+        self,
+        request: esa20240910_models.GetWafRulesetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetWafRulesetResponse:
+        """
+        @summary Get WAF Ruleset Details
+        
+        @param request: GetWafRulesetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWafRulesetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.phase):
+            query['Phase'] = request.phase
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWafRuleset',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetWafRulesetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetWafRulesetResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_waf_ruleset_with_options_async(
+        self,
+        request: esa20240910_models.GetWafRulesetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetWafRulesetResponse:
+        """
+        @summary Get WAF Ruleset Details
+        
+        @param request: GetWafRulesetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWafRulesetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.phase):
+            query['Phase'] = request.phase
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWafRuleset',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetWafRulesetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetWafRulesetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_waf_ruleset(
+        self,
+        request: esa20240910_models.GetWafRulesetRequest,
+    ) -> esa20240910_models.GetWafRulesetResponse:
+        """
+        @summary Get WAF Ruleset Details
+        
+        @param request: GetWafRulesetRequest
+        @return: GetWafRulesetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_waf_ruleset_with_options(request, runtime)
+
+    async def get_waf_ruleset_async(
+        self,
+        request: esa20240910_models.GetWafRulesetRequest,
+    ) -> esa20240910_models.GetWafRulesetResponse:
+        """
+        @summary Get WAF Ruleset Details
+        
+        @param request: GetWafRulesetRequest
+        @return: GetWafRulesetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_waf_ruleset_with_options_async(request, runtime)
 
     def list_cache_reserve_instances_with_options(
         self,
@@ -22767,7 +24555,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListManagedRulesGroupsResponse:
         """
-        @summary Queries all WAF managed rule groups in your Alibaba Cloud account.
+        @summary List Custom Managed Rule Groups
         
         @param request: ListManagedRulesGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22810,7 +24598,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListManagedRulesGroupsResponse:
         """
-        @summary Queries all WAF managed rule groups in your Alibaba Cloud account.
+        @summary List Custom Managed Rule Groups
         
         @param request: ListManagedRulesGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22852,7 +24640,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListManagedRulesGroupsRequest,
     ) -> esa20240910_models.ListManagedRulesGroupsResponse:
         """
-        @summary Queries all WAF managed rule groups in your Alibaba Cloud account.
+        @summary List Custom Managed Rule Groups
         
         @param request: ListManagedRulesGroupsRequest
         @return: ListManagedRulesGroupsResponse
@@ -22865,7 +24653,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListManagedRulesGroupsRequest,
     ) -> esa20240910_models.ListManagedRulesGroupsResponse:
         """
-        @summary Queries all WAF managed rule groups in your Alibaba Cloud account.
+        @summary List Custom Managed Rule Groups
         
         @param request: ListManagedRulesGroupsRequest
         @return: ListManagedRulesGroupsResponse
@@ -22976,6 +24764,214 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_network_optimizations_with_options_async(request, runtime)
+
+    def list_origin_ca_certificates_with_options(
+        self,
+        request: esa20240910_models.ListOriginCaCertificatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListOriginCaCertificatesResponse:
+        """
+        @summary 查询源服务器CA证书列表
+        
+        @param request: ListOriginCaCertificatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOriginCaCertificatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOriginCaCertificates',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.ListOriginCaCertificatesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.ListOriginCaCertificatesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_origin_ca_certificates_with_options_async(
+        self,
+        request: esa20240910_models.ListOriginCaCertificatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListOriginCaCertificatesResponse:
+        """
+        @summary 查询源服务器CA证书列表
+        
+        @param request: ListOriginCaCertificatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOriginCaCertificatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOriginCaCertificates',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.ListOriginCaCertificatesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.ListOriginCaCertificatesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_origin_ca_certificates(
+        self,
+        request: esa20240910_models.ListOriginCaCertificatesRequest,
+    ) -> esa20240910_models.ListOriginCaCertificatesResponse:
+        """
+        @summary 查询源服务器CA证书列表
+        
+        @param request: ListOriginCaCertificatesRequest
+        @return: ListOriginCaCertificatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_origin_ca_certificates_with_options(request, runtime)
+
+    async def list_origin_ca_certificates_async(
+        self,
+        request: esa20240910_models.ListOriginCaCertificatesRequest,
+    ) -> esa20240910_models.ListOriginCaCertificatesResponse:
+        """
+        @summary 查询源服务器CA证书列表
+        
+        @param request: ListOriginCaCertificatesRequest
+        @return: ListOriginCaCertificatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_origin_ca_certificates_with_options_async(request, runtime)
+
+    def list_origin_client_certificates_with_options(
+        self,
+        request: esa20240910_models.ListOriginClientCertificatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListOriginClientCertificatesResponse:
+        """
+        @summary 查询域名回源客户端证书列表
+        
+        @param request: ListOriginClientCertificatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOriginClientCertificatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOriginClientCertificates',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.ListOriginClientCertificatesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.ListOriginClientCertificatesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_origin_client_certificates_with_options_async(
+        self,
+        request: esa20240910_models.ListOriginClientCertificatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListOriginClientCertificatesResponse:
+        """
+        @summary 查询域名回源客户端证书列表
+        
+        @param request: ListOriginClientCertificatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOriginClientCertificatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOriginClientCertificates',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.ListOriginClientCertificatesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.ListOriginClientCertificatesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_origin_client_certificates(
+        self,
+        request: esa20240910_models.ListOriginClientCertificatesRequest,
+    ) -> esa20240910_models.ListOriginClientCertificatesResponse:
+        """
+        @summary 查询域名回源客户端证书列表
+        
+        @param request: ListOriginClientCertificatesRequest
+        @return: ListOriginClientCertificatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_origin_client_certificates_with_options(request, runtime)
+
+    async def list_origin_client_certificates_async(
+        self,
+        request: esa20240910_models.ListOriginClientCertificatesRequest,
+    ) -> esa20240910_models.ListOriginClientCertificatesResponse:
+        """
+        @summary 查询域名回源客户端证书列表
+        
+        @param request: ListOriginClientCertificatesRequest
+        @return: ListOriginClientCertificatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_origin_client_certificates_with_options_async(request, runtime)
 
     def list_origin_pools_with_options(
         self,
@@ -24687,7 +26683,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWafManagedRulesResponse:
         """
-        @summary Lists all Web Application Firewall (WAF) managed rules or some of them based on specific conditions. You can call this operation to query the details of WAF rules by page.
+        @summary List WAF Managed Rules
         
         @param tmp_req: ListWafManagedRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24746,7 +26742,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWafManagedRulesResponse:
         """
-        @summary Lists all Web Application Firewall (WAF) managed rules or some of them based on specific conditions. You can call this operation to query the details of WAF rules by page.
+        @summary List WAF Managed Rules
         
         @param tmp_req: ListWafManagedRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24804,7 +26800,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWafManagedRulesRequest,
     ) -> esa20240910_models.ListWafManagedRulesResponse:
         """
-        @summary Lists all Web Application Firewall (WAF) managed rules or some of them based on specific conditions. You can call this operation to query the details of WAF rules by page.
+        @summary List WAF Managed Rules
         
         @param request: ListWafManagedRulesRequest
         @return: ListWafManagedRulesResponse
@@ -24817,7 +26813,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWafManagedRulesRequest,
     ) -> esa20240910_models.ListWafManagedRulesResponse:
         """
-        @summary Lists all Web Application Firewall (WAF) managed rules or some of them based on specific conditions. You can call this operation to query the details of WAF rules by page.
+        @summary List WAF Managed Rules
         
         @param request: ListWafManagedRulesRequest
         @return: ListWafManagedRulesResponse
@@ -24831,7 +26827,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWafPhasesResponse:
         """
-        @summary Queries the WAF rule categories that are applied to a website and related rulesets.
+        @summary List WAF Phases
         
         @param request: ListWafPhasesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24874,7 +26870,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWafPhasesResponse:
         """
-        @summary Queries the WAF rule categories that are applied to a website and related rulesets.
+        @summary List WAF Phases
         
         @param request: ListWafPhasesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24916,7 +26912,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWafPhasesRequest,
     ) -> esa20240910_models.ListWafPhasesResponse:
         """
-        @summary Queries the WAF rule categories that are applied to a website and related rulesets.
+        @summary List WAF Phases
         
         @param request: ListWafPhasesRequest
         @return: ListWafPhasesResponse
@@ -24929,7 +26925,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWafPhasesRequest,
     ) -> esa20240910_models.ListWafPhasesResponse:
         """
-        @summary Queries the WAF rule categories that are applied to a website and related rulesets.
+        @summary List WAF Phases
         
         @param request: ListWafPhasesRequest
         @return: ListWafPhasesResponse
@@ -24937,13 +26933,289 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_waf_phases_with_options_async(request, runtime)
 
+    def list_waf_rules_with_options(
+        self,
+        tmp_req: esa20240910_models.ListWafRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListWafRulesResponse:
+        """
+        @summary List WAF Rules
+        
+        @param tmp_req: ListWafRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWafRulesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.ListWafRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.query_args):
+            request.query_args_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_args, 'QueryArgs', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.phase):
+            query['Phase'] = request.phase
+        if not UtilClient.is_unset(request.query_args_shrink):
+            query['QueryArgs'] = request.query_args_shrink
+        if not UtilClient.is_unset(request.ruleset_id):
+            query['RulesetId'] = request.ruleset_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWafRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.ListWafRulesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.ListWafRulesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_waf_rules_with_options_async(
+        self,
+        tmp_req: esa20240910_models.ListWafRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListWafRulesResponse:
+        """
+        @summary List WAF Rules
+        
+        @param tmp_req: ListWafRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWafRulesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.ListWafRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.query_args):
+            request.query_args_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_args, 'QueryArgs', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.phase):
+            query['Phase'] = request.phase
+        if not UtilClient.is_unset(request.query_args_shrink):
+            query['QueryArgs'] = request.query_args_shrink
+        if not UtilClient.is_unset(request.ruleset_id):
+            query['RulesetId'] = request.ruleset_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWafRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.ListWafRulesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.ListWafRulesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_waf_rules(
+        self,
+        request: esa20240910_models.ListWafRulesRequest,
+    ) -> esa20240910_models.ListWafRulesResponse:
+        """
+        @summary List WAF Rules
+        
+        @param request: ListWafRulesRequest
+        @return: ListWafRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_waf_rules_with_options(request, runtime)
+
+    async def list_waf_rules_async(
+        self,
+        request: esa20240910_models.ListWafRulesRequest,
+    ) -> esa20240910_models.ListWafRulesResponse:
+        """
+        @summary List WAF Rules
+        
+        @param request: ListWafRulesRequest
+        @return: ListWafRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_waf_rules_with_options_async(request, runtime)
+
+    def list_waf_rulesets_with_options(
+        self,
+        tmp_req: esa20240910_models.ListWafRulesetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListWafRulesetsResponse:
+        """
+        @summary List WAF Rule Sets
+        
+        @param tmp_req: ListWafRulesetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWafRulesetsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.ListWafRulesetsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.query_args):
+            request.query_args_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_args, 'QueryArgs', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.phase):
+            query['Phase'] = request.phase
+        if not UtilClient.is_unset(request.query_args_shrink):
+            query['QueryArgs'] = request.query_args_shrink
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWafRulesets',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.ListWafRulesetsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.ListWafRulesetsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_waf_rulesets_with_options_async(
+        self,
+        tmp_req: esa20240910_models.ListWafRulesetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListWafRulesetsResponse:
+        """
+        @summary List WAF Rule Sets
+        
+        @param tmp_req: ListWafRulesetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWafRulesetsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.ListWafRulesetsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.query_args):
+            request.query_args_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_args, 'QueryArgs', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.phase):
+            query['Phase'] = request.phase
+        if not UtilClient.is_unset(request.query_args_shrink):
+            query['QueryArgs'] = request.query_args_shrink
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWafRulesets',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.ListWafRulesetsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.ListWafRulesetsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_waf_rulesets(
+        self,
+        request: esa20240910_models.ListWafRulesetsRequest,
+    ) -> esa20240910_models.ListWafRulesetsResponse:
+        """
+        @summary List WAF Rule Sets
+        
+        @param request: ListWafRulesetsRequest
+        @return: ListWafRulesetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_waf_rulesets_with_options(request, runtime)
+
+    async def list_waf_rulesets_async(
+        self,
+        request: esa20240910_models.ListWafRulesetsRequest,
+    ) -> esa20240910_models.ListWafRulesetsResponse:
+        """
+        @summary List WAF Rule Sets
+        
+        @param request: ListWafRulesetsRequest
+        @return: ListWafRulesetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_waf_rulesets_with_options_async(request, runtime)
+
     def list_waf_template_rules_with_options(
         self,
         tmp_req: esa20240910_models.ListWafTemplateRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWafTemplateRulesResponse:
         """
-        @summary Queries template rules in Web Application Firewall (WAF). In most cases, these rules are pre-defined rulesets that are used to quickly enable protection against common types of attacks.
+        @summary List WAF Template Rules
         
         @param tmp_req: ListWafTemplateRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24992,7 +27264,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWafTemplateRulesResponse:
         """
-        @summary Queries template rules in Web Application Firewall (WAF). In most cases, these rules are pre-defined rulesets that are used to quickly enable protection against common types of attacks.
+        @summary List WAF Template Rules
         
         @param tmp_req: ListWafTemplateRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25040,7 +27312,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWafTemplateRulesRequest,
     ) -> esa20240910_models.ListWafTemplateRulesResponse:
         """
-        @summary Queries template rules in Web Application Firewall (WAF). In most cases, these rules are pre-defined rulesets that are used to quickly enable protection against common types of attacks.
+        @summary List WAF Template Rules
         
         @param request: ListWafTemplateRulesRequest
         @return: ListWafTemplateRulesResponse
@@ -25053,7 +27325,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWafTemplateRulesRequest,
     ) -> esa20240910_models.ListWafTemplateRulesResponse:
         """
-        @summary Queries template rules in Web Application Firewall (WAF). In most cases, these rules are pre-defined rulesets that are used to quickly enable protection against common types of attacks.
+        @summary List WAF Template Rules
         
         @param request: ListWafTemplateRulesRequest
         @return: ListWafTemplateRulesResponse
@@ -25067,7 +27339,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWafUsageOfRulesResponse:
         """
-        @summary Queries the usage details of WAF rules.
+        @summary List WAF Rule Usage
         
         @param request: ListWafUsageOfRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25110,7 +27382,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWafUsageOfRulesResponse:
         """
-        @summary Queries the usage details of WAF rules.
+        @summary List WAF Rule Usage
         
         @param request: ListWafUsageOfRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25152,7 +27424,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWafUsageOfRulesRequest,
     ) -> esa20240910_models.ListWafUsageOfRulesResponse:
         """
-        @summary Queries the usage details of WAF rules.
+        @summary List WAF Rule Usage
         
         @param request: ListWafUsageOfRulesRequest
         @return: ListWafUsageOfRulesResponse
@@ -25165,7 +27437,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWafUsageOfRulesRequest,
     ) -> esa20240910_models.ListWafUsageOfRulesResponse:
         """
-        @summary Queries the usage details of WAF rules.
+        @summary List WAF Rule Usage
         
         @param request: ListWafUsageOfRulesRequest
         @return: ListWafUsageOfRulesResponse
@@ -27821,6 +30093,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_http_ddo_sattack_protection_with_options_async(request, runtime)
 
+    def set_origin_client_certificate_hostnames_with_options(
+        self,
+        tmp_req: esa20240910_models.SetOriginClientCertificateHostnamesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.SetOriginClientCertificateHostnamesResponse:
+        """
+        @summary 为域名回源客户端证书绑定域名
+        
+        @param tmp_req: SetOriginClientCertificateHostnamesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetOriginClientCertificateHostnamesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.SetOriginClientCertificateHostnamesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.hostnames):
+            request.hostnames_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hostnames, 'Hostnames', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.hostnames_shrink):
+            body['Hostnames'] = request.hostnames_shrink
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.site_id):
+            body['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetOriginClientCertificateHostnames',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.SetOriginClientCertificateHostnamesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.SetOriginClientCertificateHostnamesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def set_origin_client_certificate_hostnames_with_options_async(
+        self,
+        tmp_req: esa20240910_models.SetOriginClientCertificateHostnamesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.SetOriginClientCertificateHostnamesResponse:
+        """
+        @summary 为域名回源客户端证书绑定域名
+        
+        @param tmp_req: SetOriginClientCertificateHostnamesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetOriginClientCertificateHostnamesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.SetOriginClientCertificateHostnamesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.hostnames):
+            request.hostnames_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hostnames, 'Hostnames', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.hostnames_shrink):
+            body['Hostnames'] = request.hostnames_shrink
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.site_id):
+            body['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetOriginClientCertificateHostnames',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.SetOriginClientCertificateHostnamesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.SetOriginClientCertificateHostnamesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def set_origin_client_certificate_hostnames(
+        self,
+        request: esa20240910_models.SetOriginClientCertificateHostnamesRequest,
+    ) -> esa20240910_models.SetOriginClientCertificateHostnamesResponse:
+        """
+        @summary 为域名回源客户端证书绑定域名
+        
+        @param request: SetOriginClientCertificateHostnamesRequest
+        @return: SetOriginClientCertificateHostnamesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_origin_client_certificate_hostnames_with_options(request, runtime)
+
+    async def set_origin_client_certificate_hostnames_async(
+        self,
+        request: esa20240910_models.SetOriginClientCertificateHostnamesRequest,
+    ) -> esa20240910_models.SetOriginClientCertificateHostnamesResponse:
+        """
+        @summary 为域名回源客户端证书绑定域名
+        
+        @param request: SetOriginClientCertificateHostnamesRequest
+        @return: SetOriginClientCertificateHostnamesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_origin_client_certificate_hostnames_with_options_async(request, runtime)
+
     def start_scheduled_preload_execution_with_options(
         self,
         request: esa20240910_models.StartScheduledPreloadExecutionRequest,
@@ -28341,6 +30737,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.serve_stale):
             query['ServeStale'] = request.serve_stale
         if not UtilClient.is_unset(request.site_id):
@@ -28430,6 +30828,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.serve_stale):
             query['ServeStale'] = request.serve_stale
         if not UtilClient.is_unset(request.site_id):
@@ -28751,6 +31151,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.zstd):
@@ -28806,6 +31208,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.zstd):
@@ -29377,6 +31781,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         req = open_api_models.OpenApiRequest(
@@ -29432,6 +31838,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         req = open_api_models.OpenApiRequest(
@@ -29513,6 +31921,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         req = open_api_models.OpenApiRequest(
@@ -29568,6 +31978,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         req = open_api_models.OpenApiRequest(
@@ -29663,6 +32075,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         req = open_api_models.OpenApiRequest(
@@ -29732,6 +32146,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         req = open_api_models.OpenApiRequest(
@@ -29819,6 +32235,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.tls_10):
@@ -29888,6 +32306,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.tls_10):
@@ -29965,6 +32385,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         req = open_api_models.OpenApiRequest(
@@ -30008,6 +32430,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         req = open_api_models.OpenApiRequest(
@@ -30085,6 +32509,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         req = open_api_models.OpenApiRequest(
@@ -30136,6 +32562,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         req = open_api_models.OpenApiRequest(
@@ -30659,6 +33087,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.smart_routing):
@@ -30718,6 +33148,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.smart_routing):
@@ -31167,6 +33599,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         req = open_api_models.OpenApiRequest(
@@ -31236,6 +33670,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         req = open_api_models.OpenApiRequest(
@@ -31749,6 +34185,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.status_code):
@@ -31806,6 +34244,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.status_code):
@@ -31893,6 +34333,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.uri):
@@ -31950,6 +34392,8 @@ class Client(OpenApiClient):
             query['RuleEnable'] = request.rule_enable
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.uri):
@@ -33537,6 +35981,270 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_user_delivery_task_status_with_options_async(request, runtime)
 
+    def update_waf_rule_with_options(
+        self,
+        tmp_req: esa20240910_models.UpdateWafRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateWafRuleResponse:
+        """
+        @summary Update WAF Rule Page
+        
+        @param tmp_req: UpdateWafRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWafRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.UpdateWafRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.config):
+            request.config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config, 'Config', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        body = {}
+        if not UtilClient.is_unset(request.config_shrink):
+            body['Config'] = request.config_shrink
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.position):
+            body['Position'] = request.position
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWafRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UpdateWafRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UpdateWafRuleResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_waf_rule_with_options_async(
+        self,
+        tmp_req: esa20240910_models.UpdateWafRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateWafRuleResponse:
+        """
+        @summary Update WAF Rule Page
+        
+        @param tmp_req: UpdateWafRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWafRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.UpdateWafRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.config):
+            request.config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config, 'Config', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        body = {}
+        if not UtilClient.is_unset(request.config_shrink):
+            body['Config'] = request.config_shrink
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.position):
+            body['Position'] = request.position
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWafRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UpdateWafRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UpdateWafRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_waf_rule(
+        self,
+        request: esa20240910_models.UpdateWafRuleRequest,
+    ) -> esa20240910_models.UpdateWafRuleResponse:
+        """
+        @summary Update WAF Rule Page
+        
+        @param request: UpdateWafRuleRequest
+        @return: UpdateWafRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_waf_rule_with_options(request, runtime)
+
+    async def update_waf_rule_async(
+        self,
+        request: esa20240910_models.UpdateWafRuleRequest,
+    ) -> esa20240910_models.UpdateWafRuleResponse:
+        """
+        @summary Update WAF Rule Page
+        
+        @param request: UpdateWafRuleRequest
+        @return: UpdateWafRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_waf_rule_with_options_async(request, runtime)
+
+    def update_waf_ruleset_with_options(
+        self,
+        request: esa20240910_models.UpdateWafRulesetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateWafRulesetResponse:
+        """
+        @summary Update WAF Ruleset
+        
+        @param request: UpdateWafRulesetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWafRulesetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWafRuleset',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UpdateWafRulesetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UpdateWafRulesetResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_waf_ruleset_with_options_async(
+        self,
+        request: esa20240910_models.UpdateWafRulesetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateWafRulesetResponse:
+        """
+        @summary Update WAF Ruleset
+        
+        @param request: UpdateWafRulesetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWafRulesetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWafRuleset',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UpdateWafRulesetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UpdateWafRulesetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_waf_ruleset(
+        self,
+        request: esa20240910_models.UpdateWafRulesetRequest,
+    ) -> esa20240910_models.UpdateWafRulesetResponse:
+        """
+        @summary Update WAF Ruleset
+        
+        @param request: UpdateWafRulesetRequest
+        @return: UpdateWafRulesetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_waf_ruleset_with_options(request, runtime)
+
+    async def update_waf_ruleset_async(
+        self,
+        request: esa20240910_models.UpdateWafRulesetRequest,
+    ) -> esa20240910_models.UpdateWafRulesetResponse:
+        """
+        @summary Update WAF Ruleset
+        
+        @param request: UpdateWafRulesetRequest
+        @return: UpdateWafRulesetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_waf_ruleset_with_options_async(request, runtime)
+
     def update_waiting_room_with_options(
         self,
         tmp_req: esa20240910_models.UpdateWaitingRoomRequest,
@@ -34432,6 +37140,370 @@ class Client(OpenApiClient):
             upload_file_req.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         upload_file_resp = await self.upload_file_with_options_async(upload_file_req, runtime)
         return upload_file_resp
+
+    def upload_origin_ca_certificate_with_options(
+        self,
+        request: esa20240910_models.UploadOriginCaCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UploadOriginCaCertificateResponse:
+        """
+        @summary 上传源服务器CA证书
+        
+        @param request: UploadOriginCaCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadOriginCaCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.certificate):
+            body['Certificate'] = request.certificate
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.site_id):
+            body['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UploadOriginCaCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UploadOriginCaCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UploadOriginCaCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def upload_origin_ca_certificate_with_options_async(
+        self,
+        request: esa20240910_models.UploadOriginCaCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UploadOriginCaCertificateResponse:
+        """
+        @summary 上传源服务器CA证书
+        
+        @param request: UploadOriginCaCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadOriginCaCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.certificate):
+            body['Certificate'] = request.certificate
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.site_id):
+            body['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UploadOriginCaCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UploadOriginCaCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UploadOriginCaCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def upload_origin_ca_certificate(
+        self,
+        request: esa20240910_models.UploadOriginCaCertificateRequest,
+    ) -> esa20240910_models.UploadOriginCaCertificateResponse:
+        """
+        @summary 上传源服务器CA证书
+        
+        @param request: UploadOriginCaCertificateRequest
+        @return: UploadOriginCaCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.upload_origin_ca_certificate_with_options(request, runtime)
+
+    async def upload_origin_ca_certificate_async(
+        self,
+        request: esa20240910_models.UploadOriginCaCertificateRequest,
+    ) -> esa20240910_models.UploadOriginCaCertificateResponse:
+        """
+        @summary 上传源服务器CA证书
+        
+        @param request: UploadOriginCaCertificateRequest
+        @return: UploadOriginCaCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.upload_origin_ca_certificate_with_options_async(request, runtime)
+
+    def upload_origin_client_certificate_with_options(
+        self,
+        request: esa20240910_models.UploadOriginClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UploadOriginClientCertificateResponse:
+        """
+        @summary 上传域名回源客户端证书
+        
+        @param request: UploadOriginClientCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadOriginClientCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        body = {}
+        if not UtilClient.is_unset(request.certificate):
+            body['Certificate'] = request.certificate
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.private_key):
+            body['PrivateKey'] = request.private_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UploadOriginClientCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UploadOriginClientCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UploadOriginClientCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def upload_origin_client_certificate_with_options_async(
+        self,
+        request: esa20240910_models.UploadOriginClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UploadOriginClientCertificateResponse:
+        """
+        @summary 上传域名回源客户端证书
+        
+        @param request: UploadOriginClientCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadOriginClientCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        body = {}
+        if not UtilClient.is_unset(request.certificate):
+            body['Certificate'] = request.certificate
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.private_key):
+            body['PrivateKey'] = request.private_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UploadOriginClientCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UploadOriginClientCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UploadOriginClientCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def upload_origin_client_certificate(
+        self,
+        request: esa20240910_models.UploadOriginClientCertificateRequest,
+    ) -> esa20240910_models.UploadOriginClientCertificateResponse:
+        """
+        @summary 上传域名回源客户端证书
+        
+        @param request: UploadOriginClientCertificateRequest
+        @return: UploadOriginClientCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.upload_origin_client_certificate_with_options(request, runtime)
+
+    async def upload_origin_client_certificate_async(
+        self,
+        request: esa20240910_models.UploadOriginClientCertificateRequest,
+    ) -> esa20240910_models.UploadOriginClientCertificateResponse:
+        """
+        @summary 上传域名回源客户端证书
+        
+        @param request: UploadOriginClientCertificateRequest
+        @return: UploadOriginClientCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.upload_origin_client_certificate_with_options_async(request, runtime)
+
+    def upload_site_origin_client_certificate_with_options(
+        self,
+        request: esa20240910_models.UploadSiteOriginClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UploadSiteOriginClientCertificateResponse:
+        """
+        @summary Upload site origin client certificate
+        
+        @param request: UploadSiteOriginClientCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadSiteOriginClientCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        body = {}
+        if not UtilClient.is_unset(request.certificate):
+            body['Certificate'] = request.certificate
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.private_key):
+            body['PrivateKey'] = request.private_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UploadSiteOriginClientCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UploadSiteOriginClientCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UploadSiteOriginClientCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def upload_site_origin_client_certificate_with_options_async(
+        self,
+        request: esa20240910_models.UploadSiteOriginClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UploadSiteOriginClientCertificateResponse:
+        """
+        @summary Upload site origin client certificate
+        
+        @param request: UploadSiteOriginClientCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadSiteOriginClientCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        body = {}
+        if not UtilClient.is_unset(request.certificate):
+            body['Certificate'] = request.certificate
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.private_key):
+            body['PrivateKey'] = request.private_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UploadSiteOriginClientCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UploadSiteOriginClientCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UploadSiteOriginClientCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def upload_site_origin_client_certificate(
+        self,
+        request: esa20240910_models.UploadSiteOriginClientCertificateRequest,
+    ) -> esa20240910_models.UploadSiteOriginClientCertificateResponse:
+        """
+        @summary Upload site origin client certificate
+        
+        @param request: UploadSiteOriginClientCertificateRequest
+        @return: UploadSiteOriginClientCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.upload_site_origin_client_certificate_with_options(request, runtime)
+
+    async def upload_site_origin_client_certificate_async(
+        self,
+        request: esa20240910_models.UploadSiteOriginClientCertificateRequest,
+    ) -> esa20240910_models.UploadSiteOriginClientCertificateResponse:
+        """
+        @summary Upload site origin client certificate
+        
+        @param request: UploadSiteOriginClientCertificateRequest
+        @return: UploadSiteOriginClientCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.upload_site_origin_client_certificate_with_options_async(request, runtime)
 
     def verify_site_with_options(
         self,

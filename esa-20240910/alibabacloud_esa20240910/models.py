@@ -3427,6 +3427,232 @@ class BatchCreateRecordsResponse(TeaModel):
         return self
 
 
+class BatchCreateWafRulesRequest(TeaModel):
+    def __init__(
+        self,
+        configs: List[WafRuleConfig] = None,
+        phase: str = None,
+        ruleset_id: int = None,
+        shared: WafBatchRuleShared = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        # A list of configurations for each rule, specifying detailed configurations for each rule.
+        self.configs = configs
+        # WAF rule type, with values:
+        # 
+        # - **http_anti_scan**: Scan protection.
+        # - **http_bot**: Bots.
+        self.phase = phase
+        # Ruleset ID.
+        self.ruleset_id = ruleset_id
+        # Shared configuration for multiple rules, specifying common attributes of multiple rules.
+        self.shared = shared
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        self.site_id = site_id
+        # Site version.
+        self.site_version = site_version
+
+    def validate(self):
+        if self.configs:
+            for k in self.configs:
+                if k:
+                    k.validate()
+        if self.shared:
+            self.shared.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Configs'] = []
+        if self.configs is not None:
+            for k in self.configs:
+                result['Configs'].append(k.to_map() if k else None)
+        if self.phase is not None:
+            result['Phase'] = self.phase
+        if self.ruleset_id is not None:
+            result['RulesetId'] = self.ruleset_id
+        if self.shared is not None:
+            result['Shared'] = self.shared.to_map()
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.configs = []
+        if m.get('Configs') is not None:
+            for k in m.get('Configs'):
+                temp_model = WafRuleConfig()
+                self.configs.append(temp_model.from_map(k))
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+        if m.get('RulesetId') is not None:
+            self.ruleset_id = m.get('RulesetId')
+        if m.get('Shared') is not None:
+            temp_model = WafBatchRuleShared()
+            self.shared = temp_model.from_map(m['Shared'])
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class BatchCreateWafRulesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        configs_shrink: str = None,
+        phase: str = None,
+        ruleset_id: int = None,
+        shared_shrink: str = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        # A list of configurations for each rule, specifying detailed configurations for each rule.
+        self.configs_shrink = configs_shrink
+        # WAF rule type, with values:
+        # 
+        # - **http_anti_scan**: Scan protection.
+        # - **http_bot**: Bots.
+        self.phase = phase
+        # Ruleset ID.
+        self.ruleset_id = ruleset_id
+        # Shared configuration for multiple rules, specifying common attributes of multiple rules.
+        self.shared_shrink = shared_shrink
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        self.site_id = site_id
+        # Site version.
+        self.site_version = site_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configs_shrink is not None:
+            result['Configs'] = self.configs_shrink
+        if self.phase is not None:
+            result['Phase'] = self.phase
+        if self.ruleset_id is not None:
+            result['RulesetId'] = self.ruleset_id
+        if self.shared_shrink is not None:
+            result['Shared'] = self.shared_shrink
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Configs') is not None:
+            self.configs_shrink = m.get('Configs')
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+        if m.get('RulesetId') is not None:
+            self.ruleset_id = m.get('RulesetId')
+        if m.get('Shared') is not None:
+            self.shared_shrink = m.get('Shared')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class BatchCreateWafRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        ids: List[int] = None,
+        request_id: str = None,
+        ruleset_id: int = None,
+    ):
+        # ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+        self.ids = ids
+        # Request ID.
+        self.request_id = request_id
+        # ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) interface.
+        self.ruleset_id = ruleset_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.ruleset_id is not None:
+            result['RulesetId'] = self.ruleset_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RulesetId') is not None:
+            self.ruleset_id = m.get('RulesetId')
+        return self
+
+
+class BatchCreateWafRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchCreateWafRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchCreateWafRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class BatchDeleteKvRequest(TeaModel):
     def __init__(
         self,
@@ -3755,9 +3981,9 @@ class BatchGetExpressionFieldsRequestExpressions(TeaModel):
         expression: str = None,
         id: int = None,
     ):
-        # The content of the regular expression.
+        # Content of the expression.
         self.expression = expression
-        # The ID of the regular expression.
+        # The sequence number of the expression.
         self.id = id
 
     def validate(self):
@@ -3791,11 +4017,11 @@ class BatchGetExpressionFieldsRequest(TeaModel):
         phase: str = None,
         site_id: int = None,
     ):
-        # The regular expressions.
+        # List of expressions.
         self.expressions = expressions
-        # The WAF rule category.
+        # WAF Phase
         self.phase = phase
-        # The website ID.
+        # Site ID
         self.site_id = site_id
 
     def validate(self):
@@ -3841,11 +4067,11 @@ class BatchGetExpressionFieldsShrinkRequest(TeaModel):
         phase: str = None,
         site_id: int = None,
     ):
-        # The regular expressions.
+        # List of expressions.
         self.expressions_shrink = expressions_shrink
-        # The WAF rule category.
+        # WAF Phase
         self.phase = phase
-        # The website ID.
+        # Site ID
         self.site_id = site_id
 
     def validate(self):
@@ -3882,9 +4108,9 @@ class BatchGetExpressionFieldsResponseBodyFields(TeaModel):
         fields: List[str] = None,
         id: str = None,
     ):
-        # The fields that match the regular expression.
+        # List of match fields for a single expression.
         self.fields = fields
-        # The ID of the regular expression, which corresponds to the expression ID in the request parameter.
+        # ID of the expression, corresponding to the ID in the input parameters.
         self.id = id
 
     def validate(self):
@@ -3917,9 +4143,9 @@ class BatchGetExpressionFieldsResponseBody(TeaModel):
         fields: List[BatchGetExpressionFieldsResponseBodyFields] = None,
         request_id: str = None,
     ):
-        # The fields that match the regular expressions.
+        # List of match fields.
         self.fields = fields
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4374,6 +4600,212 @@ class BatchPutKvWithHighCapacityResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BatchPutKvWithHighCapacityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BatchUpdateWafRulesRequest(TeaModel):
+    def __init__(
+        self,
+        configs: List[WafRuleConfig] = None,
+        phase: str = None,
+        ruleset_id: int = None,
+        shared: WafBatchRuleShared = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        # The configurations of rules.
+        self.configs = configs
+        # The WAF rule category.
+        self.phase = phase
+        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
+        self.ruleset_id = ruleset_id
+        # The configurations shared by multiple rules.
+        self.shared = shared
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        self.site_id = site_id
+        # The version of the website.
+        self.site_version = site_version
+
+    def validate(self):
+        if self.configs:
+            for k in self.configs:
+                if k:
+                    k.validate()
+        if self.shared:
+            self.shared.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Configs'] = []
+        if self.configs is not None:
+            for k in self.configs:
+                result['Configs'].append(k.to_map() if k else None)
+        if self.phase is not None:
+            result['Phase'] = self.phase
+        if self.ruleset_id is not None:
+            result['RulesetId'] = self.ruleset_id
+        if self.shared is not None:
+            result['Shared'] = self.shared.to_map()
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.configs = []
+        if m.get('Configs') is not None:
+            for k in m.get('Configs'):
+                temp_model = WafRuleConfig()
+                self.configs.append(temp_model.from_map(k))
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+        if m.get('RulesetId') is not None:
+            self.ruleset_id = m.get('RulesetId')
+        if m.get('Shared') is not None:
+            temp_model = WafBatchRuleShared()
+            self.shared = temp_model.from_map(m['Shared'])
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class BatchUpdateWafRulesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        configs_shrink: str = None,
+        phase: str = None,
+        ruleset_id: int = None,
+        shared_shrink: str = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        # The configurations of rules.
+        self.configs_shrink = configs_shrink
+        # The WAF rule category.
+        self.phase = phase
+        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
+        self.ruleset_id = ruleset_id
+        # The configurations shared by multiple rules.
+        self.shared_shrink = shared_shrink
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        self.site_id = site_id
+        # The version of the website.
+        self.site_version = site_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configs_shrink is not None:
+            result['Configs'] = self.configs_shrink
+        if self.phase is not None:
+            result['Phase'] = self.phase
+        if self.ruleset_id is not None:
+            result['RulesetId'] = self.ruleset_id
+        if self.shared_shrink is not None:
+            result['Shared'] = self.shared_shrink
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Configs') is not None:
+            self.configs_shrink = m.get('Configs')
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+        if m.get('RulesetId') is not None:
+            self.ruleset_id = m.get('RulesetId')
+        if m.get('Shared') is not None:
+            self.shared_shrink = m.get('Shared')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class BatchUpdateWafRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class BatchUpdateWafRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchUpdateWafRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchUpdateWafRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5191,6 +5623,7 @@ class CreateCacheRuleRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         serve_stale: str = None,
         site_id: int = None,
         site_version: int = None,
@@ -5256,6 +5689,7 @@ class CreateCacheRuleRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Serve stale cache. When enabled, the node can still use the expired cached files to respond to user requests even if the origin server is unavailable. Value range:
         # - on: Enable.
         # - off: Disable.
@@ -5328,6 +5762,8 @@ class CreateCacheRuleRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.serve_stale is not None:
             result['ServeStale'] = self.serve_stale
         if self.site_id is not None:
@@ -5382,6 +5818,8 @@ class CreateCacheRuleRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('ServeStale') is not None:
             self.serve_stale = m.get('ServeStale')
         if m.get('SiteId') is not None:
@@ -5696,6 +6134,7 @@ class CreateCompressionRuleRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
         site_version: int = None,
         zstd: str = None,
@@ -5720,6 +6159,7 @@ class CreateCompressionRuleRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
@@ -5751,6 +6191,8 @@ class CreateCompressionRuleRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         if self.site_version is not None:
@@ -5771,6 +6213,8 @@ class CreateCompressionRuleRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         if m.get('SiteVersion') is not None:
@@ -6940,6 +7384,7 @@ class CreateHttpRequestHeaderModificationRuleRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
         site_version: int = None,
     ):
@@ -6957,6 +7402,7 @@ class CreateHttpRequestHeaderModificationRuleRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
         # This parameter is required.
@@ -6986,6 +7432,8 @@ class CreateHttpRequestHeaderModificationRuleRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         if self.site_version is not None:
@@ -7005,6 +7453,8 @@ class CreateHttpRequestHeaderModificationRuleRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         if m.get('SiteVersion') is not None:
@@ -7019,6 +7469,7 @@ class CreateHttpRequestHeaderModificationRuleShrinkRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
         site_version: int = None,
     ):
@@ -7036,6 +7487,7 @@ class CreateHttpRequestHeaderModificationRuleShrinkRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
         # This parameter is required.
@@ -7060,6 +7512,8 @@ class CreateHttpRequestHeaderModificationRuleShrinkRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         if self.site_version is not None:
@@ -7076,6 +7530,8 @@ class CreateHttpRequestHeaderModificationRuleShrinkRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         if m.get('SiteVersion') is not None:
@@ -7216,6 +7672,7 @@ class CreateHttpResponseHeaderModificationRuleRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
         site_version: int = None,
     ):
@@ -7233,6 +7690,7 @@ class CreateHttpResponseHeaderModificationRuleRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID. You can obtain this by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         # 
         # This parameter is required.
@@ -7262,6 +7720,8 @@ class CreateHttpResponseHeaderModificationRuleRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         if self.site_version is not None:
@@ -7281,6 +7741,8 @@ class CreateHttpResponseHeaderModificationRuleRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         if m.get('SiteVersion') is not None:
@@ -7295,6 +7757,7 @@ class CreateHttpResponseHeaderModificationRuleShrinkRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
         site_version: int = None,
     ):
@@ -7312,6 +7775,7 @@ class CreateHttpResponseHeaderModificationRuleShrinkRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID. You can obtain this by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         # 
         # This parameter is required.
@@ -7336,6 +7800,8 @@ class CreateHttpResponseHeaderModificationRuleShrinkRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         if self.site_version is not None:
@@ -7352,6 +7818,8 @@ class CreateHttpResponseHeaderModificationRuleShrinkRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         if m.get('SiteVersion') is not None:
@@ -7451,6 +7919,7 @@ class CreateHttpsApplicationConfigurationRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
         site_version: int = None,
     ):
@@ -7502,6 +7971,7 @@ class CreateHttpsApplicationConfigurationRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
         # This parameter is required.
@@ -7544,6 +8014,8 @@ class CreateHttpsApplicationConfigurationRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         if self.site_version is not None:
@@ -7578,6 +8050,8 @@ class CreateHttpsApplicationConfigurationRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         if m.get('SiteVersion') is not None:
@@ -7673,6 +8147,7 @@ class CreateHttpsBasicConfigurationRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
         tls_10: str = None,
         tls_11: str = None,
@@ -7712,6 +8187,7 @@ class CreateHttpsBasicConfigurationRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
         # 
         # This parameter is required.
@@ -7760,6 +8236,8 @@ class CreateHttpsBasicConfigurationRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         if self.tls_10 is not None:
@@ -7792,6 +8270,8 @@ class CreateHttpsBasicConfigurationRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         if m.get('Tls10') is not None:
@@ -7888,6 +8368,7 @@ class CreateImageTransformRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
         site_version: int = None,
     ):
@@ -7905,6 +8386,7 @@ class CreateImageTransformRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
@@ -7929,6 +8411,8 @@ class CreateImageTransformRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         if self.site_version is not None:
@@ -7945,6 +8429,8 @@ class CreateImageTransformRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         if m.get('SiteVersion') is not None:
@@ -9045,6 +9531,7 @@ class CreateNetworkOptimizationRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
         site_version: int = None,
         smart_routing: str = None,
@@ -9069,6 +9556,7 @@ class CreateNetworkOptimizationRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
         # 
         # This parameter is required.
@@ -9105,6 +9593,8 @@ class CreateNetworkOptimizationRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         if self.site_version is not None:
@@ -9129,6 +9619,8 @@ class CreateNetworkOptimizationRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         if m.get('SiteVersion') is not None:
@@ -9669,6 +10161,7 @@ class CreateOriginRuleRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
         site_version: int = None,
     ):
@@ -9711,6 +10204,7 @@ class CreateOriginRuleRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding global configurations.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
         # This parameter is required.
@@ -9753,6 +10247,8 @@ class CreateOriginRuleRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         if self.site_version is not None:
@@ -9787,6 +10283,8 @@ class CreateOriginRuleRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         if m.get('SiteVersion') is not None:
@@ -10536,6 +11034,7 @@ class CreateRedirectRuleRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
         site_version: int = None,
         status_code: str = None,
@@ -10559,6 +11058,7 @@ class CreateRedirectRuleRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
@@ -10604,6 +11104,8 @@ class CreateRedirectRuleRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         if self.site_version is not None:
@@ -10626,6 +11128,8 @@ class CreateRedirectRuleRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         if m.get('SiteVersion') is not None:
@@ -10724,6 +11228,7 @@ class CreateRewriteUrlRuleRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
         site_version: int = None,
         uri: str = None,
@@ -10750,6 +11255,7 @@ class CreateRewriteUrlRuleRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
         # This parameter is required.
@@ -10780,6 +11286,8 @@ class CreateRewriteUrlRuleRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         if self.site_version is not None:
@@ -10802,6 +11310,8 @@ class CreateRewriteUrlRuleRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         if m.get('SiteVersion') is not None:
@@ -13936,6 +14446,340 @@ class CreateUserDeliveryTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateUserDeliveryTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateWafRuleRequest(TeaModel):
+    def __init__(
+        self,
+        config: WafRuleConfig = None,
+        phase: str = None,
+        ruleset_id: int = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        # Rule configuration, specifying the detailed configuration for creating a rule.
+        self.config = config
+        # WAF operation phase.
+        # 
+        # This parameter is required.
+        self.phase = phase
+        # Ruleset ID.
+        self.ruleset_id = ruleset_id
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+        # Site version.
+        self.site_version = site_version
+
+    def validate(self):
+        if self.config:
+            self.config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config.to_map()
+        if self.phase is not None:
+            result['Phase'] = self.phase
+        if self.ruleset_id is not None:
+            result['RulesetId'] = self.ruleset_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            temp_model = WafRuleConfig()
+            self.config = temp_model.from_map(m['Config'])
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+        if m.get('RulesetId') is not None:
+            self.ruleset_id = m.get('RulesetId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class CreateWafRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        config_shrink: str = None,
+        phase: str = None,
+        ruleset_id: int = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        # Rule configuration, specifying the detailed configuration for creating a rule.
+        self.config_shrink = config_shrink
+        # WAF operation phase.
+        # 
+        # This parameter is required.
+        self.phase = phase
+        # Ruleset ID.
+        self.ruleset_id = ruleset_id
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+        # Site version.
+        self.site_version = site_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_shrink is not None:
+            result['Config'] = self.config_shrink
+        if self.phase is not None:
+            result['Phase'] = self.phase
+        if self.ruleset_id is not None:
+            result['RulesetId'] = self.ruleset_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config_shrink = m.get('Config')
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+        if m.get('RulesetId') is not None:
+            self.ruleset_id = m.get('RulesetId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class CreateWafRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        request_id: str = None,
+        ruleset_id: int = None,
+    ):
+        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) API.
+        self.id = id
+        # Request ID.
+        self.request_id = request_id
+        # ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) interface.
+        self.ruleset_id = ruleset_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.ruleset_id is not None:
+            result['RulesetId'] = self.ruleset_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RulesetId') is not None:
+            self.ruleset_id = m.get('RulesetId')
+        return self
+
+
+class CreateWafRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateWafRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateWafRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateWafRulesetRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        phase: str = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        # Ruleset name.
+        self.name = name
+        # WAF operation phase.
+        # 
+        # This parameter is required.
+        self.phase = phase
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+        # Site version.
+        self.site_version = site_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.phase is not None:
+            result['Phase'] = self.phase
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class CreateWafRulesetResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        request_id: str = None,
+    ):
+        # Ruleset ID.
+        self.id = id
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateWafRulesetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateWafRulesetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateWafRulesetResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17083,6 +17927,264 @@ class DeleteNetworkOptimizationResponse(TeaModel):
         return self
 
 
+class DeleteOriginCaCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        site_id: int = None,
+    ):
+        # The certificate ID.
+        # 
+        # This parameter is required.
+        self.id = id
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DeleteOriginCaCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+        site_id: int = None,
+        site_name: str = None,
+    ):
+        # The certificate ID.
+        self.id = id
+        # The request ID.
+        self.request_id = request_id
+        # The website ID.
+        self.site_id = site_id
+        # The website name.
+        self.site_name = site_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        return self
+
+
+class DeleteOriginCaCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteOriginCaCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteOriginCaCertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteOriginClientCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        site_id: int = None,
+    ):
+        # The certificate ID.
+        # 
+        # This parameter is required.
+        self.id = id
+        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DeleteOriginClientCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+        site_id: int = None,
+        site_name: str = None,
+    ):
+        # The certificate ID.
+        self.id = id
+        # The request ID.
+        self.request_id = request_id
+        # The website ID.
+        self.site_id = site_id
+        # The website name.
+        self.site_name = site_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        return self
+
+
+class DeleteOriginClientCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteOriginClientCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteOriginClientCertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteOriginPoolRequest(TeaModel):
     def __init__(
         self,
@@ -18724,6 +19826,135 @@ class DeleteSiteDeliveryTaskResponse(TeaModel):
         return self
 
 
+class DeleteSiteOriginClientCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        site_id: int = None,
+    ):
+        # The certificate ID on ESA.
+        # 
+        # This parameter is required.
+        self.id = id
+        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DeleteSiteOriginClientCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+        site_id: int = None,
+        site_name: str = None,
+    ):
+        # The certificate ID on ESA.
+        self.id = id
+        # The request ID.
+        self.request_id = request_id
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        self.site_id = site_id
+        # The website name.
+        self.site_name = site_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        return self
+
+
+class DeleteSiteOriginClientCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSiteOriginClientCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSiteOriginClientCertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteUserDeliveryTaskRequest(TeaModel):
     def __init__(
         self,
@@ -18819,6 +20050,234 @@ class DeleteUserDeliveryTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteUserDeliveryTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteWafRuleRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        # ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+        # 
+        # This parameter is required.
+        self.id = id
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+        # Site version.
+        self.site_version = site_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class DeleteWafRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteWafRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteWafRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteWafRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteWafRulesetRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        # ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) interface.
+        # 
+        # This parameter is required.
+        self.id = id
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        self.site_id = site_id
+        # Site version.
+        self.site_version = site_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class DeleteWafRulesetResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteWafRulesetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteWafRulesetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteWafRulesetResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21512,11 +22971,11 @@ class EditSiteWafSettingsRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # The WAF configuration of the website in the JSON format.
+        # WAF configuration information for the site, passed in JSON format.
         self.settings = settings
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         self.site_id = site_id
-        # The version of the website.
+        # Site version.
         self.site_version = site_version
 
     def validate(self):
@@ -21556,11 +23015,11 @@ class EditSiteWafSettingsShrinkRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # The WAF configuration of the website in the JSON format.
+        # WAF configuration information for the site, passed in JSON format.
         self.settings_shrink = settings_shrink
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         self.site_id = site_id
-        # The version of the website.
+        # Site version.
         self.site_version = site_version
 
     def validate(self):
@@ -21596,7 +23055,7 @@ class EditSiteWafSettingsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -27037,6 +28496,7 @@ class GetIPv6ResponseBody(TeaModel):
     def __init__(
         self,
         enable: str = None,
+        region: str = None,
         request_id: str = None,
     ):
         # Indicates whether IPv6 is enabled. Valid values:
@@ -27044,6 +28504,7 @@ class GetIPv6ResponseBody(TeaModel):
         # *   **on**\
         # *   **off**\
         self.enable = enable
+        self.region = region
         # The request ID.
         self.request_id = request_id
 
@@ -27058,6 +28519,8 @@ class GetIPv6ResponseBody(TeaModel):
         result = dict()
         if self.enable is not None:
             result['Enable'] = self.enable
+        if self.region is not None:
+            result['Region'] = self.region
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -27066,6 +28529,8 @@ class GetIPv6ResponseBody(TeaModel):
         m = m or dict()
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -28805,6 +30270,691 @@ class GetNetworkOptimizationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetNetworkOptimizationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetOriginCaCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        site_id: int = None,
+    ):
+        # The certificate ID.
+        # 
+        # This parameter is required.
+        self.id = id
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class GetOriginCaCertificateResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        common_name: str = None,
+        create_time: str = None,
+        fingerprint_sha_256: str = None,
+        id: str = None,
+        issuer: str = None,
+        name: str = None,
+        not_after: str = None,
+        not_before: str = None,
+        pubkey_algorithm: str = None,
+        san: str = None,
+        serial_number: str = None,
+        signature_algorithm: str = None,
+        status: str = None,
+        type: str = None,
+        update_time: str = None,
+    ):
+        # The Common Name of the certificate.
+        self.common_name = common_name
+        # The time when the certificate was created.
+        self.create_time = create_time
+        # The SHA-256 fingerprint of the certificate.
+        self.fingerprint_sha_256 = fingerprint_sha_256
+        # The certificate ID.
+        self.id = id
+        # The certificate authority (CA) that issued the certificate.
+        self.issuer = issuer
+        # The certificate name.
+        self.name = name
+        # The time when the certificate expires.
+        self.not_after = not_after
+        # The time when the certificate takes effect.
+        self.not_before = not_before
+        # The public-key algorithm of the certificate.
+        self.pubkey_algorithm = pubkey_algorithm
+        # The Subject Alternative Name (SAN) of the certificate.
+        self.san = san
+        # The serial number of the certificate.
+        self.serial_number = serial_number
+        # The signature algorithm of the certificate.
+        self.signature_algorithm = signature_algorithm
+        # The status of the certificate.
+        self.status = status
+        # The certificate type.
+        self.type = type
+        # The time when the certificate was updated.
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.fingerprint_sha_256 is not None:
+            result['FingerprintSha256'] = self.fingerprint_sha_256
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        if self.pubkey_algorithm is not None:
+            result['PubkeyAlgorithm'] = self.pubkey_algorithm
+        if self.san is not None:
+            result['SAN'] = self.san
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.signature_algorithm is not None:
+            result['SignatureAlgorithm'] = self.signature_algorithm
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FingerprintSha256') is not None:
+            self.fingerprint_sha_256 = m.get('FingerprintSha256')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        if m.get('PubkeyAlgorithm') is not None:
+            self.pubkey_algorithm = m.get('PubkeyAlgorithm')
+        if m.get('SAN') is not None:
+            self.san = m.get('SAN')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('SignatureAlgorithm') is not None:
+            self.signature_algorithm = m.get('SignatureAlgorithm')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetOriginCaCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        certificate: str = None,
+        request_id: str = None,
+        result: GetOriginCaCertificateResponseBodyResult = None,
+        site_id: int = None,
+        site_name: str = None,
+        status: str = None,
+    ):
+        # The certificate content.
+        self.certificate = certificate
+        # The request ID.
+        self.request_id = request_id
+        # The certificate information.
+        self.result = result
+        # The website ID.
+        self.site_id = site_id
+        # The website name.
+        self.site_name = site_name
+        # The status of the certificate.
+        self.status = status
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate is not None:
+            result['Certificate'] = self.certificate
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Certificate') is not None:
+            self.certificate = m.get('Certificate')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = GetOriginCaCertificateResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetOriginCaCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetOriginCaCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetOriginCaCertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetOriginClientCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        site_id: int = None,
+    ):
+        # The certificate ID.
+        # 
+        # This parameter is required.
+        self.id = id
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class GetOriginClientCertificateResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        common_name: str = None,
+        create_time: str = None,
+        fingerprint_sha_256: str = None,
+        hostnames: List[str] = None,
+        id: str = None,
+        issuer: str = None,
+        name: str = None,
+        not_after: str = None,
+        not_before: str = None,
+        pubkey_algorithm: str = None,
+        san: str = None,
+        serial_number: str = None,
+        signature_algorithm: str = None,
+        status: str = None,
+        type: str = None,
+        update_time: str = None,
+    ):
+        # The Common Name of the certificate.
+        self.common_name = common_name
+        # The time when the certificate was created.
+        self.create_time = create_time
+        # The SHA-256 fingerprint of the certificate.
+        self.fingerprint_sha_256 = fingerprint_sha_256
+        # The domain names to associate.
+        self.hostnames = hostnames
+        # The certificate ID.
+        self.id = id
+        # The certificate authority (CA) that issued the certificate.
+        self.issuer = issuer
+        # The certificate name.
+        self.name = name
+        # The time when the certificate expires.
+        self.not_after = not_after
+        # The time when the certificate takes effect.
+        self.not_before = not_before
+        # The public-key algorithm of the certificate.
+        self.pubkey_algorithm = pubkey_algorithm
+        # The Subject Alternative Name (SAN) of the certificate.
+        self.san = san
+        # The serial number of the certificate.
+        self.serial_number = serial_number
+        # The signature algorithm of the certificate.
+        self.signature_algorithm = signature_algorithm
+        # The status of the certificate.
+        self.status = status
+        # The certificate type.
+        self.type = type
+        # The time when the certificate was updated.
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.fingerprint_sha_256 is not None:
+            result['FingerprintSha256'] = self.fingerprint_sha_256
+        if self.hostnames is not None:
+            result['Hostnames'] = self.hostnames
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        if self.pubkey_algorithm is not None:
+            result['PubkeyAlgorithm'] = self.pubkey_algorithm
+        if self.san is not None:
+            result['SAN'] = self.san
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.signature_algorithm is not None:
+            result['SignatureAlgorithm'] = self.signature_algorithm
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FingerprintSha256') is not None:
+            self.fingerprint_sha_256 = m.get('FingerprintSha256')
+        if m.get('Hostnames') is not None:
+            self.hostnames = m.get('Hostnames')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        if m.get('PubkeyAlgorithm') is not None:
+            self.pubkey_algorithm = m.get('PubkeyAlgorithm')
+        if m.get('SAN') is not None:
+            self.san = m.get('SAN')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('SignatureAlgorithm') is not None:
+            self.signature_algorithm = m.get('SignatureAlgorithm')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetOriginClientCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        certificate: str = None,
+        request_id: str = None,
+        result: GetOriginClientCertificateResponseBodyResult = None,
+        site_id: int = None,
+        site_name: str = None,
+        status: str = None,
+    ):
+        # The certificate content.
+        self.certificate = certificate
+        # The request ID.
+        self.request_id = request_id
+        # The certificate information.
+        self.result = result
+        # The website ID.
+        self.site_id = site_id
+        # The website name.
+        self.site_name = site_name
+        # The status of the certificate.
+        self.status = status
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate is not None:
+            result['Certificate'] = self.certificate
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Certificate') is not None:
+            self.certificate = m.get('Certificate')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = GetOriginClientCertificateResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetOriginClientCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetOriginClientCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetOriginClientCertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetOriginClientCertificateHostnamesRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        site_id: int = None,
+    ):
+        # The ID of the certificate.
+        # 
+        # This parameter is required.
+        self.id = id
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class GetOriginClientCertificateHostnamesResponseBody(TeaModel):
+    def __init__(
+        self,
+        hostnames: List[str] = None,
+        id: str = None,
+        request_id: str = None,
+        site_id: int = None,
+        site_name: str = None,
+    ):
+        # The domain names to associate.
+        self.hostnames = hostnames
+        # The ID of the client certificate.
+        self.id = id
+        # The request ID.
+        self.request_id = request_id
+        # The website ID.
+        self.site_id = site_id
+        # The website name.
+        self.site_name = site_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hostnames is not None:
+            result['Hostnames'] = self.hostnames
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Hostnames') is not None:
+            self.hostnames = m.get('Hostnames')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        return self
+
+
+class GetOriginClientCertificateHostnamesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetOriginClientCertificateHostnamesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetOriginClientCertificateHostnamesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -33011,6 +35161,277 @@ class GetSiteNameExclusiveResponse(TeaModel):
         return self
 
 
+class GetSiteOriginClientCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        site_id: int = None,
+    ):
+        # The certificate ID.
+        # 
+        # This parameter is required.
+        self.id = id
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class GetSiteOriginClientCertificateResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        common_name: str = None,
+        create_time: str = None,
+        fingerprint_sha_256: str = None,
+        id: str = None,
+        issuer: str = None,
+        name: str = None,
+        not_after: str = None,
+        not_before: str = None,
+        pubkey_algorithm: str = None,
+        san: str = None,
+        serial_number: str = None,
+        signature_algorithm: str = None,
+        status: str = None,
+        type: str = None,
+        update_time: str = None,
+    ):
+        # The Common Name of the certificate.
+        self.common_name = common_name
+        # The time when the certificate was created.
+        self.create_time = create_time
+        # The SHA-256 fingerprint of the certificate.
+        self.fingerprint_sha_256 = fingerprint_sha_256
+        # The certificate ID.
+        self.id = id
+        # The certificate authority (CA) that issued the certificate.
+        self.issuer = issuer
+        # The certificate name.
+        self.name = name
+        # The time when the certificate expires.
+        self.not_after = not_after
+        # The time when the certificate takes effect.
+        self.not_before = not_before
+        # The public-key algorithm of the certificate.
+        self.pubkey_algorithm = pubkey_algorithm
+        # The Subject Alternative Name (SAN) of the certificate.
+        self.san = san
+        # The serial number of the certificate.
+        self.serial_number = serial_number
+        # The signature algorithm of the certificate.
+        self.signature_algorithm = signature_algorithm
+        # The status of the certificate.
+        self.status = status
+        # The certificate type.
+        self.type = type
+        # The time when the certificate was updated.
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.fingerprint_sha_256 is not None:
+            result['FingerprintSha256'] = self.fingerprint_sha_256
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        if self.pubkey_algorithm is not None:
+            result['PubkeyAlgorithm'] = self.pubkey_algorithm
+        if self.san is not None:
+            result['SAN'] = self.san
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.signature_algorithm is not None:
+            result['SignatureAlgorithm'] = self.signature_algorithm
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FingerprintSha256') is not None:
+            self.fingerprint_sha_256 = m.get('FingerprintSha256')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        if m.get('PubkeyAlgorithm') is not None:
+            self.pubkey_algorithm = m.get('PubkeyAlgorithm')
+        if m.get('SAN') is not None:
+            self.san = m.get('SAN')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('SignatureAlgorithm') is not None:
+            self.signature_algorithm = m.get('SignatureAlgorithm')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetSiteOriginClientCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        certificate: str = None,
+        request_id: str = None,
+        result: GetSiteOriginClientCertificateResponseBodyResult = None,
+        site_id: int = None,
+        site_name: str = None,
+        status: str = None,
+    ):
+        # The certificate content.
+        self.certificate = certificate
+        # Request ID.
+        self.request_id = request_id
+        # The certificate information.
+        self.result = result
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        self.site_id = site_id
+        # The website name.
+        self.site_name = site_name
+        # The status of the certificate.
+        self.status = status
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate is not None:
+            result['Certificate'] = self.certificate
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Certificate') is not None:
+            self.certificate = m.get('Certificate')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = GetSiteOriginClientCertificateResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetSiteOriginClientCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSiteOriginClientCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSiteOriginClientCertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetSitePauseRequest(TeaModel):
     def __init__(
         self,
@@ -33127,10 +35548,11 @@ class GetSiteWafSettingsRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # Specifies the configuration path. If not provided, all configurations will be retrieved.
         self.path = path
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         self.site_id = site_id
-        # The version of the website.
+        # Site version.
         self.site_version = site_version
 
     def validate(self):
@@ -33167,9 +35589,9 @@ class GetSiteWafSettingsResponseBody(TeaModel):
         request_id: str = None,
         settings: WafSiteSettings = None,
     ):
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The WAF configurations of the website.
+        # Details of site WAF configuration.
         self.settings = settings
 
     def validate(self):
@@ -34725,6 +37147,344 @@ class GetWafQuotaResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWafQuotaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetWafRuleRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        site_id: int = None,
+    ):
+        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+        # 
+        # This parameter is required.
+        self.id = id
+        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class GetWafRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        config: WafRuleConfig = None,
+        id: int = None,
+        name: str = None,
+        phase: str = None,
+        position: int = None,
+        request_id: str = None,
+        status: str = None,
+        update_time: str = None,
+    ):
+        # Rule configuration.
+        self.config = config
+        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+        self.id = id
+        # Rule name.
+        # 
+        # This parameter is required.
+        self.name = name
+        # WAF operation phase.
+        # 
+        # This parameter is required.
+        self.phase = phase
+        # The position of the rule in the rule set.
+        self.position = position
+        # Request ID.
+        self.request_id = request_id
+        # Rule status.
+        self.status = status
+        # The last modified time of the rule.
+        self.update_time = update_time
+
+    def validate(self):
+        if self.config:
+            self.config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config.to_map()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.phase is not None:
+            result['Phase'] = self.phase
+        if self.position is not None:
+            result['Position'] = self.position
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            temp_model = WafRuleConfig()
+            self.config = temp_model.from_map(m['Config'])
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetWafRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetWafRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetWafRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetWafRulesetRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        phase: str = None,
+        site_id: int = None,
+    ):
+        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) interface.
+        self.id = id
+        # The WAF operation phase, specifying the phase of the ruleset to query.
+        self.phase = phase
+        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.phase is not None:
+            result['Phase'] = self.phase
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class GetWafRulesetResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+        phase: str = None,
+        request_id: str = None,
+        rules: List[WafRuleConfig] = None,
+        shared: WafBatchRuleShared = None,
+        status: str = None,
+        update_time: str = None,
+    ):
+        # Ruleset ID.
+        self.id = id
+        # Ruleset name.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The WAF operation phase applicable to the ruleset.
+        # 
+        # This parameter is required.
+        self.phase = phase
+        # Request ID.
+        self.request_id = request_id
+        # List of rule configurations in the ruleset.
+        self.rules = rules
+        # Shared configurations for the rules in the ruleset.
+        self.shared = shared
+        # Ruleset status.
+        self.status = status
+        # The last modified time of the ruleset.
+        self.update_time = update_time
+
+    def validate(self):
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+        if self.shared:
+            self.shared.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.phase is not None:
+            result['Phase'] = self.phase
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        if self.shared is not None:
+            result['Shared'] = self.shared.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = WafRuleConfig()
+                self.rules.append(temp_model.from_map(k))
+        if m.get('Shared') is not None:
+            temp_model = WafBatchRuleShared()
+            self.shared = temp_model.from_map(m['Shared'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetWafRulesetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetWafRulesetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetWafRulesetResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -42385,9 +45145,9 @@ class ListManagedRulesGroupsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The page number.
+        # Page number, used to specify the page number for pagination queries.
         self.page_number = page_number
-        # The number of entries per page.
+        # Page size, used to specify the number of items per page for pagination queries.
         self.page_size = page_size
 
     def validate(self):
@@ -42420,9 +45180,9 @@ class ListManagedRulesGroupsResponseBodyManagedRulesGroups(TeaModel):
         name: str = None,
         rule_count: int = None,
     ):
-        # The name of the managed rule group.
+        # Name of the managed rule group.
         self.name = name
-        # The number of rules in the managed rule group.
+        # Number of rules within the managed rule group.
         self.rule_count = rule_count
 
     def validate(self):
@@ -42458,15 +45218,15 @@ class ListManagedRulesGroupsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the managed rule groups.
+        # List of managed rule group information.
         self.managed_rules_groups = managed_rules_groups
-        # The page number returned.
+        # Current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # Page size.
         self.page_size = page_size
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The total number of managed rule groups returned.
+        # Total number of records after filtering.
         self.total_count = total_count
 
     def validate(self):
@@ -42860,6 +45620,593 @@ class ListNetworkOptimizationsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListNetworkOptimizationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListOriginCaCertificatesRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        site_id: int = None,
+    ):
+        # The page number. Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page. Default value: **20**. Valid values: 1 to 500.
+        self.page_size = page_size
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class ListOriginCaCertificatesResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        common_name: str = None,
+        create_time: str = None,
+        fingerprint_sha_256: str = None,
+        id: str = None,
+        issuer: str = None,
+        name: str = None,
+        not_after: str = None,
+        not_before: str = None,
+        pubkey_algorithm: str = None,
+        san: str = None,
+        serial_number: str = None,
+        signature_algorithm: str = None,
+        status: str = None,
+        type: str = None,
+        update_time: str = None,
+    ):
+        # The Common Name of the certificate.
+        self.common_name = common_name
+        # The time when the certificate was created.
+        self.create_time = create_time
+        # The SHA-256 fingerprint of the certificate.
+        self.fingerprint_sha_256 = fingerprint_sha_256
+        # The certificate ID.
+        self.id = id
+        # The certificate authority (CA) that issued the certificate.
+        self.issuer = issuer
+        # The certificate name.
+        self.name = name
+        # The time when the certificate expires.
+        self.not_after = not_after
+        # The time when the certificate takes effect.
+        self.not_before = not_before
+        # The public-key algorithm of the certificate.
+        self.pubkey_algorithm = pubkey_algorithm
+        # The Subject Alternative Name (SAN) of the certificate.
+        self.san = san
+        # The serial number of the certificate.
+        self.serial_number = serial_number
+        # The signature algorithm of the certificate.
+        self.signature_algorithm = signature_algorithm
+        # The certificate status.
+        self.status = status
+        # The certificate type.
+        # *   upload: custom certificate that you upload
+        self.type = type
+        # The time when the certificate was updated.
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.fingerprint_sha_256 is not None:
+            result['FingerprintSha256'] = self.fingerprint_sha_256
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        if self.pubkey_algorithm is not None:
+            result['PubkeyAlgorithm'] = self.pubkey_algorithm
+        if self.san is not None:
+            result['SAN'] = self.san
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.signature_algorithm is not None:
+            result['SignatureAlgorithm'] = self.signature_algorithm
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FingerprintSha256') is not None:
+            self.fingerprint_sha_256 = m.get('FingerprintSha256')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        if m.get('PubkeyAlgorithm') is not None:
+            self.pubkey_algorithm = m.get('PubkeyAlgorithm')
+        if m.get('SAN') is not None:
+            self.san = m.get('SAN')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('SignatureAlgorithm') is not None:
+            self.signature_algorithm = m.get('SignatureAlgorithm')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListOriginCaCertificatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        result: List[ListOriginCaCertificatesResponseBodyResult] = None,
+        site_id: int = None,
+        site_name: str = None,
+        total_count: int = None,
+    ):
+        # Page number, default is 1 if not provided.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The request ID.
+        self.request_id = request_id
+        # Details of the certificates.
+        self.result = result
+        # The website ID.
+        self.site_id = site_id
+        # The website name.
+        self.site_name = site_name
+        # The total number of entries.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = ListOriginCaCertificatesResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListOriginCaCertificatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListOriginCaCertificatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListOriginCaCertificatesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListOriginClientCertificatesRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        site_id: int = None,
+    ):
+        # The page number. Pages start from page 1. Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class ListOriginClientCertificatesResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        common_name: str = None,
+        create_time: str = None,
+        fingerprint_sha_256: str = None,
+        hostnames: List[str] = None,
+        id: str = None,
+        issuer: str = None,
+        name: str = None,
+        not_after: str = None,
+        not_before: str = None,
+        pubkey_algorithm: str = None,
+        san: str = None,
+        serial_number: str = None,
+        signature_algorithm: str = None,
+        status: str = None,
+        type: str = None,
+        update_time: str = None,
+    ):
+        # The Common Name of the certificate.
+        self.common_name = common_name
+        # The time when the certificate was created.
+        self.create_time = create_time
+        # The SHA-256 fingerprint of the certificate.
+        self.fingerprint_sha_256 = fingerprint_sha_256
+        # The domain names to associate.
+        self.hostnames = hostnames
+        # The certificate ID.
+        self.id = id
+        # The certificate authority (CA) that issued the certificate.
+        self.issuer = issuer
+        # The certificate name.
+        self.name = name
+        # The time when the certificate expires.
+        self.not_after = not_after
+        # The time when the certificate takes effect.
+        self.not_before = not_before
+        # The public-key algorithm of the certificate.
+        self.pubkey_algorithm = pubkey_algorithm
+        # The Subject Alternative Name (SAN) of the certificate.
+        self.san = san
+        # The serial number of the certificate.
+        self.serial_number = serial_number
+        # The signature algorithm of the certificate.
+        self.signature_algorithm = signature_algorithm
+        # The certificate status.
+        self.status = status
+        # The certificate type.
+        # *   upload: custom certificate that you upload
+        self.type = type
+        # The time when the certificate was updated.
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.fingerprint_sha_256 is not None:
+            result['FingerprintSha256'] = self.fingerprint_sha_256
+        if self.hostnames is not None:
+            result['Hostnames'] = self.hostnames
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        if self.pubkey_algorithm is not None:
+            result['PubkeyAlgorithm'] = self.pubkey_algorithm
+        if self.san is not None:
+            result['SAN'] = self.san
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.signature_algorithm is not None:
+            result['SignatureAlgorithm'] = self.signature_algorithm
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FingerprintSha256') is not None:
+            self.fingerprint_sha_256 = m.get('FingerprintSha256')
+        if m.get('Hostnames') is not None:
+            self.hostnames = m.get('Hostnames')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        if m.get('PubkeyAlgorithm') is not None:
+            self.pubkey_algorithm = m.get('PubkeyAlgorithm')
+        if m.get('SAN') is not None:
+            self.san = m.get('SAN')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('SignatureAlgorithm') is not None:
+            self.signature_algorithm = m.get('SignatureAlgorithm')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListOriginClientCertificatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        result: List[ListOriginClientCertificatesResponseBodyResult] = None,
+        site_id: int = None,
+        site_name: str = None,
+        total_count: int = None,
+    ):
+        # The page number. Default value: **1**.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The request ID.
+        self.request_id = request_id
+        # The certificate information.
+        self.result = result
+        # The website ID.
+        self.site_id = site_id
+        # The website name.
+        self.site_name = site_name
+        # The total number of entries.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = ListOriginClientCertificatesResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListOriginClientCertificatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListOriginClientCertificatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListOriginClientCertificatesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -47875,13 +51222,13 @@ class ListWafManagedRulesRequestQueryArgs(TeaModel):
         protection_levels: List[int] = None,
         status: str = None,
     ):
-        # The action that you want WAF to perform on requests that match the rule.
+        # Action.
         self.action = action
-        # The rule ID or name for fuzzy search.
+        # Fuzzy search for rule ID or rule name.
         self.id_name_like = id_name_like
-        # The protection levels of the rules.
+        # List of rule protection levels.
         self.protection_levels = protection_levels
-        # The status of the rule.
+        # Status.
         self.status = status
 
     def validate(self):
@@ -47928,38 +51275,37 @@ class ListWafManagedRulesRequest(TeaModel):
         query_args: ListWafManagedRulesRequestQueryArgs = None,
         site_id: int = None,
     ):
-        # The attack type. Valid values:
-        # 
-        # *   SQL injection
-        # *   Cross-site scripting
-        # *   Code execution
-        # *   CRLF
-        # *   Local file inclusion
-        # *   Remote file inclusion
-        # *   webshell
-        # *   Cross-site request forgery
-        # *   Others
-        # *   SEMA
+        # Attack type of the vulnerability protection event. Values:
+        # - SQL injection
+        # - Cross-site scripting
+        # - Code execution
+        # - CRLF
+        # - Local file inclusion
+        # - Remote file inclusion
+        # - Webshell
+        # - Cross-site request forgery
+        # - Other
+        # - SEMA
         # 
         # This parameter is required.
         self.attack_type = attack_type
-        # The ID of the WAF rule.
+        # ID of the WAF rule.
         # 
         # This parameter is required.
         self.id = id
-        # The language of the response. Valid values:
+        # Language type, which will be used to return the response. Value range:
         # 
-        # *   **en**: English.
-        # *   **zh**: Chinese.
+        # - **en**: English.
+        # - **zh**: Chinese.
         self.language = language
-        # The page number.
+        # Query page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # Query page size.
         self.page_size = page_size
         self.protection_level = protection_level
-        # The query conditions.
+        # Query conditions.
         self.query_args = query_args
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -48026,38 +51372,37 @@ class ListWafManagedRulesShrinkRequest(TeaModel):
         query_args_shrink: str = None,
         site_id: int = None,
     ):
-        # The attack type. Valid values:
-        # 
-        # *   SQL injection
-        # *   Cross-site scripting
-        # *   Code execution
-        # *   CRLF
-        # *   Local file inclusion
-        # *   Remote file inclusion
-        # *   webshell
-        # *   Cross-site request forgery
-        # *   Others
-        # *   SEMA
+        # Attack type of the vulnerability protection event. Values:
+        # - SQL injection
+        # - Cross-site scripting
+        # - Code execution
+        # - CRLF
+        # - Local file inclusion
+        # - Remote file inclusion
+        # - Webshell
+        # - Cross-site request forgery
+        # - Other
+        # - SEMA
         # 
         # This parameter is required.
         self.attack_type = attack_type
-        # The ID of the WAF rule.
+        # ID of the WAF rule.
         # 
         # This parameter is required.
         self.id = id
-        # The language of the response. Valid values:
+        # Language type, which will be used to return the response. Value range:
         # 
-        # *   **en**: English.
-        # *   **zh**: Chinese.
+        # - **en**: English.
+        # - **zh**: Chinese.
         self.language = language
-        # The page number.
+        # Query page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # Query page size.
         self.page_size = page_size
         self.protection_level = protection_level
-        # The query conditions.
+        # Query conditions.
         self.query_args_shrink = query_args_shrink
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -48119,15 +51464,15 @@ class ListWafManagedRulesResponseBodyRules(TeaModel):
         protection_level: int = None,
         status: str = None,
     ):
-        # The action that WAF performs on requests that match the managed rule.
+        # Protection action of the managed rule.
         self.action = action
-        # The ID of the managed rule.
+        # ID of the managed rule.
         self.id = id
-        # The name of the managed rule.
+        # Name of the managed rule.
         self.name = name
-        # The protection level of the managed rule.
+        # Protection level of the managed rule.
         self.protection_level = protection_level
-        # The status of the protection rule.
+        # Protection status of the managed rule.
         self.status = status
 
     def validate(self):
@@ -48175,15 +51520,15 @@ class ListWafManagedRulesResponseBody(TeaModel):
         rules: List[ListWafManagedRulesResponseBodyRules] = None,
         total_count: int = None,
     ):
-        # The page number.
+        # Page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # Page size.
         self.page_size = page_size
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The managed rules.
+        # List of managed rules.
         self.rules = rules
-        # The total number of filtered rules.
+        # Total number of rules after filtering.
         self.total_count = total_count
 
     def validate(self):
@@ -48277,11 +51622,11 @@ class ListWafPhasesRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version of the website.
+        # Site version.
         self.site_version = site_version
 
     def validate(self):
@@ -48316,13 +51661,13 @@ class ListWafPhasesResponseBodyPhasesRulesets(TeaModel):
         rules: List[WafRuleConfig] = None,
         shared: WafBatchRuleShared = None,
     ):
-        # The ID of the WAF ruleset.[](~~2850233~~)
+        # ID of the WAF ruleset.
         self.id = id
-        # The name of the WAF ruleset.
+        # Name of the WAF ruleset.
         self.name = name
-        # The rule configurations in the WAF ruleset.
+        # List of rule configurations in the WAF ruleset.
         self.rules = rules
-        # The configurations shared by the rules in the WAF ruleset.
+        # Shared configuration for rules in the WAF ruleset.
         self.shared = shared
 
     def validate(self):
@@ -48374,9 +51719,9 @@ class ListWafPhasesResponseBodyPhases(TeaModel):
         phase: str = None,
         rulesets: List[ListWafPhasesResponseBodyPhasesRulesets] = None,
     ):
-        # The name of the WAF rule category.
+        # Name of the WAF operation phase.
         self.phase = phase
-        # The WAF rulesets.
+        # List of WAF rulesets.
         self.rulesets = rulesets
 
     def validate(self):
@@ -48417,9 +51762,9 @@ class ListWafPhasesResponseBody(TeaModel):
         phases: List[ListWafPhasesResponseBodyPhases] = None,
         request_id: str = None,
     ):
-        # The WAF rule categories.
+        # List of WAF operation phases.
         self.phases = phases
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -48495,12 +51840,855 @@ class ListWafPhasesResponse(TeaModel):
         return self
 
 
+class ListWafRulesRequestQueryArgs(TeaModel):
+    def __init__(
+        self,
+        config_value_like: str = None,
+        desc: bool = None,
+        id: int = None,
+        id_name_like: str = None,
+        name_like: str = None,
+        order_by: str = None,
+        status: str = None,
+    ):
+        # Fuzzy search for values in IP access control.
+        self.config_value_like = config_value_like
+        # Whether to reverse the sorting result.
+        self.desc = desc
+        # Exact query for WAF rule ID.
+        self.id = id
+        # Fuzzy query for WAF rule ID or name.
+        self.id_name_like = id_name_like
+        # Fuzzy query for WAF rule name.
+        self.name_like = name_like
+        # Sort the returned list by the specified column.
+        self.order_by = order_by
+        # Exact query for WAF rule status.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_value_like is not None:
+            result['ConfigValueLike'] = self.config_value_like
+        if self.desc is not None:
+            result['Desc'] = self.desc
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.id_name_like is not None:
+            result['IdNameLike'] = self.id_name_like
+        if self.name_like is not None:
+            result['NameLike'] = self.name_like
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigValueLike') is not None:
+            self.config_value_like = m.get('ConfigValueLike')
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdNameLike') is not None:
+            self.id_name_like = m.get('IdNameLike')
+        if m.get('NameLike') is not None:
+            self.name_like = m.get('NameLike')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListWafRulesRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        phase: str = None,
+        query_args: ListWafRulesRequestQueryArgs = None,
+        ruleset_id: int = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        # Query page number, used for pagination.
+        self.page_number = page_number
+        # Query page size, used for pagination.
+        self.page_size = page_size
+        # WAF rule type. Values:
+        # 
+        # - http_anti_scan: Scan protection
+        # - http_bot: Bots
+        self.phase = phase
+        # Query filter conditions.
+        self.query_args = query_args
+        self.ruleset_id = ruleset_id
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+        # Site version.
+        self.site_version = site_version
+
+    def validate(self):
+        if self.query_args:
+            self.query_args.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.phase is not None:
+            result['Phase'] = self.phase
+        if self.query_args is not None:
+            result['QueryArgs'] = self.query_args.to_map()
+        if self.ruleset_id is not None:
+            result['RulesetId'] = self.ruleset_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+        if m.get('QueryArgs') is not None:
+            temp_model = ListWafRulesRequestQueryArgs()
+            self.query_args = temp_model.from_map(m['QueryArgs'])
+        if m.get('RulesetId') is not None:
+            self.ruleset_id = m.get('RulesetId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class ListWafRulesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        phase: str = None,
+        query_args_shrink: str = None,
+        ruleset_id: int = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        # Query page number, used for pagination.
+        self.page_number = page_number
+        # Query page size, used for pagination.
+        self.page_size = page_size
+        # WAF rule type. Values:
+        # 
+        # - http_anti_scan: Scan protection
+        # - http_bot: Bots
+        self.phase = phase
+        # Query filter conditions.
+        self.query_args_shrink = query_args_shrink
+        self.ruleset_id = ruleset_id
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+        # Site version.
+        self.site_version = site_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.phase is not None:
+            result['Phase'] = self.phase
+        if self.query_args_shrink is not None:
+            result['QueryArgs'] = self.query_args_shrink
+        if self.ruleset_id is not None:
+            result['RulesetId'] = self.ruleset_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+        if m.get('QueryArgs') is not None:
+            self.query_args_shrink = m.get('QueryArgs')
+        if m.get('RulesetId') is not None:
+            self.ruleset_id = m.get('RulesetId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class ListWafRulesResponseBodyRules(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        characteristics_fields: List[str] = None,
+        config: WafRuleConfig = None,
+        fields: List[str] = None,
+        id: int = None,
+        name: str = None,
+        phase: str = None,
+        position: int = None,
+        ruleset_id: int = None,
+        skip: str = None,
+        status: str = None,
+        tags: List[str] = None,
+        timer: WafTimer = None,
+        type: str = None,
+        update_time: str = None,
+    ):
+        # The action corresponding to the rule.
+        self.action = action
+        # List of statistical objects for frequency control rules.
+        self.characteristics_fields = characteristics_fields
+        # Rule configuration.
+        self.config = config
+        # List of fields for rule matching
+        self.fields = fields
+        # Rule ID.
+        self.id = id
+        # Rule name.
+        self.name = name
+        # WAF phase.
+        self.phase = phase
+        # Position order of the rule in the corresponding ruleset.
+        self.position = position
+        # Ruleset ID.
+        self.ruleset_id = ruleset_id
+        # Skip attribute for whitelist rules.
+        self.skip = skip
+        # Rule status.
+        self.status = status
+        # List of WAF phases to be skipped by whitelist rules.
+        self.tags = tags
+        # Configuration for the effective time of the rule.
+        self.timer = timer
+        # Rule type.
+        self.type = type
+        # Modification time.
+        self.update_time = update_time
+
+    def validate(self):
+        if self.config:
+            self.config.validate()
+        if self.timer:
+            self.timer.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.characteristics_fields is not None:
+            result['CharacteristicsFields'] = self.characteristics_fields
+        if self.config is not None:
+            result['Config'] = self.config.to_map()
+        if self.fields is not None:
+            result['Fields'] = self.fields
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.phase is not None:
+            result['Phase'] = self.phase
+        if self.position is not None:
+            result['Position'] = self.position
+        if self.ruleset_id is not None:
+            result['RulesetId'] = self.ruleset_id
+        if self.skip is not None:
+            result['Skip'] = self.skip
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.timer is not None:
+            result['Timer'] = self.timer.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('CharacteristicsFields') is not None:
+            self.characteristics_fields = m.get('CharacteristicsFields')
+        if m.get('Config') is not None:
+            temp_model = WafRuleConfig()
+            self.config = temp_model.from_map(m['Config'])
+        if m.get('Fields') is not None:
+            self.fields = m.get('Fields')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
+        if m.get('RulesetId') is not None:
+            self.ruleset_id = m.get('RulesetId')
+        if m.get('Skip') is not None:
+            self.skip = m.get('Skip')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('Timer') is not None:
+            temp_model = WafTimer()
+            self.timer = temp_model.from_map(m['Timer'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListWafRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_usage: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        rules: List[ListWafRulesResponseBodyRules] = None,
+        site_usage: int = None,
+        total_count: int = None,
+    ):
+        # Number of rules used in this WAF phase for the corresponding instance of the site.
+        self.instance_usage = instance_usage
+        # Page number.
+        self.page_number = page_number
+        # Page size.
+        self.page_size = page_size
+        # Request ID.
+        self.request_id = request_id
+        # Returned list of rules.
+        self.rules = rules
+        # Site usage.
+        self.site_usage = site_usage
+        # Total number of rules after filtering.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_usage is not None:
+            result['InstanceUsage'] = self.instance_usage
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        if self.site_usage is not None:
+            result['SiteUsage'] = self.site_usage
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceUsage') is not None:
+            self.instance_usage = m.get('InstanceUsage')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = ListWafRulesResponseBodyRules()
+                self.rules.append(temp_model.from_map(k))
+        if m.get('SiteUsage') is not None:
+            self.site_usage = m.get('SiteUsage')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListWafRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListWafRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListWafRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListWafRulesetsRequestQueryArgs(TeaModel):
+    def __init__(
+        self,
+        any_like: str = None,
+        desc: bool = None,
+        name_like: str = None,
+        order_by: str = None,
+    ):
+        # Fuzzy search for rule set ID, rule set name, rule ID, and rule name.
+        self.any_like = any_like
+        # Whether to sort in descending order.
+        self.desc = desc
+        # Fuzzy search for rule set name.
+        self.name_like = name_like
+        # Specify the column to sort by.
+        self.order_by = order_by
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.any_like is not None:
+            result['AnyLike'] = self.any_like
+        if self.desc is not None:
+            result['Desc'] = self.desc
+        if self.name_like is not None:
+            result['NameLike'] = self.name_like
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnyLike') is not None:
+            self.any_like = m.get('AnyLike')
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+        if m.get('NameLike') is not None:
+            self.name_like = m.get('NameLike')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        return self
+
+
+class ListWafRulesetsRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        phase: str = None,
+        query_args: ListWafRulesetsRequestQueryArgs = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        # Page number, specifying the current page number for paginated queries.
+        self.page_number = page_number
+        # Page size, specifying the number of records per page for paginated queries.
+        self.page_size = page_size
+        # WAF operation phase, specifying the rule set phase to query.
+        self.phase = phase
+        # Query parameters, passed in JSON format, containing various filtering conditions.
+        self.query_args = query_args
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        self.site_id = site_id
+        # Site version.
+        self.site_version = site_version
+
+    def validate(self):
+        if self.query_args:
+            self.query_args.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.phase is not None:
+            result['Phase'] = self.phase
+        if self.query_args is not None:
+            result['QueryArgs'] = self.query_args.to_map()
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+        if m.get('QueryArgs') is not None:
+            temp_model = ListWafRulesetsRequestQueryArgs()
+            self.query_args = temp_model.from_map(m['QueryArgs'])
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class ListWafRulesetsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        phase: str = None,
+        query_args_shrink: str = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        # Page number, specifying the current page number for paginated queries.
+        self.page_number = page_number
+        # Page size, specifying the number of records per page for paginated queries.
+        self.page_size = page_size
+        # WAF operation phase, specifying the rule set phase to query.
+        self.phase = phase
+        # Query parameters, passed in JSON format, containing various filtering conditions.
+        self.query_args_shrink = query_args_shrink
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        self.site_id = site_id
+        # Site version.
+        self.site_version = site_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.phase is not None:
+            result['Phase'] = self.phase
+        if self.query_args_shrink is not None:
+            result['QueryArgs'] = self.query_args_shrink
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+        if m.get('QueryArgs') is not None:
+            self.query_args_shrink = m.get('QueryArgs')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class ListWafRulesetsResponseBodyRulesets(TeaModel):
+    def __init__(
+        self,
+        fields: List[str] = None,
+        id: int = None,
+        name: str = None,
+        phase: str = None,
+        status: str = None,
+        target: str = None,
+        types: List[str] = None,
+        update_time: str = None,
+    ):
+        # List of match objects.
+        self.fields = fields
+        # ID of the WAF rule set.
+        self.id = id
+        # Name of the rule set.
+        self.name = name
+        # WAF operation phase.
+        self.phase = phase
+        # Status of the rule set.
+        self.status = status
+        # Protection target type in http_bot.
+        self.target = target
+        # List of rule types.
+        self.types = types
+        # Last modification time of the rule set.
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fields is not None:
+            result['Fields'] = self.fields
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.phase is not None:
+            result['Phase'] = self.phase
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.target is not None:
+            result['Target'] = self.target
+        if self.types is not None:
+            result['Types'] = self.types
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Fields') is not None:
+            self.fields = m.get('Fields')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        if m.get('Types') is not None:
+            self.types = m.get('Types')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListWafRulesetsResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_usage: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        rulesets: List[ListWafRulesetsResponseBodyRulesets] = None,
+        site_usage: int = None,
+        total_count: int = None,
+    ):
+        # Number of WAF rule sets used by the instance in this WAF operation phase.
+        self.instance_usage = instance_usage
+        # Current page number.
+        self.page_number = page_number
+        # Page size.
+        self.page_size = page_size
+        # Request ID.
+        self.request_id = request_id
+        # List of rule set information, containing detailed information about the rule sets.
+        self.rulesets = rulesets
+        # Number of WAF rule sets used by the site in this WAF operation phase.
+        self.site_usage = site_usage
+        # Total number of filtered records.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.rulesets:
+            for k in self.rulesets:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_usage is not None:
+            result['InstanceUsage'] = self.instance_usage
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Rulesets'] = []
+        if self.rulesets is not None:
+            for k in self.rulesets:
+                result['Rulesets'].append(k.to_map() if k else None)
+        if self.site_usage is not None:
+            result['SiteUsage'] = self.site_usage
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceUsage') is not None:
+            self.instance_usage = m.get('InstanceUsage')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.rulesets = []
+        if m.get('Rulesets') is not None:
+            for k in m.get('Rulesets'):
+                temp_model = ListWafRulesetsResponseBodyRulesets()
+                self.rulesets.append(temp_model.from_map(k))
+        if m.get('SiteUsage') is not None:
+            self.site_usage = m.get('SiteUsage')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListWafRulesetsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListWafRulesetsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListWafRulesetsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListWafTemplateRulesRequestQueryArgs(TeaModel):
     def __init__(
         self,
         type: str = None,
     ):
-        # The rule type.
+        # Rule type.
         self.type = type
 
     def validate(self):
@@ -48530,11 +52718,11 @@ class ListWafTemplateRulesRequest(TeaModel):
         query_args: ListWafTemplateRulesRequestQueryArgs = None,
         site_id: int = None,
     ):
-        # The WAF rule category, which is used to filter template rules of a specific category.
+        # WAF operation phase, used to filter template rules for a specific phase.
         self.phase = phase
-        # The query parameter, which is used to filter template rules based on criteria such as the rule type.
+        # Query parameters, used to filter template rules based on conditions such as rule type.
         self.query_args = query_args
-        # 站点ID，可通过调用[ListSites](https://help.aliyun.com/document_detail/2850189.html)接口获取。
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         self.site_id = site_id
 
     def validate(self):
@@ -48574,11 +52762,11 @@ class ListWafTemplateRulesShrinkRequest(TeaModel):
         query_args_shrink: str = None,
         site_id: int = None,
     ):
-        # The WAF rule category, which is used to filter template rules of a specific category.
+        # WAF operation phase, used to filter template rules for a specific phase.
         self.phase = phase
-        # The query parameter, which is used to filter template rules based on criteria such as the rule type.
+        # Query parameters, used to filter template rules based on conditions such as rule type.
         self.query_args_shrink = query_args_shrink
-        # 站点ID，可通过调用[ListSites](https://help.aliyun.com/document_detail/2850189.html)接口获取。
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         self.site_id = site_id
 
     def validate(self):
@@ -48618,15 +52806,15 @@ class ListWafTemplateRulesResponseBodyRules(TeaModel):
         status: str = None,
         type: str = None,
     ):
-        # The configuration of the rule.
+        # Rule configuration.
         self.config = config
-        # The rule name.
+        # Rule name.
         self.name = name
-        # The WAF rule category.
+        # WAF operation phase.
         self.phase = phase
-        # Indicates whether the rule is enabled.
+        # Rule status.
         self.status = status
-        # The rule type.
+        # Rule type.
         self.type = type
 
     def validate(self):
@@ -48673,9 +52861,9 @@ class ListWafTemplateRulesResponseBody(TeaModel):
         request_id: str = None,
         rules: List[ListWafTemplateRulesResponseBodyRules] = None,
     ):
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The returned template rules.
+        # The list of returned template rules.
         self.rules = rules
 
     def validate(self):
@@ -48757,9 +52945,9 @@ class ListWafUsageOfRulesRequest(TeaModel):
         phase: str = None,
         site_id: int = None,
     ):
-        # The WAF rule category.
+        # Name of the WAF operation phase.
         self.phase = phase
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         self.site_id = site_id
 
     def validate(self):
@@ -48793,11 +52981,11 @@ class ListWafUsageOfRulesResponseBodySites(TeaModel):
         name: str = None,
         usage: int = None,
     ):
-        # The website ID.
+        # Site ID.
         self.id = id
-        # The website name.
+        # Site name.
         self.name = name
-        # The usage of WAF rules or WAF rulesets.
+        # Usage of WAF rules/WAF rule sets.
         self.usage = usage
 
     def validate(self):
@@ -48834,9 +53022,9 @@ class ListWafUsageOfRulesResponseBody(TeaModel):
         request_id: str = None,
         sites: List[ListWafUsageOfRulesResponseBodySites] = None,
     ):
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The usage details of WAF rules of the website.
+        # List of site usage.
         self.sites = sites
 
     def validate(self):
@@ -52581,6 +56769,199 @@ class SetHttpDDoSAttackProtectionResponse(TeaModel):
         return self
 
 
+class SetOriginClientCertificateHostnamesRequest(TeaModel):
+    def __init__(
+        self,
+        hostnames: List[str] = None,
+        id: str = None,
+        site_id: int = None,
+    ):
+        # The domain names to associate.
+        # 
+        # This parameter is required.
+        self.hostnames = hostnames
+        # The certificate ID.
+        # 
+        # This parameter is required.
+        self.id = id
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hostnames is not None:
+            result['Hostnames'] = self.hostnames
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Hostnames') is not None:
+            self.hostnames = m.get('Hostnames')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class SetOriginClientCertificateHostnamesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        hostnames_shrink: str = None,
+        id: str = None,
+        site_id: int = None,
+    ):
+        # The domain names to associate.
+        # 
+        # This parameter is required.
+        self.hostnames_shrink = hostnames_shrink
+        # The certificate ID.
+        # 
+        # This parameter is required.
+        self.id = id
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hostnames_shrink is not None:
+            result['Hostnames'] = self.hostnames_shrink
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Hostnames') is not None:
+            self.hostnames_shrink = m.get('Hostnames')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class SetOriginClientCertificateHostnamesResponseBody(TeaModel):
+    def __init__(
+        self,
+        hostnames: List[str] = None,
+        id: str = None,
+        request_id: str = None,
+        site_id: str = None,
+        site_name: str = None,
+    ):
+        # The domain name.
+        self.hostnames = hostnames
+        # The ID of the client certificate.
+        self.id = id
+        # The request ID.
+        self.request_id = request_id
+        # The website ID.
+        self.site_id = site_id
+        # The website name.
+        self.site_name = site_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hostnames is not None:
+            result['Hostnames'] = self.hostnames
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Hostnames') is not None:
+            self.hostnames = m.get('Hostnames')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        return self
+
+
+class SetOriginClientCertificateHostnamesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetOriginClientCertificateHostnamesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetOriginClientCertificateHostnamesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StartScheduledPreloadExecutionRequest(TeaModel):
     def __init__(
         self,
@@ -53199,6 +57580,7 @@ class UpdateCacheRuleRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         serve_stale: str = None,
         site_id: int = None,
         sort_query_string_for_cache: str = None,
@@ -53267,6 +57649,7 @@ class UpdateCacheRuleRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Serve stale cache. When enabled, the node can still use the expired cached files to respond to user requests even if the origin server is unavailable. Value range:
         # - on: Enable.
         # - off: Disable.
@@ -53339,6 +57722,8 @@ class UpdateCacheRuleRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.serve_stale is not None:
             result['ServeStale'] = self.serve_stale
         if self.site_id is not None:
@@ -53393,6 +57778,8 @@ class UpdateCacheRuleRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('ServeStale') is not None:
             self.serve_stale = m.get('ServeStale')
         if m.get('SiteId') is not None:
@@ -53719,6 +58106,7 @@ class UpdateCompressionRuleRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
         zstd: str = None,
     ):
@@ -53744,6 +58132,7 @@ class UpdateCompressionRuleRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
@@ -53774,6 +58163,8 @@ class UpdateCompressionRuleRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         if self.zstd is not None:
@@ -53794,6 +58185,8 @@ class UpdateCompressionRuleRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         if m.get('Zstd') is not None:
@@ -54650,6 +59043,7 @@ class UpdateHttpRequestHeaderModificationRuleRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
     ):
         # Configuration ID. It can be obtained by calling the [ListHttpRequestHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) API.
@@ -54668,6 +59062,7 @@ class UpdateHttpRequestHeaderModificationRuleRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         # 
         # This parameter is required.
@@ -54697,6 +59092,8 @@ class UpdateHttpRequestHeaderModificationRuleRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         return result
@@ -54716,6 +59113,8 @@ class UpdateHttpRequestHeaderModificationRuleRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         return self
@@ -54729,6 +59128,7 @@ class UpdateHttpRequestHeaderModificationRuleShrinkRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
     ):
         # Configuration ID. It can be obtained by calling the [ListHttpRequestHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) API.
@@ -54747,6 +59147,7 @@ class UpdateHttpRequestHeaderModificationRuleShrinkRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         # 
         # This parameter is required.
@@ -54771,6 +59172,8 @@ class UpdateHttpRequestHeaderModificationRuleShrinkRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         return result
@@ -54787,6 +59190,8 @@ class UpdateHttpRequestHeaderModificationRuleShrinkRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         return self
@@ -54918,6 +59323,7 @@ class UpdateHttpResponseHeaderModificationRuleRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
     ):
         # Configuration ID. It can be obtained by calling the [ListHttpResponseHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) interface.
@@ -54936,6 +59342,7 @@ class UpdateHttpResponseHeaderModificationRuleRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
         # This parameter is required.
@@ -54965,6 +59372,8 @@ class UpdateHttpResponseHeaderModificationRuleRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         return result
@@ -54984,6 +59393,8 @@ class UpdateHttpResponseHeaderModificationRuleRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         return self
@@ -54997,6 +59408,7 @@ class UpdateHttpResponseHeaderModificationRuleShrinkRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
     ):
         # Configuration ID. It can be obtained by calling the [ListHttpResponseHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) interface.
@@ -55015,6 +59427,7 @@ class UpdateHttpResponseHeaderModificationRuleShrinkRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
         # This parameter is required.
@@ -55039,6 +59452,8 @@ class UpdateHttpResponseHeaderModificationRuleShrinkRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         return result
@@ -55055,6 +59470,8 @@ class UpdateHttpResponseHeaderModificationRuleShrinkRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         return self
@@ -55146,6 +59563,7 @@ class UpdateHttpsApplicationConfigurationRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
     ):
         # Feature switch, default is disabled. Value range:
@@ -55200,6 +59618,7 @@ class UpdateHttpsApplicationConfigurationRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
         # This parameter is required.
@@ -55242,6 +59661,8 @@ class UpdateHttpsApplicationConfigurationRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         return result
@@ -55276,6 +59697,8 @@ class UpdateHttpsApplicationConfigurationRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         return self
@@ -55363,6 +59786,7 @@ class UpdateHttpsBasicConfigurationRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
         tls_10: str = None,
         tls_11: str = None,
@@ -55406,6 +59830,7 @@ class UpdateHttpsBasicConfigurationRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
         # This parameter is required.
@@ -55456,6 +59881,8 @@ class UpdateHttpsBasicConfigurationRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         if self.tls_10 is not None:
@@ -55490,6 +59917,8 @@ class UpdateHttpsBasicConfigurationRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         if m.get('Tls10') is not None:
@@ -55576,6 +60005,7 @@ class UpdateIPv6Request(TeaModel):
     def __init__(
         self,
         enable: str = None,
+        region: str = None,
         site_id: int = None,
     ):
         # Specifies whether to enable IPv6. Valid values:
@@ -55585,6 +60015,7 @@ class UpdateIPv6Request(TeaModel):
         # 
         # This parameter is required.
         self.enable = enable
+        self.region = region
         # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
@@ -55601,6 +60032,8 @@ class UpdateIPv6Request(TeaModel):
         result = dict()
         if self.enable is not None:
             result['Enable'] = self.enable
+        if self.region is not None:
+            result['Region'] = self.region
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         return result
@@ -55609,6 +60042,8 @@ class UpdateIPv6Request(TeaModel):
         m = m or dict()
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         return self
@@ -55691,6 +60126,7 @@ class UpdateImageTransformRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
     ):
         # Configuration ID. It can be obtained by calling the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) interface.
@@ -55712,6 +60148,7 @@ class UpdateImageTransformRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
@@ -55736,6 +60173,8 @@ class UpdateImageTransformRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         return result
@@ -55752,6 +60191,8 @@ class UpdateImageTransformRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         return self
@@ -56796,6 +61237,7 @@ class UpdateNetworkOptimizationRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
         smart_routing: str = None,
         upload_max_filesize: str = None,
@@ -56823,6 +61265,7 @@ class UpdateNetworkOptimizationRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
         # 
         # This parameter is required.
@@ -56859,6 +61302,8 @@ class UpdateNetworkOptimizationRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         if self.smart_routing is not None:
@@ -56883,6 +61328,8 @@ class UpdateNetworkOptimizationRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         if m.get('SmartRouting') is not None:
@@ -57526,6 +61973,7 @@ class UpdateOriginRuleRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
     ):
         # Configuration ID.
@@ -57571,6 +62019,7 @@ class UpdateOriginRuleRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
         # This parameter is required.
@@ -57613,6 +62062,8 @@ class UpdateOriginRuleRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         return result
@@ -57647,6 +62098,8 @@ class UpdateOriginRuleRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         return self
@@ -58489,6 +62942,7 @@ class UpdateRedirectRuleRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
         status_code: str = None,
         target_url: str = None,
@@ -58512,6 +62966,7 @@ class UpdateRedirectRuleRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
@@ -58551,6 +63006,8 @@ class UpdateRedirectRuleRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         if self.status_code is not None:
@@ -58573,6 +63030,8 @@ class UpdateRedirectRuleRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         if m.get('StatusCode') is not None:
@@ -58663,6 +63122,7 @@ class UpdateRewriteUrlRuleRequest(TeaModel):
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
+        sequence: int = None,
         site_id: int = None,
         uri: str = None,
     ):
@@ -58690,6 +63150,7 @@ class UpdateRewriteUrlRuleRequest(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        self.sequence = sequence
         # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
@@ -58720,6 +63181,8 @@ class UpdateRewriteUrlRuleRequest(TeaModel):
             result['RuleEnable'] = self.rule_enable
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         if self.uri is not None:
@@ -58742,6 +63205,8 @@ class UpdateRewriteUrlRuleRequest(TeaModel):
             self.rule_enable = m.get('RuleEnable')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         if m.get('Uri') is not None:
@@ -60462,6 +64927,338 @@ class UpdateUserDeliveryTaskStatusResponse(TeaModel):
         return self
 
 
+class UpdateWafRuleRequest(TeaModel):
+    def __init__(
+        self,
+        config: WafRuleConfig = None,
+        id: int = None,
+        position: int = None,
+        site_id: int = None,
+        site_version: int = None,
+        status: str = None,
+    ):
+        # Rule configuration.
+        self.config = config
+        # WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+        # 
+        # This parameter is required.
+        self.id = id
+        # The position of the rule in the rule set.
+        self.position = position
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+        # Site version.
+        self.site_version = site_version
+        # Rule status.
+        self.status = status
+
+    def validate(self):
+        if self.config:
+            self.config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config.to_map()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.position is not None:
+            result['Position'] = self.position
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            temp_model = WafRuleConfig()
+            self.config = temp_model.from_map(m['Config'])
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class UpdateWafRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        config_shrink: str = None,
+        id: int = None,
+        position: int = None,
+        site_id: int = None,
+        site_version: int = None,
+        status: str = None,
+    ):
+        # Rule configuration.
+        self.config_shrink = config_shrink
+        # WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+        # 
+        # This parameter is required.
+        self.id = id
+        # The position of the rule in the rule set.
+        self.position = position
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+        # Site version.
+        self.site_version = site_version
+        # Rule status.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_shrink is not None:
+            result['Config'] = self.config_shrink
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.position is not None:
+            result['Position'] = self.position
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config_shrink = m.get('Config')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class UpdateWafRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        request_id: str = None,
+    ):
+        # WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+        self.id = id
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateWafRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateWafRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateWafRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateWafRulesetRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        site_id: int = None,
+        site_version: int = None,
+        status: str = None,
+    ):
+        # ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) interface.
+        # 
+        # This parameter is required.
+        self.id = id
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        self.site_id = site_id
+        # Site version.
+        self.site_version = site_version
+        # The target status to change for the ruleset.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class UpdateWafRulesetResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateWafRulesetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateWafRulesetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateWafRulesetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateWaitingRoomRequestHostNameAndPath(TeaModel):
     def __init__(
         self,
@@ -61724,6 +66521,582 @@ class UploadFileResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UploadFileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UploadOriginCaCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        certificate: str = None,
+        name: str = None,
+        site_id: int = None,
+    ):
+        # The certificate content.
+        # 
+        # This parameter is required.
+        self.certificate = certificate
+        # The certificate name.
+        self.name = name
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate is not None:
+            result['Certificate'] = self.certificate
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Certificate') is not None:
+            self.certificate = m.get('Certificate')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class UploadOriginCaCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        common_name: str = None,
+        fingerprint_sha_256: str = None,
+        id: str = None,
+        issuer: str = None,
+        not_after: str = None,
+        not_before: str = None,
+        request_id: str = None,
+        serial_number: str = None,
+        signature_algorithm: str = None,
+        status: str = None,
+        validity_days: str = None,
+    ):
+        # The Common Name of the certificate.
+        self.common_name = common_name
+        # The SHA-256 fingerprint of the certificate.
+        self.fingerprint_sha_256 = fingerprint_sha_256
+        # The certificate ID.
+        self.id = id
+        # The CA that issued the certificate.
+        self.issuer = issuer
+        # The time when the certificate expires.
+        self.not_after = not_after
+        # The time when the certificate takes effect.
+        self.not_before = not_before
+        # The request ID.
+        self.request_id = request_id
+        # The serial number of the certificate.
+        self.serial_number = serial_number
+        # The signature algorithm of the certificate.
+        self.signature_algorithm = signature_algorithm
+        # Indicates whether the operation is successful.
+        # 
+        # *   OK
+        # *   Fail
+        self.status = status
+        # The validity period of the certificate. Unit: day.
+        self.validity_days = validity_days
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.fingerprint_sha_256 is not None:
+            result['FingerprintSha256'] = self.fingerprint_sha_256
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.signature_algorithm is not None:
+            result['SignatureAlgorithm'] = self.signature_algorithm
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.validity_days is not None:
+            result['ValidityDays'] = self.validity_days
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('FingerprintSha256') is not None:
+            self.fingerprint_sha_256 = m.get('FingerprintSha256')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('SignatureAlgorithm') is not None:
+            self.signature_algorithm = m.get('SignatureAlgorithm')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ValidityDays') is not None:
+            self.validity_days = m.get('ValidityDays')
+        return self
+
+
+class UploadOriginCaCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UploadOriginCaCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UploadOriginCaCertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UploadOriginClientCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        certificate: str = None,
+        name: str = None,
+        private_key: str = None,
+        site_id: int = None,
+    ):
+        # The certificate content.
+        # 
+        # This parameter is required.
+        self.certificate = certificate
+        # The certificate name.
+        self.name = name
+        # The private key of the certificate.
+        # 
+        # This parameter is required.
+        self.private_key = private_key
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate is not None:
+            result['Certificate'] = self.certificate
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.private_key is not None:
+            result['PrivateKey'] = self.private_key
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Certificate') is not None:
+            self.certificate = m.get('Certificate')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PrivateKey') is not None:
+            self.private_key = m.get('PrivateKey')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class UploadOriginClientCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        common_name: str = None,
+        fingerprint_sha_256: str = None,
+        id: str = None,
+        issuer: str = None,
+        not_after: str = None,
+        not_before: str = None,
+        request_id: str = None,
+        serial_number: str = None,
+        signature_algorithm: str = None,
+        status: str = None,
+        validity_days: str = None,
+    ):
+        # The Common Name of the certificate.
+        self.common_name = common_name
+        # The SHA-256 fingerprint of the certificate.
+        self.fingerprint_sha_256 = fingerprint_sha_256
+        # The certificate ID.
+        self.id = id
+        # The CA that issued the certificate.
+        self.issuer = issuer
+        # The time when the certificate expires.
+        self.not_after = not_after
+        # The time when the certificate takes effect.
+        self.not_before = not_before
+        # The request ID.
+        self.request_id = request_id
+        # The serial number of the certificate.
+        self.serial_number = serial_number
+        # The signature algorithm of the certificate.
+        self.signature_algorithm = signature_algorithm
+        # The status of the certificate.
+        self.status = status
+        # The validity period of the certificate. Unit: day.
+        self.validity_days = validity_days
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.fingerprint_sha_256 is not None:
+            result['FingerprintSha256'] = self.fingerprint_sha_256
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.signature_algorithm is not None:
+            result['SignatureAlgorithm'] = self.signature_algorithm
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.validity_days is not None:
+            result['ValidityDays'] = self.validity_days
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('FingerprintSha256') is not None:
+            self.fingerprint_sha_256 = m.get('FingerprintSha256')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('SignatureAlgorithm') is not None:
+            self.signature_algorithm = m.get('SignatureAlgorithm')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ValidityDays') is not None:
+            self.validity_days = m.get('ValidityDays')
+        return self
+
+
+class UploadOriginClientCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UploadOriginClientCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UploadOriginClientCertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UploadSiteOriginClientCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        certificate: str = None,
+        name: str = None,
+        private_key: str = None,
+        site_id: int = None,
+    ):
+        # The certificate content.
+        # 
+        # This parameter is required.
+        self.certificate = certificate
+        # The certificate name.
+        self.name = name
+        # The private key of the certificate.
+        # 
+        # This parameter is required.
+        self.private_key = private_key
+        # Site ID.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate is not None:
+            result['Certificate'] = self.certificate
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.private_key is not None:
+            result['PrivateKey'] = self.private_key
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Certificate') is not None:
+            self.certificate = m.get('Certificate')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PrivateKey') is not None:
+            self.private_key = m.get('PrivateKey')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class UploadSiteOriginClientCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        common_name: str = None,
+        fingerprint_sha_256: str = None,
+        id: str = None,
+        issuer: str = None,
+        not_after: str = None,
+        not_before: str = None,
+        request_id: str = None,
+        serial_number: str = None,
+        signature_algorithm: str = None,
+        status: str = None,
+        validity_days: str = None,
+    ):
+        # The Common Name of the certificate.
+        self.common_name = common_name
+        # The SHA-256 fingerprint of the certificate.
+        self.fingerprint_sha_256 = fingerprint_sha_256
+        # The certificate ID on ESA.
+        self.id = id
+        # The CA that issued the certificate.
+        self.issuer = issuer
+        # The time when the certificate expires.
+        self.not_after = not_after
+        # The time when the certificate takes effect.
+        self.not_before = not_before
+        # Request ID.
+        self.request_id = request_id
+        # The serial number of the certificate.
+        self.serial_number = serial_number
+        # The signature algorithm of the certificate.
+        self.signature_algorithm = signature_algorithm
+        # The status of the certificate.
+        self.status = status
+        # The validity period of the certificate. Unit: day.
+        self.validity_days = validity_days
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.fingerprint_sha_256 is not None:
+            result['FingerprintSha256'] = self.fingerprint_sha_256
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.signature_algorithm is not None:
+            result['SignatureAlgorithm'] = self.signature_algorithm
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.validity_days is not None:
+            result['ValidityDays'] = self.validity_days
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('FingerprintSha256') is not None:
+            self.fingerprint_sha_256 = m.get('FingerprintSha256')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('SignatureAlgorithm') is not None:
+            self.signature_algorithm = m.get('SignatureAlgorithm')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ValidityDays') is not None:
+            self.validity_days = m.get('ValidityDays')
+        return self
+
+
+class UploadSiteOriginClientCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UploadSiteOriginClientCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UploadSiteOriginClientCertificateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -1,3 +1,55 @@
+2025-03-27 Version: 2.18.0
+- Support API BatchCreateWafRules.
+- Support API BatchUpdateWafRules.
+- Support API CreateWafRule.
+- Support API CreateWafRuleset.
+- Support API DeleteOriginCaCertificate.
+- Support API DeleteOriginClientCertificate.
+- Support API DeleteSiteOriginClientCertificate.
+- Support API DeleteWafRule.
+- Support API DeleteWafRuleset.
+- Support API GetOriginCaCertificate.
+- Support API GetOriginClientCertificate.
+- Support API GetOriginClientCertificateHostnames.
+- Support API GetSiteOriginClientCertificate.
+- Support API GetWafRule.
+- Support API GetWafRuleset.
+- Support API ListOriginCaCertificates.
+- Support API ListOriginClientCertificates.
+- Support API ListWafRules.
+- Support API ListWafRulesets.
+- Support API SetOriginClientCertificateHostnames.
+- Support API UpdateWafRule.
+- Support API UpdateWafRuleset.
+- Support API UploadOriginCaCertificate.
+- Support API UploadOriginClientCertificate.
+- Support API UploadSiteOriginClientCertificate.
+- Update API CreateCacheRule: add request parameters Sequence.
+- Update API CreateCompressionRule: add request parameters Sequence.
+- Update API CreateHttpRequestHeaderModificationRule: add request parameters Sequence.
+- Update API CreateHttpResponseHeaderModificationRule: add request parameters Sequence.
+- Update API CreateHttpsApplicationConfiguration: add request parameters Sequence.
+- Update API CreateHttpsBasicConfiguration: add request parameters Sequence.
+- Update API CreateImageTransform: add request parameters Sequence.
+- Update API CreateNetworkOptimization: add request parameters Sequence.
+- Update API CreateOriginRule: add request parameters Sequence.
+- Update API CreateRedirectRule: add request parameters Sequence.
+- Update API CreateRewriteUrlRule: add request parameters Sequence.
+- Update API GetIPv6: add response parameters Body.Region.
+- Update API UpdateCacheRule: add request parameters Sequence.
+- Update API UpdateCompressionRule: add request parameters Sequence.
+- Update API UpdateHttpRequestHeaderModificationRule: add request parameters Sequence.
+- Update API UpdateHttpResponseHeaderModificationRule: add request parameters Sequence.
+- Update API UpdateHttpsApplicationConfiguration: add request parameters Sequence.
+- Update API UpdateHttpsBasicConfiguration: add request parameters Sequence.
+- Update API UpdateIPv6: add request parameters Region.
+- Update API UpdateImageTransform: add request parameters Sequence.
+- Update API UpdateNetworkOptimization: add request parameters Sequence.
+- Update API UpdateOriginRule: add request parameters Sequence.
+- Update API UpdateRedirectRule: add request parameters Sequence.
+- Update API UpdateRewriteUrlRule: add request parameters Sequence.
+
+
 2025-03-20 Version: 2.17.1
 - Update API CreateOriginRule: add param RangeChunkSize.
 - Update API GetOriginRule: update response param.
