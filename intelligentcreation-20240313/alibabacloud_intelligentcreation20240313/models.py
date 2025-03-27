@@ -4944,6 +4944,134 @@ class GetAICoachScriptResponseBodyPointDeductionRuleList(TeaModel):
         return self
 
 
+class GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesKeywordValues(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        weight: int = None,
+    ):
+        self.name = name
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
+class GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesScoringRules(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class GetAICoachScriptResponseBodyPointsAnswerListAnswerValues(TeaModel):
+    def __init__(
+        self,
+        answer_name: str = None,
+        answer_weight: int = None,
+        keyword_values: List[GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesKeywordValues] = None,
+        keyword_weight: int = None,
+        scoring_rules: List[GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesScoringRules] = None,
+    ):
+        self.answer_name = answer_name
+        self.answer_weight = answer_weight
+        self.keyword_values = keyword_values
+        self.keyword_weight = keyword_weight
+        self.scoring_rules = scoring_rules
+
+    def validate(self):
+        if self.keyword_values:
+            for k in self.keyword_values:
+                if k:
+                    k.validate()
+        if self.scoring_rules:
+            for k in self.scoring_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.answer_name is not None:
+            result['answerName'] = self.answer_name
+        if self.answer_weight is not None:
+            result['answerWeight'] = self.answer_weight
+        result['keywordValues'] = []
+        if self.keyword_values is not None:
+            for k in self.keyword_values:
+                result['keywordValues'].append(k.to_map() if k else None)
+        if self.keyword_weight is not None:
+            result['keywordWeight'] = self.keyword_weight
+        result['scoringRules'] = []
+        if self.scoring_rules is not None:
+            for k in self.scoring_rules:
+                result['scoringRules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('answerName') is not None:
+            self.answer_name = m.get('answerName')
+        if m.get('answerWeight') is not None:
+            self.answer_weight = m.get('answerWeight')
+        self.keyword_values = []
+        if m.get('keywordValues') is not None:
+            for k in m.get('keywordValues'):
+                temp_model = GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesKeywordValues()
+                self.keyword_values.append(temp_model.from_map(k))
+        if m.get('keywordWeight') is not None:
+            self.keyword_weight = m.get('keywordWeight')
+        self.scoring_rules = []
+        if m.get('scoringRules') is not None:
+            for k in m.get('scoringRules'):
+                temp_model = GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesScoringRules()
+                self.scoring_rules.append(temp_model.from_map(k))
+        return self
+
+
 class GetAICoachScriptResponseBodyPointsAnswerListParameters(TeaModel):
     def __init__(
         self,
@@ -4980,6 +5108,8 @@ class GetAICoachScriptResponseBodyPointsAnswerListParameters(TeaModel):
 class GetAICoachScriptResponseBodyPointsAnswerList(TeaModel):
     def __init__(
         self,
+        answer_values: List[GetAICoachScriptResponseBodyPointsAnswerListAnswerValues] = None,
+        enabled_keyword: bool = None,
         name: str = None,
         name_list: List[str] = None,
         operators: str = None,
@@ -4987,6 +5117,8 @@ class GetAICoachScriptResponseBodyPointsAnswerList(TeaModel):
         type: str = None,
         weight: int = None,
     ):
+        self.answer_values = answer_values
+        self.enabled_keyword = enabled_keyword
         self.name = name
         self.name_list = name_list
         self.operators = operators
@@ -4995,6 +5127,10 @@ class GetAICoachScriptResponseBodyPointsAnswerList(TeaModel):
         self.weight = weight
 
     def validate(self):
+        if self.answer_values:
+            for k in self.answer_values:
+                if k:
+                    k.validate()
         if self.parameters:
             for k in self.parameters:
                 if k:
@@ -5006,6 +5142,12 @@ class GetAICoachScriptResponseBodyPointsAnswerList(TeaModel):
             return _map
 
         result = dict()
+        result['answerValues'] = []
+        if self.answer_values is not None:
+            for k in self.answer_values:
+                result['answerValues'].append(k.to_map() if k else None)
+        if self.enabled_keyword is not None:
+            result['enabledKeyword'] = self.enabled_keyword
         if self.name is not None:
             result['name'] = self.name
         if self.name_list is not None:
@@ -5024,6 +5166,13 @@ class GetAICoachScriptResponseBodyPointsAnswerList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.answer_values = []
+        if m.get('answerValues') is not None:
+            for k in m.get('answerValues'):
+                temp_model = GetAICoachScriptResponseBodyPointsAnswerListAnswerValues()
+                self.answer_values.append(temp_model.from_map(k))
+        if m.get('enabledKeyword') is not None:
+            self.enabled_keyword = m.get('enabledKeyword')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('nameList') is not None:
