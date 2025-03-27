@@ -5445,6 +5445,201 @@ class ExecuteTextbookAssistantRetryConversationResponse(TeaModel):
         return self
 
 
+class ExecuteTextbookAssistantSseDialogueRequest(TeaModel):
+    def __init__(
+        self,
+        auth_token: str = None,
+        chat_id: str = None,
+        scenario: str = None,
+        user_message: str = None,
+    ):
+        # This parameter is required.
+        self.auth_token = auth_token
+        # This parameter is required.
+        self.chat_id = chat_id
+        # This parameter is required.
+        self.scenario = scenario
+        # This parameter is required.
+        self.user_message = user_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_token is not None:
+            result['authToken'] = self.auth_token
+        if self.chat_id is not None:
+            result['chatId'] = self.chat_id
+        if self.scenario is not None:
+            result['scenario'] = self.scenario
+        if self.user_message is not None:
+            result['userMessage'] = self.user_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authToken') is not None:
+            self.auth_token = m.get('authToken')
+        if m.get('chatId') is not None:
+            self.chat_id = m.get('chatId')
+        if m.get('scenario') is not None:
+            self.scenario = m.get('scenario')
+        if m.get('userMessage') is not None:
+            self.user_message = m.get('userMessage')
+        return self
+
+
+class ExecuteTextbookAssistantSseDialogueResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        english_result: str = None,
+        is_finish: bool = None,
+    ):
+        self.english_result = english_result
+        self.is_finish = is_finish
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.english_result is not None:
+            result['englishResult'] = self.english_result
+        if self.is_finish is not None:
+            result['isFinish'] = self.is_finish
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('englishResult') is not None:
+            self.english_result = m.get('englishResult')
+        if m.get('isFinish') is not None:
+            self.is_finish = m.get('isFinish')
+        return self
+
+
+class ExecuteTextbookAssistantSseDialogueResponseBody(TeaModel):
+    def __init__(
+        self,
+        assistant: str = None,
+        chat_id: str = None,
+        data: ExecuteTextbookAssistantSseDialogueResponseBodyData = None,
+        err_code: str = None,
+        err_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        user: str = None,
+    ):
+        self.assistant = assistant
+        self.chat_id = chat_id
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.user = user
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant is not None:
+            result['assistant'] = self.assistant
+        if self.chat_id is not None:
+            result['chatId'] = self.chat_id
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.user is not None:
+            result['user'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assistant') is not None:
+            self.assistant = m.get('assistant')
+        if m.get('chatId') is not None:
+            self.chat_id = m.get('chatId')
+        if m.get('data') is not None:
+            temp_model = ExecuteTextbookAssistantSseDialogueResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('user') is not None:
+            self.user = m.get('user')
+        return self
+
+
+class ExecuteTextbookAssistantSseDialogueResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteTextbookAssistantSseDialogueResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteTextbookAssistantSseDialogueResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ExecuteTextbookAssistantStartConversationRequest(TeaModel):
     def __init__(
         self,
@@ -6920,6 +7115,497 @@ class GetTextbookAssistantTokenResponse(TeaModel):
         return self
 
 
+class ListTextbookAssistantArticleDetailsRequest(TeaModel):
+    def __init__(
+        self,
+        article_id_list: List[str] = None,
+        auth_token: str = None,
+    ):
+        self.article_id_list = article_id_list
+        # This parameter is required.
+        self.auth_token = auth_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.article_id_list is not None:
+            result['articleIdList'] = self.article_id_list
+        if self.auth_token is not None:
+            result['authToken'] = self.auth_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('articleIdList') is not None:
+            self.article_id_list = m.get('articleIdList')
+        if m.get('authToken') is not None:
+            self.auth_token = m.get('authToken')
+        return self
+
+
+class ListTextbookAssistantArticleDetailsResponseBodyDataQuestionList(TeaModel):
+    def __init__(
+        self,
+        answer: str = None,
+        question: str = None,
+        question_translate: str = None,
+    ):
+        self.answer = answer
+        self.question = question
+        self.question_translate = question_translate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.answer is not None:
+            result['answer'] = self.answer
+        if self.question is not None:
+            result['question'] = self.question
+        if self.question_translate is not None:
+            result['questionTranslate'] = self.question_translate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('answer') is not None:
+            self.answer = m.get('answer')
+        if m.get('question') is not None:
+            self.question = m.get('question')
+        if m.get('questionTranslate') is not None:
+            self.question_translate = m.get('questionTranslate')
+        return self
+
+
+class ListTextbookAssistantArticleDetailsResponseBodyDataSceneList(TeaModel):
+    def __init__(
+        self,
+        scene: str = None,
+        scene_id: str = None,
+        scene_image_list: List[str] = None,
+        scene_trans_late: str = None,
+    ):
+        self.scene = scene
+        self.scene_id = scene_id
+        self.scene_image_list = scene_image_list
+        self.scene_trans_late = scene_trans_late
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene is not None:
+            result['scene'] = self.scene
+        if self.scene_id is not None:
+            result['sceneId'] = self.scene_id
+        if self.scene_image_list is not None:
+            result['sceneImageList'] = self.scene_image_list
+        if self.scene_trans_late is not None:
+            result['sceneTransLate'] = self.scene_trans_late
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        if m.get('sceneId') is not None:
+            self.scene_id = m.get('sceneId')
+        if m.get('sceneImageList') is not None:
+            self.scene_image_list = m.get('sceneImageList')
+        if m.get('sceneTransLate') is not None:
+            self.scene_trans_late = m.get('sceneTransLate')
+        return self
+
+
+class ListTextbookAssistantArticleDetailsResponseBodyDataSentenceList(TeaModel):
+    def __init__(
+        self,
+        sentence_analysis: str = None,
+        sentence_id: str = None,
+        sentence_text: str = None,
+    ):
+        self.sentence_analysis = sentence_analysis
+        self.sentence_id = sentence_id
+        self.sentence_text = sentence_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sentence_analysis is not None:
+            result['sentenceAnalysis'] = self.sentence_analysis
+        if self.sentence_id is not None:
+            result['sentenceId'] = self.sentence_id
+        if self.sentence_text is not None:
+            result['sentenceText'] = self.sentence_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sentenceAnalysis') is not None:
+            self.sentence_analysis = m.get('sentenceAnalysis')
+        if m.get('sentenceId') is not None:
+            self.sentence_id = m.get('sentenceId')
+        if m.get('sentenceText') is not None:
+            self.sentence_text = m.get('sentenceText')
+        return self
+
+
+class ListTextbookAssistantArticleDetailsResponseBodyDataTheme(TeaModel):
+    def __init__(
+        self,
+        theme_image_list: List[str] = None,
+        theme_name: str = None,
+        theme_translate: str = None,
+    ):
+        self.theme_image_list = theme_image_list
+        self.theme_name = theme_name
+        self.theme_translate = theme_translate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.theme_image_list is not None:
+            result['themeImageList'] = self.theme_image_list
+        if self.theme_name is not None:
+            result['themeName'] = self.theme_name
+        if self.theme_translate is not None:
+            result['themeTranslate'] = self.theme_translate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('themeImageList') is not None:
+            self.theme_image_list = m.get('themeImageList')
+        if m.get('themeName') is not None:
+            self.theme_name = m.get('themeName')
+        if m.get('themeTranslate') is not None:
+            self.theme_translate = m.get('themeTranslate')
+        return self
+
+
+class ListTextbookAssistantArticleDetailsResponseBodyDataTopic(TeaModel):
+    def __init__(
+        self,
+        topic_image_list: List[str] = None,
+        topic_name: str = None,
+        topic_translate: str = None,
+    ):
+        self.topic_image_list = topic_image_list
+        self.topic_name = topic_name
+        self.topic_translate = topic_translate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.topic_image_list is not None:
+            result['topicImageList'] = self.topic_image_list
+        if self.topic_name is not None:
+            result['topicName'] = self.topic_name
+        if self.topic_translate is not None:
+            result['topicTranslate'] = self.topic_translate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('topicImageList') is not None:
+            self.topic_image_list = m.get('topicImageList')
+        if m.get('topicName') is not None:
+            self.topic_name = m.get('topicName')
+        if m.get('topicTranslate') is not None:
+            self.topic_translate = m.get('topicTranslate')
+        return self
+
+
+class ListTextbookAssistantArticleDetailsResponseBodyDataWordList(TeaModel):
+    def __init__(
+        self,
+        word_analysis: str = None,
+        word_id: str = None,
+        word_text: str = None,
+    ):
+        self.word_analysis = word_analysis
+        self.word_id = word_id
+        self.word_text = word_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.word_analysis is not None:
+            result['wordAnalysis'] = self.word_analysis
+        if self.word_id is not None:
+            result['wordId'] = self.word_id
+        if self.word_text is not None:
+            result['wordText'] = self.word_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('wordAnalysis') is not None:
+            self.word_analysis = m.get('wordAnalysis')
+        if m.get('wordId') is not None:
+            self.word_id = m.get('wordId')
+        if m.get('wordText') is not None:
+            self.word_text = m.get('wordText')
+        return self
+
+
+class ListTextbookAssistantArticleDetailsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        article_id: str = None,
+        question_list: List[ListTextbookAssistantArticleDetailsResponseBodyDataQuestionList] = None,
+        scene_list: List[ListTextbookAssistantArticleDetailsResponseBodyDataSceneList] = None,
+        sentence_list: List[ListTextbookAssistantArticleDetailsResponseBodyDataSentenceList] = None,
+        target: str = None,
+        theme: ListTextbookAssistantArticleDetailsResponseBodyDataTheme = None,
+        topic: ListTextbookAssistantArticleDetailsResponseBodyDataTopic = None,
+        word_list: List[ListTextbookAssistantArticleDetailsResponseBodyDataWordList] = None,
+    ):
+        self.article_id = article_id
+        self.question_list = question_list
+        self.scene_list = scene_list
+        self.sentence_list = sentence_list
+        self.target = target
+        self.theme = theme
+        self.topic = topic
+        self.word_list = word_list
+
+    def validate(self):
+        if self.question_list:
+            for k in self.question_list:
+                if k:
+                    k.validate()
+        if self.scene_list:
+            for k in self.scene_list:
+                if k:
+                    k.validate()
+        if self.sentence_list:
+            for k in self.sentence_list:
+                if k:
+                    k.validate()
+        if self.theme:
+            self.theme.validate()
+        if self.topic:
+            self.topic.validate()
+        if self.word_list:
+            for k in self.word_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.article_id is not None:
+            result['articleId'] = self.article_id
+        result['questionList'] = []
+        if self.question_list is not None:
+            for k in self.question_list:
+                result['questionList'].append(k.to_map() if k else None)
+        result['sceneList'] = []
+        if self.scene_list is not None:
+            for k in self.scene_list:
+                result['sceneList'].append(k.to_map() if k else None)
+        result['sentenceList'] = []
+        if self.sentence_list is not None:
+            for k in self.sentence_list:
+                result['sentenceList'].append(k.to_map() if k else None)
+        if self.target is not None:
+            result['target'] = self.target
+        if self.theme is not None:
+            result['theme'] = self.theme.to_map()
+        if self.topic is not None:
+            result['topic'] = self.topic.to_map()
+        result['wordList'] = []
+        if self.word_list is not None:
+            for k in self.word_list:
+                result['wordList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('articleId') is not None:
+            self.article_id = m.get('articleId')
+        self.question_list = []
+        if m.get('questionList') is not None:
+            for k in m.get('questionList'):
+                temp_model = ListTextbookAssistantArticleDetailsResponseBodyDataQuestionList()
+                self.question_list.append(temp_model.from_map(k))
+        self.scene_list = []
+        if m.get('sceneList') is not None:
+            for k in m.get('sceneList'):
+                temp_model = ListTextbookAssistantArticleDetailsResponseBodyDataSceneList()
+                self.scene_list.append(temp_model.from_map(k))
+        self.sentence_list = []
+        if m.get('sentenceList') is not None:
+            for k in m.get('sentenceList'):
+                temp_model = ListTextbookAssistantArticleDetailsResponseBodyDataSentenceList()
+                self.sentence_list.append(temp_model.from_map(k))
+        if m.get('target') is not None:
+            self.target = m.get('target')
+        if m.get('theme') is not None:
+            temp_model = ListTextbookAssistantArticleDetailsResponseBodyDataTheme()
+            self.theme = temp_model.from_map(m['theme'])
+        if m.get('topic') is not None:
+            temp_model = ListTextbookAssistantArticleDetailsResponseBodyDataTopic()
+            self.topic = temp_model.from_map(m['topic'])
+        self.word_list = []
+        if m.get('wordList') is not None:
+            for k in m.get('wordList'):
+                temp_model = ListTextbookAssistantArticleDetailsResponseBodyDataWordList()
+                self.word_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListTextbookAssistantArticleDetailsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[ListTextbookAssistantArticleDetailsResponseBodyData] = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ListTextbookAssistantArticleDetailsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListTextbookAssistantArticleDetailsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTextbookAssistantArticleDetailsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTextbookAssistantArticleDetailsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTextbookAssistantArticlesRequest(TeaModel):
     def __init__(
         self,
@@ -7980,6 +8666,520 @@ class ListTextbookAssistantGradeVolumesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTextbookAssistantGradeVolumesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTextbookAssistantSceneDetailsRequest(TeaModel):
+    def __init__(
+        self,
+        auth_token: str = None,
+        scene_id_list: List[str] = None,
+    ):
+        self.auth_token = auth_token
+        self.scene_id_list = scene_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_token is not None:
+            result['authToken'] = self.auth_token
+        if self.scene_id_list is not None:
+            result['sceneIdList'] = self.scene_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authToken') is not None:
+            self.auth_token = m.get('authToken')
+        if m.get('sceneIdList') is not None:
+            self.scene_id_list = m.get('sceneIdList')
+        return self
+
+
+class ListTextbookAssistantSceneDetailsResponseBodyDataRoleList(TeaModel):
+    def __init__(
+        self,
+        introduction: str = None,
+        introduction_translate: str = None,
+        promoting: str = None,
+        promoting_translate: str = None,
+        role_name: str = None,
+        role_name_translate: str = None,
+        role_type: str = None,
+    ):
+        self.introduction = introduction
+        self.introduction_translate = introduction_translate
+        self.promoting = promoting
+        self.promoting_translate = promoting_translate
+        self.role_name = role_name
+        self.role_name_translate = role_name_translate
+        self.role_type = role_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.introduction is not None:
+            result['introduction'] = self.introduction
+        if self.introduction_translate is not None:
+            result['introductionTranslate'] = self.introduction_translate
+        if self.promoting is not None:
+            result['promoting'] = self.promoting
+        if self.promoting_translate is not None:
+            result['promotingTranslate'] = self.promoting_translate
+        if self.role_name is not None:
+            result['roleName'] = self.role_name
+        if self.role_name_translate is not None:
+            result['roleNameTranslate'] = self.role_name_translate
+        if self.role_type is not None:
+            result['roleType'] = self.role_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('introduction') is not None:
+            self.introduction = m.get('introduction')
+        if m.get('introductionTranslate') is not None:
+            self.introduction_translate = m.get('introductionTranslate')
+        if m.get('promoting') is not None:
+            self.promoting = m.get('promoting')
+        if m.get('promotingTranslate') is not None:
+            self.promoting_translate = m.get('promotingTranslate')
+        if m.get('roleName') is not None:
+            self.role_name = m.get('roleName')
+        if m.get('roleNameTranslate') is not None:
+            self.role_name_translate = m.get('roleNameTranslate')
+        if m.get('roleType') is not None:
+            self.role_type = m.get('roleType')
+        return self
+
+
+class ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList(TeaModel):
+    def __init__(
+        self,
+        scene_task: str = None,
+        scene_task_translate: str = None,
+    ):
+        self.scene_task = scene_task
+        self.scene_task_translate = scene_task_translate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene_task is not None:
+            result['sceneTask'] = self.scene_task
+        if self.scene_task_translate is not None:
+            result['sceneTaskTranslate'] = self.scene_task_translate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sceneTask') is not None:
+            self.scene_task = m.get('sceneTask')
+        if m.get('sceneTaskTranslate') is not None:
+            self.scene_task_translate = m.get('sceneTaskTranslate')
+        return self
+
+
+class ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList(TeaModel):
+    def __init__(
+        self,
+        sentence_analysis: str = None,
+        sentence_id: str = None,
+        sentence_text: str = None,
+    ):
+        self.sentence_analysis = sentence_analysis
+        self.sentence_id = sentence_id
+        self.sentence_text = sentence_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sentence_analysis is not None:
+            result['sentenceAnalysis'] = self.sentence_analysis
+        if self.sentence_id is not None:
+            result['sentenceId'] = self.sentence_id
+        if self.sentence_text is not None:
+            result['sentenceText'] = self.sentence_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sentenceAnalysis') is not None:
+            self.sentence_analysis = m.get('sentenceAnalysis')
+        if m.get('sentenceId') is not None:
+            self.sentence_id = m.get('sentenceId')
+        if m.get('sentenceText') is not None:
+            self.sentence_text = m.get('sentenceText')
+        return self
+
+
+class ListTextbookAssistantSceneDetailsResponseBodyDataTheme(TeaModel):
+    def __init__(
+        self,
+        theme_image_list: List[str] = None,
+        theme_name: str = None,
+        theme_translate: str = None,
+    ):
+        self.theme_image_list = theme_image_list
+        self.theme_name = theme_name
+        self.theme_translate = theme_translate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.theme_image_list is not None:
+            result['themeImageList'] = self.theme_image_list
+        if self.theme_name is not None:
+            result['themeName'] = self.theme_name
+        if self.theme_translate is not None:
+            result['themeTranslate'] = self.theme_translate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('themeImageList') is not None:
+            self.theme_image_list = m.get('themeImageList')
+        if m.get('themeName') is not None:
+            self.theme_name = m.get('themeName')
+        if m.get('themeTranslate') is not None:
+            self.theme_translate = m.get('themeTranslate')
+        return self
+
+
+class ListTextbookAssistantSceneDetailsResponseBodyDataTopic(TeaModel):
+    def __init__(
+        self,
+        topic_image_list: List[str] = None,
+        topic_name: str = None,
+        topic_translate: str = None,
+    ):
+        self.topic_image_list = topic_image_list
+        self.topic_name = topic_name
+        self.topic_translate = topic_translate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.topic_image_list is not None:
+            result['topicImageList'] = self.topic_image_list
+        if self.topic_name is not None:
+            result['topicName'] = self.topic_name
+        if self.topic_translate is not None:
+            result['topicTranslate'] = self.topic_translate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('topicImageList') is not None:
+            self.topic_image_list = m.get('topicImageList')
+        if m.get('topicName') is not None:
+            self.topic_name = m.get('topicName')
+        if m.get('topicTranslate') is not None:
+            self.topic_translate = m.get('topicTranslate')
+        return self
+
+
+class ListTextbookAssistantSceneDetailsResponseBodyDataWordList(TeaModel):
+    def __init__(
+        self,
+        word_analysis: str = None,
+        word_id: str = None,
+        word_text: str = None,
+    ):
+        self.word_analysis = word_analysis
+        self.word_id = word_id
+        self.word_text = word_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.word_analysis is not None:
+            result['wordAnalysis'] = self.word_analysis
+        if self.word_id is not None:
+            result['wordId'] = self.word_id
+        if self.word_text is not None:
+            result['wordText'] = self.word_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('wordAnalysis') is not None:
+            self.word_analysis = m.get('wordAnalysis')
+        if m.get('wordId') is not None:
+            self.word_id = m.get('wordId')
+        if m.get('wordText') is not None:
+            self.word_text = m.get('wordText')
+        return self
+
+
+class ListTextbookAssistantSceneDetailsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        role_list: List[ListTextbookAssistantSceneDetailsResponseBodyDataRoleList] = None,
+        scene: str = None,
+        scene_id: str = None,
+        scene_image_list: List[str] = None,
+        scene_task_list: List[ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList] = None,
+        sentence_list: List[ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList] = None,
+        target: str = None,
+        theme: ListTextbookAssistantSceneDetailsResponseBodyDataTheme = None,
+        topic: ListTextbookAssistantSceneDetailsResponseBodyDataTopic = None,
+        word_list: List[ListTextbookAssistantSceneDetailsResponseBodyDataWordList] = None,
+    ):
+        self.role_list = role_list
+        self.scene = scene
+        self.scene_id = scene_id
+        self.scene_image_list = scene_image_list
+        self.scene_task_list = scene_task_list
+        self.sentence_list = sentence_list
+        self.target = target
+        self.theme = theme
+        self.topic = topic
+        self.word_list = word_list
+
+    def validate(self):
+        if self.role_list:
+            for k in self.role_list:
+                if k:
+                    k.validate()
+        if self.scene_task_list:
+            for k in self.scene_task_list:
+                if k:
+                    k.validate()
+        if self.sentence_list:
+            for k in self.sentence_list:
+                if k:
+                    k.validate()
+        if self.theme:
+            self.theme.validate()
+        if self.topic:
+            self.topic.validate()
+        if self.word_list:
+            for k in self.word_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['roleList'] = []
+        if self.role_list is not None:
+            for k in self.role_list:
+                result['roleList'].append(k.to_map() if k else None)
+        if self.scene is not None:
+            result['scene'] = self.scene
+        if self.scene_id is not None:
+            result['sceneId'] = self.scene_id
+        if self.scene_image_list is not None:
+            result['sceneImageList'] = self.scene_image_list
+        result['sceneTaskList'] = []
+        if self.scene_task_list is not None:
+            for k in self.scene_task_list:
+                result['sceneTaskList'].append(k.to_map() if k else None)
+        result['sentenceList'] = []
+        if self.sentence_list is not None:
+            for k in self.sentence_list:
+                result['sentenceList'].append(k.to_map() if k else None)
+        if self.target is not None:
+            result['target'] = self.target
+        if self.theme is not None:
+            result['theme'] = self.theme.to_map()
+        if self.topic is not None:
+            result['topic'] = self.topic.to_map()
+        result['wordList'] = []
+        if self.word_list is not None:
+            for k in self.word_list:
+                result['wordList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.role_list = []
+        if m.get('roleList') is not None:
+            for k in m.get('roleList'):
+                temp_model = ListTextbookAssistantSceneDetailsResponseBodyDataRoleList()
+                self.role_list.append(temp_model.from_map(k))
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        if m.get('sceneId') is not None:
+            self.scene_id = m.get('sceneId')
+        if m.get('sceneImageList') is not None:
+            self.scene_image_list = m.get('sceneImageList')
+        self.scene_task_list = []
+        if m.get('sceneTaskList') is not None:
+            for k in m.get('sceneTaskList'):
+                temp_model = ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList()
+                self.scene_task_list.append(temp_model.from_map(k))
+        self.sentence_list = []
+        if m.get('sentenceList') is not None:
+            for k in m.get('sentenceList'):
+                temp_model = ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList()
+                self.sentence_list.append(temp_model.from_map(k))
+        if m.get('target') is not None:
+            self.target = m.get('target')
+        if m.get('theme') is not None:
+            temp_model = ListTextbookAssistantSceneDetailsResponseBodyDataTheme()
+            self.theme = temp_model.from_map(m['theme'])
+        if m.get('topic') is not None:
+            temp_model = ListTextbookAssistantSceneDetailsResponseBodyDataTopic()
+            self.topic = temp_model.from_map(m['topic'])
+        self.word_list = []
+        if m.get('wordList') is not None:
+            for k in m.get('wordList'):
+                temp_model = ListTextbookAssistantSceneDetailsResponseBodyDataWordList()
+                self.word_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListTextbookAssistantSceneDetailsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[ListTextbookAssistantSceneDetailsResponseBodyData] = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ListTextbookAssistantSceneDetailsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListTextbookAssistantSceneDetailsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTextbookAssistantSceneDetailsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTextbookAssistantSceneDetailsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

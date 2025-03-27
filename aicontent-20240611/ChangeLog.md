@@ -1,3 +1,9 @@
+2025-03-27 Version: 2.1.0
+- Support API ExecuteTextbookAssistantSseDialogue.
+- Support API ListTextbookAssistantArticleDetails.
+- Support API ListTextbookAssistantSceneDetails.
+
+
 2025-03-26 Version: 2.0.0
 - Support API CreateAccessWarrant.
 - Support API CreateProject.
