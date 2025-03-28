@@ -161,6 +161,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.activate_license_with_options_async(request, runtime)
 
+    def aics_open_api_invoke_with_options(
+        self,
+        tmp_req: brain_industrial_20200920_models.AicsOpenApiInvokeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> brain_industrial_20200920_models.AicsOpenApiInvokeResponse:
+        """
+        @summary 调用aics openapi
+        
+        @param tmp_req: AicsOpenApiInvokeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AicsOpenApiInvokeResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = brain_industrial_20200920_models.AicsOpenApiInvokeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.param):
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        body = {}
+        if not UtilClient.is_unset(request.param_shrink):
+            body['Param'] = request.param_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AicsOpenApiInvoke',
+            version='2020-09-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.AicsOpenApiInvokeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.AicsOpenApiInvokeResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def aics_open_api_invoke_with_options_async(
+        self,
+        tmp_req: brain_industrial_20200920_models.AicsOpenApiInvokeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> brain_industrial_20200920_models.AicsOpenApiInvokeResponse:
+        """
+        @summary 调用aics openapi
+        
+        @param tmp_req: AicsOpenApiInvokeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AicsOpenApiInvokeResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = brain_industrial_20200920_models.AicsOpenApiInvokeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.param):
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        body = {}
+        if not UtilClient.is_unset(request.param_shrink):
+            body['Param'] = request.param_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AicsOpenApiInvoke',
+            version='2020-09-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.AicsOpenApiInvokeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.AicsOpenApiInvokeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def aics_open_api_invoke(
+        self,
+        request: brain_industrial_20200920_models.AicsOpenApiInvokeRequest,
+    ) -> brain_industrial_20200920_models.AicsOpenApiInvokeResponse:
+        """
+        @summary 调用aics openapi
+        
+        @param request: AicsOpenApiInvokeRequest
+        @return: AicsOpenApiInvokeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.aics_open_api_invoke_with_options(request, runtime)
+
+    async def aics_open_api_invoke_async(
+        self,
+        request: brain_industrial_20200920_models.AicsOpenApiInvokeRequest,
+    ) -> brain_industrial_20200920_models.AicsOpenApiInvokeResponse:
+        """
+        @summary 调用aics openapi
+        
+        @param request: AicsOpenApiInvokeRequest
+        @return: AicsOpenApiInvokeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.aics_open_api_invoke_with_options_async(request, runtime)
+
     def create_ess_opt_job_with_options(
         self,
         tmp_req: brain_industrial_20200920_models.CreateEssOptJobRequest,

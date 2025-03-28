@@ -1,3 +1,7 @@
+2025-03-28 Version: 1.3.0
+- Support API AicsOpenApiInvoke.
+
+
 2025-03-21 Version: 1.2.0
 - Support API OpenApiInvoke.
 

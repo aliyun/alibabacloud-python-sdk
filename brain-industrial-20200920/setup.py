@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_brain-industrial20200920.
 
-Created on 21/03/2025
+Created on 28/03/2025
 
 @author: Alibaba Cloud SDK
 """
