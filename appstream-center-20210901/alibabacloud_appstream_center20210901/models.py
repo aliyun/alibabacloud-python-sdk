@@ -7720,6 +7720,228 @@ class ListOtaTaskResponse(TeaModel):
         return self
 
 
+class ListPersistentAppInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        app_instance_group_id: str = None,
+        app_instance_persistent_ids: List[str] = None,
+        page_number: int = None,
+        page_size: int = None,
+        product_type: str = None,
+    ):
+        # This parameter is required.
+        self.app_instance_group_id = app_instance_group_id
+        self.app_instance_persistent_ids = app_instance_persistent_ids
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.product_type = product_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_instance_group_id is not None:
+            result['AppInstanceGroupId'] = self.app_instance_group_id
+        if self.app_instance_persistent_ids is not None:
+            result['AppInstancePersistentIds'] = self.app_instance_persistent_ids
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppInstanceGroupId') is not None:
+            self.app_instance_group_id = m.get('AppInstanceGroupId')
+        if m.get('AppInstancePersistentIds') is not None:
+            self.app_instance_persistent_ids = m.get('AppInstancePersistentIds')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        return self
+
+
+class ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels(TeaModel):
+    def __init__(
+        self,
+        app_instance_group_id: str = None,
+        app_instance_id: str = None,
+        app_instance_persistent_id: str = None,
+        app_instance_persistent_name: str = None,
+        app_instance_persistent_status: str = None,
+        app_instance_status: str = None,
+        authorized_users: List[str] = None,
+        gmt_create: str = None,
+    ):
+        self.app_instance_group_id = app_instance_group_id
+        self.app_instance_id = app_instance_id
+        self.app_instance_persistent_id = app_instance_persistent_id
+        self.app_instance_persistent_name = app_instance_persistent_name
+        self.app_instance_persistent_status = app_instance_persistent_status
+        self.app_instance_status = app_instance_status
+        self.authorized_users = authorized_users
+        self.gmt_create = gmt_create
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_instance_group_id is not None:
+            result['AppInstanceGroupId'] = self.app_instance_group_id
+        if self.app_instance_id is not None:
+            result['AppInstanceId'] = self.app_instance_id
+        if self.app_instance_persistent_id is not None:
+            result['AppInstancePersistentId'] = self.app_instance_persistent_id
+        if self.app_instance_persistent_name is not None:
+            result['AppInstancePersistentName'] = self.app_instance_persistent_name
+        if self.app_instance_persistent_status is not None:
+            result['AppInstancePersistentStatus'] = self.app_instance_persistent_status
+        if self.app_instance_status is not None:
+            result['AppInstanceStatus'] = self.app_instance_status
+        if self.authorized_users is not None:
+            result['AuthorizedUsers'] = self.authorized_users
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppInstanceGroupId') is not None:
+            self.app_instance_group_id = m.get('AppInstanceGroupId')
+        if m.get('AppInstanceId') is not None:
+            self.app_instance_id = m.get('AppInstanceId')
+        if m.get('AppInstancePersistentId') is not None:
+            self.app_instance_persistent_id = m.get('AppInstancePersistentId')
+        if m.get('AppInstancePersistentName') is not None:
+            self.app_instance_persistent_name = m.get('AppInstancePersistentName')
+        if m.get('AppInstancePersistentStatus') is not None:
+            self.app_instance_persistent_status = m.get('AppInstancePersistentStatus')
+        if m.get('AppInstanceStatus') is not None:
+            self.app_instance_status = m.get('AppInstanceStatus')
+        if m.get('AuthorizedUsers') is not None:
+            self.authorized_users = m.get('AuthorizedUsers')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        return self
+
+
+class ListPersistentAppInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        persistent_app_instance_models: List[ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.persistent_app_instance_models = persistent_app_instance_models
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.persistent_app_instance_models:
+            for k in self.persistent_app_instance_models:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['PersistentAppInstanceModels'] = []
+        if self.persistent_app_instance_models is not None:
+            for k in self.persistent_app_instance_models:
+                result['PersistentAppInstanceModels'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.persistent_app_instance_models = []
+        if m.get('PersistentAppInstanceModels') is not None:
+            for k in m.get('PersistentAppInstanceModels'):
+                temp_model = ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels()
+                self.persistent_app_instance_models.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListPersistentAppInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPersistentAppInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPersistentAppInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListRegionsRequest(TeaModel):
     def __init__(
         self,

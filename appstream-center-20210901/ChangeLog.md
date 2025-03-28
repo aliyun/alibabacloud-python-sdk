@@ -1,3 +1,7 @@
+2025-03-28 Version: 3.2.0
+- Support API ListPersistentAppInstances.
+
+
 2025-03-27 Version: 3.1.1
 - Update API AuthorizeInstanceGroup: add request parameters AppInstancePersistentId.
 - Update API CreateAppInstanceGroup: add request parameters AuthMode.

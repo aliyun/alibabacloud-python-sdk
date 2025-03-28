@@ -3380,6 +3380,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_ota_task_with_options_async(request, runtime)
 
+    def list_persistent_app_instances_with_options(
+        self,
+        request: appstream_center_20210901_models.ListPersistentAppInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ListPersistentAppInstancesResponse:
+        """
+        @summary 查询交付组内持久会话列表
+        
+        @param request: ListPersistentAppInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPersistentAppInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            query['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.app_instance_persistent_ids):
+            query['AppInstancePersistentIds'] = request.app_instance_persistent_ids
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPersistentAppInstances',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListPersistentAppInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListPersistentAppInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_persistent_app_instances_with_options_async(
+        self,
+        request: appstream_center_20210901_models.ListPersistentAppInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ListPersistentAppInstancesResponse:
+        """
+        @summary 查询交付组内持久会话列表
+        
+        @param request: ListPersistentAppInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPersistentAppInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            query['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.app_instance_persistent_ids):
+            query['AppInstancePersistentIds'] = request.app_instance_persistent_ids
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPersistentAppInstances',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListPersistentAppInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListPersistentAppInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_persistent_app_instances(
+        self,
+        request: appstream_center_20210901_models.ListPersistentAppInstancesRequest,
+    ) -> appstream_center_20210901_models.ListPersistentAppInstancesResponse:
+        """
+        @summary 查询交付组内持久会话列表
+        
+        @param request: ListPersistentAppInstancesRequest
+        @return: ListPersistentAppInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_persistent_app_instances_with_options(request, runtime)
+
+    async def list_persistent_app_instances_async(
+        self,
+        request: appstream_center_20210901_models.ListPersistentAppInstancesRequest,
+    ) -> appstream_center_20210901_models.ListPersistentAppInstancesResponse:
+        """
+        @summary 查询交付组内持久会话列表
+        
+        @param request: ListPersistentAppInstancesRequest
+        @return: ListPersistentAppInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_persistent_app_instances_with_options_async(request, runtime)
+
     def list_regions_with_options(
         self,
         request: appstream_center_20210901_models.ListRegionsRequest,
