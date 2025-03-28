@@ -4056,6 +4056,8 @@ class Client(OpenApiClient):
             body['dialogMemoryTurns'] = request.dialog_memory_turns
         if not UtilClient.is_unset(request.meta_data):
             body['metaData'] = request.meta_data
+        if not UtilClient.is_unset(request.op_type):
+            body['opType'] = request.op_type
         if not UtilClient.is_unset(request.recommend):
             body['recommend'] = request.recommend
         if not UtilClient.is_unset(request.script_content_played):
@@ -4119,6 +4121,8 @@ class Client(OpenApiClient):
             body['dialogMemoryTurns'] = request.dialog_memory_turns
         if not UtilClient.is_unset(request.meta_data):
             body['metaData'] = request.meta_data
+        if not UtilClient.is_unset(request.op_type):
+            body['opType'] = request.op_type
         if not UtilClient.is_unset(request.recommend):
             body['recommend'] = request.recommend
         if not UtilClient.is_unset(request.script_content_played):

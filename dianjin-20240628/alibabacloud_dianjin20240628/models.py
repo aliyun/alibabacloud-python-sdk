@@ -8510,6 +8510,7 @@ class RealTimeDialogRequest(TeaModel):
         conversation_model: List[RealTimeDialogRequestConversationModel] = None,
         dialog_memory_turns: int = None,
         meta_data: Dict[str, Any] = None,
+        op_type: str = None,
         recommend: bool = None,
         script_content_played: str = None,
         session_id: str = None,
@@ -8522,6 +8523,7 @@ class RealTimeDialogRequest(TeaModel):
         self.conversation_model = conversation_model
         self.dialog_memory_turns = dialog_memory_turns
         self.meta_data = meta_data
+        self.op_type = op_type
         self.recommend = recommend
         self.script_content_played = script_content_played
         # This parameter is required.
@@ -8553,6 +8555,8 @@ class RealTimeDialogRequest(TeaModel):
             result['dialogMemoryTurns'] = self.dialog_memory_turns
         if self.meta_data is not None:
             result['metaData'] = self.meta_data
+        if self.op_type is not None:
+            result['opType'] = self.op_type
         if self.recommend is not None:
             result['recommend'] = self.recommend
         if self.script_content_played is not None:
@@ -8580,6 +8584,8 @@ class RealTimeDialogRequest(TeaModel):
             self.dialog_memory_turns = m.get('dialogMemoryTurns')
         if m.get('metaData') is not None:
             self.meta_data = m.get('metaData')
+        if m.get('opType') is not None:
+            self.op_type = m.get('opType')
         if m.get('recommend') is not None:
             self.recommend = m.get('recommend')
         if m.get('scriptContentPlayed') is not None:

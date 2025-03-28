@@ -1,3 +1,7 @@
+2025-03-28 Version: 1.11.1
+- Update API RealTimeDialog: add request parameters body.opType.
+
+
 2025-03-13 Version: 1.11.0
 - Support API CreateDialogAnalysisTask.
 
