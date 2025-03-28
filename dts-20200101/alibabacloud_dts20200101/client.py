@@ -1960,13 +1960,141 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.configure_synchronization_job_replicator_compare_with_options_async(request, runtime)
 
+    def convert_instance_resource_group_with_options(
+        self,
+        request: dts_20200101_models.ConvertInstanceResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ConvertInstanceResourceGroupResponse:
+        """
+        @summary Transfers resource groups of instance resources.
+        
+        @param request: ConvertInstanceResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConvertInstanceResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.zero_etl_job):
+            query['ZeroEtlJob'] = request.zero_etl_job
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConvertInstanceResourceGroup',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dts_20200101_models.ConvertInstanceResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dts_20200101_models.ConvertInstanceResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def convert_instance_resource_group_with_options_async(
+        self,
+        request: dts_20200101_models.ConvertInstanceResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ConvertInstanceResourceGroupResponse:
+        """
+        @summary Transfers resource groups of instance resources.
+        
+        @param request: ConvertInstanceResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConvertInstanceResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.zero_etl_job):
+            query['ZeroEtlJob'] = request.zero_etl_job
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConvertInstanceResourceGroup',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dts_20200101_models.ConvertInstanceResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dts_20200101_models.ConvertInstanceResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def convert_instance_resource_group(
+        self,
+        request: dts_20200101_models.ConvertInstanceResourceGroupRequest,
+    ) -> dts_20200101_models.ConvertInstanceResourceGroupResponse:
+        """
+        @summary Transfers resource groups of instance resources.
+        
+        @param request: ConvertInstanceResourceGroupRequest
+        @return: ConvertInstanceResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.convert_instance_resource_group_with_options(request, runtime)
+
+    async def convert_instance_resource_group_async(
+        self,
+        request: dts_20200101_models.ConvertInstanceResourceGroupRequest,
+    ) -> dts_20200101_models.ConvertInstanceResourceGroupResponse:
+        """
+        @summary Transfers resource groups of instance resources.
+        
+        @param request: ConvertInstanceResourceGroupRequest
+        @return: ConvertInstanceResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.convert_instance_resource_group_with_options_async(request, runtime)
+
     def count_job_by_condition_with_options(
         self,
         request: dts_20200101_models.CountJobByConditionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CountJobByConditionResponse:
         """
-        @summary 查询符合条件的任务数
+        @summary Counts tasks by condition.
         
         @param request: CountJobByConditionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2025,7 +2153,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CountJobByConditionResponse:
         """
-        @summary 查询符合条件的任务数
+        @summary Counts tasks by condition.
         
         @param request: CountJobByConditionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2083,7 +2211,7 @@ class Client(OpenApiClient):
         request: dts_20200101_models.CountJobByConditionRequest,
     ) -> dts_20200101_models.CountJobByConditionResponse:
         """
-        @summary 查询符合条件的任务数
+        @summary Counts tasks by condition.
         
         @param request: CountJobByConditionRequest
         @return: CountJobByConditionResponse
@@ -2096,7 +2224,7 @@ class Client(OpenApiClient):
         request: dts_20200101_models.CountJobByConditionRequest,
     ) -> dts_20200101_models.CountJobByConditionResponse:
         """
-        @summary 查询符合条件的任务数
+        @summary Counts tasks by condition.
         
         @param request: CountJobByConditionRequest
         @return: CountJobByConditionResponse
@@ -6006,7 +6134,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeDedicatedClusterMonitorRuleResponse:
         """
-        @summary The mobile phone number to which alerts are sent. Separate multiple mobile phone numbers with commas (,).
+        @summary Queries the information about an alert rule.
         
         @param request: DescribeDedicatedClusterMonitorRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6053,7 +6181,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeDedicatedClusterMonitorRuleResponse:
         """
-        @summary The mobile phone number to which alerts are sent. Separate multiple mobile phone numbers with commas (,).
+        @summary Queries the information about an alert rule.
         
         @param request: DescribeDedicatedClusterMonitorRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6099,7 +6227,7 @@ class Client(OpenApiClient):
         request: dts_20200101_models.DescribeDedicatedClusterMonitorRuleRequest,
     ) -> dts_20200101_models.DescribeDedicatedClusterMonitorRuleResponse:
         """
-        @summary The mobile phone number to which alerts are sent. Separate multiple mobile phone numbers with commas (,).
+        @summary Queries the information about an alert rule.
         
         @param request: DescribeDedicatedClusterMonitorRuleRequest
         @return: DescribeDedicatedClusterMonitorRuleResponse
@@ -6112,7 +6240,7 @@ class Client(OpenApiClient):
         request: dts_20200101_models.DescribeDedicatedClusterMonitorRuleRequest,
     ) -> dts_20200101_models.DescribeDedicatedClusterMonitorRuleResponse:
         """
-        @summary The mobile phone number to which alerts are sent. Separate multiple mobile phone numbers with commas (,).
+        @summary Queries the information about an alert rule.
         
         @param request: DescribeDedicatedClusterMonitorRuleRequest
         @return: DescribeDedicatedClusterMonitorRuleResponse
@@ -7116,6 +7244,262 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_etl_job_logs_with_options_async(request, runtime)
 
+    def describe_full_process_list_with_options(
+        self,
+        request: dts_20200101_models.DescribeFullProcessListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeFullProcessListResponse:
+        """
+        @summary Queries full data migration tasks.
+        
+        @param request: DescribeFullProcessListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFullProcessListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.zero_etl_job):
+            query['ZeroEtlJob'] = request.zero_etl_job
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFullProcessList',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dts_20200101_models.DescribeFullProcessListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dts_20200101_models.DescribeFullProcessListResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_full_process_list_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeFullProcessListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeFullProcessListResponse:
+        """
+        @summary Queries full data migration tasks.
+        
+        @param request: DescribeFullProcessListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFullProcessListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.zero_etl_job):
+            query['ZeroEtlJob'] = request.zero_etl_job
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFullProcessList',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dts_20200101_models.DescribeFullProcessListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dts_20200101_models.DescribeFullProcessListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_full_process_list(
+        self,
+        request: dts_20200101_models.DescribeFullProcessListRequest,
+    ) -> dts_20200101_models.DescribeFullProcessListResponse:
+        """
+        @summary Queries full data migration tasks.
+        
+        @param request: DescribeFullProcessListRequest
+        @return: DescribeFullProcessListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_full_process_list_with_options(request, runtime)
+
+    async def describe_full_process_list_async(
+        self,
+        request: dts_20200101_models.DescribeFullProcessListRequest,
+    ) -> dts_20200101_models.DescribeFullProcessListResponse:
+        """
+        @summary Queries full data migration tasks.
+        
+        @param request: DescribeFullProcessListRequest
+        @return: DescribeFullProcessListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_full_process_list_with_options_async(request, runtime)
+
+    def describe_gad_instances_with_options(
+        self,
+        request: dts_20200101_models.DescribeGadInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeGadInstancesResponse:
+        """
+        @summary 查询GAD实例列表
+        
+        @param request: DescribeGadInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGadInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.master_db_instance_id):
+            query['MasterDbInstanceId'] = request.master_db_instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.slave_db_instance_id):
+            query['SlaveDbInstanceId'] = request.slave_db_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGadInstances',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dts_20200101_models.DescribeGadInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dts_20200101_models.DescribeGadInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_gad_instances_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeGadInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeGadInstancesResponse:
+        """
+        @summary 查询GAD实例列表
+        
+        @param request: DescribeGadInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGadInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.master_db_instance_id):
+            query['MasterDbInstanceId'] = request.master_db_instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.slave_db_instance_id):
+            query['SlaveDbInstanceId'] = request.slave_db_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGadInstances',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dts_20200101_models.DescribeGadInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dts_20200101_models.DescribeGadInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_gad_instances(
+        self,
+        request: dts_20200101_models.DescribeGadInstancesRequest,
+    ) -> dts_20200101_models.DescribeGadInstancesResponse:
+        """
+        @summary 查询GAD实例列表
+        
+        @param request: DescribeGadInstancesRequest
+        @return: DescribeGadInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_gad_instances_with_options(request, runtime)
+
+    async def describe_gad_instances_async(
+        self,
+        request: dts_20200101_models.DescribeGadInstancesRequest,
+    ) -> dts_20200101_models.DescribeGadInstancesResponse:
+        """
+        @summary 查询GAD实例列表
+        
+        @param request: DescribeGadInstancesRequest
+        @return: DescribeGadInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_gad_instances_with_options_async(request, runtime)
+
     def describe_initialization_status_with_options(
         self,
         request: dts_20200101_models.DescribeInitializationStatusRequest,
@@ -8052,6 +8436,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_migration_jobs_with_options_async(request, runtime)
 
+    def describe_pre_check_create_gad_order_result_with_options(
+        self,
+        request: dts_20200101_models.DescribePreCheckCreateGadOrderResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribePreCheckCreateGadOrderResultResponse:
+        """
+        @summary 查询预检查创建GAD订单任务结果
+        
+        @param request: DescribePreCheckCreateGadOrderResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePreCheckCreateGadOrderResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePreCheckCreateGadOrderResult',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dts_20200101_models.DescribePreCheckCreateGadOrderResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dts_20200101_models.DescribePreCheckCreateGadOrderResultResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_pre_check_create_gad_order_result_with_options_async(
+        self,
+        request: dts_20200101_models.DescribePreCheckCreateGadOrderResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribePreCheckCreateGadOrderResultResponse:
+        """
+        @summary 查询预检查创建GAD订单任务结果
+        
+        @param request: DescribePreCheckCreateGadOrderResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePreCheckCreateGadOrderResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePreCheckCreateGadOrderResult',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dts_20200101_models.DescribePreCheckCreateGadOrderResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dts_20200101_models.DescribePreCheckCreateGadOrderResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_pre_check_create_gad_order_result(
+        self,
+        request: dts_20200101_models.DescribePreCheckCreateGadOrderResultRequest,
+    ) -> dts_20200101_models.DescribePreCheckCreateGadOrderResultResponse:
+        """
+        @summary 查询预检查创建GAD订单任务结果
+        
+        @param request: DescribePreCheckCreateGadOrderResultRequest
+        @return: DescribePreCheckCreateGadOrderResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_pre_check_create_gad_order_result_with_options(request, runtime)
+
+    async def describe_pre_check_create_gad_order_result_async(
+        self,
+        request: dts_20200101_models.DescribePreCheckCreateGadOrderResultRequest,
+    ) -> dts_20200101_models.DescribePreCheckCreateGadOrderResultResponse:
+        """
+        @summary 查询预检查创建GAD订单任务结果
+        
+        @param request: DescribePreCheckCreateGadOrderResultRequest
+        @return: DescribePreCheckCreateGadOrderResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_pre_check_create_gad_order_result_with_options_async(request, runtime)
+
     def describe_pre_check_status_with_options(
         self,
         request: dts_20200101_models.DescribePreCheckStatusRequest,
@@ -8594,6 +9102,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeSubscriptionMetaResponse:
         """
+        @summary Queries the details of the subtasks in a distributed change tracking task for a PolarDB-X 1.0 instance.
+        
         @description    When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task.
         You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the ID of the change tracking instance and the ID of the consumer group.
         
@@ -8652,6 +9162,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeSubscriptionMetaResponse:
         """
+        @summary Queries the details of the subtasks in a distributed change tracking task for a PolarDB-X 1.0 instance.
+        
         @description    When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task.
         You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the ID of the change tracking instance and the ID of the consumer group.
         
@@ -8709,6 +9221,8 @@ class Client(OpenApiClient):
         request: dts_20200101_models.DescribeSubscriptionMetaRequest,
     ) -> dts_20200101_models.DescribeSubscriptionMetaResponse:
         """
+        @summary Queries the details of the subtasks in a distributed change tracking task for a PolarDB-X 1.0 instance.
+        
         @description    When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task.
         You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the ID of the change tracking instance and the ID of the consumer group.
         
@@ -8723,6 +9237,8 @@ class Client(OpenApiClient):
         request: dts_20200101_models.DescribeSubscriptionMetaRequest,
     ) -> dts_20200101_models.DescribeSubscriptionMetaResponse:
         """
+        @summary Queries the details of the subtasks in a distributed change tracking task for a PolarDB-X 1.0 instance.
+        
         @description    When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task.
         You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the ID of the change tracking instance and the ID of the consumer group.
         
@@ -9915,6 +10431,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tag_values_with_options_async(request, runtime)
+
+    def detach_gad_instance_db_member_with_options(
+        self,
+        request: dts_20200101_models.DetachGadInstanceDbMemberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DetachGadInstanceDbMemberResponse:
+        """
+        @summary 移除从角色
+        
+        @param request: DetachGadInstanceDbMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachGadInstanceDbMemberResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.slave_db_instance_id):
+            query['SlaveDbInstanceId'] = request.slave_db_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachGadInstanceDbMember',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dts_20200101_models.DetachGadInstanceDbMemberResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dts_20200101_models.DetachGadInstanceDbMemberResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def detach_gad_instance_db_member_with_options_async(
+        self,
+        request: dts_20200101_models.DetachGadInstanceDbMemberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DetachGadInstanceDbMemberResponse:
+        """
+        @summary 移除从角色
+        
+        @param request: DetachGadInstanceDbMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachGadInstanceDbMemberResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.slave_db_instance_id):
+            query['SlaveDbInstanceId'] = request.slave_db_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachGadInstanceDbMember',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dts_20200101_models.DetachGadInstanceDbMemberResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dts_20200101_models.DetachGadInstanceDbMemberResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def detach_gad_instance_db_member(
+        self,
+        request: dts_20200101_models.DetachGadInstanceDbMemberRequest,
+    ) -> dts_20200101_models.DetachGadInstanceDbMemberResponse:
+        """
+        @summary 移除从角色
+        
+        @param request: DetachGadInstanceDbMemberRequest
+        @return: DetachGadInstanceDbMemberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.detach_gad_instance_db_member_with_options(request, runtime)
+
+    async def detach_gad_instance_db_member_async(
+        self,
+        request: dts_20200101_models.DetachGadInstanceDbMemberRequest,
+    ) -> dts_20200101_models.DetachGadInstanceDbMemberResponse:
+        """
+        @summary 移除从角色
+        
+        @param request: DetachGadInstanceDbMemberRequest
+        @return: DetachGadInstanceDbMemberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.detach_gad_instance_db_member_with_options_async(request, runtime)
 
     def init_dts_rds_instance_with_options(
         self,
@@ -12196,6 +12836,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_dynamic_config_with_options_async(request, runtime)
 
+    def modify_gad_instance_name_with_options(
+        self,
+        request: dts_20200101_models.ModifyGadInstanceNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifyGadInstanceNameResponse:
+        """
+        @summary 修改GAD实例名称
+        
+        @param request: ModifyGadInstanceNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyGadInstanceNameResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGadInstanceName',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dts_20200101_models.ModifyGadInstanceNameResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dts_20200101_models.ModifyGadInstanceNameResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_gad_instance_name_with_options_async(
+        self,
+        request: dts_20200101_models.ModifyGadInstanceNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifyGadInstanceNameResponse:
+        """
+        @summary 修改GAD实例名称
+        
+        @param request: ModifyGadInstanceNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyGadInstanceNameResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGadInstanceName',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dts_20200101_models.ModifyGadInstanceNameResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dts_20200101_models.ModifyGadInstanceNameResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_gad_instance_name(
+        self,
+        request: dts_20200101_models.ModifyGadInstanceNameRequest,
+    ) -> dts_20200101_models.ModifyGadInstanceNameResponse:
+        """
+        @summary 修改GAD实例名称
+        
+        @param request: ModifyGadInstanceNameRequest
+        @return: ModifyGadInstanceNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_gad_instance_name_with_options(request, runtime)
+
+    async def modify_gad_instance_name_async(
+        self,
+        request: dts_20200101_models.ModifyGadInstanceNameRequest,
+    ) -> dts_20200101_models.ModifyGadInstanceNameResponse:
+        """
+        @summary 修改GAD实例名称
+        
+        @param request: ModifyGadInstanceNameRequest
+        @return: ModifyGadInstanceNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_gad_instance_name_with_options_async(request, runtime)
+
     def modify_subscription_with_options(
         self,
         request: dts_20200101_models.ModifySubscriptionRequest,
@@ -12599,6 +13363,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_synchronization_object_with_options_async(request, runtime)
+
+    def pre_check_create_gad_order_with_options(
+        self,
+        request: dts_20200101_models.PreCheckCreateGadOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.PreCheckCreateGadOrderResponse:
+        """
+        @summary 预检查创建GAD订单
+        
+        @param request: PreCheckCreateGadOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PreCheckCreateGadOrderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.slave_db_instance_id):
+            query['SlaveDbInstanceId'] = request.slave_db_instance_id
+        if not UtilClient.is_unset(request.slave_db_instance_region):
+            query['SlaveDbInstanceRegion'] = request.slave_db_instance_region
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PreCheckCreateGadOrder',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dts_20200101_models.PreCheckCreateGadOrderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dts_20200101_models.PreCheckCreateGadOrderResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def pre_check_create_gad_order_with_options_async(
+        self,
+        request: dts_20200101_models.PreCheckCreateGadOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.PreCheckCreateGadOrderResponse:
+        """
+        @summary 预检查创建GAD订单
+        
+        @param request: PreCheckCreateGadOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PreCheckCreateGadOrderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.slave_db_instance_id):
+            query['SlaveDbInstanceId'] = request.slave_db_instance_id
+        if not UtilClient.is_unset(request.slave_db_instance_region):
+            query['SlaveDbInstanceRegion'] = request.slave_db_instance_region
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PreCheckCreateGadOrder',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dts_20200101_models.PreCheckCreateGadOrderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dts_20200101_models.PreCheckCreateGadOrderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def pre_check_create_gad_order(
+        self,
+        request: dts_20200101_models.PreCheckCreateGadOrderRequest,
+    ) -> dts_20200101_models.PreCheckCreateGadOrderResponse:
+        """
+        @summary 预检查创建GAD订单
+        
+        @param request: PreCheckCreateGadOrderRequest
+        @return: PreCheckCreateGadOrderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.pre_check_create_gad_order_with_options(request, runtime)
+
+    async def pre_check_create_gad_order_async(
+        self,
+        request: dts_20200101_models.PreCheckCreateGadOrderRequest,
+    ) -> dts_20200101_models.PreCheckCreateGadOrderResponse:
+        """
+        @summary 预检查创建GAD订单
+        
+        @param request: PreCheckCreateGadOrderRequest
+        @return: PreCheckCreateGadOrderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.pre_check_create_gad_order_with_options_async(request, runtime)
 
     def renew_instance_with_options(
         self,
@@ -13235,6 +14127,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.shield_precheck_with_options_async(request, runtime)
+
+    def skip_full_job_table_with_options(
+        self,
+        request: dts_20200101_models.SkipFullJobTableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.SkipFullJobTableResponse:
+        """
+        @summary The tables that do not need to be synchronized in a full data synchronization are skipped.
+        
+        @param request: SkipFullJobTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SkipFullJobTableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.job_progress_id):
+            query['JobProgressId'] = request.job_progress_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.zero_etl_job):
+            query['ZeroEtlJob'] = request.zero_etl_job
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SkipFullJobTable',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dts_20200101_models.SkipFullJobTableResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dts_20200101_models.SkipFullJobTableResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def skip_full_job_table_with_options_async(
+        self,
+        request: dts_20200101_models.SkipFullJobTableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.SkipFullJobTableResponse:
+        """
+        @summary The tables that do not need to be synchronized in a full data synchronization are skipped.
+        
+        @param request: SkipFullJobTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SkipFullJobTableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.job_progress_id):
+            query['JobProgressId'] = request.job_progress_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.zero_etl_job):
+            query['ZeroEtlJob'] = request.zero_etl_job
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SkipFullJobTable',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dts_20200101_models.SkipFullJobTableResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dts_20200101_models.SkipFullJobTableResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def skip_full_job_table(
+        self,
+        request: dts_20200101_models.SkipFullJobTableRequest,
+    ) -> dts_20200101_models.SkipFullJobTableResponse:
+        """
+        @summary The tables that do not need to be synchronized in a full data synchronization are skipped.
+        
+        @param request: SkipFullJobTableRequest
+        @return: SkipFullJobTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.skip_full_job_table_with_options(request, runtime)
+
+    async def skip_full_job_table_async(
+        self,
+        request: dts_20200101_models.SkipFullJobTableRequest,
+    ) -> dts_20200101_models.SkipFullJobTableResponse:
+        """
+        @summary The tables that do not need to be synchronized in a full data synchronization are skipped.
+        
+        @param request: SkipFullJobTableRequest
+        @return: SkipFullJobTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.skip_full_job_table_with_options_async(request, runtime)
 
     def skip_pre_check_with_options(
         self,

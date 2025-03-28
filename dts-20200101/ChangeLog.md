@@ -1,3 +1,14 @@
+2025-03-28 Version: 5.8.0
+- Support API ConvertInstanceResourceGroup.
+- Support API DescribeFullProcessList.
+- Support API DescribeGadInstances.
+- Support API DescribePreCheckCreateGadOrderResult.
+- Support API DetachGadInstanceDbMember.
+- Support API ModifyGadInstanceName.
+- Support API PreCheckCreateGadOrder.
+- Support API SkipFullJobTable.
+
+
 2025-02-21 Version: 5.7.5
 - Update API CreateReverseDtsJob: update param ShardPassword.
 - Update API DescribeDataCheckTableDetails: update response param.

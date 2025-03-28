@@ -4365,6 +4365,184 @@ class ConfigureSynchronizationJobReplicatorCompareResponse(TeaModel):
         return self
 
 
+class ConvertInstanceResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        dts_job_id: str = None,
+        new_resource_group_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_id: str = None,
+        zero_etl_job: bool = None,
+    ):
+        # This historical parameter does not take effect and is not required.
+        self.dts_job_id = dts_job_id
+        # The ID of new resource group. You can obtain the ID on the Resource Group page in the Resource Management console. For more information, see [View basic information about a resource group](https://help.aliyun.com/document_detail/151181.html).
+        self.new_resource_group_id = new_resource_group_id
+        # The ID of the region in which the Data Transmission Service (DTS) instance resides.
+        self.region_id = region_id
+        # This parameter is only for special services and not required.
+        self.resource_group_id = resource_group_id
+        # The ID of the DTS instance. You can view the ID in the **ID/Name** column on the task page in the console.
+        # 
+        # >  This parameter is required.
+        self.resource_id = resource_id
+        # This parameter is only for special services and not required.
+        self.zero_etl_job = zero_etl_job
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.new_resource_group_id is not None:
+            result['NewResourceGroupId'] = self.new_resource_group_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('NewResourceGroupId') is not None:
+            self.new_resource_group_id = m.get('NewResourceGroupId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
+        return self
+
+
+class ConvertInstanceResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        dynamic_message: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The error code returned by the backend service. The number is incremented.
+        self.code = code
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
+        # 
+        # >  If **The Value of Input Parameter %s is not valid** is returned and DtsJobId is returned for DynamicMessage, it indicates that the request parameter DtsJobId is invalid.
+        self.dynamic_message = dynamic_message
+        # The error code returned when the request failed.
+        self.err_code = err_code
+        # The error message returned when the request failed.
+        self.err_message = err_message
+        # The HTTP status code returned.
+        self.http_status_code = http_status_code
+        # The ID of a request.
+        self.request_id = request_id
+        # Indicates whether the request is successful.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ConvertInstanceResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ConvertInstanceResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ConvertInstanceResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CountJobByConditionRequest(TeaModel):
     def __init__(
         self,
@@ -4399,6 +4577,7 @@ class CountJobByConditionRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # Resource group ID, global parameter that does not need to be passed in by the current API.
         self.resource_group_id = resource_group_id
         # The type of the source database.
         self.src_db_type = src_db_type
@@ -5060,6 +5239,7 @@ class CreateDedicatedClusterMonitorRuleRequest(TeaModel):
         self.phones = phones
         # The ID of the region in which the Data Transmission Service (DTS) instance resides.
         self.region_id = region_id
+        # The resource group ID. This parameter is a global parameter and not required.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -8440,7 +8620,7 @@ class DescribeClusterOperateLogsRequest(TeaModel):
         # The end of the time range to query. The value must be in the UNIX timestamp format. Unit: milliseconds.
         self.end_time = end_time
         self.owner_id = owner_id
-        # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+        # The number of the page to return. Specify the parameter to a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
         self.page_number = page_number
         # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
@@ -10120,6 +10300,7 @@ class DescribeDataCheckReportUrlRequest(TeaModel):
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
+        # Resource group ID.
         self.resource_group_id = resource_group_id
         # The name of the table verified in the source database.
         # 
@@ -10289,7 +10470,7 @@ class DescribeDataCheckTableDetailsRequest(TeaModel):
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
-        # The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
+        # The number of the page to return. The value must be an integer that is greater than **0** and does not exceed the maximum value of the Integer data type. Default value:**1**.
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size
@@ -10490,6 +10671,7 @@ class DescribeDataCheckTableDetailsResponseBody(TeaModel):
         self.err_code = err_code
         # The error message returned if the request failed.
         self.err_message = err_message
+        # The total number of data rows that were failed.
         self.failed_table_count = failed_table_count
         # The total number of data rows that were verified.
         self.finished_count = finished_count
@@ -11211,9 +11393,12 @@ class DescribeDedicatedClusterMonitorRuleRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
+        # The ID of the cluster.
         self.dedicated_cluster_id = dedicated_cluster_id
         self.owner_id = owner_id
+        # The ID of the region in which the instance resides.
         self.region_id = region_id
+        # Resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -11264,17 +11449,32 @@ class DescribeDedicatedClusterMonitorRuleResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The alert threshold for CPU utilization. Unit: percentage.
         self.cpu_alarm_threshold = cpu_alarm_threshold
+        # The ID of the cluster.
         self.dedicated_cluster_id = dedicated_cluster_id
+        # The alert threshold for disk usage. Unit: percentage.
         self.disk_alarm_threshold = disk_alarm_threshold
+        # The alert threshold for DTS Unit (DU) usage. Unit: percentage.
         self.du_alarm_threshold = du_alarm_threshold
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The alert threshold for memory usage. Unit: percentage.
         self.mem_alarm_threshold = mem_alarm_threshold
+        # Indicates whether the alert feature is enabled. Valid values:
+        # 
+        # *   **1**: The alert feature is enabled.
+        # *   **0**: The alert feature is disabled.
         self.notice_switch = notice_switch
+        # The mobile phone number to which alerts are sent. Separate multiple mobile phone numbers with commas (,).
         self.phones = phones
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -24464,6 +24664,630 @@ class DescribeEtlJobLogsResponse(TeaModel):
         return self
 
 
+class DescribeFullProcessListRequest(TeaModel):
+    def __init__(
+        self,
+        dts_job_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        zero_etl_job: bool = None,
+    ):
+        # The ID of the data migration, data synchronization, or change tracking task.
+        # 
+        # This parameter is required.
+        self.dts_job_id = dts_job_id
+        # The ID of the region where the data migration instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        self.region_id = region_id
+        # The resource group ID.
+        self.resource_group_id = resource_group_id
+        # Specifies whether to query only zero-extract, transform, load (ETL) integration tasks. Valid values:
+        # 
+        # *   **true**: yes.
+        # *   **false**: no.
+        self.zero_etl_job = zero_etl_job
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
+        return self
+
+
+class DescribeFullProcessListResponseBodyFullProcessList(TeaModel):
+    def __init__(
+        self,
+        detail: str = None,
+        exception: str = None,
+        process_name: str = None,
+        process_type: str = None,
+        running_sql: str = None,
+        state: str = None,
+        task_id: str = None,
+        time: int = None,
+    ):
+        # Details
+        self.detail = detail
+        # The abnormal status of the task. Valid values:**notstarted**. -**checking**. -**failed**. -**finished**.
+        self.exception = exception
+        # The name of the process.
+        self.process_name = process_name
+        # The type of the process. Valid values:
+        # 
+        # *   **1**: trusted
+        # *   **2**: suspicious
+        # *   **3**: malicious
+        self.process_type = process_type
+        # SQL that is running
+        self.running_sql = running_sql
+        # The log status.
+        self.state = state
+        # The ID of the task.
+        self.task_id = task_id
+        # The time when the logs were collected. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.detail is not None:
+            result['Detail'] = self.detail
+        if self.exception is not None:
+            result['Exception'] = self.exception
+        if self.process_name is not None:
+            result['ProcessName'] = self.process_name
+        if self.process_type is not None:
+            result['ProcessType'] = self.process_type
+        if self.running_sql is not None:
+            result['RunningSQL'] = self.running_sql
+        if self.state is not None:
+            result['State'] = self.state
+        if self.task_id is not None:
+            result['TaskID'] = self.task_id
+        if self.time is not None:
+            result['Time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
+        if m.get('Exception') is not None:
+            self.exception = m.get('Exception')
+        if m.get('ProcessName') is not None:
+            self.process_name = m.get('ProcessName')
+        if m.get('ProcessType') is not None:
+            self.process_type = m.get('ProcessType')
+        if m.get('RunningSQL') is not None:
+            self.running_sql = m.get('RunningSQL')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('TaskID') is not None:
+            self.task_id = m.get('TaskID')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        return self
+
+
+class DescribeFullProcessListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        config_list: Dict[str, Any] = None,
+        dts_job_id: str = None,
+        dynamic_message: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        full_process_list: List[DescribeFullProcessListResponseBodyFullProcessList] = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The error code.
+        self.code = code
+        # The throttling configuration. Valid values:
+        # 
+        # *   **dts.datamove.blaster.qps.max**: The rate at which queries are made to the source database per second.
+        # *   **dts.datamove.source.rps.max**: the number of rows that are fully synchronized or migrated per second.
+        # *   **dts.datamove.source.bps.max**: the amount of data processed per second for full synchronization or migration. Unit: Byte/s.
+        # 
+        # > 
+        # 
+        # *   When you set the **JobCode** parameter to **03**, you need to specify the **EnableLimit** parameter as **true**. Otherwise, the configuration cannot take effect.
+        # 
+        # *   When you set the **JobCode** parameter to **04** or **07**, you only need to specify the **dts.datamove.source.rps.max** and **dts.datamove.source.bps.max** parameters.
+        # *   A value of \\*\\*-1\\*\\* indicates no rate limit.
+        self.config_list = config_list
+        # The ID of the data migration, data synchronization, or change tracking task.
+        self.dts_job_id = dts_job_id
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
+        # 
+        # >  The request parameter **DtsJobId** is invalid if **The Value of Input Parameter %s is not valid** is returned for **ErrMessage** and **DtsJobId** is returned for **DynamicMessage**.
+        self.dynamic_message = dynamic_message
+        # The error code returned when the request failed.
+        self.err_code = err_code
+        # The error message returned when the request failed.
+        self.err_message = err_message
+        # The details of the GA instances.
+        self.full_process_list = full_process_list
+        # The HTTP status code.
+        self.http_status_code = http_status_code
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        self.success = success
+
+    def validate(self):
+        if self.full_process_list:
+            for k in self.full_process_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.config_list is not None:
+            result['ConfigList'] = self.config_list
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        result['FullProcessList'] = []
+        if self.full_process_list is not None:
+            for k in self.full_process_list:
+                result['FullProcessList'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ConfigList') is not None:
+            self.config_list = m.get('ConfigList')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        self.full_process_list = []
+        if m.get('FullProcessList') is not None:
+            for k in m.get('FullProcessList'):
+                temp_model = DescribeFullProcessListResponseBodyFullProcessList()
+                self.full_process_list.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeFullProcessListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeFullProcessListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeFullProcessListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeGadInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        instance_name: str = None,
+        master_db_instance_id: str = None,
+        owner_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        slave_db_instance_id: str = None,
+    ):
+        self.instance_name = instance_name
+        self.master_db_instance_id = master_db_instance_id
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.slave_db_instance_id = slave_db_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.master_db_instance_id is not None:
+            result['MasterDbInstanceId'] = self.master_db_instance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.slave_db_instance_id is not None:
+            result['SlaveDbInstanceId'] = self.slave_db_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('MasterDbInstanceId') is not None:
+            self.master_db_instance_id = m.get('MasterDbInstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SlaveDbInstanceId') is not None:
+            self.slave_db_instance_id = m.get('SlaveDbInstanceId')
+        return self
+
+
+class DescribeGadInstancesResponseBodyInstancesInstances(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        db_engine_type: str = None,
+        db_instance_count: int = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        instance_region: str = None,
+        instance_type: str = None,
+        master_db_instance_id: str = None,
+        master_db_instance_name: str = None,
+        master_db_instance_region: str = None,
+        master_db_instance_zone_id: str = None,
+        resource_group_id: str = None,
+        status: str = None,
+    ):
+        self.create_time = create_time
+        self.db_engine_type = db_engine_type
+        self.db_instance_count = db_instance_count
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.instance_region = instance_region
+        self.instance_type = instance_type
+        self.master_db_instance_id = master_db_instance_id
+        self.master_db_instance_name = master_db_instance_name
+        self.master_db_instance_region = master_db_instance_region
+        self.master_db_instance_zone_id = master_db_instance_zone_id
+        self.resource_group_id = resource_group_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.db_engine_type is not None:
+            result['DbEngineType'] = self.db_engine_type
+        if self.db_instance_count is not None:
+            result['DbInstanceCount'] = self.db_instance_count
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.instance_region is not None:
+            result['InstanceRegion'] = self.instance_region
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.master_db_instance_id is not None:
+            result['MasterDbInstanceId'] = self.master_db_instance_id
+        if self.master_db_instance_name is not None:
+            result['MasterDbInstanceName'] = self.master_db_instance_name
+        if self.master_db_instance_region is not None:
+            result['MasterDbInstanceRegion'] = self.master_db_instance_region
+        if self.master_db_instance_zone_id is not None:
+            result['MasterDbInstanceZoneId'] = self.master_db_instance_zone_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DbEngineType') is not None:
+            self.db_engine_type = m.get('DbEngineType')
+        if m.get('DbInstanceCount') is not None:
+            self.db_instance_count = m.get('DbInstanceCount')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InstanceRegion') is not None:
+            self.instance_region = m.get('InstanceRegion')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('MasterDbInstanceId') is not None:
+            self.master_db_instance_id = m.get('MasterDbInstanceId')
+        if m.get('MasterDbInstanceName') is not None:
+            self.master_db_instance_name = m.get('MasterDbInstanceName')
+        if m.get('MasterDbInstanceRegion') is not None:
+            self.master_db_instance_region = m.get('MasterDbInstanceRegion')
+        if m.get('MasterDbInstanceZoneId') is not None:
+            self.master_db_instance_zone_id = m.get('MasterDbInstanceZoneId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeGadInstancesResponseBodyInstances(TeaModel):
+    def __init__(
+        self,
+        instances: List[DescribeGadInstancesResponseBodyInstancesInstances] = None,
+    ):
+        self.instances = instances
+
+    def validate(self):
+        if self.instances:
+            for k in self.instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Instances'] = []
+        if self.instances is not None:
+            for k in self.instances:
+                result['Instances'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instances = []
+        if m.get('Instances') is not None:
+            for k in m.get('Instances'):
+                temp_model = DescribeGadInstancesResponseBodyInstancesInstances()
+                self.instances.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeGadInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: str = None,
+        instances: DescribeGadInstancesResponseBodyInstances = None,
+        page_number: int = None,
+        page_record_count: int = None,
+        request_id: str = None,
+        success: str = None,
+        total_record_count: int = None,
+    ):
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.instances = instances
+        self.page_number = page_number
+        self.page_record_count = page_record_count
+        self.request_id = request_id
+        self.success = success
+        self.total_record_count = total_record_count
+
+    def validate(self):
+        if self.instances:
+            self.instances.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.instances is not None:
+            result['Instances'] = self.instances.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_record_count is not None:
+            result['PageRecordCount'] = self.page_record_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_record_count is not None:
+            result['TotalRecordCount'] = self.total_record_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Instances') is not None:
+            temp_model = DescribeGadInstancesResponseBodyInstances()
+            self.instances = temp_model.from_map(m['Instances'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageRecordCount') is not None:
+            self.page_record_count = m.get('PageRecordCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalRecordCount') is not None:
+            self.total_record_count = m.get('TotalRecordCount')
+        return self
+
+
+class DescribeGadInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeGadInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeGadInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeInitializationStatusRequest(TeaModel):
     def __init__(
         self,
@@ -25309,17 +26133,17 @@ class DescribeMetricListRequest(TeaModel):
         # 
         # This parameter is required.
         self.metric_name = metric_name
-        # Specifies whether to query the metrics of the cluster or a node. Valid values:
+        # Indicates whether the metrics of the cluster or a node are queried. Valid values:
         # 
-        # *   **CLUSTER**: query the metrics of the cluster.
-        # *   **NODE**: query the metrics of a node.
+        # *   **CLUSTER**: The metrics of the cluster are queried.
+        # *   **NODE**: The metrics of a node are queried.
         self.metric_type = metric_type
         self.owner_id = owner_id
         # The monitored object. If the **MetricType** parameter is set to **NODE**, set this parameter to the ID of the node that is monitored.
         # 
         # This parameter is required.
         self.param = param
-        # The monitoring interval. Unit: seconds. Minimum value: 15.
+        # The monitoring interval. Unit: seconds. The minimum value is 15.
         self.period = period
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -28366,6 +29190,267 @@ class DescribeMigrationJobsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMigrationJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribePreCheckCreateGadOrderResultRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        owner_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        task_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItemsPreCheckItems(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        status: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItems(TeaModel):
+    def __init__(
+        self,
+        pre_check_items: List[DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItemsPreCheckItems] = None,
+    ):
+        self.pre_check_items = pre_check_items
+
+    def validate(self):
+        if self.pre_check_items:
+            for k in self.pre_check_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PreCheckItems'] = []
+        if self.pre_check_items is not None:
+            for k in self.pre_check_items:
+                result['PreCheckItems'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.pre_check_items = []
+        if m.get('PreCheckItems') is not None:
+            for k in m.get('PreCheckItems'):
+                temp_model = DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItemsPreCheckItems()
+                self.pre_check_items.append(temp_model.from_map(k))
+        return self
+
+
+class DescribePreCheckCreateGadOrderResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: str = None,
+        instance_id: str = None,
+        pre_check_items: DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItems = None,
+        pre_check_result: bool = None,
+        region_id: str = None,
+        request_id: str = None,
+        success: str = None,
+        task_id: str = None,
+    ):
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.instance_id = instance_id
+        self.pre_check_items = pre_check_items
+        self.pre_check_result = pre_check_result
+        self.region_id = region_id
+        self.request_id = request_id
+        self.success = success
+        self.task_id = task_id
+
+    def validate(self):
+        if self.pre_check_items:
+            self.pre_check_items.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.pre_check_items is not None:
+            result['PreCheckItems'] = self.pre_check_items.to_map()
+        if self.pre_check_result is not None:
+            result['PreCheckResult'] = self.pre_check_result
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PreCheckItems') is not None:
+            temp_model = DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItems()
+            self.pre_check_items = temp_model.from_map(m['PreCheckItems'])
+        if m.get('PreCheckResult') is not None:
+            self.pre_check_result = m.get('PreCheckResult')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class DescribePreCheckCreateGadOrderResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribePreCheckCreateGadOrderResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribePreCheckCreateGadOrderResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -31564,6 +32649,7 @@ class DescribeSubscriptionMetaRequest(TeaModel):
         self.dts_instance_id = dts_instance_id
         # The ID of the region in which the change tracking instance resides.
         self.region_id = region_id
+        # Resource group ID.
         self.resource_group_id = resource_group_id
         # The ID of the consumer group.
         # 
@@ -31632,6 +32718,7 @@ class DescribeSubscriptionMetaShrinkRequest(TeaModel):
         self.dts_instance_id = dts_instance_id
         # The ID of the region in which the change tracking instance resides.
         self.region_id = region_id
+        # Resource group ID.
         self.resource_group_id = resource_group_id
         # The ID of the consumer group.
         # 
@@ -35675,6 +36762,197 @@ class DescribeTagValuesResponse(TeaModel):
         return self
 
 
+class DetachGadInstanceDbMemberRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        owner_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        slave_db_instance_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.slave_db_instance_id = slave_db_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.slave_db_instance_id is not None:
+            result['SlaveDbInstanceId'] = self.slave_db_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SlaveDbInstanceId') is not None:
+            self.slave_db_instance_id = m.get('SlaveDbInstanceId')
+        return self
+
+
+class DetachGadInstanceDbMemberResponseBody(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        region_id: str = None,
+        request_id: str = None,
+        resource_group_id: str = None,
+        slave_db_instance_id: str = None,
+        success: str = None,
+    ):
+        self.create_time = create_time
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.region_id = region_id
+        self.request_id = request_id
+        self.resource_group_id = resource_group_id
+        self.slave_db_instance_id = slave_db_instance_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.slave_db_instance_id is not None:
+            result['SlaveDbInstanceId'] = self.slave_db_instance_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SlaveDbInstanceId') is not None:
+            self.slave_db_instance_id = m.get('SlaveDbInstanceId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DetachGadInstanceDbMemberResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DetachGadInstanceDbMemberResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DetachGadInstanceDbMemberResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class InitDtsRdsInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -35709,6 +36987,7 @@ class InitDtsRdsInstanceRequest(TeaModel):
         self.endpoint_region = endpoint_region
         # The ID of the region in which the active geo-redundancy database cluster resides.
         self.region_id = region_id
+        # Resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -37188,6 +38467,7 @@ class ModifyDedicatedClusterRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region in which the Data Transmission Service (DTS) instance resides.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -39274,6 +40554,191 @@ class ModifyDynamicConfigResponse(TeaModel):
         return self
 
 
+class ModifyGadInstanceNameRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        instance_name: str = None,
+        owner_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class ModifyGadInstanceNameResponseBody(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        region_id: str = None,
+        request_id: str = None,
+        resource_group_id: str = None,
+        success: str = None,
+    ):
+        self.create_time = create_time
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.region_id = region_id
+        self.request_id = request_id
+        self.resource_group_id = resource_group_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyGadInstanceNameResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyGadInstanceNameResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyGadInstanceNameResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifySubscriptionRequest(TeaModel):
     def __init__(
         self,
@@ -39780,6 +41245,185 @@ class ModifySynchronizationObjectResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySynchronizationObjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PreCheckCreateGadOrderRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        owner_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        slave_db_instance_id: str = None,
+        slave_db_instance_region: str = None,
+    ):
+        self.instance_id = instance_id
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.slave_db_instance_id = slave_db_instance_id
+        self.slave_db_instance_region = slave_db_instance_region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.slave_db_instance_id is not None:
+            result['SlaveDbInstanceId'] = self.slave_db_instance_id
+        if self.slave_db_instance_region is not None:
+            result['SlaveDbInstanceRegion'] = self.slave_db_instance_region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SlaveDbInstanceId') is not None:
+            self.slave_db_instance_id = m.get('SlaveDbInstanceId')
+        if m.get('SlaveDbInstanceRegion') is not None:
+            self.slave_db_instance_region = m.get('SlaveDbInstanceRegion')
+        return self
+
+
+class PreCheckCreateGadOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        request_id: str = None,
+        success: str = None,
+        task_id: str = None,
+    ):
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.request_id = request_id
+        self.success = success
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class PreCheckCreateGadOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PreCheckCreateGadOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PreCheckCreateGadOrderResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -40647,6 +42291,155 @@ class ShieldPrecheckResponse(TeaModel):
         return self
 
 
+class SkipFullJobTableRequest(TeaModel):
+    def __init__(
+        self,
+        dts_job_id: str = None,
+        job_progress_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        zero_etl_job: bool = None,
+    ):
+        # The ID of the DTS task. The DTS task can be a data migration, data synchronization, or change tracking task.
+        self.dts_job_id = dts_job_id
+        # The ID of the primary key.
+        self.job_progress_id = job_progress_id
+        # The region ID of the DTS instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        self.region_id = region_id
+        # The resource group ID.
+        self.resource_group_id = resource_group_id
+        # Specifies whether to query only zero-extract, transform, load (ETL) integration tasks. Valid values:
+        # 
+        # *   **true**: yes.
+        # *   **false**: no.
+        self.zero_etl_job = zero_etl_job
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.job_progress_id is not None:
+            result['JobProgressId'] = self.job_progress_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('JobProgressId') is not None:
+            self.job_progress_id = m.get('JobProgressId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
+        return self
+
+
+class SkipFullJobTableResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The error code.
+        self.code = code
+        # The HTTP status code returned.
+        self.http_status_code = http_status_code
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request is successful.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SkipFullJobTableResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SkipFullJobTableResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SkipFullJobTableResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SkipPreCheckRequest(TeaModel):
     def __init__(
         self,
@@ -41398,6 +43191,7 @@ class StartReverseWriterRequest(TeaModel):
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
+        # Resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -41860,6 +43654,7 @@ class StopDedicatedClusterRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region in which the instance resides.
         self.region_id = region_id
+        # The resource group ID. This parameter is a global parameter and not required.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -44373,6 +46168,12 @@ class TransferPayTypeRequest(TeaModel):
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
+        # The new instance class of the DTS instance. You can call the [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) operation to query the original instance class of the DTS instance.
+        # 
+        # *   DTS supports the following instance classes for a data migration instance: **xxlarge**, **xlarge**, **large**, **medium**, and **small**.
+        # *   DTS supports the following instance classes for a data synchronization instance: **large**, **medium**, **small**, and **micro**.
+        # 
+        # > For more information about the test performance of each instance class, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html) and [Specifications of data synchronization channels](https://help.aliyun.com/document_detail/26605.html).
         self.instance_class = instance_class
         # The maximum number of DUs in a serverless instance. Valid values: 2, 4, 8, and 16.
         # 
