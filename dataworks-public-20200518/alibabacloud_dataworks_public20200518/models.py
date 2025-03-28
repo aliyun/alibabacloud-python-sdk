@@ -5782,8 +5782,8 @@ class CreateDataSourceRequest(TeaModel):
         # *   odps
         # 
         #         {
-        #           "accessId": "xssssss",
-        #           "accessKey": "xsaxsaxsa",
+        #           "accessId": "*****",
+        #           "accessKey": "*****",
         #           "authType": 2,
         #           "endpoint": "http://service.odps.aliyun.com/api",
         #           "project": "xsaxsax",
@@ -5817,8 +5817,8 @@ class CreateDataSourceRequest(TeaModel):
         # *   oss
         # 
         #         {
-        #           "accessId": "sssssxx",
-        #           "accessKey": "xsaxaxsaxs",
+        #           "accessId": "*****",
+        #           "accessKey": "*****",
         #           "bucket": "xsa-xs-xs",
         #           "endpoint": "http://oss-cn-shanghai.aliyuncs.com",
         #           "tag": "public"
@@ -5875,11 +5875,11 @@ class CreateDataSourceRequest(TeaModel):
         # *   emr
         # 
         #         {
-        #           "accessId": "xsaxsa",
+        #           "accessId": "*****",
         #           "emrClusterId": "C-dsads",
         #           "emrResourceQueueName": "default",
         #           "emrEndpoint": "emr.aliyuncs.com",
-        #           "accessKey": "dsadsad",
+        #           "accessKey": "*****",
         #           "emrUserId": "224833315798889783",
         #           "name": "sasdsadsa",
         #           "emrAccessMode": "simple",
@@ -5922,8 +5922,8 @@ class CreateDataSourceRequest(TeaModel):
         # *   holo
         # 
         #         {
-        #           "accessId": "xsaxsaxs",
-        #           "accessKey": "xsaxsaxsa",
+        #           "accessId": "*****",
+        #           "accessKey": "*****",
         #           "database": "xsaxsaxsa",
         #           "instanceId": "xsaxa",
         #           "tag": "aliyun"
@@ -6404,6 +6404,7 @@ class CreateFileRequest(TeaModel):
         # - true: The empty run attribute of the previous cycle is used.
         # - false: The empty run attribute of the previous cycle is not used.
         self.ignore_parent_skip_running_property = ignore_parent_skip_running_property
+        # Custom image ID
         self.image_id = image_id
         # The output name of the parent file on which the current file depends. If you specify multiple output names, separate them with commas (,).
         # 
@@ -7759,8 +7760,10 @@ class CreateMetaCollectionResponse(TeaModel):
 class CreatePermissionApplyOrderRequestApplyObjectColumnMetaList(TeaModel):
     def __init__(
         self,
+        actions: str = None,
         name: str = None,
     ):
+        self.actions = actions
         # The field on which you want to request permissions. If you want to request permissions on an entire table, enter all fields in the table. You can request permissions on specific fields of a table in a MaxCompute project only after LabelSecurity is enabled for this project. If LabelSecurity is disabled, you can request permissions only on an entire table.
         # 
         # This parameter is required.
@@ -7775,12 +7778,16 @@ class CreatePermissionApplyOrderRequestApplyObjectColumnMetaList(TeaModel):
             return _map
 
         result = dict()
+        if self.actions is not None:
+            result['Actions'] = self.actions
         if self.name is not None:
             result['Name'] = self.name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Actions') is not None:
+            self.actions = m.get('Actions')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         return self
@@ -7794,12 +7801,8 @@ class CreatePermissionApplyOrderRequestApplyObject(TeaModel):
         name: str = None,
     ):
         # The permission that you want to request. If you want to request multiple permissions at the same time, separate them with commas (,). You can request only the following permissions: Select, Describe, Drop, Alter, Update, and Download.
-        # 
-        # This parameter is required.
         self.actions = actions
         # The fields on which you want to request permissions.
-        # 
-        # This parameter is required.
         self.column_meta_list = column_meta_list
         # The name of the object on which you want to request permissions. You can request permissions only on MaxCompute tables. Set this parameter to the name of the table on which you want to request permissions.
         # 
@@ -7847,7 +7850,9 @@ class CreatePermissionApplyOrderRequest(TeaModel):
         self,
         apply_object: List[CreatePermissionApplyOrderRequestApplyObject] = None,
         apply_reason: str = None,
+        apply_type: str = None,
         apply_user_ids: str = None,
+        catalog_name: str = None,
         deadline: int = None,
         engine_type: str = None,
         max_compute_project_name: str = None,
@@ -7862,23 +7867,21 @@ class CreatePermissionApplyOrderRequest(TeaModel):
         # 
         # This parameter is required.
         self.apply_reason = apply_reason
+        self.apply_type = apply_type
         # The ID of the Alibaba Cloud account for which you want to request permissions. If you want to request permissions for multiple Alibaba Cloud accounts, separate the IDs of the accounts with commas (,).
         # 
         # This parameter is required.
         self.apply_user_ids = apply_user_ids
+        self.catalog_name = catalog_name
         # The expiration time of the permissions that you request. This value is a UNIX timestamp. The default value is January 1, 2065. If LabelSecurity is disabled for the MaxCompute project in which you want to request permissions on the fields of a table, or the security level of the fields is 0 or is lower than or equal to the security level of the Alibaba Cloud account for which you want to request permissions, you can request only permanent permissions. You can go to the Workspace Management page in the DataWorks console, click MaxCompute Management in the left-side navigation pane, and then check whether column-level access control is enabled. You can go to your DataWorks workspace, view the security level of the fields in Data Map, and then view the security level of the Alibaba Cloud account on the User Management page.
         self.deadline = deadline
         # The type of the compute engine in which you want to request permissions on the fields of a table. The parameter value is odps and cannot be changed. This value indicates that you can request permissions only on fields of tables in the MaxCompute compute engine.
         self.engine_type = engine_type
         # The name of the MaxCompute project in which you request permissions on the fields of a table.
-        # 
-        # This parameter is required.
         self.max_compute_project_name = max_compute_project_name
         # The type of the permission request order. The parameter value is 1 and cannot be changed. This value indicates ACL-based authorization.
         self.order_type = order_type
         # The ID of the DataWorks workspace that is associated with the MaxCompute project in which you want to request permissions on the fields of a table. You can go to the SettingCenter page in the DataWorks console to view the workspace ID.
-        # 
-        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -7899,8 +7902,12 @@ class CreatePermissionApplyOrderRequest(TeaModel):
                 result['ApplyObject'].append(k.to_map() if k else None)
         if self.apply_reason is not None:
             result['ApplyReason'] = self.apply_reason
+        if self.apply_type is not None:
+            result['ApplyType'] = self.apply_type
         if self.apply_user_ids is not None:
             result['ApplyUserIds'] = self.apply_user_ids
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
         if self.deadline is not None:
             result['Deadline'] = self.deadline
         if self.engine_type is not None:
@@ -7922,8 +7929,12 @@ class CreatePermissionApplyOrderRequest(TeaModel):
                 self.apply_object.append(temp_model.from_map(k))
         if m.get('ApplyReason') is not None:
             self.apply_reason = m.get('ApplyReason')
+        if m.get('ApplyType') is not None:
+            self.apply_type = m.get('ApplyType')
         if m.get('ApplyUserIds') is not None:
             self.apply_user_ids = m.get('ApplyUserIds')
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
         if m.get('Deadline') is not None:
             self.deadline = m.get('Deadline')
         if m.get('EngineType') is not None:
@@ -25506,21 +25517,23 @@ class GetDISyncTaskResponseBodyDataAlarmListAlarmRuleList(TeaModel):
         level: str = None,
         threshold: int = None,
     ):
-        # The calculation method of indicators,
-        # - avg interval average
-        # - max interval takes the maximum value
+        # The calculation method of a metric. Valid values:
+        # 
+        # *   avg
+        # *   max
         self.aggregator = aggregator
-        # Comparison method of comparison symbols, indicators and alarm rules
-        # - \\"=\\"
-        # - \\"<\\"
-        # - \\">\\"
+        # The comparison operator, which indicates the method used to compare a metric with the alert rule.
+        # 
+        # *   \\"=\\"
+        # *   \\"<\\"
+        # *   \\">\\"
         self.comparator = comparator
-        # Duration: How long does this condition last before an alarm is triggered, in minutes.
+        # The duration that a condition is met before an alert is triggered. Unit: minutes.
         self.duration = duration
-        # - WARNING WARNING: alert
-        # - CRITICAL CRITICAL: alarm
+        # *   WARNING
+        # *   CRITICAL
         self.level = level
-        # Comparison threshold between metrics and alarm rules.
+        # The threshold for the comparison between a metric and the alert rule.
         self.threshold = threshold
 
     def validate(self):
@@ -25566,11 +25579,11 @@ class GetDISyncTaskResponseBodyDataAlarmListNotifyRule(TeaModel):
         interval: int = None,
         warning: List[str] = None,
     ):
-        # Critical-level alert notification list.
+        # The settings for Critical-level alert notifications.
         self.critical = critical
-        # Alarm interval, in minutes.
+        # The alert interval. Unit: minutes.
         self.interval = interval
-        # Warning-level alert notification list.
+        # The settings for Warning-level alert notifications.
         self.warning = warning
 
     def validate(self):
@@ -25612,26 +25625,26 @@ class GetDISyncTaskResponseBodyDataAlarmList(TeaModel):
         notify_rule: GetDISyncTaskResponseBodyDataAlarmListNotifyRule = None,
         rule_name: str = None,
     ):
-        # Alarm Notification configuration array.
+        # The alert notification settings. The value of this parameter is an array.
         self.alarm_rule_list = alarm_rule_list
-        # Alarm rule description.
+        # The description of the alert rule.
         self.description = description
-        # Whether alarm rules are enabled.
+        # Indicates whether the alert rule is enabled.
         self.enabled = enabled
-        # Alarm rule id.
+        # The ID of the alert rule.
         self.id = id
-        # Alarm Type:
+        # The alert type. Valid values:
         # 
-        # - taskStatus: task status
-        # - bizDelay: business latency
-        # - taskFailoverCount: monitoring Failover
-        # - ddlUnsupport: DDL is not supported
-        # - ddlReport: DDL notifications
-        # - totalDirtyRecordWriteInLines: dirty data
+        # *   taskStatus
+        # *   bizDelay
+        # *   taskFailoverCount
+        # *   ddlUnsupport
+        # *   ddlReport
+        # *   totalDirtyRecordWriteInLines
         self.metric = metric
-        # Alert notification rule array.
+        # The settings for alert notification rules. The value of this parameter is an array.
         self.notify_rule = notify_rule
-        # Alarm rule name.
+        # The name of the alert rule.
         self.rule_name = rule_name
 
     def validate(self):
@@ -25807,7 +25820,7 @@ class GetDISyncTaskResponseBodyData(TeaModel):
         solution_detail: GetDISyncTaskResponseBodyDataSolutionDetail = None,
         status: str = None,
     ):
-        # Array of alarm rules associated with real-time tasks.
+        # The alert rules that are associated with the real-time synchronization task. The value of this parameter is an array.
         self.alarm_list = alarm_list
         # *   If the TaskType parameter is set to DI_REALTIME, the details of the real-time synchronization task are returned.
         # *   If the TaskType parameter is set to DI_SOLUTION, the value null is returned.
@@ -30728,6 +30741,7 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
         self.end_effect_date = end_effect_date
         # Indicates whether to skip the dry-run property of the ancestor nodes of the node that corresponds to the file. This parameter corresponds to the Skip the dry-run property of the ancestor node parameter that is displayed after you configure the Depend On parameter in the Dependencies section of the Properties tab in the DataWorks console.
         self.ignore_parent_skip_running_property = ignore_parent_skip_running_property
+        # The ID of the custom image.
         self.image_id = image_id
         # The output names of the parent files on which the current file depends.
         self.input_list = input_list
@@ -39400,7 +39414,7 @@ class GetMigrationSummaryRequest(TeaModel):
     ):
         # The migration task ID.
         # 
-        # You can call the [CreateImportMigration](https://help.aliyun.com/document_detail/2809123.html) operation to obtain the ID of the import task and call the [CreateExportMigration](https://help.aliyun.com/document_detail/3241603.html) operation to obtain the ID of the export task.
+        # You can call the [CreateImportMigration](https://help.aliyun.com/document_detail/2780280.html) operation to obtain the ID of the import task and call the [CreateExportMigration](https://help.aliyun.com/document_detail/2780281.html) operation to obtain the ID of the export task.
         # 
         # This parameter is required.
         self.migration_id = migration_id
@@ -41617,10 +41631,12 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveAccountLis
 class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaListColumnMetaList(TeaModel):
     def __init__(
         self,
+        column_actions: List[str] = None,
         column_comment: str = None,
         column_name: str = None,
         security_level: str = None,
     ):
+        self.column_actions = column_actions
         # The description of the column on which you request permissions.
         self.column_comment = column_comment
         # The name of the column on which you request permissions.
@@ -41637,6 +41653,8 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentPro
             return _map
 
         result = dict()
+        if self.column_actions is not None:
+            result['ColumnActions'] = self.column_actions
         if self.column_comment is not None:
             result['ColumnComment'] = self.column_comment
         if self.column_name is not None:
@@ -41647,6 +41665,8 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentPro
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ColumnActions') is not None:
+            self.column_actions = m.get('ColumnActions')
         if m.get('ColumnComment') is not None:
             self.column_comment = m.get('ColumnComment')
         if m.get('ColumnName') is not None:
@@ -41659,9 +41679,11 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentPro
 class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaList(TeaModel):
     def __init__(
         self,
+        actions: List[str] = None,
         column_meta_list: List[GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaListColumnMetaList] = None,
         object_name: str = None,
     ):
+        self.actions = actions
         # The information about the column fields in the object on which you request permissions.
         self.column_meta_list = column_meta_list
         # The name of the table on which you request permissions.
@@ -41679,6 +41701,8 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentPro
             return _map
 
         result = dict()
+        if self.actions is not None:
+            result['Actions'] = self.actions
         result['ColumnMetaList'] = []
         if self.column_meta_list is not None:
             for k in self.column_meta_list:
@@ -41689,6 +41713,8 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentPro
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Actions') is not None:
+            self.actions = m.get('Actions')
         self.column_meta_list = []
         if m.get('ColumnMetaList') is not None:
             for k in m.get('ColumnMetaList'):
@@ -43518,6 +43544,7 @@ class GetQualityRuleResponseBodyData(TeaModel):
         self.rule_name = rule_name
         # The type of the monitoring rule.
         self.rule_type = rule_type
+        # The variable settings inserted before the custom rule. Format: x=a,y=b.
         self.task_setting = task_setting
         # The ID of the monitoring template.
         self.template_id = template_id
@@ -45200,7 +45227,7 @@ class GetTopicInfluenceResponseBodyData(TeaModel):
         influences: List[GetTopicInfluenceResponseBodyDataInfluences] = None,
         topic_id: int = None,
     ):
-        # The list of affected baseline instances.
+        # The affected baseline instances.
         self.influences = influences
         # The ID of the event.
         self.topic_id = topic_id
@@ -45247,7 +45274,7 @@ class GetTopicInfluenceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The list of baseline instances affected by the event.
+        # The data returned.
         self.data = data
         # The error code returned.
         self.error_code = error_code
@@ -46617,6 +46644,7 @@ class ListBaselineStatusesResponseBodyDataBaselineStatuses(TeaModel):
         self,
         baseline_id: int = None,
         baseline_name: str = None,
+        baseline_type: str = None,
         bizdate: int = None,
         buffer: int = None,
         end_cast: int = None,
@@ -46634,6 +46662,8 @@ class ListBaselineStatusesResponseBodyDataBaselineStatuses(TeaModel):
         self.baseline_id = baseline_id
         # The name of the baseline.
         self.baseline_name = baseline_name
+        # The type of the baseline, including DAILY and HOURLY. Separate multiple types with commas (,).
+        self.baseline_type = baseline_type
         # The data timestamp.
         self.bizdate = bizdate
         # The margin of the baseline instance. Unit: seconds.
@@ -46672,6 +46702,8 @@ class ListBaselineStatusesResponseBodyDataBaselineStatuses(TeaModel):
             result['BaselineId'] = self.baseline_id
         if self.baseline_name is not None:
             result['BaselineName'] = self.baseline_name
+        if self.baseline_type is not None:
+            result['BaselineType'] = self.baseline_type
         if self.bizdate is not None:
             result['Bizdate'] = self.bizdate
         if self.buffer is not None:
@@ -46704,6 +46736,8 @@ class ListBaselineStatusesResponseBodyDataBaselineStatuses(TeaModel):
             self.baseline_id = m.get('BaselineId')
         if m.get('BaselineName') is not None:
             self.baseline_name = m.get('BaselineName')
+        if m.get('BaselineType') is not None:
+            self.baseline_type = m.get('BaselineType')
         if m.get('Bizdate') is not None:
             self.bizdate = m.get('Bizdate')
         if m.get('Buffer') is not None:
@@ -54917,7 +54951,7 @@ class ListDataSourcesResponseBodyDataDataSources(TeaModel):
         #           "authType": "2"
         #         }
         # 
-        # *   MySQL
+        # *   mysql
         # 
         #         {
         #           "configType": "1",
@@ -54929,7 +54963,7 @@ class ListDataSourcesResponseBodyDataDataSources(TeaModel):
         #           "username": "mysql_db111"
         #         }
         # 
-        # *   ApsaraDB RDS for SQL Server
+        # *   sqlserver
         # 
         #         {
         #           "configType": "1",
@@ -54939,18 +54973,18 @@ class ListDataSourcesResponseBodyDataDataSources(TeaModel):
         #           "username": "sqlserver_db111"
         #         }
         # 
-        # *   Object Storage Service (OSS)
+        # *   oss
         # 
         #         {
-        #           "accessId": "LTAINbR9Uxxxx",
-        #           "accessKey": "***",
+        #           "accessId": "***********",
+        #           "accessKey": "***********",
         #           "bucket": "bigxxx1223",
         #           "configType": "1",
         #           "endpoint": "http://oss-cn-hangzhou.aliyuncs.com",
         #           "tag": "public"
         #         }
         # 
-        # *   ApsaraDB RDS for PostgreSQL
+        # *   postgresql
         # 
         #         {
         #           "configType": "1",
@@ -54962,7 +54996,7 @@ class ListDataSourcesResponseBodyDataDataSources(TeaModel):
         #           "username": "cdp_xxx"
         #         }
         # 
-        # *   AnalyticDB for MySQL
+        # *   ads
         # 
         #         {
         #           "configType": "1",
@@ -56897,7 +56931,7 @@ class ListFileVersionsResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The details of the file version.
+        # The details of file versions.
         self.file_versions = file_versions
         # The page number of the returned page.
         self.page_number = page_number
@@ -56956,7 +56990,7 @@ class ListFileVersionsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The file versions returned.
+        # The file versions.
         self.data = data
         # The error code returned.
         self.error_code = error_code
@@ -57060,6 +57094,7 @@ class ListFilesRequest(TeaModel):
         file_id_in: str = None,
         file_types: str = None,
         keyword: str = None,
+        last_edit_user: str = None,
         need_absolute_folder_path: bool = None,
         need_content: bool = None,
         node_id: int = None,
@@ -57072,7 +57107,7 @@ class ListFilesRequest(TeaModel):
     ):
         # The exact matching file name. The file name of the query result is exactly the same as this parameter.
         self.exact_file_name = exact_file_name
-        # The path of the files.
+        # The path of the folder to which files belong.
         self.file_folder_path = file_folder_path
         # The file ID list. The File ID set of the query result can only be a subset of the list. You can specify up to 50 fileids at a time.
         self.file_id_in = file_id_in
@@ -57082,6 +57117,7 @@ class ListFilesRequest(TeaModel):
         self.file_types = file_types
         # The keyword in the file names. The keyword is used to perform a fuzzy match. You can specify a keyword to query all files whose names contain the keyword.
         self.keyword = keyword
+        self.last_edit_user = last_edit_user
         # Whether the query result contains the path of the folder where the file is located.
         self.need_absolute_folder_path = need_absolute_folder_path
         # Whether the query results contain file content (for files with more content, there may be a long network transmission delay).
@@ -57131,6 +57167,8 @@ class ListFilesRequest(TeaModel):
             result['FileTypes'] = self.file_types
         if self.keyword is not None:
             result['Keyword'] = self.keyword
+        if self.last_edit_user is not None:
+            result['LastEditUser'] = self.last_edit_user
         if self.need_absolute_folder_path is not None:
             result['NeedAbsoluteFolderPath'] = self.need_absolute_folder_path
         if self.need_content is not None:
@@ -57163,6 +57201,8 @@ class ListFilesRequest(TeaModel):
             self.file_types = m.get('FileTypes')
         if m.get('Keyword') is not None:
             self.keyword = m.get('Keyword')
+        if m.get('LastEditUser') is not None:
+            self.last_edit_user = m.get('LastEditUser')
         if m.get('NeedAbsoluteFolderPath') is not None:
             self.need_absolute_folder_path = m.get('NeedAbsoluteFolderPath')
         if m.get('NeedContent') is not None:
@@ -57210,7 +57250,7 @@ class ListFilesResponseBodyDataFiles(TeaModel):
         parent_id: int = None,
         use_type: str = None,
     ):
-        # The path of the folder where the file is located.
+        # The path of the folder to which the file belongs.
         self.absolute_folder_path = absolute_folder_path
         # Specifies whether the automatic parsing feature is enabled for the file. Valid values:
         # 
@@ -59211,9 +59251,10 @@ class ListLineageRequest(TeaModel):
         next_token: str = None,
         page_size: int = None,
     ):
-        # The lineage type. Valid values:\\
-        # up: ancestor lineage\\
-        # down: descendant lineage
+        # The lineage type. Valid values:
+        # 
+        # *   up: ancestor lineage
+        # *   down: descendant lineage
         # 
         # This parameter is required.
         self.direction = direction
@@ -59274,9 +59315,10 @@ class ListLineageResponseBodyDataDataEntityListRelationList(TeaModel):
     ):
         # The data channel. Valid values:
         # 
-        #     FIRST_PARTY: DataWorks platformTHIRD_PARTY: user registration
+        # *   **FIRST_PARTY: DataWorks platform**\
+        # *   **THIRD_PARTY: user registration**\
         self.channel = channel
-        # The name of the data source.
+        # The data source.
         self.datasource = datasource
         # The unique relationship ID.
         self.guid = guid
@@ -59433,9 +59475,8 @@ class ListLineageResponseBody(TeaModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # true
-        # 
-        # false
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -62523,6 +62564,8 @@ class ListNodesByOutputResponse(TeaModel):
 class ListPermissionApplyOrdersRequest(TeaModel):
     def __init__(
         self,
+        apply_type: str = None,
+        catalog_name: str = None,
         end_time: int = None,
         engine_type: str = None,
         flow_status: int = None,
@@ -62535,11 +62578,11 @@ class ListPermissionApplyOrdersRequest(TeaModel):
         table_name: str = None,
         workspace_id: int = None,
     ):
+        self.apply_type = apply_type
+        self.catalog_name = catalog_name
         # The end of the time range to query. You can query all the permissions request orders that have been submitted before the time. The parameter value is a UNIX timestamp. If you do not specify the parameter, all permission request orders that are submitted before the current time are queried.
         self.end_time = end_time
         # The type of the compute engine with which the permission request order is associated. The parameter value is odps and cannot be changed. This value indicates that you can request permissions only on fields of tables in the MaxCompute compute engine.
-        # 
-        # This parameter is required.
         self.engine_type = engine_type
         # The status of the permission request order. Valid values:
         # 
@@ -62560,8 +62603,6 @@ class ListPermissionApplyOrdersRequest(TeaModel):
         # The name of the MaxCompute project with which the permission request order is associated. If you do not specify the parameter, the permission request orders of all MaxCompute projects are returned.
         self.max_compute_project_name = max_compute_project_name
         # The type of the permission request order. The parameter value is 1 and cannot be changed. This value indicates ACL-based authorization.
-        # 
-        # This parameter is required.
         self.order_type = order_type
         # The page number. Pages start from page 1. Default value: 1.
         self.page_num = page_num
@@ -62590,6 +62631,10 @@ class ListPermissionApplyOrdersRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.apply_type is not None:
+            result['ApplyType'] = self.apply_type
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.engine_type is not None:
@@ -62616,6 +62661,10 @@ class ListPermissionApplyOrdersRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApplyType') is not None:
+            self.apply_type = m.get('ApplyType')
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('EngineType') is not None:
@@ -65648,7 +65697,7 @@ class ListQualityRulesResponseBodyDataRules(TeaModel):
         self.block_type = block_type
         # The checker ID.
         self.checker_id = checker_id
-        # The description of the system defense rule.
+        # The description of the monitoring rule.
         self.comment = comment
         # The threshold for a critical alert. The threshold indicates the deviation of the monitoring result from the expected value. You can specify a custom value for the threshold based on your business requirements. If a monitoring rule is a strong rule and the critical threshold is exceeded, a critical alert is reported and tasks that are associated with the rule are blocked from running.
         self.critical_threshold = critical_threshold
@@ -65833,7 +65882,7 @@ class ListQualityRulesResponseBodyData(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The details of the monitoring rule.
+        # The details of the monitoring rules.
         self.rules = rules
         # The total number of entries returned.
         self.total_count = total_count
@@ -67230,7 +67279,7 @@ class ListShiftPersonnelsResponseBodyPaging(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # A list of on-duty engineers in a shift schedule.
+        # The on-duty engineers in the shift schedule.
         self.shift_persons = shift_persons
         # The total number of entries returned.
         self.total_count = total_count
@@ -67281,7 +67330,7 @@ class ListShiftPersonnelsResponseBody(TeaModel):
         paging: ListShiftPersonnelsResponseBodyPaging = None,
         request_id: str = None,
     ):
-        # The pagination data.
+        # The pagination information.
         self.paging = paging
         # The request ID. You can use the ID to troubleshoot issues.
         self.request_id = request_id
@@ -67500,7 +67549,7 @@ class ListShiftSchedulesResponseBody(TeaModel):
         paging: ListShiftSchedulesResponseBodyPaging = None,
         request_id: str = None,
     ):
-        # The pagination data.
+        # The pagination information.
         self.paging = paging
         # The request ID.
         self.request_id = request_id
@@ -68492,7 +68541,7 @@ class ListTablesResponseBodyDataTableEntityList(TeaModel):
         entity_content: ListTablesResponseBodyDataTableEntityListEntityContent = None,
         entity_qualified_name: str = None,
     ):
-        # Table entity information.
+        # The information about the table.
         self.entity_content = entity_content
         # The unique identifier of the table entity.
         self.entity_qualified_name = entity_qualified_name
@@ -68532,7 +68581,7 @@ class ListTablesResponseBodyData(TeaModel):
     ):
         # Pagination information, which specifies the starting point of the next read.
         self.next_token = next_token
-        # Entity array.
+        # An array of entities.
         self.table_entity_list = table_entity_list
         # The total number.
         self.total = total
@@ -69007,161 +69056,6 @@ class ListTopicsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTopicsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class MountDirectoryRequest(TeaModel):
-    def __init__(
-        self,
-        target_id: str = None,
-        target_type: str = None,
-        target_user_id: str = None,
-    ):
-        # The ID of the directory that you want to add to the left-side navigation pane of DataAnalysis. This parameter is used together with the TargetType parameter. For example, if you set the TargetType parameter to META_ALBUM, you must set the TargetId parameter to the ID of the related data album. You can call the [ListMetaCollections](https://help.aliyun.com/document_detail/469938.html) operation to obtain the ID of the data album. The ID is indicated by the QualifiedName parameter.
-        self.target_id = target_id
-        # The type of the directory that you want to add to the left-side navigation pane of DataAnalysis. Example: META_ALBUM, which indicates the data album.
-        self.target_type = target_type
-        # The ID of the user in the tenant.
-        # 
-        # *   If you do not configure TargetUserId, the specified directory belongs to you.
-        # *   If you configure TargetUserId, the specified directory belongs to the user specified by using TargetUserId.
-        self.target_user_id = target_user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.target_id is not None:
-            result['TargetId'] = self.target_id
-        if self.target_type is not None:
-            result['TargetType'] = self.target_type
-        if self.target_user_id is not None:
-            result['TargetUserId'] = self.target_user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TargetId') is not None:
-            self.target_id = m.get('TargetId')
-        if m.get('TargetType') is not None:
-            self.target_type = m.get('TargetType')
-        if m.get('TargetUserId') is not None:
-            self.target_user_id = m.get('TargetUserId')
-        return self
-
-
-class MountDirectoryResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: int = None,
-        error_code: str = None,
-        error_message: str = None,
-        http_status_code: int = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        # The number of directories that are added. Valid values:
-        # 
-        # *   0: No directories are added. The left-side navigation pane may contain the specified directory.
-        # *   1: One directory is added.
-        self.data = data
-        # The error code. The value 200 indicates that the task is successful.
-        self.error_code = error_code
-        # The error message.
-        self.error_message = error_message
-        # The HTTP status code.
-        self.http_status_code = http_status_code
-        # The request ID. You can use the ID to troubleshoot issues.
-        self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class MountDirectoryResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: MountDirectoryResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = MountDirectoryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -71580,158 +71474,6 @@ class ResumeInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ResumeInstanceResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class RevokeColumnPermissionRequest(TeaModel):
-    def __init__(
-        self,
-        columns: str = None,
-        max_compute_project_name: str = None,
-        revoke_user_id: str = None,
-        revoke_user_name: str = None,
-        table_name: str = None,
-        workspace_id: int = None,
-    ):
-        # The fields for which you want to revoke permissions from a user. Separate multiple fields with commas (,). You can revoke the permissions on the fields only in MaxCompute tables.
-        # 
-        # This parameter is required.
-        self.columns = columns
-        # The name of the MaxCompute project to which the fields belong. You can log on to the DataWorks console and go to the SettingCenter page to obtain the name of the MaxCompute project that you associate with the workspace.
-        # 
-        # This parameter is required.
-        self.max_compute_project_name = max_compute_project_name
-        # The ID of the Alibaba Cloud account of the user from which you want to revoke permissions. You can log on to the DataWorks console and go to the Security Settings page to obtain the ID. You must specify either this parameter or the RevokeUserName parameter. If you specify both this parameter and the RevokeUserName parameter and the parameter values are different, the value of this parameter prevails.
-        self.revoke_user_id = revoke_user_id
-        # The Alibaba Cloud account from which you want to revoke permissions. Specify this parameter in the format that is the same as the format of the account used to access the MaxCompute project.
-        # 
-        # *   If the account is an Alibaba Cloud account, the value is in the ALIYUN$+Account name format.
-        # *   If the account is a RAM user, the value is in the RAM$+Account name format.
-        # 
-        # You must specify either this parameter or the RevokeUserId parameter. If you specify both this parameter and the RevokeUserId parameter and the parameter values are different, the value of the RevokeUserId parameter prevails.
-        self.revoke_user_name = revoke_user_name
-        # The name of the MaxCompute table to which the fields belong. You can call the [SearchMetaTables](https://help.aliyun.com/document_detail/173919.html) operation to query the name of the MaxCompute table.
-        # 
-        # This parameter is required.
-        self.table_name = table_name
-        # The ID of the DataWorks workspace with which the MaxCompute project is associated. You can log on to the DataWorks console and go to the Workspace page to obtain the ID.
-        # 
-        # This parameter is required.
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.columns is not None:
-            result['Columns'] = self.columns
-        if self.max_compute_project_name is not None:
-            result['MaxComputeProjectName'] = self.max_compute_project_name
-        if self.revoke_user_id is not None:
-            result['RevokeUserId'] = self.revoke_user_id
-        if self.revoke_user_name is not None:
-            result['RevokeUserName'] = self.revoke_user_name
-        if self.table_name is not None:
-            result['TableName'] = self.table_name
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Columns') is not None:
-            self.columns = m.get('Columns')
-        if m.get('MaxComputeProjectName') is not None:
-            self.max_compute_project_name = m.get('MaxComputeProjectName')
-        if m.get('RevokeUserId') is not None:
-            self.revoke_user_id = m.get('RevokeUserId')
-        if m.get('RevokeUserName') is not None:
-            self.revoke_user_name = m.get('RevokeUserName')
-        if m.get('TableName') is not None:
-            self.table_name = m.get('TableName')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class RevokeColumnPermissionResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        revoke_success: bool = None,
-    ):
-        # The request ID.
-        self.request_id = request_id
-        # Indicates whether the permissions are revoked.
-        self.revoke_success = revoke_success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.revoke_success is not None:
-            result['RevokeSuccess'] = self.revoke_success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('RevokeSuccess') is not None:
-            self.revoke_success = m.get('RevokeSuccess')
-        return self
-
-
-class RevokeColumnPermissionResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: RevokeColumnPermissionResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = RevokeColumnPermissionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -76488,161 +76230,6 @@ class TopTenErrorTimesInstanceResponse(TeaModel):
         return self
 
 
-class UmountDirectoryRequest(TeaModel):
-    def __init__(
-        self,
-        target_id: str = None,
-        target_type: str = None,
-        target_user_id: str = None,
-    ):
-        # The ID of the directory that you want to remove from the left-side navigation pane of DataAnalysis. This parameter is used together with the TargetType parameter. For example, if you set the TargetType parameter to META_ALBUM, you must set the TargetId parameter to the ID of the metadata data album. You can call the [ListMetaCollections](https://help.aliyun.com/document_detail/469938.html) operation to obtain the ID of the data album. The ID is indicated by the QualifiedName parameter.
-        self.target_id = target_id
-        # The type of the directory that you want to remove from the left-side navigation pane of DataAnalysis. Example: META_ALBUM, which indicates the metadata data album.
-        self.target_type = target_type
-        # The ID of the user in the tenant.
-        # 
-        # *   If you do not configure TargetUserId, the directory belongs to you.
-        # *   If you configure TargetUserId, the directory belongs to the user specified by using TargetUserId.
-        self.target_user_id = target_user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.target_id is not None:
-            result['TargetId'] = self.target_id
-        if self.target_type is not None:
-            result['TargetType'] = self.target_type
-        if self.target_user_id is not None:
-            result['TargetUserId'] = self.target_user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TargetId') is not None:
-            self.target_id = m.get('TargetId')
-        if m.get('TargetType') is not None:
-            self.target_type = m.get('TargetType')
-        if m.get('TargetUserId') is not None:
-            self.target_user_id = m.get('TargetUserId')
-        return self
-
-
-class UmountDirectoryResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: int = None,
-        error_code: str = None,
-        error_message: str = None,
-        http_status_code: int = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        # The number of directories that are removed. Valid values:
-        # 
-        # *   0: No directories are removed. The left-side navigation pane may not contain the specified directory.
-        # *   1: One directory is removed.
-        self.data = data
-        # The error code. The value 200 indicates that the task is successful.
-        self.error_code = error_code
-        # The error message.
-        self.error_message = error_message
-        # The HTTP status code. The value 200 indicates that the request was successful.
-        self.http_status_code = http_status_code
-        # The request ID. You can use the ID to troubleshoot issues.
-        self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class UmountDirectoryResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: UmountDirectoryResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = UmountDirectoryResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class UpdateBaselineRequestAlertSettingsDingRobots(TeaModel):
     def __init__(
         self,
@@ -76797,7 +76384,7 @@ class UpdateBaselineRequestOvertimeSettings(TeaModel):
         cycle: int = None,
         time: str = None,
     ):
-        # The cycle that corresponds to the committed completion time. For a day-level baseline, set this parameter to 1. For an hour-level baseline, set this parameter to a value that does not exceed 24.
+        # The cycle that corresponds to the committed completion time. For a day-level baseline, set this parameter to 1. For an hour-level baseline, set this parameter to a value that is no more than 24.
         self.cycle = cycle
         # The committed completion time in the hh:mm format. Valid values of hh: [0,47]. Valid values of mm: [0,59].
         self.time = time
@@ -80066,7 +79653,7 @@ class UpdateFileRequest(TeaModel):
         # 
         # This parameter is configured in the JSON format.
         self.advanced_settings = advanced_settings
-        # Whether the scheduling configuration takes effect immediately after the release.
+        # Specifies whether scheduling configurations immediately take effect after the node is deployed.
         self.apply_schedule_immediately = apply_schedule_immediately
         # Specifies whether the automatic parsing feature is enabled for the file. Valid values:
         # 
@@ -80135,8 +79722,9 @@ class UpdateFileRequest(TeaModel):
         # 
         # You can call the [ListFiles](https://help.aliyun.com/document_detail/173942.html) operation to query the ID of the file whose name you want to change. Then, you can set the FileId parameter to the ID and set the FileName parameter to a new value when you call the [UpdateFile](https://help.aliyun.com/document_detail/173951.html) operation.
         self.file_name = file_name
-        # Scheduling configuration-> previous cycle-> whether to skip the upstream empty run attribute.
+        # Specifies whether to skip the dry-run property of the ancestor nodes of the node. This parameter corresponds to the Skip the dry-run property of the ancestor node parameter that is displayed after you configure the Depend On parameter in the Dependencies section of the Properties tab in the DataWorks console.
         self.ignore_parent_skip_running_property = ignore_parent_skip_running_property
+        # The ID of the custom image.
         self.image_id = image_id
         # The output name of the parent file on which the current file depends. If you specify multiple output names, separate them with commas (,).
         # 

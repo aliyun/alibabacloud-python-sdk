@@ -1,3 +1,18 @@
+2025-03-28 Version: 7.0.0
+- Delete API MountDirectory.
+- Delete API RevokeColumnPermission.
+- Delete API UmountDirectory.
+- Update API CreatePermissionApplyOrder: add request parameters ApplyType.
+- Update API CreatePermissionApplyOrder: add request parameters CatalogName.
+- Update API CreatePermissionApplyOrder: add request parameters ApplyObject.$.ColumnMetaList.$.Actions.
+- Update API GetPermissionApplyOrderDetail: add response parameters Body.ApplyOrderDetail.ApproveContent.ProjectMeta.ObjectMetaList.$.Actions.
+- Update API GetPermissionApplyOrderDetail: add response parameters Body.ApplyOrderDetail.ApproveContent.ProjectMeta.ObjectMetaList.$.ColumnMetaList.$.ColumnActions.
+- Update API ListBaselineStatuses: add response parameters Body.Data.BaselineStatuses.$.BaselineType.
+- Update API ListFiles: add request parameters LastEditUser.
+- Update API ListPermissionApplyOrders: add request parameters ApplyType.
+- Update API ListPermissionApplyOrders: add request parameters CatalogName.
+
+
 2025-02-08 Version: 6.2.4
 - Update API CreateFile: add param ImageId.
 - Update API GetFile: update response param.

@@ -2197,6 +2197,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a data synchronization task.
         
+        @description You cannot configure scheduling properties for a task by calling this operation. If you want to configure scheduling properties for a task, you can call the UpdateFile operation.[](~~2780137~~)
+        
         @param request: CreateDISyncTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateDISyncTaskResponse
@@ -2250,6 +2252,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a data synchronization task.
         
+        @description You cannot configure scheduling properties for a task by calling this operation. If you want to configure scheduling properties for a task, you can call the UpdateFile operation.[](~~2780137~~)
+        
         @param request: CreateDISyncTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateDISyncTaskResponse
@@ -2302,6 +2306,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a data synchronization task.
         
+        @description You cannot configure scheduling properties for a task by calling this operation. If you want to configure scheduling properties for a task, you can call the UpdateFile operation.[](~~2780137~~)
+        
         @param request: CreateDISyncTaskRequest
         @return: CreateDISyncTaskResponse
         """
@@ -2314,6 +2320,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.CreateDISyncTaskResponse:
         """
         @summary Creates a data synchronization task.
+        
+        @description You cannot configure scheduling properties for a task by calling this operation. If you want to configure scheduling properties for a task, you can call the UpdateFile operation.[](~~2780137~~)
         
         @param request: CreateDISyncTaskRequest
         @return: CreateDISyncTaskResponse
@@ -4531,8 +4539,12 @@ class Client(OpenApiClient):
             query['ApplyObject'] = request.apply_object
         if not UtilClient.is_unset(request.apply_reason):
             query['ApplyReason'] = request.apply_reason
+        if not UtilClient.is_unset(request.apply_type):
+            query['ApplyType'] = request.apply_type
         if not UtilClient.is_unset(request.apply_user_ids):
             query['ApplyUserIds'] = request.apply_user_ids
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
         if not UtilClient.is_unset(request.deadline):
             query['Deadline'] = request.deadline
         if not UtilClient.is_unset(request.engine_type):
@@ -4586,8 +4598,12 @@ class Client(OpenApiClient):
             query['ApplyObject'] = request.apply_object
         if not UtilClient.is_unset(request.apply_reason):
             query['ApplyReason'] = request.apply_reason
+        if not UtilClient.is_unset(request.apply_type):
+            query['ApplyType'] = request.apply_type
         if not UtilClient.is_unset(request.apply_user_ids):
             query['ApplyUserIds'] = request.apply_user_ids
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
         if not UtilClient.is_unset(request.deadline):
             query['Deadline'] = request.deadline
         if not UtilClient.is_unset(request.engine_type):
@@ -25167,6 +25183,8 @@ class Client(OpenApiClient):
             body['FileTypes'] = request.file_types
         if not UtilClient.is_unset(request.keyword):
             body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.last_edit_user):
+            body['LastEditUser'] = request.last_edit_user
         if not UtilClient.is_unset(request.need_absolute_folder_path):
             body['NeedAbsoluteFolderPath'] = request.need_absolute_folder_path
         if not UtilClient.is_unset(request.need_content):
@@ -25234,6 +25252,8 @@ class Client(OpenApiClient):
             body['FileTypes'] = request.file_types
         if not UtilClient.is_unset(request.keyword):
             body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.last_edit_user):
+            body['LastEditUser'] = request.last_edit_user
         if not UtilClient.is_unset(request.need_absolute_folder_path):
             body['NeedAbsoluteFolderPath'] = request.need_absolute_folder_path
         if not UtilClient.is_unset(request.need_content):
@@ -27429,6 +27449,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.apply_type):
+            query['ApplyType'] = request.apply_type
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.engine_type):
@@ -27490,6 +27514,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.apply_type):
+            query['ApplyType'] = request.apply_type
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.engine_type):
@@ -29771,122 +29799,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_topics_with_options_async(request, runtime)
 
-    def mount_directory_with_options(
-        self,
-        request: dataworks_public_20200518_models.MountDirectoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.MountDirectoryResponse:
-        """
-        @summary Adds a directory to the left-side navigation pane of DataAnalysis.
-        
-        @param request: MountDirectoryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MountDirectoryResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.target_id):
-            body['TargetId'] = request.target_id
-        if not UtilClient.is_unset(request.target_type):
-            body['TargetType'] = request.target_type
-        if not UtilClient.is_unset(request.target_user_id):
-            body['TargetUserId'] = request.target_user_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='MountDirectory',
-            version='2020-05-18',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20200518_models.MountDirectoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20200518_models.MountDirectoryResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def mount_directory_with_options_async(
-        self,
-        request: dataworks_public_20200518_models.MountDirectoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.MountDirectoryResponse:
-        """
-        @summary Adds a directory to the left-side navigation pane of DataAnalysis.
-        
-        @param request: MountDirectoryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MountDirectoryResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.target_id):
-            body['TargetId'] = request.target_id
-        if not UtilClient.is_unset(request.target_type):
-            body['TargetType'] = request.target_type
-        if not UtilClient.is_unset(request.target_user_id):
-            body['TargetUserId'] = request.target_user_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='MountDirectory',
-            version='2020-05-18',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20200518_models.MountDirectoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20200518_models.MountDirectoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def mount_directory(
-        self,
-        request: dataworks_public_20200518_models.MountDirectoryRequest,
-    ) -> dataworks_public_20200518_models.MountDirectoryResponse:
-        """
-        @summary Adds a directory to the left-side navigation pane of DataAnalysis.
-        
-        @param request: MountDirectoryRequest
-        @return: MountDirectoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.mount_directory_with_options(request, runtime)
-
-    async def mount_directory_async(
-        self,
-        request: dataworks_public_20200518_models.MountDirectoryRequest,
-    ) -> dataworks_public_20200518_models.MountDirectoryResponse:
-        """
-        @summary Adds a directory to the left-side navigation pane of DataAnalysis.
-        
-        @param request: MountDirectoryRequest
-        @return: MountDirectoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.mount_directory_with_options_async(request, runtime)
-
     def offline_node_with_options(
         self,
         request: dataworks_public_20200518_models.OfflineNodeRequest,
@@ -31728,134 +31640,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.resume_instance_with_options_async(request, runtime)
-
-    def revoke_column_permission_with_options(
-        self,
-        request: dataworks_public_20200518_models.RevokeColumnPermissionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.RevokeColumnPermissionResponse:
-        """
-        @summary Revokes permissions on table fields from a user.
-        
-        @param request: RevokeColumnPermissionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RevokeColumnPermissionResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.columns):
-            query['Columns'] = request.columns
-        if not UtilClient.is_unset(request.max_compute_project_name):
-            query['MaxComputeProjectName'] = request.max_compute_project_name
-        if not UtilClient.is_unset(request.revoke_user_id):
-            query['RevokeUserId'] = request.revoke_user_id
-        if not UtilClient.is_unset(request.revoke_user_name):
-            query['RevokeUserName'] = request.revoke_user_name
-        if not UtilClient.is_unset(request.table_name):
-            query['TableName'] = request.table_name
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RevokeColumnPermission',
-            version='2020-05-18',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20200518_models.RevokeColumnPermissionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20200518_models.RevokeColumnPermissionResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def revoke_column_permission_with_options_async(
-        self,
-        request: dataworks_public_20200518_models.RevokeColumnPermissionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.RevokeColumnPermissionResponse:
-        """
-        @summary Revokes permissions on table fields from a user.
-        
-        @param request: RevokeColumnPermissionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RevokeColumnPermissionResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.columns):
-            query['Columns'] = request.columns
-        if not UtilClient.is_unset(request.max_compute_project_name):
-            query['MaxComputeProjectName'] = request.max_compute_project_name
-        if not UtilClient.is_unset(request.revoke_user_id):
-            query['RevokeUserId'] = request.revoke_user_id
-        if not UtilClient.is_unset(request.revoke_user_name):
-            query['RevokeUserName'] = request.revoke_user_name
-        if not UtilClient.is_unset(request.table_name):
-            query['TableName'] = request.table_name
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RevokeColumnPermission',
-            version='2020-05-18',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20200518_models.RevokeColumnPermissionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20200518_models.RevokeColumnPermissionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def revoke_column_permission(
-        self,
-        request: dataworks_public_20200518_models.RevokeColumnPermissionRequest,
-    ) -> dataworks_public_20200518_models.RevokeColumnPermissionResponse:
-        """
-        @summary Revokes permissions on table fields from a user.
-        
-        @param request: RevokeColumnPermissionRequest
-        @return: RevokeColumnPermissionResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.revoke_column_permission_with_options(request, runtime)
-
-    async def revoke_column_permission_async(
-        self,
-        request: dataworks_public_20200518_models.RevokeColumnPermissionRequest,
-    ) -> dataworks_public_20200518_models.RevokeColumnPermissionResponse:
-        """
-        @summary Revokes permissions on table fields from a user.
-        
-        @param request: RevokeColumnPermissionRequest
-        @return: RevokeColumnPermissionResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.revoke_column_permission_with_options_async(request, runtime)
 
     def revoke_table_permission_with_options(
         self,
@@ -35044,122 +34828,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.top_ten_error_times_instance_with_options_async(request, runtime)
-
-    def umount_directory_with_options(
-        self,
-        request: dataworks_public_20200518_models.UmountDirectoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.UmountDirectoryResponse:
-        """
-        @summary Removes a directory from the left-side navigation pane of DataAnalysis.
-        
-        @param request: UmountDirectoryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UmountDirectoryResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.target_id):
-            body['TargetId'] = request.target_id
-        if not UtilClient.is_unset(request.target_type):
-            body['TargetType'] = request.target_type
-        if not UtilClient.is_unset(request.target_user_id):
-            body['TargetUserId'] = request.target_user_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UmountDirectory',
-            version='2020-05-18',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20200518_models.UmountDirectoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20200518_models.UmountDirectoryResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def umount_directory_with_options_async(
-        self,
-        request: dataworks_public_20200518_models.UmountDirectoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.UmountDirectoryResponse:
-        """
-        @summary Removes a directory from the left-side navigation pane of DataAnalysis.
-        
-        @param request: UmountDirectoryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UmountDirectoryResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.target_id):
-            body['TargetId'] = request.target_id
-        if not UtilClient.is_unset(request.target_type):
-            body['TargetType'] = request.target_type
-        if not UtilClient.is_unset(request.target_user_id):
-            body['TargetUserId'] = request.target_user_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UmountDirectory',
-            version='2020-05-18',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                dataworks_public_20200518_models.UmountDirectoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                dataworks_public_20200518_models.UmountDirectoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def umount_directory(
-        self,
-        request: dataworks_public_20200518_models.UmountDirectoryRequest,
-    ) -> dataworks_public_20200518_models.UmountDirectoryResponse:
-        """
-        @summary Removes a directory from the left-side navigation pane of DataAnalysis.
-        
-        @param request: UmountDirectoryRequest
-        @return: UmountDirectoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.umount_directory_with_options(request, runtime)
-
-    async def umount_directory_async(
-        self,
-        request: dataworks_public_20200518_models.UmountDirectoryRequest,
-    ) -> dataworks_public_20200518_models.UmountDirectoryResponse:
-        """
-        @summary Removes a directory from the left-side navigation pane of DataAnalysis.
-        
-        @param request: UmountDirectoryRequest
-        @return: UmountDirectoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.umount_directory_with_options_async(request, runtime)
 
     def update_baseline_with_options(
         self,
