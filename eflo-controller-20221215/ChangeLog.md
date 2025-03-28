@@ -1,3 +1,6 @@
+2025-03-28 Version: 2.4.2
+- Generated python 2022-12-15 for eflo-controller.
+
 2025-03-25 Version: 2.4.1
 - Update API CreateNodeGroup: add request parameters NodeGroup.UserData.
 - Update API DescribeNode: add response parameters Body.UserData.

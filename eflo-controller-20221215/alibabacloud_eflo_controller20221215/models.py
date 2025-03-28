@@ -9580,8 +9580,6 @@ class ListTagResourcesRequest(TeaModel):
         # This parameter is required.
         self.region_id = region_id
         # List of resource IDs
-        # 
-        # This parameter is required.
         self.resource_id = resource_id
         # Resource type
         # 
