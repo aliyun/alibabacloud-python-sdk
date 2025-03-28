@@ -1267,7 +1267,7 @@ class GetSubPartnerListRequest(TeaModel):
         return self
 
 
-class GetSubPartnerListResponseBodyData(TeaModel):
+class GetSubPartnerListResponseBodySubPartnerList(TeaModel):
     def __init__(
         self,
         address: str = None,
@@ -1363,26 +1363,28 @@ class GetSubPartnerListResponseBodyData(TeaModel):
 class GetSubPartnerListResponseBody(TeaModel):
     def __init__(
         self,
-        data: GetSubPartnerListResponseBodyData = None,
         message: str = None,
         page_no: str = None,
         page_size: str = None,
         request_id: str = None,
+        sub_partner_list: List[GetSubPartnerListResponseBodySubPartnerList] = None,
         success: bool = None,
         total: int = None,
     ):
-        self.data = data
         self.message = message
         self.page_no = page_no
         # This parameter is required.
         self.page_size = page_size
         self.request_id = request_id
+        self.sub_partner_list = sub_partner_list
         self.success = success
         self.total = total
 
     def validate(self):
-        if self.data:
-            self.data.validate()
+        if self.sub_partner_list:
+            for k in self.sub_partner_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1390,8 +1392,6 @@ class GetSubPartnerListResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.page_no is not None:
@@ -1400,6 +1400,10 @@ class GetSubPartnerListResponseBody(TeaModel):
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        result['SubPartnerList'] = []
+        if self.sub_partner_list is not None:
+            for k in self.sub_partner_list:
+                result['SubPartnerList'].append(k.to_map() if k else None)
         if self.success is not None:
             result['Success'] = self.success
         if self.total is not None:
@@ -1408,9 +1412,6 @@ class GetSubPartnerListResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = GetSubPartnerListResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('PageNo') is not None:
@@ -1419,6 +1420,11 @@ class GetSubPartnerListResponseBody(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        self.sub_partner_list = []
+        if m.get('SubPartnerList') is not None:
+            for k in m.get('SubPartnerList'):
+                temp_model = GetSubPartnerListResponseBodySubPartnerList()
+                self.sub_partner_list.append(temp_model.from_map(k))
         if m.get('Success') is not None:
             self.success = m.get('Success')
         if m.get('Total') is not None:
