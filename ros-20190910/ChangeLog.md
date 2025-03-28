@@ -1,3 +1,12 @@
+2025-03-28 Version: 3.5.2
+- Update API CreateChangeSet: add request parameters ResourceGroupId.
+- Update API CreateChangeSet: add request parameters Tags.
+- Update API GetChangeSet: add response parameters Body.ResourceGroupId.
+- Update API GetChangeSet: add response parameters Body.Tags.
+- Update API ListChangeSets: add response parameters Body.ChangeSets.$.ResourceGroupId.
+- Update API ListChangeSets: add response parameters Body.ChangeSets.$.Tags.
+
+
 2025-01-17 Version: 3.5.1
 - Update API CreateStackInstances: add param DeploymentOptions.
 - Update API GetTemplate: update response param.

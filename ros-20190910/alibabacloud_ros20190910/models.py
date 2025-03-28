@@ -842,6 +842,39 @@ class CreateChangeSetRequestResourcesToImport(TeaModel):
         return self
 
 
+class CreateChangeSetRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateChangeSetRequest(TeaModel):
     def __init__(
         self,
@@ -856,6 +889,7 @@ class CreateChangeSetRequest(TeaModel):
         ram_role_name: str = None,
         region_id: str = None,
         replacement_option: str = None,
+        resource_group_id: str = None,
         resources_to_import: List[CreateChangeSetRequestResourcesToImport] = None,
         stack_id: str = None,
         stack_name: str = None,
@@ -863,6 +897,7 @@ class CreateChangeSetRequest(TeaModel):
         stack_policy_during_update_body: str = None,
         stack_policy_during_update_url: str = None,
         stack_policy_url: str = None,
+        tags: List[CreateChangeSetRequestTags] = None,
         template_body: str = None,
         template_id: str = None,
         template_scratch_id: str = None,
@@ -945,6 +980,7 @@ class CreateChangeSetRequest(TeaModel):
         # 
         # > Operations that you perform to modify the resource properties for an update take precedence over operations you perform to replace the resource properties for an update. This parameter takes effect only if you set ChangeSetType to UPDATE.
         self.replacement_option = replacement_option
+        self.resource_group_id = resource_group_id
         # The resources that you want to import to the stack.
         self.resources_to_import = resources_to_import
         # The ID of the stack for which you want to create the change set. ROS compares the stack information with the information that you submit, such as an updated template or parameter value, to generate the change set.\\
@@ -1004,6 +1040,7 @@ class CreateChangeSetRequest(TeaModel):
         # *   StackPolicyDuringUpdateBody
         # *   StackPolicyDuringUpdateURL
         self.stack_policy_url = stack_policy_url
+        self.tags = tags
         self.template_body = template_body
         # The template ID. This parameter applies to shared templates and private templates.
         # 
@@ -1055,6 +1092,10 @@ class CreateChangeSetRequest(TeaModel):
             for k in self.resources_to_import:
                 if k:
                     k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1086,6 +1127,8 @@ class CreateChangeSetRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.replacement_option is not None:
             result['ReplacementOption'] = self.replacement_option
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         result['ResourcesToImport'] = []
         if self.resources_to_import is not None:
             for k in self.resources_to_import:
@@ -1102,6 +1145,10 @@ class CreateChangeSetRequest(TeaModel):
             result['StackPolicyDuringUpdateURL'] = self.stack_policy_during_update_url
         if self.stack_policy_url is not None:
             result['StackPolicyURL'] = self.stack_policy_url
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.template_body is not None:
             result['TemplateBody'] = self.template_body
         if self.template_id is not None:
@@ -1145,6 +1192,8 @@ class CreateChangeSetRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ReplacementOption') is not None:
             self.replacement_option = m.get('ReplacementOption')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         self.resources_to_import = []
         if m.get('ResourcesToImport') is not None:
             for k in m.get('ResourcesToImport'):
@@ -1162,6 +1211,11 @@ class CreateChangeSetRequest(TeaModel):
             self.stack_policy_during_update_url = m.get('StackPolicyDuringUpdateURL')
         if m.get('StackPolicyURL') is not None:
             self.stack_policy_url = m.get('StackPolicyURL')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateChangeSetRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TemplateBody') is not None:
             self.template_body = m.get('TemplateBody')
         if m.get('TemplateId') is not None:
@@ -4209,6 +4263,14 @@ class DeleteStackRequest(TeaModel):
     ):
         # The options for deleting the stack.
         self.delete_options = delete_options
+        # The maximum number of concurrent operations that can be performed on resources.
+        # 
+        # By default, this parameter is empty. You can set this parameter to an integer that is greater than or equal to 0.
+        # 
+        # 
+        # 
+        # > -  If you set this parameter to an integer that is greater than 0, the integer is used. If you set this parameter to 0 or leave this parameter empty, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
+        # > -  If you set this parameter to a specific value, ROS associates the value with the stack. The value affects subsequent operations on the stack, such as an update operation.
         self.parallelism = parallelism
         # The name of the RAM role. Resource Orchestration Service (ROS) assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.\\
         # ROS assumes the role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the RAM role.\\
@@ -6889,6 +6951,39 @@ class GetChangeSetResponseBodyParameters(TeaModel):
         return self
 
 
+class GetChangeSetResponseBodyTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetChangeSetResponseBody(TeaModel):
     def __init__(
         self,
@@ -6904,10 +6999,12 @@ class GetChangeSetResponseBody(TeaModel):
         parameters: List[GetChangeSetResponseBodyParameters] = None,
         region_id: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
         stack_id: str = None,
         stack_name: str = None,
         status: str = None,
         status_reason: str = None,
+        tags: List[GetChangeSetResponseBodyTags] = None,
         template_body: str = None,
         timeout_in_minutes: int = None,
     ):
@@ -6935,6 +7032,7 @@ class GetChangeSetResponseBody(TeaModel):
         self.region_id = region_id
         # The ID of the request.
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         # The ID of the stack with which the change set is associated.
         self.stack_id = stack_id
         # The name of the stack with which the change set is associated.
@@ -6943,6 +7041,7 @@ class GetChangeSetResponseBody(TeaModel):
         self.status = status
         # The reason why the change set is in its current state.
         self.status_reason = status_reason
+        self.tags = tags
         # The template body of the change set.
         # 
         # > This parameter takes effect only if you set ShowTemplate to true.
@@ -6955,6 +7054,10 @@ class GetChangeSetResponseBody(TeaModel):
             self.log.validate()
         if self.parameters:
             for k in self.parameters:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -6990,6 +7093,8 @@ class GetChangeSetResponseBody(TeaModel):
             result['RegionId'] = self.region_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
         if self.stack_name is not None:
@@ -6998,6 +7103,10 @@ class GetChangeSetResponseBody(TeaModel):
             result['Status'] = self.status
         if self.status_reason is not None:
             result['StatusReason'] = self.status_reason
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.template_body is not None:
             result['TemplateBody'] = self.template_body
         if self.timeout_in_minutes is not None:
@@ -7034,6 +7143,8 @@ class GetChangeSetResponseBody(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('StackId') is not None:
             self.stack_id = m.get('StackId')
         if m.get('StackName') is not None:
@@ -7042,6 +7153,11 @@ class GetChangeSetResponseBody(TeaModel):
             self.status = m.get('Status')
         if m.get('StatusReason') is not None:
             self.status_reason = m.get('StatusReason')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetChangeSetResponseBodyTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TemplateBody') is not None:
             self.template_body = m.get('TemplateBody')
         if m.get('TimeoutInMinutes') is not None:
@@ -8523,7 +8639,7 @@ class GetServiceProvisionsRequestServices(TeaModel):
         # *   IMM: Intelligent Media Management (IMM)
         # *   IOT: IoT Platform
         # *   KMS: Key Management Service (KMS)
-        # *   NAS: Apsara File Storage NAS (NAS)
+        # *   NAS: File Storage NAS (NAS)
         # *   NLP: Natural Language Processing (NLP)
         # *   OSS: Object Storage Service (OSS)
         # *   OTS: Tablestore
@@ -12077,6 +12193,7 @@ class GetTemplateResponseBody(TeaModel):
         template_version: str = None,
         update_time: str = None,
     ):
+        # Supplementary information for the public template.
         self.additional_info = additional_info
         # The ID of the change set. This parameter is returned only if you specify ChangeSetId.
         self.change_set_id = change_set_id
@@ -12623,6 +12740,11 @@ class GetTemplateParameterConstraintsRequest(TeaModel):
         self.region_id = region_id
         # The ID of the stack.
         self.stack_id = stack_id
+        # The structure that contains the template body.
+        # 
+        # The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_body = template_body
         # The ID of the template. This parameter applies to shared and private templates.
         # 
@@ -12780,6 +12902,11 @@ class GetTemplateParameterConstraintsShrinkRequest(TeaModel):
         self.region_id = region_id
         # The ID of the stack.
         self.stack_id = stack_id
+        # The structure that contains the template body.
+        # 
+        # The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_body = template_body
         # The ID of the template. This parameter applies to shared and private templates.
         # 
@@ -12905,7 +13032,9 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalCon
     ):
         # The values of the parameter.
         self.allowed_values = allowed_values
+        # Behavior of the parameter
         self.behavior = behavior
+        # The reason for the parameter behavior
         self.behavior_reason = behavior_reason
         # The name of the resource property.
         self.property_name = property_name
@@ -13003,8 +13132,11 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryTimeou
         resource_name: str = None,
         resource_type: str = None,
     ):
+        # Error message.
         self.error_message = error_message
+        # Resource name.
         self.resource_name = resource_name
+        # Resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -13081,6 +13213,7 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraints(TeaModel):
         self.parameter_key = parameter_key
         # The error that is returned when the request fails.
         self.query_errors = query_errors
+        # Query the details of timeout.
         self.query_timeout_details = query_timeout_details
         # The data type of the parameter.
         self.type = type
@@ -15235,6 +15368,39 @@ class ListChangeSetsRequest(TeaModel):
         return self
 
 
+class ListChangeSetsResponseBodyChangeSetsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListChangeSetsResponseBodyChangeSets(TeaModel):
     def __init__(
         self,
@@ -15245,10 +15411,12 @@ class ListChangeSetsResponseBodyChangeSets(TeaModel):
         description: str = None,
         execution_status: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         stack_id: str = None,
         stack_name: str = None,
         status: str = None,
         status_reason: str = None,
+        tags: List[ListChangeSetsResponseBodyChangeSetsTags] = None,
     ):
         # The ID of the change set.
         self.change_set_id = change_set_id
@@ -15264,6 +15432,7 @@ class ListChangeSetsResponseBodyChangeSets(TeaModel):
         self.execution_status = execution_status
         # The region ID of the change set.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the stack with which the change set is associated.
         self.stack_id = stack_id
         # The name of the stack with which the change set is associated.
@@ -15272,9 +15441,13 @@ class ListChangeSetsResponseBodyChangeSets(TeaModel):
         self.status = status
         # The reason why the change set is in its current state.
         self.status_reason = status_reason
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -15296,6 +15469,8 @@ class ListChangeSetsResponseBodyChangeSets(TeaModel):
             result['ExecutionStatus'] = self.execution_status
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
         if self.stack_name is not None:
@@ -15304,6 +15479,10 @@ class ListChangeSetsResponseBodyChangeSets(TeaModel):
             result['Status'] = self.status
         if self.status_reason is not None:
             result['StatusReason'] = self.status_reason
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -15322,6 +15501,8 @@ class ListChangeSetsResponseBodyChangeSets(TeaModel):
             self.execution_status = m.get('ExecutionStatus')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('StackId') is not None:
             self.stack_id = m.get('StackId')
         if m.get('StackName') is not None:
@@ -15330,6 +15511,11 @@ class ListChangeSetsResponseBodyChangeSets(TeaModel):
             self.status = m.get('Status')
         if m.get('StatusReason') is not None:
             self.status_reason = m.get('StatusReason')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListChangeSetsResponseBodyChangeSetsTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -20705,7 +20891,16 @@ class ListTemplatesRequestFilters(TeaModel):
         name: str = None,
         values: List[str] = None,
     ):
+        # The name of the filter. You can choose one or more names for the query. Value range:  
+        # 
+        # - Categories: Template categories  
+        # - DeployTypes: Deployment types  
+        # - ApplicationScenes: Application scenarios  
+        # - BasicServices: Basic services  
+        # - ResourceTypes: Resource types  
+        # - TemplateNames: Template names
         self.name = name
+        # The list of filter values.
         self.values = values
 
     def validate(self):
@@ -20738,13 +20933,13 @@ class ListTemplatesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. This parameter takes effect only when ShareType is set to Private.
+        # The key of the tag. This parameter is effective only when ShareType is Private.  
         # 
-        # You can specify up to 20 tag keys.
+        # A maximum of 20 tag keys are supported.
         self.key = key
-        # The value of the tag. This parameter takes effect only when ShareType is set to Private.
+        # The value of the tag. This parameter is effective only when ShareType is Private.  
         # 
-        # You can specify up to 20 tag values.
+        # A maximum of 20 tag values are supported.
         self.value = value
 
     def validate(self):
@@ -20783,34 +20978,35 @@ class ListTemplatesRequest(TeaModel):
         tag: List[ListTemplatesRequestTag] = None,
         template_name: str = None,
     ):
+        # Filter.
         self.filters = filters
-        # Specifies whether to query the tag information. Valid values:
+        # Whether to query tag information. Values:  
         # 
-        # *   Enabled
-        # *   Disabled (default)
+        # - Enabled: Query.  
+        # - Disabled (default): Do not query.
         self.include_tags = include_tags
-        # The page number.\\
-        # Pages start from page 1.\\
+        # The page number of the template list.  
+        # Start value: 1.  
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.\\
-        # Valid values: 1 to 50.\\
+        # The number of entries per page in a paginated query.  
+        # Value range: 1~50.  
         # Default value: 10.
         self.page_size = page_size
-        # The ID of the resource group.\\
-        # For more information about resource groups, see the "Resource Group" section of [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
+        # The ID of the resource group.  
+        # For more information about resource groups, see [What is a Resource Group](https://help.aliyun.com/document_detail/94475.html).
         self.resource_group_id = resource_group_id
-        # The sharing type of the template.
+        # The sharing type of the template.  
         # 
-        # Valid values:
-        # 
-        # *   Private (default): The template belongs to the template owner.
-        # *   Shared: The template is shared with other users.
-        # *   Official: The template is the shared template of the official version.
+        # Values:  
+        # - Private (default): The template is owned by the user.  
+        # - Shared: The template is shared by other users.  
+        # - Official: The template is officially shared.
         self.share_type = share_type
-        # The tags. You can specify up to 20 tags.
+        # Tags. A maximum of 20 tags are supported.
         self.tag = tag
-        # The template name. This parameter takes effect only when ShareType is set to Private. The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (_). The name must start with a digit or letter.
+        # The name of the template. This parameter is effective only when ShareType is Private.  
+        # The length must not exceed 255 characters and must start with a digit or a letter. It can contain digits, letters, hyphens (-), and underscores (_).
         self.template_name = template_name
 
     def validate(self):
@@ -20884,9 +21080,9 @@ class ListTemplatesResponseBodyTemplatesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # Tag key of the template.
         self.key = key
-        # The value of the tag.
+        # Tag value of the template.
         self.value = value
 
     def validate(self):
@@ -20930,34 +21126,35 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         template_version: str = None,
         update_time: str = None,
     ):
+        # Supplementary information for public templates.
         self.additional_info = additional_info
-        # The time when the template was created.
+        # Creation time.
         self.create_time = create_time
-        # The description of the template.
+        # Template description.
         self.description = description
-        # The ID of the Alibaba Cloud account to which the template belongs.
+        # ID of the Alibaba Cloud account to which the template belongs.
         self.owner_id = owner_id
-        # The ID of the resource group.
+        # Resource group ID.
         self.resource_group_id = resource_group_id
         # The sharing type of the template.
         # 
-        # Valid values:
-        # 
-        # *   Private: The template belongs to the template owner.
-        # *   Shared: The template is shared with other users.
+        # Values:
+        # - Private: The template is owned by the user themselves.
+        # - Shared: The template is shared by other users.
         self.share_type = share_type
-        # The tags of the template.
+        # Tags of the template.
         self.tags = tags
-        # The Alibaba Cloud Resource Name (ARN) of the template.
+        # The ARN of the template.
         self.template_arn = template_arn
-        # The template ID.
+        # Template ID.
         self.template_id = template_id
-        # The template name.
+        # Template name.
         self.template_name = template_name
+        # Link to the template
         self.template_url = template_url
-        # The latest version of the template.
+        # Latest template version name.
         self.template_version = template_version
-        # The time when the template was last updated.
+        # The last update time of the template.
         self.update_time = update_time
 
     def validate(self):
@@ -21045,14 +21242,14 @@ class ListTemplatesResponseBody(TeaModel):
         templates: List[ListTemplatesResponseBodyTemplates] = None,
         total_count: int = None,
     ):
-        # The page number.\\
-        # Pages start from page 1.
+        # The page number of the template list.  
+        # Start value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paginated query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The templates.
+        # The list of templates.
         self.templates = templates
         # The total number of templates.
         self.total_count = total_count
@@ -25134,25 +25331,41 @@ class UpdateTemplateRequest(TeaModel):
         template_url: str = None,
         validation_options: List[str] = None,
     ):
-        # The description of the template. It can be up to 256 characters in length.
+        # The description of the template. The maximum length is 256 characters.
         self.description = description
+        # Whether to update the Draft (draft) version. Values:
+        # - false (default): If template content is provided, a new version is created, and the Draft version is cleared. Otherwise, the current latest version is modified.
+        # - true: Modifies the Draft version. The Draft version can only be retrieved via the GetTemplate interface. The ListTemplateVersions interface will not return it. The TemplateVersion parameter in other interfaces cannot specify Draft.
         self.is_draft = is_draft
+        # Template version rotation strategy. Values:
+        # - None (default): No rotation. An error occurs when the version limit is reached.
+        # - DeleteOldestNonSharedVersionWhenLimitExceeded: Rotates and deletes non-shared template versions.
+        # > 
+        # > - If all versions of the template are shared, they cannot be rotated and deleted.
+        # > - The current latest version will not be rotated and deleted.
+        # > - Regardless of whether rotation deletion is used, the template version number cannot exceed v65000.
         self.rotate_strategy = rotate_strategy
+        # The structure of the template body. The length should be between 1 and 524,288 bytes. If the content is long, it is recommended to use HTTP POST + Body Param to pass the parameter in the request body to avoid request failure due to an overly long URL.
+        # 
+        # > You must and can only specify one of `TemplateBody`, `TemplateURL`, `TemplateId`, or `TemplateScratchId`.
         self.template_body = template_body
-        # The ID of the template. This parameter applies to shared and private templates.
+        # The template ID. Supports both shared and private templates.
         # 
         # This parameter is required.
         self.template_id = template_id
-        # The name of the template.
-        # 
-        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        # The name of the template.  
+        # The length should not exceed 255 characters (utf-8 encoding), and it must start with a number, letter, or Chinese character. It can include numbers, letters, Chinese characters, hyphens (-), and underscores (_).
         self.template_name = template_name
-        # The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template can be up to 524,288 bytes in length, and the URL can be up to 1,024 bytes in length.
+        # The location of the file containing the template body. The URL must point to a template located on a web server (HTTP or HTTPS) or in an Alibaba Cloud OSS bucket (e.g., oss://ros/template/demo, oss://ros/template/demo?RegionId=cn-hangzhou), with a maximum size of 524,288 bytes.   
         # 
-        # >  If the region of the OSS bucket is not specified, the RegionId value is used.
-        # 
-        # You can specify only one of the TemplateBody and TemplateURL parameters.
+        # > If the OSS region is not specified, it defaults to the same as the `RegionId` parameter in the request.
+        #    
+        # You can only specify one of `TemplateBody` or `TemplateURL`.   
+        # The maximum length of the URL is 1,024 bytes.
         self.template_url = template_url
+        # Validation options.
+        # 
+        # By default, no options are enabled, and strict validation is performed.
         self.validation_options = validation_options
 
     def validate(self):
@@ -25210,10 +25423,11 @@ class UpdateTemplateResponseBody(TeaModel):
         template_id: str = None,
         template_version: str = None,
     ):
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # The ID of the template.
+        # Template ID.
         self.template_id = template_id
+        # The template version affected by this operation.
         self.template_version = template_version
 
     def validate(self):
