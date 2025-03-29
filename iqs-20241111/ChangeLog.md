@@ -1,3 +1,10 @@
+2025-03-29 Version: 1.1.6
+- Update API GenericSearch: add request parameters enableRerank.
+- Update API GenericSearch: add request parameters returnMainText.
+- Update API GenericSearch: add request parameters returnMarkdownText.
+- Update API GenericSearch: add request parameters returnSummary.
+
+
 2025-02-27 Version: 1.1.5
 - Update API GenericAdvancedSearch: add param industry.
 

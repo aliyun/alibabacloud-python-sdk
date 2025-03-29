@@ -317,12 +317,20 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.enable_rerank):
+            query['enableRerank'] = request.enable_rerank
         if not UtilClient.is_unset(request.industry):
             query['industry'] = request.industry
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
         if not UtilClient.is_unset(request.query):
             query['query'] = request.query
+        if not UtilClient.is_unset(request.return_main_text):
+            query['returnMainText'] = request.return_main_text
+        if not UtilClient.is_unset(request.return_markdown_text):
+            query['returnMarkdownText'] = request.return_markdown_text
+        if not UtilClient.is_unset(request.return_summary):
+            query['returnSummary'] = request.return_summary
         if not UtilClient.is_unset(request.session_id):
             query['sessionId'] = request.session_id
         if not UtilClient.is_unset(request.time_range):
@@ -369,12 +377,20 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.enable_rerank):
+            query['enableRerank'] = request.enable_rerank
         if not UtilClient.is_unset(request.industry):
             query['industry'] = request.industry
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
         if not UtilClient.is_unset(request.query):
             query['query'] = request.query
+        if not UtilClient.is_unset(request.return_main_text):
+            query['returnMainText'] = request.return_main_text
+        if not UtilClient.is_unset(request.return_markdown_text):
+            query['returnMarkdownText'] = request.return_markdown_text
+        if not UtilClient.is_unset(request.return_summary):
+            query['returnSummary'] = request.return_summary
         if not UtilClient.is_unset(request.session_id):
             query['sessionId'] = request.session_id
         if not UtilClient.is_unset(request.time_range):

@@ -131,6 +131,7 @@ class ScorePageItem(TeaModel):
         score: float = None,
         site_label: str = None,
         snippet: str = None,
+        summary: str = None,
         title: str = None,
     ):
         # This parameter is required.
@@ -155,6 +156,7 @@ class ScorePageItem(TeaModel):
         self.score = score
         self.site_label = site_label
         self.snippet = snippet
+        self.summary = summary
         # This parameter is required.
         self.title = title
 
@@ -204,6 +206,8 @@ class ScorePageItem(TeaModel):
             result['siteLabel'] = self.site_label
         if self.snippet is not None:
             result['snippet'] = self.snippet
+        if self.summary is not None:
+            result['summary'] = self.summary
         if self.title is not None:
             result['title'] = self.title
         return result
@@ -245,6 +249,8 @@ class ScorePageItem(TeaModel):
             self.site_label = m.get('siteLabel')
         if m.get('snippet') is not None:
             self.snippet = m.get('snippet')
+        if m.get('summary') is not None:
+            self.summary = m.get('summary')
         if m.get('title') is not None:
             self.title = m.get('title')
         return self
@@ -976,16 +982,24 @@ class GenericAdvancedSearchResponse(TeaModel):
 class GenericSearchRequest(TeaModel):
     def __init__(
         self,
+        enable_rerank: bool = None,
         industry: str = None,
         page: int = None,
         query: str = None,
+        return_main_text: bool = None,
+        return_markdown_text: bool = None,
+        return_summary: bool = None,
         session_id: str = None,
         time_range: str = None,
     ):
+        self.enable_rerank = enable_rerank
         self.industry = industry
         self.page = page
         # This parameter is required.
         self.query = query
+        self.return_main_text = return_main_text
+        self.return_markdown_text = return_markdown_text
+        self.return_summary = return_summary
         self.session_id = session_id
         self.time_range = time_range
 
@@ -998,12 +1012,20 @@ class GenericSearchRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_rerank is not None:
+            result['enableRerank'] = self.enable_rerank
         if self.industry is not None:
             result['industry'] = self.industry
         if self.page is not None:
             result['page'] = self.page
         if self.query is not None:
             result['query'] = self.query
+        if self.return_main_text is not None:
+            result['returnMainText'] = self.return_main_text
+        if self.return_markdown_text is not None:
+            result['returnMarkdownText'] = self.return_markdown_text
+        if self.return_summary is not None:
+            result['returnSummary'] = self.return_summary
         if self.session_id is not None:
             result['sessionId'] = self.session_id
         if self.time_range is not None:
@@ -1012,12 +1034,20 @@ class GenericSearchRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('enableRerank') is not None:
+            self.enable_rerank = m.get('enableRerank')
         if m.get('industry') is not None:
             self.industry = m.get('industry')
         if m.get('page') is not None:
             self.page = m.get('page')
         if m.get('query') is not None:
             self.query = m.get('query')
+        if m.get('returnMainText') is not None:
+            self.return_main_text = m.get('returnMainText')
+        if m.get('returnMarkdownText') is not None:
+            self.return_markdown_text = m.get('returnMarkdownText')
+        if m.get('returnSummary') is not None:
+            self.return_summary = m.get('returnSummary')
         if m.get('sessionId') is not None:
             self.session_id = m.get('sessionId')
         if m.get('timeRange') is not None:
