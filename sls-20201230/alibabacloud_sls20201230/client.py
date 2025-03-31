@@ -21,6 +21,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Sls'
         gateway_client = GatewayClientClient()
         self._spi = gateway_client
         self._endpoint_rule = 'central'
@@ -136,6 +137,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.apply_config_to_machine_group_with_options_async(project, machine_group, config_name, headers, runtime)
+
+    def call_ai_tools_with_options(
+        self,
+        request: sls_20201230_models.CallAiToolsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CallAiToolsResponse:
+        """
+        @summary 调用 ai 工具
+        
+        @param request: CallAiToolsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CallAiToolsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.params):
+            body['params'] = request.params
+        if not UtilClient.is_unset(request.region_id):
+            body['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.tool_name):
+            body['toolName'] = request.tool_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CallAiTools',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/ml/tool/call',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='string'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CallAiToolsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def call_ai_tools_with_options_async(
+        self,
+        request: sls_20201230_models.CallAiToolsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CallAiToolsResponse:
+        """
+        @summary 调用 ai 工具
+        
+        @param request: CallAiToolsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CallAiToolsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.params):
+            body['params'] = request.params
+        if not UtilClient.is_unset(request.region_id):
+            body['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.tool_name):
+            body['toolName'] = request.tool_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CallAiTools',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/ml/tool/call',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='string'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CallAiToolsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def call_ai_tools(
+        self,
+        request: sls_20201230_models.CallAiToolsRequest,
+    ) -> sls_20201230_models.CallAiToolsResponse:
+        """
+        @summary 调用 ai 工具
+        
+        @param request: CallAiToolsRequest
+        @return: CallAiToolsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.call_ai_tools_with_options(request, headers, runtime)
+
+    async def call_ai_tools_async(
+        self,
+        request: sls_20201230_models.CallAiToolsRequest,
+    ) -> sls_20201230_models.CallAiToolsResponse:
+        """
+        @summary 调用 ai 工具
+        
+        @param request: CallAiToolsRequest
+        @return: CallAiToolsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.call_ai_tools_with_options_async(request, headers, runtime)
 
     def change_resource_group_with_options(
         self,
@@ -445,7 +558,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ConsumerGroupUpdateCheckPointResponse:
         """
-        @summary Updates the data consumption progress.
+        @summary Updates the checkpoint of a shard for a consumer group.
         
         @description    If you do not specify a consumer, you must set **forceSuccess** to **true**. Otherwise, the checkpoint cannot be updated.
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
@@ -503,7 +616,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ConsumerGroupUpdateCheckPointResponse:
         """
-        @summary Updates the data consumption progress.
+        @summary Updates the checkpoint of a shard for a consumer group.
         
         @description    If you do not specify a consumer, you must set **forceSuccess** to **true**. Otherwise, the checkpoint cannot be updated.
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
@@ -559,7 +672,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.ConsumerGroupUpdateCheckPointRequest,
     ) -> sls_20201230_models.ConsumerGroupUpdateCheckPointResponse:
         """
-        @summary Updates the data consumption progress.
+        @summary Updates the checkpoint of a shard for a consumer group.
         
         @description    If you do not specify a consumer, you must set **forceSuccess** to **true**. Otherwise, the checkpoint cannot be updated.
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
@@ -582,7 +695,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.ConsumerGroupUpdateCheckPointRequest,
     ) -> sls_20201230_models.ConsumerGroupUpdateCheckPointResponse:
         """
-        @summary Updates the data consumption progress.
+        @summary Updates the checkpoint of a shard for a consumer group.
         
         @description    If you do not specify a consumer, you must set **forceSuccess** to **true**. Otherwise, the checkpoint cannot be updated.
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
@@ -2619,6 +2732,152 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_machine_group_with_options_async(project, request, headers, runtime)
 
+    def create_max_compute_export_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateMaxComputeExportRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateMaxComputeExportResponse:
+        """
+        @summary Creates a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+        
+        @param request: CreateMaxComputeExportRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMaxComputeExportResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.configuration):
+            body['configuration'] = request.configuration
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMaxComputeExport',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/maxcomputeexports',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateMaxComputeExportResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_max_compute_export_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateMaxComputeExportRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateMaxComputeExportResponse:
+        """
+        @summary Creates a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+        
+        @param request: CreateMaxComputeExportRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMaxComputeExportResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.configuration):
+            body['configuration'] = request.configuration
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMaxComputeExport',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/maxcomputeexports',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateMaxComputeExportResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_max_compute_export(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateMaxComputeExportRequest,
+    ) -> sls_20201230_models.CreateMaxComputeExportResponse:
+        """
+        @summary Creates a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+        
+        @param request: CreateMaxComputeExportRequest
+        @return: CreateMaxComputeExportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_max_compute_export_with_options(project, request, headers, runtime)
+
+    async def create_max_compute_export_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateMaxComputeExportRequest,
+    ) -> sls_20201230_models.CreateMaxComputeExportResponse:
+        """
+        @summary Creates a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+        
+        @param request: CreateMaxComputeExportRequest
+        @return: CreateMaxComputeExportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_max_compute_export_with_options_async(project, request, headers, runtime)
+
     def create_metric_store_with_options(
         self,
         project: str,
@@ -2648,6 +2907,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.auto_split):
             body['autoSplit'] = request.auto_split
+        if not UtilClient.is_unset(request.hot_ttl):
+            body['hot_ttl'] = request.hot_ttl
+        if not UtilClient.is_unset(request.infrequent_access_ttl):
+            body['infrequentAccessTTL'] = request.infrequent_access_ttl
         if not UtilClient.is_unset(request.max_split_shard):
             body['maxSplitShard'] = request.max_split_shard
         if not UtilClient.is_unset(request.metric_type):
@@ -2710,6 +2973,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.auto_split):
             body['autoSplit'] = request.auto_split
+        if not UtilClient.is_unset(request.hot_ttl):
+            body['hot_ttl'] = request.hot_ttl
+        if not UtilClient.is_unset(request.infrequent_access_ttl):
+            body['infrequentAccessTTL'] = request.infrequent_access_ttl
         if not UtilClient.is_unset(request.max_split_shard):
             body['maxSplitShard'] = request.max_split_shard
         if not UtilClient.is_unset(request.metric_type):
@@ -3327,6 +3594,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.project_name):
             body['projectName'] = request.project_name
+        if not UtilClient.is_unset(request.recycle_bin_enabled):
+            body['recycleBinEnabled'] = request.recycle_bin_enabled
         if not UtilClient.is_unset(request.resource_group_id):
             body['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
@@ -3371,6 +3640,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.project_name):
             body['projectName'] = request.project_name
+        if not UtilClient.is_unset(request.recycle_bin_enabled):
+            body['recycleBinEnabled'] = request.recycle_bin_enabled
         if not UtilClient.is_unset(request.resource_group_id):
             body['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
@@ -3563,6 +3834,15 @@ class Client(OpenApiClient):
         
         @description ### Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+        Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:CreateSavedSearch`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}`|
         
         @param request: CreateSavedSearchRequest
         @param headers: map
@@ -3616,6 +3896,15 @@ class Client(OpenApiClient):
         
         @description ### Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+        Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:CreateSavedSearch`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}`|
         
         @param request: CreateSavedSearchRequest
         @param headers: map
@@ -3667,6 +3956,15 @@ class Client(OpenApiClient):
         
         @description ### Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+        Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:CreateSavedSearch`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}`|
         
         @param request: CreateSavedSearchRequest
         @return: CreateSavedSearchResponse
@@ -3685,6 +3983,15 @@ class Client(OpenApiClient):
         
         @description ### Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+        Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:CreateSavedSearch`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}`|
         
         @param request: CreateSavedSearchRequest
         @return: CreateSavedSearchResponse
@@ -4078,7 +4385,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateTicketResponse:
         """
-        @summary Creates a ticket to enable logon-free access to the Simple Log Service console or embed console pages into a third-party system.
+        @summary Obtains a ticket. Simple Log Service allows you to share the query and analysis pages and dashboard pages with other users and embed the console pages into third-party systems. This way, other users can view your logs in password-free mode. The URLs of the shared pages are referred to as password-free URLs. You can call the CreateTicket operation to obtain a ticket and generate a password-free URL based on the ticket and the URL of the console page that you want to share.
         
         @param request: CreateTicketRequest
         @param headers: map
@@ -4118,7 +4425,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateTicketResponse:
         """
-        @summary Creates a ticket to enable logon-free access to the Simple Log Service console or embed console pages into a third-party system.
+        @summary Obtains a ticket. Simple Log Service allows you to share the query and analysis pages and dashboard pages with other users and embed the console pages into third-party systems. This way, other users can view your logs in password-free mode. The URLs of the shared pages are referred to as password-free URLs. You can call the CreateTicket operation to obtain a ticket and generate a password-free URL based on the ticket and the URL of the console page that you want to share.
         
         @param request: CreateTicketRequest
         @param headers: map
@@ -4156,7 +4463,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.CreateTicketRequest,
     ) -> sls_20201230_models.CreateTicketResponse:
         """
-        @summary Creates a ticket to enable logon-free access to the Simple Log Service console or embed console pages into a third-party system.
+        @summary Obtains a ticket. Simple Log Service allows you to share the query and analysis pages and dashboard pages with other users and embed the console pages into third-party systems. This way, other users can view your logs in password-free mode. The URLs of the shared pages are referred to as password-free URLs. You can call the CreateTicket operation to obtain a ticket and generate a password-free URL based on the ticket and the URL of the console page that you want to share.
         
         @param request: CreateTicketRequest
         @return: CreateTicketResponse
@@ -4170,7 +4477,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.CreateTicketRequest,
     ) -> sls_20201230_models.CreateTicketResponse:
         """
-        @summary Creates a ticket to enable logon-free access to the Simple Log Service console or embed console pages into a third-party system.
+        @summary Obtains a ticket. Simple Log Service allows you to share the query and analysis pages and dashboard pages with other users and embed the console pages into third-party systems. This way, other users can view your logs in password-free mode. The URLs of the shared pages are referred to as password-free URLs. You can call the CreateTicket operation to obtain a ticket and generate a password-free URL based on the ticket and the URL of the console page that you want to share.
         
         @param request: CreateTicketRequest
         @return: CreateTicketResponse
@@ -4687,7 +4994,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes a log collection policy from a cloud service.
         
-        @description You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
+        @description You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
         
         @param request: DeleteCollectionPolicyRequest
         @param headers: map
@@ -4730,7 +5037,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes a log collection policy from a cloud service.
         
-        @description You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
+        @description You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
         
         @param request: DeleteCollectionPolicyRequest
         @param headers: map
@@ -4771,7 +5078,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes a log collection policy from a cloud service.
         
-        @description You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
+        @description You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
         
         @param request: DeleteCollectionPolicyRequest
         @return: DeleteCollectionPolicyResponse
@@ -4788,7 +5095,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes a log collection policy from a cloud service.
         
-        @description You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
+        @description You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
         
         @param request: DeleteCollectionPolicyRequest
         @return: DeleteCollectionPolicyResponse
@@ -5733,6 +6040,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_index_with_options_async(project, logstore, headers, runtime)
 
+    def delete_ingest_processor_with_options(
+        self,
+        project: str,
+        processor_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteIngestProcessorResponse:
+        """
+        @summary Deletes an ingest processor.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIngestProcessorResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteIngestProcessor',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/ingestprocessors/{processor_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteIngestProcessorResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_ingest_processor_with_options_async(
+        self,
+        project: str,
+        processor_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteIngestProcessorResponse:
+        """
+        @summary Deletes an ingest processor.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIngestProcessorResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteIngestProcessor',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/ingestprocessors/{processor_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteIngestProcessorResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_ingest_processor(
+        self,
+        project: str,
+        processor_name: str,
+    ) -> sls_20201230_models.DeleteIngestProcessorResponse:
+        """
+        @summary Deletes an ingest processor.
+        
+        @return: DeleteIngestProcessorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_ingest_processor_with_options(project, processor_name, headers, runtime)
+
+    async def delete_ingest_processor_async(
+        self,
+        project: str,
+        processor_name: str,
+    ) -> sls_20201230_models.DeleteIngestProcessorResponse:
+        """
+        @summary Deletes an ingest processor.
+        
+        @return: DeleteIngestProcessorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_ingest_processor_with_options_async(project, processor_name, headers, runtime)
+
     def delete_log_store_with_options(
         self,
         project: str,
@@ -6160,6 +6567,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_machine_group_with_options_async(project, machine_group, headers, runtime)
+
+    def delete_max_compute_export_with_options(
+        self,
+        project: str,
+        mc_export_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteMaxComputeExportResponse:
+        """
+        @summary Deletes a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMaxComputeExportResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteMaxComputeExport',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/maxcomputeexports/{mc_export_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteMaxComputeExportResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_max_compute_export_with_options_async(
+        self,
+        project: str,
+        mc_export_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteMaxComputeExportResponse:
+        """
+        @summary Deletes a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMaxComputeExportResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteMaxComputeExport',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/maxcomputeexports/{mc_export_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteMaxComputeExportResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_max_compute_export(
+        self,
+        project: str,
+        mc_export_name: str,
+    ) -> sls_20201230_models.DeleteMaxComputeExportResponse:
+        """
+        @summary Deletes a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        
+        @return: DeleteMaxComputeExportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_max_compute_export_with_options(project, mc_export_name, headers, runtime)
+
+    async def delete_max_compute_export_async(
+        self,
+        project: str,
+        mc_export_name: str,
+    ) -> sls_20201230_models.DeleteMaxComputeExportResponse:
+        """
+        @summary Deletes a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        
+        @return: DeleteMaxComputeExportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_max_compute_export_with_options_async(project, mc_export_name, headers, runtime)
 
     def delete_metric_store_with_options(
         self,
@@ -6600,6 +7127,7 @@ class Client(OpenApiClient):
     def delete_project_with_options(
         self,
         project: str,
+        request: sls_20201230_models.DeleteProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteProjectResponse:
@@ -6617,15 +7145,21 @@ class Client(OpenApiClient):
         |:---|:---|
         |`log:DeleteProject`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
         
+        @param request: DeleteProjectRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteProjectResponse
         """
+        UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.force_delete):
+            query['forceDelete'] = request.force_delete
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteProject',
@@ -6646,6 +7180,7 @@ class Client(OpenApiClient):
     async def delete_project_with_options_async(
         self,
         project: str,
+        request: sls_20201230_models.DeleteProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteProjectResponse:
@@ -6663,15 +7198,21 @@ class Client(OpenApiClient):
         |:---|:---|
         |`log:DeleteProject`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
         
+        @param request: DeleteProjectRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteProjectResponse
         """
+        UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.force_delete):
+            query['forceDelete'] = request.force_delete
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteProject',
@@ -6692,6 +7233,7 @@ class Client(OpenApiClient):
     def delete_project(
         self,
         project: str,
+        request: sls_20201230_models.DeleteProjectRequest,
     ) -> sls_20201230_models.DeleteProjectResponse:
         """
         @summary Deletes a project.
@@ -6707,15 +7249,17 @@ class Client(OpenApiClient):
         |:---|:---|
         |`log:DeleteProject`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
         
+        @param request: DeleteProjectRequest
         @return: DeleteProjectResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_project_with_options(project, headers, runtime)
+        return self.delete_project_with_options(project, request, headers, runtime)
 
     async def delete_project_async(
         self,
         project: str,
+        request: sls_20201230_models.DeleteProjectRequest,
     ) -> sls_20201230_models.DeleteProjectResponse:
         """
         @summary Deletes a project.
@@ -6731,11 +7275,12 @@ class Client(OpenApiClient):
         |:---|:---|
         |`log:DeleteProject`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
         
+        @param request: DeleteProjectRequest
         @return: DeleteProjectResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_project_with_options_async(project, headers, runtime)
+        return await self.delete_project_with_options_async(project, request, headers, runtime)
 
     def delete_project_policy_with_options(
         self,
@@ -7212,7 +7757,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DescribeRegionsResponse:
         """
-        @summary 查询可用的区域
+        @summary Queries supported regions.
         
         @param request: DescribeRegionsRequest
         @param headers: map
@@ -7250,7 +7795,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DescribeRegionsResponse:
         """
-        @summary 查询可用的区域
+        @summary Queries supported regions.
         
         @param request: DescribeRegionsRequest
         @param headers: map
@@ -7286,7 +7831,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.DescribeRegionsRequest,
     ) -> sls_20201230_models.DescribeRegionsResponse:
         """
-        @summary 查询可用的区域
+        @summary Queries supported regions.
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -7300,7 +7845,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.DescribeRegionsRequest,
     ) -> sls_20201230_models.DescribeRegionsResponse:
         """
-        @summary 查询可用的区域
+        @summary Queries supported regions.
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -7417,7 +7962,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DisableScheduledSQLResponse:
         """
-        @summary 禁用定时SQL任务
+        @summary Disables the Scheduled SQL feature.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -7453,7 +7998,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DisableScheduledSQLResponse:
         """
-        @summary 禁用定时SQL任务
+        @summary Disables the Scheduled SQL feature.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -7487,7 +8032,7 @@ class Client(OpenApiClient):
         scheduled_sqlname: str,
     ) -> sls_20201230_models.DisableScheduledSQLResponse:
         """
-        @summary 禁用定时SQL任务
+        @summary Disables the Scheduled SQL feature.
         
         @return: DisableScheduledSQLResponse
         """
@@ -7501,7 +8046,7 @@ class Client(OpenApiClient):
         scheduled_sqlname: str,
     ) -> sls_20201230_models.DisableScheduledSQLResponse:
         """
-        @summary 禁用定时SQL任务
+        @summary Disables the Scheduled SQL feature.
         
         @return: DisableScheduledSQLResponse
         """
@@ -8529,6 +9074,8 @@ class Client(OpenApiClient):
         """
         @summary 调用GetCollectionPolicy获取对应的规则
         
+        @description You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
+        
         @param request: GetCollectionPolicyRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -8570,6 +9117,8 @@ class Client(OpenApiClient):
         """
         @summary 调用GetCollectionPolicy获取对应的规则
         
+        @description You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
+        
         @param request: GetCollectionPolicyRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -8609,6 +9158,8 @@ class Client(OpenApiClient):
         """
         @summary 调用GetCollectionPolicy获取对应的规则
         
+        @description You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
+        
         @param request: GetCollectionPolicyRequest
         @return: GetCollectionPolicyResponse
         """
@@ -8623,6 +9174,8 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.GetCollectionPolicyResponse:
         """
         @summary 调用GetCollectionPolicy获取对应的规则
+        
+        @description You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
         
         @param request: GetCollectionPolicyRequest
         @return: GetCollectionPolicyResponse
@@ -9939,6 +10492,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_index_with_options_async(project, logstore, headers, runtime)
 
+    def get_ingest_processor_with_options(
+        self,
+        project: str,
+        processor_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetIngestProcessorResponse:
+        """
+        @summary Queries an ingest processor.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIngestProcessorResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetIngestProcessor',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/ingestprocessors/{processor_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetIngestProcessorResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_ingest_processor_with_options_async(
+        self,
+        project: str,
+        processor_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetIngestProcessorResponse:
+        """
+        @summary Queries an ingest processor.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIngestProcessorResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetIngestProcessor',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/ingestprocessors/{processor_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetIngestProcessorResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_ingest_processor(
+        self,
+        project: str,
+        processor_name: str,
+    ) -> sls_20201230_models.GetIngestProcessorResponse:
+        """
+        @summary Queries an ingest processor.
+        
+        @return: GetIngestProcessorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_ingest_processor_with_options(project, processor_name, headers, runtime)
+
+    async def get_ingest_processor_async(
+        self,
+        project: str,
+        processor_name: str,
+    ) -> sls_20201230_models.GetIngestProcessorResponse:
+        """
+        @summary Queries an ingest processor.
+        
+        @return: GetIngestProcessorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_ingest_processor_with_options_async(project, processor_name, headers, runtime)
+
     def get_log_store_with_options(
         self,
         project: str,
@@ -10673,7 +11326,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetLogtailPipelineConfigResponse:
         """
-        @summary Queries the details of a Logtail pipeline configuration.
+        @summary Queries the information about a Logtail pipeline configuration.
         
         @description The UK (London) region is supported. Supported regions are constantly updated.
         
@@ -10711,7 +11364,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetLogtailPipelineConfigResponse:
         """
-        @summary Queries the details of a Logtail pipeline configuration.
+        @summary Queries the information about a Logtail pipeline configuration.
         
         @description The UK (London) region is supported. Supported regions are constantly updated.
         
@@ -10747,7 +11400,7 @@ class Client(OpenApiClient):
         config_name: str,
     ) -> sls_20201230_models.GetLogtailPipelineConfigResponse:
         """
-        @summary Queries the details of a Logtail pipeline configuration.
+        @summary Queries the information about a Logtail pipeline configuration.
         
         @description The UK (London) region is supported. Supported regions are constantly updated.
         
@@ -10763,7 +11416,7 @@ class Client(OpenApiClient):
         config_name: str,
     ) -> sls_20201230_models.GetLogtailPipelineConfigResponse:
         """
-        @summary Queries the details of a Logtail pipeline configuration.
+        @summary Queries the information about a Logtail pipeline configuration.
         
         @description The UK (London) region is supported. Supported regions are constantly updated.
         
@@ -10782,6 +11435,22 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.GetMLServiceResultsResponse:
         """
         @summary Simple Log Service provides intelligent analysis capabilities that can be used to analyze basic data such as logs, metrics, and traces. You can call the GetMLServiceResults operation to obtain the analysis results of a model. You can call the operation in the following scenarios: Named Entity Recognition (NER) tasks on logs, anomaly detection on time series, and root cause analysis on high-latency traces.
+        
+        @description You must obtain the following basic permissions before you call this operation:
+        {
+        "Version": "1",
+        "Statement": [
+        {
+        "Action": [
+        "log:Get"
+        ],
+        "Resource": [
+        "acs:log::*:mlservice/sls_builtin_*"
+        ],
+        "Effect": "Allow"
+        }
+        ]
+        }
         
         @param request: GetMLServiceResultsRequest
         @param headers: map
@@ -10825,6 +11494,22 @@ class Client(OpenApiClient):
         """
         @summary Simple Log Service provides intelligent analysis capabilities that can be used to analyze basic data such as logs, metrics, and traces. You can call the GetMLServiceResults operation to obtain the analysis results of a model. You can call the operation in the following scenarios: Named Entity Recognition (NER) tasks on logs, anomaly detection on time series, and root cause analysis on high-latency traces.
         
+        @description You must obtain the following basic permissions before you call this operation:
+        {
+        "Version": "1",
+        "Statement": [
+        {
+        "Action": [
+        "log:Get"
+        ],
+        "Resource": [
+        "acs:log::*:mlservice/sls_builtin_*"
+        ],
+        "Effect": "Allow"
+        }
+        ]
+        }
+        
         @param request: GetMLServiceResultsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -10865,6 +11550,22 @@ class Client(OpenApiClient):
         """
         @summary Simple Log Service provides intelligent analysis capabilities that can be used to analyze basic data such as logs, metrics, and traces. You can call the GetMLServiceResults operation to obtain the analysis results of a model. You can call the operation in the following scenarios: Named Entity Recognition (NER) tasks on logs, anomaly detection on time series, and root cause analysis on high-latency traces.
         
+        @description You must obtain the following basic permissions before you call this operation:
+        {
+        "Version": "1",
+        "Statement": [
+        {
+        "Action": [
+        "log:Get"
+        ],
+        "Resource": [
+        "acs:log::*:mlservice/sls_builtin_*"
+        ],
+        "Effect": "Allow"
+        }
+        ]
+        }
+        
         @param request: GetMLServiceResultsRequest
         @return: GetMLServiceResultsResponse
         """
@@ -10879,6 +11580,22 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.GetMLServiceResultsResponse:
         """
         @summary Simple Log Service provides intelligent analysis capabilities that can be used to analyze basic data such as logs, metrics, and traces. You can call the GetMLServiceResults operation to obtain the analysis results of a model. You can call the operation in the following scenarios: Named Entity Recognition (NER) tasks on logs, anomaly detection on time series, and root cause analysis on high-latency traces.
+        
+        @description You must obtain the following basic permissions before you call this operation:
+        {
+        "Version": "1",
+        "Statement": [
+        {
+        "Action": [
+        "log:Get"
+        ],
+        "Resource": [
+        "acs:log::*:mlservice/sls_builtin_*"
+        ],
+        "Effect": "Allow"
+        }
+        ]
+        }
         
         @param request: GetMLServiceResultsRequest
         @return: GetMLServiceResultsResponse
@@ -10994,6 +11711,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_machine_group_with_options_async(project, machine_group, headers, runtime)
+
+    def get_max_compute_export_with_options(
+        self,
+        project: str,
+        mc_export_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetMaxComputeExportResponse:
+        """
+        @summary Queries a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMaxComputeExportResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMaxComputeExport',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/maxcomputeexports/{mc_export_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetMaxComputeExportResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_max_compute_export_with_options_async(
+        self,
+        project: str,
+        mc_export_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetMaxComputeExportResponse:
+        """
+        @summary Queries a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMaxComputeExportResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMaxComputeExport',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/maxcomputeexports/{mc_export_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetMaxComputeExportResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_max_compute_export(
+        self,
+        project: str,
+        mc_export_name: str,
+    ) -> sls_20201230_models.GetMaxComputeExportResponse:
+        """
+        @summary Queries a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        
+        @return: GetMaxComputeExportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_max_compute_export_with_options(project, mc_export_name, headers, runtime)
+
+    async def get_max_compute_export_async(
+        self,
+        project: str,
+        mc_export_name: str,
+    ) -> sls_20201230_models.GetMaxComputeExportResponse:
+        """
+        @summary Queries a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        
+        @return: GetMaxComputeExportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_max_compute_export_with_options_async(project, mc_export_name, headers, runtime)
 
     def get_metric_store_with_options(
         self,
@@ -12675,6 +13512,88 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_agent_instance_configs_with_options_async(request, headers, runtime)
 
+    def list_ai_tools_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListAiToolsResponse:
+        """
+        @summary 获取 ai 工具列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAiToolsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListAiTools',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/ml/tool/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListAiToolsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_ai_tools_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListAiToolsResponse:
+        """
+        @summary 获取 ai 工具列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAiToolsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListAiTools',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/ml/tool/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListAiToolsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_ai_tools(self) -> sls_20201230_models.ListAiToolsResponse:
+        """
+        @summary 获取 ai 工具列表
+        
+        @return: ListAiToolsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_ai_tools_with_options(headers, runtime)
+
+    async def list_ai_tools_async(self) -> sls_20201230_models.ListAiToolsResponse:
+        """
+        @summary 获取 ai 工具列表
+        
+        @return: ListAiToolsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_ai_tools_with_options_async(headers, runtime)
+
     def list_alerts_with_options(
         self,
         project: str,
@@ -13134,7 +14053,7 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of log collection policies for cloud services.
         
-        @description You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
+        @description You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
         
         @param request: ListCollectionPoliciesRequest
         @param headers: map
@@ -13186,7 +14105,7 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of log collection policies for cloud services.
         
-        @description You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
+        @description You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
         
         @param request: ListCollectionPoliciesRequest
         @param headers: map
@@ -13236,7 +14155,7 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of log collection policies for cloud services.
         
-        @description You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
+        @description You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
         
         @param request: ListCollectionPoliciesRequest
         @return: ListCollectionPoliciesResponse
@@ -13252,7 +14171,7 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of log collection policies for cloud services.
         
-        @description You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
+        @description You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
         
         @param request: ListCollectionPoliciesRequest
         @return: ListCollectionPoliciesResponse
@@ -14075,6 +14994,132 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_etls_with_options_async(project, request, headers, runtime)
 
+    def list_ingest_processors_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.ListIngestProcessorsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListIngestProcessorsResponse:
+        """
+        @summary Queries a list of ingest processors that meet specific conditions.
+        
+        @param request: ListIngestProcessorsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIngestProcessorsResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.display_name):
+            query['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.processor_name):
+            query['processorName'] = request.processor_name
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIngestProcessors',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/ingestprocessors',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListIngestProcessorsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_ingest_processors_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListIngestProcessorsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListIngestProcessorsResponse:
+        """
+        @summary Queries a list of ingest processors that meet specific conditions.
+        
+        @param request: ListIngestProcessorsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIngestProcessorsResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.display_name):
+            query['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.processor_name):
+            query['processorName'] = request.processor_name
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIngestProcessors',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/ingestprocessors',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListIngestProcessorsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_ingest_processors(
+        self,
+        project: str,
+        request: sls_20201230_models.ListIngestProcessorsRequest,
+    ) -> sls_20201230_models.ListIngestProcessorsResponse:
+        """
+        @summary Queries a list of ingest processors that meet specific conditions.
+        
+        @param request: ListIngestProcessorsRequest
+        @return: ListIngestProcessorsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_ingest_processors_with_options(project, request, headers, runtime)
+
+    async def list_ingest_processors_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListIngestProcessorsRequest,
+    ) -> sls_20201230_models.ListIngestProcessorsResponse:
+        """
+        @summary Queries a list of ingest processors that meet specific conditions.
+        
+        @param request: ListIngestProcessorsRequest
+        @return: ListIngestProcessorsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_ingest_processors_with_options_async(project, request, headers, runtime)
+
     def list_log_stores_with_options(
         self,
         project: str,
@@ -14642,6 +15687,148 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_machines_with_options_async(project, machine_group, request, headers, runtime)
+
+    def list_max_compute_exports_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.ListMaxComputeExportsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListMaxComputeExportsResponse:
+        """
+        @summary Queries a list of MaxCompute data shipping jobs.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        
+        @param request: ListMaxComputeExportsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMaxComputeExportsResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMaxComputeExports',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/maxcomputeexports',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListMaxComputeExportsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_max_compute_exports_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListMaxComputeExportsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListMaxComputeExportsResponse:
+        """
+        @summary Queries a list of MaxCompute data shipping jobs.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        
+        @param request: ListMaxComputeExportsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMaxComputeExportsResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMaxComputeExports',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/maxcomputeexports',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListMaxComputeExportsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_max_compute_exports(
+        self,
+        project: str,
+        request: sls_20201230_models.ListMaxComputeExportsRequest,
+    ) -> sls_20201230_models.ListMaxComputeExportsResponse:
+        """
+        @summary Queries a list of MaxCompute data shipping jobs.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        
+        @param request: ListMaxComputeExportsRequest
+        @return: ListMaxComputeExportsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_max_compute_exports_with_options(project, request, headers, runtime)
+
+    async def list_max_compute_exports_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListMaxComputeExportsRequest,
+    ) -> sls_20201230_models.ListMaxComputeExportsResponse:
+        """
+        @summary Queries a list of MaxCompute data shipping jobs.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        
+        @param request: ListMaxComputeExportsRequest
+        @return: ListMaxComputeExportsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_max_compute_exports_with_options_async(project, request, headers, runtime)
 
     def list_metric_stores_with_options(
         self,
@@ -16047,7 +17234,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.OpenSlsServiceResponse:
         """
-        @summary Activates Simple Log Service. You must activate Simple Log Service before you can use it to collect and manage logs.
+        @summary Activates Simple Log Service. You must use the endpoint for Simple Log Service only in the China (Shanghai) or Singapore region.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -16078,7 +17265,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.OpenSlsServiceResponse:
         """
-        @summary Activates Simple Log Service. You must activate Simple Log Service before you can use it to collect and manage logs.
+        @summary Activates Simple Log Service. You must use the endpoint for Simple Log Service only in the China (Shanghai) or Singapore region.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -16105,7 +17292,7 @@ class Client(OpenApiClient):
 
     def open_sls_service(self) -> sls_20201230_models.OpenSlsServiceResponse:
         """
-        @summary Activates Simple Log Service. You must activate Simple Log Service before you can use it to collect and manage logs.
+        @summary Activates Simple Log Service. You must use the endpoint for Simple Log Service only in the China (Shanghai) or Singapore region.
         
         @return: OpenSlsServiceResponse
         """
@@ -16115,7 +17302,7 @@ class Client(OpenApiClient):
 
     async def open_sls_service_async(self) -> sls_20201230_models.OpenSlsServiceResponse:
         """
-        @summary Activates Simple Log Service. You must activate Simple Log Service before you can use it to collect and manage logs.
+        @summary Activates Simple Log Service. You must use the endpoint for Simple Log Service only in the China (Shanghai) or Singapore region.
         
         @return: OpenSlsServiceResponse
         """
@@ -16135,7 +17322,11 @@ class Client(OpenApiClient):
         """
         @summary Queries logs based on the specified cursors. You can call this operation to obtain raw logs. To query and analyze logs, you can call the GetLogsV2 operation.
         
-        @description You cannot call this operation in OpenAPI Explorer. You can use Simple Log Service SDK to call this operation. For more information, see [SLS SDK Reference](https://help.aliyun.com/document_detail/29063.html).
+        @description *\
+        *Warning** You cannot call this operation in OpenAPI Explorer. You can use Simple Log Service SDK to call this operation. For more information, see SLS SDK Reference.
+        You must specify a shard when you query the logs.
+        You can query only logs in the Protocol Buffers (protobuf) format. For more information, see [Data encoding](https://help.aliyun.com/document_detail/29055.html).
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
         @param request: PullLogsRequest
         @param headers: PullLogsHeaders
@@ -16189,7 +17380,11 @@ class Client(OpenApiClient):
         """
         @summary Queries logs based on the specified cursors. You can call this operation to obtain raw logs. To query and analyze logs, you can call the GetLogsV2 operation.
         
-        @description You cannot call this operation in OpenAPI Explorer. You can use Simple Log Service SDK to call this operation. For more information, see [SLS SDK Reference](https://help.aliyun.com/document_detail/29063.html).
+        @description *\
+        *Warning** You cannot call this operation in OpenAPI Explorer. You can use Simple Log Service SDK to call this operation. For more information, see SLS SDK Reference.
+        You must specify a shard when you query the logs.
+        You can query only logs in the Protocol Buffers (protobuf) format. For more information, see [Data encoding](https://help.aliyun.com/document_detail/29055.html).
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
         @param request: PullLogsRequest
         @param headers: PullLogsHeaders
@@ -16241,7 +17436,11 @@ class Client(OpenApiClient):
         """
         @summary Queries logs based on the specified cursors. You can call this operation to obtain raw logs. To query and analyze logs, you can call the GetLogsV2 operation.
         
-        @description You cannot call this operation in OpenAPI Explorer. You can use Simple Log Service SDK to call this operation. For more information, see [SLS SDK Reference](https://help.aliyun.com/document_detail/29063.html).
+        @description *\
+        *Warning** You cannot call this operation in OpenAPI Explorer. You can use Simple Log Service SDK to call this operation. For more information, see SLS SDK Reference.
+        You must specify a shard when you query the logs.
+        You can query only logs in the Protocol Buffers (protobuf) format. For more information, see [Data encoding](https://help.aliyun.com/document_detail/29055.html).
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
         @param request: PullLogsRequest
         @return: PullLogsResponse
@@ -16260,7 +17459,11 @@ class Client(OpenApiClient):
         """
         @summary Queries logs based on the specified cursors. You can call this operation to obtain raw logs. To query and analyze logs, you can call the GetLogsV2 operation.
         
-        @description You cannot call this operation in OpenAPI Explorer. You can use Simple Log Service SDK to call this operation. For more information, see [SLS SDK Reference](https://help.aliyun.com/document_detail/29063.html).
+        @description *\
+        *Warning** You cannot call this operation in OpenAPI Explorer. You can use Simple Log Service SDK to call this operation. For more information, see SLS SDK Reference.
+        You must specify a shard when you query the logs.
+        You can query only logs in the Protocol Buffers (protobuf) format. For more information, see [Data encoding](https://help.aliyun.com/document_detail/29055.html).
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
         @param request: PullLogsRequest
         @return: PullLogsResponse
@@ -16389,6 +17592,132 @@ class Client(OpenApiClient):
         headers = {}
         return await self.put_annotation_data_with_options_async(dataset_id, request, headers, runtime)
 
+    def put_ingest_processor_with_options(
+        self,
+        project: str,
+        processor_name: str,
+        request: sls_20201230_models.PutIngestProcessorRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.PutIngestProcessorResponse:
+        """
+        @summary Creates or modifies an ingest processor.
+        
+        @param request: PutIngestProcessorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutIngestProcessorResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.configuration):
+            body['configuration'] = request.configuration
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PutIngestProcessor',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/ingestprocessors/{processor_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.PutIngestProcessorResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def put_ingest_processor_with_options_async(
+        self,
+        project: str,
+        processor_name: str,
+        request: sls_20201230_models.PutIngestProcessorRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.PutIngestProcessorResponse:
+        """
+        @summary Creates or modifies an ingest processor.
+        
+        @param request: PutIngestProcessorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutIngestProcessorResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.configuration):
+            body['configuration'] = request.configuration
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PutIngestProcessor',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/ingestprocessors/{processor_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.PutIngestProcessorResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def put_ingest_processor(
+        self,
+        project: str,
+        processor_name: str,
+        request: sls_20201230_models.PutIngestProcessorRequest,
+    ) -> sls_20201230_models.PutIngestProcessorResponse:
+        """
+        @summary Creates or modifies an ingest processor.
+        
+        @param request: PutIngestProcessorRequest
+        @return: PutIngestProcessorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.put_ingest_processor_with_options(project, processor_name, request, headers, runtime)
+
+    async def put_ingest_processor_async(
+        self,
+        project: str,
+        processor_name: str,
+        request: sls_20201230_models.PutIngestProcessorRequest,
+    ) -> sls_20201230_models.PutIngestProcessorResponse:
+        """
+        @summary Creates or modifies an ingest processor.
+        
+        @param request: PutIngestProcessorRequest
+        @return: PutIngestProcessorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.put_ingest_processor_with_options_async(project, processor_name, request, headers, runtime)
+
     def put_logs_with_options(
         self,
         project: str,
@@ -16398,9 +17727,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.PutLogsResponse:
         """
-        @summary Sends logs to Simple Log Service.
+        @summary Writes logs to a Logstore.
         
-        @description You cannot call this operation by using cloud service SDKs that are provided by Alibaba Cloud OpenAPI Portal. You can use Simple Log Service SDK to call this operation. For more information, see [SLS SDK Reference](https://help.aliyun.com/document_detail/29063.html).
+        @description *\
+        *Warning** You cannot call this operation in OpenAPI Explorer. You can use Simple Log Service SDK to call this operation. For more information, see SLS SDK Reference.
+        When you call the PutLogs operation to write logs to Simple Log Service, Simple Log Servicechecks the format of the logs. If a log does not meet the format requirements, the request fails and no logs are written to Simple Log Service.
+        You can write logs only in the Protocol Buffers (Protobuf) format as log groups. For more information, see [Data encoding](https://help.aliyun.com/document_detail/29055.html).
+        You can write logs in one of the following modes:
+        LoadBalance mode: In this mode, Log Service automatically writes logs to all writable shards in a Logstore. This mode delivers high availability for write operations and is suitable for data consumption scenarios in which you do not need to preserve the order of logs.
+        KeyHash: In this mode, a key field is added in the URL parameter. Log Service writes logs to a shard based on the key field. The hash key is optional. If you do not configure the hash key, logs are written to shards in LoadBalance mode. For example, you can use the KeyHash mode to write data from a producer, such as an instance, to the shard whose hash value range includes the hash value of the producer name. This ensures that the data that is written to the shard is ordered and the data in the shard is consumed based on the order. This way, when a shard is split or when shards are merged, the data that is associated with the same hash key is stored only in one shard at a point in time. For more information, see [Shard](https://help.aliyun.com/document_detail/28976.html).
+        You can call the PutLogs operation to write up to 10 MB of raw logs at a time. We recommend that you keep the total size of the values for each log in a log group to or below 1 MB. Historical versions of SDKs may have different limits. We recommend that you upgrade your SDK to the latest version.
+        The references for Log Service SDK for Java and Log Service SDK for Python provide examples on how to call the PutLogs operation. For more information, see [Get started with Simple Log Service SDK for Java](https://help.aliyun.com/document_detail/279525.html) and [Get started with Simple Log Service SDK for Python](https://help.aliyun.com/document_detail/284638.html).
         
         @param request: PutLogsRequest
         @param headers: PutLogsHeaders
@@ -16445,9 +17782,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.PutLogsResponse:
         """
-        @summary Sends logs to Simple Log Service.
+        @summary Writes logs to a Logstore.
         
-        @description You cannot call this operation by using cloud service SDKs that are provided by Alibaba Cloud OpenAPI Portal. You can use Simple Log Service SDK to call this operation. For more information, see [SLS SDK Reference](https://help.aliyun.com/document_detail/29063.html).
+        @description *\
+        *Warning** You cannot call this operation in OpenAPI Explorer. You can use Simple Log Service SDK to call this operation. For more information, see SLS SDK Reference.
+        When you call the PutLogs operation to write logs to Simple Log Service, Simple Log Servicechecks the format of the logs. If a log does not meet the format requirements, the request fails and no logs are written to Simple Log Service.
+        You can write logs only in the Protocol Buffers (Protobuf) format as log groups. For more information, see [Data encoding](https://help.aliyun.com/document_detail/29055.html).
+        You can write logs in one of the following modes:
+        LoadBalance mode: In this mode, Log Service automatically writes logs to all writable shards in a Logstore. This mode delivers high availability for write operations and is suitable for data consumption scenarios in which you do not need to preserve the order of logs.
+        KeyHash: In this mode, a key field is added in the URL parameter. Log Service writes logs to a shard based on the key field. The hash key is optional. If you do not configure the hash key, logs are written to shards in LoadBalance mode. For example, you can use the KeyHash mode to write data from a producer, such as an instance, to the shard whose hash value range includes the hash value of the producer name. This ensures that the data that is written to the shard is ordered and the data in the shard is consumed based on the order. This way, when a shard is split or when shards are merged, the data that is associated with the same hash key is stored only in one shard at a point in time. For more information, see [Shard](https://help.aliyun.com/document_detail/28976.html).
+        You can call the PutLogs operation to write up to 10 MB of raw logs at a time. We recommend that you keep the total size of the values for each log in a log group to or below 1 MB. Historical versions of SDKs may have different limits. We recommend that you upgrade your SDK to the latest version.
+        The references for Log Service SDK for Java and Log Service SDK for Python provide examples on how to call the PutLogs operation. For more information, see [Get started with Simple Log Service SDK for Java](https://help.aliyun.com/document_detail/279525.html) and [Get started with Simple Log Service SDK for Python](https://help.aliyun.com/document_detail/284638.html).
         
         @param request: PutLogsRequest
         @param headers: PutLogsHeaders
@@ -16490,9 +17835,17 @@ class Client(OpenApiClient):
         request: sls_20201230_models.PutLogsRequest,
     ) -> sls_20201230_models.PutLogsResponse:
         """
-        @summary Sends logs to Simple Log Service.
+        @summary Writes logs to a Logstore.
         
-        @description You cannot call this operation by using cloud service SDKs that are provided by Alibaba Cloud OpenAPI Portal. You can use Simple Log Service SDK to call this operation. For more information, see [SLS SDK Reference](https://help.aliyun.com/document_detail/29063.html).
+        @description *\
+        *Warning** You cannot call this operation in OpenAPI Explorer. You can use Simple Log Service SDK to call this operation. For more information, see SLS SDK Reference.
+        When you call the PutLogs operation to write logs to Simple Log Service, Simple Log Servicechecks the format of the logs. If a log does not meet the format requirements, the request fails and no logs are written to Simple Log Service.
+        You can write logs only in the Protocol Buffers (Protobuf) format as log groups. For more information, see [Data encoding](https://help.aliyun.com/document_detail/29055.html).
+        You can write logs in one of the following modes:
+        LoadBalance mode: In this mode, Log Service automatically writes logs to all writable shards in a Logstore. This mode delivers high availability for write operations and is suitable for data consumption scenarios in which you do not need to preserve the order of logs.
+        KeyHash: In this mode, a key field is added in the URL parameter. Log Service writes logs to a shard based on the key field. The hash key is optional. If you do not configure the hash key, logs are written to shards in LoadBalance mode. For example, you can use the KeyHash mode to write data from a producer, such as an instance, to the shard whose hash value range includes the hash value of the producer name. This ensures that the data that is written to the shard is ordered and the data in the shard is consumed based on the order. This way, when a shard is split or when shards are merged, the data that is associated with the same hash key is stored only in one shard at a point in time. For more information, see [Shard](https://help.aliyun.com/document_detail/28976.html).
+        You can call the PutLogs operation to write up to 10 MB of raw logs at a time. We recommend that you keep the total size of the values for each log in a log group to or below 1 MB. Historical versions of SDKs may have different limits. We recommend that you upgrade your SDK to the latest version.
+        The references for Log Service SDK for Java and Log Service SDK for Python provide examples on how to call the PutLogs operation. For more information, see [Get started with Simple Log Service SDK for Java](https://help.aliyun.com/document_detail/279525.html) and [Get started with Simple Log Service SDK for Python](https://help.aliyun.com/document_detail/284638.html).
         
         @param request: PutLogsRequest
         @return: PutLogsResponse
@@ -16508,9 +17861,17 @@ class Client(OpenApiClient):
         request: sls_20201230_models.PutLogsRequest,
     ) -> sls_20201230_models.PutLogsResponse:
         """
-        @summary Sends logs to Simple Log Service.
+        @summary Writes logs to a Logstore.
         
-        @description You cannot call this operation by using cloud service SDKs that are provided by Alibaba Cloud OpenAPI Portal. You can use Simple Log Service SDK to call this operation. For more information, see [SLS SDK Reference](https://help.aliyun.com/document_detail/29063.html).
+        @description *\
+        *Warning** You cannot call this operation in OpenAPI Explorer. You can use Simple Log Service SDK to call this operation. For more information, see SLS SDK Reference.
+        When you call the PutLogs operation to write logs to Simple Log Service, Simple Log Servicechecks the format of the logs. If a log does not meet the format requirements, the request fails and no logs are written to Simple Log Service.
+        You can write logs only in the Protocol Buffers (Protobuf) format as log groups. For more information, see [Data encoding](https://help.aliyun.com/document_detail/29055.html).
+        You can write logs in one of the following modes:
+        LoadBalance mode: In this mode, Log Service automatically writes logs to all writable shards in a Logstore. This mode delivers high availability for write operations and is suitable for data consumption scenarios in which you do not need to preserve the order of logs.
+        KeyHash: In this mode, a key field is added in the URL parameter. Log Service writes logs to a shard based on the key field. The hash key is optional. If you do not configure the hash key, logs are written to shards in LoadBalance mode. For example, you can use the KeyHash mode to write data from a producer, such as an instance, to the shard whose hash value range includes the hash value of the producer name. This ensures that the data that is written to the shard is ordered and the data in the shard is consumed based on the order. This way, when a shard is split or when shards are merged, the data that is associated with the same hash key is stored only in one shard at a point in time. For more information, see [Shard](https://help.aliyun.com/document_detail/28976.html).
+        You can call the PutLogs operation to write up to 10 MB of raw logs at a time. We recommend that you keep the total size of the values for each log in a log group to or below 1 MB. Historical versions of SDKs may have different limits. We recommend that you upgrade your SDK to the latest version.
+        The references for Log Service SDK for Java and Log Service SDK for Python provide examples on how to call the PutLogs operation. For more information, see [Get started with Simple Log Service SDK for Java](https://help.aliyun.com/document_detail/279525.html) and [Get started with Simple Log Service SDK for Python](https://help.aliyun.com/document_detail/284638.html).
         
         @param request: PutLogsRequest
         @return: PutLogsResponse
@@ -17397,6 +18758,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.start_etlwith_options_async(project, etl_name, headers, runtime)
 
+    def start_max_compute_export_with_options(
+        self,
+        project: str,
+        mc_export_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.StartMaxComputeExportResponse:
+        """
+        @summary Starts a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartMaxComputeExportResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StartMaxComputeExport',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/maxcomputeexports/{mc_export_name}?action=START',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.StartMaxComputeExportResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def start_max_compute_export_with_options_async(
+        self,
+        project: str,
+        mc_export_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.StartMaxComputeExportResponse:
+        """
+        @summary Starts a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartMaxComputeExportResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StartMaxComputeExport',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/maxcomputeexports/{mc_export_name}?action=START',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.StartMaxComputeExportResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def start_max_compute_export(
+        self,
+        project: str,
+        mc_export_name: str,
+    ) -> sls_20201230_models.StartMaxComputeExportResponse:
+        """
+        @summary Starts a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+        
+        @return: StartMaxComputeExportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.start_max_compute_export_with_options(project, mc_export_name, headers, runtime)
+
+    async def start_max_compute_export_async(
+        self,
+        project: str,
+        mc_export_name: str,
+    ) -> sls_20201230_models.StartMaxComputeExportResponse:
+        """
+        @summary Starts a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+        
+        @return: StartMaxComputeExportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.start_max_compute_export_with_options_async(project, mc_export_name, headers, runtime)
+
     def start_ossexport_with_options(
         self,
         project: str,
@@ -17796,6 +19277,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_etlwith_options_async(project, etl_name, headers, runtime)
+
+    def stop_max_compute_export_with_options(
+        self,
+        project: str,
+        mc_export_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.StopMaxComputeExportResponse:
+        """
+        @summary Stops a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopMaxComputeExportResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StopMaxComputeExport',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/maxcomputeexports/{mc_export_name}?action=STOP',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.StopMaxComputeExportResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def stop_max_compute_export_with_options_async(
+        self,
+        project: str,
+        mc_export_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.StopMaxComputeExportResponse:
+        """
+        @summary Stops a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopMaxComputeExportResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StopMaxComputeExport',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/maxcomputeexports/{mc_export_name}?action=STOP',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.StopMaxComputeExportResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def stop_max_compute_export(
+        self,
+        project: str,
+        mc_export_name: str,
+    ) -> sls_20201230_models.StopMaxComputeExportResponse:
+        """
+        @summary Stops a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        
+        @return: StopMaxComputeExportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.stop_max_compute_export_with_options(project, mc_export_name, headers, runtime)
+
+    async def stop_max_compute_export_async(
+        self,
+        project: str,
+        mc_export_name: str,
+    ) -> sls_20201230_models.StopMaxComputeExportResponse:
+        """
+        @summary Stops a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        
+        @return: StopMaxComputeExportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.stop_max_compute_export_with_options_async(project, mc_export_name, headers, runtime)
 
     def stop_ossexport_with_options(
         self,
@@ -19768,7 +21369,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateLogStoreEncryptionResponse:
         """
-        @summary 更新日志库的加密配置
+        @summary Updates the encryption configuration of a Logstore. You can create encryption configurations for the Logstore and enable or disable the encryption feature.
+        
+        @description ## [](#)Limits
+        If you specify a data encryption method when you configure data encryption settings, you cannot switch to the other method after the configuration. In addition, you cannot change the encryption algorithm or the encryption type. You can only enable or disable the encryption feature by using the enable parameter. If you specify the encryption method by using the service key of Simple Log Service when you configure data encryption settings, you cannot switch to the encryption method by using Bring Your Own Key (BYOK) keys after the configuration.
+        ## [](#)Create encryption configurations
+        ### [](#)Encryption by using service keys
+        Simple Log Service is fully responsible for data encryption and key management. No additional operations are required. When you create encryption configurations for the Logstore, you must specify the enable and encryptType parameters.
+        ### [](#byok)Encryption by using BYOK keys
+        You must create a customer master key (CMK) in Key Management Service (KMS). Then, Simple Log Service encrypts logs by using the CMK. When you create encryption configurations for the Logstore, you must specify the enable, encryptType, and userCmkInfo parameters.
+        ## [](#)Enable or disable the encryption feature
+        After you create encryption configurations for the Logstore, you cannot modify the encryptType or userCmkInfo parameters. However, you can enable and disable the encryption feature by using the enable parameter.
         
         @param request: UpdateLogStoreEncryptionRequest
         @param headers: map
@@ -19815,7 +21426,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateLogStoreEncryptionResponse:
         """
-        @summary 更新日志库的加密配置
+        @summary Updates the encryption configuration of a Logstore. You can create encryption configurations for the Logstore and enable or disable the encryption feature.
+        
+        @description ## [](#)Limits
+        If you specify a data encryption method when you configure data encryption settings, you cannot switch to the other method after the configuration. In addition, you cannot change the encryption algorithm or the encryption type. You can only enable or disable the encryption feature by using the enable parameter. If you specify the encryption method by using the service key of Simple Log Service when you configure data encryption settings, you cannot switch to the encryption method by using Bring Your Own Key (BYOK) keys after the configuration.
+        ## [](#)Create encryption configurations
+        ### [](#)Encryption by using service keys
+        Simple Log Service is fully responsible for data encryption and key management. No additional operations are required. When you create encryption configurations for the Logstore, you must specify the enable and encryptType parameters.
+        ### [](#byok)Encryption by using BYOK keys
+        You must create a customer master key (CMK) in Key Management Service (KMS). Then, Simple Log Service encrypts logs by using the CMK. When you create encryption configurations for the Logstore, you must specify the enable, encryptType, and userCmkInfo parameters.
+        ## [](#)Enable or disable the encryption feature
+        After you create encryption configurations for the Logstore, you cannot modify the encryptType or userCmkInfo parameters. However, you can enable and disable the encryption feature by using the enable parameter.
         
         @param request: UpdateLogStoreEncryptionRequest
         @param headers: map
@@ -19860,7 +21481,17 @@ class Client(OpenApiClient):
         request: sls_20201230_models.UpdateLogStoreEncryptionRequest,
     ) -> sls_20201230_models.UpdateLogStoreEncryptionResponse:
         """
-        @summary 更新日志库的加密配置
+        @summary Updates the encryption configuration of a Logstore. You can create encryption configurations for the Logstore and enable or disable the encryption feature.
+        
+        @description ## [](#)Limits
+        If you specify a data encryption method when you configure data encryption settings, you cannot switch to the other method after the configuration. In addition, you cannot change the encryption algorithm or the encryption type. You can only enable or disable the encryption feature by using the enable parameter. If you specify the encryption method by using the service key of Simple Log Service when you configure data encryption settings, you cannot switch to the encryption method by using Bring Your Own Key (BYOK) keys after the configuration.
+        ## [](#)Create encryption configurations
+        ### [](#)Encryption by using service keys
+        Simple Log Service is fully responsible for data encryption and key management. No additional operations are required. When you create encryption configurations for the Logstore, you must specify the enable and encryptType parameters.
+        ### [](#byok)Encryption by using BYOK keys
+        You must create a customer master key (CMK) in Key Management Service (KMS). Then, Simple Log Service encrypts logs by using the CMK. When you create encryption configurations for the Logstore, you must specify the enable, encryptType, and userCmkInfo parameters.
+        ## [](#)Enable or disable the encryption feature
+        After you create encryption configurations for the Logstore, you cannot modify the encryptType or userCmkInfo parameters. However, you can enable and disable the encryption feature by using the enable parameter.
         
         @param request: UpdateLogStoreEncryptionRequest
         @return: UpdateLogStoreEncryptionResponse
@@ -19876,7 +21507,17 @@ class Client(OpenApiClient):
         request: sls_20201230_models.UpdateLogStoreEncryptionRequest,
     ) -> sls_20201230_models.UpdateLogStoreEncryptionResponse:
         """
-        @summary 更新日志库的加密配置
+        @summary Updates the encryption configuration of a Logstore. You can create encryption configurations for the Logstore and enable or disable the encryption feature.
+        
+        @description ## [](#)Limits
+        If you specify a data encryption method when you configure data encryption settings, you cannot switch to the other method after the configuration. In addition, you cannot change the encryption algorithm or the encryption type. You can only enable or disable the encryption feature by using the enable parameter. If you specify the encryption method by using the service key of Simple Log Service when you configure data encryption settings, you cannot switch to the encryption method by using Bring Your Own Key (BYOK) keys after the configuration.
+        ## [](#)Create encryption configurations
+        ### [](#)Encryption by using service keys
+        Simple Log Service is fully responsible for data encryption and key management. No additional operations are required. When you create encryption configurations for the Logstore, you must specify the enable and encryptType parameters.
+        ### [](#byok)Encryption by using BYOK keys
+        You must create a customer master key (CMK) in Key Management Service (KMS). Then, Simple Log Service encrypts logs by using the CMK. When you create encryption configurations for the Logstore, you must specify the enable, encryptType, and userCmkInfo parameters.
+        ## [](#)Enable or disable the encryption feature
+        After you create encryption configurations for the Logstore, you cannot modify the encryptType or userCmkInfo parameters. However, you can enable and disable the encryption feature by using the enable parameter.
         
         @param request: UpdateLogStoreEncryptionRequest
         @return: UpdateLogStoreEncryptionResponse
@@ -20002,6 +21643,124 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_log_store_metering_mode_with_options_async(project, logstore, request, headers, runtime)
+
+    def update_log_store_processor_with_options(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.UpdateLogStoreProcessorRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateLogStoreProcessorResponse:
+        """
+        @summary Modifies the ingest processor that is associated with a Logstore.
+        
+        @param request: UpdateLogStoreProcessorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLogStoreProcessorResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.processor_name):
+            body['processorName'] = request.processor_name
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateLogStoreProcessor',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/processor',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateLogStoreProcessorResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_log_store_processor_with_options_async(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.UpdateLogStoreProcessorRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateLogStoreProcessorResponse:
+        """
+        @summary Modifies the ingest processor that is associated with a Logstore.
+        
+        @param request: UpdateLogStoreProcessorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLogStoreProcessorResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.processor_name):
+            body['processorName'] = request.processor_name
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateLogStoreProcessor',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/processor',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateLogStoreProcessorResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_log_store_processor(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.UpdateLogStoreProcessorRequest,
+    ) -> sls_20201230_models.UpdateLogStoreProcessorResponse:
+        """
+        @summary Modifies the ingest processor that is associated with a Logstore.
+        
+        @param request: UpdateLogStoreProcessorRequest
+        @return: UpdateLogStoreProcessorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_log_store_processor_with_options(project, logstore, request, headers, runtime)
+
+    async def update_log_store_processor_async(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.UpdateLogStoreProcessorRequest,
+    ) -> sls_20201230_models.UpdateLogStoreProcessorResponse:
+        """
+        @summary Modifies the ingest processor that is associated with a Logstore.
+        
+        @param request: UpdateLogStoreProcessorRequest
+        @return: UpdateLogStoreProcessorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_log_store_processor_with_options_async(project, logstore, request, headers, runtime)
 
     def update_logging_with_options(
         self,
@@ -20549,6 +22308,152 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_machine_group_machine_with_options_async(project, machine_group, request, headers, runtime)
 
+    def update_max_compute_export_with_options(
+        self,
+        project: str,
+        mc_export_name: str,
+        request: sls_20201230_models.UpdateMaxComputeExportRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateMaxComputeExportResponse:
+        """
+        @summary Updates a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        
+        @param request: UpdateMaxComputeExportRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMaxComputeExportResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.configuration):
+            body['configuration'] = request.configuration
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMaxComputeExport',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/maxcomputeexports/{mc_export_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateMaxComputeExportResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_max_compute_export_with_options_async(
+        self,
+        project: str,
+        mc_export_name: str,
+        request: sls_20201230_models.UpdateMaxComputeExportRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateMaxComputeExportResponse:
+        """
+        @summary Updates a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        
+        @param request: UpdateMaxComputeExportRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMaxComputeExportResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.configuration):
+            body['configuration'] = request.configuration
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMaxComputeExport',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/maxcomputeexports/{mc_export_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateMaxComputeExportResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_max_compute_export(
+        self,
+        project: str,
+        mc_export_name: str,
+        request: sls_20201230_models.UpdateMaxComputeExportRequest,
+    ) -> sls_20201230_models.UpdateMaxComputeExportResponse:
+        """
+        @summary Updates a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        
+        @param request: UpdateMaxComputeExportRequest
+        @return: UpdateMaxComputeExportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_max_compute_export_with_options(project, mc_export_name, request, headers, runtime)
+
+    async def update_max_compute_export_async(
+        self,
+        project: str,
+        mc_export_name: str,
+        request: sls_20201230_models.UpdateMaxComputeExportRequest,
+    ) -> sls_20201230_models.UpdateMaxComputeExportResponse:
+        """
+        @summary Updates a MaxCompute data shipping job.
+        
+        @description    Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        
+        @param request: UpdateMaxComputeExportRequest
+        @return: UpdateMaxComputeExportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_max_compute_export_with_options_async(project, mc_export_name, request, headers, runtime)
+
     def update_metric_store_with_options(
         self,
         project: str,
@@ -20580,6 +22485,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.auto_split):
             body['autoSplit'] = request.auto_split
+        if not UtilClient.is_unset(request.hot_ttl):
+            body['hot_ttl'] = request.hot_ttl
+        if not UtilClient.is_unset(request.infrequent_access_ttl):
+            body['infrequentAccessTTL'] = request.infrequent_access_ttl
         if not UtilClient.is_unset(request.max_split_shard):
             body['maxSplitShard'] = request.max_split_shard
         if not UtilClient.is_unset(request.mode):
@@ -20638,6 +22547,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.auto_split):
             body['autoSplit'] = request.auto_split
+        if not UtilClient.is_unset(request.hot_ttl):
+            body['hot_ttl'] = request.hot_ttl
+        if not UtilClient.is_unset(request.infrequent_access_ttl):
+            body['infrequentAccessTTL'] = request.infrequent_access_ttl
         if not UtilClient.is_unset(request.max_split_shard):
             body['maxSplitShard'] = request.max_split_shard
         if not UtilClient.is_unset(request.mode):
@@ -20832,6 +22745,124 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_metric_store_metering_mode_with_options_async(project, metric_store, request, headers, runtime)
+
+    def update_metric_store_processor_with_options(
+        self,
+        project: str,
+        metricstore: str,
+        request: sls_20201230_models.UpdateMetricStoreProcessorRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateMetricStoreProcessorResponse:
+        """
+        @summary Updates the ingest processor that is associated with a Metricstore.
+        
+        @param request: UpdateMetricStoreProcessorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMetricStoreProcessorResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.processor_name):
+            body['processorName'] = request.processor_name
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMetricStoreProcessor',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/metricstores/{metricstore}/processor',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateMetricStoreProcessorResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_metric_store_processor_with_options_async(
+        self,
+        project: str,
+        metricstore: str,
+        request: sls_20201230_models.UpdateMetricStoreProcessorRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateMetricStoreProcessorResponse:
+        """
+        @summary Updates the ingest processor that is associated with a Metricstore.
+        
+        @param request: UpdateMetricStoreProcessorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMetricStoreProcessorResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.processor_name):
+            body['processorName'] = request.processor_name
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMetricStoreProcessor',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/metricstores/{metricstore}/processor',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateMetricStoreProcessorResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_metric_store_processor(
+        self,
+        project: str,
+        metricstore: str,
+        request: sls_20201230_models.UpdateMetricStoreProcessorRequest,
+    ) -> sls_20201230_models.UpdateMetricStoreProcessorResponse:
+        """
+        @summary Updates the ingest processor that is associated with a Metricstore.
+        
+        @param request: UpdateMetricStoreProcessorRequest
+        @return: UpdateMetricStoreProcessorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_metric_store_processor_with_options(project, metricstore, request, headers, runtime)
+
+    async def update_metric_store_processor_async(
+        self,
+        project: str,
+        metricstore: str,
+        request: sls_20201230_models.UpdateMetricStoreProcessorRequest,
+    ) -> sls_20201230_models.UpdateMetricStoreProcessorResponse:
+        """
+        @summary Updates the ingest processor that is associated with a Metricstore.
+        
+        @param request: UpdateMetricStoreProcessorRequest
+        @return: UpdateMetricStoreProcessorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_metric_store_processor_with_options_async(project, metricstore, request, headers, runtime)
 
     def update_ossexport_with_options(
         self,
@@ -21094,7 +23125,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateOSSIngestionResponse:
         """
-        @summary 更新oss导入任务
+        @summary Updates an Object Storage Service (OSS) data import job.
         
         @param request: UpdateOSSIngestionRequest
         @param headers: map
@@ -21143,7 +23174,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateOSSIngestionResponse:
         """
-        @summary 更新oss导入任务
+        @summary Updates an Object Storage Service (OSS) data import job.
         
         @param request: UpdateOSSIngestionRequest
         @param headers: map
@@ -21190,7 +23221,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.UpdateOSSIngestionRequest,
     ) -> sls_20201230_models.UpdateOSSIngestionResponse:
         """
-        @summary 更新oss导入任务
+        @summary Updates an Object Storage Service (OSS) data import job.
         
         @param request: UpdateOSSIngestionRequest
         @return: UpdateOSSIngestionResponse
@@ -21206,7 +23237,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.UpdateOSSIngestionRequest,
     ) -> sls_20201230_models.UpdateOSSIngestionResponse:
         """
-        @summary 更新oss导入任务
+        @summary Updates an Object Storage Service (OSS) data import job.
         
         @param request: UpdateOSSIngestionRequest
         @return: UpdateOSSIngestionResponse
@@ -21384,6 +23415,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.recycle_bin_enabled):
+            body['recycleBinEnabled'] = request.recycle_bin_enabled
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
@@ -21436,6 +23469,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.recycle_bin_enabled):
+            body['recycleBinEnabled'] = request.recycle_bin_enabled
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,

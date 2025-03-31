@@ -1,3 +1,30 @@
+2025-03-31 Version: 5.7.0
+- Support API CallAiTools.
+- Support API CreateMaxComputeExport.
+- Support API DeleteIngestProcessor.
+- Support API DeleteMaxComputeExport.
+- Support API GetIngestProcessor.
+- Support API GetMaxComputeExport.
+- Support API ListAiTools.
+- Support API ListIngestProcessors.
+- Support API ListMaxComputeExports.
+- Support API PutIngestProcessor.
+- Support API StartMaxComputeExport.
+- Support API StopMaxComputeExport.
+- Support API UpdateLogStoreProcessor.
+- Support API UpdateMaxComputeExport.
+- Support API UpdateMetricStoreProcessor.
+- Update API CreateMetricStore: add request parameters body.hot_ttl.
+- Update API CreateMetricStore: add request parameters body.infrequentAccessTTL.
+- Update API CreateProject: add request parameters body.recycleBinEnabled.
+- Update API DeleteProject: add request parameters forceDelete.
+- Update API GetMetricStore: add response parameters Body.hot_ttl.
+- Update API GetMetricStore: add response parameters Body.infrequentAccessTTL.
+- Update API UpdateMetricStore: add request parameters body.hot_ttl.
+- Update API UpdateMetricStore: add request parameters body.infrequentAccessTTL.
+- Update API UpdateProject: add request parameters body.recycleBinEnabled.
+
+
 2024-12-09 Version: 5.6.0
 - Support API CreateAgentInstanceConfig.
 - Support API DeleteAgentInstanceConfig.
