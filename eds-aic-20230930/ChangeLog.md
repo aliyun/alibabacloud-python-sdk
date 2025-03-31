@@ -1,3 +1,11 @@
+2025-03-31 Version: 4.4.0
+- Support API CreateCloudPhoneNode.
+- Support API DeleteCloudPhoneNodes.
+- Support API DescribeCloudPhoneNodes.
+- Support API ModifyCloudPhoneNode.
+- Support API RenewCloudPhoneNodes.
+
+
 2025-03-14 Version: 4.3.2
 - Update API DescribeAndroidInstanceGroups: update response param.
 - Update API DescribeAndroidInstances: update response param.

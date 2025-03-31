@@ -1710,6 +1710,299 @@ class CreateAppResponse(TeaModel):
         return self
 
 
+class CreateCloudPhoneNodeRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateCloudPhoneNodeRequest(TeaModel):
+    def __init__(
+        self,
+        auto_pay: bool = None,
+        auto_renew: bool = None,
+        biz_region_id: str = None,
+        charge_type: str = None,
+        count: str = None,
+        image_id: str = None,
+        instance_type: str = None,
+        network_id: str = None,
+        node_name: str = None,
+        period: int = None,
+        period_unit: str = None,
+        phone_count: int = None,
+        resolution_height: int = None,
+        resolution_width: int = None,
+        server_share_data_volume: int = None,
+        server_type: str = None,
+        tag: List[CreateCloudPhoneNodeRequestTag] = None,
+        v_switch_id: str = None,
+    ):
+        self.auto_pay = auto_pay
+        self.auto_renew = auto_renew
+        # This parameter is required.
+        self.biz_region_id = biz_region_id
+        self.charge_type = charge_type
+        self.count = count
+        self.image_id = image_id
+        self.instance_type = instance_type
+        self.network_id = network_id
+        self.node_name = node_name
+        self.period = period
+        self.period_unit = period_unit
+        self.phone_count = phone_count
+        self.resolution_height = resolution_height
+        self.resolution_width = resolution_width
+        self.server_share_data_volume = server_share_data_volume
+        # This parameter is required.
+        self.server_type = server_type
+        self.tag = tag
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.biz_region_id is not None:
+            result['BizRegionId'] = self.biz_region_id
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.network_id is not None:
+            result['NetworkId'] = self.network_id
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        if self.phone_count is not None:
+            result['PhoneCount'] = self.phone_count
+        if self.resolution_height is not None:
+            result['ResolutionHeight'] = self.resolution_height
+        if self.resolution_width is not None:
+            result['ResolutionWidth'] = self.resolution_width
+        if self.server_share_data_volume is not None:
+            result['ServerShareDataVolume'] = self.server_share_data_volume
+        if self.server_type is not None:
+            result['ServerType'] = self.server_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('BizRegionId') is not None:
+            self.biz_region_id = m.get('BizRegionId')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('NetworkId') is not None:
+            self.network_id = m.get('NetworkId')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        if m.get('PhoneCount') is not None:
+            self.phone_count = m.get('PhoneCount')
+        if m.get('ResolutionHeight') is not None:
+            self.resolution_height = m.get('ResolutionHeight')
+        if m.get('ResolutionWidth') is not None:
+            self.resolution_width = m.get('ResolutionWidth')
+        if m.get('ServerShareDataVolume') is not None:
+            self.server_share_data_volume = m.get('ServerShareDataVolume')
+        if m.get('ServerType') is not None:
+            self.server_type = m.get('ServerType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateCloudPhoneNodeRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class CreateCloudPhoneNodeResponseBodyNodeInfos(TeaModel):
+    def __init__(
+        self,
+        instance_ids: List[str] = None,
+        node_id: str = None,
+    ):
+        self.instance_ids = instance_ids
+        self.node_id = node_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        return self
+
+
+class CreateCloudPhoneNodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        node_infos: List[CreateCloudPhoneNodeResponseBodyNodeInfos] = None,
+        order_id: str = None,
+        request_id: str = None,
+    ):
+        self.node_infos = node_infos
+        self.order_id = order_id
+        self.request_id = request_id
+
+    def validate(self):
+        if self.node_infos:
+            for k in self.node_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NodeInfos'] = []
+        if self.node_infos is not None:
+            for k in self.node_infos:
+                result['NodeInfos'].append(k.to_map() if k else None)
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.node_infos = []
+        if m.get('NodeInfos') is not None:
+            for k in m.get('NodeInfos'):
+                temp_model = CreateCloudPhoneNodeResponseBodyNodeInfos()
+                self.node_infos.append(temp_model.from_map(k))
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateCloudPhoneNodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCloudPhoneNodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCloudPhoneNodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateCustomImageRequest(TeaModel):
     def __init__(
         self,
@@ -2792,6 +3085,101 @@ class DeleteAppsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteAppsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCloudPhoneNodesRequest(TeaModel):
+    def __init__(
+        self,
+        node_ids: List[str] = None,
+    ):
+        self.node_ids = node_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.node_ids is not None:
+            result['NodeIds'] = self.node_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NodeIds') is not None:
+            self.node_ids = m.get('NodeIds')
+        return self
+
+
+class DeleteCloudPhoneNodesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteCloudPhoneNodesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCloudPhoneNodesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCloudPhoneNodesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4978,6 +5366,298 @@ class DescribeBackupFilesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeBackupFilesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCloudPhoneNodesRequest(TeaModel):
+    def __init__(
+        self,
+        biz_region_id: str = None,
+        charge_type: str = None,
+        max_results: str = None,
+        next_token: str = None,
+        node_ids: List[str] = None,
+        node_name: str = None,
+        server_type: str = None,
+        status: str = None,
+    ):
+        self.biz_region_id = biz_region_id
+        self.charge_type = charge_type
+        self.max_results = max_results
+        self.next_token = next_token
+        self.node_ids = node_ids
+        self.node_name = node_name
+        self.server_type = server_type
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_region_id is not None:
+            result['BizRegionId'] = self.biz_region_id
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.node_ids is not None:
+            result['NodeIds'] = self.node_ids
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.server_type is not None:
+            result['ServerType'] = self.server_type
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizRegionId') is not None:
+            self.biz_region_id = m.get('BizRegionId')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('NodeIds') is not None:
+            self.node_ids = m.get('NodeIds')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('ServerType') is not None:
+            self.server_type = m.get('ServerType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
+    def __init__(
+        self,
+        charge_type: str = None,
+        cpu: str = None,
+        gmt_create: str = None,
+        gmt_expired: str = None,
+        gmt_modified: str = None,
+        memory: int = None,
+        network_id: str = None,
+        node_id: str = None,
+        node_name: str = None,
+        phone_count: int = None,
+        region_id: str = None,
+        resolution_height: int = None,
+        resolution_width: int = None,
+        server_type: str = None,
+        share_data_volume: int = None,
+        status: str = None,
+        v_switch_id: str = None,
+    ):
+        self.charge_type = charge_type
+        self.cpu = cpu
+        self.gmt_create = gmt_create
+        self.gmt_expired = gmt_expired
+        self.gmt_modified = gmt_modified
+        self.memory = memory
+        self.network_id = network_id
+        self.node_id = node_id
+        self.node_name = node_name
+        self.phone_count = phone_count
+        self.region_id = region_id
+        self.resolution_height = resolution_height
+        self.resolution_width = resolution_width
+        self.server_type = server_type
+        self.share_data_volume = share_data_volume
+        self.status = status
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_expired is not None:
+            result['GmtExpired'] = self.gmt_expired
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.network_id is not None:
+            result['NetworkId'] = self.network_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.phone_count is not None:
+            result['PhoneCount'] = self.phone_count
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resolution_height is not None:
+            result['ResolutionHeight'] = self.resolution_height
+        if self.resolution_width is not None:
+            result['ResolutionWidth'] = self.resolution_width
+        if self.server_type is not None:
+            result['ServerType'] = self.server_type
+        if self.share_data_volume is not None:
+            result['ShareDataVolume'] = self.share_data_volume
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtExpired') is not None:
+            self.gmt_expired = m.get('GmtExpired')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('NetworkId') is not None:
+            self.network_id = m.get('NetworkId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('PhoneCount') is not None:
+            self.phone_count = m.get('PhoneCount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResolutionHeight') is not None:
+            self.resolution_height = m.get('ResolutionHeight')
+        if m.get('ResolutionWidth') is not None:
+            self.resolution_width = m.get('ResolutionWidth')
+        if m.get('ServerType') is not None:
+            self.server_type = m.get('ServerType')
+        if m.get('ShareDataVolume') is not None:
+            self.share_data_volume = m.get('ShareDataVolume')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class DescribeCloudPhoneNodesResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        node_model: List[DescribeCloudPhoneNodesResponseBodyNodeModel] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.node_model = node_model
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.node_model:
+            for k in self.node_model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['NodeModel'] = []
+        if self.node_model is not None:
+            for k in self.node_model:
+                result['NodeModel'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.node_model = []
+        if m.get('NodeModel') is not None:
+            for k in m.get('NodeModel'):
+                temp_model = DescribeCloudPhoneNodesResponseBodyNodeModel()
+                self.node_model.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeCloudPhoneNodesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCloudPhoneNodesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCloudPhoneNodesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8482,6 +9162,107 @@ class ModifyAppResponse(TeaModel):
         return self
 
 
+class ModifyCloudPhoneNodeRequest(TeaModel):
+    def __init__(
+        self,
+        new_node_name: str = None,
+        node_id: str = None,
+    ):
+        self.new_node_name = new_node_name
+        self.node_id = node_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.new_node_name is not None:
+            result['NewNodeName'] = self.new_node_name
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NewNodeName') is not None:
+            self.new_node_name = m.get('NewNodeName')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        return self
+
+
+class ModifyCloudPhoneNodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyCloudPhoneNodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyCloudPhoneNodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyCloudPhoneNodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyInstanceChargeTypeRequest(TeaModel):
     def __init__(
         self,
@@ -9710,6 +10491,125 @@ class RenewAndroidInstanceGroupsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RenewAndroidInstanceGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RenewCloudPhoneNodesRequest(TeaModel):
+    def __init__(
+        self,
+        auto_renew: bool = None,
+        node_ids: List[str] = None,
+        period: int = None,
+        period_unit: str = None,
+    ):
+        self.auto_renew = auto_renew
+        self.node_ids = node_ids
+        self.period = period
+        self.period_unit = period_unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.node_ids is not None:
+            result['NodeIds'] = self.node_ids
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('NodeIds') is not None:
+            self.node_ids = m.get('NodeIds')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        return self
+
+
+class RenewCloudPhoneNodesResponseBody(TeaModel):
+    def __init__(
+        self,
+        order_id: str = None,
+        request_id: str = None,
+    ):
+        self.order_id = order_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RenewCloudPhoneNodesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RenewCloudPhoneNodesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RenewCloudPhoneNodesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

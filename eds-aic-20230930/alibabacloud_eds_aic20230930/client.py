@@ -1046,6 +1046,182 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_app_with_options_async(request, runtime)
 
+    def create_cloud_phone_node_with_options(
+        self,
+        request: eds_aic_20230930_models.CreateCloudPhoneNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.CreateCloudPhoneNodeResponse:
+        """
+        @summary 创建云机节点
+        
+        @param request: CreateCloudPhoneNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudPhoneNodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.count):
+            query['Count'] = request.count
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.network_id):
+            query['NetworkId'] = request.network_id
+        if not UtilClient.is_unset(request.node_name):
+            query['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.phone_count):
+            query['PhoneCount'] = request.phone_count
+        if not UtilClient.is_unset(request.resolution_height):
+            query['ResolutionHeight'] = request.resolution_height
+        if not UtilClient.is_unset(request.resolution_width):
+            query['ResolutionWidth'] = request.resolution_width
+        if not UtilClient.is_unset(request.server_share_data_volume):
+            query['ServerShareDataVolume'] = request.server_share_data_volume
+        if not UtilClient.is_unset(request.server_type):
+            query['ServerType'] = request.server_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCloudPhoneNode',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.CreateCloudPhoneNodeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.CreateCloudPhoneNodeResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_cloud_phone_node_with_options_async(
+        self,
+        request: eds_aic_20230930_models.CreateCloudPhoneNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.CreateCloudPhoneNodeResponse:
+        """
+        @summary 创建云机节点
+        
+        @param request: CreateCloudPhoneNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudPhoneNodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.count):
+            query['Count'] = request.count
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.network_id):
+            query['NetworkId'] = request.network_id
+        if not UtilClient.is_unset(request.node_name):
+            query['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.phone_count):
+            query['PhoneCount'] = request.phone_count
+        if not UtilClient.is_unset(request.resolution_height):
+            query['ResolutionHeight'] = request.resolution_height
+        if not UtilClient.is_unset(request.resolution_width):
+            query['ResolutionWidth'] = request.resolution_width
+        if not UtilClient.is_unset(request.server_share_data_volume):
+            query['ServerShareDataVolume'] = request.server_share_data_volume
+        if not UtilClient.is_unset(request.server_type):
+            query['ServerType'] = request.server_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCloudPhoneNode',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.CreateCloudPhoneNodeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.CreateCloudPhoneNodeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_cloud_phone_node(
+        self,
+        request: eds_aic_20230930_models.CreateCloudPhoneNodeRequest,
+    ) -> eds_aic_20230930_models.CreateCloudPhoneNodeResponse:
+        """
+        @summary 创建云机节点
+        
+        @param request: CreateCloudPhoneNodeRequest
+        @return: CreateCloudPhoneNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_cloud_phone_node_with_options(request, runtime)
+
+    async def create_cloud_phone_node_async(
+        self,
+        request: eds_aic_20230930_models.CreateCloudPhoneNodeRequest,
+    ) -> eds_aic_20230930_models.CreateCloudPhoneNodeResponse:
+        """
+        @summary 创建云机节点
+        
+        @param request: CreateCloudPhoneNodeRequest
+        @return: CreateCloudPhoneNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_cloud_phone_node_with_options_async(request, runtime)
+
     def create_custom_image_with_options(
         self,
         request: eds_aic_20230930_models.CreateCustomImageRequest,
@@ -1785,6 +1961,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_apps_with_options_async(request, runtime)
+
+    def delete_cloud_phone_nodes_with_options(
+        self,
+        request: eds_aic_20230930_models.DeleteCloudPhoneNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DeleteCloudPhoneNodesResponse:
+        """
+        @summary 释放服务器
+        
+        @param request: DeleteCloudPhoneNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudPhoneNodesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.node_ids):
+            body['NodeIds'] = request.node_ids
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteCloudPhoneNodes',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.DeleteCloudPhoneNodesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.DeleteCloudPhoneNodesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_cloud_phone_nodes_with_options_async(
+        self,
+        request: eds_aic_20230930_models.DeleteCloudPhoneNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DeleteCloudPhoneNodesResponse:
+        """
+        @summary 释放服务器
+        
+        @param request: DeleteCloudPhoneNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudPhoneNodesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.node_ids):
+            body['NodeIds'] = request.node_ids
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteCloudPhoneNodes',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.DeleteCloudPhoneNodesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.DeleteCloudPhoneNodesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_cloud_phone_nodes(
+        self,
+        request: eds_aic_20230930_models.DeleteCloudPhoneNodesRequest,
+    ) -> eds_aic_20230930_models.DeleteCloudPhoneNodesResponse:
+        """
+        @summary 释放服务器
+        
+        @param request: DeleteCloudPhoneNodesRequest
+        @return: DeleteCloudPhoneNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_cloud_phone_nodes_with_options(request, runtime)
+
+    async def delete_cloud_phone_nodes_async(
+        self,
+        request: eds_aic_20230930_models.DeleteCloudPhoneNodesRequest,
+    ) -> eds_aic_20230930_models.DeleteCloudPhoneNodesResponse:
+        """
+        @summary 释放服务器
+        
+        @param request: DeleteCloudPhoneNodesRequest
+        @return: DeleteCloudPhoneNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_cloud_phone_nodes_with_options_async(request, runtime)
 
     def delete_images_with_options(
         self,
@@ -2745,6 +3029,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_files_with_options_async(request, runtime)
+
+    def describe_cloud_phone_nodes_with_options(
+        self,
+        request: eds_aic_20230930_models.DescribeCloudPhoneNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DescribeCloudPhoneNodesResponse:
+        """
+        @summary 查询云手机节点
+        
+        @param request: DescribeCloudPhoneNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudPhoneNodesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.node_ids):
+            query['NodeIds'] = request.node_ids
+        if not UtilClient.is_unset(request.node_name):
+            query['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.server_type):
+            query['ServerType'] = request.server_type
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudPhoneNodes',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.DescribeCloudPhoneNodesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.DescribeCloudPhoneNodesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_cloud_phone_nodes_with_options_async(
+        self,
+        request: eds_aic_20230930_models.DescribeCloudPhoneNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DescribeCloudPhoneNodesResponse:
+        """
+        @summary 查询云手机节点
+        
+        @param request: DescribeCloudPhoneNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudPhoneNodesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.node_ids):
+            query['NodeIds'] = request.node_ids
+        if not UtilClient.is_unset(request.node_name):
+            query['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.server_type):
+            query['ServerType'] = request.server_type
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudPhoneNodes',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.DescribeCloudPhoneNodesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.DescribeCloudPhoneNodesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_cloud_phone_nodes(
+        self,
+        request: eds_aic_20230930_models.DescribeCloudPhoneNodesRequest,
+    ) -> eds_aic_20230930_models.DescribeCloudPhoneNodesResponse:
+        """
+        @summary 查询云手机节点
+        
+        @param request: DescribeCloudPhoneNodesRequest
+        @return: DescribeCloudPhoneNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_phone_nodes_with_options(request, runtime)
+
+    async def describe_cloud_phone_nodes_async(
+        self,
+        request: eds_aic_20230930_models.DescribeCloudPhoneNodesRequest,
+    ) -> eds_aic_20230930_models.DescribeCloudPhoneNodesResponse:
+        """
+        @summary 查询云手机节点
+        
+        @param request: DescribeCloudPhoneNodesRequest
+        @return: DescribeCloudPhoneNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_phone_nodes_with_options_async(request, runtime)
 
     def describe_image_list_with_options(
         self,
@@ -5090,6 +5510,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_app_with_options_async(request, runtime)
 
+    def modify_cloud_phone_node_with_options(
+        self,
+        request: eds_aic_20230930_models.ModifyCloudPhoneNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.ModifyCloudPhoneNodeResponse:
+        """
+        @summary 修改云机节点信息
+        
+        @param request: ModifyCloudPhoneNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCloudPhoneNodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCloudPhoneNode',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.ModifyCloudPhoneNodeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.ModifyCloudPhoneNodeResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_cloud_phone_node_with_options_async(
+        self,
+        request: eds_aic_20230930_models.ModifyCloudPhoneNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.ModifyCloudPhoneNodeResponse:
+        """
+        @summary 修改云机节点信息
+        
+        @param request: ModifyCloudPhoneNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCloudPhoneNodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCloudPhoneNode',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.ModifyCloudPhoneNodeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.ModifyCloudPhoneNodeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_cloud_phone_node(
+        self,
+        request: eds_aic_20230930_models.ModifyCloudPhoneNodeRequest,
+    ) -> eds_aic_20230930_models.ModifyCloudPhoneNodeResponse:
+        """
+        @summary 修改云机节点信息
+        
+        @param request: ModifyCloudPhoneNodeRequest
+        @return: ModifyCloudPhoneNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_cloud_phone_node_with_options(request, runtime)
+
+    async def modify_cloud_phone_node_async(
+        self,
+        request: eds_aic_20230930_models.ModifyCloudPhoneNodeRequest,
+    ) -> eds_aic_20230930_models.ModifyCloudPhoneNodeResponse:
+        """
+        @summary 修改云机节点信息
+        
+        @param request: ModifyCloudPhoneNodeRequest
+        @return: ModifyCloudPhoneNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_cloud_phone_node_with_options_async(request, runtime)
+
     def modify_instance_charge_type_with_options(
         self,
         request: eds_aic_20230930_models.ModifyInstanceChargeTypeRequest,
@@ -5973,6 +6497,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.renew_android_instance_groups_with_options_async(request, runtime)
+
+    def renew_cloud_phone_nodes_with_options(
+        self,
+        request: eds_aic_20230930_models.RenewCloudPhoneNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.RenewCloudPhoneNodesResponse:
+        """
+        @summary 续费服务器
+        
+        @param request: RenewCloudPhoneNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewCloudPhoneNodesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            body['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.node_ids):
+            body['NodeIds'] = request.node_ids
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            body['PeriodUnit'] = request.period_unit
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RenewCloudPhoneNodes',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.RenewCloudPhoneNodesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.RenewCloudPhoneNodesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def renew_cloud_phone_nodes_with_options_async(
+        self,
+        request: eds_aic_20230930_models.RenewCloudPhoneNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.RenewCloudPhoneNodesResponse:
+        """
+        @summary 续费服务器
+        
+        @param request: RenewCloudPhoneNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewCloudPhoneNodesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            body['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.node_ids):
+            body['NodeIds'] = request.node_ids
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            body['PeriodUnit'] = request.period_unit
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RenewCloudPhoneNodes',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.RenewCloudPhoneNodesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.RenewCloudPhoneNodesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def renew_cloud_phone_nodes(
+        self,
+        request: eds_aic_20230930_models.RenewCloudPhoneNodesRequest,
+    ) -> eds_aic_20230930_models.RenewCloudPhoneNodesResponse:
+        """
+        @summary 续费服务器
+        
+        @param request: RenewCloudPhoneNodesRequest
+        @return: RenewCloudPhoneNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.renew_cloud_phone_nodes_with_options(request, runtime)
+
+    async def renew_cloud_phone_nodes_async(
+        self,
+        request: eds_aic_20230930_models.RenewCloudPhoneNodesRequest,
+    ) -> eds_aic_20230930_models.RenewCloudPhoneNodesResponse:
+        """
+        @summary 续费服务器
+        
+        @param request: RenewCloudPhoneNodesRequest
+        @return: RenewCloudPhoneNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.renew_cloud_phone_nodes_with_options_async(request, runtime)
 
     def reset_android_instances_in_group_with_options(
         self,
