@@ -1,3 +1,9 @@
+2025-03-31 Version: 2.2.1
+- Update API CreateDBResourceGroup: add request parameters RayConfig.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.RayConfig.
+- Update API ModifyDBResourceGroup: add request parameters RayConfig.
+
+
 2025-03-12 Version: 2.2.0
 - Support API UpgradeKernelVersion.
 - Update API CreateDBCluster: add param ProductVersion.

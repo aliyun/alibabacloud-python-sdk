@@ -6127,6 +6127,116 @@ class CreateDBClusterResponse(TeaModel):
         return self
 
 
+class CreateDBResourceGroupRequestRayConfigWorkerGroups(TeaModel):
+    def __init__(
+        self,
+        allocate_unit: str = None,
+        group_name: str = None,
+        max_worker_quantity: int = None,
+        min_worker_quantity: int = None,
+        worker_disk_capacity: str = None,
+        worker_spec_name: str = None,
+        worker_spec_type: str = None,
+    ):
+        self.allocate_unit = allocate_unit
+        self.group_name = group_name
+        self.max_worker_quantity = max_worker_quantity
+        self.min_worker_quantity = min_worker_quantity
+        self.worker_disk_capacity = worker_disk_capacity
+        self.worker_spec_name = worker_spec_name
+        self.worker_spec_type = worker_spec_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allocate_unit is not None:
+            result['AllocateUnit'] = self.allocate_unit
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.max_worker_quantity is not None:
+            result['MaxWorkerQuantity'] = self.max_worker_quantity
+        if self.min_worker_quantity is not None:
+            result['MinWorkerQuantity'] = self.min_worker_quantity
+        if self.worker_disk_capacity is not None:
+            result['WorkerDiskCapacity'] = self.worker_disk_capacity
+        if self.worker_spec_name is not None:
+            result['WorkerSpecName'] = self.worker_spec_name
+        if self.worker_spec_type is not None:
+            result['WorkerSpecType'] = self.worker_spec_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllocateUnit') is not None:
+            self.allocate_unit = m.get('AllocateUnit')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('MaxWorkerQuantity') is not None:
+            self.max_worker_quantity = m.get('MaxWorkerQuantity')
+        if m.get('MinWorkerQuantity') is not None:
+            self.min_worker_quantity = m.get('MinWorkerQuantity')
+        if m.get('WorkerDiskCapacity') is not None:
+            self.worker_disk_capacity = m.get('WorkerDiskCapacity')
+        if m.get('WorkerSpecName') is not None:
+            self.worker_spec_name = m.get('WorkerSpecName')
+        if m.get('WorkerSpecType') is not None:
+            self.worker_spec_type = m.get('WorkerSpecType')
+        return self
+
+
+class CreateDBResourceGroupRequestRayConfig(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        head_spec: str = None,
+        worker_groups: List[CreateDBResourceGroupRequestRayConfigWorkerGroups] = None,
+    ):
+        self.category = category
+        self.head_spec = head_spec
+        self.worker_groups = worker_groups
+
+    def validate(self):
+        if self.worker_groups:
+            for k in self.worker_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.head_spec is not None:
+            result['HeadSpec'] = self.head_spec
+        result['WorkerGroups'] = []
+        if self.worker_groups is not None:
+            for k in self.worker_groups:
+                result['WorkerGroups'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('HeadSpec') is not None:
+            self.head_spec = m.get('HeadSpec')
+        self.worker_groups = []
+        if m.get('WorkerGroups') is not None:
+            for k in m.get('WorkerGroups'):
+                temp_model = CreateDBResourceGroupRequestRayConfigWorkerGroups()
+                self.worker_groups.append(temp_model.from_map(k))
+        return self
+
+
 class CreateDBResourceGroupRequestRules(TeaModel):
     def __init__(
         self,
@@ -6191,6 +6301,7 @@ class CreateDBResourceGroupRequest(TeaModel):
         min_cluster_count: int = None,
         min_compute_resource: str = None,
         min_gpu_quantity: int = None,
+        ray_config: CreateDBResourceGroupRequestRayConfig = None,
         region_id: str = None,
         rules: List[CreateDBResourceGroupRequestRules] = None,
         spec_name: str = None,
@@ -6245,6 +6356,7 @@ class CreateDBResourceGroupRequest(TeaModel):
         # *   When GroupType is set to Job, set this parameter to 0ACU.
         self.min_compute_resource = min_compute_resource
         self.min_gpu_quantity = min_gpu_quantity
+        self.ray_config = ray_config
         # The region ID of the cluster.
         # 
         # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
@@ -6255,6 +6367,8 @@ class CreateDBResourceGroupRequest(TeaModel):
         self.target_resource_group_name = target_resource_group_name
 
     def validate(self):
+        if self.ray_config:
+            self.ray_config.validate()
         if self.rules:
             for k in self.rules:
                 if k:
@@ -6296,6 +6410,8 @@ class CreateDBResourceGroupRequest(TeaModel):
             result['MinComputeResource'] = self.min_compute_resource
         if self.min_gpu_quantity is not None:
             result['MinGpuQuantity'] = self.min_gpu_quantity
+        if self.ray_config is not None:
+            result['RayConfig'] = self.ray_config.to_map()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         result['Rules'] = []
@@ -6340,6 +6456,9 @@ class CreateDBResourceGroupRequest(TeaModel):
             self.min_compute_resource = m.get('MinComputeResource')
         if m.get('MinGpuQuantity') is not None:
             self.min_gpu_quantity = m.get('MinGpuQuantity')
+        if m.get('RayConfig') is not None:
+            temp_model = CreateDBResourceGroupRequestRayConfig()
+            self.ray_config = temp_model.from_map(m['RayConfig'])
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         self.rules = []
@@ -6372,6 +6491,7 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
         min_cluster_count: int = None,
         min_compute_resource: str = None,
         min_gpu_quantity: int = None,
+        ray_config_shrink: str = None,
         region_id: str = None,
         rules_shrink: str = None,
         spec_name: str = None,
@@ -6426,6 +6546,7 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
         # *   When GroupType is set to Job, set this parameter to 0ACU.
         self.min_compute_resource = min_compute_resource
         self.min_gpu_quantity = min_gpu_quantity
+        self.ray_config_shrink = ray_config_shrink
         # The region ID of the cluster.
         # 
         # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
@@ -6474,6 +6595,8 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
             result['MinComputeResource'] = self.min_compute_resource
         if self.min_gpu_quantity is not None:
             result['MinGpuQuantity'] = self.min_gpu_quantity
+        if self.ray_config_shrink is not None:
+            result['RayConfig'] = self.ray_config_shrink
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.rules_shrink is not None:
@@ -6516,6 +6639,8 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
             self.min_compute_resource = m.get('MinComputeResource')
         if m.get('MinGpuQuantity') is not None:
             self.min_gpu_quantity = m.get('MinGpuQuantity')
+        if m.get('RayConfig') is not None:
+            self.ray_config_shrink = m.get('RayConfig')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Rules') is not None:
@@ -15837,7 +15962,7 @@ class DescribeAvailableAdvicesResponseBodyItems(TeaModel):
         table_name: str = None,
         total_count: int = None,
     ):
-        # The date when the suggestion is generated.The date is in the yyyyMMdd format.
+        # The date when the suggestion is generated. The date is in the yyyyMMdd format.
         self.advice_date = advice_date
         # The suggestion ID.
         self.advice_id = advice_id
@@ -21750,6 +21875,134 @@ class DescribeDBResourceGroupRequest(TeaModel):
         return self
 
 
+class DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups(TeaModel):
+    def __init__(
+        self,
+        allocate_unit: str = None,
+        group_name: str = None,
+        max_worker_quantity: int = None,
+        min_worker_quantity: int = None,
+        worker_disk_capacity: str = None,
+        worker_spec_name: str = None,
+        worker_spec_type: str = None,
+    ):
+        self.allocate_unit = allocate_unit
+        self.group_name = group_name
+        self.max_worker_quantity = max_worker_quantity
+        self.min_worker_quantity = min_worker_quantity
+        self.worker_disk_capacity = worker_disk_capacity
+        self.worker_spec_name = worker_spec_name
+        self.worker_spec_type = worker_spec_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allocate_unit is not None:
+            result['AllocateUnit'] = self.allocate_unit
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.max_worker_quantity is not None:
+            result['MaxWorkerQuantity'] = self.max_worker_quantity
+        if self.min_worker_quantity is not None:
+            result['MinWorkerQuantity'] = self.min_worker_quantity
+        if self.worker_disk_capacity is not None:
+            result['WorkerDiskCapacity'] = self.worker_disk_capacity
+        if self.worker_spec_name is not None:
+            result['WorkerSpecName'] = self.worker_spec_name
+        if self.worker_spec_type is not None:
+            result['WorkerSpecType'] = self.worker_spec_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllocateUnit') is not None:
+            self.allocate_unit = m.get('AllocateUnit')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('MaxWorkerQuantity') is not None:
+            self.max_worker_quantity = m.get('MaxWorkerQuantity')
+        if m.get('MinWorkerQuantity') is not None:
+            self.min_worker_quantity = m.get('MinWorkerQuantity')
+        if m.get('WorkerDiskCapacity') is not None:
+            self.worker_disk_capacity = m.get('WorkerDiskCapacity')
+        if m.get('WorkerSpecName') is not None:
+            self.worker_spec_name = m.get('WorkerSpecName')
+        if m.get('WorkerSpecType') is not None:
+            self.worker_spec_type = m.get('WorkerSpecType')
+        return self
+
+
+class DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        head_spec: str = None,
+        ray_cluster_address: str = None,
+        ray_dashboard_address: str = None,
+        ray_grafana_address: str = None,
+        worker_groups: List[DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups] = None,
+    ):
+        self.category = category
+        self.head_spec = head_spec
+        self.ray_cluster_address = ray_cluster_address
+        self.ray_dashboard_address = ray_dashboard_address
+        self.ray_grafana_address = ray_grafana_address
+        self.worker_groups = worker_groups
+
+    def validate(self):
+        if self.worker_groups:
+            for k in self.worker_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.head_spec is not None:
+            result['HeadSpec'] = self.head_spec
+        if self.ray_cluster_address is not None:
+            result['RayClusterAddress'] = self.ray_cluster_address
+        if self.ray_dashboard_address is not None:
+            result['RayDashboardAddress'] = self.ray_dashboard_address
+        if self.ray_grafana_address is not None:
+            result['RayGrafanaAddress'] = self.ray_grafana_address
+        result['WorkerGroups'] = []
+        if self.worker_groups is not None:
+            for k in self.worker_groups:
+                result['WorkerGroups'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('HeadSpec') is not None:
+            self.head_spec = m.get('HeadSpec')
+        if m.get('RayClusterAddress') is not None:
+            self.ray_cluster_address = m.get('RayClusterAddress')
+        if m.get('RayDashboardAddress') is not None:
+            self.ray_dashboard_address = m.get('RayDashboardAddress')
+        if m.get('RayGrafanaAddress') is not None:
+            self.ray_grafana_address = m.get('RayGrafanaAddress')
+        self.worker_groups = []
+        if m.get('WorkerGroups') is not None:
+            for k in m.get('WorkerGroups'):
+                temp_model = DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups()
+                self.worker_groups.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeDBResourceGroupResponseBodyGroupsInfoRules(TeaModel):
     def __init__(
         self,
@@ -21813,6 +22066,7 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
         min_cluster_count: int = None,
         min_compute_resource: str = None,
         min_gpu_quantity: int = None,
+        ray_config: DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig = None,
         rules: List[DescribeDBResourceGroupResponseBodyGroupsInfoRules] = None,
         running_cluster_count: int = None,
         spec_name: str = None,
@@ -21861,6 +22115,7 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
         # The minimum amount of reserved computing resources.
         self.min_compute_resource = min_compute_resource
         self.min_gpu_quantity = min_gpu_quantity
+        self.ray_config = ray_config
         # The job resubmission rules.
         self.rules = rules
         # A reserved parameter.
@@ -21877,6 +22132,8 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
         self.update_time = update_time
 
     def validate(self):
+        if self.ray_config:
+            self.ray_config.validate()
         if self.rules:
             for k in self.rules:
                 if k:
@@ -21924,6 +22181,8 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
             result['MinComputeResource'] = self.min_compute_resource
         if self.min_gpu_quantity is not None:
             result['MinGpuQuantity'] = self.min_gpu_quantity
+        if self.ray_config is not None:
+            result['RayConfig'] = self.ray_config.to_map()
         result['Rules'] = []
         if self.rules is not None:
             for k in self.rules:
@@ -21978,6 +22237,9 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
             self.min_compute_resource = m.get('MinComputeResource')
         if m.get('MinGpuQuantity') is not None:
             self.min_gpu_quantity = m.get('MinGpuQuantity')
+        if m.get('RayConfig') is not None:
+            temp_model = DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig()
+            self.ray_config = temp_model.from_map(m['RayConfig'])
         self.rules = []
         if m.get('Rules') is not None:
             for k in m.get('Rules'):
@@ -46013,6 +46275,116 @@ class ModifyDBClusterVipResponse(TeaModel):
         return self
 
 
+class ModifyDBResourceGroupRequestRayConfigWorkerGroups(TeaModel):
+    def __init__(
+        self,
+        allocate_unit: str = None,
+        group_name: str = None,
+        max_worker_quantity: int = None,
+        min_worker_quantity: int = None,
+        worker_disk_capacity: str = None,
+        worker_spec_name: str = None,
+        worker_spec_type: str = None,
+    ):
+        self.allocate_unit = allocate_unit
+        self.group_name = group_name
+        self.max_worker_quantity = max_worker_quantity
+        self.min_worker_quantity = min_worker_quantity
+        self.worker_disk_capacity = worker_disk_capacity
+        self.worker_spec_name = worker_spec_name
+        self.worker_spec_type = worker_spec_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allocate_unit is not None:
+            result['AllocateUnit'] = self.allocate_unit
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.max_worker_quantity is not None:
+            result['MaxWorkerQuantity'] = self.max_worker_quantity
+        if self.min_worker_quantity is not None:
+            result['MinWorkerQuantity'] = self.min_worker_quantity
+        if self.worker_disk_capacity is not None:
+            result['WorkerDiskCapacity'] = self.worker_disk_capacity
+        if self.worker_spec_name is not None:
+            result['WorkerSpecName'] = self.worker_spec_name
+        if self.worker_spec_type is not None:
+            result['WorkerSpecType'] = self.worker_spec_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllocateUnit') is not None:
+            self.allocate_unit = m.get('AllocateUnit')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('MaxWorkerQuantity') is not None:
+            self.max_worker_quantity = m.get('MaxWorkerQuantity')
+        if m.get('MinWorkerQuantity') is not None:
+            self.min_worker_quantity = m.get('MinWorkerQuantity')
+        if m.get('WorkerDiskCapacity') is not None:
+            self.worker_disk_capacity = m.get('WorkerDiskCapacity')
+        if m.get('WorkerSpecName') is not None:
+            self.worker_spec_name = m.get('WorkerSpecName')
+        if m.get('WorkerSpecType') is not None:
+            self.worker_spec_type = m.get('WorkerSpecType')
+        return self
+
+
+class ModifyDBResourceGroupRequestRayConfig(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        head_spec: str = None,
+        worker_groups: List[ModifyDBResourceGroupRequestRayConfigWorkerGroups] = None,
+    ):
+        self.category = category
+        self.head_spec = head_spec
+        self.worker_groups = worker_groups
+
+    def validate(self):
+        if self.worker_groups:
+            for k in self.worker_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.head_spec is not None:
+            result['HeadSpec'] = self.head_spec
+        result['WorkerGroups'] = []
+        if self.worker_groups is not None:
+            for k in self.worker_groups:
+                result['WorkerGroups'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('HeadSpec') is not None:
+            self.head_spec = m.get('HeadSpec')
+        self.worker_groups = []
+        if m.get('WorkerGroups') is not None:
+            for k in m.get('WorkerGroups'):
+                temp_model = ModifyDBResourceGroupRequestRayConfigWorkerGroups()
+                self.worker_groups.append(temp_model.from_map(k))
+        return self
+
+
 class ModifyDBResourceGroupRequestRules(TeaModel):
     def __init__(
         self,
@@ -46072,6 +46444,7 @@ class ModifyDBResourceGroupRequest(TeaModel):
         min_cluster_count: int = None,
         min_compute_resource: str = None,
         min_gpu_quantity: int = None,
+        ray_config: ModifyDBResourceGroupRequestRayConfig = None,
         region_id: str = None,
         rules: List[ModifyDBResourceGroupRequestRules] = None,
         spec_name: str = None,
@@ -46124,6 +46497,7 @@ class ModifyDBResourceGroupRequest(TeaModel):
         # *   If GroupType is set to Job, set the value to 0ACU.
         self.min_compute_resource = min_compute_resource
         self.min_gpu_quantity = min_gpu_quantity
+        self.ray_config = ray_config
         # The region ID of the cluster.
         # 
         # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
@@ -46135,6 +46509,8 @@ class ModifyDBResourceGroupRequest(TeaModel):
         self.target_resource_group_name = target_resource_group_name
 
     def validate(self):
+        if self.ray_config:
+            self.ray_config.validate()
         if self.rules:
             for k in self.rules:
                 if k:
@@ -46174,6 +46550,8 @@ class ModifyDBResourceGroupRequest(TeaModel):
             result['MinComputeResource'] = self.min_compute_resource
         if self.min_gpu_quantity is not None:
             result['MinGpuQuantity'] = self.min_gpu_quantity
+        if self.ray_config is not None:
+            result['RayConfig'] = self.ray_config.to_map()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         result['Rules'] = []
@@ -46218,6 +46596,9 @@ class ModifyDBResourceGroupRequest(TeaModel):
             self.min_compute_resource = m.get('MinComputeResource')
         if m.get('MinGpuQuantity') is not None:
             self.min_gpu_quantity = m.get('MinGpuQuantity')
+        if m.get('RayConfig') is not None:
+            temp_model = ModifyDBResourceGroupRequestRayConfig()
+            self.ray_config = temp_model.from_map(m['RayConfig'])
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         self.rules = []
@@ -46251,6 +46632,7 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
         min_cluster_count: int = None,
         min_compute_resource: str = None,
         min_gpu_quantity: int = None,
+        ray_config_shrink: str = None,
         region_id: str = None,
         rules_shrink: str = None,
         spec_name: str = None,
@@ -46303,6 +46685,7 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
         # *   If GroupType is set to Job, set the value to 0ACU.
         self.min_compute_resource = min_compute_resource
         self.min_gpu_quantity = min_gpu_quantity
+        self.ray_config_shrink = ray_config_shrink
         # The region ID of the cluster.
         # 
         # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
@@ -46350,6 +46733,8 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
             result['MinComputeResource'] = self.min_compute_resource
         if self.min_gpu_quantity is not None:
             result['MinGpuQuantity'] = self.min_gpu_quantity
+        if self.ray_config_shrink is not None:
+            result['RayConfig'] = self.ray_config_shrink
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.rules_shrink is not None:
@@ -46392,6 +46777,8 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
             self.min_compute_resource = m.get('MinComputeResource')
         if m.get('MinGpuQuantity') is not None:
             self.min_gpu_quantity = m.get('MinGpuQuantity')
+        if m.get('RayConfig') is not None:
+            self.ray_config_shrink = m.get('RayConfig')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Rules') is not None:

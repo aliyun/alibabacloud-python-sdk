@@ -2562,6 +2562,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.engine_params):
             request.engine_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.engine_params, 'EngineParams', 'json')
+        if not UtilClient.is_unset(tmp_req.ray_config):
+            request.ray_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ray_config, 'RayConfig', 'json')
         if not UtilClient.is_unset(tmp_req.rules):
             request.rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
         query = {}
@@ -2595,6 +2597,8 @@ class Client(OpenApiClient):
             query['MinComputeResource'] = request.min_compute_resource
         if not UtilClient.is_unset(request.min_gpu_quantity):
             query['MinGpuQuantity'] = request.min_gpu_quantity
+        if not UtilClient.is_unset(request.ray_config_shrink):
+            query['RayConfig'] = request.ray_config_shrink
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.rules_shrink):
@@ -2647,6 +2651,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.engine_params):
             request.engine_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.engine_params, 'EngineParams', 'json')
+        if not UtilClient.is_unset(tmp_req.ray_config):
+            request.ray_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ray_config, 'RayConfig', 'json')
         if not UtilClient.is_unset(tmp_req.rules):
             request.rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
         query = {}
@@ -2680,6 +2686,8 @@ class Client(OpenApiClient):
             query['MinComputeResource'] = request.min_compute_resource
         if not UtilClient.is_unset(request.min_gpu_quantity):
             query['MinGpuQuantity'] = request.min_gpu_quantity
+        if not UtilClient.is_unset(request.ray_config_shrink):
+            query['RayConfig'] = request.ray_config_shrink
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.rules_shrink):
@@ -24458,6 +24466,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.engine_params):
             request.engine_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.engine_params, 'EngineParams', 'json')
+        if not UtilClient.is_unset(tmp_req.ray_config):
+            request.ray_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ray_config, 'RayConfig', 'json')
         if not UtilClient.is_unset(tmp_req.rules):
             request.rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
         query = {}
@@ -24489,6 +24499,8 @@ class Client(OpenApiClient):
             query['MinComputeResource'] = request.min_compute_resource
         if not UtilClient.is_unset(request.min_gpu_quantity):
             query['MinGpuQuantity'] = request.min_gpu_quantity
+        if not UtilClient.is_unset(request.ray_config_shrink):
+            query['RayConfig'] = request.ray_config_shrink
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.rules_shrink):
@@ -24543,6 +24555,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.engine_params):
             request.engine_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.engine_params, 'EngineParams', 'json')
+        if not UtilClient.is_unset(tmp_req.ray_config):
+            request.ray_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ray_config, 'RayConfig', 'json')
         if not UtilClient.is_unset(tmp_req.rules):
             request.rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
         query = {}
@@ -24574,6 +24588,8 @@ class Client(OpenApiClient):
             query['MinComputeResource'] = request.min_compute_resource
         if not UtilClient.is_unset(request.min_gpu_quantity):
             query['MinGpuQuantity'] = request.min_gpu_quantity
+        if not UtilClient.is_unset(request.ray_config_shrink):
+            query['RayConfig'] = request.ray_config_shrink
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.rules_shrink):
