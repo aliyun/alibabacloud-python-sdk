@@ -8134,20 +8134,26 @@ class ListFunctionVersionsResponse(TeaModel):
 class ListFunctionsRequest(TeaModel):
     def __init__(
         self,
+        description: str = None,
         fc_version: str = None,
+        gpu_type: str = None,
         limit: int = None,
         next_token: str = None,
         prefix: str = None,
+        runtime: str = None,
         tags: List[Tag] = None,
     ):
+        self.description = description
         # The version of Function Compute to which the functions belong. Valid values: v3 and v2. v3: only lists functions of Function Compute 3.0. v2: only lists functions of Function Compute 2.0. By default, this parameter is left empty and functions in both Function Compute 3.0 and Function Compute 2.0 are listed.
         self.fc_version = fc_version
+        self.gpu_type = gpu_type
         # The number of functions to return. The minimum value is 1 and the maximum value is 100.
         self.limit = limit
         # The pagination token.
         self.next_token = next_token
         # The prefix of the function name.
         self.prefix = prefix
+        self.runtime = runtime
         self.tags = tags
 
     def validate(self):
@@ -8162,14 +8168,20 @@ class ListFunctionsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.description is not None:
+            result['description'] = self.description
         if self.fc_version is not None:
             result['fcVersion'] = self.fc_version
+        if self.gpu_type is not None:
+            result['gpuType'] = self.gpu_type
         if self.limit is not None:
             result['limit'] = self.limit
         if self.next_token is not None:
             result['nextToken'] = self.next_token
         if self.prefix is not None:
             result['prefix'] = self.prefix
+        if self.runtime is not None:
+            result['runtime'] = self.runtime
         result['tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -8178,14 +8190,20 @@ class ListFunctionsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
         if m.get('fcVersion') is not None:
             self.fc_version = m.get('fcVersion')
+        if m.get('gpuType') is not None:
+            self.gpu_type = m.get('gpuType')
         if m.get('limit') is not None:
             self.limit = m.get('limit')
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
         if m.get('prefix') is not None:
             self.prefix = m.get('prefix')
+        if m.get('runtime') is not None:
+            self.runtime = m.get('runtime')
         self.tags = []
         if m.get('tags') is not None:
             for k in m.get('tags'):
@@ -8197,20 +8215,26 @@ class ListFunctionsRequest(TeaModel):
 class ListFunctionsShrinkRequest(TeaModel):
     def __init__(
         self,
+        description: str = None,
         fc_version: str = None,
+        gpu_type: str = None,
         limit: int = None,
         next_token: str = None,
         prefix: str = None,
+        runtime: str = None,
         tags_shrink: str = None,
     ):
+        self.description = description
         # The version of Function Compute to which the functions belong. Valid values: v3 and v2. v3: only lists functions of Function Compute 3.0. v2: only lists functions of Function Compute 2.0. By default, this parameter is left empty and functions in both Function Compute 3.0 and Function Compute 2.0 are listed.
         self.fc_version = fc_version
+        self.gpu_type = gpu_type
         # The number of functions to return. The minimum value is 1 and the maximum value is 100.
         self.limit = limit
         # The pagination token.
         self.next_token = next_token
         # The prefix of the function name.
         self.prefix = prefix
+        self.runtime = runtime
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -8222,28 +8246,40 @@ class ListFunctionsShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.description is not None:
+            result['description'] = self.description
         if self.fc_version is not None:
             result['fcVersion'] = self.fc_version
+        if self.gpu_type is not None:
+            result['gpuType'] = self.gpu_type
         if self.limit is not None:
             result['limit'] = self.limit
         if self.next_token is not None:
             result['nextToken'] = self.next_token
         if self.prefix is not None:
             result['prefix'] = self.prefix
+        if self.runtime is not None:
+            result['runtime'] = self.runtime
         if self.tags_shrink is not None:
             result['tags'] = self.tags_shrink
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
         if m.get('fcVersion') is not None:
             self.fc_version = m.get('fcVersion')
+        if m.get('gpuType') is not None:
+            self.gpu_type = m.get('gpuType')
         if m.get('limit') is not None:
             self.limit = m.get('limit')
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
         if m.get('prefix') is not None:
             self.prefix = m.get('prefix')
+        if m.get('runtime') is not None:
+            self.runtime = m.get('runtime')
         if m.get('tags') is not None:
             self.tags_shrink = m.get('tags')
         return self

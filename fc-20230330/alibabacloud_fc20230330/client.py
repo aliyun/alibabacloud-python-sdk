@@ -3983,14 +3983,20 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.description):
+            query['description'] = request.description
         if not UtilClient.is_unset(request.fc_version):
             query['fcVersion'] = request.fc_version
+        if not UtilClient.is_unset(request.gpu_type):
+            query['gpuType'] = request.gpu_type
         if not UtilClient.is_unset(request.limit):
             query['limit'] = request.limit
         if not UtilClient.is_unset(request.next_token):
             query['nextToken'] = request.next_token
         if not UtilClient.is_unset(request.prefix):
             query['prefix'] = request.prefix
+        if not UtilClient.is_unset(request.runtime):
+            query['runtime'] = request.runtime
         if not UtilClient.is_unset(request.tags_shrink):
             query['tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
@@ -4039,14 +4045,20 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.description):
+            query['description'] = request.description
         if not UtilClient.is_unset(request.fc_version):
             query['fcVersion'] = request.fc_version
+        if not UtilClient.is_unset(request.gpu_type):
+            query['gpuType'] = request.gpu_type
         if not UtilClient.is_unset(request.limit):
             query['limit'] = request.limit
         if not UtilClient.is_unset(request.next_token):
             query['nextToken'] = request.next_token
         if not UtilClient.is_unset(request.prefix):
             query['prefix'] = request.prefix
+        if not UtilClient.is_unset(request.runtime):
+            query['runtime'] = request.runtime
         if not UtilClient.is_unset(request.tags_shrink):
             query['tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(

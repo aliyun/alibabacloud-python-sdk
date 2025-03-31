@@ -1,3 +1,9 @@
+2025-03-31 Version: 4.1.9
+- Update API ListFunctions: add request parameters description.
+- Update API ListFunctions: add request parameters gpuType.
+- Update API ListFunctions: add request parameters runtime.
+
+
 2025-03-19 Version: 4.1.8
 - Update API ListFunctions: add param tags.
 
