@@ -1,3 +1,6 @@
+2025-03-31 Version: 1.11.2
+- Generated python 2024-06-28 for DianJin.
+
 2025-03-28 Version: 1.11.1
 - Update API RealTimeDialog: add request parameters body.opType.
 
