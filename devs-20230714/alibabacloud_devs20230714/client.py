@@ -915,6 +915,124 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_project_with_options_async(name, request, headers, runtime)
 
+    def deploy_environment_with_options(
+        self,
+        project_name: str,
+        name: str,
+        request: devs_20230714_models.DeployEnvironmentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.DeployEnvironmentResponse:
+        """
+        @summary 手动触发环境部署
+        
+        @param request: DeployEnvironmentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeployEnvironmentResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='DeployEnvironment',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/projects/{OpenApiUtilClient.get_encode_param(project_name)}/environments/{OpenApiUtilClient.get_encode_param(name)}/deploy',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.DeployEnvironmentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.DeployEnvironmentResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def deploy_environment_with_options_async(
+        self,
+        project_name: str,
+        name: str,
+        request: devs_20230714_models.DeployEnvironmentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.DeployEnvironmentResponse:
+        """
+        @summary 手动触发环境部署
+        
+        @param request: DeployEnvironmentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeployEnvironmentResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='DeployEnvironment',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/projects/{OpenApiUtilClient.get_encode_param(project_name)}/environments/{OpenApiUtilClient.get_encode_param(name)}/deploy',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.DeployEnvironmentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.DeployEnvironmentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def deploy_environment(
+        self,
+        project_name: str,
+        name: str,
+        request: devs_20230714_models.DeployEnvironmentRequest,
+    ) -> devs_20230714_models.DeployEnvironmentResponse:
+        """
+        @summary 手动触发环境部署
+        
+        @param request: DeployEnvironmentRequest
+        @return: DeployEnvironmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.deploy_environment_with_options(project_name, name, request, headers, runtime)
+
+    async def deploy_environment_async(
+        self,
+        project_name: str,
+        name: str,
+        request: devs_20230714_models.DeployEnvironmentRequest,
+    ) -> devs_20230714_models.DeployEnvironmentResponse:
+        """
+        @summary 手动触发环境部署
+        
+        @param request: DeployEnvironmentRequest
+        @return: DeployEnvironmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.deploy_environment_with_options_async(project_name, name, request, headers, runtime)
+
     def get_environment_with_options(
         self,
         project_name: str,
@@ -1020,6 +1138,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_environment_with_options_async(project_name, name, headers, runtime)
+
+    def get_environment_deployment_with_options(
+        self,
+        name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.GetEnvironmentDeploymentResponse:
+        """
+        @summary 查询环境部署信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEnvironmentDeploymentResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetEnvironmentDeployment',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/environmentdeployments/{OpenApiUtilClient.get_encode_param(name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.GetEnvironmentDeploymentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.GetEnvironmentDeploymentResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_environment_deployment_with_options_async(
+        self,
+        name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.GetEnvironmentDeploymentResponse:
+        """
+        @summary 查询环境部署信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEnvironmentDeploymentResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetEnvironmentDeployment',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/environmentdeployments/{OpenApiUtilClient.get_encode_param(name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.GetEnvironmentDeploymentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.GetEnvironmentDeploymentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_environment_deployment(
+        self,
+        name: str,
+    ) -> devs_20230714_models.GetEnvironmentDeploymentResponse:
+        """
+        @summary 查询环境部署信息
+        
+        @return: GetEnvironmentDeploymentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_environment_deployment_with_options(name, headers, runtime)
+
+    async def get_environment_deployment_async(
+        self,
+        name: str,
+    ) -> devs_20230714_models.GetEnvironmentDeploymentResponse:
+        """
+        @summary 查询环境部署信息
+        
+        @return: GetEnvironmentDeploymentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_environment_deployment_with_options_async(name, headers, runtime)
 
     def get_pipeline_with_options(
         self,

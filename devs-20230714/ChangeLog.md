@@ -1,3 +1,8 @@
+2025-03-31 Version: 2.1.0
+- Support API DeployEnvironment.
+- Support API GetEnvironmentDeployment.
+
+
 2025-03-28 Version: 2.0.0
 - Delete API ActivateConnection.
 - Delete API CreateConnection.
