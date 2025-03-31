@@ -20176,7 +20176,7 @@ class DeleteWafRulesetRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) interface.
+        # ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) interface.
         # 
         # This parameter is required.
         self.id = id
@@ -25423,6 +25423,108 @@ class GetCompressionRuleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetCompressionRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetCrossBorderOptimizationRequest(TeaModel):
+    def __init__(
+        self,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class GetCrossBorderOptimizationResponseBody(TeaModel):
+    def __init__(
+        self,
+        enable: str = None,
+        request_id: str = None,
+    ):
+        self.enable = enable
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetCrossBorderOptimizationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCrossBorderOptimizationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCrossBorderOptimizationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -49515,9 +49617,9 @@ class ListSitesRequestTagFilter(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # Tag key, used as a filter condition for the query.
+        # The tag key. This parameter specifies a filter condition for the query.
         self.key = key
-        # Tag value, used as a filter condition for the query.
+        # The tag value. This parameter specifies a filter condition for the query.
         self.value = value
 
     def validate(self):
@@ -49560,46 +49662,48 @@ class ListSitesRequest(TeaModel):
         status: str = None,
         tag_filter: List[ListSitesRequestTagFilter] = None,
     ):
-        # Access type. Values:
+        # The DNS setup. Valid values:
         # 
-        # - **NS**: Access through NS hosting.
-        # - **CNAME**: Access through CNAME.
+        # *   **NS**\
+        # *   **CNAME**\
         self.access_type = access_type
-        # Acceleration region. Values:
-        # - **domestic**: China mainland only.
-        # - **global**: Global.
-        # - **overseas**: Global (excluding China mainland).
-        self.coverage = coverage
-        # Enterprise edition only. When set to **true**, it indicates that only enterprise edition sites are queried.
-        self.only_enterprise = only_enterprise
-        # Sorting field, default sorted by creation time, supports:
-        # - gmtCreate: Site creation time
-        # - visitTime: Site access time
-        self.order_by = order_by
-        # Page number. Default value: **1**.
-        self.page_number = page_number
-        # Page size. Default value: **500**.
-        self.page_size = page_size
-        # Plan subscription type. Values:
-        # - **basicplan**: Basic plan.
-        # - **standardplan**: Standard plan.
-        # - **advancedplan**: Advanced plan.
-        # - **enterpriseplan**: Enterprise plan.
-        self.plan_subscribe_type = plan_subscribe_type
-        # Resource group ID. Used as a filter condition for the query.
-        self.resource_group_id = resource_group_id
-        # Site name. Used as a filter condition for the query.
-        self.site_name = site_name
-        # Search match pattern for the site name. The default is exact match, with values:
+        # The service location. Valid values:
         # 
-        # - **prefix**: Prefix match.
-        # - **suffix**: Suffix match.
-        # - **exact**: Exact match.
-        # - **fuzzy**: Fuzzy match.
+        # *   **domestic**: the Chinese mainland
+        # *   **global**: global
+        # *   **overseas**: outside the Chinese mainland
+        self.coverage = coverage
+        # Specifies whether to query only websites on Enterprise plans. Valid values: **true and false**.
+        self.only_enterprise = only_enterprise
+        # Sorting field. By default, it sorts by creation time, supporting the following options:
+        # - gmtCreate: website creation time
+        # - visitTime：website visit time
+        self.order_by = order_by
+        # The page number. Default value: **1**.
+        self.page_number = page_number
+        # The number of entries per page. Default value: **500**.
+        self.page_size = page_size
+        # The plan type. Valid values:
+        # 
+        # *   **basicplan**: Entrance
+        # *   **standardplan**: Pro
+        # *   **advancedplan**: Premium
+        # *   **enterpriseplan**: Enterprise
+        self.plan_subscribe_type = plan_subscribe_type
+        # The ID of the resource group. This parameter specifies a filter condition for the query.
+        self.resource_group_id = resource_group_id
+        # The website name. This parameter specifies a filter condition for the query.
+        self.site_name = site_name
+        # The match mode to search for the website name. Default value: exact. Valid values:
+        # 
+        # *   **prefix**: match by prefix.
+        # *   **suffix**: match by suffix.
+        # *   **exact**: exact match.
+        # *   **fuzzy**: fuzzy match.
         self.site_search_type = site_search_type
-        # Site status. Used as a filter condition for the query.
+        # The website status. This parameter specifies a filter condition for the query.
         self.status = status
-        # Tag filtering rules.
+        # The tag filtering rule.
         self.tag_filter = tag_filter
 
     def validate(self):
@@ -49690,46 +49794,48 @@ class ListSitesShrinkRequest(TeaModel):
         status: str = None,
         tag_filter_shrink: str = None,
     ):
-        # Access type. Values:
+        # The DNS setup. Valid values:
         # 
-        # - **NS**: Access through NS hosting.
-        # - **CNAME**: Access through CNAME.
+        # *   **NS**\
+        # *   **CNAME**\
         self.access_type = access_type
-        # Acceleration region. Values:
-        # - **domestic**: China mainland only.
-        # - **global**: Global.
-        # - **overseas**: Global (excluding China mainland).
-        self.coverage = coverage
-        # Enterprise edition only. When set to **true**, it indicates that only enterprise edition sites are queried.
-        self.only_enterprise = only_enterprise
-        # Sorting field, default sorted by creation time, supports:
-        # - gmtCreate: Site creation time
-        # - visitTime: Site access time
-        self.order_by = order_by
-        # Page number. Default value: **1**.
-        self.page_number = page_number
-        # Page size. Default value: **500**.
-        self.page_size = page_size
-        # Plan subscription type. Values:
-        # - **basicplan**: Basic plan.
-        # - **standardplan**: Standard plan.
-        # - **advancedplan**: Advanced plan.
-        # - **enterpriseplan**: Enterprise plan.
-        self.plan_subscribe_type = plan_subscribe_type
-        # Resource group ID. Used as a filter condition for the query.
-        self.resource_group_id = resource_group_id
-        # Site name. Used as a filter condition for the query.
-        self.site_name = site_name
-        # Search match pattern for the site name. The default is exact match, with values:
+        # The service location. Valid values:
         # 
-        # - **prefix**: Prefix match.
-        # - **suffix**: Suffix match.
-        # - **exact**: Exact match.
-        # - **fuzzy**: Fuzzy match.
+        # *   **domestic**: the Chinese mainland
+        # *   **global**: global
+        # *   **overseas**: outside the Chinese mainland
+        self.coverage = coverage
+        # Specifies whether to query only websites on Enterprise plans. Valid values: **true and false**.
+        self.only_enterprise = only_enterprise
+        # Sorting field. By default, it sorts by creation time, supporting the following options:
+        # - gmtCreate: website creation time
+        # - visitTime：website visit time
+        self.order_by = order_by
+        # The page number. Default value: **1**.
+        self.page_number = page_number
+        # The number of entries per page. Default value: **500**.
+        self.page_size = page_size
+        # The plan type. Valid values:
+        # 
+        # *   **basicplan**: Entrance
+        # *   **standardplan**: Pro
+        # *   **advancedplan**: Premium
+        # *   **enterpriseplan**: Enterprise
+        self.plan_subscribe_type = plan_subscribe_type
+        # The ID of the resource group. This parameter specifies a filter condition for the query.
+        self.resource_group_id = resource_group_id
+        # The website name. This parameter specifies a filter condition for the query.
+        self.site_name = site_name
+        # The match mode to search for the website name. Default value: exact. Valid values:
+        # 
+        # *   **prefix**: match by prefix.
+        # *   **suffix**: match by suffix.
+        # *   **exact**: exact match.
+        # *   **fuzzy**: fuzzy match.
         self.site_search_type = site_search_type
-        # Site status. Used as a filter condition for the query.
+        # The website status. This parameter specifies a filter condition for the query.
         self.status = status
-        # Tag filtering rules.
+        # The tag filtering rule.
         self.tag_filter_shrink = tag_filter_shrink
 
     def validate(self):
@@ -49817,49 +49923,50 @@ class ListSitesResponseBodySites(TeaModel):
         verify_code: str = None,
         visit_time: str = None,
     ):
-        # Site access type. Values:
+        # The DNS setup for the website. Valid values:
         # 
-        # - **NS**: Access through NS.
-        # - **CNAME**: Access through CNAME.
+        # *   **NS**\
+        # *   **CNAME**\
         self.access_type = access_type
-        # CNAME suffix of the site. For sites accessed via CNAME, this is the CNAME suffix that needs to be configured.
+        # The CNAME of the website domain. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured then.
         self.cname_zone = cname_zone
-        # Site acceleration region. Values:
+        # The service location for the website. Valid values:
         # 
-        # - **domestic**: China mainland only.
-        # - **global**: Global.
-        # - **overseas**: Global (excluding China mainland).
+        # *   **domestic**: the Chinese mainland
+        # *   **global**: global
+        # *   **overseas**: outside the Chinese mainland
         self.coverage = coverage
-        # Site creation time, in ISO8601 format and using UTC time, formatted as yyyy-MM-ddTHH:mm:ssZ.
+        # The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The ID of the plan instance bound to the site.
+        # The ID of the plan associated with the website.
         self.instance_id = instance_id
-        # The list of NS (Name Servers) assigned to the site. Separated by commas (,).
+        # The nameservers assigned to the website domain, which are separated by commas (,).
         self.name_server_list = name_server_list
         self.offline_reason = offline_reason
-        # The name of the plan.
+        # The plan name.
         self.plan_name = plan_name
-        # The specification name of the site\\"s plan.
+        # The plan associated with the website.
         self.plan_spec_name = plan_spec_name
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The site ID.
+        # The website ID.
         self.site_id = site_id
-        # The name of the site.
+        # The website name.
         self.site_name = site_name
-        # The status of the site. Possible values:
-        # - **pending**: The site is pending configuration.
-        # - **active**: The site is active.
-        # - **offline**: The site is offline.
-        # - **moved**: The site has been replaced.
+        # The website status. Valid values:
+        # 
+        # *   **pending**: The website is to be configured.
+        # *   **active**: The website is active.
+        # *   **offline**: The website is suspended.
+        # *   **moved**: The website has been added and verified by another Alibaba Cloud account.
         self.status = status
-        # The tags of the site.
+        # The tags of the website.
         self.tags = tags
-        # The update time of the site, represented in ISO8601 format and using UTC, formatted as yyyy-MM-ddTHH:mm:ssZ.
+        # The time when the website was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
-        # The verification code for site ownership. When the site is accessed via CNAME, this TXT verification code needs to be configured.
+        # The code that is used to verify the website domain ownership. As part of the verification TXT record, this parameter is returned for websites that use CNAME setup.
         self.verify_code = verify_code
-        # The visit time of the site, formatted according to ISO8601 and using UTC, in the format yyyy-MM-ddTHH:mm:ssZ.
+        # The website visit time is represented in the ISO 8601 date format using UTC time, formatted as yyyy-MM-ddTHH:mm:ssZ.
         self.visit_time = visit_time
 
     def validate(self):
@@ -49955,15 +50062,15 @@ class ListSitesResponseBody(TeaModel):
         sites: List[ListSitesResponseBodySites] = None,
         total_count: int = None,
     ):
-        # Page number of the returned data.
+        # The page number.
         self.page_number = page_number
-        # Number of sites per page.
+        # The number of websites per page.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # List of queried site information.
+        # The queried websites.
         self.sites = sites
-        # Total number of sites.
+        # The total number of websites.
         self.total_count = total_count
 
     def validate(self):
@@ -56871,7 +56978,7 @@ class SetOriginClientCertificateHostnamesResponseBody(TeaModel):
         hostnames: List[str] = None,
         id: str = None,
         request_id: str = None,
-        site_id: str = None,
+        site_id: int = None,
         site_name: str = None,
     ):
         # The domain name.
@@ -58259,6 +58366,109 @@ class UpdateCompressionRuleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateCompressionRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCrossBorderOptimizationRequest(TeaModel):
+    def __init__(
+        self,
+        enable: str = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.enable = enable
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class UpdateCrossBorderOptimizationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateCrossBorderOptimizationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCrossBorderOptimizationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCrossBorderOptimizationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -15635,6 +15635,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_compression_rule_with_options_async(request, runtime)
 
+    def get_cross_border_optimization_with_options(
+        self,
+        request: esa20240910_models.GetCrossBorderOptimizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetCrossBorderOptimizationResponse:
+        """
+        @summary 查询站点中国大陆网络接入优化配置
+        
+        @param request: GetCrossBorderOptimizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCrossBorderOptimizationResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCrossBorderOptimization',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetCrossBorderOptimizationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetCrossBorderOptimizationResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_cross_border_optimization_with_options_async(
+        self,
+        request: esa20240910_models.GetCrossBorderOptimizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetCrossBorderOptimizationResponse:
+        """
+        @summary 查询站点中国大陆网络接入优化配置
+        
+        @param request: GetCrossBorderOptimizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCrossBorderOptimizationResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCrossBorderOptimization',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetCrossBorderOptimizationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetCrossBorderOptimizationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_cross_border_optimization(
+        self,
+        request: esa20240910_models.GetCrossBorderOptimizationRequest,
+    ) -> esa20240910_models.GetCrossBorderOptimizationResponse:
+        """
+        @summary 查询站点中国大陆网络接入优化配置
+        
+        @param request: GetCrossBorderOptimizationRequest
+        @return: GetCrossBorderOptimizationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_cross_border_optimization_with_options(request, runtime)
+
+    async def get_cross_border_optimization_async(
+        self,
+        request: esa20240910_models.GetCrossBorderOptimizationRequest,
+    ) -> esa20240910_models.GetCrossBorderOptimizationResponse:
+        """
+        @summary 查询站点中国大陆网络接入优化配置
+        
+        @param request: GetCrossBorderOptimizationRequest
+        @return: GetCrossBorderOptimizationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_cross_border_optimization_with_options_async(request, runtime)
+
     def get_development_mode_with_options(
         self,
         request: esa20240910_models.GetDevelopmentModeRequest,
@@ -26123,7 +26227,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListSitesResponse:
         """
-        @summary Query Site List
+        @summary Queries the information about websites in your account, such as the name, status, and configuration of each website.
         
         @param tmp_req: ListSitesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26166,7 +26270,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListSitesResponse:
         """
-        @summary Query Site List
+        @summary Queries the information about websites in your account, such as the name, status, and configuration of each website.
         
         @param tmp_req: ListSitesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26208,7 +26312,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListSitesRequest,
     ) -> esa20240910_models.ListSitesResponse:
         """
-        @summary Query Site List
+        @summary Queries the information about websites in your account, such as the name, status, and configuration of each website.
         
         @param request: ListSitesRequest
         @return: ListSitesResponse
@@ -26221,7 +26325,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListSitesRequest,
     ) -> esa20240910_models.ListSitesResponse:
         """
-        @summary Query Site List
+        @summary Queries the information about websites in your account, such as the name, status, and configuration of each website.
         
         @param request: ListSitesRequest
         @return: ListSitesResponse
@@ -31264,6 +31368,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_compression_rule_with_options_async(request, runtime)
+
+    def update_cross_border_optimization_with_options(
+        self,
+        request: esa20240910_models.UpdateCrossBorderOptimizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateCrossBorderOptimizationResponse:
+        """
+        @summary 修改站点中国大陆网络接入优化配置
+        
+        @param request: UpdateCrossBorderOptimizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCrossBorderOptimizationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCrossBorderOptimization',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UpdateCrossBorderOptimizationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UpdateCrossBorderOptimizationResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_cross_border_optimization_with_options_async(
+        self,
+        request: esa20240910_models.UpdateCrossBorderOptimizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateCrossBorderOptimizationResponse:
+        """
+        @summary 修改站点中国大陆网络接入优化配置
+        
+        @param request: UpdateCrossBorderOptimizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCrossBorderOptimizationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCrossBorderOptimization',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UpdateCrossBorderOptimizationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UpdateCrossBorderOptimizationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_cross_border_optimization(
+        self,
+        request: esa20240910_models.UpdateCrossBorderOptimizationRequest,
+    ) -> esa20240910_models.UpdateCrossBorderOptimizationResponse:
+        """
+        @summary 修改站点中国大陆网络接入优化配置
+        
+        @param request: UpdateCrossBorderOptimizationRequest
+        @return: UpdateCrossBorderOptimizationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cross_border_optimization_with_options(request, runtime)
+
+    async def update_cross_border_optimization_async(
+        self,
+        request: esa20240910_models.UpdateCrossBorderOptimizationRequest,
+    ) -> esa20240910_models.UpdateCrossBorderOptimizationResponse:
+        """
+        @summary 修改站点中国大陆网络接入优化配置
+        
+        @param request: UpdateCrossBorderOptimizationRequest
+        @return: UpdateCrossBorderOptimizationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cross_border_optimization_with_options_async(request, runtime)
 
     def update_custom_scene_policy_with_options(
         self,
