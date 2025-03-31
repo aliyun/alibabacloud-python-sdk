@@ -1,3 +1,10 @@
+2025-03-31 Version: 3.2.1
+- Update API GetDashboard: add request parameters pluginId.
+- Update API GetDashboard: add request parameters upstreamCluster.
+- Update API ListHttpApis: add request parameters withAPIsPublishedToEnvironment.
+- Update API ListHttpApis: add request parameters withPolicyConfigs.
+
+
 2025-03-19 Version: 3.2.0
 - Support API UndeployHttpApi.
 - Update API CreateDomain: update param body.

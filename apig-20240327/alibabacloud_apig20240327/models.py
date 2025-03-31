@@ -5400,36 +5400,42 @@ class CreateDomainRequest(TeaModel):
         tls_max: str = None,
         tls_min: str = None,
     ):
-        # CA Certificate Identifier.
+        # The CA certificate ID.
         self.ca_cert_identifier = ca_cert_identifier
-        # Certificate Unique Identifier.
+        # The certificate ID.
         self.cert_identifier = cert_identifier
-        # Client CA Certificate
+        # The client CA certificate.
         self.client_cacert = client_cacert
-        # Set the HTTPS protocol type, whether to enable forced HTTPS redirection.
+        # Specifies whether to enable forcible HTTPS redirection.
         self.force_https = force_https
-        # HTTP/2 settings.
+        # The HTTP/2 configuration.
+        # 
+        # Valid values:
+        # 
+        # *   GlobalConfig
+        # *   Close
+        # *   Open
         self.http_2option = http_2option
-        # Whether to enable mTLS mutual authentication
+        # Specifies whether to enable mutual authentication.
         self.m_tlsenabled = m_tlsenabled
-        # Domain name.
+        # The domain name.
         # 
         # This parameter is required.
         self.name = name
-        # The protocol type supported by the domain.
+        # The protocol type supported by the domain name.
         # 
-        # - HTTP: Supports only HTTP protocol.
-        # - HTTPS: Supports only HTTPS protocol.
+        # *   HTTP: Only HTTP is supported.
+        # *   HTTPS: Only HTTPS is supported.
         # 
         # This parameter is required.
         self.protocol = protocol
-        # The ID of the resource group.
+        # The [resource group ID](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
-        # The TLS cipher suites config.
+        # The cipher suite configuration.
         self.tls_cipher_suites_config = tls_cipher_suites_config
-        # Maximum TLS protocol version, supports up to TLS 1.3.
+        # The maximum version of the TLS protocol. Up to TLS 1.3 is supported.
         self.tls_max = tls_max
-        # Minimum TLS protocol version, supports down to TLS 1.0.
+        # The minimum version of the TLS protocol. Down to TLS 1.0 is supported.
         self.tls_min = tls_min
 
     def validate(self):
@@ -5503,7 +5509,7 @@ class CreateDomainResponseBodyData(TeaModel):
         self,
         domain_id: str = None,
     ):
-        # Domain ID.
+        # The ID of the domain name.
         self.domain_id = domain_id
 
     def validate(self):
@@ -5534,13 +5540,13 @@ class CreateDomainResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response code.
+        # The status code returned.
         self.code = code
-        # Response data.
+        # The response data.
         self.data = data
-        # Response message.
+        # The response message returned.
         self.message = message
-        # Request ID, used for tracing the API call chain.
+        # The request ID, which is used to trace the API call link.
         self.request_id = request_id
 
     def validate(self):
@@ -5809,15 +5815,15 @@ class CreateHttpApiRequestIngressConfig(TeaModel):
         source_id: str = None,
         watch_namespace: str = None,
     ):
-        # Environment ID.
+        # The environment ID.
         self.environment_id = environment_id
-        # Ingress Class being listened to.
+        # The Ingress Class for listening.
         self.ingress_class = ingress_class
-        # Whether to update the address in the Ingress Status.
+        # Specifies whether to update the address in Ingress Status.
         self.override_ingress_ip = override_ingress_ip
-        # Source ID.
+        # The source ID.
         self.source_id = source_id
-        # Namespace being watched.
+        # The namespace for listening.
         self.watch_namespace = watch_namespace
 
     def validate(self):
@@ -5872,33 +5878,38 @@ class CreateHttpApiRequest(TeaModel):
         type: str = None,
         version_config: HttpApiVersionConfig = None,
     ):
-        # The AI protocols list.
+        # The AI API protocols. Valid value:
+        # 
+        # *   OpenAI/v1
         self.ai_protocols = ai_protocols
+        # The authentication configurations.
         self.auth_config = auth_config
-        # Base path of the API, which must start with a \\"/\\".
+        # The API base path, which must start with a forward slash (/).
         self.base_path = base_path
-        # The deploy configs.
+        # The API deployment configurations. Currently, only AI APIs support deployment configurations, and only a single deployment configuration can be passed.
         self.deploy_configs = deploy_configs
-        # Description of the API.
+        # The API description.
         self.description = description
+        # Specifies whether to enable authentication.
         self.enable_auth = enable_auth
-        # Configuration information for the HTTP Ingress API.
+        # The HTTP Ingress configurations.
         self.ingress_config = ingress_config
-        # Name of the API.
+        # The API name.
         # 
         # This parameter is required.
         self.name = name
-        # List of API access protocols.
+        # The protocols that are used to call the API.
         self.protocols = protocols
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Type of the HTTP API.
-        # - Http
-        # - Rest
-        # - WebSocket
-        # - HttpIngress
+        # The API type. Valid values:
+        # 
+        # *   Http
+        # *   Rest
+        # *   WebSocket
+        # *   HttpIngress
         self.type = type
-        # Versioning configuration for the API.
+        # The versioning configuration of the API.
         self.version_config = version_config
 
     def validate(self):
@@ -5988,9 +5999,9 @@ class CreateHttpApiResponseBodyData(TeaModel):
         http_api_id: str = None,
         name: str = None,
     ):
-        # HTTP API ID.
+        # The HTTP API ID.
         self.http_api_id = http_api_id
-        # Name of the API.
+        # The API name.
         self.name = name
 
     def validate(self):
@@ -6025,13 +6036,13 @@ class CreateHttpApiResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # API information.
+        # The API information.
         self.data = data
-        # Response message.
+        # The returned message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6968,25 +6979,22 @@ class CreateServiceRequestServiceConfigs(TeaModel):
         namespace: str = None,
         qualifier: str = None,
     ):
-        # List of domain names or fixed addresses.
+        # The list of domain names or fixed addresses.
         self.addresses = addresses
-        # AI service configuration.
+        # The AI service configurations.
         self.ai_service_config = ai_service_config
-        # List of DNS server addresses.
+        # The list of DNS service addresses.
         self.dns_servers = dns_servers
-        # Service group name.
-        # Needs to be specified when `sourceType` is MSE_NACOS.
+        # The service group name. This parameter is required if sourceType is set to MSE_NACOS.
         self.group_name = group_name
-        # Service name.
+        # The service name.
         self.name = name
-        # Namespace of the service:
+        # The service namespace. This parameter is required when sourceType is set to K8S or MSE_NACOS.
         # 
-        # - When `sourceType` is K8S, it represents the namespace where the K8S service is located.
-        # - When `sourceType` is MSE_NACOS, it represents the namespace in Nacos.
-        # 
-        # It needs to be specified when `sourceType` is K8S or MSE_NACOS.
+        # *   If sourceType is set to K8S, this parameter specifies the namespace where the K8s service resides.
+        # *   If sourceType is set to MSE_NACOS, this parameter specifies a namespace in Nacos.
         self.namespace = namespace
-        # Function version or alias.
+        # The function version or alias.
         self.qualifier = qualifier
 
     def validate(self):
@@ -7043,19 +7051,29 @@ class CreateServiceRequest(TeaModel):
         service_configs: List[CreateServiceRequestServiceConfigs] = None,
         source_type: str = None,
     ):
-        # Gateway ID.
+        # The gateway instance ID.
         self.gateway_id = gateway_id
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # List of service configuration information.
+        # The list of service configurations.
         self.service_configs = service_configs
-        # Service source:
-        # - MSE_NACOS: Services in MSE Nacos.
-        # - K8S: Services in the K8S cluster of container service.
-        # - VIP: Fixed address service.
-        # - DNS: DNS domain name service.
-        # - FC3: Function Compute service.
-        # - SAE_K8S_SERVICE: SAE K8S service.
+        # The service source. Valid values:
+        # 
+        # *   MSE_NACOS: a service in an MSE Nacos instance
+        # *   K8S: a service in a Kubernetes (K8s) cluster in Container Service for Kubernetes (ACK)
+        # *   VIP: a fixed IP address
+        # *   DNS: a Domain Name System (DNS) domain name
+        # *   FC3: a service in Function Compute
+        # *   SAE_K8S_SERVICE: a service in a K8s cluster in Serverless App Engine (SAE)
+        # 
+        # Enumerated values:
+        # 
+        # *   SAE_K8S_SERVICE
+        # *   K8S
+        # *   FC3
+        # *   DNS
+        # *   VIP
+        # *   MSE_NACOS
         self.source_type = source_type
 
     def validate(self):
@@ -7103,7 +7121,7 @@ class CreateServiceResponseBodyData(TeaModel):
         self,
         service_ids: List[str] = None,
     ):
-        # List of service IDs.
+        # The list of service IDs.
         self.service_ids = service_ids
 
     def validate(self):
@@ -7134,13 +7152,13 @@ class CreateServiceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The status code.
         self.code = code
-        # Response data.
+        # The response data.
         self.data = data
-        # Response message.
+        # The returned message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8406,7 +8424,7 @@ class GetDashboardRequestFilter(TeaModel):
         self,
         route_name: str = None,
     ):
-        # Route name
+        # The route name.
         self.route_name = route_name
 
     def validate(self):
@@ -8437,24 +8455,29 @@ class GetDashboardRequest(TeaModel):
         filter: GetDashboardRequestFilter = None,
         name: str = None,
         plugin_class_id: str = None,
+        plugin_id: str = None,
         source: str = None,
+        upstream_cluster: str = None,
     ):
-        # zh: Chinese
-        # en: English
+        # The language. Valid values: zh (Chinese) and en (English).
         self.accept_language = accept_language
         # API ID
         self.api_id = api_id
-        # Filter configuration
+        # The filter configurations.
         self.filter = filter
-        # Dashboard name:
-        # - LOG: Access log
-        # - PLUGIN: Plugin log
+        # The dashboard name.
+        # 
+        # *   LOG: access logs
+        # *   PLUGIN: plug-in logs
         self.name = name
-        # Plugin ID.
+        # The plug-in ID.
         self.plugin_class_id = plugin_class_id
-        # Dashboard source:
-        # - SLS: Log dashboard
+        self.plugin_id = plugin_id
+        # The dashboard source. Valid values:
+        # 
+        # *   SLS: Simple Log Service
         self.source = source
+        self.upstream_cluster = upstream_cluster
 
     def validate(self):
         if self.filter:
@@ -8476,8 +8499,12 @@ class GetDashboardRequest(TeaModel):
             result['name'] = self.name
         if self.plugin_class_id is not None:
             result['pluginClassId'] = self.plugin_class_id
+        if self.plugin_id is not None:
+            result['pluginId'] = self.plugin_id
         if self.source is not None:
             result['source'] = self.source
+        if self.upstream_cluster is not None:
+            result['upstreamCluster'] = self.upstream_cluster
         return result
 
     def from_map(self, m: dict = None):
@@ -8493,8 +8520,12 @@ class GetDashboardRequest(TeaModel):
             self.name = m.get('name')
         if m.get('pluginClassId') is not None:
             self.plugin_class_id = m.get('pluginClassId')
+        if m.get('pluginId') is not None:
+            self.plugin_id = m.get('pluginId')
         if m.get('source') is not None:
             self.source = m.get('source')
+        if m.get('upstreamCluster') is not None:
+            self.upstream_cluster = m.get('upstreamCluster')
         return self
 
 
@@ -8506,24 +8537,29 @@ class GetDashboardShrinkRequest(TeaModel):
         filter_shrink: str = None,
         name: str = None,
         plugin_class_id: str = None,
+        plugin_id: str = None,
         source: str = None,
+        upstream_cluster: str = None,
     ):
-        # zh: Chinese
-        # en: English
+        # The language. Valid values: zh (Chinese) and en (English).
         self.accept_language = accept_language
         # API ID
         self.api_id = api_id
-        # Filter configuration
+        # The filter configurations.
         self.filter_shrink = filter_shrink
-        # Dashboard name:
-        # - LOG: Access log
-        # - PLUGIN: Plugin log
+        # The dashboard name.
+        # 
+        # *   LOG: access logs
+        # *   PLUGIN: plug-in logs
         self.name = name
-        # Plugin ID.
+        # The plug-in ID.
         self.plugin_class_id = plugin_class_id
-        # Dashboard source:
-        # - SLS: Log dashboard
+        self.plugin_id = plugin_id
+        # The dashboard source. Valid values:
+        # 
+        # *   SLS: Simple Log Service
         self.source = source
+        self.upstream_cluster = upstream_cluster
 
     def validate(self):
         pass
@@ -8544,8 +8580,12 @@ class GetDashboardShrinkRequest(TeaModel):
             result['name'] = self.name
         if self.plugin_class_id is not None:
             result['pluginClassId'] = self.plugin_class_id
+        if self.plugin_id is not None:
+            result['pluginId'] = self.plugin_id
         if self.source is not None:
             result['source'] = self.source
+        if self.upstream_cluster is not None:
+            result['upstreamCluster'] = self.upstream_cluster
         return result
 
     def from_map(self, m: dict = None):
@@ -8560,8 +8600,12 @@ class GetDashboardShrinkRequest(TeaModel):
             self.name = m.get('name')
         if m.get('pluginClassId') is not None:
             self.plugin_class_id = m.get('pluginClassId')
+        if m.get('pluginId') is not None:
+            self.plugin_id = m.get('pluginId')
         if m.get('source') is not None:
             self.source = m.get('source')
+        if m.get('upstreamCluster') is not None:
+            self.upstream_cluster = m.get('upstreamCluster')
         return self
 
 
@@ -8573,13 +8617,13 @@ class GetDashboardResponseBodyData(TeaModel):
         title: str = None,
         url: str = None,
     ):
-        # Gateway unique identifier
+        # The instance ID.
         self.gateway_id = gateway_id
-        # Dashboard name
+        # The dashboard name.
         self.name = name
-        # Dashboard title
+        # The dashboard title.
         self.title = title
-        # Dashboard URL link
+        # The dashboard URL.
         self.url = url
 
     def validate(self):
@@ -8624,17 +8668,17 @@ class GetDashboardResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Response code
+        # The HTTP status code.
         self.code = code
-        # Response data
+        # The data returned.
         self.data = data
-        # Backend error code
+        # The error code.
         self.error_code = error_code
-        # Error message
+        # The error message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Whether the request was successful
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -8725,7 +8769,7 @@ class GetDomainRequest(TeaModel):
         self,
         with_statistics: bool = None,
     ):
-        # Indicates whether include domain related resource information.
+        # Specifies whether to return online resource information.
         self.with_statistics = with_statistics
 
     def validate(self):
@@ -8754,9 +8798,9 @@ class GetDomainResponseBodyDataStatisticsInfo(TeaModel):
         resource_statistics: List[ResourceStatistic] = None,
         total_count: str = None,
     ):
-        # The array of related resource infomations.
+        # The resource statistics.
         self.resource_statistics = resource_statistics
-        # The total number of entries returned.
+        # The total number of resources.
         self.total_count = total_count
 
     def validate(self):
@@ -8819,56 +8863,72 @@ class GetDomainResponseBodyData(TeaModel):
         tls_min: str = None,
         updatetimestamp: int = None,
     ):
-        # Encryption algorithm name
+        # The encryption algorithm.
         self.algorithm = algorithm
-        # CA certificate identifier
+        # The CA certificate ID.
         self.ca_cert_identifier = ca_cert_identifier
-        # Certificate Identifier
+        # The certificate ID.
         self.cert_identifier = cert_identifier
-        # Certificate name
+        # The certificate name.
         self.cert_name = cert_name
-        # Client CA Cert
+        # The client CA certificate.
         self.client_cacert = client_cacert
-        # Where it was created from.
-        self.create_from = create_from
-        # Creation timestamp.
-        self.create_timestamp = create_timestamp
-        # Whether it is the default domain.
-        self.default = default
-        # Domain ID.
-        self.domain_id = domain_id
-        # Setting for HTTPS protocol type, whether to enable forced HTTPS redirection.
-        self.force_https = force_https
-        # HTTP/2 setting.
-        self.http_2option = http_2option
-        # Certificate issuer.
-        self.issuer = issuer
-        # true
-        self.m_tlsenabled = m_tlsenabled
-        # Domain name.
-        self.name = name
-        # Certificate expiration time.
-        self.not_after_timstamp = not_after_timstamp
-        # Certificate effective time.
-        self.not_before_timestamp = not_before_timestamp
-        # The protocol types supported by the domain.
+        # The creation source.
         # 
-        # - HTTP: Supports only HTTP protocol.
-        # - HTTPS: Supports only HTTPS protocol.
+        # Valid values:
+        # 
+        # *   Console
+        # *   Ingress
+        self.create_from = create_from
+        # The creation timestamp.
+        self.create_timestamp = create_timestamp
+        # Indicates whether the domain name is the default domain name.
+        self.default = default
+        # The ID of the domain name.
+        self.domain_id = domain_id
+        # Indicates whether forcible HTTPS redirection is enabled.
+        self.force_https = force_https
+        # The HTTP/2 configuration.
+        # 
+        # Valid values:
+        # 
+        # *   GlobalConfig
+        # *   Close
+        # *   Open
+        self.http_2option = http_2option
+        # The certificate issuer.
+        self.issuer = issuer
+        # Indicates whether mutual authentication is enabled.
+        # 
+        # Valid values:
+        # 
+        # *   false
+        # *   true
+        self.m_tlsenabled = m_tlsenabled
+        # The domain name.
+        self.name = name
+        # The expiration time of the certificate.
+        self.not_after_timstamp = not_after_timstamp
+        # The time when the certificate started to take effect.
+        self.not_before_timestamp = not_before_timestamp
+        # The supported protocol. Valid values:
+        # 
+        # *   HTTP: Only HTTP is supported.
+        # *   HTTPS: Only HTTPS is supported.
         self.protocol = protocol
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # All domain names bound to the certificate.
+        # All domain names that are bound to the certificate.
         self.sans = sans
-        # The array of domain related resource information
+        # The information about online resources.
         self.statistics_info = statistics_info
-        # The TLS cipher suites config.
+        # The cipher suite configuration.
         self.tls_cipher_suites_config = tls_cipher_suites_config
-        # Maximum TLS protocol version, supports up to TLS 1.3.
+        # The maximum version of the TLS protocol. Up to TLS 1.3 is supported.
         self.tls_max = tls_max
-        # Minimum TLS protocol version, supports down to TLS 1.0.
+        # The minimum version of the TLS protocol. Down to TLS 1.0 is supported.
         self.tls_min = tls_min
-        # Update timestamp.
+        # The update timestamp.
         self.updatetimestamp = updatetimestamp
 
     def validate(self):
@@ -8996,13 +9056,13 @@ class GetDomainResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response code.
+        # The status code returned.
         self.code = code
-        # Response data.
+        # The data returned.
         self.data = data
-        # Response message.
+        # The response message returned.
         self.message = message
-        # Request ID, used for tracing the API call chain.
+        # The request ID, which is used to trace the API call link.
         self.request_id = request_id
 
     def validate(self):
@@ -10263,13 +10323,13 @@ class GetHttpApiRouteResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The status code.
         self.code = code
-        # Route detail data.
+        # The route details.
         self.data = data
-        # Response message.
+        # The returned message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10355,13 +10415,13 @@ class GetPolicyResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response code.
+        # The status code.
         self.code = code
-        # Response data.
+        # The data returned.
         self.data = data
-        # Response message.
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10811,13 +10871,13 @@ class GetServiceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The status code.
         self.code = code
-        # Service details data.
+        # The service details.
         self.data = data
-        # Response message.
+        # The returned message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11095,9 +11155,9 @@ class ImportHttpApiRequestSpecOssConfig(TeaModel):
         object_key: str = None,
         region_id: str = None,
     ):
-        # The name of the Object Storage Service (OSS) bucket that stores the dictionary file.
+        # The bucket name.
         self.bucket_name = bucket_name
-        # The file path.
+        # The full path of the file.
         self.object_key = object_key
         # The region ID.
         self.region_id = region_id
@@ -11144,29 +11204,29 @@ class ImportHttpApiRequest(TeaModel):
         target_http_api_id: str = None,
         version_config: HttpApiVersionConfig = None,
     ):
-        # The description of the imported API. If not provided, it will be extracted from the API definition. The length is limited to 255 bytes.
+        # The API description, which cannot exceed 255 bytes in length. If you do not specify a description, a description is extracted from the definition file.
         self.description = description
-        # Pre-import check. If enabled, only the check will be performed without importing the API.
+        # Specifies whether to perform a dry run. If this parameter is set to true, a dry run is performed without importing the file.
         self.dry_run = dry_run
-        # The name of the imported API. If not provided, it will be extracted from the API definition file. If the API name and version configuration already exist, this import will update the existing API definition based on the `strategy` field.
+        # The API name. If you do not specify a name, a name is extracted from the definition file. If a name and a versioning configuration already exist, the existing API definition is updated based on the strategy field.
         self.name = name
-        # The ID of the resource group.
+        # [The resource group ID](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
-        # Base64 encoded API definition, supporting OAS2.0 and OAS3.0 specifications, in YAML or JSON format. It has a higher priority than the `specFileUrl` parameter. If the file size exceeds 10MB, please use the `specFileUrl` parameter to transfer.
+        # The Base64-encoded API definition. OAS 2.0 and OAS 3.0 specifications are supported. YAML and JSON formats are supported. This parameter precedes over the specFileUrl parameter. However, if the file size exceeds 10 MB, use the specFileUrl parameter to pass the definition.
         self.spec_content_base_64 = spec_content_base_64
-        # Download URL for the API definition file, which must be accessible from the public network or via an internal OSS download address within the same region. The file URL must have download permissions. For non-publicly readable OSS file links, refer to the documentation at https://help.aliyun.com/zh/oss/user-guide/how-to-obtain-the-url-of-a-single-object-or-the-urls-of-multiple-objects, and provide a URL with download permissions. Currently, only API definition files stored on OSS are supported.
+        # The download URL of the API definition file. You can download the file over the Internet or by using an Object Storage Service (OSS) internal download URL that belongs to the current region. You must obtain the required permissions to download the file. For OSS URLs that are not publicly readable, refer to https://help.aliyun.com/zh/oss/user-guide/how-to-obtain-the-url-of-a-single-object-or-the-urls-of-multiple-objects to specify URLs that provide download permissions. Currently, only OSS URLs are supported.
         self.spec_file_url = spec_file_url
-        # The oss config info.
+        # The OSS information.
         self.spec_oss_config = spec_oss_config
-        # When the imported API name and version management match an existing API, you need to specify an update strategy.
-        # - SpecOnly: Completely based on the imported file.
-        # - SpecFirst: Prioritize the imported file, add new interfaces and update existing ones, while keeping interfaces not mentioned in the file unchanged.
-        # - ExistFirst: Prioritize the existing API, only add new interfaces without updating existing ones.
-        # If not specified, the default strategy is ExistFirst.
+        # The update policy when the API to be imported has the same version and name as an existing one. Valid values:
+        # 
+        # *   SpectOnly: All configurations in the file take effect.
+        # *   SpecFirst: The file takes precedence. New APIs are created and existing ones are updated. APIs not included in the file remain unchanged.
+        # *   ExistFirst (default): The existing APIs take precedence. New APIs are created but existing ones remain unchanged.
         self.strategy = strategy
-        # If this field is specified, this import will update the specified API instead of importing or searching for an existing API based on the API name and version management configuration. The target API must be of REST type.
+        # The API to be updated. If this parameter is specified, this import updates only the specified API. New APIs are not created and unspecified existing APIs are not updated. Only REST APIs can be specified.
         self.target_http_api_id = target_http_api_id
-        # API versioning configuration. If versioning is enabled, and the version number and API name match an existing API, this import will be treated as an update. If versioning is not enabled, and the API name matches an existing API, this import will also be treated as an update.
+        # Version configuration.
         self.version_config = version_config
 
     def validate(self):
@@ -11236,9 +11296,9 @@ class ImportHttpApiResponseBodyDataDryRunInfoFailureComponents(TeaModel):
         error_message: str = None,
         name: str = None,
     ):
-        # Error message.
+        # The error message.
         self.error_message = error_message
-        # 数据结构名称。
+        # The data struct name.
         self.name = name
 
     def validate(self):
@@ -11272,11 +11332,11 @@ class ImportHttpApiResponseBodyDataDryRunInfoFailureOperations(TeaModel):
         method: str = None,
         path: str = None,
     ):
-        # Error message
+        # The error message.
         self.error_message = error_message
-        # API method.
+        # The HTTP method of the operation.
         self.method = method
-        # API path.
+        # The operation path.
         self.path = path
 
     def validate(self):
@@ -11313,11 +11373,12 @@ class ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents(TeaModel):
         action: str = None,
         name: str = None,
     ):
-        # Action to be executed after the precheck.
-        # - Create: Create
-        # - Update: Update
+        # The action that will be performed for the data struct after the dry run.
+        # 
+        # *   Create: The data struct is created.
+        # *   Update: The data struct is updated.
         self.action = action
-        # Data structure name.
+        # The data struct name.
         self.name = name
 
     def validate(self):
@@ -11352,15 +11413,16 @@ class ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations(TeaModel):
         name: str = None,
         path: str = None,
     ):
-        # Action to be executed after the precheck.
-        # - Create: Create
-        # - Update: Update
+        # The action that will be performed for the operation after the dry run.
+        # 
+        # *   Create: The operation is created.
+        # *   Update: The operation is updated.
         self.action = action
-        # API method.
+        # The HTTP method of the operation.
         self.method = method
-        # API name.
+        # The operation name.
         self.name = name
-        # API path.
+        # The operation path.
         self.path = path
 
     def validate(self):
@@ -11406,19 +11468,19 @@ class ImportHttpApiResponseBodyDataDryRunInfo(TeaModel):
         success_operations: List[ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations] = None,
         warning_messages: List[str] = None,
     ):
-        # Error messages. If there are any error messages, the API cannot be imported successfully.
+        # The error messages. If an error message is returned, the API fails to be imported.
         self.error_messages = error_messages
-        # 已存在的API信息。若该字段非空，则导入动作将更新该API。
+        # The existing APIs. If an existing API is returned, the import updates the existing API.
         self.exist_http_api_info = exist_http_api_info
-        # List of data structures that failed the precheck.
+        # The data structs that fail the dry run.
         self.failure_components = failure_components
-        # List of APIs that failed the precheck.
+        # The operations that fail the dry run.
         self.failure_operations = failure_operations
-        # List of data structures that passed the precheck.
+        # The data structs that pass the dry run.
         self.success_components = success_components
-        # List of successfully pre-checked interfaces.
+        # The operations that pass the dry run.
         self.success_operations = success_operations
-        # Warning messages. If there are any warning messages, some interfaces or data interfaces may not be imported successfully.
+        # The alerts. If an alert is returned, specific operations or structs may fail to be imported.
         self.warning_messages = warning_messages
 
     def validate(self):
@@ -11510,11 +11572,11 @@ class ImportHttpApiResponseBodyData(TeaModel):
         http_api_id: str = None,
         name: str = None,
     ):
-        # Pre-import check result.
+        # The dry run result.
         self.dry_run_info = dry_run_info
-        # HTTP API ID.
+        # The API ID.
         self.http_api_id = http_api_id
-        # API name.
+        # The API name.
         self.name = name
 
     def validate(self):
@@ -11555,13 +11617,13 @@ class ImportHttpApiResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The status code.
         self.code = code
-        # API information.
+        # The API information.
         self.data = data
-        # Response message.
+        # The returned message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11648,15 +11710,15 @@ class ListDomainsRequest(TeaModel):
         page_size: int = None,
         resource_group_id: str = None,
     ):
-        # Gateway Id.
+        # The instance ID.
         self.gateway_id = gateway_id
-        # Domain name, fuzzy search.
+        # The domain name keyword for fuzzy search.
         self.name_like = name_like
-        # Page number, default is 1.
+        # The page number of the page to return. Default value: 1.
         self.page_number = page_number
-        # Number of items per page, default is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -11703,13 +11765,13 @@ class ListDomainsResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # List of domain information.
+        # The information about the domain names.
         self.items = items
-        # Page number.
+        # The page number of the returned page.
         self.page_number = page_number
-        # Number of items per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # Total number of items.
+        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):
@@ -11760,13 +11822,13 @@ class ListDomainsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response code.
+        # The status code returned.
         self.code = code
-        # Response data.
+        # The response data.
         self.data = data
-        # Response message.
+        # The message returned.
         self.message = message
-        # Request ID, used for tracing the API call chain.
+        # The request ID, which is used to trace the API call link.
         self.request_id = request_id
 
     def validate(self):
@@ -12069,9 +12131,9 @@ class ListGatewaysRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The key of tag N.
         self.key = key
-        # The value of the tag.
+        # The value of tag N.
         self.value = value
 
     def validate(self):
@@ -12109,19 +12171,19 @@ class ListGatewaysRequest(TeaModel):
         resource_group_id: str = None,
         tag: List[ListGatewaysRequestTag] = None,
     ):
-        # Query exactly by Gateway ID.
+        # The instance ID. If you specify an ID, an exact search is performed.
         self.gateway_id = gateway_id
-        # Keyword, search with full match, case-insensitive.
+        # The search keyword. A full match is performed. The search is case-insensitive.
         self.keyword = keyword
-        # Query exactly by Gateway name.
+        # The instance name. If you specify a name, an exact search is performed.
         self.name = name
-        # Page number.
+        # The number of the page to return.
         self.page_number = page_number
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Filter list by tags
+        # The tags that you want to use for the search.
         self.tag = tag
 
     def validate(self):
@@ -12187,19 +12249,19 @@ class ListGatewaysShrinkRequest(TeaModel):
         resource_group_id: str = None,
         tag_shrink: str = None,
     ):
-        # Query exactly by Gateway ID.
+        # The instance ID. If you specify an ID, an exact search is performed.
         self.gateway_id = gateway_id
-        # Keyword, search with full match, case-insensitive.
+        # The search keyword. A full match is performed. The search is case-insensitive.
         self.keyword = keyword
-        # Query exactly by Gateway name.
+        # The instance name. If you specify a name, an exact search is performed.
         self.name = name
-        # Page number.
+        # The number of the page to return.
         self.page_number = page_number
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Filter list by tags
+        # The tags that you want to use for the search.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -12252,11 +12314,12 @@ class ListGatewaysResponseBodyDataItemsLoadBalancersPorts(TeaModel):
         port: int = None,
         protocol: str = None,
     ):
-        # Port number.
+        # The port number.
         self.port = port
-        # Protocol:
-        # - TCP
-        # - UDP
+        # The protocol. Valid values:
+        # 
+        # *   TCP
+        # *   UDP
         self.protocol = protocol
 
     def validate(self):
@@ -12296,32 +12359,37 @@ class ListGatewaysResponseBodyDataItemsLoadBalancers(TeaModel):
         status: str = None,
         type: str = None,
     ):
-        # Load balancer address.
+        # The load balancer IP address.
         self.address = address
-        # IP version:
-        # - ipv4: IPv4.
-        # - ipv6: IPv6.
+        # The IP version of the address. Valid values:
+        # 
+        # *   ipv4: IPv4
+        # *   ipv6: IPv6
         self.address_ip_version = address_ip_version
-        # Load balancer address type:
-        # - Internet: Public network.
-        # - Intranet: Private network.
+        # The address type. Valid values:
+        # 
+        # *   Internet
+        # *   Intranet
         self.address_type = address_type
-        # Indicates whether this is the default entry address for the gateway.
+        # Indicates whether the address is the default ingress address of the instance.
         self.gateway_default = gateway_default
-        # Load balancer ID.
+        # The load balancer ID.
         self.load_balancer_id = load_balancer_id
-        # Load balancer provision mode for the gateway:
-        # - Managed: Managed by the Cloud Native API Gateway.
+        # The mode in which the load balancer is provided. Valid values:
+        # 
+        # *   Managed: Cloud-native API Gateway manages and provides the load balancer.
         self.mode = mode
-        # List of listening ports.
+        # The list of listened ports.
         self.ports = ports
-        # Status of the load balancer:
-        # - Ready: Available.
-        # - NotCreate: No associated instance.
+        # The load balancer status. Valid values:
+        # 
+        # *   Ready: The load balancer is available.
+        # *   NotCreate: The load balancer is not associated with the instance.
         self.status = status
-        # Type of load balancer for the gateway:
-        # - NLB: Network Load Balancer.
-        # - CLB: Classic Load Balancer.
+        # The load balancer type. Valid values:
+        # 
+        # *   NLB: Network Load Balancer
+        # *   CLB: Classic Load Balancer
         self.type = type
 
     def validate(self):
@@ -12389,7 +12457,7 @@ class ListGatewaysResponseBodyDataItemsSecurityGroup(TeaModel):
         self,
         security_group_id: str = None,
     ):
-        # The Security Group ID.
+        # The security group ID.
         self.security_group_id = security_group_id
 
     def validate(self):
@@ -12418,9 +12486,9 @@ class ListGatewaysResponseBodyDataItemsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -12537,9 +12605,9 @@ class ListGatewaysResponseBodyDataItemsZones(TeaModel):
         v_switch: ListGatewaysResponseBodyDataItemsZonesVSwitch = None,
         zone_id: str = None,
     ):
-        # The vSwitch.
+        # The vSwitch information.
         self.v_switch = v_switch
-        # The ID of the current zone.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -12592,59 +12660,62 @@ class ListGatewaysResponseBodyDataItems(TeaModel):
         vpc: ListGatewaysResponseBodyDataItemsVpc = None,
         zones: List[ListGatewaysResponseBodyDataItemsZones] = None,
     ):
-        # Charge type
+        # The billing method. Valid values:
         # 
-        # - POSTPAY: Postpaid (pay-as-you-go)
-        # - PREPAY: Prepaid (subscription)
+        # *   POSTPAY: pay-as-you-go
+        # *   PREPAY: subscription
         self.charge_type = charge_type
-        # Source of gateway creation:
-        # - Console: Console.
+        # The creation source of the instance. Valid values:
+        # 
+        # *   Console
         self.create_from = create_from
-        # Creation timestamp, in milliseconds.
+        # The time when the instance was created. This value is a UNIX timestamp. Unit: milliseconds.
         self.create_timestamp = create_timestamp
-        # Expiration timestamp for prepaid (annual or monthly) subscriptions. Unit: milliseconds.
+        # The time when the instance expires. This value is a UNIX timestamp. Unit: milliseconds.
         self.expire_timestamp = expire_timestamp
-        # Gateway ID.
+        # The instance ID.
         self.gateway_id = gateway_id
-        # List of gateway entry addresses.
+        # The ingress addresses of the instance.
         self.load_balancers = load_balancers
-        # Gateway name.
+        # The instance name.
         self.name = name
-        # Number of gateway instance nodes.
+        # The node quantity of the instance.
         self.replicas = replicas
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The Security Group.
+        # The security group information about the instance.
         self.security_group = security_group
-        # Gateway specification:
-        # - apigw.small.x1: Small specification.
+        # The instance specification. Valid values:
+        # 
+        # *   apigw.small.x1
         self.spec = spec
-        # Gateway status:
-        # - Running: Running.
-        # - Creating: Creating.
-        # - CreateFailed: Creation failed.
-        # - Upgrading: Upgrading.
-        # - UpgradeFailed: Upgrade failed.
-        # - Restarting: Restarting.
-        # - RestartFailed: Restart failed.
-        # - Deleting: Deleting.
-        # - DeleteFailed: Deletion failed.
+        # The instance state. Valid values:
+        # 
+        # *   Running: The instance is running.
+        # *   Creating: The instance is being created.
+        # *   CreateFailed: The instance fails to be created.
+        # *   Upgrading: The instance is being upgraded.
+        # *   UpgradeFailed: The instance fails to be upgraded.
+        # *   Restarting: The instance is being restarted.
+        # *   RestartFailed: The instance fails to be restarted.
+        # *   Deleting: The instance is being released.
+        # *   DeleteFailed: The instance failed to be released.
         self.status = status
-        # List of sub domain information
+        # The second-level domain names.
         self.sub_domain_infos = sub_domain_infos
-        # Array of tags.
+        # The tags.
         self.tags = tags
-        # Target version of the gateway. When it is inconsistent with the current `version`, an upgrade can be performed.
+        # The destination version of the instance. If the value is inconsistent with the current version, you can upgrade the instance.
         self.target_version = target_version
-        # Update timestamp. Unit: milliseconds.
+        # The time when the instance was last updated. This value is a UNIX timestamp. Unit: milliseconds.
         self.update_timestamp = update_timestamp
-        # The vSwtich.
+        # The vSwitch information.
         self.v_switch = v_switch
-        # Gateway version.
+        # The instance version.
         self.version = version
-        # The VPC.
+        # The virtual private cloud (VPC) information of the instance.
         self.vpc = vpc
-        # The Zones.
+        # The availability zones of the instance.
         self.zones = zones
 
     def validate(self):
@@ -12795,13 +12866,13 @@ class ListGatewaysResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # Gateway list
+        # The instances.
         self.items = items
-        # Page number.
+        # The page number of the returned page.
         self.page_number = page_number
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Total count.
+        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):
@@ -12852,13 +12923,13 @@ class ListGatewaysResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The status code.
         self.code = code
-        # Result of gateway list query.
+        # The instances.
         self.data = data
-        # Response message.
+        # The returned message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13193,31 +13264,41 @@ class ListHttpApiRoutesRequest(TeaModel):
         with_consumer_info_by_id: str = None,
         with_plugin_attachment_by_plugin_id: str = None,
     ):
-        # Filter the interface list based on a specific consumer authorization rule ID. The interface list in the response will only include authorized interfaces.
+        # The string that is used to filter routes based on consumer authentication rules. Only authorized APIs are returned.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
-        # Deployment status of the route.
+        # The deployment state of the route.
+        # 
+        # Enumerated values:
+        # 
+        # *   Deploying: The route is being deployed.
+        # *   DeployedWithChanges: The route is deployed and modified.
+        # *   Undeploying: The route is being undeployed.
+        # *   NotDeployed: The route is not deployed.
+        # *   Deployed: The route is deployed.
+        # *   UndeployFailed: The route failed to be undeployed.
+        # *   DeployFailed: The route failed to be deployed.
         self.deploy_statuses = deploy_statuses
-        # Filter route information by domain ID.
+        # Specifies to filter routes by domain ID.
         self.domain_id = domain_id
-        # Environment ID.
+        # The environment ID.
         self.environment_id = environment_id
-        # Cloud-native API Gateway ID.
+        # The ID of the Cloud-native API Gateway instance.
         self.gateway_id = gateway_id
-        # Route name.
+        # The route name.
         self.name = name
-        # Fuzzy search by route name.
+        # The route name keyword for a fuzzy search.
         self.name_like = name_like
-        # Page number, starting from 1. Default is 1 if not specified.
+        # The page number of the page to return. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # Page size, valid range [1, 100]. Default is 10 if not specified.
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # Fuzzy search by route path.
+        # The route path keyword for a fuzzy search.
         self.path_like = path_like
-        # The response includes consumer authorization information.
+        # The consumer authorization information in the response.
         self.with_auth_policy_info = with_auth_policy_info
-        # Each route information in the response carries the list of authorization rules for the specified consumer ID.
+        # The authentication rules of the specified consumer in each route returned.
         self.with_consumer_info_by_id = with_consumer_info_by_id
-        # Each route information in the response carries the attachment information for the specified plugin ID.
+        # The mounting information of the specified plug-in in each route returned.
         self.with_plugin_attachment_by_plugin_id = with_plugin_attachment_by_plugin_id
 
     def validate(self):
@@ -13296,13 +13377,13 @@ class ListHttpApiRoutesResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # List of routes.
+        # The routes.
         self.items = items
-        # Page number.
+        # The page number of the returned page.
         self.page_number = page_number
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Total number of items.
+        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):
@@ -13353,13 +13434,13 @@ class ListHttpApiRoutesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The status code.
         self.code = code
-        # Response data.
+        # The response parameters.
         self.data = data
-        # Response message.
+        # The returned message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13447,6 +13528,7 @@ class ListHttpApisRequest(TeaModel):
         page_size: int = None,
         resource_group_id: str = None,
         types: str = None,
+        with_apis_published_to_environment: bool = None,
         with_auth_policy_in_environment_id: str = None,
         with_auth_policy_list: bool = None,
         with_consumer_info_by_id: str = None,
@@ -13454,39 +13536,43 @@ class ListHttpApisRequest(TeaModel):
         with_environment_info_by_id: str = None,
         with_ingress_info: bool = None,
         with_plugin_attachment_by_plugin_id: str = None,
+        with_policy_configs: bool = None,
     ):
-        # Cloud-native API Gateway ID.
+        # The ID of the Cloud-native API Gateway instance.
         self.gateway_id = gateway_id
-        # Search keyword, supports fuzzy search by API name or exact search by API ID.
+        # The search keyword. You can fuzzy-search by API name or exact-search by API ID.
         self.keyword = keyword
-        # Exact search by name.
+        # The API name that is used for the search. In this case, exact search is performed.
         self.name = name
-        # Page number, starting from 1, default is 1 if not specified.
+        # The page number of the page to return. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # Page size, valid range [1, 100], default is 10 if not specified.
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Type of HTTP API. Multiple types can be passed, separated by ",".
-        # - Http
-        # - Rest
-        # - WebSocket
-        # - HttpIngress
+        # The API type. You can specify multiple types and separate them with a comma (,).
+        # 
+        # *   Http
+        # *   Rest
+        # *   WebSocket
+        # *   HttpIngress
         self.types = types
-        # Each API information in the response carries consumer authentication policy information for the specified environment ID.
+        self.with_apis_published_to_environment = with_apis_published_to_environment
+        # The consumer authentication policy in the specified environment in each returned API.
         self.with_auth_policy_in_environment_id = with_auth_policy_in_environment_id
-        # Whether the authentication policy is enabled.
+        # Specifies whether authentication is enabled.
         self.with_auth_policy_list = with_auth_policy_list
-        # Each API information in the response carries a list of authorization rules for the specified consumer ID.
+        # The authorization rules of the specified consumer in each returned API.
         self.with_consumer_info_by_id = with_consumer_info_by_id
-        # Environment information
+        # The environment information.
         self.with_environment_info = with_environment_info
-        # Environment ID
+        # The environment ID.
         self.with_environment_info_by_id = with_environment_info_by_id
-        # Ingress information
+        # The Ingress information.
         self.with_ingress_info = with_ingress_info
-        # Plugin ID, used to get plugin release information based on this ID.
+        # The plug-in ID. You can use the returned value of this parameter to query the plug-in.
         self.with_plugin_attachment_by_plugin_id = with_plugin_attachment_by_plugin_id
+        self.with_policy_configs = with_policy_configs
 
     def validate(self):
         pass
@@ -13511,6 +13597,8 @@ class ListHttpApisRequest(TeaModel):
             result['resourceGroupId'] = self.resource_group_id
         if self.types is not None:
             result['types'] = self.types
+        if self.with_apis_published_to_environment is not None:
+            result['withAPIsPublishedToEnvironment'] = self.with_apis_published_to_environment
         if self.with_auth_policy_in_environment_id is not None:
             result['withAuthPolicyInEnvironmentId'] = self.with_auth_policy_in_environment_id
         if self.with_auth_policy_list is not None:
@@ -13525,6 +13613,8 @@ class ListHttpApisRequest(TeaModel):
             result['withIngressInfo'] = self.with_ingress_info
         if self.with_plugin_attachment_by_plugin_id is not None:
             result['withPluginAttachmentByPluginId'] = self.with_plugin_attachment_by_plugin_id
+        if self.with_policy_configs is not None:
+            result['withPolicyConfigs'] = self.with_policy_configs
         return result
 
     def from_map(self, m: dict = None):
@@ -13543,6 +13633,8 @@ class ListHttpApisRequest(TeaModel):
             self.resource_group_id = m.get('resourceGroupId')
         if m.get('types') is not None:
             self.types = m.get('types')
+        if m.get('withAPIsPublishedToEnvironment') is not None:
+            self.with_apis_published_to_environment = m.get('withAPIsPublishedToEnvironment')
         if m.get('withAuthPolicyInEnvironmentId') is not None:
             self.with_auth_policy_in_environment_id = m.get('withAuthPolicyInEnvironmentId')
         if m.get('withAuthPolicyList') is not None:
@@ -13557,6 +13649,8 @@ class ListHttpApisRequest(TeaModel):
             self.with_ingress_info = m.get('withIngressInfo')
         if m.get('withPluginAttachmentByPluginId') is not None:
             self.with_plugin_attachment_by_plugin_id = m.get('withPluginAttachmentByPluginId')
+        if m.get('withPolicyConfigs') is not None:
+            self.with_policy_configs = m.get('withPolicyConfigs')
         return self
 
 
@@ -13568,13 +13662,13 @@ class ListHttpApisResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # API information.
+        # The API information.
         self.items = items
-        # Page number.
+        # The page number of the returned page.
         self.page_number = page_number
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Total count.
+        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):
@@ -13625,13 +13719,13 @@ class ListHttpApisResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The status code.
         self.code = code
-        # API list.
+        # The APIs.
         self.data = data
-        # Response message.
+        # The returned message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13935,22 +14029,31 @@ class ListServicesRequest(TeaModel):
         resource_group_id: str = None,
         source_type: str = None,
     ):
-        # Cloud-native API Gateway ID.
+        # The ID of the Cloud-native API Gateway instance.
         self.gateway_id = gateway_id
-        # Exact query by service name.
+        # The service name.
         self.name = name
-        # Page number, starting from 1. Default is 1 if not specified.
+        # The page number to return. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # Page size, valid range [1, 100]. Default is 10 if not specified.
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Query by service source type. Service sources:
-        # - MSE_NACOS: Services from MSE Nacos.
-        # - K8S: Services from K8S clusters in container services.
-        # - FC3: Services from function computing.
-        # - VIP: Services from a fixed address.
-        # - DNS: Services from a domain name.
+        # The service source. Valid values:
+        # 
+        # *   MSE_NACOS: a service in an MSE Nacos instance
+        # *   K8S: a service in a Kubernetes (K8s) cluster in Container Service for Kubernetes (ACK)
+        # *   FC3: a service in Function Compute
+        # *   VIP: a fixed address
+        # *   DNS: a domain name
+        # 
+        # Enumerated values:
+        # 
+        # *   K8S
+        # *   FC3
+        # *   DNS
+        # *   VIP
+        # *   MSE_NACOS
         self.source_type = source_type
 
     def validate(self):
@@ -14001,13 +14104,13 @@ class ListServicesResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # Service list.
+        # The services.
         self.items = items
-        # Page number.
+        # The page number of the returned page.
         self.page_number = page_number
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Total count.
+        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):
@@ -14058,13 +14161,13 @@ class ListServicesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The status code.
         self.code = code
-        # Response data.
+        # The response parameters.
         self.data = data
-        # Response message.
+        # The returned message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14585,7 +14688,9 @@ class UndeployHttpApiRequest(TeaModel):
         environment_id: str = None,
         route_id: str = None,
     ):
+        # The environment ID.
         self.environment_id = environment_id
+        # Route ID. This must be provided when publishing the route of an HTTP API.
         self.route_id = route_id
 
     def validate(self):
@@ -14619,8 +14724,11 @@ class UndeployHttpApiResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14706,30 +14814,36 @@ class UpdateDomainRequest(TeaModel):
         tls_max: str = None,
         tls_min: str = None,
     ):
-        # CA certificate identifier
+        # The CA certificate ID.
         self.ca_cert_identifier = ca_cert_identifier
-        # Certificate identifier
+        # The certificate ID.
         self.cert_identifier = cert_identifier
-        # Client CA Certificate
+        # The client CA certificate.
         self.client_cacert = client_cacert
-        # Set the HTTPS protocol type, whether to enable forced HTTPS redirection.
+        # Specifies whether to enable HTTPS redirection. If protocol is set to HTTPS, forceHttps is required.
         self.force_https = force_https
-        # HTTP/2 settings.
-        self.http_2option = http_2option
-        # Whether to enable mTLS mutual authentication
-        self.m_tlsenabled = m_tlsenabled
-        # The protocol type supported by the domain.
+        # The HTTP/2 configuration.
         # 
-        # - HTTP: Supports only HTTP protocol.
-        # - HTTPS: Supports only HTTPS protocol.
+        # Enumerated values:
+        # 
+        # *   GlobalConfig
+        # *   Close
+        # *   Open
+        self.http_2option = http_2option
+        # Specifies whether to enable mutual TLS (mTLS) authentication.
+        self.m_tlsenabled = m_tlsenabled
+        # The protocol type to be supported by the domain name. Valid values:
+        # 
+        # *   HTTP
+        # *   HTTPS
         # 
         # This parameter is required.
         self.protocol = protocol
-        # TLS Cipher Suite Configuration.
+        # The cipher suite configuration.
         self.tls_cipher_suites_config = tls_cipher_suites_config
-        # Maximum TLS protocol version, supports up to TLS 1.3.
+        # The maximum TLS version. Up to TLS 1.3 is supported.
         self.tls_max = tls_max
-        # Minimum TLS protocol version, supports down to TLS 1.0.
+        # The minimum TLS version. Down to TLS 1.0 is supported.
         self.tls_min = tls_min
 
     def validate(self):
@@ -14795,7 +14909,7 @@ class UpdateDomainResponseBodyData(TeaModel):
         self,
         deploy_revision_id: str = None,
     ):
-        # Deploy revision id.
+        # The released version ID.
         self.deploy_revision_id = deploy_revision_id
 
     def validate(self):
@@ -14826,13 +14940,13 @@ class UpdateDomainResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response code.
+        # The status code.
         self.code = code
-        # The returned data.
+        # The response parameters.
         self.data = data
-        # Response message.
+        # The returned message.
         self.message = message
-        # Request ID, used for tracing the API call chain.
+        # The request ID. You can use this value to trace the API call.
         self.request_id = request_id
 
     def validate(self):
@@ -15616,17 +15730,18 @@ class UpdateHttpApiRouteRequestBackendConfigServices(TeaModel):
         version: str = None,
         weight: int = None,
     ):
-        # Service port, do not pass in for dynamic ports.
+        # The service port. If you want to use a dynamic port, do not pass this parameter.
         self.port = port
-        # Service protocol:
-        # - HTTP.
-        # - HTTPS.
+        # The protocol. Valid values:
+        # 
+        # *   HTTP
+        # *   HTTPS
         self.protocol = protocol
-        # Service ID.
+        # The service ID.
         self.service_id = service_id
-        # Service version.
+        # The service version.
         self.version = version
-        # Percentage value of traffic ratio.
+        # The percentage value of traffic.
         self.weight = weight
 
     def validate(self):
@@ -15671,9 +15786,16 @@ class UpdateHttpApiRouteRequestBackendConfig(TeaModel):
         scene: str = None,
         services: List[UpdateHttpApiRouteRequestBackendConfigServices] = None,
     ):
-        # Backend service scenario.
+        # The backend service scenario.
+        # 
+        # Valid values:
+        # 
+        # *   SingleService
+        # *   MultiServiceByRatio
+        # *   Redirect
+        # *   Mock
         self.scene = scene
-        # List of backend services.
+        # The backend services.
         self.services = services
 
     def validate(self):
@@ -15717,15 +15839,15 @@ class UpdateHttpApiRouteRequest(TeaModel):
         environment_id: str = None,
         match: HttpRouteMatch = None,
     ):
-        # Backend service configuration for the route.
+        # The backend service configurations of the route.
         self.backend_config = backend_config
-        # Route description.
+        # The route description.
         self.description = description
-        # List of domain IDs.
+        # The domain IDs.
         self.domain_ids = domain_ids
-        # Environment ID.
+        # The environment ID.
         self.environment_id = environment_id
-        # Route match rule.
+        # The rules for matching the route.
         self.match = match
 
     def validate(self):
@@ -15776,11 +15898,11 @@ class UpdateHttpApiRouteResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The status code.
         self.code = code
-        # Response message.
+        # The returned message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

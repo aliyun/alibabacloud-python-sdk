@@ -304,7 +304,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateDomainResponse:
         """
-        @summary Create Domain
+        @summary Creates a domain name.
         
         @description Create Domain.
         
@@ -372,7 +372,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateDomainResponse:
         """
-        @summary Create Domain
+        @summary Creates a domain name.
         
         @description Create Domain.
         
@@ -438,7 +438,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateDomainRequest,
     ) -> apig20240327_models.CreateDomainResponse:
         """
-        @summary Create Domain
+        @summary Creates a domain name.
         
         @description Create Domain.
         
@@ -454,7 +454,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateDomainRequest,
     ) -> apig20240327_models.CreateDomainResponse:
         """
-        @summary Create Domain
+        @summary Creates a domain name.
         
         @description Create Domain.
         
@@ -624,7 +624,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateHttpApiResponse:
         """
-        @summary Create an API of HTTP type
+        @summary Creates an HTTP API.
         
         @param request: CreateHttpApiRequest
         @param headers: map
@@ -690,7 +690,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateHttpApiResponse:
         """
-        @summary Create an API of HTTP type
+        @summary Creates an HTTP API.
         
         @param request: CreateHttpApiRequest
         @param headers: map
@@ -754,7 +754,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateHttpApiRequest,
     ) -> apig20240327_models.CreateHttpApiResponse:
         """
-        @summary Create an API of HTTP type
+        @summary Creates an HTTP API.
         
         @param request: CreateHttpApiRequest
         @return: CreateHttpApiResponse
@@ -768,7 +768,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateHttpApiRequest,
     ) -> apig20240327_models.CreateHttpApiResponse:
         """
-        @summary Create an API of HTTP type
+        @summary Creates an HTTP API.
         
         @param request: CreateHttpApiRequest
         @return: CreateHttpApiResponse
@@ -1304,9 +1304,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateServiceResponse:
         """
-        @summary Create Service
+        @summary Creates a service.
         
-        @description The interface supports creating multiple services.
+        @description You can call this operation to create multiple services at a time.
         
         @param request: CreateServiceRequest
         @param headers: map
@@ -1356,9 +1356,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateServiceResponse:
         """
-        @summary Create Service
+        @summary Creates a service.
         
-        @description The interface supports creating multiple services.
+        @description You can call this operation to create multiple services at a time.
         
         @param request: CreateServiceRequest
         @param headers: map
@@ -1406,9 +1406,9 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateServiceRequest,
     ) -> apig20240327_models.CreateServiceResponse:
         """
-        @summary Create Service
+        @summary Creates a service.
         
-        @description The interface supports creating multiple services.
+        @description You can call this operation to create multiple services at a time.
         
         @param request: CreateServiceRequest
         @return: CreateServiceResponse
@@ -1422,9 +1422,9 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateServiceRequest,
     ) -> apig20240327_models.CreateServiceResponse:
         """
-        @summary Create Service
+        @summary Creates a service.
         
-        @description The interface supports creating multiple services.
+        @description You can call this operation to create multiple services at a time.
         
         @param request: CreateServiceRequest
         @return: CreateServiceResponse
@@ -2627,7 +2627,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetDashboardResponse:
         """
-        @summary Get Monitoring/Logging Dashboard Interface
+        @summary Obtains data from dashboards.
         
         @param tmp_req: GetDashboardRequest
         @param headers: map
@@ -2650,8 +2650,12 @@ class Client(OpenApiClient):
             query['name'] = request.name
         if not UtilClient.is_unset(request.plugin_class_id):
             query['pluginClassId'] = request.plugin_class_id
+        if not UtilClient.is_unset(request.plugin_id):
+            query['pluginId'] = request.plugin_id
         if not UtilClient.is_unset(request.source):
             query['source'] = request.source
+        if not UtilClient.is_unset(request.upstream_cluster):
+            query['upstreamCluster'] = request.upstream_cluster
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2686,7 +2690,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetDashboardResponse:
         """
-        @summary Get Monitoring/Logging Dashboard Interface
+        @summary Obtains data from dashboards.
         
         @param tmp_req: GetDashboardRequest
         @param headers: map
@@ -2709,8 +2713,12 @@ class Client(OpenApiClient):
             query['name'] = request.name
         if not UtilClient.is_unset(request.plugin_class_id):
             query['pluginClassId'] = request.plugin_class_id
+        if not UtilClient.is_unset(request.plugin_id):
+            query['pluginId'] = request.plugin_id
         if not UtilClient.is_unset(request.source):
             query['source'] = request.source
+        if not UtilClient.is_unset(request.upstream_cluster):
+            query['upstreamCluster'] = request.upstream_cluster
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2743,7 +2751,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.GetDashboardRequest,
     ) -> apig20240327_models.GetDashboardResponse:
         """
-        @summary Get Monitoring/Logging Dashboard Interface
+        @summary Obtains data from dashboards.
         
         @param request: GetDashboardRequest
         @return: GetDashboardResponse
@@ -2758,7 +2766,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.GetDashboardRequest,
     ) -> apig20240327_models.GetDashboardResponse:
         """
-        @summary Get Monitoring/Logging Dashboard Interface
+        @summary Obtains data from dashboards.
         
         @param request: GetDashboardRequest
         @return: GetDashboardResponse
@@ -2775,7 +2783,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetDomainResponse:
         """
-        @summary Query domain details
+        @summary Queries the information about a domain name.
         
         @param request: GetDomainRequest
         @param headers: map
@@ -2820,7 +2828,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetDomainResponse:
         """
-        @summary Query domain details
+        @summary Queries the information about a domain name.
         
         @param request: GetDomainRequest
         @param headers: map
@@ -2863,7 +2871,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.GetDomainRequest,
     ) -> apig20240327_models.GetDomainResponse:
         """
-        @summary Query domain details
+        @summary Queries the information about a domain name.
         
         @param request: GetDomainRequest
         @return: GetDomainResponse
@@ -2878,7 +2886,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.GetDomainRequest,
     ) -> apig20240327_models.GetDomainResponse:
         """
-        @summary Query domain details
+        @summary Queries the information about a domain name.
         
         @param request: GetDomainRequest
         @return: GetDomainResponse
@@ -3341,7 +3349,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetHttpApiRouteResponse:
         """
-        @summary Get the details of an HttpApi route
+        @summary Queries the details of a route of an HTTP API.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3380,7 +3388,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetHttpApiRouteResponse:
         """
-        @summary Get the details of an HttpApi route
+        @summary Queries the details of a route of an HTTP API.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3417,7 +3425,7 @@ class Client(OpenApiClient):
         route_id: str,
     ) -> apig20240327_models.GetHttpApiRouteResponse:
         """
-        @summary Get the details of an HttpApi route
+        @summary Queries the details of a route of an HTTP API.
         
         @return: GetHttpApiRouteResponse
         """
@@ -3431,7 +3439,7 @@ class Client(OpenApiClient):
         route_id: str,
     ) -> apig20240327_models.GetHttpApiRouteResponse:
         """
-        @summary Get the details of an HttpApi route
+        @summary Queries the details of a route of an HTTP API.
         
         @return: GetHttpApiRouteResponse
         """
@@ -3446,7 +3454,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetPolicyResponse:
         """
-        @summary GetPolicy
+        @summary Queries a policy.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3484,7 +3492,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetPolicyResponse:
         """
-        @summary GetPolicy
+        @summary Queries a policy.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3520,7 +3528,7 @@ class Client(OpenApiClient):
         policy_id: str,
     ) -> apig20240327_models.GetPolicyResponse:
         """
-        @summary GetPolicy
+        @summary Queries a policy.
         
         @return: GetPolicyResponse
         """
@@ -3533,7 +3541,7 @@ class Client(OpenApiClient):
         policy_id: str,
     ) -> apig20240327_models.GetPolicyResponse:
         """
-        @summary GetPolicy
+        @summary Queries a policy.
         
         @return: GetPolicyResponse
         """
@@ -3744,7 +3752,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetServiceResponse:
         """
-        @summary Get Service Details
+        @summary Queries the details of a service.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3782,7 +3790,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetServiceResponse:
         """
-        @summary Get Service Details
+        @summary Queries the details of a service.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3818,7 +3826,7 @@ class Client(OpenApiClient):
         service_id: str,
     ) -> apig20240327_models.GetServiceResponse:
         """
-        @summary Get Service Details
+        @summary Queries the details of a service.
         
         @return: GetServiceResponse
         """
@@ -3831,7 +3839,7 @@ class Client(OpenApiClient):
         service_id: str,
     ) -> apig20240327_models.GetServiceResponse:
         """
-        @summary Get Service Details
+        @summary Queries the details of a service.
         
         @return: GetServiceResponse
         """
@@ -3966,7 +3974,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ImportHttpApiResponse:
         """
-        @summary Import HttpApi
+        @summary Imports HTTP APIs. You can call this operation to import OpenAPI 2.0 and OpenAPI 3.0.x definition files to create REST APIs.
         
         @param request: ImportHttpApiRequest
         @param headers: map
@@ -4028,7 +4036,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ImportHttpApiResponse:
         """
-        @summary Import HttpApi
+        @summary Imports HTTP APIs. You can call this operation to import OpenAPI 2.0 and OpenAPI 3.0.x definition files to create REST APIs.
         
         @param request: ImportHttpApiRequest
         @param headers: map
@@ -4088,7 +4096,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ImportHttpApiRequest,
     ) -> apig20240327_models.ImportHttpApiResponse:
         """
-        @summary Import HttpApi
+        @summary Imports HTTP APIs. You can call this operation to import OpenAPI 2.0 and OpenAPI 3.0.x definition files to create REST APIs.
         
         @param request: ImportHttpApiRequest
         @return: ImportHttpApiResponse
@@ -4102,7 +4110,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ImportHttpApiRequest,
     ) -> apig20240327_models.ImportHttpApiResponse:
         """
-        @summary Import HttpApi
+        @summary Imports HTTP APIs. You can call this operation to import OpenAPI 2.0 and OpenAPI 3.0.x definition files to create REST APIs.
         
         @param request: ImportHttpApiRequest
         @return: ImportHttpApiResponse
@@ -4118,7 +4126,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListDomainsResponse:
         """
-        @summary ListDomains
+        @summary Queries a list of domain names.
         
         @param request: ListDomainsRequest
         @param headers: map
@@ -4170,7 +4178,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListDomainsResponse:
         """
-        @summary ListDomains
+        @summary Queries a list of domain names.
         
         @param request: ListDomainsRequest
         @param headers: map
@@ -4220,7 +4228,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListDomainsRequest,
     ) -> apig20240327_models.ListDomainsResponse:
         """
-        @summary ListDomains
+        @summary Queries a list of domain names.
         
         @param request: ListDomainsRequest
         @return: ListDomainsResponse
@@ -4234,7 +4242,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListDomainsRequest,
     ) -> apig20240327_models.ListDomainsResponse:
         """
-        @summary ListDomains
+        @summary Queries a list of domain names.
         
         @param request: ListDomainsRequest
         @return: ListDomainsResponse
@@ -4402,7 +4410,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListGatewaysResponse:
         """
-        @summary Retrieve the list of created cloud-native gateways
+        @summary Queries a list of instances.
         
         @param tmp_req: ListGatewaysRequest
         @param headers: map
@@ -4462,7 +4470,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListGatewaysResponse:
         """
-        @summary Retrieve the list of created cloud-native gateways
+        @summary Queries a list of instances.
         
         @param tmp_req: ListGatewaysRequest
         @param headers: map
@@ -4520,7 +4528,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListGatewaysRequest,
     ) -> apig20240327_models.ListGatewaysResponse:
         """
-        @summary Retrieve the list of created cloud-native gateways
+        @summary Queries a list of instances.
         
         @param request: ListGatewaysRequest
         @return: ListGatewaysResponse
@@ -4534,7 +4542,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListGatewaysRequest,
     ) -> apig20240327_models.ListGatewaysResponse:
         """
-        @summary Retrieve the list of created cloud-native gateways
+        @summary Queries a list of instances.
         
         @param request: ListGatewaysRequest
         @return: ListGatewaysResponse
@@ -4707,7 +4715,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListHttpApiRoutesResponse:
         """
-        @summary Create a route for HttpApi
+        @summary Queries the routes of an HTTP API.
         
         @param request: ListHttpApiRoutesRequest
         @param headers: map
@@ -4776,7 +4784,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListHttpApiRoutesResponse:
         """
-        @summary Create a route for HttpApi
+        @summary Queries the routes of an HTTP API.
         
         @param request: ListHttpApiRoutesRequest
         @param headers: map
@@ -4843,7 +4851,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListHttpApiRoutesRequest,
     ) -> apig20240327_models.ListHttpApiRoutesResponse:
         """
-        @summary Create a route for HttpApi
+        @summary Queries the routes of an HTTP API.
         
         @param request: ListHttpApiRoutesRequest
         @return: ListHttpApiRoutesResponse
@@ -4858,7 +4866,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListHttpApiRoutesRequest,
     ) -> apig20240327_models.ListHttpApiRoutesResponse:
         """
-        @summary Create a route for HttpApi
+        @summary Queries the routes of an HTTP API.
         
         @param request: ListHttpApiRoutesRequest
         @return: ListHttpApiRoutesResponse
@@ -4874,7 +4882,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListHttpApisResponse:
         """
-        @summary List HTTP APIs
+        @summary Queries a list of HTTP APIs.
         
         @param request: ListHttpApisRequest
         @param headers: map
@@ -4897,6 +4905,8 @@ class Client(OpenApiClient):
             query['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.types):
             query['types'] = request.types
+        if not UtilClient.is_unset(request.with_apis_published_to_environment):
+            query['withAPIsPublishedToEnvironment'] = request.with_apis_published_to_environment
         if not UtilClient.is_unset(request.with_auth_policy_in_environment_id):
             query['withAuthPolicyInEnvironmentId'] = request.with_auth_policy_in_environment_id
         if not UtilClient.is_unset(request.with_auth_policy_list):
@@ -4911,6 +4921,8 @@ class Client(OpenApiClient):
             query['withIngressInfo'] = request.with_ingress_info
         if not UtilClient.is_unset(request.with_plugin_attachment_by_plugin_id):
             query['withPluginAttachmentByPluginId'] = request.with_plugin_attachment_by_plugin_id
+        if not UtilClient.is_unset(request.with_policy_configs):
+            query['withPolicyConfigs'] = request.with_policy_configs
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4944,7 +4956,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListHttpApisResponse:
         """
-        @summary List HTTP APIs
+        @summary Queries a list of HTTP APIs.
         
         @param request: ListHttpApisRequest
         @param headers: map
@@ -4967,6 +4979,8 @@ class Client(OpenApiClient):
             query['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.types):
             query['types'] = request.types
+        if not UtilClient.is_unset(request.with_apis_published_to_environment):
+            query['withAPIsPublishedToEnvironment'] = request.with_apis_published_to_environment
         if not UtilClient.is_unset(request.with_auth_policy_in_environment_id):
             query['withAuthPolicyInEnvironmentId'] = request.with_auth_policy_in_environment_id
         if not UtilClient.is_unset(request.with_auth_policy_list):
@@ -4981,6 +4995,8 @@ class Client(OpenApiClient):
             query['withIngressInfo'] = request.with_ingress_info
         if not UtilClient.is_unset(request.with_plugin_attachment_by_plugin_id):
             query['withPluginAttachmentByPluginId'] = request.with_plugin_attachment_by_plugin_id
+        if not UtilClient.is_unset(request.with_policy_configs):
+            query['withPolicyConfigs'] = request.with_policy_configs
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -5012,7 +5028,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListHttpApisRequest,
     ) -> apig20240327_models.ListHttpApisResponse:
         """
-        @summary List HTTP APIs
+        @summary Queries a list of HTTP APIs.
         
         @param request: ListHttpApisRequest
         @return: ListHttpApisResponse
@@ -5026,7 +5042,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListHttpApisRequest,
     ) -> apig20240327_models.ListHttpApisResponse:
         """
-        @summary List HTTP APIs
+        @summary Queries a list of HTTP APIs.
         
         @param request: ListHttpApisRequest
         @return: ListHttpApisResponse
@@ -5174,7 +5190,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListServicesResponse:
         """
-        @summary Get Service List
+        @summary Queries a list of services.
         
         @param request: ListServicesRequest
         @param headers: map
@@ -5228,7 +5244,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListServicesResponse:
         """
-        @summary Get Service List
+        @summary Queries a list of services.
         
         @param request: ListServicesRequest
         @param headers: map
@@ -5280,7 +5296,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListServicesRequest,
     ) -> apig20240327_models.ListServicesResponse:
         """
-        @summary Get Service List
+        @summary Queries a list of services.
         
         @param request: ListServicesRequest
         @return: ListServicesResponse
@@ -5294,7 +5310,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListServicesRequest,
     ) -> apig20240327_models.ListServicesResponse:
         """
-        @summary Get Service List
+        @summary Queries a list of services.
         
         @param request: ListServicesRequest
         @return: ListServicesResponse
@@ -5759,9 +5775,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdateDomainResponse:
         """
-        @summary UpdateDomain
-        
-        @description 只有类型为*容器服务**的来源允许更新监听Ingress的配置。
+        @summary Updates a domain name.
         
         @param request: UpdateDomainRequest
         @param headers: map
@@ -5824,9 +5838,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdateDomainResponse:
         """
-        @summary UpdateDomain
-        
-        @description 只有类型为*容器服务**的来源允许更新监听Ingress的配置。
+        @summary Updates a domain name.
         
         @param request: UpdateDomainRequest
         @param headers: map
@@ -5887,9 +5899,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdateDomainRequest,
     ) -> apig20240327_models.UpdateDomainResponse:
         """
-        @summary UpdateDomain
-        
-        @description 只有类型为*容器服务**的来源允许更新监听Ingress的配置。
+        @summary Updates a domain name.
         
         @param request: UpdateDomainRequest
         @return: UpdateDomainResponse
@@ -5904,9 +5914,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdateDomainRequest,
     ) -> apig20240327_models.UpdateDomainResponse:
         """
-        @summary UpdateDomain
-        
-        @description 只有类型为*容器服务**的来源允许更新监听Ingress的配置。
+        @summary Updates a domain name.
         
         @param request: UpdateDomainRequest
         @return: UpdateDomainResponse
@@ -6580,7 +6588,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdateHttpApiRouteResponse:
         """
-        @summary Update the route of HttpApi
+        @summary Updates the route of an HTTP API.
         
         @param request: UpdateHttpApiRouteRequest
         @param headers: map
@@ -6634,7 +6642,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdateHttpApiRouteResponse:
         """
-        @summary Update the route of HttpApi
+        @summary Updates the route of an HTTP API.
         
         @param request: UpdateHttpApiRouteRequest
         @param headers: map
@@ -6686,7 +6694,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdateHttpApiRouteRequest,
     ) -> apig20240327_models.UpdateHttpApiRouteResponse:
         """
-        @summary Update the route of HttpApi
+        @summary Updates the route of an HTTP API.
         
         @param request: UpdateHttpApiRouteRequest
         @return: UpdateHttpApiRouteResponse
@@ -6702,7 +6710,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdateHttpApiRouteRequest,
     ) -> apig20240327_models.UpdateHttpApiRouteResponse:
         """
-        @summary Update the route of HttpApi
+        @summary Updates the route of an HTTP API.
         
         @param request: UpdateHttpApiRouteRequest
         @return: UpdateHttpApiRouteResponse
