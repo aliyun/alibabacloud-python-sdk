@@ -3,6 +3,11 @@
 - Support API UpdateCrossBorderOptimization.
 
 
+2025-03-31 Version: 2.19.0
+- Support API GetCrossBorderOptimization.
+- Support API UpdateCrossBorderOptimization.
+
+
 2025-03-27 Version: 2.18.0
 - Support API BatchCreateWafRules.
 - Support API BatchUpdateWafRules.
