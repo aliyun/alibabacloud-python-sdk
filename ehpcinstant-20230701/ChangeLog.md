@@ -1,3 +1,9 @@
+2025-03-31 Version: 2.0.1
+- Update API CreateJob: add request parameters DeploymentPolicy.Level.
+- Update API GetJob: add response parameters Body.JobInfo.DeploymentPolicy.Level.
+- Update API GetJob: add response parameters Body.JobInfo.DeploymentPolicy.Network.EnableENIMapping.
+
+
 2025-02-12 Version: 2.0.0
 - Update API CreateJob: add param SecurityPolicy.
 - Update API ListExecutors: update param PageNumber.

@@ -395,10 +395,12 @@ class CreateJobRequestDeploymentPolicy(TeaModel):
     def __init__(
         self,
         allocation_spec: str = None,
+        level: str = None,
         network: CreateJobRequestDeploymentPolicyNetwork = None,
         tag: List[CreateJobRequestDeploymentPolicyTag] = None,
     ):
         self.allocation_spec = allocation_spec
+        self.level = level
         self.network = network
         self.tag = tag
 
@@ -418,6 +420,8 @@ class CreateJobRequestDeploymentPolicy(TeaModel):
         result = dict()
         if self.allocation_spec is not None:
             result['AllocationSpec'] = self.allocation_spec
+        if self.level is not None:
+            result['Level'] = self.level
         if self.network is not None:
             result['Network'] = self.network.to_map()
         result['Tag'] = []
@@ -430,6 +434,8 @@ class CreateJobRequestDeploymentPolicy(TeaModel):
         m = m or dict()
         if m.get('AllocationSpec') is not None:
             self.allocation_spec = m.get('AllocationSpec')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
         if m.get('Network') is not None:
             temp_model = CreateJobRequestDeploymentPolicyNetwork()
             self.network = temp_model.from_map(m['Network'])
@@ -2730,9 +2736,11 @@ class GetJobRequest(TeaModel):
 class GetJobResponseBodyJobInfoDeploymentPolicyNetwork(TeaModel):
     def __init__(
         self,
+        enable_enimapping: bool = None,
         enable_external_ip_address: bool = None,
         vswitch: List[str] = None,
     ):
+        self.enable_enimapping = enable_enimapping
         self.enable_external_ip_address = enable_external_ip_address
         self.vswitch = vswitch
 
@@ -2745,6 +2753,8 @@ class GetJobResponseBodyJobInfoDeploymentPolicyNetwork(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_enimapping is not None:
+            result['EnableENIMapping'] = self.enable_enimapping
         if self.enable_external_ip_address is not None:
             result['EnableExternalIpAddress'] = self.enable_external_ip_address
         if self.vswitch is not None:
@@ -2753,6 +2763,8 @@ class GetJobResponseBodyJobInfoDeploymentPolicyNetwork(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableENIMapping') is not None:
+            self.enable_enimapping = m.get('EnableENIMapping')
         if m.get('EnableExternalIpAddress') is not None:
             self.enable_external_ip_address = m.get('EnableExternalIpAddress')
         if m.get('Vswitch') is not None:
@@ -2797,10 +2809,12 @@ class GetJobResponseBodyJobInfoDeploymentPolicy(TeaModel):
     def __init__(
         self,
         allocation_spec: str = None,
+        level: str = None,
         network: GetJobResponseBodyJobInfoDeploymentPolicyNetwork = None,
         tags: List[GetJobResponseBodyJobInfoDeploymentPolicyTags] = None,
     ):
         self.allocation_spec = allocation_spec
+        self.level = level
         self.network = network
         self.tags = tags
 
@@ -2820,6 +2834,8 @@ class GetJobResponseBodyJobInfoDeploymentPolicy(TeaModel):
         result = dict()
         if self.allocation_spec is not None:
             result['AllocationSpec'] = self.allocation_spec
+        if self.level is not None:
+            result['Level'] = self.level
         if self.network is not None:
             result['Network'] = self.network.to_map()
         result['Tags'] = []
@@ -2832,6 +2848,8 @@ class GetJobResponseBodyJobInfoDeploymentPolicy(TeaModel):
         m = m or dict()
         if m.get('AllocationSpec') is not None:
             self.allocation_spec = m.get('AllocationSpec')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
         if m.get('Network') is not None:
             temp_model = GetJobResponseBodyJobInfoDeploymentPolicyNetwork()
             self.network = temp_model.from_map(m['Network'])
