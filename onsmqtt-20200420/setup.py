@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_onsmqtt20200420.
 
-Created on 26/02/2025
+Created on 31/03/2025
 
 @author: Alibaba Cloud SDK
 """

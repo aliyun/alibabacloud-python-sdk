@@ -1,3 +1,9 @@
+2025-03-31 Version: 1.7.1
+- Update API CreateGroupId: add request parameters Tags.
+- Update API ListGroupId: add request parameters Tags.
+- Update API ListGroupId: add response parameters Body.Data.$.Tags.
+
+
 2025-02-26 Version: 1.7.0
 - Support API ListInstances.
 

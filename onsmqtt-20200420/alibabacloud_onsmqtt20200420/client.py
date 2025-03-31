@@ -1065,6 +1065,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1110,6 +1112,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1903,7 +1907,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ons_mqtt_20200420_models.DisasterDowngradeResponse:
         """
-        @summary DisasterDowngrade
+        @summary Downgrades the virtual IP address (VIP) access of a specific instance during the disaster recovery of multiple instances. Only Enterprise Platinum Edition instances support this operation. To call the operation, you must submit a ticket.
         
         @param request: DisasterDowngradeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1946,7 +1950,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ons_mqtt_20200420_models.DisasterDowngradeResponse:
         """
-        @summary DisasterDowngrade
+        @summary Downgrades the virtual IP address (VIP) access of a specific instance during the disaster recovery of multiple instances. Only Enterprise Platinum Edition instances support this operation. To call the operation, you must submit a ticket.
         
         @param request: DisasterDowngradeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1988,7 +1992,7 @@ class Client(OpenApiClient):
         request: ons_mqtt_20200420_models.DisasterDowngradeRequest,
     ) -> ons_mqtt_20200420_models.DisasterDowngradeResponse:
         """
-        @summary DisasterDowngrade
+        @summary Downgrades the virtual IP address (VIP) access of a specific instance during the disaster recovery of multiple instances. Only Enterprise Platinum Edition instances support this operation. To call the operation, you must submit a ticket.
         
         @param request: DisasterDowngradeRequest
         @return: DisasterDowngradeResponse
@@ -2001,7 +2005,7 @@ class Client(OpenApiClient):
         request: ons_mqtt_20200420_models.DisasterDowngradeRequest,
     ) -> ons_mqtt_20200420_models.DisasterDowngradeResponse:
         """
-        @summary DisasterDowngrade
+        @summary Downgrades the virtual IP address (VIP) access of a specific instance during the disaster recovery of multiple instances. Only Enterprise Platinum Edition instances support this operation. To call the operation, you must submit a ticket.
         
         @param request: DisasterDowngradeRequest
         @return: DisasterDowngradeResponse
@@ -2015,7 +2019,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ons_mqtt_20200420_models.DisasterRecoveryResponse:
         """
-        @summary DisasterRecovery
+        @summary Recovers the public virtual IP address (VIP) access of a specific instance during the disaster recovery of multiple instances. Only Enterprise Platinum Edition instances support this operation. To call this operation, you must submit a ticket.
         
         @param request: DisasterRecoveryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2058,7 +2062,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ons_mqtt_20200420_models.DisasterRecoveryResponse:
         """
-        @summary DisasterRecovery
+        @summary Recovers the public virtual IP address (VIP) access of a specific instance during the disaster recovery of multiple instances. Only Enterprise Platinum Edition instances support this operation. To call this operation, you must submit a ticket.
         
         @param request: DisasterRecoveryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2100,7 +2104,7 @@ class Client(OpenApiClient):
         request: ons_mqtt_20200420_models.DisasterRecoveryRequest,
     ) -> ons_mqtt_20200420_models.DisasterRecoveryResponse:
         """
-        @summary DisasterRecovery
+        @summary Recovers the public virtual IP address (VIP) access of a specific instance during the disaster recovery of multiple instances. Only Enterprise Platinum Edition instances support this operation. To call this operation, you must submit a ticket.
         
         @param request: DisasterRecoveryRequest
         @return: DisasterRecoveryResponse
@@ -2113,7 +2117,7 @@ class Client(OpenApiClient):
         request: ons_mqtt_20200420_models.DisasterRecoveryRequest,
     ) -> ons_mqtt_20200420_models.DisasterRecoveryResponse:
         """
-        @summary DisasterRecovery
+        @summary Recovers the public virtual IP address (VIP) access of a specific instance during the disaster recovery of multiple instances. Only Enterprise Platinum Edition instances support this operation. To call this operation, you must submit a ticket.
         
         @param request: DisasterRecoveryRequest
         @return: DisasterRecoveryResponse
@@ -3339,6 +3343,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3382,6 +3388,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

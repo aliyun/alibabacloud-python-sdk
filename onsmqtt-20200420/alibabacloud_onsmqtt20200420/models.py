@@ -1147,6 +1147,7 @@ class CreateGroupIdRequest(TeaModel):
         self,
         group_id: str = None,
         instance_id: str = None,
+        tags: str = None,
     ):
         # The ID of the group that you want to create. The group ID must meet the following conventions:
         # 
@@ -1159,6 +1160,7 @@ class CreateGroupIdRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.tags = tags
 
     def validate(self):
         pass
@@ -1173,6 +1175,8 @@ class CreateGroupIdRequest(TeaModel):
             result['GroupId'] = self.group_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.tags is not None:
+            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -1181,6 +1185,8 @@ class CreateGroupIdRequest(TeaModel):
             self.group_id = m.get('GroupId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
         return self
 
 
@@ -2039,8 +2045,12 @@ class DisasterDowngradeRequest(TeaModel):
         downgrade_instance_id: str = None,
         instance_id: str = None,
     ):
+        # The ID of the ApsaraMQ for MQTT instance for which you want to downgrade the VIP access.
+        # 
         # This parameter is required.
         self.downgrade_instance_id = downgrade_instance_id
+        # The ID of the ApsaraMQ for MQTT instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 
@@ -2077,11 +2087,15 @@ class DisasterDowngradeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial. This parameter is returned only if Resource Access Management (RAM) permission verification failed.
         self.access_denied_detail = access_denied_detail
+        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For information about error codes, see Error codes.
         self.code = code
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -4208,11 +4222,13 @@ class ListGroupIdRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        tags: str = None,
     ):
         # The ID of the ApsaraMQ for MQTT instance whose groups you want to query.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.tags = tags
 
     def validate(self):
         pass
@@ -4225,12 +4241,49 @@ class ListGroupIdRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.tags is not None:
+            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class ListGroupIdResponseBodyDataTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         return self
 
 
@@ -4241,6 +4294,7 @@ class ListGroupIdResponseBodyData(TeaModel):
         group_id: str = None,
         independent_naming: bool = None,
         instance_id: str = None,
+        tags: List[ListGroupIdResponseBodyDataTags] = None,
         update_time: int = None,
     ):
         # The time when the group was created.
@@ -4254,11 +4308,15 @@ class ListGroupIdResponseBodyData(TeaModel):
         self.independent_naming = independent_naming
         # The ID of the ApsaraMQ for MQTT instance to which the group belongs.
         self.instance_id = instance_id
+        self.tags = tags
         # The time when the group was last updated.
         self.update_time = update_time
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4274,6 +4332,10 @@ class ListGroupIdResponseBodyData(TeaModel):
             result['IndependentNaming'] = self.independent_naming
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
         return result
@@ -4288,6 +4350,11 @@ class ListGroupIdResponseBodyData(TeaModel):
             self.independent_naming = m.get('IndependentNaming')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListGroupIdResponseBodyDataTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
         return self
