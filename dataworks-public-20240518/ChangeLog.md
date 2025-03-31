@@ -1,3 +1,8 @@
+2025-03-31 Version: 6.1.2
+- Update API GetDataQualityEvaluationTaskInstance: add response parameters Body.DataQualityEvaluationTaskInstance.Results.
+- Update API ListDataQualityEvaluationTasks: add response parameters Body.PagingInfo.DataQualityEvaluationTasks.$.DataSourceId.
+
+
 2025-03-27 Version: 6.1.1
 - Update API CreateDIJob: add request parameters JobType.
 - Update API GetDIJob: add response parameters Body.PagingInfo.JobType.

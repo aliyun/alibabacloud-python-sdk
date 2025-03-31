@@ -17202,6 +17202,545 @@ class GetDataQualityEvaluationTaskInstanceRequest(TeaModel):
         return self
 
 
+class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsDetails(TeaModel):
+    def __init__(
+        self,
+        checked_value: str = None,
+        referenced_value: str = None,
+        status: str = None,
+    ):
+        self.checked_value = checked_value
+        self.referenced_value = referenced_value
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checked_value is not None:
+            result['CheckedValue'] = self.checked_value
+        if self.referenced_value is not None:
+            result['ReferencedValue'] = self.referenced_value
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckedValue') is not None:
+            self.checked_value = m.get('CheckedValue')
+        if m.get('ReferencedValue') is not None:
+            self.referenced_value = m.get('ReferencedValue')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsCritical(TeaModel):
+    def __init__(
+        self,
+        expression: str = None,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.expression = expression
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expression is not None:
+            result['Expression'] = self.expression
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Expression') is not None:
+            self.expression = m.get('Expression')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsExpected(TeaModel):
+    def __init__(
+        self,
+        expression: str = None,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.expression = expression
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expression is not None:
+            result['Expression'] = self.expression
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Expression') is not None:
+            self.expression = m.get('Expression')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsWarned(TeaModel):
+    def __init__(
+        self,
+        expression: str = None,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.expression = expression
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expression is not None:
+            result['Expression'] = self.expression
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Expression') is not None:
+            self.expression = m.get('Expression')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholds(TeaModel):
+    def __init__(
+        self,
+        critical: GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsCritical = None,
+        expected: GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsExpected = None,
+        warned: GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsWarned = None,
+    ):
+        self.critical = critical
+        self.expected = expected
+        self.warned = warned
+
+    def validate(self):
+        if self.critical:
+            self.critical.validate()
+        if self.expected:
+            self.expected.validate()
+        if self.warned:
+            self.warned.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.critical is not None:
+            result['Critical'] = self.critical.to_map()
+        if self.expected is not None:
+            result['Expected'] = self.expected.to_map()
+        if self.warned is not None:
+            result['Warned'] = self.warned.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Critical') is not None:
+            temp_model = GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsCritical()
+            self.critical = temp_model.from_map(m['Critical'])
+        if m.get('Expected') is not None:
+            temp_model = GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsExpected()
+            self.expected = temp_model.from_map(m['Expected'])
+        if m.get('Warned') is not None:
+            temp_model = GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsWarned()
+            self.warned = temp_model.from_map(m['Warned'])
+        return self
+
+
+class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfig(TeaModel):
+    def __init__(
+        self,
+        referenced_samples_filter: str = None,
+        thresholds: GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholds = None,
+        type: str = None,
+    ):
+        self.referenced_samples_filter = referenced_samples_filter
+        self.thresholds = thresholds
+        self.type = type
+
+    def validate(self):
+        if self.thresholds:
+            self.thresholds.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.referenced_samples_filter is not None:
+            result['ReferencedSamplesFilter'] = self.referenced_samples_filter
+        if self.thresholds is not None:
+            result['Thresholds'] = self.thresholds.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReferencedSamplesFilter') is not None:
+            self.referenced_samples_filter = m.get('ReferencedSamplesFilter')
+        if m.get('Thresholds') is not None:
+            temp_model = GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholds()
+            self.thresholds = temp_model.from_map(m['Thresholds'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleErrorHandlers(TeaModel):
+    def __init__(
+        self,
+        error_data_filter: str = None,
+        type: str = None,
+    ):
+        self.error_data_filter = error_data_filter
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_data_filter is not None:
+            result['ErrorDataFilter'] = self.error_data_filter
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorDataFilter') is not None:
+            self.error_data_filter = m.get('ErrorDataFilter')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleSamplingConfig(TeaModel):
+    def __init__(
+        self,
+        metric: str = None,
+        metric_parameters: str = None,
+        sampling_filter: str = None,
+        setting_config: str = None,
+    ):
+        self.metric = metric
+        self.metric_parameters = metric_parameters
+        self.sampling_filter = sampling_filter
+        self.setting_config = setting_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric is not None:
+            result['Metric'] = self.metric
+        if self.metric_parameters is not None:
+            result['MetricParameters'] = self.metric_parameters
+        if self.sampling_filter is not None:
+            result['SamplingFilter'] = self.sampling_filter
+        if self.setting_config is not None:
+            result['SettingConfig'] = self.setting_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Metric') is not None:
+            self.metric = m.get('Metric')
+        if m.get('MetricParameters') is not None:
+            self.metric_parameters = m.get('MetricParameters')
+        if m.get('SamplingFilter') is not None:
+            self.sampling_filter = m.get('SamplingFilter')
+        if m.get('SettingConfig') is not None:
+            self.setting_config = m.get('SettingConfig')
+        return self
+
+
+class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleTarget(TeaModel):
+    def __init__(
+        self,
+        database_type: str = None,
+        table_guid: str = None,
+        type: str = None,
+    ):
+        self.database_type = database_type
+        self.table_guid = table_guid
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_type is not None:
+            result['DatabaseType'] = self.database_type
+        if self.table_guid is not None:
+            result['TableGuid'] = self.table_guid
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatabaseType') is not None:
+            self.database_type = m.get('DatabaseType')
+        if m.get('TableGuid') is not None:
+            self.table_guid = m.get('TableGuid')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule(TeaModel):
+    def __init__(
+        self,
+        checking_config: GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfig = None,
+        description: str = None,
+        enabled: bool = None,
+        error_handlers: List[GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleErrorHandlers] = None,
+        id: int = None,
+        name: str = None,
+        project_id: int = None,
+        sampling_config: GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleSamplingConfig = None,
+        severity: str = None,
+        target: GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleTarget = None,
+        template_code: str = None,
+    ):
+        self.checking_config = checking_config
+        self.description = description
+        self.enabled = enabled
+        self.error_handlers = error_handlers
+        self.id = id
+        self.name = name
+        self.project_id = project_id
+        self.sampling_config = sampling_config
+        self.severity = severity
+        self.target = target
+        self.template_code = template_code
+
+    def validate(self):
+        if self.checking_config:
+            self.checking_config.validate()
+        if self.error_handlers:
+            for k in self.error_handlers:
+                if k:
+                    k.validate()
+        if self.sampling_config:
+            self.sampling_config.validate()
+        if self.target:
+            self.target.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checking_config is not None:
+            result['CheckingConfig'] = self.checking_config.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        result['ErrorHandlers'] = []
+        if self.error_handlers is not None:
+            for k in self.error_handlers:
+                result['ErrorHandlers'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.sampling_config is not None:
+            result['SamplingConfig'] = self.sampling_config.to_map()
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.target is not None:
+            result['Target'] = self.target.to_map()
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckingConfig') is not None:
+            temp_model = GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfig()
+            self.checking_config = temp_model.from_map(m['CheckingConfig'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        self.error_handlers = []
+        if m.get('ErrorHandlers') is not None:
+            for k in m.get('ErrorHandlers'):
+                temp_model = GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleErrorHandlers()
+                self.error_handlers.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SamplingConfig') is not None:
+            temp_model = GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleSamplingConfig()
+            self.sampling_config = temp_model.from_map(m['SamplingConfig'])
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Target') is not None:
+            temp_model = GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleTarget()
+            self.target = temp_model.from_map(m['Target'])
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        return self
+
+
+class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        details: List[GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsDetails] = None,
+        id: int = None,
+        rule: GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule = None,
+        sample: str = None,
+        status: str = None,
+        task_instance_id: int = None,
+    ):
+        self.create_time = create_time
+        self.details = details
+        self.id = id
+        self.rule = rule
+        self.sample = sample
+        self.status = status
+        self.task_instance_id = task_instance_id
+
+    def validate(self):
+        if self.details:
+            for k in self.details:
+                if k:
+                    k.validate()
+        if self.rule:
+            self.rule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        result['Details'] = []
+        if self.details is not None:
+            for k in self.details:
+                result['Details'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.rule is not None:
+            result['Rule'] = self.rule.to_map()
+        if self.sample is not None:
+            result['Sample'] = self.sample
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_instance_id is not None:
+            result['TaskInstanceId'] = self.task_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        self.details = []
+        if m.get('Details') is not None:
+            for k in m.get('Details'):
+                temp_model = GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsDetails()
+                self.details.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Rule') is not None:
+            temp_model = GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule()
+            self.rule = temp_model.from_map(m['Rule'])
+        if m.get('Sample') is not None:
+            self.sample = m.get('Sample')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskInstanceId') is not None:
+            self.task_instance_id = m.get('TaskInstanceId')
+        return self
+
+
 class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskHooks(TeaModel):
     def __init__(
         self,
@@ -17614,6 +18153,7 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         id: int = None,
         parameters: str = None,
         project_id: int = None,
+        results: List[GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults] = None,
         status: str = None,
         task: GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask = None,
         trigger_context: str = None,
@@ -17629,6 +18169,7 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         self.parameters = parameters
         # The ID of the workspace.
         self.project_id = project_id
+        self.results = results
         # The status of the data quality monitoring instance.
         # - Running: Verifying
         # - Error: A rule verification Error occurred.
@@ -17644,6 +18185,10 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         self.trigger_context = trigger_context
 
     def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
         if self.task:
             self.task.validate()
 
@@ -17663,6 +18208,10 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
             result['Parameters'] = self.parameters
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
         if self.status is not None:
             result['Status'] = self.status
         if self.task is not None:
@@ -17683,6 +18232,11 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
             self.parameters = m.get('Parameters')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults()
+                self.results.append(temp_model.from_map(k))
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Task') is not None:
@@ -29971,6 +30525,7 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
 class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks(TeaModel):
     def __init__(
         self,
+        data_source_id: int = None,
         description: str = None,
         hooks: List[ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks] = None,
         id: int = None,
@@ -29981,6 +30536,7 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         target: ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget = None,
         trigger: ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger = None,
     ):
+        self.data_source_id = data_source_id
         # The description of the data quality monitoring task. The description can be up to 65,535 characters in length.
         self.description = description
         # The callback configurations of the task during the instance lifecycle. Blocking an auto triggered node is a type of callback event. Only this type is supported.
@@ -30018,6 +30574,8 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
             return _map
 
         result = dict()
+        if self.data_source_id is not None:
+            result['DataSourceId'] = self.data_source_id
         if self.description is not None:
             result['Description'] = self.description
         result['Hooks'] = []
@@ -30042,6 +30600,8 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DataSourceId') is not None:
+            self.data_source_id = m.get('DataSourceId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         self.hooks = []
@@ -57434,8 +57994,6 @@ class UpdateWorkflowRequestTasks(TeaModel):
         # *   Dev
         self.env_type = env_type
         # The task ID. If you configure this parameter, full update is performed on the task. If you do not configure this parameter, another task is created.
-        # 
-        # This parameter is required.
         self.id = id
         # The input information.
         self.inputs = inputs
