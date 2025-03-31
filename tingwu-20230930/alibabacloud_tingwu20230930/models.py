@@ -1373,7 +1373,9 @@ class GetTaskInfoResponseBodyDataResult(TeaModel):
     def __init__(
         self,
         auto_chapters: str = None,
+        content_extraction: str = None,
         custom_prompt: str = None,
+        identity_recognition: str = None,
         meeting_assistance: str = None,
         ppt_extraction: str = None,
         service_inspection: str = None,
@@ -1383,7 +1385,9 @@ class GetTaskInfoResponseBodyDataResult(TeaModel):
         translation: str = None,
     ):
         self.auto_chapters = auto_chapters
+        self.content_extraction = content_extraction
         self.custom_prompt = custom_prompt
+        self.identity_recognition = identity_recognition
         self.meeting_assistance = meeting_assistance
         self.ppt_extraction = ppt_extraction
         self.service_inspection = service_inspection
@@ -1403,8 +1407,12 @@ class GetTaskInfoResponseBodyDataResult(TeaModel):
         result = dict()
         if self.auto_chapters is not None:
             result['AutoChapters'] = self.auto_chapters
+        if self.content_extraction is not None:
+            result['ContentExtraction'] = self.content_extraction
         if self.custom_prompt is not None:
             result['CustomPrompt'] = self.custom_prompt
+        if self.identity_recognition is not None:
+            result['IdentityRecognition'] = self.identity_recognition
         if self.meeting_assistance is not None:
             result['MeetingAssistance'] = self.meeting_assistance
         if self.ppt_extraction is not None:
@@ -1425,8 +1433,12 @@ class GetTaskInfoResponseBodyDataResult(TeaModel):
         m = m or dict()
         if m.get('AutoChapters') is not None:
             self.auto_chapters = m.get('AutoChapters')
+        if m.get('ContentExtraction') is not None:
+            self.content_extraction = m.get('ContentExtraction')
         if m.get('CustomPrompt') is not None:
             self.custom_prompt = m.get('CustomPrompt')
+        if m.get('IdentityRecognition') is not None:
+            self.identity_recognition = m.get('IdentityRecognition')
         if m.get('MeetingAssistance') is not None:
             self.meeting_assistance = m.get('MeetingAssistance')
         if m.get('PptExtraction') is not None:

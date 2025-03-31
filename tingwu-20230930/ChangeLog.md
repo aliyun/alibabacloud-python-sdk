@@ -1,3 +1,8 @@
+2025-03-31 Version: 2.0.23
+- Update API GetTaskInfo: add response parameters Body.Data.Result.ContentExtraction.
+- Update API GetTaskInfo: add response parameters Body.Data.Result.IdentityRecognition.
+
+
 2025-03-31 Version: 2.0.22
 - Update API CreateTask: add request parameters body.Parameters.IdentityRecognition.
 - Update API CreateTask: add request parameters body.Parameters.IdentityRecognitionEnabled.
