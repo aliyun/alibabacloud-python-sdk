@@ -1,3 +1,9 @@
+2025-03-31 Version: 2.0.22
+- Update API CreateTask: add request parameters body.Parameters.IdentityRecognition.
+- Update API CreateTask: add request parameters body.Parameters.IdentityRecognitionEnabled.
+- Update API CreateTask: add request parameters body.Parameters.ContentExtraction.ExtractionContents.$.Identity.
+
+
 2025-03-12 Version: 2.0.21
 - Update API DeleteTranscriptionPhrases: update response param.
 

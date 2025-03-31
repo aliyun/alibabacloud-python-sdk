@@ -96,9 +96,11 @@ class CreateTaskRequestParametersContentExtractionExtractionContents(TeaModel):
     def __init__(
         self,
         content: str = None,
+        identity: str = None,
         title: str = None,
     ):
         self.content = content
+        self.identity = identity
         self.title = title
 
     def validate(self):
@@ -112,6 +114,8 @@ class CreateTaskRequestParametersContentExtractionExtractionContents(TeaModel):
         result = dict()
         if self.content is not None:
             result['Content'] = self.content
+        if self.identity is not None:
+            result['Identity'] = self.identity
         if self.title is not None:
             result['Title'] = self.title
         return result
@@ -120,6 +124,8 @@ class CreateTaskRequestParametersContentExtractionExtractionContents(TeaModel):
         m = m or dict()
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('Identity') is not None:
+            self.identity = m.get('Identity')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         return self
@@ -302,6 +308,80 @@ class CreateTaskRequestParametersExtraParams(TeaModel):
             self.ocr_auxiliary_enabled = m.get('OcrAuxiliaryEnabled')
         if m.get('TranslateLlmSceneEnabled') is not None:
             self.translate_llm_scene_enabled = m.get('TranslateLlmSceneEnabled')
+        return self
+
+
+class CreateTaskRequestParametersIdentityRecognitionIdentityContents(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+    ):
+        self.description = description
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateTaskRequestParametersIdentityRecognition(TeaModel):
+    def __init__(
+        self,
+        identity_contents: List[CreateTaskRequestParametersIdentityRecognitionIdentityContents] = None,
+        scene_introduction: str = None,
+    ):
+        self.identity_contents = identity_contents
+        self.scene_introduction = scene_introduction
+
+    def validate(self):
+        if self.identity_contents:
+            for k in self.identity_contents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['IdentityContents'] = []
+        if self.identity_contents is not None:
+            for k in self.identity_contents:
+                result['IdentityContents'].append(k.to_map() if k else None)
+        if self.scene_introduction is not None:
+            result['SceneIntroduction'] = self.scene_introduction
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.identity_contents = []
+        if m.get('IdentityContents') is not None:
+            for k in m.get('IdentityContents'):
+                temp_model = CreateTaskRequestParametersIdentityRecognitionIdentityContents()
+                self.identity_contents.append(temp_model.from_map(k))
+        if m.get('SceneIntroduction') is not None:
+            self.scene_introduction = m.get('SceneIntroduction')
         return self
 
 
@@ -636,6 +716,8 @@ class CreateTaskRequestParameters(TeaModel):
         custom_prompt: CreateTaskRequestParametersCustomPrompt = None,
         custom_prompt_enabled: bool = None,
         extra_params: CreateTaskRequestParametersExtraParams = None,
+        identity_recognition: CreateTaskRequestParametersIdentityRecognition = None,
+        identity_recognition_enabled: bool = None,
         meeting_assistance: CreateTaskRequestParametersMeetingAssistance = None,
         meeting_assistance_enabled: bool = None,
         ppt_extraction_enabled: bool = None,
@@ -655,6 +737,8 @@ class CreateTaskRequestParameters(TeaModel):
         self.custom_prompt = custom_prompt
         self.custom_prompt_enabled = custom_prompt_enabled
         self.extra_params = extra_params
+        self.identity_recognition = identity_recognition
+        self.identity_recognition_enabled = identity_recognition_enabled
         self.meeting_assistance = meeting_assistance
         self.meeting_assistance_enabled = meeting_assistance_enabled
         self.ppt_extraction_enabled = ppt_extraction_enabled
@@ -675,6 +759,8 @@ class CreateTaskRequestParameters(TeaModel):
             self.custom_prompt.validate()
         if self.extra_params:
             self.extra_params.validate()
+        if self.identity_recognition:
+            self.identity_recognition.validate()
         if self.meeting_assistance:
             self.meeting_assistance.validate()
         if self.service_inspection:
@@ -706,6 +792,10 @@ class CreateTaskRequestParameters(TeaModel):
             result['CustomPromptEnabled'] = self.custom_prompt_enabled
         if self.extra_params is not None:
             result['ExtraParams'] = self.extra_params.to_map()
+        if self.identity_recognition is not None:
+            result['IdentityRecognition'] = self.identity_recognition.to_map()
+        if self.identity_recognition_enabled is not None:
+            result['IdentityRecognitionEnabled'] = self.identity_recognition_enabled
         if self.meeting_assistance is not None:
             result['MeetingAssistance'] = self.meeting_assistance.to_map()
         if self.meeting_assistance_enabled is not None:
@@ -749,6 +839,11 @@ class CreateTaskRequestParameters(TeaModel):
         if m.get('ExtraParams') is not None:
             temp_model = CreateTaskRequestParametersExtraParams()
             self.extra_params = temp_model.from_map(m['ExtraParams'])
+        if m.get('IdentityRecognition') is not None:
+            temp_model = CreateTaskRequestParametersIdentityRecognition()
+            self.identity_recognition = temp_model.from_map(m['IdentityRecognition'])
+        if m.get('IdentityRecognitionEnabled') is not None:
+            self.identity_recognition_enabled = m.get('IdentityRecognitionEnabled')
         if m.get('MeetingAssistance') is not None:
             temp_model = CreateTaskRequestParametersMeetingAssistance()
             self.meeting_assistance = temp_model.from_map(m['MeetingAssistance'])
