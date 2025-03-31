@@ -1,3 +1,6 @@
+2025-03-31 Version: 1.1.1
+- Generated python 2019-06-01 for smc.
+
 2025-03-10 Version: 1.1.0
 - Support API AssociateSourceServers.
 - Support API CreateCrossZoneMigrationJob.
