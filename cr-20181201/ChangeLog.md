@@ -1,3 +1,25 @@
+2025-03-31 Version: 2.0.0
+- Support API CancelRepoSyncTask.
+- Support API CreateArtifactSubscriptionRule.
+- Support API CreateArtifactSubscriptionTask.
+- Support API DeleteArtifactSubscriptionRule.
+- Support API GetArtifactSubscriptionRule.
+- Support API GetArtifactSubscriptionTask.
+- Support API GetArtifactSubscriptionTaskResult.
+- Support API ListArtifactSubscriptionRule.
+- Support API ListArtifactSubscriptionTask.
+- Support API UpdateArtifactSubscriptionRule.
+- Delete API GetRepoTagLayers.
+- Delete API GetRepoTagManifest.
+- Update API CreateRepoSyncRule: add request parameters RepoNameFilter.
+- Update API GetArtifactBuildRule: add response parameters Body.Parameters.PriorityFile.
+- Update API GetInstanceUsage: add response parameters Body.VpcQuota.
+- Update API GetInstanceUsage: add response parameters Body.VpcUsage.
+- Update API GetRepoSyncTask: add response parameters Body.TaskIssue.
+- Update API ListRepoSyncRule: add response parameters Body.SyncRules.$.RepoNameFilter.
+- Update API ListRepoSyncTask: add response parameters Body.SyncTasks.$.TaskIssue.
+
+
 2024-04-23 Version: 1.4.0
 - Support API CreateArtifactLifecycleRule.
 - Support API DeleteArtifactLifecycleRule.
