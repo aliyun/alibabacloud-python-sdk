@@ -1,3 +1,12 @@
+2025-03-31 Version: 1.3.0
+- Support API DeleteFeatureConfig.
+- Support API GetFeatureConfig.
+- Support API ModifyFeatureConfig.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.AttackLevel.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.RequestFrom.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.SensitiveLevel.
+
+
 2025-03-20 Version: 1.1.1
 - Update API ExportCipStats: add param ExportType.
 - Update API ExportCipStats: add param ServiceCode.

@@ -2627,6 +2627,166 @@ class DeleteCallbackResponse(TeaModel):
         return self
 
 
+class DeleteFeatureConfigRequest(TeaModel):
+    def __init__(
+        self,
+        field: str = None,
+        region_id: str = None,
+        resource_type: str = None,
+        service_code: str = None,
+        type: str = None,
+    ):
+        # Label value, customer-defined
+        self.field = field
+        # Region
+        self.region_id = region_id
+        # Resource type.
+        self.resource_type = resource_type
+        # Service code.
+        self.service_code = service_code
+        # Type
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field is not None:
+            result['Field'] = self.field
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Field') is not None:
+            self.field = m.get('Field')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DeleteFeatureConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: bool = None,
+        http_status_code: int = None,
+        msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Status code.
+        self.code = code
+        # Return result.
+        self.data = data
+        # HTTP status code.
+        self.http_status_code = http_status_code
+        # Response message of this request.
+        self.msg = msg
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+        self.request_id = request_id
+        # Success indicator.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteFeatureConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteFeatureConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteFeatureConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteImagesFromLibRequest(TeaModel):
     def __init__(
         self,
@@ -5609,6 +5769,217 @@ class GetExecuteTimeResponse(TeaModel):
         return self
 
 
+class GetFeatureConfigRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        resource_type: str = None,
+        service_code: str = None,
+        type: str = None,
+    ):
+        # Region ID
+        self.region_id = region_id
+        # Resource type.
+        self.resource_type = resource_type
+        # Service code.
+        self.service_code = service_code
+        # Type
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetFeatureConfigResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        feature_conf: List[Dict[str, Any]] = None,
+        resource_type: str = None,
+        service_code: str = None,
+        type: str = None,
+        uid: str = None,
+    ):
+        # List of feature configurations
+        self.feature_conf = feature_conf
+        # Resource type.
+        self.resource_type = resource_type
+        # Service code.
+        self.service_code = service_code
+        # Type
+        self.type = type
+        # UID.
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.feature_conf is not None:
+            result['FeatureConf'] = self.feature_conf
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.uid is not None:
+            result['Uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FeatureConf') is not None:
+            self.feature_conf = m.get('FeatureConf')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Uid') is not None:
+            self.uid = m.get('Uid')
+        return self
+
+
+class GetFeatureConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetFeatureConfigResponseBodyData = None,
+        http_status_code: int = None,
+        msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Status code
+        self.code = code
+        # Returned data.
+        self.data = data
+        # HTTP status code.
+        self.http_status_code = http_status_code
+        # Response message for this request.
+        self.msg = msg
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+        self.request_id = request_id
+        # Success indicator
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetFeatureConfigResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetFeatureConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetFeatureConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetFeatureConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetImageSceneLabelConfRequest(TeaModel):
     def __init__(
         self,
@@ -7053,6 +7424,7 @@ class GetScanResultResponseBodyDataItemsResult(TeaModel):
 class GetScanResultResponseBodyDataItems(TeaModel):
     def __init__(
         self,
+        attack_level: str = None,
         content: str = None,
         data_id: str = None,
         end_time: str = None,
@@ -7067,6 +7439,7 @@ class GetScanResultResponseBodyDataItems(TeaModel):
         no_labels: List[str] = None,
         offset: int = None,
         page_num: int = None,
+        request_from: str = None,
         request_id: str = None,
         request_time: str = None,
         result: List[GetScanResultResponseBodyDataItemsResult] = None,
@@ -7075,6 +7448,7 @@ class GetScanResultResponseBodyDataItems(TeaModel):
         risk_words: str = None,
         scan_result: str = None,
         score: float = None,
+        sensitive_level: str = None,
         service_code: str = None,
         start_time: str = None,
         suggestion: str = None,
@@ -7087,6 +7461,7 @@ class GetScanResultResponseBodyDataItems(TeaModel):
         voice_scan_opened: bool = None,
         voice_service: str = None,
     ):
+        self.attack_level = attack_level
         self.content = content
         # dataId
         self.data_id = data_id
@@ -7103,6 +7478,7 @@ class GetScanResultResponseBodyDataItems(TeaModel):
         self.no_labels = no_labels
         self.offset = offset
         self.page_num = page_num
+        self.request_from = request_from
         self.request_id = request_id
         self.request_time = request_time
         self.result = result
@@ -7111,6 +7487,7 @@ class GetScanResultResponseBodyDataItems(TeaModel):
         self.risk_words = risk_words
         self.scan_result = scan_result
         self.score = score
+        self.sensitive_level = sensitive_level
         self.service_code = service_code
         self.start_time = start_time
         self.suggestion = suggestion
@@ -7135,6 +7512,8 @@ class GetScanResultResponseBodyDataItems(TeaModel):
             return _map
 
         result = dict()
+        if self.attack_level is not None:
+            result['AttackLevel'] = self.attack_level
         if self.content is not None:
             result['Content'] = self.content
         if self.data_id is not None:
@@ -7163,6 +7542,8 @@ class GetScanResultResponseBodyDataItems(TeaModel):
             result['Offset'] = self.offset
         if self.page_num is not None:
             result['PageNum'] = self.page_num
+        if self.request_from is not None:
+            result['RequestFrom'] = self.request_from
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.request_time is not None:
@@ -7181,6 +7562,8 @@ class GetScanResultResponseBodyDataItems(TeaModel):
             result['ScanResult'] = self.scan_result
         if self.score is not None:
             result['Score'] = self.score
+        if self.sensitive_level is not None:
+            result['SensitiveLevel'] = self.sensitive_level
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
         if self.start_time is not None:
@@ -7207,6 +7590,8 @@ class GetScanResultResponseBodyDataItems(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AttackLevel') is not None:
+            self.attack_level = m.get('AttackLevel')
         if m.get('Content') is not None:
             self.content = m.get('Content')
         if m.get('DataId') is not None:
@@ -7235,6 +7620,8 @@ class GetScanResultResponseBodyDataItems(TeaModel):
             self.offset = m.get('Offset')
         if m.get('PageNum') is not None:
             self.page_num = m.get('PageNum')
+        if m.get('RequestFrom') is not None:
+            self.request_from = m.get('RequestFrom')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('RequestTime') is not None:
@@ -7254,6 +7641,8 @@ class GetScanResultResponseBodyDataItems(TeaModel):
             self.scan_result = m.get('ScanResult')
         if m.get('Score') is not None:
             self.score = m.get('Score')
+        if m.get('SensitiveLevel') is not None:
+            self.sensitive_level = m.get('SensitiveLevel')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
         if m.get('StartTime') is not None:
@@ -11698,6 +12087,180 @@ class ModifyCallbackResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyCallbackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyFeatureConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        description: str = None,
+        field: str = None,
+        region_id: str = None,
+        resource_type: str = None,
+        service_code: str = None,
+        type: str = None,
+    ):
+        # Configuration, in JSON format
+        self.config = config
+        # Label meaning
+        self.description = description
+        # Label value, customer-defined
+        self.field = field
+        # Region
+        self.region_id = region_id
+        # Resource type.
+        self.resource_type = resource_type
+        # Service code.
+        self.service_code = service_code
+        # Type
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.field is not None:
+            result['Field'] = self.field
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Field') is not None:
+            self.field = m.get('Field')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ModifyFeatureConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: bool = None,
+        http_status_code: int = None,
+        msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Status code.
+        self.code = code
+        # Returned data
+        self.data = data
+        # HTTP status code.
+        self.http_status_code = http_status_code
+        # Response message of this request.
+        self.msg = msg
+        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+        self.request_id = request_id
+        # Success indicator.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyFeatureConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyFeatureConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyFeatureConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

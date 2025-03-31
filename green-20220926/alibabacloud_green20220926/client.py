@@ -2009,6 +2009,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_callback_with_options_async(request, runtime)
 
+    def delete_feature_config_with_options(
+        self,
+        request: green_20220926_models.DeleteFeatureConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.DeleteFeatureConfigResponse:
+        """
+        @summary Delete feature configuration
+        
+        @param request: DeleteFeatureConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFeatureConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.field):
+            body['Field'] = request.field
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFeatureConfig',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.DeleteFeatureConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.DeleteFeatureConfigResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_feature_config_with_options_async(
+        self,
+        request: green_20220926_models.DeleteFeatureConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.DeleteFeatureConfigResponse:
+        """
+        @summary Delete feature configuration
+        
+        @param request: DeleteFeatureConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFeatureConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.field):
+            body['Field'] = request.field
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFeatureConfig',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.DeleteFeatureConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.DeleteFeatureConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_feature_config(
+        self,
+        request: green_20220926_models.DeleteFeatureConfigRequest,
+    ) -> green_20220926_models.DeleteFeatureConfigResponse:
+        """
+        @summary Delete feature configuration
+        
+        @param request: DeleteFeatureConfigRequest
+        @return: DeleteFeatureConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_feature_config_with_options(request, runtime)
+
+    async def delete_feature_config_async(
+        self,
+        request: green_20220926_models.DeleteFeatureConfigRequest,
+    ) -> green_20220926_models.DeleteFeatureConfigResponse:
+        """
+        @summary Delete feature configuration
+        
+        @param request: DeleteFeatureConfigRequest
+        @return: DeleteFeatureConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_feature_config_with_options_async(request, runtime)
+
     def delete_images_from_lib_with_options(
         self,
         request: green_20220926_models.DeleteImagesFromLibRequest,
@@ -4108,6 +4236,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_execute_time_with_options_async(request, runtime)
+
+    def get_feature_config_with_options(
+        self,
+        request: green_20220926_models.GetFeatureConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.GetFeatureConfigResponse:
+        """
+        @summary Get Feature Configuration
+        
+        @param request: GetFeatureConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFeatureConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFeatureConfig',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetFeatureConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetFeatureConfigResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_feature_config_with_options_async(
+        self,
+        request: green_20220926_models.GetFeatureConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.GetFeatureConfigResponse:
+        """
+        @summary Get Feature Configuration
+        
+        @param request: GetFeatureConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFeatureConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFeatureConfig',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetFeatureConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetFeatureConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_feature_config(
+        self,
+        request: green_20220926_models.GetFeatureConfigRequest,
+    ) -> green_20220926_models.GetFeatureConfigResponse:
+        """
+        @summary Get Feature Configuration
+        
+        @param request: GetFeatureConfigRequest
+        @return: GetFeatureConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_feature_config_with_options(request, runtime)
+
+    async def get_feature_config_async(
+        self,
+        request: green_20220926_models.GetFeatureConfigRequest,
+    ) -> green_20220926_models.GetFeatureConfigResponse:
+        """
+        @summary Get Feature Configuration
+        
+        @param request: GetFeatureConfigRequest
+        @return: GetFeatureConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_feature_config_with_options_async(request, runtime)
 
     def get_image_scene_label_conf_with_options(
         self,
@@ -7340,6 +7592,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_callback_with_options_async(request, runtime)
+
+    def modify_feature_config_with_options(
+        self,
+        request: green_20220926_models.ModifyFeatureConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.ModifyFeatureConfigResponse:
+        """
+        @summary Save Feature Configuration
+        
+        @param request: ModifyFeatureConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyFeatureConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['Config'] = request.config
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.field):
+            body['Field'] = request.field
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyFeatureConfig',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ModifyFeatureConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ModifyFeatureConfigResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_feature_config_with_options_async(
+        self,
+        request: green_20220926_models.ModifyFeatureConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.ModifyFeatureConfigResponse:
+        """
+        @summary Save Feature Configuration
+        
+        @param request: ModifyFeatureConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyFeatureConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['Config'] = request.config
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.field):
+            body['Field'] = request.field
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyFeatureConfig',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ModifyFeatureConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ModifyFeatureConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_feature_config(
+        self,
+        request: green_20220926_models.ModifyFeatureConfigRequest,
+    ) -> green_20220926_models.ModifyFeatureConfigResponse:
+        """
+        @summary Save Feature Configuration
+        
+        @param request: ModifyFeatureConfigRequest
+        @return: ModifyFeatureConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_feature_config_with_options(request, runtime)
+
+    async def modify_feature_config_async(
+        self,
+        request: green_20220926_models.ModifyFeatureConfigRequest,
+    ) -> green_20220926_models.ModifyFeatureConfigResponse:
+        """
+        @summary Save Feature Configuration
+        
+        @param request: ModifyFeatureConfigRequest
+        @return: ModifyFeatureConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_feature_config_with_options_async(request, runtime)
 
     def modify_service_info_with_options(
         self,
