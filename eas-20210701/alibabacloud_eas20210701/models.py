@@ -6647,30 +6647,11 @@ class DescribeGroupEndpointsResponseBodyEndpoints(TeaModel):
         path_type: str = None,
         port: int = None,
     ):
-        # The backend access ID, which varies based on the value of the EndpointType parameter.
-        # 
-        # *   If you set EndpointType to DefaultGateway, the value of this parameter is default.
-        # *   If you set EndpointType to PrivateGateway, the value of this parameter is the ID of the dedicated gateway.
-        # *   If you set EndpointType to Nlb, the value of this parameter is the ID of the NLB instance.
-        # *   If you set EndpointType to Nacos, the value of this parameter is the ID of the Nacos instance.
         self.backend_id = backend_id
-        # The service endpoint type. Valid values:
-        # 
-        # *   DefaultGateway: the shared gateway.
-        # *   PrivateGateway: the dedicated gateway.
-        # *   Nlb: Associate the service with the Network Load Balancer (NLB) instance.
-        # *   Nacos: Associate the service with the Nacos instance.
         self.endpoint_type = endpoint_type
-        # The public endpoints.
         self.internet_endpoints = internet_endpoints
-        # The internal endpoints.
         self.intranet_endpoints = intranet_endpoints
-        # The path type. Valid values:
-        # 
-        # *   Group: the path of the service group.
-        # *   Service: the path of the service.
         self.path_type = path_type
-        # The port number. This parameter takes effect only when you associate the service with an NLB or Nacos instance.
         self.port = port
 
     def validate(self):
@@ -6717,7 +6698,7 @@ class DescribeGroupEndpointsResponseBody(TeaModel):
     def __init__(
         self,
         access_token: str = None,
-        endpoints: DescribeGroupEndpointsResponseBodyEndpoints = None,
+        endpoints: List[DescribeGroupEndpointsResponseBodyEndpoints] = None,
         message: str = None,
         request_id: str = None,
     ):
@@ -6732,7 +6713,9 @@ class DescribeGroupEndpointsResponseBody(TeaModel):
 
     def validate(self):
         if self.endpoints:
-            self.endpoints.validate()
+            for k in self.endpoints:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6742,8 +6725,10 @@ class DescribeGroupEndpointsResponseBody(TeaModel):
         result = dict()
         if self.access_token is not None:
             result['AccessToken'] = self.access_token
+        result['Endpoints'] = []
         if self.endpoints is not None:
-            result['Endpoints'] = self.endpoints.to_map()
+            for k in self.endpoints:
+                result['Endpoints'].append(k.to_map() if k else None)
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -6754,9 +6739,11 @@ class DescribeGroupEndpointsResponseBody(TeaModel):
         m = m or dict()
         if m.get('AccessToken') is not None:
             self.access_token = m.get('AccessToken')
+        self.endpoints = []
         if m.get('Endpoints') is not None:
-            temp_model = DescribeGroupEndpointsResponseBodyEndpoints()
-            self.endpoints = temp_model.from_map(m['Endpoints'])
+            for k in m.get('Endpoints'):
+                temp_model = DescribeGroupEndpointsResponseBodyEndpoints()
+                self.endpoints.append(temp_model.from_map(k))
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -8193,30 +8180,11 @@ class DescribeServiceEndpointsResponseBodyEndpoints(TeaModel):
         path_type: str = None,
         port: int = None,
     ):
-        # The backend access ID, which varies based on the value of the EndpointType parameter.
-        # 
-        # *   If you set EndpointType to DefaultGateway, the value of this parameter is default.
-        # *   If you set EndpointType to PrivateGateway, the value of this parameter is the ID of the dedicated gateway.
-        # *   If you set EndpointType to Nlb, the value of this parameter is the ID of the NLB instance.
-        # *   If you set EndpointType to Nacos, the value of this parameter is the ID of the Nacos instance.
         self.backend_id = backend_id
-        # The service endpoint type. Valid values:
-        # 
-        # *   DefaultGateway: the shared gateway.
-        # *   PrivateGateway: the dedicated gateway.
-        # *   Nlb: Associate the service with the Network Load Balancer (NLB) instance.
-        # *   Nacos: Associate the service with the Nacos instance.
         self.endpoint_type = endpoint_type
-        # The public endpoints.
         self.internet_endpoints = internet_endpoints
-        # The internal endpoints.
         self.intranet_endpoints = intranet_endpoints
-        # The path type. Valid values:
-        # 
-        # *   Group: the path of the service group.
-        # *   Service: the path of the service.
         self.path_type = path_type
-        # The port number. This parameter takes effect only when you associate the service with an NLB or Nacos instance.
         self.port = port
 
     def validate(self):
@@ -8263,7 +8231,7 @@ class DescribeServiceEndpointsResponseBody(TeaModel):
     def __init__(
         self,
         access_token: str = None,
-        endpoints: DescribeServiceEndpointsResponseBodyEndpoints = None,
+        endpoints: List[DescribeServiceEndpointsResponseBodyEndpoints] = None,
         message: str = None,
         request_id: str = None,
     ):
@@ -8278,7 +8246,9 @@ class DescribeServiceEndpointsResponseBody(TeaModel):
 
     def validate(self):
         if self.endpoints:
-            self.endpoints.validate()
+            for k in self.endpoints:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8288,8 +8258,10 @@ class DescribeServiceEndpointsResponseBody(TeaModel):
         result = dict()
         if self.access_token is not None:
             result['AccessToken'] = self.access_token
+        result['Endpoints'] = []
         if self.endpoints is not None:
-            result['Endpoints'] = self.endpoints.to_map()
+            for k in self.endpoints:
+                result['Endpoints'].append(k.to_map() if k else None)
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -8300,9 +8272,11 @@ class DescribeServiceEndpointsResponseBody(TeaModel):
         m = m or dict()
         if m.get('AccessToken') is not None:
             self.access_token = m.get('AccessToken')
+        self.endpoints = []
         if m.get('Endpoints') is not None:
-            temp_model = DescribeServiceEndpointsResponseBodyEndpoints()
-            self.endpoints = temp_model.from_map(m['Endpoints'])
+            for k in m.get('Endpoints'):
+                temp_model = DescribeServiceEndpointsResponseBodyEndpoints()
+                self.endpoints.append(temp_model.from_map(k))
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:

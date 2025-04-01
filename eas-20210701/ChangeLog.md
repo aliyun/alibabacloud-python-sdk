@@ -1,3 +1,10 @@
+2025-04-01 Version: 7.0.0
+- Update API DescribeGroupEndpoints: update response parameters Body.Endpoints' type has changed.
+- Update API DescribeGroupEndpoints: delete response parameters Body.Endpoints.
+- Update API DescribeServiceEndpoints: update response parameters Body.Endpoints' type has changed.
+- Update API DescribeServiceEndpoints: delete response parameters Body.Endpoints.
+
+
 2025-03-27 Version: 6.7.0
 - Support API DescribeRegions.
 - Update API CreateGatewayIntranetLinkedVpc: add request parameters EnableAuthoritativeDns.
