@@ -6759,6 +6759,39 @@ class DownloadModelOutput(TeaModel):
         return self
 
 
+class OpenStructOssSourceConfig(TeaModel):
+    def __init__(
+        self,
+        bucket: str = None,
+        object: str = None,
+    ):
+        self.bucket = bucket
+        self.object = object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket is not None:
+            result['bucket'] = self.bucket
+        if self.object is not None:
+            result['object'] = self.object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bucket') is not None:
+            self.bucket = m.get('bucket')
+        if m.get('object') is not None:
+            self.object = m.get('object')
+        return self
+
+
 class EventFilterConfig(TeaModel):
     def __init__(
         self,
@@ -6869,13 +6902,17 @@ class TemplateSourceConfig(TeaModel):
 class SourceConfig(TeaModel):
     def __init__(
         self,
+        oss: OpenStructOssSourceConfig = None,
         repository: RepositorySourceConfig = None,
         template: TemplateSourceConfig = None,
     ):
+        self.oss = oss
         self.repository = repository
         self.template = template
 
     def validate(self):
+        if self.oss:
+            self.oss.validate()
         if self.repository:
             self.repository.validate()
         if self.template:
@@ -6887,6 +6924,8 @@ class SourceConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.oss is not None:
+            result['oss'] = self.oss.to_map()
         if self.repository is not None:
             result['repository'] = self.repository.to_map()
         if self.template is not None:
@@ -6895,6 +6934,9 @@ class SourceConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('oss') is not None:
+            temp_model = OpenStructOssSourceConfig()
+            self.oss = temp_model.from_map(m['oss'])
         if m.get('repository') is not None:
             temp_model = RepositorySourceConfig()
             self.repository = temp_model.from_map(m['repository'])
@@ -10973,6 +11015,85 @@ class ToolsetSpec(TeaModel):
         return self
 
 
+class ActivateConnectionRequest(TeaModel):
+    def __init__(
+        self,
+        account: GitAccount = None,
+        credential: OAuthCredential = None,
+    ):
+        self.account = account
+        self.credential = credential
+
+    def validate(self):
+        if self.account:
+            self.account.validate()
+        if self.credential:
+            self.credential.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account is not None:
+            result['account'] = self.account.to_map()
+        if self.credential is not None:
+            result['credential'] = self.credential.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('account') is not None:
+            temp_model = GitAccount()
+            self.account = temp_model.from_map(m['account'])
+        if m.get('credential') is not None:
+            temp_model = OAuthCredential()
+            self.credential = temp_model.from_map(m['credential'])
+        return self
+
+
+class ActivateConnectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: Connection = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = Connection()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CancelPipelineResponse(TeaModel):
     def __init__(
         self,
@@ -11438,6 +11559,101 @@ class DeleteArtifactResponse(TeaModel):
         return self
 
 
+class DeleteConnectionRequest(TeaModel):
+    def __init__(
+        self,
+        force: bool = None,
+    ):
+        self.force = force
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.force is not None:
+            result['force'] = self.force
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('force') is not None:
+            self.force = m.get('force')
+        return self
+
+
+class DeleteConnectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteConnectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteConnectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteConnectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteEnvironmentResponse(TeaModel):
     def __init__(
         self,
@@ -11679,6 +11895,47 @@ class FetchArtifactTempBucketTokenResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ArtifactTempBucketToken()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class FetchConnectionCredentialResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OAuthCredential = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OAuthCredential()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12007,6 +12264,190 @@ class GetTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = Task()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListConnectionsRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        label_selector: List[str] = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.keyword = keyword
+        self.label_selector = label_selector
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['keyword'] = self.keyword
+        if self.label_selector is not None:
+            result['labelSelector'] = self.label_selector
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('keyword') is not None:
+            self.keyword = m.get('keyword')
+        if m.get('labelSelector') is not None:
+            self.label_selector = m.get('labelSelector')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        return self
+
+
+class ListConnectionsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        label_selector_shrink: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.keyword = keyword
+        self.label_selector_shrink = label_selector_shrink
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['keyword'] = self.keyword
+        if self.label_selector_shrink is not None:
+            result['labelSelector'] = self.label_selector_shrink
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('keyword') is not None:
+            self.keyword = m.get('keyword')
+        if m.get('labelSelector') is not None:
+            self.label_selector_shrink = m.get('labelSelector')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        return self
+
+
+class ListConnectionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[Connection] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.data = data
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = Connection()
+                self.data.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListConnectionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListConnectionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListConnectionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

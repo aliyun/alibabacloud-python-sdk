@@ -7,8 +7,8 @@ from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_tea_util import models as util_models
 from alibabacloud_devs20230714 import models as devs_20230714_models
+from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
@@ -40,6 +40,130 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def activate_connection_with_options(
+        self,
+        name: str,
+        request: devs_20230714_models.ActivateConnectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.ActivateConnectionResponse:
+        """
+        @summary 激活身份绑定,完成OAuth授权
+        
+        @param request: ActivateConnectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ActivateConnectionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account):
+            body['account'] = request.account
+        if not UtilClient.is_unset(request.credential):
+            body['credential'] = request.credential
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ActivateConnection',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/connections/{OpenApiUtilClient.get_encode_param(name)}/activate',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.ActivateConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.ActivateConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def activate_connection_with_options_async(
+        self,
+        name: str,
+        request: devs_20230714_models.ActivateConnectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.ActivateConnectionResponse:
+        """
+        @summary 激活身份绑定,完成OAuth授权
+        
+        @param request: ActivateConnectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ActivateConnectionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account):
+            body['account'] = request.account
+        if not UtilClient.is_unset(request.credential):
+            body['credential'] = request.credential
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ActivateConnection',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/connections/{OpenApiUtilClient.get_encode_param(name)}/activate',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.ActivateConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.ActivateConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def activate_connection(
+        self,
+        name: str,
+        request: devs_20230714_models.ActivateConnectionRequest,
+    ) -> devs_20230714_models.ActivateConnectionResponse:
+        """
+        @summary 激活身份绑定,完成OAuth授权
+        
+        @param request: ActivateConnectionRequest
+        @return: ActivateConnectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.activate_connection_with_options(name, request, headers, runtime)
+
+    async def activate_connection_async(
+        self,
+        name: str,
+        request: devs_20230714_models.ActivateConnectionRequest,
+    ) -> devs_20230714_models.ActivateConnectionResponse:
+        """
+        @summary 激活身份绑定,完成OAuth授权
+        
+        @param request: ActivateConnectionRequest
+        @return: ActivateConnectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.activate_connection_with_options_async(name, request, headers, runtime)
 
     def cancel_pipeline_with_options(
         self,
@@ -901,6 +1025,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_artifact_with_options_async(name, headers, runtime)
 
+    def delete_connection_with_options(
+        self,
+        name: str,
+        request: devs_20230714_models.DeleteConnectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.DeleteConnectionResponse:
+        """
+        @summary 删除身份绑定
+        
+        @param request: DeleteConnectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConnectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.force):
+            query['force'] = request.force
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConnection',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/connections/{OpenApiUtilClient.get_encode_param(name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.DeleteConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.DeleteConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_connection_with_options_async(
+        self,
+        name: str,
+        request: devs_20230714_models.DeleteConnectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.DeleteConnectionResponse:
+        """
+        @summary 删除身份绑定
+        
+        @param request: DeleteConnectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConnectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.force):
+            query['force'] = request.force
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConnection',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/connections/{OpenApiUtilClient.get_encode_param(name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.DeleteConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.DeleteConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_connection(
+        self,
+        name: str,
+        request: devs_20230714_models.DeleteConnectionRequest,
+    ) -> devs_20230714_models.DeleteConnectionResponse:
+        """
+        @summary 删除身份绑定
+        
+        @param request: DeleteConnectionRequest
+        @return: DeleteConnectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_connection_with_options(name, request, headers, runtime)
+
+    async def delete_connection_async(
+        self,
+        name: str,
+        request: devs_20230714_models.DeleteConnectionRequest,
+    ) -> devs_20230714_models.DeleteConnectionResponse:
+        """
+        @summary 删除身份绑定
+        
+        @param request: DeleteConnectionRequest
+        @return: DeleteConnectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_connection_with_options_async(name, request, headers, runtime)
+
     def delete_environment_with_options(
         self,
         project_name: str,
@@ -1440,6 +1684,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.fetch_artifact_temp_bucket_token_with_options_async(headers, runtime)
+
+    def fetch_connection_credential_with_options(
+        self,
+        name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.FetchConnectionCredentialResponse:
+        """
+        @summary 查询身份绑定中的凭证信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FetchConnectionCredentialResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='FetchConnectionCredential',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/connections/{OpenApiUtilClient.get_encode_param(name)}/fetchCredential',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.FetchConnectionCredentialResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.FetchConnectionCredentialResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def fetch_connection_credential_with_options_async(
+        self,
+        name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.FetchConnectionCredentialResponse:
+        """
+        @summary 查询身份绑定中的凭证信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FetchConnectionCredentialResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='FetchConnectionCredential',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/connections/{OpenApiUtilClient.get_encode_param(name)}/fetchCredential',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.FetchConnectionCredentialResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.FetchConnectionCredentialResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def fetch_connection_credential(
+        self,
+        name: str,
+    ) -> devs_20230714_models.FetchConnectionCredentialResponse:
+        """
+        @summary 查询身份绑定中的凭证信息
+        
+        @return: FetchConnectionCredentialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.fetch_connection_credential_with_options(name, headers, runtime)
+
+    async def fetch_connection_credential_async(
+        self,
+        name: str,
+    ) -> devs_20230714_models.FetchConnectionCredentialResponse:
+        """
+        @summary 查询身份绑定中的凭证信息
+        
+        @return: FetchConnectionCredentialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.fetch_connection_credential_with_options_async(name, headers, runtime)
 
     def get_artifact_with_options(
         self,
@@ -2260,6 +2606,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_task_with_options_async(name, headers, runtime)
+
+    def list_connections_with_options(
+        self,
+        tmp_req: devs_20230714_models.ListConnectionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.ListConnectionsResponse:
+        """
+        @summary 批量查询身份绑定
+        
+        @param tmp_req: ListConnectionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConnectionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = devs_20230714_models.ListConnectionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.label_selector):
+            request.label_selector_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label_selector, 'labelSelector', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.label_selector_shrink):
+            query['labelSelector'] = request.label_selector_shrink
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConnections',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/connections',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.ListConnectionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.ListConnectionsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_connections_with_options_async(
+        self,
+        tmp_req: devs_20230714_models.ListConnectionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.ListConnectionsResponse:
+        """
+        @summary 批量查询身份绑定
+        
+        @param tmp_req: ListConnectionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConnectionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = devs_20230714_models.ListConnectionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.label_selector):
+            request.label_selector_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label_selector, 'labelSelector', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.label_selector_shrink):
+            query['labelSelector'] = request.label_selector_shrink
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConnections',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/connections',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.ListConnectionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.ListConnectionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_connections(
+        self,
+        request: devs_20230714_models.ListConnectionsRequest,
+    ) -> devs_20230714_models.ListConnectionsResponse:
+        """
+        @summary 批量查询身份绑定
+        
+        @param request: ListConnectionsRequest
+        @return: ListConnectionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_connections_with_options(request, headers, runtime)
+
+    async def list_connections_async(
+        self,
+        request: devs_20230714_models.ListConnectionsRequest,
+    ) -> devs_20230714_models.ListConnectionsResponse:
+        """
+        @summary 批量查询身份绑定
+        
+        @param request: ListConnectionsRequest
+        @return: ListConnectionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_connections_with_options_async(request, headers, runtime)
 
     def list_environments_with_options(
         self,

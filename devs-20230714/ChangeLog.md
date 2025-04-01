@@ -1,3 +1,10 @@
+2025-04-01 Version: 2.3.0
+- Support API ActivateConnection.
+- Support API DeleteConnection.
+- Support API FetchConnectionCredential.
+- Support API ListConnections.
+
+
 2025-04-01 Version: 2.2.0
 - Support API CreateArtifact.
 - Support API DeleteArtifact.
