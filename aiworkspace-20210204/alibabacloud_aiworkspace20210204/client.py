@@ -191,6 +191,10 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.size):
             body['Size'] = request.size
+        if not UtilClient.is_unset(request.source_id):
+            body['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -249,6 +253,10 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.size):
             body['Size'] = request.size
+        if not UtilClient.is_unset(request.source_id):
+            body['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(

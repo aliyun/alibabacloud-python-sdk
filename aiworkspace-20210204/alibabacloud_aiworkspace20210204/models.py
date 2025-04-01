@@ -2299,6 +2299,8 @@ class AddImageRequest(TeaModel):
         labels: List[AddImageRequestLabels] = None,
         name: str = None,
         size: int = None,
+        source_id: str = None,
+        source_type: str = None,
         workspace_id: str = None,
     ):
         self.accessibility = accessibility
@@ -2310,6 +2312,8 @@ class AddImageRequest(TeaModel):
         # This parameter is required.
         self.name = name
         self.size = size
+        self.source_id = source_id
+        self.source_type = source_type
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -2340,6 +2344,10 @@ class AddImageRequest(TeaModel):
             result['Name'] = self.name
         if self.size is not None:
             result['Size'] = self.size
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -2363,6 +2371,10 @@ class AddImageRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('Size') is not None:
             self.size = m.get('Size')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -8711,6 +8723,8 @@ class GetImageResponseBody(TeaModel):
         parent_user_id: str = None,
         request_id: str = None,
         size: int = None,
+        source_id: str = None,
+        source_type: str = None,
         user_id: str = None,
         workspace_id: str = None,
     ):
@@ -8724,6 +8738,8 @@ class GetImageResponseBody(TeaModel):
         self.parent_user_id = parent_user_id
         self.request_id = request_id
         self.size = size
+        self.source_id = source_id
+        self.source_type = source_type
         self.user_id = user_id
         self.workspace_id = workspace_id
 
@@ -8761,6 +8777,10 @@ class GetImageResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.size is not None:
             result['Size'] = self.size
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
         if self.user_id is not None:
             result['UserId'] = self.user_id
         if self.workspace_id is not None:
@@ -8792,6 +8812,10 @@ class GetImageResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Size') is not None:
             self.size = m.get('Size')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         if m.get('WorkspaceId') is not None:
@@ -11493,6 +11517,8 @@ class ListImagesResponseBodyImages(TeaModel):
         name: str = None,
         parent_user_id: str = None,
         size: int = None,
+        source_id: str = None,
+        source_type: str = None,
         user_id: str = None,
         workspace_id: str = None,
     ):
@@ -11506,6 +11532,8 @@ class ListImagesResponseBodyImages(TeaModel):
         self.name = name
         self.parent_user_id = parent_user_id
         self.size = size
+        self.source_id = source_id
+        self.source_type = source_type
         self.user_id = user_id
         self.workspace_id = workspace_id
 
@@ -11543,6 +11571,10 @@ class ListImagesResponseBodyImages(TeaModel):
             result['ParentUserId'] = self.parent_user_id
         if self.size is not None:
             result['Size'] = self.size
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
         if self.user_id is not None:
             result['UserId'] = self.user_id
         if self.workspace_id is not None:
@@ -11574,6 +11606,10 @@ class ListImagesResponseBodyImages(TeaModel):
             self.parent_user_id = m.get('ParentUserId')
         if m.get('Size') is not None:
             self.size = m.get('Size')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         if m.get('WorkspaceId') is not None:

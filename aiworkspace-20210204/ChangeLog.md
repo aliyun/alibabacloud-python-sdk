@@ -1,3 +1,12 @@
+2025-04-01 Version: 6.0.1
+- Update API AddImage: add request parameters body.SourceId.
+- Update API AddImage: add request parameters body.SourceType.
+- Update API GetImage: add response parameters Body.SourceId.
+- Update API GetImage: add response parameters Body.SourceType.
+- Update API ListImages: add response parameters Body.Images.$.SourceId.
+- Update API ListImages: add response parameters Body.Images.$.SourceType.
+
+
 2025-03-03 Version: 6.0.0
 - Support API AcceptDataworksEvent.
 - Support API ChangeResourceGroup.
