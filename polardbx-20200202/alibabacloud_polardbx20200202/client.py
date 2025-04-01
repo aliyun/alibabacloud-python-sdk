@@ -1162,6 +1162,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.CreateDBInstanceResponse:
         """
+        @summary 创建实例
+        
         @param tmp_req: CreateDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateDBInstanceResponse
@@ -1259,6 +1261,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.CreateDBInstanceResponse:
         """
+        @summary 创建实例
+        
         @param tmp_req: CreateDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateDBInstanceResponse
@@ -1355,6 +1359,8 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.CreateDBInstanceRequest,
     ) -> polardbx_20200202_models.CreateDBInstanceResponse:
         """
+        @summary 创建实例
+        
         @param request: CreateDBInstanceRequest
         @return: CreateDBInstanceResponse
         """
@@ -1366,6 +1372,8 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.CreateDBInstanceRequest,
     ) -> polardbx_20200202_models.CreateDBInstanceResponse:
         """
+        @summary 创建实例
+        
         @param request: CreateDBInstanceRequest
         @return: CreateDBInstanceResponse
         """
@@ -2820,6 +2828,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_binary_log_list_with_options_async(request, runtime)
 
+    def describe_cdc_info_with_options(
+        self,
+        request: polardbx_20200202_models.DescribeCdcInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.DescribeCdcInfoResponse:
+        """
+        @summary 查询CDC信息
+        
+        @param request: DescribeCdcInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCdcInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdcInfo',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardbx_20200202_models.DescribeCdcInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardbx_20200202_models.DescribeCdcInfoResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_cdc_info_with_options_async(
+        self,
+        request: polardbx_20200202_models.DescribeCdcInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.DescribeCdcInfoResponse:
+        """
+        @summary 查询CDC信息
+        
+        @param request: DescribeCdcInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCdcInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdcInfo',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardbx_20200202_models.DescribeCdcInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardbx_20200202_models.DescribeCdcInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_cdc_info(
+        self,
+        request: polardbx_20200202_models.DescribeCdcInfoRequest,
+    ) -> polardbx_20200202_models.DescribeCdcInfoResponse:
+        """
+        @summary 查询CDC信息
+        
+        @param request: DescribeCdcInfoRequest
+        @return: DescribeCdcInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cdc_info_with_options(request, runtime)
+
+    async def describe_cdc_info_async(
+        self,
+        request: polardbx_20200202_models.DescribeCdcInfoRequest,
+    ) -> polardbx_20200202_models.DescribeCdcInfoResponse:
+        """
+        @summary 查询CDC信息
+        
+        @param request: DescribeCdcInfoRequest
+        @return: DescribeCdcInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cdc_info_with_options_async(request, runtime)
+
     def describe_character_set_with_options(
         self,
         request: polardbx_20200202_models.DescribeCharacterSetRequest,
@@ -3922,6 +4042,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDBNodePerformanceResponse:
         """
+        @summary 性能监控数据接口
+        
         @param request: DescribeDBNodePerformanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDBNodePerformanceResponse
@@ -3975,6 +4097,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDBNodePerformanceResponse:
         """
+        @summary 性能监控数据接口
+        
         @param request: DescribeDBNodePerformanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDBNodePerformanceResponse
@@ -4027,6 +4151,8 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDBNodePerformanceRequest,
     ) -> polardbx_20200202_models.DescribeDBNodePerformanceResponse:
         """
+        @summary 性能监控数据接口
+        
         @param request: DescribeDBNodePerformanceRequest
         @return: DescribeDBNodePerformanceResponse
         """
@@ -4038,6 +4164,8 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDBNodePerformanceRequest,
     ) -> polardbx_20200202_models.DescribeDBNodePerformanceResponse:
         """
+        @summary 性能监控数据接口
+        
         @param request: DescribeDBNodePerformanceRequest
         @return: DescribeDBNodePerformanceResponse
         """
@@ -8636,6 +8764,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.UpdatePolarDBXInstanceNodeResponse:
         """
+        @summary 扩缩容实例节点数
+        
         @param request: UpdatePolarDBXInstanceNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdatePolarDBXInstanceNodeResponse
@@ -8691,6 +8821,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.UpdatePolarDBXInstanceNodeResponse:
         """
+        @summary 扩缩容实例节点数
+        
         @param request: UpdatePolarDBXInstanceNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdatePolarDBXInstanceNodeResponse
@@ -8745,6 +8877,8 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.UpdatePolarDBXInstanceNodeRequest,
     ) -> polardbx_20200202_models.UpdatePolarDBXInstanceNodeResponse:
         """
+        @summary 扩缩容实例节点数
+        
         @param request: UpdatePolarDBXInstanceNodeRequest
         @return: UpdatePolarDBXInstanceNodeResponse
         """
@@ -8756,6 +8890,8 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.UpdatePolarDBXInstanceNodeRequest,
     ) -> polardbx_20200202_models.UpdatePolarDBXInstanceNodeResponse:
         """
+        @summary 扩缩容实例节点数
+        
         @param request: UpdatePolarDBXInstanceNodeRequest
         @return: UpdatePolarDBXInstanceNodeResponse
         """

@@ -1247,12 +1247,12 @@ class CreateDBInstanceRequest(TeaModel):
     def __init__(
         self,
         auto_renew: bool = None,
-        cnnode_count: str = None,
+        cnnode_count: int = None,
         client_token: str = None,
         cn_class: str = None,
         dbnode_class: str = None,
         dbnode_count: int = None,
-        dnnode_count: str = None,
+        dnnode_count: int = None,
         dn_class: str = None,
         dn_storage_space: str = None,
         engine_version: str = None,
@@ -1441,12 +1441,12 @@ class CreateDBInstanceShrinkRequest(TeaModel):
     def __init__(
         self,
         auto_renew: bool = None,
-        cnnode_count: str = None,
+        cnnode_count: int = None,
         client_token: str = None,
         cn_class: str = None,
         dbnode_class: str = None,
         dbnode_count: int = None,
-        dnnode_count: str = None,
+        dnnode_count: int = None,
         dn_class: str = None,
         dn_storage_space: str = None,
         engine_version: str = None,
@@ -4355,6 +4355,348 @@ class DescribeBinaryLogListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeBinaryLogListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCdcInfoRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_name: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_name = dbinstance_name
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes(TeaModel):
+    def __init__(
+        self,
+        azone: str = None,
+        disk: int = None,
+        node_class: str = None,
+        node_id: str = None,
+        node_name: str = None,
+        status: str = None,
+        version: str = None,
+    ):
+        self.azone = azone
+        self.disk = disk
+        self.node_class = node_class
+        self.node_id = node_id
+        self.node_name = node_name
+        self.status = status
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.azone is not None:
+            result['AZone'] = self.azone
+        if self.disk is not None:
+            result['Disk'] = self.disk
+        if self.node_class is not None:
+            result['NodeClass'] = self.node_class
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AZone') is not None:
+            self.azone = m.get('AZone')
+        if m.get('Disk') is not None:
+            self.disk = m.get('Disk')
+        if m.get('NodeClass') is not None:
+            self.node_class = m.get('NodeClass')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class DescribeCdcInfoResponseBodyDataInstanceTopologyList(TeaModel):
+    def __init__(
+        self,
+        cluster_type: str = None,
+        comment: str = None,
+        group_name: str = None,
+        hash_level: str = None,
+        instance_name: str = None,
+        physical_nodes: List[DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes] = None,
+        stream_num: int = None,
+    ):
+        self.cluster_type = cluster_type
+        self.comment = comment
+        self.group_name = group_name
+        self.hash_level = hash_level
+        self.instance_name = instance_name
+        self.physical_nodes = physical_nodes
+        self.stream_num = stream_num
+
+    def validate(self):
+        if self.physical_nodes:
+            for k in self.physical_nodes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.hash_level is not None:
+            result['HashLevel'] = self.hash_level
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        result['PhysicalNodes'] = []
+        if self.physical_nodes is not None:
+            for k in self.physical_nodes:
+                result['PhysicalNodes'].append(k.to_map() if k else None)
+        if self.stream_num is not None:
+            result['StreamNum'] = self.stream_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('HashLevel') is not None:
+            self.hash_level = m.get('HashLevel')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        self.physical_nodes = []
+        if m.get('PhysicalNodes') is not None:
+            for k in m.get('PhysicalNodes'):
+                temp_model = DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes()
+                self.physical_nodes.append(temp_model.from_map(k))
+        if m.get('StreamNum') is not None:
+            self.stream_num = m.get('StreamNum')
+        return self
+
+
+class DescribeCdcInfoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        binlog_persist_time: int = None,
+        binlog_size: int = None,
+        cdc_new_version: str = None,
+        check_sum_switch: str = None,
+        enable_cyclic_replication: bool = None,
+        instance_topology_list: List[DescribeCdcInfoResponseBodyDataInstanceTopologyList] = None,
+        server_id: int = None,
+        version_support_multi_cdc: bool = None,
+    ):
+        self.binlog_persist_time = binlog_persist_time
+        # This parameter is required.
+        self.binlog_size = binlog_size
+        # This parameter is required.
+        self.cdc_new_version = cdc_new_version
+        self.check_sum_switch = check_sum_switch
+        self.enable_cyclic_replication = enable_cyclic_replication
+        self.instance_topology_list = instance_topology_list
+        # server id
+        # 
+        # This parameter is required.
+        self.server_id = server_id
+        self.version_support_multi_cdc = version_support_multi_cdc
+
+    def validate(self):
+        if self.instance_topology_list:
+            for k in self.instance_topology_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.binlog_persist_time is not None:
+            result['BinlogPersistTime'] = self.binlog_persist_time
+        if self.binlog_size is not None:
+            result['BinlogSize'] = self.binlog_size
+        if self.cdc_new_version is not None:
+            result['CdcNewVersion'] = self.cdc_new_version
+        if self.check_sum_switch is not None:
+            result['CheckSumSwitch'] = self.check_sum_switch
+        if self.enable_cyclic_replication is not None:
+            result['EnableCyclicReplication'] = self.enable_cyclic_replication
+        result['InstanceTopologyList'] = []
+        if self.instance_topology_list is not None:
+            for k in self.instance_topology_list:
+                result['InstanceTopologyList'].append(k.to_map() if k else None)
+        if self.server_id is not None:
+            result['ServerId'] = self.server_id
+        if self.version_support_multi_cdc is not None:
+            result['VersionSupportMultiCdc'] = self.version_support_multi_cdc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BinlogPersistTime') is not None:
+            self.binlog_persist_time = m.get('BinlogPersistTime')
+        if m.get('BinlogSize') is not None:
+            self.binlog_size = m.get('BinlogSize')
+        if m.get('CdcNewVersion') is not None:
+            self.cdc_new_version = m.get('CdcNewVersion')
+        if m.get('CheckSumSwitch') is not None:
+            self.check_sum_switch = m.get('CheckSumSwitch')
+        if m.get('EnableCyclicReplication') is not None:
+            self.enable_cyclic_replication = m.get('EnableCyclicReplication')
+        self.instance_topology_list = []
+        if m.get('InstanceTopologyList') is not None:
+            for k in m.get('InstanceTopologyList'):
+                temp_model = DescribeCdcInfoResponseBodyDataInstanceTopologyList()
+                self.instance_topology_list.append(temp_model.from_map(k))
+        if m.get('ServerId') is not None:
+            self.server_id = m.get('ServerId')
+        if m.get('VersionSupportMultiCdc') is not None:
+            self.version_support_multi_cdc = m.get('VersionSupportMultiCdc')
+        return self
+
+
+class DescribeCdcInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeCdcInfoResponseBodyData = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        # This parameter is required.
+        self.http_status_code = http_status_code
+        # Id of the request
+        self.request_id = request_id
+        # This parameter is required.
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeCdcInfoResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeCdcInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCdcInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCdcInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10491,6 +10833,7 @@ class DescribeSlowLogRecordsResponseBodyItems(TeaModel):
         sqlhash: str = None,
         sqltext: str = None,
         sql_type: str = None,
+        template_id: str = None,
         too_long: str = None,
         trace_id: str = None,
         transaction_policy: str = None,
@@ -10517,6 +10860,7 @@ class DescribeSlowLogRecordsResponseBodyItems(TeaModel):
         self.sqlhash = sqlhash
         self.sqltext = sqltext
         self.sql_type = sql_type
+        self.template_id = template_id
         self.too_long = too_long
         self.trace_id = trace_id
         self.transaction_policy = transaction_policy
@@ -10572,6 +10916,8 @@ class DescribeSlowLogRecordsResponseBodyItems(TeaModel):
             result['SQLText'] = self.sqltext
         if self.sql_type is not None:
             result['SqlType'] = self.sql_type
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
         if self.too_long is not None:
             result['TooLong'] = self.too_long
         if self.trace_id is not None:
@@ -10626,6 +10972,8 @@ class DescribeSlowLogRecordsResponseBodyItems(TeaModel):
             self.sqltext = m.get('SQLText')
         if m.get('SqlType') is not None:
             self.sql_type = m.get('SqlType')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
         if m.get('TooLong') is not None:
             self.too_long = m.get('TooLong')
         if m.get('TraceId') is not None:
@@ -15069,11 +15417,11 @@ class UpdatePolarDBXInstanceNodeRequest(TeaModel):
     def __init__(
         self,
         add_dnspec: str = None,
-        cnnode_count: str = None,
+        cnnode_count: int = None,
         client_token: str = None,
         dbinstance_name: str = None,
-        dnnode_count: str = None,
-        db_instance_node_count: str = None,
+        dnnode_count: int = None,
+        db_instance_node_count: int = None,
         delete_dnids: str = None,
         region_id: str = None,
         storage_pool_name: str = None,

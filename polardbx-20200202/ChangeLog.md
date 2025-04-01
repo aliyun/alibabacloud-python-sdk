@@ -1,3 +1,18 @@
+2025-04-01 Version: 3.0.0
+- Support API DescribeCdcInfo.
+- Update API CreateDBInstance: update request parameters CNNodeCount' type has changed.
+- Update API CreateDBInstance: update request parameters CNNodeCount' format has changed.
+- Update API CreateDBInstance: update request parameters DNNodeCount' type has changed.
+- Update API CreateDBInstance: update request parameters DNNodeCount' format has changed.
+- Update API DescribeSlowLogRecords: add response parameters Body.Items.$.TemplateId.
+- Update API UpdatePolarDBXInstanceNode: update request parameters CNNodeCount' type has changed.
+- Update API UpdatePolarDBXInstanceNode: update request parameters CNNodeCount' format has changed.
+- Update API UpdatePolarDBXInstanceNode: update request parameters DNNodeCount' type has changed.
+- Update API UpdatePolarDBXInstanceNode: update request parameters DNNodeCount' format has changed.
+- Update API UpdatePolarDBXInstanceNode: update request parameters DbInstanceNodeCount' type has changed.
+- Update API UpdatePolarDBXInstanceNode: update request parameters DbInstanceNodeCount' format has changed.
+
+
 2025-02-18 Version: 2.2.2
 - Update API DescribeGdnInstances: update response param.
 - Update API SwitchGdnMemberRole: add param TaskTimeout.
