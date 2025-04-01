@@ -363,6 +363,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.category_tags):
+            body['categoryTags'] = request.category_tags
         if not UtilClient.is_unset(request.custom_prompt):
             body['customPrompt'] = request.custom_prompt
         if not UtilClient.is_unset(request.dialogue):
@@ -383,6 +385,8 @@ class Client(OpenApiClient):
             body['templateIds'] = request.template_ids
         if not UtilClient.is_unset(request.transcription):
             body['transcription'] = request.transcription
+        if not UtilClient.is_unset(request.variables):
+            body['variables'] = request.variables
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -427,6 +431,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.category_tags):
+            body['categoryTags'] = request.category_tags
         if not UtilClient.is_unset(request.custom_prompt):
             body['customPrompt'] = request.custom_prompt
         if not UtilClient.is_unset(request.dialogue):
@@ -447,6 +453,8 @@ class Client(OpenApiClient):
             body['templateIds'] = request.template_ids
         if not UtilClient.is_unset(request.transcription):
             body['transcription'] = request.transcription
+        if not UtilClient.is_unset(request.variables):
+            body['variables'] = request.variables
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1151,6 +1159,8 @@ class Client(OpenApiClient):
             body['Stream'] = request.stream
         if not UtilClient.is_unset(request.template_ids):
             body['TemplateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.variables):
+            body['variables'] = request.variables
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1207,6 +1217,8 @@ class Client(OpenApiClient):
             body['Stream'] = request.stream
         if not UtilClient.is_unset(request.template_ids):
             body['TemplateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.variables):
+            body['variables'] = request.variables
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)

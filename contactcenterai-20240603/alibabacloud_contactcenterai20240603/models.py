@@ -808,6 +808,39 @@ class AnalyzeImageResponse(TeaModel):
         return self
 
 
+class CreateTaskRequestCategoryTags(TeaModel):
+    def __init__(
+        self,
+        tag_desc: str = None,
+        tag_name: str = None,
+    ):
+        self.tag_desc = tag_desc
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_desc is not None:
+            result['tagDesc'] = self.tag_desc
+        if self.tag_name is not None:
+            result['tagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tagDesc') is not None:
+            self.tag_desc = m.get('tagDesc')
+        if m.get('tagName') is not None:
+            self.tag_name = m.get('tagName')
+        return self
+
+
 class CreateTaskRequestDialogueSentences(TeaModel):
     def __init__(
         self,
@@ -1214,9 +1247,43 @@ class CreateTaskRequestTranscription(TeaModel):
         return self
 
 
+class CreateTaskRequestVariables(TeaModel):
+    def __init__(
+        self,
+        variable_code: str = None,
+        variable_value: str = None,
+    ):
+        self.variable_code = variable_code
+        self.variable_value = variable_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.variable_code is not None:
+            result['variableCode'] = self.variable_code
+        if self.variable_value is not None:
+            result['variableValue'] = self.variable_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('variableCode') is not None:
+            self.variable_code = m.get('variableCode')
+        if m.get('variableValue') is not None:
+            self.variable_value = m.get('variableValue')
+        return self
+
+
 class CreateTaskRequest(TeaModel):
     def __init__(
         self,
+        category_tags: List[CreateTaskRequestCategoryTags] = None,
         custom_prompt: str = None,
         dialogue: CreateTaskRequestDialogue = None,
         examples: CreateTaskRequestExamples = None,
@@ -1227,7 +1294,9 @@ class CreateTaskRequest(TeaModel):
         task_type: str = None,
         template_ids: List[str] = None,
         transcription: CreateTaskRequestTranscription = None,
+        variables: List[CreateTaskRequestVariables] = None,
     ):
+        self.category_tags = category_tags
         self.custom_prompt = custom_prompt
         self.dialogue = dialogue
         self.examples = examples
@@ -1240,8 +1309,13 @@ class CreateTaskRequest(TeaModel):
         self.task_type = task_type
         self.template_ids = template_ids
         self.transcription = transcription
+        self.variables = variables
 
     def validate(self):
+        if self.category_tags:
+            for k in self.category_tags:
+                if k:
+                    k.validate()
         if self.dialogue:
             self.dialogue.validate()
         if self.examples:
@@ -1254,6 +1328,10 @@ class CreateTaskRequest(TeaModel):
             self.service_inspection.validate()
         if self.transcription:
             self.transcription.validate()
+        if self.variables:
+            for k in self.variables:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1261,6 +1339,10 @@ class CreateTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        result['categoryTags'] = []
+        if self.category_tags is not None:
+            for k in self.category_tags:
+                result['categoryTags'].append(k.to_map() if k else None)
         if self.custom_prompt is not None:
             result['customPrompt'] = self.custom_prompt
         if self.dialogue is not None:
@@ -1283,10 +1365,19 @@ class CreateTaskRequest(TeaModel):
             result['templateIds'] = self.template_ids
         if self.transcription is not None:
             result['transcription'] = self.transcription.to_map()
+        result['variables'] = []
+        if self.variables is not None:
+            for k in self.variables:
+                result['variables'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.category_tags = []
+        if m.get('categoryTags') is not None:
+            for k in m.get('categoryTags'):
+                temp_model = CreateTaskRequestCategoryTags()
+                self.category_tags.append(temp_model.from_map(k))
         if m.get('customPrompt') is not None:
             self.custom_prompt = m.get('customPrompt')
         if m.get('dialogue') is not None:
@@ -1314,6 +1405,11 @@ class CreateTaskRequest(TeaModel):
         if m.get('transcription') is not None:
             temp_model = CreateTaskRequestTranscription()
             self.transcription = temp_model.from_map(m['transcription'])
+        self.variables = []
+        if m.get('variables') is not None:
+            for k in m.get('variables'):
+                temp_model = CreateTaskRequestVariables()
+                self.variables.append(temp_model.from_map(k))
         return self
 
 
@@ -2685,6 +2781,39 @@ class RunCompletionRequestServiceInspection(TeaModel):
         return self
 
 
+class RunCompletionRequestVariables(TeaModel):
+    def __init__(
+        self,
+        variable_code: str = None,
+        variable_value: str = None,
+    ):
+        self.variable_code = variable_code
+        self.variable_value = variable_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.variable_code is not None:
+            result['variableCode'] = self.variable_code
+        if self.variable_value is not None:
+            result['variableValue'] = self.variable_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('variableCode') is not None:
+            self.variable_code = m.get('variableCode')
+        if m.get('variableValue') is not None:
+            self.variable_value = m.get('variableValue')
+        return self
+
+
 class RunCompletionRequest(TeaModel):
     def __init__(
         self,
@@ -2694,6 +2823,7 @@ class RunCompletionRequest(TeaModel):
         service_inspection: RunCompletionRequestServiceInspection = None,
         stream: bool = None,
         template_ids: List[int] = None,
+        variables: List[RunCompletionRequestVariables] = None,
     ):
         # This parameter is required.
         self.dialogue = dialogue
@@ -2703,6 +2833,7 @@ class RunCompletionRequest(TeaModel):
         self.stream = stream
         # This parameter is required.
         self.template_ids = template_ids
+        self.variables = variables
 
     def validate(self):
         if self.dialogue:
@@ -2713,6 +2844,10 @@ class RunCompletionRequest(TeaModel):
                     k.validate()
         if self.service_inspection:
             self.service_inspection.validate()
+        if self.variables:
+            for k in self.variables:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2734,6 +2869,10 @@ class RunCompletionRequest(TeaModel):
             result['Stream'] = self.stream
         if self.template_ids is not None:
             result['TemplateIds'] = self.template_ids
+        result['variables'] = []
+        if self.variables is not None:
+            for k in self.variables:
+                result['variables'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2755,6 +2894,11 @@ class RunCompletionRequest(TeaModel):
             self.stream = m.get('Stream')
         if m.get('TemplateIds') is not None:
             self.template_ids = m.get('TemplateIds')
+        self.variables = []
+        if m.get('variables') is not None:
+            for k in m.get('variables'):
+                temp_model = RunCompletionRequestVariables()
+                self.variables.append(temp_model.from_map(k))
         return self
 
 

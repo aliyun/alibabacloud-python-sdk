@@ -1,3 +1,9 @@
+2025-04-01 Version: 3.5.2
+- Update API CreateTask: add request parameters body.categoryTags.
+- Update API CreateTask: add request parameters body.variables.
+- Update API RunCompletion: add request parameters body.variables.
+
+
 2025-03-26 Version: 3.5.1
 - Generated python 2024-06-03 for ContactCenterAI.
 
