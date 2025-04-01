@@ -5233,6 +5233,8 @@ class Client(OpenApiClient):
             query['OriginHttpsPort'] = request.origin_https_port
         if not UtilClient.is_unset(request.origin_mtls):
             query['OriginMtls'] = request.origin_mtls
+        if not UtilClient.is_unset(request.origin_read_timeout):
+            query['OriginReadTimeout'] = request.origin_read_timeout
         if not UtilClient.is_unset(request.origin_scheme):
             query['OriginScheme'] = request.origin_scheme
         if not UtilClient.is_unset(request.origin_sni):
@@ -5304,6 +5306,8 @@ class Client(OpenApiClient):
             query['OriginHttpsPort'] = request.origin_https_port
         if not UtilClient.is_unset(request.origin_mtls):
             query['OriginMtls'] = request.origin_mtls
+        if not UtilClient.is_unset(request.origin_read_timeout):
+            query['OriginReadTimeout'] = request.origin_read_timeout
         if not UtilClient.is_unset(request.origin_scheme):
             query['OriginScheme'] = request.origin_scheme
         if not UtilClient.is_unset(request.origin_sni):
@@ -16162,6 +16166,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_edge_container_app_resource_reserve_with_options_async(request, runtime)
+
+    def get_edge_container_app_resource_status_with_options(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppResourceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetEdgeContainerAppResourceStatusResponse:
+        """
+        @summary 获取边缘容器应用资源分布
+        
+        @param request: GetEdgeContainerAppResourceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeContainerAppResourceStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeContainerAppResourceStatus',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetEdgeContainerAppResourceStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetEdgeContainerAppResourceStatusResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_edge_container_app_resource_status_with_options_async(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppResourceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetEdgeContainerAppResourceStatusResponse:
+        """
+        @summary 获取边缘容器应用资源分布
+        
+        @param request: GetEdgeContainerAppResourceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeContainerAppResourceStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeContainerAppResourceStatus',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetEdgeContainerAppResourceStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetEdgeContainerAppResourceStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_edge_container_app_resource_status(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppResourceStatusRequest,
+    ) -> esa20240910_models.GetEdgeContainerAppResourceStatusResponse:
+        """
+        @summary 获取边缘容器应用资源分布
+        
+        @param request: GetEdgeContainerAppResourceStatusRequest
+        @return: GetEdgeContainerAppResourceStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_edge_container_app_resource_status_with_options(request, runtime)
+
+    async def get_edge_container_app_resource_status_async(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppResourceStatusRequest,
+    ) -> esa20240910_models.GetEdgeContainerAppResourceStatusResponse:
+        """
+        @summary 获取边缘容器应用资源分布
+        
+        @param request: GetEdgeContainerAppResourceStatusRequest
+        @return: GetEdgeContainerAppResourceStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_edge_container_app_resource_status_with_options_async(request, runtime)
 
     def get_edge_container_app_status_with_options(
         self,
@@ -33799,6 +33911,8 @@ class Client(OpenApiClient):
             query['OriginHttpsPort'] = request.origin_https_port
         if not UtilClient.is_unset(request.origin_mtls):
             query['OriginMtls'] = request.origin_mtls
+        if not UtilClient.is_unset(request.origin_read_timeout):
+            query['OriginReadTimeout'] = request.origin_read_timeout
         if not UtilClient.is_unset(request.origin_scheme):
             query['OriginScheme'] = request.origin_scheme
         if not UtilClient.is_unset(request.origin_sni):
@@ -33870,6 +33984,8 @@ class Client(OpenApiClient):
             query['OriginHttpsPort'] = request.origin_https_port
         if not UtilClient.is_unset(request.origin_mtls):
             query['OriginMtls'] = request.origin_mtls
+        if not UtilClient.is_unset(request.origin_read_timeout):
+            query['OriginReadTimeout'] = request.origin_read_timeout
         if not UtilClient.is_unset(request.origin_scheme):
             query['OriginScheme'] = request.origin_scheme
         if not UtilClient.is_unset(request.origin_sni):

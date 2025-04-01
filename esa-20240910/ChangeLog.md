@@ -1,3 +1,11 @@
+2025-04-01 Version: 2.20.0
+- Support API GetEdgeContainerAppResourceStatus.
+- Update API CreateOriginRule: add request parameters OriginReadTimeout.
+- Update API GetOriginRule: add response parameters Body.OriginReadTimeout.
+- Update API ListOriginRules: add response parameters Body.Configs.$.OriginReadTimeout.
+- Update API UpdateOriginRule: add request parameters OriginReadTimeout.
+
+
 2025-03-31 Version: 2.19.0
 - Support API GetCrossBorderOptimization.
 - Support API UpdateCrossBorderOptimization.

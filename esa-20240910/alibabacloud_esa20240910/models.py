@@ -3577,11 +3577,11 @@ class BatchCreateWafRulesResponseBody(TeaModel):
         request_id: str = None,
         ruleset_id: int = None,
     ):
-        # ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+        # ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
         self.ids = ids
         # Request ID.
         self.request_id = request_id
-        # ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) interface.
+        # ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) interface.
         self.ruleset_id = ruleset_id
 
     def validate(self):
@@ -10153,6 +10153,7 @@ class CreateOriginRuleRequest(TeaModel):
         origin_http_port: str = None,
         origin_https_port: str = None,
         origin_mtls: str = None,
+        origin_read_timeout: str = None,
         origin_scheme: str = None,
         origin_sni: str = None,
         origin_verify: str = None,
@@ -10177,6 +10178,7 @@ class CreateOriginRuleRequest(TeaModel):
         # - on: Enable.
         # - off: Disable.
         self.origin_mtls = origin_mtls
+        self.origin_read_timeout = origin_read_timeout
         # Protocol used for the origin request. Possible values:
         # - http: Use HTTP protocol for origin requests.
         # - https: Use HTTPS protocol for origin requests.
@@ -10231,6 +10233,8 @@ class CreateOriginRuleRequest(TeaModel):
             result['OriginHttpsPort'] = self.origin_https_port
         if self.origin_mtls is not None:
             result['OriginMtls'] = self.origin_mtls
+        if self.origin_read_timeout is not None:
+            result['OriginReadTimeout'] = self.origin_read_timeout
         if self.origin_scheme is not None:
             result['OriginScheme'] = self.origin_scheme
         if self.origin_sni is not None:
@@ -10267,6 +10271,8 @@ class CreateOriginRuleRequest(TeaModel):
             self.origin_https_port = m.get('OriginHttpsPort')
         if m.get('OriginMtls') is not None:
             self.origin_mtls = m.get('OriginMtls')
+        if m.get('OriginReadTimeout') is not None:
+            self.origin_read_timeout = m.get('OriginReadTimeout')
         if m.get('OriginScheme') is not None:
             self.origin_scheme = m.get('OriginScheme')
         if m.get('OriginSni') is not None:
@@ -20061,7 +20067,7 @@ class DeleteWafRuleRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+        # ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
         # 
         # This parameter is required.
         self.id = id
@@ -26238,6 +26244,161 @@ class GetEdgeContainerAppResourceReserveResponse(TeaModel):
         return self
 
 
+class GetEdgeContainerAppResourceStatusRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class GetEdgeContainerAppResourceStatusResponseBodyRegions(TeaModel):
+    def __init__(
+        self,
+        isp: str = None,
+        ready: int = None,
+        region: str = None,
+        total: int = None,
+    ):
+        self.isp = isp
+        self.ready = ready
+        self.region = region
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.isp is not None:
+            result['Isp'] = self.isp
+        if self.ready is not None:
+            result['Ready'] = self.ready
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Isp') is not None:
+            self.isp = m.get('Isp')
+        if m.get('Ready') is not None:
+            self.ready = m.get('Ready')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetEdgeContainerAppResourceStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        regions: List[GetEdgeContainerAppResourceStatusResponseBodyRegions] = None,
+        request_id: str = None,
+    ):
+        self.regions = regions
+        self.request_id = request_id
+
+    def validate(self):
+        if self.regions:
+            for k in self.regions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Regions'] = []
+        if self.regions is not None:
+            for k in self.regions:
+                result['Regions'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.regions = []
+        if m.get('Regions') is not None:
+            for k in m.get('Regions'):
+                temp_model = GetEdgeContainerAppResourceStatusResponseBodyRegions()
+                self.regions.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetEdgeContainerAppResourceStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetEdgeContainerAppResourceStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetEdgeContainerAppResourceStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetEdgeContainerAppStatusRequest(TeaModel):
     def __init__(
         self,
@@ -31998,6 +32159,7 @@ class GetOriginRuleResponseBody(TeaModel):
         origin_http_port: str = None,
         origin_https_port: str = None,
         origin_mtls: str = None,
+        origin_read_timeout: str = None,
         origin_scheme: str = None,
         origin_sni: str = None,
         origin_verify: str = None,
@@ -32029,6 +32191,7 @@ class GetOriginRuleResponseBody(TeaModel):
         # - on: Enable.
         # - off: Disable.
         self.origin_mtls = origin_mtls
+        self.origin_read_timeout = origin_read_timeout
         # Protocol used for the origin request. Value range:
         # 
         # - http: Use HTTP protocol for origin.
@@ -32088,6 +32251,8 @@ class GetOriginRuleResponseBody(TeaModel):
             result['OriginHttpsPort'] = self.origin_https_port
         if self.origin_mtls is not None:
             result['OriginMtls'] = self.origin_mtls
+        if self.origin_read_timeout is not None:
+            result['OriginReadTimeout'] = self.origin_read_timeout
         if self.origin_scheme is not None:
             result['OriginScheme'] = self.origin_scheme
         if self.origin_sni is not None:
@@ -32128,6 +32293,8 @@ class GetOriginRuleResponseBody(TeaModel):
             self.origin_https_port = m.get('OriginHttpsPort')
         if m.get('OriginMtls') is not None:
             self.origin_mtls = m.get('OriginMtls')
+        if m.get('OriginReadTimeout') is not None:
+            self.origin_read_timeout = m.get('OriginReadTimeout')
         if m.get('OriginScheme') is not None:
             self.origin_scheme = m.get('OriginScheme')
         if m.get('OriginSni') is not None:
@@ -46992,6 +47159,7 @@ class ListOriginRulesResponseBodyConfigs(TeaModel):
         origin_http_port: str = None,
         origin_https_port: str = None,
         origin_mtls: str = None,
+        origin_read_timeout: str = None,
         origin_scheme: str = None,
         origin_sni: str = None,
         origin_verify: str = None,
@@ -47021,6 +47189,7 @@ class ListOriginRulesResponseBodyConfigs(TeaModel):
         # - on: Enable.
         # - off: Disable.
         self.origin_mtls = origin_mtls
+        self.origin_read_timeout = origin_read_timeout
         # Protocol used for the origin request. Value range:
         # - http: Use HTTP protocol for origin.
         # - https: Use HTTPS protocol for origin.
@@ -47076,6 +47245,8 @@ class ListOriginRulesResponseBodyConfigs(TeaModel):
             result['OriginHttpsPort'] = self.origin_https_port
         if self.origin_mtls is not None:
             result['OriginMtls'] = self.origin_mtls
+        if self.origin_read_timeout is not None:
+            result['OriginReadTimeout'] = self.origin_read_timeout
         if self.origin_scheme is not None:
             result['OriginScheme'] = self.origin_scheme
         if self.origin_sni is not None:
@@ -47114,6 +47285,8 @@ class ListOriginRulesResponseBodyConfigs(TeaModel):
             self.origin_https_port = m.get('OriginHttpsPort')
         if m.get('OriginMtls') is not None:
             self.origin_mtls = m.get('OriginMtls')
+        if m.get('OriginReadTimeout') is not None:
+            self.origin_read_timeout = m.get('OriginReadTimeout')
         if m.get('OriginScheme') is not None:
             self.origin_scheme = m.get('OriginScheme')
         if m.get('OriginSni') is not None:
@@ -49677,7 +49850,7 @@ class ListSitesRequest(TeaModel):
         self.only_enterprise = only_enterprise
         # Sorting field. By default, it sorts by creation time, supporting the following options:
         # - gmtCreate: website creation time
-        # - visitTime：website visit time
+        # - visitTime: website visit time
         self.order_by = order_by
         # The page number. Default value: **1**.
         self.page_number = page_number
@@ -49809,7 +49982,7 @@ class ListSitesShrinkRequest(TeaModel):
         self.only_enterprise = only_enterprise
         # Sorting field. By default, it sorts by creation time, supporting the following options:
         # - gmtCreate: website creation time
-        # - visitTime：website visit time
+        # - visitTime: website visit time
         self.order_by = order_by
         # The page number. Default value: **1**.
         self.page_number = page_number
@@ -62175,6 +62348,7 @@ class UpdateOriginRuleRequest(TeaModel):
         origin_http_port: str = None,
         origin_https_port: str = None,
         origin_mtls: str = None,
+        origin_read_timeout: str = None,
         origin_scheme: str = None,
         origin_sni: str = None,
         origin_verify: str = None,
@@ -62202,6 +62376,7 @@ class UpdateOriginRuleRequest(TeaModel):
         # - on: Enable.
         # - off: Disable.
         self.origin_mtls = origin_mtls
+        self.origin_read_timeout = origin_read_timeout
         # Protocol used for the origin request. Valid values:
         # - http: Use HTTP protocol for origin pull.
         # - https: Use HTTPS protocol for origin pull.
@@ -62256,6 +62431,8 @@ class UpdateOriginRuleRequest(TeaModel):
             result['OriginHttpsPort'] = self.origin_https_port
         if self.origin_mtls is not None:
             result['OriginMtls'] = self.origin_mtls
+        if self.origin_read_timeout is not None:
+            result['OriginReadTimeout'] = self.origin_read_timeout
         if self.origin_scheme is not None:
             result['OriginScheme'] = self.origin_scheme
         if self.origin_sni is not None:
@@ -62292,6 +62469,8 @@ class UpdateOriginRuleRequest(TeaModel):
             self.origin_https_port = m.get('OriginHttpsPort')
         if m.get('OriginMtls') is not None:
             self.origin_mtls = m.get('OriginMtls')
+        if m.get('OriginReadTimeout') is not None:
+            self.origin_read_timeout = m.get('OriginReadTimeout')
         if m.get('OriginScheme') is not None:
             self.origin_scheme = m.get('OriginScheme')
         if m.get('OriginSni') is not None:
