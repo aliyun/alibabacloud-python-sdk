@@ -1809,6 +1809,232 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_vpc_binding_with_options_async(function_name, vpc_id, headers, runtime)
 
+    def disable_function_invocation_with_options(
+        self,
+        function_name: str,
+        request: fc20230330_models.DisableFunctionInvocationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.DisableFunctionInvocationResponse:
+        """
+        @summary 禁止函数调用
+        
+        @param request: DisableFunctionInvocationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableFunctionInvocationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.abort_ongoing_request):
+            body['abortOngoingRequest'] = request.abort_ongoing_request
+        if not UtilClient.is_unset(request.reason):
+            body['reason'] = request.reason
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DisableFunctionInvocation',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/functions/{OpenApiUtilClient.get_encode_param(function_name)}/invoke/disable',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                fc20230330_models.DisableFunctionInvocationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                fc20230330_models.DisableFunctionInvocationResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def disable_function_invocation_with_options_async(
+        self,
+        function_name: str,
+        request: fc20230330_models.DisableFunctionInvocationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.DisableFunctionInvocationResponse:
+        """
+        @summary 禁止函数调用
+        
+        @param request: DisableFunctionInvocationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableFunctionInvocationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.abort_ongoing_request):
+            body['abortOngoingRequest'] = request.abort_ongoing_request
+        if not UtilClient.is_unset(request.reason):
+            body['reason'] = request.reason
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DisableFunctionInvocation',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/functions/{OpenApiUtilClient.get_encode_param(function_name)}/invoke/disable',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                fc20230330_models.DisableFunctionInvocationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                fc20230330_models.DisableFunctionInvocationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def disable_function_invocation(
+        self,
+        function_name: str,
+        request: fc20230330_models.DisableFunctionInvocationRequest,
+    ) -> fc20230330_models.DisableFunctionInvocationResponse:
+        """
+        @summary 禁止函数调用
+        
+        @param request: DisableFunctionInvocationRequest
+        @return: DisableFunctionInvocationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.disable_function_invocation_with_options(function_name, request, headers, runtime)
+
+    async def disable_function_invocation_async(
+        self,
+        function_name: str,
+        request: fc20230330_models.DisableFunctionInvocationRequest,
+    ) -> fc20230330_models.DisableFunctionInvocationResponse:
+        """
+        @summary 禁止函数调用
+        
+        @param request: DisableFunctionInvocationRequest
+        @return: DisableFunctionInvocationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.disable_function_invocation_with_options_async(function_name, request, headers, runtime)
+
+    def enable_function_invocation_with_options(
+        self,
+        function_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.EnableFunctionInvocationResponse:
+        """
+        @summary 允许函数调用
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableFunctionInvocationResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='EnableFunctionInvocation',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/functions/{OpenApiUtilClient.get_encode_param(function_name)}/invoke/enable',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                fc20230330_models.EnableFunctionInvocationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                fc20230330_models.EnableFunctionInvocationResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def enable_function_invocation_with_options_async(
+        self,
+        function_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.EnableFunctionInvocationResponse:
+        """
+        @summary 允许函数调用
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableFunctionInvocationResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='EnableFunctionInvocation',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/functions/{OpenApiUtilClient.get_encode_param(function_name)}/invoke/enable',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                fc20230330_models.EnableFunctionInvocationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                fc20230330_models.EnableFunctionInvocationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def enable_function_invocation(
+        self,
+        function_name: str,
+    ) -> fc20230330_models.EnableFunctionInvocationResponse:
+        """
+        @summary 允许函数调用
+        
+        @return: EnableFunctionInvocationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.enable_function_invocation_with_options(function_name, headers, runtime)
+
+    async def enable_function_invocation_async(
+        self,
+        function_name: str,
+    ) -> fc20230330_models.EnableFunctionInvocationResponse:
+        """
+        @summary 允许函数调用
+        
+        @return: EnableFunctionInvocationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.enable_function_invocation_with_options_async(function_name, headers, runtime)
+
     def get_alias_with_options(
         self,
         function_name: str,

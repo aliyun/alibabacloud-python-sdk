@@ -1,3 +1,8 @@
+2025-04-01 Version: 4.2.0
+- Support API DisableFunctionInvocation.
+- Support API EnableFunctionInvocation.
+
+
 2025-03-31 Version: 4.1.9
 - Update API ListFunctions: add request parameters description.
 - Update API ListFunctions: add request parameters gpuType.

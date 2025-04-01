@@ -3238,6 +3238,45 @@ class Filter(TeaModel):
         return self
 
 
+class OpenStructFunctionRestriction(TeaModel):
+    def __init__(
+        self,
+        disable: bool = None,
+        last_modified_time: str = None,
+        reason: str = None,
+    ):
+        self.disable = disable
+        self.last_modified_time = last_modified_time
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disable is not None:
+            result['disable'] = self.disable
+        if self.last_modified_time is not None:
+            result['lastModifiedTime'] = self.last_modified_time
+        if self.reason is not None:
+            result['reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('disable') is not None:
+            self.disable = m.get('disable')
+        if m.get('lastModifiedTime') is not None:
+            self.last_modified_time = m.get('lastModifiedTime')
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        return self
+
+
 class FunctionLayer(TeaModel):
     def __init__(
         self,
@@ -3293,6 +3332,7 @@ class Function(TeaModel):
         instance_concurrency: int = None,
         instance_lifecycle_config: InstanceLifecycleConfig = None,
         internet_access: bool = None,
+        invocation_restriction: OpenStructFunctionRestriction = None,
         last_modified_time: str = None,
         last_update_status: str = None,
         last_update_status_reason: str = None,
@@ -3331,6 +3371,7 @@ class Function(TeaModel):
         self.instance_concurrency = instance_concurrency
         self.instance_lifecycle_config = instance_lifecycle_config
         self.internet_access = internet_access
+        self.invocation_restriction = invocation_restriction
         self.last_modified_time = last_modified_time
         self.last_update_status = last_update_status
         self.last_update_status_reason = last_update_status_reason
@@ -3361,6 +3402,8 @@ class Function(TeaModel):
             self.gpu_config.validate()
         if self.instance_lifecycle_config:
             self.instance_lifecycle_config.validate()
+        if self.invocation_restriction:
+            self.invocation_restriction.validate()
         if self.layers:
             for k in self.layers:
                 if k:
@@ -3424,6 +3467,8 @@ class Function(TeaModel):
             result['instanceLifecycleConfig'] = self.instance_lifecycle_config.to_map()
         if self.internet_access is not None:
             result['internetAccess'] = self.internet_access
+        if self.invocation_restriction is not None:
+            result['invocationRestriction'] = self.invocation_restriction.to_map()
         if self.last_modified_time is not None:
             result['lastModifiedTime'] = self.last_modified_time
         if self.last_update_status is not None:
@@ -3511,6 +3556,9 @@ class Function(TeaModel):
             self.instance_lifecycle_config = temp_model.from_map(m['instanceLifecycleConfig'])
         if m.get('internetAccess') is not None:
             self.internet_access = m.get('internetAccess')
+        if m.get('invocationRestriction') is not None:
+            temp_model = OpenStructFunctionRestriction()
+            self.invocation_restriction = temp_model.from_map(m['invocationRestriction'])
         if m.get('lastModifiedTime') is not None:
             self.last_modified_time = m.get('lastModifiedTime')
         if m.get('lastUpdateStatus') is not None:
@@ -6854,6 +6902,175 @@ class DeleteVpcBindingResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
+        return self
+
+
+class DisableFunctionInvocationRequest(TeaModel):
+    def __init__(
+        self,
+        abort_ongoing_request: bool = None,
+        reason: str = None,
+    ):
+        self.abort_ongoing_request = abort_ongoing_request
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.abort_ongoing_request is not None:
+            result['abortOngoingRequest'] = self.abort_ongoing_request
+        if self.reason is not None:
+            result['reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('abortOngoingRequest') is not None:
+            self.abort_ongoing_request = m.get('abortOngoingRequest')
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        return self
+
+
+class DisableFunctionInvocationResponseBody(TeaModel):
+    def __init__(
+        self,
+        success: bool = None,
+    ):
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class DisableFunctionInvocationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableFunctionInvocationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableFunctionInvocationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableFunctionInvocationResponseBody(TeaModel):
+    def __init__(
+        self,
+        success: bool = None,
+    ):
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class EnableFunctionInvocationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableFunctionInvocationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableFunctionInvocationResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
