@@ -502,7 +502,7 @@ class CreateCacheAnalysisJobRequest(TeaModel):
         node_id: str = None,
         separators: str = None,
     ):
-        # The ID of the backup file. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/61081.html) operation to query the ID.
+        # The ID of the backup file. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/473823.html) operation to query the ID.
         # 
         # *   If you need to specify multiple backup file IDs, separate them with commas (,). For example, you can set this parameter to `12345,67890`.
         # *   If you do not specify this parameter, the system automatically backs up the task and performs cache analysis on the backup file.
@@ -513,7 +513,7 @@ class CreateCacheAnalysisJobRequest(TeaModel):
         self.instance_id = instance_id
         # The ID of the data node on the instance. You can specify this parameter to query the monitoring information about the specified node.
         # 
-        # >  If you specify the BackupSetId parameter, the system ignores the NodeId parameter. You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/94665.html) operation to query the node ID.
+        # >  If you specify the BackupSetId parameter, the system ignores the NodeId parameter. You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/473786.html) operation to query the node ID.
         self.node_id = node_id
         # The delimiters used to identify the prefixes of keys. You do not need to specify this parameter if one or more of the following default delimiters are used: `: ; , _ - + @ = | #`
         self.separators = separators
@@ -8815,6 +8815,7 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
         rows_count_affected: int = None,
         rows_examined: int = None,
         rows_sent: int = None,
+        rule_id: str = None,
         sqltext: str = None,
         scheme: str = None,
         scnt: int = None,
@@ -8906,6 +8907,7 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
         self.rows_count_affected = rows_count_affected
         self.rows_examined = rows_examined
         self.rows_sent = rows_sent
+        self.rule_id = rule_id
         self.sqltext = sqltext
         self.scheme = scheme
         self.scnt = scnt
@@ -9092,6 +9094,8 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
             result['RowsExamined'] = self.rows_examined
         if self.rows_sent is not None:
             result['RowsSent'] = self.rows_sent
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
         if self.sqltext is not None:
             result['SQLText'] = self.sqltext
         if self.scheme is not None:
@@ -9279,6 +9283,8 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(TeaModel):
             self.rows_examined = m.get('RowsExamined')
         if m.get('RowsSent') is not None:
             self.rows_sent = m.get('RowsSent')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
         if m.get('SQLText') is not None:
             self.sqltext = m.get('SQLText')
         if m.get('Scheme') is not None:
@@ -10797,6 +10803,7 @@ class DescribeSqlLogTaskResponseBodyDataQueries(TeaModel):
         rows: int = None,
         scan_rows: int = None,
         scnt: int = None,
+        sql_command: int = None,
         sql_id: str = None,
         sql_text: str = None,
         sql_type: str = None,
@@ -10852,6 +10859,7 @@ class DescribeSqlLogTaskResponseBodyDataQueries(TeaModel):
         self.scan_rows = scan_rows
         # The number of requests from the compute nodes (CNs) to the data nodes (DNs) in the PolarDB-X 2.0 instance.
         self.scnt = scnt
+        self.sql_command = sql_command
         # The ID of the SQL statement.
         self.sql_id = sql_id
         # The queried SQL statement.
@@ -10938,6 +10946,8 @@ class DescribeSqlLogTaskResponseBodyDataQueries(TeaModel):
             result['ScanRows'] = self.scan_rows
         if self.scnt is not None:
             result['Scnt'] = self.scnt
+        if self.sql_command is not None:
+            result['SqlCommand'] = self.sql_command
         if self.sql_id is not None:
             result['SqlId'] = self.sql_id
         if self.sql_text is not None:
@@ -11008,6 +11018,8 @@ class DescribeSqlLogTaskResponseBodyDataQueries(TeaModel):
             self.scan_rows = m.get('ScanRows')
         if m.get('Scnt') is not None:
             self.scnt = m.get('Scnt')
+        if m.get('SqlCommand') is not None:
+            self.sql_command = m.get('SqlCommand')
         if m.get('SqlId') is not None:
             self.sql_id = m.get('SqlId')
         if m.get('SqlText') is not None:

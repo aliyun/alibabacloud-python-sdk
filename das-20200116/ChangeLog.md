@@ -1,3 +1,8 @@
+2025-04-01 Version: 2.6.3
+- Update API DescribeSlowLogStatistic: add response parameters Body.Data.Data.Logs.$.RuleId.
+- Update API DescribeSqlLogTask: add response parameters Body.Data.Queries.$.SqlCommand.
+
+
 2025-02-28 Version: 2.6.1
 - Update API ModifySqlLogConfig: add param EnableAudit.
 
