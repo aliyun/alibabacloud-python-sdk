@@ -23134,6 +23134,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -23194,6 +23196,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -61075,7 +61079,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.WithdrawVpcPublishedRouteEntriesResponse:
         """
-        @summary 撤回VPC已发布路由
+        @summary Withdraw advertised Virtual Private Cloud (VPC) routes.
         
         @param request: WithdrawVpcPublishedRouteEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -61134,7 +61138,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.WithdrawVpcPublishedRouteEntriesResponse:
         """
-        @summary 撤回VPC已发布路由
+        @summary Withdraw advertised Virtual Private Cloud (VPC) routes.
         
         @param request: WithdrawVpcPublishedRouteEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -61192,7 +61196,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.WithdrawVpcPublishedRouteEntriesRequest,
     ) -> vpc_20160428_models.WithdrawVpcPublishedRouteEntriesResponse:
         """
-        @summary 撤回VPC已发布路由
+        @summary Withdraw advertised Virtual Private Cloud (VPC) routes.
         
         @param request: WithdrawVpcPublishedRouteEntriesRequest
         @return: WithdrawVpcPublishedRouteEntriesResponse
@@ -61205,7 +61209,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.WithdrawVpcPublishedRouteEntriesRequest,
     ) -> vpc_20160428_models.WithdrawVpcPublishedRouteEntriesResponse:
         """
-        @summary 撤回VPC已发布路由
+        @summary Withdraw advertised Virtual Private Cloud (VPC) routes.
         
         @param request: WithdrawVpcPublishedRouteEntriesRequest
         @return: WithdrawVpcPublishedRouteEntriesResponse

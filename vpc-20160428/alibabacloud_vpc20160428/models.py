@@ -30591,6 +30591,7 @@ class DeleteTrafficMirrorSessionResponse(TeaModel):
 class DeleteVSwitchRequest(TeaModel):
     def __init__(
         self,
+        dry_run: bool = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -30598,6 +30599,7 @@ class DeleteVSwitchRequest(TeaModel):
         resource_owner_id: int = None,
         v_switch_id: str = None,
     ):
+        self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the vSwitch.
@@ -30620,6 +30622,8 @@ class DeleteVSwitchRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -30636,6 +30640,8 @@ class DeleteVSwitchRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -33851,9 +33857,9 @@ class DescribeBgpNetworksRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: **1**.
+        # The number of the returned page. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. The maximum value is **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the BGP group.
         # 
@@ -34007,7 +34013,7 @@ class DescribeBgpNetworksResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The BGP network.
+        # BGP networks.
         self.bgp_networks = bgp_networks
         # The page number.
         self.page_number = page_number
@@ -106391,8 +106397,12 @@ class WithdrawVpcPublishedRouteEntriesRequestRouteEntries(TeaModel):
         destination_cidr_block: str = None,
         route_table_id: str = None,
     ):
+        # The destination CIDR block
+        # 
         # This parameter is required.
         self.destination_cidr_block = destination_cidr_block
+        # The ID of the route table.
+        # 
         # This parameter is required.
         self.route_table_id = route_table_id
 
@@ -106433,15 +106443,25 @@ class WithdrawVpcPublishedRouteEntriesRequest(TeaModel):
         target_instance_id: str = None,
         target_type: str = None,
     ):
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region. Call the DescribeRegions operation to access it.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The route entries to be withdrawn. Maximum value: 50.
         self.route_entries = route_entries
+        # Target instance ID.
+        # 
         # This parameter is required.
         self.target_instance_id = target_instance_id
+        # The type of target instance.
+        # 
         # This parameter is required.
         self.target_type = target_type
 
@@ -106510,6 +106530,7 @@ class WithdrawVpcPublishedRouteEntriesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -1,3 +1,7 @@
+2025-04-01 Version: 6.11.4
+- Update API DeleteVSwitch: add request parameters DryRun.
+
+
 2025-03-26 Version: 6.11.3
 - Update API AllocateEipAddress: add request parameters Tag.
 - Update API AllocateEipAddressPro: add request parameters Tag.
