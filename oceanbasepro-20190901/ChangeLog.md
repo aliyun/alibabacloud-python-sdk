@@ -1,3 +1,8 @@
+2025-04-01 Version: 9.1.0
+- Support API DescribeSqlAuditStat.
+- Update API CreateProjectModifyRecords: add request parameters TransferMapping.
+
+
 2025-03-12 Version: 9.0.0
 - Support API DescribeProxyService.
 - Update API CreateProject: update param FullTransferConfig.

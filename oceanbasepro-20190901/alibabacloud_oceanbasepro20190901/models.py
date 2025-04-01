@@ -5414,22 +5414,2330 @@ class CreateProjectModifyRecordsRequestDatabases(TeaModel):
         return self
 
 
+class CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesObjectMapping(TeaModel):
+    def __init__(
+        self,
+        mapped_name: str = None,
+        name: str = None,
+    ):
+        self.mapped_name = mapped_name
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesSchemaMapping(TeaModel):
+    def __init__(
+        self,
+        mapped_name: str = None,
+        name: str = None,
+    ):
+        self.mapped_name = mapped_name
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingBlackTableRules(TeaModel):
+    def __init__(
+        self,
+        object_mapping: CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesObjectMapping = None,
+        schema_mapping: CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesSchemaMapping = None,
+    ):
+        self.object_mapping = object_mapping
+        self.schema_mapping = schema_mapping
+
+    def validate(self):
+        if self.object_mapping:
+            self.object_mapping.validate()
+        if self.schema_mapping:
+            self.schema_mapping.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.object_mapping is not None:
+            result['ObjectMapping'] = self.object_mapping.to_map()
+        if self.schema_mapping is not None:
+            result['SchemaMapping'] = self.schema_mapping.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ObjectMapping') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesObjectMapping()
+            self.object_mapping = temp_model.from_map(m['ObjectMapping'])
+        if m.get('SchemaMapping') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesSchemaMapping()
+            self.schema_mapping = temp_model.from_map(m['SchemaMapping'])
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesObjectMapping(TeaModel):
+    def __init__(
+        self,
+        mapped_name: str = None,
+        name: str = None,
+    ):
+        self.mapped_name = mapped_name
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesSchemaMapping(TeaModel):
+    def __init__(
+        self,
+        mapped_name: str = None,
+        name: str = None,
+    ):
+        self.mapped_name = mapped_name
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingBlackViewRules(TeaModel):
+    def __init__(
+        self,
+        object_mapping: CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesObjectMapping = None,
+        schema_mapping: CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesSchemaMapping = None,
+    ):
+        self.object_mapping = object_mapping
+        self.schema_mapping = schema_mapping
+
+    def validate(self):
+        if self.object_mapping:
+            self.object_mapping.validate()
+        if self.schema_mapping:
+            self.schema_mapping.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.object_mapping is not None:
+            result['ObjectMapping'] = self.object_mapping.to_map()
+        if self.schema_mapping is not None:
+            result['SchemaMapping'] = self.schema_mapping.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ObjectMapping') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesObjectMapping()
+            self.object_mapping = temp_model.from_map(m['ObjectMapping'])
+        if m.get('SchemaMapping') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesSchemaMapping()
+            self.schema_mapping = temp_model.from_map(m['SchemaMapping'])
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTablesAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTablesAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTablesAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViewsAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViewsAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViewsAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesObkvPartitionConfig(TeaModel):
+    def __init__(
+        self,
+        partition_size: int = None,
+        partition_type: str = None,
+        virtual_column: str = None,
+    ):
+        self.partition_size = partition_size
+        self.partition_type = partition_type
+        self.virtual_column = virtual_column
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.partition_size is not None:
+            result['PartitionSize'] = self.partition_size
+        if self.partition_type is not None:
+            result['PartitionType'] = self.partition_type
+        if self.virtual_column is not None:
+            result['VirtualColumn'] = self.virtual_column
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PartitionSize') is not None:
+            self.partition_size = m.get('PartitionSize')
+        if m.get('PartitionType') is not None:
+            self.partition_type = m.get('PartitionType')
+        if m.get('VirtualColumn') is not None:
+            self.virtual_column = m.get('VirtualColumn')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingDatabasesTables(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        obkv_partition_config: CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesObkvPartitionConfig = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.obkv_partition_config = obkv_partition_config
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+        if self.obkv_partition_config:
+            self.obkv_partition_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.obkv_partition_config is not None:
+            result['ObkvPartitionConfig'] = self.obkv_partition_config.to_map()
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ObkvPartitionConfig') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesObkvPartitionConfig()
+            self.obkv_partition_config = temp_model.from_map(m['ObkvPartitionConfig'])
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingDatabasesViewsAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingDatabasesViews(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: CreateProjectModifyRecordsRequestTransferMappingDatabasesViewsAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingDatabasesViewsAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingDatabases(TeaModel):
+    def __init__(
+        self,
+        cluster_name: str = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        specific_tables: List[CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables] = None,
+        specific_views: List[CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews] = None,
+        tables: List[CreateProjectModifyRecordsRequestTransferMappingDatabasesTables] = None,
+        tenant_name: str = None,
+        views: List[CreateProjectModifyRecordsRequestTransferMappingDatabasesViews] = None,
+    ):
+        self.cluster_name = cluster_name
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.specific_tables = specific_tables
+        self.specific_views = specific_views
+        self.tables = tables
+        self.tenant_name = tenant_name
+        self.views = views
+
+    def validate(self):
+        if self.specific_tables:
+            for k in self.specific_tables:
+                if k:
+                    k.validate()
+        if self.specific_views:
+            for k in self.specific_views:
+                if k:
+                    k.validate()
+        if self.tables:
+            for k in self.tables:
+                if k:
+                    k.validate()
+        if self.views:
+            for k in self.views:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        result['SpecificTables'] = []
+        if self.specific_tables is not None:
+            for k in self.specific_tables:
+                result['SpecificTables'].append(k.to_map() if k else None)
+        result['SpecificViews'] = []
+        if self.specific_views is not None:
+            for k in self.specific_views:
+                result['SpecificViews'].append(k.to_map() if k else None)
+        result['Tables'] = []
+        if self.tables is not None:
+            for k in self.tables:
+                result['Tables'].append(k.to_map() if k else None)
+        if self.tenant_name is not None:
+            result['TenantName'] = self.tenant_name
+        result['Views'] = []
+        if self.views is not None:
+            for k in self.views:
+                result['Views'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.specific_tables = []
+        if m.get('SpecificTables') is not None:
+            for k in m.get('SpecificTables'):
+                temp_model = CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables()
+                self.specific_tables.append(temp_model.from_map(k))
+        self.specific_views = []
+        if m.get('SpecificViews') is not None:
+            for k in m.get('SpecificViews'):
+                temp_model = CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews()
+                self.specific_views.append(temp_model.from_map(k))
+        self.tables = []
+        if m.get('Tables') is not None:
+            for k in m.get('Tables'):
+                temp_model = CreateProjectModifyRecordsRequestTransferMappingDatabasesTables()
+                self.tables.append(temp_model.from_map(k))
+        if m.get('TenantName') is not None:
+            self.tenant_name = m.get('TenantName')
+        self.views = []
+        if m.get('Views') is not None:
+            for k in m.get('Views'):
+                temp_model = CreateProjectModifyRecordsRequestTransferMappingDatabasesViews()
+                self.views.append(temp_model.from_map(k))
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTablesAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTablesAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTablesAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViewsAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViewsAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViewsAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack(TeaModel):
+    def __init__(
+        self,
+        cluster_name: str = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        specific_tables: List[CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables] = None,
+        specific_views: List[CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews] = None,
+        tables: List[CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables] = None,
+        tenant_name: str = None,
+        views: List[CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews] = None,
+    ):
+        self.cluster_name = cluster_name
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.specific_tables = specific_tables
+        self.specific_views = specific_views
+        self.tables = tables
+        self.tenant_name = tenant_name
+        self.views = views
+
+    def validate(self):
+        if self.specific_tables:
+            for k in self.specific_tables:
+                if k:
+                    k.validate()
+        if self.specific_views:
+            for k in self.specific_views:
+                if k:
+                    k.validate()
+        if self.tables:
+            for k in self.tables:
+                if k:
+                    k.validate()
+        if self.views:
+            for k in self.views:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        result['SpecificTables'] = []
+        if self.specific_tables is not None:
+            for k in self.specific_tables:
+                result['SpecificTables'].append(k.to_map() if k else None)
+        result['SpecificViews'] = []
+        if self.specific_views is not None:
+            for k in self.specific_views:
+                result['SpecificViews'].append(k.to_map() if k else None)
+        result['Tables'] = []
+        if self.tables is not None:
+            for k in self.tables:
+                result['Tables'].append(k.to_map() if k else None)
+        if self.tenant_name is not None:
+            result['TenantName'] = self.tenant_name
+        result['Views'] = []
+        if self.views is not None:
+            for k in self.views:
+                result['Views'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.specific_tables = []
+        if m.get('SpecificTables') is not None:
+            for k in m.get('SpecificTables'):
+                temp_model = CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables()
+                self.specific_tables.append(temp_model.from_map(k))
+        self.specific_views = []
+        if m.get('SpecificViews') is not None:
+            for k in m.get('SpecificViews'):
+                temp_model = CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews()
+                self.specific_views.append(temp_model.from_map(k))
+        self.tables = []
+        if m.get('Tables') is not None:
+            for k in m.get('Tables'):
+                temp_model = CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables()
+                self.tables.append(temp_model.from_map(k))
+        if m.get('TenantName') is not None:
+            self.tenant_name = m.get('TenantName')
+        self.views = []
+        if m.get('Views') is not None:
+            for k in m.get('Views'):
+                temp_model = CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews()
+                self.views.append(temp_model.from_map(k))
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTablesAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTablesAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTablesAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViewsAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViewsAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViewsAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingSchemasTablesAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingSchemasTablesObkvPartitionConfig(TeaModel):
+    def __init__(
+        self,
+        partition_size: int = None,
+        partition_type: str = None,
+        virtual_column: str = None,
+    ):
+        self.partition_size = partition_size
+        self.partition_type = partition_type
+        self.virtual_column = virtual_column
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.partition_size is not None:
+            result['PartitionSize'] = self.partition_size
+        if self.partition_type is not None:
+            result['PartitionType'] = self.partition_type
+        if self.virtual_column is not None:
+            result['VirtualColumn'] = self.virtual_column
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PartitionSize') is not None:
+            self.partition_size = m.get('PartitionSize')
+        if m.get('PartitionType') is not None:
+            self.partition_type = m.get('PartitionType')
+        if m.get('VirtualColumn') is not None:
+            self.virtual_column = m.get('VirtualColumn')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingSchemasTables(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: CreateProjectModifyRecordsRequestTransferMappingSchemasTablesAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        obkv_partition_config: CreateProjectModifyRecordsRequestTransferMappingSchemasTablesObkvPartitionConfig = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.obkv_partition_config = obkv_partition_config
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+        if self.obkv_partition_config:
+            self.obkv_partition_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.obkv_partition_config is not None:
+            result['ObkvPartitionConfig'] = self.obkv_partition_config.to_map()
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingSchemasTablesAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ObkvPartitionConfig') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingSchemasTablesObkvPartitionConfig()
+            self.obkv_partition_config = temp_model.from_map(m['ObkvPartitionConfig'])
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingSchemasViewsAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingSchemasViews(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: CreateProjectModifyRecordsRequestTransferMappingSchemasViewsAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingSchemasViewsAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingSchemas(TeaModel):
+    def __init__(
+        self,
+        cluster_name: str = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        specific_tables: List[CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables] = None,
+        specific_views: List[CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews] = None,
+        tables: List[CreateProjectModifyRecordsRequestTransferMappingSchemasTables] = None,
+        tenant_name: str = None,
+        views: List[CreateProjectModifyRecordsRequestTransferMappingSchemasViews] = None,
+    ):
+        self.cluster_name = cluster_name
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.specific_tables = specific_tables
+        self.specific_views = specific_views
+        self.tables = tables
+        self.tenant_name = tenant_name
+        self.views = views
+
+    def validate(self):
+        if self.specific_tables:
+            for k in self.specific_tables:
+                if k:
+                    k.validate()
+        if self.specific_views:
+            for k in self.specific_views:
+                if k:
+                    k.validate()
+        if self.tables:
+            for k in self.tables:
+                if k:
+                    k.validate()
+        if self.views:
+            for k in self.views:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        result['SpecificTables'] = []
+        if self.specific_tables is not None:
+            for k in self.specific_tables:
+                result['SpecificTables'].append(k.to_map() if k else None)
+        result['SpecificViews'] = []
+        if self.specific_views is not None:
+            for k in self.specific_views:
+                result['SpecificViews'].append(k.to_map() if k else None)
+        result['Tables'] = []
+        if self.tables is not None:
+            for k in self.tables:
+                result['Tables'].append(k.to_map() if k else None)
+        if self.tenant_name is not None:
+            result['TenantName'] = self.tenant_name
+        result['Views'] = []
+        if self.views is not None:
+            for k in self.views:
+                result['Views'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.specific_tables = []
+        if m.get('SpecificTables') is not None:
+            for k in m.get('SpecificTables'):
+                temp_model = CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables()
+                self.specific_tables.append(temp_model.from_map(k))
+        self.specific_views = []
+        if m.get('SpecificViews') is not None:
+            for k in m.get('SpecificViews'):
+                temp_model = CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews()
+                self.specific_views.append(temp_model.from_map(k))
+        self.tables = []
+        if m.get('Tables') is not None:
+            for k in m.get('Tables'):
+                temp_model = CreateProjectModifyRecordsRequestTransferMappingSchemasTables()
+                self.tables.append(temp_model.from_map(k))
+        if m.get('TenantName') is not None:
+            self.tenant_name = m.get('TenantName')
+        self.views = []
+        if m.get('Views') is not None:
+            for k in m.get('Views'):
+                temp_model = CreateProjectModifyRecordsRequestTransferMappingSchemasViews()
+                self.views.append(temp_model.from_map(k))
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesObjectMapping(TeaModel):
+    def __init__(
+        self,
+        mapped_name: str = None,
+        name: str = None,
+    ):
+        self.mapped_name = mapped_name
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesSchemaMapping(TeaModel):
+    def __init__(
+        self,
+        mapped_name: str = None,
+        name: str = None,
+    ):
+        self.mapped_name = mapped_name
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingWhiteTableRules(TeaModel):
+    def __init__(
+        self,
+        object_mapping: CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesObjectMapping = None,
+        schema_mapping: CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesSchemaMapping = None,
+    ):
+        self.object_mapping = object_mapping
+        self.schema_mapping = schema_mapping
+
+    def validate(self):
+        if self.object_mapping:
+            self.object_mapping.validate()
+        if self.schema_mapping:
+            self.schema_mapping.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.object_mapping is not None:
+            result['ObjectMapping'] = self.object_mapping.to_map()
+        if self.schema_mapping is not None:
+            result['SchemaMapping'] = self.schema_mapping.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ObjectMapping') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesObjectMapping()
+            self.object_mapping = temp_model.from_map(m['ObjectMapping'])
+        if m.get('SchemaMapping') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesSchemaMapping()
+            self.schema_mapping = temp_model.from_map(m['SchemaMapping'])
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesObjectMapping(TeaModel):
+    def __init__(
+        self,
+        mapped_name: str = None,
+        name: str = None,
+    ):
+        self.mapped_name = mapped_name
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesSchemaMapping(TeaModel):
+    def __init__(
+        self,
+        mapped_name: str = None,
+        name: str = None,
+    ):
+        self.mapped_name = mapped_name
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMappingWhiteViewRules(TeaModel):
+    def __init__(
+        self,
+        object_mapping: CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesObjectMapping = None,
+        schema_mapping: CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesSchemaMapping = None,
+    ):
+        self.object_mapping = object_mapping
+        self.schema_mapping = schema_mapping
+
+    def validate(self):
+        if self.object_mapping:
+            self.object_mapping.validate()
+        if self.schema_mapping:
+            self.schema_mapping.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.object_mapping is not None:
+            result['ObjectMapping'] = self.object_mapping.to_map()
+        if self.schema_mapping is not None:
+            result['SchemaMapping'] = self.schema_mapping.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ObjectMapping') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesObjectMapping()
+            self.object_mapping = temp_model.from_map(m['ObjectMapping'])
+        if m.get('SchemaMapping') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesSchemaMapping()
+            self.schema_mapping = temp_model.from_map(m['SchemaMapping'])
+        return self
+
+
+class CreateProjectModifyRecordsRequestTransferMapping(TeaModel):
+    def __init__(
+        self,
+        black_table_rules: List[CreateProjectModifyRecordsRequestTransferMappingBlackTableRules] = None,
+        black_view_rules: List[CreateProjectModifyRecordsRequestTransferMappingBlackViewRules] = None,
+        databases: List[CreateProjectModifyRecordsRequestTransferMappingDatabases] = None,
+        databases_black: List[CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack] = None,
+        mode: str = None,
+        schemas: List[CreateProjectModifyRecordsRequestTransferMappingSchemas] = None,
+        table_and_view_black_list: List[str] = None,
+        table_and_view_white_list: List[str] = None,
+        white_table_rules: List[CreateProjectModifyRecordsRequestTransferMappingWhiteTableRules] = None,
+        white_view_rules: List[CreateProjectModifyRecordsRequestTransferMappingWhiteViewRules] = None,
+    ):
+        self.black_table_rules = black_table_rules
+        self.black_view_rules = black_view_rules
+        self.databases = databases
+        self.databases_black = databases_black
+        self.mode = mode
+        self.schemas = schemas
+        self.table_and_view_black_list = table_and_view_black_list
+        self.table_and_view_white_list = table_and_view_white_list
+        self.white_table_rules = white_table_rules
+        self.white_view_rules = white_view_rules
+
+    def validate(self):
+        if self.black_table_rules:
+            for k in self.black_table_rules:
+                if k:
+                    k.validate()
+        if self.black_view_rules:
+            for k in self.black_view_rules:
+                if k:
+                    k.validate()
+        if self.databases:
+            for k in self.databases:
+                if k:
+                    k.validate()
+        if self.databases_black:
+            for k in self.databases_black:
+                if k:
+                    k.validate()
+        if self.schemas:
+            for k in self.schemas:
+                if k:
+                    k.validate()
+        if self.white_table_rules:
+            for k in self.white_table_rules:
+                if k:
+                    k.validate()
+        if self.white_view_rules:
+            for k in self.white_view_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['BlackTableRules'] = []
+        if self.black_table_rules is not None:
+            for k in self.black_table_rules:
+                result['BlackTableRules'].append(k.to_map() if k else None)
+        result['BlackViewRules'] = []
+        if self.black_view_rules is not None:
+            for k in self.black_view_rules:
+                result['BlackViewRules'].append(k.to_map() if k else None)
+        result['Databases'] = []
+        if self.databases is not None:
+            for k in self.databases:
+                result['Databases'].append(k.to_map() if k else None)
+        result['DatabasesBlack'] = []
+        if self.databases_black is not None:
+            for k in self.databases_black:
+                result['DatabasesBlack'].append(k.to_map() if k else None)
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        result['Schemas'] = []
+        if self.schemas is not None:
+            for k in self.schemas:
+                result['Schemas'].append(k.to_map() if k else None)
+        if self.table_and_view_black_list is not None:
+            result['TableAndViewBlackList'] = self.table_and_view_black_list
+        if self.table_and_view_white_list is not None:
+            result['TableAndViewWhiteList'] = self.table_and_view_white_list
+        result['WhiteTableRules'] = []
+        if self.white_table_rules is not None:
+            for k in self.white_table_rules:
+                result['WhiteTableRules'].append(k.to_map() if k else None)
+        result['WhiteViewRules'] = []
+        if self.white_view_rules is not None:
+            for k in self.white_view_rules:
+                result['WhiteViewRules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.black_table_rules = []
+        if m.get('BlackTableRules') is not None:
+            for k in m.get('BlackTableRules'):
+                temp_model = CreateProjectModifyRecordsRequestTransferMappingBlackTableRules()
+                self.black_table_rules.append(temp_model.from_map(k))
+        self.black_view_rules = []
+        if m.get('BlackViewRules') is not None:
+            for k in m.get('BlackViewRules'):
+                temp_model = CreateProjectModifyRecordsRequestTransferMappingBlackViewRules()
+                self.black_view_rules.append(temp_model.from_map(k))
+        self.databases = []
+        if m.get('Databases') is not None:
+            for k in m.get('Databases'):
+                temp_model = CreateProjectModifyRecordsRequestTransferMappingDatabases()
+                self.databases.append(temp_model.from_map(k))
+        self.databases_black = []
+        if m.get('DatabasesBlack') is not None:
+            for k in m.get('DatabasesBlack'):
+                temp_model = CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack()
+                self.databases_black.append(temp_model.from_map(k))
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        self.schemas = []
+        if m.get('Schemas') is not None:
+            for k in m.get('Schemas'):
+                temp_model = CreateProjectModifyRecordsRequestTransferMappingSchemas()
+                self.schemas.append(temp_model.from_map(k))
+        if m.get('TableAndViewBlackList') is not None:
+            self.table_and_view_black_list = m.get('TableAndViewBlackList')
+        if m.get('TableAndViewWhiteList') is not None:
+            self.table_and_view_white_list = m.get('TableAndViewWhiteList')
+        self.white_table_rules = []
+        if m.get('WhiteTableRules') is not None:
+            for k in m.get('WhiteTableRules'):
+                temp_model = CreateProjectModifyRecordsRequestTransferMappingWhiteTableRules()
+                self.white_table_rules.append(temp_model.from_map(k))
+        self.white_view_rules = []
+        if m.get('WhiteViewRules') is not None:
+            for k in m.get('WhiteViewRules'):
+                temp_model = CreateProjectModifyRecordsRequestTransferMappingWhiteViewRules()
+                self.white_view_rules.append(temp_model.from_map(k))
+        return self
+
+
 class CreateProjectModifyRecordsRequest(TeaModel):
     def __init__(
         self,
         databases: List[CreateProjectModifyRecordsRequestDatabases] = None,
         id: str = None,
+        transfer_mapping: CreateProjectModifyRecordsRequestTransferMapping = None,
     ):
-        # This parameter is required.
         self.databases = databases
         # This parameter is required.
         self.id = id
+        self.transfer_mapping = transfer_mapping
 
     def validate(self):
         if self.databases:
             for k in self.databases:
                 if k:
                     k.validate()
+        if self.transfer_mapping:
+            self.transfer_mapping.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5443,6 +7751,8 @@ class CreateProjectModifyRecordsRequest(TeaModel):
                 result['Databases'].append(k.to_map() if k else None)
         if self.id is not None:
             result['Id'] = self.id
+        if self.transfer_mapping is not None:
+            result['TransferMapping'] = self.transfer_mapping.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -5454,6 +7764,9 @@ class CreateProjectModifyRecordsRequest(TeaModel):
                 self.databases.append(temp_model.from_map(k))
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('TransferMapping') is not None:
+            temp_model = CreateProjectModifyRecordsRequestTransferMapping()
+            self.transfer_mapping = temp_model.from_map(m['TransferMapping'])
         return self
 
 
@@ -5462,11 +7775,12 @@ class CreateProjectModifyRecordsShrinkRequest(TeaModel):
         self,
         databases_shrink: str = None,
         id: str = None,
+        transfer_mapping_shrink: str = None,
     ):
-        # This parameter is required.
         self.databases_shrink = databases_shrink
         # This parameter is required.
         self.id = id
+        self.transfer_mapping_shrink = transfer_mapping_shrink
 
     def validate(self):
         pass
@@ -5481,6 +7795,8 @@ class CreateProjectModifyRecordsShrinkRequest(TeaModel):
             result['Databases'] = self.databases_shrink
         if self.id is not None:
             result['Id'] = self.id
+        if self.transfer_mapping_shrink is not None:
+            result['TransferMapping'] = self.transfer_mapping_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -5489,6 +7805,8 @@ class CreateProjectModifyRecordsShrinkRequest(TeaModel):
             self.databases_shrink = m.get('Databases')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('TransferMapping') is not None:
+            self.transfer_mapping_shrink = m.get('TransferMapping')
         return self
 
 
@@ -33021,6 +35339,270 @@ class DescribeSlowSQLListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSlowSQLListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSqlAuditStatRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        start_time: str = None,
+        tenant_id: str = None,
+    ):
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.start_time = start_time
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class DescribeSqlAuditStatResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        affect_rows: float = None,
+        database_name: str = None,
+        execute_time: float = None,
+        instance_id: str = None,
+        operator_type: str = None,
+        return_rows: float = None,
+        scan_rows: float = None,
+        sql_id: str = None,
+        sql_statement: str = None,
+        tenant_id: str = None,
+        total_affect_rows: int = None,
+        total_failed: int = None,
+        total_return_rows: int = None,
+        total_scan_rows: int = None,
+        total_succeed: int = None,
+        user_client_ip: str = None,
+        user_name: str = None,
+    ):
+        self.affect_rows = affect_rows
+        self.database_name = database_name
+        self.execute_time = execute_time
+        self.instance_id = instance_id
+        self.operator_type = operator_type
+        self.return_rows = return_rows
+        self.scan_rows = scan_rows
+        # Sql ID
+        self.sql_id = sql_id
+        self.sql_statement = sql_statement
+        self.tenant_id = tenant_id
+        self.total_affect_rows = total_affect_rows
+        self.total_failed = total_failed
+        self.total_return_rows = total_return_rows
+        self.total_scan_rows = total_scan_rows
+        self.total_succeed = total_succeed
+        self.user_client_ip = user_client_ip
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.affect_rows is not None:
+            result['AffectRows'] = self.affect_rows
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.execute_time is not None:
+            result['ExecuteTime'] = self.execute_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.operator_type is not None:
+            result['OperatorType'] = self.operator_type
+        if self.return_rows is not None:
+            result['ReturnRows'] = self.return_rows
+        if self.scan_rows is not None:
+            result['ScanRows'] = self.scan_rows
+        if self.sql_id is not None:
+            result['SqlId'] = self.sql_id
+        if self.sql_statement is not None:
+            result['SqlStatement'] = self.sql_statement
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.total_affect_rows is not None:
+            result['TotalAffectRows'] = self.total_affect_rows
+        if self.total_failed is not None:
+            result['TotalFailed'] = self.total_failed
+        if self.total_return_rows is not None:
+            result['TotalReturnRows'] = self.total_return_rows
+        if self.total_scan_rows is not None:
+            result['TotalScanRows'] = self.total_scan_rows
+        if self.total_succeed is not None:
+            result['TotalSucceed'] = self.total_succeed
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AffectRows') is not None:
+            self.affect_rows = m.get('AffectRows')
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('ExecuteTime') is not None:
+            self.execute_time = m.get('ExecuteTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OperatorType') is not None:
+            self.operator_type = m.get('OperatorType')
+        if m.get('ReturnRows') is not None:
+            self.return_rows = m.get('ReturnRows')
+        if m.get('ScanRows') is not None:
+            self.scan_rows = m.get('ScanRows')
+        if m.get('SqlId') is not None:
+            self.sql_id = m.get('SqlId')
+        if m.get('SqlStatement') is not None:
+            self.sql_statement = m.get('SqlStatement')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('TotalAffectRows') is not None:
+            self.total_affect_rows = m.get('TotalAffectRows')
+        if m.get('TotalFailed') is not None:
+            self.total_failed = m.get('TotalFailed')
+        if m.get('TotalReturnRows') is not None:
+            self.total_return_rows = m.get('TotalReturnRows')
+        if m.get('TotalScanRows') is not None:
+            self.total_scan_rows = m.get('TotalScanRows')
+        if m.get('TotalSucceed') is not None:
+            self.total_succeed = m.get('TotalSucceed')
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class DescribeSqlAuditStatResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeSqlAuditStatResponseBodyData] = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeSqlAuditStatResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeSqlAuditStatResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSqlAuditStatResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSqlAuditStatResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

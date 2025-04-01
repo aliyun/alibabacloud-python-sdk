@@ -1622,11 +1622,15 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.databases):
             request.databases_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.databases, 'Databases', 'json')
+        if not UtilClient.is_unset(tmp_req.transfer_mapping):
+            request.transfer_mapping_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transfer_mapping, 'TransferMapping', 'json')
         body = {}
         if not UtilClient.is_unset(request.databases_shrink):
             body['Databases'] = request.databases_shrink
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
+        if not UtilClient.is_unset(request.transfer_mapping_shrink):
+            body['TransferMapping'] = request.transfer_mapping_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1669,11 +1673,15 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.databases):
             request.databases_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.databases, 'Databases', 'json')
+        if not UtilClient.is_unset(tmp_req.transfer_mapping):
+            request.transfer_mapping_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transfer_mapping, 'TransferMapping', 'json')
         body = {}
         if not UtilClient.is_unset(request.databases_shrink):
             body['Databases'] = request.databases_shrink
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
+        if not UtilClient.is_unset(request.transfer_mapping_shrink):
+            body['TransferMapping'] = request.transfer_mapping_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -10108,6 +10116,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_slow_sqllist_with_options_async(request, runtime)
+
+    def describe_sql_audit_stat_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeSqlAuditStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeSqlAuditStatResponse:
+        """
+        @summary 按照客户端IP、用户、SQLID的维度统计SQL数据执行情况
+        
+        @param request: DescribeSqlAuditStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSqlAuditStatResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeSqlAuditStat',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ocean_base_pro_20190901_models.DescribeSqlAuditStatResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ocean_base_pro_20190901_models.DescribeSqlAuditStatResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_sql_audit_stat_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeSqlAuditStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeSqlAuditStatResponse:
+        """
+        @summary 按照客户端IP、用户、SQLID的维度统计SQL数据执行情况
+        
+        @param request: DescribeSqlAuditStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSqlAuditStatResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeSqlAuditStat',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ocean_base_pro_20190901_models.DescribeSqlAuditStatResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ocean_base_pro_20190901_models.DescribeSqlAuditStatResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_sql_audit_stat(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeSqlAuditStatRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeSqlAuditStatResponse:
+        """
+        @summary 按照客户端IP、用户、SQLID的维度统计SQL数据执行情况
+        
+        @param request: DescribeSqlAuditStatRequest
+        @return: DescribeSqlAuditStatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sql_audit_stat_with_options(request, runtime)
+
+    async def describe_sql_audit_stat_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeSqlAuditStatRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeSqlAuditStatResponse:
+        """
+        @summary 按照客户端IP、用户、SQLID的维度统计SQL数据执行情况
+        
+        @param request: DescribeSqlAuditStatRequest
+        @return: DescribeSqlAuditStatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sql_audit_stat_with_options_async(request, runtime)
 
     def describe_standby_create_mode_with_options(
         self,
