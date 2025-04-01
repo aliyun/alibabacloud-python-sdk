@@ -142,10 +142,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.AddShardingNodeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.AddShardingNodeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.AddShardingNodeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_sharding_node_with_options_async(
         self,
@@ -203,10 +209,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.AddShardingNodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.AddShardingNodeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.AddShardingNodeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_sharding_node(
         self,
@@ -244,15 +256,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.AllocateDirectConnectionResponse:
         """
-        @summary Applies for a private endpoint for an ApsaraDB for Redis cluster instance.
+        @summary Applies for a private endpoint for a Tair (Redis OSS-compatible) instance.
         
-        @description In direct connection mode, you can use private endpoints to bypass proxy nodes and connect to ApsaraDB for Redis instances from clients in the same manner as you connect to native Redis clusters. The direct connection mode can reduce communication overheads and accelerate the response speed. For more information, see [Enable the direct connection mode](https://help.aliyun.com/document_detail/146901.html).
-        To call this operation, the instance must meet the following requirements:
-        The instance is an ApsaraDB for Redis cluster instance.
-        The instance is a Community Edition instance that runs Redis 4.0 or 5.0, or an Enhanced Edition instance (Tair) that runs Redis 5.0.
-        The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, call the [SwitchNetwork](https://help.aliyun.com/document_detail/61005.html) operation to change the network type to VPC.
-        SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/96194.html) operation to disable it.
-        The vSwitch to which the instance is connected has sufficient IP addresses to be allocated. For more information, see [Obtain the number of available IP addresses in the vSwitch to which an ApsaraDB for Redis instance is connected](https://help.aliyun.com/document_detail/183151.html).
+        @description Clients can bypass proxy nodes and use private endpoints to connect to cluster instances. This is similar to the connection to native Redis clusters. The direct connection mode can reduce communication overheads and the response time of Tair (Redis OSS-compatible).
+        To call this operation, make sure that the instance meets the following requirements:
+        The instance is a cluster instance.
+        The instance is deployed in classic mode.
+        The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, you can call the [SwitchNetwork](https://help.aliyun.com/document_detail/473797.html) operation to change the network type to VPC.
+        SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/473838.html) operation to disable SSL encryption.
         
         @param request: AllocateDirectConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -290,10 +301,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.AllocateDirectConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.AllocateDirectConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.AllocateDirectConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def allocate_direct_connection_with_options_async(
         self,
@@ -301,15 +318,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.AllocateDirectConnectionResponse:
         """
-        @summary Applies for a private endpoint for an ApsaraDB for Redis cluster instance.
+        @summary Applies for a private endpoint for a Tair (Redis OSS-compatible) instance.
         
-        @description In direct connection mode, you can use private endpoints to bypass proxy nodes and connect to ApsaraDB for Redis instances from clients in the same manner as you connect to native Redis clusters. The direct connection mode can reduce communication overheads and accelerate the response speed. For more information, see [Enable the direct connection mode](https://help.aliyun.com/document_detail/146901.html).
-        To call this operation, the instance must meet the following requirements:
-        The instance is an ApsaraDB for Redis cluster instance.
-        The instance is a Community Edition instance that runs Redis 4.0 or 5.0, or an Enhanced Edition instance (Tair) that runs Redis 5.0.
-        The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, call the [SwitchNetwork](https://help.aliyun.com/document_detail/61005.html) operation to change the network type to VPC.
-        SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/96194.html) operation to disable it.
-        The vSwitch to which the instance is connected has sufficient IP addresses to be allocated. For more information, see [Obtain the number of available IP addresses in the vSwitch to which an ApsaraDB for Redis instance is connected](https://help.aliyun.com/document_detail/183151.html).
+        @description Clients can bypass proxy nodes and use private endpoints to connect to cluster instances. This is similar to the connection to native Redis clusters. The direct connection mode can reduce communication overheads and the response time of Tair (Redis OSS-compatible).
+        To call this operation, make sure that the instance meets the following requirements:
+        The instance is a cluster instance.
+        The instance is deployed in classic mode.
+        The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, you can call the [SwitchNetwork](https://help.aliyun.com/document_detail/473797.html) operation to change the network type to VPC.
+        SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/473838.html) operation to disable SSL encryption.
         
         @param request: AllocateDirectConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -347,25 +363,30 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.AllocateDirectConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.AllocateDirectConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.AllocateDirectConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def allocate_direct_connection(
         self,
         request: r_kvstore_20150101_models.AllocateDirectConnectionRequest,
     ) -> r_kvstore_20150101_models.AllocateDirectConnectionResponse:
         """
-        @summary Applies for a private endpoint for an ApsaraDB for Redis cluster instance.
+        @summary Applies for a private endpoint for a Tair (Redis OSS-compatible) instance.
         
-        @description In direct connection mode, you can use private endpoints to bypass proxy nodes and connect to ApsaraDB for Redis instances from clients in the same manner as you connect to native Redis clusters. The direct connection mode can reduce communication overheads and accelerate the response speed. For more information, see [Enable the direct connection mode](https://help.aliyun.com/document_detail/146901.html).
-        To call this operation, the instance must meet the following requirements:
-        The instance is an ApsaraDB for Redis cluster instance.
-        The instance is a Community Edition instance that runs Redis 4.0 or 5.0, or an Enhanced Edition instance (Tair) that runs Redis 5.0.
-        The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, call the [SwitchNetwork](https://help.aliyun.com/document_detail/61005.html) operation to change the network type to VPC.
-        SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/96194.html) operation to disable it.
-        The vSwitch to which the instance is connected has sufficient IP addresses to be allocated. For more information, see [Obtain the number of available IP addresses in the vSwitch to which an ApsaraDB for Redis instance is connected](https://help.aliyun.com/document_detail/183151.html).
+        @description Clients can bypass proxy nodes and use private endpoints to connect to cluster instances. This is similar to the connection to native Redis clusters. The direct connection mode can reduce communication overheads and the response time of Tair (Redis OSS-compatible).
+        To call this operation, make sure that the instance meets the following requirements:
+        The instance is a cluster instance.
+        The instance is deployed in classic mode.
+        The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, you can call the [SwitchNetwork](https://help.aliyun.com/document_detail/473797.html) operation to change the network type to VPC.
+        SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/473838.html) operation to disable SSL encryption.
         
         @param request: AllocateDirectConnectionRequest
         @return: AllocateDirectConnectionResponse
@@ -378,15 +399,14 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.AllocateDirectConnectionRequest,
     ) -> r_kvstore_20150101_models.AllocateDirectConnectionResponse:
         """
-        @summary Applies for a private endpoint for an ApsaraDB for Redis cluster instance.
+        @summary Applies for a private endpoint for a Tair (Redis OSS-compatible) instance.
         
-        @description In direct connection mode, you can use private endpoints to bypass proxy nodes and connect to ApsaraDB for Redis instances from clients in the same manner as you connect to native Redis clusters. The direct connection mode can reduce communication overheads and accelerate the response speed. For more information, see [Enable the direct connection mode](https://help.aliyun.com/document_detail/146901.html).
-        To call this operation, the instance must meet the following requirements:
-        The instance is an ApsaraDB for Redis cluster instance.
-        The instance is a Community Edition instance that runs Redis 4.0 or 5.0, or an Enhanced Edition instance (Tair) that runs Redis 5.0.
-        The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, call the [SwitchNetwork](https://help.aliyun.com/document_detail/61005.html) operation to change the network type to VPC.
-        SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/96194.html) operation to disable it.
-        The vSwitch to which the instance is connected has sufficient IP addresses to be allocated. For more information, see [Obtain the number of available IP addresses in the vSwitch to which an ApsaraDB for Redis instance is connected](https://help.aliyun.com/document_detail/183151.html).
+        @description Clients can bypass proxy nodes and use private endpoints to connect to cluster instances. This is similar to the connection to native Redis clusters. The direct connection mode can reduce communication overheads and the response time of Tair (Redis OSS-compatible).
+        To call this operation, make sure that the instance meets the following requirements:
+        The instance is a cluster instance.
+        The instance is deployed in classic mode.
+        The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, you can call the [SwitchNetwork](https://help.aliyun.com/document_detail/473797.html) operation to change the network type to VPC.
+        SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/473838.html) operation to disable SSL encryption.
         
         @param request: AllocateDirectConnectionRequest
         @return: AllocateDirectConnectionResponse
@@ -440,10 +460,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def allocate_instance_public_connection_with_options_async(
         self,
@@ -491,10 +517,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def allocate_instance_public_connection(
         self,
@@ -571,10 +603,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CancelActiveOperationTasksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CancelActiveOperationTasksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CancelActiveOperationTasksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def cancel_active_operation_tasks_with_options_async(
         self,
@@ -621,10 +659,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CancelActiveOperationTasksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CancelActiveOperationTasksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CancelActiveOperationTasksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def cancel_active_operation_tasks(
         self,
@@ -668,10 +712,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CheckCloudResourceAuthorizedResponse:
         """
-        @summary Queries whether an ApsaraDB for Redis instance is authorized to use Key Management Service (KMS).
+        @summary Queries whether a Tair (Redis OSS-compatible) instance has the permissions to use Key Management Service (KMS).
         
         @description    For information about Transparent Data Encryption (TDE) and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
-        If the ApsaraDB for Redis instance is authorized to use KMS, you can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) operation to enable TDE.
+        If the Tair (Redis OSS-compatible) instance is authorized to use KMS, you can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html) operation to enable TDE.
         
         @param request: CheckCloudResourceAuthorizedRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -707,10 +751,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CheckCloudResourceAuthorizedResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CheckCloudResourceAuthorizedResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CheckCloudResourceAuthorizedResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def check_cloud_resource_authorized_with_options_async(
         self,
@@ -718,10 +768,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CheckCloudResourceAuthorizedResponse:
         """
-        @summary Queries whether an ApsaraDB for Redis instance is authorized to use Key Management Service (KMS).
+        @summary Queries whether a Tair (Redis OSS-compatible) instance has the permissions to use Key Management Service (KMS).
         
         @description    For information about Transparent Data Encryption (TDE) and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
-        If the ApsaraDB for Redis instance is authorized to use KMS, you can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) operation to enable TDE.
+        If the Tair (Redis OSS-compatible) instance is authorized to use KMS, you can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html) operation to enable TDE.
         
         @param request: CheckCloudResourceAuthorizedRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -757,20 +807,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CheckCloudResourceAuthorizedResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CheckCloudResourceAuthorizedResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CheckCloudResourceAuthorizedResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def check_cloud_resource_authorized(
         self,
         request: r_kvstore_20150101_models.CheckCloudResourceAuthorizedRequest,
     ) -> r_kvstore_20150101_models.CheckCloudResourceAuthorizedResponse:
         """
-        @summary Queries whether an ApsaraDB for Redis instance is authorized to use Key Management Service (KMS).
+        @summary Queries whether a Tair (Redis OSS-compatible) instance has the permissions to use Key Management Service (KMS).
         
         @description    For information about Transparent Data Encryption (TDE) and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
-        If the ApsaraDB for Redis instance is authorized to use KMS, you can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) operation to enable TDE.
+        If the Tair (Redis OSS-compatible) instance is authorized to use KMS, you can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html) operation to enable TDE.
         
         @param request: CheckCloudResourceAuthorizedRequest
         @return: CheckCloudResourceAuthorizedResponse
@@ -783,10 +839,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CheckCloudResourceAuthorizedRequest,
     ) -> r_kvstore_20150101_models.CheckCloudResourceAuthorizedResponse:
         """
-        @summary Queries whether an ApsaraDB for Redis instance is authorized to use Key Management Service (KMS).
+        @summary Queries whether a Tair (Redis OSS-compatible) instance has the permissions to use Key Management Service (KMS).
         
         @description    For information about Transparent Data Encryption (TDE) and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
-        If the ApsaraDB for Redis instance is authorized to use KMS, you can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) operation to enable TDE.
+        If the Tair (Redis OSS-compatible) instance is authorized to use KMS, you can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html) operation to enable TDE.
         
         @param request: CheckCloudResourceAuthorizedRequest
         @return: CheckCloudResourceAuthorizedResponse
@@ -800,13 +856,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateAccountResponse:
         """
-        @summary Creates an account that has specific permissions for an ApsaraDB for Redis instance.
+        @summary Creates an account that has specific permissions for a Tair (Redis OSS-compatible) instance.
         
-        @description >
-        This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0 or later.
-        The ApsaraDB for Redis instance for which you want to call this operation must be in the running state.
-        You can create up to 18 accounts for an ApsaraDB for Redis instance.
-        You can also create an account in the ApsaraDB for Redis console. For more information, see [Manage database accounts](https://help.aliyun.com/document_detail/92665.html).
+        @description    This operation is supported only for instances that are compatible with Redis 4.0 or later.
+        The instance must be in the running state.
+        You can create up to 18 accounts for an instance.
+        >  For more information about how to create an account in the console, see [Manage database accounts](https://help.aliyun.com/document_detail/92665.html).
         
         @param request: CreateAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -852,10 +907,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CreateAccountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateAccountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateAccountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_account_with_options_async(
         self,
@@ -863,13 +924,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateAccountResponse:
         """
-        @summary Creates an account that has specific permissions for an ApsaraDB for Redis instance.
+        @summary Creates an account that has specific permissions for a Tair (Redis OSS-compatible) instance.
         
-        @description >
-        This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0 or later.
-        The ApsaraDB for Redis instance for which you want to call this operation must be in the running state.
-        You can create up to 18 accounts for an ApsaraDB for Redis instance.
-        You can also create an account in the ApsaraDB for Redis console. For more information, see [Manage database accounts](https://help.aliyun.com/document_detail/92665.html).
+        @description    This operation is supported only for instances that are compatible with Redis 4.0 or later.
+        The instance must be in the running state.
+        You can create up to 18 accounts for an instance.
+        >  For more information about how to create an account in the console, see [Manage database accounts](https://help.aliyun.com/document_detail/92665.html).
         
         @param request: CreateAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -915,23 +975,28 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CreateAccountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateAccountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateAccountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_account(
         self,
         request: r_kvstore_20150101_models.CreateAccountRequest,
     ) -> r_kvstore_20150101_models.CreateAccountResponse:
         """
-        @summary Creates an account that has specific permissions for an ApsaraDB for Redis instance.
+        @summary Creates an account that has specific permissions for a Tair (Redis OSS-compatible) instance.
         
-        @description >
-        This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0 or later.
-        The ApsaraDB for Redis instance for which you want to call this operation must be in the running state.
-        You can create up to 18 accounts for an ApsaraDB for Redis instance.
-        You can also create an account in the ApsaraDB for Redis console. For more information, see [Manage database accounts](https://help.aliyun.com/document_detail/92665.html).
+        @description    This operation is supported only for instances that are compatible with Redis 4.0 or later.
+        The instance must be in the running state.
+        You can create up to 18 accounts for an instance.
+        >  For more information about how to create an account in the console, see [Manage database accounts](https://help.aliyun.com/document_detail/92665.html).
         
         @param request: CreateAccountRequest
         @return: CreateAccountResponse
@@ -944,13 +1009,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateAccountRequest,
     ) -> r_kvstore_20150101_models.CreateAccountResponse:
         """
-        @summary Creates an account that has specific permissions for an ApsaraDB for Redis instance.
+        @summary Creates an account that has specific permissions for a Tair (Redis OSS-compatible) instance.
         
-        @description >
-        This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0 or later.
-        The ApsaraDB for Redis instance for which you want to call this operation must be in the running state.
-        You can create up to 18 accounts for an ApsaraDB for Redis instance.
-        You can also create an account in the ApsaraDB for Redis console. For more information, see [Manage database accounts](https://help.aliyun.com/document_detail/92665.html).
+        @description    This operation is supported only for instances that are compatible with Redis 4.0 or later.
+        The instance must be in the running state.
+        You can create up to 18 accounts for an instance.
+        >  For more information about how to create an account in the console, see [Manage database accounts](https://help.aliyun.com/document_detail/92665.html).
         
         @param request: CreateAccountRequest
         @return: CreateAccountResponse
@@ -964,9 +1028,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateBackupResponse:
         """
-        @summary Backs up an ApsaraDB for Redis instance.
+        @summary Backs up a Tair (Redis OSS-compatible) instance.
         
-        @description You can also back up an instance in the ApsaraDB for Redis console. For more information, see [Backup and recovery](https://help.aliyun.com/document_detail/43886.html).
+        @description You can also back up an instance in the Tair (Redis OSS-compatible) console. For more information, see [Backup and recovery](https://help.aliyun.com/document_detail/43886.html).
         
         @param request: CreateBackupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1000,10 +1064,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CreateBackupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateBackupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateBackupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_backup_with_options_async(
         self,
@@ -1011,9 +1081,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateBackupResponse:
         """
-        @summary Backs up an ApsaraDB for Redis instance.
+        @summary Backs up a Tair (Redis OSS-compatible) instance.
         
-        @description You can also back up an instance in the ApsaraDB for Redis console. For more information, see [Backup and recovery](https://help.aliyun.com/document_detail/43886.html).
+        @description You can also back up an instance in the Tair (Redis OSS-compatible) console. For more information, see [Backup and recovery](https://help.aliyun.com/document_detail/43886.html).
         
         @param request: CreateBackupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1047,19 +1117,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CreateBackupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateBackupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateBackupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_backup(
         self,
         request: r_kvstore_20150101_models.CreateBackupRequest,
     ) -> r_kvstore_20150101_models.CreateBackupResponse:
         """
-        @summary Backs up an ApsaraDB for Redis instance.
+        @summary Backs up a Tair (Redis OSS-compatible) instance.
         
-        @description You can also back up an instance in the ApsaraDB for Redis console. For more information, see [Backup and recovery](https://help.aliyun.com/document_detail/43886.html).
+        @description You can also back up an instance in the Tair (Redis OSS-compatible) console. For more information, see [Backup and recovery](https://help.aliyun.com/document_detail/43886.html).
         
         @param request: CreateBackupRequest
         @return: CreateBackupResponse
@@ -1072,9 +1148,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateBackupRequest,
     ) -> r_kvstore_20150101_models.CreateBackupResponse:
         """
-        @summary Backs up an ApsaraDB for Redis instance.
+        @summary Backs up a Tair (Redis OSS-compatible) instance.
         
-        @description You can also back up an instance in the ApsaraDB for Redis console. For more information, see [Backup and recovery](https://help.aliyun.com/document_detail/43886.html).
+        @description You can also back up an instance in the Tair (Redis OSS-compatible) console. For more information, see [Backup and recovery](https://help.aliyun.com/document_detail/43886.html).
         
         @param request: CreateBackupRequest
         @return: CreateBackupResponse
@@ -1088,7 +1164,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse:
         """
-        @summary Manually creates a cache analytics task.
+        @summary Creates a cache analysis task.
         
         @description This operation is no longer available. Use the new operation. For more information, see [Real-time key statistics and offline key analysis](https://help.aliyun.com/document_detail/184226.html).
         
@@ -1124,10 +1200,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_cache_analysis_task_with_options_async(
         self,
@@ -1135,7 +1217,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse:
         """
-        @summary Manually creates a cache analytics task.
+        @summary Creates a cache analysis task.
         
         @description This operation is no longer available. Use the new operation. For more information, see [Real-time key statistics and offline key analysis](https://help.aliyun.com/document_detail/184226.html).
         
@@ -1171,17 +1253,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_cache_analysis_task(
         self,
         request: r_kvstore_20150101_models.CreateCacheAnalysisTaskRequest,
     ) -> r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse:
         """
-        @summary Manually creates a cache analytics task.
+        @summary Creates a cache analysis task.
         
         @description This operation is no longer available. Use the new operation. For more information, see [Real-time key statistics and offline key analysis](https://help.aliyun.com/document_detail/184226.html).
         
@@ -1196,7 +1284,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateCacheAnalysisTaskRequest,
     ) -> r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse:
         """
-        @summary Manually creates a cache analytics task.
+        @summary Creates a cache analysis task.
         
         @description This operation is no longer available. Use the new operation. For more information, see [Real-time key statistics and offline key analysis](https://help.aliyun.com/document_detail/184226.html).
         
@@ -1212,12 +1300,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse:
         """
-        @summary Converts an existing ApsaraDB for Redis instance to the first child instance of a distributed ApsaraDB for Redis instance.
+        @summary Converts an existing Tair DRAM-based classic instance to the first child instance of a distributed instance.
         
-        @description You cannot directly create a distributed instance. If you require a distributed instance, you must call this operation to convert an existing instance to the first child instance of the distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
-        A [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html) of Enhanced Edition is used.
+        @description You can call this operation to convert an existing instance to the first child instance of a distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
+        The instance that you want to convert must be a Tair [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses the classic deployment mode.
         If the existing instance is a cluster instance, the direct connection mode must be disabled for the instance. For more information, see [Release a private endpoint](https://help.aliyun.com/document_detail/150047.html).
-        > You can also call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
+        >  You can also call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
         
         @param request: CreateGlobalDistributeCacheRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1255,10 +1343,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_global_distribute_cache_with_options_async(
         self,
@@ -1266,12 +1360,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse:
         """
-        @summary Converts an existing ApsaraDB for Redis instance to the first child instance of a distributed ApsaraDB for Redis instance.
+        @summary Converts an existing Tair DRAM-based classic instance to the first child instance of a distributed instance.
         
-        @description You cannot directly create a distributed instance. If you require a distributed instance, you must call this operation to convert an existing instance to the first child instance of the distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
-        A [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html) of Enhanced Edition is used.
+        @description You can call this operation to convert an existing instance to the first child instance of a distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
+        The instance that you want to convert must be a Tair [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses the classic deployment mode.
         If the existing instance is a cluster instance, the direct connection mode must be disabled for the instance. For more information, see [Release a private endpoint](https://help.aliyun.com/document_detail/150047.html).
-        > You can also call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
+        >  You can also call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
         
         @param request: CreateGlobalDistributeCacheRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1309,22 +1403,28 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_global_distribute_cache(
         self,
         request: r_kvstore_20150101_models.CreateGlobalDistributeCacheRequest,
     ) -> r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse:
         """
-        @summary Converts an existing ApsaraDB for Redis instance to the first child instance of a distributed ApsaraDB for Redis instance.
+        @summary Converts an existing Tair DRAM-based classic instance to the first child instance of a distributed instance.
         
-        @description You cannot directly create a distributed instance. If you require a distributed instance, you must call this operation to convert an existing instance to the first child instance of the distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
-        A [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html) of Enhanced Edition is used.
+        @description You can call this operation to convert an existing instance to the first child instance of a distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
+        The instance that you want to convert must be a Tair [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses the classic deployment mode.
         If the existing instance is a cluster instance, the direct connection mode must be disabled for the instance. For more information, see [Release a private endpoint](https://help.aliyun.com/document_detail/150047.html).
-        > You can also call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
+        >  You can also call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
         
         @param request: CreateGlobalDistributeCacheRequest
         @return: CreateGlobalDistributeCacheResponse
@@ -1337,12 +1437,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateGlobalDistributeCacheRequest,
     ) -> r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse:
         """
-        @summary Converts an existing ApsaraDB for Redis instance to the first child instance of a distributed ApsaraDB for Redis instance.
+        @summary Converts an existing Tair DRAM-based classic instance to the first child instance of a distributed instance.
         
-        @description You cannot directly create a distributed instance. If you require a distributed instance, you must call this operation to convert an existing instance to the first child instance of the distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
-        A [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html) of Enhanced Edition is used.
+        @description You can call this operation to convert an existing instance to the first child instance of a distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
+        The instance that you want to convert must be a Tair [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses the classic deployment mode.
         If the existing instance is a cluster instance, the direct connection mode must be disabled for the instance. For more information, see [Release a private endpoint](https://help.aliyun.com/document_detail/150047.html).
-        > You can also call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
+        >  You can also call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
         
         @param request: CreateGlobalDistributeCacheRequest
         @return: CreateGlobalDistributeCacheResponse
@@ -1396,10 +1496,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CreateGlobalSecurityIPGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateGlobalSecurityIPGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateGlobalSecurityIPGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_global_security_ipgroup_with_options_async(
         self,
@@ -1447,10 +1553,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CreateGlobalSecurityIPGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateGlobalSecurityIPGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateGlobalSecurityIPGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_global_security_ipgroup(
         self,
@@ -1484,11 +1596,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateInstanceResponse:
         """
-        @summary Creates an ApsaraDB for Redis instance.
+        @summary Creates a Tair (Redis OSS-compatible) instance. If you want to create a Tair (Enterprise Edition) cloud-native instance, you can call the CreateTairInstance operation.
         
-        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
-        You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](https://help.aliyun.com/document_detail/208271.html) operation.
-        > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/26351.html).
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of Tair (Redis OSS-compatible).
+        You can call this operation to create a Tair (Redis OSS-compatible) instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation.
+        > For more information about how to create an instance that meets your requirements in the Tair (Redis OSS-compatible) console, see [Step 1: Create an instance](https://help.aliyun.com/document_detail/26351.html).
         
         @param request: CreateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1606,10 +1718,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CreateInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_instance_with_options_async(
         self,
@@ -1617,11 +1735,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateInstanceResponse:
         """
-        @summary Creates an ApsaraDB for Redis instance.
+        @summary Creates a Tair (Redis OSS-compatible) instance. If you want to create a Tair (Enterprise Edition) cloud-native instance, you can call the CreateTairInstance operation.
         
-        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
-        You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](https://help.aliyun.com/document_detail/208271.html) operation.
-        > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/26351.html).
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of Tair (Redis OSS-compatible).
+        You can call this operation to create a Tair (Redis OSS-compatible) instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation.
+        > For more information about how to create an instance that meets your requirements in the Tair (Redis OSS-compatible) console, see [Step 1: Create an instance](https://help.aliyun.com/document_detail/26351.html).
         
         @param request: CreateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1739,21 +1857,27 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CreateInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_instance(
         self,
         request: r_kvstore_20150101_models.CreateInstanceRequest,
     ) -> r_kvstore_20150101_models.CreateInstanceResponse:
         """
-        @summary Creates an ApsaraDB for Redis instance.
+        @summary Creates a Tair (Redis OSS-compatible) instance. If you want to create a Tair (Enterprise Edition) cloud-native instance, you can call the CreateTairInstance operation.
         
-        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
-        You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](https://help.aliyun.com/document_detail/208271.html) operation.
-        > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/26351.html).
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of Tair (Redis OSS-compatible).
+        You can call this operation to create a Tair (Redis OSS-compatible) instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation.
+        > For more information about how to create an instance that meets your requirements in the Tair (Redis OSS-compatible) console, see [Step 1: Create an instance](https://help.aliyun.com/document_detail/26351.html).
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -1766,11 +1890,11 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateInstanceRequest,
     ) -> r_kvstore_20150101_models.CreateInstanceResponse:
         """
-        @summary Creates an ApsaraDB for Redis instance.
+        @summary Creates a Tair (Redis OSS-compatible) instance. If you want to create a Tair (Enterprise Edition) cloud-native instance, you can call the CreateTairInstance operation.
         
-        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
-        You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](https://help.aliyun.com/document_detail/208271.html) operation.
-        > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/26351.html).
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of Tair (Redis OSS-compatible).
+        You can call this operation to create a Tair (Redis OSS-compatible) instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation.
+        > For more information about how to create an instance that meets your requirements in the Tair (Redis OSS-compatible) console, see [Step 1: Create an instance](https://help.aliyun.com/document_detail/26351.html).
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -1784,10 +1908,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateInstancesResponse:
         """
-        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
-        >  You can call this operation to create an ApsaraDB for Redis classic instance or a Tair DRAM-based classic instance. We recommend that you use an API operation for creating a single instance:
-        [CreateInstance](https://help.aliyun.com/document_detail/473757.html): creates an ApsaraDB for Redis instance or a Tair DRAM-based classic instance.
-        [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html): creates a Tair cloud-native instance. The instance can be a DRAM-based, persistent memory-optimized, or ESSD/SSD-based instance.
+        @summary Creates multiple Tair (Redis OSS-compatible) instances at a time.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of Tair (Redis OSS-compatible).
+        >  You can call this operation to create classic Redis Open-Source Edition instances or classic Tair DRAM-based instances. We recommend that you use an API operation for creating a single instance:
+        [CreateInstance](https://help.aliyun.com/document_detail/473757.html): creates a Redis Open-Source instance or a classic Tair DRAM-based instance.
+        [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html): creates a Tair (Enterprise Edition) instance. The instance can be a DRAM-based, persistent memory-optimized, or ESSD/SSD-based instance.
         
         @param request: CreateInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1837,10 +1963,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CreateInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_instances_with_options_async(
         self,
@@ -1848,10 +1980,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateInstancesResponse:
         """
-        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
-        >  You can call this operation to create an ApsaraDB for Redis classic instance or a Tair DRAM-based classic instance. We recommend that you use an API operation for creating a single instance:
-        [CreateInstance](https://help.aliyun.com/document_detail/473757.html): creates an ApsaraDB for Redis instance or a Tair DRAM-based classic instance.
-        [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html): creates a Tair cloud-native instance. The instance can be a DRAM-based, persistent memory-optimized, or ESSD/SSD-based instance.
+        @summary Creates multiple Tair (Redis OSS-compatible) instances at a time.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of Tair (Redis OSS-compatible).
+        >  You can call this operation to create classic Redis Open-Source Edition instances or classic Tair DRAM-based instances. We recommend that you use an API operation for creating a single instance:
+        [CreateInstance](https://help.aliyun.com/document_detail/473757.html): creates a Redis Open-Source instance or a classic Tair DRAM-based instance.
+        [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html): creates a Tair (Enterprise Edition) instance. The instance can be a DRAM-based, persistent memory-optimized, or ESSD/SSD-based instance.
         
         @param request: CreateInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1901,20 +2035,28 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CreateInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_instances(
         self,
         request: r_kvstore_20150101_models.CreateInstancesRequest,
     ) -> r_kvstore_20150101_models.CreateInstancesResponse:
         """
-        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
-        >  You can call this operation to create an ApsaraDB for Redis classic instance or a Tair DRAM-based classic instance. We recommend that you use an API operation for creating a single instance:
-        [CreateInstance](https://help.aliyun.com/document_detail/473757.html): creates an ApsaraDB for Redis instance or a Tair DRAM-based classic instance.
-        [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html): creates a Tair cloud-native instance. The instance can be a DRAM-based, persistent memory-optimized, or ESSD/SSD-based instance.
+        @summary Creates multiple Tair (Redis OSS-compatible) instances at a time.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of Tair (Redis OSS-compatible).
+        >  You can call this operation to create classic Redis Open-Source Edition instances or classic Tair DRAM-based instances. We recommend that you use an API operation for creating a single instance:
+        [CreateInstance](https://help.aliyun.com/document_detail/473757.html): creates a Redis Open-Source instance or a classic Tair DRAM-based instance.
+        [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html): creates a Tair (Enterprise Edition) instance. The instance can be a DRAM-based, persistent memory-optimized, or ESSD/SSD-based instance.
         
         @param request: CreateInstancesRequest
         @return: CreateInstancesResponse
@@ -1927,10 +2069,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateInstancesRequest,
     ) -> r_kvstore_20150101_models.CreateInstancesResponse:
         """
-        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
-        >  You can call this operation to create an ApsaraDB for Redis classic instance or a Tair DRAM-based classic instance. We recommend that you use an API operation for creating a single instance:
-        [CreateInstance](https://help.aliyun.com/document_detail/473757.html): creates an ApsaraDB for Redis instance or a Tair DRAM-based classic instance.
-        [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html): creates a Tair cloud-native instance. The instance can be a DRAM-based, persistent memory-optimized, or ESSD/SSD-based instance.
+        @summary Creates multiple Tair (Redis OSS-compatible) instances at a time.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of Tair (Redis OSS-compatible).
+        >  You can call this operation to create classic Redis Open-Source Edition instances or classic Tair DRAM-based instances. We recommend that you use an API operation for creating a single instance:
+        [CreateInstance](https://help.aliyun.com/document_detail/473757.html): creates a Redis Open-Source instance or a classic Tair DRAM-based instance.
+        [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html): creates a Tair (Enterprise Edition) instance. The instance can be a DRAM-based, persistent memory-optimized, or ESSD/SSD-based instance.
         
         @param request: CreateInstancesRequest
         @return: CreateInstancesResponse
@@ -1990,10 +2134,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CreateParameterGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateParameterGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateParameterGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_parameter_group_with_options_async(
         self,
@@ -2047,10 +2197,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CreateParameterGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateParameterGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateParameterGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_parameter_group(
         self,
@@ -2160,10 +2316,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CreateTCInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateTCInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateTCInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_tcinstance_with_options_async(
         self,
@@ -2247,10 +2409,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CreateTCInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateTCInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateTCInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_tcinstance(
         self,
@@ -2284,12 +2452,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateTairInstanceResponse:
         """
-        @summary Creates a Tair instance.
+        @summary Creates a Tair (Enterprise Edition) cloud-native instance.
         
-        @description For information about instance selection, see [Select an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/223808.html).
-        Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
-        For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](https://help.aliyun.com/document_detail/443863.html).
-        If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](https://help.aliyun.com/document_detail/126164.html) instances, you can call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation.
+        @description For information about instance selection, see [Instructions for selecting an appropriate Tair (Redis OSS-compatible) instance](https://help.aliyun.com/document_detail/223808.html).
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of Tair (Redis OSS-compatible).
+        >
+        For information about how to create an instance in the console, see [Step 1: Create an instance](https://help.aliyun.com/document_detail/26351.html).
+        To create other types of instances, such as Redis Open-Source Edition instances or [Tair DRAM-based](https://help.aliyun.com/document_detail/126164.html) instances, you can call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) operation.
         
         @param request: CreateTairInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2403,10 +2572,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CreateTairInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateTairInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateTairInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_tair_instance_with_options_async(
         self,
@@ -2414,12 +2589,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateTairInstanceResponse:
         """
-        @summary Creates a Tair instance.
+        @summary Creates a Tair (Enterprise Edition) cloud-native instance.
         
-        @description For information about instance selection, see [Select an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/223808.html).
-        Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
-        For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](https://help.aliyun.com/document_detail/443863.html).
-        If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](https://help.aliyun.com/document_detail/126164.html) instances, you can call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation.
+        @description For information about instance selection, see [Instructions for selecting an appropriate Tair (Redis OSS-compatible) instance](https://help.aliyun.com/document_detail/223808.html).
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of Tair (Redis OSS-compatible).
+        >
+        For information about how to create an instance in the console, see [Step 1: Create an instance](https://help.aliyun.com/document_detail/26351.html).
+        To create other types of instances, such as Redis Open-Source Edition instances or [Tair DRAM-based](https://help.aliyun.com/document_detail/126164.html) instances, you can call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) operation.
         
         @param request: CreateTairInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2533,22 +2709,29 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.CreateTairInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateTairInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.CreateTairInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_tair_instance(
         self,
         request: r_kvstore_20150101_models.CreateTairInstanceRequest,
     ) -> r_kvstore_20150101_models.CreateTairInstanceResponse:
         """
-        @summary Creates a Tair instance.
+        @summary Creates a Tair (Enterprise Edition) cloud-native instance.
         
-        @description For information about instance selection, see [Select an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/223808.html).
-        Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
-        For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](https://help.aliyun.com/document_detail/443863.html).
-        If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](https://help.aliyun.com/document_detail/126164.html) instances, you can call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation.
+        @description For information about instance selection, see [Instructions for selecting an appropriate Tair (Redis OSS-compatible) instance](https://help.aliyun.com/document_detail/223808.html).
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of Tair (Redis OSS-compatible).
+        >
+        For information about how to create an instance in the console, see [Step 1: Create an instance](https://help.aliyun.com/document_detail/26351.html).
+        To create other types of instances, such as Redis Open-Source Edition instances or [Tair DRAM-based](https://help.aliyun.com/document_detail/126164.html) instances, you can call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) operation.
         
         @param request: CreateTairInstanceRequest
         @return: CreateTairInstanceResponse
@@ -2561,12 +2744,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateTairInstanceRequest,
     ) -> r_kvstore_20150101_models.CreateTairInstanceResponse:
         """
-        @summary Creates a Tair instance.
+        @summary Creates a Tair (Enterprise Edition) cloud-native instance.
         
-        @description For information about instance selection, see [Select an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/223808.html).
-        Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
-        For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](https://help.aliyun.com/document_detail/443863.html).
-        If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](https://help.aliyun.com/document_detail/126164.html) instances, you can call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation.
+        @description For information about instance selection, see [Instructions for selecting an appropriate Tair (Redis OSS-compatible) instance](https://help.aliyun.com/document_detail/223808.html).
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of Tair (Redis OSS-compatible).
+        >
+        For information about how to create an instance in the console, see [Step 1: Create an instance](https://help.aliyun.com/document_detail/26351.html).
+        To create other types of instances, such as Redis Open-Source Edition instances or [Tair DRAM-based](https://help.aliyun.com/document_detail/126164.html) instances, you can call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) operation.
         
         @param request: CreateTairInstanceRequest
         @return: CreateTairInstanceResponse
@@ -2580,10 +2764,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DeleteAccountResponse:
         """
-        @summary Deletes an account from an ApsaraDB for Redis instance.
+        @summary Deletes an account from a Tair (Redis OSS-compatible) instance.
         
-        @description    This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0.
-        The ApsaraDB for Redis instance must be in the Running state.
+        @description    This operation is supported only for instances that are compatible with Redis 4.0 or later.
+        The instance must be in the Running state.
         
         @param request: DeleteAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2621,10 +2805,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DeleteAccountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DeleteAccountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DeleteAccountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_account_with_options_async(
         self,
@@ -2632,10 +2822,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DeleteAccountResponse:
         """
-        @summary Deletes an account from an ApsaraDB for Redis instance.
+        @summary Deletes an account from a Tair (Redis OSS-compatible) instance.
         
-        @description    This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0.
-        The ApsaraDB for Redis instance must be in the Running state.
+        @description    This operation is supported only for instances that are compatible with Redis 4.0 or later.
+        The instance must be in the Running state.
         
         @param request: DeleteAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2673,20 +2863,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DeleteAccountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DeleteAccountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DeleteAccountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_account(
         self,
         request: r_kvstore_20150101_models.DeleteAccountRequest,
     ) -> r_kvstore_20150101_models.DeleteAccountResponse:
         """
-        @summary Deletes an account from an ApsaraDB for Redis instance.
+        @summary Deletes an account from a Tair (Redis OSS-compatible) instance.
         
-        @description    This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0.
-        The ApsaraDB for Redis instance must be in the Running state.
+        @description    This operation is supported only for instances that are compatible with Redis 4.0 or later.
+        The instance must be in the Running state.
         
         @param request: DeleteAccountRequest
         @return: DeleteAccountResponse
@@ -2699,10 +2895,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DeleteAccountRequest,
     ) -> r_kvstore_20150101_models.DeleteAccountResponse:
         """
-        @summary Deletes an account from an ApsaraDB for Redis instance.
+        @summary Deletes an account from a Tair (Redis OSS-compatible) instance.
         
-        @description    This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0.
-        The ApsaraDB for Redis instance must be in the Running state.
+        @description    This operation is supported only for instances that are compatible with Redis 4.0 or later.
+        The instance must be in the Running state.
         
         @param request: DeleteAccountRequest
         @return: DeleteAccountResponse
@@ -2758,10 +2954,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_global_security_ipgroup_with_options_async(
         self,
@@ -2811,10 +3013,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_global_security_ipgroup(
         self,
@@ -2894,10 +3102,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DeleteInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DeleteInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DeleteInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_instance_with_options_async(
         self,
@@ -2947,10 +3161,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DeleteInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DeleteInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DeleteInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_instance(
         self,
@@ -3030,10 +3250,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DeleteParameterGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DeleteParameterGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DeleteParameterGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_parameter_group_with_options_async(
         self,
@@ -3075,10 +3301,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DeleteParameterGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DeleteParameterGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DeleteParameterGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_parameter_group(
         self,
@@ -3112,9 +3344,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DeleteShardingNodeResponse:
         """
-        @summary Removes one or more data shards from an ApsaraDB for Redis cluster instance.
+        @summary Removes one or more data shards from a Tair (Redis OSS-compatible) cluster instance.
         
-        @description You can also remove data shards from an instance in the ApsaraDB for Redis console. For more information, see [Adjust the number of shards for an ApsaraDB for Redis instance with cloud disks](https://help.aliyun.com/document_detail/198082.html).\\
+        @description You can also remove data shards from an instance in the Tair (Redis OSS-compatible) console. For more information, see [Adjust the number of shards for an instance with cloud disks](https://help.aliyun.com/document_detail/198082.html).\\
         Before you call this operation, make sure that the instance meets the following requirements:
         The instance is a persistent memory-optimized instance in the cluster architecture. For more information about persistent memory-optimized instances, see [Persistent memory-optimized instances](https://help.aliyun.com/document_detail/183956.html).
         The instance has more than one data shard.
@@ -3125,6 +3357,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
         if not UtilClient.is_unset(request.force_trans):
             query['ForceTrans'] = request.force_trans
         if not UtilClient.is_unset(request.instance_id):
@@ -3157,10 +3391,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DeleteShardingNodeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DeleteShardingNodeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DeleteShardingNodeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_sharding_node_with_options_async(
         self,
@@ -3168,9 +3408,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DeleteShardingNodeResponse:
         """
-        @summary Removes one or more data shards from an ApsaraDB for Redis cluster instance.
+        @summary Removes one or more data shards from a Tair (Redis OSS-compatible) cluster instance.
         
-        @description You can also remove data shards from an instance in the ApsaraDB for Redis console. For more information, see [Adjust the number of shards for an ApsaraDB for Redis instance with cloud disks](https://help.aliyun.com/document_detail/198082.html).\\
+        @description You can also remove data shards from an instance in the Tair (Redis OSS-compatible) console. For more information, see [Adjust the number of shards for an instance with cloud disks](https://help.aliyun.com/document_detail/198082.html).\\
         Before you call this operation, make sure that the instance meets the following requirements:
         The instance is a persistent memory-optimized instance in the cluster architecture. For more information about persistent memory-optimized instances, see [Persistent memory-optimized instances](https://help.aliyun.com/document_detail/183956.html).
         The instance has more than one data shard.
@@ -3181,6 +3421,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
         if not UtilClient.is_unset(request.force_trans):
             query['ForceTrans'] = request.force_trans
         if not UtilClient.is_unset(request.instance_id):
@@ -3213,19 +3455,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DeleteShardingNodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DeleteShardingNodeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DeleteShardingNodeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_sharding_node(
         self,
         request: r_kvstore_20150101_models.DeleteShardingNodeRequest,
     ) -> r_kvstore_20150101_models.DeleteShardingNodeResponse:
         """
-        @summary Removes one or more data shards from an ApsaraDB for Redis cluster instance.
+        @summary Removes one or more data shards from a Tair (Redis OSS-compatible) cluster instance.
         
-        @description You can also remove data shards from an instance in the ApsaraDB for Redis console. For more information, see [Adjust the number of shards for an ApsaraDB for Redis instance with cloud disks](https://help.aliyun.com/document_detail/198082.html).\\
+        @description You can also remove data shards from an instance in the Tair (Redis OSS-compatible) console. For more information, see [Adjust the number of shards for an instance with cloud disks](https://help.aliyun.com/document_detail/198082.html).\\
         Before you call this operation, make sure that the instance meets the following requirements:
         The instance is a persistent memory-optimized instance in the cluster architecture. For more information about persistent memory-optimized instances, see [Persistent memory-optimized instances](https://help.aliyun.com/document_detail/183956.html).
         The instance has more than one data shard.
@@ -3241,9 +3489,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DeleteShardingNodeRequest,
     ) -> r_kvstore_20150101_models.DeleteShardingNodeResponse:
         """
-        @summary Removes one or more data shards from an ApsaraDB for Redis cluster instance.
+        @summary Removes one or more data shards from a Tair (Redis OSS-compatible) cluster instance.
         
-        @description You can also remove data shards from an instance in the ApsaraDB for Redis console. For more information, see [Adjust the number of shards for an ApsaraDB for Redis instance with cloud disks](https://help.aliyun.com/document_detail/198082.html).\\
+        @description You can also remove data shards from an instance in the Tair (Redis OSS-compatible) console. For more information, see [Adjust the number of shards for an instance with cloud disks](https://help.aliyun.com/document_detail/198082.html).\\
         Before you call this operation, make sure that the instance meets the following requirements:
         The instance is a persistent memory-optimized instance in the cluster architecture. For more information about persistent memory-optimized instances, see [Persistent memory-optimized instances](https://help.aliyun.com/document_detail/183956.html).
         The instance has more than one data shard.
@@ -3260,9 +3508,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeAccountsResponse:
         """
-        @summary Queries all accounts or a specified account of an ApsaraDB for Redis instance.
+        @summary Queries a specified account of a Tair (Redis OSS-compatible) instance.
         
-        @description >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        @description >  Only Tair (Redis OSS-compatible) instances of Redis 4.0 or later are supported.
         
         @param request: DescribeAccountsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3298,10 +3546,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeAccountsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeAccountsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeAccountsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_accounts_with_options_async(
         self,
@@ -3309,9 +3563,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeAccountsResponse:
         """
-        @summary Queries all accounts or a specified account of an ApsaraDB for Redis instance.
+        @summary Queries a specified account of a Tair (Redis OSS-compatible) instance.
         
-        @description >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        @description >  Only Tair (Redis OSS-compatible) instances of Redis 4.0 or later are supported.
         
         @param request: DescribeAccountsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3347,19 +3601,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeAccountsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeAccountsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeAccountsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_accounts(
         self,
         request: r_kvstore_20150101_models.DescribeAccountsRequest,
     ) -> r_kvstore_20150101_models.DescribeAccountsResponse:
         """
-        @summary Queries all accounts or a specified account of an ApsaraDB for Redis instance.
+        @summary Queries a specified account of a Tair (Redis OSS-compatible) instance.
         
-        @description >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        @description >  Only Tair (Redis OSS-compatible) instances of Redis 4.0 or later are supported.
         
         @param request: DescribeAccountsRequest
         @return: DescribeAccountsResponse
@@ -3372,9 +3632,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeAccountsRequest,
     ) -> r_kvstore_20150101_models.DescribeAccountsResponse:
         """
-        @summary Queries all accounts or a specified account of an ApsaraDB for Redis instance.
+        @summary Queries a specified account of a Tair (Redis OSS-compatible) instance.
         
-        @description >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        @description >  Only Tair (Redis OSS-compatible) instances of Redis 4.0 or later are supported.
         
         @param request: DescribeAccountsRequest
         @return: DescribeAccountsResponse
@@ -3388,9 +3648,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeActiveOperationTaskResponse:
         """
-        @summary Queries the detailed information about O&M tasks of an ApsaraDB for Redis instance.
+        @summary Queries the details of the O\\&M tasks of a Tair (Redis OSS-compatible) instance.
         
-        @description After you have called this API operation and queried the information about a specific O&M task, you can also call the [ModifyActiveOperationTask](~~ModifyActiveOperationTask~~) operation to modify the scheduled switchover time of the O&M task.
+        @description After you have called this API operation and queried the information about a specific O&M task, you can also call the [ModifyActiveOperationTask](https://help.aliyun.com/document_detail/473864.html) operation to modify the scheduled switchover time of the O&M task.
         
         @param request: DescribeActiveOperationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3432,10 +3692,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeActiveOperationTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeActiveOperationTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeActiveOperationTaskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_active_operation_task_with_options_async(
         self,
@@ -3443,9 +3709,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeActiveOperationTaskResponse:
         """
-        @summary Queries the detailed information about O&M tasks of an ApsaraDB for Redis instance.
+        @summary Queries the details of the O\\&M tasks of a Tair (Redis OSS-compatible) instance.
         
-        @description After you have called this API operation and queried the information about a specific O&M task, you can also call the [ModifyActiveOperationTask](~~ModifyActiveOperationTask~~) operation to modify the scheduled switchover time of the O&M task.
+        @description After you have called this API operation and queried the information about a specific O&M task, you can also call the [ModifyActiveOperationTask](https://help.aliyun.com/document_detail/473864.html) operation to modify the scheduled switchover time of the O&M task.
         
         @param request: DescribeActiveOperationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3487,19 +3753,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeActiveOperationTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeActiveOperationTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeActiveOperationTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_active_operation_task(
         self,
         request: r_kvstore_20150101_models.DescribeActiveOperationTaskRequest,
     ) -> r_kvstore_20150101_models.DescribeActiveOperationTaskResponse:
         """
-        @summary Queries the detailed information about O&M tasks of an ApsaraDB for Redis instance.
+        @summary Queries the details of the O\\&M tasks of a Tair (Redis OSS-compatible) instance.
         
-        @description After you have called this API operation and queried the information about a specific O&M task, you can also call the [ModifyActiveOperationTask](~~ModifyActiveOperationTask~~) operation to modify the scheduled switchover time of the O&M task.
+        @description After you have called this API operation and queried the information about a specific O&M task, you can also call the [ModifyActiveOperationTask](https://help.aliyun.com/document_detail/473864.html) operation to modify the scheduled switchover time of the O&M task.
         
         @param request: DescribeActiveOperationTaskRequest
         @return: DescribeActiveOperationTaskResponse
@@ -3512,9 +3784,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeActiveOperationTaskRequest,
     ) -> r_kvstore_20150101_models.DescribeActiveOperationTaskResponse:
         """
-        @summary Queries the detailed information about O&M tasks of an ApsaraDB for Redis instance.
+        @summary Queries the details of the O\\&M tasks of a Tair (Redis OSS-compatible) instance.
         
-        @description After you have called this API operation and queried the information about a specific O&M task, you can also call the [ModifyActiveOperationTask](~~ModifyActiveOperationTask~~) operation to modify the scheduled switchover time of the O&M task.
+        @description After you have called this API operation and queried the information about a specific O&M task, you can also call the [ModifyActiveOperationTask](https://help.aliyun.com/document_detail/473864.html) operation to modify the scheduled switchover time of the O&M task.
         
         @param request: DescribeActiveOperationTaskRequest
         @return: DescribeActiveOperationTaskResponse
@@ -3528,7 +3800,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeActiveOperationTasksResponse:
         """
-        @summary Queries the details about the O\\\\\\&M tasks of an ApsaraDB for Redis instance.
+        @summary Queries the O\\\\\\\\\\\\&M event details of an instance.
         
         @param request: DescribeActiveOperationTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3582,10 +3854,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeActiveOperationTasksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeActiveOperationTasksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeActiveOperationTasksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_active_operation_tasks_with_options_async(
         self,
@@ -3593,7 +3871,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeActiveOperationTasksResponse:
         """
-        @summary Queries the details about the O\\\\\\&M tasks of an ApsaraDB for Redis instance.
+        @summary Queries the O\\\\\\\\\\\\&M event details of an instance.
         
         @param request: DescribeActiveOperationTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3647,17 +3925,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeActiveOperationTasksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeActiveOperationTasksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeActiveOperationTasksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_active_operation_tasks(
         self,
         request: r_kvstore_20150101_models.DescribeActiveOperationTasksRequest,
     ) -> r_kvstore_20150101_models.DescribeActiveOperationTasksResponse:
         """
-        @summary Queries the details about the O\\\\\\&M tasks of an ApsaraDB for Redis instance.
+        @summary Queries the O\\\\\\\\\\\\&M event details of an instance.
         
         @param request: DescribeActiveOperationTasksRequest
         @return: DescribeActiveOperationTasksResponse
@@ -3670,7 +3954,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeActiveOperationTasksRequest,
     ) -> r_kvstore_20150101_models.DescribeActiveOperationTasksResponse:
         """
-        @summary Queries the details about the O\\\\\\&M tasks of an ApsaraDB for Redis instance.
+        @summary Queries the O\\\\\\\\\\\\&M event details of an instance.
         
         @param request: DescribeActiveOperationTasksRequest
         @return: DescribeActiveOperationTasksResponse
@@ -3684,13 +3968,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeAuditLogConfigResponse:
         """
-        @summary Queries the audit log configurations of an ApsaraDB for Redis instance. The configurations include whether the audit log feature is enabled and the retention period of audit logs.
+        @summary Queries the audit log configurations of a Tair (Redis OSS-compatible) instance. The configurations include whether the audit log feature is enabled and the retention period of audit logs.
         
-        @description > You can call the [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance. For more information, see [Enable the new audit log feature](https://help.aliyun.com/document_detail/102015.html).
-        Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
-        The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
-        The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to check whether the instance uses the latest minor version.
-        The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html).
+        @description Before you call this operation, you must enable the audit log feature for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/473829.html) or [Enable the audit log feature](https://help.aliyun.com/document_detail/102015.html).
         
         @param request: DescribeAuditLogConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3726,10 +4006,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeAuditLogConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeAuditLogConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeAuditLogConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_audit_log_config_with_options_async(
         self,
@@ -3737,13 +4023,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeAuditLogConfigResponse:
         """
-        @summary Queries the audit log configurations of an ApsaraDB for Redis instance. The configurations include whether the audit log feature is enabled and the retention period of audit logs.
+        @summary Queries the audit log configurations of a Tair (Redis OSS-compatible) instance. The configurations include whether the audit log feature is enabled and the retention period of audit logs.
         
-        @description > You can call the [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance. For more information, see [Enable the new audit log feature](https://help.aliyun.com/document_detail/102015.html).
-        Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
-        The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
-        The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to check whether the instance uses the latest minor version.
-        The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html).
+        @description Before you call this operation, you must enable the audit log feature for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/473829.html) or [Enable the audit log feature](https://help.aliyun.com/document_detail/102015.html).
         
         @param request: DescribeAuditLogConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3779,23 +4061,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeAuditLogConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeAuditLogConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeAuditLogConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_audit_log_config(
         self,
         request: r_kvstore_20150101_models.DescribeAuditLogConfigRequest,
     ) -> r_kvstore_20150101_models.DescribeAuditLogConfigResponse:
         """
-        @summary Queries the audit log configurations of an ApsaraDB for Redis instance. The configurations include whether the audit log feature is enabled and the retention period of audit logs.
+        @summary Queries the audit log configurations of a Tair (Redis OSS-compatible) instance. The configurations include whether the audit log feature is enabled and the retention period of audit logs.
         
-        @description > You can call the [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance. For more information, see [Enable the new audit log feature](https://help.aliyun.com/document_detail/102015.html).
-        Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
-        The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
-        The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to check whether the instance uses the latest minor version.
-        The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html).
+        @description Before you call this operation, you must enable the audit log feature for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/473829.html) or [Enable the audit log feature](https://help.aliyun.com/document_detail/102015.html).
         
         @param request: DescribeAuditLogConfigRequest
         @return: DescribeAuditLogConfigResponse
@@ -3808,13 +4092,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeAuditLogConfigRequest,
     ) -> r_kvstore_20150101_models.DescribeAuditLogConfigResponse:
         """
-        @summary Queries the audit log configurations of an ApsaraDB for Redis instance. The configurations include whether the audit log feature is enabled and the retention period of audit logs.
+        @summary Queries the audit log configurations of a Tair (Redis OSS-compatible) instance. The configurations include whether the audit log feature is enabled and the retention period of audit logs.
         
-        @description > You can call the [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance. For more information, see [Enable the new audit log feature](https://help.aliyun.com/document_detail/102015.html).
-        Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
-        The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
-        The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to check whether the instance uses the latest minor version.
-        The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html).
+        @description Before you call this operation, you must enable the audit log feature for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/473829.html) or [Enable the audit log feature](https://help.aliyun.com/document_detail/102015.html).
         
         @param request: DescribeAuditLogConfigRequest
         @return: DescribeAuditLogConfigResponse
@@ -3828,13 +4108,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeAuditRecordsResponse:
         """
-        @summary Queries the audit logs of an ApsaraDB for Redis instance.
+        @summary Queries the audit logs of a Tair (Redis OSS-compatible) instance.
         
-        @description This operation can be called up to 100 times per minute. You can also query audit logs in the ApsaraDB for Redis console. For more information, see [Query audit logs of an instance](https://help.aliyun.com/document_detail/101937.html).
-        Before you call this operation, make sure that the instance meets the following requirements:
-        The instance is an ApsaraDB for Redis Community Edition instance or an ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based instance.
-        The engine version of the instance is Redis 4.0 or later.
-        The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html).
+        @description Before you call this operation, you must enable the audit log feature for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/473829.html).
         
         @param request: DescribeAuditRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3886,10 +4162,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeAuditRecordsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeAuditRecordsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeAuditRecordsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_audit_records_with_options_async(
         self,
@@ -3897,13 +4179,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeAuditRecordsResponse:
         """
-        @summary Queries the audit logs of an ApsaraDB for Redis instance.
+        @summary Queries the audit logs of a Tair (Redis OSS-compatible) instance.
         
-        @description This operation can be called up to 100 times per minute. You can also query audit logs in the ApsaraDB for Redis console. For more information, see [Query audit logs of an instance](https://help.aliyun.com/document_detail/101937.html).
-        Before you call this operation, make sure that the instance meets the following requirements:
-        The instance is an ApsaraDB for Redis Community Edition instance or an ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based instance.
-        The engine version of the instance is Redis 4.0 or later.
-        The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html).
+        @description Before you call this operation, you must enable the audit log feature for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/473829.html).
         
         @param request: DescribeAuditRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3955,23 +4233,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeAuditRecordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeAuditRecordsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeAuditRecordsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_audit_records(
         self,
         request: r_kvstore_20150101_models.DescribeAuditRecordsRequest,
     ) -> r_kvstore_20150101_models.DescribeAuditRecordsResponse:
         """
-        @summary Queries the audit logs of an ApsaraDB for Redis instance.
+        @summary Queries the audit logs of a Tair (Redis OSS-compatible) instance.
         
-        @description This operation can be called up to 100 times per minute. You can also query audit logs in the ApsaraDB for Redis console. For more information, see [Query audit logs of an instance](https://help.aliyun.com/document_detail/101937.html).
-        Before you call this operation, make sure that the instance meets the following requirements:
-        The instance is an ApsaraDB for Redis Community Edition instance or an ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based instance.
-        The engine version of the instance is Redis 4.0 or later.
-        The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html).
+        @description Before you call this operation, you must enable the audit log feature for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/473829.html).
         
         @param request: DescribeAuditRecordsRequest
         @return: DescribeAuditRecordsResponse
@@ -3984,13 +4264,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeAuditRecordsRequest,
     ) -> r_kvstore_20150101_models.DescribeAuditRecordsResponse:
         """
-        @summary Queries the audit logs of an ApsaraDB for Redis instance.
+        @summary Queries the audit logs of a Tair (Redis OSS-compatible) instance.
         
-        @description This operation can be called up to 100 times per minute. You can also query audit logs in the ApsaraDB for Redis console. For more information, see [Query audit logs of an instance](https://help.aliyun.com/document_detail/101937.html).
-        Before you call this operation, make sure that the instance meets the following requirements:
-        The instance is an ApsaraDB for Redis Community Edition instance or an ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based instance.
-        The engine version of the instance is Redis 4.0 or later.
-        The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html).
+        @description Before you call this operation, you must enable the audit log feature for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/473829.html).
         
         @param request: DescribeAuditRecordsRequest
         @return: DescribeAuditRecordsResponse
@@ -4004,7 +4280,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeAvailableResourceResponse:
         """
-        @summary Queries the types of ApsaraDB for Redis instances that can be created in a specified zone.
+        @summary Queries the types of Tair (Redis OSS-compatible) instances that can be created in a specified zone.
         
         @param request: DescribeAvailableResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4058,10 +4334,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeAvailableResourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeAvailableResourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeAvailableResourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_available_resource_with_options_async(
         self,
@@ -4069,7 +4351,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeAvailableResourceResponse:
         """
-        @summary Queries the types of ApsaraDB for Redis instances that can be created in a specified zone.
+        @summary Queries the types of Tair (Redis OSS-compatible) instances that can be created in a specified zone.
         
         @param request: DescribeAvailableResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4123,17 +4405,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeAvailableResourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeAvailableResourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeAvailableResourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_available_resource(
         self,
         request: r_kvstore_20150101_models.DescribeAvailableResourceRequest,
     ) -> r_kvstore_20150101_models.DescribeAvailableResourceResponse:
         """
-        @summary Queries the types of ApsaraDB for Redis instances that can be created in a specified zone.
+        @summary Queries the types of Tair (Redis OSS-compatible) instances that can be created in a specified zone.
         
         @param request: DescribeAvailableResourceRequest
         @return: DescribeAvailableResourceResponse
@@ -4146,7 +4434,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeAvailableResourceRequest,
     ) -> r_kvstore_20150101_models.DescribeAvailableResourceResponse:
         """
-        @summary Queries the types of ApsaraDB for Redis instances that can be created in a specified zone.
+        @summary Queries the types of Tair (Redis OSS-compatible) instances that can be created in a specified zone.
         
         @param request: DescribeAvailableResourceRequest
         @return: DescribeAvailableResourceResponse
@@ -4160,7 +4448,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeBackupPolicyResponse:
         """
-        @summary Queries the backup policy of an ApsaraDB for Redis instance, including the backup cycle and backup time.
+        @summary Queries the backup policy of a Tair (Redis OSS-compatible) instance, including the backup cycle and backup time.
         
         @param request: DescribeBackupPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4194,10 +4482,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeBackupPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeBackupPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeBackupPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_backup_policy_with_options_async(
         self,
@@ -4205,7 +4499,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeBackupPolicyResponse:
         """
-        @summary Queries the backup policy of an ApsaraDB for Redis instance, including the backup cycle and backup time.
+        @summary Queries the backup policy of a Tair (Redis OSS-compatible) instance, including the backup cycle and backup time.
         
         @param request: DescribeBackupPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4239,17 +4533,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeBackupPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeBackupPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeBackupPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_backup_policy(
         self,
         request: r_kvstore_20150101_models.DescribeBackupPolicyRequest,
     ) -> r_kvstore_20150101_models.DescribeBackupPolicyResponse:
         """
-        @summary Queries the backup policy of an ApsaraDB for Redis instance, including the backup cycle and backup time.
+        @summary Queries the backup policy of a Tair (Redis OSS-compatible) instance, including the backup cycle and backup time.
         
         @param request: DescribeBackupPolicyRequest
         @return: DescribeBackupPolicyResponse
@@ -4262,7 +4562,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeBackupPolicyRequest,
     ) -> r_kvstore_20150101_models.DescribeBackupPolicyResponse:
         """
-        @summary Queries the backup policy of an ApsaraDB for Redis instance, including the backup cycle and backup time.
+        @summary Queries the backup policy of a Tair (Redis OSS-compatible) instance, including the backup cycle and backup time.
         
         @param request: DescribeBackupPolicyRequest
         @return: DescribeBackupPolicyResponse
@@ -4276,7 +4576,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeBackupTasksResponse:
         """
-        @summary Queries the states of backup tasks for an ApsaraDB for Redis instance.
+        @summary Queries the execution status of backup tasks for a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeBackupTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4314,10 +4614,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeBackupTasksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeBackupTasksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeBackupTasksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_backup_tasks_with_options_async(
         self,
@@ -4325,7 +4631,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeBackupTasksResponse:
         """
-        @summary Queries the states of backup tasks for an ApsaraDB for Redis instance.
+        @summary Queries the execution status of backup tasks for a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeBackupTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4363,17 +4669,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeBackupTasksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeBackupTasksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeBackupTasksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_backup_tasks(
         self,
         request: r_kvstore_20150101_models.DescribeBackupTasksRequest,
     ) -> r_kvstore_20150101_models.DescribeBackupTasksResponse:
         """
-        @summary Queries the states of backup tasks for an ApsaraDB for Redis instance.
+        @summary Queries the execution status of backup tasks for a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeBackupTasksRequest
         @return: DescribeBackupTasksResponse
@@ -4386,7 +4698,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeBackupTasksRequest,
     ) -> r_kvstore_20150101_models.DescribeBackupTasksResponse:
         """
-        @summary Queries the states of backup tasks for an ApsaraDB for Redis instance.
+        @summary Queries the execution status of backup tasks for a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeBackupTasksRequest
         @return: DescribeBackupTasksResponse
@@ -4448,10 +4760,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeBackupsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeBackupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeBackupsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_backups_with_options_async(
         self,
@@ -4507,10 +4825,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeBackupsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeBackupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeBackupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_backups(
         self,
@@ -4544,12 +4868,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse:
         """
-        @summary Queries the cache analytics report that is generated on a specified date for an ApsaraDB for Redis instance.
+        @summary Queries the cache analysis report of an instance on a specified date.
         
-        @description > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
+        @description > Tair (Redis OSS-compatible) has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
         Before you call this operation, make sure that the instance meets the following requirements:
         The engine version of the instance is Redis 4.0 or later.
-        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
+        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of a Tair (Redis OSS-compatible) instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
         
         @param request: DescribeCacheAnalysisReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4593,10 +4917,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_cache_analysis_report_with_options_async(
         self,
@@ -4604,12 +4934,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse:
         """
-        @summary Queries the cache analytics report that is generated on a specified date for an ApsaraDB for Redis instance.
+        @summary Queries the cache analysis report of an instance on a specified date.
         
-        @description > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
+        @description > Tair (Redis OSS-compatible) has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
         Before you call this operation, make sure that the instance meets the following requirements:
         The engine version of the instance is Redis 4.0 or later.
-        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
+        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of a Tair (Redis OSS-compatible) instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
         
         @param request: DescribeCacheAnalysisReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4653,22 +4983,28 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_cache_analysis_report(
         self,
         request: r_kvstore_20150101_models.DescribeCacheAnalysisReportRequest,
     ) -> r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse:
         """
-        @summary Queries the cache analytics report that is generated on a specified date for an ApsaraDB for Redis instance.
+        @summary Queries the cache analysis report of an instance on a specified date.
         
-        @description > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
+        @description > Tair (Redis OSS-compatible) has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
         Before you call this operation, make sure that the instance meets the following requirements:
         The engine version of the instance is Redis 4.0 or later.
-        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
+        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of a Tair (Redis OSS-compatible) instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
         
         @param request: DescribeCacheAnalysisReportRequest
         @return: DescribeCacheAnalysisReportResponse
@@ -4681,12 +5017,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeCacheAnalysisReportRequest,
     ) -> r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse:
         """
-        @summary Queries the cache analytics report that is generated on a specified date for an ApsaraDB for Redis instance.
+        @summary Queries the cache analysis report of an instance on a specified date.
         
-        @description > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
+        @description > Tair (Redis OSS-compatible) has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
         Before you call this operation, make sure that the instance meets the following requirements:
         The engine version of the instance is Redis 4.0 or later.
-        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
+        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of a Tair (Redis OSS-compatible) instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
         
         @param request: DescribeCacheAnalysisReportRequest
         @return: DescribeCacheAnalysisReportResponse
@@ -4700,12 +5036,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse:
         """
-        @summary Queries the cache analytics reports of an ApsaraDB for Redis instance.
+        @summary Queries a list of cache analysis reports for an instance.
         
-        @description > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
+        @description > Tair (Redis OSS-compatible) has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
         Before you call this operation, make sure that the instance meets the following requirements:
         The engine version of the instance is Redis 4.0 or later.
-        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
+        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of a Tair (Redis OSS-compatible) instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
         
         @param request: DescribeCacheAnalysisReportListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4747,10 +5083,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_cache_analysis_report_list_with_options_async(
         self,
@@ -4758,12 +5100,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse:
         """
-        @summary Queries the cache analytics reports of an ApsaraDB for Redis instance.
+        @summary Queries a list of cache analysis reports for an instance.
         
-        @description > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
+        @description > Tair (Redis OSS-compatible) has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
         Before you call this operation, make sure that the instance meets the following requirements:
         The engine version of the instance is Redis 4.0 or later.
-        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
+        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of a Tair (Redis OSS-compatible) instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
         
         @param request: DescribeCacheAnalysisReportListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4805,22 +5147,28 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_cache_analysis_report_list(
         self,
         request: r_kvstore_20150101_models.DescribeCacheAnalysisReportListRequest,
     ) -> r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse:
         """
-        @summary Queries the cache analytics reports of an ApsaraDB for Redis instance.
+        @summary Queries a list of cache analysis reports for an instance.
         
-        @description > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
+        @description > Tair (Redis OSS-compatible) has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
         Before you call this operation, make sure that the instance meets the following requirements:
         The engine version of the instance is Redis 4.0 or later.
-        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
+        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of a Tair (Redis OSS-compatible) instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
         
         @param request: DescribeCacheAnalysisReportListRequest
         @return: DescribeCacheAnalysisReportListResponse
@@ -4833,12 +5181,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeCacheAnalysisReportListRequest,
     ) -> r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse:
         """
-        @summary Queries the cache analytics reports of an ApsaraDB for Redis instance.
+        @summary Queries a list of cache analysis reports for an instance.
         
-        @description > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
+        @description > Tair (Redis OSS-compatible) has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
         Before you call this operation, make sure that the instance meets the following requirements:
         The engine version of the instance is Redis 4.0 or later.
-        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
+        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of a Tair (Redis OSS-compatible) instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
         
         @param request: DescribeCacheAnalysisReportListRequest
         @return: DescribeCacheAnalysisReportListResponse
@@ -4852,7 +5200,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeClusterBackupListResponse:
         """
-        @summary Queries the backup sets of an ApsaraDB for Redis or Tair cluster instance.
+        @summary Queries the backup sets of a Tair (Redis OSS-compatible) cluster instance.
+        
+        @description This operation is applicable only to cloud-native instances.
         
         @param request: DescribeClusterBackupListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4874,10 +5224,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeClusterBackupListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeClusterBackupListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeClusterBackupListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_cluster_backup_list_with_options_async(
         self,
@@ -4885,7 +5241,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeClusterBackupListResponse:
         """
-        @summary Queries the backup sets of an ApsaraDB for Redis or Tair cluster instance.
+        @summary Queries the backup sets of a Tair (Redis OSS-compatible) cluster instance.
+        
+        @description This operation is applicable only to cloud-native instances.
         
         @param request: DescribeClusterBackupListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4907,17 +5265,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeClusterBackupListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeClusterBackupListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeClusterBackupListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_cluster_backup_list(
         self,
         request: r_kvstore_20150101_models.DescribeClusterBackupListRequest,
     ) -> r_kvstore_20150101_models.DescribeClusterBackupListResponse:
         """
-        @summary Queries the backup sets of an ApsaraDB for Redis or Tair cluster instance.
+        @summary Queries the backup sets of a Tair (Redis OSS-compatible) cluster instance.
+        
+        @description This operation is applicable only to cloud-native instances.
         
         @param request: DescribeClusterBackupListRequest
         @return: DescribeClusterBackupListResponse
@@ -4930,7 +5296,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeClusterBackupListRequest,
     ) -> r_kvstore_20150101_models.DescribeClusterBackupListResponse:
         """
-        @summary Queries the backup sets of an ApsaraDB for Redis or Tair cluster instance.
+        @summary Queries the backup sets of a Tair (Redis OSS-compatible) cluster instance.
+        
+        @description This operation is applicable only to cloud-native instances.
         
         @param request: DescribeClusterBackupListRequest
         @return: DescribeClusterBackupListResponse
@@ -4944,9 +5312,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeClusterMemberInfoResponse:
         """
-        @summary Queries the configuration information of nodes in an ApsaraDB for Redis cluster instance, such as the specifications and the maximum number of connections.
+        @summary Queries the configuration information of nodes in a Tair (Redis OSS-compatible) cluster instance, such as the specifications and the maximum number of connections.
         
-        @description > This API operation is applicable only to ApsaraDB for Redis instances that use [cloud disks](https://help.aliyun.com/document_detail/188068.html) and the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
+        @description > This API operation is applicable only to Tair (Redis OSS-compatible) instances that use [cloud disks](https://help.aliyun.com/document_detail/188068.html) and the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
         
         @param request: DescribeClusterMemberInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4984,10 +5352,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeClusterMemberInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeClusterMemberInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeClusterMemberInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_cluster_member_info_with_options_async(
         self,
@@ -4995,9 +5369,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeClusterMemberInfoResponse:
         """
-        @summary Queries the configuration information of nodes in an ApsaraDB for Redis cluster instance, such as the specifications and the maximum number of connections.
+        @summary Queries the configuration information of nodes in a Tair (Redis OSS-compatible) cluster instance, such as the specifications and the maximum number of connections.
         
-        @description > This API operation is applicable only to ApsaraDB for Redis instances that use [cloud disks](https://help.aliyun.com/document_detail/188068.html) and the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
+        @description > This API operation is applicable only to Tair (Redis OSS-compatible) instances that use [cloud disks](https://help.aliyun.com/document_detail/188068.html) and the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
         
         @param request: DescribeClusterMemberInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5035,19 +5409,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeClusterMemberInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeClusterMemberInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeClusterMemberInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_cluster_member_info(
         self,
         request: r_kvstore_20150101_models.DescribeClusterMemberInfoRequest,
     ) -> r_kvstore_20150101_models.DescribeClusterMemberInfoResponse:
         """
-        @summary Queries the configuration information of nodes in an ApsaraDB for Redis cluster instance, such as the specifications and the maximum number of connections.
+        @summary Queries the configuration information of nodes in a Tair (Redis OSS-compatible) cluster instance, such as the specifications and the maximum number of connections.
         
-        @description > This API operation is applicable only to ApsaraDB for Redis instances that use [cloud disks](https://help.aliyun.com/document_detail/188068.html) and the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
+        @description > This API operation is applicable only to Tair (Redis OSS-compatible) instances that use [cloud disks](https://help.aliyun.com/document_detail/188068.html) and the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
         
         @param request: DescribeClusterMemberInfoRequest
         @return: DescribeClusterMemberInfoResponse
@@ -5060,9 +5440,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeClusterMemberInfoRequest,
     ) -> r_kvstore_20150101_models.DescribeClusterMemberInfoResponse:
         """
-        @summary Queries the configuration information of nodes in an ApsaraDB for Redis cluster instance, such as the specifications and the maximum number of connections.
+        @summary Queries the configuration information of nodes in a Tair (Redis OSS-compatible) cluster instance, such as the specifications and the maximum number of connections.
         
-        @description > This API operation is applicable only to ApsaraDB for Redis instances that use [cloud disks](https://help.aliyun.com/document_detail/188068.html) and the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
+        @description > This API operation is applicable only to Tair (Redis OSS-compatible) instances that use [cloud disks](https://help.aliyun.com/document_detail/188068.html) and the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
         
         @param request: DescribeClusterMemberInfoRequest
         @return: DescribeClusterMemberInfoResponse
@@ -5110,10 +5490,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeDBInstanceNetInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeDBInstanceNetInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeDBInstanceNetInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbinstance_net_info_with_options_async(
         self,
@@ -5155,10 +5541,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeDBInstanceNetInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeDBInstanceNetInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeDBInstanceNetInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbinstance_net_info(
         self,
@@ -5226,10 +5618,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeDBNodeDirectVipInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeDBNodeDirectVipInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeDBNodeDirectVipInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbnode_direct_vip_info_with_options_async(
         self,
@@ -5271,10 +5669,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeDBNodeDirectVipInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeDBNodeDirectVipInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeDBNodeDirectVipInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbnode_direct_vip_info(
         self,
@@ -5312,9 +5716,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse:
         """
-        @summary Queries the information of an ApsaraDB for Redis instance deployed in a dedicated cluster.
+        @summary Queries the information of Tair (Redis OSS-compatible) instances deployed in a dedicated cluster.
         
-        @description > If you want to query the information about ApsaraDB for Redis instances that are not deployed in a dedicated cluster, call the [DescribeInstanceAttribute](https://help.aliyun.com/document_detail/60996.html) operation.
+        @description > If you want to query the information about Tair (Redis OSS-compatible) instances that are not deployed in a dedicated cluster, call the [DescribeInstanceAttribute](https://help.aliyun.com/document_detail/473779.html) operation.
         
         @param request: DescribeDedicatedClusterInstanceListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5368,10 +5772,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dedicated_cluster_instance_list_with_options_async(
         self,
@@ -5379,9 +5789,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse:
         """
-        @summary Queries the information of an ApsaraDB for Redis instance deployed in a dedicated cluster.
+        @summary Queries the information of Tair (Redis OSS-compatible) instances deployed in a dedicated cluster.
         
-        @description > If you want to query the information about ApsaraDB for Redis instances that are not deployed in a dedicated cluster, call the [DescribeInstanceAttribute](https://help.aliyun.com/document_detail/60996.html) operation.
+        @description > If you want to query the information about Tair (Redis OSS-compatible) instances that are not deployed in a dedicated cluster, call the [DescribeInstanceAttribute](https://help.aliyun.com/document_detail/473779.html) operation.
         
         @param request: DescribeDedicatedClusterInstanceListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5435,19 +5845,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dedicated_cluster_instance_list(
         self,
         request: r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListRequest,
     ) -> r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse:
         """
-        @summary Queries the information of an ApsaraDB for Redis instance deployed in a dedicated cluster.
+        @summary Queries the information of Tair (Redis OSS-compatible) instances deployed in a dedicated cluster.
         
-        @description > If you want to query the information about ApsaraDB for Redis instances that are not deployed in a dedicated cluster, call the [DescribeInstanceAttribute](https://help.aliyun.com/document_detail/60996.html) operation.
+        @description > If you want to query the information about Tair (Redis OSS-compatible) instances that are not deployed in a dedicated cluster, call the [DescribeInstanceAttribute](https://help.aliyun.com/document_detail/473779.html) operation.
         
         @param request: DescribeDedicatedClusterInstanceListRequest
         @return: DescribeDedicatedClusterInstanceListResponse
@@ -5460,9 +5876,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListRequest,
     ) -> r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse:
         """
-        @summary Queries the information of an ApsaraDB for Redis instance deployed in a dedicated cluster.
+        @summary Queries the information of Tair (Redis OSS-compatible) instances deployed in a dedicated cluster.
         
-        @description > If you want to query the information about ApsaraDB for Redis instances that are not deployed in a dedicated cluster, call the [DescribeInstanceAttribute](https://help.aliyun.com/document_detail/60996.html) operation.
+        @description > If you want to query the information about Tair (Redis OSS-compatible) instances that are not deployed in a dedicated cluster, call the [DescribeInstanceAttribute](https://help.aliyun.com/document_detail/473779.html) operation.
         
         @param request: DescribeDedicatedClusterInstanceListRequest
         @return: DescribeDedicatedClusterInstanceListResponse
@@ -5476,9 +5892,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeEncryptionKeyResponse:
         """
-        @summary Queries the details of a Transparent Data Encryption (TDE) custom key for an ApsaraDB for Redis instance.
+        @summary Queries the details of a custom key for a Tair (Redis OSS-compatible) instance to use transparent data encryption (TDE).
         
-        @description Before you call this operation, TDE must be enabled for the ApsaraDB for Redis instance by using a custom key. For more information, see [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html).
+        @description Before you call this operation, TDE must be enabled for the Tair (Redis OSS-compatible) instance by using a custom key. For more information, see [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html).
         > For more information about TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
         @param request: DescribeEncryptionKeyRequest
@@ -5515,10 +5931,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeEncryptionKeyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeEncryptionKeyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeEncryptionKeyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_encryption_key_with_options_async(
         self,
@@ -5526,9 +5948,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeEncryptionKeyResponse:
         """
-        @summary Queries the details of a Transparent Data Encryption (TDE) custom key for an ApsaraDB for Redis instance.
+        @summary Queries the details of a custom key for a Tair (Redis OSS-compatible) instance to use transparent data encryption (TDE).
         
-        @description Before you call this operation, TDE must be enabled for the ApsaraDB for Redis instance by using a custom key. For more information, see [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html).
+        @description Before you call this operation, TDE must be enabled for the Tair (Redis OSS-compatible) instance by using a custom key. For more information, see [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html).
         > For more information about TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
         @param request: DescribeEncryptionKeyRequest
@@ -5565,19 +5987,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeEncryptionKeyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeEncryptionKeyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeEncryptionKeyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_encryption_key(
         self,
         request: r_kvstore_20150101_models.DescribeEncryptionKeyRequest,
     ) -> r_kvstore_20150101_models.DescribeEncryptionKeyResponse:
         """
-        @summary Queries the details of a Transparent Data Encryption (TDE) custom key for an ApsaraDB for Redis instance.
+        @summary Queries the details of a custom key for a Tair (Redis OSS-compatible) instance to use transparent data encryption (TDE).
         
-        @description Before you call this operation, TDE must be enabled for the ApsaraDB for Redis instance by using a custom key. For more information, see [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html).
+        @description Before you call this operation, TDE must be enabled for the Tair (Redis OSS-compatible) instance by using a custom key. For more information, see [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html).
         > For more information about TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
         @param request: DescribeEncryptionKeyRequest
@@ -5591,9 +6019,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeEncryptionKeyRequest,
     ) -> r_kvstore_20150101_models.DescribeEncryptionKeyResponse:
         """
-        @summary Queries the details of a Transparent Data Encryption (TDE) custom key for an ApsaraDB for Redis instance.
+        @summary Queries the details of a custom key for a Tair (Redis OSS-compatible) instance to use transparent data encryption (TDE).
         
-        @description Before you call this operation, TDE must be enabled for the ApsaraDB for Redis instance by using a custom key. For more information, see [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html).
+        @description Before you call this operation, TDE must be enabled for the Tair (Redis OSS-compatible) instance by using a custom key. For more information, see [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html).
         > For more information about TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
         @param request: DescribeEncryptionKeyRequest
@@ -5608,9 +6036,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeEncryptionKeyListResponse:
         """
-        @summary Queries the custom keys used by an ApsaraDB for Redis instance.
+        @summary Queries a list of custom keys used by Tair (Redis OSS-compatible) instances.
         
-        @description    You can specify a custom key when you call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service (KMS).
+        @description    You can specify a custom key when you call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service (KMS).
         For more information about TDE and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
         @param request: DescribeEncryptionKeyListRequest
@@ -5645,10 +6073,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeEncryptionKeyListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeEncryptionKeyListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeEncryptionKeyListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_encryption_key_list_with_options_async(
         self,
@@ -5656,9 +6090,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeEncryptionKeyListResponse:
         """
-        @summary Queries the custom keys used by an ApsaraDB for Redis instance.
+        @summary Queries a list of custom keys used by Tair (Redis OSS-compatible) instances.
         
-        @description    You can specify a custom key when you call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service (KMS).
+        @description    You can specify a custom key when you call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service (KMS).
         For more information about TDE and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
         @param request: DescribeEncryptionKeyListRequest
@@ -5693,19 +6127,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeEncryptionKeyListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeEncryptionKeyListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeEncryptionKeyListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_encryption_key_list(
         self,
         request: r_kvstore_20150101_models.DescribeEncryptionKeyListRequest,
     ) -> r_kvstore_20150101_models.DescribeEncryptionKeyListResponse:
         """
-        @summary Queries the custom keys used by an ApsaraDB for Redis instance.
+        @summary Queries a list of custom keys used by Tair (Redis OSS-compatible) instances.
         
-        @description    You can specify a custom key when you call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service (KMS).
+        @description    You can specify a custom key when you call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service (KMS).
         For more information about TDE and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
         @param request: DescribeEncryptionKeyListRequest
@@ -5719,9 +6159,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeEncryptionKeyListRequest,
     ) -> r_kvstore_20150101_models.DescribeEncryptionKeyListResponse:
         """
-        @summary Queries the custom keys used by an ApsaraDB for Redis instance.
+        @summary Queries a list of custom keys used by Tair (Redis OSS-compatible) instances.
         
-        @description    You can specify a custom key when you call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service (KMS).
+        @description    You can specify a custom key when you call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service (KMS).
         For more information about TDE and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
         @param request: DescribeEncryptionKeyListRequest
@@ -5736,7 +6176,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeEngineVersionResponse:
         """
-        @summary Queries the major version and minor version of an ApsaraDB for Redis instance and the release notes for minor versions.
+        @summary Queries the major version and minor version of a Tair (Redis OSS-compatible) instance and the release notes for minor versions.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeEngineVersion\\&type=RPC\\&version=2015-01-01)
@@ -5773,10 +6213,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeEngineVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeEngineVersionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeEngineVersionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_engine_version_with_options_async(
         self,
@@ -5784,7 +6230,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeEngineVersionResponse:
         """
-        @summary Queries the major version and minor version of an ApsaraDB for Redis instance and the release notes for minor versions.
+        @summary Queries the major version and minor version of a Tair (Redis OSS-compatible) instance and the release notes for minor versions.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeEngineVersion\\&type=RPC\\&version=2015-01-01)
@@ -5821,17 +6267,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeEngineVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeEngineVersionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeEngineVersionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_engine_version(
         self,
         request: r_kvstore_20150101_models.DescribeEngineVersionRequest,
     ) -> r_kvstore_20150101_models.DescribeEngineVersionResponse:
         """
-        @summary Queries the major version and minor version of an ApsaraDB for Redis instance and the release notes for minor versions.
+        @summary Queries the major version and minor version of a Tair (Redis OSS-compatible) instance and the release notes for minor versions.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeEngineVersion\\&type=RPC\\&version=2015-01-01)
@@ -5847,7 +6299,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeEngineVersionRequest,
     ) -> r_kvstore_20150101_models.DescribeEngineVersionResponse:
         """
-        @summary Queries the major version and minor version of an ApsaraDB for Redis instance and the release notes for minor versions.
+        @summary Queries the major version and minor version of a Tair (Redis OSS-compatible) instance and the release notes for minor versions.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeEngineVersion\\&type=RPC\\&version=2015-01-01)
@@ -5864,7 +6316,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse:
         """
-        @summary Queries the details of a distributed ApsaraDB for Redis instance.
+        @summary Queries the details of a distributed Tair (Redis OSS-compatible) instance.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeGlobalDistributeCache\\&type=RPC\\&version=2015-01-01)
@@ -5907,10 +6359,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_global_distribute_cache_with_options_async(
         self,
@@ -5918,7 +6376,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse:
         """
-        @summary Queries the details of a distributed ApsaraDB for Redis instance.
+        @summary Queries the details of a distributed Tair (Redis OSS-compatible) instance.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeGlobalDistributeCache\\&type=RPC\\&version=2015-01-01)
@@ -5961,17 +6419,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_global_distribute_cache(
         self,
         request: r_kvstore_20150101_models.DescribeGlobalDistributeCacheRequest,
     ) -> r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse:
         """
-        @summary Queries the details of a distributed ApsaraDB for Redis instance.
+        @summary Queries the details of a distributed Tair (Redis OSS-compatible) instance.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeGlobalDistributeCache\\&type=RPC\\&version=2015-01-01)
@@ -5987,7 +6451,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeGlobalDistributeCacheRequest,
     ) -> r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse:
         """
-        @summary Queries the details of a distributed ApsaraDB for Redis instance.
+        @summary Queries the details of a distributed Tair (Redis OSS-compatible) instance.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeGlobalDistributeCache\\&type=RPC\\&version=2015-01-01)
@@ -6026,10 +6490,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_global_security_ipgroup_with_options_async(
         self,
@@ -6059,10 +6529,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_global_security_ipgroup(
         self,
@@ -6118,10 +6594,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_global_security_ipgroup_relation_with_options_async(
         self,
@@ -6151,10 +6633,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_global_security_ipgroup_relation(
         self,
@@ -6236,10 +6724,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_history_monitor_values_with_options_async(
         self,
@@ -6295,10 +6789,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_history_monitor_values(
         self,
@@ -6388,10 +6888,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeHistoryTasksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeHistoryTasksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeHistoryTasksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_history_tasks_with_options_async(
         self,
@@ -6451,10 +6957,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeHistoryTasksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeHistoryTasksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeHistoryTasksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_history_tasks(
         self,
@@ -6488,7 +7000,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstanceAttributeResponse:
         """
-        @summary Queries the details of an ApsaraDB for Redis instance.
+        @summary Queries the attribute of Tair (Redis OSS-compatible) instances.
         
         @param request: DescribeInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6522,10 +7034,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeInstanceAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstanceAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstanceAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_instance_attribute_with_options_async(
         self,
@@ -6533,7 +7051,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstanceAttributeResponse:
         """
-        @summary Queries the details of an ApsaraDB for Redis instance.
+        @summary Queries the attribute of Tair (Redis OSS-compatible) instances.
         
         @param request: DescribeInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6567,17 +7085,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeInstanceAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstanceAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstanceAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_instance_attribute(
         self,
         request: r_kvstore_20150101_models.DescribeInstanceAttributeRequest,
     ) -> r_kvstore_20150101_models.DescribeInstanceAttributeResponse:
         """
-        @summary Queries the details of an ApsaraDB for Redis instance.
+        @summary Queries the attribute of Tair (Redis OSS-compatible) instances.
         
         @param request: DescribeInstanceAttributeRequest
         @return: DescribeInstanceAttributeResponse
@@ -6590,7 +7114,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeInstanceAttributeRequest,
     ) -> r_kvstore_20150101_models.DescribeInstanceAttributeResponse:
         """
-        @summary Queries the details of an ApsaraDB for Redis instance.
+        @summary Queries the attribute of Tair (Redis OSS-compatible) instances.
         
         @param request: DescribeInstanceAttributeRequest
         @return: DescribeInstanceAttributeResponse
@@ -6604,7 +7128,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse:
         """
-        @summary Queries whether auto-renewal is enabled for an ApsaraDB for Redis instance.
+        @summary Queries whether auto-renewal is enabled for a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeInstanceAutoRenewalAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6644,10 +7168,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_instance_auto_renewal_attribute_with_options_async(
         self,
@@ -6655,7 +7185,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse:
         """
-        @summary Queries whether auto-renewal is enabled for an ApsaraDB for Redis instance.
+        @summary Queries whether auto-renewal is enabled for a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeInstanceAutoRenewalAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6695,17 +7225,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_instance_auto_renewal_attribute(
         self,
         request: r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeRequest,
     ) -> r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse:
         """
-        @summary Queries whether auto-renewal is enabled for an ApsaraDB for Redis instance.
+        @summary Queries whether auto-renewal is enabled for a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeInstanceAutoRenewalAttributeRequest
         @return: DescribeInstanceAutoRenewalAttributeResponse
@@ -6718,7 +7254,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeRequest,
     ) -> r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse:
         """
-        @summary Queries whether auto-renewal is enabled for an ApsaraDB for Redis instance.
+        @summary Queries whether auto-renewal is enabled for a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeInstanceAutoRenewalAttributeRequest
         @return: DescribeInstanceAutoRenewalAttributeResponse
@@ -6732,7 +7268,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstanceConfigResponse:
         """
-        @summary Queries the parameter settings of an ApsaraDB for Redis instance.
+        @summary Queries the default parameter configurations of a Tair (Redis OSS-compatible) instance.
         
         @description This operation is available only for instances that use cloud disks.
         > You can call the [DescribeParameters](https://help.aliyun.com/document_detail/473847.html) operation to query the parameter settings of instances that use local disks.
@@ -6769,10 +7305,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeInstanceConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstanceConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstanceConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_instance_config_with_options_async(
         self,
@@ -6780,7 +7322,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstanceConfigResponse:
         """
-        @summary Queries the parameter settings of an ApsaraDB for Redis instance.
+        @summary Queries the default parameter configurations of a Tair (Redis OSS-compatible) instance.
         
         @description This operation is available only for instances that use cloud disks.
         > You can call the [DescribeParameters](https://help.aliyun.com/document_detail/473847.html) operation to query the parameter settings of instances that use local disks.
@@ -6817,17 +7359,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeInstanceConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstanceConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstanceConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_instance_config(
         self,
         request: r_kvstore_20150101_models.DescribeInstanceConfigRequest,
     ) -> r_kvstore_20150101_models.DescribeInstanceConfigResponse:
         """
-        @summary Queries the parameter settings of an ApsaraDB for Redis instance.
+        @summary Queries the default parameter configurations of a Tair (Redis OSS-compatible) instance.
         
         @description This operation is available only for instances that use cloud disks.
         > You can call the [DescribeParameters](https://help.aliyun.com/document_detail/473847.html) operation to query the parameter settings of instances that use local disks.
@@ -6843,7 +7391,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeInstanceConfigRequest,
     ) -> r_kvstore_20150101_models.DescribeInstanceConfigResponse:
         """
-        @summary Queries the parameter settings of an ApsaraDB for Redis instance.
+        @summary Queries the default parameter configurations of a Tair (Redis OSS-compatible) instance.
         
         @description This operation is available only for instances that use cloud disks.
         > You can call the [DescribeParameters](https://help.aliyun.com/document_detail/473847.html) operation to query the parameter settings of instances that use local disks.
@@ -6862,10 +7410,10 @@ class Client(OpenApiClient):
         """
         @summary Queries whether TLS (SSL) encryption is enabled for an instance.
         
-        @description SSL encryption is supported for ApsaraDB for Redis 2.8 standard master-replica instances, ApsaraDB for Redis 2.8 master-replica cluster instances, and ApsaraDB for Redis 4.0 master-replica cluster instances. You can enable SSL encryption to enhance data transmission security.
-        You can use one of the following methods to enable or disable SSL encryption or update the SSL certificate for an ApsaraDB for Redis instance:
-        Call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/96194.html) operation.
-        Enable or disable SSL encryption or update the SSL certificate in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
+        @description SSL encryption is supported for Tair (Redis OSS-compatible) 2.8 standard master-replica instances, Tair (Redis OSS-compatible) 2.8 master-replica cluster instances, and Tair (Redis OSS-compatible) 4.0 master-replica cluster instances. You can enable SSL encryption to enhance data transmission security.
+        You can use one of the following methods to enable or disable SSL encryption or update the SSL certificate for a Tair (Redis OSS-compatible) instance:
+        Call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/473838.html) operation.
+        Enable or disable SSL encryption or update the SSL certificate in the Tair (Redis OSS-compatible) console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
         > After SSL encryption is enabled, the instance may respond slower.
         
         @param request: DescribeInstanceSSLRequest
@@ -6900,10 +7448,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeInstanceSSLResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstanceSSLResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstanceSSLResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_instance_sslwith_options_async(
         self,
@@ -6913,10 +7467,10 @@ class Client(OpenApiClient):
         """
         @summary Queries whether TLS (SSL) encryption is enabled for an instance.
         
-        @description SSL encryption is supported for ApsaraDB for Redis 2.8 standard master-replica instances, ApsaraDB for Redis 2.8 master-replica cluster instances, and ApsaraDB for Redis 4.0 master-replica cluster instances. You can enable SSL encryption to enhance data transmission security.
-        You can use one of the following methods to enable or disable SSL encryption or update the SSL certificate for an ApsaraDB for Redis instance:
-        Call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/96194.html) operation.
-        Enable or disable SSL encryption or update the SSL certificate in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
+        @description SSL encryption is supported for Tair (Redis OSS-compatible) 2.8 standard master-replica instances, Tair (Redis OSS-compatible) 2.8 master-replica cluster instances, and Tair (Redis OSS-compatible) 4.0 master-replica cluster instances. You can enable SSL encryption to enhance data transmission security.
+        You can use one of the following methods to enable or disable SSL encryption or update the SSL certificate for a Tair (Redis OSS-compatible) instance:
+        Call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/473838.html) operation.
+        Enable or disable SSL encryption or update the SSL certificate in the Tair (Redis OSS-compatible) console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
         > After SSL encryption is enabled, the instance may respond slower.
         
         @param request: DescribeInstanceSSLRequest
@@ -6951,10 +7505,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeInstanceSSLResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstanceSSLResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstanceSSLResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_instance_ssl(
         self,
@@ -6963,10 +7523,10 @@ class Client(OpenApiClient):
         """
         @summary Queries whether TLS (SSL) encryption is enabled for an instance.
         
-        @description SSL encryption is supported for ApsaraDB for Redis 2.8 standard master-replica instances, ApsaraDB for Redis 2.8 master-replica cluster instances, and ApsaraDB for Redis 4.0 master-replica cluster instances. You can enable SSL encryption to enhance data transmission security.
-        You can use one of the following methods to enable or disable SSL encryption or update the SSL certificate for an ApsaraDB for Redis instance:
-        Call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/96194.html) operation.
-        Enable or disable SSL encryption or update the SSL certificate in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
+        @description SSL encryption is supported for Tair (Redis OSS-compatible) 2.8 standard master-replica instances, Tair (Redis OSS-compatible) 2.8 master-replica cluster instances, and Tair (Redis OSS-compatible) 4.0 master-replica cluster instances. You can enable SSL encryption to enhance data transmission security.
+        You can use one of the following methods to enable or disable SSL encryption or update the SSL certificate for a Tair (Redis OSS-compatible) instance:
+        Call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/473838.html) operation.
+        Enable or disable SSL encryption or update the SSL certificate in the Tair (Redis OSS-compatible) console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
         > After SSL encryption is enabled, the instance may respond slower.
         
         @param request: DescribeInstanceSSLRequest
@@ -6982,10 +7542,10 @@ class Client(OpenApiClient):
         """
         @summary Queries whether TLS (SSL) encryption is enabled for an instance.
         
-        @description SSL encryption is supported for ApsaraDB for Redis 2.8 standard master-replica instances, ApsaraDB for Redis 2.8 master-replica cluster instances, and ApsaraDB for Redis 4.0 master-replica cluster instances. You can enable SSL encryption to enhance data transmission security.
-        You can use one of the following methods to enable or disable SSL encryption or update the SSL certificate for an ApsaraDB for Redis instance:
-        Call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/96194.html) operation.
-        Enable or disable SSL encryption or update the SSL certificate in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
+        @description SSL encryption is supported for Tair (Redis OSS-compatible) 2.8 standard master-replica instances, Tair (Redis OSS-compatible) 2.8 master-replica cluster instances, and Tair (Redis OSS-compatible) 4.0 master-replica cluster instances. You can enable SSL encryption to enhance data transmission security.
+        You can use one of the following methods to enable or disable SSL encryption or update the SSL certificate for a Tair (Redis OSS-compatible) instance:
+        Call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/473838.html) operation.
+        Enable or disable SSL encryption or update the SSL certificate in the Tair (Redis OSS-compatible) console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
         > After SSL encryption is enabled, the instance may respond slower.
         
         @param request: DescribeInstanceSSLRequest
@@ -7000,10 +7560,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstanceTDEStatusResponse:
         """
-        @summary Queries whether transparent data encryption (TDE) is enabled for an ApsaraDB for Redis instance.
+        @summary Queries whether transparent data encryption (TDE) is enabled for a Tair (Redis OSS-compatible) instance.
         
         @description For more information about TDE and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
-        >  You can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) to enable or disable TDE.
+        >  You can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html) to enable or disable TDE.
         
         @param request: DescribeInstanceTDEStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7037,10 +7597,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeInstanceTDEStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstanceTDEStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstanceTDEStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_instance_tdestatus_with_options_async(
         self,
@@ -7048,10 +7614,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstanceTDEStatusResponse:
         """
-        @summary Queries whether transparent data encryption (TDE) is enabled for an ApsaraDB for Redis instance.
+        @summary Queries whether transparent data encryption (TDE) is enabled for a Tair (Redis OSS-compatible) instance.
         
         @description For more information about TDE and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
-        >  You can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) to enable or disable TDE.
+        >  You can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html) to enable or disable TDE.
         
         @param request: DescribeInstanceTDEStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7085,20 +7651,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeInstanceTDEStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstanceTDEStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstanceTDEStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_instance_tdestatus(
         self,
         request: r_kvstore_20150101_models.DescribeInstanceTDEStatusRequest,
     ) -> r_kvstore_20150101_models.DescribeInstanceTDEStatusResponse:
         """
-        @summary Queries whether transparent data encryption (TDE) is enabled for an ApsaraDB for Redis instance.
+        @summary Queries whether transparent data encryption (TDE) is enabled for a Tair (Redis OSS-compatible) instance.
         
         @description For more information about TDE and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
-        >  You can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) to enable or disable TDE.
+        >  You can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html) to enable or disable TDE.
         
         @param request: DescribeInstanceTDEStatusRequest
         @return: DescribeInstanceTDEStatusResponse
@@ -7111,10 +7683,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeInstanceTDEStatusRequest,
     ) -> r_kvstore_20150101_models.DescribeInstanceTDEStatusResponse:
         """
-        @summary Queries whether transparent data encryption (TDE) is enabled for an ApsaraDB for Redis instance.
+        @summary Queries whether transparent data encryption (TDE) is enabled for a Tair (Redis OSS-compatible) instance.
         
         @description For more information about TDE and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
-        >  You can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) to enable or disable TDE.
+        >  You can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html) to enable or disable TDE.
         
         @param request: DescribeInstanceTDEStatusRequest
         @return: DescribeInstanceTDEStatusResponse
@@ -7128,7 +7700,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstancesResponse:
         """
-        @summary Queries the information about one or more ApsaraDB for Redis instances.
+        @summary Queries the information about one or more Tair (Redis OSS-compatible) instances.
         
         @param request: DescribeInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7202,10 +7774,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_instances_with_options_async(
         self,
@@ -7213,7 +7791,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstancesResponse:
         """
-        @summary Queries the information about one or more ApsaraDB for Redis instances.
+        @summary Queries the information about one or more Tair (Redis OSS-compatible) instances.
         
         @param request: DescribeInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7287,17 +7865,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_instances(
         self,
         request: r_kvstore_20150101_models.DescribeInstancesRequest,
     ) -> r_kvstore_20150101_models.DescribeInstancesResponse:
         """
-        @summary Queries the information about one or more ApsaraDB for Redis instances.
+        @summary Queries the information about one or more Tair (Redis OSS-compatible) instances.
         
         @param request: DescribeInstancesRequest
         @return: DescribeInstancesResponse
@@ -7310,7 +7894,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeInstancesRequest,
     ) -> r_kvstore_20150101_models.DescribeInstancesResponse:
         """
-        @summary Queries the information about one or more ApsaraDB for Redis instances.
+        @summary Queries the information about one or more Tair (Redis OSS-compatible) instances.
         
         @param request: DescribeInstancesRequest
         @return: DescribeInstancesResponse
@@ -7324,7 +7908,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstancesOverviewResponse:
         """
-        @summary Queries the overview information of one or more ApsaraDB for Redis instances.
+        @summary Queries the overview information of one or more Tair (Redis OSS-compatible) instances.
         
         @description If you do not specify the InstanceIds parameter when you call this operation, the overview information of all instances is returned.
         > This operation returns non-paged results.
@@ -7391,10 +7975,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeInstancesOverviewResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstancesOverviewResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstancesOverviewResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_instances_overview_with_options_async(
         self,
@@ -7402,7 +7992,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstancesOverviewResponse:
         """
-        @summary Queries the overview information of one or more ApsaraDB for Redis instances.
+        @summary Queries the overview information of one or more Tair (Redis OSS-compatible) instances.
         
         @description If you do not specify the InstanceIds parameter when you call this operation, the overview information of all instances is returned.
         > This operation returns non-paged results.
@@ -7469,17 +8059,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeInstancesOverviewResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstancesOverviewResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeInstancesOverviewResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_instances_overview(
         self,
         request: r_kvstore_20150101_models.DescribeInstancesOverviewRequest,
     ) -> r_kvstore_20150101_models.DescribeInstancesOverviewResponse:
         """
-        @summary Queries the overview information of one or more ApsaraDB for Redis instances.
+        @summary Queries the overview information of one or more Tair (Redis OSS-compatible) instances.
         
         @description If you do not specify the InstanceIds parameter when you call this operation, the overview information of all instances is returned.
         > This operation returns non-paged results.
@@ -7495,7 +8091,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeInstancesOverviewRequest,
     ) -> r_kvstore_20150101_models.DescribeInstancesOverviewResponse:
         """
-        @summary Queries the overview information of one or more ApsaraDB for Redis instances.
+        @summary Queries the overview information of one or more Tair (Redis OSS-compatible) instances.
         
         @description If you do not specify the InstanceIds parameter when you call this operation, the overview information of all instances is returned.
         > This operation returns non-paged results.
@@ -7512,9 +8108,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeIntranetAttributeResponse:
         """
-        @summary Queries the internal bandwidth of an ApsaraDB for Redis instance. If you have purchased extra internal bandwidth, the expiration time of the purchased bandwidth is also returned.
+        @summary Queries the internal bandwidth of a Tair (Redis OSS-compatible) instance.
         
-        @description You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to increase the internal bandwidth of an instance.
+        @description You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html) operation to increase the internal bandwidth of an instance.
         
         @param request: DescribeIntranetAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7550,10 +8146,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeIntranetAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeIntranetAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeIntranetAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_intranet_attribute_with_options_async(
         self,
@@ -7561,9 +8163,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeIntranetAttributeResponse:
         """
-        @summary Queries the internal bandwidth of an ApsaraDB for Redis instance. If you have purchased extra internal bandwidth, the expiration time of the purchased bandwidth is also returned.
+        @summary Queries the internal bandwidth of a Tair (Redis OSS-compatible) instance.
         
-        @description You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to increase the internal bandwidth of an instance.
+        @description You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html) operation to increase the internal bandwidth of an instance.
         
         @param request: DescribeIntranetAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7599,19 +8201,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeIntranetAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeIntranetAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeIntranetAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_intranet_attribute(
         self,
         request: r_kvstore_20150101_models.DescribeIntranetAttributeRequest,
     ) -> r_kvstore_20150101_models.DescribeIntranetAttributeResponse:
         """
-        @summary Queries the internal bandwidth of an ApsaraDB for Redis instance. If you have purchased extra internal bandwidth, the expiration time of the purchased bandwidth is also returned.
+        @summary Queries the internal bandwidth of a Tair (Redis OSS-compatible) instance.
         
-        @description You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to increase the internal bandwidth of an instance.
+        @description You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html) operation to increase the internal bandwidth of an instance.
         
         @param request: DescribeIntranetAttributeRequest
         @return: DescribeIntranetAttributeResponse
@@ -7624,9 +8232,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeIntranetAttributeRequest,
     ) -> r_kvstore_20150101_models.DescribeIntranetAttributeResponse:
         """
-        @summary Queries the internal bandwidth of an ApsaraDB for Redis instance. If you have purchased extra internal bandwidth, the expiration time of the purchased bandwidth is also returned.
+        @summary Queries the internal bandwidth of a Tair (Redis OSS-compatible) instance.
         
-        @description You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to increase the internal bandwidth of an instance.
+        @description You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html) operation to increase the internal bandwidth of an instance.
         
         @param request: DescribeIntranetAttributeRequest
         @return: DescribeIntranetAttributeResponse
@@ -7640,7 +8248,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse:
         """
-        @summary Queries the logical topology of an ApsaraDB for Redis instance.
+        @summary Queries the logical topology of a Tair (Redis OSS-compatible) instance.
         
         @description This parameter is supported only for cluster and read/write splitting instances.
         
@@ -7676,10 +8284,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_logic_instance_topology_with_options_async(
         self,
@@ -7687,7 +8301,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse:
         """
-        @summary Queries the logical topology of an ApsaraDB for Redis instance.
+        @summary Queries the logical topology of a Tair (Redis OSS-compatible) instance.
         
         @description This parameter is supported only for cluster and read/write splitting instances.
         
@@ -7723,17 +8337,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_logic_instance_topology(
         self,
         request: r_kvstore_20150101_models.DescribeLogicInstanceTopologyRequest,
     ) -> r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse:
         """
-        @summary Queries the logical topology of an ApsaraDB for Redis instance.
+        @summary Queries the logical topology of a Tair (Redis OSS-compatible) instance.
         
         @description This parameter is supported only for cluster and read/write splitting instances.
         
@@ -7748,7 +8368,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeLogicInstanceTopologyRequest,
     ) -> r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse:
         """
-        @summary Queries the logical topology of an ApsaraDB for Redis instance.
+        @summary Queries the logical topology of a Tair (Redis OSS-compatible) instance.
         
         @description This parameter is supported only for cluster and read/write splitting instances.
         
@@ -7799,10 +8419,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeMonitorItemsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeMonitorItemsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeMonitorItemsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_monitor_items_with_options_async(
         self,
@@ -7845,10 +8471,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeMonitorItemsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeMonitorItemsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeMonitorItemsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_monitor_items(
         self,
@@ -7924,10 +8556,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeParameterGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_parameter_group_with_options_async(
         self,
@@ -7971,10 +8609,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeParameterGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_parameter_group(
         self,
@@ -8046,10 +8690,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_parameter_group_support_param_with_options_async(
         self,
@@ -8095,10 +8745,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_parameter_group_support_param(
         self,
@@ -8132,7 +8788,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse:
         """
-        @summary 查询参数模板支持设置的参数列表
+        @summary Queries the information about the parameters that can be configured in a parameter template, such as the default values, value ranges, and descriptions.
         
         @param request: DescribeParameterGroupTemplateListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8154,10 +8810,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_parameter_group_template_list_with_options_async(
         self,
@@ -8165,7 +8827,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse:
         """
-        @summary 查询参数模板支持设置的参数列表
+        @summary Queries the information about the parameters that can be configured in a parameter template, such as the default values, value ranges, and descriptions.
         
         @param request: DescribeParameterGroupTemplateListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8187,17 +8849,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_parameter_group_template_list(
         self,
         request: r_kvstore_20150101_models.DescribeParameterGroupTemplateListRequest,
     ) -> r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse:
         """
-        @summary 查询参数模板支持设置的参数列表
+        @summary Queries the information about the parameters that can be configured in a parameter template, such as the default values, value ranges, and descriptions.
         
         @param request: DescribeParameterGroupTemplateListRequest
         @return: DescribeParameterGroupTemplateListResponse
@@ -8210,7 +8878,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeParameterGroupTemplateListRequest,
     ) -> r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse:
         """
-        @summary 查询参数模板支持设置的参数列表
+        @summary Queries the information about the parameters that can be configured in a parameter template, such as the default values, value ranges, and descriptions.
         
         @param request: DescribeParameterGroupTemplateListRequest
         @return: DescribeParameterGroupTemplateListResponse
@@ -8260,10 +8928,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeParameterGroupsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterGroupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterGroupsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_parameter_groups_with_options_async(
         self,
@@ -8307,10 +8981,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeParameterGroupsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterGroupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterGroupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_parameter_groups(
         self,
@@ -8344,7 +9024,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse:
         """
-        @summary Queries the parameter modification history of a Tair or ApsaraDB for Redis instance.
+        @summary Queries the parameter modification history of a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeParameterModificationHistoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8386,10 +9066,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_parameter_modification_history_with_options_async(
         self,
@@ -8397,7 +9083,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse:
         """
-        @summary Queries the parameter modification history of a Tair or ApsaraDB for Redis instance.
+        @summary Queries the parameter modification history of a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeParameterModificationHistoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8439,17 +9125,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_parameter_modification_history(
         self,
         request: r_kvstore_20150101_models.DescribeParameterModificationHistoryRequest,
     ) -> r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse:
         """
-        @summary Queries the parameter modification history of a Tair or ApsaraDB for Redis instance.
+        @summary Queries the parameter modification history of a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeParameterModificationHistoryRequest
         @return: DescribeParameterModificationHistoryResponse
@@ -8462,7 +9154,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeParameterModificationHistoryRequest,
     ) -> r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse:
         """
-        @summary Queries the parameter modification history of a Tair or ApsaraDB for Redis instance.
+        @summary Queries the parameter modification history of a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeParameterModificationHistoryRequest
         @return: DescribeParameterModificationHistoryResponse
@@ -8476,9 +9168,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeParameterTemplatesResponse:
         """
-        @summary Queries the parameters and their default values that are supported by ApsaraDB for Redis instances of different architectures and major versions.
+        @summary Queries the parameters and their default values that are supported by Tair (Redis OSS-compatible) instances of different architectures and major versions.
         
-        @description After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/61113.html) operation to reconfigure the parameters of the instance.
+        @description After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to reconfigure the parameters of the instance.
         
         @param request: DescribeParameterTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8520,10 +9212,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeParameterTemplatesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterTemplatesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterTemplatesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_parameter_templates_with_options_async(
         self,
@@ -8531,9 +9229,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeParameterTemplatesResponse:
         """
-        @summary Queries the parameters and their default values that are supported by ApsaraDB for Redis instances of different architectures and major versions.
+        @summary Queries the parameters and their default values that are supported by Tair (Redis OSS-compatible) instances of different architectures and major versions.
         
-        @description After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/61113.html) operation to reconfigure the parameters of the instance.
+        @description After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to reconfigure the parameters of the instance.
         
         @param request: DescribeParameterTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8575,19 +9273,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeParameterTemplatesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterTemplatesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParameterTemplatesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_parameter_templates(
         self,
         request: r_kvstore_20150101_models.DescribeParameterTemplatesRequest,
     ) -> r_kvstore_20150101_models.DescribeParameterTemplatesResponse:
         """
-        @summary Queries the parameters and their default values that are supported by ApsaraDB for Redis instances of different architectures and major versions.
+        @summary Queries the parameters and their default values that are supported by Tair (Redis OSS-compatible) instances of different architectures and major versions.
         
-        @description After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/61113.html) operation to reconfigure the parameters of the instance.
+        @description After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to reconfigure the parameters of the instance.
         
         @param request: DescribeParameterTemplatesRequest
         @return: DescribeParameterTemplatesResponse
@@ -8600,9 +9304,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeParameterTemplatesRequest,
     ) -> r_kvstore_20150101_models.DescribeParameterTemplatesResponse:
         """
-        @summary Queries the parameters and their default values that are supported by ApsaraDB for Redis instances of different architectures and major versions.
+        @summary Queries the parameters and their default values that are supported by Tair (Redis OSS-compatible) instances of different architectures and major versions.
         
-        @description After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/61113.html) operation to reconfigure the parameters of the instance.
+        @description After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to reconfigure the parameters of the instance.
         
         @param request: DescribeParameterTemplatesRequest
         @return: DescribeParameterTemplatesResponse
@@ -8616,10 +9320,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeParametersResponse:
         """
-        @summary Queries the configuration parameters and running parameters of an ApsaraDB for Redis instance.
+        @summary Queries the configuration parameters and running parameters of a Tair (Redis OSS-compatible) instance.
         
-        @description This operation is available only for instances that use local disks.
-        > You can call the [DescribeInstanceConfig](https://help.aliyun.com/document_detail/473846.html) operation to query the parameter settings of instances that use cloud disks.
+        @description This operation is applicable only to classic instances.
+        >  If the instance is deployed in cloud-native mode, you can use the [DescribeInstanceConfig](https://help.aliyun.com/document_detail/473846.html) operation to query the configuration and operational parameters of the instance.
         
         @param request: DescribeParametersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8657,10 +9361,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeParametersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParametersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParametersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_parameters_with_options_async(
         self,
@@ -8668,10 +9378,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeParametersResponse:
         """
-        @summary Queries the configuration parameters and running parameters of an ApsaraDB for Redis instance.
+        @summary Queries the configuration parameters and running parameters of a Tair (Redis OSS-compatible) instance.
         
-        @description This operation is available only for instances that use local disks.
-        > You can call the [DescribeInstanceConfig](https://help.aliyun.com/document_detail/473846.html) operation to query the parameter settings of instances that use cloud disks.
+        @description This operation is applicable only to classic instances.
+        >  If the instance is deployed in cloud-native mode, you can use the [DescribeInstanceConfig](https://help.aliyun.com/document_detail/473846.html) operation to query the configuration and operational parameters of the instance.
         
         @param request: DescribeParametersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8709,20 +9419,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeParametersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParametersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeParametersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_parameters(
         self,
         request: r_kvstore_20150101_models.DescribeParametersRequest,
     ) -> r_kvstore_20150101_models.DescribeParametersResponse:
         """
-        @summary Queries the configuration parameters and running parameters of an ApsaraDB for Redis instance.
+        @summary Queries the configuration parameters and running parameters of a Tair (Redis OSS-compatible) instance.
         
-        @description This operation is available only for instances that use local disks.
-        > You can call the [DescribeInstanceConfig](https://help.aliyun.com/document_detail/473846.html) operation to query the parameter settings of instances that use cloud disks.
+        @description This operation is applicable only to classic instances.
+        >  If the instance is deployed in cloud-native mode, you can use the [DescribeInstanceConfig](https://help.aliyun.com/document_detail/473846.html) operation to query the configuration and operational parameters of the instance.
         
         @param request: DescribeParametersRequest
         @return: DescribeParametersResponse
@@ -8735,10 +9451,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeParametersRequest,
     ) -> r_kvstore_20150101_models.DescribeParametersResponse:
         """
-        @summary Queries the configuration parameters and running parameters of an ApsaraDB for Redis instance.
+        @summary Queries the configuration parameters and running parameters of a Tair (Redis OSS-compatible) instance.
         
-        @description This operation is available only for instances that use local disks.
-        > You can call the [DescribeInstanceConfig](https://help.aliyun.com/document_detail/473846.html) operation to query the parameter settings of instances that use cloud disks.
+        @description This operation is applicable only to classic instances.
+        >  If the instance is deployed in cloud-native mode, you can use the [DescribeInstanceConfig](https://help.aliyun.com/document_detail/473846.html) operation to query the configuration and operational parameters of the instance.
         
         @param request: DescribeParametersRequest
         @return: DescribeParametersResponse
@@ -8768,6 +9484,8 @@ class Client(OpenApiClient):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.coupon_no):
             query['CouponNo'] = request.coupon_no
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
         if not UtilClient.is_unset(request.force_upgrade):
             query['ForceUpgrade'] = request.force_upgrade
         if not UtilClient.is_unset(request.instance_class):
@@ -8816,10 +9534,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribePriceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribePriceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribePriceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_price_with_options_async(
         self,
@@ -8843,6 +9567,8 @@ class Client(OpenApiClient):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.coupon_no):
             query['CouponNo'] = request.coupon_no
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
         if not UtilClient.is_unset(request.force_upgrade):
             query['ForceUpgrade'] = request.force_upgrade
         if not UtilClient.is_unset(request.instance_class):
@@ -8891,10 +9617,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribePriceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribePriceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribePriceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_price(
         self,
@@ -8962,10 +9694,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeRegionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeRegionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeRegionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_regions_with_options_async(
         self,
@@ -9007,10 +9745,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeRegionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeRegionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeRegionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_regions(
         self,
@@ -9044,7 +9788,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeRoleZoneInfoResponse:
         """
-        @summary Queries the role, type, minor version, and zone of each node in an ApsaraDB for Redis instance.
+        @summary Queries the role, type, minor version, and zone of each node in a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeRoleZoneInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9084,10 +9828,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeRoleZoneInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeRoleZoneInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeRoleZoneInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_role_zone_info_with_options_async(
         self,
@@ -9095,7 +9845,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeRoleZoneInfoResponse:
         """
-        @summary Queries the role, type, minor version, and zone of each node in an ApsaraDB for Redis instance.
+        @summary Queries the role, type, minor version, and zone of each node in a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeRoleZoneInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9135,17 +9885,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeRoleZoneInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeRoleZoneInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeRoleZoneInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_role_zone_info(
         self,
         request: r_kvstore_20150101_models.DescribeRoleZoneInfoRequest,
     ) -> r_kvstore_20150101_models.DescribeRoleZoneInfoResponse:
         """
-        @summary Queries the role, type, minor version, and zone of each node in an ApsaraDB for Redis instance.
+        @summary Queries the role, type, minor version, and zone of each node in a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeRoleZoneInfoRequest
         @return: DescribeRoleZoneInfoResponse
@@ -9158,7 +9914,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeRoleZoneInfoRequest,
     ) -> r_kvstore_20150101_models.DescribeRoleZoneInfoResponse:
         """
-        @summary Queries the role, type, minor version, and zone of each node in an ApsaraDB for Redis instance.
+        @summary Queries the role, type, minor version, and zone of each node in a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeRoleZoneInfoRequest
         @return: DescribeRoleZoneInfoResponse
@@ -9172,9 +9928,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeRunningLogRecordsResponse:
         """
-        @summary Queries the active logs of an ApsaraDB for Redis instance.
+        @summary Queries the operational logs of a Tair (Redis OSS-compatible) instance.
         
-        @description For more information about how to view the operational logs of an instance in the ApsaraDB for Redis console, see [View active logs](https://help.aliyun.com/document_detail/101713.html).
+        @description For more information about how to view the operational logs of an instance in the Tair (Redis OSS-compatible) console, see [View active logs](https://help.aliyun.com/document_detail/101713.html).
         This operation can be called up to 100 times per minute.
         
         @param request: DescribeRunningLogRecordsRequest
@@ -9231,10 +9987,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeRunningLogRecordsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeRunningLogRecordsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeRunningLogRecordsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_running_log_records_with_options_async(
         self,
@@ -9242,9 +10004,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeRunningLogRecordsResponse:
         """
-        @summary Queries the active logs of an ApsaraDB for Redis instance.
+        @summary Queries the operational logs of a Tair (Redis OSS-compatible) instance.
         
-        @description For more information about how to view the operational logs of an instance in the ApsaraDB for Redis console, see [View active logs](https://help.aliyun.com/document_detail/101713.html).
+        @description For more information about how to view the operational logs of an instance in the Tair (Redis OSS-compatible) console, see [View active logs](https://help.aliyun.com/document_detail/101713.html).
         This operation can be called up to 100 times per minute.
         
         @param request: DescribeRunningLogRecordsRequest
@@ -9301,19 +10063,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeRunningLogRecordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeRunningLogRecordsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeRunningLogRecordsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_running_log_records(
         self,
         request: r_kvstore_20150101_models.DescribeRunningLogRecordsRequest,
     ) -> r_kvstore_20150101_models.DescribeRunningLogRecordsResponse:
         """
-        @summary Queries the active logs of an ApsaraDB for Redis instance.
+        @summary Queries the operational logs of a Tair (Redis OSS-compatible) instance.
         
-        @description For more information about how to view the operational logs of an instance in the ApsaraDB for Redis console, see [View active logs](https://help.aliyun.com/document_detail/101713.html).
+        @description For more information about how to view the operational logs of an instance in the Tair (Redis OSS-compatible) console, see [View active logs](https://help.aliyun.com/document_detail/101713.html).
         This operation can be called up to 100 times per minute.
         
         @param request: DescribeRunningLogRecordsRequest
@@ -9327,9 +10095,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeRunningLogRecordsRequest,
     ) -> r_kvstore_20150101_models.DescribeRunningLogRecordsResponse:
         """
-        @summary Queries the active logs of an ApsaraDB for Redis instance.
+        @summary Queries the operational logs of a Tair (Redis OSS-compatible) instance.
         
-        @description For more information about how to view the operational logs of an instance in the ApsaraDB for Redis console, see [View active logs](https://help.aliyun.com/document_detail/101713.html).
+        @description For more information about how to view the operational logs of an instance in the Tair (Redis OSS-compatible) console, see [View active logs](https://help.aliyun.com/document_detail/101713.html).
         This operation can be called up to 100 times per minute.
         
         @param request: DescribeRunningLogRecordsRequest
@@ -9378,10 +10146,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_security_group_configuration_with_options_async(
         self,
@@ -9423,10 +10197,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_security_group_configuration(
         self,
@@ -9494,10 +10274,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeSecurityIpsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeSecurityIpsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeSecurityIpsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_security_ips_with_options_async(
         self,
@@ -9539,10 +10325,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeSecurityIpsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeSecurityIpsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeSecurityIpsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_security_ips(
         self,
@@ -9576,9 +10368,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeSlowLogRecordsResponse:
         """
-        @summary Queries the slow logs of an ApsaraDB for Redis instance that are generated within a specified period of time.
+        @summary Queries the slow query logs of a Tair (Redis OSS-compatible) instance that are generated within a specified period of time.
         
-        @description You can also query slow logs in the ApsaraDB for Redis console. For more information, see [Query slow logs of an instance](https://help.aliyun.com/document_detail/95874.html). This operation can be called up to 100 times per minute.
+        @description You can also query slow logs in the Tair (Redis OSS-compatible) console. For more information, see [Query slow logs of an instance](https://help.aliyun.com/document_detail/95874.html). This operation can be called up to 100 times per minute.
         
         @param request: DescribeSlowLogRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9632,10 +10424,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeSlowLogRecordsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeSlowLogRecordsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeSlowLogRecordsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_slow_log_records_with_options_async(
         self,
@@ -9643,9 +10441,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeSlowLogRecordsResponse:
         """
-        @summary Queries the slow logs of an ApsaraDB for Redis instance that are generated within a specified period of time.
+        @summary Queries the slow query logs of a Tair (Redis OSS-compatible) instance that are generated within a specified period of time.
         
-        @description You can also query slow logs in the ApsaraDB for Redis console. For more information, see [Query slow logs of an instance](https://help.aliyun.com/document_detail/95874.html). This operation can be called up to 100 times per minute.
+        @description You can also query slow logs in the Tair (Redis OSS-compatible) console. For more information, see [Query slow logs of an instance](https://help.aliyun.com/document_detail/95874.html). This operation can be called up to 100 times per minute.
         
         @param request: DescribeSlowLogRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9699,19 +10497,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeSlowLogRecordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeSlowLogRecordsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeSlowLogRecordsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_slow_log_records(
         self,
         request: r_kvstore_20150101_models.DescribeSlowLogRecordsRequest,
     ) -> r_kvstore_20150101_models.DescribeSlowLogRecordsResponse:
         """
-        @summary Queries the slow logs of an ApsaraDB for Redis instance that are generated within a specified period of time.
+        @summary Queries the slow query logs of a Tair (Redis OSS-compatible) instance that are generated within a specified period of time.
         
-        @description You can also query slow logs in the ApsaraDB for Redis console. For more information, see [Query slow logs of an instance](https://help.aliyun.com/document_detail/95874.html). This operation can be called up to 100 times per minute.
+        @description You can also query slow logs in the Tair (Redis OSS-compatible) console. For more information, see [Query slow logs of an instance](https://help.aliyun.com/document_detail/95874.html). This operation can be called up to 100 times per minute.
         
         @param request: DescribeSlowLogRecordsRequest
         @return: DescribeSlowLogRecordsResponse
@@ -9724,9 +10528,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeSlowLogRecordsRequest,
     ) -> r_kvstore_20150101_models.DescribeSlowLogRecordsResponse:
         """
-        @summary Queries the slow logs of an ApsaraDB for Redis instance that are generated within a specified period of time.
+        @summary Queries the slow query logs of a Tair (Redis OSS-compatible) instance that are generated within a specified period of time.
         
-        @description You can also query slow logs in the ApsaraDB for Redis console. For more information, see [Query slow logs of an instance](https://help.aliyun.com/document_detail/95874.html). This operation can be called up to 100 times per minute.
+        @description You can also query slow logs in the Tair (Redis OSS-compatible) console. For more information, see [Query slow logs of an instance](https://help.aliyun.com/document_detail/95874.html). This operation can be called up to 100 times per minute.
         
         @param request: DescribeSlowLogRecordsRequest
         @return: DescribeSlowLogRecordsResponse
@@ -9762,10 +10566,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_tair_kvcache_custom_instance_attribute_with_options_async(
         self,
@@ -9795,10 +10605,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_tair_kvcache_custom_instance_attribute(
         self,
@@ -9854,10 +10670,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_tair_kvcache_custom_instance_history_monitor_values_with_options_async(
         self,
@@ -9887,10 +10709,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_tair_kvcache_custom_instance_history_monitor_values(
         self,
@@ -9946,10 +10774,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_tair_kvcache_custom_instances_with_options_async(
         self,
@@ -9979,10 +10813,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_tair_kvcache_custom_instances(
         self,
@@ -10010,15 +10850,223 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_tair_kvcache_custom_instances_with_options_async(request, runtime)
 
+    def describe_tair_kvcache_infer_instance_attribute_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeTairKVCacheInferInstanceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeTairKVCacheInferInstanceAttributeResponse:
+        """
+        @summary 查看TairInfer实例
+        
+        @param request: DescribeTairKVCacheInferInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTairKVCacheInferInstanceAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTairKVCacheInferInstanceAttribute',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTairKVCacheInferInstanceAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTairKVCacheInferInstanceAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_tair_kvcache_infer_instance_attribute_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeTairKVCacheInferInstanceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeTairKVCacheInferInstanceAttributeResponse:
+        """
+        @summary 查看TairInfer实例
+        
+        @param request: DescribeTairKVCacheInferInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTairKVCacheInferInstanceAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTairKVCacheInferInstanceAttribute',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTairKVCacheInferInstanceAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTairKVCacheInferInstanceAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_tair_kvcache_infer_instance_attribute(
+        self,
+        request: r_kvstore_20150101_models.DescribeTairKVCacheInferInstanceAttributeRequest,
+    ) -> r_kvstore_20150101_models.DescribeTairKVCacheInferInstanceAttributeResponse:
+        """
+        @summary 查看TairInfer实例
+        
+        @param request: DescribeTairKVCacheInferInstanceAttributeRequest
+        @return: DescribeTairKVCacheInferInstanceAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tair_kvcache_infer_instance_attribute_with_options(request, runtime)
+
+    async def describe_tair_kvcache_infer_instance_attribute_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeTairKVCacheInferInstanceAttributeRequest,
+    ) -> r_kvstore_20150101_models.DescribeTairKVCacheInferInstanceAttributeResponse:
+        """
+        @summary 查看TairInfer实例
+        
+        @param request: DescribeTairKVCacheInferInstanceAttributeRequest
+        @return: DescribeTairKVCacheInferInstanceAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tair_kvcache_infer_instance_attribute_with_options_async(request, runtime)
+
+    def describe_tair_kvcache_infer_instances_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeTairKVCacheInferInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeTairKVCacheInferInstancesResponse:
+        """
+        @summary 查看TairInfer实例列表
+        
+        @param request: DescribeTairKVCacheInferInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTairKVCacheInferInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTairKVCacheInferInstances',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTairKVCacheInferInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTairKVCacheInferInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_tair_kvcache_infer_instances_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeTairKVCacheInferInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeTairKVCacheInferInstancesResponse:
+        """
+        @summary 查看TairInfer实例列表
+        
+        @param request: DescribeTairKVCacheInferInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTairKVCacheInferInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTairKVCacheInferInstances',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTairKVCacheInferInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTairKVCacheInferInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_tair_kvcache_infer_instances(
+        self,
+        request: r_kvstore_20150101_models.DescribeTairKVCacheInferInstancesRequest,
+    ) -> r_kvstore_20150101_models.DescribeTairKVCacheInferInstancesResponse:
+        """
+        @summary 查看TairInfer实例列表
+        
+        @param request: DescribeTairKVCacheInferInstancesRequest
+        @return: DescribeTairKVCacheInferInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tair_kvcache_infer_instances_with_options(request, runtime)
+
+    async def describe_tair_kvcache_infer_instances_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeTairKVCacheInferInstancesRequest,
+    ) -> r_kvstore_20150101_models.DescribeTairKVCacheInferInstancesResponse:
+        """
+        @summary 查看TairInfer实例列表
+        
+        @param request: DescribeTairKVCacheInferInstancesRequest
+        @return: DescribeTairKVCacheInferInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tair_kvcache_infer_instances_with_options_async(request, runtime)
+
     def describe_tasks_with_options(
         self,
         request: r_kvstore_20150101_models.DescribeTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeTasksResponse:
         """
-        @summary Queries all tasks that are performed on an ApsaraDB for Redis instance within a specified period of time.
+        @summary Queries all tasks that are performed on a Tair (Redis OSS-compatible) instance within a specified period of time.
         
-        @description You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the ApsaraDB for Redis console and click the Tasks icon in the upper-right corner of the *Instance Information** page to view the progress of the current task.
+        @description You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the Tair (Redis OSS-compatible) console and click the Tasks icon in the upper-right corner of the *Instance Information** page to view the progress of the current task.
         
         @param request: DescribeTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10062,10 +11110,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeTasksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTasksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTasksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_tasks_with_options_async(
         self,
@@ -10073,9 +11127,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeTasksResponse:
         """
-        @summary Queries all tasks that are performed on an ApsaraDB for Redis instance within a specified period of time.
+        @summary Queries all tasks that are performed on a Tair (Redis OSS-compatible) instance within a specified period of time.
         
-        @description You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the ApsaraDB for Redis console and click the Tasks icon in the upper-right corner of the *Instance Information** page to view the progress of the current task.
+        @description You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the Tair (Redis OSS-compatible) console and click the Tasks icon in the upper-right corner of the *Instance Information** page to view the progress of the current task.
         
         @param request: DescribeTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10119,19 +11173,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeTasksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTasksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeTasksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_tasks(
         self,
         request: r_kvstore_20150101_models.DescribeTasksRequest,
     ) -> r_kvstore_20150101_models.DescribeTasksResponse:
         """
-        @summary Queries all tasks that are performed on an ApsaraDB for Redis instance within a specified period of time.
+        @summary Queries all tasks that are performed on a Tair (Redis OSS-compatible) instance within a specified period of time.
         
-        @description You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the ApsaraDB for Redis console and click the Tasks icon in the upper-right corner of the *Instance Information** page to view the progress of the current task.
+        @description You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the Tair (Redis OSS-compatible) console and click the Tasks icon in the upper-right corner of the *Instance Information** page to view the progress of the current task.
         
         @param request: DescribeTasksRequest
         @return: DescribeTasksResponse
@@ -10144,9 +11204,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeTasksRequest,
     ) -> r_kvstore_20150101_models.DescribeTasksResponse:
         """
-        @summary Queries all tasks that are performed on an ApsaraDB for Redis instance within a specified period of time.
+        @summary Queries all tasks that are performed on a Tair (Redis OSS-compatible) instance within a specified period of time.
         
-        @description You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the ApsaraDB for Redis console and click the Tasks icon in the upper-right corner of the *Instance Information** page to view the progress of the current task.
+        @description You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the Tair (Redis OSS-compatible) console and click the Tasks icon in the upper-right corner of the *Instance Information** page to view the progress of the current task.
         
         @param request: DescribeTasksRequest
         @return: DescribeTasksResponse
@@ -10160,7 +11220,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeZonesResponse:
         """
-        @summary Queries the zones available for ApsaraDB for Redis.
+        @summary Queries the zones available for Tair (Redis OSS-compatible).
         
         @param request: DescribeZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10196,10 +11256,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeZonesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeZonesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeZonesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_zones_with_options_async(
         self,
@@ -10207,7 +11273,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeZonesResponse:
         """
-        @summary Queries the zones available for ApsaraDB for Redis.
+        @summary Queries the zones available for Tair (Redis OSS-compatible).
         
         @param request: DescribeZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10243,17 +11309,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeZonesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeZonesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.DescribeZonesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_zones(
         self,
         request: r_kvstore_20150101_models.DescribeZonesRequest,
     ) -> r_kvstore_20150101_models.DescribeZonesResponse:
         """
-        @summary Queries the zones available for ApsaraDB for Redis.
+        @summary Queries the zones available for Tair (Redis OSS-compatible).
         
         @param request: DescribeZonesRequest
         @return: DescribeZonesResponse
@@ -10266,7 +11338,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeZonesRequest,
     ) -> r_kvstore_20150101_models.DescribeZonesResponse:
         """
-        @summary Queries the zones available for ApsaraDB for Redis.
+        @summary Queries the zones available for Tair (Redis OSS-compatible).
         
         @param request: DescribeZonesRequest
         @return: DescribeZonesResponse
@@ -10280,10 +11352,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.EnableAdditionalBandwidthResponse:
         """
-        @summary Adjusts the bandwidth of an ApsaraDB for Redis instance.
+        @summary Adjusts the bandwidth of a Tair (Redis OSS-compatible) instance. Only the pay-as-you-go billing method is supported for bandwidth adjustment. You need to specify the InstanceId, NodeId (optional), Bandwidth, and ChargeType parameters.
         
         @description If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](https://help.aliyun.com/document_detail/102588.html).
-        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the current bandwidth of each data node in an instance.
+        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/473782.html) operation to query the current bandwidth of each data node in an instance.
         
         @param request: EnableAdditionalBandwidthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10335,10 +11407,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.EnableAdditionalBandwidthResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.EnableAdditionalBandwidthResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.EnableAdditionalBandwidthResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def enable_additional_bandwidth_with_options_async(
         self,
@@ -10346,10 +11424,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.EnableAdditionalBandwidthResponse:
         """
-        @summary Adjusts the bandwidth of an ApsaraDB for Redis instance.
+        @summary Adjusts the bandwidth of a Tair (Redis OSS-compatible) instance. Only the pay-as-you-go billing method is supported for bandwidth adjustment. You need to specify the InstanceId, NodeId (optional), Bandwidth, and ChargeType parameters.
         
         @description If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](https://help.aliyun.com/document_detail/102588.html).
-        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the current bandwidth of each data node in an instance.
+        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/473782.html) operation to query the current bandwidth of each data node in an instance.
         
         @param request: EnableAdditionalBandwidthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10401,20 +11479,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.EnableAdditionalBandwidthResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.EnableAdditionalBandwidthResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.EnableAdditionalBandwidthResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def enable_additional_bandwidth(
         self,
         request: r_kvstore_20150101_models.EnableAdditionalBandwidthRequest,
     ) -> r_kvstore_20150101_models.EnableAdditionalBandwidthResponse:
         """
-        @summary Adjusts the bandwidth of an ApsaraDB for Redis instance.
+        @summary Adjusts the bandwidth of a Tair (Redis OSS-compatible) instance. Only the pay-as-you-go billing method is supported for bandwidth adjustment. You need to specify the InstanceId, NodeId (optional), Bandwidth, and ChargeType parameters.
         
         @description If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](https://help.aliyun.com/document_detail/102588.html).
-        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the current bandwidth of each data node in an instance.
+        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/473782.html) operation to query the current bandwidth of each data node in an instance.
         
         @param request: EnableAdditionalBandwidthRequest
         @return: EnableAdditionalBandwidthResponse
@@ -10427,10 +11511,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.EnableAdditionalBandwidthRequest,
     ) -> r_kvstore_20150101_models.EnableAdditionalBandwidthResponse:
         """
-        @summary Adjusts the bandwidth of an ApsaraDB for Redis instance.
+        @summary Adjusts the bandwidth of a Tair (Redis OSS-compatible) instance. Only the pay-as-you-go billing method is supported for bandwidth adjustment. You need to specify the InstanceId, NodeId (optional), Bandwidth, and ChargeType parameters.
         
         @description If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](https://help.aliyun.com/document_detail/102588.html).
-        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the current bandwidth of each data node in an instance.
+        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/473782.html) operation to query the current bandwidth of each data node in an instance.
         
         @param request: EnableAdditionalBandwidthRequest
         @return: EnableAdditionalBandwidthResponse
@@ -10444,9 +11528,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.FlushExpireKeysResponse:
         """
-        @summary Deletes the expired keys from an ApsaraDB for Redis instance.
+        @summary Clears all expired keys in a Tair (Redis OSS-compatible) instance.
         
-        @description For more information about how to clear the expired keys in the ApsaraDB for Redis console, see [Clear data](https://help.aliyun.com/document_detail/43881.html).
+        @description For more information about how to clear the expired keys in the Tair (Redis OSS-compatible) console, see [Clear data](https://help.aliyun.com/document_detail/43881.html).
         >  Expired keys cannot be recovered after they are deleted. Exercise caution when you call this operation.
         
         @param request: FlushExpireKeysRequest
@@ -10483,10 +11567,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.FlushExpireKeysResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.FlushExpireKeysResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.FlushExpireKeysResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def flush_expire_keys_with_options_async(
         self,
@@ -10494,9 +11584,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.FlushExpireKeysResponse:
         """
-        @summary Deletes the expired keys from an ApsaraDB for Redis instance.
+        @summary Clears all expired keys in a Tair (Redis OSS-compatible) instance.
         
-        @description For more information about how to clear the expired keys in the ApsaraDB for Redis console, see [Clear data](https://help.aliyun.com/document_detail/43881.html).
+        @description For more information about how to clear the expired keys in the Tair (Redis OSS-compatible) console, see [Clear data](https://help.aliyun.com/document_detail/43881.html).
         >  Expired keys cannot be recovered after they are deleted. Exercise caution when you call this operation.
         
         @param request: FlushExpireKeysRequest
@@ -10533,19 +11623,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.FlushExpireKeysResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.FlushExpireKeysResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.FlushExpireKeysResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def flush_expire_keys(
         self,
         request: r_kvstore_20150101_models.FlushExpireKeysRequest,
     ) -> r_kvstore_20150101_models.FlushExpireKeysResponse:
         """
-        @summary Deletes the expired keys from an ApsaraDB for Redis instance.
+        @summary Clears all expired keys in a Tair (Redis OSS-compatible) instance.
         
-        @description For more information about how to clear the expired keys in the ApsaraDB for Redis console, see [Clear data](https://help.aliyun.com/document_detail/43881.html).
+        @description For more information about how to clear the expired keys in the Tair (Redis OSS-compatible) console, see [Clear data](https://help.aliyun.com/document_detail/43881.html).
         >  Expired keys cannot be recovered after they are deleted. Exercise caution when you call this operation.
         
         @param request: FlushExpireKeysRequest
@@ -10559,9 +11655,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.FlushExpireKeysRequest,
     ) -> r_kvstore_20150101_models.FlushExpireKeysResponse:
         """
-        @summary Deletes the expired keys from an ApsaraDB for Redis instance.
+        @summary Clears all expired keys in a Tair (Redis OSS-compatible) instance.
         
-        @description For more information about how to clear the expired keys in the ApsaraDB for Redis console, see [Clear data](https://help.aliyun.com/document_detail/43881.html).
+        @description For more information about how to clear the expired keys in the Tair (Redis OSS-compatible) console, see [Clear data](https://help.aliyun.com/document_detail/43881.html).
         >  Expired keys cannot be recovered after they are deleted. Exercise caution when you call this operation.
         
         @param request: FlushExpireKeysRequest
@@ -10576,7 +11672,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.FlushInstanceResponse:
         """
-        @summary Clears the data of an ApsaraDB for Redis instance. The cleared data cannot be restored.
+        @summary Clears the data of a Tair (Redis OSS-compatible) instance. The cleared data cannot be restored.
         
         @param request: FlushInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10610,10 +11706,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.FlushInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.FlushInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.FlushInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def flush_instance_with_options_async(
         self,
@@ -10621,7 +11723,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.FlushInstanceResponse:
         """
-        @summary Clears the data of an ApsaraDB for Redis instance. The cleared data cannot be restored.
+        @summary Clears the data of a Tair (Redis OSS-compatible) instance. The cleared data cannot be restored.
         
         @param request: FlushInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10655,17 +11757,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.FlushInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.FlushInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.FlushInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def flush_instance(
         self,
         request: r_kvstore_20150101_models.FlushInstanceRequest,
     ) -> r_kvstore_20150101_models.FlushInstanceResponse:
         """
-        @summary Clears the data of an ApsaraDB for Redis instance. The cleared data cannot be restored.
+        @summary Clears the data of a Tair (Redis OSS-compatible) instance. The cleared data cannot be restored.
         
         @param request: FlushInstanceRequest
         @return: FlushInstanceResponse
@@ -10678,7 +11786,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.FlushInstanceRequest,
     ) -> r_kvstore_20150101_models.FlushInstanceResponse:
         """
-        @summary Clears the data of an ApsaraDB for Redis instance. The cleared data cannot be restored.
+        @summary Clears the data of a Tair (Redis OSS-compatible) instance. The cleared data cannot be restored.
         
         @param request: FlushInstanceRequest
         @return: FlushInstanceResponse
@@ -10692,9 +11800,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.FlushInstanceForDBResponse:
         """
-        @summary Cleans the data of specified databases in an instance.
+        @summary Cleans the data of specified databases in a Tair (Redis OSS-compatible) instance.
         
-        @description Each ApsaraDB for Redis or Tair instance can contain up to 256 databases. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on an ApsaraDB for Redis instance, and how can I choose databases?](https://help.aliyun.com/document_detail/38688.html)
+        @description Each Tair (Redis OSS-compatible) instance can contain up to 256 databases named from DB0 to DB255. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on a Tair (Redis OSS-compatible) instance, and how can I choose databases?](https://help.aliyun.com/document_detail/38688.html)
         >  This operation is available only for cloud-native instances that use cloud disks.
         
         @param request: FlushInstanceForDBRequest
@@ -10729,10 +11837,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.FlushInstanceForDBResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.FlushInstanceForDBResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.FlushInstanceForDBResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def flush_instance_for_dbwith_options_async(
         self,
@@ -10740,9 +11854,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.FlushInstanceForDBResponse:
         """
-        @summary Cleans the data of specified databases in an instance.
+        @summary Cleans the data of specified databases in a Tair (Redis OSS-compatible) instance.
         
-        @description Each ApsaraDB for Redis or Tair instance can contain up to 256 databases. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on an ApsaraDB for Redis instance, and how can I choose databases?](https://help.aliyun.com/document_detail/38688.html)
+        @description Each Tair (Redis OSS-compatible) instance can contain up to 256 databases named from DB0 to DB255. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on a Tair (Redis OSS-compatible) instance, and how can I choose databases?](https://help.aliyun.com/document_detail/38688.html)
         >  This operation is available only for cloud-native instances that use cloud disks.
         
         @param request: FlushInstanceForDBRequest
@@ -10777,19 +11891,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.FlushInstanceForDBResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.FlushInstanceForDBResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.FlushInstanceForDBResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def flush_instance_for_db(
         self,
         request: r_kvstore_20150101_models.FlushInstanceForDBRequest,
     ) -> r_kvstore_20150101_models.FlushInstanceForDBResponse:
         """
-        @summary Cleans the data of specified databases in an instance.
+        @summary Cleans the data of specified databases in a Tair (Redis OSS-compatible) instance.
         
-        @description Each ApsaraDB for Redis or Tair instance can contain up to 256 databases. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on an ApsaraDB for Redis instance, and how can I choose databases?](https://help.aliyun.com/document_detail/38688.html)
+        @description Each Tair (Redis OSS-compatible) instance can contain up to 256 databases named from DB0 to DB255. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on a Tair (Redis OSS-compatible) instance, and how can I choose databases?](https://help.aliyun.com/document_detail/38688.html)
         >  This operation is available only for cloud-native instances that use cloud disks.
         
         @param request: FlushInstanceForDBRequest
@@ -10803,9 +11923,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.FlushInstanceForDBRequest,
     ) -> r_kvstore_20150101_models.FlushInstanceForDBResponse:
         """
-        @summary Cleans the data of specified databases in an instance.
+        @summary Cleans the data of specified databases in a Tair (Redis OSS-compatible) instance.
         
-        @description Each ApsaraDB for Redis or Tair instance can contain up to 256 databases. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on an ApsaraDB for Redis instance, and how can I choose databases?](https://help.aliyun.com/document_detail/38688.html)
+        @description Each Tair (Redis OSS-compatible) instance can contain up to 256 databases named from DB0 to DB255. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on a Tair (Redis OSS-compatible) instance, and how can I choose databases?](https://help.aliyun.com/document_detail/38688.html)
         >  This operation is available only for cloud-native instances that use cloud disks.
         
         @param request: FlushInstanceForDBRequest
@@ -10820,11 +11940,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.GrantAccountPrivilegeResponse:
         """
-        @summary Modifies the permissions of an account for an ApsaraDB for Redis instance.
+        @summary Modifies the permissions of an account for a Tair (Redis OSS-compatible) instance.
         
         @description >
-        Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
-        The ApsaraDB for Redis instance must be in the running state.
+        Only Tair (Redis OSS-compatible) instances of Redis 4.0 or later are supported.
+        The Tair (Redis OSS-compatible) instance must be in the running state.
         
         @param request: GrantAccountPrivilegeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10864,10 +11984,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.GrantAccountPrivilegeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.GrantAccountPrivilegeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.GrantAccountPrivilegeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def grant_account_privilege_with_options_async(
         self,
@@ -10875,11 +12001,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.GrantAccountPrivilegeResponse:
         """
-        @summary Modifies the permissions of an account for an ApsaraDB for Redis instance.
+        @summary Modifies the permissions of an account for a Tair (Redis OSS-compatible) instance.
         
         @description >
-        Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
-        The ApsaraDB for Redis instance must be in the running state.
+        Only Tair (Redis OSS-compatible) instances of Redis 4.0 or later are supported.
+        The Tair (Redis OSS-compatible) instance must be in the running state.
         
         @param request: GrantAccountPrivilegeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10919,21 +12045,27 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.GrantAccountPrivilegeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.GrantAccountPrivilegeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.GrantAccountPrivilegeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def grant_account_privilege(
         self,
         request: r_kvstore_20150101_models.GrantAccountPrivilegeRequest,
     ) -> r_kvstore_20150101_models.GrantAccountPrivilegeResponse:
         """
-        @summary Modifies the permissions of an account for an ApsaraDB for Redis instance.
+        @summary Modifies the permissions of an account for a Tair (Redis OSS-compatible) instance.
         
         @description >
-        Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
-        The ApsaraDB for Redis instance must be in the running state.
+        Only Tair (Redis OSS-compatible) instances of Redis 4.0 or later are supported.
+        The Tair (Redis OSS-compatible) instance must be in the running state.
         
         @param request: GrantAccountPrivilegeRequest
         @return: GrantAccountPrivilegeResponse
@@ -10946,11 +12078,11 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.GrantAccountPrivilegeRequest,
     ) -> r_kvstore_20150101_models.GrantAccountPrivilegeResponse:
         """
-        @summary Modifies the permissions of an account for an ApsaraDB for Redis instance.
+        @summary Modifies the permissions of an account for a Tair (Redis OSS-compatible) instance.
         
         @description >
-        Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
-        The ApsaraDB for Redis instance must be in the running state.
+        Only Tair (Redis OSS-compatible) instances of Redis 4.0 or later are supported.
+        The Tair (Redis OSS-compatible) instance must be in the running state.
         
         @param request: GrantAccountPrivilegeRequest
         @return: GrantAccountPrivilegeResponse
@@ -11000,10 +12132,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.InitializeKvstorePermissionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.InitializeKvstorePermissionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.InitializeKvstorePermissionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def initialize_kvstore_permission_with_options_async(
         self,
@@ -11047,10 +12185,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.InitializeKvstorePermissionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.InitializeKvstorePermissionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.InitializeKvstorePermissionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def initialize_kvstore_permission(
         self,
@@ -11088,9 +12232,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ListTagResourcesResponse:
         """
-        @summary Queries the relationships between ApsaraDB for Redis instances and tags.
+        @summary Queries the relationships between Tair (Redis OSS-compatible) instances and tags.
         
-        @description You can also query the relationships between instances and tags in the ApsaraDB for Redis console. For more information, see [Filter ApsaraDB for Redis instances by tag](https://help.aliyun.com/document_detail/119160.html) and [View tags bound to an instance](https://help.aliyun.com/document_detail/134038.html).
+        @description You can also query the relationships between instances and tags in the Tair (Redis OSS-compatible) console. For more information, see [Filter Tair (Redis OSS-compatible) instances by tag](https://help.aliyun.com/document_detail/119160.html) and [View tags bound to an instance](https://help.aliyun.com/document_detail/134038.html).
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11130,10 +12274,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ListTagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ListTagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ListTagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -11141,9 +12291,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ListTagResourcesResponse:
         """
-        @summary Queries the relationships between ApsaraDB for Redis instances and tags.
+        @summary Queries the relationships between Tair (Redis OSS-compatible) instances and tags.
         
-        @description You can also query the relationships between instances and tags in the ApsaraDB for Redis console. For more information, see [Filter ApsaraDB for Redis instances by tag](https://help.aliyun.com/document_detail/119160.html) and [View tags bound to an instance](https://help.aliyun.com/document_detail/134038.html).
+        @description You can also query the relationships between instances and tags in the Tair (Redis OSS-compatible) console. For more information, see [Filter Tair (Redis OSS-compatible) instances by tag](https://help.aliyun.com/document_detail/119160.html) and [View tags bound to an instance](https://help.aliyun.com/document_detail/134038.html).
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11183,19 +12333,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ListTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ListTagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ListTagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_tag_resources(
         self,
         request: r_kvstore_20150101_models.ListTagResourcesRequest,
     ) -> r_kvstore_20150101_models.ListTagResourcesResponse:
         """
-        @summary Queries the relationships between ApsaraDB for Redis instances and tags.
+        @summary Queries the relationships between Tair (Redis OSS-compatible) instances and tags.
         
-        @description You can also query the relationships between instances and tags in the ApsaraDB for Redis console. For more information, see [Filter ApsaraDB for Redis instances by tag](https://help.aliyun.com/document_detail/119160.html) and [View tags bound to an instance](https://help.aliyun.com/document_detail/134038.html).
+        @description You can also query the relationships between instances and tags in the Tair (Redis OSS-compatible) console. For more information, see [Filter Tair (Redis OSS-compatible) instances by tag](https://help.aliyun.com/document_detail/119160.html) and [View tags bound to an instance](https://help.aliyun.com/document_detail/134038.html).
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -11208,9 +12364,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ListTagResourcesRequest,
     ) -> r_kvstore_20150101_models.ListTagResourcesResponse:
         """
-        @summary Queries the relationships between ApsaraDB for Redis instances and tags.
+        @summary Queries the relationships between Tair (Redis OSS-compatible) instances and tags.
         
-        @description You can also query the relationships between instances and tags in the ApsaraDB for Redis console. For more information, see [Filter ApsaraDB for Redis instances by tag](https://help.aliyun.com/document_detail/119160.html) and [View tags bound to an instance](https://help.aliyun.com/document_detail/134038.html).
+        @description You can also query the relationships between instances and tags in the Tair (Redis OSS-compatible) console. For more information, see [Filter Tair (Redis OSS-compatible) instances by tag](https://help.aliyun.com/document_detail/119160.html) and [View tags bound to an instance](https://help.aliyun.com/document_detail/134038.html).
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -11260,10 +12416,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.LockDBInstanceWriteResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.LockDBInstanceWriteResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.LockDBInstanceWriteResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def lock_dbinstance_write_with_options_async(
         self,
@@ -11307,10 +12469,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.LockDBInstanceWriteResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.LockDBInstanceWriteResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.LockDBInstanceWriteResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def lock_dbinstance_write(
         self,
@@ -11380,10 +12548,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.MasterNodeShutDownFailOverResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.MasterNodeShutDownFailOverResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.MasterNodeShutDownFailOverResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def master_node_shut_down_fail_over_with_options_async(
         self,
@@ -11427,10 +12601,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.MasterNodeShutDownFailOverResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.MasterNodeShutDownFailOverResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.MasterNodeShutDownFailOverResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def master_node_shut_down_fail_over(
         self,
@@ -11464,11 +12644,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.MigrateToOtherZoneResponse:
         """
-        @summary Migrates an ApsaraDB for Redis instance to another zone in the same region.
+        @summary Migrates a Tair (Redis OSS-compatible) instance to another zone in the same region.
         
         @description Before you call this operation, you must release the public endpoint (if any) of the instance. For more information, see [Migrate an instance across zones](https://help.aliyun.com/document_detail/106272.html).
         >
-        If the network type of an ApsaraDB for Redis instance is switched from classic network to Virtual Private Cloud (VPC), and the classic network endpoint is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
+        If the network type of an Tair (Redis OSS-compatible) instance is switched from classic network to Virtual Private Cloud (VPC), and the classic network endpoint is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
         After the instance is migrated, the endpoint of the instance remains unchanged. However, the virtual IP address (VIP) is changed. We recommend that you use the endpoint instead of the VIP to connect to the instance.
         
         @param request: MigrateToOtherZoneRequest
@@ -11485,6 +12665,10 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.read_only_count):
+            query['ReadOnlyCount'] = request.read_only_count
+        if not UtilClient.is_unset(request.replica_count):
+            query['ReplicaCount'] = request.replica_count
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -11493,6 +12677,10 @@ class Client(OpenApiClient):
             query['SecondaryZoneId'] = request.secondary_zone_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.slave_read_only_count):
+            query['SlaveReadOnlyCount'] = request.slave_read_only_count
+        if not UtilClient.is_unset(request.slave_replica_count):
+            query['SlaveReplicaCount'] = request.slave_replica_count
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.zone_id):
@@ -11511,10 +12699,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.MigrateToOtherZoneResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.MigrateToOtherZoneResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.MigrateToOtherZoneResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def migrate_to_other_zone_with_options_async(
         self,
@@ -11522,11 +12716,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.MigrateToOtherZoneResponse:
         """
-        @summary Migrates an ApsaraDB for Redis instance to another zone in the same region.
+        @summary Migrates a Tair (Redis OSS-compatible) instance to another zone in the same region.
         
         @description Before you call this operation, you must release the public endpoint (if any) of the instance. For more information, see [Migrate an instance across zones](https://help.aliyun.com/document_detail/106272.html).
         >
-        If the network type of an ApsaraDB for Redis instance is switched from classic network to Virtual Private Cloud (VPC), and the classic network endpoint is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
+        If the network type of an Tair (Redis OSS-compatible) instance is switched from classic network to Virtual Private Cloud (VPC), and the classic network endpoint is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
         After the instance is migrated, the endpoint of the instance remains unchanged. However, the virtual IP address (VIP) is changed. We recommend that you use the endpoint instead of the VIP to connect to the instance.
         
         @param request: MigrateToOtherZoneRequest
@@ -11543,6 +12737,10 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.read_only_count):
+            query['ReadOnlyCount'] = request.read_only_count
+        if not UtilClient.is_unset(request.replica_count):
+            query['ReplicaCount'] = request.replica_count
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -11551,6 +12749,10 @@ class Client(OpenApiClient):
             query['SecondaryZoneId'] = request.secondary_zone_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.slave_read_only_count):
+            query['SlaveReadOnlyCount'] = request.slave_read_only_count
+        if not UtilClient.is_unset(request.slave_replica_count):
+            query['SlaveReplicaCount'] = request.slave_replica_count
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.zone_id):
@@ -11569,21 +12771,27 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.MigrateToOtherZoneResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.MigrateToOtherZoneResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.MigrateToOtherZoneResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def migrate_to_other_zone(
         self,
         request: r_kvstore_20150101_models.MigrateToOtherZoneRequest,
     ) -> r_kvstore_20150101_models.MigrateToOtherZoneResponse:
         """
-        @summary Migrates an ApsaraDB for Redis instance to another zone in the same region.
+        @summary Migrates a Tair (Redis OSS-compatible) instance to another zone in the same region.
         
         @description Before you call this operation, you must release the public endpoint (if any) of the instance. For more information, see [Migrate an instance across zones](https://help.aliyun.com/document_detail/106272.html).
         >
-        If the network type of an ApsaraDB for Redis instance is switched from classic network to Virtual Private Cloud (VPC), and the classic network endpoint is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
+        If the network type of an Tair (Redis OSS-compatible) instance is switched from classic network to Virtual Private Cloud (VPC), and the classic network endpoint is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
         After the instance is migrated, the endpoint of the instance remains unchanged. However, the virtual IP address (VIP) is changed. We recommend that you use the endpoint instead of the VIP to connect to the instance.
         
         @param request: MigrateToOtherZoneRequest
@@ -11597,11 +12805,11 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.MigrateToOtherZoneRequest,
     ) -> r_kvstore_20150101_models.MigrateToOtherZoneResponse:
         """
-        @summary Migrates an ApsaraDB for Redis instance to another zone in the same region.
+        @summary Migrates a Tair (Redis OSS-compatible) instance to another zone in the same region.
         
         @description Before you call this operation, you must release the public endpoint (if any) of the instance. For more information, see [Migrate an instance across zones](https://help.aliyun.com/document_detail/106272.html).
         >
-        If the network type of an ApsaraDB for Redis instance is switched from classic network to Virtual Private Cloud (VPC), and the classic network endpoint is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
+        If the network type of an Tair (Redis OSS-compatible) instance is switched from classic network to Virtual Private Cloud (VPC), and the classic network endpoint is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
         After the instance is migrated, the endpoint of the instance remains unchanged. However, the virtual IP address (VIP) is changed. We recommend that you use the endpoint instead of the VIP to connect to the instance.
         
         @param request: MigrateToOtherZoneRequest
@@ -11616,9 +12824,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyAccountDescriptionResponse:
         """
-        @summary Modifies the description of an account for an ApsaraDB for Redis instance.
+        @summary Modifies the description of an account for a Tair (Redis OSS-compatible) instance.
         
-        @description > This operation is supported only for instances that run Redis 4.0 or later.
+        @description This operation is supported only for instances that run Redis 4.0 or later.
         
         @param request: ModifyAccountDescriptionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11658,10 +12866,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyAccountDescriptionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyAccountDescriptionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyAccountDescriptionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_account_description_with_options_async(
         self,
@@ -11669,9 +12883,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyAccountDescriptionResponse:
         """
-        @summary Modifies the description of an account for an ApsaraDB for Redis instance.
+        @summary Modifies the description of an account for a Tair (Redis OSS-compatible) instance.
         
-        @description > This operation is supported only for instances that run Redis 4.0 or later.
+        @description This operation is supported only for instances that run Redis 4.0 or later.
         
         @param request: ModifyAccountDescriptionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11711,19 +12925,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyAccountDescriptionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyAccountDescriptionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyAccountDescriptionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_account_description(
         self,
         request: r_kvstore_20150101_models.ModifyAccountDescriptionRequest,
     ) -> r_kvstore_20150101_models.ModifyAccountDescriptionResponse:
         """
-        @summary Modifies the description of an account for an ApsaraDB for Redis instance.
+        @summary Modifies the description of an account for a Tair (Redis OSS-compatible) instance.
         
-        @description > This operation is supported only for instances that run Redis 4.0 or later.
+        @description This operation is supported only for instances that run Redis 4.0 or later.
         
         @param request: ModifyAccountDescriptionRequest
         @return: ModifyAccountDescriptionResponse
@@ -11736,9 +12956,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyAccountDescriptionRequest,
     ) -> r_kvstore_20150101_models.ModifyAccountDescriptionResponse:
         """
-        @summary Modifies the description of an account for an ApsaraDB for Redis instance.
+        @summary Modifies the description of an account for a Tair (Redis OSS-compatible) instance.
         
-        @description > This operation is supported only for instances that run Redis 4.0 or later.
+        @description This operation is supported only for instances that run Redis 4.0 or later.
         
         @param request: ModifyAccountDescriptionRequest
         @return: ModifyAccountDescriptionResponse
@@ -11752,7 +12972,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyAccountPasswordResponse:
         """
-        @summary Changes the password of a specific account for an ApsaraDB for Redis instance.
+        @summary Changes the password of a specific account for a Tair (Redis OSS-compatible) instance.
         
         @param request: ModifyAccountPasswordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11794,10 +13014,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyAccountPasswordResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyAccountPasswordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyAccountPasswordResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_account_password_with_options_async(
         self,
@@ -11805,7 +13031,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyAccountPasswordResponse:
         """
-        @summary Changes the password of a specific account for an ApsaraDB for Redis instance.
+        @summary Changes the password of a specific account for a Tair (Redis OSS-compatible) instance.
         
         @param request: ModifyAccountPasswordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11847,17 +13073,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyAccountPasswordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyAccountPasswordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyAccountPasswordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_account_password(
         self,
         request: r_kvstore_20150101_models.ModifyAccountPasswordRequest,
     ) -> r_kvstore_20150101_models.ModifyAccountPasswordResponse:
         """
-        @summary Changes the password of a specific account for an ApsaraDB for Redis instance.
+        @summary Changes the password of a specific account for a Tair (Redis OSS-compatible) instance.
         
         @param request: ModifyAccountPasswordRequest
         @return: ModifyAccountPasswordResponse
@@ -11870,7 +13102,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyAccountPasswordRequest,
     ) -> r_kvstore_20150101_models.ModifyAccountPasswordResponse:
         """
-        @summary Changes the password of a specific account for an ApsaraDB for Redis instance.
+        @summary Changes the password of a specific account for a Tair (Redis OSS-compatible) instance.
         
         @param request: ModifyAccountPasswordRequest
         @return: ModifyAccountPasswordResponse
@@ -11884,9 +13116,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyActiveOperationTaskResponse:
         """
-        @summary Changes the scheduled switchover time of an O\\&amp;M task.
+        @summary Changes the scheduled switchover time of an O&M task.
         
-        @description You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/187022.html).
+        @description You can receive notifications for Tair (Redis OSS-compatible) events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the console. You can also change the scheduled switchover time of a task by using the console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/187022.html).
         
         @param request: ModifyActiveOperationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11922,10 +13154,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyActiveOperationTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyActiveOperationTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyActiveOperationTaskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_active_operation_task_with_options_async(
         self,
@@ -11933,9 +13171,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyActiveOperationTaskResponse:
         """
-        @summary Changes the scheduled switchover time of an O\\&amp;M task.
+        @summary Changes the scheduled switchover time of an O&M task.
         
-        @description You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/187022.html).
+        @description You can receive notifications for Tair (Redis OSS-compatible) events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the console. You can also change the scheduled switchover time of a task by using the console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/187022.html).
         
         @param request: ModifyActiveOperationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11971,19 +13209,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyActiveOperationTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyActiveOperationTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyActiveOperationTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_active_operation_task(
         self,
         request: r_kvstore_20150101_models.ModifyActiveOperationTaskRequest,
     ) -> r_kvstore_20150101_models.ModifyActiveOperationTaskResponse:
         """
-        @summary Changes the scheduled switchover time of an O\\&amp;M task.
+        @summary Changes the scheduled switchover time of an O&M task.
         
-        @description You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/187022.html).
+        @description You can receive notifications for Tair (Redis OSS-compatible) events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the console. You can also change the scheduled switchover time of a task by using the console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/187022.html).
         
         @param request: ModifyActiveOperationTaskRequest
         @return: ModifyActiveOperationTaskResponse
@@ -11996,9 +13240,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyActiveOperationTaskRequest,
     ) -> r_kvstore_20150101_models.ModifyActiveOperationTaskResponse:
         """
-        @summary Changes the scheduled switchover time of an O\\&amp;M task.
+        @summary Changes the scheduled switchover time of an O&M task.
         
-        @description You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/187022.html).
+        @description You can receive notifications for Tair (Redis OSS-compatible) events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the console. You can also change the scheduled switchover time of a task by using the console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/187022.html).
         
         @param request: ModifyActiveOperationTaskRequest
         @return: ModifyActiveOperationTaskResponse
@@ -12050,10 +13294,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyActiveOperationTasksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyActiveOperationTasksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyActiveOperationTasksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_active_operation_tasks_with_options_async(
         self,
@@ -12099,10 +13349,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyActiveOperationTasksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyActiveOperationTasksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyActiveOperationTasksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_active_operation_tasks(
         self,
@@ -12136,12 +13392,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyAuditLogConfigResponse:
         """
-        @summary Modifies the audit log settings of an ApsaraDB for Redis instance.
+        @summary Enables the audit log feature or modifies the audit log settings for a Tair (Redis OSS-compatible) instance.
         
         @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of the audit log feature.
-        Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
-        The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
-        The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to check whether the instance uses the latest major version and minor version.
+        Before you call this operation, make sure that the Tair (Redis OSS-compatible) instance meets the following requirements:
+        The instance is a Tair (Redis OSS-compatible) Community Edition instance or Tair [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
+        The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/473781.html) operation to check whether the instance uses the latest major version and minor version.
         
         @param request: ModifyAuditLogConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12179,10 +13435,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyAuditLogConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyAuditLogConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyAuditLogConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_audit_log_config_with_options_async(
         self,
@@ -12190,12 +13452,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyAuditLogConfigResponse:
         """
-        @summary Modifies the audit log settings of an ApsaraDB for Redis instance.
+        @summary Enables the audit log feature or modifies the audit log settings for a Tair (Redis OSS-compatible) instance.
         
         @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of the audit log feature.
-        Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
-        The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
-        The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to check whether the instance uses the latest major version and minor version.
+        Before you call this operation, make sure that the Tair (Redis OSS-compatible) instance meets the following requirements:
+        The instance is a Tair (Redis OSS-compatible) Community Edition instance or Tair [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
+        The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/473781.html) operation to check whether the instance uses the latest major version and minor version.
         
         @param request: ModifyAuditLogConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12233,22 +13495,28 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyAuditLogConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyAuditLogConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyAuditLogConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_audit_log_config(
         self,
         request: r_kvstore_20150101_models.ModifyAuditLogConfigRequest,
     ) -> r_kvstore_20150101_models.ModifyAuditLogConfigResponse:
         """
-        @summary Modifies the audit log settings of an ApsaraDB for Redis instance.
+        @summary Enables the audit log feature or modifies the audit log settings for a Tair (Redis OSS-compatible) instance.
         
         @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of the audit log feature.
-        Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
-        The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
-        The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to check whether the instance uses the latest major version and minor version.
+        Before you call this operation, make sure that the Tair (Redis OSS-compatible) instance meets the following requirements:
+        The instance is a Tair (Redis OSS-compatible) Community Edition instance or Tair [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
+        The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/473781.html) operation to check whether the instance uses the latest major version and minor version.
         
         @param request: ModifyAuditLogConfigRequest
         @return: ModifyAuditLogConfigResponse
@@ -12261,12 +13529,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyAuditLogConfigRequest,
     ) -> r_kvstore_20150101_models.ModifyAuditLogConfigResponse:
         """
-        @summary Modifies the audit log settings of an ApsaraDB for Redis instance.
+        @summary Enables the audit log feature or modifies the audit log settings for a Tair (Redis OSS-compatible) instance.
         
         @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of the audit log feature.
-        Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
-        The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
-        The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to check whether the instance uses the latest major version and minor version.
+        Before you call this operation, make sure that the Tair (Redis OSS-compatible) instance meets the following requirements:
+        The instance is a Tair (Redis OSS-compatible) Community Edition instance or Tair [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
+        The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/473781.html) operation to check whether the instance uses the latest major version and minor version.
         
         @param request: ModifyAuditLogConfigRequest
         @return: ModifyAuditLogConfigResponse
@@ -12322,10 +13590,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyBackupPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyBackupPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyBackupPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_backup_policy_with_options_async(
         self,
@@ -12375,10 +13649,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyBackupPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyBackupPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyBackupPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_backup_policy(
         self,
@@ -12448,10 +13728,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbinstance_auto_upgrade_with_options_async(
         self,
@@ -12495,10 +13781,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbinstance_auto_upgrade(
         self,
@@ -12532,9 +13824,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse:
         """
-        @summary Changes the endpoint or port number of an ApsaraDB for Redis instance.
+        @summary Changes the endpoint or port number of a Tair (Redis OSS-compatible) instance.
         
-        @description You can also modify the endpoint or port number of an instance in the ApsaraDB for Redis console. For more information, see [Change the endpoint or port number of an instance](https://help.aliyun.com/document_detail/85683.html).
+        @description You can also modify the endpoint or port number of an instance in the Tair (Redis OSS-compatible) console. For more information, see [Change the endpoint or port number of an instance](https://help.aliyun.com/document_detail/85683.html).
         
         @param request: ModifyDBInstanceConnectionStringRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12576,10 +13868,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbinstance_connection_string_with_options_async(
         self,
@@ -12587,9 +13885,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse:
         """
-        @summary Changes the endpoint or port number of an ApsaraDB for Redis instance.
+        @summary Changes the endpoint or port number of a Tair (Redis OSS-compatible) instance.
         
-        @description You can also modify the endpoint or port number of an instance in the ApsaraDB for Redis console. For more information, see [Change the endpoint or port number of an instance](https://help.aliyun.com/document_detail/85683.html).
+        @description You can also modify the endpoint or port number of an instance in the Tair (Redis OSS-compatible) console. For more information, see [Change the endpoint or port number of an instance](https://help.aliyun.com/document_detail/85683.html).
         
         @param request: ModifyDBInstanceConnectionStringRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12631,19 +13929,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbinstance_connection_string(
         self,
         request: r_kvstore_20150101_models.ModifyDBInstanceConnectionStringRequest,
     ) -> r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse:
         """
-        @summary Changes the endpoint or port number of an ApsaraDB for Redis instance.
+        @summary Changes the endpoint or port number of a Tair (Redis OSS-compatible) instance.
         
-        @description You can also modify the endpoint or port number of an instance in the ApsaraDB for Redis console. For more information, see [Change the endpoint or port number of an instance](https://help.aliyun.com/document_detail/85683.html).
+        @description You can also modify the endpoint or port number of an instance in the Tair (Redis OSS-compatible) console. For more information, see [Change the endpoint or port number of an instance](https://help.aliyun.com/document_detail/85683.html).
         
         @param request: ModifyDBInstanceConnectionStringRequest
         @return: ModifyDBInstanceConnectionStringResponse
@@ -12656,9 +13960,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyDBInstanceConnectionStringRequest,
     ) -> r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse:
         """
-        @summary Changes the endpoint or port number of an ApsaraDB for Redis instance.
+        @summary Changes the endpoint or port number of a Tair (Redis OSS-compatible) instance.
         
-        @description You can also modify the endpoint or port number of an instance in the ApsaraDB for Redis console. For more information, see [Change the endpoint or port number of an instance](https://help.aliyun.com/document_detail/85683.html).
+        @description You can also modify the endpoint or port number of an instance in the Tair (Redis OSS-compatible) console. For more information, see [Change the endpoint or port number of an instance](https://help.aliyun.com/document_detail/85683.html).
         
         @param request: ModifyDBInstanceConnectionStringRequest
         @return: ModifyDBInstanceConnectionStringResponse
@@ -12714,10 +14018,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_global_security_ipgroup_with_options_async(
         self,
@@ -12767,10 +14077,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_global_security_ipgroup(
         self,
@@ -12844,10 +14160,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_global_security_ipgroup_name_with_options_async(
         self,
@@ -12895,10 +14217,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_global_security_ipgroup_name(
         self,
@@ -12972,10 +14300,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_global_security_ipgroup_relation_with_options_async(
         self,
@@ -13023,10 +14357,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_global_security_ipgroup_relation(
         self,
@@ -13060,9 +14400,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceAttributeResponse:
         """
-        @summary Changes the information of an ApsaraDB for Redis instance, such as the name and password.
+        @summary Modifies the specific information of a Tair (Redis OSS-compatible) instance, such as the password and the name.
         
-        @description You can also modify the information of an instance in the ApsaraDB for Redis console. For more information, see [Change or reset the password](https://help.aliyun.com/document_detail/43874.html).
+        @description You can also modify the information of an instance in the Tair (Redis OSS-compatible) console. For more information, see [Change or reset the password](https://help.aliyun.com/document_detail/43874.html).
         
         @param request: ModifyInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13102,10 +14442,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_instance_attribute_with_options_async(
         self,
@@ -13113,9 +14459,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceAttributeResponse:
         """
-        @summary Changes the information of an ApsaraDB for Redis instance, such as the name and password.
+        @summary Modifies the specific information of a Tair (Redis OSS-compatible) instance, such as the password and the name.
         
-        @description You can also modify the information of an instance in the ApsaraDB for Redis console. For more information, see [Change or reset the password](https://help.aliyun.com/document_detail/43874.html).
+        @description You can also modify the information of an instance in the Tair (Redis OSS-compatible) console. For more information, see [Change or reset the password](https://help.aliyun.com/document_detail/43874.html).
         
         @param request: ModifyInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13155,19 +14501,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_instance_attribute(
         self,
         request: r_kvstore_20150101_models.ModifyInstanceAttributeRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceAttributeResponse:
         """
-        @summary Changes the information of an ApsaraDB for Redis instance, such as the name and password.
+        @summary Modifies the specific information of a Tair (Redis OSS-compatible) instance, such as the password and the name.
         
-        @description You can also modify the information of an instance in the ApsaraDB for Redis console. For more information, see [Change or reset the password](https://help.aliyun.com/document_detail/43874.html).
+        @description You can also modify the information of an instance in the Tair (Redis OSS-compatible) console. For more information, see [Change or reset the password](https://help.aliyun.com/document_detail/43874.html).
         
         @param request: ModifyInstanceAttributeRequest
         @return: ModifyInstanceAttributeResponse
@@ -13180,9 +14532,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceAttributeRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceAttributeResponse:
         """
-        @summary Changes the information of an ApsaraDB for Redis instance, such as the name and password.
+        @summary Modifies the specific information of a Tair (Redis OSS-compatible) instance, such as the password and the name.
         
-        @description You can also modify the information of an instance in the ApsaraDB for Redis console. For more information, see [Change or reset the password](https://help.aliyun.com/document_detail/43874.html).
+        @description You can also modify the information of an instance in the Tair (Redis OSS-compatible) console. For more information, see [Change or reset the password](https://help.aliyun.com/document_detail/43874.html).
         
         @param request: ModifyInstanceAttributeRequest
         @return: ModifyInstanceAttributeResponse
@@ -13216,6 +14568,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -13236,10 +14590,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_instance_auto_renewal_attribute_with_options_async(
         self,
@@ -13267,6 +14627,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -13287,10 +14649,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_instance_auto_renewal_attribute(
         self,
@@ -13328,7 +14696,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceBandwidthResponse:
         """
-        @summary Modifies the bandwidth of an instance.
+        @summary Sets the intended bandwidth value of a Tair (Redis OSS-compatible) instance.
+        
+        @description    Before you call this operation, make sure that you understand the billing methods and pricing of instance bandwidth. Tair (Redis OSS-compatible) charges fees per hour based on the amount and usage duration of the extra bandwidth that you purchase. The fees vary based on the region that you select. For more information, see [Billable items](https://help.aliyun.com/document_detail/54532.html).
+        The bandwidth of an instance or a shard can be increased by up to six times the default bandwidth of the instance, but the increase in bandwidth cannot exceed 192 Mbit/s. For example, if the default bandwidth of a Tair DRAM-based master-replica instance equipped with 2 GB of memory is 96 Mbit/s, you can increase the bandwidth of the instance by up to 192 Mbit/s. As a result, the maximum bandwidth of the instance is 288 Mbit/s. If the default bandwidth of a Redis Open-Source Edition master-replica instance equipped with 256 MB of memory is 10 Mbit/s, you can increase the bandwidth of the instance by up to 60 Mbit/s. As a result, the maximum bandwidth of the instance is 70 Mbit/s.
         
         @param request: ModifyInstanceBandwidthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13364,10 +14735,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceBandwidthResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceBandwidthResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceBandwidthResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_instance_bandwidth_with_options_async(
         self,
@@ -13375,7 +14752,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceBandwidthResponse:
         """
-        @summary Modifies the bandwidth of an instance.
+        @summary Sets the intended bandwidth value of a Tair (Redis OSS-compatible) instance.
+        
+        @description    Before you call this operation, make sure that you understand the billing methods and pricing of instance bandwidth. Tair (Redis OSS-compatible) charges fees per hour based on the amount and usage duration of the extra bandwidth that you purchase. The fees vary based on the region that you select. For more information, see [Billable items](https://help.aliyun.com/document_detail/54532.html).
+        The bandwidth of an instance or a shard can be increased by up to six times the default bandwidth of the instance, but the increase in bandwidth cannot exceed 192 Mbit/s. For example, if the default bandwidth of a Tair DRAM-based master-replica instance equipped with 2 GB of memory is 96 Mbit/s, you can increase the bandwidth of the instance by up to 192 Mbit/s. As a result, the maximum bandwidth of the instance is 288 Mbit/s. If the default bandwidth of a Redis Open-Source Edition master-replica instance equipped with 256 MB of memory is 10 Mbit/s, you can increase the bandwidth of the instance by up to 60 Mbit/s. As a result, the maximum bandwidth of the instance is 70 Mbit/s.
         
         @param request: ModifyInstanceBandwidthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13411,17 +14791,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceBandwidthResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceBandwidthResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceBandwidthResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_instance_bandwidth(
         self,
         request: r_kvstore_20150101_models.ModifyInstanceBandwidthRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceBandwidthResponse:
         """
-        @summary Modifies the bandwidth of an instance.
+        @summary Sets the intended bandwidth value of a Tair (Redis OSS-compatible) instance.
+        
+        @description    Before you call this operation, make sure that you understand the billing methods and pricing of instance bandwidth. Tair (Redis OSS-compatible) charges fees per hour based on the amount and usage duration of the extra bandwidth that you purchase. The fees vary based on the region that you select. For more information, see [Billable items](https://help.aliyun.com/document_detail/54532.html).
+        The bandwidth of an instance or a shard can be increased by up to six times the default bandwidth of the instance, but the increase in bandwidth cannot exceed 192 Mbit/s. For example, if the default bandwidth of a Tair DRAM-based master-replica instance equipped with 2 GB of memory is 96 Mbit/s, you can increase the bandwidth of the instance by up to 192 Mbit/s. As a result, the maximum bandwidth of the instance is 288 Mbit/s. If the default bandwidth of a Redis Open-Source Edition master-replica instance equipped with 256 MB of memory is 10 Mbit/s, you can increase the bandwidth of the instance by up to 60 Mbit/s. As a result, the maximum bandwidth of the instance is 70 Mbit/s.
         
         @param request: ModifyInstanceBandwidthRequest
         @return: ModifyInstanceBandwidthResponse
@@ -13434,7 +14823,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceBandwidthRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceBandwidthResponse:
         """
-        @summary Modifies the bandwidth of an instance.
+        @summary Sets the intended bandwidth value of a Tair (Redis OSS-compatible) instance.
+        
+        @description    Before you call this operation, make sure that you understand the billing methods and pricing of instance bandwidth. Tair (Redis OSS-compatible) charges fees per hour based on the amount and usage duration of the extra bandwidth that you purchase. The fees vary based on the region that you select. For more information, see [Billable items](https://help.aliyun.com/document_detail/54532.html).
+        The bandwidth of an instance or a shard can be increased by up to six times the default bandwidth of the instance, but the increase in bandwidth cannot exceed 192 Mbit/s. For example, if the default bandwidth of a Tair DRAM-based master-replica instance equipped with 2 GB of memory is 96 Mbit/s, you can increase the bandwidth of the instance by up to 192 Mbit/s. As a result, the maximum bandwidth of the instance is 288 Mbit/s. If the default bandwidth of a Redis Open-Source Edition master-replica instance equipped with 256 MB of memory is 10 Mbit/s, you can increase the bandwidth of the instance by up to 60 Mbit/s. As a result, the maximum bandwidth of the instance is 70 Mbit/s.
         
         @param request: ModifyInstanceBandwidthRequest
         @return: ModifyInstanceBandwidthResponse
@@ -13496,10 +14888,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_instance_config_with_options_async(
         self,
@@ -13555,10 +14953,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_instance_config(
         self,
@@ -13592,9 +14996,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse:
         """
-        @summary Modifies the maintenance window of an ApsaraDB for Redis instance. Alibaba Cloud maintains ApsaraDB for Redis instances during the specified maintenance window.
+        @summary Modifies the maintenance window of an Tair (Redis OSS-compatible) instance. Alibaba Cloud maintains Tair (Redis OSS-compatible) instances during the specified maintenance window.
         
-        @description You can also modify the maintenance window of an instance in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](https://help.aliyun.com/document_detail/55252.html).
+        @description You can also modify the maintenance window of an instance in the Tair (Redis OSS-compatible) console. For more information, see [Set a maintenance window](https://help.aliyun.com/document_detail/55252.html).
         
         @param request: ModifyInstanceMaintainTimeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13632,10 +15036,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_instance_maintain_time_with_options_async(
         self,
@@ -13643,9 +15053,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse:
         """
-        @summary Modifies the maintenance window of an ApsaraDB for Redis instance. Alibaba Cloud maintains ApsaraDB for Redis instances during the specified maintenance window.
+        @summary Modifies the maintenance window of an Tair (Redis OSS-compatible) instance. Alibaba Cloud maintains Tair (Redis OSS-compatible) instances during the specified maintenance window.
         
-        @description You can also modify the maintenance window of an instance in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](https://help.aliyun.com/document_detail/55252.html).
+        @description You can also modify the maintenance window of an instance in the Tair (Redis OSS-compatible) console. For more information, see [Set a maintenance window](https://help.aliyun.com/document_detail/55252.html).
         
         @param request: ModifyInstanceMaintainTimeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13683,19 +15093,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_instance_maintain_time(
         self,
         request: r_kvstore_20150101_models.ModifyInstanceMaintainTimeRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse:
         """
-        @summary Modifies the maintenance window of an ApsaraDB for Redis instance. Alibaba Cloud maintains ApsaraDB for Redis instances during the specified maintenance window.
+        @summary Modifies the maintenance window of an Tair (Redis OSS-compatible) instance. Alibaba Cloud maintains Tair (Redis OSS-compatible) instances during the specified maintenance window.
         
-        @description You can also modify the maintenance window of an instance in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](https://help.aliyun.com/document_detail/55252.html).
+        @description You can also modify the maintenance window of an instance in the Tair (Redis OSS-compatible) console. For more information, see [Set a maintenance window](https://help.aliyun.com/document_detail/55252.html).
         
         @param request: ModifyInstanceMaintainTimeRequest
         @return: ModifyInstanceMaintainTimeResponse
@@ -13708,9 +15124,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceMaintainTimeRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse:
         """
-        @summary Modifies the maintenance window of an ApsaraDB for Redis instance. Alibaba Cloud maintains ApsaraDB for Redis instances during the specified maintenance window.
+        @summary Modifies the maintenance window of an Tair (Redis OSS-compatible) instance. Alibaba Cloud maintains Tair (Redis OSS-compatible) instances during the specified maintenance window.
         
-        @description You can also modify the maintenance window of an instance in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](https://help.aliyun.com/document_detail/55252.html).
+        @description You can also modify the maintenance window of an instance in the Tair (Redis OSS-compatible) console. For more information, see [Set a maintenance window](https://help.aliyun.com/document_detail/55252.html).
         
         @param request: ModifyInstanceMaintainTimeRequest
         @return: ModifyInstanceMaintainTimeResponse
@@ -13724,9 +15140,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse:
         """
-        @summary Upgrades the major version of an ApsaraDB for Redis instance.
+        @summary Upgrades the major version of a Tair (Redis OSS-compatible) instance.
         
-        @description For more information about how to perform the corresponding operation in the console, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html).
+        @description For more information about the precautions and impacts of the upgrade, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html).
         
         @param request: ModifyInstanceMajorVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13764,10 +15180,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_instance_major_version_with_options_async(
         self,
@@ -13775,9 +15197,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse:
         """
-        @summary Upgrades the major version of an ApsaraDB for Redis instance.
+        @summary Upgrades the major version of a Tair (Redis OSS-compatible) instance.
         
-        @description For more information about how to perform the corresponding operation in the console, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html).
+        @description For more information about the precautions and impacts of the upgrade, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html).
         
         @param request: ModifyInstanceMajorVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13815,19 +15237,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_instance_major_version(
         self,
         request: r_kvstore_20150101_models.ModifyInstanceMajorVersionRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse:
         """
-        @summary Upgrades the major version of an ApsaraDB for Redis instance.
+        @summary Upgrades the major version of a Tair (Redis OSS-compatible) instance.
         
-        @description For more information about how to perform the corresponding operation in the console, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html).
+        @description For more information about the precautions and impacts of the upgrade, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html).
         
         @param request: ModifyInstanceMajorVersionRequest
         @return: ModifyInstanceMajorVersionResponse
@@ -13840,9 +15268,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceMajorVersionRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse:
         """
-        @summary Upgrades the major version of an ApsaraDB for Redis instance.
+        @summary Upgrades the major version of a Tair (Redis OSS-compatible) instance.
         
-        @description For more information about how to perform the corresponding operation in the console, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html).
+        @description For more information about the precautions and impacts of the upgrade, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html).
         
         @param request: ModifyInstanceMajorVersionRequest
         @return: ModifyInstanceMajorVersionResponse
@@ -13856,11 +15284,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse:
         """
-        @summary Updates the minor version of an ApsaraDB for Redis instance.
+        @summary Updates the minor version of a Tair (Redis OSS-compatible) instance.
         
-        @description The procedure to update the minor version of an instance varies based on types of ApsaraDB for Redis instances. For more information, see [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
+        @description The procedure to update the minor version of an instance varies based on types of Tair (Redis OSS-compatible) instances. For more information, see [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
         >
-        Before you call this operation, you can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to query the minor version of the current instance.
+        Before you call this operation, you can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/473781.html) operation to query the minor version of the current instance.
         When you switch your workloads over from the original instance to a new instance or from the master node to the replica node in the original instance, you may experience disconnections that last a few seconds. The original instance stays in the read-only state within 60 seconds until all data is synchronized. We recommend that you upgrade the original instance during off-peak hours and make sure that your application is configured to automatically reconnect to the original instance.
         
         @param request: ModifyInstanceMinorVersionRequest
@@ -13899,10 +15327,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_instance_minor_version_with_options_async(
         self,
@@ -13910,11 +15344,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse:
         """
-        @summary Updates the minor version of an ApsaraDB for Redis instance.
+        @summary Updates the minor version of a Tair (Redis OSS-compatible) instance.
         
-        @description The procedure to update the minor version of an instance varies based on types of ApsaraDB for Redis instances. For more information, see [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
+        @description The procedure to update the minor version of an instance varies based on types of Tair (Redis OSS-compatible) instances. For more information, see [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
         >
-        Before you call this operation, you can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to query the minor version of the current instance.
+        Before you call this operation, you can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/473781.html) operation to query the minor version of the current instance.
         When you switch your workloads over from the original instance to a new instance or from the master node to the replica node in the original instance, you may experience disconnections that last a few seconds. The original instance stays in the read-only state within 60 seconds until all data is synchronized. We recommend that you upgrade the original instance during off-peak hours and make sure that your application is configured to automatically reconnect to the original instance.
         
         @param request: ModifyInstanceMinorVersionRequest
@@ -13953,21 +15387,27 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_instance_minor_version(
         self,
         request: r_kvstore_20150101_models.ModifyInstanceMinorVersionRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse:
         """
-        @summary Updates the minor version of an ApsaraDB for Redis instance.
+        @summary Updates the minor version of a Tair (Redis OSS-compatible) instance.
         
-        @description The procedure to update the minor version of an instance varies based on types of ApsaraDB for Redis instances. For more information, see [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
+        @description The procedure to update the minor version of an instance varies based on types of Tair (Redis OSS-compatible) instances. For more information, see [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
         >
-        Before you call this operation, you can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to query the minor version of the current instance.
+        Before you call this operation, you can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/473781.html) operation to query the minor version of the current instance.
         When you switch your workloads over from the original instance to a new instance or from the master node to the replica node in the original instance, you may experience disconnections that last a few seconds. The original instance stays in the read-only state within 60 seconds until all data is synchronized. We recommend that you upgrade the original instance during off-peak hours and make sure that your application is configured to automatically reconnect to the original instance.
         
         @param request: ModifyInstanceMinorVersionRequest
@@ -13981,11 +15421,11 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceMinorVersionRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse:
         """
-        @summary Updates the minor version of an ApsaraDB for Redis instance.
+        @summary Updates the minor version of a Tair (Redis OSS-compatible) instance.
         
-        @description The procedure to update the minor version of an instance varies based on types of ApsaraDB for Redis instances. For more information, see [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
+        @description The procedure to update the minor version of an instance varies based on types of Tair (Redis OSS-compatible) instances. For more information, see [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
         >
-        Before you call this operation, you can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to query the minor version of the current instance.
+        Before you call this operation, you can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/473781.html) operation to query the minor version of the current instance.
         When you switch your workloads over from the original instance to a new instance or from the master node to the replica node in the original instance, you may experience disconnections that last a few seconds. The original instance stays in the read-only state within 60 seconds until all data is synchronized. We recommend that you upgrade the original instance during off-peak hours and make sure that your application is configured to automatically reconnect to the original instance.
         
         @param request: ModifyInstanceMinorVersionRequest
@@ -14000,10 +15440,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse:
         """
-        @summary Extends the retention period of the classic network endpoint of an ApsaraDB for Redis instance. You can call this operation after you change the network type of the ApsaraDB for Redis instance from classic network to Virtual Private Cloud (VPC) with the classic network endpoint retained.
+        @summary Extends the retention period of the classic network endpoint of a Tair (Redis OSS-compatible) instance. You can call this operation after you change the network type of the Tair (Redis OSS-compatible) instance from classic network to Virtual Private Cloud (VPC) with the classic network endpoint retained.
         
-        @description You can also perform this operation in the ApsaraDB for Redis console. For more information, see [Change the expiration time for the endpoint of the classic network](https://help.aliyun.com/document_detail/60062.html).
-        > For more information about how to switch the network type of an ApsaraDB for Redis instance from classic network to VPC, see [SwitchNetwork](https://help.aliyun.com/document_detail/61005.html).
+        @description You can also perform this operation in the Tair (Redis OSS-compatible) console. For more information, see [Change the expiration time for the endpoint of the classic network](https://help.aliyun.com/document_detail/60062.html).
+        > For more information about how to switch the network type of a Tair (Redis OSS-compatible) instance from classic network to VPC, see [SwitchNetwork](https://help.aliyun.com/document_detail/473797.html).
         
         @param request: ModifyInstanceNetExpireTimeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14041,10 +15481,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_instance_net_expire_time_with_options_async(
         self,
@@ -14052,10 +15498,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse:
         """
-        @summary Extends the retention period of the classic network endpoint of an ApsaraDB for Redis instance. You can call this operation after you change the network type of the ApsaraDB for Redis instance from classic network to Virtual Private Cloud (VPC) with the classic network endpoint retained.
+        @summary Extends the retention period of the classic network endpoint of a Tair (Redis OSS-compatible) instance. You can call this operation after you change the network type of the Tair (Redis OSS-compatible) instance from classic network to Virtual Private Cloud (VPC) with the classic network endpoint retained.
         
-        @description You can also perform this operation in the ApsaraDB for Redis console. For more information, see [Change the expiration time for the endpoint of the classic network](https://help.aliyun.com/document_detail/60062.html).
-        > For more information about how to switch the network type of an ApsaraDB for Redis instance from classic network to VPC, see [SwitchNetwork](https://help.aliyun.com/document_detail/61005.html).
+        @description You can also perform this operation in the Tair (Redis OSS-compatible) console. For more information, see [Change the expiration time for the endpoint of the classic network](https://help.aliyun.com/document_detail/60062.html).
+        > For more information about how to switch the network type of a Tair (Redis OSS-compatible) instance from classic network to VPC, see [SwitchNetwork](https://help.aliyun.com/document_detail/473797.html).
         
         @param request: ModifyInstanceNetExpireTimeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14093,20 +15539,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_instance_net_expire_time(
         self,
         request: r_kvstore_20150101_models.ModifyInstanceNetExpireTimeRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse:
         """
-        @summary Extends the retention period of the classic network endpoint of an ApsaraDB for Redis instance. You can call this operation after you change the network type of the ApsaraDB for Redis instance from classic network to Virtual Private Cloud (VPC) with the classic network endpoint retained.
+        @summary Extends the retention period of the classic network endpoint of a Tair (Redis OSS-compatible) instance. You can call this operation after you change the network type of the Tair (Redis OSS-compatible) instance from classic network to Virtual Private Cloud (VPC) with the classic network endpoint retained.
         
-        @description You can also perform this operation in the ApsaraDB for Redis console. For more information, see [Change the expiration time for the endpoint of the classic network](https://help.aliyun.com/document_detail/60062.html).
-        > For more information about how to switch the network type of an ApsaraDB for Redis instance from classic network to VPC, see [SwitchNetwork](https://help.aliyun.com/document_detail/61005.html).
+        @description You can also perform this operation in the Tair (Redis OSS-compatible) console. For more information, see [Change the expiration time for the endpoint of the classic network](https://help.aliyun.com/document_detail/60062.html).
+        > For more information about how to switch the network type of a Tair (Redis OSS-compatible) instance from classic network to VPC, see [SwitchNetwork](https://help.aliyun.com/document_detail/473797.html).
         
         @param request: ModifyInstanceNetExpireTimeRequest
         @return: ModifyInstanceNetExpireTimeResponse
@@ -14119,10 +15571,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceNetExpireTimeRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse:
         """
-        @summary Extends the retention period of the classic network endpoint of an ApsaraDB for Redis instance. You can call this operation after you change the network type of the ApsaraDB for Redis instance from classic network to Virtual Private Cloud (VPC) with the classic network endpoint retained.
+        @summary Extends the retention period of the classic network endpoint of a Tair (Redis OSS-compatible) instance. You can call this operation after you change the network type of the Tair (Redis OSS-compatible) instance from classic network to Virtual Private Cloud (VPC) with the classic network endpoint retained.
         
-        @description You can also perform this operation in the ApsaraDB for Redis console. For more information, see [Change the expiration time for the endpoint of the classic network](https://help.aliyun.com/document_detail/60062.html).
-        > For more information about how to switch the network type of an ApsaraDB for Redis instance from classic network to VPC, see [SwitchNetwork](https://help.aliyun.com/document_detail/61005.html).
+        @description You can also perform this operation in the Tair (Redis OSS-compatible) console. For more information, see [Change the expiration time for the endpoint of the classic network](https://help.aliyun.com/document_detail/60062.html).
+        > For more information about how to switch the network type of a Tair (Redis OSS-compatible) instance from classic network to VPC, see [SwitchNetwork](https://help.aliyun.com/document_detail/473797.html).
         
         @param request: ModifyInstanceNetExpireTimeRequest
         @return: ModifyInstanceNetExpireTimeResponse
@@ -14176,10 +15628,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceParameterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceParameterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceParameterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_instance_parameter_with_options_async(
         self,
@@ -14227,10 +15685,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceParameterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceParameterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceParameterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_instance_parameter(
         self,
@@ -14264,10 +15728,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceSSLResponse:
         """
-        @summary Modifies the SSL settings of an ApsaraDB for Redis instance.
+        @summary Enables Transport Layer Security (TLS) for a Tair (Redis OSS-compatible) instance.
         
-        @description You can also modify SSL encryption configurations in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
-        >  To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](~~ModifyInstanceConfig~~) operation to modify the required parameter.
+        @description You can also configure SSL encryption in the console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
+        >  To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to modify the required parameter.
         
         @param request: ModifyInstanceSSLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14303,10 +15767,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceSSLResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceSSLResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceSSLResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_instance_sslwith_options_async(
         self,
@@ -14314,10 +15784,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceSSLResponse:
         """
-        @summary Modifies the SSL settings of an ApsaraDB for Redis instance.
+        @summary Enables Transport Layer Security (TLS) for a Tair (Redis OSS-compatible) instance.
         
-        @description You can also modify SSL encryption configurations in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
-        >  To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](~~ModifyInstanceConfig~~) operation to modify the required parameter.
+        @description You can also configure SSL encryption in the console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
+        >  To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to modify the required parameter.
         
         @param request: ModifyInstanceSSLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14353,20 +15823,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceSSLResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceSSLResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceSSLResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_instance_ssl(
         self,
         request: r_kvstore_20150101_models.ModifyInstanceSSLRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceSSLResponse:
         """
-        @summary Modifies the SSL settings of an ApsaraDB for Redis instance.
+        @summary Enables Transport Layer Security (TLS) for a Tair (Redis OSS-compatible) instance.
         
-        @description You can also modify SSL encryption configurations in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
-        >  To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](~~ModifyInstanceConfig~~) operation to modify the required parameter.
+        @description You can also configure SSL encryption in the console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
+        >  To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to modify the required parameter.
         
         @param request: ModifyInstanceSSLRequest
         @return: ModifyInstanceSSLResponse
@@ -14379,10 +15855,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceSSLRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceSSLResponse:
         """
-        @summary Modifies the SSL settings of an ApsaraDB for Redis instance.
+        @summary Enables Transport Layer Security (TLS) for a Tair (Redis OSS-compatible) instance.
         
-        @description You can also modify SSL encryption configurations in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
-        >  To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](~~ModifyInstanceConfig~~) operation to modify the required parameter.
+        @description You can also configure SSL encryption in the console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
+        >  To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to modify the required parameter.
         
         @param request: ModifyInstanceSSLRequest
         @return: ModifyInstanceSSLResponse
@@ -14396,7 +15872,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceSpecResponse:
         """
-        @summary Changes the specifications of an ApsaraDB for Redis instance.
+        @summary Changes the configurations of a Tair (Redis OSS-compatible) instance.
         
         @description >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](https://help.aliyun.com/document_detail/26353.html).
         
@@ -14472,10 +15948,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceSpecResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceSpecResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceSpecResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_instance_spec_with_options_async(
         self,
@@ -14483,7 +15965,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceSpecResponse:
         """
-        @summary Changes the specifications of an ApsaraDB for Redis instance.
+        @summary Changes the configurations of a Tair (Redis OSS-compatible) instance.
         
         @description >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](https://help.aliyun.com/document_detail/26353.html).
         
@@ -14559,17 +16041,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceSpecResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceSpecResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceSpecResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_instance_spec(
         self,
         request: r_kvstore_20150101_models.ModifyInstanceSpecRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceSpecResponse:
         """
-        @summary Changes the specifications of an ApsaraDB for Redis instance.
+        @summary Changes the configurations of a Tair (Redis OSS-compatible) instance.
         
         @description >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](https://help.aliyun.com/document_detail/26353.html).
         
@@ -14584,7 +16072,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceSpecRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceSpecResponse:
         """
-        @summary Changes the specifications of an ApsaraDB for Redis instance.
+        @summary Changes the configurations of a Tair (Redis OSS-compatible) instance.
         
         @description >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](https://help.aliyun.com/document_detail/26353.html).
         
@@ -14600,7 +16088,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceTDEResponse:
         """
-        @summary Enables transparent data encryption (TDE) for an ApsaraDB for Redis instance. You can use existing custom keys.
+        @summary Enables transparent data encryption (TDE) for a Tair (Redis OSS-compatible) instance. You can use existing custom keys.
         
         @description > For more information about TDE and the impact of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
@@ -14644,10 +16132,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceTDEResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceTDEResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceTDEResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_instance_tdewith_options_async(
         self,
@@ -14655,7 +16149,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceTDEResponse:
         """
-        @summary Enables transparent data encryption (TDE) for an ApsaraDB for Redis instance. You can use existing custom keys.
+        @summary Enables transparent data encryption (TDE) for a Tair (Redis OSS-compatible) instance. You can use existing custom keys.
         
         @description > For more information about TDE and the impact of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
@@ -14699,17 +16193,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceTDEResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceTDEResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceTDEResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_instance_tde(
         self,
         request: r_kvstore_20150101_models.ModifyInstanceTDERequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceTDEResponse:
         """
-        @summary Enables transparent data encryption (TDE) for an ApsaraDB for Redis instance. You can use existing custom keys.
+        @summary Enables transparent data encryption (TDE) for a Tair (Redis OSS-compatible) instance. You can use existing custom keys.
         
         @description > For more information about TDE and the impact of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
@@ -14724,7 +16224,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceTDERequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceTDEResponse:
         """
-        @summary Enables transparent data encryption (TDE) for an ApsaraDB for Redis instance. You can use existing custom keys.
+        @summary Enables transparent data encryption (TDE) for a Tair (Redis OSS-compatible) instance. You can use existing custom keys.
         
         @description > For more information about TDE and the impact of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
@@ -14779,10 +16279,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_instance_vpc_auth_mode_with_options_async(
         self,
@@ -14829,10 +16335,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_instance_vpc_auth_mode(
         self,
@@ -14872,10 +16384,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyIntranetAttributeResponse:
         """
-        @summary Temporarily adjusts the internal bandwidth of an ApsaraDB for Redis instance that is deployed in a dedicated cluster.
+        @summary Temporarily adjusts the internal bandwidth of a Tair (Redis OSS-compatible) instance that is deployed in a dedicated cluster.
         
         @description >
-        This operation is applicable only to an ApsaraDB for Redis instance that is deployed in a dedicated cluster. To adjust the bandwidth of a standard ApsaraDB for Redis instance, call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation.
+        This operation is applicable only to an instance that is deployed in a dedicated cluster. To adjust the bandwidth of a standard instance, call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html) operation.
         
         @param request: ModifyIntranetAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14913,10 +16425,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyIntranetAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyIntranetAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyIntranetAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_intranet_attribute_with_options_async(
         self,
@@ -14924,10 +16442,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyIntranetAttributeResponse:
         """
-        @summary Temporarily adjusts the internal bandwidth of an ApsaraDB for Redis instance that is deployed in a dedicated cluster.
+        @summary Temporarily adjusts the internal bandwidth of a Tair (Redis OSS-compatible) instance that is deployed in a dedicated cluster.
         
         @description >
-        This operation is applicable only to an ApsaraDB for Redis instance that is deployed in a dedicated cluster. To adjust the bandwidth of a standard ApsaraDB for Redis instance, call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation.
+        This operation is applicable only to an instance that is deployed in a dedicated cluster. To adjust the bandwidth of a standard instance, call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html) operation.
         
         @param request: ModifyIntranetAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14965,20 +16483,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyIntranetAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyIntranetAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyIntranetAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_intranet_attribute(
         self,
         request: r_kvstore_20150101_models.ModifyIntranetAttributeRequest,
     ) -> r_kvstore_20150101_models.ModifyIntranetAttributeResponse:
         """
-        @summary Temporarily adjusts the internal bandwidth of an ApsaraDB for Redis instance that is deployed in a dedicated cluster.
+        @summary Temporarily adjusts the internal bandwidth of a Tair (Redis OSS-compatible) instance that is deployed in a dedicated cluster.
         
         @description >
-        This operation is applicable only to an ApsaraDB for Redis instance that is deployed in a dedicated cluster. To adjust the bandwidth of a standard ApsaraDB for Redis instance, call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation.
+        This operation is applicable only to an instance that is deployed in a dedicated cluster. To adjust the bandwidth of a standard instance, call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html) operation.
         
         @param request: ModifyIntranetAttributeRequest
         @return: ModifyIntranetAttributeResponse
@@ -14991,10 +16515,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyIntranetAttributeRequest,
     ) -> r_kvstore_20150101_models.ModifyIntranetAttributeResponse:
         """
-        @summary Temporarily adjusts the internal bandwidth of an ApsaraDB for Redis instance that is deployed in a dedicated cluster.
+        @summary Temporarily adjusts the internal bandwidth of a Tair (Redis OSS-compatible) instance that is deployed in a dedicated cluster.
         
         @description >
-        This operation is applicable only to an ApsaraDB for Redis instance that is deployed in a dedicated cluster. To adjust the bandwidth of a standard ApsaraDB for Redis instance, call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation.
+        This operation is applicable only to an instance that is deployed in a dedicated cluster. To adjust the bandwidth of a standard instance, call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html) operation.
         
         @param request: ModifyIntranetAttributeRequest
         @return: ModifyIntranetAttributeResponse
@@ -15052,10 +16576,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyParameterGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyParameterGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyParameterGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_parameter_group_with_options_async(
         self,
@@ -15107,10 +16637,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyParameterGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyParameterGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyParameterGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_parameter_group(
         self,
@@ -15144,10 +16680,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyResourceGroupResponse:
         """
-        @summary Changes the resource group to which an ApsaraDB for Redis instance belongs.
+        @summary Changes the resource group to which a Tair (Redis OSS-compatible) instance belongs.
         
-        @description Resource groups allow you to sort resources owned by your Alibaba Cloud account into groups. This simplifies resource and permission management within your Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
-        > For more information about resource group API operations, see [Resource Management API overview](https://help.aliyun.com/document_detail/160024.html).
+        @description You can also perform this operation in the [Resource Management](https://resourcemanager.console.aliyun.com/resource-center) console. For more information, see [Transfer resources across resource groups](https://help.aliyun.com/document_detail/94487.html).
+        >  Resource Group allows you to sort resources owned by your Alibaba Cloud account into groups. This simplifies the resource and permission management within your Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
         
         @param request: ModifyResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15185,10 +16721,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_resource_group_with_options_async(
         self,
@@ -15196,10 +16738,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyResourceGroupResponse:
         """
-        @summary Changes the resource group to which an ApsaraDB for Redis instance belongs.
+        @summary Changes the resource group to which a Tair (Redis OSS-compatible) instance belongs.
         
-        @description Resource groups allow you to sort resources owned by your Alibaba Cloud account into groups. This simplifies resource and permission management within your Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
-        > For more information about resource group API operations, see [Resource Management API overview](https://help.aliyun.com/document_detail/160024.html).
+        @description You can also perform this operation in the [Resource Management](https://resourcemanager.console.aliyun.com/resource-center) console. For more information, see [Transfer resources across resource groups](https://help.aliyun.com/document_detail/94487.html).
+        >  Resource Group allows you to sort resources owned by your Alibaba Cloud account into groups. This simplifies the resource and permission management within your Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
         
         @param request: ModifyResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15237,20 +16779,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_resource_group(
         self,
         request: r_kvstore_20150101_models.ModifyResourceGroupRequest,
     ) -> r_kvstore_20150101_models.ModifyResourceGroupResponse:
         """
-        @summary Changes the resource group to which an ApsaraDB for Redis instance belongs.
+        @summary Changes the resource group to which a Tair (Redis OSS-compatible) instance belongs.
         
-        @description Resource groups allow you to sort resources owned by your Alibaba Cloud account into groups. This simplifies resource and permission management within your Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
-        > For more information about resource group API operations, see [Resource Management API overview](https://help.aliyun.com/document_detail/160024.html).
+        @description You can also perform this operation in the [Resource Management](https://resourcemanager.console.aliyun.com/resource-center) console. For more information, see [Transfer resources across resource groups](https://help.aliyun.com/document_detail/94487.html).
+        >  Resource Group allows you to sort resources owned by your Alibaba Cloud account into groups. This simplifies the resource and permission management within your Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
         
         @param request: ModifyResourceGroupRequest
         @return: ModifyResourceGroupResponse
@@ -15263,10 +16811,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyResourceGroupRequest,
     ) -> r_kvstore_20150101_models.ModifyResourceGroupResponse:
         """
-        @summary Changes the resource group to which an ApsaraDB for Redis instance belongs.
+        @summary Changes the resource group to which a Tair (Redis OSS-compatible) instance belongs.
         
-        @description Resource groups allow you to sort resources owned by your Alibaba Cloud account into groups. This simplifies resource and permission management within your Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
-        > For more information about resource group API operations, see [Resource Management API overview](https://help.aliyun.com/document_detail/160024.html).
+        @description You can also perform this operation in the [Resource Management](https://resourcemanager.console.aliyun.com/resource-center) console. For more information, see [Transfer resources across resource groups](https://help.aliyun.com/document_detail/94487.html).
+        >  Resource Group allows you to sort resources owned by your Alibaba Cloud account into groups. This simplifies the resource and permission management within your Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
         
         @param request: ModifyResourceGroupRequest
         @return: ModifyResourceGroupResponse
@@ -15318,10 +16866,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_security_group_configuration_with_options_async(
         self,
@@ -15367,10 +16921,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_security_group_configuration(
         self,
@@ -15408,9 +16968,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifySecurityIpsResponse:
         """
-        @summary Modifies the IP address whitelists of an ApsaraDB for Redis instance.
+        @summary Modifies the IP address whitelists of a Tair (Redis OSS-compatible) instance.
         
-        @description You can also modify the whitelists of an instance in the ApsaraDB for Redis console. For more information, see [Configure a whitelist for an instance](https://help.aliyun.com/document_detail/56464.html).
+        @description You can also modify the whitelists of an instance in the Tair (Redis OSS-compatible) console. For more information, see [Configure a whitelist for an instance](https://help.aliyun.com/document_detail/56464.html).
         
         @param request: ModifySecurityIpsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15452,10 +17012,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifySecurityIpsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifySecurityIpsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifySecurityIpsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_security_ips_with_options_async(
         self,
@@ -15463,9 +17029,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifySecurityIpsResponse:
         """
-        @summary Modifies the IP address whitelists of an ApsaraDB for Redis instance.
+        @summary Modifies the IP address whitelists of a Tair (Redis OSS-compatible) instance.
         
-        @description You can also modify the whitelists of an instance in the ApsaraDB for Redis console. For more information, see [Configure a whitelist for an instance](https://help.aliyun.com/document_detail/56464.html).
+        @description You can also modify the whitelists of an instance in the Tair (Redis OSS-compatible) console. For more information, see [Configure a whitelist for an instance](https://help.aliyun.com/document_detail/56464.html).
         
         @param request: ModifySecurityIpsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15507,19 +17073,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifySecurityIpsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifySecurityIpsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifySecurityIpsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_security_ips(
         self,
         request: r_kvstore_20150101_models.ModifySecurityIpsRequest,
     ) -> r_kvstore_20150101_models.ModifySecurityIpsResponse:
         """
-        @summary Modifies the IP address whitelists of an ApsaraDB for Redis instance.
+        @summary Modifies the IP address whitelists of a Tair (Redis OSS-compatible) instance.
         
-        @description You can also modify the whitelists of an instance in the ApsaraDB for Redis console. For more information, see [Configure a whitelist for an instance](https://help.aliyun.com/document_detail/56464.html).
+        @description You can also modify the whitelists of an instance in the Tair (Redis OSS-compatible) console. For more information, see [Configure a whitelist for an instance](https://help.aliyun.com/document_detail/56464.html).
         
         @param request: ModifySecurityIpsRequest
         @return: ModifySecurityIpsResponse
@@ -15532,9 +17104,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifySecurityIpsRequest,
     ) -> r_kvstore_20150101_models.ModifySecurityIpsResponse:
         """
-        @summary Modifies the IP address whitelists of an ApsaraDB for Redis instance.
+        @summary Modifies the IP address whitelists of a Tair (Redis OSS-compatible) instance.
         
-        @description You can also modify the whitelists of an instance in the ApsaraDB for Redis console. For more information, see [Configure a whitelist for an instance](https://help.aliyun.com/document_detail/56464.html).
+        @description You can also modify the whitelists of an instance in the Tair (Redis OSS-compatible) console. For more information, see [Configure a whitelist for an instance](https://help.aliyun.com/document_detail/56464.html).
         
         @param request: ModifySecurityIpsRequest
         @return: ModifySecurityIpsResponse
@@ -15586,10 +17158,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_tair_kvcache_custom_instance_attribute_with_options_async(
         self,
@@ -15635,10 +17213,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_tair_kvcache_custom_instance_attribute(
         self,
@@ -15672,7 +17256,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyTaskInfoResponse:
         """
-        @summary 任务中心修改任务信息
+        @summary Modifies the task information, such as the task execution time.
         
         @param request: ModifyTaskInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15710,10 +17294,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyTaskInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyTaskInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyTaskInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_task_info_with_options_async(
         self,
@@ -15721,7 +17311,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyTaskInfoResponse:
         """
-        @summary 任务中心修改任务信息
+        @summary Modifies the task information, such as the task execution time.
         
         @param request: ModifyTaskInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15759,17 +17349,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyTaskInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyTaskInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ModifyTaskInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_task_info(
         self,
         request: r_kvstore_20150101_models.ModifyTaskInfoRequest,
     ) -> r_kvstore_20150101_models.ModifyTaskInfoResponse:
         """
-        @summary 任务中心修改任务信息
+        @summary Modifies the task information, such as the task execution time.
         
         @param request: ModifyTaskInfoRequest
         @return: ModifyTaskInfoResponse
@@ -15782,7 +17378,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyTaskInfoRequest,
     ) -> r_kvstore_20150101_models.ModifyTaskInfoResponse:
         """
-        @summary 任务中心修改任务信息
+        @summary Modifies the task information, such as the task execution time.
         
         @param request: ModifyTaskInfoRequest
         @return: ModifyTaskInfoResponse
@@ -15832,10 +17428,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ReleaseDirectConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ReleaseDirectConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ReleaseDirectConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def release_direct_connection_with_options_async(
         self,
@@ -15879,10 +17481,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ReleaseDirectConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ReleaseDirectConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ReleaseDirectConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def release_direct_connection(
         self,
@@ -15920,9 +17528,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse:
         """
-        @summary Releases the public endpoint of an ApsaraDB for Redis instance.
+        @summary Releases the public endpoint of a Tair (Redis OSS-compatible) instance.
         
-        @description For more information about how to perform the API operation in the ApsaraDB for Redis console, see [Release public endpoints](https://help.aliyun.com/document_detail/125424.html).
+        @description You can also release the public endpoint for an instance in the Tair (Redis OSS-compatible) console. For more information, see [Release public endpoints](https://help.aliyun.com/document_detail/125424.html).
         
         @param request: ReleaseInstancePublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15958,10 +17566,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def release_instance_public_connection_with_options_async(
         self,
@@ -15969,9 +17583,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse:
         """
-        @summary Releases the public endpoint of an ApsaraDB for Redis instance.
+        @summary Releases the public endpoint of a Tair (Redis OSS-compatible) instance.
         
-        @description For more information about how to perform the API operation in the ApsaraDB for Redis console, see [Release public endpoints](https://help.aliyun.com/document_detail/125424.html).
+        @description You can also release the public endpoint for an instance in the Tair (Redis OSS-compatible) console. For more information, see [Release public endpoints](https://help.aliyun.com/document_detail/125424.html).
         
         @param request: ReleaseInstancePublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16007,19 +17621,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def release_instance_public_connection(
         self,
         request: r_kvstore_20150101_models.ReleaseInstancePublicConnectionRequest,
     ) -> r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse:
         """
-        @summary Releases the public endpoint of an ApsaraDB for Redis instance.
+        @summary Releases the public endpoint of a Tair (Redis OSS-compatible) instance.
         
-        @description For more information about how to perform the API operation in the ApsaraDB for Redis console, see [Release public endpoints](https://help.aliyun.com/document_detail/125424.html).
+        @description You can also release the public endpoint for an instance in the Tair (Redis OSS-compatible) console. For more information, see [Release public endpoints](https://help.aliyun.com/document_detail/125424.html).
         
         @param request: ReleaseInstancePublicConnectionRequest
         @return: ReleaseInstancePublicConnectionResponse
@@ -16032,9 +17652,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ReleaseInstancePublicConnectionRequest,
     ) -> r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse:
         """
-        @summary Releases the public endpoint of an ApsaraDB for Redis instance.
+        @summary Releases the public endpoint of a Tair (Redis OSS-compatible) instance.
         
-        @description For more information about how to perform the API operation in the ApsaraDB for Redis console, see [Release public endpoints](https://help.aliyun.com/document_detail/125424.html).
+        @description You can also release the public endpoint for an instance in the Tair (Redis OSS-compatible) console. For more information, see [Release public endpoints](https://help.aliyun.com/document_detail/125424.html).
         
         @param request: ReleaseInstancePublicConnectionRequest
         @return: ReleaseInstancePublicConnectionResponse
@@ -16084,10 +17704,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.RemoveSubInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RemoveSubInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RemoveSubInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def remove_sub_instance_with_options_async(
         self,
@@ -16131,10 +17757,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.RemoveSubInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RemoveSubInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RemoveSubInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def remove_sub_instance(
         self,
@@ -16172,11 +17804,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.RenewAdditionalBandwidthResponse:
         """
-        @summary Renews the purchased bandwidth for an ApsaraDB for Redis instance.
+        @summary This operation is not recommended now. The billing method for bandwidth of a Tair (Redis OSS-compatible) instance is changed to pay-as-you-go.
         
-        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
-        You can adjust the bandwidth of an instance in the ApsaraDB for Redis console. For more information, see [Adjust the bandwidth of an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/102588.html). You can also call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to adjust the bandwidth of an instance. If you want to continue using the bandwidth that you purchase after the validity period of the bandwidth, you must call the RenewAdditionalBandwidth operation to renew the bandwidth before the bandwidth expires.
-        > Before you call this operation, you can call the [DescribeIntranetAttribute](https://help.aliyun.com/document_detail/128715.html) operation, which returns the expiration time of the purchased bandwidth in the *BandwidthExpireTime** parameter.
+        @description You can adjust the bandwidth of an instance in the Tair (Redis OSS-compatible) console. For more information, see [Adjust the bandwidth of an instance](https://help.aliyun.com/document_detail/102588.html). You can also call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html) operation to purchase bandwidth for an instance.
         
         @param request: RenewAdditionalBandwidthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16218,10 +17848,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.RenewAdditionalBandwidthResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RenewAdditionalBandwidthResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RenewAdditionalBandwidthResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def renew_additional_bandwidth_with_options_async(
         self,
@@ -16229,11 +17865,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.RenewAdditionalBandwidthResponse:
         """
-        @summary Renews the purchased bandwidth for an ApsaraDB for Redis instance.
+        @summary This operation is not recommended now. The billing method for bandwidth of a Tair (Redis OSS-compatible) instance is changed to pay-as-you-go.
         
-        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
-        You can adjust the bandwidth of an instance in the ApsaraDB for Redis console. For more information, see [Adjust the bandwidth of an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/102588.html). You can also call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to adjust the bandwidth of an instance. If you want to continue using the bandwidth that you purchase after the validity period of the bandwidth, you must call the RenewAdditionalBandwidth operation to renew the bandwidth before the bandwidth expires.
-        > Before you call this operation, you can call the [DescribeIntranetAttribute](https://help.aliyun.com/document_detail/128715.html) operation, which returns the expiration time of the purchased bandwidth in the *BandwidthExpireTime** parameter.
+        @description You can adjust the bandwidth of an instance in the Tair (Redis OSS-compatible) console. For more information, see [Adjust the bandwidth of an instance](https://help.aliyun.com/document_detail/102588.html). You can also call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html) operation to purchase bandwidth for an instance.
         
         @param request: RenewAdditionalBandwidthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16275,21 +17909,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.RenewAdditionalBandwidthResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RenewAdditionalBandwidthResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RenewAdditionalBandwidthResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def renew_additional_bandwidth(
         self,
         request: r_kvstore_20150101_models.RenewAdditionalBandwidthRequest,
     ) -> r_kvstore_20150101_models.RenewAdditionalBandwidthResponse:
         """
-        @summary Renews the purchased bandwidth for an ApsaraDB for Redis instance.
+        @summary This operation is not recommended now. The billing method for bandwidth of a Tair (Redis OSS-compatible) instance is changed to pay-as-you-go.
         
-        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
-        You can adjust the bandwidth of an instance in the ApsaraDB for Redis console. For more information, see [Adjust the bandwidth of an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/102588.html). You can also call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to adjust the bandwidth of an instance. If you want to continue using the bandwidth that you purchase after the validity period of the bandwidth, you must call the RenewAdditionalBandwidth operation to renew the bandwidth before the bandwidth expires.
-        > Before you call this operation, you can call the [DescribeIntranetAttribute](https://help.aliyun.com/document_detail/128715.html) operation, which returns the expiration time of the purchased bandwidth in the *BandwidthExpireTime** parameter.
+        @description You can adjust the bandwidth of an instance in the Tair (Redis OSS-compatible) console. For more information, see [Adjust the bandwidth of an instance](https://help.aliyun.com/document_detail/102588.html). You can also call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html) operation to purchase bandwidth for an instance.
         
         @param request: RenewAdditionalBandwidthRequest
         @return: RenewAdditionalBandwidthResponse
@@ -16302,11 +17940,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.RenewAdditionalBandwidthRequest,
     ) -> r_kvstore_20150101_models.RenewAdditionalBandwidthResponse:
         """
-        @summary Renews the purchased bandwidth for an ApsaraDB for Redis instance.
+        @summary This operation is not recommended now. The billing method for bandwidth of a Tair (Redis OSS-compatible) instance is changed to pay-as-you-go.
         
-        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
-        You can adjust the bandwidth of an instance in the ApsaraDB for Redis console. For more information, see [Adjust the bandwidth of an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/102588.html). You can also call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to adjust the bandwidth of an instance. If you want to continue using the bandwidth that you purchase after the validity period of the bandwidth, you must call the RenewAdditionalBandwidth operation to renew the bandwidth before the bandwidth expires.
-        > Before you call this operation, you can call the [DescribeIntranetAttribute](https://help.aliyun.com/document_detail/128715.html) operation, which returns the expiration time of the purchased bandwidth in the *BandwidthExpireTime** parameter.
+        @description You can adjust the bandwidth of an instance in the Tair (Redis OSS-compatible) console. For more information, see [Adjust the bandwidth of an instance](https://help.aliyun.com/document_detail/102588.html). You can also call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html) operation to purchase bandwidth for an instance.
         
         @param request: RenewAdditionalBandwidthRequest
         @return: RenewAdditionalBandwidthResponse
@@ -16374,10 +18010,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.RenewInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RenewInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RenewInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def renew_instance_with_options_async(
         self,
@@ -16439,10 +18081,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.RenewInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RenewInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RenewInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def renew_instance(
         self,
@@ -16480,9 +18128,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ResetAccountPasswordResponse:
         """
-        @summary Resets the password of an account for an ApsaraDB for Redis instance.
+        @summary Resets the password of an account for a Tair (Redis OSS-compatible) instance.
         
-        @description >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        @description >  Only Tair (Redis OSS-compatible) instances of Redis 4.0 or later are supported.
         
         @param request: ResetAccountPasswordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16522,10 +18170,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ResetAccountPasswordResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ResetAccountPasswordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ResetAccountPasswordResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def reset_account_password_with_options_async(
         self,
@@ -16533,9 +18187,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ResetAccountPasswordResponse:
         """
-        @summary Resets the password of an account for an ApsaraDB for Redis instance.
+        @summary Resets the password of an account for a Tair (Redis OSS-compatible) instance.
         
-        @description >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        @description >  Only Tair (Redis OSS-compatible) instances of Redis 4.0 or later are supported.
         
         @param request: ResetAccountPasswordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16575,19 +18229,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ResetAccountPasswordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ResetAccountPasswordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ResetAccountPasswordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def reset_account_password(
         self,
         request: r_kvstore_20150101_models.ResetAccountPasswordRequest,
     ) -> r_kvstore_20150101_models.ResetAccountPasswordResponse:
         """
-        @summary Resets the password of an account for an ApsaraDB for Redis instance.
+        @summary Resets the password of an account for a Tair (Redis OSS-compatible) instance.
         
-        @description >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        @description >  Only Tair (Redis OSS-compatible) instances of Redis 4.0 or later are supported.
         
         @param request: ResetAccountPasswordRequest
         @return: ResetAccountPasswordResponse
@@ -16600,9 +18260,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ResetAccountPasswordRequest,
     ) -> r_kvstore_20150101_models.ResetAccountPasswordResponse:
         """
-        @summary Resets the password of an account for an ApsaraDB for Redis instance.
+        @summary Resets the password of an account for a Tair (Redis OSS-compatible) instance.
         
-        @description >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        @description >  Only Tair (Redis OSS-compatible) instances of Redis 4.0 or later are supported.
         
         @param request: ResetAccountPasswordRequest
         @return: ResetAccountPasswordResponse
@@ -16654,10 +18314,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def reset_tair_kvcache_custom_instance_password_with_options_async(
         self,
@@ -16703,10 +18369,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def reset_tair_kvcache_custom_instance_password(
         self,
@@ -16780,10 +18452,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def resize_tair_kvcache_custom_instance_disk_with_options_async(
         self,
@@ -16831,10 +18509,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def resize_tair_kvcache_custom_instance_disk(
         self,
@@ -16906,10 +18590,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.RestartInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RestartInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RestartInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def restart_instance_with_options_async(
         self,
@@ -16955,10 +18645,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.RestartInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RestartInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RestartInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def restart_instance(
         self,
@@ -17026,10 +18722,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def restart_tair_kvcache_custom_instance_with_options_async(
         self,
@@ -17071,10 +18773,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def restart_tair_kvcache_custom_instance(
         self,
@@ -17110,8 +18818,8 @@ class Client(OpenApiClient):
         """
         @summary Restores the data in a backup file to a specified ApsaraDB for Redis instance.
         
-        @description    If your instance is a [persistent memory-optimized instance](https://help.aliyun.com/document_detail/443828.html) or [DRAM-based instance](https://help.aliyun.com/document_detail/443827.html) that is compatible with Redis 5.0 and the [data flashback](https://help.aliyun.com/document_detail/443784.html) feature is enabled, you can call this operation to restore the data of a specified key to a specified point in time that is accurate to the second. Other keys are not affected. This way, you can achieve more fine-grained data restoration.
-        For other instance series, this operation overwrites the existing data of your instance with the backup data. Proceed with caution. We recommend that you call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation to create an instance. Then, you can restore data to the new instance.
+        @description    If your instance is a [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html) or a [persistent memory-optimized instance](https://help.aliyun.com/document_detail/183956.html) and has the [data flashback](https://help.aliyun.com/document_detail/148479.html) feature enabled, you can call this operation to restore the entire instance or specific keys to a specific point in time accurate to the second. This way, you can achieve more fine-grained data restoration.
+        For other types of instances, we recommend that you call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) or [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation to restore the backup data to a new instance.
         
         @param request: RestoreInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17155,10 +18863,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.RestoreInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RestoreInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RestoreInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def restore_instance_with_options_async(
         self,
@@ -17168,8 +18882,8 @@ class Client(OpenApiClient):
         """
         @summary Restores the data in a backup file to a specified ApsaraDB for Redis instance.
         
-        @description    If your instance is a [persistent memory-optimized instance](https://help.aliyun.com/document_detail/443828.html) or [DRAM-based instance](https://help.aliyun.com/document_detail/443827.html) that is compatible with Redis 5.0 and the [data flashback](https://help.aliyun.com/document_detail/443784.html) feature is enabled, you can call this operation to restore the data of a specified key to a specified point in time that is accurate to the second. Other keys are not affected. This way, you can achieve more fine-grained data restoration.
-        For other instance series, this operation overwrites the existing data of your instance with the backup data. Proceed with caution. We recommend that you call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation to create an instance. Then, you can restore data to the new instance.
+        @description    If your instance is a [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html) or a [persistent memory-optimized instance](https://help.aliyun.com/document_detail/183956.html) and has the [data flashback](https://help.aliyun.com/document_detail/148479.html) feature enabled, you can call this operation to restore the entire instance or specific keys to a specific point in time accurate to the second. This way, you can achieve more fine-grained data restoration.
+        For other types of instances, we recommend that you call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) or [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation to restore the backup data to a new instance.
         
         @param request: RestoreInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17213,10 +18927,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.RestoreInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RestoreInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.RestoreInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def restore_instance(
         self,
@@ -17225,8 +18945,8 @@ class Client(OpenApiClient):
         """
         @summary Restores the data in a backup file to a specified ApsaraDB for Redis instance.
         
-        @description    If your instance is a [persistent memory-optimized instance](https://help.aliyun.com/document_detail/443828.html) or [DRAM-based instance](https://help.aliyun.com/document_detail/443827.html) that is compatible with Redis 5.0 and the [data flashback](https://help.aliyun.com/document_detail/443784.html) feature is enabled, you can call this operation to restore the data of a specified key to a specified point in time that is accurate to the second. Other keys are not affected. This way, you can achieve more fine-grained data restoration.
-        For other instance series, this operation overwrites the existing data of your instance with the backup data. Proceed with caution. We recommend that you call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation to create an instance. Then, you can restore data to the new instance.
+        @description    If your instance is a [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html) or a [persistent memory-optimized instance](https://help.aliyun.com/document_detail/183956.html) and has the [data flashback](https://help.aliyun.com/document_detail/148479.html) feature enabled, you can call this operation to restore the entire instance or specific keys to a specific point in time accurate to the second. This way, you can achieve more fine-grained data restoration.
+        For other types of instances, we recommend that you call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) or [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation to restore the backup data to a new instance.
         
         @param request: RestoreInstanceRequest
         @return: RestoreInstanceResponse
@@ -17241,8 +18961,8 @@ class Client(OpenApiClient):
         """
         @summary Restores the data in a backup file to a specified ApsaraDB for Redis instance.
         
-        @description    If your instance is a [persistent memory-optimized instance](https://help.aliyun.com/document_detail/443828.html) or [DRAM-based instance](https://help.aliyun.com/document_detail/443827.html) that is compatible with Redis 5.0 and the [data flashback](https://help.aliyun.com/document_detail/443784.html) feature is enabled, you can call this operation to restore the data of a specified key to a specified point in time that is accurate to the second. Other keys are not affected. This way, you can achieve more fine-grained data restoration.
-        For other instance series, this operation overwrites the existing data of your instance with the backup data. Proceed with caution. We recommend that you call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation to create an instance. Then, you can restore data to the new instance.
+        @description    If your instance is a [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html) or a [persistent memory-optimized instance](https://help.aliyun.com/document_detail/183956.html) and has the [data flashback](https://help.aliyun.com/document_detail/148479.html) feature enabled, you can call this operation to restore the entire instance or specific keys to a specific point in time accurate to the second. This way, you can achieve more fine-grained data restoration.
+        For other types of instances, we recommend that you call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) or [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation to restore the backup data to a new instance.
         
         @param request: RestoreInstanceRequest
         @return: RestoreInstanceResponse
@@ -17290,10 +19010,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.StartTairKVCacheCustomInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.StartTairKVCacheCustomInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.StartTairKVCacheCustomInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def start_tair_kvcache_custom_instance_with_options_async(
         self,
@@ -17335,10 +19061,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.StartTairKVCacheCustomInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.StartTairKVCacheCustomInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.StartTairKVCacheCustomInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def start_tair_kvcache_custom_instance(
         self,
@@ -17406,10 +19138,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.StopTairKVCacheCustomInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.StopTairKVCacheCustomInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.StopTairKVCacheCustomInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def stop_tair_kvcache_custom_instance_with_options_async(
         self,
@@ -17451,10 +19189,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.StopTairKVCacheCustomInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.StopTairKVCacheCustomInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.StopTairKVCacheCustomInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def stop_tair_kvcache_custom_instance(
         self,
@@ -17491,7 +19235,7 @@ class Client(OpenApiClient):
         @summary Performs a master-replica switchover to switch node roles. This operation is applicable to disaster recovery drills and nearby access to applications that are deployed across zones.
         
         @description > For more information about nearby access to applications that are deployed across zones, see [Switch node roles](https://help.aliyun.com/document_detail/164222.html).
-        The instance must be an ApsaraDB for Redis Community Edition instance or Enhanced Edition (Tair) [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses local disks.
+        The instance must be a Redis Open-Source Edition instance or Tair (Enterprise Edition) [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses local disks.
         A call to this operation has the following impacts on your instance:
         The data shards in the instance may change to the read-only state and experience transient connections within seconds. Make sure that your application is configured to automatically reconnect to the instance.
         If the instance enters the switching state, you cannot manage this instance. For example, you cannot modify the instance configurations or migrate the instance to another zone.
@@ -17534,10 +19278,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.SwitchInstanceHAResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.SwitchInstanceHAResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.SwitchInstanceHAResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def switch_instance_hawith_options_async(
         self,
@@ -17548,7 +19298,7 @@ class Client(OpenApiClient):
         @summary Performs a master-replica switchover to switch node roles. This operation is applicable to disaster recovery drills and nearby access to applications that are deployed across zones.
         
         @description > For more information about nearby access to applications that are deployed across zones, see [Switch node roles](https://help.aliyun.com/document_detail/164222.html).
-        The instance must be an ApsaraDB for Redis Community Edition instance or Enhanced Edition (Tair) [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses local disks.
+        The instance must be a Redis Open-Source Edition instance or Tair (Enterprise Edition) [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses local disks.
         A call to this operation has the following impacts on your instance:
         The data shards in the instance may change to the read-only state and experience transient connections within seconds. Make sure that your application is configured to automatically reconnect to the instance.
         If the instance enters the switching state, you cannot manage this instance. For example, you cannot modify the instance configurations or migrate the instance to another zone.
@@ -17591,10 +19341,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.SwitchInstanceHAResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.SwitchInstanceHAResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.SwitchInstanceHAResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def switch_instance_ha(
         self,
@@ -17604,7 +19360,7 @@ class Client(OpenApiClient):
         @summary Performs a master-replica switchover to switch node roles. This operation is applicable to disaster recovery drills and nearby access to applications that are deployed across zones.
         
         @description > For more information about nearby access to applications that are deployed across zones, see [Switch node roles](https://help.aliyun.com/document_detail/164222.html).
-        The instance must be an ApsaraDB for Redis Community Edition instance or Enhanced Edition (Tair) [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses local disks.
+        The instance must be a Redis Open-Source Edition instance or Tair (Enterprise Edition) [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses local disks.
         A call to this operation has the following impacts on your instance:
         The data shards in the instance may change to the read-only state and experience transient connections within seconds. Make sure that your application is configured to automatically reconnect to the instance.
         If the instance enters the switching state, you cannot manage this instance. For example, you cannot modify the instance configurations or migrate the instance to another zone.
@@ -17623,7 +19379,7 @@ class Client(OpenApiClient):
         @summary Performs a master-replica switchover to switch node roles. This operation is applicable to disaster recovery drills and nearby access to applications that are deployed across zones.
         
         @description > For more information about nearby access to applications that are deployed across zones, see [Switch node roles](https://help.aliyun.com/document_detail/164222.html).
-        The instance must be an ApsaraDB for Redis Community Edition instance or Enhanced Edition (Tair) [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses local disks.
+        The instance must be a Redis Open-Source Edition instance or Tair (Enterprise Edition) [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses local disks.
         A call to this operation has the following impacts on your instance:
         The data shards in the instance may change to the read-only state and experience transient connections within seconds. Make sure that your application is configured to automatically reconnect to the instance.
         If the instance enters the switching state, you cannot manage this instance. For example, you cannot modify the instance configurations or migrate the instance to another zone.
@@ -17640,12 +19396,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.SwitchInstanceProxyResponse:
         """
-        @summary Enables or disables the proxy mode for an ApsaraDB for Redis cluster instance in a dedicated cluster.
+        @summary Enables or disables the proxy mode for a Tair (Redis OSS-compatible) cluster instance in a dedicated cluster.
         
-        @description For more information about the proxy mode, see [Features of proxy nodes](https://help.aliyun.com/document_detail/142959.html). Before you call this operation, make sure that the following requirements are met:
-        Your ApsaraDB for Redis instance is created by using a dedicated cluster. For more information, see [What is ApsaraDB MyBase?](https://help.aliyun.com/document_detail/141455.html)
-        The instance uses the cluster architecture. For more information about the cluster architecture, see [Cluster master-replica instances](https://help.aliyun.com/document_detail/52228.html).
-        > Before you call the SwitchInstanceProxy operation, you must call the [DescribeDedicatedClusterInstanceList](https://help.aliyun.com/document_detail/229522.html) operation and view the value of the *ProxyCount** response parameter to check whether the proxy mode is enabled. A value of 0 indicates that the proxy mode is disabled. A value that is greater than 0 indicates that the proxy mode is enabled.
+        @description For more information about the proxy mode, see [Features of proxy servers](https://help.aliyun.com/document_detail/142959.html). Before you call this operation, make sure that the following requirements are met:
+        The instance is created by using a dedicated cluster. For more information, see [What is ApsaraDB for MyBase?](https://help.aliyun.com/document_detail/141455.html)
+        The instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
+        >  Before you call the SwitchInstanceProxy operation, you must call the [DescribeDedicatedClusterInstanceList](https://help.aliyun.com/document_detail/473867.html) operation and view the value of the *ProxyCount** response parameter to check whether the proxy mode is enabled. A value of 0 indicates that the proxy mode is disabled. A value that is greater than 0 indicates that the proxy mode is enabled.
         
         @param request: SwitchInstanceProxyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17679,10 +19435,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.SwitchInstanceProxyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.SwitchInstanceProxyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.SwitchInstanceProxyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def switch_instance_proxy_with_options_async(
         self,
@@ -17690,12 +19452,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.SwitchInstanceProxyResponse:
         """
-        @summary Enables or disables the proxy mode for an ApsaraDB for Redis cluster instance in a dedicated cluster.
+        @summary Enables or disables the proxy mode for a Tair (Redis OSS-compatible) cluster instance in a dedicated cluster.
         
-        @description For more information about the proxy mode, see [Features of proxy nodes](https://help.aliyun.com/document_detail/142959.html). Before you call this operation, make sure that the following requirements are met:
-        Your ApsaraDB for Redis instance is created by using a dedicated cluster. For more information, see [What is ApsaraDB MyBase?](https://help.aliyun.com/document_detail/141455.html)
-        The instance uses the cluster architecture. For more information about the cluster architecture, see [Cluster master-replica instances](https://help.aliyun.com/document_detail/52228.html).
-        > Before you call the SwitchInstanceProxy operation, you must call the [DescribeDedicatedClusterInstanceList](https://help.aliyun.com/document_detail/229522.html) operation and view the value of the *ProxyCount** response parameter to check whether the proxy mode is enabled. A value of 0 indicates that the proxy mode is disabled. A value that is greater than 0 indicates that the proxy mode is enabled.
+        @description For more information about the proxy mode, see [Features of proxy servers](https://help.aliyun.com/document_detail/142959.html). Before you call this operation, make sure that the following requirements are met:
+        The instance is created by using a dedicated cluster. For more information, see [What is ApsaraDB for MyBase?](https://help.aliyun.com/document_detail/141455.html)
+        The instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
+        >  Before you call the SwitchInstanceProxy operation, you must call the [DescribeDedicatedClusterInstanceList](https://help.aliyun.com/document_detail/473867.html) operation and view the value of the *ProxyCount** response parameter to check whether the proxy mode is enabled. A value of 0 indicates that the proxy mode is disabled. A value that is greater than 0 indicates that the proxy mode is enabled.
         
         @param request: SwitchInstanceProxyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17729,22 +19491,28 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.SwitchInstanceProxyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.SwitchInstanceProxyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.SwitchInstanceProxyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def switch_instance_proxy(
         self,
         request: r_kvstore_20150101_models.SwitchInstanceProxyRequest,
     ) -> r_kvstore_20150101_models.SwitchInstanceProxyResponse:
         """
-        @summary Enables or disables the proxy mode for an ApsaraDB for Redis cluster instance in a dedicated cluster.
+        @summary Enables or disables the proxy mode for a Tair (Redis OSS-compatible) cluster instance in a dedicated cluster.
         
-        @description For more information about the proxy mode, see [Features of proxy nodes](https://help.aliyun.com/document_detail/142959.html). Before you call this operation, make sure that the following requirements are met:
-        Your ApsaraDB for Redis instance is created by using a dedicated cluster. For more information, see [What is ApsaraDB MyBase?](https://help.aliyun.com/document_detail/141455.html)
-        The instance uses the cluster architecture. For more information about the cluster architecture, see [Cluster master-replica instances](https://help.aliyun.com/document_detail/52228.html).
-        > Before you call the SwitchInstanceProxy operation, you must call the [DescribeDedicatedClusterInstanceList](https://help.aliyun.com/document_detail/229522.html) operation and view the value of the *ProxyCount** response parameter to check whether the proxy mode is enabled. A value of 0 indicates that the proxy mode is disabled. A value that is greater than 0 indicates that the proxy mode is enabled.
+        @description For more information about the proxy mode, see [Features of proxy servers](https://help.aliyun.com/document_detail/142959.html). Before you call this operation, make sure that the following requirements are met:
+        The instance is created by using a dedicated cluster. For more information, see [What is ApsaraDB for MyBase?](https://help.aliyun.com/document_detail/141455.html)
+        The instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
+        >  Before you call the SwitchInstanceProxy operation, you must call the [DescribeDedicatedClusterInstanceList](https://help.aliyun.com/document_detail/473867.html) operation and view the value of the *ProxyCount** response parameter to check whether the proxy mode is enabled. A value of 0 indicates that the proxy mode is disabled. A value that is greater than 0 indicates that the proxy mode is enabled.
         
         @param request: SwitchInstanceProxyRequest
         @return: SwitchInstanceProxyResponse
@@ -17757,12 +19525,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.SwitchInstanceProxyRequest,
     ) -> r_kvstore_20150101_models.SwitchInstanceProxyResponse:
         """
-        @summary Enables or disables the proxy mode for an ApsaraDB for Redis cluster instance in a dedicated cluster.
+        @summary Enables or disables the proxy mode for a Tair (Redis OSS-compatible) cluster instance in a dedicated cluster.
         
-        @description For more information about the proxy mode, see [Features of proxy nodes](https://help.aliyun.com/document_detail/142959.html). Before you call this operation, make sure that the following requirements are met:
-        Your ApsaraDB for Redis instance is created by using a dedicated cluster. For more information, see [What is ApsaraDB MyBase?](https://help.aliyun.com/document_detail/141455.html)
-        The instance uses the cluster architecture. For more information about the cluster architecture, see [Cluster master-replica instances](https://help.aliyun.com/document_detail/52228.html).
-        > Before you call the SwitchInstanceProxy operation, you must call the [DescribeDedicatedClusterInstanceList](https://help.aliyun.com/document_detail/229522.html) operation and view the value of the *ProxyCount** response parameter to check whether the proxy mode is enabled. A value of 0 indicates that the proxy mode is disabled. A value that is greater than 0 indicates that the proxy mode is enabled.
+        @description For more information about the proxy mode, see [Features of proxy servers](https://help.aliyun.com/document_detail/142959.html). Before you call this operation, make sure that the following requirements are met:
+        The instance is created by using a dedicated cluster. For more information, see [What is ApsaraDB for MyBase?](https://help.aliyun.com/document_detail/141455.html)
+        The instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
+        >  Before you call the SwitchInstanceProxy operation, you must call the [DescribeDedicatedClusterInstanceList](https://help.aliyun.com/document_detail/473867.html) operation and view the value of the *ProxyCount** response parameter to check whether the proxy mode is enabled. A value of 0 indicates that the proxy mode is disabled. A value that is greater than 0 indicates that the proxy mode is enabled.
         
         @param request: SwitchInstanceProxyRequest
         @return: SwitchInstanceProxyResponse
@@ -17804,10 +19572,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.SwitchInstanceZoneFailOverResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.SwitchInstanceZoneFailOverResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.SwitchInstanceZoneFailOverResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def switch_instance_zone_fail_over_with_options_async(
         self,
@@ -17843,10 +19617,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.SwitchInstanceZoneFailOverResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.SwitchInstanceZoneFailOverResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.SwitchInstanceZoneFailOverResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def switch_instance_zone_fail_over(
         self,
@@ -17880,7 +19660,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.SwitchNetworkResponse:
         """
-        @summary Changes the virtual private cloud (VPC) or vSwitch of an ApsaraDB for Redis instance. If the instance is deployed in the classic network, the network type of the instance is changed from the classic network to VPC.
+        @summary Changes the VPC or vSwitch of a Tair (Redis OSS-compatible) instance. If the instance is deployed in the classic network, the network type of the instance is changed from the classic network to VPC.
         
         @param request: SwitchNetworkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17924,10 +19704,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.SwitchNetworkResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.SwitchNetworkResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.SwitchNetworkResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def switch_network_with_options_async(
         self,
@@ -17935,7 +19721,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.SwitchNetworkResponse:
         """
-        @summary Changes the virtual private cloud (VPC) or vSwitch of an ApsaraDB for Redis instance. If the instance is deployed in the classic network, the network type of the instance is changed from the classic network to VPC.
+        @summary Changes the VPC or vSwitch of a Tair (Redis OSS-compatible) instance. If the instance is deployed in the classic network, the network type of the instance is changed from the classic network to VPC.
         
         @param request: SwitchNetworkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17979,17 +19765,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.SwitchNetworkResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.SwitchNetworkResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.SwitchNetworkResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def switch_network(
         self,
         request: r_kvstore_20150101_models.SwitchNetworkRequest,
     ) -> r_kvstore_20150101_models.SwitchNetworkResponse:
         """
-        @summary Changes the virtual private cloud (VPC) or vSwitch of an ApsaraDB for Redis instance. If the instance is deployed in the classic network, the network type of the instance is changed from the classic network to VPC.
+        @summary Changes the VPC or vSwitch of a Tair (Redis OSS-compatible) instance. If the instance is deployed in the classic network, the network type of the instance is changed from the classic network to VPC.
         
         @param request: SwitchNetworkRequest
         @return: SwitchNetworkResponse
@@ -18002,7 +19794,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.SwitchNetworkRequest,
     ) -> r_kvstore_20150101_models.SwitchNetworkResponse:
         """
-        @summary Changes the virtual private cloud (VPC) or vSwitch of an ApsaraDB for Redis instance. If the instance is deployed in the classic network, the network type of the instance is changed from the classic network to VPC.
+        @summary Changes the VPC or vSwitch of a Tair (Redis OSS-compatible) instance. If the instance is deployed in the classic network, the network type of the instance is changed from the classic network to VPC.
         
         @param request: SwitchNetworkRequest
         @return: SwitchNetworkResponse
@@ -18016,7 +19808,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.SyncDtsStatusResponse:
         """
-        @summary Disables configuration changes for an ApsaraDB for Redis instance before you use Data Transmission Service (DTS) to migrate or synchronize data of the instance. This prevents migration and synchronization task failures due to the configuration change.
+        @summary Disables configuration changes for a Tair (Redis OSS-compatible) instance before you use Data Transmission Service (DTS) to migrate or synchronize data of the instance. This prevents migration and synchronization task failures due to configuration changes.
         
         @param request: SyncDtsStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18056,10 +19848,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.SyncDtsStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.SyncDtsStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.SyncDtsStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def sync_dts_status_with_options_async(
         self,
@@ -18067,7 +19865,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.SyncDtsStatusResponse:
         """
-        @summary Disables configuration changes for an ApsaraDB for Redis instance before you use Data Transmission Service (DTS) to migrate or synchronize data of the instance. This prevents migration and synchronization task failures due to the configuration change.
+        @summary Disables configuration changes for a Tair (Redis OSS-compatible) instance before you use Data Transmission Service (DTS) to migrate or synchronize data of the instance. This prevents migration and synchronization task failures due to configuration changes.
         
         @param request: SyncDtsStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18107,17 +19905,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.SyncDtsStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.SyncDtsStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.SyncDtsStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def sync_dts_status(
         self,
         request: r_kvstore_20150101_models.SyncDtsStatusRequest,
     ) -> r_kvstore_20150101_models.SyncDtsStatusResponse:
         """
-        @summary Disables configuration changes for an ApsaraDB for Redis instance before you use Data Transmission Service (DTS) to migrate or synchronize data of the instance. This prevents migration and synchronization task failures due to the configuration change.
+        @summary Disables configuration changes for a Tair (Redis OSS-compatible) instance before you use Data Transmission Service (DTS) to migrate or synchronize data of the instance. This prevents migration and synchronization task failures due to configuration changes.
         
         @param request: SyncDtsStatusRequest
         @return: SyncDtsStatusResponse
@@ -18130,7 +19934,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.SyncDtsStatusRequest,
     ) -> r_kvstore_20150101_models.SyncDtsStatusResponse:
         """
-        @summary Disables configuration changes for an ApsaraDB for Redis instance before you use Data Transmission Service (DTS) to migrate or synchronize data of the instance. This prevents migration and synchronization task failures due to the configuration change.
+        @summary Disables configuration changes for a Tair (Redis OSS-compatible) instance before you use Data Transmission Service (DTS) to migrate or synchronize data of the instance. This prevents migration and synchronization task failures due to configuration changes.
         
         @param request: SyncDtsStatusRequest
         @return: SyncDtsStatusResponse
@@ -18144,7 +19948,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.TagResourcesResponse:
         """
-        @summary Adds specified tags to one or more ApsaraDB for Redis instances.
+        @summary Adds tags to Tair (Redis OSS-compatible) instances.
         
         @description If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can filter instances by tag.
         A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
@@ -18152,7 +19956,7 @@ class Client(OpenApiClient):
         If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
         You can add up to 20 tags to each instance.
         You can add tags to up to 50 instances in each request.
-        You can also add tags to instances in the ApsaraDB for Redis console. For more information, see [Create a tag](https://help.aliyun.com/document_detail/118779.html).
+        You can also add tags to instances in the Tair (Redis OSS-compatible) console. For more information, see [Create a tag](https://help.aliyun.com/document_detail/118779.html).
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18190,10 +19994,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.TagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.TagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.TagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def tag_resources_with_options_async(
         self,
@@ -18201,7 +20011,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.TagResourcesResponse:
         """
-        @summary Adds specified tags to one or more ApsaraDB for Redis instances.
+        @summary Adds tags to Tair (Redis OSS-compatible) instances.
         
         @description If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can filter instances by tag.
         A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
@@ -18209,7 +20019,7 @@ class Client(OpenApiClient):
         If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
         You can add up to 20 tags to each instance.
         You can add tags to up to 50 instances in each request.
-        You can also add tags to instances in the ApsaraDB for Redis console. For more information, see [Create a tag](https://help.aliyun.com/document_detail/118779.html).
+        You can also add tags to instances in the Tair (Redis OSS-compatible) console. For more information, see [Create a tag](https://help.aliyun.com/document_detail/118779.html).
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18247,17 +20057,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.TagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.TagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.TagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def tag_resources(
         self,
         request: r_kvstore_20150101_models.TagResourcesRequest,
     ) -> r_kvstore_20150101_models.TagResourcesResponse:
         """
-        @summary Adds specified tags to one or more ApsaraDB for Redis instances.
+        @summary Adds tags to Tair (Redis OSS-compatible) instances.
         
         @description If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can filter instances by tag.
         A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
@@ -18265,7 +20081,7 @@ class Client(OpenApiClient):
         If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
         You can add up to 20 tags to each instance.
         You can add tags to up to 50 instances in each request.
-        You can also add tags to instances in the ApsaraDB for Redis console. For more information, see [Create a tag](https://help.aliyun.com/document_detail/118779.html).
+        You can also add tags to instances in the Tair (Redis OSS-compatible) console. For more information, see [Create a tag](https://help.aliyun.com/document_detail/118779.html).
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -18278,7 +20094,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.TagResourcesRequest,
     ) -> r_kvstore_20150101_models.TagResourcesResponse:
         """
-        @summary Adds specified tags to one or more ApsaraDB for Redis instances.
+        @summary Adds tags to Tair (Redis OSS-compatible) instances.
         
         @description If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can filter instances by tag.
         A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
@@ -18286,7 +20102,7 @@ class Client(OpenApiClient):
         If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
         You can add up to 20 tags to each instance.
         You can add tags to up to 50 instances in each request.
-        You can also add tags to instances in the ApsaraDB for Redis console. For more information, see [Create a tag](https://help.aliyun.com/document_detail/118779.html).
+        You can also add tags to instances in the Tair (Redis OSS-compatible) console. For more information, see [Create a tag](https://help.aliyun.com/document_detail/118779.html).
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -18300,7 +20116,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.TransformInstanceChargeTypeResponse:
         """
-        @summary Changes the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go or from pay-as-you-go to subscription.
+        @summary Changes the billing method of a Tair (Redis OSS-compatible) instance from subscription to pay-as-you-go or from pay-as-you-go to subscription.
         
         @description Before you call this operation, make sure that you understand relevant precautions and billing rules. For more information, see the following topics:
         [Change the billing method to subscription](https://help.aliyun.com/document_detail/54542.html).
@@ -18348,10 +20164,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.TransformInstanceChargeTypeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.TransformInstanceChargeTypeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.TransformInstanceChargeTypeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def transform_instance_charge_type_with_options_async(
         self,
@@ -18359,7 +20181,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.TransformInstanceChargeTypeResponse:
         """
-        @summary Changes the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go or from pay-as-you-go to subscription.
+        @summary Changes the billing method of a Tair (Redis OSS-compatible) instance from subscription to pay-as-you-go or from pay-as-you-go to subscription.
         
         @description Before you call this operation, make sure that you understand relevant precautions and billing rules. For more information, see the following topics:
         [Change the billing method to subscription](https://help.aliyun.com/document_detail/54542.html).
@@ -18407,17 +20229,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.TransformInstanceChargeTypeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.TransformInstanceChargeTypeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.TransformInstanceChargeTypeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def transform_instance_charge_type(
         self,
         request: r_kvstore_20150101_models.TransformInstanceChargeTypeRequest,
     ) -> r_kvstore_20150101_models.TransformInstanceChargeTypeResponse:
         """
-        @summary Changes the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go or from pay-as-you-go to subscription.
+        @summary Changes the billing method of a Tair (Redis OSS-compatible) instance from subscription to pay-as-you-go or from pay-as-you-go to subscription.
         
         @description Before you call this operation, make sure that you understand relevant precautions and billing rules. For more information, see the following topics:
         [Change the billing method to subscription](https://help.aliyun.com/document_detail/54542.html).
@@ -18434,7 +20262,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.TransformInstanceChargeTypeRequest,
     ) -> r_kvstore_20150101_models.TransformInstanceChargeTypeResponse:
         """
-        @summary Changes the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go or from pay-as-you-go to subscription.
+        @summary Changes the billing method of a Tair (Redis OSS-compatible) instance from subscription to pay-as-you-go or from pay-as-you-go to subscription.
         
         @description Before you call this operation, make sure that you understand relevant precautions and billing rules. For more information, see the following topics:
         [Change the billing method to subscription](https://help.aliyun.com/document_detail/54542.html).
@@ -18452,10 +20280,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.TransformToPrePaidResponse:
         """
-        @summary Changes the billing method of an ApsaraDB for Redis instance from pay-as-you-go to subscription.
+        @summary Changes a pay-as-you-go Tair (Redis OSS-compatible) instance to a subscription instance.
         
-        @description For more information about how to change the billing method in the ApsaraDB for Redis console, see [Switch to subscription](https://help.aliyun.com/document_detail/54542.html).
-        >  You cannot change the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go.
+        @description For more information about how to change the billing method in the Tair (Redis OSS-compatible) console, see [Switch to subscription](https://help.aliyun.com/document_detail/54542.html).
+        >  You cannot change the billing method of a Tair (Redis OSS-compatible) instance from subscription to pay-as-you-go.
         
         @param request: TransformToPrePaidRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18497,10 +20325,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.TransformToPrePaidResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.TransformToPrePaidResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.TransformToPrePaidResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def transform_to_pre_paid_with_options_async(
         self,
@@ -18508,10 +20342,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.TransformToPrePaidResponse:
         """
-        @summary Changes the billing method of an ApsaraDB for Redis instance from pay-as-you-go to subscription.
+        @summary Changes a pay-as-you-go Tair (Redis OSS-compatible) instance to a subscription instance.
         
-        @description For more information about how to change the billing method in the ApsaraDB for Redis console, see [Switch to subscription](https://help.aliyun.com/document_detail/54542.html).
-        >  You cannot change the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go.
+        @description For more information about how to change the billing method in the Tair (Redis OSS-compatible) console, see [Switch to subscription](https://help.aliyun.com/document_detail/54542.html).
+        >  You cannot change the billing method of a Tair (Redis OSS-compatible) instance from subscription to pay-as-you-go.
         
         @param request: TransformToPrePaidRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18553,20 +20387,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.TransformToPrePaidResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.TransformToPrePaidResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.TransformToPrePaidResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def transform_to_pre_paid(
         self,
         request: r_kvstore_20150101_models.TransformToPrePaidRequest,
     ) -> r_kvstore_20150101_models.TransformToPrePaidResponse:
         """
-        @summary Changes the billing method of an ApsaraDB for Redis instance from pay-as-you-go to subscription.
+        @summary Changes a pay-as-you-go Tair (Redis OSS-compatible) instance to a subscription instance.
         
-        @description For more information about how to change the billing method in the ApsaraDB for Redis console, see [Switch to subscription](https://help.aliyun.com/document_detail/54542.html).
-        >  You cannot change the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go.
+        @description For more information about how to change the billing method in the Tair (Redis OSS-compatible) console, see [Switch to subscription](https://help.aliyun.com/document_detail/54542.html).
+        >  You cannot change the billing method of a Tair (Redis OSS-compatible) instance from subscription to pay-as-you-go.
         
         @param request: TransformToPrePaidRequest
         @return: TransformToPrePaidResponse
@@ -18579,10 +20419,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.TransformToPrePaidRequest,
     ) -> r_kvstore_20150101_models.TransformToPrePaidResponse:
         """
-        @summary Changes the billing method of an ApsaraDB for Redis instance from pay-as-you-go to subscription.
+        @summary Changes a pay-as-you-go Tair (Redis OSS-compatible) instance to a subscription instance.
         
-        @description For more information about how to change the billing method in the ApsaraDB for Redis console, see [Switch to subscription](https://help.aliyun.com/document_detail/54542.html).
-        >  You cannot change the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go.
+        @description For more information about how to change the billing method in the Tair (Redis OSS-compatible) console, see [Switch to subscription](https://help.aliyun.com/document_detail/54542.html).
+        >  You cannot change the billing method of a Tair (Redis OSS-compatible) instance from subscription to pay-as-you-go.
         
         @param request: TransformToPrePaidRequest
         @return: TransformToPrePaidResponse
@@ -18630,10 +20470,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.UnlockDBInstanceWriteResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.UnlockDBInstanceWriteResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.UnlockDBInstanceWriteResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def unlock_dbinstance_write_with_options_async(
         self,
@@ -18675,10 +20521,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.UnlockDBInstanceWriteResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.UnlockDBInstanceWriteResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.UnlockDBInstanceWriteResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def unlock_dbinstance_write(
         self,
@@ -18712,11 +20564,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.UntagResourcesResponse:
         """
-        @summary Removes tags from one or more ApsaraDB for Redis instances.
+        @summary Removes tags from Tair (Redis OSS-compatible) instances.
         
         @description    You can remove up to 20 tags at a time.
         If a tag is removed from an instance and is not added to other instances, the tag is deleted.
-        You can also remove tags from instances in the ApsaraDB for Redis console. For more information, see [Remove a tag](https://help.aliyun.com/document_detail/119157.html).
+        You can also remove tags from instances in the Tair (Redis OSS-compatible) console. For more information, see [Remove a tag](https://help.aliyun.com/document_detail/119157.html).
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18756,10 +20608,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.UntagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.UntagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.UntagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def untag_resources_with_options_async(
         self,
@@ -18767,11 +20625,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.UntagResourcesResponse:
         """
-        @summary Removes tags from one or more ApsaraDB for Redis instances.
+        @summary Removes tags from Tair (Redis OSS-compatible) instances.
         
         @description    You can remove up to 20 tags at a time.
         If a tag is removed from an instance and is not added to other instances, the tag is deleted.
-        You can also remove tags from instances in the ApsaraDB for Redis console. For more information, see [Remove a tag](https://help.aliyun.com/document_detail/119157.html).
+        You can also remove tags from instances in the Tair (Redis OSS-compatible) console. For more information, see [Remove a tag](https://help.aliyun.com/document_detail/119157.html).
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18811,21 +20669,27 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.UntagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.UntagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                r_kvstore_20150101_models.UntagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def untag_resources(
         self,
         request: r_kvstore_20150101_models.UntagResourcesRequest,
     ) -> r_kvstore_20150101_models.UntagResourcesResponse:
         """
-        @summary Removes tags from one or more ApsaraDB for Redis instances.
+        @summary Removes tags from Tair (Redis OSS-compatible) instances.
         
         @description    You can remove up to 20 tags at a time.
         If a tag is removed from an instance and is not added to other instances, the tag is deleted.
-        You can also remove tags from instances in the ApsaraDB for Redis console. For more information, see [Remove a tag](https://help.aliyun.com/document_detail/119157.html).
+        You can also remove tags from instances in the Tair (Redis OSS-compatible) console. For more information, see [Remove a tag](https://help.aliyun.com/document_detail/119157.html).
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -18838,11 +20702,11 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.UntagResourcesRequest,
     ) -> r_kvstore_20150101_models.UntagResourcesResponse:
         """
-        @summary Removes tags from one or more ApsaraDB for Redis instances.
+        @summary Removes tags from Tair (Redis OSS-compatible) instances.
         
         @description    You can remove up to 20 tags at a time.
         If a tag is removed from an instance and is not added to other instances, the tag is deleted.
-        You can also remove tags from instances in the ApsaraDB for Redis console. For more information, see [Remove a tag](https://help.aliyun.com/document_detail/119157.html).
+        You can also remove tags from instances in the Tair (Redis OSS-compatible) console. For more information, see [Remove a tag](https://help.aliyun.com/document_detail/119157.html).
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse

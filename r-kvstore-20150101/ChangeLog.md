@@ -1,3 +1,25 @@
+2025-04-01 Version: 5.0.0
+- Support API DescribeTairKVCacheInferInstanceAttribute.
+- Support API DescribeTairKVCacheInferInstances.
+- Update API DeleteShardingNode: add request parameters EffectiveTime.
+- Update API DescribeAvailableResource: add response parameters Body.AvailableZones.$.IsMainSale.
+- Update API DescribeBackupTasks: add response parameters Body.BackupJobs.$.Progress.
+- Update API DescribeClusterBackupList: add request parameters NoShardBackup.
+- Update API DescribeHistoryTasks: update response parameters Body.Items.$.Status' type has changed.
+- Update API DescribeHistoryTasks: update response parameters Body.Items.$.Status' format has changed.
+- Update API DescribeInstanceAttribute: add response parameters Body.Instances.$.AutoSecondaryZone.
+- Update API DescribePrice: add request parameters EngineVersion.
+- Update API DescribeTairKVCacheCustomInstanceAttribute: add response parameters Body.UseEni.
+- Update API DescribeTairKVCacheCustomInstances: add request parameters PrivateIp.
+- Update API DescribeTairKVCacheCustomInstances: add response parameters Body.Instances.$.PrivateIp.
+- Update API DescribeTairKVCacheCustomInstances: add response parameters Body.Instances.$.UseEni.
+- Update API MigrateToOtherZone: add request parameters ReadOnlyCount.
+- Update API MigrateToOtherZone: add request parameters ReplicaCount.
+- Update API MigrateToOtherZone: add request parameters SlaveReadOnlyCount.
+- Update API MigrateToOtherZone: add request parameters SlaveReplicaCount.
+- Update API ModifyInstanceAutoRenewalAttribute: add request parameters Product.
+
+
 2024-12-17 Version: 4.3.0
 - Support API CancelActiveOperationTasks.
 - Support API CreateTCInstance.
