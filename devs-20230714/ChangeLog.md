@@ -1,3 +1,16 @@
+2025-04-01 Version: 2.2.0
+- Support API CreateArtifact.
+- Support API DeleteArtifact.
+- Support API FetchArtifactDownloadUrl.
+- Support API FetchArtifactTempBucketToken.
+- Support API GetArtifact.
+- Support API GetServiceDeployment.
+- Support API ListServiceDeployments.
+- Support API PreviewEnvironment.
+- Support API PutArtifact.
+- Support API RenderServicesByTemplate.
+
+
 2025-03-31 Version: 2.1.0
 - Support API DeployEnvironment.
 - Support API GetEnvironmentDeployment.

@@ -245,6 +245,116 @@ class Client(OpenApiClient):
         headers = {}
         return await self.cancel_task_with_options_async(name, headers, runtime)
 
+    def create_artifact_with_options(
+        self,
+        request: devs_20230714_models.CreateArtifactRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.CreateArtifactResponse:
+        """
+        @summary 创建交付物存储
+        
+        @param request: CreateArtifactRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateArtifactResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateArtifact',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/artifacts',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.CreateArtifactResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.CreateArtifactResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_artifact_with_options_async(
+        self,
+        request: devs_20230714_models.CreateArtifactRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.CreateArtifactResponse:
+        """
+        @summary 创建交付物存储
+        
+        @param request: CreateArtifactRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateArtifactResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateArtifact',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/artifacts',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.CreateArtifactResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.CreateArtifactResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_artifact(
+        self,
+        request: devs_20230714_models.CreateArtifactRequest,
+    ) -> devs_20230714_models.CreateArtifactResponse:
+        """
+        @summary 创建交付物存储
+        
+        @param request: CreateArtifactRequest
+        @return: CreateArtifactResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_artifact_with_options(request, headers, runtime)
+
+    async def create_artifact_async(
+        self,
+        request: devs_20230714_models.CreateArtifactRequest,
+    ) -> devs_20230714_models.CreateArtifactResponse:
+        """
+        @summary 创建交付物存储
+        
+        @param request: CreateArtifactRequest
+        @return: CreateArtifactResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_artifact_with_options_async(request, headers, runtime)
+
     def create_environment_with_options(
         self,
         project_name: str,
@@ -689,6 +799,108 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_task_with_options_async(request, headers, runtime)
 
+    def delete_artifact_with_options(
+        self,
+        name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.DeleteArtifactResponse:
+        """
+        @summary 删除交付物
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteArtifactResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteArtifact',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/artifacts/{OpenApiUtilClient.get_encode_param(name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.DeleteArtifactResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.DeleteArtifactResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_artifact_with_options_async(
+        self,
+        name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.DeleteArtifactResponse:
+        """
+        @summary 删除交付物
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteArtifactResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteArtifact',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/artifacts/{OpenApiUtilClient.get_encode_param(name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.DeleteArtifactResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.DeleteArtifactResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_artifact(
+        self,
+        name: str,
+    ) -> devs_20230714_models.DeleteArtifactResponse:
+        """
+        @summary 删除交付物
+        
+        @return: DeleteArtifactResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_artifact_with_options(name, headers, runtime)
+
+    async def delete_artifact_async(
+        self,
+        name: str,
+    ) -> devs_20230714_models.DeleteArtifactResponse:
+        """
+        @summary 删除交付物
+        
+        @return: DeleteArtifactResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_artifact_with_options_async(name, headers, runtime)
+
     def delete_environment_with_options(
         self,
         project_name: str,
@@ -1032,6 +1244,304 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.deploy_environment_with_options_async(project_name, name, request, headers, runtime)
+
+    def fetch_artifact_download_url_with_options(
+        self,
+        name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.FetchArtifactDownloadUrlResponse:
+        """
+        @summary 获取交付物的zip包临时下载地址url
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FetchArtifactDownloadUrlResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='FetchArtifactDownloadUrl',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/artifacts/{OpenApiUtilClient.get_encode_param(name)}/fetchCode',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.FetchArtifactDownloadUrlResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.FetchArtifactDownloadUrlResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def fetch_artifact_download_url_with_options_async(
+        self,
+        name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.FetchArtifactDownloadUrlResponse:
+        """
+        @summary 获取交付物的zip包临时下载地址url
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FetchArtifactDownloadUrlResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='FetchArtifactDownloadUrl',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/artifacts/{OpenApiUtilClient.get_encode_param(name)}/fetchCode',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.FetchArtifactDownloadUrlResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.FetchArtifactDownloadUrlResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def fetch_artifact_download_url(
+        self,
+        name: str,
+    ) -> devs_20230714_models.FetchArtifactDownloadUrlResponse:
+        """
+        @summary 获取交付物的zip包临时下载地址url
+        
+        @return: FetchArtifactDownloadUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.fetch_artifact_download_url_with_options(name, headers, runtime)
+
+    async def fetch_artifact_download_url_async(
+        self,
+        name: str,
+    ) -> devs_20230714_models.FetchArtifactDownloadUrlResponse:
+        """
+        @summary 获取交付物的zip包临时下载地址url
+        
+        @return: FetchArtifactDownloadUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.fetch_artifact_download_url_with_options_async(name, headers, runtime)
+
+    def fetch_artifact_temp_bucket_token_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.FetchArtifactTempBucketTokenResponse:
+        """
+        @summary 获取交付物临时上传的bucket、object和临时sts
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FetchArtifactTempBucketTokenResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='FetchArtifactTempBucketToken',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/artifacts/action/fetchTempBucketToken',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.FetchArtifactTempBucketTokenResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.FetchArtifactTempBucketTokenResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def fetch_artifact_temp_bucket_token_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.FetchArtifactTempBucketTokenResponse:
+        """
+        @summary 获取交付物临时上传的bucket、object和临时sts
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FetchArtifactTempBucketTokenResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='FetchArtifactTempBucketToken',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/artifacts/action/fetchTempBucketToken',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.FetchArtifactTempBucketTokenResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.FetchArtifactTempBucketTokenResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def fetch_artifact_temp_bucket_token(self) -> devs_20230714_models.FetchArtifactTempBucketTokenResponse:
+        """
+        @summary 获取交付物临时上传的bucket、object和临时sts
+        
+        @return: FetchArtifactTempBucketTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.fetch_artifact_temp_bucket_token_with_options(headers, runtime)
+
+    async def fetch_artifact_temp_bucket_token_async(self) -> devs_20230714_models.FetchArtifactTempBucketTokenResponse:
+        """
+        @summary 获取交付物临时上传的bucket、object和临时sts
+        
+        @return: FetchArtifactTempBucketTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.fetch_artifact_temp_bucket_token_with_options_async(headers, runtime)
+
+    def get_artifact_with_options(
+        self,
+        name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.GetArtifactResponse:
+        """
+        @summary 查询交付物
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetArtifactResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetArtifact',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/artifacts/{OpenApiUtilClient.get_encode_param(name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.GetArtifactResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.GetArtifactResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_artifact_with_options_async(
+        self,
+        name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.GetArtifactResponse:
+        """
+        @summary 查询交付物
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetArtifactResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetArtifact',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/artifacts/{OpenApiUtilClient.get_encode_param(name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.GetArtifactResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.GetArtifactResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_artifact(
+        self,
+        name: str,
+    ) -> devs_20230714_models.GetArtifactResponse:
+        """
+        @summary 查询交付物
+        
+        @return: GetArtifactResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_artifact_with_options(name, headers, runtime)
+
+    async def get_artifact_async(
+        self,
+        name: str,
+    ) -> devs_20230714_models.GetArtifactResponse:
+        """
+        @summary 查询交付物
+        
+        @return: GetArtifactResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_artifact_with_options_async(name, headers, runtime)
 
     def get_environment_with_options(
         self,
@@ -1547,6 +2057,108 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_repository_with_options_async(name, headers, runtime)
 
+    def get_service_deployment_with_options(
+        self,
+        name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.GetServiceDeploymentResponse:
+        """
+        @summary 查询服务部署信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceDeploymentResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetServiceDeployment',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/servicedeployments/{OpenApiUtilClient.get_encode_param(name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.GetServiceDeploymentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.GetServiceDeploymentResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_service_deployment_with_options_async(
+        self,
+        name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.GetServiceDeploymentResponse:
+        """
+        @summary 查询服务部署信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceDeploymentResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetServiceDeployment',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/servicedeployments/{OpenApiUtilClient.get_encode_param(name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.GetServiceDeploymentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.GetServiceDeploymentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_service_deployment(
+        self,
+        name: str,
+    ) -> devs_20230714_models.GetServiceDeploymentResponse:
+        """
+        @summary 查询服务部署信息
+        
+        @return: GetServiceDeploymentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_service_deployment_with_options(name, headers, runtime)
+
+    async def get_service_deployment_async(
+        self,
+        name: str,
+    ) -> devs_20230714_models.GetServiceDeploymentResponse:
+        """
+        @summary 查询服务部署信息
+        
+        @return: GetServiceDeploymentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_service_deployment_with_options_async(name, headers, runtime)
+
     def get_task_with_options(
         self,
         name: str,
@@ -2049,6 +2661,142 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_projects_with_options_async(request, headers, runtime)
 
+    def list_service_deployments_with_options(
+        self,
+        tmp_req: devs_20230714_models.ListServiceDeploymentsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.ListServiceDeploymentsResponse:
+        """
+        @summary 批量查询服务部署信息
+        
+        @param tmp_req: ListServiceDeploymentsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceDeploymentsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = devs_20230714_models.ListServiceDeploymentsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.label_selector):
+            request.label_selector_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label_selector, 'labelSelector', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.label_selector_shrink):
+            query['labelSelector'] = request.label_selector_shrink
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServiceDeployments',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/servicedeployments',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.ListServiceDeploymentsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.ListServiceDeploymentsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_service_deployments_with_options_async(
+        self,
+        tmp_req: devs_20230714_models.ListServiceDeploymentsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.ListServiceDeploymentsResponse:
+        """
+        @summary 批量查询服务部署信息
+        
+        @param tmp_req: ListServiceDeploymentsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceDeploymentsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = devs_20230714_models.ListServiceDeploymentsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.label_selector):
+            request.label_selector_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label_selector, 'labelSelector', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.label_selector_shrink):
+            query['labelSelector'] = request.label_selector_shrink
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServiceDeployments',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/servicedeployments',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.ListServiceDeploymentsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.ListServiceDeploymentsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_service_deployments(
+        self,
+        request: devs_20230714_models.ListServiceDeploymentsRequest,
+    ) -> devs_20230714_models.ListServiceDeploymentsResponse:
+        """
+        @summary 批量查询服务部署信息
+        
+        @param request: ListServiceDeploymentsRequest
+        @return: ListServiceDeploymentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_service_deployments_with_options(request, headers, runtime)
+
+    async def list_service_deployments_async(
+        self,
+        request: devs_20230714_models.ListServiceDeploymentsRequest,
+    ) -> devs_20230714_models.ListServiceDeploymentsResponse:
+        """
+        @summary 批量查询服务部署信息
+        
+        @param request: ListServiceDeploymentsRequest
+        @return: ListServiceDeploymentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_service_deployments_with_options_async(request, headers, runtime)
+
     def list_tasks_with_options(
         self,
         tmp_req: devs_20230714_models.ListTasksRequest,
@@ -2172,6 +2920,234 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_tasks_with_options_async(request, headers, runtime)
+
+    def preview_environment_with_options(
+        self,
+        project_name: str,
+        name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.PreviewEnvironmentResponse:
+        """
+        @summary 预览环境变更信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PreviewEnvironmentResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='PreviewEnvironment',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/projects/{OpenApiUtilClient.get_encode_param(project_name)}/environments/{OpenApiUtilClient.get_encode_param(name)}/preview',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.PreviewEnvironmentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.PreviewEnvironmentResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def preview_environment_with_options_async(
+        self,
+        project_name: str,
+        name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.PreviewEnvironmentResponse:
+        """
+        @summary 预览环境变更信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PreviewEnvironmentResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='PreviewEnvironment',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/projects/{OpenApiUtilClient.get_encode_param(project_name)}/environments/{OpenApiUtilClient.get_encode_param(name)}/preview',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.PreviewEnvironmentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.PreviewEnvironmentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def preview_environment(
+        self,
+        project_name: str,
+        name: str,
+    ) -> devs_20230714_models.PreviewEnvironmentResponse:
+        """
+        @summary 预览环境变更信息
+        
+        @return: PreviewEnvironmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.preview_environment_with_options(project_name, name, headers, runtime)
+
+    async def preview_environment_async(
+        self,
+        project_name: str,
+        name: str,
+    ) -> devs_20230714_models.PreviewEnvironmentResponse:
+        """
+        @summary 预览环境变更信息
+        
+        @return: PreviewEnvironmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.preview_environment_with_options_async(project_name, name, headers, runtime)
+
+    def put_artifact_with_options(
+        self,
+        name: str,
+        request: devs_20230714_models.PutArtifactRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.PutArtifactResponse:
+        """
+        @summary 更新交付物
+        
+        @param request: PutArtifactRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutArtifactResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.force):
+            query['force'] = request.force
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='PutArtifact',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/artifacts/{OpenApiUtilClient.get_encode_param(name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.PutArtifactResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.PutArtifactResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def put_artifact_with_options_async(
+        self,
+        name: str,
+        request: devs_20230714_models.PutArtifactRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.PutArtifactResponse:
+        """
+        @summary 更新交付物
+        
+        @param request: PutArtifactRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutArtifactResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.force):
+            query['force'] = request.force
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='PutArtifact',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/artifacts/{OpenApiUtilClient.get_encode_param(name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.PutArtifactResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.PutArtifactResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def put_artifact(
+        self,
+        name: str,
+        request: devs_20230714_models.PutArtifactRequest,
+    ) -> devs_20230714_models.PutArtifactResponse:
+        """
+        @summary 更新交付物
+        
+        @param request: PutArtifactRequest
+        @return: PutArtifactResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.put_artifact_with_options(name, request, headers, runtime)
+
+    async def put_artifact_async(
+        self,
+        name: str,
+        request: devs_20230714_models.PutArtifactRequest,
+    ) -> devs_20230714_models.PutArtifactResponse:
+        """
+        @summary 更新交付物
+        
+        @param request: PutArtifactRequest
+        @return: PutArtifactResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.put_artifact_with_options_async(name, request, headers, runtime)
 
     def put_pipeline_status_with_options(
         self,
@@ -2416,6 +3392,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.put_task_status_with_options_async(name, request, headers, runtime)
+
+    def render_services_by_template_with_options(
+        self,
+        request: devs_20230714_models.RenderServicesByTemplateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.RenderServicesByTemplateResponse:
+        """
+        @summary 解析模板中的服务、变量配置
+        
+        @param request: RenderServicesByTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenderServicesByTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.parameters):
+            body['parameters'] = request.parameters
+        if not UtilClient.is_unset(request.project_name):
+            body['projectName'] = request.project_name
+        if not UtilClient.is_unset(request.service_name_changes):
+            body['serviceNameChanges'] = request.service_name_changes
+        if not UtilClient.is_unset(request.template_name):
+            body['templateName'] = request.template_name
+        if not UtilClient.is_unset(request.variable_values):
+            body['variableValues'] = request.variable_values
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RenderServicesByTemplate',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/templates/action/renderServices',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.RenderServicesByTemplateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.RenderServicesByTemplateResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def render_services_by_template_with_options_async(
+        self,
+        request: devs_20230714_models.RenderServicesByTemplateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devs_20230714_models.RenderServicesByTemplateResponse:
+        """
+        @summary 解析模板中的服务、变量配置
+        
+        @param request: RenderServicesByTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenderServicesByTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.parameters):
+            body['parameters'] = request.parameters
+        if not UtilClient.is_unset(request.project_name):
+            body['projectName'] = request.project_name
+        if not UtilClient.is_unset(request.service_name_changes):
+            body['serviceNameChanges'] = request.service_name_changes
+        if not UtilClient.is_unset(request.template_name):
+            body['templateName'] = request.template_name
+        if not UtilClient.is_unset(request.variable_values):
+            body['variableValues'] = request.variable_values
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RenderServicesByTemplate',
+            version='2023-07-14',
+            protocol='HTTPS',
+            pathname=f'/2023-07-14/templates/action/renderServices',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                devs_20230714_models.RenderServicesByTemplateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                devs_20230714_models.RenderServicesByTemplateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def render_services_by_template(
+        self,
+        request: devs_20230714_models.RenderServicesByTemplateRequest,
+    ) -> devs_20230714_models.RenderServicesByTemplateResponse:
+        """
+        @summary 解析模板中的服务、变量配置
+        
+        @param request: RenderServicesByTemplateRequest
+        @return: RenderServicesByTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.render_services_by_template_with_options(request, headers, runtime)
+
+    async def render_services_by_template_async(
+        self,
+        request: devs_20230714_models.RenderServicesByTemplateRequest,
+    ) -> devs_20230714_models.RenderServicesByTemplateResponse:
+        """
+        @summary 解析模板中的服务、变量配置
+        
+        @param request: RenderServicesByTemplateRequest
+        @return: RenderServicesByTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.render_services_by_template_with_options_async(request, headers, runtime)
 
     def resume_task_with_options(
         self,
