@@ -1,3 +1,8 @@
+2025-04-01 Version: 1.3.0
+- Support API ListMultiAccountResourceRelationships.
+- Support API ListResourceRelationships.
+
+
 2025-02-25 Version: 1.2.2
 - Update API ExecuteMultiAccountSQLQuery: update response param.
 - Update API ExecuteSQLQuery: update response param.

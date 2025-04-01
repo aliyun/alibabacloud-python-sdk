@@ -2325,6 +2325,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_multi_account_resource_groups_with_options_async(request, runtime)
 
+    def list_multi_account_resource_relationships_with_options(
+        self,
+        request: resource_center_20221201_models.ListMultiAccountResourceRelationshipsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_center_20221201_models.ListMultiAccountResourceRelationshipsResponse:
+        """
+        @summary 跨账号列出资源关系
+        
+        @param request: ListMultiAccountResourceRelationshipsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMultiAccountResourceRelationshipsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.related_resource_filter):
+            query['RelatedResourceFilter'] = request.related_resource_filter
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMultiAccountResourceRelationships',
+            version='2022-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                resource_center_20221201_models.ListMultiAccountResourceRelationshipsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                resource_center_20221201_models.ListMultiAccountResourceRelationshipsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_multi_account_resource_relationships_with_options_async(
+        self,
+        request: resource_center_20221201_models.ListMultiAccountResourceRelationshipsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_center_20221201_models.ListMultiAccountResourceRelationshipsResponse:
+        """
+        @summary 跨账号列出资源关系
+        
+        @param request: ListMultiAccountResourceRelationshipsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMultiAccountResourceRelationshipsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.related_resource_filter):
+            query['RelatedResourceFilter'] = request.related_resource_filter
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMultiAccountResourceRelationships',
+            version='2022-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                resource_center_20221201_models.ListMultiAccountResourceRelationshipsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                resource_center_20221201_models.ListMultiAccountResourceRelationshipsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_multi_account_resource_relationships(
+        self,
+        request: resource_center_20221201_models.ListMultiAccountResourceRelationshipsRequest,
+    ) -> resource_center_20221201_models.ListMultiAccountResourceRelationshipsResponse:
+        """
+        @summary 跨账号列出资源关系
+        
+        @param request: ListMultiAccountResourceRelationshipsRequest
+        @return: ListMultiAccountResourceRelationshipsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_multi_account_resource_relationships_with_options(request, runtime)
+
+    async def list_multi_account_resource_relationships_async(
+        self,
+        request: resource_center_20221201_models.ListMultiAccountResourceRelationshipsRequest,
+    ) -> resource_center_20221201_models.ListMultiAccountResourceRelationshipsResponse:
+        """
+        @summary 跨账号列出资源关系
+        
+        @param request: ListMultiAccountResourceRelationshipsRequest
+        @return: ListMultiAccountResourceRelationshipsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_multi_account_resource_relationships_with_options_async(request, runtime)
+
     def list_multi_account_tag_keys_with_options(
         self,
         request: resource_center_20221201_models.ListMultiAccountTagKeysRequest,
@@ -2577,13 +2709,141 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_multi_account_tag_values_with_options_async(request, runtime)
 
+    def list_resource_relationships_with_options(
+        self,
+        request: resource_center_20221201_models.ListResourceRelationshipsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_center_20221201_models.ListResourceRelationshipsResponse:
+        """
+        @summary 列出资源关系
+        
+        @param request: ListResourceRelationshipsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceRelationshipsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.related_resource_filter):
+            query['RelatedResourceFilter'] = request.related_resource_filter
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceRelationships',
+            version='2022-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                resource_center_20221201_models.ListResourceRelationshipsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                resource_center_20221201_models.ListResourceRelationshipsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_resource_relationships_with_options_async(
+        self,
+        request: resource_center_20221201_models.ListResourceRelationshipsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_center_20221201_models.ListResourceRelationshipsResponse:
+        """
+        @summary 列出资源关系
+        
+        @param request: ListResourceRelationshipsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceRelationshipsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.related_resource_filter):
+            query['RelatedResourceFilter'] = request.related_resource_filter
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceRelationships',
+            version='2022-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                resource_center_20221201_models.ListResourceRelationshipsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                resource_center_20221201_models.ListResourceRelationshipsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_resource_relationships(
+        self,
+        request: resource_center_20221201_models.ListResourceRelationshipsRequest,
+    ) -> resource_center_20221201_models.ListResourceRelationshipsResponse:
+        """
+        @summary 列出资源关系
+        
+        @param request: ListResourceRelationshipsRequest
+        @return: ListResourceRelationshipsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_resource_relationships_with_options(request, runtime)
+
+    async def list_resource_relationships_async(
+        self,
+        request: resource_center_20221201_models.ListResourceRelationshipsRequest,
+    ) -> resource_center_20221201_models.ListResourceRelationshipsResponse:
+        """
+        @summary 列出资源关系
+        
+        @param request: ListResourceRelationshipsRequest
+        @return: ListResourceRelationshipsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_resource_relationships_with_options_async(request, runtime)
+
     def list_resource_types_with_options(
         self,
         request: resource_center_20221201_models.ListResourceTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.ListResourceTypesResponse:
         """
-        @summary Queries the resource types supported by Resource Center.
+        @summary Queries the metadata of resource types.
         
         @param request: ListResourceTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2628,7 +2888,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.ListResourceTypesResponse:
         """
-        @summary Queries the resource types supported by Resource Center.
+        @summary Queries the metadata of resource types.
         
         @param request: ListResourceTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2672,7 +2932,7 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.ListResourceTypesRequest,
     ) -> resource_center_20221201_models.ListResourceTypesResponse:
         """
-        @summary Queries the resource types supported by Resource Center.
+        @summary Queries the metadata of resource types.
         
         @param request: ListResourceTypesRequest
         @return: ListResourceTypesResponse
@@ -2685,7 +2945,7 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.ListResourceTypesRequest,
     ) -> resource_center_20221201_models.ListResourceTypesResponse:
         """
-        @summary Queries the resource types supported by Resource Center.
+        @summary Queries the metadata of resource types.
         
         @param request: ListResourceTypesRequest
         @return: ListResourceTypesResponse
