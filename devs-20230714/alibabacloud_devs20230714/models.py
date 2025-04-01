@@ -6759,7 +6759,7 @@ class DownloadModelOutput(TeaModel):
         return self
 
 
-class OpenStructOssSourceConfig(TeaModel):
+class OssSourceConfig(TeaModel):
     def __init__(
         self,
         bucket: str = None,
@@ -6902,7 +6902,7 @@ class TemplateSourceConfig(TeaModel):
 class SourceConfig(TeaModel):
     def __init__(
         self,
-        oss: OpenStructOssSourceConfig = None,
+        oss: OssSourceConfig = None,
         repository: RepositorySourceConfig = None,
         template: TemplateSourceConfig = None,
     ):
@@ -6935,7 +6935,7 @@ class SourceConfig(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('oss') is not None:
-            temp_model = OpenStructOssSourceConfig()
+            temp_model = OssSourceConfig()
             self.oss = temp_model.from_map(m['oss'])
         if m.get('repository') is not None:
             temp_model = RepositorySourceConfig()
@@ -11012,6 +11012,39 @@ class ToolsetSpec(TeaModel):
         if m.get('schema') is not None:
             temp_model = ToolsetSchema()
             self.schema = temp_model.from_map(m['schema'])
+        return self
+
+
+class OpenStructOssSourceConfig(TeaModel):
+    def __init__(
+        self,
+        bucket: str = None,
+        object: str = None,
+    ):
+        self.bucket = bucket
+        self.object = object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket is not None:
+            result['bucket'] = self.bucket
+        if self.object is not None:
+            result['object'] = self.object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bucket') is not None:
+            self.bucket = m.get('bucket')
+        if m.get('object') is not None:
+            self.object = m.get('object')
         return self
 
 
