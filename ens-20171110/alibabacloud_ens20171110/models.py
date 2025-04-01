@@ -3419,6 +3419,7 @@ class CreateARMServerInstancesRequest(TeaModel):
         amount: int = None,
         auto_renew: bool = None,
         auto_use_coupon: bool = None,
+        cidr: str = None,
         ens_region_id: str = None,
         environment_var: str = None,
         frequency: int = None,
@@ -3447,6 +3448,7 @@ class CreateARMServerInstancesRequest(TeaModel):
         # *   true
         # *   false (default)
         self.auto_use_coupon = auto_use_coupon
+        self.cidr = cidr
         # The ID of the Edge Node Service (ENS) node.
         # 
         # This parameter is required.
@@ -3552,6 +3554,8 @@ class CreateARMServerInstancesRequest(TeaModel):
             result['AutoRenew'] = self.auto_renew
         if self.auto_use_coupon is not None:
             result['AutoUseCoupon'] = self.auto_use_coupon
+        if self.cidr is not None:
+            result['Cidr'] = self.cidr
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
         if self.environment_var is not None:
@@ -3588,6 +3592,8 @@ class CreateARMServerInstancesRequest(TeaModel):
             self.auto_renew = m.get('AutoRenew')
         if m.get('AutoUseCoupon') is not None:
             self.auto_use_coupon = m.get('AutoUseCoupon')
+        if m.get('Cidr') is not None:
+            self.cidr = m.get('Cidr')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
         if m.get('EnvironmentVar') is not None:
@@ -4549,9 +4555,11 @@ class CreateEnsRouteEntryRequest(TeaModel):
         # 
         # This parameter is required.
         self.next_hop_id = next_hop_id
-        # The type of next hop of the custom route entry. Valid values:
+        # The next hop type of the custom route. Valid values:
         # 
-        # *   Instance (default): an ENS instance.
+        # *   Instance: an ENS instance.
+        # *   HaVip: a high-availability virtual IP address (HAVIP).
+        # *   NetworkPeer: VPC peering connection.
         self.next_hop_type = next_hop_type
         # The name of the custom route entry that you want to add. The name must be 1 to 128 characters in length. It cannot start with http:// or https://.
         self.route_entry_name = route_entry_name
@@ -4559,6 +4567,7 @@ class CreateEnsRouteEntryRequest(TeaModel):
         # 
         # This parameter is required.
         self.route_table_id = route_table_id
+        # The new source CIDR block of the inbound or outbound traffic.
         self.source_cidr_block = source_cidr_block
 
     def validate(self):
@@ -9489,6 +9498,14 @@ class CreateSnatEntryRequest(TeaModel):
         source_vswitch_id: str = None,
         standby_snat_ip: str = None,
     ):
+        # Specifies whether to enable EIP affinity. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
+        # 
+        # **\
+        # 
+        # **Description** After you enable EIP affinity, if multiple EIPs are associated with an SNAT entry, each client uses one EIP to access the Internet. If EIP affinity is disabled, each client uses a random EIP to access the Internet.
         self.eip_affinity = eip_affinity
         # The timeout period for idle connections. Valid values: **1** to **86400**. Unit: seconds.
         self.idle_timeout = idle_timeout
@@ -12311,6 +12328,15 @@ class DeleteNatGatewayRequest(TeaModel):
         force_delete: bool = None,
         nat_gateway_id: str = None,
     ):
+        # Specifies whether to forcefully delete the VPC. Valid values:
+        # 
+        # - **true**: yes
+        # - **false** (default): no
+        # 
+        # You can forcefully delete a VPC in the following scenarios:
+        # 
+        # - Only an IPv4 gateway and routes that point to the IPv4 gateway exist in the VPC.
+        # - Only an IPv6 gateway and routes that point to the IPv6 gateway exist in the VPC.
         self.force_delete = force_delete
         # The ID of the NAT gateway that you want to delete.
         # 
@@ -22591,6 +22617,7 @@ class DescribeEnsRouteEntryListResponseBodyRouteEntrys(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The time when the entry was created. The time is displayed in UTC.
         self.creation_time = creation_time
         # Enter a description for the route.
         self.description = description
@@ -22604,6 +22631,7 @@ class DescribeEnsRouteEntryListResponseBodyRouteEntrys(TeaModel):
         self.route_entry_name = route_entry_name
         # The ID of the route table.
         self.route_table_id = route_table_id
+        # The new source CIDR block of the inbound or outbound traffic.
         self.source_cidr_block = source_cidr_block
         # The status of the route entry. Valid values:
         self.status = status
@@ -22792,10 +22820,14 @@ class DescribeEnsRouteTablesRequest(TeaModel):
         route_table_name: str = None,
         type: str = None,
     ):
+        # The type of the route table. Valid values:
+        # 
+        # *   **VSwitch** (default): vSwitch route table
+        # *   **Gateway**: gateway route table
         self.associate_type = associate_type
         # The ID of the ENS node.
         self.ens_region_id = ens_region_id
-        # The IDs of the Edge Node Service (ENS) nodes.
+        # The IDs of edge nodes. You can specify 1 to 100 IDs.
         self.ens_region_ids = ens_region_ids
         # The ID of the network.
         self.network_id = network_id
@@ -22805,7 +22837,14 @@ class DescribeEnsRouteTablesRequest(TeaModel):
         self.page_size = page_size
         # The ID of the route table.
         self.route_table_id = route_table_id
+        # The name of the route table that you want to query.
+        # 
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         self.route_table_name = route_table_name
+        # The type of the NAT.
+        # 
+        # *   Empty: symmetric NAT.
+        # *   FullCone: full cone NAT.
         self.type = type
 
     def validate(self):
@@ -22875,23 +22914,34 @@ class DescribeEnsRouteTablesResponseBodyRouteTables(TeaModel):
         type: str = None,
         v_switch_ids: List[str] = None,
     ):
+        # The type of the route table. Valid values:
+        # 
+        # *   **VSwitch** (default): vSwitch route table
+        # *   **Gateway**: gateway route table
         self.associate_type = associate_type
         # The time when the route table was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
+        # The description of the network.
+        # 
+        # The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
         self.description = description
         # The ID of the edge node.
         self.ens_region_id = ens_region_id
+        # Is the gateway routing table the default.
         self.is_default_gateway_route_table = is_default_gateway_route_table
         # The ID of the network.
         self.network_id = network_id
         # The ID of the route table.
         self.route_table_id = route_table_id
+        # The name of the route table that you want to query.
+        # 
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         self.route_table_name = route_table_name
         # The status. Valid values:
         # 
         # *   Available: The route table is available.
         self.status = status
-        # The type of the route table. Valid values:
+        # The type of the route table. Examples:
         # 
         # *   Custom: custom route table.
         # *   System: system route table.
@@ -26312,6 +26362,7 @@ class DescribeFileSystemsResponseBodyFileSystems(TeaModel):
         self,
         capacity: int = None,
         creation_time: str = None,
+        description: str = None,
         ens_region_id: str = None,
         file_system_id: str = None,
         file_system_name: str = None,
@@ -26326,6 +26377,7 @@ class DescribeFileSystemsResponseBodyFileSystems(TeaModel):
         self.capacity = capacity
         # The time when the file system was created.
         self.creation_time = creation_time
+        self.description = description
         # The ID of the region.
         self.ens_region_id = ens_region_id
         # The ID of the file system.
@@ -26374,6 +26426,8 @@ class DescribeFileSystemsResponseBodyFileSystems(TeaModel):
             result['Capacity'] = self.capacity
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
+        if self.description is not None:
+            result['Description'] = self.description
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
         if self.file_system_id is not None:
@@ -26402,6 +26456,8 @@ class DescribeFileSystemsResponseBodyFileSystems(TeaModel):
             self.capacity = m.get('Capacity')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
         if m.get('FileSystemId') is not None:
@@ -27603,9 +27659,9 @@ class DescribeImageSharePermissionRequest(TeaModel):
         # 
         # Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: **100**.
+        # The number of entries to return on each page. Maximum value: **100**.
         # 
-        # Default value: **10**.
+        # Default value: **10**\
         self.page_size = page_size
 
     def validate(self):
@@ -31850,6 +31906,7 @@ class DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols(TeaMode
         listener_port: int = None,
         listener_protocol: str = None,
     ):
+        # The backend port that is used by the ELB instance. Valid values: **1** to **65535**.
         self.backend_server_port = backend_server_port
         # The description of the listener.
         self.description = description
@@ -33072,7 +33129,9 @@ class DescribeLoadBalancerListenersRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The description of the image.
         self.description = description
+        # The listener port.
         self.listener_port = listener_port
         # The ID of the ELB instance.
         # 
@@ -33132,6 +33191,7 @@ class DescribeLoadBalancerListenersResponseBodyListenersListener(TeaModel):
         protocol: str = None,
         status: str = None,
     ):
+        # The backend port that is used by the ELB instance. Valid values: **1** to **65535**.
         self.backend_server_port = backend_server_port
         # The timestamp when the listener was created.
         self.create_time = create_time
@@ -35978,11 +36038,13 @@ class DescribeNatGatewaysRequest(TeaModel):
     ):
         # The ID of the Edge Node Service (ENS) node.
         self.ens_region_id = ens_region_id
+        # The node information.
         self.ens_region_ids = ens_region_ids
         # The name of the NAT gateway.
         self.name = name
         # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The IDs of NAT Gateways.
         self.nat_gateway_ids = nat_gateway_ids
         # The ID of the network.
         self.network_id = network_id
@@ -36056,8 +36118,16 @@ class DescribeNatGatewaysResponseBodyNatGatewaysIpLists(TeaModel):
         ip_address: str = None,
         using_status: str = None,
     ):
+        # The ID of the instance.
         self.allocation_id = allocation_id
+        # The IP address of the EIP associated with the NAT gateway.
         self.ip_address = ip_address
+        # The association between the EIP and the Internet NAT gateway. Valid values:
+        # 
+        # *   **UsedByForwardTable**: The EIP is specified in a DNAT entry.
+        # *   **UsedBySnatTable**: The EIP is specified in an SNAT entry.
+        # *   **UsedByForwardSnatTable**: The EIP is specified in both an SNAT entry and a DNAT entry.
+        # *   **Idle**: The EIP is not specified in a DNAT or SNAT entry.
         self.using_status = using_status
 
     def validate(self):
@@ -36105,6 +36175,7 @@ class DescribeNatGatewaysResponseBodyNatGateways(TeaModel):
         self.creation_time = creation_time
         # The ID of the ENS node.
         self.ens_region_id = ens_region_id
+        # The list of elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
         self.ip_lists = ip_lists
         # The name of the NAT gateway.
         self.name = name
@@ -36114,6 +36185,11 @@ class DescribeNatGatewaysResponseBodyNatGateways(TeaModel):
         self.network_id = network_id
         # The type of the NAT gateway.
         self.spec = spec
+        # The status of the SNAT entry.
+        # 
+        # *   Pending: The SNAT entry is being created or modified.
+        # *   Available: The SNAT entry is available.
+        # *   Deleting: The SNAT entry is being deleted.
         self.status = status
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
@@ -36187,7 +36263,7 @@ class DescribeNatGatewaysResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the NAT gateways.
+        # The details of the NAT gateways.
         self.nat_gateways = nat_gateways
         # The page number.
         self.page_number = page_number
@@ -37122,6 +37198,9 @@ class DescribeNetworkAttributeResponseBody(TeaModel):
         self.description = description
         # The ID of the edge node.
         self.ens_region_id = ens_region_id
+        # The ID of the gateway route table associated with the IPv6 gateway.
+        # 
+        # >  This parameter is available only when the IPv6 gateway is associated with a gateway route table.
         self.gateway_route_table_id = gateway_route_table_id
         # List of HaVipIds.
         self.ha_vip_ids = ha_vip_ids
@@ -37141,6 +37220,7 @@ class DescribeNetworkAttributeResponseBody(TeaModel):
         self.network_name = network_name
         # The request ID.
         self.request_id = request_id
+        # The ID of the route table that you want to query.
         self.route_table_id = route_table_id
         # List of routing table IDs.
         self.route_table_ids = route_table_ids
@@ -37916,11 +37996,11 @@ class DescribeNetworksRequest(TeaModel):
     ):
         # The ID of the edge node.
         self.ens_region_id = ens_region_id
-        # The node information.
+        # The IDs of edge nodes. You can specify 1 to 100 IDs.
         self.ens_region_ids = ens_region_ids
         # The ID of the network.
         self.network_id = network_id
-        # The ID of Network.
+        # The IDs of VPCs You can specify 1 to 100 IDs.
         self.network_ids = network_ids
         # The name of the network.
         self.network_name = network_name
@@ -38052,6 +38132,9 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
         self.description = description
         # The ID of the edge node.
         self.ens_region_id = ens_region_id
+        # The ID of the gateway route table associated with the IPv6 gateway.
+        # 
+        # >  This parameter is available only when the IPv6 gateway is associated with a gateway route table.
         self.gateway_route_table_id = gateway_route_table_id
         # The ID of the network access control list (ACL).
         self.network_acl_id = network_acl_id
@@ -38059,8 +38142,9 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
         self.network_id = network_id
         # The name of the network.
         self.network_name = network_name
+        # The ID of the route table.
         self.route_table_id = route_table_id
-        # The ID of the route table. Valid values of **N** are **1** to **20**, which specifies that you can disassociate a gateway endpoint from at most 20 route tables at a time.
+        # The IDs of the route tables.
         self.route_table_ids = route_table_ids
         # The route table ID.
         self.router_table_id = router_table_id
@@ -38189,7 +38273,7 @@ class DescribeNetworksResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of networks.
+        # The VPCs.
         self.networks = networks
         # The page number of the returned page.
         self.page_number = page_number
@@ -43897,10 +43981,13 @@ class DescribeSelfImagesResponseBody(TeaModel):
         self.code = code
         # The image information.
         self.images = images
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Maximum value: 50. Default value: 10.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -45205,6 +45292,14 @@ class DescribeSnatAttributeResponseBody(TeaModel):
         self.creation_time = creation_time
         # The destination CIDR block. The rule takes effect only on requests that access the destination CIDR block.
         self.dest_cidr = dest_cidr
+        # Specifies whether to enable EIP affinity. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
+        # 
+        # **\
+        # 
+        # **Description** After you enable EIP affinity, if multiple EIPs are associated with an SNAT entry, each client uses one EIP to access the Internet. If EIP affinity is disabled, each client uses a random EIP to access the Internet.
         self.eip_affinity = eip_affinity
         # The timeout period. Unit: seconds.
         self.idle_timeout = idle_timeout
@@ -45406,6 +45501,7 @@ class DescribeSnatTableEntriesRequest(TeaModel):
         self.snat_entry_name = snat_entry_name
         # The elastic IP address (EIP) specified in the SNAT entry.
         self.snat_ip = snat_ip
+        # The information about the EIP specified in the SNAT entry.
         self.snat_ips = snat_ips
         # The source CIDR block specified in the SNAT entry.
         self.source_cidr = source_cidr
@@ -45473,6 +45569,14 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntries(TeaModel):
         standby_status: str = None,
         status: str = None,
     ):
+        # Specifies whether to enable EIP affinity. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
+        # 
+        # **\
+        # 
+        # **Description** After you enable EIP affinity, if multiple EIPs are associated with an SNAT entry, each client uses one EIP to access the Internet. If EIP affinity is disabled, each client uses a random EIP to access the Internet.
         self.eip_affinity = eip_affinity
         # The timeout period for idle connections. Valid values: **1** to **86400**. Unit: seconds.
         self.idle_timeout = idle_timeout
@@ -51631,7 +51735,13 @@ class ModifyForwardEntryRequest(TeaModel):
         internal_port: str = None,
         ip_protocol: str = None,
     ):
+        # The elastic IP address (EIP) that is used to access the Internet.
         self.external_ip = external_ip
+        # The external port or port range that is used for port forwarding.
+        # 
+        # *   Valid values: 1 to 65535.
+        # *   To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20.
+        # *   If you set ExternalPort to a port range, you must also set InternalPort to a port range. The number of ports in the port ranges must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
         self.external_port = external_port
         # The ID of the DNAT entry.
         # 
@@ -51641,8 +51751,18 @@ class ModifyForwardEntryRequest(TeaModel):
         self.forward_entry_name = forward_entry_name
         # The probe port. The port must be within the internal port range. By default, this parameter is left empty.
         self.health_check_port = health_check_port
+        # The private IP address of the instance that uses the DNAT entry for Internet communication.
         self.internal_ip = internal_ip
+        # The internal port or port range that is used for port forwarding.
+        # 
+        # *   Valid values: 1 to 65535.
+        # *   To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20.
         self.internal_port = internal_port
+        # The protocol. Valid values:
+        # 
+        # *   **TCP**: forwards TCP packets.
+        # *   **UDP**: forwards UDP packets.
+        # *   **Any** (default): forwards all packets.
         self.ip_protocol = ip_protocol
 
     def validate(self):
@@ -56271,6 +56391,16 @@ class ReleaseInstanceResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
+        # The type of the resource.
+        # 
+        # Valid values:
+        # 
+        # *   instance
+        # *   eip
+        # *   disk
+        # *   network
+        # *   natgateway
+        # *   vswitch
         self.resource_type = resource_type
 
     def validate(self):
@@ -63064,6 +63194,10 @@ class UnAssociateEnsEipAddressRequest(TeaModel):
         # 
         # This parameter is required.
         self.allocation_id = allocation_id
+        # Specifies whether to forcefully release the instance if it is in the Running status. Valid values:
+        # 
+        # *   true. If you set the Force parameter to true, temporary data in the memory and storage of the instance is erased and cannot be restored after you call the operation, which is similar to the effect of a power-off action.
+        # *   false (default)
         self.force = force
 
     def validate(self):

@@ -2081,6 +2081,8 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.auto_use_coupon):
             query['AutoUseCoupon'] = request.auto_use_coupon
+        if not UtilClient.is_unset(request.cidr):
+            query['Cidr'] = request.cidr
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.environment_var):
@@ -2152,6 +2154,8 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.auto_use_coupon):
             query['AutoUseCoupon'] = request.auto_use_coupon
+        if not UtilClient.is_unset(request.cidr):
+            query['Cidr'] = request.cidr
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.environment_var):
