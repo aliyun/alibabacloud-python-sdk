@@ -48,7 +48,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.AbortAndRollbackChangeOrderResponse:
         """
-        @summary ba386059-69b1-4e65-b1e5-0682d9fa\\\\*\\*\\*\
+        @summary Terminates a change order and rolls back the corresponding application.
         
         @param request: AbortAndRollbackChangeOrderRequest
         @param headers: map
@@ -92,7 +92,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.AbortAndRollbackChangeOrderResponse:
         """
-        @summary ba386059-69b1-4e65-b1e5-0682d9fa\\\\*\\*\\*\
+        @summary Terminates a change order and rolls back the corresponding application.
         
         @param request: AbortAndRollbackChangeOrderRequest
         @param headers: map
@@ -134,7 +134,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.AbortAndRollbackChangeOrderRequest,
     ) -> sae_20190506_models.AbortAndRollbackChangeOrderResponse:
         """
-        @summary ba386059-69b1-4e65-b1e5-0682d9fa\\\\*\\*\\*\
+        @summary Terminates a change order and rolls back the corresponding application.
         
         @param request: AbortAndRollbackChangeOrderRequest
         @return: AbortAndRollbackChangeOrderResponse
@@ -148,7 +148,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.AbortAndRollbackChangeOrderRequest,
     ) -> sae_20190506_models.AbortAndRollbackChangeOrderResponse:
         """
-        @summary ba386059-69b1-4e65-b1e5-0682d9fa\\\\*\\*\\*\
+        @summary Terminates a change order and rolls back the corresponding application.
         
         @param request: AbortAndRollbackChangeOrderRequest
         @return: AbortAndRollbackChangeOrderResponse
@@ -164,6 +164,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.AbortChangeOrderResponse:
         """
+        @summary Terminate a change order.
+        
         @param request: AbortChangeOrderRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -206,6 +208,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.AbortChangeOrderResponse:
         """
+        @summary Terminate a change order.
+        
         @param request: AbortChangeOrderRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -246,6 +250,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.AbortChangeOrderRequest,
     ) -> sae_20190506_models.AbortChangeOrderResponse:
         """
+        @summary Terminate a change order.
+        
         @param request: AbortChangeOrderRequest
         @return: AbortChangeOrderResponse
         """
@@ -258,6 +264,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.AbortChangeOrderRequest,
     ) -> sae_20190506_models.AbortChangeOrderResponse:
         """
+        @summary Terminate a change order.
+        
         @param request: AbortChangeOrderRequest
         @return: AbortChangeOrderResponse
         """
@@ -827,6 +835,8 @@ class Client(OpenApiClient):
             query['Memory'] = request.memory
         if not UtilClient.is_unset(request.micro_registration):
             query['MicroRegistration'] = request.micro_registration
+        if not UtilClient.is_unset(request.microservice_engine_config):
+            query['MicroserviceEngineConfig'] = request.microservice_engine_config
         if not UtilClient.is_unset(request.mount_desc):
             query['MountDesc'] = request.mount_desc
         if not UtilClient.is_unset(request.mount_host):
@@ -837,6 +847,8 @@ class Client(OpenApiClient):
             query['NasConfigs'] = request.nas_configs
         if not UtilClient.is_unset(request.nas_id):
             query['NasId'] = request.nas_id
+        if not UtilClient.is_unset(request.new_sae_version):
+            query['NewSaeVersion'] = request.new_sae_version
         if not UtilClient.is_unset(request.oidc_role_name):
             query['OidcRoleName'] = request.oidc_role_name
         if not UtilClient.is_unset(request.package_type):
@@ -1013,6 +1025,8 @@ class Client(OpenApiClient):
             query['Memory'] = request.memory
         if not UtilClient.is_unset(request.micro_registration):
             query['MicroRegistration'] = request.micro_registration
+        if not UtilClient.is_unset(request.microservice_engine_config):
+            query['MicroserviceEngineConfig'] = request.microservice_engine_config
         if not UtilClient.is_unset(request.mount_desc):
             query['MountDesc'] = request.mount_desc
         if not UtilClient.is_unset(request.mount_host):
@@ -1023,6 +1037,8 @@ class Client(OpenApiClient):
             query['NasConfigs'] = request.nas_configs
         if not UtilClient.is_unset(request.nas_id):
             query['NasId'] = request.nas_id
+        if not UtilClient.is_unset(request.new_sae_version):
+            query['NewSaeVersion'] = request.new_sae_version
         if not UtilClient.is_unset(request.oidc_role_name):
             query['OidcRoleName'] = request.oidc_role_name
         if not UtilClient.is_unset(request.package_type):
@@ -1623,6 +1639,8 @@ class Client(OpenApiClient):
             query['CertId'] = request.cert_id
         if not UtilClient.is_unset(request.cert_ids):
             query['CertIds'] = request.cert_ids
+        if not UtilClient.is_unset(request.cors_config):
+            query['CorsConfig'] = request.cors_config
         if not UtilClient.is_unset(request.default_rule):
             query['DefaultRule'] = request.default_rule
         if not UtilClient.is_unset(request.description):
@@ -1709,6 +1727,8 @@ class Client(OpenApiClient):
             query['CertId'] = request.cert_id
         if not UtilClient.is_unset(request.cert_ids):
             query['CertIds'] = request.cert_ids
+        if not UtilClient.is_unset(request.cors_config):
+            query['CorsConfig'] = request.cors_config
         if not UtilClient.is_unset(request.default_rule):
             query['DefaultRule'] = request.default_rule
         if not UtilClient.is_unset(request.description):
@@ -1808,7 +1828,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateJobResponse:
         """
-        @summary Updates a job template.
+        @summary Create a job template.
         
         @param request: CreateJobRequest
         @param headers: map
@@ -1960,7 +1980,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateJobResponse:
         """
-        @summary Updates a job template.
+        @summary Create a job template.
         
         @param request: CreateJobRequest
         @param headers: map
@@ -2110,7 +2130,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateJobRequest,
     ) -> sae_20190506_models.CreateJobResponse:
         """
-        @summary Updates a job template.
+        @summary Create a job template.
         
         @param request: CreateJobRequest
         @return: CreateJobResponse
@@ -2124,7 +2144,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateJobRequest,
     ) -> sae_20190506_models.CreateJobResponse:
         """
-        @summary Updates a job template.
+        @summary Create a job template.
         
         @param request: CreateJobRequest
         @return: CreateJobResponse
@@ -2140,7 +2160,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateNamespaceResponse:
         """
-        @summary Creates a namespace.
+        @summary Create a namespace.
         
         @param request: CreateNamespaceRequest
         @param headers: map
@@ -2192,7 +2212,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateNamespaceResponse:
         """
-        @summary Creates a namespace.
+        @summary Create a namespace.
         
         @param request: CreateNamespaceRequest
         @param headers: map
@@ -2242,7 +2262,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateNamespaceRequest,
     ) -> sae_20190506_models.CreateNamespaceResponse:
         """
-        @summary Creates a namespace.
+        @summary Create a namespace.
         
         @param request: CreateNamespaceRequest
         @return: CreateNamespaceResponse
@@ -2256,7 +2276,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateNamespaceRequest,
     ) -> sae_20190506_models.CreateNamespaceResponse:
         """
-        @summary Creates a namespace.
+        @summary Create a namespace.
         
         @param request: CreateNamespaceRequest
         @return: CreateNamespaceResponse
@@ -2408,7 +2428,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateWebApplicationResponse:
         """
-        @summary 创建应用
+        @summary Create a web application
+        
+        @description Call the CreateWebApplication operation to create a web application.
         
         @param request: CreateWebApplicationRequest
         @param headers: map
@@ -2453,7 +2475,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateWebApplicationResponse:
         """
-        @summary 创建应用
+        @summary Create a web application
+        
+        @description Call the CreateWebApplication operation to create a web application.
         
         @param request: CreateWebApplicationRequest
         @param headers: map
@@ -2496,7 +2520,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateWebApplicationRequest,
     ) -> sae_20190506_models.CreateWebApplicationResponse:
         """
-        @summary 创建应用
+        @summary Create a web application
+        
+        @description Call the CreateWebApplication operation to create a web application.
         
         @param request: CreateWebApplicationRequest
         @return: CreateWebApplicationResponse
@@ -2510,7 +2536,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateWebApplicationRequest,
     ) -> sae_20190506_models.CreateWebApplicationResponse:
         """
-        @summary 创建应用
+        @summary Create a web application
+        
+        @description Call the CreateWebApplication operation to create a web application.
         
         @param request: CreateWebApplicationRequest
         @return: CreateWebApplicationResponse
@@ -2526,7 +2554,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateWebCustomDomainResponse:
         """
-        @summary 新建自定义域名
+        @summary Create a custom domain name for the web application.
+        
+        @description Create a custom domain name for the web application.
         
         @param request: CreateWebCustomDomainRequest
         @param headers: map
@@ -2571,7 +2601,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateWebCustomDomainResponse:
         """
-        @summary 新建自定义域名
+        @summary Create a custom domain name for the web application.
+        
+        @description Create a custom domain name for the web application.
         
         @param request: CreateWebCustomDomainRequest
         @param headers: map
@@ -2614,7 +2646,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateWebCustomDomainRequest,
     ) -> sae_20190506_models.CreateWebCustomDomainResponse:
         """
-        @summary 新建自定义域名
+        @summary Create a custom domain name for the web application.
+        
+        @description Create a custom domain name for the web application.
         
         @param request: CreateWebCustomDomainRequest
         @return: CreateWebCustomDomainResponse
@@ -2628,7 +2662,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateWebCustomDomainRequest,
     ) -> sae_20190506_models.CreateWebCustomDomainResponse:
         """
-        @summary 新建自定义域名
+        @summary Create a custom domain name for the web application.
+        
+        @description Create a custom domain name for the web application.
         
         @param request: CreateWebCustomDomainRequest
         @return: CreateWebCustomDomainResponse
@@ -2644,6 +2680,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteApplicationResponse:
         """
+        @summary Deletes an application.
+        
         @param request: DeleteApplicationRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2686,6 +2724,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteApplicationResponse:
         """
+        @summary Deletes an application.
+        
         @param request: DeleteApplicationRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2726,6 +2766,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteApplicationRequest,
     ) -> sae_20190506_models.DeleteApplicationResponse:
         """
+        @summary Deletes an application.
+        
         @param request: DeleteApplicationRequest
         @return: DeleteApplicationResponse
         """
@@ -2738,6 +2780,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteApplicationRequest,
     ) -> sae_20190506_models.DeleteApplicationResponse:
         """
+        @summary Deletes an application.
+        
         @param request: DeleteApplicationRequest
         @return: DeleteApplicationResponse
         """
@@ -2872,6 +2916,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteConfigMapResponse:
         """
+        @summary Deletes a ConfigMap.
+        
         @param request: DeleteConfigMapRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2914,6 +2960,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteConfigMapResponse:
         """
+        @summary Deletes a ConfigMap.
+        
         @param request: DeleteConfigMapRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2954,6 +3002,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteConfigMapRequest,
     ) -> sae_20190506_models.DeleteConfigMapResponse:
         """
+        @summary Deletes a ConfigMap.
+        
         @param request: DeleteConfigMapRequest
         @return: DeleteConfigMapResponse
         """
@@ -2966,6 +3016,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteConfigMapRequest,
     ) -> sae_20190506_models.DeleteConfigMapResponse:
         """
+        @summary Deletes a ConfigMap.
+        
         @param request: DeleteConfigMapRequest
         @return: DeleteConfigMapResponse
         """
@@ -2980,7 +3032,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteGreyTagRouteResponse:
         """
-        @summary 1
+        @summary Deletes a canary release rule based on the specified rule ID.
         
         @param request: DeleteGreyTagRouteRequest
         @param headers: map
@@ -3024,7 +3076,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteGreyTagRouteResponse:
         """
-        @summary 1
+        @summary Deletes a canary release rule based on the specified rule ID.
         
         @param request: DeleteGreyTagRouteRequest
         @param headers: map
@@ -3066,7 +3118,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteGreyTagRouteRequest,
     ) -> sae_20190506_models.DeleteGreyTagRouteResponse:
         """
-        @summary 1
+        @summary Deletes a canary release rule based on the specified rule ID.
         
         @param request: DeleteGreyTagRouteRequest
         @return: DeleteGreyTagRouteResponse
@@ -3080,7 +3132,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteGreyTagRouteRequest,
     ) -> sae_20190506_models.DeleteGreyTagRouteResponse:
         """
-        @summary 1
+        @summary Deletes a canary release rule based on the specified rule ID.
         
         @param request: DeleteGreyTagRouteRequest
         @return: DeleteGreyTagRouteResponse
@@ -3096,7 +3148,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteHistoryJobResponse:
         """
-        @summary Deletes a job.
+        @summary Delete a job.
         
         @param request: DeleteHistoryJobRequest
         @param headers: map
@@ -3142,7 +3194,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteHistoryJobResponse:
         """
-        @summary Deletes a job.
+        @summary Delete a job.
         
         @param request: DeleteHistoryJobRequest
         @param headers: map
@@ -3186,7 +3238,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteHistoryJobRequest,
     ) -> sae_20190506_models.DeleteHistoryJobResponse:
         """
-        @summary Deletes a job.
+        @summary Delete a job.
         
         @param request: DeleteHistoryJobRequest
         @return: DeleteHistoryJobResponse
@@ -3200,7 +3252,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteHistoryJobRequest,
     ) -> sae_20190506_models.DeleteHistoryJobResponse:
         """
-        @summary Deletes a job.
+        @summary Delete a job.
         
         @param request: DeleteHistoryJobRequest
         @return: DeleteHistoryJobResponse
@@ -3216,6 +3268,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteIngressResponse:
         """
+        @summary Deletes a routing rule.
+        
         @param request: DeleteIngressRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3258,6 +3312,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteIngressResponse:
         """
+        @summary Deletes a routing rule.
+        
         @param request: DeleteIngressRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3298,6 +3354,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteIngressRequest,
     ) -> sae_20190506_models.DeleteIngressResponse:
         """
+        @summary Deletes a routing rule.
+        
         @param request: DeleteIngressRequest
         @return: DeleteIngressResponse
         """
@@ -3310,6 +3368,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteIngressRequest,
     ) -> sae_20190506_models.DeleteIngressResponse:
         """
+        @summary Deletes a routing rule.
+        
         @param request: DeleteIngressRequest
         @return: DeleteIngressResponse
         """
@@ -3324,7 +3384,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteJobResponse:
         """
-        @summary Deletes a job template.
+        @summary Delete a job template.
         
         @param request: DeleteJobRequest
         @param headers: map
@@ -3368,7 +3428,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteJobResponse:
         """
-        @summary Deletes a job template.
+        @summary Delete a job template.
         
         @param request: DeleteJobRequest
         @param headers: map
@@ -3410,7 +3470,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteJobRequest,
     ) -> sae_20190506_models.DeleteJobResponse:
         """
-        @summary Deletes a job template.
+        @summary Delete a job template.
         
         @param request: DeleteJobRequest
         @return: DeleteJobResponse
@@ -3424,7 +3484,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteJobRequest,
     ) -> sae_20190506_models.DeleteJobResponse:
         """
-        @summary Deletes a job template.
+        @summary Delete a job template.
         
         @param request: DeleteJobRequest
         @return: DeleteJobResponse
@@ -3440,6 +3500,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteNamespaceResponse:
         """
+        @summary Deletes a namespace.
+        
         @param request: DeleteNamespaceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3484,6 +3546,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteNamespaceResponse:
         """
+        @summary Deletes a namespace.
+        
         @param request: DeleteNamespaceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3526,6 +3590,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteNamespaceRequest,
     ) -> sae_20190506_models.DeleteNamespaceResponse:
         """
+        @summary Deletes a namespace.
+        
         @param request: DeleteNamespaceRequest
         @return: DeleteNamespaceResponse
         """
@@ -3538,6 +3604,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteNamespaceRequest,
     ) -> sae_20190506_models.DeleteNamespaceResponse:
         """
+        @summary Deletes a namespace.
+        
         @param request: DeleteNamespaceRequest
         @return: DeleteNamespaceResponse
         """
@@ -3673,7 +3741,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteWebApplicationResponse:
         """
-        @summary 删除应用
+        @summary Delete a web application.
+        
+        @description Call the DeleteWebApplication operation to delete a web application.
         
         @param request: DeleteWebApplicationRequest
         @param headers: map
@@ -3718,7 +3788,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteWebApplicationResponse:
         """
-        @summary 删除应用
+        @summary Delete a web application.
+        
+        @description Call the DeleteWebApplication operation to delete a web application.
         
         @param request: DeleteWebApplicationRequest
         @param headers: map
@@ -3761,7 +3833,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteWebApplicationRequest,
     ) -> sae_20190506_models.DeleteWebApplicationResponse:
         """
-        @summary 删除应用
+        @summary Delete a web application.
+        
+        @description Call the DeleteWebApplication operation to delete a web application.
         
         @param request: DeleteWebApplicationRequest
         @return: DeleteWebApplicationResponse
@@ -3776,7 +3850,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteWebApplicationRequest,
     ) -> sae_20190506_models.DeleteWebApplicationResponse:
         """
-        @summary 删除应用
+        @summary Delete a web application.
+        
+        @description Call the DeleteWebApplication operation to delete a web application.
         
         @param request: DeleteWebApplicationRequest
         @return: DeleteWebApplicationResponse
@@ -3794,7 +3870,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteWebApplicationRevisionResponse:
         """
-        @summary 删除应用版本
+        @summary Delete a web application version.
+        
+        @description Delete a web application version.
         
         @param request: DeleteWebApplicationRevisionRequest
         @param headers: map
@@ -3840,7 +3918,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteWebApplicationRevisionResponse:
         """
-        @summary 删除应用版本
+        @summary Delete a web application version.
+        
+        @description Delete a web application version.
         
         @param request: DeleteWebApplicationRevisionRequest
         @param headers: map
@@ -3884,7 +3964,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteWebApplicationRevisionRequest,
     ) -> sae_20190506_models.DeleteWebApplicationRevisionResponse:
         """
-        @summary 删除应用版本
+        @summary Delete a web application version.
+        
+        @description Delete a web application version.
         
         @param request: DeleteWebApplicationRevisionRequest
         @return: DeleteWebApplicationRevisionResponse
@@ -3900,7 +3982,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteWebApplicationRevisionRequest,
     ) -> sae_20190506_models.DeleteWebApplicationRevisionResponse:
         """
-        @summary 删除应用版本
+        @summary Delete a web application version.
+        
+        @description Delete a web application version.
         
         @param request: DeleteWebApplicationRevisionRequest
         @return: DeleteWebApplicationRevisionResponse
@@ -3917,7 +4001,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteWebCustomDomainResponse:
         """
-        @summary 删除自定义域名
+        @summary Delete a custom domain name.
+        
+        @description Delete a custom domain name.
         
         @param request: DeleteWebCustomDomainRequest
         @param headers: map
@@ -3962,7 +4048,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteWebCustomDomainResponse:
         """
-        @summary 删除自定义域名
+        @summary Delete a custom domain name.
+        
+        @description Delete a custom domain name.
         
         @param request: DeleteWebCustomDomainRequest
         @param headers: map
@@ -4005,7 +4093,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteWebCustomDomainRequest,
     ) -> sae_20190506_models.DeleteWebCustomDomainResponse:
         """
-        @summary 删除自定义域名
+        @summary Delete a custom domain name.
+        
+        @description Delete a custom domain name.
         
         @param request: DeleteWebCustomDomainRequest
         @return: DeleteWebCustomDomainResponse
@@ -4020,7 +4110,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DeleteWebCustomDomainRequest,
     ) -> sae_20190506_models.DeleteWebCustomDomainResponse:
         """
-        @summary 删除自定义域名
+        @summary Delete a custom domain name.
+        
+        @description Delete a custom domain name.
         
         @param request: DeleteWebCustomDomainRequest
         @return: DeleteWebCustomDomainResponse
@@ -4103,6 +4195,8 @@ class Client(OpenApiClient):
             query['Memory'] = request.memory
         if not UtilClient.is_unset(request.micro_registration):
             query['MicroRegistration'] = request.micro_registration
+        if not UtilClient.is_unset(request.microservice_engine_config):
+            query['MicroserviceEngineConfig'] = request.microservice_engine_config
         if not UtilClient.is_unset(request.min_ready_instance_ratio):
             query['MinReadyInstanceRatio'] = request.min_ready_instance_ratio
         if not UtilClient.is_unset(request.min_ready_instances):
@@ -4289,6 +4383,8 @@ class Client(OpenApiClient):
             query['Memory'] = request.memory
         if not UtilClient.is_unset(request.micro_registration):
             query['MicroRegistration'] = request.micro_registration
+        if not UtilClient.is_unset(request.microservice_engine_config):
+            query['MicroserviceEngineConfig'] = request.microservice_engine_config
         if not UtilClient.is_unset(request.min_ready_instance_ratio):
             query['MinReadyInstanceRatio'] = request.min_ready_instance_ratio
         if not UtilClient.is_unset(request.min_ready_instances):
@@ -5420,6 +5516,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationStatusResponse:
         """
+        @summary Queries the status of an application.
+        
         @param request: DescribeApplicationStatusRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5462,6 +5560,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationStatusResponse:
         """
+        @summary Queries the status of an application.
+        
         @param request: DescribeApplicationStatusRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5502,6 +5602,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeApplicationStatusRequest,
     ) -> sae_20190506_models.DescribeApplicationStatusResponse:
         """
+        @summary Queries the status of an application.
+        
         @param request: DescribeApplicationStatusRequest
         @return: DescribeApplicationStatusResponse
         """
@@ -5514,6 +5616,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeApplicationStatusRequest,
     ) -> sae_20190506_models.DescribeApplicationStatusResponse:
         """
+        @summary Queries the status of an application.
+        
         @param request: DescribeApplicationStatusRequest
         @return: DescribeApplicationStatusResponse
         """
@@ -5528,6 +5632,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeChangeOrderResponse:
         """
+        @summary Queries the information of a change order.
+        
         @param request: DescribeChangeOrderRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5570,6 +5676,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeChangeOrderResponse:
         """
+        @summary Queries the information of a change order.
+        
         @param request: DescribeChangeOrderRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5610,6 +5718,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeChangeOrderRequest,
     ) -> sae_20190506_models.DescribeChangeOrderResponse:
         """
+        @summary Queries the information of a change order.
+        
         @param request: DescribeChangeOrderRequest
         @return: DescribeChangeOrderResponse
         """
@@ -5622,6 +5732,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeChangeOrderRequest,
     ) -> sae_20190506_models.DescribeChangeOrderResponse:
         """
+        @summary Queries the information of a change order.
+        
         @param request: DescribeChangeOrderRequest
         @return: DescribeChangeOrderResponse
         """
@@ -5636,6 +5748,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeComponentsResponse:
         """
+        @summary Queries the version of the component that is required when you create and deploy an application.
+        
         @param request: DescribeComponentsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5680,6 +5794,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeComponentsResponse:
         """
+        @summary Queries the version of the component that is required when you create and deploy an application.
+        
         @param request: DescribeComponentsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5722,6 +5838,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeComponentsRequest,
     ) -> sae_20190506_models.DescribeComponentsResponse:
         """
+        @summary Queries the version of the component that is required when you create and deploy an application.
+        
         @param request: DescribeComponentsRequest
         @return: DescribeComponentsResponse
         """
@@ -5734,6 +5852,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeComponentsRequest,
     ) -> sae_20190506_models.DescribeComponentsResponse:
         """
+        @summary Queries the version of the component that is required when you create and deploy an application.
+        
         @param request: DescribeComponentsRequest
         @return: DescribeComponentsResponse
         """
@@ -5748,6 +5868,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeConfigMapResponse:
         """
+        @summary Queries the details of a ConfigMap.
+        
         @param request: DescribeConfigMapRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5790,6 +5912,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeConfigMapResponse:
         """
+        @summary Queries the details of a ConfigMap.
+        
         @param request: DescribeConfigMapRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5830,6 +5954,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeConfigMapRequest,
     ) -> sae_20190506_models.DescribeConfigMapResponse:
         """
+        @summary Queries the details of a ConfigMap.
+        
         @param request: DescribeConfigMapRequest
         @return: DescribeConfigMapResponse
         """
@@ -5842,6 +5968,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeConfigMapRequest,
     ) -> sae_20190506_models.DescribeConfigMapResponse:
         """
+        @summary Queries the details of a ConfigMap.
+        
         @param request: DescribeConfigMapRequest
         @return: DescribeConfigMapResponse
         """
@@ -5856,6 +5984,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeConfigurationPriceResponse:
         """
+        @summary Query configuration price.
+        
         @param request: DescribeConfigurationPriceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5904,6 +6034,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeConfigurationPriceResponse:
         """
+        @summary Query configuration price.
+        
         @param request: DescribeConfigurationPriceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5950,6 +6082,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeConfigurationPriceRequest,
     ) -> sae_20190506_models.DescribeConfigurationPriceResponse:
         """
+        @summary Query configuration price.
+        
         @param request: DescribeConfigurationPriceRequest
         @return: DescribeConfigurationPriceResponse
         """
@@ -5962,6 +6096,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeConfigurationPriceRequest,
     ) -> sae_20190506_models.DescribeConfigurationPriceResponse:
         """
+        @summary Query configuration price.
+        
         @param request: DescribeConfigurationPriceRequest
         @return: DescribeConfigurationPriceResponse
         """
@@ -5975,6 +6111,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeEdasContainersResponse:
         """
+        @summary Queries the container components of a microservices application.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeEdasContainersResponse
@@ -6010,6 +6148,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeEdasContainersResponse:
         """
+        @summary Queries the container components of a microservices application.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeEdasContainersResponse
@@ -6041,6 +6181,8 @@ class Client(OpenApiClient):
 
     def describe_edas_containers(self) -> sae_20190506_models.DescribeEdasContainersResponse:
         """
+        @summary Queries the container components of a microservices application.
+        
         @return: DescribeEdasContainersResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -6049,6 +6191,8 @@ class Client(OpenApiClient):
 
     async def describe_edas_containers_async(self) -> sae_20190506_models.DescribeEdasContainersResponse:
         """
+        @summary Queries the container components of a microservices application.
+        
         @return: DescribeEdasContainersResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -6178,6 +6322,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeIngressResponse:
         """
+        @summary Call the DescribeIngress operation to query the details of an Ingress.
+        
         @param request: DescribeIngressRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6220,6 +6366,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeIngressResponse:
         """
+        @summary Call the DescribeIngress operation to query the details of an Ingress.
+        
         @param request: DescribeIngressRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6260,6 +6408,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeIngressRequest,
     ) -> sae_20190506_models.DescribeIngressResponse:
         """
+        @summary Call the DescribeIngress operation to query the details of an Ingress.
+        
         @param request: DescribeIngressRequest
         @return: DescribeIngressResponse
         """
@@ -6272,6 +6422,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeIngressRequest,
     ) -> sae_20190506_models.DescribeIngressResponse:
         """
+        @summary Call the DescribeIngress operation to query the details of an Ingress.
+        
         @param request: DescribeIngressRequest
         @return: DescribeIngressResponse
         """
@@ -6397,6 +6549,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeInstanceSpecificationsResponse:
         """
+        @summary Queries all instance types.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeInstanceSpecificationsResponse
@@ -6432,6 +6586,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeInstanceSpecificationsResponse:
         """
+        @summary Queries all instance types.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeInstanceSpecificationsResponse
@@ -6463,6 +6619,8 @@ class Client(OpenApiClient):
 
     def describe_instance_specifications(self) -> sae_20190506_models.DescribeInstanceSpecificationsResponse:
         """
+        @summary Queries all instance types.
+        
         @return: DescribeInstanceSpecificationsResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -6471,6 +6629,8 @@ class Client(OpenApiClient):
 
     async def describe_instance_specifications_async(self) -> sae_20190506_models.DescribeInstanceSpecificationsResponse:
         """
+        @summary Queries all instance types.
+        
         @return: DescribeInstanceSpecificationsResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -7204,7 +7364,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeNamespacesResponse:
         """
-        @summary Queries the details of namespaces.
+        @summary Queries a list of namespaces.
         
         @param request: DescribeNamespacesRequest
         @param headers: map
@@ -7250,7 +7410,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeNamespacesResponse:
         """
-        @summary Queries the details of namespaces.
+        @summary Queries a list of namespaces.
         
         @param request: DescribeNamespacesRequest
         @param headers: map
@@ -7294,7 +7454,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeNamespacesRequest,
     ) -> sae_20190506_models.DescribeNamespacesResponse:
         """
-        @summary Queries the details of namespaces.
+        @summary Queries a list of namespaces.
         
         @param request: DescribeNamespacesRequest
         @return: DescribeNamespacesResponse
@@ -7308,7 +7468,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeNamespacesRequest,
     ) -> sae_20190506_models.DescribeNamespacesResponse:
         """
-        @summary Queries the details of namespaces.
+        @summary Queries a list of namespaces.
         
         @param request: DescribeNamespacesRequest
         @return: DescribeNamespacesResponse
@@ -7324,7 +7484,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribePipelineResponse:
         """
-        @summary Queries the information of a batch.
+        @summary View batch information
         
         @param request: DescribePipelineRequest
         @param headers: map
@@ -7368,7 +7528,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribePipelineResponse:
         """
-        @summary Queries the information of a batch.
+        @summary View batch information
         
         @param request: DescribePipelineRequest
         @param headers: map
@@ -7410,7 +7570,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribePipelineRequest,
     ) -> sae_20190506_models.DescribePipelineResponse:
         """
-        @summary Queries the information of a batch.
+        @summary View batch information
         
         @param request: DescribePipelineRequest
         @return: DescribePipelineResponse
@@ -7424,7 +7584,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribePipelineRequest,
     ) -> sae_20190506_models.DescribePipelineResponse:
         """
-        @summary Queries the information of a batch.
+        @summary View batch information
         
         @param request: DescribePipelineRequest
         @return: DescribePipelineResponse
@@ -7534,7 +7694,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeSecretResponse:
         """
-        @summary Queries the details of a Secret instance.
+        @summary Queries the details of a Secret.
         
         @param request: DescribeSecretRequest
         @param headers: map
@@ -7580,7 +7740,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeSecretResponse:
         """
-        @summary Queries the details of a Secret instance.
+        @summary Queries the details of a Secret.
         
         @param request: DescribeSecretRequest
         @param headers: map
@@ -7624,7 +7784,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeSecretRequest,
     ) -> sae_20190506_models.DescribeSecretResponse:
         """
-        @summary Queries the details of a Secret instance.
+        @summary Queries the details of a Secret.
         
         @param request: DescribeSecretRequest
         @return: DescribeSecretResponse
@@ -7638,7 +7798,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeSecretRequest,
     ) -> sae_20190506_models.DescribeSecretResponse:
         """
-        @summary Queries the details of a Secret instance.
+        @summary Queries the details of a Secret.
         
         @param request: DescribeSecretRequest
         @return: DescribeSecretResponse
@@ -7655,7 +7815,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeWebApplicationResponse:
         """
-        @summary 获取应用信息
+        @summary Query web applications.
+        
+        @description Call the DescribeWebApplication operation to query web applications.
         
         @param request: DescribeWebApplicationRequest
         @param headers: map
@@ -7700,7 +7862,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeWebApplicationResponse:
         """
-        @summary 获取应用信息
+        @summary Query web applications.
+        
+        @description Call the DescribeWebApplication operation to query web applications.
         
         @param request: DescribeWebApplicationRequest
         @param headers: map
@@ -7743,7 +7907,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeWebApplicationRequest,
     ) -> sae_20190506_models.DescribeWebApplicationResponse:
         """
-        @summary 获取应用信息
+        @summary Query web applications.
+        
+        @description Call the DescribeWebApplication operation to query web applications.
         
         @param request: DescribeWebApplicationRequest
         @return: DescribeWebApplicationResponse
@@ -7758,7 +7924,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeWebApplicationRequest,
     ) -> sae_20190506_models.DescribeWebApplicationResponse:
         """
-        @summary 获取应用信息
+        @summary Query web applications.
+        
+        @description Call the DescribeWebApplication operation to query web applications.
         
         @param request: DescribeWebApplicationRequest
         @return: DescribeWebApplicationResponse
@@ -7775,7 +7943,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeWebApplicationResourceStaticsResponse:
         """
-        @summary 应用资源用量统计
+        @summary Query the resource usage of a web application.
+        
+        @description Query the resource usage of a web application.
         
         @param request: DescribeWebApplicationResourceStaticsRequest
         @param headers: map
@@ -7826,7 +7996,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeWebApplicationResourceStaticsResponse:
         """
-        @summary 应用资源用量统计
+        @summary Query the resource usage of a web application.
+        
+        @description Query the resource usage of a web application.
         
         @param request: DescribeWebApplicationResourceStaticsRequest
         @param headers: map
@@ -7875,7 +8047,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeWebApplicationResourceStaticsRequest,
     ) -> sae_20190506_models.DescribeWebApplicationResourceStaticsResponse:
         """
-        @summary 应用资源用量统计
+        @summary Query the resource usage of a web application.
+        
+        @description Query the resource usage of a web application.
         
         @param request: DescribeWebApplicationResourceStaticsRequest
         @return: DescribeWebApplicationResourceStaticsResponse
@@ -7890,7 +8064,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeWebApplicationResourceStaticsRequest,
     ) -> sae_20190506_models.DescribeWebApplicationResourceStaticsResponse:
         """
-        @summary 应用资源用量统计
+        @summary Query the resource usage of a web application.
+        
+        @description Query the resource usage of a web application.
         
         @param request: DescribeWebApplicationResourceStaticsRequest
         @return: DescribeWebApplicationResourceStaticsResponse
@@ -7908,7 +8084,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeWebApplicationRevisionResponse:
         """
-        @summary 获取应用版本
+        @summary Describe a web application version.
+        
+        @description Describe a web application version.
         
         @param request: DescribeWebApplicationRevisionRequest
         @param headers: map
@@ -7954,7 +8132,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeWebApplicationRevisionResponse:
         """
-        @summary 获取应用版本
+        @summary Describe a web application version.
+        
+        @description Describe a web application version.
         
         @param request: DescribeWebApplicationRevisionRequest
         @param headers: map
@@ -7998,7 +8178,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeWebApplicationRevisionRequest,
     ) -> sae_20190506_models.DescribeWebApplicationRevisionResponse:
         """
-        @summary 获取应用版本
+        @summary Describe a web application version.
+        
+        @description Describe a web application version.
         
         @param request: DescribeWebApplicationRevisionRequest
         @return: DescribeWebApplicationRevisionResponse
@@ -8014,7 +8196,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeWebApplicationRevisionRequest,
     ) -> sae_20190506_models.DescribeWebApplicationRevisionResponse:
         """
-        @summary 获取应用版本
+        @summary Describe a web application version.
+        
+        @description Describe a web application version.
         
         @param request: DescribeWebApplicationRevisionRequest
         @return: DescribeWebApplicationRevisionResponse
@@ -8031,7 +8215,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeWebApplicationScalingConfigResponse:
         """
-        @summary 弹性配置详情
+        @summary Describe the scaling configuration of a web application.
+        
+        @description Call the DescribeWebApplicationScalingConfig operation to obtain the scaling configuration of a web application.
         
         @param request: DescribeWebApplicationScalingConfigRequest
         @param headers: map
@@ -8076,7 +8262,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeWebApplicationScalingConfigResponse:
         """
-        @summary 弹性配置详情
+        @summary Describe the scaling configuration of a web application.
+        
+        @description Call the DescribeWebApplicationScalingConfig operation to obtain the scaling configuration of a web application.
         
         @param request: DescribeWebApplicationScalingConfigRequest
         @param headers: map
@@ -8119,7 +8307,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeWebApplicationScalingConfigRequest,
     ) -> sae_20190506_models.DescribeWebApplicationScalingConfigResponse:
         """
-        @summary 弹性配置详情
+        @summary Describe the scaling configuration of a web application.
+        
+        @description Call the DescribeWebApplicationScalingConfig operation to obtain the scaling configuration of a web application.
         
         @param request: DescribeWebApplicationScalingConfigRequest
         @return: DescribeWebApplicationScalingConfigResponse
@@ -8134,7 +8324,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeWebApplicationScalingConfigRequest,
     ) -> sae_20190506_models.DescribeWebApplicationScalingConfigResponse:
         """
-        @summary 弹性配置详情
+        @summary Describe the scaling configuration of a web application.
+        
+        @description Call the DescribeWebApplicationScalingConfig operation to obtain the scaling configuration of a web application.
         
         @param request: DescribeWebApplicationScalingConfigRequest
         @return: DescribeWebApplicationScalingConfigResponse
@@ -8151,7 +8343,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeWebApplicationTrafficConfigResponse:
         """
-        @summary 流量配置详情
+        @summary Query the traffic configurations of a web application.
+        
+        @description Call the DescribeWebApplicationTrafficConfig operation to query the traffic configurations of a web application.
         
         @param request: DescribeWebApplicationTrafficConfigRequest
         @param headers: map
@@ -8196,7 +8390,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeWebApplicationTrafficConfigResponse:
         """
-        @summary 流量配置详情
+        @summary Query the traffic configurations of a web application.
+        
+        @description Call the DescribeWebApplicationTrafficConfig operation to query the traffic configurations of a web application.
         
         @param request: DescribeWebApplicationTrafficConfigRequest
         @param headers: map
@@ -8239,7 +8435,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeWebApplicationTrafficConfigRequest,
     ) -> sae_20190506_models.DescribeWebApplicationTrafficConfigResponse:
         """
-        @summary 流量配置详情
+        @summary Query the traffic configurations of a web application.
+        
+        @description Call the DescribeWebApplicationTrafficConfig operation to query the traffic configurations of a web application.
         
         @param request: DescribeWebApplicationTrafficConfigRequest
         @return: DescribeWebApplicationTrafficConfigResponse
@@ -8254,7 +8452,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeWebApplicationTrafficConfigRequest,
     ) -> sae_20190506_models.DescribeWebApplicationTrafficConfigResponse:
         """
-        @summary 流量配置详情
+        @summary Query the traffic configurations of a web application.
+        
+        @description Call the DescribeWebApplicationTrafficConfig operation to query the traffic configurations of a web application.
         
         @param request: DescribeWebApplicationTrafficConfigRequest
         @return: DescribeWebApplicationTrafficConfigResponse
@@ -8271,7 +8471,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeWebCustomDomainResponse:
         """
-        @summary 获取域名.
+        @summary Query the details of a custom domain name for a web application.
+        
+        @description Query the details of a custom domain name for a web application.
         
         @param request: DescribeWebCustomDomainRequest
         @param headers: map
@@ -8316,7 +8518,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeWebCustomDomainResponse:
         """
-        @summary 获取域名.
+        @summary Query the details of a custom domain name for a web application.
+        
+        @description Query the details of a custom domain name for a web application.
         
         @param request: DescribeWebCustomDomainRequest
         @param headers: map
@@ -8359,7 +8563,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeWebCustomDomainRequest,
     ) -> sae_20190506_models.DescribeWebCustomDomainResponse:
         """
-        @summary 获取域名.
+        @summary Query the details of a custom domain name for a web application.
+        
+        @description Query the details of a custom domain name for a web application.
         
         @param request: DescribeWebCustomDomainRequest
         @return: DescribeWebCustomDomainResponse
@@ -8374,7 +8580,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeWebCustomDomainRequest,
     ) -> sae_20190506_models.DescribeWebCustomDomainResponse:
         """
-        @summary 获取域名.
+        @summary Query the details of a custom domain name for a web application.
+        
+        @description Query the details of a custom domain name for a web application.
         
         @param request: DescribeWebCustomDomainRequest
         @return: DescribeWebCustomDomainResponse
@@ -8392,7 +8600,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeWebInstanceLogsResponse:
         """
-        @summary 应用实例日志
+        @summary Obtain the logs of web application instances.
+        
+        @description Obtain the logs of web application instances.
         
         @param request: DescribeWebInstanceLogsRequest
         @param headers: map
@@ -8438,7 +8648,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeWebInstanceLogsResponse:
         """
-        @summary 应用实例日志
+        @summary Obtain the logs of web application instances.
+        
+        @description Obtain the logs of web application instances.
         
         @param request: DescribeWebInstanceLogsRequest
         @param headers: map
@@ -8482,7 +8694,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeWebInstanceLogsRequest,
     ) -> sae_20190506_models.DescribeWebInstanceLogsResponse:
         """
-        @summary 应用实例日志
+        @summary Obtain the logs of web application instances.
+        
+        @description Obtain the logs of web application instances.
         
         @param request: DescribeWebInstanceLogsRequest
         @return: DescribeWebInstanceLogsResponse
@@ -8498,7 +8712,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeWebInstanceLogsRequest,
     ) -> sae_20190506_models.DescribeWebInstanceLogsResponse:
         """
-        @summary 应用实例日志
+        @summary Obtain the logs of web application instances.
+        
+        @description Obtain the logs of web application instances.
         
         @param request: DescribeWebInstanceLogsRequest
         @return: DescribeWebInstanceLogsResponse
@@ -8626,6 +8842,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DowngradeApplicationApmServiceResponse:
         """
+        @summary Disables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
+        
         @param request: DowngradeApplicationApmServiceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -8668,6 +8886,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DowngradeApplicationApmServiceResponse:
         """
+        @summary Disables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
+        
         @param request: DowngradeApplicationApmServiceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -8708,6 +8928,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DowngradeApplicationApmServiceRequest,
     ) -> sae_20190506_models.DowngradeApplicationApmServiceResponse:
         """
+        @summary Disables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
+        
         @param request: DowngradeApplicationApmServiceRequest
         @return: DowngradeApplicationApmServiceResponse
         """
@@ -8720,6 +8942,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DowngradeApplicationApmServiceRequest,
     ) -> sae_20190506_models.DowngradeApplicationApmServiceResponse:
         """
+        @summary Disables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
+        
         @param request: DowngradeApplicationApmServiceRequest
         @return: DowngradeApplicationApmServiceResponse
         """
@@ -8998,7 +9222,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetApplicationResponse:
         """
-        @summary 查询应用基本信息
+        @summary Queries the basic information of an application.
         
         @param request: GetApplicationRequest
         @param headers: map
@@ -9046,7 +9270,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetApplicationResponse:
         """
-        @summary 查询应用基本信息
+        @summary Queries the basic information of an application.
         
         @param request: GetApplicationRequest
         @param headers: map
@@ -9092,7 +9316,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.GetApplicationRequest,
     ) -> sae_20190506_models.GetApplicationResponse:
         """
-        @summary 查询应用基本信息
+        @summary Queries the basic information of an application.
         
         @param request: GetApplicationRequest
         @return: GetApplicationResponse
@@ -9106,7 +9330,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.GetApplicationRequest,
     ) -> sae_20190506_models.GetApplicationResponse:
         """
-        @summary 查询应用基本信息
+        @summary Queries the basic information of an application.
         
         @param request: GetApplicationRequest
         @return: GetApplicationResponse
@@ -9122,7 +9346,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetArmsTopNMetricResponse:
         """
-        @summary Queries the top N applications in Application Monitoring.
+        @summary The application name.
         
         @param request: GetArmsTopNMetricRequest
         @param headers: map
@@ -9178,7 +9402,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetArmsTopNMetricResponse:
         """
-        @summary Queries the top N applications in Application Monitoring.
+        @summary The application name.
         
         @param request: GetArmsTopNMetricRequest
         @param headers: map
@@ -9232,7 +9456,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.GetArmsTopNMetricRequest,
     ) -> sae_20190506_models.GetArmsTopNMetricResponse:
         """
-        @summary Queries the top N applications in Application Monitoring.
+        @summary The application name.
         
         @param request: GetArmsTopNMetricRequest
         @return: GetArmsTopNMetricResponse
@@ -9246,7 +9470,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.GetArmsTopNMetricRequest,
     ) -> sae_20190506_models.GetArmsTopNMetricResponse:
         """
-        @summary Queries the top N applications in Application Monitoring.
+        @summary The application name.
         
         @param request: GetArmsTopNMetricRequest
         @return: GetArmsTopNMetricResponse
@@ -9654,7 +9878,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetWarningEventMetricResponse:
         """
-        @summary Queries the top N applications in which Warning events occur.
+        @summary The number of Warning events.
         
         @param request: GetWarningEventMetricRequest
         @param headers: map
@@ -9708,7 +9932,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetWarningEventMetricResponse:
         """
-        @summary Queries the top N applications in which Warning events occur.
+        @summary The number of Warning events.
         
         @param request: GetWarningEventMetricRequest
         @param headers: map
@@ -9760,7 +9984,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.GetWarningEventMetricRequest,
     ) -> sae_20190506_models.GetWarningEventMetricResponse:
         """
-        @summary Queries the top N applications in which Warning events occur.
+        @summary The number of Warning events.
         
         @param request: GetWarningEventMetricRequest
         @return: GetWarningEventMetricResponse
@@ -9774,7 +9998,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.GetWarningEventMetricRequest,
     ) -> sae_20190506_models.GetWarningEventMetricResponse:
         """
-        @summary Queries the top N applications in which Warning events occur.
+        @summary The number of Warning events.
         
         @param request: GetWarningEventMetricRequest
         @return: GetWarningEventMetricResponse
@@ -9790,6 +10014,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetWebshellTokenResponse:
         """
+        @summary Obtains the token used to remotely log on to the Webshell of an instance.
+        
         @param request: GetWebshellTokenRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9836,6 +10062,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetWebshellTokenResponse:
         """
+        @summary Obtains the token used to remotely log on to the Webshell of an instance.
+        
         @param request: GetWebshellTokenRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9880,6 +10108,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.GetWebshellTokenRequest,
     ) -> sae_20190506_models.GetWebshellTokenResponse:
         """
+        @summary Obtains the token used to remotely log on to the Webshell of an instance.
+        
         @param request: GetWebshellTokenRequest
         @return: GetWebshellTokenResponse
         """
@@ -9892,6 +10122,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.GetWebshellTokenRequest,
     ) -> sae_20190506_models.GetWebshellTokenResponse:
         """
+        @summary Obtains the token used to remotely log on to the Webshell of an instance.
+        
         @param request: GetWebshellTokenRequest
         @return: GetWebshellTokenResponse
         """
@@ -10050,7 +10282,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListAppServicesResponse:
         """
-        @summary 查询微服务的服务列表
+        @summary Queries the list of microservices
         
         @param request: ListAppServicesRequest
         @param headers: map
@@ -10110,7 +10342,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListAppServicesResponse:
         """
-        @summary 查询微服务的服务列表
+        @summary Queries the list of microservices
         
         @param request: ListAppServicesRequest
         @param headers: map
@@ -10168,7 +10400,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListAppServicesRequest,
     ) -> sae_20190506_models.ListAppServicesResponse:
         """
-        @summary 查询微服务的服务列表
+        @summary Queries the list of microservices
         
         @param request: ListAppServicesRequest
         @return: ListAppServicesResponse
@@ -10182,7 +10414,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListAppServicesRequest,
     ) -> sae_20190506_models.ListAppServicesResponse:
         """
-        @summary 查询微服务的服务列表
+        @summary Queries the list of microservices
         
         @param request: ListAppServicesRequest
         @return: ListAppServicesResponse
@@ -10198,7 +10430,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListAppServicesPageResponse:
         """
-        @summary 6dcc8c9e-d3da-478a-a066-86dcf820\\\\*\\*\\*\
+        @summary Queries the services of an application.
         
         @param request: ListAppServicesPageRequest
         @param headers: map
@@ -10248,7 +10480,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListAppServicesPageResponse:
         """
-        @summary 6dcc8c9e-d3da-478a-a066-86dcf820\\\\*\\*\\*\
+        @summary Queries the services of an application.
         
         @param request: ListAppServicesPageRequest
         @param headers: map
@@ -10296,7 +10528,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListAppServicesPageRequest,
     ) -> sae_20190506_models.ListAppServicesPageResponse:
         """
-        @summary 6dcc8c9e-d3da-478a-a066-86dcf820\\\\*\\*\\*\
+        @summary Queries the services of an application.
         
         @param request: ListAppServicesPageRequest
         @return: ListAppServicesPageResponse
@@ -10310,7 +10542,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListAppServicesPageRequest,
     ) -> sae_20190506_models.ListAppServicesPageResponse:
         """
-        @summary 6dcc8c9e-d3da-478a-a066-86dcf820\\\\*\\*\\*\
+        @summary Queries the services of an application.
         
         @param request: ListAppServicesPageRequest
         @return: ListAppServicesPageResponse
@@ -10326,7 +10558,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListAppVersionsResponse:
         """
-        @summary 7171a6ca-d1cd-4928-8642-7d5cfe69\\\\*\\*\\*\
+        @summary Queries the deployment versions of an application.
         
         @param request: ListAppVersionsRequest
         @param headers: map
@@ -10370,7 +10602,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListAppVersionsResponse:
         """
-        @summary 7171a6ca-d1cd-4928-8642-7d5cfe69\\\\*\\*\\*\
+        @summary Queries the deployment versions of an application.
         
         @param request: ListAppVersionsRequest
         @param headers: map
@@ -10412,7 +10644,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListAppVersionsRequest,
     ) -> sae_20190506_models.ListAppVersionsResponse:
         """
-        @summary 7171a6ca-d1cd-4928-8642-7d5cfe69\\\\*\\*\\*\
+        @summary Queries the deployment versions of an application.
         
         @param request: ListAppVersionsRequest
         @return: ListAppVersionsResponse
@@ -10426,7 +10658,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListAppVersionsRequest,
     ) -> sae_20190506_models.ListAppVersionsResponse:
         """
-        @summary 7171a6ca-d1cd-4928-8642-7d5cfe69\\\\*\\*\\*\
+        @summary Queries the deployment versions of an application.
         
         @param request: ListAppVersionsRequest
         @return: ListAppVersionsResponse
@@ -10442,7 +10674,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListApplicationsResponse:
         """
-        @summary The ID of the namespace.
+        @summary Queries a list of applications.
         
         @param request: ListApplicationsRequest
         @param headers: map
@@ -10504,7 +10736,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListApplicationsResponse:
         """
-        @summary The ID of the namespace.
+        @summary Queries a list of applications.
         
         @param request: ListApplicationsRequest
         @param headers: map
@@ -10564,7 +10796,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListApplicationsRequest,
     ) -> sae_20190506_models.ListApplicationsResponse:
         """
-        @summary The ID of the namespace.
+        @summary Queries a list of applications.
         
         @param request: ListApplicationsRequest
         @return: ListApplicationsResponse
@@ -10578,7 +10810,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListApplicationsRequest,
     ) -> sae_20190506_models.ListApplicationsResponse:
         """
-        @summary The ID of the namespace.
+        @summary Queries a list of applications.
         
         @param request: ListApplicationsRequest
         @return: ListApplicationsResponse
@@ -10594,6 +10826,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListChangeOrdersResponse:
         """
+        @summary Query a list of change orders.
+        
         @param request: ListChangeOrdersRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -10646,6 +10880,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListChangeOrdersResponse:
         """
+        @summary Query a list of change orders.
+        
         @param request: ListChangeOrdersRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -10696,6 +10932,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListChangeOrdersRequest,
     ) -> sae_20190506_models.ListChangeOrdersResponse:
         """
+        @summary Query a list of change orders.
+        
         @param request: ListChangeOrdersRequest
         @return: ListChangeOrdersResponse
         """
@@ -10708,6 +10946,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListChangeOrdersRequest,
     ) -> sae_20190506_models.ListChangeOrdersResponse:
         """
+        @summary Query a list of change orders.
+        
         @param request: ListChangeOrdersRequest
         @return: ListChangeOrdersResponse
         """
@@ -10722,7 +10962,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListConsumedServicesResponse:
         """
-        @summary b2a8a925-477a-4ed7-b825-d5e22500\\\\*\\*\\*\
+        @summary Queries a list of microservices that are subscribed.
         
         @param request: ListConsumedServicesRequest
         @param headers: map
@@ -10766,7 +11006,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListConsumedServicesResponse:
         """
-        @summary b2a8a925-477a-4ed7-b825-d5e22500\\\\*\\*\\*\
+        @summary Queries a list of microservices that are subscribed.
         
         @param request: ListConsumedServicesRequest
         @param headers: map
@@ -10808,7 +11048,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListConsumedServicesRequest,
     ) -> sae_20190506_models.ListConsumedServicesResponse:
         """
-        @summary b2a8a925-477a-4ed7-b825-d5e22500\\\\*\\*\\*\
+        @summary Queries a list of microservices that are subscribed.
         
         @param request: ListConsumedServicesRequest
         @return: ListConsumedServicesResponse
@@ -10822,7 +11062,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListConsumedServicesRequest,
     ) -> sae_20190506_models.ListConsumedServicesResponse:
         """
-        @summary b2a8a925-477a-4ed7-b825-d5e22500\\\\*\\*\\*\
+        @summary Queries a list of microservices that are subscribed.
         
         @param request: ListConsumedServicesRequest
         @return: ListConsumedServicesResponse
@@ -10962,9 +11202,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListIngressesResponse:
         """
-        @summary The returned message.
-        **success** is returned when the request succeeds.
-        An error code is returned when the request fails.
+        @summary Use ListIngress API call to query Ingress list
         
         @param request: ListIngressesRequest
         @param headers: map
@@ -11010,9 +11248,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListIngressesResponse:
         """
-        @summary The returned message.
-        **success** is returned when the request succeeds.
-        An error code is returned when the request fails.
+        @summary Use ListIngress API call to query Ingress list
         
         @param request: ListIngressesRequest
         @param headers: map
@@ -11056,9 +11292,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListIngressesRequest,
     ) -> sae_20190506_models.ListIngressesResponse:
         """
-        @summary The returned message.
-        **success** is returned when the request succeeds.
-        An error code is returned when the request fails.
+        @summary Use ListIngress API call to query Ingress list
         
         @param request: ListIngressesRequest
         @return: ListIngressesResponse
@@ -11072,9 +11306,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListIngressesRequest,
     ) -> sae_20190506_models.ListIngressesResponse:
         """
-        @summary The returned message.
-        **success** is returned when the request succeeds.
-        An error code is returned when the request fails.
+        @summary Use ListIngress API call to query Ingress list
         
         @param request: ListIngressesRequest
         @return: ListIngressesResponse
@@ -11242,7 +11474,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListLogConfigsResponse:
         """
-        @summary 56f77b65-788d-442a-9885-7f20d91f\\\\*\\*\\*\
+        @summary Queries a list of application logs.
         
         @param request: ListLogConfigsRequest
         @param headers: map
@@ -11290,7 +11522,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListLogConfigsResponse:
         """
-        @summary 56f77b65-788d-442a-9885-7f20d91f\\\\*\\*\\*\
+        @summary Queries a list of application logs.
         
         @param request: ListLogConfigsRequest
         @param headers: map
@@ -11336,7 +11568,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListLogConfigsRequest,
     ) -> sae_20190506_models.ListLogConfigsResponse:
         """
-        @summary 56f77b65-788d-442a-9885-7f20d91f\\\\*\\*\\*\
+        @summary Queries a list of application logs.
         
         @param request: ListLogConfigsRequest
         @return: ListLogConfigsResponse
@@ -11350,7 +11582,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListLogConfigsRequest,
     ) -> sae_20190506_models.ListLogConfigsResponse:
         """
-        @summary 56f77b65-788d-442a-9885-7f20d91f\\\\*\\*\\*\
+        @summary Queries a list of application logs.
         
         @param request: ListLogConfigsRequest
         @return: ListLogConfigsResponse
@@ -11366,6 +11598,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListNamespaceChangeOrdersResponse:
         """
+        @summary Queries a list of change orders in a namespace.
+        
         @param request: ListNamespaceChangeOrdersRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -11418,6 +11652,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListNamespaceChangeOrdersResponse:
         """
+        @summary Queries a list of change orders in a namespace.
+        
         @param request: ListNamespaceChangeOrdersRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -11468,6 +11704,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListNamespaceChangeOrdersRequest,
     ) -> sae_20190506_models.ListNamespaceChangeOrdersResponse:
         """
+        @summary Queries a list of change orders in a namespace.
+        
         @param request: ListNamespaceChangeOrdersRequest
         @return: ListNamespaceChangeOrdersResponse
         """
@@ -11480,6 +11718,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListNamespaceChangeOrdersRequest,
     ) -> sae_20190506_models.ListNamespaceChangeOrdersResponse:
         """
+        @summary Queries a list of change orders in a namespace.
+        
         @param request: ListNamespaceChangeOrdersRequest
         @return: ListNamespaceChangeOrdersResponse
         """
@@ -11610,7 +11850,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListPublishedServicesResponse:
         """
-        @summary b2a8a925-477a-4ed7-b825-d5e22500\\\\*\\*\\*\
+        @summary Queries a list of microservices that are published.
         
         @param request: ListPublishedServicesRequest
         @param headers: map
@@ -11654,7 +11894,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListPublishedServicesResponse:
         """
-        @summary b2a8a925-477a-4ed7-b825-d5e22500\\\\*\\*\\*\
+        @summary Queries a list of microservices that are published.
         
         @param request: ListPublishedServicesRequest
         @param headers: map
@@ -11696,7 +11936,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListPublishedServicesRequest,
     ) -> sae_20190506_models.ListPublishedServicesResponse:
         """
-        @summary b2a8a925-477a-4ed7-b825-d5e22500\\\\*\\*\\*\
+        @summary Queries a list of microservices that are published.
         
         @param request: ListPublishedServicesRequest
         @return: ListPublishedServicesResponse
@@ -11710,7 +11950,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListPublishedServicesRequest,
     ) -> sae_20190506_models.ListPublishedServicesResponse:
         """
-        @summary b2a8a925-477a-4ed7-b825-d5e22500\\\\*\\*\\*\
+        @summary Queries a list of microservices that are published.
         
         @param request: ListPublishedServicesRequest
         @return: ListPublishedServicesResponse
@@ -11975,7 +12215,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListWebApplicationInstancesResponse:
         """
-        @summary 应用实例列表
+        @summary Query the list of web application instances.
+        
+        @description Query the list of web application instances.
         
         @param tmp_req: ListWebApplicationInstancesRequest
         @param headers: map
@@ -12040,7 +12282,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListWebApplicationInstancesResponse:
         """
-        @summary 应用实例列表
+        @summary Query the list of web application instances.
+        
+        @description Query the list of web application instances.
         
         @param tmp_req: ListWebApplicationInstancesRequest
         @param headers: map
@@ -12103,7 +12347,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListWebApplicationInstancesRequest,
     ) -> sae_20190506_models.ListWebApplicationInstancesResponse:
         """
-        @summary 应用实例列表
+        @summary Query the list of web application instances.
+        
+        @description Query the list of web application instances.
         
         @param request: ListWebApplicationInstancesRequest
         @return: ListWebApplicationInstancesResponse
@@ -12118,7 +12364,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListWebApplicationInstancesRequest,
     ) -> sae_20190506_models.ListWebApplicationInstancesResponse:
         """
-        @summary 应用实例列表
+        @summary Query the list of web application instances.
+        
+        @description Query the list of web application instances.
         
         @param request: ListWebApplicationInstancesRequest
         @return: ListWebApplicationInstancesResponse
@@ -12135,7 +12383,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListWebApplicationRevisionsResponse:
         """
-        @summary 版本列表
+        @summary Query the list of web application versions.
+        
+        @description Query the list of web application versions.
         
         @param request: ListWebApplicationRevisionsRequest
         @param headers: map
@@ -12184,7 +12434,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListWebApplicationRevisionsResponse:
         """
-        @summary 版本列表
+        @summary Query the list of web application versions.
+        
+        @description Query the list of web application versions.
         
         @param request: ListWebApplicationRevisionsRequest
         @param headers: map
@@ -12231,7 +12483,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListWebApplicationRevisionsRequest,
     ) -> sae_20190506_models.ListWebApplicationRevisionsResponse:
         """
-        @summary 版本列表
+        @summary Query the list of web application versions.
+        
+        @description Query the list of web application versions.
         
         @param request: ListWebApplicationRevisionsRequest
         @return: ListWebApplicationRevisionsResponse
@@ -12246,7 +12500,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListWebApplicationRevisionsRequest,
     ) -> sae_20190506_models.ListWebApplicationRevisionsResponse:
         """
-        @summary 版本列表
+        @summary Query the list of web application versions.
+        
+        @description Query the list of web application versions.
         
         @param request: ListWebApplicationRevisionsRequest
         @return: ListWebApplicationRevisionsResponse
@@ -12262,7 +12518,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListWebApplicationsResponse:
         """
-        @summary 应用列表
+        @summary Query the list of web applications.
+        
+        @description Call the ListWebApplications operation to query the list of web applications.
         
         @param request: ListWebApplicationsRequest
         @param headers: map
@@ -12312,7 +12570,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListWebApplicationsResponse:
         """
-        @summary 应用列表
+        @summary Query the list of web applications.
+        
+        @description Call the ListWebApplications operation to query the list of web applications.
         
         @param request: ListWebApplicationsRequest
         @param headers: map
@@ -12360,7 +12620,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListWebApplicationsRequest,
     ) -> sae_20190506_models.ListWebApplicationsResponse:
         """
-        @summary 应用列表
+        @summary Query the list of web applications.
+        
+        @description Call the ListWebApplications operation to query the list of web applications.
         
         @param request: ListWebApplicationsRequest
         @return: ListWebApplicationsResponse
@@ -12374,7 +12636,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListWebApplicationsRequest,
     ) -> sae_20190506_models.ListWebApplicationsResponse:
         """
-        @summary 应用列表
+        @summary Query the list of web applications.
+        
+        @description Call the ListWebApplications operation to query the list of web applications.
         
         @param request: ListWebApplicationsRequest
         @return: ListWebApplicationsResponse
@@ -12390,7 +12654,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListWebCustomDomainsResponse:
         """
-        @summary 自定义域名列表.
+        @summary Query available custom domain names.
+        
+        @description Query available custom domain names.
         
         @param request: ListWebCustomDomainsRequest
         @param headers: map
@@ -12442,7 +12708,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListWebCustomDomainsResponse:
         """
-        @summary 自定义域名列表.
+        @summary Query available custom domain names.
+        
+        @description Query available custom domain names.
         
         @param request: ListWebCustomDomainsRequest
         @param headers: map
@@ -12492,7 +12760,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListWebCustomDomainsRequest,
     ) -> sae_20190506_models.ListWebCustomDomainsResponse:
         """
-        @summary 自定义域名列表.
+        @summary Query available custom domain names.
+        
+        @description Query available custom domain names.
         
         @param request: ListWebCustomDomainsRequest
         @return: ListWebCustomDomainsResponse
@@ -12506,7 +12776,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListWebCustomDomainsRequest,
     ) -> sae_20190506_models.ListWebCustomDomainsResponse:
         """
-        @summary 自定义域名列表.
+        @summary Query available custom domain names.
+        
+        @description Query available custom domain names.
         
         @param request: ListWebCustomDomainsRequest
         @return: ListWebCustomDomainsResponse
@@ -12625,7 +12897,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.PublishWebApplicationRevisionResponse:
         """
-        @summary 新建版本
+        @summary Publish a web application version.
+        
+        @description Publish a web application version. You can change the configurations of the version and create a new version.
         
         @param request: PublishWebApplicationRevisionRequest
         @param headers: map
@@ -12671,7 +12945,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.PublishWebApplicationRevisionResponse:
         """
-        @summary 新建版本
+        @summary Publish a web application version.
+        
+        @description Publish a web application version. You can change the configurations of the version and create a new version.
         
         @param request: PublishWebApplicationRevisionRequest
         @param headers: map
@@ -12715,7 +12991,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.PublishWebApplicationRevisionRequest,
     ) -> sae_20190506_models.PublishWebApplicationRevisionResponse:
         """
-        @summary 新建版本
+        @summary Publish a web application version.
+        
+        @description Publish a web application version. You can change the configurations of the version and create a new version.
         
         @param request: PublishWebApplicationRevisionRequest
         @return: PublishWebApplicationRevisionResponse
@@ -12730,7 +13008,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.PublishWebApplicationRevisionRequest,
     ) -> sae_20190506_models.PublishWebApplicationRevisionResponse:
         """
-        @summary 新建版本
+        @summary Publish a web application version.
+        
+        @description Publish a web application version. You can change the configurations of the version and create a new version.
         
         @param request: PublishWebApplicationRevisionRequest
         @return: PublishWebApplicationRevisionResponse
@@ -13755,7 +14035,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.StartWebApplicationResponse:
         """
-        @summary 启动应用
+        @summary Start a web application.
+        
+        @description Call the StartWebApplication operation to start a web application.
         
         @param request: StartWebApplicationRequest
         @param headers: map
@@ -13800,7 +14082,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.StartWebApplicationResponse:
         """
-        @summary 启动应用
+        @summary Start a web application.
+        
+        @description Call the StartWebApplication operation to start a web application.
         
         @param request: StartWebApplicationRequest
         @param headers: map
@@ -13843,7 +14127,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.StartWebApplicationRequest,
     ) -> sae_20190506_models.StartWebApplicationResponse:
         """
-        @summary 启动应用
+        @summary Start a web application.
+        
+        @description Call the StartWebApplication operation to start a web application.
         
         @param request: StartWebApplicationRequest
         @return: StartWebApplicationResponse
@@ -13858,7 +14144,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.StartWebApplicationRequest,
     ) -> sae_20190506_models.StartWebApplicationResponse:
         """
-        @summary 启动应用
+        @summary Start a web application.
+        
+        @description Call the StartWebApplication operation to start a web application.
         
         @param request: StartWebApplicationRequest
         @return: StartWebApplicationResponse
@@ -13991,7 +14279,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.StopWebApplicationResponse:
         """
-        @summary 停止应用
+        @summary Stop a web application.
+        
+        @description Call the StopWebApplication operation to stop a web application.
         
         @param request: StopWebApplicationRequest
         @param headers: map
@@ -14036,7 +14326,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.StopWebApplicationResponse:
         """
-        @summary 停止应用
+        @summary Stop a web application.
+        
+        @description Call the StopWebApplication operation to stop a web application.
         
         @param request: StopWebApplicationRequest
         @param headers: map
@@ -14079,7 +14371,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.StopWebApplicationRequest,
     ) -> sae_20190506_models.StopWebApplicationResponse:
         """
-        @summary 停止应用
+        @summary Stop a web application.
+        
+        @description Call the StopWebApplication operation to stop a web application.
         
         @param request: StopWebApplicationRequest
         @return: StopWebApplicationResponse
@@ -14094,7 +14388,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.StopWebApplicationRequest,
     ) -> sae_20190506_models.StopWebApplicationResponse:
         """
-        @summary 停止应用
+        @summary Stop a web application.
+        
+        @description Call the StopWebApplication operation to stop a web application.
         
         @param request: StopWebApplicationRequest
         @return: StopWebApplicationResponse
@@ -14351,6 +14647,134 @@ class Client(OpenApiClient):
         headers = {}
         return await self.tag_resources_with_options_async(request, headers, runtime)
 
+    def unbind_nlb_with_options(
+        self,
+        request: sae_20190506_models.UnbindNlbRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UnbindNlbResponse:
+        """
+        @summary Calls the UnbindNlb operation to delete an NLB listener bound for application access
+        
+        @param request: UnbindNlbRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindNlbResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.nlb_id):
+            query['NlbId'] = request.nlb_id
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindNlb',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/nlb',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sae_20190506_models.UnbindNlbResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sae_20190506_models.UnbindNlbResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def unbind_nlb_with_options_async(
+        self,
+        request: sae_20190506_models.UnbindNlbRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UnbindNlbResponse:
+        """
+        @summary Calls the UnbindNlb operation to delete an NLB listener bound for application access
+        
+        @param request: UnbindNlbRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindNlbResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.nlb_id):
+            query['NlbId'] = request.nlb_id
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindNlb',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/nlb',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sae_20190506_models.UnbindNlbResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sae_20190506_models.UnbindNlbResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def unbind_nlb(
+        self,
+        request: sae_20190506_models.UnbindNlbRequest,
+    ) -> sae_20190506_models.UnbindNlbResponse:
+        """
+        @summary Calls the UnbindNlb operation to delete an NLB listener bound for application access
+        
+        @param request: UnbindNlbRequest
+        @return: UnbindNlbResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.unbind_nlb_with_options(request, headers, runtime)
+
+    async def unbind_nlb_async(
+        self,
+        request: sae_20190506_models.UnbindNlbRequest,
+    ) -> sae_20190506_models.UnbindNlbResponse:
+        """
+        @summary Calls the UnbindNlb operation to delete an NLB listener bound for application access
+        
+        @param request: UnbindNlbRequest
+        @return: UnbindNlbResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.unbind_nlb_with_options_async(request, headers, runtime)
+
     def unbind_slb_with_options(
         self,
         request: sae_20190506_models.UnbindSlbRequest,
@@ -14358,7 +14782,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UnbindSlbResponse:
         """
-        @summary 0099b7be-5f5b-4512-a7fc-56049ef1\\\\*\\*\\*\
+        @summary Disassociates an internal-facing or Internet-facing SLB instance from an application.
         
         @param request: UnbindSlbRequest
         @param headers: map
@@ -14406,7 +14830,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UnbindSlbResponse:
         """
-        @summary 0099b7be-5f5b-4512-a7fc-56049ef1\\\\*\\*\\*\
+        @summary Disassociates an internal-facing or Internet-facing SLB instance from an application.
         
         @param request: UnbindSlbRequest
         @param headers: map
@@ -14452,7 +14876,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UnbindSlbRequest,
     ) -> sae_20190506_models.UnbindSlbResponse:
         """
-        @summary 0099b7be-5f5b-4512-a7fc-56049ef1\\\\*\\*\\*\
+        @summary Disassociates an internal-facing or Internet-facing SLB instance from an application.
         
         @param request: UnbindSlbRequest
         @return: UnbindSlbResponse
@@ -14466,7 +14890,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UnbindSlbRequest,
     ) -> sae_20190506_models.UnbindSlbResponse:
         """
-        @summary 0099b7be-5f5b-4512-a7fc-56049ef1\\\\*\\*\\*\
+        @summary Disassociates an internal-facing or Internet-facing SLB instance from an application.
         
         @param request: UnbindSlbRequest
         @return: UnbindSlbResponse
@@ -14606,7 +15030,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateAppSecurityGroupResponse:
         """
-        @summary 017f39b8-dfa4-4e16-a84b-1dcee4b1\\\\*\\*\\*\
+        @summary Updates the security group of an application.
         
         @param request: UpdateAppSecurityGroupRequest
         @param headers: map
@@ -14652,7 +15076,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateAppSecurityGroupResponse:
         """
-        @summary 017f39b8-dfa4-4e16-a84b-1dcee4b1\\\\*\\*\\*\
+        @summary Updates the security group of an application.
         
         @param request: UpdateAppSecurityGroupRequest
         @param headers: map
@@ -14696,7 +15120,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateAppSecurityGroupRequest,
     ) -> sae_20190506_models.UpdateAppSecurityGroupResponse:
         """
-        @summary 017f39b8-dfa4-4e16-a84b-1dcee4b1\\\\*\\*\\*\
+        @summary Updates the security group of an application.
         
         @param request: UpdateAppSecurityGroupRequest
         @return: UpdateAppSecurityGroupResponse
@@ -14710,7 +15134,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateAppSecurityGroupRequest,
     ) -> sae_20190506_models.UpdateAppSecurityGroupResponse:
         """
-        @summary 017f39b8-dfa4-4e16-a84b-1dcee4b1\\\\*\\*\\*\
+        @summary Updates the security group of an application.
         
         @param request: UpdateAppSecurityGroupRequest
         @return: UpdateAppSecurityGroupResponse
@@ -14726,7 +15150,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateApplicationDescriptionResponse:
         """
-        @summary 更新应用描述信息
+        @summary Updates the description of an application.
         
         @param request: UpdateApplicationDescriptionRequest
         @param headers: map
@@ -14772,7 +15196,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateApplicationDescriptionResponse:
         """
-        @summary 更新应用描述信息
+        @summary Updates the description of an application.
         
         @param request: UpdateApplicationDescriptionRequest
         @param headers: map
@@ -14816,7 +15240,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateApplicationDescriptionRequest,
     ) -> sae_20190506_models.UpdateApplicationDescriptionResponse:
         """
-        @summary 更新应用描述信息
+        @summary Updates the description of an application.
         
         @param request: UpdateApplicationDescriptionRequest
         @return: UpdateApplicationDescriptionResponse
@@ -14830,7 +15254,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateApplicationDescriptionRequest,
     ) -> sae_20190506_models.UpdateApplicationDescriptionResponse:
         """
-        @summary 更新应用描述信息
+        @summary Updates the description of an application.
         
         @param request: UpdateApplicationDescriptionRequest
         @return: UpdateApplicationDescriptionResponse
@@ -14998,6 +15422,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateApplicationVswitchesResponse:
         """
+        @summary Update the configuration of a vSwitch.
+        
         @param request: UpdateApplicationVswitchesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -15042,6 +15468,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateApplicationVswitchesResponse:
         """
+        @summary Update the configuration of a vSwitch.
+        
         @param request: UpdateApplicationVswitchesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -15084,6 +15512,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateApplicationVswitchesRequest,
     ) -> sae_20190506_models.UpdateApplicationVswitchesResponse:
         """
+        @summary Update the configuration of a vSwitch.
+        
         @param request: UpdateApplicationVswitchesRequest
         @return: UpdateApplicationVswitchesResponse
         """
@@ -15096,6 +15526,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateApplicationVswitchesRequest,
     ) -> sae_20190506_models.UpdateApplicationVswitchesResponse:
         """
+        @summary Update the configuration of a vSwitch.
+        
         @param request: UpdateApplicationVswitchesRequest
         @return: UpdateApplicationVswitchesResponse
         """
@@ -15110,7 +15542,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateConfigMapResponse:
         """
-        @summary 1
+        @summary Update a ConfigMap.
         
         @param request: UpdateConfigMapRequest
         @param headers: map
@@ -15160,7 +15592,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateConfigMapResponse:
         """
-        @summary 1
+        @summary Update a ConfigMap.
         
         @param request: UpdateConfigMapRequest
         @param headers: map
@@ -15208,7 +15640,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateConfigMapRequest,
     ) -> sae_20190506_models.UpdateConfigMapResponse:
         """
-        @summary 1
+        @summary Update a ConfigMap.
         
         @param request: UpdateConfigMapRequest
         @return: UpdateConfigMapResponse
@@ -15222,7 +15654,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateConfigMapRequest,
     ) -> sae_20190506_models.UpdateConfigMapResponse:
         """
-        @summary 1
+        @summary Update a ConfigMap.
         
         @param request: UpdateConfigMapRequest
         @return: UpdateConfigMapResponse
@@ -15370,7 +15802,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateIngressResponse:
         """
-        @summary Updates the configurations of a routing rule.
+        @summary Update the configurations of an Ingress instance.
         
         @param request: UpdateIngressRequest
         @param headers: map
@@ -15383,6 +15815,8 @@ class Client(OpenApiClient):
             query['CertId'] = request.cert_id
         if not UtilClient.is_unset(request.cert_ids):
             query['CertIds'] = request.cert_ids
+        if not UtilClient.is_unset(request.cors_config):
+            query['CorsConfig'] = request.cors_config
         if not UtilClient.is_unset(request.default_rule):
             query['DefaultRule'] = request.default_rule
         if not UtilClient.is_unset(request.description):
@@ -15448,7 +15882,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateIngressResponse:
         """
-        @summary Updates the configurations of a routing rule.
+        @summary Update the configurations of an Ingress instance.
         
         @param request: UpdateIngressRequest
         @param headers: map
@@ -15461,6 +15895,8 @@ class Client(OpenApiClient):
             query['CertId'] = request.cert_id
         if not UtilClient.is_unset(request.cert_ids):
             query['CertIds'] = request.cert_ids
+        if not UtilClient.is_unset(request.cors_config):
+            query['CorsConfig'] = request.cors_config
         if not UtilClient.is_unset(request.default_rule):
             query['DefaultRule'] = request.default_rule
         if not UtilClient.is_unset(request.description):
@@ -15524,7 +15960,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateIngressRequest,
     ) -> sae_20190506_models.UpdateIngressResponse:
         """
-        @summary Updates the configurations of a routing rule.
+        @summary Update the configurations of an Ingress instance.
         
         @param request: UpdateIngressRequest
         @return: UpdateIngressResponse
@@ -15538,7 +15974,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateIngressRequest,
     ) -> sae_20190506_models.UpdateIngressResponse:
         """
-        @summary Updates the configurations of a routing rule.
+        @summary Update the configurations of an Ingress instance.
         
         @param request: UpdateIngressRequest
         @return: UpdateIngressResponse
@@ -16255,7 +16691,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateWebApplicationResponse:
         """
-        @summary 更新应用
+        @summary Updates the configuration at the web application level.
+        
+        @description You can call the UpdateWebApplication operation to update the configuration at the web application level.
         
         @param request: UpdateWebApplicationRequest
         @param headers: map
@@ -16301,7 +16739,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateWebApplicationResponse:
         """
-        @summary 更新应用
+        @summary Updates the configuration at the web application level.
+        
+        @description You can call the UpdateWebApplication operation to update the configuration at the web application level.
         
         @param request: UpdateWebApplicationRequest
         @param headers: map
@@ -16345,7 +16785,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateWebApplicationRequest,
     ) -> sae_20190506_models.UpdateWebApplicationResponse:
         """
-        @summary 更新应用
+        @summary Updates the configuration at the web application level.
+        
+        @description You can call the UpdateWebApplication operation to update the configuration at the web application level.
         
         @param request: UpdateWebApplicationRequest
         @return: UpdateWebApplicationResponse
@@ -16360,7 +16802,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateWebApplicationRequest,
     ) -> sae_20190506_models.UpdateWebApplicationResponse:
         """
-        @summary 更新应用
+        @summary Updates the configuration at the web application level.
+        
+        @description You can call the UpdateWebApplication operation to update the configuration at the web application level.
         
         @param request: UpdateWebApplicationRequest
         @return: UpdateWebApplicationResponse
@@ -16377,7 +16821,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateWebApplicationScalingConfigResponse:
         """
-        @summary 更新弹性配置
+        @summary Update the scaling configuration of a web application.
+        
+        @description You can call the UpdateWebApplicationScalingConfig operation to update the scaling configurations of a web application.
         
         @param request: UpdateWebApplicationScalingConfigRequest
         @param headers: map
@@ -16423,7 +16869,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateWebApplicationScalingConfigResponse:
         """
-        @summary 更新弹性配置
+        @summary Update the scaling configuration of a web application.
+        
+        @description You can call the UpdateWebApplicationScalingConfig operation to update the scaling configurations of a web application.
         
         @param request: UpdateWebApplicationScalingConfigRequest
         @param headers: map
@@ -16467,7 +16915,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateWebApplicationScalingConfigRequest,
     ) -> sae_20190506_models.UpdateWebApplicationScalingConfigResponse:
         """
-        @summary 更新弹性配置
+        @summary Update the scaling configuration of a web application.
+        
+        @description You can call the UpdateWebApplicationScalingConfig operation to update the scaling configurations of a web application.
         
         @param request: UpdateWebApplicationScalingConfigRequest
         @return: UpdateWebApplicationScalingConfigResponse
@@ -16482,7 +16932,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateWebApplicationScalingConfigRequest,
     ) -> sae_20190506_models.UpdateWebApplicationScalingConfigResponse:
         """
-        @summary 更新弹性配置
+        @summary Update the scaling configuration of a web application.
+        
+        @description You can call the UpdateWebApplicationScalingConfig operation to update the scaling configurations of a web application.
         
         @param request: UpdateWebApplicationScalingConfigRequest
         @return: UpdateWebApplicationScalingConfigResponse
@@ -16499,7 +16951,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateWebApplicationTrafficConfigResponse:
         """
-        @summary 更新流量配置
+        @summary Update the traffic configurations of a web application.
+        
+        @description Call the UpdateWebApplicationTrafficConfig operation to update the traffic configurations of a web application.
         
         @param request: UpdateWebApplicationTrafficConfigRequest
         @param headers: map
@@ -16545,7 +16999,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateWebApplicationTrafficConfigResponse:
         """
-        @summary 更新流量配置
+        @summary Update the traffic configurations of a web application.
+        
+        @description Call the UpdateWebApplicationTrafficConfig operation to update the traffic configurations of a web application.
         
         @param request: UpdateWebApplicationTrafficConfigRequest
         @param headers: map
@@ -16589,7 +17045,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateWebApplicationTrafficConfigRequest,
     ) -> sae_20190506_models.UpdateWebApplicationTrafficConfigResponse:
         """
-        @summary 更新流量配置
+        @summary Update the traffic configurations of a web application.
+        
+        @description Call the UpdateWebApplicationTrafficConfig operation to update the traffic configurations of a web application.
         
         @param request: UpdateWebApplicationTrafficConfigRequest
         @return: UpdateWebApplicationTrafficConfigResponse
@@ -16604,7 +17062,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateWebApplicationTrafficConfigRequest,
     ) -> sae_20190506_models.UpdateWebApplicationTrafficConfigResponse:
         """
-        @summary 更新流量配置
+        @summary Update the traffic configurations of a web application.
+        
+        @description Call the UpdateWebApplicationTrafficConfig operation to update the traffic configurations of a web application.
         
         @param request: UpdateWebApplicationTrafficConfigRequest
         @return: UpdateWebApplicationTrafficConfigResponse
@@ -16621,7 +17081,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateWebCustomDomainResponse:
         """
-        @summary 更新自定义域名.
+        @summary Update a custom domain name.
+        
+        @description Update a custom domain name.
         
         @param request: UpdateWebCustomDomainRequest
         @param headers: map
@@ -16667,7 +17129,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateWebCustomDomainResponse:
         """
-        @summary 更新自定义域名.
+        @summary Update a custom domain name.
+        
+        @description Update a custom domain name.
         
         @param request: UpdateWebCustomDomainRequest
         @param headers: map
@@ -16711,7 +17175,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateWebCustomDomainRequest,
     ) -> sae_20190506_models.UpdateWebCustomDomainResponse:
         """
-        @summary 更新自定义域名.
+        @summary Update a custom domain name.
+        
+        @description Update a custom domain name.
         
         @param request: UpdateWebCustomDomainRequest
         @return: UpdateWebCustomDomainResponse
@@ -16726,7 +17192,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateWebCustomDomainRequest,
     ) -> sae_20190506_models.UpdateWebCustomDomainResponse:
         """
-        @summary 更新自定义域名.
+        @summary Update a custom domain name.
+        
+        @description Update a custom domain name.
         
         @param request: UpdateWebCustomDomainRequest
         @return: UpdateWebCustomDomainResponse
@@ -16742,6 +17210,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpgradeApplicationApmServiceResponse:
         """
+        @summary Enables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
+        
+        @description You are charged when you use the ARMS advanced monitoring feature. Enable this feature based on your business requirements. For more information, see [Billing overview](https://icms.alibaba-inc.com/content/arms/arms?l=1\\&m=16992\\&n=3183148).
+        
         @param request: UpgradeApplicationApmServiceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -16784,6 +17256,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpgradeApplicationApmServiceResponse:
         """
+        @summary Enables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
+        
+        @description You are charged when you use the ARMS advanced monitoring feature. Enable this feature based on your business requirements. For more information, see [Billing overview](https://icms.alibaba-inc.com/content/arms/arms?l=1\\&m=16992\\&n=3183148).
+        
         @param request: UpgradeApplicationApmServiceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -16824,6 +17300,10 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpgradeApplicationApmServiceRequest,
     ) -> sae_20190506_models.UpgradeApplicationApmServiceResponse:
         """
+        @summary Enables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
+        
+        @description You are charged when you use the ARMS advanced monitoring feature. Enable this feature based on your business requirements. For more information, see [Billing overview](https://icms.alibaba-inc.com/content/arms/arms?l=1\\&m=16992\\&n=3183148).
+        
         @param request: UpgradeApplicationApmServiceRequest
         @return: UpgradeApplicationApmServiceResponse
         """
@@ -16836,6 +17316,10 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpgradeApplicationApmServiceRequest,
     ) -> sae_20190506_models.UpgradeApplicationApmServiceResponse:
         """
+        @summary Enables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
+        
+        @description You are charged when you use the ARMS advanced monitoring feature. Enable this feature based on your business requirements. For more information, see [Billing overview](https://icms.alibaba-inc.com/content/arms/arms?l=1\\&m=16992\\&n=3183148).
+        
         @param request: UpgradeApplicationApmServiceRequest
         @return: UpgradeApplicationApmServiceResponse
         """

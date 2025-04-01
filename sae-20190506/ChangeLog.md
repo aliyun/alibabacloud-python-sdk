@@ -1,3 +1,17 @@
+2025-04-01 Version: 2.0.0
+- Support API UnbindNlb.
+- Update API CreateApplication: add request parameters MicroserviceEngineConfig.
+- Update API CreateApplication: add request parameters NewSaeVersion.
+- Update API CreateIngress: add request parameters CorsConfig.
+- Update API DeployApplication: add request parameters MicroserviceEngineConfig.
+- Update API DescribeApplicationScalingRule: delete response parameters Body.Data.EnableIdle.
+- Update API DescribeApplicationScalingRules: delete response parameters Body.Data.ApplicationScalingRules.$.EnableIdle.
+- Update API DescribeIngress: add response parameters Body.Data.CorsConfig.
+- Update API ListApplications: add response parameters Body.Data.Applications.$.EnableIdle.
+- Update API ListIngresses: add response parameters Body.Data.IngressList.$.CorsConfig.
+- Update API UpdateIngress: add request parameters CorsConfig.
+
+
 2025-03-12 Version: 1.26.0
 - Support API ListAppServices.
 - Update API DeployApplication: add param SwimlanePvtzDiscoverySvc.
