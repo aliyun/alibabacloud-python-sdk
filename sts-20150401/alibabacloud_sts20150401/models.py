@@ -17,13 +17,13 @@ class AssumeRoleRequest(TeaModel):
         # 
         # Minimum value: 900. Maximum value: the value of the `MaxSessionDuration` parameter. Default value: 3600.
         # 
-        # You can call the CreateRole or UpdateRole operation to configure the `MaxSessionDuration` parameter. For more information, see [CreateRole](~~28710~~) or [UpdateRole](~~28712~~).
+        # You can call the CreateRole or UpdateRole operation to configure the `MaxSessionDuration` parameter. For more information, see [CreateRole](https://help.aliyun.com/document_detail/28710.html) or [UpdateRole](https://help.aliyun.com/document_detail/28712.html).
         self.duration_seconds = duration_seconds
         # The external ID of the RAM role.
         # 
-        # This parameter is provided by an external party and is used to prevent the confused deputy problem.
+        # This parameter is provided by an external party and is used to prevent the confused deputy problem. For more information, see [Use ExternalId to prevent the confused deputy problem](https://help.aliyun.com/document_detail/2361741.html).
         # 
-        # The value must be 2 to 1,224 characters in length and can contain letters, digits, and the following special characters: `= , . @ : / - _`. The regular expression for this parameter is `[\w+=,.@:\/-]*`.
+        # The value must be 2 to 1,224 characters in length and can contain letters, digits, and the following special characters: `= , . @ : / - _`. The regular expression for this parameter is `[\\w+=,.@:\\/-]*`.
         self.external_id = external_id
         # The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
         # 
@@ -32,24 +32,28 @@ class AssumeRoleRequest(TeaModel):
         # 
         # The value must be 1 to 2,048 characters in length.
         # 
-        # For more information about policy elements and sample policies, see [Policy elements](~~93738~~) and [Overview of sample policies](~~210969~~).
+        # For more information about policy elements and sample policies, see [Policy elements](https://help.aliyun.com/document_detail/93738.html) and [Overview of sample policies](https://help.aliyun.com/document_detail/210969.html).
         self.policy = policy
         # The Alibaba Cloud Resource Name (ARN) of the RAM role.
         # 
-        # The trusted entity of the RAM role is an Alibaba Cloud account. For more information, see [Create a RAM role for a trusted Alibaba Cloud account](~~93691~~) or [CreateRole](~~28710~~).
+        # The trusted entity of the RAM role is an Alibaba Cloud account. For more information, see [Create a RAM role for a trusted Alibaba Cloud account](https://help.aliyun.com/document_detail/93691.html) or [CreateRole](https://help.aliyun.com/document_detail/28710.html).
         # 
         # Format: `acs:ram::<account_id>:role/<role_name>`.
         # 
         # You can view the ARN in the RAM console or by calling operations. The following items describe the validity periods of storage addresses:
         # 
-        # *   For more information about how to view the ARN in the RAM console, see [How do I find the ARN of the RAM role?](~~39744~~)
-        # *   For more information about how to view the ARN by calling operations, see [ListRoles](~~28713~~) or [GetRole](~~28711~~).
+        # *   For more information about how to view the ARN in the RAM console, see [How do I find the ARN of the RAM role?](https://help.aliyun.com/document_detail/39744.html)
+        # *   For more information about how to view the ARN by calling operations, see [ListRoles](https://help.aliyun.com/document_detail/28713.html) or [GetRole](https://help.aliyun.com/document_detail/28711.html).
+        # 
+        # This parameter is required.
         self.role_arn = role_arn
         # The custom name of the role session.
         # 
         # Set this parameter based on your business requirements. In most cases, you can set this parameter to the identity of the API caller. For example, you can specify a username. You can specify `RoleSessionName` to identify API callers that assume the same RAM role in ActionTrail logs. This allows you to track the users that perform the operations.
         # 
         # The value must be 2 to 64 characters in length and can contain letters, digits, and the following special characters: `. @ - _`.
+        # 
+        # This parameter is required.
         self.role_session_name = role_session_name
 
     def validate(self):
@@ -233,9 +237,6 @@ class AssumeRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -279,14 +280,14 @@ class AssumeRoleWithOIDCRequest(TeaModel):
         # 
         # Default value: 3600. Minimum value: 900. Maximum value: the value of the `MaxSessionDuration` parameter.
         # 
-        # For more information about how to specify `MaxSessionDuration`, see [CreateRole](~~28710~~) or [UpdateRole](~~28712~~).
+        # For more information about how to specify `MaxSessionDuration`, see [CreateRole](https://help.aliyun.com/document_detail/28710.html) or [UpdateRole](https://help.aliyun.com/document_detail/28712.html).
         self.duration_seconds = duration_seconds
         # The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
         # 
         # You can view the ARN in the RAM console or by calling operations.
         # 
-        # *   For more information about how to view the ARN in the RAM console, see [View the information about an OIDC IdP](~~327123~~).
-        # *   For more information about how to view the ARN by calling operations, see [GetOIDCProvider](~~327126~~) or [ListOIDCProviders](~~327127~~).
+        # *   For more information about how to view the ARN in the RAM console, see [View the information about an OIDC IdP](https://help.aliyun.com/document_detail/327123.html).
+        # *   For more information about how to view the ARN by calling operations, see [GetOIDCProvider](https://help.aliyun.com/document_detail/327126.html) or [ListOIDCProviders](https://help.aliyun.com/document_detail/327127.html).
         self.oidcprovider_arn = oidcprovider_arn
         # The OIDC token that is issued by the external IdP.
         # 
@@ -305,14 +306,14 @@ class AssumeRoleWithOIDCRequest(TeaModel):
         # 
         # You can view the ARN in the RAM console or by calling operations.
         # 
-        # *   For more information about how to view the ARN in the RAM console, see [How do I view the ARN of the RAM role?](~~39744~~)
-        # *   For more information about how to view the ARN by calling operations, see [ListRoles](~~28713~~) or [GetRole](~~28711~~).
+        # *   For more information about how to view the ARN in the RAM console, see [How do I view the ARN of the RAM role?](https://help.aliyun.com/document_detail/39744.html)
+        # *   For more information about how to view the ARN by calling operations, see [ListRoles](https://help.aliyun.com/document_detail/28713.html) or [GetRole](https://help.aliyun.com/document_detail/28711.html).
         self.role_arn = role_arn
         # The custom name of the role session.
         # 
         # Set this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, for example, the username. In ActionTrail logs, you can distinguish the users who assume the same RAM role to perform operations based on the value of the RoleSessionName parameter. This way, you can perform user-specific auditing.
         # 
-        # The value can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (\_).
+        # The value can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_).
         # 
         # The value must be 2 to 64 characters in length.
         self.role_session_name = role_session_name
@@ -457,7 +458,9 @@ class AssumeRoleWithOIDCResponseBodyOIDCTokenInfo(TeaModel):
         # 
         # The audience is represented by the `aud` field in the OIDC Token.
         self.client_ids = client_ids
+        # The time when the OIDC token expires.
         self.expiration_time = expiration_time
+        # The time when the OIDC token was issued.
         self.issuance_time = issuance_time
         # The URL of the issuer,
         # 
@@ -467,6 +470,7 @@ class AssumeRoleWithOIDCResponseBodyOIDCTokenInfo(TeaModel):
         # 
         # which is represented by the `sub` field in the OIDC Token.
         self.subject = subject
+        # The verification information about the OIDC token. For more information, see [Manage an OIDC IdP](https://help.aliyun.com/document_detail/327123.html).
         self.verification_info = verification_info
 
     def validate(self):
@@ -578,9 +582,6 @@ class AssumeRoleWithOIDCResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -623,7 +624,7 @@ class AssumeRoleWithSAMLRequest(TeaModel):
         # 
         # Minimum value: 900. Maximum value: the value of the `MaxSessionDuration` parameter. Default value: 3600.
         # 
-        # You can call the CreateRole or UpdateRole operation to configure the `MaxSessionDuration` parameter. For more information, see [CreateRole](~~28710~~) or [UpdateRole](~~28712~~).
+        # You can call the CreateRole or UpdateRole operation to configure the `MaxSessionDuration` parameter. For more information, see [CreateRole](https://help.aliyun.com/document_detail/28710.html) or [UpdateRole](https://help.aliyun.com/document_detail/28712.html).
         self.duration_seconds = duration_seconds
         # The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
         # 
@@ -634,14 +635,14 @@ class AssumeRoleWithSAMLRequest(TeaModel):
         self.policy = policy
         # The ARN of the RAM role.
         # 
-        # The trust entity of the RAM role is a SAML IdP. For more information, see [Create a RAM role for a trusted IdP](~~116805~~) or [CreateRole](~~28710~~).
+        # The trust entity of the RAM role is a SAML IdP. For more information, see [Create a RAM role for a trusted IdP](https://help.aliyun.com/document_detail/116805.html) or [CreateRole](https://help.aliyun.com/document_detail/28710.html).
         # 
         # Format: `acs:ram::<account_id>:role/<role_name>`.
         # 
         # You can view the ARN in the RAM console or by calling operations.
         # 
-        # *   For more information about how to view the ARN in the RAM console, see [How do I view the ARN of the RAM role?](~~39744~~).
-        # *   For more information about how to view the ARN by calling operations, see [ListRoles](~~28713~~) or [GetRole](~~28711~~).
+        # *   For more information about how to view the ARN in the RAM console, see [How do I view the ARN of the RAM role?](https://help.aliyun.com/document_detail/39744.html).
+        # *   For more information about how to view the ARN by calling operations, see [ListRoles](https://help.aliyun.com/document_detail/28713.html) or [GetRole](https://help.aliyun.com/document_detail/28711.html).
         self.role_arn = role_arn
         # The Base64-encoded SAML assertion.
         # 
@@ -655,8 +656,8 @@ class AssumeRoleWithSAMLRequest(TeaModel):
         # 
         # You can view the ARN in the RAM console or by calling operations.
         # 
-        # *   For more information about how to view the ARN in the RAM console, see [How do I view the ARN of a RAM role?](~~116795~~)
-        # *   For more information about how to view the ARN by calling operations, see [GetSAMLProvider](~~186833~~) or [ListSAMLProviders](~~186851~~).
+        # *   For more information about how to view the ARN in the RAM console, see [How do I view the ARN of a RAM role?](https://help.aliyun.com/document_detail/116795.html)
+        # *   For more information about how to view the ARN by calling operations, see [GetSAMLProvider](https://help.aliyun.com/document_detail/186833.html) or [ListSAMLProviders](https://help.aliyun.com/document_detail/186851.html).
         self.samlprovider_arn = samlprovider_arn
 
     def validate(self):
@@ -899,9 +900,6 @@ class AssumeRoleWithSAMLResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1006,9 +1004,6 @@ class GetCallerIdentityResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
