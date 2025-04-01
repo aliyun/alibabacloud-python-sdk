@@ -5950,15 +5950,7 @@ class Client(OpenApiClient):
         @return: ListServiceUsagesResponse
         """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.filter):
-            query['Filter'] = request.filter
-        if not UtilClient.is_unset(request.max_results):
-            query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
-            query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.supplier_role):
-            query['SupplierRole'] = request.supplier_role
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5967,7 +5959,7 @@ class Client(OpenApiClient):
             version='2021-05-21',
             protocol='HTTPS',
             pathname='/',
-            method='POST',
+            method='GET',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -5997,15 +5989,7 @@ class Client(OpenApiClient):
         @return: ListServiceUsagesResponse
         """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.filter):
-            query['Filter'] = request.filter
-        if not UtilClient.is_unset(request.max_results):
-            query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
-            query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.supplier_role):
-            query['SupplierRole'] = request.supplier_role
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6014,7 +5998,7 @@ class Client(OpenApiClient):
             version='2021-05-21',
             protocol='HTTPS',
             pathname='/',
-            method='POST',
+            method='GET',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',

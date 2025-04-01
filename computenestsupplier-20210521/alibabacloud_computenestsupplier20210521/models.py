@@ -9837,6 +9837,7 @@ class ListAcrImageRepositoriesResponseBodyRepositories(TeaModel):
         self.create_time = create_time
         # The time when the image was modified.
         self.modified_time = modified_time
+        # The namespace of the repository
         self.namespace = namespace
         # The image repo ID.
         self.repo_id = repo_id
