@@ -545,6 +545,162 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_advisor_checks_with_options_async(request, runtime)
 
+    def describe_advisor_checks_fo_pages_with_options(
+        self,
+        tmp_req: advisor_20180120_models.DescribeAdvisorChecksFoPagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> advisor_20180120_models.DescribeAdvisorChecksFoPagesResponse:
+        """
+        @summary 巡检项设置-分页
+        
+        @param tmp_req: DescribeAdvisorChecksFoPagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAdvisorChecksFoPagesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = advisor_20180120_models.DescribeAdvisorChecksFoPagesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.check_types):
+            request.check_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.check_types, 'CheckTypes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.assume_aliyun_id):
+            query['AssumeAliyunId'] = request.assume_aliyun_id
+        if not UtilClient.is_unset(request.biz_category):
+            query['BizCategory'] = request.biz_category
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.check_types_shrink):
+            query['CheckTypes'] = request.check_types_shrink
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAdvisorChecksFoPages',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                advisor_20180120_models.DescribeAdvisorChecksFoPagesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                advisor_20180120_models.DescribeAdvisorChecksFoPagesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_advisor_checks_fo_pages_with_options_async(
+        self,
+        tmp_req: advisor_20180120_models.DescribeAdvisorChecksFoPagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> advisor_20180120_models.DescribeAdvisorChecksFoPagesResponse:
+        """
+        @summary 巡检项设置-分页
+        
+        @param tmp_req: DescribeAdvisorChecksFoPagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAdvisorChecksFoPagesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = advisor_20180120_models.DescribeAdvisorChecksFoPagesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.check_types):
+            request.check_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.check_types, 'CheckTypes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.assume_aliyun_id):
+            query['AssumeAliyunId'] = request.assume_aliyun_id
+        if not UtilClient.is_unset(request.biz_category):
+            query['BizCategory'] = request.biz_category
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.check_types_shrink):
+            query['CheckTypes'] = request.check_types_shrink
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAdvisorChecksFoPages',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                advisor_20180120_models.DescribeAdvisorChecksFoPagesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                advisor_20180120_models.DescribeAdvisorChecksFoPagesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_advisor_checks_fo_pages(
+        self,
+        request: advisor_20180120_models.DescribeAdvisorChecksFoPagesRequest,
+    ) -> advisor_20180120_models.DescribeAdvisorChecksFoPagesResponse:
+        """
+        @summary 巡检项设置-分页
+        
+        @param request: DescribeAdvisorChecksFoPagesRequest
+        @return: DescribeAdvisorChecksFoPagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_advisor_checks_fo_pages_with_options(request, runtime)
+
+    async def describe_advisor_checks_fo_pages_async(
+        self,
+        request: advisor_20180120_models.DescribeAdvisorChecksFoPagesRequest,
+    ) -> advisor_20180120_models.DescribeAdvisorChecksFoPagesResponse:
+        """
+        @summary 巡检项设置-分页
+        
+        @param request: DescribeAdvisorChecksFoPagesRequest
+        @return: DescribeAdvisorChecksFoPagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_advisor_checks_fo_pages_with_options_async(request, runtime)
+
     def describe_advisor_resources_with_options(
         self,
         request: advisor_20180120_models.DescribeAdvisorResourcesRequest,
@@ -1033,6 +1189,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cost_check_results_with_options_async(request, runtime)
 
+    def describe_cost_optimization_overview_with_options(
+        self,
+        tmp_req: advisor_20180120_models.DescribeCostOptimizationOverviewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> advisor_20180120_models.DescribeCostOptimizationOverviewResponse:
+        """
+        @summary 成本优化-概览
+        
+        @param tmp_req: DescribeCostOptimizationOverviewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCostOptimizationOverviewResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = advisor_20180120_models.DescribeCostOptimizationOverviewShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.assume_aliyun_id_list):
+            request.assume_aliyun_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.assume_aliyun_id_list, 'AssumeAliyunIdList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.assume_aliyun_id):
+            query['AssumeAliyunId'] = request.assume_aliyun_id
+        if not UtilClient.is_unset(request.assume_aliyun_id_list_shrink):
+            query['AssumeAliyunIdList'] = request.assume_aliyun_id_list_shrink
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCostOptimizationOverview',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                advisor_20180120_models.DescribeCostOptimizationOverviewResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                advisor_20180120_models.DescribeCostOptimizationOverviewResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_cost_optimization_overview_with_options_async(
+        self,
+        tmp_req: advisor_20180120_models.DescribeCostOptimizationOverviewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> advisor_20180120_models.DescribeCostOptimizationOverviewResponse:
+        """
+        @summary 成本优化-概览
+        
+        @param tmp_req: DescribeCostOptimizationOverviewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCostOptimizationOverviewResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = advisor_20180120_models.DescribeCostOptimizationOverviewShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.assume_aliyun_id_list):
+            request.assume_aliyun_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.assume_aliyun_id_list, 'AssumeAliyunIdList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.assume_aliyun_id):
+            query['AssumeAliyunId'] = request.assume_aliyun_id
+        if not UtilClient.is_unset(request.assume_aliyun_id_list_shrink):
+            query['AssumeAliyunIdList'] = request.assume_aliyun_id_list_shrink
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCostOptimizationOverview',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                advisor_20180120_models.DescribeCostOptimizationOverviewResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                advisor_20180120_models.DescribeCostOptimizationOverviewResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_cost_optimization_overview(
+        self,
+        request: advisor_20180120_models.DescribeCostOptimizationOverviewRequest,
+    ) -> advisor_20180120_models.DescribeCostOptimizationOverviewResponse:
+        """
+        @summary 成本优化-概览
+        
+        @param request: DescribeCostOptimizationOverviewRequest
+        @return: DescribeCostOptimizationOverviewResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cost_optimization_overview_with_options(request, runtime)
+
+    async def describe_cost_optimization_overview_async(
+        self,
+        request: advisor_20180120_models.DescribeCostOptimizationOverviewRequest,
+    ) -> advisor_20180120_models.DescribeCostOptimizationOverviewResponse:
+        """
+        @summary 成本优化-概览
+        
+        @param request: DescribeCostOptimizationOverviewRequest
+        @return: DescribeCostOptimizationOverviewResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cost_optimization_overview_with_options_async(request, runtime)
+
     def get_history_advices_with_options(
         self,
         request: advisor_20180120_models.GetHistoryAdvicesRequest,
@@ -1160,6 +1440,230 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_history_advices_with_options_async(request, runtime)
+
+    def get_inspect_progress_with_options(
+        self,
+        request: advisor_20180120_models.GetInspectProgressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> advisor_20180120_models.GetInspectProgressResponse:
+        """
+        @summary 获取任务执行进度(普通用户、RD单账号)
+        
+        @param request: GetInspectProgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInspectProgressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.assume_aliyun_id):
+            query['AssumeAliyunId'] = request.assume_aliyun_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInspectProgress',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                advisor_20180120_models.GetInspectProgressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                advisor_20180120_models.GetInspectProgressResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_inspect_progress_with_options_async(
+        self,
+        request: advisor_20180120_models.GetInspectProgressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> advisor_20180120_models.GetInspectProgressResponse:
+        """
+        @summary 获取任务执行进度(普通用户、RD单账号)
+        
+        @param request: GetInspectProgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInspectProgressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.assume_aliyun_id):
+            query['AssumeAliyunId'] = request.assume_aliyun_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInspectProgress',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                advisor_20180120_models.GetInspectProgressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                advisor_20180120_models.GetInspectProgressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_inspect_progress(
+        self,
+        request: advisor_20180120_models.GetInspectProgressRequest,
+    ) -> advisor_20180120_models.GetInspectProgressResponse:
+        """
+        @summary 获取任务执行进度(普通用户、RD单账号)
+        
+        @param request: GetInspectProgressRequest
+        @return: GetInspectProgressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_inspect_progress_with_options(request, runtime)
+
+    async def get_inspect_progress_async(
+        self,
+        request: advisor_20180120_models.GetInspectProgressRequest,
+    ) -> advisor_20180120_models.GetInspectProgressResponse:
+        """
+        @summary 获取任务执行进度(普通用户、RD单账号)
+        
+        @param request: GetInspectProgressRequest
+        @return: GetInspectProgressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_inspect_progress_with_options_async(request, runtime)
+
+    def get_product_list_with_options(
+        self,
+        request: advisor_20180120_models.GetProductListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> advisor_20180120_models.GetProductListResponse:
+        """
+        @summary 获取云产品的列表
+        
+        @param request: GetProductListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProductListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetProductList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                advisor_20180120_models.GetProductListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                advisor_20180120_models.GetProductListResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_product_list_with_options_async(
+        self,
+        request: advisor_20180120_models.GetProductListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> advisor_20180120_models.GetProductListResponse:
+        """
+        @summary 获取云产品的列表
+        
+        @param request: GetProductListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProductListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetProductList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                advisor_20180120_models.GetProductListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                advisor_20180120_models.GetProductListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_product_list(
+        self,
+        request: advisor_20180120_models.GetProductListRequest,
+    ) -> advisor_20180120_models.GetProductListResponse:
+        """
+        @summary 获取云产品的列表
+        
+        @param request: GetProductListRequest
+        @return: GetProductListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_product_list_with_options(request, runtime)
+
+    async def get_product_list_async(
+        self,
+        request: advisor_20180120_models.GetProductListRequest,
+    ) -> advisor_20180120_models.GetProductListResponse:
+        """
+        @summary 获取云产品的列表
+        
+        @param request: GetProductListRequest
+        @return: GetProductListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_product_list_with_options_async(request, runtime)
 
     def get_task_status_by_id_with_options(
         self,

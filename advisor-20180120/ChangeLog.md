@@ -1,3 +1,10 @@
+2025-04-01 Version: 1.6.0
+- Support API DescribeAdvisorChecksFoPages.
+- Support API DescribeCostOptimizationOverview.
+- Support API GetInspectProgress.
+- Support API GetProductList.
+
+
 2025-03-12 Version: 1.5.1
 - Update API DescribeAdvices: add param CheckPlanId.
 - Update API DescribeAdvices: update response param.
