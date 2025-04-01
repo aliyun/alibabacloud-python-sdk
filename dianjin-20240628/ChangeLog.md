@@ -1,3 +1,7 @@
+2025-04-01 Version: 1.12.0
+- Support API UpdateDocumentChunk.
+
+
 2025-03-31 Version: 1.11.2
 - Generated python 2024-06-28 for DianJin.
 

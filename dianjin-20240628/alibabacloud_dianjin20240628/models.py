@@ -12405,6 +12405,194 @@ class UpdateDocumentResponse(TeaModel):
         return self
 
 
+class UpdateDocumentChunkRequestChunks(TeaModel):
+    def __init__(
+        self,
+        chunk_id: str = None,
+        chunk_text: str = None,
+    ):
+        # This parameter is required.
+        self.chunk_id = chunk_id
+        # This parameter is required.
+        self.chunk_text = chunk_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chunk_id is not None:
+            result['chunkId'] = self.chunk_id
+        if self.chunk_text is not None:
+            result['chunkText'] = self.chunk_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('chunkId') is not None:
+            self.chunk_id = m.get('chunkId')
+        if m.get('chunkText') is not None:
+            self.chunk_text = m.get('chunkText')
+        return self
+
+
+class UpdateDocumentChunkRequest(TeaModel):
+    def __init__(
+        self,
+        chunks: List[UpdateDocumentChunkRequestChunks] = None,
+        library_id: str = None,
+    ):
+        # This parameter is required.
+        self.chunks = chunks
+        # This parameter is required.
+        self.library_id = library_id
+
+    def validate(self):
+        if self.chunks:
+            for k in self.chunks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['chunks'] = []
+        if self.chunks is not None:
+            for k in self.chunks:
+                result['chunks'].append(k.to_map() if k else None)
+        if self.library_id is not None:
+            result['libraryId'] = self.library_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.chunks = []
+        if m.get('chunks') is not None:
+            for k in m.get('chunks'):
+                temp_model = UpdateDocumentChunkRequestChunks()
+                self.chunks.append(temp_model.from_map(k))
+        if m.get('libraryId') is not None:
+            self.library_id = m.get('libraryId')
+        return self
+
+
+class UpdateDocumentChunkResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost: int = None,
+        data: str = None,
+        data_type: str = None,
+        err_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time: str = None,
+    ):
+        self.cost = cost
+        self.data = data
+        self.data_type = data_type
+        self.err_code = err_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost
+        if self.data is not None:
+            result['data'] = self.data
+        if self.data_type is not None:
+            result['dataType'] = self.data_type
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.time is not None:
+            result['time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            self.cost = m.get('cost')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('dataType') is not None:
+            self.data_type = m.get('dataType')
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        return self
+
+
+class UpdateDocumentChunkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDocumentChunkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDocumentChunkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateLibraryRequestIndexSettingChunkStrategy(TeaModel):
     def __init__(
         self,

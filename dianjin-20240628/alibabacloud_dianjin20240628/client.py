@@ -5337,6 +5337,130 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_document_with_options_async(workspace_id, request, headers, runtime)
 
+    def update_document_chunk_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.UpdateDocumentChunkRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.UpdateDocumentChunkResponse:
+        """
+        @summary 更新文档的chunk
+        
+        @param request: UpdateDocumentChunkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDocumentChunkResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chunks):
+            body['chunks'] = request.chunks
+        if not UtilClient.is_unset(request.library_id):
+            body['libraryId'] = request.library_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDocumentChunk',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/library/updateDocumentChunk',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dian_jin_20240628_models.UpdateDocumentChunkResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dian_jin_20240628_models.UpdateDocumentChunkResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_document_chunk_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.UpdateDocumentChunkRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.UpdateDocumentChunkResponse:
+        """
+        @summary 更新文档的chunk
+        
+        @param request: UpdateDocumentChunkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDocumentChunkResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chunks):
+            body['chunks'] = request.chunks
+        if not UtilClient.is_unset(request.library_id):
+            body['libraryId'] = request.library_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDocumentChunk',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/library/updateDocumentChunk',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dian_jin_20240628_models.UpdateDocumentChunkResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dian_jin_20240628_models.UpdateDocumentChunkResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_document_chunk(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.UpdateDocumentChunkRequest,
+    ) -> dian_jin_20240628_models.UpdateDocumentChunkResponse:
+        """
+        @summary 更新文档的chunk
+        
+        @param request: UpdateDocumentChunkRequest
+        @return: UpdateDocumentChunkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_document_chunk_with_options(workspace_id, request, headers, runtime)
+
+    async def update_document_chunk_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.UpdateDocumentChunkRequest,
+    ) -> dian_jin_20240628_models.UpdateDocumentChunkResponse:
+        """
+        @summary 更新文档的chunk
+        
+        @param request: UpdateDocumentChunkRequest
+        @return: UpdateDocumentChunkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_document_chunk_with_options_async(workspace_id, request, headers, runtime)
+
     def update_library_with_options(
         self,
         workspace_id: str,
