@@ -1,3 +1,9 @@
+2025-04-02 Version: 2.33.1
+- Update API CreateWorkspaceDoc: add response parameters Body.dentryUuid.
+- Update API CreateWorkspaceDoc: add response parameters Body.vendorRequestId.
+- Update API CreateWorkspaceDoc: add response parameters Body.vendorType.
+
+
 2025-02-28 Version: 2.33.0
 - Support API CreateMessage.
 - Support API CreateRun.
