@@ -1485,6 +1485,7 @@ class DescribeAdvisorChecksFoPagesResponseBodyDataResult(TeaModel):
         name: str = None,
         operate_column: str = None,
         product: str = None,
+        risk_level: int = None,
         source: str = None,
         status: str = None,
         sub_category: List[int] = None,
@@ -1499,6 +1500,7 @@ class DescribeAdvisorChecksFoPagesResponseBodyDataResult(TeaModel):
         self.name = name
         self.operate_column = operate_column
         self.product = product
+        self.risk_level = risk_level
         self.source = source
         self.status = status
         self.sub_category = sub_category
@@ -1530,6 +1532,8 @@ class DescribeAdvisorChecksFoPagesResponseBodyDataResult(TeaModel):
             result['OperateColumn'] = self.operate_column
         if self.product is not None:
             result['Product'] = self.product
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         if self.source is not None:
             result['Source'] = self.source
         if self.status is not None:
@@ -1560,6 +1564,8 @@ class DescribeAdvisorChecksFoPagesResponseBodyDataResult(TeaModel):
             self.operate_column = m.get('OperateColumn')
         if m.get('Product') is not None:
             self.product = m.get('Product')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('Status') is not None:
