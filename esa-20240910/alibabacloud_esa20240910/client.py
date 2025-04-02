@@ -14169,6 +14169,274 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_rate_plan_instance_status_with_options_async(request, runtime)
 
+    def describe_site_time_series_data_with_options(
+        self,
+        tmp_req: esa20240910_models.DescribeSiteTimeSeriesDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DescribeSiteTimeSeriesDataResponse:
+        """
+        @summary 获取时序数据
+        
+        @param tmp_req: DescribeSiteTimeSeriesDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSiteTimeSeriesDataResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.DescribeSiteTimeSeriesDataShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.fields):
+            request.fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.fields, 'Fields', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.fields_shrink):
+            query['Fields'] = request.fields_shrink
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSiteTimeSeriesData',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.DescribeSiteTimeSeriesDataResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.DescribeSiteTimeSeriesDataResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_site_time_series_data_with_options_async(
+        self,
+        tmp_req: esa20240910_models.DescribeSiteTimeSeriesDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DescribeSiteTimeSeriesDataResponse:
+        """
+        @summary 获取时序数据
+        
+        @param tmp_req: DescribeSiteTimeSeriesDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSiteTimeSeriesDataResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.DescribeSiteTimeSeriesDataShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.fields):
+            request.fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.fields, 'Fields', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.fields_shrink):
+            query['Fields'] = request.fields_shrink
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSiteTimeSeriesData',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.DescribeSiteTimeSeriesDataResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.DescribeSiteTimeSeriesDataResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_site_time_series_data(
+        self,
+        request: esa20240910_models.DescribeSiteTimeSeriesDataRequest,
+    ) -> esa20240910_models.DescribeSiteTimeSeriesDataResponse:
+        """
+        @summary 获取时序数据
+        
+        @param request: DescribeSiteTimeSeriesDataRequest
+        @return: DescribeSiteTimeSeriesDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_site_time_series_data_with_options(request, runtime)
+
+    async def describe_site_time_series_data_async(
+        self,
+        request: esa20240910_models.DescribeSiteTimeSeriesDataRequest,
+    ) -> esa20240910_models.DescribeSiteTimeSeriesDataResponse:
+        """
+        @summary 获取时序数据
+        
+        @param request: DescribeSiteTimeSeriesDataRequest
+        @return: DescribeSiteTimeSeriesDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_site_time_series_data_with_options_async(request, runtime)
+
+    def describe_site_top_data_with_options(
+        self,
+        tmp_req: esa20240910_models.DescribeSiteTopDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DescribeSiteTopDataResponse:
+        """
+        @summary 获取Top数据
+        
+        @param tmp_req: DescribeSiteTopDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSiteTopDataResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.DescribeSiteTopDataShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.fields):
+            request.fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.fields, 'Fields', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.fields_shrink):
+            query['Fields'] = request.fields_shrink
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSiteTopData',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.DescribeSiteTopDataResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.DescribeSiteTopDataResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_site_top_data_with_options_async(
+        self,
+        tmp_req: esa20240910_models.DescribeSiteTopDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DescribeSiteTopDataResponse:
+        """
+        @summary 获取Top数据
+        
+        @param tmp_req: DescribeSiteTopDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSiteTopDataResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.DescribeSiteTopDataShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.fields):
+            request.fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.fields, 'Fields', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.fields_shrink):
+            query['Fields'] = request.fields_shrink
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSiteTopData',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.DescribeSiteTopDataResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.DescribeSiteTopDataResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_site_top_data(
+        self,
+        request: esa20240910_models.DescribeSiteTopDataRequest,
+    ) -> esa20240910_models.DescribeSiteTopDataResponse:
+        """
+        @summary 获取Top数据
+        
+        @param request: DescribeSiteTopDataRequest
+        @return: DescribeSiteTopDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_site_top_data_with_options(request, runtime)
+
+    async def describe_site_top_data_async(
+        self,
+        request: esa20240910_models.DescribeSiteTopDataRequest,
+    ) -> esa20240910_models.DescribeSiteTopDataResponse:
+        """
+        @summary 获取Top数据
+        
+        @param request: DescribeSiteTopDataRequest
+        @return: DescribeSiteTopDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_site_top_data_with_options_async(request, runtime)
+
     def disable_custom_scene_policy_with_options(
         self,
         request: esa20240910_models.DisableCustomScenePolicyRequest,

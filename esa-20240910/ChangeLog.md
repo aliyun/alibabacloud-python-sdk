@@ -1,3 +1,8 @@
+2025-04-02 Version: 2.21.0
+- Support API DescribeSiteTimeSeriesData.
+- Support API DescribeSiteTopData.
+
+
 2025-04-01 Version: 2.20.0
 - Support API GetEdgeContainerAppResourceStatus.
 - Update API CreateOriginRule: add request parameters OriginReadTimeout.

@@ -4618,7 +4618,7 @@ class BatchUpdateWafRulesRequest(TeaModel):
         self.configs = configs
         # The WAF rule category.
         self.phase = phase
-        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
+        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
         self.ruleset_id = ruleset_id
         # The configurations shared by multiple rules.
         self.shared = shared
@@ -4692,7 +4692,7 @@ class BatchUpdateWafRulesShrinkRequest(TeaModel):
         self.configs_shrink = configs_shrink
         # The WAF rule category.
         self.phase = phase
-        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
+        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
         self.ruleset_id = ruleset_id
         # The configurations shared by multiple rules.
         self.shared_shrink = shared_shrink
@@ -14585,11 +14585,11 @@ class CreateWafRuleResponseBody(TeaModel):
         request_id: str = None,
         ruleset_id: int = None,
     ):
-        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) API.
+        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) API.
         self.id = id
         # Request ID.
         self.request_id = request_id
-        # ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) interface.
+        # ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) interface.
         self.ruleset_id = ruleset_id
 
     def validate(self):
@@ -22860,6 +22860,746 @@ class DescribeRatePlanInstanceStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRatePlanInstanceStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSiteTimeSeriesDataRequestFields(TeaModel):
+    def __init__(
+        self,
+        dimension: List[str] = None,
+        field_name: str = None,
+    ):
+        self.dimension = dimension
+        self.field_name = field_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dimension is not None:
+            result['Dimension'] = self.dimension
+        if self.field_name is not None:
+            result['FieldName'] = self.field_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Dimension') is not None:
+            self.dimension = m.get('Dimension')
+        if m.get('FieldName') is not None:
+            self.field_name = m.get('FieldName')
+        return self
+
+
+class DescribeSiteTimeSeriesDataRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        fields: List[DescribeSiteTimeSeriesDataRequestFields] = None,
+        interval: str = None,
+        site_id: str = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        # This parameter is required.
+        self.fields = fields
+        self.interval = interval
+        self.site_id = site_id
+        self.start_time = start_time
+
+    def validate(self):
+        if self.fields:
+            for k in self.fields:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        result['Fields'] = []
+        if self.fields is not None:
+            for k in self.fields:
+                result['Fields'].append(k.to_map() if k else None)
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        self.fields = []
+        if m.get('Fields') is not None:
+            for k in m.get('Fields'):
+                temp_model = DescribeSiteTimeSeriesDataRequestFields()
+                self.fields.append(temp_model.from_map(k))
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeSiteTimeSeriesDataShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        fields_shrink: str = None,
+        interval: str = None,
+        site_id: str = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        # This parameter is required.
+        self.fields_shrink = fields_shrink
+        self.interval = interval
+        self.site_id = site_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.fields_shrink is not None:
+            result['Fields'] = self.fields_shrink
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Fields') is not None:
+            self.fields_shrink = m.get('Fields')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeSiteTimeSeriesDataResponseBodyDataDetailData(TeaModel):
+    def __init__(
+        self,
+        time_stamp: str = None,
+        value: Any = None,
+    ):
+        self.time_stamp = time_stamp
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeSiteTimeSeriesDataResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        detail_data: List[DescribeSiteTimeSeriesDataResponseBodyDataDetailData] = None,
+        dimension_name: str = None,
+        dimension_value: str = None,
+        field_name: str = None,
+    ):
+        self.detail_data = detail_data
+        self.dimension_name = dimension_name
+        self.dimension_value = dimension_value
+        self.field_name = field_name
+
+    def validate(self):
+        if self.detail_data:
+            for k in self.detail_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DetailData'] = []
+        if self.detail_data is not None:
+            for k in self.detail_data:
+                result['DetailData'].append(k.to_map() if k else None)
+        if self.dimension_name is not None:
+            result['DimensionName'] = self.dimension_name
+        if self.dimension_value is not None:
+            result['DimensionValue'] = self.dimension_value
+        if self.field_name is not None:
+            result['FieldName'] = self.field_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.detail_data = []
+        if m.get('DetailData') is not None:
+            for k in m.get('DetailData'):
+                temp_model = DescribeSiteTimeSeriesDataResponseBodyDataDetailData()
+                self.detail_data.append(temp_model.from_map(k))
+        if m.get('DimensionName') is not None:
+            self.dimension_name = m.get('DimensionName')
+        if m.get('DimensionValue') is not None:
+            self.dimension_value = m.get('DimensionValue')
+        if m.get('FieldName') is not None:
+            self.field_name = m.get('FieldName')
+        return self
+
+
+class DescribeSiteTimeSeriesDataResponseBodySummarizedData(TeaModel):
+    def __init__(
+        self,
+        agg_method: str = None,
+        dimension_name: str = None,
+        dimension_value: str = None,
+        field_name: str = None,
+        value: Any = None,
+    ):
+        self.agg_method = agg_method
+        self.dimension_name = dimension_name
+        self.dimension_value = dimension_value
+        self.field_name = field_name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agg_method is not None:
+            result['AggMethod'] = self.agg_method
+        if self.dimension_name is not None:
+            result['DimensionName'] = self.dimension_name
+        if self.dimension_value is not None:
+            result['DimensionValue'] = self.dimension_value
+        if self.field_name is not None:
+            result['FieldName'] = self.field_name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggMethod') is not None:
+            self.agg_method = m.get('AggMethod')
+        if m.get('DimensionName') is not None:
+            self.dimension_name = m.get('DimensionName')
+        if m.get('DimensionValue') is not None:
+            self.dimension_value = m.get('DimensionValue')
+        if m.get('FieldName') is not None:
+            self.field_name = m.get('FieldName')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeSiteTimeSeriesDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeSiteTimeSeriesDataResponseBodyData] = None,
+        end_time: str = None,
+        interval: int = None,
+        request_id: str = None,
+        sampling_rate: float = None,
+        start_time: str = None,
+        summarized_data: List[DescribeSiteTimeSeriesDataResponseBodySummarizedData] = None,
+    ):
+        self.data = data
+        self.end_time = end_time
+        self.interval = interval
+        self.request_id = request_id
+        self.sampling_rate = sampling_rate
+        self.start_time = start_time
+        self.summarized_data = summarized_data
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+        if self.summarized_data:
+            for k in self.summarized_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sampling_rate is not None:
+            result['SamplingRate'] = self.sampling_rate
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        result['SummarizedData'] = []
+        if self.summarized_data is not None:
+            for k in self.summarized_data:
+                result['SummarizedData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeSiteTimeSeriesDataResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SamplingRate') is not None:
+            self.sampling_rate = m.get('SamplingRate')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        self.summarized_data = []
+        if m.get('SummarizedData') is not None:
+            for k in m.get('SummarizedData'):
+                temp_model = DescribeSiteTimeSeriesDataResponseBodySummarizedData()
+                self.summarized_data.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeSiteTimeSeriesDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSiteTimeSeriesDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSiteTimeSeriesDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSiteTopDataRequestFields(TeaModel):
+    def __init__(
+        self,
+        dimension: List[str] = None,
+        field_name: str = None,
+    ):
+        self.dimension = dimension
+        self.field_name = field_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dimension is not None:
+            result['Dimension'] = self.dimension
+        if self.field_name is not None:
+            result['FieldName'] = self.field_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Dimension') is not None:
+            self.dimension = m.get('Dimension')
+        if m.get('FieldName') is not None:
+            self.field_name = m.get('FieldName')
+        return self
+
+
+class DescribeSiteTopDataRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        fields: List[DescribeSiteTopDataRequestFields] = None,
+        interval: str = None,
+        limit: str = None,
+        site_id: str = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        # This parameter is required.
+        self.fields = fields
+        self.interval = interval
+        self.limit = limit
+        self.site_id = site_id
+        self.start_time = start_time
+
+    def validate(self):
+        if self.fields:
+            for k in self.fields:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        result['Fields'] = []
+        if self.fields is not None:
+            for k in self.fields:
+                result['Fields'].append(k.to_map() if k else None)
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        self.fields = []
+        if m.get('Fields') is not None:
+            for k in m.get('Fields'):
+                temp_model = DescribeSiteTopDataRequestFields()
+                self.fields.append(temp_model.from_map(k))
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeSiteTopDataShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        fields_shrink: str = None,
+        interval: str = None,
+        limit: str = None,
+        site_id: str = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        # This parameter is required.
+        self.fields_shrink = fields_shrink
+        self.interval = interval
+        self.limit = limit
+        self.site_id = site_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.fields_shrink is not None:
+            result['Fields'] = self.fields_shrink
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Fields') is not None:
+            self.fields_shrink = m.get('Fields')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeSiteTopDataResponseBodyDataDetailData(TeaModel):
+    def __init__(
+        self,
+        dimension_value: str = None,
+        value: Any = None,
+    ):
+        self.dimension_value = dimension_value
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dimension_value is not None:
+            result['DimensionValue'] = self.dimension_value
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DimensionValue') is not None:
+            self.dimension_value = m.get('DimensionValue')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeSiteTopDataResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        detail_data: List[DescribeSiteTopDataResponseBodyDataDetailData] = None,
+        dimension_name: str = None,
+        field_name: str = None,
+    ):
+        self.detail_data = detail_data
+        self.dimension_name = dimension_name
+        self.field_name = field_name
+
+    def validate(self):
+        if self.detail_data:
+            for k in self.detail_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DetailData'] = []
+        if self.detail_data is not None:
+            for k in self.detail_data:
+                result['DetailData'].append(k.to_map() if k else None)
+        if self.dimension_name is not None:
+            result['DimensionName'] = self.dimension_name
+        if self.field_name is not None:
+            result['FieldName'] = self.field_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.detail_data = []
+        if m.get('DetailData') is not None:
+            for k in m.get('DetailData'):
+                temp_model = DescribeSiteTopDataResponseBodyDataDetailData()
+                self.detail_data.append(temp_model.from_map(k))
+        if m.get('DimensionName') is not None:
+            self.dimension_name = m.get('DimensionName')
+        if m.get('FieldName') is not None:
+            self.field_name = m.get('FieldName')
+        return self
+
+
+class DescribeSiteTopDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeSiteTopDataResponseBodyData] = None,
+        end_time: str = None,
+        request_id: str = None,
+        sampling_rate: float = None,
+        start_time: str = None,
+    ):
+        self.data = data
+        self.end_time = end_time
+        self.request_id = request_id
+        self.sampling_rate = sampling_rate
+        self.start_time = start_time
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sampling_rate is not None:
+            result['SamplingRate'] = self.sampling_rate
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeSiteTopDataResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SamplingRate') is not None:
+            self.sampling_rate = m.get('SamplingRate')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeSiteTopDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSiteTopDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSiteTopDataResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -37426,7 +38166,7 @@ class GetWafRuleRequest(TeaModel):
         id: int = None,
         site_id: int = None,
     ):
-        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
         # 
         # This parameter is required.
         self.id = id
@@ -37473,7 +38213,7 @@ class GetWafRuleResponseBody(TeaModel):
     ):
         # Rule configuration.
         self.config = config
-        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
         self.id = id
         # Rule name.
         # 
@@ -37590,7 +38330,7 @@ class GetWafRulesetRequest(TeaModel):
         phase: str = None,
         site_id: int = None,
     ):
-        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) interface.
+        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) interface.
         self.id = id
         # The WAF operation phase, specifying the phase of the ruleset to query.
         self.phase = phase
@@ -65328,7 +66068,7 @@ class UpdateWafRuleRequest(TeaModel):
     ):
         # Rule configuration.
         self.config = config
-        # WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+        # WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
         # 
         # This parameter is required.
         self.id = id
@@ -65397,7 +66137,7 @@ class UpdateWafRuleShrinkRequest(TeaModel):
     ):
         # Rule configuration.
         self.config_shrink = config_shrink
-        # WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+        # WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
         # 
         # This parameter is required.
         self.id = id
@@ -65458,7 +66198,7 @@ class UpdateWafRuleResponseBody(TeaModel):
         id: int = None,
         request_id: str = None,
     ):
-        # WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+        # WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
         self.id = id
         # Request ID.
         self.request_id = request_id
