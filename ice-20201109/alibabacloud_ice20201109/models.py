@@ -1870,25 +1870,21 @@ class LiveManifestConfig(TeaModel):
         self,
         ad_markers: str = None,
         date_time_interval: int = None,
-        manifest_name: str = None,
         max_video_bitrate: int = None,
         min_buffer_time: int = None,
+        min_update_period: int = None,
         min_video_bitrate: int = None,
-        protocol: str = None,
-        segment_num: int = None,
+        segment_count: int = None,
         stream_order: str = None,
-        use_audio_rendition_groups: bool = None,
     ):
         self.ad_markers = ad_markers
         self.date_time_interval = date_time_interval
-        self.manifest_name = manifest_name
         self.max_video_bitrate = max_video_bitrate
         self.min_buffer_time = min_buffer_time
+        self.min_update_period = min_update_period
         self.min_video_bitrate = min_video_bitrate
-        self.protocol = protocol
-        self.segment_num = segment_num
+        self.segment_count = segment_count
         self.stream_order = stream_order
-        self.use_audio_rendition_groups = use_audio_rendition_groups
 
     def validate(self):
         pass
@@ -1903,22 +1899,18 @@ class LiveManifestConfig(TeaModel):
             result['AdMarkers'] = self.ad_markers
         if self.date_time_interval is not None:
             result['DateTimeInterval'] = self.date_time_interval
-        if self.manifest_name is not None:
-            result['ManifestName'] = self.manifest_name
         if self.max_video_bitrate is not None:
             result['MaxVideoBitrate'] = self.max_video_bitrate
         if self.min_buffer_time is not None:
             result['MinBufferTime'] = self.min_buffer_time
+        if self.min_update_period is not None:
+            result['MinUpdatePeriod'] = self.min_update_period
         if self.min_video_bitrate is not None:
             result['MinVideoBitrate'] = self.min_video_bitrate
-        if self.protocol is not None:
-            result['Protocol'] = self.protocol
-        if self.segment_num is not None:
-            result['SegmentNum'] = self.segment_num
+        if self.segment_count is not None:
+            result['SegmentCount'] = self.segment_count
         if self.stream_order is not None:
             result['StreamOrder'] = self.stream_order
-        if self.use_audio_rendition_groups is not None:
-            result['UseAudioRenditionGroups'] = self.use_audio_rendition_groups
         return result
 
     def from_map(self, m: dict = None):
@@ -1927,22 +1919,18 @@ class LiveManifestConfig(TeaModel):
             self.ad_markers = m.get('AdMarkers')
         if m.get('DateTimeInterval') is not None:
             self.date_time_interval = m.get('DateTimeInterval')
-        if m.get('ManifestName') is not None:
-            self.manifest_name = m.get('ManifestName')
         if m.get('MaxVideoBitrate') is not None:
             self.max_video_bitrate = m.get('MaxVideoBitrate')
         if m.get('MinBufferTime') is not None:
             self.min_buffer_time = m.get('MinBufferTime')
+        if m.get('MinUpdatePeriod') is not None:
+            self.min_update_period = m.get('MinUpdatePeriod')
         if m.get('MinVideoBitrate') is not None:
             self.min_video_bitrate = m.get('MinVideoBitrate')
-        if m.get('Protocol') is not None:
-            self.protocol = m.get('Protocol')
-        if m.get('SegmentNum') is not None:
-            self.segment_num = m.get('SegmentNum')
+        if m.get('SegmentCount') is not None:
+            self.segment_count = m.get('SegmentCount')
         if m.get('StreamOrder') is not None:
             self.stream_order = m.get('StreamOrder')
-        if m.get('UseAudioRenditionGroups') is not None:
-            self.use_audio_rendition_groups = m.get('UseAudioRenditionGroups')
         return self
 
 
@@ -1951,11 +1939,13 @@ class LivePackagingConfigDrmConfig(TeaModel):
         self,
         encryption_method: str = None,
         iv: str = None,
+        rotate_period: int = None,
         system_ids: List[str] = None,
         url: str = None,
     ):
         self.encryption_method = encryption_method
         self.iv = iv
+        self.rotate_period = rotate_period
         self.system_ids = system_ids
         self.url = url
 
@@ -1972,6 +1962,8 @@ class LivePackagingConfigDrmConfig(TeaModel):
             result['EncryptionMethod'] = self.encryption_method
         if self.iv is not None:
             result['IV'] = self.iv
+        if self.rotate_period is not None:
+            result['RotatePeriod'] = self.rotate_period
         if self.system_ids is not None:
             result['SystemIds'] = self.system_ids
         if self.url is not None:
@@ -1984,6 +1976,8 @@ class LivePackagingConfigDrmConfig(TeaModel):
             self.encryption_method = m.get('EncryptionMethod')
         if m.get('IV') is not None:
             self.iv = m.get('IV')
+        if m.get('RotatePeriod') is not None:
+            self.rotate_period = m.get('RotatePeriod')
         if m.get('SystemIds') is not None:
             self.system_ids = m.get('SystemIds')
         if m.get('Url') is not None:
@@ -60392,14 +60386,18 @@ class QueryIProductionJobResponseBodyInput(TeaModel):
 class QueryIProductionJobResponseBodyOutput(TeaModel):
     def __init__(
         self,
+        biz: str = None,
         media: str = None,
+        output_url: str = None,
         type: str = None,
     ):
+        self.biz = biz
         # The output file. If Type is set to OSS, set this parameter to the path of an OSS object. If Type is set to Media, set this parameter to the ID of a media asset. You can specify the path of an OSS object in one of the following formats:
         # 
         # 1.  oss://bucket/object
         # 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object bucket in the path specifies an OSS bucket that resides in the same region as the intelligent production job. object in the path specifies the object path in OSS.
         self.media = media
+        self.output_url = output_url
         # The media type. Valid values:
         # 
         # *   OSS: OSS object
@@ -60415,16 +60413,24 @@ class QueryIProductionJobResponseBodyOutput(TeaModel):
             return _map
 
         result = dict()
+        if self.biz is not None:
+            result['Biz'] = self.biz
         if self.media is not None:
             result['Media'] = self.media
+        if self.output_url is not None:
+            result['OutputUrl'] = self.output_url
         if self.type is not None:
             result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Biz') is not None:
+            self.biz = m.get('Biz')
         if m.get('Media') is not None:
             self.media = m.get('Media')
+        if m.get('OutputUrl') is not None:
+            self.output_url = m.get('OutputUrl')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -60480,6 +60486,7 @@ class QueryIProductionJobResponseBody(TeaModel):
         name: str = None,
         output: QueryIProductionJobResponseBodyOutput = None,
         output_files: List[str] = None,
+        output_media_ids: List[str] = None,
         output_urls: List[str] = None,
         request_id: str = None,
         result: str = None,
@@ -60511,6 +60518,7 @@ class QueryIProductionJobResponseBody(TeaModel):
         self.output = output
         # The output files.
         self.output_files = output_files
+        self.output_media_ids = output_media_ids
         # The URLs of the output files.
         self.output_urls = output_urls
         # The ID of the request.
@@ -60563,6 +60571,8 @@ class QueryIProductionJobResponseBody(TeaModel):
             result['Output'] = self.output.to_map()
         if self.output_files is not None:
             result['OutputFiles'] = self.output_files
+        if self.output_media_ids is not None:
+            result['OutputMediaIds'] = self.output_media_ids
         if self.output_urls is not None:
             result['OutputUrls'] = self.output_urls
         if self.request_id is not None:
@@ -60601,6 +60611,8 @@ class QueryIProductionJobResponseBody(TeaModel):
             self.output = temp_model.from_map(m['Output'])
         if m.get('OutputFiles') is not None:
             self.output_files = m.get('OutputFiles')
+        if m.get('OutputMediaIds') is not None:
+            self.output_media_ids = m.get('OutputMediaIds')
         if m.get('OutputUrls') is not None:
             self.output_urls = m.get('OutputUrls')
         if m.get('RequestId') is not None:
@@ -74468,9 +74480,12 @@ class SubmitIProductionJobRequestInput(TeaModel):
 class SubmitIProductionJobRequestOutput(TeaModel):
     def __init__(
         self,
+        biz: str = None,
         media: str = None,
+        output_url: str = None,
         type: str = None,
     ):
+        self.biz = biz
         # The output file. If Type is set to OSS, set this parameter to the path of an OSS object. If Type is set to Media, set this parameter to the ID of a media asset. You can specify the path of an OSS object in one of the following formats:
         # 
         # 1.  oss://bucket/object
@@ -74478,6 +74493,7 @@ class SubmitIProductionJobRequestOutput(TeaModel):
         # 
         # This parameter is required.
         self.media = media
+        self.output_url = output_url
         # The media type. Valid values:
         # 
         # *   OSS: OSS object
@@ -74495,16 +74511,24 @@ class SubmitIProductionJobRequestOutput(TeaModel):
             return _map
 
         result = dict()
+        if self.biz is not None:
+            result['Biz'] = self.biz
         if self.media is not None:
             result['Media'] = self.media
+        if self.output_url is not None:
+            result['OutputUrl'] = self.output_url
         if self.type is not None:
             result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Biz') is not None:
+            self.biz = m.get('Biz')
         if m.get('Media') is not None:
             self.media = m.get('Media')
+        if m.get('OutputUrl') is not None:
+            self.output_url = m.get('OutputUrl')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self

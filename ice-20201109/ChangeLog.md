@@ -1,3 +1,11 @@
+2025-04-02 Version: 5.0.2
+- Update API QueryIProductionJob: add response parameters Body.OutputMediaIds.
+- Update API QueryIProductionJob: add response parameters Body.Output.Biz.
+- Update API QueryIProductionJob: add response parameters Body.Output.OutputUrl.
+- Update API SubmitIProductionJob: add request parameters Output.Biz.
+- Update API SubmitIProductionJob: add request parameters Output.OutputUrl.
+
+
 2025-03-27 Version: 5.0.1
 - Update API SubmitBatchMediaProducingJob: add request parameters TemplateConfig.
 
