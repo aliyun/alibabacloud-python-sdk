@@ -1,3 +1,11 @@
+2025-04-02 Version: 6.18.2
+- Update API ListClusters: add response parameters Body.Data.$.VersionLifecycle.
+- Update API ListGateway: add response parameters Body.Data.Result.$.GatewayEntry.
+- Update API ListGateway: add response parameters Body.Data.Result.$.VersionLifecycle.
+- Update API QueryClusterDetail: add response parameters Body.Data.VersionLifecycle.
+- Update API QueryClusterInfo: add response parameters Body.Data.VersionLifecycle.
+
+
 2025-03-25 Version: 6.18.1
 - Update API AddGatewayServiceVersion: update response param.
 - Update API CreateApplication: add param Tags.

@@ -38157,6 +38157,7 @@ class ListClustersResponseBodyData(TeaModel):
         resource_group_id: str = None,
         tags: Dict[str, Any] = None,
         version_code: str = None,
+        version_lifecycle: str = None,
         vpc_id: str = None,
     ):
         # The application version.
@@ -38198,6 +38199,7 @@ class ListClustersResponseBodyData(TeaModel):
         self.tags = tags
         # The version information.
         self.version_code = version_code
+        self.version_lifecycle = version_lifecycle
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -38250,6 +38252,8 @@ class ListClustersResponseBodyData(TeaModel):
             result['Tags'] = self.tags
         if self.version_code is not None:
             result['VersionCode'] = self.version_code
+        if self.version_lifecycle is not None:
+            result['VersionLifecycle'] = self.version_lifecycle
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -38297,6 +38301,8 @@ class ListClustersResponseBodyData(TeaModel):
             self.tags = m.get('Tags')
         if m.get('VersionCode') is not None:
             self.version_code = m.get('VersionCode')
+        if m.get('VersionLifecycle') is not None:
+            self.version_lifecycle = m.get('VersionLifecycle')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -40727,6 +40733,57 @@ class ListGatewayResponseBodyDataResultElasticPolicy(TeaModel):
         return self
 
 
+class ListGatewayResponseBodyDataResultGatewayEntry(TeaModel):
+    def __init__(
+        self,
+        entry_domain: str = None,
+        http_ports: List[int] = None,
+        https_ports: List[int] = None,
+        ip_list: List[str] = None,
+        net_type: str = None,
+    ):
+        self.entry_domain = entry_domain
+        self.http_ports = http_ports
+        self.https_ports = https_ports
+        self.ip_list = ip_list
+        self.net_type = net_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entry_domain is not None:
+            result['EntryDomain'] = self.entry_domain
+        if self.http_ports is not None:
+            result['HttpPorts'] = self.http_ports
+        if self.https_ports is not None:
+            result['HttpsPorts'] = self.https_ports
+        if self.ip_list is not None:
+            result['IpList'] = self.ip_list
+        if self.net_type is not None:
+            result['NetType'] = self.net_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EntryDomain') is not None:
+            self.entry_domain = m.get('EntryDomain')
+        if m.get('HttpPorts') is not None:
+            self.http_ports = m.get('HttpPorts')
+        if m.get('HttpsPorts') is not None:
+            self.https_ports = m.get('HttpsPorts')
+        if m.get('IpList') is not None:
+            self.ip_list = m.get('IpList')
+        if m.get('NetType') is not None:
+            self.net_type = m.get('NetType')
+        return self
+
+
 class ListGatewayResponseBodyDataResultInitConfig(TeaModel):
     def __init__(
         self,
@@ -40979,6 +41036,7 @@ class ListGatewayResponseBodyDataResult(TeaModel):
         elastic_replica: int = None,
         elastic_type: str = None,
         end_date: str = None,
+        gateway_entry: List[ListGatewayResponseBodyDataResultGatewayEntry] = None,
         gateway_type: str = None,
         gateway_unique_id: str = None,
         gateway_version: str = None,
@@ -41007,6 +41065,7 @@ class ListGatewayResponseBodyDataResult(TeaModel):
         tag: str = None,
         total_replica: int = None,
         upgrade: bool = None,
+        version_lifecycle: str = None,
         vpc_id: str = None,
         vswitch_2: str = None,
     ):
@@ -41034,6 +41093,7 @@ class ListGatewayResponseBodyDataResult(TeaModel):
         self.elastic_type = elastic_type
         # The time when the instance expires.
         self.end_date = end_date
+        self.gateway_entry = gateway_entry
         # The gateway type.
         self.gateway_type = gateway_type
         # The unique ID of the gateway.
@@ -41101,6 +41161,7 @@ class ListGatewayResponseBodyDataResult(TeaModel):
         self.total_replica = total_replica
         # Indicates whether the instance was upgraded.
         self.upgrade = upgrade
+        self.version_lifecycle = version_lifecycle
         # The ID of the virtual private cloud (VPC) to which the gateway belongs.
         self.vpc_id = vpc_id
         # The ID of the secondary vSwitch.
@@ -41109,6 +41170,10 @@ class ListGatewayResponseBodyDataResult(TeaModel):
     def validate(self):
         if self.elastic_policy:
             self.elastic_policy.validate()
+        if self.gateway_entry:
+            for k in self.gateway_entry:
+                if k:
+                    k.validate()
         if self.init_config:
             self.init_config.validate()
         if self.internet_slb:
@@ -41150,6 +41215,10 @@ class ListGatewayResponseBodyDataResult(TeaModel):
             result['ElasticType'] = self.elastic_type
         if self.end_date is not None:
             result['EndDate'] = self.end_date
+        result['GatewayEntry'] = []
+        if self.gateway_entry is not None:
+            for k in self.gateway_entry:
+                result['GatewayEntry'].append(k.to_map() if k else None)
         if self.gateway_type is not None:
             result['GatewayType'] = self.gateway_type
         if self.gateway_unique_id is not None:
@@ -41210,6 +41279,8 @@ class ListGatewayResponseBodyDataResult(TeaModel):
             result['TotalReplica'] = self.total_replica
         if self.upgrade is not None:
             result['Upgrade'] = self.upgrade
+        if self.version_lifecycle is not None:
+            result['VersionLifecycle'] = self.version_lifecycle
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.vswitch_2 is not None:
@@ -41241,6 +41312,11 @@ class ListGatewayResponseBodyDataResult(TeaModel):
             self.elastic_type = m.get('ElasticType')
         if m.get('EndDate') is not None:
             self.end_date = m.get('EndDate')
+        self.gateway_entry = []
+        if m.get('GatewayEntry') is not None:
+            for k in m.get('GatewayEntry'):
+                temp_model = ListGatewayResponseBodyDataResultGatewayEntry()
+                self.gateway_entry.append(temp_model.from_map(k))
         if m.get('GatewayType') is not None:
             self.gateway_type = m.get('GatewayType')
         if m.get('GatewayUniqueId') is not None:
@@ -41305,6 +41381,8 @@ class ListGatewayResponseBodyDataResult(TeaModel):
             self.total_replica = m.get('TotalReplica')
         if m.get('Upgrade') is not None:
             self.upgrade = m.get('Upgrade')
+        if m.get('VersionLifecycle') is not None:
+            self.version_lifecycle = m.get('VersionLifecycle')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('Vswitch2') is not None:
@@ -54840,6 +54918,7 @@ class QueryClusterDetailResponseBodyData(TeaModel):
         resource_group_id: str = None,
         tags: Dict[str, Any] = None,
         v_switch_id: str = None,
+        version_lifecycle: str = None,
         vpc_id: str = None,
     ):
         # The whitelist.
@@ -54921,6 +55000,7 @@ class QueryClusterDetailResponseBodyData(TeaModel):
         self.tags = tags
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        self.version_lifecycle = version_lifecycle
         # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
 
@@ -55010,6 +55090,8 @@ class QueryClusterDetailResponseBodyData(TeaModel):
             result['Tags'] = self.tags
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
+        if self.version_lifecycle is not None:
+            result['VersionLifecycle'] = self.version_lifecycle
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -55091,6 +55173,8 @@ class QueryClusterDetailResponseBodyData(TeaModel):
             self.tags = m.get('Tags')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        if m.get('VersionLifecycle') is not None:
+            self.version_lifecycle = m.get('VersionLifecycle')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -55633,6 +55717,7 @@ class QueryClusterInfoResponseBodyData(TeaModel):
         tags: Dict[str, Any] = None,
         v_switch_id: str = None,
         version_code: str = None,
+        version_lifecycle: str = None,
         vpc_id: str = None,
     ):
         # The public IP address whitelist.
@@ -55718,6 +55803,7 @@ class QueryClusterInfoResponseBodyData(TeaModel):
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
         self.version_code = version_code
+        self.version_lifecycle = version_lifecycle
         # The ID of the VPC where the instance resides.
         self.vpc_id = vpc_id
 
@@ -55821,6 +55907,8 @@ class QueryClusterInfoResponseBodyData(TeaModel):
             result['VSwitchId'] = self.v_switch_id
         if self.version_code is not None:
             result['VersionCode'] = self.version_code
+        if self.version_lifecycle is not None:
+            result['VersionLifecycle'] = self.version_lifecycle
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -55915,6 +56003,8 @@ class QueryClusterInfoResponseBodyData(TeaModel):
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VersionCode') is not None:
             self.version_code = m.get('VersionCode')
+        if m.get('VersionLifecycle') is not None:
+            self.version_lifecycle = m.get('VersionLifecycle')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
