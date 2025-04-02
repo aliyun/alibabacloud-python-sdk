@@ -23,12 +23,9 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'ap-northeast-1': 'pai-dlc.aliyuncs.com',
             'ap-northeast-2-pop': 'pai-dlc.aliyuncs.com',
             'ap-south-1': 'pai-dlc.aliyuncs.com',
             'ap-southeast-2': 'pai-dlc.aliyuncs.com',
-            'ap-southeast-3': 'pai-dlc.aliyuncs.com',
-            'ap-southeast-5': 'pai-dlc.aliyuncs.com',
             'cn-beijing-finance-1': 'pai-dlc.aliyuncs.com',
             'cn-beijing-finance-pop': 'pai-dlc.aliyuncs.com',
             'cn-beijing-gov-1': 'pai-dlc.aliyuncs.com',
@@ -59,7 +56,6 @@ class Client(OpenApiClient):
             'cn-shenzhen-st4-d01': 'pai-dlc.aliyuncs.com',
             'cn-shenzhen-su18-b01': 'pai-dlc.aliyuncs.com',
             'cn-wuhan': 'pai-dlc.aliyuncs.com',
-            'cn-wulanchabu': 'pai-dlc.aliyuncs.com',
             'cn-yushanfang': 'pai-dlc.aliyuncs.com',
             'cn-zhangbei': 'pai-dlc.aliyuncs.com',
             'cn-zhangbei-na61-b01': 'pai-dlc.aliyuncs.com',
@@ -69,9 +65,7 @@ class Client(OpenApiClient):
             'eu-west-1': 'pai-dlc.aliyuncs.com',
             'eu-west-1-oxs': 'pai-dlc.aliyuncs.com',
             'me-east-1': 'pai-dlc.aliyuncs.com',
-            'rus-west-1-pop': 'pai-dlc.aliyuncs.com',
-            'us-east-1': 'pai-dlc.aliyuncs.com',
-            'us-west-1': 'pai-dlc.aliyuncs.com'
+            'rus-west-1-pop': 'pai-dlc.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('pai-dlc', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -99,7 +93,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.CreateJobResponse:
         """
-        @summary 创建一个DLC作业
+        @summary Creates a job that runs in a cluster. You can configure the data source, code source, startup command, and computing resources of each node on which a job runs.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
         
         @param request: CreateJobRequest
         @param headers: map
@@ -183,7 +179,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.CreateJobResponse:
         """
-        @summary 创建一个DLC作业
+        @summary Creates a job that runs in a cluster. You can configure the data source, code source, startup command, and computing resources of each node on which a job runs.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
         
         @param request: CreateJobRequest
         @param headers: map
@@ -265,7 +263,9 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.CreateJobRequest,
     ) -> pai_dlc_20201203_models.CreateJobResponse:
         """
-        @summary 创建一个DLC作业
+        @summary Creates a job that runs in a cluster. You can configure the data source, code source, startup command, and computing resources of each node on which a job runs.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
         
         @param request: CreateJobRequest
         @return: CreateJobResponse
@@ -279,7 +279,9 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.CreateJobRequest,
     ) -> pai_dlc_20201203_models.CreateJobResponse:
         """
-        @summary 创建一个DLC作业
+        @summary Creates a job that runs in a cluster. You can configure the data source, code source, startup command, and computing resources of each node on which a job runs.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
         
         @param request: CreateJobRequest
         @return: CreateJobResponse
@@ -295,7 +297,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.CreateTensorboardResponse:
         """
-        @summary 创建一个Tensorboard
+        @summary Creates a TensorBoard by using a job or specifying a data source configuration.
         
         @param request: CreateTensorboardRequest
         @param headers: map
@@ -377,7 +379,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.CreateTensorboardResponse:
         """
-        @summary 创建一个Tensorboard
+        @summary Creates a TensorBoard by using a job or specifying a data source configuration.
         
         @param request: CreateTensorboardRequest
         @param headers: map
@@ -457,7 +459,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.CreateTensorboardRequest,
     ) -> pai_dlc_20201203_models.CreateTensorboardResponse:
         """
-        @summary 创建一个Tensorboard
+        @summary Creates a TensorBoard by using a job or specifying a data source configuration.
         
         @param request: CreateTensorboardRequest
         @return: CreateTensorboardResponse
@@ -471,7 +473,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.CreateTensorboardRequest,
     ) -> pai_dlc_20201203_models.CreateTensorboardResponse:
         """
-        @summary 创建一个Tensorboard
+        @summary Creates a TensorBoard by using a job or specifying a data source configuration.
         
         @param request: CreateTensorboardRequest
         @return: CreateTensorboardResponse
@@ -487,7 +489,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.DeleteJobResponse:
         """
-        @summary 删除一个DLC作业
+        @summary Deletes a completed or stopped job.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -525,7 +527,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.DeleteJobResponse:
         """
-        @summary 删除一个DLC作业
+        @summary Deletes a completed or stopped job.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -561,7 +563,7 @@ class Client(OpenApiClient):
         job_id: str,
     ) -> pai_dlc_20201203_models.DeleteJobResponse:
         """
-        @summary 删除一个DLC作业
+        @summary Deletes a completed or stopped job.
         
         @return: DeleteJobResponse
         """
@@ -574,7 +576,7 @@ class Client(OpenApiClient):
         job_id: str,
     ) -> pai_dlc_20201203_models.DeleteJobResponse:
         """
-        @summary 删除一个DLC作业
+        @summary Deletes a completed or stopped job.
         
         @return: DeleteJobResponse
         """
@@ -590,7 +592,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.DeleteTensorboardResponse:
         """
-        @summary 删除一个数据源配置
+        @summary Deletes a stopped TensorBoard.
         
         @param request: DeleteTensorboardRequest
         @param headers: map
@@ -635,7 +637,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.DeleteTensorboardResponse:
         """
-        @summary 删除一个数据源配置
+        @summary Deletes a stopped TensorBoard.
         
         @param request: DeleteTensorboardRequest
         @param headers: map
@@ -678,7 +680,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.DeleteTensorboardRequest,
     ) -> pai_dlc_20201203_models.DeleteTensorboardResponse:
         """
-        @summary 删除一个数据源配置
+        @summary Deletes a stopped TensorBoard.
         
         @param request: DeleteTensorboardRequest
         @return: DeleteTensorboardResponse
@@ -693,7 +695,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.DeleteTensorboardRequest,
     ) -> pai_dlc_20201203_models.DeleteTensorboardResponse:
         """
-        @summary 删除一个数据源配置
+        @summary Deletes a stopped TensorBoard.
         
         @param request: DeleteTensorboardRequest
         @return: DeleteTensorboardResponse
@@ -710,7 +712,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetJobResponse:
         """
-        @summary 获取一个DLC作业详情
+        @summary Obtains the configuration and runtime information of a job.
         
         @param request: GetJobRequest
         @param headers: map
@@ -755,7 +757,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetJobResponse:
         """
-        @summary 获取一个DLC作业详情
+        @summary Obtains the configuration and runtime information of a job.
         
         @param request: GetJobRequest
         @param headers: map
@@ -798,7 +800,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetJobRequest,
     ) -> pai_dlc_20201203_models.GetJobResponse:
         """
-        @summary 获取一个DLC作业详情
+        @summary Obtains the configuration and runtime information of a job.
         
         @param request: GetJobRequest
         @return: GetJobResponse
@@ -813,7 +815,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetJobRequest,
     ) -> pai_dlc_20201203_models.GetJobResponse:
         """
-        @summary 获取一个DLC作业详情
+        @summary Obtains the configuration and runtime information of a job.
         
         @param request: GetJobRequest
         @return: GetJobResponse
@@ -830,7 +832,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetJobEventsResponse:
         """
-        @summary 获取作业的事件
+        @summary Obtains the system events of a job.
         
         @param request: GetJobEventsRequest
         @param headers: map
@@ -879,7 +881,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetJobEventsResponse:
         """
-        @summary 获取作业的事件
+        @summary Obtains the system events of a job.
         
         @param request: GetJobEventsRequest
         @param headers: map
@@ -926,7 +928,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetJobEventsRequest,
     ) -> pai_dlc_20201203_models.GetJobEventsResponse:
         """
-        @summary 获取作业的事件
+        @summary Obtains the system events of a job.
         
         @param request: GetJobEventsRequest
         @return: GetJobEventsResponse
@@ -941,7 +943,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetJobEventsRequest,
     ) -> pai_dlc_20201203_models.GetJobEventsResponse:
         """
-        @summary 获取作业的事件
+        @summary Obtains the system events of a job.
         
         @param request: GetJobEventsRequest
         @return: GetJobEventsResponse
@@ -958,7 +960,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetJobMetricsResponse:
         """
-        @summary 获取一个作业的资源监控指标
+        @summary Obtains the monitoring data of a job, including the CPU, GPU, and memory utilization, network, and disk read/write rate.
         
         @param request: GetJobMetricsRequest
         @param headers: map
@@ -1011,7 +1013,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetJobMetricsResponse:
         """
-        @summary 获取一个作业的资源监控指标
+        @summary Obtains the monitoring data of a job, including the CPU, GPU, and memory utilization, network, and disk read/write rate.
         
         @param request: GetJobMetricsRequest
         @param headers: map
@@ -1062,7 +1064,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetJobMetricsRequest,
     ) -> pai_dlc_20201203_models.GetJobMetricsResponse:
         """
-        @summary 获取一个作业的资源监控指标
+        @summary Obtains the monitoring data of a job, including the CPU, GPU, and memory utilization, network, and disk read/write rate.
         
         @param request: GetJobMetricsRequest
         @return: GetJobMetricsResponse
@@ -1077,7 +1079,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetJobMetricsRequest,
     ) -> pai_dlc_20201203_models.GetJobMetricsResponse:
         """
-        @summary 获取一个作业的资源监控指标
+        @summary Obtains the monitoring data of a job, including the CPU, GPU, and memory utilization, network, and disk read/write rate.
         
         @param request: GetJobMetricsRequest
         @return: GetJobMetricsResponse
@@ -1094,7 +1096,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetJobSanityCheckResultResponse:
         """
-        @summary 获取DLC作业某次算力健康检测结果
+        @summary Obtains specified job sanity check result in a Deep Learning Containers (DLC) job.
         
         @param request: GetJobSanityCheckResultRequest
         @param headers: map
@@ -1143,7 +1145,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetJobSanityCheckResultResponse:
         """
-        @summary 获取DLC作业某次算力健康检测结果
+        @summary Obtains specified job sanity check result in a Deep Learning Containers (DLC) job.
         
         @param request: GetJobSanityCheckResultRequest
         @param headers: map
@@ -1190,7 +1192,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetJobSanityCheckResultRequest,
     ) -> pai_dlc_20201203_models.GetJobSanityCheckResultResponse:
         """
-        @summary 获取DLC作业某次算力健康检测结果
+        @summary Obtains specified job sanity check result in a Deep Learning Containers (DLC) job.
         
         @param request: GetJobSanityCheckResultRequest
         @return: GetJobSanityCheckResultResponse
@@ -1205,7 +1207,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetJobSanityCheckResultRequest,
     ) -> pai_dlc_20201203_models.GetJobSanityCheckResultResponse:
         """
-        @summary 获取DLC作业某次算力健康检测结果
+        @summary Obtains specified job sanity check result in a Deep Learning Containers (DLC) job.
         
         @param request: GetJobSanityCheckResultRequest
         @return: GetJobSanityCheckResultResponse
@@ -1223,7 +1225,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetPodEventsResponse:
         """
-        @summary 获取作业中一个运行实例的系统事件
+        @summary Obtains the system events of a specific node in a job to locate and troubleshoot issues.
         
         @param request: GetPodEventsRequest
         @param headers: map
@@ -1275,7 +1277,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetPodEventsResponse:
         """
-        @summary 获取作业中一个运行实例的系统事件
+        @summary Obtains the system events of a specific node in a job to locate and troubleshoot issues.
         
         @param request: GetPodEventsRequest
         @param headers: map
@@ -1325,7 +1327,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetPodEventsRequest,
     ) -> pai_dlc_20201203_models.GetPodEventsResponse:
         """
-        @summary 获取作业中一个运行实例的系统事件
+        @summary Obtains the system events of a specific node in a job to locate and troubleshoot issues.
         
         @param request: GetPodEventsRequest
         @return: GetPodEventsResponse
@@ -1341,7 +1343,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetPodEventsRequest,
     ) -> pai_dlc_20201203_models.GetPodEventsResponse:
         """
-        @summary 获取作业中一个运行实例的系统事件
+        @summary Obtains the system events of a specific node in a job to locate and troubleshoot issues.
         
         @param request: GetPodEventsRequest
         @return: GetPodEventsResponse
@@ -1359,7 +1361,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetPodLogsResponse:
         """
-        @summary 获取作业中一个运行实例的日志
+        @summary Obtains or downloads the logs of a node for a task. The logs are from the stdout and stderr of the system and user scripts.
         
         @param request: GetPodLogsRequest
         @param headers: map
@@ -1413,7 +1415,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetPodLogsResponse:
         """
-        @summary 获取作业中一个运行实例的日志
+        @summary Obtains or downloads the logs of a node for a task. The logs are from the stdout and stderr of the system and user scripts.
         
         @param request: GetPodLogsRequest
         @param headers: map
@@ -1465,7 +1467,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetPodLogsRequest,
     ) -> pai_dlc_20201203_models.GetPodLogsResponse:
         """
-        @summary 获取作业中一个运行实例的日志
+        @summary Obtains or downloads the logs of a node for a task. The logs are from the stdout and stderr of the system and user scripts.
         
         @param request: GetPodLogsRequest
         @return: GetPodLogsResponse
@@ -1481,7 +1483,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetPodLogsRequest,
     ) -> pai_dlc_20201203_models.GetPodLogsResponse:
         """
-        @summary 获取作业中一个运行实例的日志
+        @summary Obtains or downloads the logs of a node for a task. The logs are from the stdout and stderr of the system and user scripts.
         
         @param request: GetPodLogsRequest
         @return: GetPodLogsResponse
@@ -1498,7 +1500,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetTensorboardResponse:
         """
-        @summary 获取一个Tensorboard
+        @summary Queries the information of a TensorBoard instance.
         
         @param request: GetTensorboardRequest
         @param headers: map
@@ -1547,7 +1549,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetTensorboardResponse:
         """
-        @summary 获取一个Tensorboard
+        @summary Queries the information of a TensorBoard instance.
         
         @param request: GetTensorboardRequest
         @param headers: map
@@ -1594,7 +1596,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetTensorboardRequest,
     ) -> pai_dlc_20201203_models.GetTensorboardResponse:
         """
-        @summary 获取一个Tensorboard
+        @summary Queries the information of a TensorBoard instance.
         
         @param request: GetTensorboardRequest
         @return: GetTensorboardResponse
@@ -1609,7 +1611,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetTensorboardRequest,
     ) -> pai_dlc_20201203_models.GetTensorboardResponse:
         """
-        @summary 获取一个Tensorboard
+        @summary Queries the information of a TensorBoard instance.
         
         @param request: GetTensorboardRequest
         @return: GetTensorboardResponse
@@ -1626,7 +1628,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetTensorboardSharedUrlResponse:
         """
-        @summary Get the shared url for tensorboard
+        @summary Obtains the shareable link of a TensorBoard task. The link contains digital tokens. You can use a shareable link to access a TensorBoard task.
         
         @param request: GetTensorboardSharedUrlRequest
         @param headers: map
@@ -1671,7 +1673,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetTensorboardSharedUrlResponse:
         """
-        @summary Get the shared url for tensorboard
+        @summary Obtains the shareable link of a TensorBoard task. The link contains digital tokens. You can use a shareable link to access a TensorBoard task.
         
         @param request: GetTensorboardSharedUrlRequest
         @param headers: map
@@ -1714,7 +1716,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetTensorboardSharedUrlRequest,
     ) -> pai_dlc_20201203_models.GetTensorboardSharedUrlResponse:
         """
-        @summary Get the shared url for tensorboard
+        @summary Obtains the shareable link of a TensorBoard task. The link contains digital tokens. You can use a shareable link to access a TensorBoard task.
         
         @param request: GetTensorboardSharedUrlRequest
         @return: GetTensorboardSharedUrlResponse
@@ -1729,7 +1731,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetTensorboardSharedUrlRequest,
     ) -> pai_dlc_20201203_models.GetTensorboardSharedUrlResponse:
         """
-        @summary Get the shared url for tensorboard
+        @summary Obtains the shareable link of a TensorBoard task. The link contains digital tokens. You can use a shareable link to access a TensorBoard task.
         
         @param request: GetTensorboardSharedUrlRequest
         @return: GetTensorboardSharedUrlResponse
@@ -1745,7 +1747,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetTokenResponse:
         """
-        @summary 获取用户Token
+        @summary Queries a user token.
         
         @param request: GetTokenRequest
         @param headers: map
@@ -1793,7 +1795,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetTokenResponse:
         """
-        @summary 获取用户Token
+        @summary Queries a user token.
         
         @param request: GetTokenRequest
         @param headers: map
@@ -1839,7 +1841,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetTokenRequest,
     ) -> pai_dlc_20201203_models.GetTokenResponse:
         """
-        @summary 获取用户Token
+        @summary Queries a user token.
         
         @param request: GetTokenRequest
         @return: GetTokenResponse
@@ -1853,7 +1855,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetTokenRequest,
     ) -> pai_dlc_20201203_models.GetTokenResponse:
         """
-        @summary 获取用户Token
+        @summary Queries a user token.
         
         @param request: GetTokenRequest
         @return: GetTokenResponse
@@ -1871,7 +1873,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetWebTerminalResponse:
         """
-        @summary Get the url for accessing pod's terminal in k8s
+        @summary Provides methods and steps to obtain a HTTP link for accessing a container.
         
         @param request: GetWebTerminalRequest
         @param headers: map
@@ -1919,7 +1921,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetWebTerminalResponse:
         """
-        @summary Get the url for accessing pod's terminal in k8s
+        @summary Provides methods and steps to obtain a HTTP link for accessing a container.
         
         @param request: GetWebTerminalRequest
         @param headers: map
@@ -1965,7 +1967,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetWebTerminalRequest,
     ) -> pai_dlc_20201203_models.GetWebTerminalResponse:
         """
-        @summary Get the url for accessing pod's terminal in k8s
+        @summary Provides methods and steps to obtain a HTTP link for accessing a container.
         
         @param request: GetWebTerminalRequest
         @return: GetWebTerminalResponse
@@ -1981,7 +1983,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.GetWebTerminalRequest,
     ) -> pai_dlc_20201203_models.GetWebTerminalResponse:
         """
-        @summary Get the url for accessing pod's terminal in k8s
+        @summary Provides methods and steps to obtain a HTTP link for accessing a container.
         
         @param request: GetWebTerminalRequest
         @return: GetWebTerminalResponse
@@ -1997,7 +1999,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.ListEcsSpecsResponse:
         """
-        @summary ListEcsSpecs
+        @summary Queries the list of supported instance types.
         
         @param request: ListEcsSpecsRequest
         @param headers: map
@@ -2053,7 +2055,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.ListEcsSpecsResponse:
         """
-        @summary ListEcsSpecs
+        @summary Queries the list of supported instance types.
         
         @param request: ListEcsSpecsRequest
         @param headers: map
@@ -2107,7 +2109,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.ListEcsSpecsRequest,
     ) -> pai_dlc_20201203_models.ListEcsSpecsResponse:
         """
-        @summary ListEcsSpecs
+        @summary Queries the list of supported instance types.
         
         @param request: ListEcsSpecsRequest
         @return: ListEcsSpecsResponse
@@ -2121,7 +2123,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.ListEcsSpecsRequest,
     ) -> pai_dlc_20201203_models.ListEcsSpecsResponse:
         """
-        @summary ListEcsSpecs
+        @summary Queries the list of supported instance types.
         
         @param request: ListEcsSpecsRequest
         @return: ListEcsSpecsResponse
@@ -2138,7 +2140,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.ListJobSanityCheckResultsResponse:
         """
-        @summary 获取某个DLC作业的多次算力健康检测结果
+        @summary Obtains the results of all sanity checks for a DLC job.
         
         @param request: ListJobSanityCheckResultsRequest
         @param headers: map
@@ -2183,7 +2185,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.ListJobSanityCheckResultsResponse:
         """
-        @summary 获取某个DLC作业的多次算力健康检测结果
+        @summary Obtains the results of all sanity checks for a DLC job.
         
         @param request: ListJobSanityCheckResultsRequest
         @param headers: map
@@ -2226,7 +2228,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.ListJobSanityCheckResultsRequest,
     ) -> pai_dlc_20201203_models.ListJobSanityCheckResultsResponse:
         """
-        @summary 获取某个DLC作业的多次算力健康检测结果
+        @summary Obtains the results of all sanity checks for a DLC job.
         
         @param request: ListJobSanityCheckResultsRequest
         @return: ListJobSanityCheckResultsResponse
@@ -2241,7 +2243,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.ListJobSanityCheckResultsRequest,
     ) -> pai_dlc_20201203_models.ListJobSanityCheckResultsResponse:
         """
-        @summary 获取某个DLC作业的多次算力健康检测结果
+        @summary Obtains the results of all sanity checks for a DLC job.
         
         @param request: ListJobSanityCheckResultsRequest
         @return: ListJobSanityCheckResultsResponse
@@ -2257,7 +2259,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.ListJobsResponse:
         """
-        @summary 根据过滤条件获取DLC作业列表
+        @summary Queries a list of jobs and supports pagination, sorting, and filtering by conditions.
         
         @param tmp_req: ListJobsRequest
         @param headers: map
@@ -2351,7 +2353,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.ListJobsResponse:
         """
-        @summary 根据过滤条件获取DLC作业列表
+        @summary Queries a list of jobs and supports pagination, sorting, and filtering by conditions.
         
         @param tmp_req: ListJobsRequest
         @param headers: map
@@ -2443,7 +2445,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.ListJobsRequest,
     ) -> pai_dlc_20201203_models.ListJobsResponse:
         """
-        @summary 根据过滤条件获取DLC作业列表
+        @summary Queries a list of jobs and supports pagination, sorting, and filtering by conditions.
         
         @param request: ListJobsRequest
         @return: ListJobsResponse
@@ -2457,7 +2459,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.ListJobsRequest,
     ) -> pai_dlc_20201203_models.ListJobsResponse:
         """
-        @summary 根据过滤条件获取DLC作业列表
+        @summary Queries a list of jobs and supports pagination, sorting, and filtering by conditions.
         
         @param request: ListJobsRequest
         @return: ListJobsResponse
@@ -2473,7 +2475,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.ListTensorboardsResponse:
         """
-        @summary 获取Tensorboard
+        @summary Queries a list of TensorBoard instances.
         
         @param request: ListTensorboardsRequest
         @param headers: map
@@ -2555,7 +2557,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.ListTensorboardsResponse:
         """
-        @summary 获取Tensorboard
+        @summary Queries a list of TensorBoard instances.
         
         @param request: ListTensorboardsRequest
         @param headers: map
@@ -2635,7 +2637,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.ListTensorboardsRequest,
     ) -> pai_dlc_20201203_models.ListTensorboardsResponse:
         """
-        @summary 获取Tensorboard
+        @summary Queries a list of TensorBoard instances.
         
         @param request: ListTensorboardsRequest
         @return: ListTensorboardsResponse
@@ -2649,7 +2651,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.ListTensorboardsRequest,
     ) -> pai_dlc_20201203_models.ListTensorboardsResponse:
         """
-        @summary 获取Tensorboard
+        @summary Queries a list of TensorBoard instances.
         
         @param request: ListTensorboardsRequest
         @return: ListTensorboardsResponse
@@ -2666,7 +2668,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.StartTensorboardResponse:
         """
-        @summary 开始运行tensorboard
+        @summary Starts a TensorBoard instance.
         
         @param request: StartTensorboardRequest
         @param headers: map
@@ -2711,7 +2713,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.StartTensorboardResponse:
         """
-        @summary 开始运行tensorboard
+        @summary Starts a TensorBoard instance.
         
         @param request: StartTensorboardRequest
         @param headers: map
@@ -2754,7 +2756,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.StartTensorboardRequest,
     ) -> pai_dlc_20201203_models.StartTensorboardResponse:
         """
-        @summary 开始运行tensorboard
+        @summary Starts a TensorBoard instance.
         
         @param request: StartTensorboardRequest
         @return: StartTensorboardResponse
@@ -2769,7 +2771,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.StartTensorboardRequest,
     ) -> pai_dlc_20201203_models.StartTensorboardResponse:
         """
-        @summary 开始运行tensorboard
+        @summary Starts a TensorBoard instance.
         
         @param request: StartTensorboardRequest
         @return: StartTensorboardResponse
@@ -2785,7 +2787,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.StopJobResponse:
         """
-        @summary 停止一个DLC作业
+        @summary Stops a running job.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2823,7 +2825,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.StopJobResponse:
         """
-        @summary 停止一个DLC作业
+        @summary Stops a running job.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2859,7 +2861,7 @@ class Client(OpenApiClient):
         job_id: str,
     ) -> pai_dlc_20201203_models.StopJobResponse:
         """
-        @summary 停止一个DLC作业
+        @summary Stops a running job.
         
         @return: StopJobResponse
         """
@@ -2872,7 +2874,7 @@ class Client(OpenApiClient):
         job_id: str,
     ) -> pai_dlc_20201203_models.StopJobResponse:
         """
-        @summary 停止一个DLC作业
+        @summary Stops a running job.
         
         @return: StopJobResponse
         """
@@ -2888,7 +2890,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.StopTensorboardResponse:
         """
-        @summary 停止运行tensorboard
+        @summary Stops a TensorBoard instance.
         
         @param request: StopTensorboardRequest
         @param headers: map
@@ -2933,7 +2935,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.StopTensorboardResponse:
         """
-        @summary 停止运行tensorboard
+        @summary Stops a TensorBoard instance.
         
         @param request: StopTensorboardRequest
         @param headers: map
@@ -2976,7 +2978,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.StopTensorboardRequest,
     ) -> pai_dlc_20201203_models.StopTensorboardResponse:
         """
-        @summary 停止运行tensorboard
+        @summary Stops a TensorBoard instance.
         
         @param request: StopTensorboardRequest
         @return: StopTensorboardResponse
@@ -2991,7 +2993,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.StopTensorboardRequest,
     ) -> pai_dlc_20201203_models.StopTensorboardResponse:
         """
-        @summary 停止运行tensorboard
+        @summary Stops a TensorBoard instance.
         
         @param request: StopTensorboardRequest
         @return: StopTensorboardResponse
@@ -3008,7 +3010,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.UpdateJobResponse:
         """
-        @summary 更新一个Job
+        @summary Updates the configuration information of a job. For example, you can modify the priority of a job in a queue.
         
         @param request: UpdateJobRequest
         @param headers: map
@@ -3055,7 +3057,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.UpdateJobResponse:
         """
-        @summary 更新一个Job
+        @summary Updates the configuration information of a job. For example, you can modify the priority of a job in a queue.
         
         @param request: UpdateJobRequest
         @param headers: map
@@ -3100,7 +3102,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.UpdateJobRequest,
     ) -> pai_dlc_20201203_models.UpdateJobResponse:
         """
-        @summary 更新一个Job
+        @summary Updates the configuration information of a job. For example, you can modify the priority of a job in a queue.
         
         @param request: UpdateJobRequest
         @return: UpdateJobResponse
@@ -3115,7 +3117,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.UpdateJobRequest,
     ) -> pai_dlc_20201203_models.UpdateJobResponse:
         """
-        @summary 更新一个Job
+        @summary Updates the configuration information of a job. For example, you can modify the priority of a job in a queue.
         
         @param request: UpdateJobRequest
         @return: UpdateJobResponse
@@ -3132,7 +3134,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.UpdateTensorboardResponse:
         """
-        @summary 更新tensorboard
+        @summary Updates a TensorBoard instance.
         
         @param request: UpdateTensorboardRequest
         @param headers: map
@@ -3183,7 +3185,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.UpdateTensorboardResponse:
         """
-        @summary 更新tensorboard
+        @summary Updates a TensorBoard instance.
         
         @param request: UpdateTensorboardRequest
         @param headers: map
@@ -3232,7 +3234,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.UpdateTensorboardRequest,
     ) -> pai_dlc_20201203_models.UpdateTensorboardResponse:
         """
-        @summary 更新tensorboard
+        @summary Updates a TensorBoard instance.
         
         @param request: UpdateTensorboardRequest
         @return: UpdateTensorboardResponse
@@ -3247,7 +3249,7 @@ class Client(OpenApiClient):
         request: pai_dlc_20201203_models.UpdateTensorboardRequest,
     ) -> pai_dlc_20201203_models.UpdateTensorboardResponse:
         """
-        @summary 更新tensorboard
+        @summary Updates a TensorBoard instance.
         
         @param request: UpdateTensorboardRequest
         @return: UpdateTensorboardResponse

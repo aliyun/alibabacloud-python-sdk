@@ -2124,9 +2124,11 @@ class PodItem(TeaModel):
         gmt_start_time: str = None,
         history_pods: List['PodItem'] = None,
         ip: str = None,
+        node_name: str = None,
         pod_id: str = None,
         pod_uid: str = None,
         status: str = None,
+        sub_status: str = None,
         type: str = None,
     ):
         self.gmt_create_time = gmt_create_time
@@ -2134,9 +2136,11 @@ class PodItem(TeaModel):
         self.gmt_start_time = gmt_start_time
         self.history_pods = history_pods
         self.ip = ip
+        self.node_name = node_name
         self.pod_id = pod_id
         self.pod_uid = pod_uid
         self.status = status
+        self.sub_status = sub_status
         self.type = type
 
     def validate(self):
@@ -2163,12 +2167,16 @@ class PodItem(TeaModel):
                 result['HistoryPods'].append(k.to_map() if k else None)
         if self.ip is not None:
             result['Ip'] = self.ip
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
         if self.pod_id is not None:
             result['PodId'] = self.pod_id
         if self.pod_uid is not None:
             result['PodUid'] = self.pod_uid
         if self.status is not None:
             result['Status'] = self.status
+        if self.sub_status is not None:
+            result['SubStatus'] = self.sub_status
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -2188,12 +2196,16 @@ class PodItem(TeaModel):
                 self.history_pods.append(temp_model.from_map(k))
         if m.get('Ip') is not None:
             self.ip = m.get('Ip')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
         if m.get('PodId') is not None:
             self.pod_id = m.get('PodId')
         if m.get('PodUid') is not None:
             self.pod_uid = m.get('PodUid')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SubStatus') is not None:
+            self.sub_status = m.get('SubStatus')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -2791,6 +2803,7 @@ class LogInfo(TeaModel):
         self,
         content: str = None,
         id: str = None,
+        is_truncated: bool = None,
         pod_id: str = None,
         pod_uid: str = None,
         source: str = None,
@@ -2798,6 +2811,7 @@ class LogInfo(TeaModel):
     ):
         self.content = content
         self.id = id
+        self.is_truncated = is_truncated
         self.pod_id = pod_id
         self.pod_uid = pod_uid
         self.source = source
@@ -2816,6 +2830,8 @@ class LogInfo(TeaModel):
             result['Content'] = self.content
         if self.id is not None:
             result['Id'] = self.id
+        if self.is_truncated is not None:
+            result['IsTruncated'] = self.is_truncated
         if self.pod_id is not None:
             result['PodId'] = self.pod_id
         if self.pod_uid is not None:
@@ -2832,6 +2848,8 @@ class LogInfo(TeaModel):
             self.content = m.get('Content')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('IsTruncated') is not None:
+            self.is_truncated = m.get('IsTruncated')
         if m.get('PodId') is not None:
             self.pod_id = m.get('PodId')
         if m.get('PodUid') is not None:
@@ -3295,6 +3313,80 @@ class SanityCheckResultItem(TeaModel):
             self.started_at = m.get('StartedAt')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        return self
+
+
+class SeccompProfile(TeaModel):
+    def __init__(
+        self,
+        localhost_profile: str = None,
+        type: str = None,
+    ):
+        self.localhost_profile = localhost_profile
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.localhost_profile is not None:
+            result['LocalhostProfile'] = self.localhost_profile
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LocalhostProfile') is not None:
+            self.localhost_profile = m.get('LocalhostProfile')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class SecurityContext(TeaModel):
+    def __init__(
+        self,
+        run_as_group: int = None,
+        run_as_user: int = None,
+        seccomp_profile: SeccompProfile = None,
+    ):
+        self.run_as_group = run_as_group
+        self.run_as_user = run_as_user
+        self.seccomp_profile = seccomp_profile
+
+    def validate(self):
+        if self.seccomp_profile:
+            self.seccomp_profile.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.run_as_group is not None:
+            result['RunAsGroup'] = self.run_as_group
+        if self.run_as_user is not None:
+            result['RunAsUser'] = self.run_as_user
+        if self.seccomp_profile is not None:
+            result['SeccompProfile'] = self.seccomp_profile.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RunAsGroup') is not None:
+            self.run_as_group = m.get('RunAsGroup')
+        if m.get('RunAsUser') is not None:
+            self.run_as_user = m.get('RunAsUser')
+        if m.get('SeccompProfile') is not None:
+            temp_model = SeccompProfile()
+            self.seccomp_profile = temp_model.from_map(m['SeccompProfile'])
         return self
 
 
@@ -3853,9 +3945,13 @@ class CreateJobRequestCodeSource(TeaModel):
         commit: str = None,
         mount_path: str = None,
     ):
+        # The branch of the referenced code repository. By default, the branch configured in the code source is used. This parameter is optional.
         self.branch = branch
+        # The ID of the code source.
         self.code_source_id = code_source_id
+        # The commit ID of the code to be downloaded. By default, the commit ID configured in the code source is used. This parameter is optional.
         self.commit = commit
+        # The path to which the job is mounted. By default, the mount path configured in the data source is used. This parameter is optional.
         self.mount_path = mount_path
 
     def validate(self):
@@ -3895,14 +3991,20 @@ class CreateJobRequestDataSources(TeaModel):
         self,
         data_source_id: str = None,
         data_source_version: str = None,
+        mount_access: str = None,
         mount_path: str = None,
         options: str = None,
         uri: str = None,
     ):
+        # The data source ID.
         self.data_source_id = data_source_id
         self.data_source_version = data_source_version
+        self.mount_access = mount_access
+        # The path to which the job is mounted. By default, the mount path in the data source configuration is used. This parameter is optional.
         self.mount_path = mount_path
+        # The mount attribute of the custom dataset. Set the value to OSS.
         self.options = options
+        # The data source path.
         self.uri = uri
 
     def validate(self):
@@ -3918,6 +4020,8 @@ class CreateJobRequestDataSources(TeaModel):
             result['DataSourceId'] = self.data_source_id
         if self.data_source_version is not None:
             result['DataSourceVersion'] = self.data_source_version
+        if self.mount_access is not None:
+            result['MountAccess'] = self.mount_access
         if self.mount_path is not None:
             result['MountPath'] = self.mount_path
         if self.options is not None:
@@ -3932,6 +4036,8 @@ class CreateJobRequestDataSources(TeaModel):
             self.data_source_id = m.get('DataSourceId')
         if m.get('DataSourceVersion') is not None:
             self.data_source_version = m.get('DataSourceVersion')
+        if m.get('MountAccess') is not None:
+            self.mount_access = m.get('MountAccess')
         if m.get('MountPath') is not None:
             self.mount_path = m.get('MountPath')
         if m.get('Options') is not None:
@@ -3950,10 +4056,24 @@ class CreateJobRequestUserVpc(TeaModel):
         switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The default route. Default value: false. Valid values:
+        # 
+        # *   eth0: The default network interface is used to access the Internet through the public gateway.
+        # *   eth1: The user\\"s Elastic Network Interface is used to access the Internet through the private gateway. For more information about the configuration method, see [Enable Internet access for a DSW instance by using a private Internet NAT gateway](https://help.aliyun.com/document_detail/2525343.html).
         self.default_route = default_route
+        # The extended CIDR block.
+        # 
+        # *   If you leave the SwitchId and ExtendedCIDRs parameters empty, the system automatically obtains all CIDR blocks in a VPC.
+        # *   If you configure the SwitchId and ExtendedCIDRs parameters, we recommend that you specify all CIDR blocks in a VPC.
         self.extended_cidrs = extended_cidrs
+        # The ID of the security group.
         self.security_group_id = security_group_id
+        # The vSwitch ID. This parameter is optional.
+        # 
+        # *   If you leave this parameter empty, the system automatically selects a vSwitch based on the inventory status.
+        # *   You can also specify a vSwitch ID.
         self.switch_id = switch_id
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4017,30 +4137,92 @@ class CreateJobRequest(TeaModel):
         user_vpc: CreateJobRequestUserVpc = None,
         workspace_id: str = None,
     ):
+        # The job visibility. Valid values:
+        # 
+        # *   PUBLIC: The job is visible to all members in the workspace.
+        # *   PRIVATE: The job is visible only to you and the administrator of the workspace.
         self.accessibility = accessibility
+        # The code source of the job. Before the node of the job runs, DLC automatically downloads the configured code from the code source and mounts the code to the local path of the container.
         self.code_source = code_source
+        # The access credential configuration.
         self.credential_config = credential_config
+        # The data sources for job running.
         self.data_sources = data_sources
+        # This parameter is not supported.
         self.debugger_config_content = debugger_config_content
+        # The job name. The name must be in the following format:
+        # 
+        # *   The name must be 1 to 256 characters in length.
+        # *   The name can contain digits, letters, underscores (_), periods (.), and hyphens (-).
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # This parameter is not supported.
         self.elastic_spec = elastic_spec
+        # The environment variables.
         self.envs = envs
+        # The maximum running duration of the job. Unit: minutes.
         self.job_max_running_time_minutes = job_max_running_time_minutes
+        # The configurations for job running, such as the image address, startup command, node resource declaration, and number of replicas.****\
+        # 
+        # A DLC job consists of different types of nodes. If nodes of the same type have exactly the same configuration, the configuration is called JobSpec. **JobSpecs** specifies the configurations of all types of nodes. The value is of the array type.
+        # 
         # This parameter is required.
         self.job_specs = job_specs
+        # The job type. The value is case-sensitive. Valid values:
+        # 
+        # *   TFJob
+        # *   PyTorchJob
+        # *   MPIJob
+        # *   XGBoostJob
+        # *   OneFlowJob
+        # *   ElasticBatchJob
+        # *   SlurmJob
+        # *   RayJob
+        # 
+        # Valid values for each job type:
+        # 
+        # *   OneFlowJob: OneFlow.
+        # *   PyTorchJob: PyTorch.
+        # *   SlurmJob: Slurm.
+        # *   XGBoostJob: XGBoost.
+        # *   ElasticBatchJob: ElasticBatch.
+        # *   MPIJob: MPIJob.
+        # *   TFJob: Tensorflow.
+        # *   RayJob: Ray.
+        # 
         # This parameter is required.
         self.job_type = job_type
+        # The additional configuration of the job. You can use this parameter to adjust the behavior of the attached data source. For example, if the attached data source of the job is of the OSS type, you can use this parameter to add the following configurations to override the default parameters of JindoFS: `fs.oss.download.thread.concurrency=4,fs.oss.download.queue.size=16`.
         self.options = options
+        # The priority of the job. Default value: 1. Valid values: 1 to 9.
+        # 
+        # *   1: the lowest priority.
+        # *   9: the highest priority.
         self.priority = priority
+        # The ID of the resource group. This parameter is optional.
+        # 
+        # *   If you leave this parameter empty, the job is submitted to a public resource group.
+        # *   If a resource quota is associated with the current workspace, you can specify the resource quota ID. For more information about how to query the resource quota ID, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
         self.resource_id = resource_id
+        # The additional parameter configurations of the job.
         self.settings = settings
+        # The policy that is used to check whether a distributed multi-node job is successful. Only TensorFlow distributed multi-node jobs are supported.
+        # 
+        # *   ChiefWorker: If you use this policy, the job is considered successful when the pod on the chief node completes operations.
+        # *   AllWorkers (default): If you use this policy, the job is considered successful when all worker nodes complete operations.
         self.success_policy = success_policy
+        # The folder in which the third-party Python library file requirements.txt is stored. Before the startup command specified by the UserCommand parameter is run on each node, DLC fetches the requirements.txt file from the folder and runs `pip install -r` to install the required package and library.
         self.thirdparty_lib_dir = thirdparty_lib_dir
+        # The third-party Python libraries to be installed.
         self.thirdparty_libs = thirdparty_libs
+        # The startup command for all nodes of the job.
+        # 
         # This parameter is required.
         self.user_command = user_command
+        # The VPC settings.
         self.user_vpc = user_vpc
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -4181,7 +4363,9 @@ class CreateJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The request ID used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -4273,25 +4457,60 @@ class CreateTensorboardRequest(TeaModel):
         uri: str = None,
         workspace_id: str = None,
     ):
+        # The visibility of the job. Valid values:
+        # 
+        # *   PUBLIC: The configuration is public in the workspace.
+        # *   PRIVATE: The configuration is visible only to you and the administrator of the workspace.
         self.accessibility = accessibility
+        # The number of vCPU cores.
         self.cpu = cpu
+        # The dataset ID. 
+        # <props="china">Call [ListDatasets](https://help.aliyun.com/document_detail/457222.html) to get the dataset ID.
         self.data_source_id = data_source_id
+        # The dataset type. Valid values:
+        # 
+        # *   OSS
+        # *   NAS
         self.data_source_type = data_source_type
+        # The configurations of the data source.
         self.data_sources = data_sources
+        # The TensorBoard name
         self.display_name = display_name
+        # The job ID. Call [ListJobs](https://help.aliyun.com/document_detail/459676.html) to get the job ID.
         self.job_id = job_id
+        # The maximum running duration. Unit: minutes.
         self.max_running_time_minutes = max_running_time_minutes
+        # The memory size. Unit: GB.
         self.memory = memory
+        # The extended fields of the dataset are in the JSON format. MountPath: the path to mount the dataset.
         self.options = options
+        # The priority of the job. Default value: 1. Valid values: 1 to 9.
+        # 
+        # *   1 is the lowest priority.
+        # *   9 is the highest priority.
         self.priority = priority
+        # The resource quota ID. This parameter is required when you create a TensorBoard job by using a resource quota. <props="china">Call [ListQuotas](https://help.aliyun.com/document_detail/2628071.html) to get the quota ID. 
+        # This feature is currently limited to whitelisted users. If you need to use this feature, contact us.
         self.quota_id = quota_id
+        # The source ID.
         self.source_id = source_id
+        # The source type.
         self.source_type = source_type
+        # The directory of summary.
         self.summary_path = summary_path
+        # The relative path of summary.
         self.summary_relative_path = summary_relative_path
+        # The configurations of datasets mounted with the TensorBoard job.
         self.tensorboard_data_sources = tensorboard_data_sources
+        # The pay-as-you-go configuration of TensorBoard, which is used to create TensorBoard jobs that use pay-as-you-go resources.
         self.tensorboard_spec = tensorboard_spec
+        # The dataset URI.
+        # 
+        # *   Value format when DataSourceType is set to OSS: `oss://[oss-bucket].[endpoint]/[path]`.
+        # *   Value format when DataSourceType is set to NAS:`nas://[nas-filesystem-id].[region]/[path]`.
         self.uri = uri
+        # The workspace ID. 
+        # <props="china">Call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -4418,9 +4637,13 @@ class CreateTensorboardResponseBody(TeaModel):
         request_id: str = None,
         tensorboard_id: str = None,
     ):
+        # The dataset ID.
         self.data_source_id = data_source_id
+        # The job ID.
         self.job_id = job_id
+        # The ID of the request.
         self.request_id = request_id
+        # TensorBoard ID
         self.tensorboard_id = tensorboard_id
 
     def validate(self):
@@ -4502,7 +4725,9 @@ class DeleteJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The request ID. You can troubleshoot issues based on the request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4575,6 +4800,8 @@ class DeleteTensorboardRequest(TeaModel):
         self,
         workspace_id: str = None,
     ):
+        # The workspace ID. 
+        # <props="china">For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -4603,7 +4830,9 @@ class DeleteTensorboardResponseBody(TeaModel):
         request_id: str = None,
         tensorboard_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The TensorBoard ID.
         self.tensorboard_id = tensorboard_id
 
     def validate(self):
@@ -4676,6 +4905,7 @@ class GetJobRequest(TeaModel):
         self,
         need_detail: bool = None,
     ):
+        # Specifies whether to return the job details. Default value: true.
         self.need_detail = need_detail
 
     def validate(self):
@@ -4706,9 +4936,13 @@ class GetJobResponseBodyCodeSource(TeaModel):
         commit: str = None,
         mount_path: str = None,
     ):
+        # The code branch.
         self.branch = branch
+        # The code source ID.
         self.code_source_id = code_source_id
+        # The code commit ID
         self.commit = commit
+        # The local mount path.
         self.mount_path = mount_path
 
     def validate(self):
@@ -4750,8 +4984,11 @@ class GetJobResponseBodyDataSources(TeaModel):
         mount_path: str = None,
         uri: str = None,
     ):
+        # The data source ID.
         self.data_source_id = data_source_id
+        # The local mount path. This parameter is optional. The default value is empty, which specifies that the mount path in the data source is used.
         self.mount_path = mount_path
+        # The data source URL.
         self.uri = uri
 
     def validate(self):
@@ -4796,15 +5033,28 @@ class GetJobResponseBodyPodsHistoryPods(TeaModel):
         sub_status: str = None,
         type: str = None,
     ):
+        # The time when the node was created (UTC).
         self.gmt_create_time = gmt_create_time
+        # The end time of the node (UTC).
         self.gmt_finish_time = gmt_finish_time
+        # The start time of the node (UTC).
         self.gmt_start_time = gmt_start_time
+        # The IP address of the node.
         self.ip = ip
+        # The ID of the node.
         self.pod_id = pod_id
+        # The UID of the node.
         self.pod_uid = pod_uid
+        # The resource type of the node.
         self.resource_type = resource_type
+        # The status of the node.
         self.status = status
+        # The sub-status of the node, such as its preemption status. Valid values:
+        # 
+        # *   Normal
+        # *   Evicted
         self.sub_status = sub_status
+        # The type of the node.
         self.type = type
 
     def validate(self):
@@ -4878,16 +5128,36 @@ class GetJobResponseBodyPods(TeaModel):
         sub_status: str = None,
         type: str = None,
     ):
+        # The time when the node was created (UTC).
         self.gmt_create_time = gmt_create_time
+        # The end time of the node (UTC).
         self.gmt_finish_time = gmt_finish_time
+        # The start time of the node (UTC).
         self.gmt_start_time = gmt_start_time
+        # The historical nodes.
         self.history_pods = history_pods
+        # The IP address of the node.
         self.ip = ip
+        # The node ID. It can be used in the GetPodLogs and GetPodEvents operations to obtain the detailed logs and events of the node.
         self.pod_id = pod_id
+        # The UID of the node.
         self.pod_uid = pod_uid
+        # The resource type of the node.
         self.resource_type = resource_type
+        # The status of the node. Valid values:
+        # 
+        # *   Pending
+        # *   Running
+        # *   Succeeded
+        # *   Failed
+        # *   Unknown
         self.status = status
+        # The sub-status of the node, such as its preemption status. Valid values:
+        # 
+        # *   Normal
+        # *   Evicted
         self.sub_status = sub_status
+        # The node type, which corresponds to a specific JobSpec in JobSpecs of the CreateJob operation.
         self.type = type
 
     def validate(self):
@@ -4967,10 +5237,17 @@ class GetJobResponseBodyUserVpc(TeaModel):
         switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The default router. This parameter is valid only for general-purpose computing resources. Valid values:
+        # 
+        # eth0: The default network interface is used to access the Internet through the public gateway. eth1: The user\\"s Elastic Network Interface is used to access the Internet through the private gateway.
         self.default_route = default_route
+        # The extended CIDR block. Example: 192.168.0.1/24.
         self.extended_cidrs = extended_cidrs
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The vSwitch ID.
         self.switch_id = switch_id
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -5054,46 +5331,104 @@ class GetJobResponseBody(TeaModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # The visibility of the job. Valid values:
+        # 
+        # *   PUBLIC: The code is public in the workspace.
+        # *   PRIVATE: The workspace is visible only to you and the administrator of the workspace. This is the default value.
         self.accessibility = accessibility
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The code source.
         self.code_source = code_source
+        # The access credential configurations.
         self.credential_config = credential_config
+        # The data sources.
         self.data_sources = data_sources
+        # The job name.
         self.display_name = display_name
+        # The duration of the job (seconds).
         self.duration = duration
+        # The elastic job parameters.
         self.elastic_spec = elastic_spec
+        # Specifies whether to enable the debugger job.
         self.enabled_debugger = enabled_debugger
+        # The configurations of environment variables.
         self.envs = envs
+        # The time when the job was created (UTC).
         self.gmt_create_time = gmt_create_time
+        # The time of the job failed (UTC).
         self.gmt_failed_time = gmt_failed_time
+        # The time when the job ended (UTC).
         self.gmt_finish_time = gmt_finish_time
+        # The start time of the job (UTC).
         self.gmt_running_time = gmt_running_time
+        # The time when the job stopped (UTC).
         self.gmt_stopped_time = gmt_stopped_time
+        # The time when the job was submitted to the cluster (UTC).
         self.gmt_submitted_time = gmt_submitted_time
+        # The time when the job succeeded (UTC).
         self.gmt_successed_time = gmt_successed_time
+        # The job ID.
         self.job_id = job_id
+        # The node configurations of the job, which is **JobSpecs** in the CreateJob operation.
         self.job_specs = job_specs
+        # The job type. Specified by the JobType parameter of the [CreateJob](https://help.aliyun.com/document_detail/459672.html) operation.
         self.job_type = job_type
+        # All running nodes of the job.
         self.pods = pods
+        # The priority of the job. Valid values: 1 to 9.
         self.priority = priority
+        # The status detail code, which is a sub-status under the current status.
         self.reason_code = reason_code
+        # The description of the status detail code.
         self.reason_message = reason_message
+        # The request ID, which can be used for troubleshooting.
         self.request_id = request_id
+        # The ID of the resource group to which the job belongs.
         self.resource_id = resource_id
+        # The resource level that the job uses.
         self.resource_level = resource_level
+        # The resource type. Valid values: ECS, Lingjun, and ACS.
         self.resource_type = resource_type
+        # The number of retries and the maximum number of retries used by the job.
         self.restart_times = restart_times
+        # The settings of the additional parameters of the job.
         self.settings = settings
+        # The status of the job. Valid values:
+        # 
+        # *   Creating
+        # *   Queuing
+        # *   Bidding (Only for Lingjun preemptible jobs)
+        # *   EnvPreparing
+        # *   SanityChecking
+        # *   Running
+        # *   Restarting
+        # *   Stopping
+        # *   SucceededReserving
+        # *   FailedReserving
+        # *   Succeeded
+        # *   Failed
+        # *   Stopped
         self.status = status
+        # The status history.
         self.status_history = status_history
+        # The sub-status of the job, such as its preemption status.
         self.sub_status = sub_status
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # The directory that contains requirements.txt.
         self.thirdparty_lib_dir = thirdparty_lib_dir
+        # The third-party Python libraries to be installed.
         self.thirdparty_libs = thirdparty_libs
+        # The command that is run to start each node.
         self.user_command = user_command
+        # The UID of the Alibaba Cloud account who submitted the job.
         self.user_id = user_id
+        # The VPC of the user.
         self.user_vpc = user_vpc
+        # The ID of the workspace to which the job belongs.
         self.workspace_id = workspace_id
+        # The name of the workspace to which the job belongs.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -5374,8 +5709,11 @@ class GetJobEventsRequest(TeaModel):
         max_events_num: int = None,
         start_time: str = None,
     ):
+        # The end time (UTC) of the time range for querying events. The default value is the current time.
         self.end_time = end_time
+        # The maximum number of events that can be returned. Default value: 2000.
         self.max_events_num = max_events_num
+        # The start time (UTC) of the time range for querying events. The default value is 7 days ago.
         self.start_time = start_time
 
     def validate(self):
@@ -5413,8 +5751,11 @@ class GetJobEventsResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The events.
         self.events = events
+        # The job ID.
         self.job_id = job_id
+        # The request ID, which can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -5495,11 +5836,26 @@ class GetJobMetricsRequest(TeaModel):
         time_step: str = None,
         token: str = None,
     ):
+        # The end time of the time range to query monitoring data. The time is displayed in UTC. The default value is the current time.
         self.end_time = end_time
+        # The type of the monitoring metrics. Valid values:
+        # 
+        # *   GpuCoreUsage: GPU utilization
+        # *   GpuMemoryUsage: GPU memory utilization
+        # *   CpuCoreUsage: CPU utilization
+        # *   MemoryUsage: memory utilization
+        # *   NetworkInputRate: the network write in rate.
+        # *   NetworkOutputRate: the network write out rate
+        # *   DiskReadRate: the disk read rate
+        # *   DiskWriteRate: the disk write rate
+        # 
         # This parameter is required.
         self.metric_type = metric_type
+        # The beginning of the time range to query monitoring data. The time is displayed in UTC. The default value is the time 1 hour before the current time.
         self.start_time = start_time
+        # The interval at which monitoring data is returned. Default value: 5. Unit: minutes.
         self.time_step = time_step
+        # The temporary token used for authentication.
         self.token = token
 
     def validate(self):
@@ -5545,8 +5901,11 @@ class GetJobMetricsResponseBody(TeaModel):
         pod_metrics: List[PodMetric] = None,
         request_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The monitoring metrics of the job.
         self.pod_metrics = pod_metrics
+        # The request ID. You can troubleshoot issues based on the request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5633,9 +5992,19 @@ class GetJobSanityCheckResultRequest(TeaModel):
         sanity_check_phase: str = None,
         token: str = None,
     ):
+        # The nth time for which the job sanity check is performed.
+        # 
         # This parameter is required.
         self.sanity_check_number = sanity_check_number
+        # The phase in which the job sanity check is performed.
+        # 
+        # *   CheckInit
+        # *   DeviceCheck
+        # *   SingleNodeCommCheck
+        # *   TwoNodeCommCheck
+        # *   AllNodeCommCheck
         self.sanity_check_phase = sanity_check_phase
+        # The token information for job sharing. For more information about how to obtain the token information, see [GetToken](https://help.aliyun.com/document_detail/2557812.html).
         self.token = token
 
     def validate(self):
@@ -5673,8 +6042,11 @@ class GetJobSanityCheckResultResponseBody(TeaModel):
         request_id: str = None,
         sanity_check_result: List[SanityCheckResultItem] = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
+        # The job sanity check result.
         self.sanity_check_result = sanity_check_result
 
     def validate(self):
@@ -5762,9 +6134,13 @@ class GetPodEventsRequest(TeaModel):
         pod_uid: str = None,
         start_time: str = None,
     ):
+        # The end time (UTC).
         self.end_time = end_time
+        # The maximum number of events that can be returned.
         self.max_events_num = max_events_num
+        # The node UID. Call [GetJob](https://help.aliyun.com/document_detail/459677.html) to get the node UID.
         self.pod_uid = pod_uid
+        # The start time (UTC).
         self.start_time = start_time
 
     def validate(self):
@@ -5808,11 +6184,17 @@ class GetPodEventsResponseBody(TeaModel):
         pod_uid: str = None,
         request_id: str = None,
     ):
+        # The events returned.
         self.events = events
+        # The job ID.
         self.job_id = job_id
+        # The node ID.
+        # 
         # This parameter is required.
         self.pod_id = pod_id
+        # The node UID.
         self.pod_uid = pod_uid
+        # The request ID, which can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -5901,10 +6283,18 @@ class GetPodLogsRequest(TeaModel):
         pod_uid: str = None,
         start_time: str = None,
     ):
+        # Specifies whether to download the log file. Default value: false. Valid values:
+        # 
+        # *   false
+        # *   true
         self.download_to_file = download_to_file
+        # The end time of the query. Default value: current time.
         self.end_time = end_time
+        # The maximum number of log entries. Default value: 2000.
         self.max_lines = max_lines
+        # The node UID. For more information about how to obtain a node UID, see [GetJob](https://help.aliyun.com/document_detail/459677.html).
         self.pod_uid = pod_uid
+        # The start time of the query. Default value: 7 days ago.
         self.start_time = start_time
 
     def validate(self):
@@ -5952,10 +6342,15 @@ class GetPodLogsResponseBody(TeaModel):
         pod_uid: str = None,
         request_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The logs.
         self.logs = logs
+        # The node ID.
         self.pod_id = pod_id
+        # The instance UID.
         self.pod_uid = pod_uid
+        # The request ID which is used for diagnostics and Q\\&A.
         self.request_id = request_id
 
     def validate(self):
@@ -6042,8 +6437,12 @@ class GetTensorboardRequest(TeaModel):
         token: str = None,
         workspace_id: str = None,
     ):
+        # The job ID. For more information about how to query the job ID, see [ListJob](https://help.aliyun.com/document_detail/459676.html).
         self.jod_id = jod_id
+        # The information about the shared token. You can specify this parameter to obtain the permission to view a TensorBoard job based on the shared token information. You can execute [GetTensorboardSharedUrl](https://help.aliyun.com/document_detail/2557813.html) and extract the shared token from the obtained information.
         self.token = token
+        # The workspace ID. 
+        # <props="china">For more information about how to query the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -6120,6 +6519,7 @@ class GetTensorboardSharedUrlRequest(TeaModel):
         self,
         expire_time_seconds: str = None,
     ):
+        # The validity period of the shareable link. Unit: seconds. Maximum value: 604800.
         self.expire_time_seconds = expire_time_seconds
 
     def validate(self):
@@ -6148,7 +6548,9 @@ class GetTensorboardSharedUrlResponseBody(TeaModel):
         request_id: str = None,
         tensorboard_shared_url: str = None,
     ):
+        # The request ID which is used for troubleshooting.
         self.request_id = request_id
+        # The shareable link of the TensorBoard task.
         self.tensorboard_shared_url = tensorboard_shared_url
 
     def validate(self):
@@ -6223,8 +6625,11 @@ class GetTokenRequest(TeaModel):
         target_id: str = None,
         target_type: str = None,
     ):
+        # The time when the share link expires. Default value: 604800 seconds. Minimum value: 0.
         self.expire_time = expire_time
+        # The ID of the job that is waiting to be shared.
         self.target_id = target_id
+        # The type of the job that you want to share. Valid values: job and tensorboard.
         self.target_type = target_type
 
     def validate(self):
@@ -6261,7 +6666,9 @@ class GetTokenResponseBody(TeaModel):
         request_id: str = None,
         token: str = None,
     ):
+        # The request ID, which is used to troubleshoot issues.
         self.request_id = request_id
+        # The token of the shared job, which can be used as the value of the Token parameter in the GetJob API operation to view information about the shared job.
         self.token = token
 
     def validate(self):
@@ -6335,8 +6742,12 @@ class GetWebTerminalRequest(TeaModel):
         is_shared: bool = None,
         pod_uid: str = None,
     ):
+        # Specifies whether to create a shareable link to access the container. Valid values:
+        # 
+        # *   true: returns a shareable link to access the container. The link will expire after 30 seconds and can only be used once. After you access the container by using the link, other requests that use this link to access the container become invalid.
+        # *   false: returns a common shareable link to access the container. If you use a common shareable link to access a container, Alibaba Cloud identity authentication is required. The link will expire after 30 seconds.
         self.is_shared = is_shared
-        # Pod UID。
+        # The pod UID.
         self.pod_uid = pod_uid
 
     def validate(self):
@@ -6369,7 +6780,47 @@ class GetWebTerminalResponseBody(TeaModel):
         request_id: str = None,
         web_terminal_url: str = None,
     ):
+        # The request ID which is used for diagnostics and Q\\&A.
         self.request_id = request_id
+        # The WebSocket URI for accessing the container. You must build a WebSocket client. For more information about the communication format, see the following code:
+        # 
+        #     ws = new WebSocket(
+        #       `wss://xxxxx`,
+        #     );
+        #     ws.onopen = function open() {
+        #       console.warn(\\"connected\\");
+        #       term.write(\\"\\r\\");
+        #     };
+        # 
+        #     ws.onclose = function close() {
+        #       console.warn(\\"disconnected\\");
+        #       term.write(\\"Connection closed\\");
+        #     };
+        # 
+        #     // Return the following information in the backend.
+        #     ws.onmessage = function incoming(event) {
+        #       const msg = JSON.parse(event.data);
+        #       console.warn(msg);
+        #       if (msg.operation === \\"stdout\\") {
+        #         term.write(msg.data);
+        #       } else {
+        #         console.warn(\\"invalid msg operation: \\" + msg);
+        #       }
+        #     };
+        # 
+        #     // Enter the following code in the console.
+        #     term.onData(data => {
+        #       const msg = { operation: \\"stdin\\", data: data };
+        #       ws.send(JSON.stringify(msg));
+        #     });
+        # 
+        #     term.onResize(size => {
+        #       const msg = { operation: \\"resize\\", cols: size.cols, rows: size.rows };
+        #       ws.send(JSON.stringify(msg));
+        #     });
+        # 
+        #     fitAddon.fit();
+        #     };
         self.web_terminal_url = web_terminal_url
 
     def validate(self):
@@ -6448,12 +6899,33 @@ class ListEcsSpecsRequest(TeaModel):
         resource_type: str = None,
         sort_by: str = None,
     ):
+        # Filter by accelerator type. Valid values:
+        # 
+        # *   CPU
+        # *   GPU
         self.accelerator_type = accelerator_type
+        # The instance types to query. Separate the types with commas (,).
         self.instance_types = instance_types
+        # The sorting order. Valid values:
+        # 
+        # *   desc: descending order.
+        # *   asc: ascending order.
         self.order = order
+        # The number of the page to query. The start value is 1.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The type of the resource. Valid values:
+        # 
+        # *   ECS
+        # *   Lingjun
         self.resource_type = resource_type
+        # The field based on which the results are sorted. Valid values:
+        # 
+        # *   CPU
+        # *   GPU
+        # *   Memory
+        # *   GmtCreateTime
         self.sort_by = sort_by
 
     def validate(self):
@@ -6507,8 +6979,11 @@ class ListEcsSpecsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of ECS specifications.
         self.ecs_specs = ecs_specs
+        # The request ID.
         self.request_id = request_id
+        # The number of types that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -6593,6 +7068,10 @@ class ListJobSanityCheckResultsRequest(TeaModel):
         self,
         order: str = None,
     ):
+        # The sorting order:
+        # 
+        # *   desc: descending order
+        # *   asc: ascending order
         self.order = order
 
     def validate(self):
@@ -6622,8 +7101,11 @@ class ListJobSanityCheckResultsResponseBody(TeaModel):
         sanity_check_results: List[List[SanityCheckResultItem]] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The sanity check results.
         self.sanity_check_results = sanity_check_results
+        # The total number of results that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -6738,29 +7220,89 @@ class ListJobsRequest(TeaModel):
         username: str = None,
         workspace_id: str = None,
     ):
+        # The job visibility. Valid values:
+        # 
+        # *   PUBLIC: The job is visible to all members in the workspace.
+        # *   PRIVATE: The job is visible only to you and the administrator of the workspace.
         self.accessibility = accessibility
+        # The ID of the user associated with the job.
         self.business_user_id = business_user_id
+        # The caller.
         self.caller = caller
+        # The job name. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. For example, if you enter test, test-job1, job-test, job-test2, or job-test can be matched, and job-t1 cannot be matched. The default value null indicates any job name.
         self.display_name = display_name
+        # The end time of the query. Use the job creation time to filter data. The default value is the current time.
         self.end_time = end_time
+        # Specifies whether to query a list of jobs across workspaces. This parameter must be used together with `ShowOwn=true`. You can use this parameter to query a list of jobs recently submitted by the current user.
         self.from_all_workspaces = from_all_workspaces
+        # The job ID. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. The default value null indicates any job ID.
         self.job_id = job_id
+        # The job type. You can query any job type. The default value null indicates any job type. Valid values:
+        # 
+        # *   TFJob
+        # *   PyTorchJob
+        # *   XGBoostJob
+        # *   OneFlowJob
+        # *   ElasticBatchJob
         self.job_type = job_type
+        # The sorting order. Valid values:
+        # 
+        # *   desc (default)
+        # *   asc
         self.order = order
+        # The Idle resource information. Valid values:
+        # 
+        # *   ForbiddenQuotaOverSold
+        # *   ForceQuotaOverSold
+        # *   AcceptQuotaOverSold-true (true indicates that the job uses idle resources.)
+        # *   AcceptQuotaOverSold-false (false indicates that the job uses guaranteed resources.)
         self.oversold_info = oversold_info
+        # The number of the page to return for the current query. Minimum value: 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
         self.payment_type = payment_type
+        # The specific pipeline ID used to filter jobs.
         self.pipeline_id = pipeline_id
+        # The resource group ID. For information about how to obtain the ID of a dedicated resource group, see [Manage resource quota](https://help.aliyun.com/document_detail/2651299.html).
         self.resource_id = resource_id
+        # The resource quota name used to filter jobs. Fuzzy search is supported. Wildcards are not supported. The default value null indicates that jobs are not filtered by resource quota name.
         self.resource_quota_name = resource_quota_name
+        # Specifies whether to query only the jobs submitted by the current user.
         self.show_own = show_own
+        # The sorting field in the returned job list. Valid values:
+        # 
+        # *   DisplayName
+        # *   JobType
+        # *   Status
+        # *   GmtCreateTime
+        # *   GmtFinishTime
         self.sort_by = sort_by
+        # The start time of the query. Use the job creation time to filter data. The default value is the current time minus seven days. In other words, if you do not configure the StartTime and EndTime parameters, the system queries the job list in the last seven days.
         self.start_time = start_time
+        # The job status. Valid values:
+        # 
+        # *   Creating
+        # *   Queuing
+        # *   Bidding (only available for spot jobs that use Lingjun resources)
+        # *   EnvPreparing
+        # *   SanityChecking
+        # *   Running
+        # *   Restarting
+        # *   Stopping
+        # *   SucceededReserving
+        # *   FailedReserving
+        # *   Succeeded
+        # *   Failed
+        # *   Stopped
         self.status = status
+        # The tags.
         self.tags = tags
+        # The user ID used to filter jobs.
         self.user_id_for_filter = user_id_for_filter
+        # The username used to filter jobs. Fuzzy search is supported. Wildcards are not supported. The default value null indicates that jobs are not filtered by username.
         self.username = username
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -6903,29 +7445,89 @@ class ListJobsShrinkRequest(TeaModel):
         username: str = None,
         workspace_id: str = None,
     ):
+        # The job visibility. Valid values:
+        # 
+        # *   PUBLIC: The job is visible to all members in the workspace.
+        # *   PRIVATE: The job is visible only to you and the administrator of the workspace.
         self.accessibility = accessibility
+        # The ID of the user associated with the job.
         self.business_user_id = business_user_id
+        # The caller.
         self.caller = caller
+        # The job name. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. For example, if you enter test, test-job1, job-test, job-test2, or job-test can be matched, and job-t1 cannot be matched. The default value null indicates any job name.
         self.display_name = display_name
+        # The end time of the query. Use the job creation time to filter data. The default value is the current time.
         self.end_time = end_time
+        # Specifies whether to query a list of jobs across workspaces. This parameter must be used together with `ShowOwn=true`. You can use this parameter to query a list of jobs recently submitted by the current user.
         self.from_all_workspaces = from_all_workspaces
+        # The job ID. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. The default value null indicates any job ID.
         self.job_id = job_id
+        # The job type. You can query any job type. The default value null indicates any job type. Valid values:
+        # 
+        # *   TFJob
+        # *   PyTorchJob
+        # *   XGBoostJob
+        # *   OneFlowJob
+        # *   ElasticBatchJob
         self.job_type = job_type
+        # The sorting order. Valid values:
+        # 
+        # *   desc (default)
+        # *   asc
         self.order = order
+        # The Idle resource information. Valid values:
+        # 
+        # *   ForbiddenQuotaOverSold
+        # *   ForceQuotaOverSold
+        # *   AcceptQuotaOverSold-true (true indicates that the job uses idle resources.)
+        # *   AcceptQuotaOverSold-false (false indicates that the job uses guaranteed resources.)
         self.oversold_info = oversold_info
+        # The number of the page to return for the current query. Minimum value: 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
         self.payment_type = payment_type
+        # The specific pipeline ID used to filter jobs.
         self.pipeline_id = pipeline_id
+        # The resource group ID. For information about how to obtain the ID of a dedicated resource group, see [Manage resource quota](https://help.aliyun.com/document_detail/2651299.html).
         self.resource_id = resource_id
+        # The resource quota name used to filter jobs. Fuzzy search is supported. Wildcards are not supported. The default value null indicates that jobs are not filtered by resource quota name.
         self.resource_quota_name = resource_quota_name
+        # Specifies whether to query only the jobs submitted by the current user.
         self.show_own = show_own
+        # The sorting field in the returned job list. Valid values:
+        # 
+        # *   DisplayName
+        # *   JobType
+        # *   Status
+        # *   GmtCreateTime
+        # *   GmtFinishTime
         self.sort_by = sort_by
+        # The start time of the query. Use the job creation time to filter data. The default value is the current time minus seven days. In other words, if you do not configure the StartTime and EndTime parameters, the system queries the job list in the last seven days.
         self.start_time = start_time
+        # The job status. Valid values:
+        # 
+        # *   Creating
+        # *   Queuing
+        # *   Bidding (only available for spot jobs that use Lingjun resources)
+        # *   EnvPreparing
+        # *   SanityChecking
+        # *   Running
+        # *   Restarting
+        # *   Stopping
+        # *   SucceededReserving
+        # *   FailedReserving
+        # *   Succeeded
+        # *   Failed
+        # *   Stopped
         self.status = status
+        # The tags.
         self.tags_shrink = tags_shrink
+        # The user ID used to filter jobs.
         self.user_id_for_filter = user_id_for_filter
+        # The username used to filter jobs. Fuzzy search is supported. Wildcards are not supported. The default value null indicates that jobs are not filtered by username.
         self.username = username
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -7047,8 +7649,11 @@ class ListJobsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The jobs.
         self.jobs = jobs
+        # The request ID used to troubleshoot issues.
         self.request_id = request_id
+        # The total number of jobs that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -7152,25 +7757,73 @@ class ListTensorboardsRequest(TeaModel):
         verbose: bool = None,
         workspace_id: str = None,
     ):
+        # The instance visibility.
+        # 
+        # *   PUBLIC: TensorBoard instances are visible to all members in the workspace.
+        # *   PRIVATE: TensorBoard instances are visible only to you and the administrator of the workspace.
         self.accessibility = accessibility
+        # The TensorBoard instance name.
         self.display_name = display_name
+        # The end time of the query. Use the UTC time when the TensorBoard instance is created to filter data. If you leave this parameter empty, the default value is the current time.
         self.end_time = end_time
+        # The job ID used to filter TensorBoard instances. For more information about how to obtain the ID of a job, see [ListJobs](https://help.aliyun.com/document_detail/459676.html).
         self.job_id = job_id
+        # The sorting order.
+        # 
+        # *   desc
+        # *   asc
         self.order = order
+        # The page number. Minimum value: 1.
         self.page_number = page_number
+        # The number of TensorBoard instances per page.
         self.page_size = page_size
+        # The billing method of TensorBoard instances.
+        # 
+        # *   Free: the TensorBoard instance that uses free resources.
+        # *   Postpaid: the TensorBoard instance that uses pay-as-you-go resources.
         self.payment_type = payment_type
+        # The resource quota ID.
+        # 
+        # > 
+        # 
+        # *   Only whitelisted users can use resource quotas to create TensorBoard instances. If you want to use this feature, contact us.
+        # 
+        # *   This parameter takes effect only when TensorBoard instances use resource quotas.
         self.quota_id = quota_id
+        # Specifies whether to return only the TensorBoard instances created by the current logon account.
         self.show_own = show_own
+        # The returned field used to sort TensorBoard instances.
+        # 
+        # *   DisplayName: the name of the TensorBoard instance.
+        # *   GmtCreateTime: the time when the TensorBoard instance is created.
         self.sort_by = sort_by
+        # The data source ID. For more information about how to obtain the ID of a job, see [ListJobs](https://help.aliyun.com/document_detail/459676.html).
         self.source_id = source_id
+        # The data source associated with the TensorBoard instance. This parameter is no longer used. Only Deep Learning Containers (DLC) training jobs are supported.
         self.source_type = source_type
+        # The start time of the query. Use the UTC time when the TensorBoard instance is created to filter data. If you leave this parameter empty, the default value is seven days before the current time.
         self.start_time = start_time
+        # The TensorBoard instance status. Valid values:
+        # 
+        # *   Creating
+        # *   Running
+        # *   Stopped
+        # *   Succeeded
+        # *   Failed
         self.status = status
+        # The TensorBoard instance ID used to filter TensorBoard instances.
         self.tensorboard_id = tensorboard_id
+        # The user ID.
         self.user_id = user_id
+        # The username.
         self.username = username
+        # Specifies whether to return the information about the TensorBoard instance.
+        # 
+        # *   true
+        # *   false
         self.verbose = verbose
+        # The workspace ID. Obtain a list of TensorBoard instances based on the workspace ID. 
+        # <props="china">For more information, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -7276,8 +7929,11 @@ class ListTensorboardsResponseBody(TeaModel):
         tensorboards: List[Tensorboard] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The TensorBoard instances.
         self.tensorboards = tensorboards
+        # The total number of data sources that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -7362,6 +8018,8 @@ class StartTensorboardRequest(TeaModel):
         self,
         workspace_id: str = None,
     ):
+        # The workspace ID. 
+        # <props="china">For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -7390,7 +8048,9 @@ class StartTensorboardResponseBody(TeaModel):
         request_id: str = None,
         tensorboard_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The TensorBoard instance ID.
         self.tensorboard_id = tensorboard_id
 
     def validate(self):
@@ -7464,7 +8124,9 @@ class StopJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The request ID. You can troubleshoot issues based on the request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7537,6 +8199,8 @@ class StopTensorboardRequest(TeaModel):
         self,
         workspace_id: str = None,
     ):
+        # The workspace ID. 
+        # <props="china">For more information about how to query the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -7565,7 +8229,9 @@ class StopTensorboardResponseBody(TeaModel):
         request_id: str = None,
         tensorboard_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the TensorBoard instance.
         self.tensorboard_id = tensorboard_id
 
     def validate(self):
@@ -7639,7 +8305,15 @@ class UpdateJobRequest(TeaModel):
         accessibility: str = None,
         priority: int = None,
     ):
+        # The job visibility. Valid values:
+        # 
+        # *   PUBLIC: The job is visible to all members in the workspace.
+        # *   PRIVATE: The job is visible only to you and the administrator of the workspace.
         self.accessibility = accessibility
+        # The job priority. Valid values: 1 to 9.
+        # 
+        # *   1: the lowest priority.
+        # *   9: the highest priority.
         self.priority = priority
 
     def validate(self):
@@ -7672,7 +8346,9 @@ class UpdateJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The request ID, which is used for diagnostics and Q\\&A.
         self.request_id = request_id
 
     def validate(self):
@@ -7748,9 +8424,16 @@ class UpdateTensorboardRequest(TeaModel):
         priority: str = None,
         workspace_id: str = None,
     ):
+        # The visibility of the jobs. Valid values:
+        # 
+        # *   PUBLIC: The jobs are public in the workspace.
+        # *   PRIVATE: The jobs are visible only to you and the administrator of the workspace.
         self.accessibility = accessibility
+        # The maximum running time. Unit: minutes.
         self.max_running_time_minutes = max_running_time_minutes
         self.priority = priority
+        # The workspace ID. 
+        # <props="china">For more information about how to query the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -7791,7 +8474,9 @@ class UpdateTensorboardResponseBody(TeaModel):
         request_id: str = None,
         tensorboard_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the TensorBoard instance.
         self.tensorboard_id = tensorboard_id
 
     def validate(self):
