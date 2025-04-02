@@ -1,3 +1,7 @@
+2025-04-02 Version: 6.1.3
+- Update API ListNodes: add response parameters Body.PagingInfo.Nodes.$.RuntimeResource.ResourceGroup.
+
+
 2025-03-31 Version: 6.1.2
 - Update API GetDataQualityEvaluationTaskInstance: add response parameters Body.DataQualityEvaluationTaskInstance.Results.
 - Update API ListDataQualityEvaluationTasks: add response parameters Body.PagingInfo.DataQualityEvaluationTasks.$.DataSourceId.

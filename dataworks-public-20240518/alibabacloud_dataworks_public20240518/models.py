@@ -5045,14 +5045,21 @@ class CreateDIJobRequest(TeaModel):
         self.job_name = job_name
         # The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
         self.job_settings = job_settings
+        # 任务类型，可选
+        # 
+        #  - DatabaseRealtimeMigration(整库实时):将源端多个库的多个表进行流同步，支持仅全量，仅增量，或全量+增量。
+        # 
+        #  - DatabaseOfflineMigration(整库离线):将源端多个库的多个表进行批同步，支持仅全量，仅增量，或全量+增量。
+        # 
+        #  - SingleTableRealtimeMigration(单表实时):将源端单个表进行流同步
         self.job_type = job_type
         # The synchronization type. Valid values:
         # 
-        # *   FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
-        # *   RealtimeIncremental: real-time incremental synchronization
-        # *   Full: full synchronization
-        # *   OfflineIncremental: batch incremental synchronization
-        # *   FullAndOfflineIncremental: one-time full synchronization and batch incremental synchronization
+        # *   FullAndRealtimeIncremental: full synchronization and real-time incremental synchronization of data in an entire database
+        # *   RealtimeIncremental: real-time incremental synchronization of data in a single table
+        # *   Full: full batch synchronization of data in an entire database
+        # *   OfflineIncremental: batch incremental synchronization of data in an entire database
+        # *   FullAndOfflineIncremental: full synchronization and batch incremental synchronization of data in an entire database
         # 
         # This parameter is required.
         self.migration_type = migration_type
@@ -5230,14 +5237,21 @@ class CreateDIJobShrinkRequest(TeaModel):
         self.job_name = job_name
         # The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
         self.job_settings_shrink = job_settings_shrink
+        # 任务类型，可选
+        # 
+        #  - DatabaseRealtimeMigration(整库实时):将源端多个库的多个表进行流同步，支持仅全量，仅增量，或全量+增量。
+        # 
+        #  - DatabaseOfflineMigration(整库离线):将源端多个库的多个表进行批同步，支持仅全量，仅增量，或全量+增量。
+        # 
+        #  - SingleTableRealtimeMigration(单表实时):将源端单个表进行流同步
         self.job_type = job_type
         # The synchronization type. Valid values:
         # 
-        # *   FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
-        # *   RealtimeIncremental: real-time incremental synchronization
-        # *   Full: full synchronization
-        # *   OfflineIncremental: batch incremental synchronization
-        # *   FullAndOfflineIncremental: one-time full synchronization and batch incremental synchronization
+        # *   FullAndRealtimeIncremental: full synchronization and real-time incremental synchronization of data in an entire database
+        # *   RealtimeIncremental: real-time incremental synchronization of data in a single table
+        # *   Full: full batch synchronization of data in an entire database
+        # *   OfflineIncremental: batch incremental synchronization of data in an entire database
+        # *   FullAndOfflineIncremental: full synchronization and batch incremental synchronization of data in an entire database
         # 
         # This parameter is required.
         self.migration_type = migration_type
@@ -15074,8 +15088,11 @@ class GetCertificateRequest(TeaModel):
         id: int = None,
         project_id: int = None,
     ):
+        # The ID of the certificate file.
+        # 
         # This parameter is required.
         self.id = id
+        # The ID of the workspace to which the certificate file belongs.
         self.project_id = project_id
 
     def validate(self):
@@ -15113,12 +15130,19 @@ class GetCertificateResponseBodyCertificate(TeaModel):
         name: str = None,
         project_id: int = None,
     ):
+        # The time when the certificate file was created. The value is a UNIX timestamp. Unit: milliseconds.
         self.create_time = create_time
+        # The ID of the user who created the certificate file.
         self.create_user = create_user
+        # The description.
         self.description = description
+        # The size of the certificate file, in bytes.
         self.file_size_in_bytes = file_size_in_bytes
+        # The ID of the certificate file.
         self.id = id
+        # The name of the certificate file.
         self.name = name
+        # The ID of the workspace to which the certificate file belongs.
         self.project_id = project_id
 
     def validate(self):
@@ -15171,7 +15195,9 @@ class GetCertificateResponseBody(TeaModel):
         certificate: GetCertificateResponseBodyCertificate = None,
         request_id: str = None,
     ):
+        # The details of the certificate file.
         self.certificate = certificate
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16266,6 +16292,11 @@ class GetDIJobResponseBodyPagingInfo(TeaModel):
         self.job_settings = job_settings
         # The status of the job.
         self.job_status = job_status
+        # DatabaseRealtimeMigration (Full Database Real-Time): Perform stream synchronization of multiple tables from multiple source databases. Supports full data only, incremental only, or full + incremental.
+        # 
+        # DatabaseOfflineMigration (Full Database Offline): Perform batch synchronization of multiple tables from multiple source databases. Supports full data only, incremental only, or full + incremental.
+        # 
+        # SingleTableRealtimeMigration (Single Table Real-Time): Perform stream synchronization of a single table from the source.
         self.job_type = job_type
         # The synchronization type. Valid values:
         # 
@@ -17750,7 +17781,7 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         # The hook trigger condition. When this condition is met, the hook action is triggered. Only two conditional expressions are supported:
         # 
         # *   Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
-        # *   Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High"AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
+        # *   Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
         self.condition = condition
         # Hook type. Currently, only one type is supported:
         # 
@@ -17914,7 +17945,7 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         # The notification trigger condition. When this condition is met, the alert notification is triggered. Only two conditional expressions are supported:
         # 
         # *   Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
-        # *   Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High"AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
+        # *   Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
         self.condition = condition
         # The alert notification methods.
         self.notifications = notifications
@@ -26643,15 +26674,25 @@ class ListCertificatesRequest(TeaModel):
         sort_by: str = None,
         start_create_time: int = None,
     ):
+        # The ID of the user who created the certificate files.
         self.create_user = create_user
+        # The time when the certificate file was created. You can call this operation to query the files that are created before the time. Unit: milliseconds.
         self.end_create_time = end_create_time
+        # The name of the certificate file. Fuzzy match by file name is supported.
         self.name = name
+        # The order in which you want to sort the certificate files. Valid values: Desc: descending order ASC: ascending order Default value: Asc
         self.order = order
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The ID of the workspace to which the certificate file belongs.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The field used to sort the certificate files. Valid values: CreateTime Id Name Default value: Id
         self.sort_by = sort_by
+        # The time when the certificate file was created. You can call this operation to query the files that are created after the time. Unit: milliseconds.
         self.start_create_time = start_create_time
 
     def validate(self):
@@ -26716,11 +26757,17 @@ class ListCertificatesResponseBodyPagingInfoCertificates(TeaModel):
         id: int = None,
         name: str = None,
     ):
+        # The time when the certificate file was created. This value is a UNIX timestamp.
         self.create_time = create_time
+        # The ID of the user who created the certificate file.
         self.create_user = create_user
+        # The description.
         self.description = description
+        # The size of the certificate file, in bytes.
         self.file_size_in_bytes = file_size_in_bytes
+        # The ID of the certificate file.
         self.id = id
+        # The name of the certificate file.
         self.name = name
 
     def validate(self):
@@ -26771,9 +26818,13 @@ class ListCertificatesResponseBodyPagingInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The certificate files.
         self.certificates = certificates
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -26822,7 +26873,9 @@ class ListCertificatesResponseBody(TeaModel):
         paging_info: ListCertificatesResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -28673,9 +28726,7 @@ class ListDataAssetTagsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The type of the tag.
-        # 
-        # Valid values:
+        # The type of the tag. Valid values:
         # 
         # *   Normal
         # *   System
@@ -34311,8 +34362,8 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstances(T
     ):
         # The scheduling dependency type. Valid values:
         # 
-        # *   Normal: same-cycle scheduling dependency
-        # *   CrossCycle: cross-cycle scheduling dependency
+        # *   Normal
+        # *   CrossCycle
         self.dependency_type = dependency_type
         # The information about a task instance.
         self.task_instance = task_instance
@@ -38405,8 +38456,10 @@ class ListNodesResponseBodyPagingInfoNodesOutputs(TeaModel):
 class ListNodesResponseBodyPagingInfoNodesRuntimeResource(TeaModel):
     def __init__(
         self,
+        resource_group: str = None,
         resource_group_id: str = None,
     ):
+        self.resource_group = resource_group
         # The resource group ID.
         self.resource_group_id = resource_group_id
 
@@ -38419,12 +38472,16 @@ class ListNodesResponseBodyPagingInfoNodesRuntimeResource(TeaModel):
             return _map
 
         result = dict()
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         return self
@@ -40302,7 +40359,7 @@ class ListResourceGroupsRequest(TeaModel):
         # *   Status (Desc/Asc): the status of the resource group
         # *   Spec (Desc/Asc): the specifications of the resource group
         # *   CreateUser (Desc/Asc): the creator of the resource group
-        # *   CreateTime (Desc/Asc): the time when the route is created
+        # *   CreateTime (Desc/Asc): the time when the resource group is created
         # 
         # Default value: CreateTime Asc
         self.sort_by = sort_by
@@ -40415,7 +40472,7 @@ class ListResourceGroupsShrinkRequest(TeaModel):
         # *   Status (Desc/Asc): the status of the resource group
         # *   Spec (Desc/Asc): the specifications of the resource group
         # *   CreateUser (Desc/Asc): the creator of the resource group
-        # *   CreateTime (Desc/Asc): the time when the route is created
+        # *   CreateTime (Desc/Asc): the time when the resource group is created
         # 
         # Default value: CreateTime Asc
         self.sort_by = sort_by
@@ -41559,7 +41616,7 @@ class ListTaskInstanceOperationLogsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The operation date, accurate to the day. The default value is the current day. You can query only the operation logs generated within the previous 31 days.
+        # The operation date, accurate to the day. The default value is the current day. You can query only the operation logs generated within the previous 31 days. This value is a UNIX timestamp.
         self.date = date
         # The instance ID.
         # 
@@ -41869,7 +41926,7 @@ class ListTaskInstancesRequest(TeaModel):
         # *   Skip
         # *   Normal
         self.trigger_recurrence = trigger_recurrence
-        # The trigger type.
+        # The trigger type. Valid values:
         # 
         # *   Scheduler: scheduling cycle-based trigger
         # *   Manual: manual trigger
@@ -42055,7 +42112,7 @@ class ListTaskInstancesShrinkRequest(TeaModel):
         # *   Skip
         # *   Normal
         self.trigger_recurrence = trigger_recurrence
-        # The trigger type.
+        # The trigger type. Valid values:
         # 
         # *   Scheduler: scheduling cycle-based trigger
         # *   Manual: manual trigger
@@ -46107,8 +46164,6 @@ class ListWorkflowInstancesRequest(TeaModel):
         type: str = None,
         workflow_id: int = None,
     ):
-        # 业务日期。
-        # 
         # This parameter is required.
         self.biz_date = biz_date
         # The IDs of the workflow instances. You can query multiple instances at a time by instance ID.
@@ -46135,12 +46190,13 @@ class ListWorkflowInstancesRequest(TeaModel):
         # 
         # Default value: Id Desc.
         self.sort_by = sort_by
-        # 工作流实例的类型。
-        # - Normal：周期调度
-        # - Manual：手动任务
-        # - SmokeTest：测试
-        # - SupplementData：补数据
-        # - ManualWorkflow：手动工作流
+        # The type of the workflow instance. Valid values:
+        # 
+        # *   Normal
+        # *   Manual
+        # *   SmokeTest
+        # *   SupplementData
+        # *   ManualWorkflow
         self.type = type
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
@@ -46215,8 +46271,6 @@ class ListWorkflowInstancesShrinkRequest(TeaModel):
         type: str = None,
         workflow_id: int = None,
     ):
-        # 业务日期。
-        # 
         # This parameter is required.
         self.biz_date = biz_date
         # The IDs of the workflow instances. You can query multiple instances at a time by instance ID.
@@ -46243,12 +46297,13 @@ class ListWorkflowInstancesShrinkRequest(TeaModel):
         # 
         # Default value: Id Desc.
         self.sort_by = sort_by
-        # 工作流实例的类型。
-        # - Normal：周期调度
-        # - Manual：手动任务
-        # - SmokeTest：测试
-        # - SupplementData：补数据
-        # - ManualWorkflow：手动工作流
+        # The type of the workflow instance. Valid values:
+        # 
+        # *   Normal
+        # *   Manual
+        # *   SmokeTest
+        # *   SupplementData
+        # *   ManualWorkflow
         self.type = type
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
@@ -46327,7 +46382,6 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(TeaModel):
         type: str = None,
         workflow_id: int = None,
     ):
-        # 业务日期。
         self.biz_date = biz_date
         # The creation time.
         self.create_time = create_time
@@ -46363,12 +46417,6 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(TeaModel):
         # *   Success: The instance is successfully run.
         # *   Checking: Data quality is being checked for the instance.
         self.status = status
-        # 工作流实例的类型。
-        # - Normal：周期调度
-        # - Manual：手动任务
-        # - SmokeTest：测试
-        # - SupplementData：补数据
-        # - ManualWorkflow：手动工作流
         self.type = type
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
@@ -48924,9 +48972,9 @@ class StartDIJobRequestRealtimeStartSettingsFailoverSettings(TeaModel):
         interval: int = None,
         upper_limit: int = None,
     ):
-        # The failover interval. Unit: minutes.
+        # This parameter is deprecated. Use advanced parameters for failover settings when you create a task.
         self.interval = interval
-        # The maximum number of failovers allowed.
+        # This parameter is deprecated. Use advanced parameters for failover settings when you create a task.
         self.upper_limit = upper_limit
 
     def validate(self):
@@ -48959,7 +49007,7 @@ class StartDIJobRequestRealtimeStartSettings(TeaModel):
         failover_settings: StartDIJobRequestRealtimeStartSettingsFailoverSettings = None,
         start_time: int = None,
     ):
-        # The failover settings.
+        # This parameter is deprecated. Use advanced parameters for failover settings when you create a task.
         self.failover_settings = failover_settings
         # The start time.
         self.start_time = start_time
@@ -49000,11 +49048,18 @@ class StartDIJobRequest(TeaModel):
     ):
         # This parameter is deprecated. Use the Id parameter instead.
         self.dijob_id = dijob_id
-        # Deprecated
+        # Specifies whether to forcefully rerun all synchronization steps. If you do not configure this parameter, the system does not perform the forcible rerun operation.
+        # 
+        # *   If the system does not perform the forcible rerun operation, only the steps that are not run start to run.
+        # *   If the system performs the forcible rerun operation, all steps start to rerun.
         self.force_to_rerun = force_to_rerun
         # The ID of the synchronization task.
         self.id = id
         # The settings for starting real-time synchronization.
+        # 
+        #     {
+        #       "StartTime":1663765058
+        #     }
         self.realtime_start_settings = realtime_start_settings
 
     def validate(self):
@@ -49051,11 +49106,18 @@ class StartDIJobShrinkRequest(TeaModel):
     ):
         # This parameter is deprecated. Use the Id parameter instead.
         self.dijob_id = dijob_id
-        # Deprecated
+        # Specifies whether to forcefully rerun all synchronization steps. If you do not configure this parameter, the system does not perform the forcible rerun operation.
+        # 
+        # *   If the system does not perform the forcible rerun operation, only the steps that are not run start to run.
+        # *   If the system performs the forcible rerun operation, all steps start to rerun.
         self.force_to_rerun = force_to_rerun
         # The ID of the synchronization task.
         self.id = id
         # The settings for starting real-time synchronization.
+        # 
+        #     {
+        #       "StartTime":1663765058
+        #     }
         self.realtime_start_settings_shrink = realtime_start_settings_shrink
 
     def validate(self):
@@ -50429,7 +50491,7 @@ class TriggerSchedulerTaskInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.task_id = task_id
-        # The time defined by the HTTP Trigger node.
+        # The time defined by the HTTP Trigger node. This value is a UNIX timestamp.
         # 
         # This parameter is required.
         self.trigger_time = trigger_time
@@ -52327,7 +52389,7 @@ class UpdateDIJobRequestResourceSettingsOfflineResourceSettings(TeaModel):
     ):
         # The number of compute units (CUs) in the resource group for Data Integration that are used for batch synchronization.
         self.requested_cu = requested_cu
-        # The identifier of the resource group for Data Integration used for batch synchronization.
+        # The name of the resource group for Data Integration used for batch synchronization.
         self.resource_group_identifier = resource_group_identifier
 
     def validate(self):
@@ -52362,7 +52424,7 @@ class UpdateDIJobRequestResourceSettingsRealtimeResourceSettings(TeaModel):
     ):
         # The number of CUs in the resource group for Data Integration that are used for real-time synchronization.
         self.requested_cu = requested_cu
-        # The identifier of the resource group for Data Integration used for real-time synchronization.
+        # The name of the resource group for Data Integration used for real-time synchronization.
         self.resource_group_identifier = resource_group_identifier
 
     def validate(self):
@@ -52397,7 +52459,7 @@ class UpdateDIJobRequestResourceSettingsScheduleResourceSettings(TeaModel):
     ):
         # The number of CUs in the resource group for scheduling that are used for batch synchronization.
         self.requested_cu = requested_cu
-        # The identifier of the resource group for scheduling used for batch synchronization.
+        # The name of the resource group for scheduling used for batch synchronization.
         self.resource_group_identifier = resource_group_identifier
 
     def validate(self):
@@ -56591,7 +56653,7 @@ class UpdateTaskRequestTrigger(TeaModel):
     ):
         # The CRON expression. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.cron = cron
-        # The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+        # The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the `yyyy-mm-dd hh:mm:ss` format.
         self.end_time = end_time
         # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
         # 
@@ -56599,12 +56661,12 @@ class UpdateTaskRequestTrigger(TeaModel):
         # *   Skip
         # *   Normal
         self.recurrence = recurrence
-        # The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+        # The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the `yyyy-mm-dd hh:mm:ss` format.
         self.start_time = start_time
         # The trigger type. Valid values:
         # 
-        # *   Scheduler: periodic scheduling
-        # *   Manual: manual scheduling
+        # *   Scheduler: scheduling cycle-based trigger
+        # *   Manual: manual trigger
         # 
         # This parameter is required.
         self.type = type
@@ -56692,7 +56754,7 @@ class UpdateTaskRequest(TeaModel):
         # *   T+1
         # *   Immediately
         self.instance_mode = instance_mode
-        # The name of the task.
+        # The name.
         # 
         # This parameter is required.
         self.name = name
@@ -56903,7 +56965,7 @@ class UpdateTaskShrinkRequest(TeaModel):
         # *   T+1
         # *   Immediately
         self.instance_mode = instance_mode
-        # The name of the task.
+        # The name.
         # 
         # This parameter is required.
         self.name = name
@@ -58179,14 +58241,14 @@ class UpdateWorkflowRequestTrigger(TeaModel):
     ):
         # The CRON expression. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.cron = cron
-        # The end time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+        # The end time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the `yyyy-mm-dd hh:mm:ss` format.
         self.end_time = end_time
-        # The start time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+        # The start time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the `yyyy-mm-dd hh:mm:ss` format.
         self.start_time = start_time
         # The trigger type. Valid values:
         # 
-        # *   Scheduler: periodic scheduling
-        # *   Manual: manual scheduling
+        # *   Scheduler: scheduling cycle-based trigger
+        # *   Manual: manual trigger
         # 
         # This parameter is required.
         self.type = type

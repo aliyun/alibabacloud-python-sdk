@@ -6603,7 +6603,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetAlertRuleResponse:
         """
-        @summary Queries a list of custom alert monitoring rules.
+        @summary Queries a custom alert monitoring rule.
         
         @param request: GetAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6642,7 +6642,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetAlertRuleResponse:
         """
-        @summary Queries a list of custom alert monitoring rules.
+        @summary Queries a custom alert monitoring rule.
         
         @param request: GetAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6680,7 +6680,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetAlertRuleRequest,
     ) -> dataworks_public_20240518_models.GetAlertRuleResponse:
         """
-        @summary Queries a list of custom alert monitoring rules.
+        @summary Queries a custom alert monitoring rule.
         
         @param request: GetAlertRuleRequest
         @return: GetAlertRuleResponse
@@ -6693,7 +6693,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetAlertRuleRequest,
     ) -> dataworks_public_20240518_models.GetAlertRuleResponse:
         """
-        @summary Queries a list of custom alert monitoring rules.
+        @summary Queries a custom alert monitoring rule.
         
         @param request: GetAlertRuleRequest
         @return: GetAlertRuleResponse
@@ -6707,7 +6707,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetCertificateResponse:
         """
-        @summary 查看认证文件
+        @summary Queries a certificate file.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Deploy, Develop, Workspace Owner, and O\\&M.
         
         @param request: GetCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6746,7 +6749,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetCertificateResponse:
         """
-        @summary 查看认证文件
+        @summary Queries a certificate file.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Deploy, Develop, Workspace Owner, and O\\&M.
         
         @param request: GetCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6784,7 +6790,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetCertificateRequest,
     ) -> dataworks_public_20240518_models.GetCertificateResponse:
         """
-        @summary 查看认证文件
+        @summary Queries a certificate file.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Deploy, Develop, Workspace Owner, and O\\&M.
         
         @param request: GetCertificateRequest
         @return: GetCertificateResponse
@@ -6797,7 +6806,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetCertificateRequest,
     ) -> dataworks_public_20240518_models.GetCertificateResponse:
         """
-        @summary 查看认证文件
+        @summary Queries a certificate file.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Deploy, Develop, Workspace Owner, and O\\&M.
         
         @param request: GetCertificateRequest
         @return: GetCertificateResponse
@@ -10087,7 +10099,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListAlertRulesResponse:
         """
-        @summary Queries a list of custom monitoring alert rule by page.
+        @summary Queries a list of custom monitoring alert rules.
         
         @param tmp_req: ListAlertRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10146,7 +10158,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListAlertRulesResponse:
         """
-        @summary Queries a list of custom monitoring alert rule by page.
+        @summary Queries a list of custom monitoring alert rules.
         
         @param tmp_req: ListAlertRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10204,7 +10216,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListAlertRulesRequest,
     ) -> dataworks_public_20240518_models.ListAlertRulesResponse:
         """
-        @summary Queries a list of custom monitoring alert rule by page.
+        @summary Queries a list of custom monitoring alert rules.
         
         @param request: ListAlertRulesRequest
         @return: ListAlertRulesResponse
@@ -10217,7 +10229,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListAlertRulesRequest,
     ) -> dataworks_public_20240518_models.ListAlertRulesResponse:
         """
-        @summary Queries a list of custom monitoring alert rule by page.
+        @summary Queries a list of custom monitoring alert rules.
         
         @param request: ListAlertRulesRequest
         @return: ListAlertRulesResponse
@@ -10231,7 +10243,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListCertificatesResponse:
         """
-        @summary 查询认证文件列表
+        @summary Queries a list of certificate files.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator.
         
         @param request: ListCertificatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10270,7 +10285,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListCertificatesResponse:
         """
-        @summary 查询认证文件列表
+        @summary Queries a list of certificate files.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator.
         
         @param request: ListCertificatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10308,7 +10326,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListCertificatesRequest,
     ) -> dataworks_public_20240518_models.ListCertificatesResponse:
         """
-        @summary 查询认证文件列表
+        @summary Queries a list of certificate files.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator.
         
         @param request: ListCertificatesRequest
         @return: ListCertificatesResponse
@@ -10321,7 +10342,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListCertificatesRequest,
     ) -> dataworks_public_20240518_models.ListCertificatesResponse:
         """
-        @summary 查询认证文件列表
+        @summary Queries a list of certificate files.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator.
         
         @param request: ListCertificatesRequest
         @return: ListCertificatesResponse
@@ -17159,7 +17183,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.TestDataSourceConnectivityResponse:
         """
-        @summary Tests the network connectivity between a resource group and a data source.
+        @summary Tests the connectivity between a data source and a resource group.
         
         @description 1.  This API operation is available for all DataWorks editions.
         2.  Your account must be assigned one of the following roles of the desired workspace: Tenant Owner, Workspace Administrator, Deploy, Develop, Workspace Owner, and O\\&M
@@ -17207,7 +17231,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.TestDataSourceConnectivityResponse:
         """
-        @summary Tests the network connectivity between a resource group and a data source.
+        @summary Tests the connectivity between a data source and a resource group.
         
         @description 1.  This API operation is available for all DataWorks editions.
         2.  Your account must be assigned one of the following roles of the desired workspace: Tenant Owner, Workspace Administrator, Deploy, Develop, Workspace Owner, and O\\&M
@@ -17254,7 +17278,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.TestDataSourceConnectivityRequest,
     ) -> dataworks_public_20240518_models.TestDataSourceConnectivityResponse:
         """
-        @summary Tests the network connectivity between a resource group and a data source.
+        @summary Tests the connectivity between a data source and a resource group.
         
         @description 1.  This API operation is available for all DataWorks editions.
         2.  Your account must be assigned one of the following roles of the desired workspace: Tenant Owner, Workspace Administrator, Deploy, Develop, Workspace Owner, and O\\&M
@@ -17270,7 +17294,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.TestDataSourceConnectivityRequest,
     ) -> dataworks_public_20240518_models.TestDataSourceConnectivityResponse:
         """
-        @summary Tests the network connectivity between a resource group and a data source.
+        @summary Tests the connectivity between a data source and a resource group.
         
         @description 1.  This API operation is available for all DataWorks editions.
         2.  Your account must be assigned one of the following roles of the desired workspace: Tenant Owner, Workspace Administrator, Deploy, Develop, Workspace Owner, and O\\&M
@@ -17559,7 +17583,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateAlertRuleResponse:
         """
-        @summary Updates a custom alert monitoring rule.
+        @summary Updates the information about a custom alert monitoring rule.
         
         @param tmp_req: UpdateAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17616,7 +17640,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateAlertRuleResponse:
         """
-        @summary Updates a custom alert monitoring rule.
+        @summary Updates the information about a custom alert monitoring rule.
         
         @param tmp_req: UpdateAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17672,7 +17696,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateAlertRuleRequest,
     ) -> dataworks_public_20240518_models.UpdateAlertRuleResponse:
         """
-        @summary Updates a custom alert monitoring rule.
+        @summary Updates the information about a custom alert monitoring rule.
         
         @param request: UpdateAlertRuleRequest
         @return: UpdateAlertRuleResponse
@@ -17685,7 +17709,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateAlertRuleRequest,
     ) -> dataworks_public_20240518_models.UpdateAlertRuleResponse:
         """
-        @summary Updates a custom alert monitoring rule.
+        @summary Updates the information about a custom alert monitoring rule.
         
         @param request: UpdateAlertRuleRequest
         @return: UpdateAlertRuleResponse
