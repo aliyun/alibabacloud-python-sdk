@@ -3501,11 +3501,15 @@ class GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp(
         self,
         dialog_exec_plan: str = None,
         dialog_labels: List[GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisRespDialogLabels] = None,
+        dialog_open_analysis: Dict[str, Any] = None,
+        dialog_process_analysis: Dict[str, Any] = None,
         dialog_sop: str = None,
         dialog_summary: str = None,
     ):
         self.dialog_exec_plan = dialog_exec_plan
         self.dialog_labels = dialog_labels
+        self.dialog_open_analysis = dialog_open_analysis
+        self.dialog_process_analysis = dialog_process_analysis
         self.dialog_sop = dialog_sop
         self.dialog_summary = dialog_summary
 
@@ -3527,6 +3531,10 @@ class GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp(
         if self.dialog_labels is not None:
             for k in self.dialog_labels:
                 result['dialogLabels'].append(k.to_map() if k else None)
+        if self.dialog_open_analysis is not None:
+            result['dialogOpenAnalysis'] = self.dialog_open_analysis
+        if self.dialog_process_analysis is not None:
+            result['dialogProcessAnalysis'] = self.dialog_process_analysis
         if self.dialog_sop is not None:
             result['dialogSop'] = self.dialog_sop
         if self.dialog_summary is not None:
@@ -3542,6 +3550,10 @@ class GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp(
             for k in m.get('dialogLabels'):
                 temp_model = GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisRespDialogLabels()
                 self.dialog_labels.append(temp_model.from_map(k))
+        if m.get('dialogOpenAnalysis') is not None:
+            self.dialog_open_analysis = m.get('dialogOpenAnalysis')
+        if m.get('dialogProcessAnalysis') is not None:
+            self.dialog_process_analysis = m.get('dialogProcessAnalysis')
         if m.get('dialogSop') is not None:
             self.dialog_sop = m.get('dialogSop')
         if m.get('dialogSummary') is not None:

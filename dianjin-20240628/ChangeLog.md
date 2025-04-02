@@ -1,3 +1,8 @@
+2025-04-02 Version: 1.12.2
+- Update API GetDialogAnalysisResult: add response parameters Body.data.dialogAnalysisRespList.$.analysisResp.dialogOpenAnalysis.
+- Update API GetDialogAnalysisResult: add response parameters Body.data.dialogAnalysisRespList.$.analysisResp.dialogProcessAnalysis.
+
+
 2025-04-01 Version: 1.12.1
 - Generated python 2024-06-28 for DianJin.
 
