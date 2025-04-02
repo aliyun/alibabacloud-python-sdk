@@ -3023,3 +3023,708 @@ class GetIssuesResponse(TeaModel):
         return self
 
 
+class GetSymbolicFilesRequest(TeaModel):
+    def __init__(
+        self,
+        app_key: int = None,
+        app_version: str = None,
+        end_time: int = None,
+        export_status: str = None,
+        file_name: str = None,
+        file_type: str = None,
+        os: str = None,
+        page_index: int = None,
+        page_size: int = None,
+        start_time: int = None,
+        uuid: str = None,
+    ):
+        # appKey
+        # 
+        # This parameter is required.
+        self.app_key = app_key
+        self.app_version = app_version
+        self.end_time = end_time
+        self.export_status = export_status
+        self.file_name = file_name
+        # This parameter is required.
+        self.file_type = file_type
+        # This parameter is required.
+        self.os = os
+        # This parameter is required.
+        self.page_index = page_index
+        # This parameter is required.
+        self.page_size = page_size
+        self.start_time = start_time
+        # uuid
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.export_status is not None:
+            result['ExportStatus'] = self.export_status
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.os is not None:
+            result['Os'] = self.os
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('ExportStatus') is not None:
+            self.export_status = m.get('ExportStatus')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('Os') is not None:
+            self.os = m.get('Os')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class GetSymbolicFilesResponseBodyModelItems(TeaModel):
+    def __init__(
+        self,
+        app_version: str = None,
+        build_id: str = None,
+        export_status: str = None,
+        file_name: str = None,
+        file_path: str = None,
+        file_type: str = None,
+        gmt_create: int = None,
+        id: int = None,
+        status: str = None,
+        uuid: str = None,
+    ):
+        self.app_version = app_version
+        self.build_id = build_id
+        self.export_status = export_status
+        self.file_name = file_name
+        self.file_path = file_path
+        self.file_type = file_type
+        self.gmt_create = gmt_create
+        self.id = id
+        self.status = status
+        # uuid
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
+        if self.build_id is not None:
+            result['BuildId'] = self.build_id
+        if self.export_status is not None:
+            result['ExportStatus'] = self.export_status
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_path is not None:
+            result['FilePath'] = self.file_path
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
+        if m.get('BuildId') is not None:
+            self.build_id = m.get('BuildId')
+        if m.get('ExportStatus') is not None:
+            self.export_status = m.get('ExportStatus')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FilePath') is not None:
+            self.file_path = m.get('FilePath')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class GetSymbolicFilesResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        items: List[GetSymbolicFilesResponseBodyModelItems] = None,
+        page_num: int = None,
+        page_size: int = None,
+        pages: int = None,
+        total: int = None,
+    ):
+        self.items = items
+        self.page_num = page_num
+        self.page_size = page_size
+        self.pages = pages
+        self.total = total
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.pages is not None:
+            result['Pages'] = self.pages
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = GetSymbolicFilesResponseBodyModelItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Pages') is not None:
+            self.pages = m.get('Pages')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSymbolicFilesResponseBody(TeaModel):
+    def __init__(
+        self,
+        args: Dict[str, Any] = None,
+        error_code: int = None,
+        message: str = None,
+        model: GetSymbolicFilesResponseBodyModel = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Args
+        self.args = args
+        self.error_code = error_code
+        self.message = message
+        self.model = model
+        # requestId
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.model:
+            self.model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.args is not None:
+            result['Args'] = self.args
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Args') is not None:
+            self.args = m.get('Args')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            temp_model = GetSymbolicFilesResponseBodyModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetSymbolicFilesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSymbolicFilesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSymbolicFilesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RequestUploadTokenRequest(TeaModel):
+    def __init__(
+        self,
+        app_key: int = None,
+        os: str = None,
+    ):
+        # appKey
+        # 
+        # This parameter is required.
+        self.app_key = app_key
+        # This parameter is required.
+        self.os = os
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.os is not None:
+            result['Os'] = self.os
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('Os') is not None:
+            self.os = m.get('Os')
+        return self
+
+
+class RequestUploadTokenResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        access_key_id: str = None,
+        access_key_secret: str = None,
+        endpoint: str = None,
+        security_token: str = None,
+        upload_bucket: str = None,
+        upload_dir: str = None,
+    ):
+        # OSS AccessKeyId
+        self.access_key_id = access_key_id
+        # OSS AccessKeySecret
+        self.access_key_secret = access_key_secret
+        self.endpoint = endpoint
+        self.security_token = security_token
+        self.upload_bucket = upload_bucket
+        self.upload_dir = upload_dir
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key_id is not None:
+            result['AccessKeyId'] = self.access_key_id
+        if self.access_key_secret is not None:
+            result['AccessKeySecret'] = self.access_key_secret
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.upload_bucket is not None:
+            result['UploadBucket'] = self.upload_bucket
+        if self.upload_dir is not None:
+            result['UploadDir'] = self.upload_dir
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKeyId') is not None:
+            self.access_key_id = m.get('AccessKeyId')
+        if m.get('AccessKeySecret') is not None:
+            self.access_key_secret = m.get('AccessKeySecret')
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('UploadBucket') is not None:
+            self.upload_bucket = m.get('UploadBucket')
+        if m.get('UploadDir') is not None:
+            self.upload_dir = m.get('UploadDir')
+        return self
+
+
+class RequestUploadTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        args: Dict[str, Any] = None,
+        error_code: int = None,
+        message: str = None,
+        model: RequestUploadTokenResponseBodyModel = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Args
+        self.args = args
+        self.error_code = error_code
+        self.message = message
+        self.model = model
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.model:
+            self.model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.args is not None:
+            result['Args'] = self.args
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Args') is not None:
+            self.args = m.get('Args')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            temp_model = RequestUploadTokenResponseBodyModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RequestUploadTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RequestUploadTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RequestUploadTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitSymbolicRequest(TeaModel):
+    def __init__(
+        self,
+        app_key: int = None,
+        app_version: str = None,
+        build_id: str = None,
+        file_name: str = None,
+        file_path: str = None,
+        file_type: str = None,
+        os: str = None,
+        uuid: str = None,
+    ):
+        # appKey
+        # 
+        # This parameter is required.
+        self.app_key = app_key
+        self.app_version = app_version
+        self.build_id = build_id
+        # This parameter is required.
+        self.file_name = file_name
+        # This parameter is required.
+        self.file_path = file_path
+        # This parameter is required.
+        self.file_type = file_type
+        # This parameter is required.
+        self.os = os
+        # uuid
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
+        if self.build_id is not None:
+            result['BuildId'] = self.build_id
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_path is not None:
+            result['FilePath'] = self.file_path
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.os is not None:
+            result['Os'] = self.os
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
+        if m.get('BuildId') is not None:
+            self.build_id = m.get('BuildId')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FilePath') is not None:
+            self.file_path = m.get('FilePath')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('Os') is not None:
+            self.os = m.get('Os')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class SubmitSymbolicResponseBody(TeaModel):
+    def __init__(
+        self,
+        args: Dict[str, Any] = None,
+        error_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # args
+        self.args = args
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.args is not None:
+            result['Args'] = self.args
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Args') is not None:
+            self.args = m.get('Args')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitSymbolicResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitSymbolicResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitSymbolicResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+

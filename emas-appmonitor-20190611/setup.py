@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_emas-appmonitor20190611.
 
-Created on 25/02/2025
+Created on 02/04/2025
 
 @author: Alibaba Cloud SDK
 """

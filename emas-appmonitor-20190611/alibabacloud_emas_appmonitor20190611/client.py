@@ -630,3 +630,375 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_issues_with_options_async(request, runtime)
+
+    def get_symbolic_files_with_options(
+        self,
+        request: emas_appmonitor_20190611_models.GetSymbolicFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emas_appmonitor_20190611_models.GetSymbolicFilesResponse:
+        """
+        @param request: GetSymbolicFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSymbolicFilesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_key):
+            body['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.app_version):
+            body['AppVersion'] = request.app_version
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.export_status):
+            body['ExportStatus'] = request.export_status
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.os):
+            body['Os'] = request.os
+        if not UtilClient.is_unset(request.page_index):
+            body['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSymbolicFiles',
+            version='2019-06-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.GetSymbolicFilesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.GetSymbolicFilesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_symbolic_files_with_options_async(
+        self,
+        request: emas_appmonitor_20190611_models.GetSymbolicFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emas_appmonitor_20190611_models.GetSymbolicFilesResponse:
+        """
+        @param request: GetSymbolicFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSymbolicFilesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_key):
+            body['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.app_version):
+            body['AppVersion'] = request.app_version
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.export_status):
+            body['ExportStatus'] = request.export_status
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.os):
+            body['Os'] = request.os
+        if not UtilClient.is_unset(request.page_index):
+            body['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSymbolicFiles',
+            version='2019-06-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.GetSymbolicFilesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.GetSymbolicFilesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_symbolic_files(
+        self,
+        request: emas_appmonitor_20190611_models.GetSymbolicFilesRequest,
+    ) -> emas_appmonitor_20190611_models.GetSymbolicFilesResponse:
+        """
+        @param request: GetSymbolicFilesRequest
+        @return: GetSymbolicFilesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_symbolic_files_with_options(request, runtime)
+
+    async def get_symbolic_files_async(
+        self,
+        request: emas_appmonitor_20190611_models.GetSymbolicFilesRequest,
+    ) -> emas_appmonitor_20190611_models.GetSymbolicFilesResponse:
+        """
+        @param request: GetSymbolicFilesRequest
+        @return: GetSymbolicFilesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_symbolic_files_with_options_async(request, runtime)
+
+    def request_upload_token_with_options(
+        self,
+        request: emas_appmonitor_20190611_models.RequestUploadTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emas_appmonitor_20190611_models.RequestUploadTokenResponse:
+        """
+        @param request: RequestUploadTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RequestUploadTokenResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_key):
+            body['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.os):
+            body['Os'] = request.os
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RequestUploadToken',
+            version='2019-06-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.RequestUploadTokenResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.RequestUploadTokenResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def request_upload_token_with_options_async(
+        self,
+        request: emas_appmonitor_20190611_models.RequestUploadTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emas_appmonitor_20190611_models.RequestUploadTokenResponse:
+        """
+        @param request: RequestUploadTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RequestUploadTokenResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_key):
+            body['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.os):
+            body['Os'] = request.os
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RequestUploadToken',
+            version='2019-06-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.RequestUploadTokenResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.RequestUploadTokenResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def request_upload_token(
+        self,
+        request: emas_appmonitor_20190611_models.RequestUploadTokenRequest,
+    ) -> emas_appmonitor_20190611_models.RequestUploadTokenResponse:
+        """
+        @param request: RequestUploadTokenRequest
+        @return: RequestUploadTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.request_upload_token_with_options(request, runtime)
+
+    async def request_upload_token_async(
+        self,
+        request: emas_appmonitor_20190611_models.RequestUploadTokenRequest,
+    ) -> emas_appmonitor_20190611_models.RequestUploadTokenResponse:
+        """
+        @param request: RequestUploadTokenRequest
+        @return: RequestUploadTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.request_upload_token_with_options_async(request, runtime)
+
+    def submit_symbolic_with_options(
+        self,
+        request: emas_appmonitor_20190611_models.SubmitSymbolicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emas_appmonitor_20190611_models.SubmitSymbolicResponse:
+        """
+        @param request: SubmitSymbolicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSymbolicResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_key):
+            body['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.app_version):
+            body['AppVersion'] = request.app_version
+        if not UtilClient.is_unset(request.build_id):
+            body['BuildId'] = request.build_id
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_path):
+            body['FilePath'] = request.file_path
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.os):
+            body['Os'] = request.os
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitSymbolic',
+            version='2019-06-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.SubmitSymbolicResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.SubmitSymbolicResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def submit_symbolic_with_options_async(
+        self,
+        request: emas_appmonitor_20190611_models.SubmitSymbolicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emas_appmonitor_20190611_models.SubmitSymbolicResponse:
+        """
+        @param request: SubmitSymbolicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSymbolicResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_key):
+            body['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.app_version):
+            body['AppVersion'] = request.app_version
+        if not UtilClient.is_unset(request.build_id):
+            body['BuildId'] = request.build_id
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_path):
+            body['FilePath'] = request.file_path
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.os):
+            body['Os'] = request.os
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitSymbolic',
+            version='2019-06-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.SubmitSymbolicResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.SubmitSymbolicResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def submit_symbolic(
+        self,
+        request: emas_appmonitor_20190611_models.SubmitSymbolicRequest,
+    ) -> emas_appmonitor_20190611_models.SubmitSymbolicResponse:
+        """
+        @param request: SubmitSymbolicRequest
+        @return: SubmitSymbolicResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_symbolic_with_options(request, runtime)
+
+    async def submit_symbolic_async(
+        self,
+        request: emas_appmonitor_20190611_models.SubmitSymbolicRequest,
+    ) -> emas_appmonitor_20190611_models.SubmitSymbolicResponse:
+        """
+        @param request: SubmitSymbolicRequest
+        @return: SubmitSymbolicResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_symbolic_with_options_async(request, runtime)
