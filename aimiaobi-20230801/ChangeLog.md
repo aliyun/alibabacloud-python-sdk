@@ -1,3 +1,14 @@
+2025-04-03 Version: 1.20.3
+- Update API DeleteCustomText: add request parameters RegionId.
+- Update API GetHotTopicBroadcast: add request parameters LocationQuery.
+- Update API GetHotTopicBroadcast: add request parameters Locations.
+- Update API GetHotTopicBroadcast: add request parameters Query.
+- Update API GetHotTopicBroadcast: add response parameters Body.Data.Data.$.Locations.
+- Update API RunSearchGeneration: add response parameters Body.Payload.Output.AgentContext.BizContext.GeneratedContent.TextSearchResult.
+- Update API RunTitleGeneration: add request parameters DeduplicatedTitles.
+- Update API RunTitleGeneration: add request parameters TitleCount.
+
+
 2025-03-18 Version: 1.20.2
 - Update API RunSearchGeneration: update param AgentContext.
 - Update API RunSearchSimilarArticles: update param ChatConfig.

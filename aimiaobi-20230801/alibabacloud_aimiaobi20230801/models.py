@@ -8843,6 +8843,9 @@ class GetHotTopicBroadcastRequest(TeaModel):
         category: str = None,
         current: int = None,
         hot_topic_version: str = None,
+        location_query: str = None,
+        locations: List[str] = None,
+        query: str = None,
         size: int = None,
         step_for_custom_summary_style_config: GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig = None,
         step_for_news_broadcast_content_config: GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig = None,
@@ -8853,6 +8856,9 @@ class GetHotTopicBroadcastRequest(TeaModel):
         self.category = category
         self.current = current
         self.hot_topic_version = hot_topic_version
+        self.location_query = location_query
+        self.locations = locations
+        self.query = query
         self.size = size
         self.step_for_custom_summary_style_config = step_for_custom_summary_style_config
         self.step_for_news_broadcast_content_config = step_for_news_broadcast_content_config
@@ -8880,6 +8886,12 @@ class GetHotTopicBroadcastRequest(TeaModel):
             result['Current'] = self.current
         if self.hot_topic_version is not None:
             result['HotTopicVersion'] = self.hot_topic_version
+        if self.location_query is not None:
+            result['LocationQuery'] = self.location_query
+        if self.locations is not None:
+            result['Locations'] = self.locations
+        if self.query is not None:
+            result['Query'] = self.query
         if self.size is not None:
             result['Size'] = self.size
         if self.step_for_custom_summary_style_config is not None:
@@ -8902,6 +8914,12 @@ class GetHotTopicBroadcastRequest(TeaModel):
             self.current = m.get('Current')
         if m.get('HotTopicVersion') is not None:
             self.hot_topic_version = m.get('HotTopicVersion')
+        if m.get('LocationQuery') is not None:
+            self.location_query = m.get('LocationQuery')
+        if m.get('Locations') is not None:
+            self.locations = m.get('Locations')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         if m.get('StepForCustomSummaryStyleConfig') is not None:
@@ -8924,6 +8942,9 @@ class GetHotTopicBroadcastShrinkRequest(TeaModel):
         category: str = None,
         current: int = None,
         hot_topic_version: str = None,
+        location_query: str = None,
+        locations_shrink: str = None,
+        query: str = None,
         size: int = None,
         step_for_custom_summary_style_config_shrink: str = None,
         step_for_news_broadcast_content_config_shrink: str = None,
@@ -8934,6 +8955,9 @@ class GetHotTopicBroadcastShrinkRequest(TeaModel):
         self.category = category
         self.current = current
         self.hot_topic_version = hot_topic_version
+        self.location_query = location_query
+        self.locations_shrink = locations_shrink
+        self.query = query
         self.size = size
         self.step_for_custom_summary_style_config_shrink = step_for_custom_summary_style_config_shrink
         self.step_for_news_broadcast_content_config_shrink = step_for_news_broadcast_content_config_shrink
@@ -8958,6 +8982,12 @@ class GetHotTopicBroadcastShrinkRequest(TeaModel):
             result['Current'] = self.current
         if self.hot_topic_version is not None:
             result['HotTopicVersion'] = self.hot_topic_version
+        if self.location_query is not None:
+            result['LocationQuery'] = self.location_query
+        if self.locations_shrink is not None:
+            result['Locations'] = self.locations_shrink
+        if self.query is not None:
+            result['Query'] = self.query
         if self.size is not None:
             result['Size'] = self.size
         if self.step_for_custom_summary_style_config_shrink is not None:
@@ -8980,6 +9010,12 @@ class GetHotTopicBroadcastShrinkRequest(TeaModel):
             self.current = m.get('Current')
         if m.get('HotTopicVersion') is not None:
             self.hot_topic_version = m.get('HotTopicVersion')
+        if m.get('LocationQuery') is not None:
+            self.location_query = m.get('LocationQuery')
+        if m.get('Locations') is not None:
+            self.locations_shrink = m.get('Locations')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         if m.get('StepForCustomSummaryStyleConfig') is not None:
@@ -9284,6 +9320,7 @@ class GetHotTopicBroadcastResponseBodyDataData(TeaModel):
         id: str = None,
         images: List[GetHotTopicBroadcastResponseBodyDataDataImages] = None,
         input_token: int = None,
+        locations: List[str] = None,
         news: List[GetHotTopicBroadcastResponseBodyDataDataNews] = None,
         output_token: int = None,
         summary: GetHotTopicBroadcastResponseBodyDataDataSummary = None,
@@ -9299,6 +9336,7 @@ class GetHotTopicBroadcastResponseBodyDataData(TeaModel):
         self.id = id
         self.images = images
         self.input_token = input_token
+        self.locations = locations
         self.news = news
         self.output_token = output_token
         self.summary = summary
@@ -9344,6 +9382,8 @@ class GetHotTopicBroadcastResponseBodyDataData(TeaModel):
                 result['Images'].append(k.to_map() if k else None)
         if self.input_token is not None:
             result['InputToken'] = self.input_token
+        if self.locations is not None:
+            result['Locations'] = self.locations
         result['News'] = []
         if self.news is not None:
             for k in self.news:
@@ -9381,6 +9421,8 @@ class GetHotTopicBroadcastResponseBodyDataData(TeaModel):
                 self.images.append(temp_model.from_map(k))
         if m.get('InputToken') is not None:
             self.input_token = m.get('InputToken')
+        if m.get('Locations') is not None:
+            self.locations = m.get('Locations')
         self.news = []
         if m.get('News') is not None:
             for k in m.get('News'):
@@ -33350,6 +33392,140 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         return self
 
 
+class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        doc_id: str = None,
+        doc_uuid: str = None,
+        pub_time: str = None,
+        search_source: str = None,
+        search_source_name: str = None,
+        search_source_type: str = None,
+        summary: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.content = content
+        self.doc_id = doc_id
+        self.doc_uuid = doc_uuid
+        self.pub_time = pub_time
+        self.search_source = search_source
+        self.search_source_name = search_source_name
+        self.search_source_type = search_source_type
+        self.summary = summary
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.doc_id is not None:
+            result['DocId'] = self.doc_id
+        if self.doc_uuid is not None:
+            result['DocUuid'] = self.doc_uuid
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
+        if self.search_source is not None:
+            result['SearchSource'] = self.search_source
+        if self.search_source_name is not None:
+            result['SearchSourceName'] = self.search_source_name
+        if self.search_source_type is not None:
+            result['SearchSourceType'] = self.search_source_type
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('DocId') is not None:
+            self.doc_id = m.get('DocId')
+        if m.get('DocUuid') is not None:
+            self.doc_uuid = m.get('DocUuid')
+        if m.get('PubTime') is not None:
+            self.pub_time = m.get('PubTime')
+        if m.get('SearchSource') is not None:
+            self.search_source = m.get('SearchSource')
+        if m.get('SearchSourceName') is not None:
+            self.search_source_name = m.get('SearchSourceName')
+        if m.get('SearchSourceType') is not None:
+            self.search_source_type = m.get('SearchSourceType')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult(TeaModel):
+    def __init__(
+        self,
+        current: int = None,
+        search_result: List[RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult] = None,
+        size: int = None,
+        total: int = None,
+    ):
+        self.current = current
+        self.search_result = search_result
+        self.size = size
+        self.total = total
+
+    def validate(self):
+        if self.search_result:
+            for k in self.search_result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current is not None:
+            result['Current'] = self.current
+        result['SearchResult'] = []
+        if self.search_result is not None:
+            for k in self.search_result:
+                result['SearchResult'].append(k.to_map() if k else None)
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Current') is not None:
+            self.current = m.get('Current')
+        self.search_result = []
+        if m.get('SearchResult') is not None:
+            for k in m.get('SearchResult'):
+                temp_model = RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult()
+                self.search_result.append(temp_model.from_map(k))
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
 class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesGenerateCoordinate(TeaModel):
     def __init__(
         self,
@@ -34273,6 +34449,7 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         image_search_result: RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResult = None,
         news_element_result: RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResult = None,
         text_generate_result: RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult = None,
+        text_search_result: RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult = None,
         timeline_result: RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult = None,
         video_search_result: RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResult = None,
     ):
@@ -34281,6 +34458,7 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         self.image_search_result = image_search_result
         self.news_element_result = news_element_result
         self.text_generate_result = text_generate_result
+        self.text_search_result = text_search_result
         self.timeline_result = timeline_result
         self.video_search_result = video_search_result
 
@@ -34295,6 +34473,8 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
             self.news_element_result.validate()
         if self.text_generate_result:
             self.text_generate_result.validate()
+        if self.text_search_result:
+            self.text_search_result.validate()
         if self.timeline_result:
             self.timeline_result.validate()
         if self.video_search_result:
@@ -34316,6 +34496,8 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
             result['NewsElementResult'] = self.news_element_result.to_map()
         if self.text_generate_result is not None:
             result['TextGenerateResult'] = self.text_generate_result.to_map()
+        if self.text_search_result is not None:
+            result['TextSearchResult'] = self.text_search_result.to_map()
         if self.timeline_result is not None:
             result['TimelineResult'] = self.timeline_result.to_map()
         if self.video_search_result is not None:
@@ -34339,6 +34521,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         if m.get('TextGenerateResult') is not None:
             temp_model = RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult()
             self.text_generate_result = temp_model.from_map(m['TextGenerateResult'])
+        if m.get('TextSearchResult') is not None:
+            temp_model = RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult()
+            self.text_search_result = temp_model.from_map(m['TextSearchResult'])
         if m.get('TimelineResult') is not None:
             temp_model = RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult()
             self.timeline_result = temp_model.from_map(m['TimelineResult'])
@@ -37051,13 +37236,17 @@ class RunTitleGenerationRequestReferenceData(TeaModel):
 class RunTitleGenerationRequest(TeaModel):
     def __init__(
         self,
+        deduplicated_titles: List[str] = None,
         reference_data: RunTitleGenerationRequestReferenceData = None,
         task_id: str = None,
+        title_count: str = None,
         workspace_id: str = None,
     ):
+        self.deduplicated_titles = deduplicated_titles
         # This parameter is required.
         self.reference_data = reference_data
         self.task_id = task_id
+        self.title_count = title_count
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -37071,21 +37260,29 @@ class RunTitleGenerationRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.deduplicated_titles is not None:
+            result['DeduplicatedTitles'] = self.deduplicated_titles
         if self.reference_data is not None:
             result['ReferenceData'] = self.reference_data.to_map()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
+        if self.title_count is not None:
+            result['TitleCount'] = self.title_count
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DeduplicatedTitles') is not None:
+            self.deduplicated_titles = m.get('DeduplicatedTitles')
         if m.get('ReferenceData') is not None:
             temp_model = RunTitleGenerationRequestReferenceData()
             self.reference_data = temp_model.from_map(m['ReferenceData'])
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+        if m.get('TitleCount') is not None:
+            self.title_count = m.get('TitleCount')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -37094,13 +37291,17 @@ class RunTitleGenerationRequest(TeaModel):
 class RunTitleGenerationShrinkRequest(TeaModel):
     def __init__(
         self,
+        deduplicated_titles_shrink: str = None,
         reference_data_shrink: str = None,
         task_id: str = None,
+        title_count: str = None,
         workspace_id: str = None,
     ):
+        self.deduplicated_titles_shrink = deduplicated_titles_shrink
         # This parameter is required.
         self.reference_data_shrink = reference_data_shrink
         self.task_id = task_id
+        self.title_count = title_count
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -37113,20 +37314,28 @@ class RunTitleGenerationShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.deduplicated_titles_shrink is not None:
+            result['DeduplicatedTitles'] = self.deduplicated_titles_shrink
         if self.reference_data_shrink is not None:
             result['ReferenceData'] = self.reference_data_shrink
         if self.task_id is not None:
             result['TaskId'] = self.task_id
+        if self.title_count is not None:
+            result['TitleCount'] = self.title_count
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DeduplicatedTitles') is not None:
+            self.deduplicated_titles_shrink = m.get('DeduplicatedTitles')
         if m.get('ReferenceData') is not None:
             self.reference_data_shrink = m.get('ReferenceData')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+        if m.get('TitleCount') is not None:
+            self.title_count = m.get('TitleCount')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self

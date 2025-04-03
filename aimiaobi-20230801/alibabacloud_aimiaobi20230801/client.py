@@ -4544,6 +4544,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.GetHotTopicBroadcastShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.locations):
+            request.locations_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.locations, 'Locations', 'json')
         if not UtilClient.is_unset(tmp_req.step_for_custom_summary_style_config):
             request.step_for_custom_summary_style_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.step_for_custom_summary_style_config, 'StepForCustomSummaryStyleConfig', 'json')
         if not UtilClient.is_unset(tmp_req.step_for_news_broadcast_content_config):
@@ -4559,6 +4561,12 @@ class Client(OpenApiClient):
             body['Current'] = request.current
         if not UtilClient.is_unset(request.hot_topic_version):
             body['HotTopicVersion'] = request.hot_topic_version
+        if not UtilClient.is_unset(request.location_query):
+            body['LocationQuery'] = request.location_query
+        if not UtilClient.is_unset(request.locations_shrink):
+            body['Locations'] = request.locations_shrink
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
         if not UtilClient.is_unset(request.size):
             body['Size'] = request.size
         if not UtilClient.is_unset(request.step_for_custom_summary_style_config_shrink):
@@ -4609,6 +4617,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.GetHotTopicBroadcastShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.locations):
+            request.locations_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.locations, 'Locations', 'json')
         if not UtilClient.is_unset(tmp_req.step_for_custom_summary_style_config):
             request.step_for_custom_summary_style_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.step_for_custom_summary_style_config, 'StepForCustomSummaryStyleConfig', 'json')
         if not UtilClient.is_unset(tmp_req.step_for_news_broadcast_content_config):
@@ -4624,6 +4634,12 @@ class Client(OpenApiClient):
             body['Current'] = request.current
         if not UtilClient.is_unset(request.hot_topic_version):
             body['HotTopicVersion'] = request.hot_topic_version
+        if not UtilClient.is_unset(request.location_query):
+            body['LocationQuery'] = request.location_query
+        if not UtilClient.is_unset(request.locations_shrink):
+            body['Locations'] = request.locations_shrink
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
         if not UtilClient.is_unset(request.size):
             body['Size'] = request.size
         if not UtilClient.is_unset(request.step_for_custom_summary_style_config_shrink):
@@ -13592,13 +13608,19 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.RunTitleGenerationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.deduplicated_titles):
+            request.deduplicated_titles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deduplicated_titles, 'DeduplicatedTitles', 'json')
         if not UtilClient.is_unset(tmp_req.reference_data):
             request.reference_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reference_data, 'ReferenceData', 'json')
         body = {}
+        if not UtilClient.is_unset(request.deduplicated_titles_shrink):
+            body['DeduplicatedTitles'] = request.deduplicated_titles_shrink
         if not UtilClient.is_unset(request.reference_data_shrink):
             body['ReferenceData'] = request.reference_data_shrink
         if not UtilClient.is_unset(request.task_id):
             body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.title_count):
+            body['TitleCount'] = request.title_count
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -13641,13 +13663,19 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.RunTitleGenerationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.deduplicated_titles):
+            request.deduplicated_titles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deduplicated_titles, 'DeduplicatedTitles', 'json')
         if not UtilClient.is_unset(tmp_req.reference_data):
             request.reference_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reference_data, 'ReferenceData', 'json')
         body = {}
+        if not UtilClient.is_unset(request.deduplicated_titles_shrink):
+            body['DeduplicatedTitles'] = request.deduplicated_titles_shrink
         if not UtilClient.is_unset(request.reference_data_shrink):
             body['ReferenceData'] = request.reference_data_shrink
         if not UtilClient.is_unset(request.task_id):
             body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.title_count):
+            body['TitleCount'] = request.title_count
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
