@@ -1,3 +1,16 @@
+2025-04-03 Version: 2.4.3
+- Update API ExtendCluster: add request parameters IpAllocationPolicy.$.NodePolicy.$.Hostname.
+- Update API ExtendCluster: add request parameters NodeGroups.$.Amount.
+- Update API ExtendCluster: add request parameters NodeGroups.$.AutoRenew.
+- Update API ExtendCluster: add request parameters NodeGroups.$.ChargeType.
+- Update API ExtendCluster: add request parameters NodeGroups.$.Hostnames.
+- Update API ExtendCluster: add request parameters NodeGroups.$.LoginPassword.
+- Update API ExtendCluster: add request parameters NodeGroups.$.NodeTag.
+- Update API ExtendCluster: add request parameters NodeGroups.$.Period.
+- Update API ExtendCluster: add request parameters NodeGroups.$.VSwitchId.
+- Update API ExtendCluster: add request parameters NodeGroups.$.VpcId.
+
+
 2025-03-28 Version: 2.4.2
 - Generated python 2022-12-15 for eflo-controller.
 

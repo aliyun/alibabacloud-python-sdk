@@ -6131,10 +6131,12 @@ class ExtendClusterRequestIpAllocationPolicyNodePolicy(TeaModel):
     def __init__(
         self,
         bonds: List[ExtendClusterRequestIpAllocationPolicyNodePolicyBonds] = None,
+        hostname: str = None,
         node_id: str = None,
     ):
         # Bond information
         self.bonds = bonds
+        self.hostname = hostname
         # Node ID
         self.node_id = node_id
 
@@ -6154,6 +6156,8 @@ class ExtendClusterRequestIpAllocationPolicyNodePolicy(TeaModel):
         if self.bonds is not None:
             for k in self.bonds:
                 result['Bonds'].append(k.to_map() if k else None)
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
         if self.node_id is not None:
             result['NodeId'] = self.node_id
         return result
@@ -6165,6 +6169,8 @@ class ExtendClusterRequestIpAllocationPolicyNodePolicy(TeaModel):
             for k in m.get('Bonds'):
                 temp_model = ExtendClusterRequestIpAllocationPolicyNodePolicyBonds()
                 self.bonds.append(temp_model.from_map(k))
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
         return self
@@ -6232,6 +6238,39 @@ class ExtendClusterRequestIpAllocationPolicy(TeaModel):
         return self
 
 
+class ExtendClusterRequestNodeGroupsNodeTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ExtendClusterRequestNodeGroupsNodes(TeaModel):
     def __init__(
         self,
@@ -6291,21 +6330,43 @@ class ExtendClusterRequestNodeGroupsNodes(TeaModel):
 class ExtendClusterRequestNodeGroups(TeaModel):
     def __init__(
         self,
+        amount: int = None,
+        auto_renew: bool = None,
+        charge_type: str = None,
+        hostnames: List[str] = None,
+        login_password: str = None,
         node_group_id: str = None,
+        node_tag: List[ExtendClusterRequestNodeGroupsNodeTag] = None,
         nodes: List[ExtendClusterRequestNodeGroupsNodes] = None,
+        period: int = None,
         user_data: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
         zone_id: str = None,
     ):
+        self.amount = amount
+        self.auto_renew = auto_renew
+        self.charge_type = charge_type
+        self.hostnames = hostnames
+        self.login_password = login_password
         # Node Group ID
         self.node_group_id = node_group_id
+        self.node_tag = node_tag
         # List of Nodes
         self.nodes = nodes
+        self.period = period
         # Custom Data
         self.user_data = user_data
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
         # Zone ID
         self.zone_id = zone_id
 
     def validate(self):
+        if self.node_tag:
+            for k in self.node_tag:
+                if k:
+                    k.validate()
         if self.nodes:
             for k in self.nodes:
                 if k:
@@ -6317,29 +6378,70 @@ class ExtendClusterRequestNodeGroups(TeaModel):
             return _map
 
         result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.hostnames is not None:
+            result['Hostnames'] = self.hostnames
+        if self.login_password is not None:
+            result['LoginPassword'] = self.login_password
         if self.node_group_id is not None:
             result['NodeGroupId'] = self.node_group_id
+        result['NodeTag'] = []
+        if self.node_tag is not None:
+            for k in self.node_tag:
+                result['NodeTag'].append(k.to_map() if k else None)
         result['Nodes'] = []
         if self.nodes is not None:
             for k in self.nodes:
                 result['Nodes'].append(k.to_map() if k else None)
+        if self.period is not None:
+            result['Period'] = self.period
         if self.user_data is not None:
             result['UserData'] = self.user_data
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('Hostnames') is not None:
+            self.hostnames = m.get('Hostnames')
+        if m.get('LoginPassword') is not None:
+            self.login_password = m.get('LoginPassword')
         if m.get('NodeGroupId') is not None:
             self.node_group_id = m.get('NodeGroupId')
+        self.node_tag = []
+        if m.get('NodeTag') is not None:
+            for k in m.get('NodeTag'):
+                temp_model = ExtendClusterRequestNodeGroupsNodeTag()
+                self.node_tag.append(temp_model.from_map(k))
         self.nodes = []
         if m.get('Nodes') is not None:
             for k in m.get('Nodes'):
                 temp_model = ExtendClusterRequestNodeGroupsNodes()
                 self.nodes.append(temp_model.from_map(k))
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
