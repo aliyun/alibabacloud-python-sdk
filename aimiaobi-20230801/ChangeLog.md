@@ -1,3 +1,6 @@
+2025-04-03 Version: 1.20.4
+- Generated python 2023-08-01 for AiMiaoBi.
+
 2025-04-03 Version: 1.20.3
 - Update API DeleteCustomText: add request parameters RegionId.
 - Update API GetHotTopicBroadcast: add request parameters LocationQuery.
