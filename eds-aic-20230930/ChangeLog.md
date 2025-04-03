@@ -1,3 +1,11 @@
+2025-04-03 Version: 4.4.1
+- Update API CreateCloudPhoneNode: add request parameters DisplayConfig.
+- Update API CreatePolicyGroup: add request parameters PolicyType.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.DisplayConfig.
+- Update API DescribeCloudPhoneNodes: add response parameters Body.NodeModel.$.InstanceType.
+- Update API ListPolicyGroups: add request parameters PolicyType.
+
+
 2025-03-31 Version: 4.4.0
 - Support API CreateCloudPhoneNode.
 - Support API DeleteCloudPhoneNodes.

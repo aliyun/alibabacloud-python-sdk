@@ -448,7 +448,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.BatchGetAcpConnectionTicketResponse:
         """
-        @summary Retrieves connection tickets in bulk.
+        @summary Retrieves connection tickets in batch.
         
         @param request: BatchGetAcpConnectionTicketRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -495,7 +495,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.BatchGetAcpConnectionTicketResponse:
         """
-        @summary Retrieves connection tickets in bulk.
+        @summary Retrieves connection tickets in batch.
         
         @param request: BatchGetAcpConnectionTicketRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -541,7 +541,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.BatchGetAcpConnectionTicketRequest,
     ) -> eds_aic_20230930_models.BatchGetAcpConnectionTicketResponse:
         """
-        @summary Retrieves connection tickets in bulk.
+        @summary Retrieves connection tickets in batch.
         
         @param request: BatchGetAcpConnectionTicketRequest
         @return: BatchGetAcpConnectionTicketResponse
@@ -554,7 +554,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.BatchGetAcpConnectionTicketRequest,
     ) -> eds_aic_20230930_models.BatchGetAcpConnectionTicketResponse:
         """
-        @summary Retrieves connection tickets in bulk.
+        @summary Retrieves connection tickets in batch.
         
         @param request: BatchGetAcpConnectionTicketRequest
         @return: BatchGetAcpConnectionTicketResponse
@@ -894,8 +894,17 @@ class Client(OpenApiClient):
         """
         @summary Creates an Android application.
         
-        @description ### [](#)Preparations
-        Before you proceed, log on to the [Elastic Desktop Service (EDS) Enterprise console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the application file to Application Center to obtain the values of request parameters `FileName`, `FilePath`, and `OssAppUrl`.
+        @description When creating an app, you can provide app information to the system in one of the following ways:
+        Way 1: Apps from the Application Center
+        You can use one of the following methods:
+        Method 1: Pass in the `FileName` and `FilePath` parameters at the same time.
+        Method 2: Pass in the `OssAppUrl` parameter
+        Rule: If your app is from the Alibaba Cloud Workspace Application Center, you must use either Method 1 or Method 2. If both are used, Method 1 takes priority.
+        Condition: Before you proceed, log on to the [Elastic Desktop Service (EDS) Enterprise console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the app file to the Application Center to obtain the values of the `FileName`, `FilePath`, and `OssAppUrl` parameters.
+        Way 2: Custom apps
+        Pass in the `CustomAppInfo` parameter.
+        Rule: If you pass in the `CustomAppInfo` parameter, all six fields within it are required.
+        >  If Way 1 and Way 2 are adopted simultaneously, the information from Way 2 takes priority.
         
         @param tmp_req: CreateAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -958,8 +967,17 @@ class Client(OpenApiClient):
         """
         @summary Creates an Android application.
         
-        @description ### [](#)Preparations
-        Before you proceed, log on to the [Elastic Desktop Service (EDS) Enterprise console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the application file to Application Center to obtain the values of request parameters `FileName`, `FilePath`, and `OssAppUrl`.
+        @description When creating an app, you can provide app information to the system in one of the following ways:
+        Way 1: Apps from the Application Center
+        You can use one of the following methods:
+        Method 1: Pass in the `FileName` and `FilePath` parameters at the same time.
+        Method 2: Pass in the `OssAppUrl` parameter
+        Rule: If your app is from the Alibaba Cloud Workspace Application Center, you must use either Method 1 or Method 2. If both are used, Method 1 takes priority.
+        Condition: Before you proceed, log on to the [Elastic Desktop Service (EDS) Enterprise console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the app file to the Application Center to obtain the values of the `FileName`, `FilePath`, and `OssAppUrl` parameters.
+        Way 2: Custom apps
+        Pass in the `CustomAppInfo` parameter.
+        Rule: If you pass in the `CustomAppInfo` parameter, all six fields within it are required.
+        >  If Way 1 and Way 2 are adopted simultaneously, the information from Way 2 takes priority.
         
         @param tmp_req: CreateAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1021,8 +1039,17 @@ class Client(OpenApiClient):
         """
         @summary Creates an Android application.
         
-        @description ### [](#)Preparations
-        Before you proceed, log on to the [Elastic Desktop Service (EDS) Enterprise console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the application file to Application Center to obtain the values of request parameters `FileName`, `FilePath`, and `OssAppUrl`.
+        @description When creating an app, you can provide app information to the system in one of the following ways:
+        Way 1: Apps from the Application Center
+        You can use one of the following methods:
+        Method 1: Pass in the `FileName` and `FilePath` parameters at the same time.
+        Method 2: Pass in the `OssAppUrl` parameter
+        Rule: If your app is from the Alibaba Cloud Workspace Application Center, you must use either Method 1 or Method 2. If both are used, Method 1 takes priority.
+        Condition: Before you proceed, log on to the [Elastic Desktop Service (EDS) Enterprise console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the app file to the Application Center to obtain the values of the `FileName`, `FilePath`, and `OssAppUrl` parameters.
+        Way 2: Custom apps
+        Pass in the `CustomAppInfo` parameter.
+        Rule: If you pass in the `CustomAppInfo` parameter, all six fields within it are required.
+        >  If Way 1 and Way 2 are adopted simultaneously, the information from Way 2 takes priority.
         
         @param request: CreateAppRequest
         @return: CreateAppResponse
@@ -1037,8 +1064,17 @@ class Client(OpenApiClient):
         """
         @summary Creates an Android application.
         
-        @description ### [](#)Preparations
-        Before you proceed, log on to the [Elastic Desktop Service (EDS) Enterprise console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the application file to Application Center to obtain the values of request parameters `FileName`, `FilePath`, and `OssAppUrl`.
+        @description When creating an app, you can provide app information to the system in one of the following ways:
+        Way 1: Apps from the Application Center
+        You can use one of the following methods:
+        Method 1: Pass in the `FileName` and `FilePath` parameters at the same time.
+        Method 2: Pass in the `OssAppUrl` parameter
+        Rule: If your app is from the Alibaba Cloud Workspace Application Center, you must use either Method 1 or Method 2. If both are used, Method 1 takes priority.
+        Condition: Before you proceed, log on to the [Elastic Desktop Service (EDS) Enterprise console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the app file to the Application Center to obtain the values of the `FileName`, `FilePath`, and `OssAppUrl` parameters.
+        Way 2: Custom apps
+        Pass in the `CustomAppInfo` parameter.
+        Rule: If you pass in the `CustomAppInfo` parameter, all six fields within it are required.
+        >  If Way 1 and Way 2 are adopted simultaneously, the information from Way 2 takes priority.
         
         @param request: CreateAppRequest
         @return: CreateAppResponse
@@ -1048,17 +1084,21 @@ class Client(OpenApiClient):
 
     def create_cloud_phone_node_with_options(
         self,
-        request: eds_aic_20230930_models.CreateCloudPhoneNodeRequest,
+        tmp_req: eds_aic_20230930_models.CreateCloudPhoneNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.CreateCloudPhoneNodeResponse:
         """
         @summary 创建云机节点
         
-        @param request: CreateCloudPhoneNodeRequest
+        @param tmp_req: CreateCloudPhoneNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateCloudPhoneNodeResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = eds_aic_20230930_models.CreateCloudPhoneNodeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.display_config):
+            request.display_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.display_config, 'DisplayConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
@@ -1096,8 +1136,12 @@ class Client(OpenApiClient):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
+        body = {}
+        if not UtilClient.is_unset(request.display_config_shrink):
+            body['DisplayConfig'] = request.display_config_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateCloudPhoneNode',
@@ -1123,17 +1167,21 @@ class Client(OpenApiClient):
 
     async def create_cloud_phone_node_with_options_async(
         self,
-        request: eds_aic_20230930_models.CreateCloudPhoneNodeRequest,
+        tmp_req: eds_aic_20230930_models.CreateCloudPhoneNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.CreateCloudPhoneNodeResponse:
         """
         @summary 创建云机节点
         
-        @param request: CreateCloudPhoneNodeRequest
+        @param tmp_req: CreateCloudPhoneNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateCloudPhoneNodeResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = eds_aic_20230930_models.CreateCloudPhoneNodeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.display_config):
+            request.display_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.display_config, 'DisplayConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
@@ -1171,8 +1219,12 @@ class Client(OpenApiClient):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
+        body = {}
+        if not UtilClient.is_unset(request.display_config_shrink):
+            body['DisplayConfig'] = request.display_config_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateCloudPhoneNode',
@@ -1228,7 +1280,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.CreateCustomImageResponse:
         """
-        @summary Create Custom Image
+        @summary Creates a custom image from a cloud phone instance.
         
         @param request: CreateCustomImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1275,7 +1327,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.CreateCustomImageResponse:
         """
-        @summary Create Custom Image
+        @summary Creates a custom image from a cloud phone instance.
         
         @param request: CreateCustomImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1321,7 +1373,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.CreateCustomImageRequest,
     ) -> eds_aic_20230930_models.CreateCustomImageResponse:
         """
-        @summary Create Custom Image
+        @summary Creates a custom image from a cloud phone instance.
         
         @param request: CreateCustomImageRequest
         @return: CreateCustomImageResponse
@@ -1334,7 +1386,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.CreateCustomImageRequest,
     ) -> eds_aic_20230930_models.CreateCustomImageResponse:
         """
-        @summary Create Custom Image
+        @summary Creates a custom image from a cloud phone instance.
         
         @param request: CreateCustomImageRequest
         @return: CreateCustomImageResponse
@@ -1494,6 +1546,8 @@ class Client(OpenApiClient):
             body['NetRedirectPolicy'] = request.net_redirect_policy_shrink
         if not UtilClient.is_unset(request.policy_group_name):
             body['PolicyGroupName'] = request.policy_group_name
+        if not UtilClient.is_unset(request.policy_type):
+            body['PolicyType'] = request.policy_type
         if not UtilClient.is_unset(request.resolution_height):
             body['ResolutionHeight'] = request.resolution_height
         if not UtilClient.is_unset(request.resolution_width):
@@ -1555,6 +1609,8 @@ class Client(OpenApiClient):
             body['NetRedirectPolicy'] = request.net_redirect_policy_shrink
         if not UtilClient.is_unset(request.policy_group_name):
             body['PolicyGroupName'] = request.policy_group_name
+        if not UtilClient.is_unset(request.policy_type):
+            body['PolicyType'] = request.policy_type
         if not UtilClient.is_unset(request.resolution_height):
             body['ResolutionHeight'] = request.resolution_height
         if not UtilClient.is_unset(request.resolution_width):
@@ -1968,7 +2024,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.DeleteCloudPhoneNodesResponse:
         """
-        @summary 释放服务器
+        @summary Deletes a cloud phone matrix.
+        
+        @description Before you proceed, make sure that the cloud phone matrix that you want to delete expired.
         
         @param request: DeleteCloudPhoneNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2009,7 +2067,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.DeleteCloudPhoneNodesResponse:
         """
-        @summary 释放服务器
+        @summary Deletes a cloud phone matrix.
+        
+        @description Before you proceed, make sure that the cloud phone matrix that you want to delete expired.
         
         @param request: DeleteCloudPhoneNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2049,7 +2109,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.DeleteCloudPhoneNodesRequest,
     ) -> eds_aic_20230930_models.DeleteCloudPhoneNodesResponse:
         """
-        @summary 释放服务器
+        @summary Deletes a cloud phone matrix.
+        
+        @description Before you proceed, make sure that the cloud phone matrix that you want to delete expired.
         
         @param request: DeleteCloudPhoneNodesRequest
         @return: DeleteCloudPhoneNodesResponse
@@ -2062,7 +2124,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.DeleteCloudPhoneNodesRequest,
     ) -> eds_aic_20230930_models.DeleteCloudPhoneNodesResponse:
         """
-        @summary 释放服务器
+        @summary Deletes a cloud phone matrix.
+        
+        @description Before you proceed, make sure that the cloud phone matrix that you want to delete expired.
         
         @param request: DeleteCloudPhoneNodesRequest
         @return: DeleteCloudPhoneNodesResponse
@@ -4692,7 +4756,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.GenerateCoordinationCodeResponse:
         """
-        @summary 获取协同码
+        @summary Generates a collaboration code for the cloud phone being accessed by using the current convenience account, and shares this code with other convenience accounts to allow them to access the same cloud phone.
+        
+        @description You can call this operation to generate a collaboration code for a cloud phone accessed by your current account and share this code with other convenience users to allow them to access the same cloud phone over the desktop, mobile, or web client. They can then call the [ApplyCoordinationWithCode](https://help.aliyun.com/zh/wuying-workspace/developer-reference/api-metaspace-2022-03-07-applycoordinationwithcode?spm=a2c4g.11174283.help-menu-68242.d_5_3_2_1.70e5e380fUFgOH\\&scm=20140722.H_2863194._.OR_help-T_cn~zh-V_1) operation to initiate a coordination request, which will provide them with a connection token.
         
         @param request: GenerateCoordinationCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4735,7 +4801,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.GenerateCoordinationCodeResponse:
         """
-        @summary 获取协同码
+        @summary Generates a collaboration code for the cloud phone being accessed by using the current convenience account, and shares this code with other convenience accounts to allow them to access the same cloud phone.
+        
+        @description You can call this operation to generate a collaboration code for a cloud phone accessed by your current account and share this code with other convenience users to allow them to access the same cloud phone over the desktop, mobile, or web client. They can then call the [ApplyCoordinationWithCode](https://help.aliyun.com/zh/wuying-workspace/developer-reference/api-metaspace-2022-03-07-applycoordinationwithcode?spm=a2c4g.11174283.help-menu-68242.d_5_3_2_1.70e5e380fUFgOH\\&scm=20140722.H_2863194._.OR_help-T_cn~zh-V_1) operation to initiate a coordination request, which will provide them with a connection token.
         
         @param request: GenerateCoordinationCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4777,7 +4845,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.GenerateCoordinationCodeRequest,
     ) -> eds_aic_20230930_models.GenerateCoordinationCodeResponse:
         """
-        @summary 获取协同码
+        @summary Generates a collaboration code for the cloud phone being accessed by using the current convenience account, and shares this code with other convenience accounts to allow them to access the same cloud phone.
+        
+        @description You can call this operation to generate a collaboration code for a cloud phone accessed by your current account and share this code with other convenience users to allow them to access the same cloud phone over the desktop, mobile, or web client. They can then call the [ApplyCoordinationWithCode](https://help.aliyun.com/zh/wuying-workspace/developer-reference/api-metaspace-2022-03-07-applycoordinationwithcode?spm=a2c4g.11174283.help-menu-68242.d_5_3_2_1.70e5e380fUFgOH\\&scm=20140722.H_2863194._.OR_help-T_cn~zh-V_1) operation to initiate a coordination request, which will provide them with a connection token.
         
         @param request: GenerateCoordinationCodeRequest
         @return: GenerateCoordinationCodeResponse
@@ -4790,7 +4860,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.GenerateCoordinationCodeRequest,
     ) -> eds_aic_20230930_models.GenerateCoordinationCodeResponse:
         """
-        @summary 获取协同码
+        @summary Generates a collaboration code for the cloud phone being accessed by using the current convenience account, and shares this code with other convenience accounts to allow them to access the same cloud phone.
+        
+        @description You can call this operation to generate a collaboration code for a cloud phone accessed by your current account and share this code with other convenience users to allow them to access the same cloud phone over the desktop, mobile, or web client. They can then call the [ApplyCoordinationWithCode](https://help.aliyun.com/zh/wuying-workspace/developer-reference/api-metaspace-2022-03-07-applycoordinationwithcode?spm=a2c4g.11174283.help-menu-68242.d_5_3_2_1.70e5e380fUFgOH\\&scm=20140722.H_2863194._.OR_help-T_cn~zh-V_1) operation to initiate a coordination request, which will provide them with a connection token.
         
         @param request: GenerateCoordinationCodeRequest
         @return: GenerateCoordinationCodeResponse
@@ -4926,7 +4998,7 @@ class Client(OpenApiClient):
         """
         @summary Installs an app on multiple cloud phone instances at the same time.
         
-        @description This operation runs asynchronously. To check the installation result, you can query the installation history for the app.
+        @description This operation runs asynchronously. To check the operation result, visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
         
         @param request: InstallAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4973,7 +5045,7 @@ class Client(OpenApiClient):
         """
         @summary Installs an app on multiple cloud phone instances at the same time.
         
-        @description This operation runs asynchronously. To check the installation result, you can query the installation history for the app.
+        @description This operation runs asynchronously. To check the operation result, visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
         
         @param request: InstallAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5019,7 +5091,7 @@ class Client(OpenApiClient):
         """
         @summary Installs an app on multiple cloud phone instances at the same time.
         
-        @description This operation runs asynchronously. To check the installation result, you can query the installation history for the app.
+        @description This operation runs asynchronously. To check the operation result, visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
         
         @param request: InstallAppRequest
         @return: InstallAppResponse
@@ -5034,7 +5106,7 @@ class Client(OpenApiClient):
         """
         @summary Installs an app on multiple cloud phone instances at the same time.
         
-        @description This operation runs asynchronously. To check the installation result, you can query the installation history for the app.
+        @description This operation runs asynchronously. To check the operation result, visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
         
         @param request: InstallAppRequest
         @return: InstallAppResponse
@@ -5064,6 +5136,8 @@ class Client(OpenApiClient):
             body['PolicyGroupIds'] = request.policy_group_ids
         if not UtilClient.is_unset(request.policy_group_name):
             body['PolicyGroupName'] = request.policy_group_name
+        if not UtilClient.is_unset(request.policy_type):
+            body['PolicyType'] = request.policy_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -5111,6 +5185,8 @@ class Client(OpenApiClient):
             body['PolicyGroupIds'] = request.policy_group_ids
         if not UtilClient.is_unset(request.policy_group_name):
             body['PolicyGroupName'] = request.policy_group_name
+        if not UtilClient.is_unset(request.policy_type):
+            body['PolicyType'] = request.policy_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -5516,7 +5592,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.ModifyCloudPhoneNodeResponse:
         """
-        @summary 修改云机节点信息
+        @summary Modifies a cloud phone matrix. Currently, you can only modify the name of a cloud phone matrix.
         
         @param request: ModifyCloudPhoneNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5555,7 +5631,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.ModifyCloudPhoneNodeResponse:
         """
-        @summary 修改云机节点信息
+        @summary Modifies a cloud phone matrix. Currently, you can only modify the name of a cloud phone matrix.
         
         @param request: ModifyCloudPhoneNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5593,7 +5669,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.ModifyCloudPhoneNodeRequest,
     ) -> eds_aic_20230930_models.ModifyCloudPhoneNodeResponse:
         """
-        @summary 修改云机节点信息
+        @summary Modifies a cloud phone matrix. Currently, you can only modify the name of a cloud phone matrix.
         
         @param request: ModifyCloudPhoneNodeRequest
         @return: ModifyCloudPhoneNodeResponse
@@ -5606,7 +5682,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.ModifyCloudPhoneNodeRequest,
     ) -> eds_aic_20230930_models.ModifyCloudPhoneNodeResponse:
         """
-        @summary 修改云机节点信息
+        @summary Modifies a cloud phone matrix. Currently, you can only modify the name of a cloud phone matrix.
         
         @param request: ModifyCloudPhoneNodeRequest
         @return: ModifyCloudPhoneNodeResponse
@@ -6014,6 +6090,8 @@ class Client(OpenApiClient):
         """
         @summary Operates apps in a cloud phone, such as opening, closing, and reopening apps.
         
+        @description This operation runs asynchronously. To check the operation result, visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
+        
         @param request: OperateAppRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: OperateAppResponse
@@ -6059,6 +6137,8 @@ class Client(OpenApiClient):
         """
         @summary Operates apps in a cloud phone, such as opening, closing, and reopening apps.
         
+        @description This operation runs asynchronously. To check the operation result, visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
+        
         @param request: OperateAppRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: OperateAppResponse
@@ -6103,6 +6183,8 @@ class Client(OpenApiClient):
         """
         @summary Operates apps in a cloud phone, such as opening, closing, and reopening apps.
         
+        @description This operation runs asynchronously. To check the operation result, visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
+        
         @param request: OperateAppRequest
         @return: OperateAppResponse
         """
@@ -6115,6 +6197,8 @@ class Client(OpenApiClient):
     ) -> eds_aic_20230930_models.OperateAppResponse:
         """
         @summary Operates apps in a cloud phone, such as opening, closing, and reopening apps.
+        
+        @description This operation runs asynchronously. To check the operation result, visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
         
         @param request: OperateAppRequest
         @return: OperateAppResponse
@@ -6504,7 +6588,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.RenewCloudPhoneNodesResponse:
         """
-        @summary 续费服务器
+        @summary Renews a cloud mobile matrix.
         
         @param request: RenewCloudPhoneNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6551,7 +6635,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.RenewCloudPhoneNodesResponse:
         """
-        @summary 续费服务器
+        @summary Renews a cloud mobile matrix.
         
         @param request: RenewCloudPhoneNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6597,7 +6681,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.RenewCloudPhoneNodesRequest,
     ) -> eds_aic_20230930_models.RenewCloudPhoneNodesResponse:
         """
-        @summary 续费服务器
+        @summary Renews a cloud mobile matrix.
         
         @param request: RenewCloudPhoneNodesRequest
         @return: RenewCloudPhoneNodesResponse
@@ -6610,7 +6694,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.RenewCloudPhoneNodesRequest,
     ) -> eds_aic_20230930_models.RenewCloudPhoneNodesResponse:
         """
-        @summary 续费服务器
+        @summary Renews a cloud mobile matrix.
         
         @param request: RenewCloudPhoneNodesRequest
         @return: RenewCloudPhoneNodesResponse
@@ -7352,7 +7436,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.UninstallAppResponse:
         """
-        @summary Uninstalls an app from multiple cloud phone instances. This operation runs asynchronously. You can check the result of the task by using the task ID.
+        @summary Uninstalls an app from multiple cloud phone instances.
+        
+        @description This operation runs asynchronously. To check the operation result, you can visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
         
         @param request: UninstallAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7397,7 +7483,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.UninstallAppResponse:
         """
-        @summary Uninstalls an app from multiple cloud phone instances. This operation runs asynchronously. You can check the result of the task by using the task ID.
+        @summary Uninstalls an app from multiple cloud phone instances.
+        
+        @description This operation runs asynchronously. To check the operation result, you can visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
         
         @param request: UninstallAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7441,7 +7529,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.UninstallAppRequest,
     ) -> eds_aic_20230930_models.UninstallAppResponse:
         """
-        @summary Uninstalls an app from multiple cloud phone instances. This operation runs asynchronously. You can check the result of the task by using the task ID.
+        @summary Uninstalls an app from multiple cloud phone instances.
+        
+        @description This operation runs asynchronously. To check the operation result, you can visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
         
         @param request: UninstallAppRequest
         @return: UninstallAppResponse
@@ -7454,7 +7544,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.UninstallAppRequest,
     ) -> eds_aic_20230930_models.UninstallAppResponse:
         """
-        @summary Uninstalls an app from multiple cloud phone instances. This operation runs asynchronously. You can check the result of the task by using the task ID.
+        @summary Uninstalls an app from multiple cloud phone instances.
+        
+        @description This operation runs asynchronously. To check the operation result, you can visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
         
         @param request: UninstallAppRequest
         @return: UninstallAppResponse
