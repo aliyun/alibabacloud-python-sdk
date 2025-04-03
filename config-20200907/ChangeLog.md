@@ -1,3 +1,14 @@
+2025-04-03 Version: 3.0.12
+- Update API CreateAggregateConfigRule: add request parameters ResourceNameScope.
+- Update API CreateConfigRule: add request parameters ResourceNameScope.
+- Update API GetAggregateConfigRule: add response parameters Body.ConfigRule.ResourceNameScope.
+- Update API GetConfigRule: add response parameters Body.ConfigRule.ResourceNameScope.
+- Update API ListManagedRules: add request parameters FilterType.
+- Update API UpdateAggregateConfigRule: add request parameters ResourceNameScope.
+- Update API UpdateAggregator: add request parameters FolderId.
+- Update API UpdateConfigRule: add request parameters ResourceNameScope.
+
+
 2025-01-21 Version: 3.0.11
 - Update API CreateAggregateCompliancePack: add param Tag.
 - Update API CreateAggregateConfigRule: add param Tag.

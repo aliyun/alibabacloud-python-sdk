@@ -1520,7 +1520,13 @@ class CreateAggregateCompliancePackRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag that is added to the resource.
+        # 
+        # You can add up to 20 tag keys to a resource.
         self.key = key
+        # The value of the tag that is added to the resource.
+        # 
+        # You can add up to 20 tag values to a resource.
         self.value = value
 
     def validate(self):
@@ -1653,6 +1659,9 @@ class CreateAggregateCompliancePackRequest(TeaModel):
         # *   2 (default): medium
         # *   3: low
         self.risk_level = risk_level
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag = tag
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
@@ -1939,6 +1948,9 @@ class CreateAggregateCompliancePackShrinkRequest(TeaModel):
         # *   2 (default): medium
         # *   3: low
         self.risk_level = risk_level
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
@@ -2433,7 +2445,17 @@ class CreateAggregateConfigRuleRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # 
+        # You can specify at most 20 tag keys.
         self.key = key
+        # The tag values.
+        # 
+        # The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # Each key-value must be unique. You can specify at most 20 tag values in each call.
         self.value = value
 
     def validate(self):
@@ -2517,6 +2539,7 @@ class CreateAggregateConfigRuleRequest(TeaModel):
         region_ids_scope: str = None,
         resource_group_ids_scope: str = None,
         resource_ids_scope: str = None,
+        resource_name_scope: str = None,
         resource_types_scope: List[str] = None,
         risk_level: int = None,
         source_identifier: str = None,
@@ -2604,6 +2627,7 @@ class CreateAggregateConfigRuleRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # The IDs of the resources included from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
+        self.resource_name_scope = resource_name_scope
         # The type of the resource evaluated by the rule. Separate multiple resource types with commas (,).
         # 
         # This parameter is required.
@@ -2632,19 +2656,26 @@ class CreateAggregateConfigRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.source_owner = source_owner
+        # The tags.
         self.tag = tag
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # 
         # The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
         # 
         # *   AND
         # *   OR
         self.tag_key_logic_scope = tag_key_logic_scope
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # 
         # The tag key used to filter resources. The rule applies only to the resources with the specified tag key. Separate multiple parameter values with commas (,).
         # 
-        # > This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+        # >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
         self.tag_key_scope = tag_key_scope
-        # The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
         # 
-        # > This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+        # The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
+        # 
+        # >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
         self.tag_value_scope = tag_value_scope
         # The tag scope.
         self.tags_scope = tags_scope
@@ -2709,6 +2740,8 @@ class CreateAggregateConfigRuleRequest(TeaModel):
             result['ResourceGroupIdsScope'] = self.resource_group_ids_scope
         if self.resource_ids_scope is not None:
             result['ResourceIdsScope'] = self.resource_ids_scope
+        if self.resource_name_scope is not None:
+            result['ResourceNameScope'] = self.resource_name_scope
         if self.resource_types_scope is not None:
             result['ResourceTypesScope'] = self.resource_types_scope
         if self.risk_level is not None:
@@ -2776,6 +2809,8 @@ class CreateAggregateConfigRuleRequest(TeaModel):
             self.resource_group_ids_scope = m.get('ResourceGroupIdsScope')
         if m.get('ResourceIdsScope') is not None:
             self.resource_ids_scope = m.get('ResourceIdsScope')
+        if m.get('ResourceNameScope') is not None:
+            self.resource_name_scope = m.get('ResourceNameScope')
         if m.get('ResourceTypesScope') is not None:
             self.resource_types_scope = m.get('ResourceTypesScope')
         if m.get('RiskLevel') is not None:
@@ -2895,6 +2930,7 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
         region_ids_scope: str = None,
         resource_group_ids_scope: str = None,
         resource_ids_scope: str = None,
+        resource_name_scope: str = None,
         resource_types_scope_shrink: str = None,
         risk_level: int = None,
         source_identifier: str = None,
@@ -2982,6 +3018,7 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # The IDs of the resources included from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
+        self.resource_name_scope = resource_name_scope
         # The type of the resource evaluated by the rule. Separate multiple resource types with commas (,).
         # 
         # This parameter is required.
@@ -3010,19 +3047,26 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.source_owner = source_owner
+        # The tags.
         self.tag_shrink = tag_shrink
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # 
         # The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
         # 
         # *   AND
         # *   OR
         self.tag_key_logic_scope = tag_key_logic_scope
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # 
         # The tag key used to filter resources. The rule applies only to the resources with the specified tag key. Separate multiple parameter values with commas (,).
         # 
-        # > This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+        # >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
         self.tag_key_scope = tag_key_scope
-        # The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
         # 
-        # > This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+        # The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
+        # 
+        # >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
         self.tag_value_scope = tag_value_scope
         # The tag scope.
         self.tags_scope = tags_scope
@@ -3083,6 +3127,8 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
             result['ResourceGroupIdsScope'] = self.resource_group_ids_scope
         if self.resource_ids_scope is not None:
             result['ResourceIdsScope'] = self.resource_ids_scope
+        if self.resource_name_scope is not None:
+            result['ResourceNameScope'] = self.resource_name_scope
         if self.resource_types_scope_shrink is not None:
             result['ResourceTypesScope'] = self.resource_types_scope_shrink
         if self.risk_level is not None:
@@ -3148,6 +3194,8 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
             self.resource_group_ids_scope = m.get('ResourceGroupIdsScope')
         if m.get('ResourceIdsScope') is not None:
             self.resource_ids_scope = m.get('ResourceIdsScope')
+        if m.get('ResourceNameScope') is not None:
+            self.resource_name_scope = m.get('ResourceNameScope')
         if m.get('ResourceTypesScope') is not None:
             self.resource_types_scope_shrink = m.get('ResourceTypesScope')
         if m.get('RiskLevel') is not None:
@@ -3482,7 +3530,15 @@ class CreateAggregatorRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the resource. You can specify up to 20 tag keys.
+        # 
+        # The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag values.
+        # 
+        # The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # Each key-value must be unique. You can specify at most 20 tag values in each call.
         self.value = value
 
     def validate(self):
@@ -3550,8 +3606,11 @@ class CreateAggregatorRequest(TeaModel):
         # 
         # This parameter is required.
         self.description = description
-        # The ID of the folder to which the account group is attached. You must specify this parameter if `AggregatorType` is set to `FOLDER`.
+        # The ID of the folder to which the account group is attached. You must specify this parameter if `AggregatorType` is set to `FOLDER`. Multiple resource folder IDs should be separated by commas (,).
         self.folder_id = folder_id
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag = tag
 
     def validate(self):
@@ -3656,8 +3715,11 @@ class CreateAggregatorShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.description = description
-        # The ID of the folder to which the account group is attached. You must specify this parameter if `AggregatorType` is set to `FOLDER`.
+        # The ID of the folder to which the account group is attached. You must specify this parameter if `AggregatorType` is set to `FOLDER`. Multiple resource folder IDs should be separated by commas (,).
         self.folder_id = folder_id
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -3939,7 +4001,17 @@ class CreateCompliancePackRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag keys.
+        # 
+        # The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length. The tag keys cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # You can specify at most 20 tag keys in each call.
         self.key = key
+        # The tag values.
+        # 
+        # The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # Each key-value must be unique. You can specify at most 20 tag values in each call.
         self.value = value
 
     def validate(self):
@@ -4063,6 +4135,9 @@ class CreateCompliancePackRequest(TeaModel):
         # *   2: medium.
         # *   3: low.
         self.risk_level = risk_level
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag = tag
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
@@ -4334,6 +4409,9 @@ class CreateCompliancePackShrinkRequest(TeaModel):
         # *   2: medium.
         # *   3: low.
         self.risk_level = risk_level
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
@@ -4568,25 +4646,34 @@ class CreateConfigDeliveryChannelRequest(TeaModel):
         # *   true: Cloud Config delivers scheduled resource snapshots.
         # *   false (default): Cloud Config does not deliver scheduled resource snapshots.
         self.configuration_snapshot = configuration_snapshot
-        # The rule that you want to attach to the delivery channel. This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
+        # The rule that you want to attach to the delivery channel, used to specify subscription content filtering conditions.
         # 
-        # *   If the value of the DeliveryChannelType parameter is MNS, take note of the following settings of the lowest risk level and resource types of the events to which you subscribed:
+        # *   If you specify the minimum risk level and resource types for compliance events, it should be as follows:
         # 
         #     *   The setting of the lowest risk level for the events to which you want to subscribe is in the following format: `{"filterType":"RuleRiskLevel","value":"1","multiple":false}`.
         # 
         #         The `value` field indicates the lowest risk level of the events to which you want to subscribe. Valid values: 1, 2, and 3. The value 1 indicates the high risk level, the value 2 indicates the medium risk level, and the value 3 indicates the low risk level.
         # 
+        #         The `multiple` field indicates whether multiple values are supported for this group of filters. Risk levels only support single-value filtering, so the multiple field for compliance event type content can only be set to `false`.
+        # 
         #     *   The setting of the resource types of the events to which you want to subscribe is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`.
         # 
-        #         The `values` field indicates the resource types of the events to which you want to subscribe. The value of the field is a JSON array. Examples:
+        #         The `values` field indicates the resource types of the events to which you want to subscribe. 
         # 
-        # `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`
+        #         The `multiple` field indicates whether multiple values are supported for this group of filters. Resource types support multi-value filtering; when selecting multiple resource types, the multiple field can be set to true.
+        # The value of the field is a JSON array. Examples:
         # 
-        # *   If you set the DeliveryChannelType parameter to SLS, the setting of the resource types of the snapshots to which you want to deliver is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`.
+        #         `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`
+        # 
+        #     *   You can also simultaneously specify both risk levels and resource types, such as:
+        # 
+        #         `[{"filterType":"RuleRiskLevel","value":"2","multiple":false},{"filterType":"ResourceType","values":["ACS::CDN::Domain","ACS::ActionTrail::Trail"],"multiple":true}]`
+        # 
+        # *   If you specify the resource types for delivering configurations, the resource types are specified by: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`.
         # 
         #     The `values` field specifies the resource types of the snapshots to which you want to deliver. The value of the field is a JSON array. Examples:
         # 
-        # `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`
+        #       `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`
         self.delivery_channel_condition = delivery_channel_condition
         # The name of the delivery channel.
         # 
@@ -4898,6 +4985,7 @@ class CreateConfigRuleRequest(TeaModel):
         region_ids_scope: str = None,
         resource_group_ids_scope: str = None,
         resource_ids_scope: str = None,
+        resource_name_scope: str = None,
         resource_types_scope: List[str] = None,
         risk_level: int = None,
         source_identifier: str = None,
@@ -4959,6 +5047,7 @@ class CreateConfigRuleRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # ResourceIdsScope
         self.resource_ids_scope = resource_ids_scope
+        self.resource_name_scope = resource_name_scope
         # The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
         # 
         # This parameter is required.
@@ -5055,6 +5144,8 @@ class CreateConfigRuleRequest(TeaModel):
             result['ResourceGroupIdsScope'] = self.resource_group_ids_scope
         if self.resource_ids_scope is not None:
             result['ResourceIdsScope'] = self.resource_ids_scope
+        if self.resource_name_scope is not None:
+            result['ResourceNameScope'] = self.resource_name_scope
         if self.resource_types_scope is not None:
             result['ResourceTypesScope'] = self.resource_types_scope
         if self.risk_level is not None:
@@ -5112,6 +5203,8 @@ class CreateConfigRuleRequest(TeaModel):
             self.resource_group_ids_scope = m.get('ResourceGroupIdsScope')
         if m.get('ResourceIdsScope') is not None:
             self.resource_ids_scope = m.get('ResourceIdsScope')
+        if m.get('ResourceNameScope') is not None:
+            self.resource_name_scope = m.get('ResourceNameScope')
         if m.get('ResourceTypesScope') is not None:
             self.resource_types_scope = m.get('ResourceTypesScope')
         if m.get('RiskLevel') is not None:
@@ -5226,6 +5319,7 @@ class CreateConfigRuleShrinkRequest(TeaModel):
         region_ids_scope: str = None,
         resource_group_ids_scope: str = None,
         resource_ids_scope: str = None,
+        resource_name_scope: str = None,
         resource_types_scope_shrink: str = None,
         risk_level: int = None,
         source_identifier: str = None,
@@ -5287,6 +5381,7 @@ class CreateConfigRuleShrinkRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # ResourceIdsScope
         self.resource_ids_scope = resource_ids_scope
+        self.resource_name_scope = resource_name_scope
         # The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
         # 
         # This parameter is required.
@@ -5379,6 +5474,8 @@ class CreateConfigRuleShrinkRequest(TeaModel):
             result['ResourceGroupIdsScope'] = self.resource_group_ids_scope
         if self.resource_ids_scope is not None:
             result['ResourceIdsScope'] = self.resource_ids_scope
+        if self.resource_name_scope is not None:
+            result['ResourceNameScope'] = self.resource_name_scope
         if self.resource_types_scope_shrink is not None:
             result['ResourceTypesScope'] = self.resource_types_scope_shrink
         if self.risk_level is not None:
@@ -5434,6 +5531,8 @@ class CreateConfigRuleShrinkRequest(TeaModel):
             self.resource_group_ids_scope = m.get('ResourceGroupIdsScope')
         if m.get('ResourceIdsScope') is not None:
             self.resource_ids_scope = m.get('ResourceIdsScope')
+        if m.get('ResourceNameScope') is not None:
+            self.resource_name_scope = m.get('ResourceNameScope')
         if m.get('ResourceTypesScope') is not None:
             self.resource_types_scope_shrink = m.get('ResourceTypesScope')
         if m.get('RiskLevel') is not None:
@@ -10219,7 +10318,15 @@ class GetAggregateCompliancePackRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the resource. You can specify up to 20 tag keys.
+        # 
+        # The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag values.
+        # 
+        # The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # Each key-value must be unique. You can specify at most 20 tag values in each call.
         self.value = value
 
     def validate(self):
@@ -10265,6 +10372,9 @@ class GetAggregateCompliancePackRequest(TeaModel):
         # 
         # This parameter is required.
         self.compliance_pack_id = compliance_pack_id
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag = tag
 
     def validate(self):
@@ -10322,6 +10432,9 @@ class GetAggregateCompliancePackShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.compliance_pack_id = compliance_pack_id
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -10663,7 +10776,9 @@ class GetAggregateCompliancePackResponseBodyCompliancePackTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag keys of the resource.
         self.tag_key = tag_key
+        # The tag values of the resource.
         self.tag_value = tag_value
 
     def validate(self):
@@ -10736,6 +10851,7 @@ class GetAggregateCompliancePackResponseBodyCompliancePack(TeaModel):
         # *   ACTIVE: The compliance package was normal.
         # *   CREATING: The compliance package was being created.
         self.status = status
+        # The tags.
         self.tags = tags
         # The information about the current compliance package template. The rules in the template do not contain custom function rules. You can quickly create the same compliance package for other accounts or account groups based on the template information.
         self.template_content = template_content
@@ -12348,6 +12464,7 @@ class GetAggregateConfigRuleResponseBodyConfigRule(TeaModel):
         region_ids_scope: str = None,
         resource_group_ids_scope: str = None,
         resource_ids_scope: str = None,
+        resource_name_scope: str = None,
         resource_types_scope: str = None,
         risk_level: int = None,
         source: GetAggregateConfigRuleResponseBodyConfigRuleSource = None,
@@ -12435,6 +12552,8 @@ class GetAggregateConfigRuleResponseBodyConfigRule(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # The IDs of the resources to which the rule applies. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
+        # The names of the resource groups to which the rule applies.
+        self.resource_name_scope = resource_name_scope
         # The type of the resource evaluated by the rule.
         self.resource_types_scope = resource_types_scope
         # The risk level of the resources that are not compliant with the rule. Valid values:
@@ -12445,13 +12564,19 @@ class GetAggregateConfigRuleResponseBodyConfigRule(TeaModel):
         self.risk_level = risk_level
         # The information about how the rule was created.
         self.source = source
-        # The logical relationship among the tag keys if you specify multiple tag keys by using the `TagKeyScope` parameter. For example, if the `TagKeyScope` parameter is set to `ECS,OSS` and the TagKeyLogicScope parameter is set to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
         # 
-        # *   AND: the logical relationship of AND
-        # *   OR: the logical relationship of OR
+        # The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+        # 
+        # *   AND
+        # *   OR
         self.tag_key_logic_scope = tag_key_logic_scope
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # 
         # The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
         self.tag_key_scope = tag_key_scope
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # 
         # The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
         self.tag_value_scope = tag_value_scope
         # The list of tags.
@@ -12545,6 +12670,8 @@ class GetAggregateConfigRuleResponseBodyConfigRule(TeaModel):
             result['ResourceGroupIdsScope'] = self.resource_group_ids_scope
         if self.resource_ids_scope is not None:
             result['ResourceIdsScope'] = self.resource_ids_scope
+        if self.resource_name_scope is not None:
+            result['ResourceNameScope'] = self.resource_name_scope
         if self.resource_types_scope is not None:
             result['ResourceTypesScope'] = self.resource_types_scope
         if self.risk_level is not None:
@@ -12630,6 +12757,8 @@ class GetAggregateConfigRuleResponseBodyConfigRule(TeaModel):
             self.resource_group_ids_scope = m.get('ResourceGroupIdsScope')
         if m.get('ResourceIdsScope') is not None:
             self.resource_ids_scope = m.get('ResourceIdsScope')
+        if m.get('ResourceNameScope') is not None:
+            self.resource_name_scope = m.get('ResourceNameScope')
         if m.get('ResourceTypesScope') is not None:
             self.resource_types_scope = m.get('ResourceTypesScope')
         if m.get('RiskLevel') is not None:
@@ -12662,7 +12791,7 @@ class GetAggregateConfigRuleResponseBody(TeaModel):
         config_rule: GetAggregateConfigRuleResponseBodyConfigRule = None,
         request_id: str = None,
     ):
-        # The rules.
+        # The information about the rules.
         self.config_rule = config_rule
         # The ID of the request.
         self.request_id = request_id
@@ -13180,11 +13309,11 @@ class GetAggregateConfigRulesReportResponseBodyConfigRulesReport(TeaModel):
         self.report_id = report_id
         # The status of the compliance evaluation report. Valid values:
         # 
-        # *   NONE: The compliance evaluation report was not generated.
-        # *   CREATING: The compliance evaluation report was being generated.
+        # *   NONE: The compliance evaluation report is not generated.
+        # *   CREATING: The compliance evaluation report is being generated.
         # *   COMPLETE: The compliance evaluation report was generated.
         self.report_status = report_status
-        # The URL that is used to download the compliance evaluation report.
+        # The URL used to download the compliance evaluation report.
         self.report_url = report_url
 
     def validate(self):
@@ -13233,7 +13362,7 @@ class GetAggregateConfigRulesReportResponseBody(TeaModel):
         config_rules_report: GetAggregateConfigRulesReportResponseBodyConfigRulesReport = None,
         request_id: str = None,
     ):
-        # The information about the compliance evaluation report.
+        # The compliance evaluation report.
         self.config_rules_report = config_rules_report
         # The request ID.
         self.request_id = request_id
@@ -15682,7 +15811,17 @@ class GetAggregatorRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # 
+        # You can specify at most 20 tag keys.
         self.key = key
+        # The tag values.
+        # 
+        # The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # Each key-value must be unique. You can specify at most 20 tag values in each call.
         self.value = value
 
     def validate(self):
@@ -15719,6 +15858,9 @@ class GetAggregatorRequest(TeaModel):
         # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag = tag
 
     def validate(self):
@@ -15763,6 +15905,9 @@ class GetAggregatorShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -15849,7 +15994,9 @@ class GetAggregatorResponseBodyAggregatorTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -15920,6 +16067,7 @@ class GetAggregatorResponseBodyAggregator(TeaModel):
         self.description = description
         # The ID of the attached folder of the account group.
         self.folder_id = folder_id
+        # tags
         self.tags = tags
 
     def validate(self):
@@ -16083,7 +16231,13 @@ class GetCompliancePackRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # 
+        # You can specify at most 20 tag keys.
         self.key = key
+        # The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -16122,6 +16276,9 @@ class GetCompliancePackRequest(TeaModel):
         # 
         # This parameter is required.
         self.compliance_pack_id = compliance_pack_id
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag = tag
 
     def validate(self):
@@ -16168,6 +16325,9 @@ class GetCompliancePackShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.compliance_pack_id = compliance_pack_id
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -16327,9 +16487,9 @@ class GetCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope(TeaModel)
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
+        # The key of the tag.
         self.tag_key = tag_key
-        # The tag value.
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -16362,9 +16522,9 @@ class GetCompliancePackResponseBodyCompliancePackScopeTagsScope(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
+        # The key of the tag.
         self.tag_key = tag_key
-        # The tag value.
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -16405,13 +16565,13 @@ class GetCompliancePackResponseBodyCompliancePackScope(TeaModel):
         tag_value_scope: str = None,
         tags_scope: List[GetCompliancePackResponseBodyCompliancePackScopeTagsScope] = None,
     ):
-        # Excluded region scope, multiple regions should be separated by commas.
+        # The IDs of regions that are excluded. Separate multiple region IDs with commas (,).
         self.exclude_region_ids_scope = exclude_region_ids_scope
-        # Excluded resourceGroup scope, multiple resourceGroup should be separated by commas.
+        # The IDs of the resource groups whose resources you do not want to evaluate by using the compliance package. Separate multiple resource group IDs with commas (,).
         self.exclude_resource_group_ids_scope = exclude_resource_group_ids_scope
         # The ID of the resource that you do not want to evaluate by using the compliance package.
         self.exclude_resource_ids_scope = exclude_resource_ids_scope
-        # Exclude tag scope.
+        # The scope of the tag that is excluded.
         # 
         # This parameter is required.
         self.exclude_tags_scope = exclude_tags_scope
@@ -16419,13 +16579,13 @@ class GetCompliancePackResponseBodyCompliancePackScope(TeaModel):
         self.region_ids_scope = region_ids_scope
         # The ID of the resource group whose resources you want to evaluate by using the compliance package.
         self.resource_group_ids_scope = resource_group_ids_scope
-        # Include ResourceId scope, multiple resourceIds should be separated by commas.
+        # The IDs of the resources to which the rule applies. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
         # The tag value of the resource that you want to evaluate by using the compliance package.
         self.tag_value_scope = tag_value_scope
-        # Include tag scope.
+        # The tag scope.
         # 
         # This parameter is required.
         self.tags_scope = tags_scope
@@ -16509,7 +16669,9 @@ class GetCompliancePackResponseBodyCompliancePackTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag keys of the resource.
         self.tag_key = tag_key
+        # The tag values of the resource.
         self.tag_value = tag_value
 
     def validate(self):
@@ -16579,6 +16741,7 @@ class GetCompliancePackResponseBodyCompliancePack(TeaModel):
         # *   ACTIVE: The compliance package is normal.
         # *   CREATING: The compliance package is being created.
         self.status = status
+        # The list of tags.
         self.tags = tags
         # The information about the current compliance package template. The rules in the template do not contain custom function rules. You can quickly create the same compliance package for other accounts or account groups based on the template information.
         self.template_content = template_content
@@ -18111,6 +18274,7 @@ class GetConfigRuleResponseBodyConfigRule(TeaModel):
         region_ids_scope: str = None,
         resource_group_ids_scope: str = None,
         resource_ids_scope: str = None,
+        resource_name_scope: str = None,
         resource_types_scope: str = None,
         risk_level: int = None,
         scope: GetConfigRuleResponseBodyConfigRuleScope = None,
@@ -18183,6 +18347,7 @@ class GetConfigRuleResponseBodyConfigRule(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # ResourceIdsScope
         self.resource_ids_scope = resource_ids_scope
+        self.resource_name_scope = resource_name_scope
         # The type of the resource to be evaluated by the rule.
         self.resource_types_scope = resource_types_scope
         # The risk level of the resources that do not comply with the rule. Valid values:
@@ -18292,6 +18457,8 @@ class GetConfigRuleResponseBodyConfigRule(TeaModel):
             result['ResourceGroupIdsScope'] = self.resource_group_ids_scope
         if self.resource_ids_scope is not None:
             result['ResourceIdsScope'] = self.resource_ids_scope
+        if self.resource_name_scope is not None:
+            result['ResourceNameScope'] = self.resource_name_scope
         if self.resource_types_scope is not None:
             result['ResourceTypesScope'] = self.resource_types_scope
         if self.risk_level is not None:
@@ -18371,6 +18538,8 @@ class GetConfigRuleResponseBodyConfigRule(TeaModel):
             self.resource_group_ids_scope = m.get('ResourceGroupIdsScope')
         if m.get('ResourceIdsScope') is not None:
             self.resource_ids_scope = m.get('ResourceIdsScope')
+        if m.get('ResourceNameScope') is not None:
+            self.resource_name_scope = m.get('ResourceNameScope')
         if m.get('ResourceTypesScope') is not None:
             self.resource_types_scope = m.get('ResourceTypesScope')
         if m.get('RiskLevel') is not None:
@@ -22545,7 +22714,15 @@ class ListAggregateCompliancePacksRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the resource. You can specify up to 20 tag keys.
+        # 
+        # The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag values.
+        # 
+        # The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # Each key-value must be unique. You can specify at most 20 tag values in each call.
         self.value = value
 
     def validate(self):
@@ -22600,6 +22777,7 @@ class ListAggregateCompliancePacksRequest(TeaModel):
         # *   ACTIVE: compliance packages that are available for use.
         # *   CREATING: compliance packages that are being created.
         self.status = status
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -22674,6 +22852,7 @@ class ListAggregateCompliancePacksShrinkRequest(TeaModel):
         # *   ACTIVE: compliance packages that are available for use.
         # *   CREATING: compliance packages that are being created.
         self.status = status
+        # The tags.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -22718,7 +22897,9 @@ class ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePac
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -22784,6 +22965,7 @@ class ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePac
         # *   ACTIVE: The compliance package is available for use.
         # *   CREATING: The compliance package is being created.
         self.status = status
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -22858,7 +23040,7 @@ class ListAggregateCompliancePacksResponseBodyCompliancePacksResult(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The details of the compliance package.
+        # The compliance packages.
         self.compliance_packs = compliance_packs
         # The page number of the returned page.
         self.page_number = page_number
@@ -22913,7 +23095,7 @@ class ListAggregateCompliancePacksResponseBody(TeaModel):
         compliance_packs_result: ListAggregateCompliancePacksResponseBodyCompliancePacksResult = None,
         request_id: str = None,
     ):
-        # The information about the compliance packages.
+        # The compliance packages returned.
         self.compliance_packs_result = compliance_packs_result
         # The ID of the request.
         self.request_id = request_id
@@ -23941,7 +24123,15 @@ class ListAggregateConfigRulesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # 
+        # You can specify at most 20 tag keys.
         self.key = key
+        # The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -24027,6 +24217,9 @@ class ListAggregateConfigRulesRequest(TeaModel):
         # *   2: medium
         # *   3: low
         self.risk_level = risk_level
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag = tag
 
     def validate(self):
@@ -24156,6 +24349,9 @@ class ListAggregateConfigRulesShrinkRequest(TeaModel):
         # *   2: medium
         # *   3: low
         self.risk_level = risk_level
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -26451,7 +26647,15 @@ class ListAggregatorsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the resource. You can specify up to 20 tag keys.
+        # 
+        # The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag values.
+        # 
+        # The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # Each key-value must be unique. You can specify at most 20 tag values in each call.
         self.value = value
 
     def validate(self):
@@ -26491,6 +26695,9 @@ class ListAggregatorsRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
         self.next_token = next_token
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag = tag
 
     def validate(self):
@@ -26542,6 +26749,9 @@ class ListAggregatorsShrinkRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
         self.next_token = next_token
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -26578,7 +26788,9 @@ class ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag keys of the resource.
         self.tag_key = tag_key
+        # The tag values of the resource.
         self.tag_value = tag_value
 
     def validate(self):
@@ -26644,6 +26856,7 @@ class ListAggregatorsResponseBodyAggregatorsResultAggregators(TeaModel):
         self.description = description
         # The ID of the folder.
         self.folder_id = folder_id
+        # tags
         self.tags = tags
 
     def validate(self):
@@ -27253,7 +27466,15 @@ class ListCompliancePacksRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the resource. You can specify up to 20 tag keys.
+        # 
+        # The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag values.
+        # 
+        # The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # Each key-value must be unique. You can specify at most 20 tag values in each call.
         self.value = value
 
     def validate(self):
@@ -27301,6 +27522,9 @@ class ListCompliancePacksRequest(TeaModel):
         # *   ACTIVE: The compliance package is active.
         # *   CREATING: The compliance package is being created.
         self.status = status
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag = tag
 
     def validate(self):
@@ -27364,6 +27588,9 @@ class ListCompliancePacksShrinkRequest(TeaModel):
         # *   ACTIVE: The compliance package is active.
         # *   CREATING: The compliance package is being created.
         self.status = status
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -27404,7 +27631,9 @@ class ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags(Te
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # tag key
         self.tag_key = tag_key
+        # tag value
         self.tag_value = tag_value
 
     def validate(self):
@@ -27467,6 +27696,7 @@ class ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks(TeaMod
         # *   ACTIVE: The compliance package is normal.
         # *   CREATING: The compliance package is being created.
         self.status = status
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -27973,7 +28203,7 @@ class ListConfigRuleEvaluationResultsRequest(TeaModel):
         # 
         # You can call the [ListConfigRules](https://help.aliyun.com/document_detail/169607.html) operation to obtain the rule ID.
         self.config_rule_id = config_rule_id
-        # The maximum number of entries to return for a single request. Valid values: 1 to 100.
+        # The maximum number of entries to return in a request. Valid values: 1 to 100.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
         self.next_token = next_token
@@ -28198,6 +28428,7 @@ class ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResu
         # 
         # *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
         # *   ScheduledNotification: The rule is periodically triggered.
+        # *   Manual: The rule is manually triggered.
         self.invoking_event_message_type = invoking_event_message_type
         # Indicates whether the remediation template is enabled. Valid values:
         # 
@@ -29693,12 +29924,14 @@ class ListIntegratedServiceResponse(TeaModel):
 class ListManagedRulesRequest(TeaModel):
     def __init__(
         self,
+        filter_type: str = None,
         keyword: str = None,
         page_number: int = None,
         page_size: int = None,
         resource_types: str = None,
         risk_level: int = None,
     ):
+        self.filter_type = filter_type
         # The keyword of the managed rule.
         self.keyword = keyword
         # The page number of the page to return.
@@ -29727,6 +29960,8 @@ class ListManagedRulesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.filter_type is not None:
+            result['FilterType'] = self.filter_type
         if self.keyword is not None:
             result['Keyword'] = self.keyword
         if self.page_number is not None:
@@ -29741,6 +29976,8 @@ class ListManagedRulesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FilterType') is not None:
+            self.filter_type = m.get('FilterType')
         if m.get('Keyword') is not None:
             self.keyword = m.get('Keyword')
         if m.get('PageNumber') is not None:
@@ -31236,6 +31473,7 @@ class ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResult
         # 
         # *   ConfigurationItemChangeNotification: The managed rule is triggered by configuration changes.
         # *   ScheduledNotification: The managed rule is periodically triggered.
+        # *   Manual: The rule is manually triggered.
         self.invoking_event_message_type = invoking_event_message_type
         # Indicates whether the remediation template is enabled. Valid values:
         # 
@@ -35331,6 +35569,7 @@ class UpdateAggregateConfigRuleRequest(TeaModel):
         region_ids_scope: str = None,
         resource_group_ids_scope: str = None,
         resource_ids_scope: str = None,
+        resource_name_scope: str = None,
         resource_types_scope: List[str] = None,
         risk_level: int = None,
         tag: List[UpdateAggregateConfigRuleRequestTag] = None,
@@ -35400,13 +35639,13 @@ class UpdateAggregateConfigRuleRequest(TeaModel):
         self.folder_ids_scope = folder_ids_scope
         # The input parameters of the rule.
         self.input_parameters = input_parameters
-        # The intervals at which the rule is triggered. Valid values:
+        # The interval at which the rule is triggered. Valid values:
         # 
-        # *   One_Hour: 1 hour
-        # *   Three_Hours: 3 hours
-        # *   Six_Hours: 6 hours
-        # *   Twelve_Hours: 12 hours
-        # *   TwentyFour_Hours: 24 hours
+        # *   One_Hour
+        # *   Three_Hours
+        # *   Six_Hours
+        # *   Twelve_Hours
+        # *   TwentyFour_Hours
         # 
         # >  This parameter is required if the `ConfigRuleTriggerTypes` parameter is set to `ScheduledNotification`.
         self.maximum_execution_frequency = maximum_execution_frequency
@@ -35420,27 +35659,35 @@ class UpdateAggregateConfigRuleRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # The IDs of the resources included from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
+        # The names of the resource groups to which the rule applies.
+        self.resource_name_scope = resource_name_scope
         # The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
         self.resource_types_scope = resource_types_scope
-        # The risk level of the resources that are not compliant with the rule. Valid values:
+        # The risk level of the resources that do not comply with the rule. Valid values:
         # 
-        # *   1: high risk level
-        # *   2: medium risk level
-        # *   3: low risk level
+        # *   1: high
+        # *   2: medium
+        # *   3: low
         self.risk_level = risk_level
         # The tags of the resource.
         # 
         # You can add up to 20 tags to a resource.
         self.tag = tag
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # 
         # The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
         # 
         # *   AND
         # *   OR
         self.tag_key_logic_scope = tag_key_logic_scope
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # 
         # The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
         # 
         # >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
         self.tag_key_scope = tag_key_scope
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # 
         # The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
         # 
         # >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
@@ -35508,6 +35755,8 @@ class UpdateAggregateConfigRuleRequest(TeaModel):
             result['ResourceGroupIdsScope'] = self.resource_group_ids_scope
         if self.resource_ids_scope is not None:
             result['ResourceIdsScope'] = self.resource_ids_scope
+        if self.resource_name_scope is not None:
+            result['ResourceNameScope'] = self.resource_name_scope
         if self.resource_types_scope is not None:
             result['ResourceTypesScope'] = self.resource_types_scope
         if self.risk_level is not None:
@@ -35571,6 +35820,8 @@ class UpdateAggregateConfigRuleRequest(TeaModel):
             self.resource_group_ids_scope = m.get('ResourceGroupIdsScope')
         if m.get('ResourceIdsScope') is not None:
             self.resource_ids_scope = m.get('ResourceIdsScope')
+        if m.get('ResourceNameScope') is not None:
+            self.resource_name_scope = m.get('ResourceNameScope')
         if m.get('ResourceTypesScope') is not None:
             self.resource_types_scope = m.get('ResourceTypesScope')
         if m.get('RiskLevel') is not None:
@@ -35686,6 +35937,7 @@ class UpdateAggregateConfigRuleShrinkRequest(TeaModel):
         region_ids_scope: str = None,
         resource_group_ids_scope: str = None,
         resource_ids_scope: str = None,
+        resource_name_scope: str = None,
         resource_types_scope_shrink: str = None,
         risk_level: int = None,
         tag_shrink: str = None,
@@ -35755,13 +36007,13 @@ class UpdateAggregateConfigRuleShrinkRequest(TeaModel):
         self.folder_ids_scope = folder_ids_scope
         # The input parameters of the rule.
         self.input_parameters_shrink = input_parameters_shrink
-        # The intervals at which the rule is triggered. Valid values:
+        # The interval at which the rule is triggered. Valid values:
         # 
-        # *   One_Hour: 1 hour
-        # *   Three_Hours: 3 hours
-        # *   Six_Hours: 6 hours
-        # *   Twelve_Hours: 12 hours
-        # *   TwentyFour_Hours: 24 hours
+        # *   One_Hour
+        # *   Three_Hours
+        # *   Six_Hours
+        # *   Twelve_Hours
+        # *   TwentyFour_Hours
         # 
         # >  This parameter is required if the `ConfigRuleTriggerTypes` parameter is set to `ScheduledNotification`.
         self.maximum_execution_frequency = maximum_execution_frequency
@@ -35775,27 +36027,35 @@ class UpdateAggregateConfigRuleShrinkRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # The IDs of the resources included from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
+        # The names of the resource groups to which the rule applies.
+        self.resource_name_scope = resource_name_scope
         # The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
         self.resource_types_scope_shrink = resource_types_scope_shrink
-        # The risk level of the resources that are not compliant with the rule. Valid values:
+        # The risk level of the resources that do not comply with the rule. Valid values:
         # 
-        # *   1: high risk level
-        # *   2: medium risk level
-        # *   3: low risk level
+        # *   1: high
+        # *   2: medium
+        # *   3: low
         self.risk_level = risk_level
         # The tags of the resource.
         # 
         # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # 
         # The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
         # 
         # *   AND
         # *   OR
         self.tag_key_logic_scope = tag_key_logic_scope
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # 
         # The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
         # 
         # >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
         self.tag_key_scope = tag_key_scope
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # 
         # The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
         # 
         # >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
@@ -35859,6 +36119,8 @@ class UpdateAggregateConfigRuleShrinkRequest(TeaModel):
             result['ResourceGroupIdsScope'] = self.resource_group_ids_scope
         if self.resource_ids_scope is not None:
             result['ResourceIdsScope'] = self.resource_ids_scope
+        if self.resource_name_scope is not None:
+            result['ResourceNameScope'] = self.resource_name_scope
         if self.resource_types_scope_shrink is not None:
             result['ResourceTypesScope'] = self.resource_types_scope_shrink
         if self.risk_level is not None:
@@ -35920,6 +36182,8 @@ class UpdateAggregateConfigRuleShrinkRequest(TeaModel):
             self.resource_group_ids_scope = m.get('ResourceGroupIdsScope')
         if m.get('ResourceIdsScope') is not None:
             self.resource_ids_scope = m.get('ResourceIdsScope')
+        if m.get('ResourceNameScope') is not None:
+            self.resource_name_scope = m.get('ResourceNameScope')
         if m.get('ResourceTypesScope') is not None:
             self.resource_types_scope_shrink = m.get('ResourceTypesScope')
         if m.get('RiskLevel') is not None:
@@ -36242,7 +36506,15 @@ class UpdateAggregatorRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the resource. You can specify up to 20 tag keys.
+        # 
+        # The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag values.
+        # 
+        # The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # Each key-value must be unique. You can specify at most 20 tag values in each call.
         self.value = value
 
     def validate(self):
@@ -36277,6 +36549,7 @@ class UpdateAggregatorRequest(TeaModel):
         aggregator_name: str = None,
         client_token: str = None,
         description: str = None,
+        folder_id: str = None,
         tag: List[UpdateAggregatorRequestTag] = None,
     ):
         # The members in the account group.
@@ -36299,6 +36572,10 @@ class UpdateAggregatorRequest(TeaModel):
         # 
         # For more information about how to obtain the description of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
         self.description = description
+        self.folder_id = folder_id
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag = tag
 
     def validate(self):
@@ -36329,6 +36606,8 @@ class UpdateAggregatorRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.description is not None:
             result['Description'] = self.description
+        if self.folder_id is not None:
+            result['FolderId'] = self.folder_id
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -36350,6 +36629,8 @@ class UpdateAggregatorRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('FolderId') is not None:
+            self.folder_id = m.get('FolderId')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -36366,6 +36647,7 @@ class UpdateAggregatorShrinkRequest(TeaModel):
         aggregator_name: str = None,
         client_token: str = None,
         description: str = None,
+        folder_id: str = None,
         tag_shrink: str = None,
     ):
         # The members in the account group.
@@ -36388,6 +36670,10 @@ class UpdateAggregatorShrinkRequest(TeaModel):
         # 
         # For more information about how to obtain the description of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
         self.description = description
+        self.folder_id = folder_id
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -36409,6 +36695,8 @@ class UpdateAggregatorShrinkRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.description is not None:
             result['Description'] = self.description
+        if self.folder_id is not None:
+            result['FolderId'] = self.folder_id
         if self.tag_shrink is not None:
             result['Tag'] = self.tag_shrink
         return result
@@ -36425,6 +36713,8 @@ class UpdateAggregatorShrinkRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('FolderId') is not None:
+            self.folder_id = m.get('FolderId')
         if m.get('Tag') is not None:
             self.tag_shrink = m.get('Tag')
         return self
@@ -36665,7 +36955,17 @@ class UpdateCompliancePackRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag keys.
+        # 
+        # The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length. The tag keys cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # You can specify at most 20 tag keys in each call.
         self.key = key
+        # The tag values.
+        # 
+        # The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # Each key-value must be unique. You can specify at most 20 tag values in each call.
         self.value = value
 
     def validate(self):
@@ -36786,6 +37086,9 @@ class UpdateCompliancePackRequest(TeaModel):
         # *   2: medium risk level
         # *   3: low risk level
         self.risk_level = risk_level
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag = tag
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
@@ -37044,6 +37347,9 @@ class UpdateCompliancePackShrinkRequest(TeaModel):
         # *   2: medium risk level
         # *   3: low risk level
         self.risk_level = risk_level
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
@@ -37597,6 +37903,7 @@ class UpdateConfigRuleRequest(TeaModel):
         region_ids_scope: str = None,
         resource_group_ids_scope: str = None,
         resource_ids_scope: str = None,
+        resource_name_scope: str = None,
         resource_types_scope: List[str] = None,
         risk_level: int = None,
         tag: List[UpdateConfigRuleRequestTag] = None,
@@ -37660,6 +37967,7 @@ class UpdateConfigRuleRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # The IDs of the resources to which the rule applies. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
+        self.resource_name_scope = resource_name_scope
         # The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
         self.resource_types_scope = resource_types_scope
         # The risk level of the resources that do not comply with the rule. Valid values:
@@ -37740,6 +38048,8 @@ class UpdateConfigRuleRequest(TeaModel):
             result['ResourceGroupIdsScope'] = self.resource_group_ids_scope
         if self.resource_ids_scope is not None:
             result['ResourceIdsScope'] = self.resource_ids_scope
+        if self.resource_name_scope is not None:
+            result['ResourceNameScope'] = self.resource_name_scope
         if self.resource_types_scope is not None:
             result['ResourceTypesScope'] = self.resource_types_scope
         if self.risk_level is not None:
@@ -37795,6 +38105,8 @@ class UpdateConfigRuleRequest(TeaModel):
             self.resource_group_ids_scope = m.get('ResourceGroupIdsScope')
         if m.get('ResourceIdsScope') is not None:
             self.resource_ids_scope = m.get('ResourceIdsScope')
+        if m.get('ResourceNameScope') is not None:
+            self.resource_name_scope = m.get('ResourceNameScope')
         if m.get('ResourceTypesScope') is not None:
             self.resource_types_scope = m.get('ResourceTypesScope')
         if m.get('RiskLevel') is not None:
@@ -37906,6 +38218,7 @@ class UpdateConfigRuleShrinkRequest(TeaModel):
         region_ids_scope: str = None,
         resource_group_ids_scope: str = None,
         resource_ids_scope: str = None,
+        resource_name_scope: str = None,
         resource_types_scope_shrink: str = None,
         risk_level: int = None,
         tag_shrink: str = None,
@@ -37969,6 +38282,7 @@ class UpdateConfigRuleShrinkRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # The IDs of the resources to which the rule applies. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
+        self.resource_name_scope = resource_name_scope
         # The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
         self.resource_types_scope_shrink = resource_types_scope_shrink
         # The risk level of the resources that do not comply with the rule. Valid values:
@@ -38045,6 +38359,8 @@ class UpdateConfigRuleShrinkRequest(TeaModel):
             result['ResourceGroupIdsScope'] = self.resource_group_ids_scope
         if self.resource_ids_scope is not None:
             result['ResourceIdsScope'] = self.resource_ids_scope
+        if self.resource_name_scope is not None:
+            result['ResourceNameScope'] = self.resource_name_scope
         if self.resource_types_scope_shrink is not None:
             result['ResourceTypesScope'] = self.resource_types_scope_shrink
         if self.risk_level is not None:
@@ -38098,6 +38414,8 @@ class UpdateConfigRuleShrinkRequest(TeaModel):
             self.resource_group_ids_scope = m.get('ResourceGroupIdsScope')
         if m.get('ResourceIdsScope') is not None:
             self.resource_ids_scope = m.get('ResourceIdsScope')
+        if m.get('ResourceNameScope') is not None:
+            self.resource_name_scope = m.get('ResourceNameScope')
         if m.get('ResourceTypesScope') is not None:
             self.resource_types_scope_shrink = m.get('ResourceTypesScope')
         if m.get('RiskLevel') is not None:

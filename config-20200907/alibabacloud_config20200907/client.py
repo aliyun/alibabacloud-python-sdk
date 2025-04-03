@@ -1402,6 +1402,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tag):
             request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
+        if not UtilClient.is_unset(request.resource_name_scope):
+            query['ResourceNameScope'] = request.resource_name_scope
         if not UtilClient.is_unset(request.tag_shrink):
             query['Tag'] = request.tag_shrink
         body = {}
@@ -1515,6 +1517,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tag):
             request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
+        if not UtilClient.is_unset(request.resource_name_scope):
+            query['ResourceNameScope'] = request.resource_name_scope
         if not UtilClient.is_unset(request.tag_shrink):
             query['Tag'] = request.tag_shrink
         body = {}
@@ -2392,6 +2396,8 @@ class Client(OpenApiClient):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
         if not UtilClient.is_unset(request.resource_ids_scope):
             body['ResourceIdsScope'] = request.resource_ids_scope
+        if not UtilClient.is_unset(request.resource_name_scope):
+            body['ResourceNameScope'] = request.resource_name_scope
         if not UtilClient.is_unset(request.resource_types_scope_shrink):
             body['ResourceTypesScope'] = request.resource_types_scope_shrink
         if not UtilClient.is_unset(request.risk_level):
@@ -2493,6 +2499,8 @@ class Client(OpenApiClient):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
         if not UtilClient.is_unset(request.resource_ids_scope):
             body['ResourceIdsScope'] = request.resource_ids_scope
+        if not UtilClient.is_unset(request.resource_name_scope):
+            body['ResourceNameScope'] = request.resource_name_scope
         if not UtilClient.is_unset(request.resource_types_scope_shrink):
             body['ResourceTypesScope'] = request.resource_types_scope_shrink
         if not UtilClient.is_unset(request.risk_level):
@@ -13642,6 +13650,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.filter_type):
+            query['FilterType'] = request.filter_type
         if not UtilClient.is_unset(request.keyword):
             query['Keyword'] = request.keyword
         if not UtilClient.is_unset(request.page_number):
@@ -13696,6 +13706,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.filter_type):
+            query['FilterType'] = request.filter_type
         if not UtilClient.is_unset(request.keyword):
             query['Keyword'] = request.keyword
         if not UtilClient.is_unset(request.page_number):
@@ -16735,6 +16747,8 @@ class Client(OpenApiClient):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
         if not UtilClient.is_unset(request.resource_ids_scope):
             body['ResourceIdsScope'] = request.resource_ids_scope
+        if not UtilClient.is_unset(request.resource_name_scope):
+            body['ResourceNameScope'] = request.resource_name_scope
         if not UtilClient.is_unset(request.resource_types_scope_shrink):
             body['ResourceTypesScope'] = request.resource_types_scope_shrink
         if not UtilClient.is_unset(request.risk_level):
@@ -16841,6 +16855,8 @@ class Client(OpenApiClient):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
         if not UtilClient.is_unset(request.resource_ids_scope):
             body['ResourceIdsScope'] = request.resource_ids_scope
+        if not UtilClient.is_unset(request.resource_name_scope):
+            body['ResourceNameScope'] = request.resource_name_scope
         if not UtilClient.is_unset(request.resource_types_scope_shrink):
             body['ResourceTypesScope'] = request.resource_types_scope_shrink
         if not UtilClient.is_unset(request.risk_level):
@@ -17086,6 +17102,8 @@ class Client(OpenApiClient):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.folder_id):
+            body['FolderId'] = request.folder_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -17147,6 +17165,8 @@ class Client(OpenApiClient):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.folder_id):
+            body['FolderId'] = request.folder_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -17627,6 +17647,8 @@ class Client(OpenApiClient):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
         if not UtilClient.is_unset(request.resource_ids_scope):
             body['ResourceIdsScope'] = request.resource_ids_scope
+        if not UtilClient.is_unset(request.resource_name_scope):
+            body['ResourceNameScope'] = request.resource_name_scope
         if not UtilClient.is_unset(request.resource_types_scope_shrink):
             body['ResourceTypesScope'] = request.resource_types_scope_shrink
         if not UtilClient.is_unset(request.risk_level):
@@ -17725,6 +17747,8 @@ class Client(OpenApiClient):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
         if not UtilClient.is_unset(request.resource_ids_scope):
             body['ResourceIdsScope'] = request.resource_ids_scope
+        if not UtilClient.is_unset(request.resource_name_scope):
+            body['ResourceNameScope'] = request.resource_name_scope
         if not UtilClient.is_unset(request.resource_types_scope_shrink):
             body['ResourceTypesScope'] = request.resource_types_scope_shrink
         if not UtilClient.is_unset(request.risk_level):
