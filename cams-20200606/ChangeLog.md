@@ -1,3 +1,12 @@
+2025-04-07 Version: 1.6.1
+- Update API ChatappSyncPhoneNumber: add response parameters Body.PhoneNumbers.$.IsOfficial.
+- Update API QueryChatappPhoneNumbers: add request parameters OwnerId.
+- Update API QueryChatappPhoneNumbers: add request parameters ResourceOwnerAccount.
+- Update API QueryChatappPhoneNumbers: add request parameters ResourceOwnerId.
+- Update API QueryChatappPhoneNumbers: add response parameters Body.Success.
+- Update API QueryChatappPhoneNumbers: add response parameters Body.PhoneNumbers.$.IsOfficial.
+
+
 2024-11-15 Version: 1.6.0
 - Support API TriggerChatFlow.
 - Update API AddChatappPhoneNumber: update param PreValidateId.

@@ -85,10 +85,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.AddChatappPhoneNumberResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.AddChatappPhoneNumberResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.AddChatappPhoneNumberResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_chatapp_phone_number_with_options_async(
         self,
@@ -134,10 +140,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.AddChatappPhoneNumberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.AddChatappPhoneNumberResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.AddChatappPhoneNumberResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_chatapp_phone_number(
         self,
@@ -213,10 +225,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.BeeBotAssociateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.BeeBotAssociateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.BeeBotAssociateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def bee_bot_associate_with_options_async(
         self,
@@ -266,10 +284,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.BeeBotAssociateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.BeeBotAssociateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.BeeBotAssociateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def bee_bot_associate(
         self,
@@ -359,10 +383,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.BeeBotChatResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.BeeBotChatResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.BeeBotChatResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def bee_bot_chat_with_options_async(
         self,
@@ -422,10 +452,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.BeeBotChatResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.BeeBotChatResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.BeeBotChatResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def bee_bot_chat(
         self,
@@ -495,10 +531,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ChatappBindWabaResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappBindWabaResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappBindWabaResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def chatapp_bind_waba_with_options_async(
         self,
@@ -538,10 +580,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ChatappBindWabaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappBindWabaResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappBindWabaResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def chatapp_bind_waba(
         self,
@@ -605,10 +653,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ChatappEmbedSignUpResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappEmbedSignUpResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappEmbedSignUpResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def chatapp_embed_sign_up_with_options_async(
         self,
@@ -642,10 +696,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ChatappEmbedSignUpResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappEmbedSignUpResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappEmbedSignUpResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def chatapp_embed_sign_up(
         self,
@@ -711,10 +771,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ChatappMigrationRegisterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappMigrationRegisterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappMigrationRegisterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def chatapp_migration_register_with_options_async(
         self,
@@ -750,10 +816,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ChatappMigrationRegisterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappMigrationRegisterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappMigrationRegisterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def chatapp_migration_register(
         self,
@@ -821,10 +893,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ChatappMigrationVerifiedResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappMigrationVerifiedResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappMigrationVerifiedResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def chatapp_migration_verified_with_options_async(
         self,
@@ -862,10 +940,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ChatappMigrationVerifiedResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappMigrationVerifiedResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappMigrationVerifiedResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def chatapp_migration_verified(
         self,
@@ -931,10 +1015,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ChatappPhoneNumberDeregisterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappPhoneNumberDeregisterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappPhoneNumberDeregisterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def chatapp_phone_number_deregister_with_options_async(
         self,
@@ -970,10 +1060,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ChatappPhoneNumberDeregisterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappPhoneNumberDeregisterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappPhoneNumberDeregisterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def chatapp_phone_number_deregister(
         self,
@@ -1045,10 +1141,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ChatappPhoneNumberRegisterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappPhoneNumberRegisterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappPhoneNumberRegisterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def chatapp_phone_number_register_with_options_async(
         self,
@@ -1090,10 +1192,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ChatappPhoneNumberRegisterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappPhoneNumberRegisterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappPhoneNumberRegisterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def chatapp_phone_number_register(
         self,
@@ -1163,10 +1271,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ChatappSyncPhoneNumberResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappSyncPhoneNumberResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappSyncPhoneNumberResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def chatapp_sync_phone_number_with_options_async(
         self,
@@ -1206,10 +1320,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ChatappSyncPhoneNumberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappSyncPhoneNumberResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappSyncPhoneNumberResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def chatapp_sync_phone_number(
         self,
@@ -1283,10 +1403,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ChatappVerifyAndRegisterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappVerifyAndRegisterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappVerifyAndRegisterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def chatapp_verify_and_register_with_options_async(
         self,
@@ -1330,10 +1456,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ChatappVerifyAndRegisterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappVerifyAndRegisterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ChatappVerifyAndRegisterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def chatapp_verify_and_register(
         self,
@@ -1401,10 +1533,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.CreateChatappMigrationInitiateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.CreateChatappMigrationInitiateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.CreateChatappMigrationInitiateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_chatapp_migration_initiate_with_options_async(
         self,
@@ -1442,10 +1580,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.CreateChatappMigrationInitiateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.CreateChatappMigrationInitiateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.CreateChatappMigrationInitiateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_chatapp_migration_initiate(
         self,
@@ -1538,10 +1682,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.CreateChatappTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.CreateChatappTemplateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.CreateChatappTemplateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_chatapp_template_with_options_async(
         self,
@@ -1604,10 +1754,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.CreateChatappTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.CreateChatappTemplateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.CreateChatappTemplateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_chatapp_template(
         self,
@@ -1685,10 +1841,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.CreateFlowResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.CreateFlowResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.CreateFlowResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_flow_with_options_async(
         self,
@@ -1730,10 +1892,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.CreateFlowResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.CreateFlowResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.CreateFlowResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_flow(
         self,
@@ -1801,10 +1969,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.CreatePhoneMessageQrdlResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.CreatePhoneMessageQrdlResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.CreatePhoneMessageQrdlResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_phone_message_qrdl_with_options_async(
         self,
@@ -1842,10 +2016,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.CreatePhoneMessageQrdlResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.CreatePhoneMessageQrdlResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.CreatePhoneMessageQrdlResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_phone_message_qrdl(
         self,
@@ -1924,10 +2104,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.DeleteChatappTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.DeleteChatappTemplateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.DeleteChatappTemplateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_chatapp_template_with_options_async(
         self,
@@ -1980,10 +2166,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.DeleteChatappTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.DeleteChatappTemplateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.DeleteChatappTemplateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_chatapp_template(
         self,
@@ -2051,10 +2243,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.DeleteFlowResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.DeleteFlowResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.DeleteFlowResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_flow_with_options_async(
         self,
@@ -2090,10 +2288,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.DeleteFlowResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.DeleteFlowResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.DeleteFlowResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_flow(
         self,
@@ -2159,10 +2363,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.DeletePhoneMessageQrdlResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.DeletePhoneMessageQrdlResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.DeletePhoneMessageQrdlResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_phone_message_qrdl_with_options_async(
         self,
@@ -2198,10 +2408,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.DeletePhoneMessageQrdlResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.DeletePhoneMessageQrdlResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.DeletePhoneMessageQrdlResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_phone_message_qrdl(
         self,
@@ -2261,10 +2477,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.DeprecateFlowResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.DeprecateFlowResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.DeprecateFlowResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def deprecate_flow_with_options_async(
         self,
@@ -2298,10 +2520,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.DeprecateFlowResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.DeprecateFlowResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.DeprecateFlowResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def deprecate_flow(
         self,
@@ -2363,10 +2591,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.EnableWhatsappROIMetricResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.EnableWhatsappROIMetricResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.EnableWhatsappROIMetricResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def enable_whatsapp_roimetric_with_options_async(
         self,
@@ -2402,10 +2636,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.EnableWhatsappROIMetricResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.EnableWhatsappROIMetricResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.EnableWhatsappROIMetricResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def enable_whatsapp_roimetric(
         self,
@@ -2479,10 +2719,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetChatappPhoneNumberMetricResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetChatappPhoneNumberMetricResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetChatappPhoneNumberMetricResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_chatapp_phone_number_metric_with_options_async(
         self,
@@ -2526,10 +2772,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetChatappPhoneNumberMetricResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetChatappPhoneNumberMetricResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetChatappPhoneNumberMetricResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_chatapp_phone_number_metric(
         self,
@@ -2606,10 +2858,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetChatappTemplateDetailResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetChatappTemplateDetailResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetChatappTemplateDetailResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_chatapp_template_detail_with_options_async(
         self,
@@ -2656,10 +2914,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetChatappTemplateDetailResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetChatappTemplateDetailResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetChatappTemplateDetailResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_chatapp_template_detail(
         self,
@@ -2739,10 +3003,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetChatappTemplateMetricResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetChatappTemplateMetricResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetChatappTemplateMetricResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_chatapp_template_metric_with_options_async(
         self,
@@ -2790,10 +3060,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetChatappTemplateMetricResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetChatappTemplateMetricResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetChatappTemplateMetricResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_chatapp_template_metric(
         self,
@@ -2857,10 +3133,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetChatappUploadAuthorizationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetChatappUploadAuthorizationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetChatappUploadAuthorizationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_chatapp_upload_authorization_with_options_async(
         self,
@@ -2894,10 +3176,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetChatappUploadAuthorizationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetChatappUploadAuthorizationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetChatappUploadAuthorizationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_chatapp_upload_authorization(
         self,
@@ -2973,10 +3261,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetChatappVerifyCodeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetChatappVerifyCodeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetChatappVerifyCodeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_chatapp_verify_code_with_options_async(
         self,
@@ -3022,10 +3316,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetChatappVerifyCodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetChatappVerifyCodeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetChatappVerifyCodeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_chatapp_verify_code(
         self,
@@ -3097,10 +3397,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetCommerceSettingResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetCommerceSettingResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetCommerceSettingResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_commerce_setting_with_options_async(
         self,
@@ -3142,10 +3448,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetCommerceSettingResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetCommerceSettingResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetCommerceSettingResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_commerce_setting(
         self,
@@ -3219,10 +3531,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetConversationalAutomationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetConversationalAutomationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetConversationalAutomationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_conversational_automation_with_options_async(
         self,
@@ -3266,10 +3584,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetConversationalAutomationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetConversationalAutomationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetConversationalAutomationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_conversational_automation(
         self,
@@ -3339,10 +3663,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetFlowResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetFlowResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetFlowResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_flow_with_options_async(
         self,
@@ -3378,10 +3708,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetFlowResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetFlowResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetFlowResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_flow(
         self,
@@ -3445,10 +3781,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetFlowJSONAssestResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetFlowJSONAssestResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetFlowJSONAssestResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_flow_jsonassest_with_options_async(
         self,
@@ -3482,10 +3824,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetFlowJSONAssestResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetFlowJSONAssestResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetFlowJSONAssestResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_flow_jsonassest(
         self,
@@ -3547,10 +3895,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetFlowPreviewUrlResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetFlowPreviewUrlResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetFlowPreviewUrlResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_flow_preview_url_with_options_async(
         self,
@@ -3586,10 +3940,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetFlowPreviewUrlResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetFlowPreviewUrlResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetFlowPreviewUrlResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_flow_preview_url(
         self,
@@ -3659,10 +4019,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetMigrationVerifyCodeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetMigrationVerifyCodeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetMigrationVerifyCodeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_migration_verify_code_with_options_async(
         self,
@@ -3702,10 +4068,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetMigrationVerifyCodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetMigrationVerifyCodeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetMigrationVerifyCodeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_migration_verify_code(
         self,
@@ -3775,10 +4147,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetPermissionByCodeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetPermissionByCodeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetPermissionByCodeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_permission_by_code_with_options_async(
         self,
@@ -3818,10 +4196,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetPermissionByCodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetPermissionByCodeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetPermissionByCodeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_permission_by_code(
         self,
@@ -3881,10 +4265,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetPhoneEncryptionPublicKeyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetPhoneEncryptionPublicKeyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetPhoneEncryptionPublicKeyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_phone_encryption_public_key_with_options_async(
         self,
@@ -3918,10 +4308,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetPhoneEncryptionPublicKeyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetPhoneEncryptionPublicKeyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetPhoneEncryptionPublicKeyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_phone_encryption_public_key(
         self,
@@ -3983,10 +4379,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetPhoneNumberVerificationStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetPhoneNumberVerificationStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetPhoneNumberVerificationStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_phone_number_verification_status_with_options_async(
         self,
@@ -4022,10 +4424,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetPhoneNumberVerificationStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetPhoneNumberVerificationStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetPhoneNumberVerificationStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_phone_number_verification_status(
         self,
@@ -4091,10 +4499,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetPreValidatePhoneIdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetPreValidatePhoneIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetPreValidatePhoneIdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_pre_validate_phone_id_with_options_async(
         self,
@@ -4130,10 +4544,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetPreValidatePhoneIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetPreValidatePhoneIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetPreValidatePhoneIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_pre_validate_phone_id(
         self,
@@ -4205,10 +4625,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetWhatsappConnectionCatalogResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetWhatsappConnectionCatalogResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetWhatsappConnectionCatalogResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_whatsapp_connection_catalog_with_options_async(
         self,
@@ -4250,10 +4676,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetWhatsappConnectionCatalogResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetWhatsappConnectionCatalogResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetWhatsappConnectionCatalogResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_whatsapp_connection_catalog(
         self,
@@ -4335,10 +4767,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetWhatsappHealthStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetWhatsappHealthStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetWhatsappHealthStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_whatsapp_health_status_with_options_async(
         self,
@@ -4390,10 +4828,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.GetWhatsappHealthStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.GetWhatsappHealthStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.GetWhatsappHealthStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_whatsapp_health_status(
         self,
@@ -4463,10 +4907,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.IsvGetAppIdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.IsvGetAppIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.IsvGetAppIdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def isv_get_app_id_with_options_async(
         self,
@@ -4502,10 +4952,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.IsvGetAppIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.IsvGetAppIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.IsvGetAppIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def isv_get_app_id(
         self,
@@ -4590,10 +5046,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ListChatappTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ListChatappTemplateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ListChatappTemplateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_chatapp_template_with_options_async(
         self,
@@ -4648,10 +5110,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ListChatappTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ListChatappTemplateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ListChatappTemplateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_chatapp_template(
         self,
@@ -4725,10 +5193,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ListFlowResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ListFlowResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ListFlowResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_flow_with_options_async(
         self,
@@ -4770,10 +5244,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ListFlowResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ListFlowResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ListFlowResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_flow(
         self,
@@ -4837,10 +5317,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ListPhoneMessageQrdlResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ListPhoneMessageQrdlResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ListPhoneMessageQrdlResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_phone_message_qrdl_with_options_async(
         self,
@@ -4874,10 +5360,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ListPhoneMessageQrdlResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ListPhoneMessageQrdlResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ListPhoneMessageQrdlResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_phone_message_qrdl(
         self,
@@ -4955,10 +5447,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ListProductResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ListProductResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ListProductResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_product_with_options_async(
         self,
@@ -5010,10 +5508,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ListProductResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ListProductResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ListProductResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_product(
         self,
@@ -5093,10 +5597,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ListProductCatalogResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ListProductCatalogResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ListProductCatalogResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_product_catalog_with_options_async(
         self,
@@ -5146,10 +5656,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ListProductCatalogResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ListProductCatalogResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ListProductCatalogResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_product_catalog(
         self,
@@ -5239,10 +5755,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ModifyChatappTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ModifyChatappTemplateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ModifyChatappTemplateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_chatapp_template_with_options_async(
         self,
@@ -5302,10 +5824,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ModifyChatappTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ModifyChatappTemplateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ModifyChatappTemplateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_chatapp_template(
         self,
@@ -5379,10 +5907,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ModifyFlowResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ModifyFlowResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ModifyFlowResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_flow_with_options_async(
         self,
@@ -5426,10 +5960,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ModifyFlowResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ModifyFlowResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ModifyFlowResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_flow(
         self,
@@ -5519,10 +6059,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ModifyPhoneBusinessProfileResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ModifyPhoneBusinessProfileResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ModifyPhoneBusinessProfileResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_phone_business_profile_with_options_async(
         self,
@@ -5582,10 +6128,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.ModifyPhoneBusinessProfileResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.ModifyPhoneBusinessProfileResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.ModifyPhoneBusinessProfileResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_phone_business_profile(
         self,
@@ -5651,10 +6203,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.PublishFlowResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.PublishFlowResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.PublishFlowResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def publish_flow_with_options_async(
         self,
@@ -5690,10 +6248,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.PublishFlowResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.PublishFlowResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.PublishFlowResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def publish_flow(
         self,
@@ -5765,10 +6329,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.QueryChatappBindWabaResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.QueryChatappBindWabaResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.QueryChatappBindWabaResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_chatapp_bind_waba_with_options_async(
         self,
@@ -5810,10 +6380,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.QueryChatappBindWabaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.QueryChatappBindWabaResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.QueryChatappBindWabaResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_chatapp_bind_waba(
         self,
@@ -5865,6 +6441,12 @@ class Client(OpenApiClient):
             query['CustSpaceId'] = request.cust_space_id
         if not UtilClient.is_unset(request.isv_code):
             query['IsvCode'] = request.isv_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
@@ -5881,10 +6463,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.QueryChatappPhoneNumbersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.QueryChatappPhoneNumbersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.QueryChatappPhoneNumbersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_chatapp_phone_numbers_with_options_async(
         self,
@@ -5906,6 +6494,12 @@ class Client(OpenApiClient):
             query['CustSpaceId'] = request.cust_space_id
         if not UtilClient.is_unset(request.isv_code):
             query['IsvCode'] = request.isv_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
@@ -5922,10 +6516,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.QueryChatappPhoneNumbersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.QueryChatappPhoneNumbersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.QueryChatappPhoneNumbersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_chatapp_phone_numbers(
         self,
@@ -5997,10 +6597,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.QueryPhoneBusinessProfileResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.QueryPhoneBusinessProfileResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.QueryPhoneBusinessProfileResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_phone_business_profile_with_options_async(
         self,
@@ -6042,10 +6648,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.QueryPhoneBusinessProfileResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.QueryPhoneBusinessProfileResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.QueryPhoneBusinessProfileResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_phone_business_profile(
         self,
@@ -6117,10 +6729,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.QueryWabaBusinessInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.QueryWabaBusinessInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.QueryWabaBusinessInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_waba_business_info_with_options_async(
         self,
@@ -6162,10 +6780,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.QueryWabaBusinessInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.QueryWabaBusinessInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.QueryWabaBusinessInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_waba_business_info(
         self,
@@ -6266,10 +6890,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.SendChatappMassMessageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.SendChatappMassMessageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.SendChatappMassMessageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def send_chatapp_mass_message_with_options_async(
         self,
@@ -6340,10 +6970,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.SendChatappMassMessageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.SendChatappMassMessageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.SendChatappMassMessageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def send_chatapp_mass_message(
         self,
@@ -6471,10 +7107,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.SendChatappMessageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.SendChatappMessageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.SendChatappMessageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def send_chatapp_message_with_options_async(
         self,
@@ -6570,10 +7212,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.SendChatappMessageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.SendChatappMessageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.SendChatappMessageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def send_chatapp_message(
         self,
@@ -6650,10 +7298,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.SubmitIsvCustomerTermsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.SubmitIsvCustomerTermsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.SubmitIsvCustomerTermsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def submit_isv_customer_terms_with_options_async(
         self,
@@ -6700,10 +7354,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.SubmitIsvCustomerTermsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.SubmitIsvCustomerTermsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.SubmitIsvCustomerTermsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def submit_isv_customer_terms(
         self,
@@ -6789,10 +7449,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.TriggerChatFlowResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.TriggerChatFlowResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.TriggerChatFlowResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def trigger_chat_flow_with_options_async(
         self,
@@ -6846,10 +7512,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.TriggerChatFlowResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.TriggerChatFlowResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.TriggerChatFlowResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def trigger_chat_flow(
         self,
@@ -6919,10 +7591,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.UpdateAccountWebhookResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.UpdateAccountWebhookResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.UpdateAccountWebhookResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_account_webhook_with_options_async(
         self,
@@ -6962,10 +7640,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.UpdateAccountWebhookResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.UpdateAccountWebhookResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.UpdateAccountWebhookResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_account_webhook(
         self,
@@ -7041,10 +7725,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.UpdateCommerceSettingResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.UpdateCommerceSettingResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.UpdateCommerceSettingResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_commerce_setting_with_options_async(
         self,
@@ -7090,10 +7780,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.UpdateCommerceSettingResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.UpdateCommerceSettingResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.UpdateCommerceSettingResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_commerce_setting(
         self,
@@ -7179,10 +7875,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.UpdateConversationalAutomationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.UpdateConversationalAutomationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.UpdateConversationalAutomationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_conversational_automation_with_options_async(
         self,
@@ -7238,10 +7940,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.UpdateConversationalAutomationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.UpdateConversationalAutomationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.UpdateConversationalAutomationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_conversational_automation(
         self,
@@ -7311,10 +8019,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.UpdateFlowJSONAssetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.UpdateFlowJSONAssetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.UpdateFlowJSONAssetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_flow_jsonasset_with_options_async(
         self,
@@ -7350,10 +8064,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.UpdateFlowJSONAssetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.UpdateFlowJSONAssetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.UpdateFlowJSONAssetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_flow_jsonasset(
         self,
@@ -7415,10 +8135,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.UpdatePhoneEncryptionPublicKeyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.UpdatePhoneEncryptionPublicKeyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.UpdatePhoneEncryptionPublicKeyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_phone_encryption_public_key_with_options_async(
         self,
@@ -7454,10 +8180,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.UpdatePhoneEncryptionPublicKeyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.UpdatePhoneEncryptionPublicKeyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.UpdatePhoneEncryptionPublicKeyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_phone_encryption_public_key(
         self,
@@ -7523,10 +8255,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.UpdatePhoneMessageQrdlResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.UpdatePhoneMessageQrdlResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.UpdatePhoneMessageQrdlResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_phone_message_qrdl_with_options_async(
         self,
@@ -7566,10 +8304,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.UpdatePhoneMessageQrdlResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.UpdatePhoneMessageQrdlResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.UpdatePhoneMessageQrdlResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_phone_message_qrdl(
         self,
@@ -7641,10 +8385,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.UpdatePhoneWebhookResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.UpdatePhoneWebhookResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.UpdatePhoneWebhookResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_phone_webhook_with_options_async(
         self,
@@ -7690,10 +8440,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            cams_20200606_models.UpdatePhoneWebhookResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cams_20200606_models.UpdatePhoneWebhookResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cams_20200606_models.UpdatePhoneWebhookResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_phone_webhook(
         self,

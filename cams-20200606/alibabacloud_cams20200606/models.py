@@ -2315,6 +2315,7 @@ class ChatappSyncPhoneNumberResponseBodyPhoneNumbers(TeaModel):
     def __init__(
         self,
         code_verification_status: str = None,
+        is_official: str = None,
         messaging_limit_tier: str = None,
         name_status: str = None,
         new_name_status: str = None,
@@ -2329,6 +2330,7 @@ class ChatappSyncPhoneNumberResponseBodyPhoneNumbers(TeaModel):
     ):
         # The verification status.
         self.code_verification_status = code_verification_status
+        self.is_official = is_official
         # The number of phone numbers to which messages can be sent in a day.
         self.messaging_limit_tier = messaging_limit_tier
         # The review status of the business display name.
@@ -2363,6 +2365,8 @@ class ChatappSyncPhoneNumberResponseBodyPhoneNumbers(TeaModel):
         result = dict()
         if self.code_verification_status is not None:
             result['CodeVerificationStatus'] = self.code_verification_status
+        if self.is_official is not None:
+            result['IsOfficial'] = self.is_official
         if self.messaging_limit_tier is not None:
             result['MessagingLimitTier'] = self.messaging_limit_tier
         if self.name_status is not None:
@@ -2391,6 +2395,8 @@ class ChatappSyncPhoneNumberResponseBodyPhoneNumbers(TeaModel):
         m = m or dict()
         if m.get('CodeVerificationStatus') is not None:
             self.code_verification_status = m.get('CodeVerificationStatus')
+        if m.get('IsOfficial') is not None:
+            self.is_official = m.get('IsOfficial')
         if m.get('MessagingLimitTier') is not None:
             self.messaging_limit_tier = m.get('MessagingLimitTier')
         if m.get('NameStatus') is not None:
@@ -8300,7 +8306,7 @@ class GetPhoneEncryptionPublicKeyResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [Error codes](https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
+        # *   For more information about other response codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The returned data.
         self.data = data
@@ -9170,7 +9176,7 @@ class GetWhatsappHealthStatusResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [Error codes](https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
+        # *   For more information about other response codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The returned data.
         self.data = data
@@ -12793,12 +12799,18 @@ class QueryChatappPhoneNumbersRequest(TeaModel):
         self,
         cust_space_id: str = None,
         isv_code: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
         status: str = None,
     ):
         # The space ID of the RAM user within the ISV account.
         self.cust_space_id = cust_space_id
         # The independent software vendor (ISV) verification code, which is used to verify whether the RAM user is authorized by the ISV account.
         self.isv_code = isv_code
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
         # The state of the phone number.
         self.status = status
 
@@ -12815,6 +12827,12 @@ class QueryChatappPhoneNumbersRequest(TeaModel):
             result['CustSpaceId'] = self.cust_space_id
         if self.isv_code is not None:
             result['IsvCode'] = self.isv_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -12825,6 +12843,12 @@ class QueryChatappPhoneNumbersRequest(TeaModel):
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('IsvCode') is not None:
             self.isv_code = m.get('IsvCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -12834,6 +12858,7 @@ class QueryChatappPhoneNumbersResponseBodyPhoneNumbers(TeaModel):
     def __init__(
         self,
         code_verification_status: str = None,
+        is_official: str = None,
         messaging_limit_tier: str = None,
         name_status: str = None,
         new_name_status: str = None,
@@ -12848,6 +12873,7 @@ class QueryChatappPhoneNumbersResponseBodyPhoneNumbers(TeaModel):
     ):
         # The verification status of the phone number.
         self.code_verification_status = code_verification_status
+        self.is_official = is_official
         # The number of phone numbers to which messages can be sent in a day.
         # 
         # Valid values:
@@ -12912,6 +12938,8 @@ class QueryChatappPhoneNumbersResponseBodyPhoneNumbers(TeaModel):
         result = dict()
         if self.code_verification_status is not None:
             result['CodeVerificationStatus'] = self.code_verification_status
+        if self.is_official is not None:
+            result['IsOfficial'] = self.is_official
         if self.messaging_limit_tier is not None:
             result['MessagingLimitTier'] = self.messaging_limit_tier
         if self.name_status is not None:
@@ -12940,6 +12968,8 @@ class QueryChatappPhoneNumbersResponseBodyPhoneNumbers(TeaModel):
         m = m or dict()
         if m.get('CodeVerificationStatus') is not None:
             self.code_verification_status = m.get('CodeVerificationStatus')
+        if m.get('IsOfficial') is not None:
+            self.is_official = m.get('IsOfficial')
         if m.get('MessagingLimitTier') is not None:
             self.messaging_limit_tier = m.get('MessagingLimitTier')
         if m.get('NameStatus') is not None:
@@ -12973,6 +13003,7 @@ class QueryChatappPhoneNumbersResponseBody(TeaModel):
         message: str = None,
         phone_numbers: List[QueryChatappPhoneNumbersResponseBodyPhoneNumbers] = None,
         request_id: str = None,
+        success: bool = None,
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
@@ -12987,6 +13018,7 @@ class QueryChatappPhoneNumbersResponseBody(TeaModel):
         self.phone_numbers = phone_numbers
         # The ID of the request.
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         if self.phone_numbers:
@@ -13012,6 +13044,8 @@ class QueryChatappPhoneNumbersResponseBody(TeaModel):
                 result['PhoneNumbers'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -13029,6 +13063,8 @@ class QueryChatappPhoneNumbersResponseBody(TeaModel):
                 self.phone_numbers.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
