@@ -25173,6 +25173,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.commit_status):
+            body['CommitStatus'] = request.commit_status
         if not UtilClient.is_unset(request.exact_file_name):
             body['ExactFileName'] = request.exact_file_name
         if not UtilClient.is_unset(request.file_folder_path):
@@ -25242,6 +25244,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.commit_status):
+            body['CommitStatus'] = request.commit_status
         if not UtilClient.is_unset(request.exact_file_name):
             body['ExactFileName'] = request.exact_file_name
         if not UtilClient.is_unset(request.file_folder_path):

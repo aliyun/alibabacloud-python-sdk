@@ -1,3 +1,7 @@
+2025-04-07 Version: 7.0.1
+- Update API ListFiles: add request parameters CommitStatus.
+
+
 2025-03-28 Version: 7.0.0
 - Delete API MountDirectory.
 - Delete API RevokeColumnPermission.

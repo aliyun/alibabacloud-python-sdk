@@ -57089,6 +57089,7 @@ class ListFileVersionsResponse(TeaModel):
 class ListFilesRequest(TeaModel):
     def __init__(
         self,
+        commit_status: int = None,
         exact_file_name: str = None,
         file_folder_path: str = None,
         file_id_in: str = None,
@@ -57105,6 +57106,7 @@ class ListFilesRequest(TeaModel):
         project_identifier: str = None,
         use_type: str = None,
     ):
+        self.commit_status = commit_status
         # The exact matching file name. The file name of the query result is exactly the same as this parameter.
         self.exact_file_name = exact_file_name
         # The path of the folder to which files belong.
@@ -57117,6 +57119,7 @@ class ListFilesRequest(TeaModel):
         self.file_types = file_types
         # The keyword in the file names. The keyword is used to perform a fuzzy match. You can specify a keyword to query all files whose names contain the keyword.
         self.keyword = keyword
+        # The ID of the Alibaba Cloud account that is used to last modify the file.
         self.last_edit_user = last_edit_user
         # Whether the query result contains the path of the folder where the file is located.
         self.need_absolute_folder_path = need_absolute_folder_path
@@ -57157,6 +57160,8 @@ class ListFilesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.commit_status is not None:
+            result['CommitStatus'] = self.commit_status
         if self.exact_file_name is not None:
             result['ExactFileName'] = self.exact_file_name
         if self.file_folder_path is not None:
@@ -57191,6 +57196,8 @@ class ListFilesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CommitStatus') is not None:
+            self.commit_status = m.get('CommitStatus')
         if m.get('ExactFileName') is not None:
             self.exact_file_name = m.get('ExactFileName')
         if m.get('FileFolderPath') is not None:
@@ -62590,15 +62597,6 @@ class ListPermissionApplyOrdersRequest(TeaModel):
         # *   2: approved and authorized
         # *   3: approved but authorization failed
         # *   4: rejected
-        # 
-        # Valid values:
-        # 
-        # *   0
-        # *   1
-        # *   2
-        # *   3
-        # *   4
-        # *   5
         self.flow_status = flow_status
         # The name of the MaxCompute project with which the permission request order is associated. If you do not specify the parameter, the permission request orders of all MaxCompute projects are returned.
         self.max_compute_project_name = max_compute_project_name
@@ -79322,8 +79320,8 @@ class UpdateDataSourceRequest(TeaModel):
         # *   odps
         # 
         #         {
-        #           "accessId": "xssssss",
-        #           "accessKey": "xsaxsaxsa",
+        #           "accessId": "*****",
+        #           "accessKey": "*****",
         #           "authType": 2,
         #           "endpoint": "http://service.odps.aliyun.com/api",
         #           "project": "xsaxsax",
@@ -79357,8 +79355,8 @@ class UpdateDataSourceRequest(TeaModel):
         # *   oss
         # 
         #         {
-        #           "accessId": "sssssxx",
-        #           "accessKey": "xsaxaxsaxs",
+        #           "accessId": "*****",
+        #           "accessKey": "*****",
         #           "bucket": "xsa-xs-xs",
         #           "endpoint": "http://oss-cn-shanghai.aliyuncs.com",
         #           "tag": "public"
@@ -79407,11 +79405,11 @@ class UpdateDataSourceRequest(TeaModel):
         # *   emr
         # 
         #         {
-        #           "accessId": "xsaxsa",
+        #           "accessId": "*****",
         #           "emrClusterId": "C-dsads",
         #           "emrResourceQueueName": "default",
         #           "emrEndpoint": "emr.aliyuncs.com",
-        #           "accessKey": "dsadsad",
+        #           "accessKey": "*****",
         #           "emrUserId": "224833315798889783",
         #           "name": "sasdsadsa",
         #           "emrAccessMode": "simple",
@@ -79454,8 +79452,8 @@ class UpdateDataSourceRequest(TeaModel):
         # *   holo
         # 
         #         {
-        #           "accessId": "xsaxsaxs",
-        #           "accessKey": "xsaxsaxsa",
+        #           "accessId": "*****",
+        #           "accessKey": "*****",
         #           "database": "xsaxsaxsa",
         #           "instanceId": "xsaxa",
         #           "tag": "aliyun"
