@@ -368,6 +368,8 @@ class Client(OpenApiClient):
             body['Md5'] = request.md_5
         if not UtilClient.is_unset(request.size_in_bytes):
             body['SizeInBytes'] = request.size_in_bytes
+        if not UtilClient.is_unset(request.use_internal_endpoint):
+            body['UseInternalEndpoint'] = request.use_internal_endpoint
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -425,6 +427,8 @@ class Client(OpenApiClient):
             body['Md5'] = request.md_5
         if not UtilClient.is_unset(request.size_in_bytes):
             body['SizeInBytes'] = request.size_in_bytes
+        if not UtilClient.is_unset(request.use_internal_endpoint):
+            body['UseInternalEndpoint'] = request.use_internal_endpoint
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)

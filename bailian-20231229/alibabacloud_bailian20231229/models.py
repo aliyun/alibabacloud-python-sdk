@@ -458,6 +458,7 @@ class ApplyFileUploadLeaseRequest(TeaModel):
         file_name: str = None,
         md_5: str = None,
         size_in_bytes: str = None,
+        use_internal_endpoint: bool = None,
     ):
         self.category_type = category_type
         # The name of the uploaded document, including the extension. Supported formats: pdf, doc, docx, md, txt, ppt, and pptx. The document name must be 4 to 128 characters in length.
@@ -472,6 +473,7 @@ class ApplyFileUploadLeaseRequest(TeaModel):
         # 
         # This parameter is required.
         self.size_in_bytes = size_in_bytes
+        self.use_internal_endpoint = use_internal_endpoint
 
     def validate(self):
         pass
@@ -490,6 +492,8 @@ class ApplyFileUploadLeaseRequest(TeaModel):
             result['Md5'] = self.md_5
         if self.size_in_bytes is not None:
             result['SizeInBytes'] = self.size_in_bytes
+        if self.use_internal_endpoint is not None:
+            result['UseInternalEndpoint'] = self.use_internal_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -502,6 +506,8 @@ class ApplyFileUploadLeaseRequest(TeaModel):
             self.md_5 = m.get('Md5')
         if m.get('SizeInBytes') is not None:
             self.size_in_bytes = m.get('SizeInBytes')
+        if m.get('UseInternalEndpoint') is not None:
+            self.use_internal_endpoint = m.get('UseInternalEndpoint')
         return self
 
 
