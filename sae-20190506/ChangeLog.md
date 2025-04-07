@@ -1,3 +1,20 @@
+2025-04-07 Version: 2.0.1
+- Update API CreateApplication: add request parameters DiskSize.
+- Update API DescribeApplicationConfig: add response parameters Body.Data.DiskSize.
+- Update API DescribeApplicationInstances: add request parameters PipelineId.
+- Update API DescribeApplicationInstances: add response parameters Body.Data.Instances.$.Timestamp.
+- Update API GetChangeOrderMetric: add request parameters AppId.
+- Update API GetChangeOrderMetric: add request parameters CoType.
+- Update API GetChangeOrderMetric: add response parameters Body.Data.$.AvgTimeCostMs.
+- Update API GetChangeOrderMetric: add response parameters Body.Data.$.MaxTimeCostMs.
+- Update API GetChangeOrderMetric: add response parameters Body.Data.$.OptimizeSuggestions.
+- Update API GetChangeOrderMetric: add response parameters Body.Data.$.TaskTimeCostMsAvg.
+- Update API ListApplications: add response parameters Body.Data.Applications.$.DiskSize.
+- Update API ListChangeOrders: add request parameters OrderBy.
+- Update API ListChangeOrders: add request parameters Reverse.
+- Update API RescaleApplicationVertically: add request parameters DiskSize.
+
+
 2025-04-01 Version: 2.0.0
 - Support API UnbindNlb.
 - Update API CreateApplication: add request parameters MicroserviceEngineConfig.

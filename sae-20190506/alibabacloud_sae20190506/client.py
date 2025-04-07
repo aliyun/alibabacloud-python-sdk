@@ -805,6 +805,8 @@ class Client(OpenApiClient):
             query['CustomImageNetworkType'] = request.custom_image_network_type
         if not UtilClient.is_unset(request.deploy):
             query['Deploy'] = request.deploy
+        if not UtilClient.is_unset(request.disk_size):
+            query['DiskSize'] = request.disk_size
         if not UtilClient.is_unset(request.dotnet):
             query['Dotnet'] = request.dotnet
         if not UtilClient.is_unset(request.edas_container_version):
@@ -995,6 +997,8 @@ class Client(OpenApiClient):
             query['CustomImageNetworkType'] = request.custom_image_network_type
         if not UtilClient.is_unset(request.deploy):
             query['Deploy'] = request.deploy
+        if not UtilClient.is_unset(request.disk_size):
+            query['DiskSize'] = request.disk_size
         if not UtilClient.is_unset(request.dotnet):
             query['Dotnet'] = request.dotnet
         if not UtilClient.is_unset(request.edas_container_version):
@@ -5047,6 +5051,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
         if not UtilClient.is_unset(request.reverse):
             query['Reverse'] = request.reverse
         req = open_api_models.OpenApiRequest(
@@ -5101,6 +5107,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
         if not UtilClient.is_unset(request.reverse):
             query['Reverse'] = request.reverse
         req = open_api_models.OpenApiRequest(
@@ -9623,8 +9631,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.app_source):
             query['AppSource'] = request.app_source
+        if not UtilClient.is_unset(request.co_type):
+            query['CoType'] = request.co_type
         if not UtilClient.is_unset(request.cpu_strategy):
             query['CpuStrategy'] = request.cpu_strategy
         if not UtilClient.is_unset(request.create_time):
@@ -9677,8 +9689,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.app_source):
             query['AppSource'] = request.app_source
+        if not UtilClient.is_unset(request.co_type):
+            query['CoType'] = request.co_type
         if not UtilClient.is_unset(request.cpu_strategy):
             query['CpuStrategy'] = request.cpu_strategy
         if not UtilClient.is_unset(request.create_time):
@@ -10845,8 +10861,12 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.key):
             query['Key'] = request.key
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.reverse):
+            query['Reverse'] = request.reverse
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -10899,8 +10919,12 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.key):
             query['Key'] = request.key
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.reverse):
+            query['Reverse'] = request.reverse
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -13407,6 +13431,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.cpu):
             query['Cpu'] = request.cpu
+        if not UtilClient.is_unset(request.disk_size):
+            query['DiskSize'] = request.disk_size
         if not UtilClient.is_unset(request.memory):
             query['Memory'] = request.memory
         if not UtilClient.is_unset(request.auto_enable_application_scaling_rule):
@@ -13461,6 +13487,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.cpu):
             query['Cpu'] = request.cpu
+        if not UtilClient.is_unset(request.disk_size):
+            query['DiskSize'] = request.disk_size
         if not UtilClient.is_unset(request.memory):
             query['Memory'] = request.memory
         if not UtilClient.is_unset(request.auto_enable_application_scaling_rule):

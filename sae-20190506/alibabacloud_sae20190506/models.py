@@ -11947,6 +11947,7 @@ class CreateApplicationRequest(TeaModel):
         custom_host_alias: str = None,
         custom_image_network_type: str = None,
         deploy: bool = None,
+        disk_size: int = None,
         dotnet: str = None,
         edas_container_version: str = None,
         enable_cpu_burst: bool = None,
@@ -12034,6 +12035,7 @@ class CreateApplicationRequest(TeaModel):
         self.custom_image_network_type = custom_image_network_type
         # true
         self.deploy = deploy
+        self.disk_size = disk_size
         self.dotnet = dotnet
         # 3.5.3
         self.edas_container_version = edas_container_version
@@ -12172,6 +12174,8 @@ class CreateApplicationRequest(TeaModel):
             result['CustomImageNetworkType'] = self.custom_image_network_type
         if self.deploy is not None:
             result['Deploy'] = self.deploy
+        if self.disk_size is not None:
+            result['DiskSize'] = self.disk_size
         if self.dotnet is not None:
             result['Dotnet'] = self.dotnet
         if self.edas_container_version is not None:
@@ -12322,6 +12326,8 @@ class CreateApplicationRequest(TeaModel):
             self.custom_image_network_type = m.get('CustomImageNetworkType')
         if m.get('Deploy') is not None:
             self.deploy = m.get('Deploy')
+        if m.get('DiskSize') is not None:
+            self.disk_size = m.get('DiskSize')
         if m.get('Dotnet') is not None:
             self.dotnet = m.get('Dotnet')
         if m.get('EdasContainerVersion') is not None:
@@ -12460,6 +12466,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         custom_host_alias: str = None,
         custom_image_network_type: str = None,
         deploy: bool = None,
+        disk_size: int = None,
         dotnet: str = None,
         edas_container_version: str = None,
         enable_cpu_burst: bool = None,
@@ -12547,6 +12554,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         self.custom_image_network_type = custom_image_network_type
         # true
         self.deploy = deploy
+        self.disk_size = disk_size
         self.dotnet = dotnet
         # 3.5.3
         self.edas_container_version = edas_container_version
@@ -12682,6 +12690,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             result['CustomImageNetworkType'] = self.custom_image_network_type
         if self.deploy is not None:
             result['Deploy'] = self.deploy
+        if self.disk_size is not None:
+            result['DiskSize'] = self.disk_size
         if self.dotnet is not None:
             result['Dotnet'] = self.dotnet
         if self.edas_container_version is not None:
@@ -12830,6 +12840,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             self.custom_image_network_type = m.get('CustomImageNetworkType')
         if m.get('Deploy') is not None:
             self.deploy = m.get('Deploy')
+        if m.get('DiskSize') is not None:
+            self.disk_size = m.get('DiskSize')
         if m.get('Dotnet') is not None:
             self.dotnet = m.get('Dotnet')
         if m.get('EdasContainerVersion') is not None:
@@ -19865,6 +19877,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         cpu: int = None,
         custom_host_alias: str = None,
         custom_image_network_type: str = None,
+        disk_size: int = None,
         dotnet: str = None,
         edas_container_version: str = None,
         enable_ahas: str = None,
@@ -19993,6 +20006,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # *   **ip**: the IP address.
         self.custom_host_alias = custom_host_alias
         self.custom_image_network_type = custom_image_network_type
+        self.disk_size = disk_size
         self.dotnet = dotnet
         # The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
         self.edas_container_version = edas_container_version
@@ -20314,6 +20328,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['CustomHostAlias'] = self.custom_host_alias
         if self.custom_image_network_type is not None:
             result['CustomImageNetworkType'] = self.custom_image_network_type
+        if self.disk_size is not None:
+            result['DiskSize'] = self.disk_size
         if self.dotnet is not None:
             result['Dotnet'] = self.dotnet
         if self.edas_container_version is not None:
@@ -20493,6 +20509,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.custom_host_alias = m.get('CustomHostAlias')
         if m.get('CustomImageNetworkType') is not None:
             self.custom_image_network_type = m.get('CustomImageNetworkType')
+        if m.get('DiskSize') is not None:
+            self.disk_size = m.get('DiskSize')
         if m.get('Dotnet') is not None:
             self.dotnet = m.get('Dotnet')
         if m.get('EdasContainerVersion') is not None:
@@ -21315,6 +21333,7 @@ class DescribeApplicationInstancesRequest(TeaModel):
         group_id: str = None,
         instance_id: str = None,
         page_size: int = None,
+        pipeline_id: str = None,
         reverse: bool = None,
     ):
         # d700e680-aa4d-4ec1-afc2-6566b5ff\\*\\*\\*\\*\
@@ -21330,6 +21349,7 @@ class DescribeApplicationInstancesRequest(TeaModel):
         self.instance_id = instance_id
         # 10
         self.page_size = page_size
+        self.pipeline_id = pipeline_id
         # true
         self.reverse = reverse
 
@@ -21352,6 +21372,8 @@ class DescribeApplicationInstancesRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
         if self.reverse is not None:
             result['Reverse'] = self.reverse
         return result
@@ -21368,6 +21390,8 @@ class DescribeApplicationInstancesRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
         if m.get('Reverse') is not None:
             self.reverse = m.get('Reverse')
         return self
@@ -21429,6 +21453,7 @@ class DescribeApplicationInstancesResponseBodyDataInstances(TeaModel):
         main_container_status: str = None,
         package_version: str = None,
         sidecar_containers_status: List[DescribeApplicationInstancesResponseBodyDataInstancesSidecarContainersStatus] = None,
+        timestamp: int = None,
         unhealthy_message: str = None,
         v_switch_id: str = None,
     ):
@@ -21480,6 +21505,7 @@ class DescribeApplicationInstancesResponseBodyDataInstances(TeaModel):
         # The version of the package.
         self.package_version = package_version
         self.sidecar_containers_status = sidecar_containers_status
+        self.timestamp = timestamp
         self.unhealthy_message = unhealthy_message
         # The ID of the zone where the instance is deployed.
         self.v_switch_id = v_switch_id
@@ -21526,6 +21552,8 @@ class DescribeApplicationInstancesResponseBodyDataInstances(TeaModel):
         if self.sidecar_containers_status is not None:
             for k in self.sidecar_containers_status:
                 result['SidecarContainersStatus'].append(k.to_map() if k else None)
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
         if self.unhealthy_message is not None:
             result['UnhealthyMessage'] = self.unhealthy_message
         if self.v_switch_id is not None:
@@ -21565,6 +21593,8 @@ class DescribeApplicationInstancesResponseBodyDataInstances(TeaModel):
             for k in m.get('SidecarContainersStatus'):
                 temp_model = DescribeApplicationInstancesResponseBodyDataInstancesSidecarContainersStatus()
                 self.sidecar_containers_status.append(temp_model.from_map(k))
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
         if m.get('UnhealthyMessage') is not None:
             self.unhealthy_message = m.get('UnhealthyMessage')
         if m.get('VSwitchId') is not None:
@@ -33279,19 +33309,23 @@ class GetAvailabilityMetricResponse(TeaModel):
 class GetChangeOrderMetricRequest(TeaModel):
     def __init__(
         self,
+        app_id: str = None,
         app_source: str = None,
+        co_type: str = None,
         cpu_strategy: str = None,
         create_time: str = None,
         limit: int = None,
         order_by: str = None,
         region_id: str = None,
     ):
+        self.app_id = app_id
         # The SAE application type. Valid values:
         # 
         # *   **micro_service**\
         # *   **web**\
         # *   **job**\
         self.app_source = app_source
+        self.co_type = co_type
         # The CPU allocation policy. Valid values:
         # 
         # *   **request**: CPU cores are allocated only when a request is initiated.
@@ -33321,8 +33355,12 @@ class GetChangeOrderMetricRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
         if self.app_source is not None:
             result['AppSource'] = self.app_source
+        if self.co_type is not None:
+            result['CoType'] = self.co_type
         if self.cpu_strategy is not None:
             result['CpuStrategy'] = self.cpu_strategy
         if self.create_time is not None:
@@ -33337,8 +33375,12 @@ class GetChangeOrderMetricRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
         if m.get('AppSource') is not None:
             self.app_source = m.get('AppSource')
+        if m.get('CoType') is not None:
+            self.co_type = m.get('CoType')
         if m.get('CpuStrategy') is not None:
             self.cpu_strategy = m.get('CpuStrategy')
         if m.get('CreateTime') is not None:
@@ -33356,22 +33398,30 @@ class GetChangeOrderMetricResponseBodyData(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        avg_time_cost_ms: float = None,
         error: int = None,
         error_percent: float = None,
+        max_time_cost_ms: float = None,
         name: str = None,
+        optimize_suggestions: str = None,
         region_id: str = None,
+        task_time_cost_ms_avg: str = None,
         total: int = None,
     ):
         # The application ID.
         self.app_id = app_id
+        self.avg_time_cost_ms = avg_time_cost_ms
         # The number of abnormal change orders.
         self.error = error
         # The percentage of change failures.
         self.error_percent = error_percent
+        self.max_time_cost_ms = max_time_cost_ms
         # The application name.
         self.name = name
+        self.optimize_suggestions = optimize_suggestions
         # The namespace ID.
         self.region_id = region_id
+        self.task_time_cost_ms_avg = task_time_cost_ms_avg
         # The total number of change orders.
         self.total = total
 
@@ -33386,14 +33436,22 @@ class GetChangeOrderMetricResponseBodyData(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.avg_time_cost_ms is not None:
+            result['AvgTimeCostMs'] = self.avg_time_cost_ms
         if self.error is not None:
             result['Error'] = self.error
         if self.error_percent is not None:
             result['ErrorPercent'] = self.error_percent
+        if self.max_time_cost_ms is not None:
+            result['MaxTimeCostMs'] = self.max_time_cost_ms
         if self.name is not None:
             result['Name'] = self.name
+        if self.optimize_suggestions is not None:
+            result['OptimizeSuggestions'] = self.optimize_suggestions
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.task_time_cost_ms_avg is not None:
+            result['TaskTimeCostMsAvg'] = self.task_time_cost_ms_avg
         if self.total is not None:
             result['Total'] = self.total
         return result
@@ -33402,14 +33460,22 @@ class GetChangeOrderMetricResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('AvgTimeCostMs') is not None:
+            self.avg_time_cost_ms = m.get('AvgTimeCostMs')
         if m.get('Error') is not None:
             self.error = m.get('Error')
         if m.get('ErrorPercent') is not None:
             self.error_percent = m.get('ErrorPercent')
+        if m.get('MaxTimeCostMs') is not None:
+            self.max_time_cost_ms = m.get('MaxTimeCostMs')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('OptimizeSuggestions') is not None:
+            self.optimize_suggestions = m.get('OptimizeSuggestions')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('TaskTimeCostMsAvg') is not None:
+            self.task_time_cost_ms_avg = m.get('TaskTimeCostMsAvg')
         if m.get('Total') is not None:
             self.total = m.get('Total')
         return self
@@ -35729,6 +35795,7 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
         base_app_id: str = None,
         children: List[ListApplicationsResponseBodyDataApplicationsChildren] = None,
         cpu: int = None,
+        disk_size: int = None,
         enable_idle: str = None,
         image_url: str = None,
         instances: int = None,
@@ -35768,6 +35835,7 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
         # *   **16000**\
         # *   **32000**\
         self.cpu = cpu
+        self.disk_size = disk_size
         self.enable_idle = enable_idle
         self.image_url = image_url
         # The number of application instances.
@@ -35834,6 +35902,8 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
                 result['Children'].append(k.to_map() if k else None)
         if self.cpu is not None:
             result['Cpu'] = self.cpu
+        if self.disk_size is not None:
+            result['DiskSize'] = self.disk_size
         if self.enable_idle is not None:
             result['EnableIdle'] = self.enable_idle
         if self.image_url is not None:
@@ -35887,6 +35957,8 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
                 self.children.append(temp_model.from_map(k))
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
+        if m.get('DiskSize') is not None:
+            self.disk_size = m.get('DiskSize')
         if m.get('EnableIdle') is not None:
             self.enable_idle = m.get('EnableIdle')
         if m.get('ImageUrl') is not None:
@@ -36113,7 +36185,9 @@ class ListChangeOrdersRequest(TeaModel):
         co_type: str = None,
         current_page: int = None,
         key: str = None,
+        order_by: str = None,
         page_size: int = None,
+        reverse: bool = None,
     ):
         # 1
         # 
@@ -36148,8 +36222,10 @@ class ListChangeOrdersRequest(TeaModel):
         self.current_page = current_page
         # CoCreateApp
         self.key = key
+        self.order_by = order_by
         # test
         self.page_size = page_size
+        self.reverse = reverse
 
     def validate(self):
         pass
@@ -36170,8 +36246,12 @@ class ListChangeOrdersRequest(TeaModel):
             result['CurrentPage'] = self.current_page
         if self.key is not None:
             result['Key'] = self.key
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.reverse is not None:
+            result['Reverse'] = self.reverse
         return result
 
     def from_map(self, m: dict = None):
@@ -36186,8 +36266,12 @@ class ListChangeOrdersRequest(TeaModel):
             self.current_page = m.get('CurrentPage')
         if m.get('Key') is not None:
             self.key = m.get('Key')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('Reverse') is not None:
+            self.reverse = m.get('Reverse')
         return self
 
 
@@ -41751,6 +41835,7 @@ class RescaleApplicationVerticallyRequest(TeaModel):
         self,
         app_id: str = None,
         cpu: str = None,
+        disk_size: str = None,
         memory: str = None,
         auto_enable_application_scaling_rule: bool = None,
         min_ready_instance_ratio: int = None,
@@ -41764,6 +41849,7 @@ class RescaleApplicationVerticallyRequest(TeaModel):
         # 
         # This parameter is required.
         self.cpu = cpu
+        self.disk_size = disk_size
         # The destination memory size. Unit: MB.
         # 
         # This parameter is required.
@@ -41785,6 +41871,8 @@ class RescaleApplicationVerticallyRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.cpu is not None:
             result['Cpu'] = self.cpu
+        if self.disk_size is not None:
+            result['DiskSize'] = self.disk_size
         if self.memory is not None:
             result['Memory'] = self.memory
         if self.auto_enable_application_scaling_rule is not None:
@@ -41801,6 +41889,8 @@ class RescaleApplicationVerticallyRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
+        if m.get('DiskSize') is not None:
+            self.disk_size = m.get('DiskSize')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         if m.get('autoEnableApplicationScalingRule') is not None:
