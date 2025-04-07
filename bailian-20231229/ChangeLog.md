@@ -2,6 +2,10 @@
 - Update API ApplyFileUploadLease: add request parameters UseInternalEndpoint.
 
 
+2025-04-07 Version: 2.0.2
+- Update API ApplyFileUploadLease: add request parameters UseInternalEndpoint.
+
+
 2025-03-25 Version: 2.0.1
 - Update API GetIndexJobStatus: update response param.
 - Update API ListFile: update response param.
