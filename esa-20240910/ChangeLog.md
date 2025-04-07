@@ -1,3 +1,12 @@
+2025-04-07 Version: 2.22.0
+- Support API CreateRoutineRoute.
+- Support API DeleteRoutineRoute.
+- Support API GetRoutineRoute.
+- Support API ListRoutineRoutes.
+- Support API ListSiteRoutes.
+- Support API UpdateRoutineRoute.
+
+
 2025-04-02 Version: 2.21.0
 - Support API DescribeSiteTimeSeriesData.
 - Support API DescribeSiteTopData.

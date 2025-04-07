@@ -11777,6 +11777,145 @@ class CreateRoutineRelatedRouteResponse(TeaModel):
         return self
 
 
+class CreateRoutineRouteRequest(TeaModel):
+    def __init__(
+        self,
+        bypass: str = None,
+        route_enable: str = None,
+        route_name: str = None,
+        routine_name: str = None,
+        rule: str = None,
+        sequence: int = None,
+        site_id: int = None,
+    ):
+        self.bypass = bypass
+        self.route_enable = route_enable
+        self.route_name = route_name
+        # This parameter is required.
+        self.routine_name = routine_name
+        self.rule = rule
+        self.sequence = sequence
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bypass is not None:
+            result['Bypass'] = self.bypass
+        if self.route_enable is not None:
+            result['RouteEnable'] = self.route_enable
+        if self.route_name is not None:
+            result['RouteName'] = self.route_name
+        if self.routine_name is not None:
+            result['RoutineName'] = self.routine_name
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bypass') is not None:
+            self.bypass = m.get('Bypass')
+        if m.get('RouteEnable') is not None:
+            self.route_enable = m.get('RouteEnable')
+        if m.get('RouteName') is not None:
+            self.route_name = m.get('RouteName')
+        if m.get('RoutineName') is not None:
+            self.routine_name = m.get('RoutineName')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class CreateRoutineRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        request_id: str = None,
+    ):
+        self.config_id = config_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateRoutineRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateRoutineRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateRoutineRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateScheduledPreloadExecutionsRequestExecutions(TeaModel):
     def __init__(
         self,
@@ -19413,6 +19552,109 @@ class DeleteRoutineRelatedRouteResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteRoutineRelatedRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteRoutineRouteRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DeleteRoutineRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteRoutineRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteRoutineRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteRoutineRouteResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -34543,6 +34785,169 @@ class GetRoutineResponse(TeaModel):
         return self
 
 
+class GetRoutineRouteRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class GetRoutineRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        bypass: str = None,
+        config_id: int = None,
+        config_type: str = None,
+        mode: str = None,
+        request_id: str = None,
+        route_enable: str = None,
+        route_name: str = None,
+        routine_name: str = None,
+        rule: str = None,
+        sequence: int = None,
+        site_version: int = None,
+    ):
+        self.bypass = bypass
+        self.config_id = config_id
+        self.config_type = config_type
+        self.mode = mode
+        self.request_id = request_id
+        self.route_enable = route_enable
+        self.route_name = route_name
+        self.routine_name = routine_name
+        self.rule = rule
+        self.sequence = sequence
+        self.site_version = site_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bypass is not None:
+            result['Bypass'] = self.bypass
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.route_enable is not None:
+            result['RouteEnable'] = self.route_enable
+        if self.route_name is not None:
+            result['RouteName'] = self.route_name
+        if self.routine_name is not None:
+            result['RoutineName'] = self.routine_name
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bypass') is not None:
+            self.bypass = m.get('Bypass')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RouteEnable') is not None:
+            self.route_enable = m.get('RouteEnable')
+        if m.get('RouteName') is not None:
+            self.route_name = m.get('RouteName')
+        if m.get('RoutineName') is not None:
+            self.routine_name = m.get('RoutineName')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class GetRoutineRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRoutineRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRoutineRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetRoutineStagingCodeUploadInfoRequest(TeaModel):
     def __init__(
         self,
@@ -38330,7 +38735,7 @@ class GetWafRulesetRequest(TeaModel):
         phase: str = None,
         site_id: int = None,
     ):
-        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) interface.
+        # The ID of the WAF ruleset, which can be obtained by calling the ListWafRulesets interface.
         self.id = id
         # The WAF operation phase, specifying the phase of the ruleset to query.
         self.phase = phase
@@ -49811,6 +50216,245 @@ class ListRoutineOptionalSpecsResponse(TeaModel):
         return self
 
 
+class ListRoutineRoutesRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        routine_name: str = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.routine_name = routine_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.routine_name is not None:
+            result['RoutineName'] = self.routine_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RoutineName') is not None:
+            self.routine_name = m.get('RoutineName')
+        return self
+
+
+class ListRoutineRoutesResponseBodyConfigs(TeaModel):
+    def __init__(
+        self,
+        bypass: str = None,
+        config_id: int = None,
+        config_type: str = None,
+        mode: str = None,
+        route_enable: str = None,
+        route_name: str = None,
+        routine_name: str = None,
+        rule: str = None,
+        sequence: int = None,
+        site_id: str = None,
+        site_name: str = None,
+        site_version: int = None,
+    ):
+        self.bypass = bypass
+        self.config_id = config_id
+        self.config_type = config_type
+        self.mode = mode
+        self.route_enable = route_enable
+        self.route_name = route_name
+        self.routine_name = routine_name
+        self.rule = rule
+        self.sequence = sequence
+        self.site_id = site_id
+        self.site_name = site_name
+        self.site_version = site_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bypass is not None:
+            result['Bypass'] = self.bypass
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.route_enable is not None:
+            result['RouteEnable'] = self.route_enable
+        if self.route_name is not None:
+            result['RouteName'] = self.route_name
+        if self.routine_name is not None:
+            result['RoutineName'] = self.routine_name
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bypass') is not None:
+            self.bypass = m.get('Bypass')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('RouteEnable') is not None:
+            self.route_enable = m.get('RouteEnable')
+        if m.get('RouteName') is not None:
+            self.route_name = m.get('RouteName')
+        if m.get('RoutineName') is not None:
+            self.routine_name = m.get('RoutineName')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class ListRoutineRoutesResponseBody(TeaModel):
+    def __init__(
+        self,
+        configs: List[ListRoutineRoutesResponseBodyConfigs] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        total_page: int = None,
+    ):
+        self.configs = configs
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+        self.total_page = total_page
+
+    def validate(self):
+        if self.configs:
+            for k in self.configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Configs'] = []
+        if self.configs is not None:
+            for k in self.configs:
+                result['Configs'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.configs = []
+        if m.get('Configs') is not None:
+            for k in m.get('Configs'):
+                temp_model = ListRoutineRoutesResponseBodyConfigs()
+                self.configs.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class ListRoutineRoutesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRoutineRoutesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRoutineRoutesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListScheduledPreloadExecutionsRequest(TeaModel):
     def __init__(
         self,
@@ -50520,6 +51164,251 @@ class ListSiteDeliveryTasksResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListSiteDeliveryTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListSiteRoutesRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        config_type: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        route_name: str = None,
+        site_id: int = None,
+    ):
+        self.config_id = config_id
+        self.config_type = config_type
+        self.page_number = page_number
+        self.page_size = page_size
+        self.route_name = route_name
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.route_name is not None:
+            result['RouteName'] = self.route_name
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RouteName') is not None:
+            self.route_name = m.get('RouteName')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class ListSiteRoutesResponseBodyConfigs(TeaModel):
+    def __init__(
+        self,
+        bypass: str = None,
+        config_id: int = None,
+        config_type: str = None,
+        mode: str = None,
+        route_enable: str = None,
+        route_name: str = None,
+        routine_name: str = None,
+        rule: str = None,
+        sequence: int = None,
+        site_version: int = None,
+    ):
+        self.bypass = bypass
+        self.config_id = config_id
+        self.config_type = config_type
+        self.mode = mode
+        self.route_enable = route_enable
+        self.route_name = route_name
+        self.routine_name = routine_name
+        self.rule = rule
+        self.sequence = sequence
+        self.site_version = site_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bypass is not None:
+            result['Bypass'] = self.bypass
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.route_enable is not None:
+            result['RouteEnable'] = self.route_enable
+        if self.route_name is not None:
+            result['RouteName'] = self.route_name
+        if self.routine_name is not None:
+            result['RoutineName'] = self.routine_name
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bypass') is not None:
+            self.bypass = m.get('Bypass')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('RouteEnable') is not None:
+            self.route_enable = m.get('RouteEnable')
+        if m.get('RouteName') is not None:
+            self.route_name = m.get('RouteName')
+        if m.get('RoutineName') is not None:
+            self.routine_name = m.get('RoutineName')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class ListSiteRoutesResponseBody(TeaModel):
+    def __init__(
+        self,
+        configs: List[ListSiteRoutesResponseBodyConfigs] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        total_page: int = None,
+    ):
+        self.configs = configs
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+        self.total_page = total_page
+
+    def validate(self):
+        if self.configs:
+            for k in self.configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Configs'] = []
+        if self.configs is not None:
+            for k in self.configs:
+                result['Configs'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.configs = []
+        if m.get('Configs') is not None:
+            for k in m.get('Configs'):
+                temp_model = ListSiteRoutesResponseBodyConfigs()
+                self.configs.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class ListSiteRoutesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSiteRoutesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSiteRoutesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -64412,6 +65301,145 @@ class UpdateRewriteUrlRuleResponse(TeaModel):
         return self
 
 
+class UpdateRoutineRouteRequest(TeaModel):
+    def __init__(
+        self,
+        bypass: str = None,
+        config_id: int = None,
+        route_enable: str = None,
+        route_name: str = None,
+        routine_name: str = None,
+        rule: str = None,
+        sequence: int = None,
+        site_id: int = None,
+    ):
+        self.bypass = bypass
+        # This parameter is required.
+        self.config_id = config_id
+        self.route_enable = route_enable
+        self.route_name = route_name
+        self.routine_name = routine_name
+        self.rule = rule
+        self.sequence = sequence
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bypass is not None:
+            result['Bypass'] = self.bypass
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.route_enable is not None:
+            result['RouteEnable'] = self.route_enable
+        if self.route_name is not None:
+            result['RouteName'] = self.route_name
+        if self.routine_name is not None:
+            result['RoutineName'] = self.routine_name
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bypass') is not None:
+            self.bypass = m.get('Bypass')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('RouteEnable') is not None:
+            self.route_enable = m.get('RouteEnable')
+        if m.get('RouteName') is not None:
+            self.route_name = m.get('RouteName')
+        if m.get('RoutineName') is not None:
+            self.routine_name = m.get('RoutineName')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class UpdateRoutineRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateRoutineRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRoutineRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRoutineRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateScheduledPreloadExecutionRequest(TeaModel):
     def __init__(
         self,
@@ -66276,7 +67304,7 @@ class UpdateWafRulesetRequest(TeaModel):
         site_version: int = None,
         status: str = None,
     ):
-        # ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) interface.
+        # ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) interface.
         # 
         # This parameter is required.
         self.id = id

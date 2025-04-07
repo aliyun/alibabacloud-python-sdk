@@ -6301,6 +6301,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_routine_related_route_with_options_async(request, runtime)
 
+    def create_routine_route_with_options(
+        self,
+        request: esa20240910_models.CreateRoutineRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateRoutineRouteResponse:
+        """
+        @summary 新增边缘函数路由配置
+        
+        @param request: CreateRoutineRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRoutineRouteResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bypass):
+            query['Bypass'] = request.bypass
+        if not UtilClient.is_unset(request.route_enable):
+            query['RouteEnable'] = request.route_enable
+        if not UtilClient.is_unset(request.route_name):
+            query['RouteName'] = request.route_name
+        if not UtilClient.is_unset(request.routine_name):
+            query['RoutineName'] = request.routine_name
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRoutineRoute',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.CreateRoutineRouteResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.CreateRoutineRouteResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_routine_route_with_options_async(
+        self,
+        request: esa20240910_models.CreateRoutineRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateRoutineRouteResponse:
+        """
+        @summary 新增边缘函数路由配置
+        
+        @param request: CreateRoutineRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRoutineRouteResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bypass):
+            query['Bypass'] = request.bypass
+        if not UtilClient.is_unset(request.route_enable):
+            query['RouteEnable'] = request.route_enable
+        if not UtilClient.is_unset(request.route_name):
+            query['RouteName'] = request.route_name
+        if not UtilClient.is_unset(request.routine_name):
+            query['RoutineName'] = request.routine_name
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRoutineRoute',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.CreateRoutineRouteResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.CreateRoutineRouteResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_routine_route(
+        self,
+        request: esa20240910_models.CreateRoutineRouteRequest,
+    ) -> esa20240910_models.CreateRoutineRouteResponse:
+        """
+        @summary 新增边缘函数路由配置
+        
+        @param request: CreateRoutineRouteRequest
+        @return: CreateRoutineRouteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_routine_route_with_options(request, runtime)
+
+    async def create_routine_route_async(
+        self,
+        request: esa20240910_models.CreateRoutineRouteRequest,
+    ) -> esa20240910_models.CreateRoutineRouteResponse:
+        """
+        @summary 新增边缘函数路由配置
+        
+        @param request: CreateRoutineRouteRequest
+        @return: CreateRoutineRouteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_routine_route_with_options_async(request, runtime)
+
     def create_scheduled_preload_executions_with_options(
         self,
         tmp_req: esa20240910_models.CreateScheduledPreloadExecutionsRequest,
@@ -11714,6 +11846,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_routine_related_route_with_options_async(request, runtime)
+
+    def delete_routine_route_with_options(
+        self,
+        request: esa20240910_models.DeleteRoutineRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteRoutineRouteResponse:
+        """
+        @summary 删除边缘函数路由配置
+        
+        @param request: DeleteRoutineRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRoutineRouteResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRoutineRoute',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.DeleteRoutineRouteResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.DeleteRoutineRouteResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_routine_route_with_options_async(
+        self,
+        request: esa20240910_models.DeleteRoutineRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteRoutineRouteResponse:
+        """
+        @summary 删除边缘函数路由配置
+        
+        @param request: DeleteRoutineRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRoutineRouteResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRoutineRoute',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.DeleteRoutineRouteResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.DeleteRoutineRouteResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_routine_route(
+        self,
+        request: esa20240910_models.DeleteRoutineRouteRequest,
+    ) -> esa20240910_models.DeleteRoutineRouteResponse:
+        """
+        @summary 删除边缘函数路由配置
+        
+        @param request: DeleteRoutineRouteRequest
+        @return: DeleteRoutineRouteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_routine_route_with_options(request, runtime)
+
+    async def delete_routine_route_async(
+        self,
+        request: esa20240910_models.DeleteRoutineRouteRequest,
+    ) -> esa20240910_models.DeleteRoutineRouteResponse:
+        """
+        @summary 删除边缘函数路由配置
+        
+        @param request: DeleteRoutineRouteRequest
+        @return: DeleteRoutineRouteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_routine_route_with_options_async(request, runtime)
 
     def delete_scheduled_preload_execution_with_options(
         self,
@@ -19885,6 +20129,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_routine_with_options_async(request, runtime)
 
+    def get_routine_route_with_options(
+        self,
+        request: esa20240910_models.GetRoutineRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetRoutineRouteResponse:
+        """
+        @summary 查询单条边缘函数路由配置
+        
+        @param request: GetRoutineRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRoutineRouteResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRoutineRoute',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetRoutineRouteResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetRoutineRouteResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_routine_route_with_options_async(
+        self,
+        request: esa20240910_models.GetRoutineRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetRoutineRouteResponse:
+        """
+        @summary 查询单条边缘函数路由配置
+        
+        @param request: GetRoutineRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRoutineRouteResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRoutineRoute',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetRoutineRouteResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetRoutineRouteResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_routine_route(
+        self,
+        request: esa20240910_models.GetRoutineRouteRequest,
+    ) -> esa20240910_models.GetRoutineRouteResponse:
+        """
+        @summary 查询单条边缘函数路由配置
+        
+        @param request: GetRoutineRouteRequest
+        @return: GetRoutineRouteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_routine_route_with_options(request, runtime)
+
+    async def get_routine_route_async(
+        self,
+        request: esa20240910_models.GetRoutineRouteRequest,
+    ) -> esa20240910_models.GetRoutineRouteResponse:
+        """
+        @summary 查询单条边缘函数路由配置
+        
+        @param request: GetRoutineRouteRequest
+        @return: GetRoutineRouteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_routine_route_with_options_async(request, runtime)
+
     def get_routine_staging_code_upload_info_with_options(
         self,
         request: esa20240910_models.GetRoutineStagingCodeUploadInfoRequest,
@@ -26289,6 +26645,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_routine_optional_specs_with_options_async(runtime)
 
+    def list_routine_routes_with_options(
+        self,
+        request: esa20240910_models.ListRoutineRoutesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListRoutineRoutesResponse:
+        """
+        @summary 查询边缘程序的函数路由列表
+        
+        @param request: ListRoutineRoutesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRoutineRoutesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.routine_name):
+            query['RoutineName'] = request.routine_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRoutineRoutes',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.ListRoutineRoutesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.ListRoutineRoutesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_routine_routes_with_options_async(
+        self,
+        request: esa20240910_models.ListRoutineRoutesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListRoutineRoutesResponse:
+        """
+        @summary 查询边缘程序的函数路由列表
+        
+        @param request: ListRoutineRoutesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRoutineRoutesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.routine_name):
+            query['RoutineName'] = request.routine_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRoutineRoutes',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.ListRoutineRoutesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.ListRoutineRoutesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_routine_routes(
+        self,
+        request: esa20240910_models.ListRoutineRoutesRequest,
+    ) -> esa20240910_models.ListRoutineRoutesResponse:
+        """
+        @summary 查询边缘程序的函数路由列表
+        
+        @param request: ListRoutineRoutesRequest
+        @return: ListRoutineRoutesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_routine_routes_with_options(request, runtime)
+
+    async def list_routine_routes_async(
+        self,
+        request: esa20240910_models.ListRoutineRoutesRequest,
+    ) -> esa20240910_models.ListRoutineRoutesResponse:
+        """
+        @summary 查询边缘程序的函数路由列表
+        
+        @param request: ListRoutineRoutesRequest
+        @return: ListRoutineRoutesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_routine_routes_with_options_async(request, runtime)
+
     def list_scheduled_preload_executions_with_options(
         self,
         request: esa20240910_models.ListScheduledPreloadExecutionsRequest,
@@ -26600,6 +27072,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_site_delivery_tasks_with_options_async(request, runtime)
+
+    def list_site_routes_with_options(
+        self,
+        request: esa20240910_models.ListSiteRoutesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListSiteRoutesResponse:
+        """
+        @summary 查询站点的函数路由列表
+        
+        @param request: ListSiteRoutesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSiteRoutesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.config_type):
+            query['ConfigType'] = request.config_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.route_name):
+            query['RouteName'] = request.route_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSiteRoutes',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.ListSiteRoutesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.ListSiteRoutesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_site_routes_with_options_async(
+        self,
+        request: esa20240910_models.ListSiteRoutesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListSiteRoutesResponse:
+        """
+        @summary 查询站点的函数路由列表
+        
+        @param request: ListSiteRoutesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSiteRoutesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.config_type):
+            query['ConfigType'] = request.config_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.route_name):
+            query['RouteName'] = request.route_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSiteRoutes',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.ListSiteRoutesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.ListSiteRoutesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_site_routes(
+        self,
+        request: esa20240910_models.ListSiteRoutesRequest,
+    ) -> esa20240910_models.ListSiteRoutesResponse:
+        """
+        @summary 查询站点的函数路由列表
+        
+        @param request: ListSiteRoutesRequest
+        @return: ListSiteRoutesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_site_routes_with_options(request, runtime)
+
+    async def list_site_routes_async(
+        self,
+        request: esa20240910_models.ListSiteRoutesRequest,
+    ) -> esa20240910_models.ListSiteRoutesResponse:
+        """
+        @summary 查询站点的函数路由列表
+        
+        @param request: ListSiteRoutesRequest
+        @return: ListSiteRoutesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_site_routes_with_options_async(request, runtime)
 
     def list_sites_with_options(
         self,
@@ -35048,6 +35648,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_rewrite_url_rule_with_options_async(request, runtime)
+
+    def update_routine_route_with_options(
+        self,
+        request: esa20240910_models.UpdateRoutineRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateRoutineRouteResponse:
+        """
+        @summary 修改边缘函数路由配置
+        
+        @param request: UpdateRoutineRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRoutineRouteResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bypass):
+            query['Bypass'] = request.bypass
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.route_enable):
+            query['RouteEnable'] = request.route_enable
+        if not UtilClient.is_unset(request.route_name):
+            query['RouteName'] = request.route_name
+        if not UtilClient.is_unset(request.routine_name):
+            query['RoutineName'] = request.routine_name
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRoutineRoute',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UpdateRoutineRouteResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UpdateRoutineRouteResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_routine_route_with_options_async(
+        self,
+        request: esa20240910_models.UpdateRoutineRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateRoutineRouteResponse:
+        """
+        @summary 修改边缘函数路由配置
+        
+        @param request: UpdateRoutineRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRoutineRouteResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bypass):
+            query['Bypass'] = request.bypass
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.route_enable):
+            query['RouteEnable'] = request.route_enable
+        if not UtilClient.is_unset(request.route_name):
+            query['RouteName'] = request.route_name
+        if not UtilClient.is_unset(request.routine_name):
+            query['RoutineName'] = request.routine_name
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.sequence):
+            query['Sequence'] = request.sequence
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRoutineRoute',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UpdateRoutineRouteResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UpdateRoutineRouteResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_routine_route(
+        self,
+        request: esa20240910_models.UpdateRoutineRouteRequest,
+    ) -> esa20240910_models.UpdateRoutineRouteResponse:
+        """
+        @summary 修改边缘函数路由配置
+        
+        @param request: UpdateRoutineRouteRequest
+        @return: UpdateRoutineRouteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_routine_route_with_options(request, runtime)
+
+    async def update_routine_route_async(
+        self,
+        request: esa20240910_models.UpdateRoutineRouteRequest,
+    ) -> esa20240910_models.UpdateRoutineRouteResponse:
+        """
+        @summary 修改边缘函数路由配置
+        
+        @param request: UpdateRoutineRouteRequest
+        @return: UpdateRoutineRouteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_routine_route_with_options_async(request, runtime)
 
     def update_scheduled_preload_execution_with_options(
         self,
