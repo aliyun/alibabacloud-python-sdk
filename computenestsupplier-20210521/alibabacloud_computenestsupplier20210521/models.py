@@ -6176,6 +6176,7 @@ class GetServiceResponseBody(TeaModel):
         alarm_metadata: str = None,
         approval_type: str = None,
         build_info: str = None,
+        build_parameters: str = None,
         categories: str = None,
         commodity: GetServiceResponseBodyCommodity = None,
         compliance_metadata: GetServiceResponseBodyComplianceMetadata = None,
@@ -6238,6 +6239,7 @@ class GetServiceResponseBody(TeaModel):
         self.approval_type = approval_type
         # The information of build service information.
         self.build_info = build_info
+        self.build_parameters = build_parameters
         # The category of the service.
         self.categories = categories
         # The commodity details.
@@ -6428,6 +6430,8 @@ class GetServiceResponseBody(TeaModel):
             result['ApprovalType'] = self.approval_type
         if self.build_info is not None:
             result['BuildInfo'] = self.build_info
+        if self.build_parameters is not None:
+            result['BuildParameters'] = self.build_parameters
         if self.categories is not None:
             result['Categories'] = self.categories
         if self.commodity is not None:
@@ -6544,6 +6548,8 @@ class GetServiceResponseBody(TeaModel):
             self.approval_type = m.get('ApprovalType')
         if m.get('BuildInfo') is not None:
             self.build_info = m.get('BuildInfo')
+        if m.get('BuildParameters') is not None:
+            self.build_parameters = m.get('BuildParameters')
         if m.get('Categories') is not None:
             self.categories = m.get('Categories')
         if m.get('Commodity') is not None:

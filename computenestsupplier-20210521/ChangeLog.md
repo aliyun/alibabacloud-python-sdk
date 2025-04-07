@@ -1,3 +1,7 @@
+2025-04-07 Version: 7.0.5
+- Update API GetService: add response parameters Body.BuildParameters.
+
+
 2025-04-01 Version: 7.0.4
 - Generated python 2021-05-21 for ComputeNestSupplier.
 
