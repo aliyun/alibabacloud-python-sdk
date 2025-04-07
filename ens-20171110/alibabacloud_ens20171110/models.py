@@ -8092,6 +8092,7 @@ class CreateNatGatewayRequest(TeaModel):
     def __init__(
         self,
         ens_region_id: str = None,
+        instance_billing_cycle: str = None,
         instance_type: str = None,
         name: str = None,
         network_id: str = None,
@@ -8102,6 +8103,7 @@ class CreateNatGatewayRequest(TeaModel):
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
+        self.instance_billing_cycle = instance_billing_cycle
         # The instance type of the NAT gateway. Set the value to **enat.default**.
         self.instance_type = instance_type
         # The name of the NAT gateway. The name must be 1 to 128 characters in length. The name cannot start with `http://` or `https://`.
@@ -8113,8 +8115,6 @@ class CreateNatGatewayRequest(TeaModel):
         # The tags.
         self.tag = tag
         # The ID of the vSwitch.
-        # 
-        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -8131,6 +8131,8 @@ class CreateNatGatewayRequest(TeaModel):
         result = dict()
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        if self.instance_billing_cycle is not None:
+            result['InstanceBillingCycle'] = self.instance_billing_cycle
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
         if self.name is not None:
@@ -8149,6 +8151,8 @@ class CreateNatGatewayRequest(TeaModel):
         m = m or dict()
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        if m.get('InstanceBillingCycle') is not None:
+            self.instance_billing_cycle = m.get('InstanceBillingCycle')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
         if m.get('Name') is not None:
@@ -34147,6 +34151,7 @@ class DescribeLoadBalancersRequest(TeaModel):
         self.address = address
         # The ID of the Edge Node Service (ENS) node.
         self.ens_region_id = ens_region_id
+        # The IDs of the Edge Node Service (ENS) nodes.
         self.ens_region_ids = ens_region_ids
         # The ID of the ELB instance.
         self.load_balancer_id = load_balancer_id
@@ -34161,7 +34166,7 @@ class DescribeLoadBalancersRequest(TeaModel):
         self.network_id = network_id
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10. Valid values: **10** to **100**.
+        # The number of entries to return on each page. Default value: 10. Valid values: **10** to **100**.
         self.page_size = page_size
         # The ID of the backend server.
         self.server_id = server_id

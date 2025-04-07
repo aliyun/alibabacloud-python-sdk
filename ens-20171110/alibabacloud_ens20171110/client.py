@@ -5377,6 +5377,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.instance_billing_cycle):
+            query['InstanceBillingCycle'] = request.instance_billing_cycle
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.name):
@@ -5428,6 +5430,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.instance_billing_cycle):
+            query['InstanceBillingCycle'] = request.instance_billing_cycle
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.name):

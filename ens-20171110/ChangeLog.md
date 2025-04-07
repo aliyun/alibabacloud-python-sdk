@@ -1,3 +1,7 @@
+2025-04-07 Version: 9.0.2
+- Update API CreateNatGateway: add request parameters InstanceBillingCycle.
+
+
 2025-04-01 Version: 9.0.1
 - Update API CreateARMServerInstances: add request parameters Cidr.
 - Update API DescribeFileSystems: add response parameters Body.FileSystems.$.Description.
