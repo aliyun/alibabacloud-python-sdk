@@ -1,3 +1,6 @@
+2025-04-07 Version: 6.0.1
+- Generated python 2024-07-12 for IQS.
+
 2025-03-12 Version: 6.0.0
 - Update API BicyclingDirectionNova: update response param.
 - Update API DrivingDirectionNova: update response param.
