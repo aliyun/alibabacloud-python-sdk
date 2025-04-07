@@ -1,3 +1,7 @@
+2025-04-07 Version: 3.2.1
+- Update API GetConnectionTicket: add request parameters AccessType.
+
+
 2025-03-28 Version: 3.2.0
 - Support API ListPersistentAppInstances.
 

@@ -1810,6 +1810,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.access_type):
+            body['AccessType'] = request.access_type
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
         if not UtilClient.is_unset(request.app_instance_group_id_list):
@@ -1873,6 +1875,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.access_type):
+            body['AccessType'] = request.access_type
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
         if not UtilClient.is_unset(request.app_instance_group_id_list):

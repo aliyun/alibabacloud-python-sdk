@@ -3601,6 +3601,7 @@ class GetAppInstanceGroupResponse(TeaModel):
 class GetConnectionTicketRequest(TeaModel):
     def __init__(
         self,
+        access_type: str = None,
         app_id: str = None,
         app_instance_group_id_list: List[str] = None,
         app_instance_id: str = None,
@@ -3612,6 +3613,7 @@ class GetConnectionTicketRequest(TeaModel):
         product_type: str = None,
         task_id: str = None,
     ):
+        self.access_type = access_type
         # The application ID.
         # 
         # >  This parameter is required for the first call to this operation and optional for subsequent calls to the operation.
@@ -3663,6 +3665,8 @@ class GetConnectionTicketRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.access_type is not None:
+            result['AccessType'] = self.access_type
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.app_instance_group_id_list is not None:
@@ -3687,6 +3691,8 @@ class GetConnectionTicketRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessType') is not None:
+            self.access_type = m.get('AccessType')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('AppInstanceGroupIdList') is not None:
