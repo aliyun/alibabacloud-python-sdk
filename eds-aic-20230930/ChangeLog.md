@@ -1,3 +1,10 @@
+2025-04-07 Version: 4.4.2
+- Update API RebootAndroidInstancesInGroup: add request parameters SaleMode.
+- Update API ResetAndroidInstancesInGroup: add request parameters SaleMode.
+- Update API StartAndroidInstance: add request parameters SaleMode.
+- Update API StopAndroidInstance: add request parameters SaleMode.
+
+
 2025-04-03 Version: 4.4.1
 - Update API CreateCloudPhoneNode: add request parameters DisplayConfig.
 - Update API CreatePolicyGroup: add request parameters PolicyType.
