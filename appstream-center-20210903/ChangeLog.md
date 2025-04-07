@@ -1,3 +1,7 @@
+2025-04-07 Version: 2.0.1
+- Update API GetConnectionTicket: add request parameters AccessType.
+
+
 2025-03-19 Version: 2.0.0
 - Support API ResetAppResources.
 - Support API RestartAppResources.

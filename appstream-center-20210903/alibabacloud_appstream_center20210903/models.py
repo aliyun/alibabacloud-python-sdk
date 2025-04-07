@@ -7,6 +7,7 @@ from typing import Dict, List
 class GetConnectionTicketRequest(TeaModel):
     def __init__(
         self,
+        access_type: str = None,
         app_id: str = None,
         app_instance_group_id: str = None,
         app_instance_id: str = None,
@@ -31,6 +32,7 @@ class GetConnectionTicketRequest(TeaModel):
         tenant_id: str = None,
         uuid: str = None,
     ):
+        self.access_type = access_type
         self.app_id = app_id
         self.app_instance_group_id = app_instance_group_id
         self.app_instance_id = app_instance_id
@@ -65,6 +67,8 @@ class GetConnectionTicketRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.access_type is not None:
+            result['AccessType'] = self.access_type
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.app_instance_group_id is not None:
@@ -115,6 +119,8 @@ class GetConnectionTicketRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessType') is not None:
+            self.access_type = m.get('AccessType')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('AppInstanceGroupId') is not None:
