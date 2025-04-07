@@ -3855,8 +3855,6 @@ class Client(OpenApiClient):
         """
         @summary Deletes a backup snapshot.
         
-        @description If you delete the most recent backup snapshot for a data source, you must set the Force parameter to `true`. Otherwise, an error occurs.
-        
         @param request: DeleteSnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteSnapshotResponse
@@ -3910,8 +3908,6 @@ class Client(OpenApiClient):
         """
         @summary Deletes a backup snapshot.
         
-        @description If you delete the most recent backup snapshot for a data source, you must set the Force parameter to `true`. Otherwise, an error occurs.
-        
         @param request: DeleteSnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteSnapshotResponse
@@ -3964,8 +3960,6 @@ class Client(OpenApiClient):
         """
         @summary Deletes a backup snapshot.
         
-        @description If you delete the most recent backup snapshot for a data source, you must set the Force parameter to `true`. Otherwise, an error occurs.
-        
         @param request: DeleteSnapshotRequest
         @return: DeleteSnapshotResponse
         """
@@ -3978,8 +3972,6 @@ class Client(OpenApiClient):
     ) -> hbr_20170908_models.DeleteSnapshotResponse:
         """
         @summary Deletes a backup snapshot.
-        
-        @description If you delete the most recent backup snapshot for a data source, you must set the Force parameter to `true`. Otherwise, an error occurs.
         
         @param request: DeleteSnapshotRequest
         @return: DeleteSnapshotResponse
@@ -4361,6 +4353,8 @@ class Client(OpenApiClient):
             query['CrossAccountType'] = request.cross_account_type
         if not UtilClient.is_unset(request.cross_account_user_id):
             query['CrossAccountUserId'] = request.cross_account_user_id
+        if not UtilClient.is_unset(request.filters):
+            query['Filters'] = request.filters
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -4428,6 +4422,8 @@ class Client(OpenApiClient):
             query['CrossAccountType'] = request.cross_account_type
         if not UtilClient.is_unset(request.cross_account_user_id):
             query['CrossAccountUserId'] = request.cross_account_user_id
+        if not UtilClient.is_unset(request.filters):
+            query['Filters'] = request.filters
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):

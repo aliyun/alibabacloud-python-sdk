@@ -3849,7 +3849,7 @@ class CreatePolicyV2RequestRulesDataSourceFilters(TeaModel):
     ):
         # This parameter is deprecated.
         self.data_source_ids = data_source_ids
-        # The type of the data source. Valid value:
+        # The type of the data source. Valid values:
         # 
         # *   **UDM_ECS**: Elastic Compute Service (ECS) instance This type of data source is supported only if the **PolicyType** parameter is set to **UDM_ECS_ONLY**.
         # *   **OSS**: Object Storage Service (OSS) bucket This type of data source is supported only if the **PolicyType** parameter is set to **STANDARD**.
@@ -4002,9 +4002,9 @@ class CreatePolicyV2RequestRules(TeaModel):
         self.keep_latest_snapshots = keep_latest_snapshots
         # This parameter is required only if the **RuleType** parameter is set to **REPLICATION**. This parameter specifies the ID of the destination region.
         self.replication_region_id = replication_region_id
-        # This parameter is required only if the **RuleType** parameter is set to **BACKUP**, **TRANSITION** or **REPLICATION**.
+        # This parameter is required only if the **RuleType** parameter is set to **BACKUP**, **TRANSITION**, or **REPLICATION**.
         # 
-        # *   If the **RuleType** parameter is set to **BACKUP**, this parameter specifies the retention period of the backup data. The priority is lower than the Retention field of the rule with RuleType=TRANSITION. Minimum value: 1. Maximum value: 364635. Unit: days.
+        # *   If the **RuleType** parameter is set to **BACKUP**, this parameter specifies the retention period of the backup data. The priority is lower than the retention period when the **RuleType** parameter is set to **TRANSITION**. Minimum value: 1. Maximum value: 364635. Unit: days.
         # *   If the **RuleType** parameter is set to **TRANSITION**, this parameter specifies the retention period of the backup data. Minimum value: 1. Maximum value: 364635. Unit: days.
         # *   If the **RuleType** parameter is set to **REPLICATION**, this parameter specifies the retention period of remote backups. Minimum value: 1. Maximum value: 364635. Unit: days.
         self.retention = retention
@@ -4015,14 +4015,23 @@ class CreatePolicyV2RequestRules(TeaModel):
         # *   **BACKUP**: backup rule
         # *   **TRANSITION**: lifecycle rule
         # *   **REPLICATION**: replication rule
-        # *   **TAG**: tag rule
+        # *   **TAG**: tag-based resource association rule
         # 
         # This parameter is required.
         self.rule_type = rule_type
-        # This parameter is required only if the **RuleType** parameter is set to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+        # This parameter is required only if the **RuleType** parameter is set to **BACKUP**. This parameter specifies the backup schedule settings. Formats:
         # 
-        # *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
-        # *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of 1 hour. P1D specifies an interval of one day.
+        # *   `I|{startTime}|{interval}`: The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+        # 
+        #     *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+        #     *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, `PT1H` specifies an interval of 1 hour. `P1D` specifies an interval of one day.
+        # 
+        # *   `C|{startTime}|{crontab}`: The system runs backup jobs at a point in time that is specified in the {startTime} parameter based on the {crontab} expression. For example, C|1631685600|0 0 2 ?\\* 3,5,7 indicates that the system runs backup jobs at 02:00:00 every Tuesday, Thursday, and Saturday from14:00:00 on September 15, 2021.``
+        # 
+        #     *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+        #     *   crontab: the crontab expression. For example, 0 0 2 ?\\* 3,5,7 indicates 02:00:00 every Tuesday, Thursday, and Saturday.``
+        # 
+        # The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed.
         self.schedule = schedule
         # This parameter is required only if the **RuleType** parameter is set to **TAG**. This parameter specifies the resource tag filter rule.
         self.tag_filters = tag_filters
@@ -4637,7 +4646,30 @@ class CreateRestoreJobRequest(TeaModel):
         self.target_table_name = target_table_name
         # The time of the Table Store to be restored. UNIX timestamp, in seconds.
         self.target_time = target_time
-        # Details of the whole machine backup.
+        # The parameter is valid only when the SourceType is set to UDM_ECS. It represents the details of the entire machine backup and is a JSON string. Depending on the value of RestoreType, different details must be passed as follows:
+        # - **UDM_ECS_DISK**: ECS disk cloning.
+        #   - **targetInstanceId**: string (required). Specifies the target ECS instance ID to which the cloned disk will be attached.
+        #   - **diskCategory**: string (required). Specifies the type of the target disk.
+        #   - **diskPerformanceLevel**: string. When diskCategory is "essd", this indicates the disk performance level, supporting PL0, PL1, PL2, and PL3, with PL1 as the default.
+        # - **UDM_ECS_DISK_ROLLBACK**: ECS disk rollback.
+        #   - **sourceInstanceId**: string (required). Specifies the source ECS instance ID.
+        #   - **forceRestore**: bool (default: false). Indicates whether to force restore. NOTE: If forceRestore is set to true, the disk restoration will proceed even if the backup disk has been unmounted from the original ECS instance or mounted to another instance. Exercise caution when using this option.
+        #   - **bootAfterRestore**: bool (default: false). Indicates whether to start the ECS instance after restoration.
+        # - **UDM_ECS**: Full ECS cloning.
+        #   - **bootAfterRestore**: bool (default: false). Indicates whether to start the ECS instance after restoration.
+        #   - **diskCategory**: string (required). Specifies the type of the target disk.
+        #   - **diskPerformanceLevel**: string. When diskCategory is "essd", this indicates the disk performance level (PL0/PL1/PL2/PL3), defaulting to PL1.
+        #   - **instanceType**: string (required). Specifies the specification of the target ECS instance.
+        #   - **restoredNetwork**: string (required). Specifies the vSwitch ID for the target ECS instance.
+        #   - **securityGroup**: string (required). Specifies the security group ID for the target ECS instance.
+        #   - **restoredName:** string (required). Specifies the instance name of the target ECS instance.
+        #   - **restoredHostName**: string (required). Specifies the host name of the target ECS instance.
+        #   - **allocatePublicIp**: bool (default: false). Indicates whether to assign a public IP to the target ECS instance.
+        #   - **privateIpAddress**: string. Specifies the internal IP address of the target ECS instance. If not specified, an IP will be assigned via DHCP.
+        # - **UDM_ECS_ROLLBACK**: Full ECS rollback.
+        #   - **sourceInstanceId**: string (required). Specifies the source ECS instance ID.
+        #   - **forceRestore**: bool (default: false). Indicates whether to force restore. NOTE: If forceRestore is set to true, the disk restoration will proceed even if the backup disk has been unmounted from the original ECS instance or mounted to another instance. Exercise caution when using this option.
+        #   - **bootAfterRestore**: bool (default: false). Indicates whether to start the ECS instance after restoration.
         self.udm_detail = udm_detail
         # Valid only when **SourceType** is **UDM_ECS**. Indicates the target region for the restore.
         self.udm_region_id = udm_region_id
@@ -4865,7 +4897,30 @@ class CreateRestoreJobShrinkRequest(TeaModel):
         self.target_table_name = target_table_name
         # The time of the Table Store to be restored. UNIX timestamp, in seconds.
         self.target_time = target_time
-        # Details of the whole machine backup.
+        # The parameter is valid only when the SourceType is set to UDM_ECS. It represents the details of the entire machine backup and is a JSON string. Depending on the value of RestoreType, different details must be passed as follows:
+        # - **UDM_ECS_DISK**: ECS disk cloning.
+        #   - **targetInstanceId**: string (required). Specifies the target ECS instance ID to which the cloned disk will be attached.
+        #   - **diskCategory**: string (required). Specifies the type of the target disk.
+        #   - **diskPerformanceLevel**: string. When diskCategory is "essd", this indicates the disk performance level, supporting PL0, PL1, PL2, and PL3, with PL1 as the default.
+        # - **UDM_ECS_DISK_ROLLBACK**: ECS disk rollback.
+        #   - **sourceInstanceId**: string (required). Specifies the source ECS instance ID.
+        #   - **forceRestore**: bool (default: false). Indicates whether to force restore. NOTE: If forceRestore is set to true, the disk restoration will proceed even if the backup disk has been unmounted from the original ECS instance or mounted to another instance. Exercise caution when using this option.
+        #   - **bootAfterRestore**: bool (default: false). Indicates whether to start the ECS instance after restoration.
+        # - **UDM_ECS**: Full ECS cloning.
+        #   - **bootAfterRestore**: bool (default: false). Indicates whether to start the ECS instance after restoration.
+        #   - **diskCategory**: string (required). Specifies the type of the target disk.
+        #   - **diskPerformanceLevel**: string. When diskCategory is "essd", this indicates the disk performance level (PL0/PL1/PL2/PL3), defaulting to PL1.
+        #   - **instanceType**: string (required). Specifies the specification of the target ECS instance.
+        #   - **restoredNetwork**: string (required). Specifies the vSwitch ID for the target ECS instance.
+        #   - **securityGroup**: string (required). Specifies the security group ID for the target ECS instance.
+        #   - **restoredName:** string (required). Specifies the instance name of the target ECS instance.
+        #   - **restoredHostName**: string (required). Specifies the host name of the target ECS instance.
+        #   - **allocatePublicIp**: bool (default: false). Indicates whether to assign a public IP to the target ECS instance.
+        #   - **privateIpAddress**: string. Specifies the internal IP address of the target ECS instance. If not specified, an IP will be assigned via DHCP.
+        # - **UDM_ECS_ROLLBACK**: Full ECS rollback.
+        #   - **sourceInstanceId**: string (required). Specifies the source ECS instance ID.
+        #   - **forceRestore**: bool (default: false). Indicates whether to force restore. NOTE: If forceRestore is set to true, the disk restoration will proceed even if the backup disk has been unmounted from the original ECS instance or mounted to another instance. Exercise caution when using this option.
+        #   - **bootAfterRestore**: bool (default: false). Indicates whether to start the ECS instance after restoration.
         self.udm_detail_shrink = udm_detail_shrink
         # Valid only when **SourceType** is **UDM_ECS**. Indicates the target region for the restore.
         self.udm_region_id = udm_region_id
@@ -5296,18 +5351,19 @@ class CreateVaultRequest(TeaModel):
         # 
         # This parameter is required.
         self.vault_region_id = vault_region_id
-        # The storage type of the backup vault. Valid value: 
-        # - **STANDARD**: standard storage.
-        # - **ARCHIVE**: deprected.
-        # - **COLD_ARCHIVE**: deprected.
-        # - **IA**: deprected.
+        # The storage type of the backup vault.
+        # 
+        # *   **STANDARD**: standard storage.
+        # *   **ARCHIVE**: This parameter is deprecated.
+        # *   **COLD_ARCHIVE**: This parameter is deprecated.
+        # *   **IA**: This parameter is deprecated.
         self.vault_storage_class = vault_storage_class
         # The type of the backup vault. Valid values:
         # 
         # *   **STANDARD**: standard backup vault
         # *   **OTS_BACKUP**: backup vault for Tablestore
         self.vault_type = vault_type
-        # Whether to enable the vault worm feature. Once the worm feature is enabled, the vault and all its backup data cannot be deleted before they automatically expire. After enabling the worm feature, it is not supported to disable it. The worm feature is only effective for standard and archive backup vault.
+        # Specifies whether to enable the immutable backup feature.
         self.worm_enabled = worm_enabled
 
     def validate(self):
@@ -5471,7 +5527,7 @@ class DeleteAirEcsInstanceRequest(TeaModel):
         ecs_instance_id: str = None,
         uninstall_client_source_types: List[str] = None,
     ):
-        # The ID of the ECS instance.
+        # The ID of the Elastic Compute Service (ECS) instance.
         self.ecs_instance_id = ecs_instance_id
         # The data sources for which the client needs to be uninstalled.
         self.uninstall_client_source_types = uninstall_client_source_types
@@ -5506,7 +5562,7 @@ class DeleteAirEcsInstanceShrinkRequest(TeaModel):
         ecs_instance_id: str = None,
         uninstall_client_source_types_shrink: str = None,
     ):
-        # The ID of the ECS instance.
+        # The ID of the Elastic Compute Service (ECS) instance.
         self.ecs_instance_id = ecs_instance_id
         # The data sources for which the client needs to be uninstalled.
         self.uninstall_client_source_types_shrink = uninstall_client_source_types_shrink
@@ -6811,10 +6867,7 @@ class DeleteSnapshotRequest(TeaModel):
     ):
         # The ID of the Cloud Backup client. If you delete a backup snapshot for Elastic Compute Service (ECS) instances, you must specify one of the ClientId and **InstanceId** parameters.
         self.client_id = client_id
-        # Specifies whether to forcibly delete the most recent backup snapshot. Valid values:
-        # 
-        # *   true: The system forcibly deletes the most recent backup snapshot.
-        # *   false (default): The system does not forcibly delete the most recent backup snapshot.
+        # This parameter is deprecated.
         self.force = force
         # The ID of the ECS instance. If you delete a backup snapshot for ECS instances, you must specify one of the InstanceId and **ClientId** parameters.
         self.instance_id = instance_id
@@ -7349,6 +7402,39 @@ class DeleteVaultResponse(TeaModel):
         return self
 
 
+class DescribeBackupClientsRequestFilters(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        values: List[str] = None,
+    ):
+        self.key = key
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
 class DescribeBackupClientsRequestTag(TeaModel):
     def __init__(
         self,
@@ -7401,6 +7487,7 @@ class DescribeBackupClientsRequest(TeaModel):
         cross_account_role_name: str = None,
         cross_account_type: str = None,
         cross_account_user_id: int = None,
+        filters: List[DescribeBackupClientsRequestFilters] = None,
         instance_ids: List[str] = None,
         page_number: int = None,
         page_size: int = None,
@@ -7426,6 +7513,7 @@ class DescribeBackupClientsRequest(TeaModel):
         self.cross_account_type = cross_account_type
         # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
+        self.filters = filters
         # The IDs of ECS instances.
         self.instance_ids = instance_ids
         # The page number. Pages start from page 1. Default value: 1.
@@ -7436,6 +7524,10 @@ class DescribeBackupClientsRequest(TeaModel):
         self.tag = tag
 
     def validate(self):
+        if self.filters:
+            for k in self.filters:
+                if k:
+                    k.validate()
         if self.tag:
             for k in self.tag:
                 if k:
@@ -7459,6 +7551,10 @@ class DescribeBackupClientsRequest(TeaModel):
             result['CrossAccountType'] = self.cross_account_type
         if self.cross_account_user_id is not None:
             result['CrossAccountUserId'] = self.cross_account_user_id
+        result['Filters'] = []
+        if self.filters is not None:
+            for k in self.filters:
+                result['Filters'].append(k.to_map() if k else None)
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
         if self.page_number is not None:
@@ -7485,6 +7581,11 @@ class DescribeBackupClientsRequest(TeaModel):
             self.cross_account_type = m.get('CrossAccountType')
         if m.get('CrossAccountUserId') is not None:
             self.cross_account_user_id = m.get('CrossAccountUserId')
+        self.filters = []
+        if m.get('Filters') is not None:
+            for k in m.get('Filters'):
+                temp_model = DescribeBackupClientsRequestFilters()
+                self.filters.append(temp_model.from_map(k))
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
         if m.get('PageNumber') is not None:
@@ -7496,6 +7597,39 @@ class DescribeBackupClientsRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = DescribeBackupClientsRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeBackupClientsShrinkRequestFilters(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        values: List[str] = None,
+    ):
+        self.key = key
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
         return self
 
 
@@ -7551,6 +7685,7 @@ class DescribeBackupClientsShrinkRequest(TeaModel):
         cross_account_role_name: str = None,
         cross_account_type: str = None,
         cross_account_user_id: int = None,
+        filters: List[DescribeBackupClientsShrinkRequestFilters] = None,
         instance_ids_shrink: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -7576,6 +7711,7 @@ class DescribeBackupClientsShrinkRequest(TeaModel):
         self.cross_account_type = cross_account_type
         # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
+        self.filters = filters
         # The IDs of ECS instances.
         self.instance_ids_shrink = instance_ids_shrink
         # The page number. Pages start from page 1. Default value: 1.
@@ -7586,6 +7722,10 @@ class DescribeBackupClientsShrinkRequest(TeaModel):
         self.tag = tag
 
     def validate(self):
+        if self.filters:
+            for k in self.filters:
+                if k:
+                    k.validate()
         if self.tag:
             for k in self.tag:
                 if k:
@@ -7609,6 +7749,10 @@ class DescribeBackupClientsShrinkRequest(TeaModel):
             result['CrossAccountType'] = self.cross_account_type
         if self.cross_account_user_id is not None:
             result['CrossAccountUserId'] = self.cross_account_user_id
+        result['Filters'] = []
+        if self.filters is not None:
+            for k in self.filters:
+                result['Filters'].append(k.to_map() if k else None)
         if self.instance_ids_shrink is not None:
             result['InstanceIds'] = self.instance_ids_shrink
         if self.page_number is not None:
@@ -7635,6 +7779,11 @@ class DescribeBackupClientsShrinkRequest(TeaModel):
             self.cross_account_type = m.get('CrossAccountType')
         if m.get('CrossAccountUserId') is not None:
             self.cross_account_user_id = m.get('CrossAccountUserId')
+        self.filters = []
+        if m.get('Filters') is not None:
+            for k in m.get('Filters'):
+                temp_model = DescribeBackupClientsShrinkRequestFilters()
+                self.filters.append(temp_model.from_map(k))
         if m.get('InstanceIds') is not None:
             self.instance_ids_shrink = m.get('InstanceIds')
         if m.get('PageNumber') is not None:
@@ -9121,9 +9270,10 @@ class DescribeBackupPlansRequest(TeaModel):
         # 
         # *   **ECS_FILE**: Elastic Compute Service (ECS) files
         # *   **OSS**: Object Storage Service (OSS) buckets
-        # *   **NAS**: Apsara File Storage NAS file systems
+        # *   **NAS**: File Storage NAS (NAS) file systems
         # *   **OTS**: Tablestore instances
         # *   **UDM_ECS**: ECS instances
+        # *   **SYNC**: data synchronization
         self.source_type = source_type
 
     def validate(self):
@@ -9717,6 +9867,7 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
         # *   **NAS**: NAS file systems
         # *   **OTS**: Tablestore instances
         # *   **UDM_ECS**: ECS instances
+        # *   **SYNC**: data synchronization
         self.source_type = source_type
         # This parameter is valid only when **SourceType** is set to **ECS_FILE**. This parameter indicates the throttling rules. Format: `{start}|{end}|{bandwidth}`. Multiple throttling rules are separated with vertical bars (`|`). A time range cannot overlap with another one.
         # 
@@ -10202,6 +10353,7 @@ class DescribeClientsResponseBodyClientsClient(TeaModel):
         self.cluster_id = cluster_id
         # The time when the Cloud Backup client was created.
         self.created_time = created_time
+        # The latest heartbeat time of the Cloud Backup client. This value is a UNIX timestamp. Unit: seconds.
         self.heart_beat_time = heart_beat_time
         # The instance ID.
         self.instance_id = instance_id
@@ -14911,9 +15063,9 @@ class DescribePolicyBindingsResponseBodyPolicyBindings(TeaModel):
         self.cross_account_user_id = cross_account_user_id
         # Data source ID.
         self.data_source_id = data_source_id
-        # 策略是否对该数据源生效。
-        # - true：暂停
-        # - false：未暂停
+        # Whether the policy is disbaled for this data source.
+        # - true: disabled
+        # - false: Not disabled
         self.disabled = disabled
         # This parameter is required only when **SourceType** is **ECS_FILE** or **File**. It specifies the file types that should not be backed up, and all files of these types will be excluded. Supports up to 255 characters.
         self.exclude = exclude
@@ -17385,6 +17537,7 @@ class DescribeVaultsRequest(TeaModel):
         self.tag = tag
         # Backup vault ID.
         self.vault_id = vault_id
+        # The name of the backup vault. The name must be 1 to 64 characters in length.
         self.vault_name = vault_name
         # The region ID to which the backup vault belongs.
         self.vault_region_id = vault_region_id
@@ -23902,7 +24055,7 @@ class UpdatePolicyV2RequestRules(TeaModel):
         # *   If the **RuleType** parameter is set to **TRANSITION**, this parameter specifies the retention period of the backup data. Minimum value: 1. Unit: days.
         # *   If the **RuleType** parameter is set to **REPLICATION**, this parameter specifies the retention period of remote backups. Minimum value: 1. Unit: days.
         self.retention = retention
-        # This parameter is required only if the value of the **RuleType** parameter is **TRANSITION**. This parameter specifies the special retention rules.
+        # This parameter is required only if the **RuleType** parameter is set to **TRANSITION**. This parameter specifies the special retention rules.
         self.retention_rules = retention_rules
         # The rule ID.
         self.rule_id = rule_id
@@ -23912,10 +24065,19 @@ class UpdatePolicyV2RequestRules(TeaModel):
         # *   **TRANSITION**: lifecycle rule
         # *   **REPLICATION**: replication rule
         self.rule_type = rule_type
-        # This parameter is required only if the **RuleType** parameter is set to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+        # This parameter is required only if the **RuleType** parameter is set to **BACKUP**. This parameter specifies the backup schedule settings. Formats:
         # 
-        # *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
-        # *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of 1 hour. P1D specifies an interval of one day.
+        # *   `I|{startTime}|{interval}`: The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+        # 
+        #     *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+        #     *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, `PT1H` specifies an interval of 1 hour. `P1D` specifies an interval of one day.
+        # 
+        # *   `C|{startTime}|{crontab}`: The system runs backup jobs at a point in time that is specified in the {startTime} parameter based on the {crontab} expression. For example, C|1631685600|0 0 2 ?\\* 3,5,7 indicates that the system runs backup jobs at 02:00:00 every Tuesday, Thursday, and Saturday from14:00:00 on September 15, 2021.``
+        # 
+        #     *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+        #     *   crontab: the crontab expression. For example, 0 0 2 ?\\* 3,5,7 indicates 02:00:00 every Tuesday, Thursday, and Saturday.``
+        # 
+        # The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed.
         self.schedule = schedule
         # This parameter is required only if the **RuleType** parameter is set to **TAG**. This parameter specifies the resource tag filter rule.
         self.tag_filters = tag_filters
@@ -24238,7 +24400,7 @@ class UpdateVaultRequest(TeaModel):
         self.vault_id = vault_id
         # The name of the backup vault. The name must be 1 to 64 characters in length.
         self.vault_name = vault_name
-        # Whether to enable the vault worm feature. Once the worm feature is enabled, the vault and all its backup data cannot be deleted before they automatically expire. After enabling the worm feature, it is not supported to disable it. The worm feature is only effective for standard and archive backup vault.
+        # Specifies whether to enable the immutable backup feature for storage vaults. After the immutable backup feature is enabled, backup vaults and all backup data cannot be deleted until the retention period expires. The immutable backup feature cannot be disabled after it is enabled. Only standard backup vaults and archive vaults support the immutable backup feature.
         self.worm_enabled = worm_enabled
 
     def validate(self):

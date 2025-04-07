@@ -1,3 +1,7 @@
+2025-04-07 Version: 2.1.6
+- Update API DescribeBackupClients: add request parameters Filters.
+
+
 2025-03-06 Version: 2.1.5
 - Update API DescribeClients: update response param.
 - Update API UpdatePolicyV2: update param Rules.
