@@ -594,6 +594,255 @@ class GenericSearchResult(TeaModel):
         return self
 
 
+class GlobalPageItem(TeaModel):
+    def __init__(
+        self,
+        link: str = None,
+        snippet: str = None,
+        title: str = None,
+    ):
+        # This parameter is required.
+        self.link = link
+        self.snippet = snippet
+        # This parameter is required.
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.link is not None:
+            result['link'] = self.link
+        if self.snippet is not None:
+            result['snippet'] = self.snippet
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('link') is not None:
+            self.link = m.get('link')
+        if m.get('snippet') is not None:
+            self.snippet = m.get('snippet')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
+class GlobalQueryContextOriginalQuery(TeaModel):
+    def __init__(
+        self,
+        page: str = None,
+        query: str = None,
+        time_range: str = None,
+    ):
+        self.page = page
+        self.query = query
+        self.time_range = time_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page is not None:
+            result['page'] = self.page
+        if self.query is not None:
+            result['query'] = self.query
+        if self.time_range is not None:
+            result['timeRange'] = self.time_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        if m.get('timeRange') is not None:
+            self.time_range = m.get('timeRange')
+        return self
+
+
+class GlobalQueryContext(TeaModel):
+    def __init__(
+        self,
+        original_query: GlobalQueryContextOriginalQuery = None,
+    ):
+        self.original_query = original_query
+
+    def validate(self):
+        if self.original_query:
+            self.original_query.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.original_query is not None:
+            result['originalQuery'] = self.original_query.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('originalQuery') is not None:
+            temp_model = GlobalQueryContextOriginalQuery()
+            self.original_query = temp_model.from_map(m['originalQuery'])
+        return self
+
+
+class GlobalSceneItem(TeaModel):
+    def __init__(
+        self,
+        detail: str = None,
+        type: str = None,
+    ):
+        self.detail = detail
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.detail is not None:
+            result['detail'] = self.detail
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('detail') is not None:
+            self.detail = m.get('detail')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GlobalSearchInformation(TeaModel):
+    def __init__(
+        self,
+        search_time: int = None,
+        total: int = None,
+    ):
+        self.search_time = search_time
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.search_time is not None:
+            result['searchTime'] = self.search_time
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('searchTime') is not None:
+            self.search_time = m.get('searchTime')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class GlobalSearchResult(TeaModel):
+    def __init__(
+        self,
+        page_items: List[GlobalPageItem] = None,
+        query_context: GlobalQueryContext = None,
+        request_id: str = None,
+        scene_items: List[GlobalSceneItem] = None,
+        search_information: GlobalSearchInformation = None,
+    ):
+        self.page_items = page_items
+        self.query_context = query_context
+        self.request_id = request_id
+        self.scene_items = scene_items
+        self.search_information = search_information
+
+    def validate(self):
+        if self.page_items:
+            for k in self.page_items:
+                if k:
+                    k.validate()
+        if self.query_context:
+            self.query_context.validate()
+        if self.scene_items:
+            for k in self.scene_items:
+                if k:
+                    k.validate()
+        if self.search_information:
+            self.search_information.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['pageItems'] = []
+        if self.page_items is not None:
+            for k in self.page_items:
+                result['pageItems'].append(k.to_map() if k else None)
+        if self.query_context is not None:
+            result['queryContext'] = self.query_context.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['sceneItems'] = []
+        if self.scene_items is not None:
+            for k in self.scene_items:
+                result['sceneItems'].append(k.to_map() if k else None)
+        if self.search_information is not None:
+            result['searchInformation'] = self.search_information.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.page_items = []
+        if m.get('pageItems') is not None:
+            for k in m.get('pageItems'):
+                temp_model = GlobalPageItem()
+                self.page_items.append(temp_model.from_map(k))
+        if m.get('queryContext') is not None:
+            temp_model = GlobalQueryContext()
+            self.query_context = temp_model.from_map(m['queryContext'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.scene_items = []
+        if m.get('sceneItems') is not None:
+            for k in m.get('sceneItems'):
+                temp_model = GlobalSceneItem()
+                self.scene_items.append(temp_model.from_map(k))
+        if m.get('searchInformation') is not None:
+            temp_model = GlobalSearchInformation()
+            self.search_information = temp_model.from_map(m['searchInformation'])
+        return self
+
+
 class AiSearchRequest(TeaModel):
     def __init__(
         self,
@@ -1092,6 +1341,93 @@ class GenericSearchResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GenericSearchResult()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GlobalSearchRequest(TeaModel):
+    def __init__(
+        self,
+        page: int = None,
+        page_size: int = None,
+        query: str = None,
+        time_range: str = None,
+    ):
+        self.page = page
+        self.page_size = page_size
+        # This parameter is required.
+        self.query = query
+        self.time_range = time_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page is not None:
+            result['page'] = self.page
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.query is not None:
+            result['query'] = self.query
+        if self.time_range is not None:
+            result['timeRange'] = self.time_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        if m.get('timeRange') is not None:
+            self.time_range = m.get('timeRange')
+        return self
+
+
+class GlobalSearchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GlobalSearchResult = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GlobalSearchResult()
             self.body = temp_model.from_map(m['body'])
         return self
 

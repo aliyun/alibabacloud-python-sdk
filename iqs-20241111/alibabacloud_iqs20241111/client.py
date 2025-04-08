@@ -448,3 +448,131 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.generic_search_with_options_async(request, headers, runtime)
+
+    def global_search_with_options(
+        self,
+        request: iqs20241111_models.GlobalSearchRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20241111_models.GlobalSearchResponse:
+        """
+        @summary 通晓搜索-出海版(全球信息搜索)
+        
+        @param request: GlobalSearchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GlobalSearchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            query['query'] = request.query
+        if not UtilClient.is_unset(request.time_range):
+            query['timeRange'] = request.time_range
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GlobalSearch',
+            version='2024-11-11',
+            protocol='HTTPS',
+            pathname=f'/linked-retrieval/linked-retrieval-entry/v1/iqs/search/global',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20241111_models.GlobalSearchResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20241111_models.GlobalSearchResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def global_search_with_options_async(
+        self,
+        request: iqs20241111_models.GlobalSearchRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20241111_models.GlobalSearchResponse:
+        """
+        @summary 通晓搜索-出海版(全球信息搜索)
+        
+        @param request: GlobalSearchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GlobalSearchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            query['query'] = request.query
+        if not UtilClient.is_unset(request.time_range):
+            query['timeRange'] = request.time_range
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GlobalSearch',
+            version='2024-11-11',
+            protocol='HTTPS',
+            pathname=f'/linked-retrieval/linked-retrieval-entry/v1/iqs/search/global',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20241111_models.GlobalSearchResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20241111_models.GlobalSearchResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def global_search(
+        self,
+        request: iqs20241111_models.GlobalSearchRequest,
+    ) -> iqs20241111_models.GlobalSearchResponse:
+        """
+        @summary 通晓搜索-出海版(全球信息搜索)
+        
+        @param request: GlobalSearchRequest
+        @return: GlobalSearchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.global_search_with_options(request, headers, runtime)
+
+    async def global_search_async(
+        self,
+        request: iqs20241111_models.GlobalSearchRequest,
+    ) -> iqs20241111_models.GlobalSearchResponse:
+        """
+        @summary 通晓搜索-出海版(全球信息搜索)
+        
+        @param request: GlobalSearchRequest
+        @return: GlobalSearchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.global_search_with_options_async(request, headers, runtime)
