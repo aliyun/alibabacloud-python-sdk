@@ -1,3 +1,7 @@
+2025-04-08 Version: 4.2.0
+- Support API SearchImageByText.
+
+
 2025-02-13 Version: 4.1.0
 - Support API CompareSimilarByImage.
 - Update API AddImage: add param IntAttr3.

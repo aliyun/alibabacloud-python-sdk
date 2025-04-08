@@ -1955,6 +1955,134 @@ class Client(OpenApiClient):
         search_image_by_pic_resp = await self.search_image_by_pic_with_options_async(search_image_by_pic_req, runtime)
         return search_image_by_pic_resp
 
+    def search_image_by_text_with_options(
+        self,
+        request: image_search_20201214_models.SearchImageByTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> image_search_20201214_models.SearchImageByTextResponse:
+        """
+        @summary SearchImageByText
+        
+        @param request: SearchImageByTextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchImageByTextResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.distinct_product_id):
+            body['DistinctProductId'] = request.distinct_product_id
+        if not UtilClient.is_unset(request.filter):
+            body['Filter'] = request.filter
+        if not UtilClient.is_unset(request.instance_name):
+            body['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.num):
+            body['Num'] = request.num
+        if not UtilClient.is_unset(request.start):
+            body['Start'] = request.start
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SearchImageByText',
+            version='2020-12-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                image_search_20201214_models.SearchImageByTextResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                image_search_20201214_models.SearchImageByTextResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def search_image_by_text_with_options_async(
+        self,
+        request: image_search_20201214_models.SearchImageByTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> image_search_20201214_models.SearchImageByTextResponse:
+        """
+        @summary SearchImageByText
+        
+        @param request: SearchImageByTextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchImageByTextResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.distinct_product_id):
+            body['DistinctProductId'] = request.distinct_product_id
+        if not UtilClient.is_unset(request.filter):
+            body['Filter'] = request.filter
+        if not UtilClient.is_unset(request.instance_name):
+            body['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.num):
+            body['Num'] = request.num
+        if not UtilClient.is_unset(request.start):
+            body['Start'] = request.start
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SearchImageByText',
+            version='2020-12-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                image_search_20201214_models.SearchImageByTextResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                image_search_20201214_models.SearchImageByTextResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def search_image_by_text(
+        self,
+        request: image_search_20201214_models.SearchImageByTextRequest,
+    ) -> image_search_20201214_models.SearchImageByTextResponse:
+        """
+        @summary SearchImageByText
+        
+        @param request: SearchImageByTextRequest
+        @return: SearchImageByTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.search_image_by_text_with_options(request, runtime)
+
+    async def search_image_by_text_async(
+        self,
+        request: image_search_20201214_models.SearchImageByTextRequest,
+    ) -> image_search_20201214_models.SearchImageByTextResponse:
+        """
+        @summary SearchImageByText
+        
+        @param request: SearchImageByTextRequest
+        @return: SearchImageByTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.search_image_by_text_with_options_async(request, runtime)
+
     def update_image_with_options(
         self,
         request: image_search_20201214_models.UpdateImageRequest,
