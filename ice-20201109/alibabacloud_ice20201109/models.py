@@ -19177,13 +19177,17 @@ class DescribeNotifyConfigRequest(TeaModel):
 class DescribeNotifyConfigResponseBody(TeaModel):
     def __init__(
         self,
+        audio_oss_path: str = None,
         callback_url: str = None,
+        enable_audio_recording: bool = None,
         enable_notify: bool = None,
         event_types: str = None,
         request_id: str = None,
         token: str = None,
     ):
+        self.audio_oss_path = audio_oss_path
         self.callback_url = callback_url
+        self.enable_audio_recording = enable_audio_recording
         self.enable_notify = enable_notify
         # The event types. If this parameter is empty, all event types are selected.
         # 
@@ -19203,8 +19207,12 @@ class DescribeNotifyConfigResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.audio_oss_path is not None:
+            result['AudioOssPath'] = self.audio_oss_path
         if self.callback_url is not None:
             result['CallbackUrl'] = self.callback_url
+        if self.enable_audio_recording is not None:
+            result['EnableAudioRecording'] = self.enable_audio_recording
         if self.enable_notify is not None:
             result['EnableNotify'] = self.enable_notify
         if self.event_types is not None:
@@ -19217,8 +19225,12 @@ class DescribeNotifyConfigResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AudioOssPath') is not None:
+            self.audio_oss_path = m.get('AudioOssPath')
         if m.get('CallbackUrl') is not None:
             self.callback_url = m.get('CallbackUrl')
+        if m.get('EnableAudioRecording') is not None:
+            self.enable_audio_recording = m.get('EnableAudioRecording')
         if m.get('EnableNotify') is not None:
             self.enable_notify = m.get('EnableNotify')
         if m.get('EventTypes') is not None:
@@ -41952,26 +41964,20 @@ class ListAIAgentDialoguesRequest(TeaModel):
         return self
 
 
-class ListAIAgentDialoguesResponseBodyDialogues(TeaModel):
+class ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList(TeaModel):
     def __init__(
         self,
-        dialogue_id: str = None,
-        producer: str = None,
-        reasoning_text: str = None,
-        round_id: str = None,
-        source: str = None,
-        text: str = None,
-        time: int = None,
-        type: str = None,
+        format: str = None,
+        id: str = None,
+        name: str = None,
+        type: int = None,
+        url: str = None,
     ):
-        self.dialogue_id = dialogue_id
-        self.producer = producer
-        self.reasoning_text = reasoning_text
-        self.round_id = round_id
-        self.source = source
-        self.text = text
-        self.time = time
+        self.format = format
+        self.id = id
+        self.name = name
         self.type = type
+        self.url = url
 
     def validate(self):
         pass
@@ -41982,6 +41988,72 @@ class ListAIAgentDialoguesResponseBodyDialogues(TeaModel):
             return _map
 
         result = dict()
+        if self.format is not None:
+            result['Format'] = self.format
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class ListAIAgentDialoguesResponseBodyDialogues(TeaModel):
+    def __init__(
+        self,
+        attached_file_list: List[ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList] = None,
+        dialogue_id: str = None,
+        producer: str = None,
+        reasoning_text: str = None,
+        round_id: str = None,
+        source: str = None,
+        text: str = None,
+        time: int = None,
+        type: str = None,
+    ):
+        self.attached_file_list = attached_file_list
+        self.dialogue_id = dialogue_id
+        self.producer = producer
+        self.reasoning_text = reasoning_text
+        self.round_id = round_id
+        self.source = source
+        self.text = text
+        self.time = time
+        self.type = type
+
+    def validate(self):
+        if self.attached_file_list:
+            for k in self.attached_file_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AttachedFileList'] = []
+        if self.attached_file_list is not None:
+            for k in self.attached_file_list:
+                result['AttachedFileList'].append(k.to_map() if k else None)
         if self.dialogue_id is not None:
             result['DialogueId'] = self.dialogue_id
         if self.producer is not None:
@@ -42002,6 +42074,11 @@ class ListAIAgentDialoguesResponseBodyDialogues(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.attached_file_list = []
+        if m.get('AttachedFileList') is not None:
+            for k in m.get('AttachedFileList'):
+                temp_model = ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList()
+                self.attached_file_list.append(temp_model.from_map(k))
         if m.get('DialogueId') is not None:
             self.dialogue_id = m.get('DialogueId')
         if m.get('Producer') is not None:
@@ -70372,7 +70449,9 @@ class SetNotifyConfigRequest(TeaModel):
     def __init__(
         self,
         aiagent_id: str = None,
+        audio_oss_path: str = None,
         callback_url: str = None,
+        enable_audio_recording: bool = None,
         enable_notify: bool = None,
         event_types: str = None,
         token: str = None,
@@ -70381,8 +70460,10 @@ class SetNotifyConfigRequest(TeaModel):
         # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
+        self.audio_oss_path = audio_oss_path
         # The URL for receiving callback notifications. By default, this parameter is left empty.
         self.callback_url = callback_url
+        self.enable_audio_recording = enable_audio_recording
         # Specifies whether to enable event notifications.
         # 
         # This parameter is required.
@@ -70407,8 +70488,12 @@ class SetNotifyConfigRequest(TeaModel):
         result = dict()
         if self.aiagent_id is not None:
             result['AIAgentId'] = self.aiagent_id
+        if self.audio_oss_path is not None:
+            result['AudioOssPath'] = self.audio_oss_path
         if self.callback_url is not None:
             result['CallbackUrl'] = self.callback_url
+        if self.enable_audio_recording is not None:
+            result['EnableAudioRecording'] = self.enable_audio_recording
         if self.enable_notify is not None:
             result['EnableNotify'] = self.enable_notify
         if self.event_types is not None:
@@ -70421,8 +70506,12 @@ class SetNotifyConfigRequest(TeaModel):
         m = m or dict()
         if m.get('AIAgentId') is not None:
             self.aiagent_id = m.get('AIAgentId')
+        if m.get('AudioOssPath') is not None:
+            self.audio_oss_path = m.get('AudioOssPath')
         if m.get('CallbackUrl') is not None:
             self.callback_url = m.get('CallbackUrl')
+        if m.get('EnableAudioRecording') is not None:
+            self.enable_audio_recording = m.get('EnableAudioRecording')
         if m.get('EnableNotify') is not None:
             self.enable_notify = m.get('EnableNotify')
         if m.get('EventTypes') is not None:

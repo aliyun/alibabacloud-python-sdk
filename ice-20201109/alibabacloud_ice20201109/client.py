@@ -30175,8 +30175,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aiagent_id):
             query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.audio_oss_path):
+            query['AudioOssPath'] = request.audio_oss_path
         if not UtilClient.is_unset(request.callback_url):
             query['CallbackUrl'] = request.callback_url
+        if not UtilClient.is_unset(request.enable_audio_recording):
+            query['EnableAudioRecording'] = request.enable_audio_recording
         if not UtilClient.is_unset(request.enable_notify):
             query['EnableNotify'] = request.enable_notify
         if not UtilClient.is_unset(request.event_types):
@@ -30227,8 +30231,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aiagent_id):
             query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.audio_oss_path):
+            query['AudioOssPath'] = request.audio_oss_path
         if not UtilClient.is_unset(request.callback_url):
             query['CallbackUrl'] = request.callback_url
+        if not UtilClient.is_unset(request.enable_audio_recording):
+            query['EnableAudioRecording'] = request.enable_audio_recording
         if not UtilClient.is_unset(request.enable_notify):
             query['EnableNotify'] = request.enable_notify
         if not UtilClient.is_unset(request.event_types):

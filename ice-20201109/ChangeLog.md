@@ -1,3 +1,11 @@
+2025-04-08 Version: 5.0.3
+- Update API DescribeNotifyConfig: add response parameters Body.AudioOssPath.
+- Update API DescribeNotifyConfig: add response parameters Body.EnableAudioRecording.
+- Update API ListAIAgentDialogues: add response parameters Body.Dialogues.$.AttachedFileList.
+- Update API SetNotifyConfig: add request parameters AudioOssPath.
+- Update API SetNotifyConfig: add request parameters EnableAudioRecording.
+
+
 2025-04-02 Version: 5.0.2
 - Update API QueryIProductionJob: add response parameters Body.OutputMediaIds.
 - Update API QueryIProductionJob: add response parameters Body.Output.Biz.
