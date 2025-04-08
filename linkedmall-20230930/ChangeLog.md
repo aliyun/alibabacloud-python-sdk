@@ -1,3 +1,9 @@
+2025-04-08 Version: 3.0.0
+- Update API SearchProducts: add response parameters Body.products.$.categoryChain.$.isLeaf.
+- Update API SearchProducts: update response parameters Body.products.$.categoryChain.$.level' type has changed.
+- Update API SearchProducts: update response parameters Body.products.$.categoryChain.$.level' format has changed.
+
+
 2025-03-14 Version: 2.4.1
 - Generated python 2023-09-30 for linkedmall.
 

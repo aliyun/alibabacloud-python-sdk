@@ -6227,11 +6227,13 @@ class SearchProductsResponseBodyProductsCategoryChain(TeaModel):
     def __init__(
         self,
         category_id: int = None,
-        level: bool = None,
+        is_leaf: bool = None,
+        level: int = None,
         name: str = None,
         parent_id: int = None,
     ):
         self.category_id = category_id
+        self.is_leaf = is_leaf
         self.level = level
         self.name = name
         self.parent_id = parent_id
@@ -6247,6 +6249,8 @@ class SearchProductsResponseBodyProductsCategoryChain(TeaModel):
         result = dict()
         if self.category_id is not None:
             result['categoryId'] = self.category_id
+        if self.is_leaf is not None:
+            result['isLeaf'] = self.is_leaf
         if self.level is not None:
             result['level'] = self.level
         if self.name is not None:
@@ -6259,6 +6263,8 @@ class SearchProductsResponseBodyProductsCategoryChain(TeaModel):
         m = m or dict()
         if m.get('categoryId') is not None:
             self.category_id = m.get('categoryId')
+        if m.get('isLeaf') is not None:
+            self.is_leaf = m.get('isLeaf')
         if m.get('level') is not None:
             self.level = m.get('level')
         if m.get('name') is not None:
