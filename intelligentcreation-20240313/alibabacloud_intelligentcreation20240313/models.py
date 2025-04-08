@@ -1654,19 +1654,57 @@ class BatchAddDocumentResponse(TeaModel):
         return self
 
 
+class BatchCreateAICoachTaskRequestStudentList(TeaModel):
+    def __init__(
+        self,
+        student_audio_url: str = None,
+        student_id: str = None,
+    ):
+        self.student_audio_url = student_audio_url
+        self.student_id = student_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.student_audio_url is not None:
+            result['studentAudioUrl'] = self.student_audio_url
+        if self.student_id is not None:
+            result['studentId'] = self.student_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('studentAudioUrl') is not None:
+            self.student_audio_url = m.get('studentAudioUrl')
+        if m.get('studentId') is not None:
+            self.student_id = m.get('studentId')
+        return self
+
+
 class BatchCreateAICoachTaskRequest(TeaModel):
     def __init__(
         self,
         request_id: str = None,
         script_record_id: str = None,
         student_ids: List[str] = None,
+        student_list: List[BatchCreateAICoachTaskRequestStudentList] = None,
     ):
         self.request_id = request_id
         self.script_record_id = script_record_id
         self.student_ids = student_ids
+        self.student_list = student_list
 
     def validate(self):
-        pass
+        if self.student_list:
+            for k in self.student_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1680,6 +1718,10 @@ class BatchCreateAICoachTaskRequest(TeaModel):
             result['scriptRecordId'] = self.script_record_id
         if self.student_ids is not None:
             result['studentIds'] = self.student_ids
+        result['studentList'] = []
+        if self.student_list is not None:
+            for k in self.student_list:
+                result['studentList'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1690,6 +1732,11 @@ class BatchCreateAICoachTaskRequest(TeaModel):
             self.script_record_id = m.get('scriptRecordId')
         if m.get('studentIds') is not None:
             self.student_ids = m.get('studentIds')
+        self.student_list = []
+        if m.get('studentList') is not None:
+            for k in m.get('studentList'):
+                temp_model = BatchCreateAICoachTaskRequestStudentList()
+                self.student_list.append(temp_model.from_map(k))
         return self
 
 
@@ -3112,10 +3159,12 @@ class CreateAICoachTaskRequest(TeaModel):
         self,
         request_id: str = None,
         script_record_id: str = None,
+        student_audio_url: str = None,
         student_id: str = None,
     ):
         self.request_id = request_id
         self.script_record_id = script_record_id
+        self.student_audio_url = student_audio_url
         self.student_id = student_id
 
     def validate(self):
@@ -3131,6 +3180,8 @@ class CreateAICoachTaskRequest(TeaModel):
             result['requestId'] = self.request_id
         if self.script_record_id is not None:
             result['scriptRecordId'] = self.script_record_id
+        if self.student_audio_url is not None:
+            result['studentAudioUrl'] = self.student_audio_url
         if self.student_id is not None:
             result['studentId'] = self.student_id
         return result
@@ -3141,6 +3192,8 @@ class CreateAICoachTaskRequest(TeaModel):
             self.request_id = m.get('requestId')
         if m.get('scriptRecordId') is not None:
             self.script_record_id = m.get('scriptRecordId')
+        if m.get('studentAudioUrl') is not None:
+            self.student_audio_url = m.get('studentAudioUrl')
         if m.get('studentId') is not None:
             self.student_id = m.get('studentId')
         return self
@@ -4842,6 +4895,39 @@ class GetAICoachScriptRequest(TeaModel):
         return self
 
 
+class GetAICoachScriptResponseBodyCheckCheatConfig(TeaModel):
+    def __init__(
+        self,
+        check_image: bool = None,
+        check_voice: bool = None,
+    ):
+        self.check_image = check_image
+        self.check_voice = check_voice
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_image is not None:
+            result['checkImage'] = self.check_image
+        if self.check_voice is not None:
+            result['checkVoice'] = self.check_voice
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('checkImage') is not None:
+            self.check_image = m.get('checkImage')
+        if m.get('checkVoice') is not None:
+            self.check_voice = m.get('checkVoice')
+        return self
+
+
 class GetAICoachScriptResponseBodyCompleteStrategy(TeaModel):
     def __init__(
         self,
@@ -5373,7 +5459,9 @@ class GetAICoachScriptResponseBodyWeights(TeaModel):
 class GetAICoachScriptResponseBody(TeaModel):
     def __init__(
         self,
+        append_question_flag: bool = None,
         assessment_scope: str = None,
+        check_cheat_config: GetAICoachScriptResponseBodyCheckCheatConfig = None,
         complete_strategy: GetAICoachScriptResponseBodyCompleteStrategy = None,
         cover_url: str = None,
         dialogue_input_text_limit: int = None,
@@ -5403,7 +5491,9 @@ class GetAICoachScriptResponseBody(TeaModel):
         type: int = None,
         weights: GetAICoachScriptResponseBodyWeights = None,
     ):
+        self.append_question_flag = append_question_flag
         self.assessment_scope = assessment_scope
+        self.check_cheat_config = check_cheat_config
         self.complete_strategy = complete_strategy
         self.cover_url = cover_url
         self.dialogue_input_text_limit = dialogue_input_text_limit
@@ -5434,6 +5524,8 @@ class GetAICoachScriptResponseBody(TeaModel):
         self.weights = weights
 
     def validate(self):
+        if self.check_cheat_config:
+            self.check_cheat_config.validate()
         if self.complete_strategy:
             self.complete_strategy.validate()
         if self.point_deduction_rule_list:
@@ -5457,8 +5549,12 @@ class GetAICoachScriptResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.append_question_flag is not None:
+            result['appendQuestionFlag'] = self.append_question_flag
         if self.assessment_scope is not None:
             result['assessmentScope'] = self.assessment_scope
+        if self.check_cheat_config is not None:
+            result['checkCheatConfig'] = self.check_cheat_config.to_map()
         if self.complete_strategy is not None:
             result['completeStrategy'] = self.complete_strategy.to_map()
         if self.cover_url is not None:
@@ -5525,8 +5621,13 @@ class GetAICoachScriptResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appendQuestionFlag') is not None:
+            self.append_question_flag = m.get('appendQuestionFlag')
         if m.get('assessmentScope') is not None:
             self.assessment_scope = m.get('assessmentScope')
+        if m.get('checkCheatConfig') is not None:
+            temp_model = GetAICoachScriptResponseBodyCheckCheatConfig()
+            self.check_cheat_config = temp_model.from_map(m['checkCheatConfig'])
         if m.get('completeStrategy') is not None:
             temp_model = GetAICoachScriptResponseBodyCompleteStrategy()
             self.complete_strategy = temp_model.from_map(m['completeStrategy'])

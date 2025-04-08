@@ -1,3 +1,10 @@
+2025-04-08 Version: 2.12.2
+- Update API BatchCreateAICoachTask: add request parameters body.studentList.
+- Update API CreateAICoachTask: add request parameters body.studentAudioUrl.
+- Update API GetAICoachScript: add response parameters Body.appendQuestionFlag.
+- Update API GetAICoachScript: add response parameters Body.checkCheatConfig.
+
+
 2025-03-27 Version: 2.12.1
 - Update API GetAICoachScript: add response parameters Body.points.$.answerList.$.answerValues.
 - Update API GetAICoachScript: add response parameters Body.points.$.answerList.$.enabledKeyword.

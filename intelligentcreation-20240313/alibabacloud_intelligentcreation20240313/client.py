@@ -307,6 +307,8 @@ class Client(OpenApiClient):
             body['scriptRecordId'] = request.script_record_id
         if not UtilClient.is_unset(request.student_ids):
             body['studentIds'] = request.student_ids
+        if not UtilClient.is_unset(request.student_list):
+            body['studentList'] = request.student_list
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -355,6 +357,8 @@ class Client(OpenApiClient):
             body['scriptRecordId'] = request.script_record_id
         if not UtilClient.is_unset(request.student_ids):
             body['studentIds'] = request.student_ids
+        if not UtilClient.is_unset(request.student_list):
+            body['studentList'] = request.student_list
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1297,6 +1301,8 @@ class Client(OpenApiClient):
             body['requestId'] = request.request_id
         if not UtilClient.is_unset(request.script_record_id):
             body['scriptRecordId'] = request.script_record_id
+        if not UtilClient.is_unset(request.student_audio_url):
+            body['studentAudioUrl'] = request.student_audio_url
         if not UtilClient.is_unset(request.student_id):
             body['studentId'] = request.student_id
         req = open_api_models.OpenApiRequest(
@@ -1345,6 +1351,8 @@ class Client(OpenApiClient):
             body['requestId'] = request.request_id
         if not UtilClient.is_unset(request.script_record_id):
             body['scriptRecordId'] = request.script_record_id
+        if not UtilClient.is_unset(request.student_audio_url):
+            body['studentAudioUrl'] = request.student_audio_url
         if not UtilClient.is_unset(request.student_id):
             body['studentId'] = request.student_id
         req = open_api_models.OpenApiRequest(
