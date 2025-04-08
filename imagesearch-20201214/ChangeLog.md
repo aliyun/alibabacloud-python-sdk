@@ -1,3 +1,6 @@
+2025-04-08 Version: 4.2.1
+- Generated python 2020-12-14 for ImageSearch.
+
 2025-04-08 Version: 4.2.0
 - Support API SearchImageByText.
 
