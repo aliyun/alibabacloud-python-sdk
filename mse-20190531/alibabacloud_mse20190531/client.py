@@ -512,6 +512,8 @@ class Client(OpenApiClient):
             query['EnterpriseSecurityGroup'] = request.enterprise_security_group
         if not UtilClient.is_unset(request.internet_slb_spec):
             query['InternetSlbSpec'] = request.internet_slb_spec
+        if not UtilClient.is_unset(request.managed_entry_network_type):
+            query['ManagedEntryNetworkType'] = request.managed_entry_network_type
         if not UtilClient.is_unset(request.mser_version):
             query['MserVersion'] = request.mser_version
         if not UtilClient.is_unset(request.name):
@@ -601,6 +603,8 @@ class Client(OpenApiClient):
             query['EnterpriseSecurityGroup'] = request.enterprise_security_group
         if not UtilClient.is_unset(request.internet_slb_spec):
             query['InternetSlbSpec'] = request.internet_slb_spec
+        if not UtilClient.is_unset(request.managed_entry_network_type):
+            query['ManagedEntryNetworkType'] = request.managed_entry_network_type
         if not UtilClient.is_unset(request.mser_version):
             query['MserVersion'] = request.mser_version
         if not UtilClient.is_unset(request.name):

@@ -1899,6 +1899,7 @@ class AddGatewayRequest(TeaModel):
         enable_xtrace: bool = None,
         enterprise_security_group: bool = None,
         internet_slb_spec: str = None,
+        managed_entry_network_type: str = None,
         mser_version: str = None,
         name: str = None,
         nlb_network_type: str = None,
@@ -1950,6 +1951,7 @@ class AddGatewayRequest(TeaModel):
         # *   slb.s3.medium
         # *   slb.s3.large
         self.internet_slb_spec = internet_slb_spec
+        self.managed_entry_network_type = managed_entry_network_type
         # The MSE instance type. Valid values:
         # 
         # *   mse_pro: ordinary instance
@@ -2046,6 +2048,8 @@ class AddGatewayRequest(TeaModel):
             result['EnterpriseSecurityGroup'] = self.enterprise_security_group
         if self.internet_slb_spec is not None:
             result['InternetSlbSpec'] = self.internet_slb_spec
+        if self.managed_entry_network_type is not None:
+            result['ManagedEntryNetworkType'] = self.managed_entry_network_type
         if self.mser_version is not None:
             result['MserVersion'] = self.mser_version
         if self.name is not None:
@@ -2100,6 +2104,8 @@ class AddGatewayRequest(TeaModel):
             self.enterprise_security_group = m.get('EnterpriseSecurityGroup')
         if m.get('InternetSlbSpec') is not None:
             self.internet_slb_spec = m.get('InternetSlbSpec')
+        if m.get('ManagedEntryNetworkType') is not None:
+            self.managed_entry_network_type = m.get('ManagedEntryNetworkType')
         if m.get('MserVersion') is not None:
             self.mser_version = m.get('MserVersion')
         if m.get('Name') is not None:
@@ -2185,6 +2191,7 @@ class AddGatewayShrinkRequest(TeaModel):
         enable_xtrace: bool = None,
         enterprise_security_group: bool = None,
         internet_slb_spec: str = None,
+        managed_entry_network_type: str = None,
         mser_version: str = None,
         name: str = None,
         nlb_network_type: str = None,
@@ -2236,6 +2243,7 @@ class AddGatewayShrinkRequest(TeaModel):
         # *   slb.s3.medium
         # *   slb.s3.large
         self.internet_slb_spec = internet_slb_spec
+        self.managed_entry_network_type = managed_entry_network_type
         # The MSE instance type. Valid values:
         # 
         # *   mse_pro: ordinary instance
@@ -2328,6 +2336,8 @@ class AddGatewayShrinkRequest(TeaModel):
             result['EnterpriseSecurityGroup'] = self.enterprise_security_group
         if self.internet_slb_spec is not None:
             result['InternetSlbSpec'] = self.internet_slb_spec
+        if self.managed_entry_network_type is not None:
+            result['ManagedEntryNetworkType'] = self.managed_entry_network_type
         if self.mser_version is not None:
             result['MserVersion'] = self.mser_version
         if self.name is not None:
@@ -2380,6 +2390,8 @@ class AddGatewayShrinkRequest(TeaModel):
             self.enterprise_security_group = m.get('EnterpriseSecurityGroup')
         if m.get('InternetSlbSpec') is not None:
             self.internet_slb_spec = m.get('InternetSlbSpec')
+        if m.get('ManagedEntryNetworkType') is not None:
+            self.managed_entry_network_type = m.get('ManagedEntryNetworkType')
         if m.get('MserVersion') is not None:
             self.mser_version = m.get('MserVersion')
         if m.get('Name') is not None:
@@ -24461,6 +24473,7 @@ class GetGatewayConfigResponseBodyData(TeaModel):
         enable_custom_auth_config_push: str = None,
         enable_generate_request_id: bool = None,
         enable_gzip: bool = None,
+        enable_gzip_hardware_accelerate: bool = None,
         enable_hardware_accelerate: bool = None,
         enable_http_2: bool = None,
         enable_http_3: bool = None,
@@ -24492,6 +24505,7 @@ class GetGatewayConfigResponseBodyData(TeaModel):
         self.enable_custom_auth_config_push = enable_custom_auth_config_push
         self.enable_generate_request_id = enable_generate_request_id
         self.enable_gzip = enable_gzip
+        self.enable_gzip_hardware_accelerate = enable_gzip_hardware_accelerate
         self.enable_hardware_accelerate = enable_hardware_accelerate
         self.enable_http_2 = enable_http_2
         self.enable_http_3 = enable_http_3
@@ -24546,6 +24560,8 @@ class GetGatewayConfigResponseBodyData(TeaModel):
             result['EnableGenerateRequestId'] = self.enable_generate_request_id
         if self.enable_gzip is not None:
             result['EnableGzip'] = self.enable_gzip
+        if self.enable_gzip_hardware_accelerate is not None:
+            result['EnableGzipHardwareAccelerate'] = self.enable_gzip_hardware_accelerate
         if self.enable_hardware_accelerate is not None:
             result['EnableHardwareAccelerate'] = self.enable_hardware_accelerate
         if self.enable_http_2 is not None:
@@ -24610,6 +24626,8 @@ class GetGatewayConfigResponseBodyData(TeaModel):
             self.enable_generate_request_id = m.get('EnableGenerateRequestId')
         if m.get('EnableGzip') is not None:
             self.enable_gzip = m.get('EnableGzip')
+        if m.get('EnableGzipHardwareAccelerate') is not None:
+            self.enable_gzip_hardware_accelerate = m.get('EnableGzipHardwareAccelerate')
         if m.get('EnableHardwareAccelerate') is not None:
             self.enable_hardware_accelerate = m.get('EnableHardwareAccelerate')
         if m.get('EnableHttp2') is not None:
@@ -24843,6 +24861,7 @@ class GetGatewayDomainDetailResponseBodyData(TeaModel):
         gmt_modified: str = None,
         http_2: str = None,
         id: int = None,
+        is_managed: bool = None,
         issuer: str = None,
         must_https: bool = None,
         name: str = None,
@@ -24883,6 +24902,7 @@ class GetGatewayDomainDetailResponseBodyData(TeaModel):
         self.http_2 = http_2
         # The ID.
         self.id = id
+        self.is_managed = is_managed
         # The issuer.
         self.issuer = issuer
         # Indicates whether HTTPS is forcibly used.
@@ -24935,6 +24955,8 @@ class GetGatewayDomainDetailResponseBodyData(TeaModel):
             result['Http2'] = self.http_2
         if self.id is not None:
             result['Id'] = self.id
+        if self.is_managed is not None:
+            result['IsManaged'] = self.is_managed
         if self.issuer is not None:
             result['Issuer'] = self.issuer
         if self.must_https is not None:
@@ -24981,6 +25003,8 @@ class GetGatewayDomainDetailResponseBodyData(TeaModel):
             self.http_2 = m.get('Http2')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('IsManaged') is not None:
+            self.is_managed = m.get('IsManaged')
         if m.get('Issuer') is not None:
             self.issuer = m.get('Issuer')
         if m.get('MustHttps') is not None:
@@ -42823,6 +42847,7 @@ class ListGatewayDomainResponseBodyData(TeaModel):
         gmt_modified: str = None,
         http_2: str = None,
         id: int = None,
+        is_managed: bool = None,
         must_https: bool = None,
         name: str = None,
         protocol: str = None,
@@ -42851,6 +42876,7 @@ class ListGatewayDomainResponseBodyData(TeaModel):
         self.http_2 = http_2
         # The ID of the domain name.
         self.id = id
+        self.is_managed = is_managed
         # Indicates whether HTTPS is forcefully used.
         self.must_https = must_https
         # The domain name.
@@ -42902,6 +42928,8 @@ class ListGatewayDomainResponseBodyData(TeaModel):
             result['Http2'] = self.http_2
         if self.id is not None:
             result['Id'] = self.id
+        if self.is_managed is not None:
+            result['IsManaged'] = self.is_managed
         if self.must_https is not None:
             result['MustHttps'] = self.must_https
         if self.name is not None:
@@ -42937,6 +42965,8 @@ class ListGatewayDomainResponseBodyData(TeaModel):
             self.http_2 = m.get('Http2')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('IsManaged') is not None:
+            self.is_managed = m.get('IsManaged')
         if m.get('MustHttps') is not None:
             self.must_https = m.get('MustHttps')
         if m.get('Name') is not None:
@@ -46845,10 +46875,12 @@ class ListGatewayZoneResponseBodyData(TeaModel):
     def __init__(
         self,
         local_name: str = None,
+        support_qat: bool = None,
         zone_id: str = None,
     ):
         # The local name of the zone.
         self.local_name = local_name
+        self.support_qat = support_qat
         # The zone ID.
         self.zone_id = zone_id
 
@@ -46863,6 +46895,8 @@ class ListGatewayZoneResponseBodyData(TeaModel):
         result = dict()
         if self.local_name is not None:
             result['LocalName'] = self.local_name
+        if self.support_qat is not None:
+            result['SupportQat'] = self.support_qat
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -46871,6 +46905,8 @@ class ListGatewayZoneResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('LocalName') is not None:
             self.local_name = m.get('LocalName')
+        if m.get('SupportQat') is not None:
+            self.support_qat = m.get('SupportQat')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self

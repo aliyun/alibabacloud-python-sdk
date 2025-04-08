@@ -1,3 +1,11 @@
+2025-04-08 Version: 6.18.3
+- Update API AddGateway: add request parameters ManagedEntryNetworkType.
+- Update API GetGatewayConfig: add response parameters Body.Data.EnableGzipHardwareAccelerate.
+- Update API GetGatewayDomainDetail: add response parameters Body.Data.IsManaged.
+- Update API ListGatewayDomain: add response parameters Body.Data.$.IsManaged.
+- Update API ListGatewayZone: add response parameters Body.Data.$.SupportQat.
+
+
 2025-04-02 Version: 6.18.2
 - Update API ListClusters: add response parameters Body.Data.$.VersionLifecycle.
 - Update API ListGateway: add response parameters Body.Data.Result.$.GatewayEntry.
