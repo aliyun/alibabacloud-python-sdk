@@ -49285,7 +49285,6 @@ class ImportImageRequest(TeaModel):
         self.ossregion = ossregion
         # This parameter is required.
         self.ostype = ostype
-        # This parameter is required.
         self.osversion = osversion
         # This parameter is required.
         self.platform = platform
@@ -49393,7 +49392,6 @@ class ImportImageShrinkRequest(TeaModel):
         self.ossregion = ossregion
         # This parameter is required.
         self.ostype = ostype
-        # This parameter is required.
         self.osversion = osversion
         # This parameter is required.
         self.platform = platform
