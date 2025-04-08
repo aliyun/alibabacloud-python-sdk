@@ -1,3 +1,7 @@
+2025-04-08 Version: 1.10.12
+- Update API ModifyInstanceAttribute: add request parameters InstanceIds.
+
+
 2025-03-26 Version: 1.10.11
 - Update API CreateScalingConfiguration: add request parameters ResourcePoolOptions.
 - Update API DescribeScalingConfigurations: add response parameters Body.ScalingConfigurations.$.ResourcePoolOptions.

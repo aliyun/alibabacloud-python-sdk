@@ -11405,6 +11405,8 @@ class Client(OpenApiClient):
             query['Entrusted'] = request.entrusted
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
@@ -11456,6 +11458,8 @@ class Client(OpenApiClient):
             query['Entrusted'] = request.entrusted
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
