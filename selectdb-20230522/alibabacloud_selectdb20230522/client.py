@@ -627,7 +627,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.CreateDBInstanceResponse:
         """
-        @summary 创建SelectDB实例
+        @summary Creates an ApsaraDB for SelectDB instance.
         
         @param tmp_req: CreateDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -636,6 +636,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = selectdb_20230522_models.CreateDBInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.multi_zone):
+            request.multi_zone_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.multi_zone, 'MultiZone', 'json')
         if not UtilClient.is_unset(tmp_req.tag):
             request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
@@ -651,10 +653,14 @@ class Client(OpenApiClient):
             query['DBInstanceClass'] = request.dbinstance_class
         if not UtilClient.is_unset(request.dbinstance_description):
             query['DBInstanceDescription'] = request.dbinstance_description
+        if not UtilClient.is_unset(request.deploy_scheme):
+            query['DeployScheme'] = request.deploy_scheme
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.multi_zone_shrink):
+            query['MultiZone'] = request.multi_zone_shrink
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.region_id):
@@ -708,7 +714,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.CreateDBInstanceResponse:
         """
-        @summary 创建SelectDB实例
+        @summary Creates an ApsaraDB for SelectDB instance.
         
         @param tmp_req: CreateDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -717,6 +723,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = selectdb_20230522_models.CreateDBInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.multi_zone):
+            request.multi_zone_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.multi_zone, 'MultiZone', 'json')
         if not UtilClient.is_unset(tmp_req.tag):
             request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
@@ -732,10 +740,14 @@ class Client(OpenApiClient):
             query['DBInstanceClass'] = request.dbinstance_class
         if not UtilClient.is_unset(request.dbinstance_description):
             query['DBInstanceDescription'] = request.dbinstance_description
+        if not UtilClient.is_unset(request.deploy_scheme):
+            query['DeployScheme'] = request.deploy_scheme
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.multi_zone_shrink):
+            query['MultiZone'] = request.multi_zone_shrink
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.region_id):
@@ -788,7 +800,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.CreateDBInstanceRequest,
     ) -> selectdb_20230522_models.CreateDBInstanceResponse:
         """
-        @summary 创建SelectDB实例
+        @summary Creates an ApsaraDB for SelectDB instance.
         
         @param request: CreateDBInstanceRequest
         @return: CreateDBInstanceResponse
@@ -801,7 +813,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.CreateDBInstanceRequest,
     ) -> selectdb_20230522_models.CreateDBInstanceResponse:
         """
-        @summary 创建SelectDB实例
+        @summary Creates an ApsaraDB for SelectDB instance.
         
         @param request: CreateDBInstanceRequest
         @return: CreateDBInstanceResponse
@@ -2279,7 +2291,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.DescribeRegionsResponse:
         """
-        @summary 获取Region信息
+        @summary Queries available regions and zones.
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2318,7 +2330,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.DescribeRegionsResponse:
         """
-        @summary 获取Region信息
+        @summary Queries available regions and zones.
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2356,7 +2368,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.DescribeRegionsRequest,
     ) -> selectdb_20230522_models.DescribeRegionsResponse:
         """
-        @summary 获取Region信息
+        @summary Queries available regions and zones.
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -2369,7 +2381,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.DescribeRegionsRequest,
     ) -> selectdb_20230522_models.DescribeRegionsResponse:
         """
-        @summary 获取Region信息
+        @summary Queries available regions and zones.
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse

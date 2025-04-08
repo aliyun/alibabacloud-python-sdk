@@ -1,3 +1,18 @@
+2025-04-08 Version: 4.2.1
+- Update API CreateDBInstance: add request parameters DeployScheme.
+- Update API CreateDBInstance: add request parameters MultiZone.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DeployScheme.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.MultiZone.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.VSwitchId.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBClusterList.$.ClusterBinding.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBClusterList.$.SubDomain.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBClusterList.$.VSwitchId.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBClusterList.$.ZoneId.
+- Update API DescribeDBInstances: add response parameters Body.Items.$.DeployScheme.
+- Update API DescribeDBInstances: add response parameters Body.Items.$.EngineMinorVersion.
+- Update API DescribeDBInstances: add response parameters Body.Items.$.MultiZone.
+
+
 2025-03-10 Version: 4.2.0
 - Support API DescribeRegions.
 - Update API ModifyDBClusterConfig: add param ParallelOperation.

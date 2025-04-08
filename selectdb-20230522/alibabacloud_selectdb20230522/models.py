@@ -712,13 +712,48 @@ class CreateDBClusterResponse(TeaModel):
         return self
 
 
+class CreateDBInstanceRequestMultiZone(TeaModel):
+    def __init__(
+        self,
+        v_switch_ids: List[str] = None,
+        zone_id: str = None,
+    ):
+        self.v_switch_ids = v_switch_ids
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
 class CreateDBInstanceRequestTag(TeaModel):
     def __init__(
         self,
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -754,8 +789,10 @@ class CreateDBInstanceRequest(TeaModel):
         connection_string: str = None,
         dbinstance_class: str = None,
         dbinstance_description: str = None,
+        deploy_scheme: str = None,
         engine: str = None,
         engine_version: str = None,
+        multi_zone: List[CreateDBInstanceRequestMultiZone] = None,
         period: str = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -767,38 +804,82 @@ class CreateDBInstanceRequest(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The reserved cache size.
+        # 
         # This parameter is required.
         self.cache_size = cache_size
+        # The billing method of the instance. Valid values:
+        # 
+        # *   **Postpaid**: pay-as-you-go
+        # *   **Prepaid**: subscription
+        # 
         # This parameter is required.
         self.charge_type = charge_type
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The instance endpoint.
         self.connection_string = connection_string
+        # The specifications of the instance. Valid values:
+        # 
+        # *   **selectdb.xlarge**: 4 CPU cores and 32 GB of memory
+        # *   **selectdb.2xlarge**: 8 CPU cores and 64 GB of memory
+        # *   **selectdb.4xlarge**: 16 CPU cores and 128 GB of memory
+        # 
         # This parameter is required.
         self.dbinstance_class = dbinstance_class
+        # The instance description.
         self.dbinstance_description = dbinstance_description
-        # The type of the database. Default value: **selectdb**.
+        self.deploy_scheme = deploy_scheme
+        # The database engine of the instance. Default value: **selectdb**.
         self.engine = engine
+        # The database engine version of the instance. Default value: **2.4**.
+        # 
         # This parameter is required.
         self.engine_version = engine_version
+        self.multi_zone = multi_zone
+        # The unit of the subscription duration of the cluster. Valid values:
+        # 
+        # *   **Year**: subscription on a yearly basis.
+        # *   **Month**: subscription on a monthly basis.
+        # 
+        # >  This parameter takes effect and is required only when **ChargeType** is set to **Prepaid**.
         self.period = period
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
-        # 代表资源组的资源属性字段
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
+        # The IP addresses in the whitelist of the instance. Separate multiple IP addresses with commas (,).
         self.security_iplist = security_iplist
+        # The instance tags.
         self.tag = tag
+        # The subscription duration of the instance.
+        # 
+        # *   Valid values when Period is set to Year: 1, 2, 3, and 5 (integer)
+        # *   Valid values when Period is set to Month: 1 to 9 (integer)
+        # 
+        # >  This parameter takes effect and is required only when **ChargeType** is set to **Prepaid**.
         self.used_time = used_time
+        # The vSwitch ID.
+        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # The virtual private cloud (VPC) ID.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
+        # The zone ID.
+        # 
         # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
+        if self.multi_zone:
+            for k in self.multi_zone:
+                if k:
+                    k.validate()
         if self.tag:
             for k in self.tag:
                 if k:
@@ -822,10 +903,16 @@ class CreateDBInstanceRequest(TeaModel):
             result['DBInstanceClass'] = self.dbinstance_class
         if self.dbinstance_description is not None:
             result['DBInstanceDescription'] = self.dbinstance_description
+        if self.deploy_scheme is not None:
+            result['DeployScheme'] = self.deploy_scheme
         if self.engine is not None:
             result['Engine'] = self.engine
         if self.engine_version is not None:
             result['EngineVersion'] = self.engine_version
+        result['MultiZone'] = []
+        if self.multi_zone is not None:
+            for k in self.multi_zone:
+                result['MultiZone'].append(k.to_map() if k else None)
         if self.period is not None:
             result['Period'] = self.period
         if self.region_id is not None:
@@ -864,10 +951,17 @@ class CreateDBInstanceRequest(TeaModel):
             self.dbinstance_class = m.get('DBInstanceClass')
         if m.get('DBInstanceDescription') is not None:
             self.dbinstance_description = m.get('DBInstanceDescription')
+        if m.get('DeployScheme') is not None:
+            self.deploy_scheme = m.get('DeployScheme')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
         if m.get('EngineVersion') is not None:
             self.engine_version = m.get('EngineVersion')
+        self.multi_zone = []
+        if m.get('MultiZone') is not None:
+            for k in m.get('MultiZone'):
+                temp_model = CreateDBInstanceRequestMultiZone()
+                self.multi_zone.append(temp_model.from_map(k))
         if m.get('Period') is not None:
             self.period = m.get('Period')
         if m.get('RegionId') is not None:
@@ -903,8 +997,10 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         connection_string: str = None,
         dbinstance_class: str = None,
         dbinstance_description: str = None,
+        deploy_scheme: str = None,
         engine: str = None,
         engine_version: str = None,
+        multi_zone_shrink: str = None,
         period: str = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -916,34 +1012,74 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The reserved cache size.
+        # 
         # This parameter is required.
         self.cache_size = cache_size
+        # The billing method of the instance. Valid values:
+        # 
+        # *   **Postpaid**: pay-as-you-go
+        # *   **Prepaid**: subscription
+        # 
         # This parameter is required.
         self.charge_type = charge_type
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The instance endpoint.
         self.connection_string = connection_string
+        # The specifications of the instance. Valid values:
+        # 
+        # *   **selectdb.xlarge**: 4 CPU cores and 32 GB of memory
+        # *   **selectdb.2xlarge**: 8 CPU cores and 64 GB of memory
+        # *   **selectdb.4xlarge**: 16 CPU cores and 128 GB of memory
+        # 
         # This parameter is required.
         self.dbinstance_class = dbinstance_class
+        # The instance description.
         self.dbinstance_description = dbinstance_description
-        # The type of the database. Default value: **selectdb**.
+        self.deploy_scheme = deploy_scheme
+        # The database engine of the instance. Default value: **selectdb**.
         self.engine = engine
+        # The database engine version of the instance. Default value: **2.4**.
+        # 
         # This parameter is required.
         self.engine_version = engine_version
+        self.multi_zone_shrink = multi_zone_shrink
+        # The unit of the subscription duration of the cluster. Valid values:
+        # 
+        # *   **Year**: subscription on a yearly basis.
+        # *   **Month**: subscription on a monthly basis.
+        # 
+        # >  This parameter takes effect and is required only when **ChargeType** is set to **Prepaid**.
         self.period = period
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
-        # 代表资源组的资源属性字段
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
+        # The IP addresses in the whitelist of the instance. Separate multiple IP addresses with commas (,).
         self.security_iplist = security_iplist
+        # The instance tags.
         self.tag_shrink = tag_shrink
+        # The subscription duration of the instance.
+        # 
+        # *   Valid values when Period is set to Year: 1, 2, 3, and 5 (integer)
+        # *   Valid values when Period is set to Month: 1 to 9 (integer)
+        # 
+        # >  This parameter takes effect and is required only when **ChargeType** is set to **Prepaid**.
         self.used_time = used_time
+        # The vSwitch ID.
+        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # The virtual private cloud (VPC) ID.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
+        # The zone ID.
+        # 
         # This parameter is required.
         self.zone_id = zone_id
 
@@ -968,10 +1104,14 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             result['DBInstanceClass'] = self.dbinstance_class
         if self.dbinstance_description is not None:
             result['DBInstanceDescription'] = self.dbinstance_description
+        if self.deploy_scheme is not None:
+            result['DeployScheme'] = self.deploy_scheme
         if self.engine is not None:
             result['Engine'] = self.engine
         if self.engine_version is not None:
             result['EngineVersion'] = self.engine_version
+        if self.multi_zone_shrink is not None:
+            result['MultiZone'] = self.multi_zone_shrink
         if self.period is not None:
             result['Period'] = self.period
         if self.region_id is not None:
@@ -1008,10 +1148,14 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             self.dbinstance_class = m.get('DBInstanceClass')
         if m.get('DBInstanceDescription') is not None:
             self.dbinstance_description = m.get('DBInstanceDescription')
+        if m.get('DeployScheme') is not None:
+            self.deploy_scheme = m.get('DeployScheme')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
         if m.get('EngineVersion') is not None:
             self.engine_version = m.get('EngineVersion')
+        if m.get('MultiZone') is not None:
+            self.multi_zone_shrink = m.get('MultiZone')
         if m.get('Period') is not None:
             self.period = m.get('Period')
         if m.get('RegionId') is not None:
@@ -1041,7 +1185,9 @@ class CreateDBInstanceResponseBodyData(TeaModel):
         dbinstance_id: str = None,
         order_id: int = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The order ID.
         self.order_id = order_id
 
     def validate(self):
@@ -1074,7 +1220,9 @@ class CreateDBInstanceResponseBody(TeaModel):
         data: CreateDBInstanceResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2728,6 +2876,7 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
         cache_storage_size_gb: str = None,
         cache_storage_type: str = None,
         charge_type: str = None,
+        cluster_binding: str = None,
         cpu_cores: int = None,
         created_time: str = None,
         db_cluster_class: str = None,
@@ -2740,6 +2889,9 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
         scaling_rules_enable: bool = None,
         start_time: str = None,
         status: str = None,
+        sub_domain: str = None,
+        v_switch_id: str = None,
+        zone_id: str = None,
     ):
         # The cache size. Unit: GB.
         self.cache_storage_size_gb = cache_storage_size_gb
@@ -2750,6 +2902,7 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
         # *   **Postpaid**: pay-as-you-go.
         # *   **Prepaid**: subscription.
         self.charge_type = charge_type
+        self.cluster_binding = cluster_binding
         # The number of CPU cores.
         self.cpu_cores = cpu_cores
         # The time when the cluster was created.
@@ -2788,6 +2941,9 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
         # *   **READONLY_RESOURCE_CHANGING**: The resource configuration of the cluster is being changed and the cluster is write-locked.
         # *   **DELETING**: The cluster is being deleted.
         self.status = status
+        self.sub_domain = sub_domain
+        self.v_switch_id = v_switch_id
+        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -2804,6 +2960,8 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
             result['CacheStorageType'] = self.cache_storage_type
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+        if self.cluster_binding is not None:
+            result['ClusterBinding'] = self.cluster_binding
         if self.cpu_cores is not None:
             result['CpuCores'] = self.cpu_cores
         if self.created_time is not None:
@@ -2828,6 +2986,12 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
             result['StartTime'] = self.start_time
         if self.status is not None:
             result['Status'] = self.status
+        if self.sub_domain is not None:
+            result['SubDomain'] = self.sub_domain
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2838,6 +3002,8 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
             self.cache_storage_type = m.get('CacheStorageType')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+        if m.get('ClusterBinding') is not None:
+            self.cluster_binding = m.get('ClusterBinding')
         if m.get('CpuCores') is not None:
             self.cpu_cores = m.get('CpuCores')
         if m.get('CreatedTime') is not None:
@@ -2862,6 +3028,57 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
             self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SubDomain') is not None:
+            self.sub_domain = m.get('SubDomain')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeDBInstanceAttributeResponseBodyMultiZone(TeaModel):
+    def __init__(
+        self,
+        available_ip_count: int = None,
+        cidr: str = None,
+        v_switch_ids: List[str] = None,
+        zone_id: str = None,
+    ):
+        self.available_ip_count = available_ip_count
+        self.cidr = cidr
+        self.v_switch_ids = v_switch_ids
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.available_ip_count is not None:
+            result['AvailableIpCount'] = self.available_ip_count
+        if self.cidr is not None:
+            result['Cidr'] = self.cidr
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvailableIpCount') is not None:
+            self.available_ip_count = m.get('AvailableIpCount')
+        if m.get('Cidr') is not None:
+            self.cidr = m.get('Cidr')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
         return self
 
 
@@ -2908,6 +3125,7 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
         create_time: str = None,
         dbcluster_list: List[DescribeDBInstanceAttributeResponseBodyDBClusterList] = None,
         dbinstance_id: str = None,
+        deploy_scheme: str = None,
         description: str = None,
         engine: str = None,
         engine_minor_version: str = None,
@@ -2918,6 +3136,7 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
         lock_reason: str = None,
         maintain_endtime: str = None,
         maintain_starttime: str = None,
+        multi_zone: List[DescribeDBInstanceAttributeResponseBodyMultiZone] = None,
         object_store_size: int = None,
         region_id: str = None,
         request_id: str = None,
@@ -2927,6 +3146,7 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
         storage_size: int = None,
         sub_domain: str = None,
         tags: List[DescribeDBInstanceAttributeResponseBodyTags] = None,
+        v_switch_id: str = None,
         vpc_id: str = None,
         zone_id: str = None,
     ):
@@ -2943,6 +3163,7 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
         self.dbcluster_list = dbcluster_list
         # The instance ID.
         self.dbinstance_id = dbinstance_id
+        self.deploy_scheme = deploy_scheme
         # The description of the instance.
         self.description = description
         # The database engine of the instance.
@@ -2963,6 +3184,7 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
         self.maintain_endtime = maintain_endtime
         # The start time of the instance maintenance window.
         self.maintain_starttime = maintain_starttime
+        self.multi_zone = multi_zone
         # The storage capacity of the instance.
         self.object_store_size = object_store_size
         # The Region ID.
@@ -2988,6 +3210,7 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
         self.sub_domain = sub_domain
         # The tags that are added to the instances. Each tag is a key-value pair that consists of two parts: TagKey and TagValue. Format: `{"key1":"value1"}`.
         self.tags = tags
+        self.v_switch_id = v_switch_id
         # The VPC ID.
         self.vpc_id = vpc_id
         # The Zone ID.
@@ -2996,6 +3219,10 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
     def validate(self):
         if self.dbcluster_list:
             for k in self.dbcluster_list:
+                if k:
+                    k.validate()
+        if self.multi_zone:
+            for k in self.multi_zone:
                 if k:
                     k.validate()
         if self.tags:
@@ -3021,6 +3248,8 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
                 result['DBClusterList'].append(k.to_map() if k else None)
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.deploy_scheme is not None:
+            result['DeployScheme'] = self.deploy_scheme
         if self.description is not None:
             result['Description'] = self.description
         if self.engine is not None:
@@ -3041,6 +3270,10 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
             result['MaintainEndtime'] = self.maintain_endtime
         if self.maintain_starttime is not None:
             result['MaintainStarttime'] = self.maintain_starttime
+        result['MultiZone'] = []
+        if self.multi_zone is not None:
+            for k in self.multi_zone:
+                result['MultiZone'].append(k.to_map() if k else None)
         if self.object_store_size is not None:
             result['ObjectStoreSize'] = self.object_store_size
         if self.region_id is not None:
@@ -3061,6 +3294,8 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.zone_id is not None:
@@ -3082,6 +3317,8 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
                 self.dbcluster_list.append(temp_model.from_map(k))
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('DeployScheme') is not None:
+            self.deploy_scheme = m.get('DeployScheme')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Engine') is not None:
@@ -3102,6 +3339,11 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
             self.maintain_endtime = m.get('MaintainEndtime')
         if m.get('MaintainStarttime') is not None:
             self.maintain_starttime = m.get('MaintainStarttime')
+        self.multi_zone = []
+        if m.get('MultiZone') is not None:
+            for k in m.get('MultiZone'):
+                temp_model = DescribeDBInstanceAttributeResponseBodyMultiZone()
+                self.multi_zone.append(temp_model.from_map(k))
         if m.get('ObjectStoreSize') is not None:
             self.object_store_size = m.get('ObjectStoreSize')
         if m.get('RegionId') is not None:
@@ -3123,6 +3365,8 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
             for k in m.get('Tags'):
                 temp_model = DescribeDBInstanceAttributeResponseBodyTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('ZoneId') is not None:
@@ -3809,6 +4053,39 @@ class DescribeDBInstancesShrinkRequest(TeaModel):
         return self
 
 
+class DescribeDBInstancesResponseBodyItemsMultiZone(TeaModel):
+    def __init__(
+        self,
+        v_switch_ids: List[str] = None,
+        zone_id: str = None,
+    ):
+        self.v_switch_ids = v_switch_ids
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
 class DescribeDBInstancesResponseBodyItemsTags(TeaModel):
     def __init__(
         self,
@@ -3849,8 +4126,10 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
         charge_type: str = None,
         cluster_count: int = None,
         dbinstance_id: str = None,
+        deploy_scheme: str = None,
         description: str = None,
         engine: str = None,
+        engine_minor_version: str = None,
         engine_version: str = None,
         expire_time: str = None,
         gmt_created: str = None,
@@ -3863,6 +4142,7 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
         maintain_endtime: str = None,
         maintain_start_time_str: str = None,
         maintain_starttime: str = None,
+        multi_zone: List[DescribeDBInstancesResponseBodyItemsMultiZone] = None,
         object_store_size: int = None,
         parent_instance: str = None,
         region_id: str = None,
@@ -3895,10 +4175,12 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
         self.cluster_count = cluster_count
         # The instance ID.
         self.dbinstance_id = dbinstance_id
+        self.deploy_scheme = deploy_scheme
         # The description of the instance.
         self.description = description
         # The database engine of the instance.
         self.engine = engine
+        self.engine_minor_version = engine_minor_version
         # The database engine version of the instance.
         self.engine_version = engine_version
         # The time when the cluster expires.
@@ -3928,6 +4210,7 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
         self.maintain_start_time_str = maintain_start_time_str
         # The start time of the instance maintenance window.
         self.maintain_starttime = maintain_starttime
+        self.multi_zone = multi_zone
         # The storage capacity of the instance. Unit: GB.
         self.object_store_size = object_store_size
         # The time when the instance was created.
@@ -3977,6 +4260,10 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
         self.connection_string = connection_string
 
     def validate(self):
+        if self.multi_zone:
+            for k in self.multi_zone:
+                if k:
+                    k.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -3996,10 +4283,14 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
             result['ClusterCount'] = self.cluster_count
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.deploy_scheme is not None:
+            result['DeployScheme'] = self.deploy_scheme
         if self.description is not None:
             result['Description'] = self.description
         if self.engine is not None:
             result['Engine'] = self.engine
+        if self.engine_minor_version is not None:
+            result['EngineMinorVersion'] = self.engine_minor_version
         if self.engine_version is not None:
             result['EngineVersion'] = self.engine_version
         if self.expire_time is not None:
@@ -4024,6 +4315,10 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
             result['MaintainStartTimeStr'] = self.maintain_start_time_str
         if self.maintain_starttime is not None:
             result['MaintainStarttime'] = self.maintain_starttime
+        result['MultiZone'] = []
+        if self.multi_zone is not None:
+            for k in self.multi_zone:
+                result['MultiZone'].append(k.to_map() if k else None)
         if self.object_store_size is not None:
             result['ObjectStoreSize'] = self.object_store_size
         if self.parent_instance is not None:
@@ -4078,10 +4373,14 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
             self.cluster_count = m.get('ClusterCount')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('DeployScheme') is not None:
+            self.deploy_scheme = m.get('DeployScheme')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
+        if m.get('EngineMinorVersion') is not None:
+            self.engine_minor_version = m.get('EngineMinorVersion')
         if m.get('EngineVersion') is not None:
             self.engine_version = m.get('EngineVersion')
         if m.get('ExpireTime') is not None:
@@ -4106,6 +4405,11 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
             self.maintain_start_time_str = m.get('MaintainStartTimeStr')
         if m.get('MaintainStarttime') is not None:
             self.maintain_starttime = m.get('MaintainStarttime')
+        self.multi_zone = []
+        if m.get('MultiZone') is not None:
+            for k in m.get('MultiZone'):
+                temp_model = DescribeDBInstancesResponseBodyItemsMultiZone()
+                self.multi_zone.append(temp_model.from_map(k))
         if m.get('ObjectStoreSize') is not None:
             self.object_store_size = m.get('ObjectStoreSize')
         if m.get('ParentInstance') is not None:
@@ -4509,7 +4813,9 @@ class DescribeRegionsRequest(TeaModel):
         region: str = None,
         zone_id: str = None,
     ):
+        # The region ID.
         self.region = region
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -4548,13 +4854,21 @@ class DescribeRegionsResponseBodyRegionModelListZones(TeaModel):
         vpc_enabled: bool = None,
         zone_id: str = None,
     ):
+        # The zone description.
         self.description = description
+        # Indicates whether the VPC is disabled.
         self.disabled = disabled
+        # The label.
         self.label = label
+        # The zone name.
         self.name = name
+        # The region ID.
         self.region_id = region_id
+        # The subdomain.
         self.sub_domain = sub_domain
+        # Indicates whether the VPC is enabled.
         self.vpc_enabled = vpc_enabled
+        # Indicates whether the virtual private cloud (VPC) is available.
         self.zone_id = zone_id
 
     def validate(self):
@@ -4611,7 +4925,9 @@ class DescribeRegionsResponseBodyRegionModelList(TeaModel):
         region_id: str = None,
         zones: List[DescribeRegionsResponseBodyRegionModelListZones] = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # An array of zones.
         self.zones = zones
 
     def validate(self):
@@ -4652,7 +4968,9 @@ class DescribeRegionsResponseBody(TeaModel):
         region_model_list: List[DescribeRegionsResponseBodyRegionModelList] = None,
         request_id: str = None,
     ):
+        # An array of regions.
         self.region_model_list = region_model_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
