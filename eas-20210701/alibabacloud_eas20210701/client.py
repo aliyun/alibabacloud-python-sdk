@@ -9056,6 +9056,8 @@ class Client(OpenApiClient):
             query['Gateway'] = request.gateway
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.include_no_workspace):
+            query['IncludeNoWorkspace'] = request.include_no_workspace
         if not UtilClient.is_unset(request.label_shrink):
             query['Label'] = request.label_shrink
         if not UtilClient.is_unset(request.order):
@@ -9138,6 +9140,8 @@ class Client(OpenApiClient):
             query['Gateway'] = request.gateway
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.include_no_workspace):
+            query['IncludeNoWorkspace'] = request.include_no_workspace
         if not UtilClient.is_unset(request.label_shrink):
             query['Label'] = request.label_shrink
         if not UtilClient.is_unset(request.order):

@@ -13146,6 +13146,7 @@ class ListServicesRequest(TeaModel):
         filter: str = None,
         gateway: str = None,
         group_name: str = None,
+        include_no_workspace: bool = None,
         label: Dict[str, str] = None,
         order: str = None,
         page_number: int = None,
@@ -13168,6 +13169,7 @@ class ListServicesRequest(TeaModel):
         self.gateway = gateway
         # The name of the service group. For more information about how to query the name of a service group, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
         self.group_name = group_name
+        self.include_no_workspace = include_no_workspace
         # The tag that is used to filter services.
         self.label = label
         # The sorting order. Valid values:
@@ -13413,6 +13415,8 @@ class ListServicesRequest(TeaModel):
             result['Gateway'] = self.gateway
         if self.group_name is not None:
             result['GroupName'] = self.group_name
+        if self.include_no_workspace is not None:
+            result['IncludeNoWorkspace'] = self.include_no_workspace
         if self.label is not None:
             result['Label'] = self.label
         if self.order is not None:
@@ -13453,6 +13457,8 @@ class ListServicesRequest(TeaModel):
             self.gateway = m.get('Gateway')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
+        if m.get('IncludeNoWorkspace') is not None:
+            self.include_no_workspace = m.get('IncludeNoWorkspace')
         if m.get('Label') is not None:
             self.label = m.get('Label')
         if m.get('Order') is not None:
@@ -13492,6 +13498,7 @@ class ListServicesShrinkRequest(TeaModel):
         filter: str = None,
         gateway: str = None,
         group_name: str = None,
+        include_no_workspace: bool = None,
         label_shrink: str = None,
         order: str = None,
         page_number: int = None,
@@ -13514,6 +13521,7 @@ class ListServicesShrinkRequest(TeaModel):
         self.gateway = gateway
         # The name of the service group. For more information about how to query the name of a service group, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
         self.group_name = group_name
+        self.include_no_workspace = include_no_workspace
         # The tag that is used to filter services.
         self.label_shrink = label_shrink
         # The sorting order. Valid values:
@@ -13759,6 +13767,8 @@ class ListServicesShrinkRequest(TeaModel):
             result['Gateway'] = self.gateway
         if self.group_name is not None:
             result['GroupName'] = self.group_name
+        if self.include_no_workspace is not None:
+            result['IncludeNoWorkspace'] = self.include_no_workspace
         if self.label_shrink is not None:
             result['Label'] = self.label_shrink
         if self.order is not None:
@@ -13799,6 +13809,8 @@ class ListServicesShrinkRequest(TeaModel):
             self.gateway = m.get('Gateway')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
+        if m.get('IncludeNoWorkspace') is not None:
+            self.include_no_workspace = m.get('IncludeNoWorkspace')
         if m.get('Label') is not None:
             self.label_shrink = m.get('Label')
         if m.get('Order') is not None:

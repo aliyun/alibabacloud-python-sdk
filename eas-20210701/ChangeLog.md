@@ -1,3 +1,7 @@
+2025-04-08 Version: 6.7.2
+- Update API ListServices: add request parameters IncludeNoWorkspace.
+
+
 2025-04-01 Version: 7.0.0
 - Update API DescribeGroupEndpoints: update response parameters Body.Endpoints' type has changed.
 - Update API DescribeGroupEndpoints: delete response parameters Body.Endpoints.
