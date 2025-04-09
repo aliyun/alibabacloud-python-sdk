@@ -562,6 +562,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_get_acp_connection_ticket_with_options_async(request, runtime)
 
+    def change_cloud_phone_node_with_options(
+        self,
+        request: eds_aic_20230930_models.ChangeCloudPhoneNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.ChangeCloudPhoneNodeResponse:
+        """
+        @summary 修改云手机矩阵的配置
+        
+        @param request: ChangeCloudPhoneNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeCloudPhoneNodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.phone_count):
+            query['PhoneCount'] = request.phone_count
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeCloudPhoneNode',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.ChangeCloudPhoneNodeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.ChangeCloudPhoneNodeResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def change_cloud_phone_node_with_options_async(
+        self,
+        request: eds_aic_20230930_models.ChangeCloudPhoneNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.ChangeCloudPhoneNodeResponse:
+        """
+        @summary 修改云手机矩阵的配置
+        
+        @param request: ChangeCloudPhoneNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeCloudPhoneNodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.phone_count):
+            query['PhoneCount'] = request.phone_count
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeCloudPhoneNode',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.ChangeCloudPhoneNodeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.ChangeCloudPhoneNodeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def change_cloud_phone_node(
+        self,
+        request: eds_aic_20230930_models.ChangeCloudPhoneNodeRequest,
+    ) -> eds_aic_20230930_models.ChangeCloudPhoneNodeResponse:
+        """
+        @summary 修改云手机矩阵的配置
+        
+        @param request: ChangeCloudPhoneNodeRequest
+        @return: ChangeCloudPhoneNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.change_cloud_phone_node_with_options(request, runtime)
+
+    async def change_cloud_phone_node_async(
+        self,
+        request: eds_aic_20230930_models.ChangeCloudPhoneNodeRequest,
+    ) -> eds_aic_20230930_models.ChangeCloudPhoneNodeResponse:
+        """
+        @summary 修改云手机矩阵的配置
+        
+        @param request: ChangeCloudPhoneNodeRequest
+        @return: ChangeCloudPhoneNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.change_cloud_phone_node_with_options_async(request, runtime)
+
     def check_resource_stock_with_options(
         self,
         request: eds_aic_20230930_models.CheckResourceStockRequest,
@@ -4617,6 +4733,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.end_coordination_with_options_async(request, runtime)
+
+    def expand_data_volume_with_options(
+        self,
+        request: eds_aic_20230930_models.ExpandDataVolumeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.ExpandDataVolumeResponse:
+        """
+        @summary 存储扩容
+        
+        @param request: ExpandDataVolumeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExpandDataVolumeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.node_ids):
+            query['NodeIds'] = request.node_ids
+        if not UtilClient.is_unset(request.share_data_volume):
+            query['ShareDataVolume'] = request.share_data_volume
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ExpandDataVolume',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.ExpandDataVolumeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.ExpandDataVolumeResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def expand_data_volume_with_options_async(
+        self,
+        request: eds_aic_20230930_models.ExpandDataVolumeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.ExpandDataVolumeResponse:
+        """
+        @summary 存储扩容
+        
+        @param request: ExpandDataVolumeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExpandDataVolumeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.node_ids):
+            query['NodeIds'] = request.node_ids
+        if not UtilClient.is_unset(request.share_data_volume):
+            query['ShareDataVolume'] = request.share_data_volume
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ExpandDataVolume',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.ExpandDataVolumeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.ExpandDataVolumeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def expand_data_volume(
+        self,
+        request: eds_aic_20230930_models.ExpandDataVolumeRequest,
+    ) -> eds_aic_20230930_models.ExpandDataVolumeResponse:
+        """
+        @summary 存储扩容
+        
+        @param request: ExpandDataVolumeRequest
+        @return: ExpandDataVolumeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.expand_data_volume_with_options(request, runtime)
+
+    async def expand_data_volume_async(
+        self,
+        request: eds_aic_20230930_models.ExpandDataVolumeRequest,
+    ) -> eds_aic_20230930_models.ExpandDataVolumeResponse:
+        """
+        @summary 存储扩容
+        
+        @param request: ExpandDataVolumeRequest
+        @return: ExpandDataVolumeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.expand_data_volume_with_options_async(request, runtime)
 
     def fetch_file_with_options(
         self,

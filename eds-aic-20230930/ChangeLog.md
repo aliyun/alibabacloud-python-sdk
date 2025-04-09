@@ -1,3 +1,8 @@
+2025-04-09 Version: 4.5.0
+- Support API ChangeCloudPhoneNode.
+- Support API ExpandDataVolume.
+
+
 2025-04-07 Version: 4.4.2
 - Update API RebootAndroidInstancesInGroup: add request parameters SaleMode.
 - Update API ResetAndroidInstancesInGroup: add request parameters SaleMode.
