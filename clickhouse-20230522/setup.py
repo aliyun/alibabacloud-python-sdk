@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_clickhouse20230522.
 
-Created on 17/03/2025
+Created on 09/04/2025
 
 @author: Alibaba Cloud SDK
 """

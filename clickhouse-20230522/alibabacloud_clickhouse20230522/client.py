@@ -385,6 +385,8 @@ class Client(OpenApiClient):
             query['MultiZone'] = request.multi_zone_shrink
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.scale_max):
             query['ScaleMax'] = request.scale_max
         if not UtilClient.is_unset(request.scale_min):
@@ -456,6 +458,8 @@ class Client(OpenApiClient):
             query['MultiZone'] = request.multi_zone_shrink
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.scale_max):
             query['ScaleMax'] = request.scale_max
         if not UtilClient.is_unset(request.scale_min):

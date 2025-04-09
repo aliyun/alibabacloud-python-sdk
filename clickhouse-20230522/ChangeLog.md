@@ -1,3 +1,7 @@
+2025-04-09 Version: 1.0.6
+- Update API CreateDBInstance: add request parameters ResourceGroupId.
+
+
 2025-03-17 Version: 1.0.5
 - Update API DeleteEndpoint: add param DBInstanceNetType.
 - Update API DescribeDBInstanceAttribute: update response param.

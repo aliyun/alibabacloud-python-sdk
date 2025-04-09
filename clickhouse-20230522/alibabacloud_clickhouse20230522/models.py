@@ -583,6 +583,7 @@ class CreateDBInstanceRequest(TeaModel):
         engine_version: str = None,
         multi_zone: List[CreateDBInstanceRequestMultiZone] = None,
         region_id: str = None,
+        resource_group_id: str = None,
         scale_max: str = None,
         scale_min: str = None,
         source_dbinstance_id: str = None,
@@ -612,6 +613,7 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The maximum capacity for auto scaling.
         self.scale_max = scale_max
         # The minimum capacity for auto scaling.
@@ -655,6 +657,8 @@ class CreateDBInstanceRequest(TeaModel):
                 result['MultiZone'].append(k.to_map() if k else None)
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.scale_max is not None:
             result['ScaleMax'] = self.scale_max
         if self.scale_min is not None:
@@ -690,6 +694,8 @@ class CreateDBInstanceRequest(TeaModel):
                 self.multi_zone.append(temp_model.from_map(k))
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ScaleMax') is not None:
             self.scale_max = m.get('ScaleMax')
         if m.get('ScaleMin') is not None:
@@ -716,6 +722,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         engine_version: str = None,
         multi_zone_shrink: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         scale_max: str = None,
         scale_min: str = None,
         source_dbinstance_id: str = None,
@@ -745,6 +752,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The maximum capacity for auto scaling.
         self.scale_max = scale_max
         # The minimum capacity for auto scaling.
@@ -783,6 +791,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             result['MultiZone'] = self.multi_zone_shrink
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.scale_max is not None:
             result['ScaleMax'] = self.scale_max
         if self.scale_min is not None:
@@ -815,6 +825,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             self.multi_zone_shrink = m.get('MultiZone')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ScaleMax') is not None:
             self.scale_max = m.get('ScaleMax')
         if m.get('ScaleMin') is not None:
