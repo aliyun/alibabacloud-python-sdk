@@ -6222,6 +6222,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_clean_userdata):
             query['AutoCleanUserdata'] = request.auto_clean_userdata
+        if not UtilClient.is_unset(request.data_snapshot_ids):
+            query['DataSnapshotIds'] = request.data_snapshot_ids
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.desktop_id):
@@ -6279,6 +6281,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_clean_userdata):
             query['AutoCleanUserdata'] = request.auto_clean_userdata
+        if not UtilClient.is_unset(request.data_snapshot_ids):
+            query['DataSnapshotIds'] = request.data_snapshot_ids
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.desktop_id):
@@ -7792,6 +7796,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteCenterPolicyResponse:
         """
+        @summary Deletes a center policy
+        
         @param request: DeleteCenterPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteCenterPolicyResponse
@@ -7837,6 +7843,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteCenterPolicyResponse:
         """
+        @summary Deletes a center policy
+        
         @param request: DeleteCenterPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteCenterPolicyResponse
@@ -7881,6 +7889,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteCenterPolicyRequest,
     ) -> ecd_20200930_models.DeleteCenterPolicyResponse:
         """
+        @summary Deletes a center policy
+        
         @param request: DeleteCenterPolicyRequest
         @return: DeleteCenterPolicyResponse
         """
@@ -7892,6 +7902,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteCenterPolicyRequest,
     ) -> ecd_20200930_models.DeleteCenterPolicyResponse:
         """
+        @summary Deletes a center policy
+        
         @param request: DeleteCenterPolicyRequest
         @return: DeleteCenterPolicyResponse
         """
@@ -27075,6 +27087,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.after_status):
+            query['AfterStatus'] = request.after_status
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.image_id):
@@ -27131,6 +27145,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.after_status):
+            query['AfterStatus'] = request.after_status
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.image_id):

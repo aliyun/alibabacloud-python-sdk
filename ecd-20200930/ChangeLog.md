@@ -1,3 +1,16 @@
+2025-04-09 Version: 4.7.2
+- Update API CreateImage: add request parameters DataSnapshotIds.
+- Update API DescribeDesktopGroups: add response parameters Body.DesktopGroups.$.IsLdap.
+- Update API DescribeDesktops: add response parameters Body.Desktops.$.IsLdap.
+- Update API DescribeUsersInGroup: add response parameters Body.EndUsers.$.DisplayNameNew.
+- Update API DescribeUsersInGroup: add response parameters Body.EndUsers.$.UserPrincipalName.
+- Update API ListDirectoryUsers: add response parameters Body.Users.$.DisplayNameNew.
+- Update API ListDirectoryUsers: add response parameters Body.Users.$.UserPrincipalName.
+- Update API ListOfficeSiteUsers: add response parameters Body.Users.$.DisplayNameNew.
+- Update API ListOfficeSiteUsers: add response parameters Body.Users.$.UserPrincipalName.
+- Update API RebuildDesktops: add request parameters AfterStatus.
+
+
 2025-03-27 Version: 4.7.1
 - Update API CreateConfigGroup: add request parameters ConfigTimers.$.NotificationTime.
 - Update API DescribeTimerGroup: add response parameters Body.Data.ConfigTimers.$.NotificationTime.
