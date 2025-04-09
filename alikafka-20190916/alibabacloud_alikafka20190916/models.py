@@ -6062,16 +6062,24 @@ class GetAllowedIpListResponseBodyAllowedListInternetList(TeaModel):
         self,
         allowed_ip_group: Dict[str, str] = None,
         allowed_ip_list: List[str] = None,
+        black_iplist: List[str] = None,
+        black_ipmap: Dict[str, str] = None,
         port_range: str = None,
+        security_group_id: str = None,
+        user_defined_shared_security_group: bool = None,
     ):
         # The group to which the IP address whitelist belongs.
         self.allowed_ip_group = allowed_ip_group
         # The information about the IP address whitelist.
         self.allowed_ip_list = allowed_ip_list
+        self.black_iplist = black_iplist
+        self.black_ipmap = black_ipmap
         # The port range. Valid value:
         # 
         # **9093/9093**.
         self.port_range = port_range
+        self.security_group_id = security_group_id
+        self.user_defined_shared_security_group = user_defined_shared_security_group
 
     def validate(self):
         pass
@@ -6086,8 +6094,16 @@ class GetAllowedIpListResponseBodyAllowedListInternetList(TeaModel):
             result['AllowedIpGroup'] = self.allowed_ip_group
         if self.allowed_ip_list is not None:
             result['AllowedIpList'] = self.allowed_ip_list
+        if self.black_iplist is not None:
+            result['BlackIPList'] = self.black_iplist
+        if self.black_ipmap is not None:
+            result['BlackIPMap'] = self.black_ipmap
         if self.port_range is not None:
             result['PortRange'] = self.port_range
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.user_defined_shared_security_group is not None:
+            result['UserDefinedSharedSecurityGroup'] = self.user_defined_shared_security_group
         return result
 
     def from_map(self, m: dict = None):
@@ -6096,8 +6112,16 @@ class GetAllowedIpListResponseBodyAllowedListInternetList(TeaModel):
             self.allowed_ip_group = m.get('AllowedIpGroup')
         if m.get('AllowedIpList') is not None:
             self.allowed_ip_list = m.get('AllowedIpList')
+        if m.get('BlackIPList') is not None:
+            self.black_iplist = m.get('BlackIPList')
+        if m.get('BlackIPMap') is not None:
+            self.black_ipmap = m.get('BlackIPMap')
         if m.get('PortRange') is not None:
             self.port_range = m.get('PortRange')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('UserDefinedSharedSecurityGroup') is not None:
+            self.user_defined_shared_security_group = m.get('UserDefinedSharedSecurityGroup')
         return self
 
 
@@ -6106,16 +6130,24 @@ class GetAllowedIpListResponseBodyAllowedListVpcList(TeaModel):
         self,
         allowed_ip_group: Dict[str, str] = None,
         allowed_ip_list: List[str] = None,
+        black_iplist: List[str] = None,
+        black_ipmap: Dict[str, str] = None,
         port_range: str = None,
+        security_group_id: str = None,
+        user_defined_shared_security_group: bool = None,
     ):
         # The group to which the IP address whitelist belongs.
         self.allowed_ip_group = allowed_ip_group
         # The information about the IP address whitelist.
         self.allowed_ip_list = allowed_ip_list
+        self.black_iplist = black_iplist
+        self.black_ipmap = black_ipmap
         # The port range. Valid value:
         # 
         # **9092/9092**.
         self.port_range = port_range
+        self.security_group_id = security_group_id
+        self.user_defined_shared_security_group = user_defined_shared_security_group
 
     def validate(self):
         pass
@@ -6130,8 +6162,16 @@ class GetAllowedIpListResponseBodyAllowedListVpcList(TeaModel):
             result['AllowedIpGroup'] = self.allowed_ip_group
         if self.allowed_ip_list is not None:
             result['AllowedIpList'] = self.allowed_ip_list
+        if self.black_iplist is not None:
+            result['BlackIPList'] = self.black_iplist
+        if self.black_ipmap is not None:
+            result['BlackIPMap'] = self.black_ipmap
         if self.port_range is not None:
             result['PortRange'] = self.port_range
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.user_defined_shared_security_group is not None:
+            result['UserDefinedSharedSecurityGroup'] = self.user_defined_shared_security_group
         return result
 
     def from_map(self, m: dict = None):
@@ -6140,8 +6180,16 @@ class GetAllowedIpListResponseBodyAllowedListVpcList(TeaModel):
             self.allowed_ip_group = m.get('AllowedIpGroup')
         if m.get('AllowedIpList') is not None:
             self.allowed_ip_list = m.get('AllowedIpList')
+        if m.get('BlackIPList') is not None:
+            self.black_iplist = m.get('BlackIPList')
+        if m.get('BlackIPMap') is not None:
+            self.black_ipmap = m.get('BlackIPMap')
         if m.get('PortRange') is not None:
             self.port_range = m.get('PortRange')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('UserDefinedSharedSecurityGroup') is not None:
+            self.user_defined_shared_security_group = m.get('UserDefinedSharedSecurityGroup')
         return self
 
 

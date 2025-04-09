@@ -1,3 +1,14 @@
+2025-04-09 Version: 2.10.1
+- Update API GetAllowedIpList: add response parameters Body.AllowedList.InternetList.$.BlackIPList.
+- Update API GetAllowedIpList: add response parameters Body.AllowedList.InternetList.$.BlackIPMap.
+- Update API GetAllowedIpList: add response parameters Body.AllowedList.InternetList.$.SecurityGroupId.
+- Update API GetAllowedIpList: add response parameters Body.AllowedList.InternetList.$.UserDefinedSharedSecurityGroup.
+- Update API GetAllowedIpList: add response parameters Body.AllowedList.VpcList.$.BlackIPList.
+- Update API GetAllowedIpList: add response parameters Body.AllowedList.VpcList.$.BlackIPMap.
+- Update API GetAllowedIpList: add response parameters Body.AllowedList.VpcList.$.SecurityGroupId.
+- Update API GetAllowedIpList: add response parameters Body.AllowedList.VpcList.$.UserDefinedSharedSecurityGroup.
+
+
 2025-02-12 Version: 2.10.0
 - Support API DescribeAclResourceName.
 
