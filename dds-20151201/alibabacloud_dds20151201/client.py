@@ -30,33 +30,26 @@ class Client(OpenApiClient):
             'cn-wulanchabu': 'mongodb.aliyuncs.com',
             'cn-hangzhou': 'mongodb.aliyuncs.com',
             'cn-shanghai': 'mongodb.aliyuncs.com',
-            'cn-nanjing': 'mongodb.cn-nanjing.aliyuncs.com',
-            'cn-fuzhou': 'mongodb.cn-fuzhou.aliyuncs.com',
             'cn-shenzhen': 'mongodb.aliyuncs.com',
             'cn-heyuan': 'mongodb.aliyuncs.com',
             'cn-guangzhou': 'mongodb.aliyuncs.com',
             'cn-chengdu': 'mongodb.cn-chengdu.aliyuncs.com',
             'cn-hongkong': 'mongodb.cn-hongkong.aliyuncs.com',
             'ap-northeast-1': 'mongodb.ap-northeast-1.aliyuncs.com',
-            'ap-northeast-2': 'mongodb.ap-northeast-2.aliyuncs.com',
             'ap-southeast-1': 'mongodb.ap-southeast-1.aliyuncs.com',
             'ap-southeast-2': 'mongodb.ap-southeast-2.aliyuncs.com',
             'ap-southeast-3': 'mongodb.ap-southeast-3.aliyuncs.com',
             'ap-southeast-5': 'mongodb.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-6': 'mongodb.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-7': 'mongodb.ap-southeast-7.aliyuncs.com',
-            'cn-zhengzhou-jva': 'mongodb.cn-zhengzhou-jva.aliyuncs.com',
             'us-east-1': 'mongodb.us-east-1.aliyuncs.com',
             'us-west-1': 'mongodb.us-west-1.aliyuncs.com',
             'eu-west-1': 'mongodb.eu-west-1.aliyuncs.com',
             'eu-central-1': 'mongodb.eu-central-1.aliyuncs.com',
             'ap-south-1': 'mongodb.ap-south-1.aliyuncs.com',
             'me-east-1': 'mongodb.me-east-1.aliyuncs.com',
-            'me-central-1': 'mongodb.me-central-1.aliyuncs.com',
             'cn-hangzhou-finance': 'mongodb.aliyuncs.com',
             'cn-shanghai-finance-1': 'mongodb.aliyuncs.com',
             'cn-shenzhen-finance-1': 'mongodb.aliyuncs.com',
-            'cn-north-2-gov-1': 'mongodb.aliyuncs.com',
+            'cn-north-2-gov-1': 'mongodb.cn-north-2-gov-1.aliyuncs.com',
             'ap-northeast-2-pop': 'mongodb.aliyuncs.com',
             'cn-beijing-finance-1': 'mongodb.aliyuncs.com',
             'cn-beijing-finance-pop': 'mongodb.aliyuncs.com',
@@ -3393,6 +3386,8 @@ class Client(OpenApiClient):
             query['ProductId'] = request.product_id
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -3462,6 +3457,8 @@ class Client(OpenApiClient):
             query['ProductId'] = request.product_id
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -4019,6 +4016,8 @@ class Client(OpenApiClient):
             query['ExcludeZoneId'] = request.exclude_zone_id
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.mongo_type):
             query['MongoType'] = request.mongo_type
         if not UtilClient.is_unset(request.owner_account):
@@ -4096,6 +4095,8 @@ class Client(OpenApiClient):
             query['ExcludeZoneId'] = request.exclude_zone_id
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.mongo_type):
             query['MongoType'] = request.mongo_type
         if not UtilClient.is_unset(request.owner_account):
@@ -6113,6 +6114,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_sslwith_options_async(request, runtime)
 
+    def describe_dbinstance_spec_info_with_options(
+        self,
+        request: dds_20151201_models.DescribeDBInstanceSpecInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeDBInstanceSpecInfoResponse:
+        """
+        @summary 查看规格信息详情
+        
+        @param request: DescribeDBInstanceSpecInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceSpecInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_class):
+            query['InstanceClass'] = request.instance_class
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceSpecInfo',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dds_20151201_models.DescribeDBInstanceSpecInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dds_20151201_models.DescribeDBInstanceSpecInfoResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_dbinstance_spec_info_with_options_async(
+        self,
+        request: dds_20151201_models.DescribeDBInstanceSpecInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeDBInstanceSpecInfoResponse:
+        """
+        @summary 查看规格信息详情
+        
+        @param request: DescribeDBInstanceSpecInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceSpecInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_class):
+            query['InstanceClass'] = request.instance_class
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceSpecInfo',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dds_20151201_models.DescribeDBInstanceSpecInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dds_20151201_models.DescribeDBInstanceSpecInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_dbinstance_spec_info(
+        self,
+        request: dds_20151201_models.DescribeDBInstanceSpecInfoRequest,
+    ) -> dds_20151201_models.DescribeDBInstanceSpecInfoResponse:
+        """
+        @summary 查看规格信息详情
+        
+        @param request: DescribeDBInstanceSpecInfoRequest
+        @return: DescribeDBInstanceSpecInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbinstance_spec_info_with_options(request, runtime)
+
+    async def describe_dbinstance_spec_info_async(
+        self,
+        request: dds_20151201_models.DescribeDBInstanceSpecInfoRequest,
+    ) -> dds_20151201_models.DescribeDBInstanceSpecInfoResponse:
+        """
+        @summary 查看规格信息详情
+        
+        @param request: DescribeDBInstanceSpecInfoRequest
+        @return: DescribeDBInstanceSpecInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbinstance_spec_info_with_options_async(request, runtime)
+
     def describe_dbinstance_switch_log_with_options(
         self,
         request: dds_20151201_models.DescribeDBInstanceSwitchLogRequest,
@@ -7217,6 +7346,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -7284,6 +7415,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -7371,6 +7504,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -7432,6 +7567,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -8563,7 +8700,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribePriceResponse:
         """
-        @summary Queries the fees incurred when you create, upgrade, or renew an ApsaraDB for MongoDB instance.
+        @summary Queries the pricing information of an ApsaraDB for MongoDB instance.
         
         @param request: DescribePriceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8628,7 +8765,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribePriceResponse:
         """
-        @summary Queries the fees incurred when you create, upgrade, or renew an ApsaraDB for MongoDB instance.
+        @summary Queries the pricing information of an ApsaraDB for MongoDB instance.
         
         @param request: DescribePriceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8692,7 +8829,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribePriceRequest,
     ) -> dds_20151201_models.DescribePriceResponse:
         """
-        @summary Queries the fees incurred when you create, upgrade, or renew an ApsaraDB for MongoDB instance.
+        @summary Queries the pricing information of an ApsaraDB for MongoDB instance.
         
         @param request: DescribePriceRequest
         @return: DescribePriceResponse
@@ -8705,7 +8842,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribePriceRequest,
     ) -> dds_20151201_models.DescribePriceResponse:
         """
-        @summary Queries the fees incurred when you create, upgrade, or renew an ApsaraDB for MongoDB instance.
+        @summary Queries the pricing information of an ApsaraDB for MongoDB instance.
         
         @param request: DescribePriceRequest
         @return: DescribePriceResponse
@@ -11363,6 +11500,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -11416,6 +11555,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):

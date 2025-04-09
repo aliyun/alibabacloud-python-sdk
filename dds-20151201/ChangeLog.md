@@ -1,3 +1,14 @@
+2025-04-09 Version: 9.0.0
+- Support API DescribeDBInstanceSpecInfo.
+- Update API DescribeActiveOperationTasks: add request parameters ResourceGroupId.
+- Update API DescribeAvailabilityZones: add request parameters InstanceType.
+- Update API DescribeHistoryTasks: add request parameters ResourceGroupId.
+- Update API DescribeHistoryTasks: update response parameters Body.Items.$.Status' type has changed.
+- Update API DescribeHistoryTasks: update response parameters Body.Items.$.Status' format has changed.
+- Update API DescribeHistoryTasksStat: add request parameters ResourceGroupId.
+- Update API ModifyActiveOperationTasks: add request parameters ResourceGroupId.
+
+
 2025-02-10 Version: 8.2.0
 - Support API CheckServiceLinkedRole.
 - Support API DescribeActiveOperationMaintenanceConfig.

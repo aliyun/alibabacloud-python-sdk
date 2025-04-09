@@ -826,6 +826,13 @@ class CreateAccountRequest(TeaModel):
         # 
         # This parameter is required.
         self.account_password = account_password
+        # The type of the account that you want to create. Valid values:
+        # 
+        # *   **db** (default): shard account (available)
+        # *   **cs**: ConfigServer account
+        # *   **normal**: replica set account
+        # 
+        # >  You can set this parameter only to **db**.
         self.character_type = character_type
         # The cluster ID.
         # 
@@ -2435,23 +2442,29 @@ class CreateShardingDBInstanceRequestReplicaSet(TeaModel):
         readonly_replicas: int = None,
         storage: int = None,
     ):
-        # The instance type of the shard node. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
+        # The instance type of the shard component. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
         # 
-        # > * **N** specifies the serial number of the shard node for which the instance type is specified. For example, **ReplicaSet.2.Class** specifies the instance type of the second shard node.
-        # > * Valid values of **N**: **2** to **32**.
+        # > 
+        # 
+        # *   **N** specifies the serial number of the shard component for which the instance type is specified. For example, **ReplicaSet.2.Class** specifies the instance type of the second shard component.
+        # 
+        # *   Valid values of **N**: **2** to **32**.
         # 
         # This parameter is required.
         self.class_ = class_
-        # The number of read-only nodes in the shard node.
+        # The number of read-only nodes in the shard component.
         # 
         # Valid values: **0**, **1, 2, 3, 4, and 5**. Default value: **0**.
         # 
-        # >  **N** specifies the serial number of the shard node for which you want to set the number of read-only nodes. **ReplicaSet.2.ReadonlyReplicas** specifies the number of read-only nodes in the second shard node.
+        # >  **N** specifies the serial number of the shard component for which you want to set the number of read-only nodes. **ReplicaSet.2.ReadonlyReplicas** specifies the number of read-only nodes in the second shard component.
         self.readonly_replicas = readonly_replicas
-        # The storage capacity of the shard node. Unit: GB.
+        # The storage capacity of the shard component. Unit: GB.
         # 
-        # > * The values that can be specified for this parameter vary based on the instance types. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
-        # > * **N** specifies the serial number of the shard node for which the storage space is specified. For example, **ReplicaSet.2.Storage** specifies the storage space of the second shard node.
+        # > 
+        # 
+        # *   The values that can be specified for this parameter vary based on the instance types. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
+        # 
+        # *   **N** specifies the serial number of the shard component for which the storage capacity is specified. For example, **ReplicaSet.2.Storage** specifies the storage capacity of the second shard component.
         # 
         # This parameter is required.
         self.storage = storage
@@ -2567,9 +2580,11 @@ class CreateShardingDBInstanceRequest(TeaModel):
     ):
         # The password of the root account. The password must meet the following requirements:
         # 
-        # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        # *   The special characters include ! # $ % ^ & \\* ( ) _ + - =\
-        # *   The password of the account must be 8 to 32 characters in length.
+        # *   The password contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # *   The following special characters are supported: ! @ # $ % ^ & \\* ( ) _ + - =.
+        # *   The password must be 8 to 32 characters in length.
+        # 
+        # >  For more information about how to resolve failed database connections due to special characters, see [What do I do if my instance is not connected due to special characters in the password in the connection string of the instance?](https://help.aliyun.com/document_detail/471568.html)
         self.account_password = account_password
         # Specifies whether to enable auto-renewal for the instance. Valid values:
         # 
@@ -2587,7 +2602,7 @@ class CreateShardingDBInstanceRequest(TeaModel):
         # *   **PostPaid** (default): pay-as-you-go
         # *   **PrePaid**: subscription
         # 
-        # >  If this parameter is set to **PrePaid**, you must also configure the **Period** parameter.
+        # >  If you set this parameter to **PrePaid**, you must also configure the **Period** parameter.
         self.charge_type = charge_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -2605,7 +2620,7 @@ class CreateShardingDBInstanceRequest(TeaModel):
         # 
         # >  This parameter is required when you set the RestoreType parameter to 3.
         self.dest_region = dest_region
-        # Indicates whether disk encryption is enabled.
+        # Specifies whether to enable disk encryption.
         self.encrypted = encrypted
         # The ID of the custom key.
         self.encryption_key = encryption_key
@@ -2622,8 +2637,11 @@ class CreateShardingDBInstanceRequest(TeaModel):
         # *   **4.2**\
         # *   **4.0**\
         # 
-        # > * For more information about the limits on database versions and storage engines, see [MongoDB versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
-        # > * If you call this operation to clone an instance, set the value of this parameter to the database engine version of the source instance.
+        # > 
+        # 
+        # *   For more information about the limits on database versions and storage engines, see [MongoDB versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
+        # 
+        # *   If you call this operation to clone an instance, set the value of this parameter to the database engine version of the source instance.
         # 
         # This parameter is required.
         self.engine_version = engine_version
@@ -2658,9 +2676,9 @@ class CreateShardingDBInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.mongos = mongos
-        # The network type of the instance.
+        # The network type of the instance. Set the value to VPC.
         # 
-        # Set the value to **VPC**.
+        # ****\
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2681,7 +2699,7 @@ class CreateShardingDBInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The information of the shard node.
+        # The information of the shard component.
         # 
         # This parameter is required.
         self.replica_set = replica_set
@@ -2693,10 +2711,11 @@ class CreateShardingDBInstanceRequest(TeaModel):
         # 
         # > This parameter is required only if you call this operation to clone an instance. If you specify this parameter, you must also specify **SrcDBInstanceId**.
         self.restore_time = restore_time
-        # The backup restore type of the instance.
-        # - 1:  restore an instance to the specified time.
-        # - 2: restore an  released instance to the specified backup set.
-        # - 3：restore an instance to the specified cross-regional backup set.
+        # The restoration type of the instance. Valid values:
+        # 
+        # *   1: restores the instance data to the specified point in time.
+        # *   2: restores the data of the released instance to the specified backup set.
+        # *   3: restores the instance data to the specified cross-region backup set.
         self.restore_type = restore_type
         # The ID of secondary zone 1 for multi-zone deployment. Valid values:
         # 
@@ -2742,8 +2761,11 @@ class CreateShardingDBInstanceRequest(TeaModel):
         self.src_region = src_region
         # The storage engine of the instance. Set the value to **WiredTiger**.
         # 
-        # > * If you call this operation to clone an instance, set the value of this parameter to the storage engine of the source instance.
-        # > * For more information about the limits on database versions and storage engines, see [MongoDB versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
+        # > 
+        # 
+        # *   If you call this operation to clone an instance, set the value of this parameter to the storage engine of the source instance.
+        # 
+        # *   For more information about the limits on database versions and storage engines, see [MongoDB versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
         self.storage_engine = storage_engine
         # The storage type of the instance. Valid values:
         # 
@@ -4800,6 +4822,7 @@ class DescribeActiveOperationTasksRequest(TeaModel):
         page_size: int = None,
         product_id: str = None,
         region: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         status: int = None,
@@ -4827,9 +4850,9 @@ class DescribeActiveOperationTasksRequest(TeaModel):
         self.ins_name = ins_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the page to return.
+        # The number of the page to return. Specify the parameter to a positive integer that is greater than **0**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **30, 50, and 100**. Default value: **30**.
+        # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
         # The ID of the service.
         self.product_id = product_id
@@ -4837,6 +4860,8 @@ class DescribeActiveOperationTasksRequest(TeaModel):
         # 
         # >  If you set the Region parameter to **all**, all tasks created within your Alibaba Cloud account are queried. In this case, you must set the **taskType** parameter to **all**.
         self.region = region
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The status of the task. Valid values:
@@ -4880,6 +4905,8 @@ class DescribeActiveOperationTasksRequest(TeaModel):
             result['ProductId'] = self.product_id
         if self.region is not None:
             result['Region'] = self.region
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -4914,6 +4941,8 @@ class DescribeActiveOperationTasksRequest(TeaModel):
             self.product_id = m.get('ProductId')
         if m.get('Region') is not None:
             self.region = m.get('Region')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -5905,6 +5934,7 @@ class DescribeAvailabilityZonesRequest(TeaModel):
         exclude_secondary_zone_id: str = None,
         exclude_zone_id: str = None,
         instance_charge_type: str = None,
+        instance_type: str = None,
         mongo_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -5917,7 +5947,7 @@ class DescribeAvailabilityZonesRequest(TeaModel):
         storage_type: str = None,
         zone_id: str = None,
     ):
-        # The language of the values of the returned **RegionName** and **ZoneName** parameters. Valid values:
+        # The language of the returned **RegionName** and **ZoneName** parameter values. Valid values:
         # 
         # *   **zh** (default): Chinese
         # *   **en**: English
@@ -5935,11 +5965,16 @@ class DescribeAvailabilityZonesRequest(TeaModel):
         self.exclude_secondary_zone_id = exclude_secondary_zone_id
         # The zone ID that is excluded from the query results.
         self.exclude_zone_id = exclude_zone_id
-        # The billing method. Valid values:
+        # The billing method of the product. Valid values:
         # 
-        # *   **PrePaid** (default): subscription
-        # *   **PostPaid**: pay-as-you-go
+        # *   **PrePaid**: subscription
+        # *   **PostPaid:** pay-as-you-go
         self.instance_charge_type = instance_charge_type
+        # The architecture of the instance. Valid values:
+        # 
+        # *   **sharding**: sharded cluster instance
+        # *   **replicate**: replica set or standalone instance
+        self.instance_type = instance_type
         # The edition of the instance. High-Available Edition and Preview Edition (dbfs) are supported.
         self.mongo_type = mongo_type
         self.owner_account = owner_account
@@ -5948,26 +5983,39 @@ class DescribeAvailabilityZonesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The number of nodes. This parameter is available only for replica set instances.
+        # The number of nodes in the instance.
+        # 
+        # >  This parameter is available only for replica set instances.
+        # 
+        # Valid values:
+        # 
+        # *   1
+        # *   3
+        # *   5
+        # *   7
         self.replication_factor = replication_factor
         # The ID of the resource group. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The storage type of the instance. 
-        # - **cloud**: The system displays only zones in which cloud disk-based instances can be deployed. 
-        # - **local**: The system displays only zones in which local disk-based instances can be deployed. 
-        # - **default** or null: The system displays only zones in which cloud disk-based and local disk-based instances can be deployed.
-        self.storage_support = storage_support
-        # The storage type of the instance. Valid values:
+        # The storage type. Valid values:
         # 
-        # *   **cloud_essd1**: PL1 enhanced SSD (ESSD)
+        # *   **cloud**: displays only zones available for instances that use cloud disks.
+        # *   **local**: only displays zones available for instances that use local disks instances.
+        # *   **default** or unspecified: displays zones available for instances that use cloud disks and those that use local disks.
+        self.storage_support = storage_support
+        # The disk type. Valid values:
+        # 
+        # *   **cloud_essd**: PL1 Enterprise SSD (ESSD)
         # *   **cloud_essd2**: PL2 ESSD
         # *   **cloud_essd3**: PL3 ESSD
-        # *   **local_ssd**: Local SSD
+        # *   **dhg_local_ssd**: local SSD
         # 
-        # > *   Instances that run MongoDB 4.4 or later support only cloud disks. **cloud_essd1** is selected if you leave this parameter empty.
-        # > *   Instances that run MongoDB 4.2 and earlier support only local disks. **local_ssd** is selected if you leave this parameter empty.
+        # > 
+        # 
+        # *   Instances that run MongoDB 4.4 or later only use cloud disks to store data. If you do not specify this parameter, the value **cloud_essd1** is used by default.
+        # 
+        # *   Instances that run MongoDB 4.2 and earlier only use local disks to store data. If you do not specify this parameter, the value **local_ssd** is used by default.
         self.storage_type = storage_type
         # The zone ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query available zones.
         self.zone_id = zone_id
@@ -5995,6 +6043,8 @@ class DescribeAvailabilityZonesRequest(TeaModel):
             result['ExcludeZoneId'] = self.exclude_zone_id
         if self.instance_charge_type is not None:
             result['InstanceChargeType'] = self.instance_charge_type
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
         if self.mongo_type is not None:
             result['MongoType'] = self.mongo_type
         if self.owner_account is not None:
@@ -6035,6 +6085,8 @@ class DescribeAvailabilityZonesRequest(TeaModel):
             self.exclude_zone_id = m.get('ExcludeZoneId')
         if m.get('InstanceChargeType') is not None:
             self.instance_charge_type = m.get('InstanceChargeType')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
         if m.get('MongoType') is not None:
             self.mongo_type = m.get('MongoType')
         if m.get('OwnerAccount') is not None:
@@ -7808,7 +7860,7 @@ class DescribeBackupTasksRequest(TeaModel):
     ):
         # The ID of the backup task.
         # 
-        # >  If you call the [CreateBackup](https://help.aliyun.com/document_detail/61075.html) operation to perform a manual backup task, you can set this parameter to the returned backup ID to query the backup progress of the task.
+        # >  If you call the [CreateBackup](https://help.aliyun.com/document_detail/468439.html) operation to perform a manual backup task, you can set this parameter to the returned backup ID to query the backup progress of the task.
         self.backup_job_id = backup_job_id
         # The instance ID.
         # 
@@ -8051,7 +8103,7 @@ class DescribeBackupsRequest(TeaModel):
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
+        # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
         # The number of entries to return per page. Valid values:
         # 
@@ -9406,6 +9458,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMong
     ):
         # The endpoint of the mongos node.
         self.connect_sting = connect_sting
+        # The endpoint of the mongos node.
         self.connect_string = connect_string
         # The minor version of the current MongoDB kernel.
         self.current_kernel_version = current_kernel_version
@@ -11367,6 +11420,150 @@ class DescribeDBInstanceSSLResponse(TeaModel):
         return self
 
 
+class DescribeDBInstanceSpecInfoRequest(TeaModel):
+    def __init__(
+        self,
+        instance_class: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.instance_class = instance_class
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_class is not None:
+            result['InstanceClass'] = self.instance_class
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceClass') is not None:
+            self.instance_class = m.get('InstanceClass')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeDBInstanceSpecInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        cpu: str = None,
+        description: str = None,
+        memory: str = None,
+        request_id: str = None,
+    ):
+        self.cpu = cpu
+        self.description = description
+        self.memory = memory
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['CPU'] = self.cpu
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CPU') is not None:
+            self.cpu = m.get('CPU')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDBInstanceSpecInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDBInstanceSpecInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDBInstanceSpecInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDBInstanceSwitchLogRequest(TeaModel):
     def __init__(
         self,
@@ -12822,6 +13019,7 @@ class DescribeDBInstancesOverviewRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Specifies whether to display instance tags. Default value: False.
         self.show_tags = show_tags
         # The ID of the vSwitch to which the instance is connected.
         self.v_switch_id = v_switch_id
@@ -14173,6 +14371,7 @@ class DescribeHistoryTasksRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         status: str = None,
@@ -14191,12 +14390,14 @@ class DescribeHistoryTasksRequest(TeaModel):
         self.instance_id = instance_id
         # The instance type of the instance. Set the value to Instance.
         self.instance_type = instance_type
-        # The number of the page to return. The value must be a positive integer. Default value: 1
+        # The number of the page to return. The value must be a positive integer. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 10 to 100. Default value: 10
+        # The number of entries per page. Valid values: 10 to 100. Default value: 10.
         self.page_size = page_size
         # The region ID of the pending event. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The task status. Valid values:
@@ -14269,6 +14470,8 @@ class DescribeHistoryTasksRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -14301,6 +14504,8 @@ class DescribeHistoryTasksRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -14336,7 +14541,7 @@ class DescribeHistoryTasksResponseBodyItems(TeaModel):
         region_id: str = None,
         remain_time: int = None,
         start_time: str = None,
-        status: int = None,
+        status: str = None,
         task_detail: str = None,
         task_id: str = None,
         task_type: str = None,
@@ -14650,6 +14855,7 @@ class DescribeHistoryTasksStatRequest(TeaModel):
         from_start_time: str = None,
         instance_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         status: str = None,
@@ -14670,6 +14876,8 @@ class DescribeHistoryTasksStatRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The task status. Valid values:
@@ -14736,6 +14944,8 @@ class DescribeHistoryTasksStatRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -14762,6 +14972,8 @@ class DescribeHistoryTasksStatRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -18160,13 +18372,15 @@ class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance(Tea
         self.pricing_module = pricing_module
         # The promotion details.
         self.prom_detail_list = prom_detail_list
-        # The discount.
+        # The discounted price.
         self.stand_discount_price = stand_discount_price
         # The discount.
         self.stand_price = stand_price
         # The original price of the product.
         self.total_product_fee = total_product_fee
+        # The price type.
         self.price_type = price_type
+        # The unit of the price.
         self.price_unit = price_unit
 
     def validate(self):
@@ -18376,7 +18590,7 @@ class DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromot
         self.promotion_name = promotion_name
         # The promotion ID.
         self.promotion_option_no = promotion_option_no
-        # The IDs of the rules that correspond to the coupon.
+        # The promotion IDs.
         self.promotion_rule_id_list = promotion_rule_id_list
         # Indicates whether
         self.selected = selected
@@ -23436,10 +23650,8 @@ class MigrateToOtherZoneRequest(TeaModel):
     ):
         # The time when the instance is migrated to the destination zone. Valid values:
         # 
-        # *   **Immediately**: The instance is immediately migrated to the destination zone.
-        # *   **MaintainTime**: The instance is migrated during the maintenance period of the instance.
-        # 
-        # Default value: **Immediately**.
+        # *   **Immediately** (default): The instance is migrated immediately.
+        # *   **MaintainTime**: The instance is migrated during its maintenance window.
         self.effective_time = effective_time
         # The ID of the instance.
         # 
@@ -23603,6 +23815,13 @@ class ModifyAccountDescriptionRequest(TeaModel):
         # 
         # This parameter is required.
         self.account_name = account_name
+        # The type of the account whose description you can modify. Valid values:
+        # 
+        # *   **db**: shard account
+        # *   **cs**: ConfigServer account
+        # *   **normal** (default): replica set account (available)
+        # 
+        # >  You can set this parameter only to **normal**.
         self.character_type = character_type
         # The instance ID.
         # 
@@ -23737,6 +23956,7 @@ class ModifyActiveOperationTasksRequest(TeaModel):
         immediate_start: int = None,
         owner_account: str = None,
         owner_id: int = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         switch_time: str = None,
@@ -23757,6 +23977,8 @@ class ModifyActiveOperationTasksRequest(TeaModel):
         self.immediate_start = immediate_start
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The scheduled switching time that you want to specify. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -23783,6 +24005,8 @@ class ModifyActiveOperationTasksRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -23801,6 +24025,8 @@ class ModifyActiveOperationTasksRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
