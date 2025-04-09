@@ -1,3 +1,9 @@
+2025-04-09 Version: 4.0.1
+- Update API CreateServerGroup: add request parameters HealthCheckConfig.HealthCheckHttpVersion.
+- Update API ListServerGroups: add response parameters Body.ServerGroups.$.HealthCheck.HealthCheckHttpVersion.
+- Update API UpdateServerGroupAttribute: add request parameters HealthCheckConfig.HealthCheckHttpVersion.
+
+
 2025-02-07 Version: 4.0.0
 - Update API CreateListener: update param IdleTimeout.
 - Update API GetListenerHealthStatus: delete param MaxResults.

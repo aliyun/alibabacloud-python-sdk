@@ -1105,11 +1105,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a server group in a region.
         
-        @description    **protocol** specifies the protocol used to forward requests to the backend servers.
-        NLB instances support only backend server groups that use TCP, UDP, or SSL over TCP.
-        **CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the creation status of the task.
-        If the task is in the **Succeeded** status, the server group is created.
-        If the task is in the **Processing** status, the server group is being created.
+        @description *CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the creation status of the task.
+        - If the task is in the *Succeeded** status, the server group is created.
+        -    If the task is in the *Processing** status, the server group is being created.
         
         @param request: CreateServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1185,11 +1183,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a server group in a region.
         
-        @description    **protocol** specifies the protocol used to forward requests to the backend servers.
-        NLB instances support only backend server groups that use TCP, UDP, or SSL over TCP.
-        **CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the creation status of the task.
-        If the task is in the **Succeeded** status, the server group is created.
-        If the task is in the **Processing** status, the server group is being created.
+        @description *CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the creation status of the task.
+        - If the task is in the *Succeeded** status, the server group is created.
+        -    If the task is in the *Processing** status, the server group is being created.
         
         @param request: CreateServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1264,11 +1260,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a server group in a region.
         
-        @description    **protocol** specifies the protocol used to forward requests to the backend servers.
-        NLB instances support only backend server groups that use TCP, UDP, or SSL over TCP.
-        **CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the creation status of the task.
-        If the task is in the **Succeeded** status, the server group is created.
-        If the task is in the **Processing** status, the server group is being created.
+        @description *CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the creation status of the task.
+        - If the task is in the *Succeeded** status, the server group is created.
+        -    If the task is in the *Processing** status, the server group is being created.
         
         @param request: CreateServerGroupRequest
         @return: CreateServerGroupResponse
@@ -1283,11 +1277,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a server group in a region.
         
-        @description    **protocol** specifies the protocol used to forward requests to the backend servers.
-        NLB instances support only backend server groups that use TCP, UDP, or SSL over TCP.
-        **CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the creation status of the task.
-        If the task is in the **Succeeded** status, the server group is created.
-        If the task is in the **Processing** status, the server group is being created.
+        @description *CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the creation status of the task.
+        - If the task is in the *Succeeded** status, the server group is created.
+        -    If the task is in the *Processing** status, the server group is being created.
         
         @param request: CreateServerGroupRequest
         @return: CreateServerGroupResponse
@@ -1789,7 +1781,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DescribeHdMonitorRegionConfigResponse:
         """
-        @summary 查询秒级监控存储配置
+        @summary Queries the storage configurations of fine-grained monitoring.
         
         @param request: DescribeHdMonitorRegionConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1830,7 +1822,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DescribeHdMonitorRegionConfigResponse:
         """
-        @summary 查询秒级监控存储配置
+        @summary Queries the storage configurations of fine-grained monitoring.
         
         @param request: DescribeHdMonitorRegionConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1870,7 +1862,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DescribeHdMonitorRegionConfigRequest,
     ) -> nlb_20220430_models.DescribeHdMonitorRegionConfigResponse:
         """
-        @summary 查询秒级监控存储配置
+        @summary Queries the storage configurations of fine-grained monitoring.
         
         @param request: DescribeHdMonitorRegionConfigRequest
         @return: DescribeHdMonitorRegionConfigResponse
@@ -1883,7 +1875,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DescribeHdMonitorRegionConfigRequest,
     ) -> nlb_20220430_models.DescribeHdMonitorRegionConfigResponse:
         """
-        @summary 查询秒级监控存储配置
+        @summary Queries the storage configurations of fine-grained monitoring.
         
         @param request: DescribeHdMonitorRegionConfigRequest
         @return: DescribeHdMonitorRegionConfigResponse
@@ -2521,7 +2513,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.EnableLoadBalancerIpv6InternetResponse:
         """
-        @summary Changes the network type of the IPv6 address of a dual-stack NLB instance from private to the public.
+        @summary Changes the network type of the IPv6 address of a dual-stack Network Load Balancer (NLB) instance from internal-facing to Internet-facing.
         
         @param request: EnableLoadBalancerIpv6InternetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2568,7 +2560,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.EnableLoadBalancerIpv6InternetResponse:
         """
-        @summary Changes the network type of the IPv6 address of a dual-stack NLB instance from private to the public.
+        @summary Changes the network type of the IPv6 address of a dual-stack Network Load Balancer (NLB) instance from internal-facing to Internet-facing.
         
         @param request: EnableLoadBalancerIpv6InternetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2614,7 +2606,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.EnableLoadBalancerIpv6InternetRequest,
     ) -> nlb_20220430_models.EnableLoadBalancerIpv6InternetResponse:
         """
-        @summary Changes the network type of the IPv6 address of a dual-stack NLB instance from private to the public.
+        @summary Changes the network type of the IPv6 address of a dual-stack Network Load Balancer (NLB) instance from internal-facing to Internet-facing.
         
         @param request: EnableLoadBalancerIpv6InternetRequest
         @return: EnableLoadBalancerIpv6InternetResponse
@@ -2627,7 +2619,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.EnableLoadBalancerIpv6InternetRequest,
     ) -> nlb_20220430_models.EnableLoadBalancerIpv6InternetResponse:
         """
-        @summary Changes the network type of the IPv6 address of a dual-stack NLB instance from private to the public.
+        @summary Changes the network type of the IPv6 address of a dual-stack Network Load Balancer (NLB) instance from internal-facing to Internet-facing.
         
         @param request: EnableLoadBalancerIpv6InternetRequest
         @return: EnableLoadBalancerIpv6InternetResponse
@@ -3369,7 +3361,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListLoadBalancersResponse:
         """
-        @summary Queries the basic information about a Network Load Balancer (NLB) instance.
+        @summary Queries the basic information about Network Load Balancer (NLB) instances.
         
         @param request: ListLoadBalancersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3440,7 +3432,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListLoadBalancersResponse:
         """
-        @summary Queries the basic information about a Network Load Balancer (NLB) instance.
+        @summary Queries the basic information about Network Load Balancer (NLB) instances.
         
         @param request: ListLoadBalancersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3510,7 +3502,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListLoadBalancersRequest,
     ) -> nlb_20220430_models.ListLoadBalancersResponse:
         """
-        @summary Queries the basic information about a Network Load Balancer (NLB) instance.
+        @summary Queries the basic information about Network Load Balancer (NLB) instances.
         
         @param request: ListLoadBalancersRequest
         @return: ListLoadBalancersResponse
@@ -3523,7 +3515,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListLoadBalancersRequest,
     ) -> nlb_20220430_models.ListLoadBalancersResponse:
         """
-        @summary Queries the basic information about a Network Load Balancer (NLB) instance.
+        @summary Queries the basic information about Network Load Balancer (NLB) instances.
         
         @param request: ListLoadBalancersRequest
         @return: ListLoadBalancersResponse
@@ -4723,7 +4715,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.SetHdMonitorRegionConfigResponse:
         """
-        @summary 配置秒级监控存储
+        @summary Configures storage for fine-grained monitoring.
+        
+        @description This operation is used to configure a data warehouse for the fine-grained monitoring feature. If a listener in the current region has fine-grained monitoring enabled, you must disable fine-grained monitoring before you can configure a warehouse.
         
         @param request: SetHdMonitorRegionConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4768,7 +4762,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.SetHdMonitorRegionConfigResponse:
         """
-        @summary 配置秒级监控存储
+        @summary Configures storage for fine-grained monitoring.
+        
+        @description This operation is used to configure a data warehouse for the fine-grained monitoring feature. If a listener in the current region has fine-grained monitoring enabled, you must disable fine-grained monitoring before you can configure a warehouse.
         
         @param request: SetHdMonitorRegionConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4812,7 +4808,9 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.SetHdMonitorRegionConfigRequest,
     ) -> nlb_20220430_models.SetHdMonitorRegionConfigResponse:
         """
-        @summary 配置秒级监控存储
+        @summary Configures storage for fine-grained monitoring.
+        
+        @description This operation is used to configure a data warehouse for the fine-grained monitoring feature. If a listener in the current region has fine-grained monitoring enabled, you must disable fine-grained monitoring before you can configure a warehouse.
         
         @param request: SetHdMonitorRegionConfigRequest
         @return: SetHdMonitorRegionConfigResponse
@@ -4825,7 +4823,9 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.SetHdMonitorRegionConfigRequest,
     ) -> nlb_20220430_models.SetHdMonitorRegionConfigResponse:
         """
-        @summary 配置秒级监控存储
+        @summary Configures storage for fine-grained monitoring.
+        
+        @description This operation is used to configure a data warehouse for the fine-grained monitoring feature. If a listener in the current region has fine-grained monitoring enabled, you must disable fine-grained monitoring before you can configure a warehouse.
         
         @param request: SetHdMonitorRegionConfigRequest
         @return: SetHdMonitorRegionConfigResponse
@@ -4959,9 +4959,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.StartShiftLoadBalancerZonesResponse:
         """
-        @summary Removes the elastic IP address (EIP) or virtual IP address (VIP) from a zone.
+        @summary Removes the elastic IP address (EIP) or virtual IP address (VIP) used in a zone from the DNS record.
         
-        @description > If a Network Load Balancer (NLB) instance is deployed only in one zone, you cannot remove the NLB instance from the zone.
+        @description >  If the NLB instance is deployed in only one zone, you cannot remove the EIP or VIP from the DNS record.
         
         @param request: StartShiftLoadBalancerZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5010,9 +5010,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.StartShiftLoadBalancerZonesResponse:
         """
-        @summary Removes the elastic IP address (EIP) or virtual IP address (VIP) from a zone.
+        @summary Removes the elastic IP address (EIP) or virtual IP address (VIP) used in a zone from the DNS record.
         
-        @description > If a Network Load Balancer (NLB) instance is deployed only in one zone, you cannot remove the NLB instance from the zone.
+        @description >  If the NLB instance is deployed in only one zone, you cannot remove the EIP or VIP from the DNS record.
         
         @param request: StartShiftLoadBalancerZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5060,9 +5060,9 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.StartShiftLoadBalancerZonesRequest,
     ) -> nlb_20220430_models.StartShiftLoadBalancerZonesResponse:
         """
-        @summary Removes the elastic IP address (EIP) or virtual IP address (VIP) from a zone.
+        @summary Removes the elastic IP address (EIP) or virtual IP address (VIP) used in a zone from the DNS record.
         
-        @description > If a Network Load Balancer (NLB) instance is deployed only in one zone, you cannot remove the NLB instance from the zone.
+        @description >  If the NLB instance is deployed in only one zone, you cannot remove the EIP or VIP from the DNS record.
         
         @param request: StartShiftLoadBalancerZonesRequest
         @return: StartShiftLoadBalancerZonesResponse
@@ -5075,9 +5075,9 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.StartShiftLoadBalancerZonesRequest,
     ) -> nlb_20220430_models.StartShiftLoadBalancerZonesResponse:
         """
-        @summary Removes the elastic IP address (EIP) or virtual IP address (VIP) from a zone.
+        @summary Removes the elastic IP address (EIP) or virtual IP address (VIP) used in a zone from the DNS record.
         
-        @description > If a Network Load Balancer (NLB) instance is deployed only in one zone, you cannot remove the NLB instance from the zone.
+        @description >  If the NLB instance is deployed in only one zone, you cannot remove the EIP or VIP from the DNS record.
         
         @param request: StartShiftLoadBalancerZonesRequest
         @return: StartShiftLoadBalancerZonesResponse
