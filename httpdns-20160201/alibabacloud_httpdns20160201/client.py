@@ -73,10 +73,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            httpdns_20160201_models.AddDomainResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                httpdns_20160201_models.AddDomainResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                httpdns_20160201_models.AddDomainResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_domain_with_options_async(
         self,
@@ -110,10 +116,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            httpdns_20160201_models.AddDomainResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                httpdns_20160201_models.AddDomainResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                httpdns_20160201_models.AddDomainResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_domain(
         self,
@@ -173,10 +185,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            httpdns_20160201_models.DeleteDomainResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                httpdns_20160201_models.DeleteDomainResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                httpdns_20160201_models.DeleteDomainResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_domain_with_options_async(
         self,
@@ -210,10 +228,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            httpdns_20160201_models.DeleteDomainResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                httpdns_20160201_models.DeleteDomainResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                httpdns_20160201_models.DeleteDomainResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_domain(
         self,
@@ -273,10 +297,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            httpdns_20160201_models.DescribeDomainsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                httpdns_20160201_models.DescribeDomainsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                httpdns_20160201_models.DescribeDomainsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_domains_with_options_async(
         self,
@@ -310,10 +340,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            httpdns_20160201_models.DescribeDomainsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                httpdns_20160201_models.DescribeDomainsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                httpdns_20160201_models.DescribeDomainsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_domains(
         self,
@@ -360,10 +396,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            httpdns_20160201_models.GetAccountInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                httpdns_20160201_models.GetAccountInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                httpdns_20160201_models.GetAccountInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_account_info_with_options_async(
         self,
@@ -388,10 +430,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            httpdns_20160201_models.GetAccountInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                httpdns_20160201_models.GetAccountInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                httpdns_20160201_models.GetAccountInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_account_info(self) -> httpdns_20160201_models.GetAccountInfoResponse:
         """
@@ -443,10 +491,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            httpdns_20160201_models.GetResolveCountSummaryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                httpdns_20160201_models.GetResolveCountSummaryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                httpdns_20160201_models.GetResolveCountSummaryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_resolve_count_summary_with_options_async(
         self,
@@ -480,10 +534,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            httpdns_20160201_models.GetResolveCountSummaryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                httpdns_20160201_models.GetResolveCountSummaryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                httpdns_20160201_models.GetResolveCountSummaryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_resolve_count_summary(
         self,
@@ -545,10 +605,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            httpdns_20160201_models.GetResolveStatisticsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                httpdns_20160201_models.GetResolveStatisticsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                httpdns_20160201_models.GetResolveStatisticsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_resolve_statistics_with_options_async(
         self,
@@ -584,10 +650,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            httpdns_20160201_models.GetResolveStatisticsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                httpdns_20160201_models.GetResolveStatisticsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                httpdns_20160201_models.GetResolveStatisticsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_resolve_statistics(
         self,
@@ -647,10 +719,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            httpdns_20160201_models.ListDomainsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                httpdns_20160201_models.ListDomainsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                httpdns_20160201_models.ListDomainsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_domains_with_options_async(
         self,
@@ -688,10 +766,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            httpdns_20160201_models.ListDomainsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                httpdns_20160201_models.ListDomainsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                httpdns_20160201_models.ListDomainsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_domains(
         self,
@@ -753,10 +837,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            httpdns_20160201_models.RefreshResolveCacheResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                httpdns_20160201_models.RefreshResolveCacheResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                httpdns_20160201_models.RefreshResolveCacheResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def refresh_resolve_cache_with_options_async(
         self,
@@ -792,10 +882,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            httpdns_20160201_models.RefreshResolveCacheResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                httpdns_20160201_models.RefreshResolveCacheResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                httpdns_20160201_models.RefreshResolveCacheResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def refresh_resolve_cache(
         self,

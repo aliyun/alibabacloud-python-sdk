@@ -423,6 +423,8 @@ class GetAccountInfoResponseBodyAccountInfo(TeaModel):
         doh_resolve_all_enabled: bool = None,
         month_doh_resolve_count: int = None,
         month_free_count: int = None,
+        month_http_aes_resolve_count: int = None,
+        month_https_aes_resolve_count: int = None,
         month_https_resolve_count: int = None,
         month_resolve_count: int = None,
         package_count: int = None,
@@ -437,6 +439,8 @@ class GetAccountInfoResponseBodyAccountInfo(TeaModel):
         self.doh_resolve_all_enabled = doh_resolve_all_enabled
         self.month_doh_resolve_count = month_doh_resolve_count
         self.month_free_count = month_free_count
+        self.month_http_aes_resolve_count = month_http_aes_resolve_count
+        self.month_https_aes_resolve_count = month_https_aes_resolve_count
         self.month_https_resolve_count = month_https_resolve_count
         self.month_resolve_count = month_resolve_count
         self.package_count = package_count
@@ -465,6 +469,10 @@ class GetAccountInfoResponseBodyAccountInfo(TeaModel):
             result['MonthDohResolveCount'] = self.month_doh_resolve_count
         if self.month_free_count is not None:
             result['MonthFreeCount'] = self.month_free_count
+        if self.month_http_aes_resolve_count is not None:
+            result['MonthHttpAesResolveCount'] = self.month_http_aes_resolve_count
+        if self.month_https_aes_resolve_count is not None:
+            result['MonthHttpsAesResolveCount'] = self.month_https_aes_resolve_count
         if self.month_https_resolve_count is not None:
             result['MonthHttpsResolveCount'] = self.month_https_resolve_count
         if self.month_resolve_count is not None:
@@ -495,6 +503,10 @@ class GetAccountInfoResponseBodyAccountInfo(TeaModel):
             self.month_doh_resolve_count = m.get('MonthDohResolveCount')
         if m.get('MonthFreeCount') is not None:
             self.month_free_count = m.get('MonthFreeCount')
+        if m.get('MonthHttpAesResolveCount') is not None:
+            self.month_http_aes_resolve_count = m.get('MonthHttpAesResolveCount')
+        if m.get('MonthHttpsAesResolveCount') is not None:
+            self.month_https_aes_resolve_count = m.get('MonthHttpsAesResolveCount')
         if m.get('MonthHttpsResolveCount') is not None:
             self.month_https_resolve_count = m.get('MonthHttpsResolveCount')
         if m.get('MonthResolveCount') is not None:
@@ -631,14 +643,18 @@ class GetResolveCountSummaryResponseBodyResolveSummary(TeaModel):
         doh: int = None,
         http: int = None,
         http_6: int = None,
+        http_aes: str = None,
         https: int = None,
         https_6: int = None,
+        https_aes: str = None,
     ):
         self.doh = doh
         self.http = http
         self.http_6 = http_6
+        self.http_aes = http_aes
         self.https = https
         self.https_6 = https_6
+        self.https_aes = https_aes
 
     def validate(self):
         pass
@@ -655,10 +671,14 @@ class GetResolveCountSummaryResponseBodyResolveSummary(TeaModel):
             result['Http'] = self.http
         if self.http_6 is not None:
             result['Http6'] = self.http_6
+        if self.http_aes is not None:
+            result['HttpAes'] = self.http_aes
         if self.https is not None:
             result['Https'] = self.https
         if self.https_6 is not None:
             result['Https6'] = self.https_6
+        if self.https_aes is not None:
+            result['HttpsAes'] = self.https_aes
         return result
 
     def from_map(self, m: dict = None):
@@ -669,10 +689,14 @@ class GetResolveCountSummaryResponseBodyResolveSummary(TeaModel):
             self.http = m.get('Http')
         if m.get('Http6') is not None:
             self.http_6 = m.get('Http6')
+        if m.get('HttpAes') is not None:
+            self.http_aes = m.get('HttpAes')
         if m.get('Https') is not None:
             self.https = m.get('Https')
         if m.get('Https6') is not None:
             self.https_6 = m.get('Https6')
+        if m.get('HttpsAes') is not None:
+            self.https_aes = m.get('HttpsAes')
         return self
 
 
@@ -993,6 +1017,8 @@ class ListDomainsResponseBodyDomainInfosDomainInfo(TeaModel):
     def __init__(
         self,
         domain_name: str = None,
+        resolve_http_aes: int = None,
+        resolve_https_aes: int = None,
         resolved: int = None,
         resolved_6: int = None,
         resolved_doh: int = None,
@@ -1001,6 +1027,8 @@ class ListDomainsResponseBodyDomainInfosDomainInfo(TeaModel):
         time_modified: int = None,
     ):
         self.domain_name = domain_name
+        self.resolve_http_aes = resolve_http_aes
+        self.resolve_https_aes = resolve_https_aes
         self.resolved = resolved
         self.resolved_6 = resolved_6
         self.resolved_doh = resolved_doh
@@ -1019,6 +1047,10 @@ class ListDomainsResponseBodyDomainInfosDomainInfo(TeaModel):
         result = dict()
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
+        if self.resolve_http_aes is not None:
+            result['ResolveHttpAes'] = self.resolve_http_aes
+        if self.resolve_https_aes is not None:
+            result['ResolveHttpsAes'] = self.resolve_https_aes
         if self.resolved is not None:
             result['Resolved'] = self.resolved
         if self.resolved_6 is not None:
@@ -1037,6 +1069,10 @@ class ListDomainsResponseBodyDomainInfosDomainInfo(TeaModel):
         m = m or dict()
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
+        if m.get('ResolveHttpAes') is not None:
+            self.resolve_http_aes = m.get('ResolveHttpAes')
+        if m.get('ResolveHttpsAes') is not None:
+            self.resolve_https_aes = m.get('ResolveHttpsAes')
         if m.get('Resolved') is not None:
             self.resolved = m.get('Resolved')
         if m.get('Resolved6') is not None:

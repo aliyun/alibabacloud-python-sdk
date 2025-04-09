@@ -1,3 +1,12 @@
+2025-04-09 Version: 2.1.1
+- Update API GetAccountInfo: add response parameters Body.AccountInfo.MonthHttpAesResolveCount.
+- Update API GetAccountInfo: add response parameters Body.AccountInfo.MonthHttpsAesResolveCount.
+- Update API GetResolveCountSummary: add response parameters Body.ResolveSummary.HttpAes.
+- Update API GetResolveCountSummary: add response parameters Body.ResolveSummary.HttpsAes.
+- Update API ListDomains: add response parameters Body.DomainInfos.$.ResolveHttpAes.
+- Update API ListDomains: add response parameters Body.DomainInfos.$.ResolveHttpsAes.
+
+
 2024-12-24 Version: 2.1.0
 - Support API RefreshResolveCache.
 
