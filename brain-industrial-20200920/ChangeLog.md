@@ -1,3 +1,7 @@
+2025-04-09 Version: 2.0.0
+- Delete API OpenApiInvoke.
+
+
 2025-03-28 Version: 1.3.0
 - Support API AicsOpenApiInvoke.
 
