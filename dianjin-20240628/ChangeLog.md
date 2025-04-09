@@ -1,3 +1,7 @@
+2025-04-09 Version: 1.13.0
+- Support API GetDialogDetail.
+
+
 2025-04-02 Version: 1.12.2
 - Update API GetDialogAnalysisResult: add response parameters Body.data.dialogAnalysisRespList.$.analysisResp.dialogOpenAnalysis.
 - Update API GetDialogAnalysisResult: add response parameters Body.data.dialogAnalysisRespList.$.analysisResp.dialogProcessAnalysis.

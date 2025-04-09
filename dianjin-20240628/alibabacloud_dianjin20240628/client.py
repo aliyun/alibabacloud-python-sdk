@@ -2133,6 +2133,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_dialog_analysis_result_with_options_async(workspace_id, request, headers, runtime)
 
+    def get_dialog_detail_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetDialogDetailRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GetDialogDetailResponse:
+        """
+        @summary 获取异步任务的结果
+        
+        @param request: GetDialogDetailRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDialogDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.session_id):
+            query['sessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDialogDetail',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/virtualHuman/dialog/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dian_jin_20240628_models.GetDialogDetailResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dian_jin_20240628_models.GetDialogDetailResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_dialog_detail_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetDialogDetailRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GetDialogDetailResponse:
+        """
+        @summary 获取异步任务的结果
+        
+        @param request: GetDialogDetailRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDialogDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.session_id):
+            query['sessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDialogDetail',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/virtualHuman/dialog/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dian_jin_20240628_models.GetDialogDetailResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dian_jin_20240628_models.GetDialogDetailResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_dialog_detail(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetDialogDetailRequest,
+    ) -> dian_jin_20240628_models.GetDialogDetailResponse:
+        """
+        @summary 获取异步任务的结果
+        
+        @param request: GetDialogDetailRequest
+        @return: GetDialogDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_dialog_detail_with_options(workspace_id, request, headers, runtime)
+
+    async def get_dialog_detail_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetDialogDetailRequest,
+    ) -> dian_jin_20240628_models.GetDialogDetailResponse:
+        """
+        @summary 获取异步任务的结果
+        
+        @param request: GetDialogDetailRequest
+        @return: GetDialogDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_dialog_detail_with_options_async(workspace_id, request, headers, runtime)
+
     def get_document_chunk_list_with_options(
         self,
         workspace_id: str,
