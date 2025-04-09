@@ -488,8 +488,10 @@ class CreateAppRequest(TeaModel):
 class CreateAppResponseBodyResult(TeaModel):
     def __init__(
         self,
+        app_id: str = None,
         instane_id: str = None,
     ):
+        self.app_id = app_id
         self.instane_id = instane_id
 
     def validate(self):
@@ -501,12 +503,16 @@ class CreateAppResponseBodyResult(TeaModel):
             return _map
 
         result = dict()
+        if self.app_id is not None:
+            result['appId'] = self.app_id
         if self.instane_id is not None:
             result['instaneId'] = self.instane_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appId') is not None:
+            self.app_id = m.get('appId')
         if m.get('instaneId') is not None:
             self.instane_id = m.get('instaneId')
         return self
