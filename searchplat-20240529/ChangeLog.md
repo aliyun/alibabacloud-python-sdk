@@ -1,3 +1,7 @@
+2025-04-09 Version: 2.0.1
+- Update API CreateDocumentAnalyzeTask: add request parameters body.strategy.
+
+
 2025-03-21 Version: 2.0.0
 - Support API GetWebSearch.
 - Update API GetTextGeneration: update param body.

@@ -48,6 +48,8 @@ class Client(OpenApiClient):
             body['document'] = request.document
         if not UtilClient.is_unset(request.output):
             body['output'] = request.output
+        if not UtilClient.is_unset(request.strategy):
+            body['strategy'] = request.strategy
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -90,6 +92,8 @@ class Client(OpenApiClient):
             body['document'] = request.document
         if not UtilClient.is_unset(request.output):
             body['output'] = request.output
+        if not UtilClient.is_unset(request.strategy):
+            body['strategy'] = request.strategy
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)

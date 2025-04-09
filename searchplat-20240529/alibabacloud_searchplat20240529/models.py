@@ -76,20 +76,51 @@ class CreateDocumentAnalyzeTaskRequestOutput(TeaModel):
         return self
 
 
+class CreateDocumentAnalyzeTaskRequestStrategy(TeaModel):
+    def __init__(
+        self,
+        enable_semantic: bool = None,
+    ):
+        self.enable_semantic = enable_semantic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_semantic is not None:
+            result['enable_semantic'] = self.enable_semantic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable_semantic') is not None:
+            self.enable_semantic = m.get('enable_semantic')
+        return self
+
+
 class CreateDocumentAnalyzeTaskRequest(TeaModel):
     def __init__(
         self,
         document: CreateDocumentAnalyzeTaskRequestDocument = None,
         output: CreateDocumentAnalyzeTaskRequestOutput = None,
+        strategy: CreateDocumentAnalyzeTaskRequestStrategy = None,
     ):
         self.document = document
         self.output = output
+        self.strategy = strategy
 
     def validate(self):
         if self.document:
             self.document.validate()
         if self.output:
             self.output.validate()
+        if self.strategy:
+            self.strategy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -101,6 +132,8 @@ class CreateDocumentAnalyzeTaskRequest(TeaModel):
             result['document'] = self.document.to_map()
         if self.output is not None:
             result['output'] = self.output.to_map()
+        if self.strategy is not None:
+            result['strategy'] = self.strategy.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -111,6 +144,9 @@ class CreateDocumentAnalyzeTaskRequest(TeaModel):
         if m.get('output') is not None:
             temp_model = CreateDocumentAnalyzeTaskRequestOutput()
             self.output = temp_model.from_map(m['output'])
+        if m.get('strategy') is not None:
+            temp_model = CreateDocumentAnalyzeTaskRequestStrategy()
+            self.strategy = temp_model.from_map(m['strategy'])
         return self
 
 
