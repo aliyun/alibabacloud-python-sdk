@@ -8818,10 +8818,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CreateReplicationLinkResponse:
         """
-        @summary Creates a disaster recovery instance for an ApsaraDB RDS instance and configures a data synchronization link.
+        @summary Creates a data synchronization task for a disaster recovery (DR) ApsaraDB RDS instance.
         
-        @description ### [](#)Supported database engine
+        @description ### [](#)Supported database engines
         PostgreSQL
+        SQL Server
+        >  The parameters vary based on database engines.
         
         @param request: CreateReplicationLinkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8884,10 +8886,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CreateReplicationLinkResponse:
         """
-        @summary Creates a disaster recovery instance for an ApsaraDB RDS instance and configures a data synchronization link.
+        @summary Creates a data synchronization task for a disaster recovery (DR) ApsaraDB RDS instance.
         
-        @description ### [](#)Supported database engine
+        @description ### [](#)Supported database engines
         PostgreSQL
+        SQL Server
+        >  The parameters vary based on database engines.
         
         @param request: CreateReplicationLinkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8949,10 +8953,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.CreateReplicationLinkRequest,
     ) -> rds_20140815_models.CreateReplicationLinkResponse:
         """
-        @summary Creates a disaster recovery instance for an ApsaraDB RDS instance and configures a data synchronization link.
+        @summary Creates a data synchronization task for a disaster recovery (DR) ApsaraDB RDS instance.
         
-        @description ### [](#)Supported database engine
+        @description ### [](#)Supported database engines
         PostgreSQL
+        SQL Server
+        >  The parameters vary based on database engines.
         
         @param request: CreateReplicationLinkRequest
         @return: CreateReplicationLinkResponse
@@ -8965,10 +8971,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.CreateReplicationLinkRequest,
     ) -> rds_20140815_models.CreateReplicationLinkResponse:
         """
-        @summary Creates a disaster recovery instance for an ApsaraDB RDS instance and configures a data synchronization link.
+        @summary Creates a data synchronization task for a disaster recovery (DR) ApsaraDB RDS instance.
         
-        @description ### [](#)Supported database engine
+        @description ### [](#)Supported database engines
         PostgreSQL
+        SQL Server
+        >  The parameters vary based on database engines.
         
         @param request: CreateReplicationLinkRequest
         @return: CreateReplicationLinkResponse
@@ -12826,10 +12834,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DeleteReplicationLinkResponse:
         """
-        @summary Deletes the data synchronization link of a disaster recovery RDS instance and promotes the disaster recovery instance to the primary instance.
+        @summary Deletes the data synchronization link for a disaster recovery (DR) ApsaraDB RDS instance and promotes the DR instance to the primary instance.
         
-        @description ### [](#)Supported database engine
+        @description ### [](#)Supported database engines
         PostgreSQL
+        SQL Server
         
         @param request: DeleteReplicationLinkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12874,10 +12883,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DeleteReplicationLinkResponse:
         """
-        @summary Deletes the data synchronization link of a disaster recovery RDS instance and promotes the disaster recovery instance to the primary instance.
+        @summary Deletes the data synchronization link for a disaster recovery (DR) ApsaraDB RDS instance and promotes the DR instance to the primary instance.
         
-        @description ### [](#)Supported database engine
+        @description ### [](#)Supported database engines
         PostgreSQL
+        SQL Server
         
         @param request: DeleteReplicationLinkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12921,10 +12931,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DeleteReplicationLinkRequest,
     ) -> rds_20140815_models.DeleteReplicationLinkResponse:
         """
-        @summary Deletes the data synchronization link of a disaster recovery RDS instance and promotes the disaster recovery instance to the primary instance.
+        @summary Deletes the data synchronization link for a disaster recovery (DR) ApsaraDB RDS instance and promotes the DR instance to the primary instance.
         
-        @description ### [](#)Supported database engine
+        @description ### [](#)Supported database engines
         PostgreSQL
+        SQL Server
         
         @param request: DeleteReplicationLinkRequest
         @return: DeleteReplicationLinkResponse
@@ -12937,10 +12948,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DeleteReplicationLinkRequest,
     ) -> rds_20140815_models.DeleteReplicationLinkResponse:
         """
-        @summary Deletes the data synchronization link of a disaster recovery RDS instance and promotes the disaster recovery instance to the primary instance.
+        @summary Deletes the data synchronization link for a disaster recovery (DR) ApsaraDB RDS instance and promotes the DR instance to the primary instance.
         
-        @description ### [](#)Supported database engine
+        @description ### [](#)Supported database engines
         PostgreSQL
+        SQL Server
         
         @param request: DeleteReplicationLinkRequest
         @return: DeleteReplicationLinkResponse
@@ -29492,6 +29504,242 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_rcinstance_attribute_with_options_async(request, runtime)
 
+    def describe_rcinstance_type_families_with_options(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceTypeFamiliesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRCInstanceTypeFamiliesResponse:
+        """
+        @summary Queries the instance families of RDS Custom instances.
+        
+        @param request: DescribeRCInstanceTypeFamiliesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRCInstanceTypeFamiliesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRCInstanceTypeFamilies',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rds_20140815_models.DescribeRCInstanceTypeFamiliesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rds_20140815_models.DescribeRCInstanceTypeFamiliesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_rcinstance_type_families_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceTypeFamiliesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRCInstanceTypeFamiliesResponse:
+        """
+        @summary Queries the instance families of RDS Custom instances.
+        
+        @param request: DescribeRCInstanceTypeFamiliesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRCInstanceTypeFamiliesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRCInstanceTypeFamilies',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rds_20140815_models.DescribeRCInstanceTypeFamiliesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rds_20140815_models.DescribeRCInstanceTypeFamiliesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_rcinstance_type_families(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceTypeFamiliesRequest,
+    ) -> rds_20140815_models.DescribeRCInstanceTypeFamiliesResponse:
+        """
+        @summary Queries the instance families of RDS Custom instances.
+        
+        @param request: DescribeRCInstanceTypeFamiliesRequest
+        @return: DescribeRCInstanceTypeFamiliesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rcinstance_type_families_with_options(request, runtime)
+
+    async def describe_rcinstance_type_families_async(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceTypeFamiliesRequest,
+    ) -> rds_20140815_models.DescribeRCInstanceTypeFamiliesResponse:
+        """
+        @summary Queries the instance families of RDS Custom instances.
+        
+        @param request: DescribeRCInstanceTypeFamiliesRequest
+        @return: DescribeRCInstanceTypeFamiliesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rcinstance_type_families_with_options_async(request, runtime)
+
+    def describe_rcinstance_types_with_options(
+        self,
+        tmp_req: rds_20140815_models.DescribeRCInstanceTypesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRCInstanceTypesResponse:
+        """
+        @summary 查询RDS Custom规格信息
+        
+        @param tmp_req: DescribeRCInstanceTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRCInstanceTypesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.DescribeRCInstanceTypesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_type):
+            request.instance_type_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_type, 'InstanceType', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.instance_type_shrink):
+            query['InstanceType'] = request.instance_type_shrink
+        if not UtilClient.is_unset(request.instance_type_family):
+            query['InstanceTypeFamily'] = request.instance_type_family
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRCInstanceTypes',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rds_20140815_models.DescribeRCInstanceTypesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rds_20140815_models.DescribeRCInstanceTypesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_rcinstance_types_with_options_async(
+        self,
+        tmp_req: rds_20140815_models.DescribeRCInstanceTypesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRCInstanceTypesResponse:
+        """
+        @summary 查询RDS Custom规格信息
+        
+        @param tmp_req: DescribeRCInstanceTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRCInstanceTypesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.DescribeRCInstanceTypesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_type):
+            request.instance_type_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_type, 'InstanceType', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.instance_type_shrink):
+            query['InstanceType'] = request.instance_type_shrink
+        if not UtilClient.is_unset(request.instance_type_family):
+            query['InstanceTypeFamily'] = request.instance_type_family
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRCInstanceTypes',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rds_20140815_models.DescribeRCInstanceTypesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rds_20140815_models.DescribeRCInstanceTypesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_rcinstance_types(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceTypesRequest,
+    ) -> rds_20140815_models.DescribeRCInstanceTypesResponse:
+        """
+        @summary 查询RDS Custom规格信息
+        
+        @param request: DescribeRCInstanceTypesRequest
+        @return: DescribeRCInstanceTypesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rcinstance_types_with_options(request, runtime)
+
+    async def describe_rcinstance_types_async(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceTypesRequest,
+    ) -> rds_20140815_models.DescribeRCInstanceTypesResponse:
+        """
+        @summary 查询RDS Custom规格信息
+        
+        @param request: DescribeRCInstanceTypesRequest
+        @return: DescribeRCInstanceTypesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rcinstance_types_with_options_async(request, runtime)
+
     def describe_rcinstance_vnc_url_with_options(
         self,
         request: rds_20140815_models.DescribeRCInstanceVncUrlRequest,
@@ -42212,13 +42460,14 @@ class Client(OpenApiClient):
         """
         @summary Changes the instance type and storage capacity of an ApsaraDB RDS instance.
         
-        @description ### Supported database engines
+        @description ### [](#)Supported database engines
         MySQL
         PostgreSQL
         SQL Server
         MariaDB
-        ### References
-        > Fees are generated if the call is successful. Before you call this operation, carefully read the following documentation:
+        ### [](#)Billing details
+        [Fees for specification changes](https://help.aliyun.com/document_detail/57178.html) are generated if the call is successful. Before you call this operation, carefully read the following topics.
+        ### [](#)References
         [Change the specifications of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96061.html)
         [Change the specifications of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96750.html)
         [Change the specifications of an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95665.html)
@@ -42331,13 +42580,14 @@ class Client(OpenApiClient):
         """
         @summary Changes the instance type and storage capacity of an ApsaraDB RDS instance.
         
-        @description ### Supported database engines
+        @description ### [](#)Supported database engines
         MySQL
         PostgreSQL
         SQL Server
         MariaDB
-        ### References
-        > Fees are generated if the call is successful. Before you call this operation, carefully read the following documentation:
+        ### [](#)Billing details
+        [Fees for specification changes](https://help.aliyun.com/document_detail/57178.html) are generated if the call is successful. Before you call this operation, carefully read the following topics.
+        ### [](#)References
         [Change the specifications of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96061.html)
         [Change the specifications of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96750.html)
         [Change the specifications of an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95665.html)
@@ -42449,13 +42699,14 @@ class Client(OpenApiClient):
         """
         @summary Changes the instance type and storage capacity of an ApsaraDB RDS instance.
         
-        @description ### Supported database engines
+        @description ### [](#)Supported database engines
         MySQL
         PostgreSQL
         SQL Server
         MariaDB
-        ### References
-        > Fees are generated if the call is successful. Before you call this operation, carefully read the following documentation:
+        ### [](#)Billing details
+        [Fees for specification changes](https://help.aliyun.com/document_detail/57178.html) are generated if the call is successful. Before you call this operation, carefully read the following topics.
+        ### [](#)References
         [Change the specifications of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96061.html)
         [Change the specifications of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96750.html)
         [Change the specifications of an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95665.html)
@@ -42474,13 +42725,14 @@ class Client(OpenApiClient):
         """
         @summary Changes the instance type and storage capacity of an ApsaraDB RDS instance.
         
-        @description ### Supported database engines
+        @description ### [](#)Supported database engines
         MySQL
         PostgreSQL
         SQL Server
         MariaDB
-        ### References
-        > Fees are generated if the call is successful. Before you call this operation, carefully read the following documentation:
+        ### [](#)Billing details
+        [Fees for specification changes](https://help.aliyun.com/document_detail/57178.html) are generated if the call is successful. Before you call this operation, carefully read the following topics.
+        ### [](#)References
         [Change the specifications of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96061.html)
         [Change the specifications of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96750.html)
         [Change the specifications of an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95665.html)
@@ -45864,6 +46116,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_parameter_group_with_options_async(request, runtime)
 
+    def modify_rcdisk_spec_with_options(
+        self,
+        request: rds_20140815_models.ModifyRCDiskSpecRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyRCDiskSpecResponse:
+        """
+        @summary 变更云盘类型或性能级别
+        
+        @param request: ModifyRCDiskSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyRCDiskSpecResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.disk_category):
+            query['DiskCategory'] = request.disk_category
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.performance_level):
+            query['PerformanceLevel'] = request.performance_level
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyRCDiskSpec',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rds_20140815_models.ModifyRCDiskSpecResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rds_20140815_models.ModifyRCDiskSpecResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_rcdisk_spec_with_options_async(
+        self,
+        request: rds_20140815_models.ModifyRCDiskSpecRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyRCDiskSpecResponse:
+        """
+        @summary 变更云盘类型或性能级别
+        
+        @param request: ModifyRCDiskSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyRCDiskSpecResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.disk_category):
+            query['DiskCategory'] = request.disk_category
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.performance_level):
+            query['PerformanceLevel'] = request.performance_level
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyRCDiskSpec',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rds_20140815_models.ModifyRCDiskSpecResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rds_20140815_models.ModifyRCDiskSpecResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_rcdisk_spec(
+        self,
+        request: rds_20140815_models.ModifyRCDiskSpecRequest,
+    ) -> rds_20140815_models.ModifyRCDiskSpecResponse:
+        """
+        @summary 变更云盘类型或性能级别
+        
+        @param request: ModifyRCDiskSpecRequest
+        @return: ModifyRCDiskSpecResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_rcdisk_spec_with_options(request, runtime)
+
+    async def modify_rcdisk_spec_async(
+        self,
+        request: rds_20140815_models.ModifyRCDiskSpecRequest,
+    ) -> rds_20140815_models.ModifyRCDiskSpecResponse:
+        """
+        @summary 变更云盘类型或性能级别
+        
+        @param request: ModifyRCDiskSpecRequest
+        @return: ModifyRCDiskSpecResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_rcdisk_spec_with_options_async(request, runtime)
+
     def modify_rcinstance_with_options(
         self,
         request: rds_20140815_models.ModifyRCInstanceRequest,
@@ -49070,7 +49450,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.RebootRCInstancesResponse:
         """
-        @summary 批量重启RC实例
+        @summary Restarts multiple RDS Custom instances at a time.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
         
         @param tmp_req: RebootRCInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49121,7 +49504,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.RebootRCInstancesResponse:
         """
-        @summary 批量重启RC实例
+        @summary Restarts multiple RDS Custom instances at a time.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
         
         @param tmp_req: RebootRCInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49171,7 +49557,10 @@ class Client(OpenApiClient):
         request: rds_20140815_models.RebootRCInstancesRequest,
     ) -> rds_20140815_models.RebootRCInstancesResponse:
         """
-        @summary 批量重启RC实例
+        @summary Restarts multiple RDS Custom instances at a time.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
         
         @param request: RebootRCInstancesRequest
         @return: RebootRCInstancesResponse
@@ -49184,7 +49573,10 @@ class Client(OpenApiClient):
         request: rds_20140815_models.RebootRCInstancesRequest,
     ) -> rds_20140815_models.RebootRCInstancesResponse:
         """
-        @summary 批量重启RC实例
+        @summary Restarts multiple RDS Custom instances at a time.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
         
         @param request: RebootRCInstancesRequest
         @return: RebootRCInstancesResponse
@@ -54142,7 +54534,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.SwitchReplicationLinkResponse:
         """
-        @summary 切换到灾备实例
+        @summary Switches the data synchronization link to synchronize data from a disaster recovery (DR) instance to the primary ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
         
         @param request: SwitchReplicationLinkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -54189,7 +54584,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.SwitchReplicationLinkResponse:
         """
-        @summary 切换到灾备实例
+        @summary Switches the data synchronization link to synchronize data from a disaster recovery (DR) instance to the primary ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
         
         @param request: SwitchReplicationLinkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -54235,7 +54633,10 @@ class Client(OpenApiClient):
         request: rds_20140815_models.SwitchReplicationLinkRequest,
     ) -> rds_20140815_models.SwitchReplicationLinkResponse:
         """
-        @summary 切换到灾备实例
+        @summary Switches the data synchronization link to synchronize data from a disaster recovery (DR) instance to the primary ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
         
         @param request: SwitchReplicationLinkRequest
         @return: SwitchReplicationLinkResponse
@@ -54248,7 +54649,10 @@ class Client(OpenApiClient):
         request: rds_20140815_models.SwitchReplicationLinkRequest,
     ) -> rds_20140815_models.SwitchReplicationLinkResponse:
         """
-        @summary 切换到灾备实例
+        @summary Switches the data synchronization link to synchronize data from a disaster recovery (DR) instance to the primary ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
         
         @param request: SwitchReplicationLinkRequest
         @return: SwitchReplicationLinkResponse

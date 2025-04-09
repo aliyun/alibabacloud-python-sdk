@@ -5708,11 +5708,12 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # > This parameter is available when you set the **InstanceNetworkType** parameter to **VPC**.
         self.vpcid = vpcid
-        # The vSwitch ID. The vSwitch must belong to the zone that is specified by **ZoneId**.
+        # The vSwitch ID.
         # 
-        # *   If you set **InstanceNetworkType** to **VPC**, you must also specify this parameter.
-        # *   If you set the **ZoneSlaveId1** parameter to a value that is not **Auto**, you must specify the IDs of two vSwitches for this parameter and separate the IDs with a comma (,). The ZoneSlaveId1 parameter specifies the zone ID of the secondary node.
-        # *   The value cannot contain `spaces`, exclamation points `(!)`, or special characters such as number signs `(#)`, dollar signs `($)`, ampersands `(&)`, and percent signs `(%)`.
+        # *   **Relations with zones**: Specify the vSwitch ID based on the zones in which the vSwitch belongs to. If you specify two vSwitch IDs, make sure that the vSwitch IDs match the zone IDs specified by the ZoneId and ZoneIdSlave1 parameters.
+        # *   **Limits on the network type**: Set **InstanceNetworkType** to **VPC**.
+        # *   **Limits on multiple vSwitch IDs**: If you set **ZoneSlaveId1** to a value that is not **Auto**, you must specify the IDs of two vSwitches for this parameter and separate the IDs with a comma (,).
+        # *   **Limits on characters**: The value cannot contain `spaces` or the following characters: `!` `#` `￥` `&` `%`
         self.v_switch_id = v_switch_id
         # The entries in the whitelist. If you enter multiple IP addresses or CIDR blocks, you must separate the IP addresses or CIDR blocks with commas (,). Do not add spaces preceding or following the commas. Example: `192.168.0.1,172.16.213.9`.
         self.whitelist_template_list = whitelist_template_list
@@ -6488,11 +6489,12 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # 
         # > This parameter is available when you set the **InstanceNetworkType** parameter to **VPC**.
         self.vpcid = vpcid
-        # The vSwitch ID. The vSwitch must belong to the zone that is specified by **ZoneId**.
+        # The vSwitch ID.
         # 
-        # *   If you set **InstanceNetworkType** to **VPC**, you must also specify this parameter.
-        # *   If you set the **ZoneSlaveId1** parameter to a value that is not **Auto**, you must specify the IDs of two vSwitches for this parameter and separate the IDs with a comma (,). The ZoneSlaveId1 parameter specifies the zone ID of the secondary node.
-        # *   The value cannot contain `spaces`, exclamation points `(!)`, or special characters such as number signs `(#)`, dollar signs `($)`, ampersands `(&)`, and percent signs `(%)`.
+        # *   **Relations with zones**: Specify the vSwitch ID based on the zones in which the vSwitch belongs to. If you specify two vSwitch IDs, make sure that the vSwitch IDs match the zone IDs specified by the ZoneId and ZoneIdSlave1 parameters.
+        # *   **Limits on the network type**: Set **InstanceNetworkType** to **VPC**.
+        # *   **Limits on multiple vSwitch IDs**: If you set **ZoneSlaveId1** to a value that is not **Auto**, you must specify the IDs of two vSwitches for this parameter and separate the IDs with a comma (,).
+        # *   **Limits on characters**: The value cannot contain `spaces` or the following characters: `!` `#` `￥` `&` `%`
         self.v_switch_id = v_switch_id
         # The entries in the whitelist. If you enter multiple IP addresses or CIDR blocks, you must separate the IP addresses or CIDR blocks with commas (,). Do not add spaces preceding or following the commas. Example: `192.168.0.1,172.16.213.9`.
         self.whitelist_template_list = whitelist_template_list
@@ -11688,7 +11690,7 @@ class CreateRCDiskRequest(TeaModel):
         # *   **cloud** (default): basic disk
         # *   **cloud_efficiency**: ultra disk.
         # *   **cloud_ssd**: standard SSD.
-        # *   **cloud_essd**: Enterprise SSD (ESSD).
+        # *   **cloud_essd**: ESSD.
         # *   **cloud_auto**: ESSD AutoPL disk
         # *   **cloud_essd_entry**: ESSD Entry disk
         # *   **elastic_ephemeral_disk_standard**: standard elastic ephemeral disk
@@ -11745,8 +11747,6 @@ class CreateRCDiskRequest(TeaModel):
         # 
         # *   If the size of the snapshot specified by `SnapshotId` is larger than the value of `Size`, the size of the created disk is equal to the size of the snapshot.
         # *   If the size of the snapshot specified by `SnapshotId` is smaller than the value of `Size`, the size of the created disk is equal to the value of `Size`.
-        # 
-        # This parameter is required.
         self.size = size
         # The snapshot that you want to use to create the disk. Snapshots that were created on or before July 15, 2013 cannot be used to create disks. The following limits apply to `SnapshotId` and `Size`:
         # 
@@ -13441,14 +13441,14 @@ class CreateReplicationLinkRequest(TeaModel):
         task_id: int = None,
         task_name: str = None,
     ):
-        # The ID of the instance.
+        # The ID of the DR instance.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform a dry run before the system creates the DR instance. Valid values:
         # 
-        # *   **true**: performs a dry run but does not create the instance. The system checks items such as the request parameters, request format, service limits, and available resources.
-        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, the instance is created.
+        # *   **true**: performs a dry run but does not create the instance. The system checks the request parameters, request syntax, limits, and available resources.
+        # *   **false** (default): performs a dry run and the actual request. If the request passes the dry run, the instance is directly created.
         # 
         # This parameter is required.
         self.dry_run = dry_run
@@ -13456,27 +13456,24 @@ class CreateReplicationLinkRequest(TeaModel):
         self.replicator_account = replicator_account
         # The password of the account.
         self.replicator_password = replicator_password
-        # The endpoint of the source instance.
+        # The endpoint of the source ApsaraDB RDS for PostgreSQL instance or the IP address of the source ApsaraDB RDS for SQL Server instance.
         self.source_address = source_address
         # The type of the source instance. Valid values:
         # 
-        # *   **other**: other instances
-        # *   **aliyunRDS**: an ApsaraDB RDS instance
+        # *   **other**: other instances. **SQL Server instances are not supported.**\
+        # *   **aliyunRDS**: an ApsaraDB RDS instance.
         self.source_category = source_category
-        # The name of the source instance.
-        # 
-        # >  This parameter is required when you set the **SourceCategory** parameter to **aliyunRDS**.
+        # The name of the source instance. If you set **SourceCategory** to **aliyunRDS**, this parameter is required.
         self.source_instance_name = source_instance_name
-        # The region ID of the source instance.
-        # 
-        # >  This parameter is required when you set the **SourceCategory** parameter to **aliyunRDS**.
+        # The region ID of the source instance. If you set **SourceCategory** to **aliyunRDS**, this parameter is required.
         self.source_instance_region_id = source_instance_region_id
         # The port of the source instance.
         self.source_port = source_port
+        # The IP address of the DR instance of the ApsaraDB RDS for SQL Server instance.
         self.target_address = target_address
         # The task ID of the successful dry run.
         self.task_id = task_id
-        # The name of the task. You can specify a custom task name. If you do not specify this parameter, ApsaraDB RDS automatically generates a task name.
+        # The task name of the dry run. You can specify a custom task name. If you do not specify this parameter, ApsaraDB RDS automatically generates a task name.
         self.task_name = task_name
 
     def validate(self):
@@ -13551,13 +13548,13 @@ class CreateReplicationLinkResponseBody(TeaModel):
         task_id: int = None,
         task_name: str = None,
     ):
-        # The ID of the instance.
+        # The ID of the DR instance.
         self.dbinstance_id = dbinstance_id
         # The request ID.
         self.request_id = request_id
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
-        # The name of the task.
+        # The task name.
         self.task_name = task_name
 
     def validate(self):
@@ -17511,11 +17508,11 @@ class DeleteReplicationLinkRequest(TeaModel):
         promote_to_master: bool = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the instance.
+        # The ID of the DR instance.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Specifies whether to promote the disaster recovery instance to the primary instance. Valid values:
+        # Specifies whether to delete the data synchronization link between the DR instance and the primary instance and promote the DR instance to the primary instance. Valid values:
         # 
         # *   **true**\
         # *   **false**\
@@ -17560,13 +17557,13 @@ class DeleteReplicationLinkResponseBody(TeaModel):
         task_id: int = None,
         task_name: str = None,
     ):
-        # The ID of the instance.
+        # The ID of the DR instance.
         self.dbinstance_id = dbinstance_id
         # The request ID.
         self.request_id = request_id
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
-        # The name of the task.
+        # The task name.
         self.task_name = task_name
 
     def validate(self):
@@ -27385,6 +27382,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         port: str = None,
         proxy_type: int = None,
         read_only_dbinstance_ids: DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeReadOnlyDBInstanceIds = None,
+        read_only_status: str = None,
         readonly_instance_sqldelayed_time: str = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -27614,6 +27612,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.proxy_type = proxy_type
         # The IDs of the read-only instances that are attached to the primary instance.
         self.read_only_dbinstance_ids = read_only_dbinstance_ids
+        self.read_only_status = read_only_status
         # The latency at which the system replicates data to read-only instances. The system replicates data from the primary instance to the read-only instances at the latency that is specified by the **ReadonlyInstanceSQLDelayedTime** parameter. Unit: seconds.
         self.readonly_instance_sqldelayed_time = readonly_instance_sqldelayed_time
         # The region ID.
@@ -27814,6 +27813,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             result['ProxyType'] = self.proxy_type
         if self.read_only_dbinstance_ids is not None:
             result['ReadOnlyDBInstanceIds'] = self.read_only_dbinstance_ids.to_map()
+        if self.read_only_status is not None:
+            result['ReadOnlyStatus'] = self.read_only_status
         if self.readonly_instance_sqldelayed_time is not None:
             result['ReadonlyInstanceSQLDelayedTime'] = self.readonly_instance_sqldelayed_time
         if self.region_id is not None:
@@ -27988,6 +27989,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         if m.get('ReadOnlyDBInstanceIds') is not None:
             temp_model = DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeReadOnlyDBInstanceIds()
             self.read_only_dbinstance_ids = temp_model.from_map(m['ReadOnlyDBInstanceIds'])
+        if m.get('ReadOnlyStatus') is not None:
+            self.read_only_status = m.get('ReadOnlyStatus')
         if m.get('ReadonlyInstanceSQLDelayedTime') is not None:
             self.readonly_instance_sqldelayed_time = m.get('ReadonlyInstanceSQLDelayedTime')
         if m.get('RegionId') is not None:
@@ -53186,6 +53189,7 @@ class DescribeRCInstanceAttributeResponseBodyVpcAttributes(TeaModel):
 class DescribeRCInstanceAttributeResponseBody(TeaModel):
     def __init__(
         self,
+        auto_renew: bool = None,
         cluster_id: str = None,
         cpu: int = None,
         create_mode: int = None,
@@ -53232,6 +53236,7 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
         vpc_attributes: DescribeRCInstanceAttributeResponseBodyVpcAttributes = None,
         zone_id: str = None,
     ):
+        self.auto_renew = auto_renew
         # The ID of the cluster to which the instance belongs.
         # 
         # >  This parameter will be deprecated. We recommend that you use other parameters to ensure compatibility.
@@ -53375,6 +53380,8 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         if self.cpu is not None:
@@ -53469,6 +53476,8 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         if m.get('Cpu') is not None:
@@ -53609,6 +53618,441 @@ class DescribeRCInstanceAttributeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRCInstanceAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRCInstanceTypeFamiliesRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        # The region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeRCInstanceTypeFamiliesResponseBodyInstanceTypeFamiliesInstanceTypeFamily(TeaModel):
+    def __init__(
+        self,
+        instance_type_family_desc: str = None,
+        instance_type_family_id: str = None,
+    ):
+        # The description of the instance family.
+        self.instance_type_family_desc = instance_type_family_desc
+        # The ID of the instance family.
+        self.instance_type_family_id = instance_type_family_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type_family_desc is not None:
+            result['InstanceTypeFamilyDesc'] = self.instance_type_family_desc
+        if self.instance_type_family_id is not None:
+            result['InstanceTypeFamilyId'] = self.instance_type_family_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceTypeFamilyDesc') is not None:
+            self.instance_type_family_desc = m.get('InstanceTypeFamilyDesc')
+        if m.get('InstanceTypeFamilyId') is not None:
+            self.instance_type_family_id = m.get('InstanceTypeFamilyId')
+        return self
+
+
+class DescribeRCInstanceTypeFamiliesResponseBodyInstanceTypeFamilies(TeaModel):
+    def __init__(
+        self,
+        instance_type_family: List[DescribeRCInstanceTypeFamiliesResponseBodyInstanceTypeFamiliesInstanceTypeFamily] = None,
+    ):
+        # The instance family.
+        self.instance_type_family = instance_type_family
+
+    def validate(self):
+        if self.instance_type_family:
+            for k in self.instance_type_family:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceTypeFamily'] = []
+        if self.instance_type_family is not None:
+            for k in self.instance_type_family:
+                result['InstanceTypeFamily'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_type_family = []
+        if m.get('InstanceTypeFamily') is not None:
+            for k in m.get('InstanceTypeFamily'):
+                temp_model = DescribeRCInstanceTypeFamiliesResponseBodyInstanceTypeFamiliesInstanceTypeFamily()
+                self.instance_type_family.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeRCInstanceTypeFamiliesResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_type_families: DescribeRCInstanceTypeFamiliesResponseBodyInstanceTypeFamilies = None,
+        request_id: str = None,
+    ):
+        # The instance families.
+        self.instance_type_families = instance_type_families
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instance_type_families:
+            self.instance_type_families.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type_families is not None:
+            result['InstanceTypeFamilies'] = self.instance_type_families.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceTypeFamilies') is not None:
+            temp_model = DescribeRCInstanceTypeFamiliesResponseBodyInstanceTypeFamilies()
+            self.instance_type_families = temp_model.from_map(m['InstanceTypeFamilies'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeRCInstanceTypeFamiliesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRCInstanceTypeFamiliesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRCInstanceTypeFamiliesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRCInstanceTypesRequest(TeaModel):
+    def __init__(
+        self,
+        commodity_code: str = None,
+        engine: str = None,
+        instance_type: List[str] = None,
+        instance_type_family: str = None,
+        region_id: str = None,
+    ):
+        self.commodity_code = commodity_code
+        self.engine = engine
+        self.instance_type = instance_type
+        self.instance_type_family = instance_type_family
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.instance_type_family is not None:
+            result['InstanceTypeFamily'] = self.instance_type_family
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('InstanceTypeFamily') is not None:
+            self.instance_type_family = m.get('InstanceTypeFamily')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeRCInstanceTypesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        commodity_code: str = None,
+        engine: str = None,
+        instance_type_shrink: str = None,
+        instance_type_family: str = None,
+        region_id: str = None,
+    ):
+        self.commodity_code = commodity_code
+        self.engine = engine
+        self.instance_type_shrink = instance_type_shrink
+        self.instance_type_family = instance_type_family
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.instance_type_shrink is not None:
+            result['InstanceType'] = self.instance_type_shrink
+        if self.instance_type_family is not None:
+            result['InstanceTypeFamily'] = self.instance_type_family
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('InstanceType') is not None:
+            self.instance_type_shrink = m.get('InstanceType')
+        if m.get('InstanceTypeFamily') is not None:
+            self.instance_type_family = m.get('InstanceTypeFamily')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType(TeaModel):
+    def __init__(
+        self,
+        cpu_core_count: int = None,
+        instance_type_family: str = None,
+        instance_type_id: str = None,
+        memory_size: int = None,
+    ):
+        self.cpu_core_count = cpu_core_count
+        self.instance_type_family = instance_type_family
+        self.instance_type_id = instance_type_id
+        self.memory_size = memory_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu_core_count is not None:
+            result['CpuCoreCount'] = self.cpu_core_count
+        if self.instance_type_family is not None:
+            result['InstanceTypeFamily'] = self.instance_type_family
+        if self.instance_type_id is not None:
+            result['InstanceTypeId'] = self.instance_type_id
+        if self.memory_size is not None:
+            result['MemorySize'] = self.memory_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CpuCoreCount') is not None:
+            self.cpu_core_count = m.get('CpuCoreCount')
+        if m.get('InstanceTypeFamily') is not None:
+            self.instance_type_family = m.get('InstanceTypeFamily')
+        if m.get('InstanceTypeId') is not None:
+            self.instance_type_id = m.get('InstanceTypeId')
+        if m.get('MemorySize') is not None:
+            self.memory_size = m.get('MemorySize')
+        return self
+
+
+class DescribeRCInstanceTypesResponseBodyInstanceTypes(TeaModel):
+    def __init__(
+        self,
+        instance_type: List[DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType] = None,
+    ):
+        self.instance_type = instance_type
+
+    def validate(self):
+        if self.instance_type:
+            for k in self.instance_type:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceType'] = []
+        if self.instance_type is not None:
+            for k in self.instance_type:
+                result['InstanceType'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_type = []
+        if m.get('InstanceType') is not None:
+            for k in m.get('InstanceType'):
+                temp_model = DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType()
+                self.instance_type.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeRCInstanceTypesResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_types: DescribeRCInstanceTypesResponseBodyInstanceTypes = None,
+        request_id: str = None,
+    ):
+        self.instance_types = instance_types
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instance_types:
+            self.instance_types.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_types is not None:
+            result['InstanceTypes'] = self.instance_types.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceTypes') is not None:
+            temp_model = DescribeRCInstanceTypesResponseBodyInstanceTypes()
+            self.instance_types = temp_model.from_map(m['InstanceTypes'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeRCInstanceTypesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRCInstanceTypesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRCInstanceTypesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -53914,20 +54358,70 @@ class DescribeRCInstancesResponseBodyRCInstancesTags(TeaModel):
         return self
 
 
+class DescribeRCInstancesResponseBodyRCInstancesVpcAttributes(TeaModel):
+    def __init__(
+        self,
+        nat_ip_address: str = None,
+        private_ip_address: List[str] = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.nat_ip_address = nat_ip_address
+        self.private_ip_address = private_ip_address
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.nat_ip_address is not None:
+            result['NatIpAddress'] = self.nat_ip_address
+        if self.private_ip_address is not None:
+            result['PrivateIpAddress'] = self.private_ip_address
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NatIpAddress') is not None:
+            self.nat_ip_address = m.get('NatIpAddress')
+        if m.get('PrivateIpAddress') is not None:
+            self.private_ip_address = m.get('PrivateIpAddress')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
 class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
     def __init__(
         self,
         cluster_name: str = None,
+        cpu: int = None,
         create_mode: str = None,
         db_type: str = None,
+        deployment_set_id: str = None,
         description: str = None,
+        expired_time: str = None,
         gmt_created: str = None,
         host_ip: str = None,
         host_name: str = None,
+        image_id: str = None,
         instance_charge_type: str = None,
         instance_id: str = None,
         instance_type: str = None,
         instance_type_family: str = None,
+        memory: int = None,
         public_ip: str = None,
         region_id: str = None,
         security_group_id: str = None,
@@ -53935,27 +54429,33 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
         status: str = None,
         tag_resources: List[DescribeRCInstancesResponseBodyRCInstancesTagResources] = None,
         tags: List[DescribeRCInstancesResponseBodyRCInstancesTags] = None,
+        vpc_attributes: DescribeRCInstancesResponseBodyRCInstancesVpcAttributes = None,
         vpc_id: str = None,
         zone_id: str = None,
     ):
         # The cluster name.
         self.cluster_name = cluster_name
+        self.cpu = cpu
         self.create_mode = create_mode
         # The database type.
         self.db_type = db_type
+        self.deployment_set_id = deployment_set_id
         # The instance description.
         self.description = description
+        self.expired_time = expired_time
         # The time when the task was created. The time is displayed in GMT.
         self.gmt_created = gmt_created
         # The host IP address.
         self.host_ip = host_ip
         # The host name.
         self.host_name = host_name
+        self.image_id = image_id
         self.instance_charge_type = instance_charge_type
         # The instance ID.
         self.instance_id = instance_id
         self.instance_type = instance_type
         self.instance_type_family = instance_type_family
+        self.memory = memory
         self.public_ip = public_ip
         # The region ID.
         self.region_id = region_id
@@ -53973,6 +54473,7 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
         self.status = status
         self.tag_resources = tag_resources
         self.tags = tags
+        self.vpc_attributes = vpc_attributes
         # The VPC ID.
         self.vpc_id = vpc_id
         self.zone_id = zone_id
@@ -53986,6 +54487,8 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
             for k in self.tags:
                 if k:
                     k.validate()
+        if self.vpc_attributes:
+            self.vpc_attributes.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -53995,18 +54498,26 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
         result = dict()
         if self.cluster_name is not None:
             result['ClusterName'] = self.cluster_name
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
         if self.create_mode is not None:
             result['CreateMode'] = self.create_mode
         if self.db_type is not None:
             result['DbType'] = self.db_type
+        if self.deployment_set_id is not None:
+            result['DeploymentSetId'] = self.deployment_set_id
         if self.description is not None:
             result['Description'] = self.description
+        if self.expired_time is not None:
+            result['ExpiredTime'] = self.expired_time
         if self.gmt_created is not None:
             result['GmtCreated'] = self.gmt_created
         if self.host_ip is not None:
             result['HostIp'] = self.host_ip
         if self.host_name is not None:
             result['HostName'] = self.host_name
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
         if self.instance_charge_type is not None:
             result['InstanceChargeType'] = self.instance_charge_type
         if self.instance_id is not None:
@@ -54015,6 +54526,8 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
             result['InstanceType'] = self.instance_type
         if self.instance_type_family is not None:
             result['InstanceTypeFamily'] = self.instance_type_family
+        if self.memory is not None:
+            result['Memory'] = self.memory
         if self.public_ip is not None:
             result['PublicIp'] = self.public_ip
         if self.region_id is not None:
@@ -54033,6 +54546,8 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.vpc_attributes is not None:
+            result['VpcAttributes'] = self.vpc_attributes.to_map()
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.zone_id is not None:
@@ -54043,18 +54558,26 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
         m = m or dict()
         if m.get('ClusterName') is not None:
             self.cluster_name = m.get('ClusterName')
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
         if m.get('CreateMode') is not None:
             self.create_mode = m.get('CreateMode')
         if m.get('DbType') is not None:
             self.db_type = m.get('DbType')
+        if m.get('DeploymentSetId') is not None:
+            self.deployment_set_id = m.get('DeploymentSetId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ExpiredTime') is not None:
+            self.expired_time = m.get('ExpiredTime')
         if m.get('GmtCreated') is not None:
             self.gmt_created = m.get('GmtCreated')
         if m.get('HostIp') is not None:
             self.host_ip = m.get('HostIp')
         if m.get('HostName') is not None:
             self.host_name = m.get('HostName')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
         if m.get('InstanceChargeType') is not None:
             self.instance_charge_type = m.get('InstanceChargeType')
         if m.get('InstanceId') is not None:
@@ -54063,6 +54586,8 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
             self.instance_type = m.get('InstanceType')
         if m.get('InstanceTypeFamily') is not None:
             self.instance_type_family = m.get('InstanceTypeFamily')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
         if m.get('PublicIp') is not None:
             self.public_ip = m.get('PublicIp')
         if m.get('RegionId') is not None:
@@ -54083,6 +54608,9 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
             for k in m.get('Tags'):
                 temp_model = DescribeRCInstancesResponseBodyRCInstancesTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('VpcAttributes') is not None:
+            temp_model = DescribeRCInstancesResponseBodyRCInstancesVpcAttributes()
+            self.vpc_attributes = temp_model.from_map(m['VpcAttributes'])
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('ZoneId') is not None:
@@ -72560,40 +73088,39 @@ class ModifyDBInstanceSpecRequestServerlessConfiguration(TeaModel):
         min_capacity: float = None,
         switch_force: bool = None,
     ):
-        # Specifies whether to enable the automatic start and stop feature for the serverless instance. Valid values:
+        # Specifies whether to enable the automatic start and stop feature for the serverless instance that runs MySQL or PostgreSQL. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
         # 
-        # > This parameter is required only for serverless instances that run MySQL and PostgreSQL. After the automatic start and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is suspended. After a connection to the instance is established, the instance is automatically resumed.
+        # >  After the automatic start and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is suspended. After a connection to the instance is established, the instance is automatically resumed.
         self.auto_pause = auto_pause
-        # The maximum number of RDS Capacity Units (RCUs). Valid values:
+        # The **maximum** number of RDS Capacity Units (RCUs). Valid values:
         # 
         # *   Serverless ApsaraDB RDS for MySQL instances: **1 to 32**\
-        # *   Serverless ApsaraDB RDS for SQL Server instances: **2 to 8**\
+        # *   Serverless ApsaraDB RDS for SQL Server instances: **2 to 16**. Only integers are supported.
         # *   Serverless ApsaraDB RDS for PostgreSQL instances: **1 to 14**\
         # 
-        # > 
-        # 
-        # *   The value of this parameter must be greater than or equal to the value of **MinCapacity** and can be specified only to an **integer**.
+        # >  The value of this parameter must be greater than or equal to the value of **MinCapacity**.
         self.max_capacity = max_capacity
-        # The minimum number of RCUs. Valid values:
+        # The minimum number of RCUs. Valid values:****\
         # 
         # *   Serverless ApsaraDB RDS for MySQL instances: **0.5 to 32**.
         # *   Serverless ApsaraDB RDS for SQL Server instances: **2 to 8**. Only integers are supported.
         # *   Serverless ApsaraDB RDS for PostgreSQL instances: **0.5 to 14**.
         # 
-        # > 
-        # 
-        # *   The value of this parameter must be less than or equal to the value of MaxCapacity.
+        # >  The value of this parameter must be less than or equal to the value of MaxCapacity.
         self.min_capacity = min_capacity
-        # Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
+        # Specifies whether to enable the forceful scaling feature for the serverless instance that runs MySQL or PostgreSQL. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
         # 
-        # > *   This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts 30 to 120 seconds occurs during forced scaling. Process with caution.
-        # > *   The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
+        # > 
+        # 
+        # *   If you set this parameter to true, **a service interruption that lasts 30 to 120 seconds occurs during forced scaling**. Process with caution.
+        # 
+        # *   The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
         self.switch_force = switch_force
 
     def validate(self):
@@ -72664,70 +73191,70 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         zone_id: str = None,
         zone_id_slave_1: str = None,
     ):
-        # Specifies whether to upgrade the major engine version of the instance. Valid values:
+        # Specifies whether to upgrade the major engine version of an ApsaraDB RDS for SQL Server instance. For more information, see [Upgrade the major engine version](https://help.aliyun.com/document_detail/127458.html). Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
         # 
-        # >When you upgrade the major engine version of an ApsaraDB RDS for SQL Server instance, set this parameter to true. When you upgrade the major engine version, you must also specify required parameters such as DBInstanceId, EngineVersion, DBInstanceClass, and Category, and optional parameters such as ZoneId, ZoneIdSlave1, and VSwitchId.
+        # > *   When you upgrade the major engine version, you must also specify the required parameters such as DBInstanceId, EngineVersion, DBInstanceClass, Category, ZoneId, and VSwitchId.
+        # > *   If you want to upgrade the instance edition to RDS High-availability Edition or RDS Cluster Edition, you must specify ZoneIdSlave1.
         self.allow_major_version_upgrade = allow_major_version_upgrade
         # Specifies whether to use vouchers to offset fees. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
         self.auto_use_coupon = auto_use_coupon
-        # An invalid parameter. You can ignore this parameter.
+        # An invalid parameter. You do not need to specify this parameter.
         self.bursting_enabled = bursting_enabled
         # The RDS edition of the instance. Valid values:
         # 
-        # *   Regular instance
+        # >  If you set **EngineVersion** to an SQL Server version number, you must also specify this parameter.
         # 
-        #     *   **Basic**: RDS Basic Edition.
-        #     *   **HighAvailability**: RDS High-availability Edition.
-        #     *   **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server.
-        #     *   **Cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL.
+        # **Regular RDS instances**\
         # 
-        # *   Serverless instance
+        # *   **Basic**: RDS Basic Edition.
+        # *   **HighAvailability**: RDS High-availability Edition.
+        # *   **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server.
+        # *   **Cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL.
         # 
-        #     *   **serverless_basic**: RDS Basic Edition. This edition is available only for serverless instances that run MySQL and PostgreSQL.
-        #     *   **serverless_standard**: RDS High-availability Edition. This edition is available only for serverless instances that run MySQL and PostgreSQL.
-        #     *   **serverless_ha**: RDS High-availability Edition for ApsaraDB RDS for SQL Server.
+        # **Serverless instances. ApsaraDB RDS for MariaDB does not support serverless instances.**\
         # 
-        # 
-        # 
-        # > If you set the **EngineVersion** parameter to an SQL Server version number, you must also specify this parameter.
+        # *   **serverless_basic**: RDS Basic Edition. This edition is available only for serverless instances that run MySQL and PostgreSQL.
+        # *   **serverless_standard**: RDS High-availability Edition. This edition is available only for serverless instances that run MySQL and PostgreSQL.
+        # *   **serverless_ha**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run SQL Server.
         self.category = category
         # A reserved parameter.
         self.cold_data_enabled = cold_data_enabled
-        # Whether to enable storage compression.
-        # - on: Enable
-        # - off: Disable
+        # Specifies whether to enable the storage compression feature for the ApsaraDB RDS for MySQL instance. For more information, see [Use the storage compression feature](https://help.aliyun.com/document_detail/2861985.html). Valid values:
+        # 
+        # *   **on**\
+        # *   **off**\
         self.compression_mode = compression_mode
-        # The new instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableClasses operation to query the instance types that are supported by an instance.
+        # The instance type of the new instance. For more information, see [Specifications](https://help.aliyun.com/document_detail/26312.html). You can call the [DescribeAvailableClasses](https://help.aliyun.com/document_detail/610393.html) operation to query the instance types.
         # 
         # > *   You must specify at least one of DBInstanceClass and **DBInstanceStorage**.
-        # > *   You can call the DescribeDBInstanceAttribute operation to query the current instance type of the instance.
+        # > *   You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/610394.html) operation to query the current instance type of the instance.
         self.dbinstance_class = dbinstance_class
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The new storage capacity of the instance. Unit: GB. You can increase the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableClasses operation to query the storage capacity range that is supported by the new instance type.
+        # The storage capacity of the new instance. Unit: GB. For more information, see [Storage types](https://help.aliyun.com/document_detail/26312.html). You can call the [DescribeAvailableClasses](https://help.aliyun.com/document_detail/610393.html) operation to query the storage capacity range that is supported by the new instance type.
         # 
-        # > *   You must specify at least one of the DBInstanceStorage and **DBInstanceClass** parameters.
-        # > *   You can call the DescribeDBInstanceAttribute to query the current storage capacity of the instance.
+        # > *   You must specify at least one of DBInstanceStorage and **DBInstanceClass**.
+        # > *   You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/610394.html) operation to query the current storage capacity of the instance.
         self.dbinstance_storage = dbinstance_storage
-        # The storage type of the instance. Valid values:
+        # The storage type of the new instance. Valid values:
         # 
         # *   **local_ssd**: local SSD.
-        # *   **cloud_ssd**: standard SSD. This storage type is not recommended and is unavailable in some Alibaba Cloud regions.
-        # *   **cloud_essd**: enhanced SSD (ESSD) of performance level 1 (PL1).
-        # *   **cloud_essd2**: ESSDs of PL2.
-        # *   **cloud_essd3**: ESSD of PL3.
+        # *   **cloud_ssd**: SSD cloud disks. This storage medium is not recommended and is unavailable in specific Alibaba Cloud regions.
+        # *   **cloud_essd**: performance level 1 (PL1) Enterprise SSD (ESSD).
+        # *   **cloud_essd2**: PL2 ESSD.
+        # *   **cloud_essd3**: PL3 ESSD.
         # 
         # To change the storage type, take note of the following items:
         # 
-        # If the instance runs PostgreSQL, you can upgrade the storage type of the instance from standard SSD to ESSD. However, you cannot downgrade the storage type of the instance from ESSD to standard SSD. ESSDs provide the following PLs: PL1, PL2, and PL3. You can upgrade or downgrade the storage type between ESSD of PL1, ESSD of PL2, and ESSD of PL3. For more information, see [Configuration items](https://help.aliyun.com/document_detail/96750.html).
+        # If the instance runs PostgreSQL, you can upgrade the storage type of the instance from standard SSDs to ESSDs. However, you cannot downgrade the storage type of the instance from ESSDs to standard SSDs. ESSDs provide the following PLs: ESSDs of PL1, ESSDs of PL2, and ESSDs of PL3. You can upgrade or downgrade the storage type between ESSD of PL1, ESSD of PL2, and ESSD of PL3. For more information, see [Configuration items](https://help.aliyun.com/document_detail/96750.html).
         self.dbinstance_storage_type = dbinstance_storage_type
         # The ID of the dedicated cluster.
         self.dedicated_host_group_id = dedicated_host_group_id
@@ -72740,37 +73267,35 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         # 
         # >  If you specify only **DBInstanceStorageType**, you can leave Direction empty. For example, if you want to change only the storage type of the instance from standard SSD to Enterprise SSD (ESSD), you do not need to specify Direction.
         self.direction = direction
-        # The effective time. Valid values:
+        # The time when the new specifications take effect. Valid values:
         # 
-        # *   **Immediate** (default): The effective time immediately takes effect.
-        # *   **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
-        # *   **ScheduleTime**: The effective time takes effect at the point in time that you specify. The value of ScheduleTime must be a specific point in time that is 12 hours later than the current time. In this case, The value of EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
+        # >  **Specific changes may affect the instance**. Read the [Impact](https://help.aliyun.com/document_detail/96061.html) section before you specify this parameter. We recommend that you specify this parameter during off-peak hours.
+        # 
+        # *   **Immediate** (default): The changes immediately take effect.
+        # *   **MaintainTime**: The changes take effect during the [maintenance window](https://help.aliyun.com/document_detail/610402.html) of the instance.
+        # *   **ScheduleTime**: The changes take effect at the point in time that you specify. This time must be at least 12 hours later than the current time. The actual effective time is calculated based on the following formula: EffectiveTime = ScheduleTime + SwitchTime.
         self.effective_time = effective_time
-        # The database engine version of the instance.
+        # The database engine version of the instance. Valid values:
         # 
-        # *   Regular instance
+        # **Regular RDS instances**\
         # 
-        #     *   Valid values if you set the Engine parameter to MySQL: **5.5**, **5.6**, **5.7**, and **8.0**\
-        #     *   Valid values if you set the Engine parameter to SQLServer: **2008r2**, **08r2_ent_ha**, **2012**, **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_std_ha**, **2017_ent**, **2019_std_ha**, and **2019_ent**\
-        #     *   Valid values if you set the Engine parameter to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, and **15.0**\
-        #     *   Valid value if you set the Engine parameter to MariaDB: **10.3**\
+        # *   Valid values when Engine is set to MySQL: 5.5, 5.6, 5.7, and 8.0.
+        # *   Valid values when Engine is set to SQLServer: 2008r2, 08r2_ent_ha, 2012, 2012_ent_ha, 2012_std_ha, 2012_web, 2014_std_ha, 2016_ent_ha, 2016_std_ha, 2016_web, 2017_std_ha, 2017_ent, 2019_std_ha, and 2019_ent.
+        # *   Valid values when Engine is set to PostgreSQL: 10.0, 11.0, 12.0, 13.0, 14.0, and 15.0.
+        # *   Valid value when Engine is set to MariaDB: 10.3.
         # 
-        # *   Serverless instance
+        # **Serverless instances. ApsaraDB RDS for MariaDB does not support serverless instances.**\
         # 
-        #     *   Valid values if you set the Engine parameter to MySQL: **5.7** and **8.0**\
-        #     *   Valid values if you set the Engine parameter to SQLServer: **2016_std_sl**, **2017_std_sl**, and **2019_std_sl**\
-        #     *   Valid values if you set the Engine parameter to PostgreSQL: **14.0**, **15.0**, **16.0**\
-        # 
-        # > ApsaraDB RDS for MariaDB does not support serverless instances.
+        # *   Valid values when Engine is set to MySQL: 5.7 and 8.0.
+        # *   Valid values when Engine is set to SQL Server: 2016_std_sl, 2017_std_sl, and 2019_std_sl.
+        # *   Valid values when Engine is set to PostgreSQL: 14.0, 15.0, and 16.0.
         self.engine_version = engine_version
         # A reserved parameter.
         self.io_acceleration_enabled = io_acceleration_enabled
-        # Specifies whether to enable the write optimization feature.
+        # Specifies whether to enable the write optimization feature for the ApsaraDB RDS for MySQL instance. For more information, see [Use the write optimization feature](https://help.aliyun.com/document_detail/2858761.html). Valid values:
         # 
         # *   **optimized**: enables the feature.
         # *   **none**: disables the feature.
-        # 
-        # >  For more information about the write optimization feature, see [Write optimization](https://help.aliyun.com/document_detail/2858761.html).
         self.optimized_writes = optimized_writes
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -72778,11 +73303,13 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         # 
         # *   **Postpaid**: pay-as-you-go.
         # *   **Prepaid**: subscription.
-        # *   **Serverless**: serverless. This value is not supported for instances that run MariaDB. If you set the value to Serverless, you must specify the scaling range of computing resources, configure the automatic start and stop feature, and configure auto scaling policies for your serverless instance. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/411291.html), [Overview of serverless ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/607742.html).
+        # *   **Serverless**: serverless. This value is not supported for ApsaraDB RDS for MariaDB instances.
+        # 
+        # >  If you want to set this parameter to Serverless, **you must specify **AutoPause, MaxCapacity, MinCapacity, and SwitchForce. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/411291.html), [Overview of serverless ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/607742.html).
         self.pay_type = pay_type
         # The coupon code.
         self.promotion_code = promotion_code
-        # Target specifications for read-only instances when changing a MySQL high-availability local disk instance to a cloud disk.
+        # The specification of the read-only instance when you change the storage type of the ApsaraDB RDS for MySQL instance that runs RDS High-availability Edition from cloud disk to local disk.
         self.read_only_dbinstance_class = read_only_dbinstance_class
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -72792,24 +73319,25 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         self.serverless_configuration = serverless_configuration
         # A deprecated parameter. You do not need to specify this parameter.
         self.source_biz = source_biz
-        # The response parameters.
+        # The time at which you want to change the specifications. **We recommend that you perform the specification changes during off-peak hours.**\
+        # 
+        # Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # > *   The time at which you want to change the specifications **must be later than the current time**. Otherwise, the specification change task fails. If the specification change task fails, you must wait for the order to be automatically canceled, and then call this operation again.
+        # > *   If you want to increase the storage capacity or change the ESSD storage type between different PLs, the specification change immediately takes effect and does not affect your workloads. You do not need to specify this parameter.
         self.switch_time = switch_time
-        # The number of the minor version.
+        # The minor engine version number of the ApsaraDB RDS for PostgreSQL instance. For more information, see [Update the minor engine version](https://help.aliyun.com/document_detail/126002.html). If the minor engine version does not support changing the instance type, you must specify the minor engine version to **update the minor engine version when you change the instance type**.
         # 
-        # This parameter is required only for instances that run PostgreSQL. If the minor engine version does not support changing the instance type, you must specify the minor engine version to update the minor engine version when you change the instance type.
-        # 
-        # Format: `rds_postgres_<Major engine version>00_<Minor engine version>`. Example: `rds_postgres_1200_20200830`.
-        # 
-        # >  For more information about minor engine versions, see [Release notes for AliPG](https://help.aliyun.com/document_detail/126002.html).
+        # Format: `rds_postgres_<Major engine version>00_<Minor engine version>`. For example, if the instance runs PostgreSQL 12, set this parameter to `rds_postgres_1200_20200830`.
         self.target_minor_version = target_minor_version
-        # The ID of the order.
+        # The validity period of the specification changes on an ApsaraDB RDS for SQL Server instance. At the end of the validity period, the specifications of the instance are restored to the specifications that are used before an [elastic upgrade](https://help.aliyun.com/document_detail/95665.html) is performed. Unit: days.
         self.used_time = used_time
         # The vSwitch ID. The vSwitch must belong to the zone that is specified by **ZoneId**.
         # 
         # *   If you set **InstanceNetworkType** to **VPC**, you must also specify this parameter.
         # *   If you specify ZoneSlaveId1, you must specify the IDs of two vSwitches for this parameter and separate the IDs with a comma (,).
         # 
-        # > When you upgrade the major engine version, if you want to specify a vSwitch or change the vSwitch for the RDS instance, you must also specify this parameter.
+        # >  If you want to upgrade the major engine version of an ApsaraDB RDS for SQL Server instance by specifying AllowMajorVersionUpgrade or change the vSwitch, you must specify this parameter.
         self.v_switch_id = v_switch_id
         # The RDS edition of the instance. Valid values:
         # 
@@ -72820,9 +73348,9 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         # 
         # > If you set **EngineVersion** to an SQL Server version number, you must also specify this parameter.
         self.zone_id = zone_id
-        # The zone ID of the secondary instance. If you set this parameter to the same value as the **ZoneId** parameter, the single-zone deployment method is used. If you set this parameter to a different value from the **ZoneId** parameter, the multi-zone deployment method is used.
+        # The zone ID of the secondary instance. If you set this parameter to the same value as **ZoneId**, the single-zone deployment method is used. If you set this parameter to a different value from **ZoneId**, the multi-zone deployment method is used.
         # 
-        # > If you must specify a secondary zone or change the secondary zone to upgrade the major engine version of an ApsaraDB RDS for SQL Server instance, you must also specify this parameter.
+        # >  If you want to upgrade the major engine version of an ApsaraDB RDS for SQL Server instance by specifying AllowMajorVersionUpgrade or change the secondary zone, you must specify this parameter.
         self.zone_id_slave_1 = zone_id_slave_1
 
     def validate(self):
@@ -73007,70 +73535,70 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         zone_id: str = None,
         zone_id_slave_1: str = None,
     ):
-        # Specifies whether to upgrade the major engine version of the instance. Valid values:
+        # Specifies whether to upgrade the major engine version of an ApsaraDB RDS for SQL Server instance. For more information, see [Upgrade the major engine version](https://help.aliyun.com/document_detail/127458.html). Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
         # 
-        # >When you upgrade the major engine version of an ApsaraDB RDS for SQL Server instance, set this parameter to true. When you upgrade the major engine version, you must also specify required parameters such as DBInstanceId, EngineVersion, DBInstanceClass, and Category, and optional parameters such as ZoneId, ZoneIdSlave1, and VSwitchId.
+        # > *   When you upgrade the major engine version, you must also specify the required parameters such as DBInstanceId, EngineVersion, DBInstanceClass, Category, ZoneId, and VSwitchId.
+        # > *   If you want to upgrade the instance edition to RDS High-availability Edition or RDS Cluster Edition, you must specify ZoneIdSlave1.
         self.allow_major_version_upgrade = allow_major_version_upgrade
         # Specifies whether to use vouchers to offset fees. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
         self.auto_use_coupon = auto_use_coupon
-        # An invalid parameter. You can ignore this parameter.
+        # An invalid parameter. You do not need to specify this parameter.
         self.bursting_enabled = bursting_enabled
         # The RDS edition of the instance. Valid values:
         # 
-        # *   Regular instance
+        # >  If you set **EngineVersion** to an SQL Server version number, you must also specify this parameter.
         # 
-        #     *   **Basic**: RDS Basic Edition.
-        #     *   **HighAvailability**: RDS High-availability Edition.
-        #     *   **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server.
-        #     *   **Cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL.
+        # **Regular RDS instances**\
         # 
-        # *   Serverless instance
+        # *   **Basic**: RDS Basic Edition.
+        # *   **HighAvailability**: RDS High-availability Edition.
+        # *   **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server.
+        # *   **Cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL.
         # 
-        #     *   **serverless_basic**: RDS Basic Edition. This edition is available only for serverless instances that run MySQL and PostgreSQL.
-        #     *   **serverless_standard**: RDS High-availability Edition. This edition is available only for serverless instances that run MySQL and PostgreSQL.
-        #     *   **serverless_ha**: RDS High-availability Edition for ApsaraDB RDS for SQL Server.
+        # **Serverless instances. ApsaraDB RDS for MariaDB does not support serverless instances.**\
         # 
-        # 
-        # 
-        # > If you set the **EngineVersion** parameter to an SQL Server version number, you must also specify this parameter.
+        # *   **serverless_basic**: RDS Basic Edition. This edition is available only for serverless instances that run MySQL and PostgreSQL.
+        # *   **serverless_standard**: RDS High-availability Edition. This edition is available only for serverless instances that run MySQL and PostgreSQL.
+        # *   **serverless_ha**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run SQL Server.
         self.category = category
         # A reserved parameter.
         self.cold_data_enabled = cold_data_enabled
-        # Whether to enable storage compression.
-        # - on: Enable
-        # - off: Disable
+        # Specifies whether to enable the storage compression feature for the ApsaraDB RDS for MySQL instance. For more information, see [Use the storage compression feature](https://help.aliyun.com/document_detail/2861985.html). Valid values:
+        # 
+        # *   **on**\
+        # *   **off**\
         self.compression_mode = compression_mode
-        # The new instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableClasses operation to query the instance types that are supported by an instance.
+        # The instance type of the new instance. For more information, see [Specifications](https://help.aliyun.com/document_detail/26312.html). You can call the [DescribeAvailableClasses](https://help.aliyun.com/document_detail/610393.html) operation to query the instance types.
         # 
         # > *   You must specify at least one of DBInstanceClass and **DBInstanceStorage**.
-        # > *   You can call the DescribeDBInstanceAttribute operation to query the current instance type of the instance.
+        # > *   You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/610394.html) operation to query the current instance type of the instance.
         self.dbinstance_class = dbinstance_class
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The new storage capacity of the instance. Unit: GB. You can increase the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableClasses operation to query the storage capacity range that is supported by the new instance type.
+        # The storage capacity of the new instance. Unit: GB. For more information, see [Storage types](https://help.aliyun.com/document_detail/26312.html). You can call the [DescribeAvailableClasses](https://help.aliyun.com/document_detail/610393.html) operation to query the storage capacity range that is supported by the new instance type.
         # 
-        # > *   You must specify at least one of the DBInstanceStorage and **DBInstanceClass** parameters.
-        # > *   You can call the DescribeDBInstanceAttribute to query the current storage capacity of the instance.
+        # > *   You must specify at least one of DBInstanceStorage and **DBInstanceClass**.
+        # > *   You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/610394.html) operation to query the current storage capacity of the instance.
         self.dbinstance_storage = dbinstance_storage
-        # The storage type of the instance. Valid values:
+        # The storage type of the new instance. Valid values:
         # 
         # *   **local_ssd**: local SSD.
-        # *   **cloud_ssd**: standard SSD. This storage type is not recommended and is unavailable in some Alibaba Cloud regions.
-        # *   **cloud_essd**: enhanced SSD (ESSD) of performance level 1 (PL1).
-        # *   **cloud_essd2**: ESSDs of PL2.
-        # *   **cloud_essd3**: ESSD of PL3.
+        # *   **cloud_ssd**: SSD cloud disks. This storage medium is not recommended and is unavailable in specific Alibaba Cloud regions.
+        # *   **cloud_essd**: performance level 1 (PL1) Enterprise SSD (ESSD).
+        # *   **cloud_essd2**: PL2 ESSD.
+        # *   **cloud_essd3**: PL3 ESSD.
         # 
         # To change the storage type, take note of the following items:
         # 
-        # If the instance runs PostgreSQL, you can upgrade the storage type of the instance from standard SSD to ESSD. However, you cannot downgrade the storage type of the instance from ESSD to standard SSD. ESSDs provide the following PLs: PL1, PL2, and PL3. You can upgrade or downgrade the storage type between ESSD of PL1, ESSD of PL2, and ESSD of PL3. For more information, see [Configuration items](https://help.aliyun.com/document_detail/96750.html).
+        # If the instance runs PostgreSQL, you can upgrade the storage type of the instance from standard SSDs to ESSDs. However, you cannot downgrade the storage type of the instance from ESSDs to standard SSDs. ESSDs provide the following PLs: ESSDs of PL1, ESSDs of PL2, and ESSDs of PL3. You can upgrade or downgrade the storage type between ESSD of PL1, ESSD of PL2, and ESSD of PL3. For more information, see [Configuration items](https://help.aliyun.com/document_detail/96750.html).
         self.dbinstance_storage_type = dbinstance_storage_type
         # The ID of the dedicated cluster.
         self.dedicated_host_group_id = dedicated_host_group_id
@@ -73083,37 +73611,35 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         # 
         # >  If you specify only **DBInstanceStorageType**, you can leave Direction empty. For example, if you want to change only the storage type of the instance from standard SSD to Enterprise SSD (ESSD), you do not need to specify Direction.
         self.direction = direction
-        # The effective time. Valid values:
+        # The time when the new specifications take effect. Valid values:
         # 
-        # *   **Immediate** (default): The effective time immediately takes effect.
-        # *   **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
-        # *   **ScheduleTime**: The effective time takes effect at the point in time that you specify. The value of ScheduleTime must be a specific point in time that is 12 hours later than the current time. In this case, The value of EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
+        # >  **Specific changes may affect the instance**. Read the [Impact](https://help.aliyun.com/document_detail/96061.html) section before you specify this parameter. We recommend that you specify this parameter during off-peak hours.
+        # 
+        # *   **Immediate** (default): The changes immediately take effect.
+        # *   **MaintainTime**: The changes take effect during the [maintenance window](https://help.aliyun.com/document_detail/610402.html) of the instance.
+        # *   **ScheduleTime**: The changes take effect at the point in time that you specify. This time must be at least 12 hours later than the current time. The actual effective time is calculated based on the following formula: EffectiveTime = ScheduleTime + SwitchTime.
         self.effective_time = effective_time
-        # The database engine version of the instance.
+        # The database engine version of the instance. Valid values:
         # 
-        # *   Regular instance
+        # **Regular RDS instances**\
         # 
-        #     *   Valid values if you set the Engine parameter to MySQL: **5.5**, **5.6**, **5.7**, and **8.0**\
-        #     *   Valid values if you set the Engine parameter to SQLServer: **2008r2**, **08r2_ent_ha**, **2012**, **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_std_ha**, **2017_ent**, **2019_std_ha**, and **2019_ent**\
-        #     *   Valid values if you set the Engine parameter to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, and **15.0**\
-        #     *   Valid value if you set the Engine parameter to MariaDB: **10.3**\
+        # *   Valid values when Engine is set to MySQL: 5.5, 5.6, 5.7, and 8.0.
+        # *   Valid values when Engine is set to SQLServer: 2008r2, 08r2_ent_ha, 2012, 2012_ent_ha, 2012_std_ha, 2012_web, 2014_std_ha, 2016_ent_ha, 2016_std_ha, 2016_web, 2017_std_ha, 2017_ent, 2019_std_ha, and 2019_ent.
+        # *   Valid values when Engine is set to PostgreSQL: 10.0, 11.0, 12.0, 13.0, 14.0, and 15.0.
+        # *   Valid value when Engine is set to MariaDB: 10.3.
         # 
-        # *   Serverless instance
+        # **Serverless instances. ApsaraDB RDS for MariaDB does not support serverless instances.**\
         # 
-        #     *   Valid values if you set the Engine parameter to MySQL: **5.7** and **8.0**\
-        #     *   Valid values if you set the Engine parameter to SQLServer: **2016_std_sl**, **2017_std_sl**, and **2019_std_sl**\
-        #     *   Valid values if you set the Engine parameter to PostgreSQL: **14.0**, **15.0**, **16.0**\
-        # 
-        # > ApsaraDB RDS for MariaDB does not support serverless instances.
+        # *   Valid values when Engine is set to MySQL: 5.7 and 8.0.
+        # *   Valid values when Engine is set to SQL Server: 2016_std_sl, 2017_std_sl, and 2019_std_sl.
+        # *   Valid values when Engine is set to PostgreSQL: 14.0, 15.0, and 16.0.
         self.engine_version = engine_version
         # A reserved parameter.
         self.io_acceleration_enabled = io_acceleration_enabled
-        # Specifies whether to enable the write optimization feature.
+        # Specifies whether to enable the write optimization feature for the ApsaraDB RDS for MySQL instance. For more information, see [Use the write optimization feature](https://help.aliyun.com/document_detail/2858761.html). Valid values:
         # 
         # *   **optimized**: enables the feature.
         # *   **none**: disables the feature.
-        # 
-        # >  For more information about the write optimization feature, see [Write optimization](https://help.aliyun.com/document_detail/2858761.html).
         self.optimized_writes = optimized_writes
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -73121,11 +73647,13 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         # 
         # *   **Postpaid**: pay-as-you-go.
         # *   **Prepaid**: subscription.
-        # *   **Serverless**: serverless. This value is not supported for instances that run MariaDB. If you set the value to Serverless, you must specify the scaling range of computing resources, configure the automatic start and stop feature, and configure auto scaling policies for your serverless instance. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/411291.html), [Overview of serverless ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/607742.html).
+        # *   **Serverless**: serverless. This value is not supported for ApsaraDB RDS for MariaDB instances.
+        # 
+        # >  If you want to set this parameter to Serverless, **you must specify **AutoPause, MaxCapacity, MinCapacity, and SwitchForce. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/411291.html), [Overview of serverless ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/607742.html).
         self.pay_type = pay_type
         # The coupon code.
         self.promotion_code = promotion_code
-        # Target specifications for read-only instances when changing a MySQL high-availability local disk instance to a cloud disk.
+        # The specification of the read-only instance when you change the storage type of the ApsaraDB RDS for MySQL instance that runs RDS High-availability Edition from cloud disk to local disk.
         self.read_only_dbinstance_class = read_only_dbinstance_class
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -73135,24 +73663,25 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         self.serverless_configuration_shrink = serverless_configuration_shrink
         # A deprecated parameter. You do not need to specify this parameter.
         self.source_biz = source_biz
-        # The response parameters.
+        # The time at which you want to change the specifications. **We recommend that you perform the specification changes during off-peak hours.**\
+        # 
+        # Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # > *   The time at which you want to change the specifications **must be later than the current time**. Otherwise, the specification change task fails. If the specification change task fails, you must wait for the order to be automatically canceled, and then call this operation again.
+        # > *   If you want to increase the storage capacity or change the ESSD storage type between different PLs, the specification change immediately takes effect and does not affect your workloads. You do not need to specify this parameter.
         self.switch_time = switch_time
-        # The number of the minor version.
+        # The minor engine version number of the ApsaraDB RDS for PostgreSQL instance. For more information, see [Update the minor engine version](https://help.aliyun.com/document_detail/126002.html). If the minor engine version does not support changing the instance type, you must specify the minor engine version to **update the minor engine version when you change the instance type**.
         # 
-        # This parameter is required only for instances that run PostgreSQL. If the minor engine version does not support changing the instance type, you must specify the minor engine version to update the minor engine version when you change the instance type.
-        # 
-        # Format: `rds_postgres_<Major engine version>00_<Minor engine version>`. Example: `rds_postgres_1200_20200830`.
-        # 
-        # >  For more information about minor engine versions, see [Release notes for AliPG](https://help.aliyun.com/document_detail/126002.html).
+        # Format: `rds_postgres_<Major engine version>00_<Minor engine version>`. For example, if the instance runs PostgreSQL 12, set this parameter to `rds_postgres_1200_20200830`.
         self.target_minor_version = target_minor_version
-        # The ID of the order.
+        # The validity period of the specification changes on an ApsaraDB RDS for SQL Server instance. At the end of the validity period, the specifications of the instance are restored to the specifications that are used before an [elastic upgrade](https://help.aliyun.com/document_detail/95665.html) is performed. Unit: days.
         self.used_time = used_time
         # The vSwitch ID. The vSwitch must belong to the zone that is specified by **ZoneId**.
         # 
         # *   If you set **InstanceNetworkType** to **VPC**, you must also specify this parameter.
         # *   If you specify ZoneSlaveId1, you must specify the IDs of two vSwitches for this parameter and separate the IDs with a comma (,).
         # 
-        # > When you upgrade the major engine version, if you want to specify a vSwitch or change the vSwitch for the RDS instance, you must also specify this parameter.
+        # >  If you want to upgrade the major engine version of an ApsaraDB RDS for SQL Server instance by specifying AllowMajorVersionUpgrade or change the vSwitch, you must specify this parameter.
         self.v_switch_id = v_switch_id
         # The RDS edition of the instance. Valid values:
         # 
@@ -73163,9 +73692,9 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         # 
         # > If you set **EngineVersion** to an SQL Server version number, you must also specify this parameter.
         self.zone_id = zone_id
-        # The zone ID of the secondary instance. If you set this parameter to the same value as the **ZoneId** parameter, the single-zone deployment method is used. If you set this parameter to a different value from the **ZoneId** parameter, the multi-zone deployment method is used.
+        # The zone ID of the secondary instance. If you set this parameter to the same value as **ZoneId**, the single-zone deployment method is used. If you set this parameter to a different value from **ZoneId**, the multi-zone deployment method is used.
         # 
-        # > If you must specify a secondary zone or change the secondary zone to upgrade the major engine version of an ApsaraDB RDS for SQL Server instance, you must also specify this parameter.
+        # >  If you want to upgrade the major engine version of an ApsaraDB RDS for SQL Server instance by specifying AllowMajorVersionUpgrade or change the secondary zone, you must specify this parameter.
         self.zone_id_slave_1 = zone_id_slave_1
 
     def validate(self):
@@ -74098,9 +74627,9 @@ class ModifyDBProxyRequest(TeaModel):
         self.dbproxy_instance_type = dbproxy_instance_type
         # The proxy nodes.
         self.dbproxy_nodes = dbproxy_nodes
-        # The network type of the instance. Set the value to **VPC**.
+        # The network type of the instance. Only the VPC network type is supported. Set the value to **VPC**.
         # 
-        # > This parameter is required if you enable the database proxy feature for an ApsaraDB RDS for MySQL instance that uses cloud disks or an ApsaraDB RDS for PostgreSQL instance.
+        # >  If you enable the database proxy feature for the instance, you must specify this parameter.
         self.instance_network_type = instance_network_type
         self.owner_id = owner_id
         # Specifies whether to enable persistent connections. Valid values:
@@ -74120,13 +74649,13 @@ class ModifyDBProxyRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the virtual private cloud (VPC) to which the instance belongs. You can call the DescribeDBInstanceAttribute operation to query the VPC ID.
+        # The ID of the virtual private cloud (VPC) to which the instance belongs. You can call the DescribeDBInstanceAttribute operation to query the ID.
         # 
-        # >  This parameter is required if you enable the database proxy feature for an ApsaraDB RDS for MySQL instance that uses cloud disks or an ApsaraDB RDS for PostgreSQL instance.
+        # >  If you enable the database proxy feature for the instance, you must specify this parameter.
         self.vpcid = vpcid
-        # The vSwitch ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the vSwitch ID.
+        # The ID of the vSwitch to which the instance belongs. You can call the DescribeDBInstanceAttribute operation to query the ID.
         # 
-        # >  This parameter is required if you enable the database proxy feature for an ApsaraDB RDS for MySQL instance that uses cloud disks or an ApsaraDB RDS for PostgreSQL instance.
+        # >  If you enable the database proxy feature for the instance, you must specify this parameter.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -74257,9 +74786,9 @@ class ModifyDBProxyShrinkRequest(TeaModel):
         self.dbproxy_instance_type = dbproxy_instance_type
         # The proxy nodes.
         self.dbproxy_nodes_shrink = dbproxy_nodes_shrink
-        # The network type of the instance. Set the value to **VPC**.
+        # The network type of the instance. Only the VPC network type is supported. Set the value to **VPC**.
         # 
-        # > This parameter is required if you enable the database proxy feature for an ApsaraDB RDS for MySQL instance that uses cloud disks or an ApsaraDB RDS for PostgreSQL instance.
+        # >  If you enable the database proxy feature for the instance, you must specify this parameter.
         self.instance_network_type = instance_network_type
         self.owner_id = owner_id
         # Specifies whether to enable persistent connections. Valid values:
@@ -74279,13 +74808,13 @@ class ModifyDBProxyShrinkRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the virtual private cloud (VPC) to which the instance belongs. You can call the DescribeDBInstanceAttribute operation to query the VPC ID.
+        # The ID of the virtual private cloud (VPC) to which the instance belongs. You can call the DescribeDBInstanceAttribute operation to query the ID.
         # 
-        # >  This parameter is required if you enable the database proxy feature for an ApsaraDB RDS for MySQL instance that uses cloud disks or an ApsaraDB RDS for PostgreSQL instance.
+        # >  If you enable the database proxy feature for the instance, you must specify this parameter.
         self.vpcid = vpcid
-        # The vSwitch ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the vSwitch ID.
+        # The ID of the vSwitch to which the instance belongs. You can call the DescribeDBInstanceAttribute operation to query the ID.
         # 
-        # >  This parameter is required if you enable the database proxy feature for an ApsaraDB RDS for MySQL instance that uses cloud disks or an ApsaraDB RDS for PostgreSQL instance.
+        # >  If you enable the database proxy feature for the instance, you must specify this parameter.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -74748,13 +75277,10 @@ class ModifyDBProxyEndpointAddressRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         # The network type of the database proxy endpoint. Valid values:
         # 
-        # *   **Public**: Internet
-        # *   **VPC**: virtual private cloud (VPC)
-        # *   **Classic**: classic network
+        # *   **Public**\
+        # *   **VPC** (default)
         # 
-        # If the instance runs MySQL, the default value is **Classic**.
-        # 
-        # >  If the instance runs PostgreSQL, you must set this parameter to **Public** or **VPC**.
+        # >  If the RDS instance runs MySQL, this parameter is required.
         self.dbproxy_connect_string_net_type = dbproxy_connect_string_net_type
         # The ID of the database proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the ID of the database proxy endpoint.
         # 
@@ -77792,6 +78318,137 @@ class ModifyParameterGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyParameterGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyRCDiskSpecRequest(TeaModel):
+    def __init__(
+        self,
+        auto_pay: bool = None,
+        disk_category: str = None,
+        disk_id: str = None,
+        dry_run: bool = None,
+        performance_level: str = None,
+        region_id: str = None,
+    ):
+        self.auto_pay = auto_pay
+        self.disk_category = disk_category
+        self.disk_id = disk_id
+        self.dry_run = dry_run
+        self.performance_level = performance_level
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.disk_category is not None:
+            result['DiskCategory'] = self.disk_category
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('DiskCategory') is not None:
+            self.disk_category = m.get('DiskCategory')
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ModifyRCDiskSpecResponseBody(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        request_id: str = None,
+    ):
+        self.order_id = order_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyRCDiskSpecResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyRCDiskSpecResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyRCDiskSpecResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -81646,9 +82303,16 @@ class RebootRCInstancesRequest(TeaModel):
         instance_ids: List[str] = None,
         region_id: str = None,
     ):
+        # The batch operation mode. Set the value to **AllTogether**. In this mode, if all specified instances are restarted, a success message is returned. If an instance fails the verification, none of the specified instances can be restarted and an error message is returned.
         self.batch_optimization = batch_optimization
+        # Specifies whether to forcefully restart the instance. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
         self.force_reboot = force_reboot
+        # The node IDs.
         self.instance_ids = instance_ids
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -81691,9 +82355,16 @@ class RebootRCInstancesShrinkRequest(TeaModel):
         instance_ids_shrink: str = None,
         region_id: str = None,
     ):
+        # The batch operation mode. Set the value to **AllTogether**. In this mode, if all specified instances are restarted, a success message is returned. If an instance fails the verification, none of the specified instances can be restarted and an error message is returned.
         self.batch_optimization = batch_optimization
+        # Specifies whether to forcefully restart the instance. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
         self.force_reboot = force_reboot
+        # The node IDs.
         self.instance_ids_shrink = instance_ids_shrink
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -81733,6 +82404,7 @@ class RebootRCInstancesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -87338,11 +88010,17 @@ class SwitchReplicationLinkRequest(TeaModel):
         target_instance_name: str = None,
         target_instance_region_id: str = None,
     ):
+        # The ID of the source or primary instance.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
+        # The name of the destination DR instance.
+        # 
         # This parameter is required.
         self.target_instance_name = target_instance_name
+        # The ID of the region in which the destination DR instance resides.
+        # 
         # This parameter is required.
         self.target_instance_region_id = target_instance_region_id
 
@@ -87386,9 +88064,13 @@ class SwitchReplicationLinkResponseBody(TeaModel):
         task_id: int = None,
         task_name: str = None,
     ):
+        # The ID of the DR instance.
         self.dbinstance_id = dbinstance_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

@@ -1,3 +1,17 @@
+2025-04-09 Version: 11.1.0
+- Support API DescribeRCInstanceTypeFamilies.
+- Support API DescribeRCInstanceTypes.
+- Support API ModifyRCDiskSpec.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.ReadOnlyStatus.
+- Update API DescribeRCInstanceAttribute: add response parameters Body.AutoRenew.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.Cpu.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.DeploymentSetId.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.ExpiredTime.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.ImageId.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.Memory.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.VpcAttributes.
+
+
 2025-03-26 Version: 11.0.0
 - Support API DescribeRCSecurityGroupList.
 - Support API MigrateDBNodes.
