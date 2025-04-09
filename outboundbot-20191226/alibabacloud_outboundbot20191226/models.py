@@ -94,9 +94,6 @@ class ApplyNumberDistrictInfoParsingResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -139,9 +136,11 @@ class AssignJobsRequest(TeaModel):
         strategy_json: str = None,
     ):
         self.calling_number = calling_number
+        # This parameter is required.
         self.instance_id = instance_id
         self.is_asynchrony = is_asynchrony
         self.job_data_parsing_task_id = job_data_parsing_task_id
+        # This parameter is required.
         self.job_group_id = job_group_id
         self.jobs_json = jobs_json
         self.roster_type = roster_type
@@ -270,9 +269,6 @@ class AssignJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -312,7 +308,9 @@ class CancelJobsRequest(TeaModel):
         job_reference_id: List[str] = None,
         scenario_id: str = None,
     ):
+        # This parameter is required.
         self.all = all
+        # This parameter is required.
         self.instance_id = instance_id
         self.job_group_id = job_group_id
         self.job_id = job_id
@@ -422,9 +420,6 @@ class CancelJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -460,7 +455,9 @@ class ChangeResourceGroupRequest(TeaModel):
         new_resource_group_id: str = None,
         resource_id: str = None,
     ):
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
+        # This parameter is required.
         self.resource_id = resource_id
 
     def validate(self):
@@ -550,9 +547,6 @@ class ChangeResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -582,6 +576,730 @@ class ChangeResourceGroupResponse(TeaModel):
         return self
 
 
+class CreateAgentProfileRequest(TeaModel):
+    def __init__(
+        self,
+        agent_profile_template_id: str = None,
+        app_ip: str = None,
+        description: str = None,
+        faq_category_ids: str = None,
+        instance_id: str = None,
+        instruction_json: str = None,
+        labels_json: str = None,
+        model: str = None,
+        model_config: str = None,
+        prompt: str = None,
+        prompt_json: str = None,
+        scenario: str = None,
+        script_id: str = None,
+        variables_json: str = None,
+    ):
+        # This parameter is required.
+        self.agent_profile_template_id = agent_profile_template_id
+        self.app_ip = app_ip
+        self.description = description
+        self.faq_category_ids = faq_category_ids
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.instruction_json = instruction_json
+        self.labels_json = labels_json
+        # This parameter is required.
+        self.model = model
+        self.model_config = model_config
+        self.prompt = prompt
+        self.prompt_json = prompt_json
+        self.scenario = scenario
+        # This parameter is required.
+        self.script_id = script_id
+        self.variables_json = variables_json
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_profile_template_id is not None:
+            result['AgentProfileTemplateId'] = self.agent_profile_template_id
+        if self.app_ip is not None:
+            result['AppIp'] = self.app_ip
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.faq_category_ids is not None:
+            result['FaqCategoryIds'] = self.faq_category_ids
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instruction_json is not None:
+            result['InstructionJson'] = self.instruction_json
+        if self.labels_json is not None:
+            result['LabelsJson'] = self.labels_json
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.model_config is not None:
+            result['ModelConfig'] = self.model_config
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.prompt_json is not None:
+            result['PromptJson'] = self.prompt_json
+        if self.scenario is not None:
+            result['Scenario'] = self.scenario
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        if self.variables_json is not None:
+            result['VariablesJson'] = self.variables_json
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentProfileTemplateId') is not None:
+            self.agent_profile_template_id = m.get('AgentProfileTemplateId')
+        if m.get('AppIp') is not None:
+            self.app_ip = m.get('AppIp')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FaqCategoryIds') is not None:
+            self.faq_category_ids = m.get('FaqCategoryIds')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstructionJson') is not None:
+            self.instruction_json = m.get('InstructionJson')
+        if m.get('LabelsJson') is not None:
+            self.labels_json = m.get('LabelsJson')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('ModelConfig') is not None:
+            self.model_config = m.get('ModelConfig')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('PromptJson') is not None:
+            self.prompt_json = m.get('PromptJson')
+        if m.get('Scenario') is not None:
+            self.scenario = m.get('Scenario')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        if m.get('VariablesJson') is not None:
+            self.variables_json = m.get('VariablesJson')
+        return self
+
+
+class CreateAgentProfileResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        agent_profile_id: str = None,
+        agent_profile_template_id: str = None,
+        agent_type: str = None,
+        create_time: str = None,
+        description: str = None,
+        instance_id: str = None,
+        instruction_json: str = None,
+        labels_json: str = None,
+        model: str = None,
+        model_config: str = None,
+        prompt: str = None,
+        prompt_json: str = None,
+        scenario: str = None,
+        script_id: str = None,
+        system: bool = None,
+        update_time: str = None,
+        variables_json: str = None,
+    ):
+        self.agent_profile_id = agent_profile_id
+        self.agent_profile_template_id = agent_profile_template_id
+        # agent type
+        self.agent_type = agent_type
+        self.create_time = create_time
+        self.description = description
+        self.instance_id = instance_id
+        self.instruction_json = instruction_json
+        self.labels_json = labels_json
+        self.model = model
+        self.model_config = model_config
+        self.prompt = prompt
+        self.prompt_json = prompt_json
+        self.scenario = scenario
+        self.script_id = script_id
+        self.system = system
+        self.update_time = update_time
+        self.variables_json = variables_json
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_profile_id is not None:
+            result['AgentProfileId'] = self.agent_profile_id
+        if self.agent_profile_template_id is not None:
+            result['AgentProfileTemplateId'] = self.agent_profile_template_id
+        if self.agent_type is not None:
+            result['AgentType'] = self.agent_type
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instruction_json is not None:
+            result['InstructionJson'] = self.instruction_json
+        if self.labels_json is not None:
+            result['LabelsJson'] = self.labels_json
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.model_config is not None:
+            result['ModelConfig'] = self.model_config
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.prompt_json is not None:
+            result['PromptJson'] = self.prompt_json
+        if self.scenario is not None:
+            result['Scenario'] = self.scenario
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        if self.system is not None:
+            result['System'] = self.system
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.variables_json is not None:
+            result['VariablesJson'] = self.variables_json
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentProfileId') is not None:
+            self.agent_profile_id = m.get('AgentProfileId')
+        if m.get('AgentProfileTemplateId') is not None:
+            self.agent_profile_template_id = m.get('AgentProfileTemplateId')
+        if m.get('AgentType') is not None:
+            self.agent_type = m.get('AgentType')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstructionJson') is not None:
+            self.instruction_json = m.get('InstructionJson')
+        if m.get('LabelsJson') is not None:
+            self.labels_json = m.get('LabelsJson')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('ModelConfig') is not None:
+            self.model_config = m.get('ModelConfig')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('PromptJson') is not None:
+            self.prompt_json = m.get('PromptJson')
+        if m.get('Scenario') is not None:
+            self.scenario = m.get('Scenario')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        if m.get('System') is not None:
+            self.system = m.get('System')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('VariablesJson') is not None:
+            self.variables_json = m.get('VariablesJson')
+        return self
+
+
+class CreateAgentProfileResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateAgentProfileResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateAgentProfileResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateAgentProfileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAgentProfileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAgentProfileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateAnnotationMissionRequest(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        agent_key: str = None,
+        annotation_mission_data_source_type: int = None,
+        annotation_mission_debug_data_source_list: List[int] = None,
+        annotation_mission_debug_data_source_list_json_string: str = None,
+        annotation_mission_name: str = None,
+        chatbot_id: str = None,
+        conversation_time_end_filter: int = None,
+        conversation_time_start_filter: int = None,
+        exclude_other_session: bool = None,
+        finished: bool = None,
+        instance_id: str = None,
+        sampling_count: int = None,
+        sampling_rate: int = None,
+        sampling_type: int = None,
+        script_id: str = None,
+        session_end_reason_filter_list: List[int] = None,
+        session_end_reason_filter_list_json_string: str = None,
+    ):
+        self.agent_id = agent_id
+        self.agent_key = agent_key
+        self.annotation_mission_data_source_type = annotation_mission_data_source_type
+        self.annotation_mission_debug_data_source_list = annotation_mission_debug_data_source_list
+        self.annotation_mission_debug_data_source_list_json_string = annotation_mission_debug_data_source_list_json_string
+        self.annotation_mission_name = annotation_mission_name
+        self.chatbot_id = chatbot_id
+        self.conversation_time_end_filter = conversation_time_end_filter
+        self.conversation_time_start_filter = conversation_time_start_filter
+        self.exclude_other_session = exclude_other_session
+        self.finished = finished
+        self.instance_id = instance_id
+        self.sampling_count = sampling_count
+        self.sampling_rate = sampling_rate
+        self.sampling_type = sampling_type
+        self.script_id = script_id
+        self.session_end_reason_filter_list = session_end_reason_filter_list
+        self.session_end_reason_filter_list_json_string = session_end_reason_filter_list_json_string
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.annotation_mission_data_source_type is not None:
+            result['AnnotationMissionDataSourceType'] = self.annotation_mission_data_source_type
+        if self.annotation_mission_debug_data_source_list is not None:
+            result['AnnotationMissionDebugDataSourceList'] = self.annotation_mission_debug_data_source_list
+        if self.annotation_mission_debug_data_source_list_json_string is not None:
+            result['AnnotationMissionDebugDataSourceListJsonString'] = self.annotation_mission_debug_data_source_list_json_string
+        if self.annotation_mission_name is not None:
+            result['AnnotationMissionName'] = self.annotation_mission_name
+        if self.chatbot_id is not None:
+            result['ChatbotId'] = self.chatbot_id
+        if self.conversation_time_end_filter is not None:
+            result['ConversationTimeEndFilter'] = self.conversation_time_end_filter
+        if self.conversation_time_start_filter is not None:
+            result['ConversationTimeStartFilter'] = self.conversation_time_start_filter
+        if self.exclude_other_session is not None:
+            result['ExcludeOtherSession'] = self.exclude_other_session
+        if self.finished is not None:
+            result['Finished'] = self.finished
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.sampling_count is not None:
+            result['SamplingCount'] = self.sampling_count
+        if self.sampling_rate is not None:
+            result['SamplingRate'] = self.sampling_rate
+        if self.sampling_type is not None:
+            result['SamplingType'] = self.sampling_type
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        if self.session_end_reason_filter_list is not None:
+            result['SessionEndReasonFilterList'] = self.session_end_reason_filter_list
+        if self.session_end_reason_filter_list_json_string is not None:
+            result['SessionEndReasonFilterListJsonString'] = self.session_end_reason_filter_list_json_string
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('AnnotationMissionDataSourceType') is not None:
+            self.annotation_mission_data_source_type = m.get('AnnotationMissionDataSourceType')
+        if m.get('AnnotationMissionDebugDataSourceList') is not None:
+            self.annotation_mission_debug_data_source_list = m.get('AnnotationMissionDebugDataSourceList')
+        if m.get('AnnotationMissionDebugDataSourceListJsonString') is not None:
+            self.annotation_mission_debug_data_source_list_json_string = m.get('AnnotationMissionDebugDataSourceListJsonString')
+        if m.get('AnnotationMissionName') is not None:
+            self.annotation_mission_name = m.get('AnnotationMissionName')
+        if m.get('ChatbotId') is not None:
+            self.chatbot_id = m.get('ChatbotId')
+        if m.get('ConversationTimeEndFilter') is not None:
+            self.conversation_time_end_filter = m.get('ConversationTimeEndFilter')
+        if m.get('ConversationTimeStartFilter') is not None:
+            self.conversation_time_start_filter = m.get('ConversationTimeStartFilter')
+        if m.get('ExcludeOtherSession') is not None:
+            self.exclude_other_session = m.get('ExcludeOtherSession')
+        if m.get('Finished') is not None:
+            self.finished = m.get('Finished')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SamplingCount') is not None:
+            self.sampling_count = m.get('SamplingCount')
+        if m.get('SamplingRate') is not None:
+            self.sampling_rate = m.get('SamplingRate')
+        if m.get('SamplingType') is not None:
+            self.sampling_type = m.get('SamplingType')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        if m.get('SessionEndReasonFilterList') is not None:
+            self.session_end_reason_filter_list = m.get('SessionEndReasonFilterList')
+        if m.get('SessionEndReasonFilterListJsonString') is not None:
+            self.session_end_reason_filter_list_json_string = m.get('SessionEndReasonFilterListJsonString')
+        return self
+
+
+class CreateAnnotationMissionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        agent_key: str = None,
+        annotation_mission_data_source_type: int = None,
+        annotation_mission_debug_data_source_list_shrink: str = None,
+        annotation_mission_debug_data_source_list_json_string: str = None,
+        annotation_mission_name: str = None,
+        chatbot_id: str = None,
+        conversation_time_end_filter: int = None,
+        conversation_time_start_filter: int = None,
+        exclude_other_session: bool = None,
+        finished: bool = None,
+        instance_id: str = None,
+        sampling_count: int = None,
+        sampling_rate: int = None,
+        sampling_type: int = None,
+        script_id: str = None,
+        session_end_reason_filter_list: List[int] = None,
+        session_end_reason_filter_list_json_string: str = None,
+    ):
+        self.agent_id = agent_id
+        self.agent_key = agent_key
+        self.annotation_mission_data_source_type = annotation_mission_data_source_type
+        self.annotation_mission_debug_data_source_list_shrink = annotation_mission_debug_data_source_list_shrink
+        self.annotation_mission_debug_data_source_list_json_string = annotation_mission_debug_data_source_list_json_string
+        self.annotation_mission_name = annotation_mission_name
+        self.chatbot_id = chatbot_id
+        self.conversation_time_end_filter = conversation_time_end_filter
+        self.conversation_time_start_filter = conversation_time_start_filter
+        self.exclude_other_session = exclude_other_session
+        self.finished = finished
+        self.instance_id = instance_id
+        self.sampling_count = sampling_count
+        self.sampling_rate = sampling_rate
+        self.sampling_type = sampling_type
+        self.script_id = script_id
+        self.session_end_reason_filter_list = session_end_reason_filter_list
+        self.session_end_reason_filter_list_json_string = session_end_reason_filter_list_json_string
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.annotation_mission_data_source_type is not None:
+            result['AnnotationMissionDataSourceType'] = self.annotation_mission_data_source_type
+        if self.annotation_mission_debug_data_source_list_shrink is not None:
+            result['AnnotationMissionDebugDataSourceList'] = self.annotation_mission_debug_data_source_list_shrink
+        if self.annotation_mission_debug_data_source_list_json_string is not None:
+            result['AnnotationMissionDebugDataSourceListJsonString'] = self.annotation_mission_debug_data_source_list_json_string
+        if self.annotation_mission_name is not None:
+            result['AnnotationMissionName'] = self.annotation_mission_name
+        if self.chatbot_id is not None:
+            result['ChatbotId'] = self.chatbot_id
+        if self.conversation_time_end_filter is not None:
+            result['ConversationTimeEndFilter'] = self.conversation_time_end_filter
+        if self.conversation_time_start_filter is not None:
+            result['ConversationTimeStartFilter'] = self.conversation_time_start_filter
+        if self.exclude_other_session is not None:
+            result['ExcludeOtherSession'] = self.exclude_other_session
+        if self.finished is not None:
+            result['Finished'] = self.finished
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.sampling_count is not None:
+            result['SamplingCount'] = self.sampling_count
+        if self.sampling_rate is not None:
+            result['SamplingRate'] = self.sampling_rate
+        if self.sampling_type is not None:
+            result['SamplingType'] = self.sampling_type
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        if self.session_end_reason_filter_list is not None:
+            result['SessionEndReasonFilterList'] = self.session_end_reason_filter_list
+        if self.session_end_reason_filter_list_json_string is not None:
+            result['SessionEndReasonFilterListJsonString'] = self.session_end_reason_filter_list_json_string
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('AnnotationMissionDataSourceType') is not None:
+            self.annotation_mission_data_source_type = m.get('AnnotationMissionDataSourceType')
+        if m.get('AnnotationMissionDebugDataSourceList') is not None:
+            self.annotation_mission_debug_data_source_list_shrink = m.get('AnnotationMissionDebugDataSourceList')
+        if m.get('AnnotationMissionDebugDataSourceListJsonString') is not None:
+            self.annotation_mission_debug_data_source_list_json_string = m.get('AnnotationMissionDebugDataSourceListJsonString')
+        if m.get('AnnotationMissionName') is not None:
+            self.annotation_mission_name = m.get('AnnotationMissionName')
+        if m.get('ChatbotId') is not None:
+            self.chatbot_id = m.get('ChatbotId')
+        if m.get('ConversationTimeEndFilter') is not None:
+            self.conversation_time_end_filter = m.get('ConversationTimeEndFilter')
+        if m.get('ConversationTimeStartFilter') is not None:
+            self.conversation_time_start_filter = m.get('ConversationTimeStartFilter')
+        if m.get('ExcludeOtherSession') is not None:
+            self.exclude_other_session = m.get('ExcludeOtherSession')
+        if m.get('Finished') is not None:
+            self.finished = m.get('Finished')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SamplingCount') is not None:
+            self.sampling_count = m.get('SamplingCount')
+        if m.get('SamplingRate') is not None:
+            self.sampling_rate = m.get('SamplingRate')
+        if m.get('SamplingType') is not None:
+            self.sampling_type = m.get('SamplingType')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        if m.get('SessionEndReasonFilterList') is not None:
+            self.session_end_reason_filter_list = m.get('SessionEndReasonFilterList')
+        if m.get('SessionEndReasonFilterListJsonString') is not None:
+            self.session_end_reason_filter_list_json_string = m.get('SessionEndReasonFilterListJsonString')
+        return self
+
+
+class CreateAnnotationMissionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        success: bool = None,
+    ):
+        self.message = message
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateAnnotationMissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateAnnotationMissionResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateAnnotationMissionResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateAnnotationMissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAnnotationMissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAnnotationMissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateBatchJobsRequest(TeaModel):
     def __init__(
         self,
@@ -596,13 +1314,16 @@ class CreateBatchJobsRequest(TeaModel):
         submitted: bool = None,
     ):
         self.batch_job_description = batch_job_description
+        # This parameter is required.
         self.batch_job_name = batch_job_name
         self.calling_number = calling_number
+        # This parameter is required.
         self.instance_id = instance_id
         self.job_file_path = job_file_path
         self.scenario_id = scenario_id
         self.script_id = script_id
         self.strategy_json = strategy_json
+        # This parameter is required.
         self.submitted = submitted
 
     def validate(self):
@@ -951,9 +1672,6 @@ class CreateBatchJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -989,10 +1707,12 @@ class CreateBatchRepeatJobRequest(TeaModel):
         calling_number: List[str] = None,
         description: str = None,
         filter_status: str = None,
+        flash_sms_extras: str = None,
         instance_id: str = None,
         min_concurrency: int = None,
         name: str = None,
         priority: str = None,
+        recall_calling_number: List[str] = None,
         recall_strategy_json: str = None,
         ringing_duration: int = None,
         script_id: str = None,
@@ -1002,13 +1722,18 @@ class CreateBatchRepeatJobRequest(TeaModel):
         self.calling_number = calling_number
         self.description = description
         self.filter_status = filter_status
+        self.flash_sms_extras = flash_sms_extras
+        # This parameter is required.
         self.instance_id = instance_id
         self.min_concurrency = min_concurrency
+        # This parameter is required.
         self.name = name
         self.priority = priority
+        self.recall_calling_number = recall_calling_number
         self.recall_strategy_json = recall_strategy_json
         self.ringing_duration = ringing_duration
         self.script_id = script_id
+        # This parameter is required.
         self.source_group_id = source_group_id
         self.strategy_json = strategy_json
 
@@ -1027,6 +1752,8 @@ class CreateBatchRepeatJobRequest(TeaModel):
             result['Description'] = self.description
         if self.filter_status is not None:
             result['FilterStatus'] = self.filter_status
+        if self.flash_sms_extras is not None:
+            result['FlashSmsExtras'] = self.flash_sms_extras
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.min_concurrency is not None:
@@ -1035,6 +1762,8 @@ class CreateBatchRepeatJobRequest(TeaModel):
             result['Name'] = self.name
         if self.priority is not None:
             result['Priority'] = self.priority
+        if self.recall_calling_number is not None:
+            result['RecallCallingNumber'] = self.recall_calling_number
         if self.recall_strategy_json is not None:
             result['RecallStrategyJson'] = self.recall_strategy_json
         if self.ringing_duration is not None:
@@ -1055,6 +1784,8 @@ class CreateBatchRepeatJobRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('FilterStatus') is not None:
             self.filter_status = m.get('FilterStatus')
+        if m.get('FlashSmsExtras') is not None:
+            self.flash_sms_extras = m.get('FlashSmsExtras')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('MinConcurrency') is not None:
@@ -1063,6 +1794,8 @@ class CreateBatchRepeatJobRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
+        if m.get('RecallCallingNumber') is not None:
+            self.recall_calling_number = m.get('RecallCallingNumber')
         if m.get('RecallStrategyJson') is not None:
             self.recall_strategy_json = m.get('RecallStrategyJson')
         if m.get('RingingDuration') is not None:
@@ -1192,9 +1925,6 @@ class CreateBatchRepeatJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1232,9 +1962,13 @@ class CreateDialogueFlowRequest(TeaModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.dialogue_flow_type = dialogue_flow_type
+        # This parameter is required.
         self.dialogue_name = dialogue_name
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -1338,9 +2072,6 @@ class CreateDialogueFlowResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1376,7 +2107,9 @@ class CreateDownloadUrlRequest(TeaModel):
         download_task_id: str = None,
         file_id: str = None,
     ):
+        # This parameter is required.
         self.download_task_id = download_task_id
+        # This parameter is required.
         self.file_id = file_id
 
     def validate(self):
@@ -1472,9 +2205,6 @@ class CreateDownloadUrlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1514,11 +2244,17 @@ class CreateGlobalQuestionRequest(TeaModel):
         questions: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.answers = answers
+        # This parameter is required.
         self.global_question_name = global_question_name
+        # This parameter is required.
         self.global_question_type = global_question_type
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.questions = questions
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -1630,9 +2366,6 @@ class CreateGlobalQuestionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1674,7 +2407,9 @@ class CreateInstanceRequest(TeaModel):
     ):
         self.calling_number = calling_number
         self.instance_description = instance_description
+        # This parameter is required.
         self.instance_name = instance_name
+        # This parameter is required.
         self.max_concurrent_conversation = max_concurrent_conversation
         self.nlu_service_type = nlu_service_type
         self.resource_group_id = resource_group_id
@@ -1865,9 +2600,6 @@ class CreateInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2069,9 +2801,6 @@ class CreateInstanceBindNumberResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2111,11 +2840,15 @@ class CreateIntentRequest(TeaModel):
         script_id: str = None,
         utterances: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.intent_description = intent_description
+        # This parameter is required.
         self.intent_name = intent_name
         self.keywords = keywords
+        # This parameter is required.
         self.script_id = script_id
+        # This parameter is required.
         self.utterances = utterances
 
     def validate(self):
@@ -2227,9 +2960,6 @@ class CreateIntentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2265,7 +2995,9 @@ class CreateJobDataParsingTaskRequest(TeaModel):
         instance_id: str = None,
         job_file_path: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_file_path = job_file_path
 
     def validate(self):
@@ -2361,9 +3093,6 @@ class CreateJobDataParsingTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2397,11 +3126,13 @@ class CreateJobGroupRequest(TeaModel):
     def __init__(
         self,
         calling_number: List[str] = None,
+        flash_sms_extras: str = None,
         instance_id: str = None,
         job_group_description: str = None,
         job_group_name: str = None,
         min_concurrency: int = None,
         priority: str = None,
+        recall_calling_number: List[str] = None,
         recall_strategy_json: str = None,
         ringing_duration: int = None,
         scenario_id: str = None,
@@ -2409,11 +3140,15 @@ class CreateJobGroupRequest(TeaModel):
         strategy_json: str = None,
     ):
         self.calling_number = calling_number
+        self.flash_sms_extras = flash_sms_extras
+        # This parameter is required.
         self.instance_id = instance_id
         self.job_group_description = job_group_description
+        # This parameter is required.
         self.job_group_name = job_group_name
         self.min_concurrency = min_concurrency
         self.priority = priority
+        self.recall_calling_number = recall_calling_number
         self.recall_strategy_json = recall_strategy_json
         self.ringing_duration = ringing_duration
         self.scenario_id = scenario_id
@@ -2431,6 +3166,8 @@ class CreateJobGroupRequest(TeaModel):
         result = dict()
         if self.calling_number is not None:
             result['CallingNumber'] = self.calling_number
+        if self.flash_sms_extras is not None:
+            result['FlashSmsExtras'] = self.flash_sms_extras
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.job_group_description is not None:
@@ -2441,6 +3178,8 @@ class CreateJobGroupRequest(TeaModel):
             result['MinConcurrency'] = self.min_concurrency
         if self.priority is not None:
             result['Priority'] = self.priority
+        if self.recall_calling_number is not None:
+            result['RecallCallingNumber'] = self.recall_calling_number
         if self.recall_strategy_json is not None:
             result['RecallStrategyJson'] = self.recall_strategy_json
         if self.ringing_duration is not None:
@@ -2457,6 +3196,8 @@ class CreateJobGroupRequest(TeaModel):
         m = m or dict()
         if m.get('CallingNumber') is not None:
             self.calling_number = m.get('CallingNumber')
+        if m.get('FlashSmsExtras') is not None:
+            self.flash_sms_extras = m.get('FlashSmsExtras')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('JobGroupDescription') is not None:
@@ -2467,6 +3208,8 @@ class CreateJobGroupRequest(TeaModel):
             self.min_concurrency = m.get('MinConcurrency')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
+        if m.get('RecallCallingNumber') is not None:
+            self.recall_calling_number = m.get('RecallCallingNumber')
         if m.get('RecallStrategyJson') is not None:
             self.recall_strategy_json = m.get('RecallStrategyJson')
         if m.get('RingingDuration') is not None:
@@ -2724,6 +3467,7 @@ class CreateJobGroupResponseBodyJobGroup(TeaModel):
         min_concurrency: int = None,
         modify_time: str = None,
         priority: str = None,
+        recall_calling_numbers: List[str] = None,
         recall_strategy: CreateJobGroupResponseBodyJobGroupRecallStrategy = None,
         ringing_duration: int = None,
         scenario_id: str = None,
@@ -2743,6 +3487,7 @@ class CreateJobGroupResponseBodyJobGroup(TeaModel):
         self.min_concurrency = min_concurrency
         self.modify_time = modify_time
         self.priority = priority
+        self.recall_calling_numbers = recall_calling_numbers
         self.recall_strategy = recall_strategy
         self.ringing_duration = ringing_duration
         self.scenario_id = scenario_id
@@ -2787,6 +3532,8 @@ class CreateJobGroupResponseBodyJobGroup(TeaModel):
             result['ModifyTime'] = self.modify_time
         if self.priority is not None:
             result['Priority'] = self.priority
+        if self.recall_calling_numbers is not None:
+            result['RecallCallingNumbers'] = self.recall_calling_numbers
         if self.recall_strategy is not None:
             result['RecallStrategy'] = self.recall_strategy.to_map()
         if self.ringing_duration is not None:
@@ -2828,6 +3575,8 @@ class CreateJobGroupResponseBodyJobGroup(TeaModel):
             self.modify_time = m.get('ModifyTime')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
+        if m.get('RecallCallingNumbers') is not None:
+            self.recall_calling_numbers = m.get('RecallCallingNumbers')
         if m.get('RecallStrategy') is not None:
             temp_model = CreateJobGroupResponseBodyJobGroupRecallStrategy()
             self.recall_strategy = temp_model.from_map(m['RecallStrategy'])
@@ -2918,9 +3667,6 @@ class CreateJobGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2957,6 +3703,7 @@ class CreateJobGroupExportTaskRequest(TeaModel):
         job_group_id: str = None,
         option: List[str] = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.job_group_id = job_group_id
         self.option = option
@@ -3058,9 +3805,6 @@ class CreateJobGroupExportTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3186,9 +3930,6 @@ class CreateNumberDistrictInfoDownloadUrlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3314,9 +4055,6 @@ class CreateNumberDistrictInfoParsingTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3354,9 +4092,13 @@ class CreateOutboundCallNumberRequest(TeaModel):
         rate_limit_count: int = None,
         rate_limit_period: int = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.number = number
+        # This parameter is required.
         self.rate_limit_count = rate_limit_count
+        # This parameter is required.
         self.rate_limit_period = rate_limit_period
 
     def validate(self):
@@ -3460,9 +4202,6 @@ class CreateOutboundCallNumberResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3495,6 +4234,9 @@ class CreateOutboundCallNumberResponse(TeaModel):
 class CreateScriptRequest(TeaModel):
     def __init__(
         self,
+        agent_id: int = None,
+        agent_key: str = None,
+        agent_llm: bool = None,
         asr_config: str = None,
         chatbot_id: str = None,
         emotion_enable: bool = None,
@@ -3503,6 +4245,8 @@ class CreateScriptRequest(TeaModel):
         long_wait_enable: bool = None,
         mini_playback_enable: bool = None,
         new_barge_in_enable: bool = None,
+        nlu_access_type: str = None,
+        nlu_engine: str = None,
         scene: str = None,
         script_content: List[str] = None,
         script_description: str = None,
@@ -3510,17 +4254,26 @@ class CreateScriptRequest(TeaModel):
         script_waveform: List[str] = None,
         tts_config: str = None,
     ):
+        self.agent_id = agent_id
+        self.agent_key = agent_key
+        self.agent_llm = agent_llm
         self.asr_config = asr_config
         self.chatbot_id = chatbot_id
         self.emotion_enable = emotion_enable
+        # This parameter is required.
         self.industry = industry
+        # This parameter is required.
         self.instance_id = instance_id
         self.long_wait_enable = long_wait_enable
         self.mini_playback_enable = mini_playback_enable
         self.new_barge_in_enable = new_barge_in_enable
+        self.nlu_access_type = nlu_access_type
+        self.nlu_engine = nlu_engine
+        # This parameter is required.
         self.scene = scene
         self.script_content = script_content
         self.script_description = script_description
+        # This parameter is required.
         self.script_name = script_name
         self.script_waveform = script_waveform
         self.tts_config = tts_config
@@ -3534,6 +4287,12 @@ class CreateScriptRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.agent_llm is not None:
+            result['AgentLlm'] = self.agent_llm
         if self.asr_config is not None:
             result['AsrConfig'] = self.asr_config
         if self.chatbot_id is not None:
@@ -3550,6 +4309,10 @@ class CreateScriptRequest(TeaModel):
             result['MiniPlaybackEnable'] = self.mini_playback_enable
         if self.new_barge_in_enable is not None:
             result['NewBargeInEnable'] = self.new_barge_in_enable
+        if self.nlu_access_type is not None:
+            result['NluAccessType'] = self.nlu_access_type
+        if self.nlu_engine is not None:
+            result['NluEngine'] = self.nlu_engine
         if self.scene is not None:
             result['Scene'] = self.scene
         if self.script_content is not None:
@@ -3566,6 +4329,12 @@ class CreateScriptRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('AgentLlm') is not None:
+            self.agent_llm = m.get('AgentLlm')
         if m.get('AsrConfig') is not None:
             self.asr_config = m.get('AsrConfig')
         if m.get('ChatbotId') is not None:
@@ -3582,6 +4351,10 @@ class CreateScriptRequest(TeaModel):
             self.mini_playback_enable = m.get('MiniPlaybackEnable')
         if m.get('NewBargeInEnable') is not None:
             self.new_barge_in_enable = m.get('NewBargeInEnable')
+        if m.get('NluAccessType') is not None:
+            self.nlu_access_type = m.get('NluAccessType')
+        if m.get('NluEngine') is not None:
+            self.nlu_engine = m.get('NluEngine')
         if m.get('Scene') is not None:
             self.scene = m.get('Scene')
         if m.get('ScriptContent') is not None:
@@ -3604,6 +4377,8 @@ class CreateScriptResponseBodyScript(TeaModel):
         industry: str = None,
         is_debug_drafted: bool = None,
         is_drafted: bool = None,
+        nlu_access_type: str = None,
+        nlu_engine: str = None,
         scene: str = None,
         script_description: str = None,
         script_id: str = None,
@@ -3615,6 +4390,8 @@ class CreateScriptResponseBodyScript(TeaModel):
         self.industry = industry
         self.is_debug_drafted = is_debug_drafted
         self.is_drafted = is_drafted
+        self.nlu_access_type = nlu_access_type
+        self.nlu_engine = nlu_engine
         self.scene = scene
         self.script_description = script_description
         self.script_id = script_id
@@ -3639,6 +4416,10 @@ class CreateScriptResponseBodyScript(TeaModel):
             result['IsDebugDrafted'] = self.is_debug_drafted
         if self.is_drafted is not None:
             result['IsDrafted'] = self.is_drafted
+        if self.nlu_access_type is not None:
+            result['NluAccessType'] = self.nlu_access_type
+        if self.nlu_engine is not None:
+            result['NluEngine'] = self.nlu_engine
         if self.scene is not None:
             result['Scene'] = self.scene
         if self.script_description is not None:
@@ -3663,6 +4444,10 @@ class CreateScriptResponseBodyScript(TeaModel):
             self.is_debug_drafted = m.get('IsDebugDrafted')
         if m.get('IsDrafted') is not None:
             self.is_drafted = m.get('IsDrafted')
+        if m.get('NluAccessType') is not None:
+            self.nlu_access_type = m.get('NluAccessType')
+        if m.get('NluEngine') is not None:
+            self.nlu_engine = m.get('NluEngine')
         if m.get('Scene') is not None:
             self.scene = m.get('Scene')
         if m.get('ScriptDescription') is not None:
@@ -3749,9 +4534,6 @@ class CreateScriptResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3790,10 +4572,15 @@ class CreateScriptWaveformRequest(TeaModel):
         script_content: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.file_id = file_id
+        # This parameter is required.
         self.file_name = file_name
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_content = script_content
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -3901,9 +4688,6 @@ class CreateScriptWaveformResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3941,9 +4725,13 @@ class CreateTagRequest(TeaModel):
         tag_group: str = None,
         tag_name: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
+        # This parameter is required.
         self.tag_group = tag_group
+        # This parameter is required.
         self.tag_name = tag_name
 
     def validate(self):
@@ -4047,9 +4835,6 @@ class CreateTagResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4117,6 +4902,7 @@ class CreateTaskExportTaskRequest(TeaModel):
         self.has_answered = has_answered
         self.has_hang_up_by_rejection = has_hang_up_by_rejection
         self.has_reached_end_of_flow = has_reached_end_of_flow
+        # This parameter is required.
         self.instance_id = instance_id
         self.job_group_id = job_group_id
         self.job_group_name_query = job_group_name_query
@@ -4325,9 +5111,6 @@ class CreateTaskExportTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4353,6 +5136,170 @@ class CreateTaskExportTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateTaskExportTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAgentProfilesRequest(TeaModel):
+    def __init__(
+        self,
+        agent_profile_ids: List[str] = None,
+        app_ip: str = None,
+    ):
+        self.agent_profile_ids = agent_profile_ids
+        self.app_ip = app_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_profile_ids is not None:
+            result['AgentProfileIds'] = self.agent_profile_ids
+        if self.app_ip is not None:
+            result['AppIp'] = self.app_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentProfileIds') is not None:
+            self.agent_profile_ids = m.get('AgentProfileIds')
+        if m.get('AppIp') is not None:
+            self.app_ip = m.get('AppIp')
+        return self
+
+
+class DeleteAgentProfilesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_profile_ids_shrink: str = None,
+        app_ip: str = None,
+    ):
+        self.agent_profile_ids_shrink = agent_profile_ids_shrink
+        self.app_ip = app_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_profile_ids_shrink is not None:
+            result['AgentProfileIds'] = self.agent_profile_ids_shrink
+        if self.app_ip is not None:
+            result['AppIp'] = self.app_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentProfileIds') is not None:
+            self.agent_profile_ids_shrink = m.get('AgentProfileIds')
+        if m.get('AppIp') is not None:
+            self.app_ip = m.get('AppIp')
+        return self
+
+
+class DeleteAgentProfilesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteAgentProfilesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAgentProfilesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAgentProfilesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4420,9 +5367,6 @@ class DeleteAllNumberDistrictInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4459,7 +5403,9 @@ class DeleteContactBlockListRequest(TeaModel):
         instance_id: str = None,
         operator: str = None,
     ):
+        # This parameter is required.
         self.contact_block_list_id = contact_block_list_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.operator = operator
 
@@ -4560,9 +5506,6 @@ class DeleteContactBlockListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4599,7 +5542,9 @@ class DeleteContactWhiteListRequest(TeaModel):
         instance_id: str = None,
         operator: str = None,
     ):
+        # This parameter is required.
         self.contact_white_list_id = contact_white_list_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.operator = operator
 
@@ -4700,9 +5645,6 @@ class DeleteContactWhiteListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4739,8 +5681,11 @@ class DeleteDialogueFlowRequest(TeaModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.dialogue_flow_id = dialogue_flow_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -4834,9 +5779,6 @@ class DeleteDialogueFlowResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4873,8 +5815,11 @@ class DeleteGlobalQuestionRequest(TeaModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.global_question_id = global_question_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -4968,9 +5913,6 @@ class DeleteGlobalQuestionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5005,6 +5947,7 @@ class DeleteInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -5090,9 +6033,6 @@ class DeleteInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5129,8 +6069,11 @@ class DeleteIntentRequest(TeaModel):
         intent_id: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.intent_id = intent_id
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -5224,9 +6167,6 @@ class DeleteIntentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5262,7 +6202,9 @@ class DeleteJobGroupRequest(TeaModel):
         instance_id: str = None,
         job_group_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_group_id = job_group_id
 
     def validate(self):
@@ -5352,9 +6294,6 @@ class DeleteJobGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5390,7 +6329,9 @@ class DeleteOutboundCallNumberRequest(TeaModel):
         instance_id: str = None,
         outbound_call_number_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.outbound_call_number_id = outbound_call_number_id
 
     def validate(self):
@@ -5480,9 +6421,6 @@ class DeleteOutboundCallNumberResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5518,7 +6456,9 @@ class DeleteScriptRequest(TeaModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -5608,9 +6548,6 @@ class DeleteScriptResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5647,7 +6584,9 @@ class DeleteScriptRecordingRequest(TeaModel):
         script_id: str = None,
         uuids_json: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
         self.uuids_json = uuids_json
 
@@ -5742,9 +6681,6 @@ class DeleteScriptRecordingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5781,8 +6717,11 @@ class DeleteScriptWaveformRequest(TeaModel):
         script_id: str = None,
         script_waveform_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
+        # This parameter is required.
         self.script_waveform_id = script_waveform_id
 
     def validate(self):
@@ -5876,9 +6815,6 @@ class DeleteScriptWaveformResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5915,8 +6851,11 @@ class DescribeDialogueNodeStatisticsRequest(TeaModel):
         job_group_id: str = None,
         limit: int = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_group_id = job_group_id
+        # This parameter is required.
         self.limit = limit
 
     def validate(self):
@@ -5944,6 +6883,51 @@ class DescribeDialogueNodeStatisticsRequest(TeaModel):
             self.job_group_id = m.get('JobGroupId')
         if m.get('Limit') is not None:
             self.limit = m.get('Limit')
+        return self
+
+
+class DescribeDialogueNodeStatisticsResponseBodyHangUpDialogueNodes(TeaModel):
+    def __init__(
+        self,
+        hang_up_num: int = None,
+        node_id: str = None,
+        node_name: str = None,
+        rate_display: str = None,
+    ):
+        self.hang_up_num = hang_up_num
+        self.node_id = node_id
+        self.node_name = node_name
+        self.rate_display = rate_display
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hang_up_num is not None:
+            result['HangUpNum'] = self.hang_up_num
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.rate_display is not None:
+            result['RateDisplay'] = self.rate_display
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HangUpNum') is not None:
+            self.hang_up_num = m.get('HangUpNum')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('RateDisplay') is not None:
+            self.rate_display = m.get('RateDisplay')
         return self
 
 
@@ -6022,6 +7006,7 @@ class DescribeDialogueNodeStatisticsResponseBody(TeaModel):
         self,
         code: str = None,
         group_id: str = None,
+        hang_up_dialogue_nodes: List[DescribeDialogueNodeStatisticsResponseBodyHangUpDialogueNodes] = None,
         http_status_code: int = None,
         instance_id: str = None,
         message: str = None,
@@ -6032,6 +7017,7 @@ class DescribeDialogueNodeStatisticsResponseBody(TeaModel):
     ):
         self.code = code
         self.group_id = group_id
+        self.hang_up_dialogue_nodes = hang_up_dialogue_nodes
         self.http_status_code = http_status_code
         self.instance_id = instance_id
         self.message = message
@@ -6041,6 +7027,10 @@ class DescribeDialogueNodeStatisticsResponseBody(TeaModel):
         self.total_completed = total_completed
 
     def validate(self):
+        if self.hang_up_dialogue_nodes:
+            for k in self.hang_up_dialogue_nodes:
+                if k:
+                    k.validate()
         if self.no_answer_dialogue_nodes:
             for k in self.no_answer_dialogue_nodes:
                 if k:
@@ -6056,6 +7046,10 @@ class DescribeDialogueNodeStatisticsResponseBody(TeaModel):
             result['Code'] = self.code
         if self.group_id is not None:
             result['GroupId'] = self.group_id
+        result['HangUpDialogueNodes'] = []
+        if self.hang_up_dialogue_nodes is not None:
+            for k in self.hang_up_dialogue_nodes:
+                result['HangUpDialogueNodes'].append(k.to_map() if k else None)
         if self.http_status_code is not None:
             result['HttpStatusCode'] = self.http_status_code
         if self.instance_id is not None:
@@ -6080,6 +7074,11 @@ class DescribeDialogueNodeStatisticsResponseBody(TeaModel):
             self.code = m.get('Code')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
+        self.hang_up_dialogue_nodes = []
+        if m.get('HangUpDialogueNodes') is not None:
+            for k in m.get('HangUpDialogueNodes'):
+                temp_model = DescribeDialogueNodeStatisticsResponseBodyHangUpDialogueNodes()
+                self.hang_up_dialogue_nodes.append(temp_model.from_map(k))
         if m.get('HttpStatusCode') is not None:
             self.http_status_code = m.get('HttpStatusCode')
         if m.get('InstanceId') is not None:
@@ -6112,9 +7111,6 @@ class DescribeDialogueNodeStatisticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6150,7 +7146,9 @@ class DescribeDsReportsRequest(TeaModel):
         instance_id: str = None,
         job_group_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_group_id = job_group_id
 
     def validate(self):
@@ -6246,9 +7244,6 @@ class DescribeDsReportsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6285,8 +7280,11 @@ class DescribeGlobalQuestionRequest(TeaModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.global_question_id = global_question_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -6445,9 +7443,6 @@ class DescribeGlobalQuestionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6483,7 +7478,9 @@ class DescribeGroupExecutingInfoRequest(TeaModel):
         instance_id: str = None,
         job_group_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_group_id = job_group_id
 
     def validate(self):
@@ -6589,6 +7586,7 @@ class DescribeGroupExecutingInfoResponseBodyExecutingInfo(TeaModel):
         finished_num: int = None,
         hang_up_by_client_num: int = None,
         jobs_progress: DescribeGroupExecutingInfoResponseBodyExecutingInfoJobsProgress = None,
+        no_interaction_num: int = None,
         start_time: int = None,
         transfer_by_intent_num: int = None,
         transfer_by_no_answer: int = None,
@@ -6600,6 +7598,7 @@ class DescribeGroupExecutingInfoResponseBodyExecutingInfo(TeaModel):
         self.finished_num = finished_num
         self.hang_up_by_client_num = hang_up_by_client_num
         self.jobs_progress = jobs_progress
+        self.no_interaction_num = no_interaction_num
         self.start_time = start_time
         self.transfer_by_intent_num = transfer_by_intent_num
         self.transfer_by_no_answer = transfer_by_no_answer
@@ -6628,6 +7627,8 @@ class DescribeGroupExecutingInfoResponseBodyExecutingInfo(TeaModel):
             result['HangUpByClientNum'] = self.hang_up_by_client_num
         if self.jobs_progress is not None:
             result['JobsProgress'] = self.jobs_progress.to_map()
+        if self.no_interaction_num is not None:
+            result['NoInteractionNum'] = self.no_interaction_num
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.transfer_by_intent_num is not None:
@@ -6653,6 +7654,8 @@ class DescribeGroupExecutingInfoResponseBodyExecutingInfo(TeaModel):
         if m.get('JobsProgress') is not None:
             temp_model = DescribeGroupExecutingInfoResponseBodyExecutingInfoJobsProgress()
             self.jobs_progress = temp_model.from_map(m['JobsProgress'])
+        if m.get('NoInteractionNum') is not None:
+            self.no_interaction_num = m.get('NoInteractionNum')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('TransferByIntentNum') is not None:
@@ -6745,9 +7748,6 @@ class DescribeGroupExecutingInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6782,6 +7782,7 @@ class DescribeInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -6950,9 +7951,6 @@ class DescribeInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6989,8 +7987,11 @@ class DescribeIntentRequest(TeaModel):
         intent_id: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.intent_id = intent_id
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -7161,9 +8162,6 @@ class DescribeIntentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7200,7 +8198,9 @@ class DescribeIntentStatisticsRequest(TeaModel):
         job_group_id: str = None,
         limit: int = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_group_id = job_group_id
         self.limit = limit
 
@@ -7298,9 +8298,17 @@ class DescribeIntentStatisticsResponseBodyGlobalIntents(TeaModel):
 class DescribeIntentStatisticsResponseBodyIntentsAfterNoAnswer(TeaModel):
     def __init__(
         self,
+        group_id: str = None,
+        hit_after_no_answer: int = None,
         instance_id: str = None,
+        intent_id: str = None,
+        intent_name: str = None,
     ):
+        self.group_id = group_id
+        self.hit_after_no_answer = hit_after_no_answer
         self.instance_id = instance_id
+        self.intent_id = intent_id
+        self.intent_name = intent_name
 
     def validate(self):
         pass
@@ -7311,14 +8319,30 @@ class DescribeIntentStatisticsResponseBodyIntentsAfterNoAnswer(TeaModel):
             return _map
 
         result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.hit_after_no_answer is not None:
+            result['HitAfterNoAnswer'] = self.hit_after_no_answer
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.intent_name is not None:
+            result['IntentName'] = self.intent_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('HitAfterNoAnswer') is not None:
+            self.hit_after_no_answer = m.get('HitAfterNoAnswer')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('IntentName') is not None:
+            self.intent_name = m.get('IntentName')
         return self
 
 
@@ -7331,6 +8355,7 @@ class DescribeIntentStatisticsResponseBodyProcessIntents(TeaModel):
         instance_id: str = None,
         intent_id: str = None,
         intent_name: str = None,
+        rate_display: str = None,
         type: str = None,
     ):
         self.group_id = group_id
@@ -7339,6 +8364,7 @@ class DescribeIntentStatisticsResponseBodyProcessIntents(TeaModel):
         self.instance_id = instance_id
         self.intent_id = intent_id
         self.intent_name = intent_name
+        self.rate_display = rate_display
         self.type = type
 
     def validate(self):
@@ -7362,6 +8388,8 @@ class DescribeIntentStatisticsResponseBodyProcessIntents(TeaModel):
             result['IntentId'] = self.intent_id
         if self.intent_name is not None:
             result['IntentName'] = self.intent_name
+        if self.rate_display is not None:
+            result['RateDisplay'] = self.rate_display
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -7380,6 +8408,8 @@ class DescribeIntentStatisticsResponseBodyProcessIntents(TeaModel):
             self.intent_id = m.get('IntentId')
         if m.get('IntentName') is not None:
             self.intent_name = m.get('IntentName')
+        if m.get('RateDisplay') is not None:
+            self.rate_display = m.get('RateDisplay')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -7516,9 +8546,6 @@ class DescribeIntentStatisticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7555,7 +8582,9 @@ class DescribeJobRequest(TeaModel):
         job_id: str = None,
         with_script: bool = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_id = job_id
         self.with_script = with_script
 
@@ -8029,8 +9058,11 @@ class DescribeJobResponseBodyJobTasks(TeaModel):
         hang_up_direction: str = None,
         job_id: str = None,
         planed_time: int = None,
+        real_ringing_duration: int = None,
         ringing_duration: int = None,
         scenario_id: str = None,
+        sip_code: str = None,
+        sip_duration: int = None,
         status: str = None,
         task_id: str = None,
     ):
@@ -8048,8 +9080,11 @@ class DescribeJobResponseBodyJobTasks(TeaModel):
         self.hang_up_direction = hang_up_direction
         self.job_id = job_id
         self.planed_time = planed_time
+        self.real_ringing_duration = real_ringing_duration
         self.ringing_duration = ringing_duration
         self.scenario_id = scenario_id
+        self.sip_code = sip_code
+        self.sip_duration = sip_duration
         self.status = status
         self.task_id = task_id
 
@@ -8097,10 +9132,16 @@ class DescribeJobResponseBodyJobTasks(TeaModel):
             result['JobId'] = self.job_id
         if self.planed_time is not None:
             result['PlanedTime'] = self.planed_time
+        if self.real_ringing_duration is not None:
+            result['RealRingingDuration'] = self.real_ringing_duration
         if self.ringing_duration is not None:
             result['RingingDuration'] = self.ringing_duration
         if self.scenario_id is not None:
             result['ScenarioId'] = self.scenario_id
+        if self.sip_code is not None:
+            result['SipCode'] = self.sip_code
+        if self.sip_duration is not None:
+            result['SipDuration'] = self.sip_duration
         if self.status is not None:
             result['Status'] = self.status
         if self.task_id is not None:
@@ -8141,10 +9182,16 @@ class DescribeJobResponseBodyJobTasks(TeaModel):
             self.job_id = m.get('JobId')
         if m.get('PlanedTime') is not None:
             self.planed_time = m.get('PlanedTime')
+        if m.get('RealRingingDuration') is not None:
+            self.real_ringing_duration = m.get('RealRingingDuration')
         if m.get('RingingDuration') is not None:
             self.ringing_duration = m.get('RingingDuration')
         if m.get('ScenarioId') is not None:
             self.scenario_id = m.get('ScenarioId')
+        if m.get('SipCode') is not None:
+            self.sip_code = m.get('SipCode')
+        if m.get('SipDuration') is not None:
+            self.sip_duration = m.get('SipDuration')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TaskId') is not None:
@@ -8408,9 +9455,6 @@ class DescribeJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8446,7 +9490,9 @@ class DescribeJobDataParsingTaskProgressRequest(TeaModel):
         instance_id: str = None,
         job_data_parsing_task_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_data_parsing_task_id = job_data_parsing_task_id
 
     def validate(self):
@@ -8601,9 +9647,6 @@ class DescribeJobDataParsingTaskProgressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8641,7 +9684,9 @@ class DescribeJobGroupRequest(TeaModel):
         job_group_id: str = None,
     ):
         self.brief_types = brief_types
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_group_id = job_group_id
 
     def validate(self):
@@ -8708,6 +9753,39 @@ class DescribeJobGroupResponseBodyJobGroupExportProgress(TeaModel):
             self.progress = m.get('Progress')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        return self
+
+
+class DescribeJobGroupResponseBodyJobGroupFlashSmsExtras(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        template_id: str = None,
+    ):
+        self.config_id = config_id
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
         return self
 
 
@@ -9027,6 +10105,7 @@ class DescribeJobGroupResponseBodyJobGroupStrategy(TeaModel):
         min_attempt_interval: int = None,
         repeat_by: str = None,
         repeat_days: List[str] = None,
+        repeatable: bool = None,
         routing_strategy: str = None,
         start_time: int = None,
         strategy_description: str = None,
@@ -9043,6 +10122,7 @@ class DescribeJobGroupResponseBodyJobGroupStrategy(TeaModel):
         self.min_attempt_interval = min_attempt_interval
         self.repeat_by = repeat_by
         self.repeat_days = repeat_days
+        self.repeatable = repeatable
         self.routing_strategy = routing_strategy
         self.start_time = start_time
         self.strategy_description = strategy_description
@@ -9079,6 +10159,8 @@ class DescribeJobGroupResponseBodyJobGroupStrategy(TeaModel):
             result['RepeatBy'] = self.repeat_by
         if self.repeat_days is not None:
             result['RepeatDays'] = self.repeat_days
+        if self.repeatable is not None:
+            result['Repeatable'] = self.repeatable
         if self.routing_strategy is not None:
             result['RoutingStrategy'] = self.routing_strategy
         if self.start_time is not None:
@@ -9115,6 +10197,8 @@ class DescribeJobGroupResponseBodyJobGroupStrategy(TeaModel):
             self.repeat_by = m.get('RepeatBy')
         if m.get('RepeatDays') is not None:
             self.repeat_days = m.get('RepeatDays')
+        if m.get('Repeatable') is not None:
+            self.repeatable = m.get('Repeatable')
         if m.get('RoutingStrategy') is not None:
             self.routing_strategy = m.get('RoutingStrategy')
         if m.get('StartTime') is not None:
@@ -9141,6 +10225,7 @@ class DescribeJobGroupResponseBodyJobGroup(TeaModel):
         calling_numbers: List[str] = None,
         creation_time: int = None,
         export_progress: DescribeJobGroupResponseBodyJobGroupExportProgress = None,
+        flash_sms_extras: DescribeJobGroupResponseBodyJobGroupFlashSmsExtras = None,
         job_data_parsing_task_id: str = None,
         job_file_path: str = None,
         job_group_description: str = None,
@@ -9150,6 +10235,7 @@ class DescribeJobGroupResponseBodyJobGroup(TeaModel):
         modify_time: str = None,
         priority: str = None,
         progress: DescribeJobGroupResponseBodyJobGroupProgress = None,
+        recall_calling_numbers: List[str] = None,
         recall_strategy: DescribeJobGroupResponseBodyJobGroupRecallStrategy = None,
         result: DescribeJobGroupResponseBodyJobGroupResult = None,
         ringing_duration: int = None,
@@ -9163,6 +10249,7 @@ class DescribeJobGroupResponseBodyJobGroup(TeaModel):
         self.calling_numbers = calling_numbers
         self.creation_time = creation_time
         self.export_progress = export_progress
+        self.flash_sms_extras = flash_sms_extras
         self.job_data_parsing_task_id = job_data_parsing_task_id
         self.job_file_path = job_file_path
         self.job_group_description = job_group_description
@@ -9172,6 +10259,7 @@ class DescribeJobGroupResponseBodyJobGroup(TeaModel):
         self.modify_time = modify_time
         self.priority = priority
         self.progress = progress
+        self.recall_calling_numbers = recall_calling_numbers
         self.recall_strategy = recall_strategy
         self.result = result
         self.ringing_duration = ringing_duration
@@ -9185,6 +10273,8 @@ class DescribeJobGroupResponseBodyJobGroup(TeaModel):
     def validate(self):
         if self.export_progress:
             self.export_progress.validate()
+        if self.flash_sms_extras:
+            self.flash_sms_extras.validate()
         if self.progress:
             self.progress.validate()
         if self.recall_strategy:
@@ -9206,6 +10296,8 @@ class DescribeJobGroupResponseBodyJobGroup(TeaModel):
             result['CreationTime'] = self.creation_time
         if self.export_progress is not None:
             result['ExportProgress'] = self.export_progress.to_map()
+        if self.flash_sms_extras is not None:
+            result['FlashSmsExtras'] = self.flash_sms_extras.to_map()
         if self.job_data_parsing_task_id is not None:
             result['JobDataParsingTaskId'] = self.job_data_parsing_task_id
         if self.job_file_path is not None:
@@ -9224,6 +10316,8 @@ class DescribeJobGroupResponseBodyJobGroup(TeaModel):
             result['Priority'] = self.priority
         if self.progress is not None:
             result['Progress'] = self.progress.to_map()
+        if self.recall_calling_numbers is not None:
+            result['RecallCallingNumbers'] = self.recall_calling_numbers
         if self.recall_strategy is not None:
             result['RecallStrategy'] = self.recall_strategy.to_map()
         if self.result is not None:
@@ -9253,6 +10347,9 @@ class DescribeJobGroupResponseBodyJobGroup(TeaModel):
         if m.get('ExportProgress') is not None:
             temp_model = DescribeJobGroupResponseBodyJobGroupExportProgress()
             self.export_progress = temp_model.from_map(m['ExportProgress'])
+        if m.get('FlashSmsExtras') is not None:
+            temp_model = DescribeJobGroupResponseBodyJobGroupFlashSmsExtras()
+            self.flash_sms_extras = temp_model.from_map(m['FlashSmsExtras'])
         if m.get('JobDataParsingTaskId') is not None:
             self.job_data_parsing_task_id = m.get('JobDataParsingTaskId')
         if m.get('JobFilePath') is not None:
@@ -9272,6 +10369,8 @@ class DescribeJobGroupResponseBodyJobGroup(TeaModel):
         if m.get('Progress') is not None:
             temp_model = DescribeJobGroupResponseBodyJobGroupProgress()
             self.progress = temp_model.from_map(m['Progress'])
+        if m.get('RecallCallingNumbers') is not None:
+            self.recall_calling_numbers = m.get('RecallCallingNumbers')
         if m.get('RecallStrategy') is not None:
             temp_model = DescribeJobGroupResponseBodyJobGroupRecallStrategy()
             self.recall_strategy = temp_model.from_map(m['RecallStrategy'])
@@ -9367,9 +10466,6 @@ class DescribeJobGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9507,9 +10603,6 @@ class DescribeJobGroupExportTaskProgressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9709,9 +10802,6 @@ class DescribeNumberDistrictInfoStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9747,7 +10837,9 @@ class DescribeScriptRequest(TeaModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -9777,7 +10869,11 @@ class DescribeScriptRequest(TeaModel):
 class DescribeScriptResponseBodyScript(TeaModel):
     def __init__(
         self,
+        agent_id: int = None,
+        agent_key: str = None,
+        agent_llm: bool = None,
         asr_config: str = None,
+        chat_config: str = None,
         chatbot_id: str = None,
         debug_status: str = None,
         emotion_enable: bool = None,
@@ -9795,7 +10891,11 @@ class DescribeScriptResponseBodyScript(TeaModel):
         tts_config: str = None,
         update_time: int = None,
     ):
+        self.agent_id = agent_id
+        self.agent_key = agent_key
+        self.agent_llm = agent_llm
         self.asr_config = asr_config
+        self.chat_config = chat_config
         self.chatbot_id = chatbot_id
         self.debug_status = debug_status
         self.emotion_enable = emotion_enable
@@ -9822,8 +10922,16 @@ class DescribeScriptResponseBodyScript(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.agent_llm is not None:
+            result['AgentLlm'] = self.agent_llm
         if self.asr_config is not None:
             result['AsrConfig'] = self.asr_config
+        if self.chat_config is not None:
+            result['ChatConfig'] = self.chat_config
         if self.chatbot_id is not None:
             result['ChatbotId'] = self.chatbot_id
         if self.debug_status is not None:
@@ -9860,8 +10968,16 @@ class DescribeScriptResponseBodyScript(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('AgentLlm') is not None:
+            self.agent_llm = m.get('AgentLlm')
         if m.get('AsrConfig') is not None:
             self.asr_config = m.get('AsrConfig')
+        if m.get('ChatConfig') is not None:
+            self.chat_config = m.get('ChatConfig')
         if m.get('ChatbotId') is not None:
             self.chatbot_id = m.get('ChatbotId')
         if m.get('DebugStatus') is not None:
@@ -9974,9 +11090,6 @@ class DescribeScriptResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10013,8 +11126,11 @@ class DescribeScriptVoiceConfigRequest(TeaModel):
         script_id: str = None,
         script_voice_config_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
+        # This parameter is required.
         self.script_voice_config_id = script_voice_config_id
 
     def validate(self):
@@ -10179,9 +11295,6 @@ class DescribeScriptVoiceConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10217,7 +11330,9 @@ class DescribeTTSConfigRequest(TeaModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -10372,9 +11487,6 @@ class DescribeTTSConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10407,18 +11519,32 @@ class DescribeTTSConfigResponse(TeaModel):
 class DescribeTTSDemoRequest(TeaModel):
     def __init__(
         self,
+        access_key: str = None,
+        ali_customized_voice: str = None,
+        app_key: str = None,
+        engine: str = None,
         instance_id: str = None,
+        nls_service_type: str = None,
         pitch_rate: int = None,
         script_id: str = None,
+        secret_key: str = None,
         speech_rate: int = None,
         text: str = None,
         voice: str = None,
         volume: int = None,
     ):
+        self.access_key = access_key
+        self.ali_customized_voice = ali_customized_voice
+        self.app_key = app_key
+        self.engine = engine
+        # This parameter is required.
         self.instance_id = instance_id
+        self.nls_service_type = nls_service_type
         self.pitch_rate = pitch_rate
         self.script_id = script_id
+        self.secret_key = secret_key
         self.speech_rate = speech_rate
+        # This parameter is required.
         self.text = text
         self.voice = voice
         self.volume = volume
@@ -10432,12 +11558,24 @@ class DescribeTTSDemoRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.access_key is not None:
+            result['AccessKey'] = self.access_key
+        if self.ali_customized_voice is not None:
+            result['AliCustomizedVoice'] = self.ali_customized_voice
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.engine is not None:
+            result['Engine'] = self.engine
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.nls_service_type is not None:
+            result['NlsServiceType'] = self.nls_service_type
         if self.pitch_rate is not None:
             result['PitchRate'] = self.pitch_rate
         if self.script_id is not None:
             result['ScriptId'] = self.script_id
+        if self.secret_key is not None:
+            result['SecretKey'] = self.secret_key
         if self.speech_rate is not None:
             result['SpeechRate'] = self.speech_rate
         if self.text is not None:
@@ -10450,12 +11588,24 @@ class DescribeTTSDemoRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessKey') is not None:
+            self.access_key = m.get('AccessKey')
+        if m.get('AliCustomizedVoice') is not None:
+            self.ali_customized_voice = m.get('AliCustomizedVoice')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('NlsServiceType') is not None:
+            self.nls_service_type = m.get('NlsServiceType')
         if m.get('PitchRate') is not None:
             self.pitch_rate = m.get('PitchRate')
         if m.get('ScriptId') is not None:
             self.script_id = m.get('ScriptId')
+        if m.get('SecretKey') is not None:
+            self.secret_key = m.get('SecretKey')
         if m.get('SpeechRate') is not None:
             self.speech_rate = m.get('SpeechRate')
         if m.get('Text') is not None:
@@ -10536,9 +11686,6 @@ class DescribeTTSDemoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10574,7 +11721,9 @@ class DescribeTagHitsSummaryRequest(TeaModel):
         instance_id: str = None,
         job_group_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_group_id = job_group_id
 
     def validate(self):
@@ -10778,9 +11927,6 @@ class DescribeTagHitsSummaryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10982,9 +12128,6 @@ class DescribeTenantBindNumberResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11031,14 +12174,21 @@ class DialogueRequest(TeaModel):
     ):
         self.action_key = action_key
         self.action_params = action_params
+        # This parameter is required.
         self.call_id = call_id
+        # This parameter is required.
         self.call_type = call_type
+        # This parameter is required.
         self.called_number = called_number
+        # This parameter is required.
         self.calling_number = calling_number
+        # This parameter is required.
         self.instance_id = instance_id
         self.scenario_id = scenario_id
+        # 场景id
         self.script_id = script_id
         self.task_id = task_id
+        # This parameter is required.
         self.utterance = utterance
 
     def validate(self):
@@ -11113,6 +12263,7 @@ class DialogueResponseBodyFeedback(TeaModel):
         self.action = action
         self.action_params = action_params
         self.content = content
+        # 已废弃
         self.content_params = content_params
         self.interruptible = interruptible
 
@@ -11223,9 +12374,6 @@ class DialogueResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11345,9 +12493,6 @@ class DismissNumberDistrictInfoParsingResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11384,8 +12529,10 @@ class DownloadRecordingRequest(TeaModel):
         need_voice_slice_recording: bool = None,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.need_voice_slice_recording = need_voice_slice_recording
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -11526,9 +12673,6 @@ class DownloadRecordingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11565,8 +12709,11 @@ class DownloadScriptRecordingRequest(TeaModel):
         script_id: str = None,
         uuid: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
+        # This parameter is required.
         self.uuid = uuid
 
     def validate(self):
@@ -11701,9 +12848,6 @@ class DownloadScriptRecordingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11740,8 +12884,11 @@ class DuplicateScriptRequest(TeaModel):
         name: str = None,
         source_script_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.source_script_id = source_script_id
 
     def validate(self):
@@ -11841,9 +12988,6 @@ class DuplicateScriptResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11879,7 +13023,9 @@ class ExportScriptRequest(TeaModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -12004,9 +13150,6 @@ class ExportScriptResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12209,9 +13352,6 @@ class GenerateUploadUrlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12247,6 +13387,7 @@ class GetAfterAnswerDelayPlaybackRequest(TeaModel):
         entry_id: str = None,
         strategy_level: int = None,
     ):
+        # This parameter is required.
         self.entry_id = entry_id
         self.strategy_level = strategy_level
 
@@ -12343,9 +13484,6 @@ class GetAfterAnswerDelayPlaybackResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12371,6 +13509,1121 @@ class GetAfterAnswerDelayPlaybackResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAfterAnswerDelayPlaybackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAgentProfileRequest(TeaModel):
+    def __init__(
+        self,
+        agent_profile_id: str = None,
+        app_ip: str = None,
+        instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.agent_profile_id = agent_profile_id
+        self.app_ip = app_ip
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_profile_id is not None:
+            result['AgentProfileId'] = self.agent_profile_id
+        if self.app_ip is not None:
+            result['AppIp'] = self.app_ip
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentProfileId') is not None:
+            self.agent_profile_id = m.get('AgentProfileId')
+        if m.get('AppIp') is not None:
+            self.app_ip = m.get('AppIp')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetAgentProfileResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        agent_profile_id: str = None,
+        agent_profile_template_id: str = None,
+        agent_type: str = None,
+        api_plugin_json: str = None,
+        create_time: str = None,
+        description: str = None,
+        instance_id: str = None,
+        instruction_json: str = None,
+        labels_json: str = None,
+        model: str = None,
+        model_config: str = None,
+        nlu_config_json: str = None,
+        prompt: str = None,
+        prompt_json: str = None,
+        scenario: str = None,
+        script_id: str = None,
+        system: bool = None,
+        update_time: str = None,
+        variables_json: str = None,
+    ):
+        self.agent_profile_id = agent_profile_id
+        self.agent_profile_template_id = agent_profile_template_id
+        # agent type
+        self.agent_type = agent_type
+        self.api_plugin_json = api_plugin_json
+        self.create_time = create_time
+        self.description = description
+        self.instance_id = instance_id
+        self.instruction_json = instruction_json
+        self.labels_json = labels_json
+        self.model = model
+        self.model_config = model_config
+        self.nlu_config_json = nlu_config_json
+        self.prompt = prompt
+        self.prompt_json = prompt_json
+        self.scenario = scenario
+        self.script_id = script_id
+        self.system = system
+        self.update_time = update_time
+        self.variables_json = variables_json
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_profile_id is not None:
+            result['AgentProfileId'] = self.agent_profile_id
+        if self.agent_profile_template_id is not None:
+            result['AgentProfileTemplateId'] = self.agent_profile_template_id
+        if self.agent_type is not None:
+            result['AgentType'] = self.agent_type
+        if self.api_plugin_json is not None:
+            result['ApiPluginJson'] = self.api_plugin_json
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instruction_json is not None:
+            result['InstructionJson'] = self.instruction_json
+        if self.labels_json is not None:
+            result['LabelsJson'] = self.labels_json
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.model_config is not None:
+            result['ModelConfig'] = self.model_config
+        if self.nlu_config_json is not None:
+            result['NluConfigJson'] = self.nlu_config_json
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.prompt_json is not None:
+            result['PromptJson'] = self.prompt_json
+        if self.scenario is not None:
+            result['Scenario'] = self.scenario
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        if self.system is not None:
+            result['System'] = self.system
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.variables_json is not None:
+            result['VariablesJson'] = self.variables_json
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentProfileId') is not None:
+            self.agent_profile_id = m.get('AgentProfileId')
+        if m.get('AgentProfileTemplateId') is not None:
+            self.agent_profile_template_id = m.get('AgentProfileTemplateId')
+        if m.get('AgentType') is not None:
+            self.agent_type = m.get('AgentType')
+        if m.get('ApiPluginJson') is not None:
+            self.api_plugin_json = m.get('ApiPluginJson')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstructionJson') is not None:
+            self.instruction_json = m.get('InstructionJson')
+        if m.get('LabelsJson') is not None:
+            self.labels_json = m.get('LabelsJson')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('ModelConfig') is not None:
+            self.model_config = m.get('ModelConfig')
+        if m.get('NluConfigJson') is not None:
+            self.nlu_config_json = m.get('NluConfigJson')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('PromptJson') is not None:
+            self.prompt_json = m.get('PromptJson')
+        if m.get('Scenario') is not None:
+            self.scenario = m.get('Scenario')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        if m.get('System') is not None:
+            self.system = m.get('System')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('VariablesJson') is not None:
+            self.variables_json = m.get('VariablesJson')
+        return self
+
+
+class GetAgentProfileResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetAgentProfileResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetAgentProfileResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAgentProfileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAgentProfileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAgentProfileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAgentProfileTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        agent_profile_template_id: str = None,
+        app_ip: str = None,
+    ):
+        # This parameter is required.
+        self.agent_profile_template_id = agent_profile_template_id
+        self.app_ip = app_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_profile_template_id is not None:
+            result['AgentProfileTemplateId'] = self.agent_profile_template_id
+        if self.app_ip is not None:
+            result['AppIp'] = self.app_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentProfileTemplateId') is not None:
+            self.agent_profile_template_id = m.get('AgentProfileTemplateId')
+        if m.get('AppIp') is not None:
+            self.app_ip = m.get('AppIp')
+        return self
+
+
+class GetAgentProfileTemplateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        agent_profile_template_id: str = None,
+        create_time: str = None,
+        description: str = None,
+        name: str = None,
+        prompt_schema: str = None,
+        update_time: str = None,
+    ):
+        self.agent_profile_template_id = agent_profile_template_id
+        self.create_time = create_time
+        self.description = description
+        self.name = name
+        self.prompt_schema = prompt_schema
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_profile_template_id is not None:
+            result['AgentProfileTemplateId'] = self.agent_profile_template_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.prompt_schema is not None:
+            result['PromptSchema'] = self.prompt_schema
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentProfileTemplateId') is not None:
+            self.agent_profile_template_id = m.get('AgentProfileTemplateId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PromptSchema') is not None:
+            self.prompt_schema = m.get('PromptSchema')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetAgentProfileTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetAgentProfileTemplateResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetAgentProfileTemplateResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAgentProfileTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAgentProfileTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAgentProfileTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAnnotationMissionSummaryRequest(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_id: str = None,
+    ):
+        self.annotation_mission_id = annotation_mission_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_mission_id is not None:
+            result['AnnotationMissionId'] = self.annotation_mission_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationMissionId') is not None:
+            self.annotation_mission_id = m.get('AnnotationMissionId')
+        return self
+
+
+class GetAnnotationMissionSummaryResponseBodyDataAsrSummaryInfo(TeaModel):
+    def __init__(
+        self,
+        add_customization_data_count: int = None,
+        add_vocabulary_data_count: int = None,
+        annotation_invalid: int = None,
+        character_correct_rate: int = None,
+        character_error_rate: int = None,
+        chat_total_count: int = None,
+        no_annotation: int = None,
+        sentence_error_rate: int = None,
+        word_error_rate: int = None,
+    ):
+        self.add_customization_data_count = add_customization_data_count
+        self.add_vocabulary_data_count = add_vocabulary_data_count
+        self.annotation_invalid = annotation_invalid
+        self.character_correct_rate = character_correct_rate
+        self.character_error_rate = character_error_rate
+        self.chat_total_count = chat_total_count
+        self.no_annotation = no_annotation
+        self.sentence_error_rate = sentence_error_rate
+        self.word_error_rate = word_error_rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.add_customization_data_count is not None:
+            result['AddCustomizationDataCount'] = self.add_customization_data_count
+        if self.add_vocabulary_data_count is not None:
+            result['AddVocabularyDataCount'] = self.add_vocabulary_data_count
+        if self.annotation_invalid is not None:
+            result['AnnotationInvalid'] = self.annotation_invalid
+        if self.character_correct_rate is not None:
+            result['CharacterCorrectRate'] = self.character_correct_rate
+        if self.character_error_rate is not None:
+            result['CharacterErrorRate'] = self.character_error_rate
+        if self.chat_total_count is not None:
+            result['ChatTotalCount'] = self.chat_total_count
+        if self.no_annotation is not None:
+            result['NoAnnotation'] = self.no_annotation
+        if self.sentence_error_rate is not None:
+            result['SentenceErrorRate'] = self.sentence_error_rate
+        if self.word_error_rate is not None:
+            result['WordErrorRate'] = self.word_error_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddCustomizationDataCount') is not None:
+            self.add_customization_data_count = m.get('AddCustomizationDataCount')
+        if m.get('AddVocabularyDataCount') is not None:
+            self.add_vocabulary_data_count = m.get('AddVocabularyDataCount')
+        if m.get('AnnotationInvalid') is not None:
+            self.annotation_invalid = m.get('AnnotationInvalid')
+        if m.get('CharacterCorrectRate') is not None:
+            self.character_correct_rate = m.get('CharacterCorrectRate')
+        if m.get('CharacterErrorRate') is not None:
+            self.character_error_rate = m.get('CharacterErrorRate')
+        if m.get('ChatTotalCount') is not None:
+            self.chat_total_count = m.get('ChatTotalCount')
+        if m.get('NoAnnotation') is not None:
+            self.no_annotation = m.get('NoAnnotation')
+        if m.get('SentenceErrorRate') is not None:
+            self.sentence_error_rate = m.get('SentenceErrorRate')
+        if m.get('WordErrorRate') is not None:
+            self.word_error_rate = m.get('WordErrorRate')
+        return self
+
+
+class GetAnnotationMissionSummaryResponseBodyDataIntentSummaryInfo(TeaModel):
+    def __init__(
+        self,
+        annotation_correct_count: int = None,
+        annotation_invalid: int = None,
+        chat_total_count: int = None,
+        intent_user_say_count: int = None,
+        intention_not_covered_count: int = None,
+        match_error_count: int = None,
+        no_annotation: int = None,
+        translation_unrecognized_count: int = None,
+    ):
+        self.annotation_correct_count = annotation_correct_count
+        self.annotation_invalid = annotation_invalid
+        self.chat_total_count = chat_total_count
+        self.intent_user_say_count = intent_user_say_count
+        self.intention_not_covered_count = intention_not_covered_count
+        self.match_error_count = match_error_count
+        self.no_annotation = no_annotation
+        self.translation_unrecognized_count = translation_unrecognized_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_correct_count is not None:
+            result['AnnotationCorrectCount'] = self.annotation_correct_count
+        if self.annotation_invalid is not None:
+            result['AnnotationInvalid'] = self.annotation_invalid
+        if self.chat_total_count is not None:
+            result['ChatTotalCount'] = self.chat_total_count
+        if self.intent_user_say_count is not None:
+            result['IntentUserSayCount'] = self.intent_user_say_count
+        if self.intention_not_covered_count is not None:
+            result['IntentionNotCoveredCount'] = self.intention_not_covered_count
+        if self.match_error_count is not None:
+            result['MatchErrorCount'] = self.match_error_count
+        if self.no_annotation is not None:
+            result['NoAnnotation'] = self.no_annotation
+        if self.translation_unrecognized_count is not None:
+            result['TranslationUnrecognizedCount'] = self.translation_unrecognized_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationCorrectCount') is not None:
+            self.annotation_correct_count = m.get('AnnotationCorrectCount')
+        if m.get('AnnotationInvalid') is not None:
+            self.annotation_invalid = m.get('AnnotationInvalid')
+        if m.get('ChatTotalCount') is not None:
+            self.chat_total_count = m.get('ChatTotalCount')
+        if m.get('IntentUserSayCount') is not None:
+            self.intent_user_say_count = m.get('IntentUserSayCount')
+        if m.get('IntentionNotCoveredCount') is not None:
+            self.intention_not_covered_count = m.get('IntentionNotCoveredCount')
+        if m.get('MatchErrorCount') is not None:
+            self.match_error_count = m.get('MatchErrorCount')
+        if m.get('NoAnnotation') is not None:
+            self.no_annotation = m.get('NoAnnotation')
+        if m.get('TranslationUnrecognizedCount') is not None:
+            self.translation_unrecognized_count = m.get('TranslationUnrecognizedCount')
+        return self
+
+
+class GetAnnotationMissionSummaryResponseBodyDataTagSummaryInfoTagSummaryInfoDetailList(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        name: str = None,
+    ):
+        self.count = count
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetAnnotationMissionSummaryResponseBodyDataTagSummaryInfo(TeaModel):
+    def __init__(
+        self,
+        tag_summary_info_detail_list: List[GetAnnotationMissionSummaryResponseBodyDataTagSummaryInfoTagSummaryInfoDetailList] = None,
+    ):
+        self.tag_summary_info_detail_list = tag_summary_info_detail_list
+
+    def validate(self):
+        if self.tag_summary_info_detail_list:
+            for k in self.tag_summary_info_detail_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TagSummaryInfoDetailList'] = []
+        if self.tag_summary_info_detail_list is not None:
+            for k in self.tag_summary_info_detail_list:
+                result['TagSummaryInfoDetailList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag_summary_info_detail_list = []
+        if m.get('TagSummaryInfoDetailList') is not None:
+            for k in m.get('TagSummaryInfoDetailList'):
+                temp_model = GetAnnotationMissionSummaryResponseBodyDataTagSummaryInfoTagSummaryInfoDetailList()
+                self.tag_summary_info_detail_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetAnnotationMissionSummaryResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_id: str = None,
+        asr_summary_info: GetAnnotationMissionSummaryResponseBodyDataAsrSummaryInfo = None,
+        intent_summary_info: GetAnnotationMissionSummaryResponseBodyDataIntentSummaryInfo = None,
+        message: str = None,
+        success: bool = None,
+        tag_summary_info: GetAnnotationMissionSummaryResponseBodyDataTagSummaryInfo = None,
+    ):
+        self.annotation_mission_id = annotation_mission_id
+        self.asr_summary_info = asr_summary_info
+        self.intent_summary_info = intent_summary_info
+        self.message = message
+        self.success = success
+        self.tag_summary_info = tag_summary_info
+
+    def validate(self):
+        if self.asr_summary_info:
+            self.asr_summary_info.validate()
+        if self.intent_summary_info:
+            self.intent_summary_info.validate()
+        if self.tag_summary_info:
+            self.tag_summary_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_mission_id is not None:
+            result['AnnotationMissionId'] = self.annotation_mission_id
+        if self.asr_summary_info is not None:
+            result['AsrSummaryInfo'] = self.asr_summary_info.to_map()
+        if self.intent_summary_info is not None:
+            result['IntentSummaryInfo'] = self.intent_summary_info.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.tag_summary_info is not None:
+            result['TagSummaryInfo'] = self.tag_summary_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationMissionId') is not None:
+            self.annotation_mission_id = m.get('AnnotationMissionId')
+        if m.get('AsrSummaryInfo') is not None:
+            temp_model = GetAnnotationMissionSummaryResponseBodyDataAsrSummaryInfo()
+            self.asr_summary_info = temp_model.from_map(m['AsrSummaryInfo'])
+        if m.get('IntentSummaryInfo') is not None:
+            temp_model = GetAnnotationMissionSummaryResponseBodyDataIntentSummaryInfo()
+            self.intent_summary_info = temp_model.from_map(m['IntentSummaryInfo'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TagSummaryInfo') is not None:
+            temp_model = GetAnnotationMissionSummaryResponseBodyDataTagSummaryInfo()
+            self.tag_summary_info = temp_model.from_map(m['TagSummaryInfo'])
+        return self
+
+
+class GetAnnotationMissionSummaryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetAnnotationMissionSummaryResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetAnnotationMissionSummaryResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAnnotationMissionSummaryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAnnotationMissionSummaryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAnnotationMissionSummaryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAnnotationMissionTagInfoListRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        page_index: int = None,
+        page_size: int = None,
+    ):
+        self.instance_id = instance_id
+        self.page_index = page_index
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class GetAnnotationMissionTagInfoListResponseBodyDataAnnotationMissionTagInfoList(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_tag_info_description: str = None,
+        annotation_mission_tag_info_id: str = None,
+        annotation_mission_tag_info_name: str = None,
+        delete: bool = None,
+        instance_id: str = None,
+        tenant_id: str = None,
+    ):
+        self.annotation_mission_tag_info_description = annotation_mission_tag_info_description
+        self.annotation_mission_tag_info_id = annotation_mission_tag_info_id
+        self.annotation_mission_tag_info_name = annotation_mission_tag_info_name
+        self.delete = delete
+        self.instance_id = instance_id
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_mission_tag_info_description is not None:
+            result['AnnotationMissionTagInfoDescription'] = self.annotation_mission_tag_info_description
+        if self.annotation_mission_tag_info_id is not None:
+            result['AnnotationMissionTagInfoId'] = self.annotation_mission_tag_info_id
+        if self.annotation_mission_tag_info_name is not None:
+            result['AnnotationMissionTagInfoName'] = self.annotation_mission_tag_info_name
+        if self.delete is not None:
+            result['Delete'] = self.delete
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationMissionTagInfoDescription') is not None:
+            self.annotation_mission_tag_info_description = m.get('AnnotationMissionTagInfoDescription')
+        if m.get('AnnotationMissionTagInfoId') is not None:
+            self.annotation_mission_tag_info_id = m.get('AnnotationMissionTagInfoId')
+        if m.get('AnnotationMissionTagInfoName') is not None:
+            self.annotation_mission_tag_info_name = m.get('AnnotationMissionTagInfoName')
+        if m.get('Delete') is not None:
+            self.delete = m.get('Delete')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class GetAnnotationMissionTagInfoListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_tag_info_list: List[GetAnnotationMissionTagInfoListResponseBodyDataAnnotationMissionTagInfoList] = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        self.annotation_mission_tag_info_list = annotation_mission_tag_info_list
+        self.message = message
+        self.success = success
+
+    def validate(self):
+        if self.annotation_mission_tag_info_list:
+            for k in self.annotation_mission_tag_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AnnotationMissionTagInfoList'] = []
+        if self.annotation_mission_tag_info_list is not None:
+            for k in self.annotation_mission_tag_info_list:
+                result['AnnotationMissionTagInfoList'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.annotation_mission_tag_info_list = []
+        if m.get('AnnotationMissionTagInfoList') is not None:
+            for k in m.get('AnnotationMissionTagInfoList'):
+                temp_model = GetAnnotationMissionTagInfoListResponseBodyDataAnnotationMissionTagInfoList()
+                self.annotation_mission_tag_info_list.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAnnotationMissionTagInfoListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetAnnotationMissionTagInfoListResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetAnnotationMissionTagInfoListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAnnotationMissionTagInfoListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAnnotationMissionTagInfoListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAnnotationMissionTagInfoListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12471,9 +14724,6 @@ class GetAsrServerInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12509,6 +14759,7 @@ class GetBaseStrategyPeriodRequest(TeaModel):
         entry_id: str = None,
         strategy_level: int = None,
     ):
+        # This parameter is required.
         self.entry_id = entry_id
         self.strategy_level = strategy_level
 
@@ -12588,6 +14839,7 @@ class GetBaseStrategyPeriodResponseBody(TeaModel):
         http_status_code: int = None,
         message: str = None,
         only_weekdays: bool = None,
+        only_workdays: bool = None,
         request_id: str = None,
         success: bool = None,
         working_time: List[GetBaseStrategyPeriodResponseBodyWorkingTime] = None,
@@ -12596,6 +14848,7 @@ class GetBaseStrategyPeriodResponseBody(TeaModel):
         self.http_status_code = http_status_code
         self.message = message
         self.only_weekdays = only_weekdays
+        self.only_workdays = only_workdays
         self.request_id = request_id
         self.success = success
         self.working_time = working_time
@@ -12620,6 +14873,8 @@ class GetBaseStrategyPeriodResponseBody(TeaModel):
             result['Message'] = self.message
         if self.only_weekdays is not None:
             result['OnlyWeekdays'] = self.only_weekdays
+        if self.only_workdays is not None:
+            result['OnlyWorkdays'] = self.only_workdays
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.success is not None:
@@ -12640,6 +14895,8 @@ class GetBaseStrategyPeriodResponseBody(TeaModel):
             self.message = m.get('Message')
         if m.get('OnlyWeekdays') is not None:
             self.only_weekdays = m.get('OnlyWeekdays')
+        if m.get('OnlyWorkdays') is not None:
+            self.only_workdays = m.get('OnlyWorkdays')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
@@ -12664,9 +14921,6 @@ class GetBaseStrategyPeriodResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12772,9 +15026,6 @@ class GetConcurrentConversationQuotaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12813,6 +15064,7 @@ class GetContactBlockListRequest(TeaModel):
         page_size: int = None,
     ):
         self.count_total_row = count_total_row
+        # This parameter is required.
         self.instance_id = instance_id
         self.page_number = page_number
         self.page_size = page_size
@@ -13042,9 +15294,6 @@ class GetContactBlockListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13083,6 +15332,7 @@ class GetContactWhiteListRequest(TeaModel):
         page_size: int = None,
     ):
         self.count_total_row = count_total_row
+        # This parameter is required.
         self.instance_id = instance_id
         self.page_number = page_number
         self.page_size = page_size
@@ -13312,9 +15562,6 @@ class GetContactWhiteListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13349,6 +15596,7 @@ class GetCurrentConcurrencyRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -13452,9 +15700,6 @@ class GetCurrentConcurrencyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13490,6 +15735,7 @@ class GetEffectiveDaysRequest(TeaModel):
         entry_id: str = None,
         strategy_level: int = None,
     ):
+        # This parameter is required.
         self.entry_id = entry_id
         self.strategy_level = strategy_level
 
@@ -13586,9 +15832,6 @@ class GetEffectiveDaysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13624,6 +15867,7 @@ class GetEmptyNumberNoMoreCallsInfoRequest(TeaModel):
         entry_id: str = None,
         strategy_level: int = None,
     ):
+        # This parameter is required.
         self.entry_id = entry_id
         self.strategy_level = strategy_level
 
@@ -13720,9 +15964,6 @@ class GetEmptyNumberNoMoreCallsInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13752,12 +15993,223 @@ class GetEmptyNumberNoMoreCallsInfoResponse(TeaModel):
         return self
 
 
+class GetJobDataUploadParamsRequest(TeaModel):
+    def __init__(
+        self,
+        busi_type: str = None,
+        file_name: str = None,
+        instance_id: str = None,
+        path: str = None,
+        unique_id: str = None,
+    ):
+        self.busi_type = busi_type
+        # This parameter is required.
+        self.file_name = file_name
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.path = path
+        self.unique_id = unique_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.busi_type is not None:
+            result['BusiType'] = self.busi_type
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.unique_id is not None:
+            result['UniqueId'] = self.unique_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusiType') is not None:
+            self.busi_type = m.get('BusiType')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('UniqueId') is not None:
+            self.unique_id = m.get('UniqueId')
+        return self
+
+
+class GetJobDataUploadParamsResponseBodyUploadParams(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        expire: int = None,
+        folder: str = None,
+        host: str = None,
+        policy: str = None,
+        signature: str = None,
+    ):
+        self.access_id = access_id
+        self.expire = expire
+        self.folder = folder
+        self.host = host
+        self.policy = policy
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.expire is not None:
+            result['Expire'] = self.expire
+        if self.folder is not None:
+            result['Folder'] = self.folder
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('Expire') is not None:
+            self.expire = m.get('Expire')
+        if m.get('Folder') is not None:
+            self.folder = m.get('Folder')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        return self
+
+
+class GetJobDataUploadParamsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        upload_params: GetJobDataUploadParamsResponseBodyUploadParams = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.upload_params = upload_params
+
+    def validate(self):
+        if self.upload_params:
+            self.upload_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.upload_params is not None:
+            result['UploadParams'] = self.upload_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('UploadParams') is not None:
+            temp_model = GetJobDataUploadParamsResponseBodyUploadParams()
+            self.upload_params = temp_model.from_map(m['UploadParams'])
+        return self
+
+
+class GetJobDataUploadParamsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetJobDataUploadParamsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetJobDataUploadParamsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetMaxAttemptsPerDayRequest(TeaModel):
     def __init__(
         self,
         entry_id: str = None,
         strategy_level: int = None,
     ):
+        # This parameter is required.
         self.entry_id = entry_id
         self.strategy_level = strategy_level
 
@@ -13854,9 +16306,6 @@ class GetMaxAttemptsPerDayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13955,9 +16404,6 @@ class GetNumberDistrictInfoTemplateDownloadUrlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13983,6 +16429,279 @@ class GetNumberDistrictInfoTemplateDownloadUrlResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetNumberDistrictInfoTemplateDownloadUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetRealtimeConcurrencyReportRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        job_group_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.instance_id = instance_id
+        self.job_group_id = job_group_id
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.job_group_id is not None:
+            result['JobGroupId'] = self.job_group_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('JobGroupId') is not None:
+            self.job_group_id = m.get('JobGroupId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class GetRealtimeConcurrencyReportResponseBodyReportsList(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        instance_name: str = None,
+        job_group_id: str = None,
+        job_group_name: str = None,
+        max_concurrency_limit: int = None,
+        min_concurrency_limit: int = None,
+        occupied_concurrency_count: int = None,
+        report_date: int = None,
+    ):
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.job_group_id = job_group_id
+        self.job_group_name = job_group_name
+        self.max_concurrency_limit = max_concurrency_limit
+        self.min_concurrency_limit = min_concurrency_limit
+        self.occupied_concurrency_count = occupied_concurrency_count
+        self.report_date = report_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.job_group_id is not None:
+            result['JobGroupId'] = self.job_group_id
+        if self.job_group_name is not None:
+            result['JobGroupName'] = self.job_group_name
+        if self.max_concurrency_limit is not None:
+            result['MaxConcurrencyLimit'] = self.max_concurrency_limit
+        if self.min_concurrency_limit is not None:
+            result['MinConcurrencyLimit'] = self.min_concurrency_limit
+        if self.occupied_concurrency_count is not None:
+            result['OccupiedConcurrencyCount'] = self.occupied_concurrency_count
+        if self.report_date is not None:
+            result['ReportDate'] = self.report_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('JobGroupId') is not None:
+            self.job_group_id = m.get('JobGroupId')
+        if m.get('JobGroupName') is not None:
+            self.job_group_name = m.get('JobGroupName')
+        if m.get('MaxConcurrencyLimit') is not None:
+            self.max_concurrency_limit = m.get('MaxConcurrencyLimit')
+        if m.get('MinConcurrencyLimit') is not None:
+            self.min_concurrency_limit = m.get('MinConcurrencyLimit')
+        if m.get('OccupiedConcurrencyCount') is not None:
+            self.occupied_concurrency_count = m.get('OccupiedConcurrencyCount')
+        if m.get('ReportDate') is not None:
+            self.report_date = m.get('ReportDate')
+        return self
+
+
+class GetRealtimeConcurrencyReportResponseBodyReports(TeaModel):
+    def __init__(
+        self,
+        list: List[GetRealtimeConcurrencyReportResponseBodyReportsList] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.list = list
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = GetRealtimeConcurrencyReportResponseBodyReportsList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class GetRealtimeConcurrencyReportResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        report_date: int = None,
+        reports: GetRealtimeConcurrencyReportResponseBodyReports = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.report_date = report_date
+        self.reports = reports
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.reports:
+            self.reports.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.report_date is not None:
+            result['ReportDate'] = self.report_date
+        if self.reports is not None:
+            result['Reports'] = self.reports.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('ReportDate') is not None:
+            self.report_date = m.get('ReportDate')
+        if m.get('Reports') is not None:
+            temp_model = GetRealtimeConcurrencyReportResponseBodyReports()
+            self.reports = temp_model.from_map(m['Reports'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetRealtimeConcurrencyReportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRealtimeConcurrencyReportResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRealtimeConcurrencyReportResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14136,9 +16855,6 @@ class GetSummaryInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14175,7 +16891,9 @@ class GetTaskByUuidRequest(TeaModel):
         task_id: str = None,
         with_conversations: bool = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.task_id = task_id
         self.with_conversations = with_conversations
 
@@ -14207,6 +16925,57 @@ class GetTaskByUuidRequest(TeaModel):
         return self
 
 
+class GetTaskByUuidResponseBodyTaskConversations(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        script: str = None,
+        sequence_id: str = None,
+        speaker: str = None,
+        timestamp: int = None,
+    ):
+        self.action = action
+        self.script = script
+        self.sequence_id = sequence_id
+        self.speaker = speaker
+        self.timestamp = timestamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.script is not None:
+            result['Script'] = self.script
+        if self.sequence_id is not None:
+            result['SequenceId'] = self.sequence_id
+        if self.speaker is not None:
+            result['Speaker'] = self.speaker
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('Script') is not None:
+            self.script = m.get('Script')
+        if m.get('SequenceId') is not None:
+            self.sequence_id = m.get('SequenceId')
+        if m.get('Speaker') is not None:
+            self.speaker = m.get('Speaker')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        return self
+
+
 class GetTaskByUuidResponseBodyTask(TeaModel):
     def __init__(
         self,
@@ -14214,6 +16983,7 @@ class GetTaskByUuidResponseBodyTask(TeaModel):
         call_id: str = None,
         called_number: str = None,
         calling_number: str = None,
+        conversations: List[GetTaskByUuidResponseBodyTaskConversations] = None,
         end_reason: int = None,
         end_time: int = None,
         id: str = None,
@@ -14226,6 +16996,7 @@ class GetTaskByUuidResponseBodyTask(TeaModel):
         self.call_id = call_id
         self.called_number = called_number
         self.calling_number = calling_number
+        self.conversations = conversations
         self.end_reason = end_reason
         self.end_time = end_time
         self.id = id
@@ -14235,7 +17006,10 @@ class GetTaskByUuidResponseBodyTask(TeaModel):
         self.planned_time = planned_time
 
     def validate(self):
-        pass
+        if self.conversations:
+            for k in self.conversations:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -14251,6 +17025,10 @@ class GetTaskByUuidResponseBodyTask(TeaModel):
             result['CalledNumber'] = self.called_number
         if self.calling_number is not None:
             result['CallingNumber'] = self.calling_number
+        result['Conversations'] = []
+        if self.conversations is not None:
+            for k in self.conversations:
+                result['Conversations'].append(k.to_map() if k else None)
         if self.end_reason is not None:
             result['EndReason'] = self.end_reason
         if self.end_time is not None:
@@ -14277,6 +17055,11 @@ class GetTaskByUuidResponseBodyTask(TeaModel):
             self.called_number = m.get('CalledNumber')
         if m.get('CallingNumber') is not None:
             self.calling_number = m.get('CallingNumber')
+        self.conversations = []
+        if m.get('Conversations') is not None:
+            for k in m.get('Conversations'):
+                temp_model = GetTaskByUuidResponseBodyTaskConversations()
+                self.conversations.append(temp_model.from_map(k))
         if m.get('EndReason') is not None:
             self.end_reason = m.get('EndReason')
         if m.get('EndTime') is not None:
@@ -14297,10 +17080,18 @@ class GetTaskByUuidResponseBodyTask(TeaModel):
 class GetTaskByUuidResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
         task: GetTaskByUuidResponseBodyTask = None,
     ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
         self.request_id = request_id
+        self.success = success
         self.task = task
 
     def validate(self):
@@ -14313,16 +17104,32 @@ class GetTaskByUuidResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         if self.task is not None:
             result['Task'] = self.task.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('Task') is not None:
             temp_model = GetTaskByUuidResponseBodyTask()
             self.task = temp_model.from_map(m['Task'])
@@ -14341,9 +17148,6 @@ class GetTaskByUuidResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14442,9 +17246,6 @@ class GetVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14478,9 +17279,13 @@ class ImportScriptRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        nlu_engine: str = None,
         signature_url: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        self.nlu_engine = nlu_engine
+        # This parameter is required.
         self.signature_url = signature_url
 
     def validate(self):
@@ -14494,6 +17299,8 @@ class ImportScriptRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.nlu_engine is not None:
+            result['NluEngine'] = self.nlu_engine
         if self.signature_url is not None:
             result['SignatureUrl'] = self.signature_url
         return result
@@ -14502,6 +17309,8 @@ class ImportScriptRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('NluEngine') is not None:
+            self.nlu_engine = m.get('NluEngine')
         if m.get('SignatureUrl') is not None:
             self.signature_url = m.get('SignatureUrl')
         return self
@@ -14576,9 +17385,6 @@ class ImportScriptResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14615,8 +17421,10 @@ class InflightTaskTimeoutRequest(TeaModel):
         instance_owner_id: int = None,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.instance_owner_id = instance_owner_id
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -14710,9 +17518,6 @@ class InflightTaskTimeoutResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14738,6 +17543,276 @@ class InflightTaskTimeoutResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = InflightTaskTimeoutResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAgentProfilesRequest(TeaModel):
+    def __init__(
+        self,
+        app_ip: str = None,
+        instance_id: str = None,
+        script_id: str = None,
+    ):
+        self.app_ip = app_ip
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.script_id = script_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_ip is not None:
+            result['AppIp'] = self.app_ip
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppIp') is not None:
+            self.app_ip = m.get('AppIp')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        return self
+
+
+class ListAgentProfilesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        agent_profile_id: str = None,
+        agent_profile_template_id: str = None,
+        agent_type: str = None,
+        create_time: str = None,
+        description: str = None,
+        instance_id: str = None,
+        instruction_json: str = None,
+        labels_json: str = None,
+        model: str = None,
+        model_config: str = None,
+        prompt: str = None,
+        prompt_json: str = None,
+        scenario: str = None,
+        script_id: str = None,
+        system: bool = None,
+        update_time: str = None,
+        variables_json: str = None,
+    ):
+        self.agent_profile_id = agent_profile_id
+        self.agent_profile_template_id = agent_profile_template_id
+        # agent type
+        self.agent_type = agent_type
+        self.create_time = create_time
+        self.description = description
+        self.instance_id = instance_id
+        self.instruction_json = instruction_json
+        self.labels_json = labels_json
+        self.model = model
+        self.model_config = model_config
+        self.prompt = prompt
+        self.prompt_json = prompt_json
+        self.scenario = scenario
+        self.script_id = script_id
+        self.system = system
+        self.update_time = update_time
+        self.variables_json = variables_json
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_profile_id is not None:
+            result['AgentProfileId'] = self.agent_profile_id
+        if self.agent_profile_template_id is not None:
+            result['AgentProfileTemplateId'] = self.agent_profile_template_id
+        if self.agent_type is not None:
+            result['AgentType'] = self.agent_type
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instruction_json is not None:
+            result['InstructionJson'] = self.instruction_json
+        if self.labels_json is not None:
+            result['LabelsJson'] = self.labels_json
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.model_config is not None:
+            result['ModelConfig'] = self.model_config
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.prompt_json is not None:
+            result['PromptJson'] = self.prompt_json
+        if self.scenario is not None:
+            result['Scenario'] = self.scenario
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        if self.system is not None:
+            result['System'] = self.system
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.variables_json is not None:
+            result['VariablesJson'] = self.variables_json
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentProfileId') is not None:
+            self.agent_profile_id = m.get('AgentProfileId')
+        if m.get('AgentProfileTemplateId') is not None:
+            self.agent_profile_template_id = m.get('AgentProfileTemplateId')
+        if m.get('AgentType') is not None:
+            self.agent_type = m.get('AgentType')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstructionJson') is not None:
+            self.instruction_json = m.get('InstructionJson')
+        if m.get('LabelsJson') is not None:
+            self.labels_json = m.get('LabelsJson')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('ModelConfig') is not None:
+            self.model_config = m.get('ModelConfig')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('PromptJson') is not None:
+            self.prompt_json = m.get('PromptJson')
+        if m.get('Scenario') is not None:
+            self.scenario = m.get('Scenario')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        if m.get('System') is not None:
+            self.system = m.get('System')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('VariablesJson') is not None:
+            self.variables_json = m.get('VariablesJson')
+        return self
+
+
+class ListAgentProfilesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListAgentProfilesResponseBodyData] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListAgentProfilesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListAgentProfilesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAgentProfilesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAgentProfilesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14905,9 +17980,6 @@ class ListAllTenantBindNumberBindingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14937,13 +18009,27 @@ class ListAllTenantBindNumberBindingResponse(TeaModel):
         return self
 
 
-class ListChatbotInstancesRequest(TeaModel):
+class ListAnnotationMissionRequest(TeaModel):
     def __init__(
         self,
-        page_number: int = None,
+        annotation_mission_id: str = None,
+        annotation_mission_name: str = None,
+        annotation_status_list_filter: List[int] = None,
+        annotation_status_list_string_filter: str = None,
+        create_time_end_filter: int = None,
+        create_time_start_filter: int = None,
+        instance_id: str = None,
+        page_index: int = None,
         page_size: int = None,
     ):
-        self.page_number = page_number
+        self.annotation_mission_id = annotation_mission_id
+        self.annotation_mission_name = annotation_mission_name
+        self.annotation_status_list_filter = annotation_status_list_filter
+        self.annotation_status_list_string_filter = annotation_status_list_string_filter
+        self.create_time_end_filter = create_time_end_filter
+        self.create_time_start_filter = create_time_start_filter
+        self.instance_id = instance_id
+        self.page_index = page_index
         self.page_size = page_size
 
     def validate(self):
@@ -14955,6 +18041,1539 @@ class ListChatbotInstancesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.annotation_mission_id is not None:
+            result['AnnotationMissionId'] = self.annotation_mission_id
+        if self.annotation_mission_name is not None:
+            result['AnnotationMissionName'] = self.annotation_mission_name
+        if self.annotation_status_list_filter is not None:
+            result['AnnotationStatusListFilter'] = self.annotation_status_list_filter
+        if self.annotation_status_list_string_filter is not None:
+            result['AnnotationStatusListStringFilter'] = self.annotation_status_list_string_filter
+        if self.create_time_end_filter is not None:
+            result['CreateTimeEndFilter'] = self.create_time_end_filter
+        if self.create_time_start_filter is not None:
+            result['CreateTimeStartFilter'] = self.create_time_start_filter
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationMissionId') is not None:
+            self.annotation_mission_id = m.get('AnnotationMissionId')
+        if m.get('AnnotationMissionName') is not None:
+            self.annotation_mission_name = m.get('AnnotationMissionName')
+        if m.get('AnnotationStatusListFilter') is not None:
+            self.annotation_status_list_filter = m.get('AnnotationStatusListFilter')
+        if m.get('AnnotationStatusListStringFilter') is not None:
+            self.annotation_status_list_string_filter = m.get('AnnotationStatusListStringFilter')
+        if m.get('CreateTimeEndFilter') is not None:
+            self.create_time_end_filter = m.get('CreateTimeEndFilter')
+        if m.get('CreateTimeStartFilter') is not None:
+            self.create_time_start_filter = m.get('CreateTimeStartFilter')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListAnnotationMissionResponseBodyDataAnnotationMissionList(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_data_source_type: int = None,
+        annotation_mission_debug_data_source_list: List[int] = None,
+        annotation_mission_id: str = None,
+        annotation_mission_name: str = None,
+        annotation_status: int = None,
+        conversation_time_end_filter: int = None,
+        conversation_time_start_filter: int = None,
+        create_time: int = None,
+        exclude_other_mission_session: bool = None,
+        finish_time: int = None,
+        instance_id: str = None,
+        sampling_count: int = None,
+        sampling_description: str = None,
+        sampling_rate: int = None,
+        sampling_type: int = None,
+        session_end_reason_filter_list: List[int] = None,
+        session_finish_count: int = None,
+        session_total_count: int = None,
+    ):
+        self.annotation_mission_data_source_type = annotation_mission_data_source_type
+        self.annotation_mission_debug_data_source_list = annotation_mission_debug_data_source_list
+        self.annotation_mission_id = annotation_mission_id
+        self.annotation_mission_name = annotation_mission_name
+        self.annotation_status = annotation_status
+        self.conversation_time_end_filter = conversation_time_end_filter
+        self.conversation_time_start_filter = conversation_time_start_filter
+        self.create_time = create_time
+        self.exclude_other_mission_session = exclude_other_mission_session
+        self.finish_time = finish_time
+        self.instance_id = instance_id
+        self.sampling_count = sampling_count
+        self.sampling_description = sampling_description
+        self.sampling_rate = sampling_rate
+        self.sampling_type = sampling_type
+        self.session_end_reason_filter_list = session_end_reason_filter_list
+        self.session_finish_count = session_finish_count
+        self.session_total_count = session_total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_mission_data_source_type is not None:
+            result['AnnotationMissionDataSourceType'] = self.annotation_mission_data_source_type
+        if self.annotation_mission_debug_data_source_list is not None:
+            result['AnnotationMissionDebugDataSourceList'] = self.annotation_mission_debug_data_source_list
+        if self.annotation_mission_id is not None:
+            result['AnnotationMissionId'] = self.annotation_mission_id
+        if self.annotation_mission_name is not None:
+            result['AnnotationMissionName'] = self.annotation_mission_name
+        if self.annotation_status is not None:
+            result['AnnotationStatus'] = self.annotation_status
+        if self.conversation_time_end_filter is not None:
+            result['ConversationTimeEndFilter'] = self.conversation_time_end_filter
+        if self.conversation_time_start_filter is not None:
+            result['ConversationTimeStartFilter'] = self.conversation_time_start_filter
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.exclude_other_mission_session is not None:
+            result['ExcludeOtherMissionSession'] = self.exclude_other_mission_session
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.sampling_count is not None:
+            result['SamplingCount'] = self.sampling_count
+        if self.sampling_description is not None:
+            result['SamplingDescription'] = self.sampling_description
+        if self.sampling_rate is not None:
+            result['SamplingRate'] = self.sampling_rate
+        if self.sampling_type is not None:
+            result['SamplingType'] = self.sampling_type
+        if self.session_end_reason_filter_list is not None:
+            result['SessionEndReasonFilterList'] = self.session_end_reason_filter_list
+        if self.session_finish_count is not None:
+            result['SessionFinishCount'] = self.session_finish_count
+        if self.session_total_count is not None:
+            result['SessionTotalCount'] = self.session_total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationMissionDataSourceType') is not None:
+            self.annotation_mission_data_source_type = m.get('AnnotationMissionDataSourceType')
+        if m.get('AnnotationMissionDebugDataSourceList') is not None:
+            self.annotation_mission_debug_data_source_list = m.get('AnnotationMissionDebugDataSourceList')
+        if m.get('AnnotationMissionId') is not None:
+            self.annotation_mission_id = m.get('AnnotationMissionId')
+        if m.get('AnnotationMissionName') is not None:
+            self.annotation_mission_name = m.get('AnnotationMissionName')
+        if m.get('AnnotationStatus') is not None:
+            self.annotation_status = m.get('AnnotationStatus')
+        if m.get('ConversationTimeEndFilter') is not None:
+            self.conversation_time_end_filter = m.get('ConversationTimeEndFilter')
+        if m.get('ConversationTimeStartFilter') is not None:
+            self.conversation_time_start_filter = m.get('ConversationTimeStartFilter')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ExcludeOtherMissionSession') is not None:
+            self.exclude_other_mission_session = m.get('ExcludeOtherMissionSession')
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SamplingCount') is not None:
+            self.sampling_count = m.get('SamplingCount')
+        if m.get('SamplingDescription') is not None:
+            self.sampling_description = m.get('SamplingDescription')
+        if m.get('SamplingRate') is not None:
+            self.sampling_rate = m.get('SamplingRate')
+        if m.get('SamplingType') is not None:
+            self.sampling_type = m.get('SamplingType')
+        if m.get('SessionEndReasonFilterList') is not None:
+            self.session_end_reason_filter_list = m.get('SessionEndReasonFilterList')
+        if m.get('SessionFinishCount') is not None:
+            self.session_finish_count = m.get('SessionFinishCount')
+        if m.get('SessionTotalCount') is not None:
+            self.session_total_count = m.get('SessionTotalCount')
+        return self
+
+
+class ListAnnotationMissionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_list: List[ListAnnotationMissionResponseBodyDataAnnotationMissionList] = None,
+        message: str = None,
+        page_index: int = None,
+        page_size: int = None,
+        success: bool = None,
+        total_count: int = None,
+        total_page_count: int = None,
+    ):
+        self.annotation_mission_list = annotation_mission_list
+        self.message = message
+        self.page_index = page_index
+        self.page_size = page_size
+        self.success = success
+        self.total_count = total_count
+        self.total_page_count = total_page_count
+
+    def validate(self):
+        if self.annotation_mission_list:
+            for k in self.annotation_mission_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AnnotationMissionList'] = []
+        if self.annotation_mission_list is not None:
+            for k in self.annotation_mission_list:
+                result['AnnotationMissionList'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page_count is not None:
+            result['TotalPageCount'] = self.total_page_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.annotation_mission_list = []
+        if m.get('AnnotationMissionList') is not None:
+            for k in m.get('AnnotationMissionList'):
+                temp_model = ListAnnotationMissionResponseBodyDataAnnotationMissionList()
+                self.annotation_mission_list.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPageCount') is not None:
+            self.total_page_count = m.get('TotalPageCount')
+        return self
+
+
+class ListAnnotationMissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListAnnotationMissionResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListAnnotationMissionResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListAnnotationMissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAnnotationMissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAnnotationMissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAnnotationMissionSessionRequest(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_id: str = None,
+        annotation_mission_session_id: str = None,
+        environment: int = None,
+        include_status_list_json_string: str = None,
+        page_index: int = None,
+        page_size: int = None,
+    ):
+        self.annotation_mission_id = annotation_mission_id
+        self.annotation_mission_session_id = annotation_mission_session_id
+        self.environment = environment
+        self.include_status_list_json_string = include_status_list_json_string
+        self.page_index = page_index
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_mission_id is not None:
+            result['AnnotationMissionId'] = self.annotation_mission_id
+        if self.annotation_mission_session_id is not None:
+            result['AnnotationMissionSessionId'] = self.annotation_mission_session_id
+        if self.environment is not None:
+            result['Environment'] = self.environment
+        if self.include_status_list_json_string is not None:
+            result['IncludeStatusListJsonString'] = self.include_status_list_json_string
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationMissionId') is not None:
+            self.annotation_mission_id = m.get('AnnotationMissionId')
+        if m.get('AnnotationMissionSessionId') is not None:
+            self.annotation_mission_session_id = m.get('AnnotationMissionSessionId')
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
+        if m.get('IncludeStatusListJsonString') is not None:
+            self.include_status_list_json_string = m.get('IncludeStatusListJsonString')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatCustomizationDataInfoList(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_chat_customization_data_info_id: str = None,
+        annotation_mission_chat_id: str = None,
+        annotation_mission_id: str = None,
+        annotation_mission_session_id: str = None,
+        content: str = None,
+        create: bool = None,
+        create_time: int = None,
+        customization_data_description: str = None,
+        customization_data_id: str = None,
+        customization_data_name: str = None,
+        customization_data_weight: int = None,
+        delete: bool = None,
+        instance_id: str = None,
+        modified_time: int = None,
+    ):
+        # id
+        self.annotation_mission_chat_customization_data_info_id = annotation_mission_chat_customization_data_info_id
+        # chat id
+        self.annotation_mission_chat_id = annotation_mission_chat_id
+        self.annotation_mission_id = annotation_mission_id
+        self.annotation_mission_session_id = annotation_mission_session_id
+        self.content = content
+        self.create = create
+        self.create_time = create_time
+        self.customization_data_description = customization_data_description
+        # id
+        self.customization_data_id = customization_data_id
+        self.customization_data_name = customization_data_name
+        self.customization_data_weight = customization_data_weight
+        self.delete = delete
+        self.instance_id = instance_id
+        self.modified_time = modified_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_mission_chat_customization_data_info_id is not None:
+            result['AnnotationMissionChatCustomizationDataInfoId'] = self.annotation_mission_chat_customization_data_info_id
+        if self.annotation_mission_chat_id is not None:
+            result['AnnotationMissionChatId'] = self.annotation_mission_chat_id
+        if self.annotation_mission_id is not None:
+            result['AnnotationMissionId'] = self.annotation_mission_id
+        if self.annotation_mission_session_id is not None:
+            result['AnnotationMissionSessionId'] = self.annotation_mission_session_id
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.create is not None:
+            result['Create'] = self.create
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.customization_data_description is not None:
+            result['CustomizationDataDescription'] = self.customization_data_description
+        if self.customization_data_id is not None:
+            result['CustomizationDataId'] = self.customization_data_id
+        if self.customization_data_name is not None:
+            result['CustomizationDataName'] = self.customization_data_name
+        if self.customization_data_weight is not None:
+            result['CustomizationDataWeight'] = self.customization_data_weight
+        if self.delete is not None:
+            result['Delete'] = self.delete
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationMissionChatCustomizationDataInfoId') is not None:
+            self.annotation_mission_chat_customization_data_info_id = m.get('AnnotationMissionChatCustomizationDataInfoId')
+        if m.get('AnnotationMissionChatId') is not None:
+            self.annotation_mission_chat_id = m.get('AnnotationMissionChatId')
+        if m.get('AnnotationMissionId') is not None:
+            self.annotation_mission_id = m.get('AnnotationMissionId')
+        if m.get('AnnotationMissionSessionId') is not None:
+            self.annotation_mission_session_id = m.get('AnnotationMissionSessionId')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Create') is not None:
+            self.create = m.get('Create')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CustomizationDataDescription') is not None:
+            self.customization_data_description = m.get('CustomizationDataDescription')
+        if m.get('CustomizationDataId') is not None:
+            self.customization_data_id = m.get('CustomizationDataId')
+        if m.get('CustomizationDataName') is not None:
+            self.customization_data_name = m.get('CustomizationDataName')
+        if m.get('CustomizationDataWeight') is not None:
+            self.customization_data_weight = m.get('CustomizationDataWeight')
+        if m.get('Delete') is not None:
+            self.delete = m.get('Delete')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        return self
+
+
+class ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatIntentUserSayInfoList(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_chat_id: str = None,
+        annotation_mission_chat_intent_user_say_info_id: str = None,
+        annotation_mission_id: str = None,
+        annotation_mission_session_id: str = None,
+        bot_id: str = None,
+        content: str = None,
+        create: bool = None,
+        create_time: int = None,
+        delete: bool = None,
+        dialog_id: int = None,
+        instance_id: str = None,
+        intent_id: int = None,
+        modified_time: int = None,
+    ):
+        # chat id
+        self.annotation_mission_chat_id = annotation_mission_chat_id
+        # id
+        self.annotation_mission_chat_intent_user_say_info_id = annotation_mission_chat_intent_user_say_info_id
+        self.annotation_mission_id = annotation_mission_id
+        self.annotation_mission_session_id = annotation_mission_session_id
+        self.bot_id = bot_id
+        self.content = content
+        self.create = create
+        self.create_time = create_time
+        self.delete = delete
+        self.dialog_id = dialog_id
+        self.instance_id = instance_id
+        self.intent_id = intent_id
+        self.modified_time = modified_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_mission_chat_id is not None:
+            result['AnnotationMissionChatId'] = self.annotation_mission_chat_id
+        if self.annotation_mission_chat_intent_user_say_info_id is not None:
+            result['AnnotationMissionChatIntentUserSayInfoId'] = self.annotation_mission_chat_intent_user_say_info_id
+        if self.annotation_mission_id is not None:
+            result['AnnotationMissionId'] = self.annotation_mission_id
+        if self.annotation_mission_session_id is not None:
+            result['AnnotationMissionSessionId'] = self.annotation_mission_session_id
+        if self.bot_id is not None:
+            result['BotId'] = self.bot_id
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.create is not None:
+            result['Create'] = self.create
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.delete is not None:
+            result['Delete'] = self.delete
+        if self.dialog_id is not None:
+            result['DialogId'] = self.dialog_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationMissionChatId') is not None:
+            self.annotation_mission_chat_id = m.get('AnnotationMissionChatId')
+        if m.get('AnnotationMissionChatIntentUserSayInfoId') is not None:
+            self.annotation_mission_chat_intent_user_say_info_id = m.get('AnnotationMissionChatIntentUserSayInfoId')
+        if m.get('AnnotationMissionId') is not None:
+            self.annotation_mission_id = m.get('AnnotationMissionId')
+        if m.get('AnnotationMissionSessionId') is not None:
+            self.annotation_mission_session_id = m.get('AnnotationMissionSessionId')
+        if m.get('BotId') is not None:
+            self.bot_id = m.get('BotId')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Create') is not None:
+            self.create = m.get('Create')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Delete') is not None:
+            self.delete = m.get('Delete')
+        if m.get('DialogId') is not None:
+            self.dialog_id = m.get('DialogId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        return self
+
+
+class ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatTagInfoList(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_chat_id: str = None,
+        annotation_mission_chat_tag_info_id: str = None,
+        annotation_mission_id: str = None,
+        annotation_mission_session_id: str = None,
+        annotation_mission_tag_info_id: str = None,
+        annotation_mission_tag_info_name: str = None,
+        create: bool = None,
+        create_time: int = None,
+        delete: bool = None,
+        instance_id: str = None,
+        modified_time: int = None,
+    ):
+        # chat id
+        self.annotation_mission_chat_id = annotation_mission_chat_id
+        # id
+        self.annotation_mission_chat_tag_info_id = annotation_mission_chat_tag_info_id
+        self.annotation_mission_id = annotation_mission_id
+        self.annotation_mission_session_id = annotation_mission_session_id
+        # tag id
+        self.annotation_mission_tag_info_id = annotation_mission_tag_info_id
+        self.annotation_mission_tag_info_name = annotation_mission_tag_info_name
+        self.create = create
+        self.create_time = create_time
+        self.delete = delete
+        self.instance_id = instance_id
+        self.modified_time = modified_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_mission_chat_id is not None:
+            result['AnnotationMissionChatId'] = self.annotation_mission_chat_id
+        if self.annotation_mission_chat_tag_info_id is not None:
+            result['AnnotationMissionChatTagInfoId'] = self.annotation_mission_chat_tag_info_id
+        if self.annotation_mission_id is not None:
+            result['AnnotationMissionId'] = self.annotation_mission_id
+        if self.annotation_mission_session_id is not None:
+            result['AnnotationMissionSessionId'] = self.annotation_mission_session_id
+        if self.annotation_mission_tag_info_id is not None:
+            result['AnnotationMissionTagInfoId'] = self.annotation_mission_tag_info_id
+        if self.annotation_mission_tag_info_name is not None:
+            result['AnnotationMissionTagInfoName'] = self.annotation_mission_tag_info_name
+        if self.create is not None:
+            result['Create'] = self.create
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.delete is not None:
+            result['Delete'] = self.delete
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationMissionChatId') is not None:
+            self.annotation_mission_chat_id = m.get('AnnotationMissionChatId')
+        if m.get('AnnotationMissionChatTagInfoId') is not None:
+            self.annotation_mission_chat_tag_info_id = m.get('AnnotationMissionChatTagInfoId')
+        if m.get('AnnotationMissionId') is not None:
+            self.annotation_mission_id = m.get('AnnotationMissionId')
+        if m.get('AnnotationMissionSessionId') is not None:
+            self.annotation_mission_session_id = m.get('AnnotationMissionSessionId')
+        if m.get('AnnotationMissionTagInfoId') is not None:
+            self.annotation_mission_tag_info_id = m.get('AnnotationMissionTagInfoId')
+        if m.get('AnnotationMissionTagInfoName') is not None:
+            self.annotation_mission_tag_info_name = m.get('AnnotationMissionTagInfoName')
+        if m.get('Create') is not None:
+            self.create = m.get('Create')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Delete') is not None:
+            self.delete = m.get('Delete')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        return self
+
+
+class ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatVocabularyInfoList(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_chat_id: str = None,
+        annotation_mission_chat_vocabulary_info_id: str = None,
+        annotation_mission_id: str = None,
+        annotation_mission_session_id: str = None,
+        create: bool = None,
+        create_time: int = None,
+        delete: bool = None,
+        instance_id: str = None,
+        modified_time: int = None,
+        vocabulary: str = None,
+        vocabulary_description: str = None,
+        vocabulary_id: str = None,
+        vocabulary_name: str = None,
+        vocabulary_weight: int = None,
+    ):
+        # chat id
+        self.annotation_mission_chat_id = annotation_mission_chat_id
+        # id
+        self.annotation_mission_chat_vocabulary_info_id = annotation_mission_chat_vocabulary_info_id
+        self.annotation_mission_id = annotation_mission_id
+        self.annotation_mission_session_id = annotation_mission_session_id
+        self.create = create
+        self.create_time = create_time
+        self.delete = delete
+        self.instance_id = instance_id
+        self.modified_time = modified_time
+        self.vocabulary = vocabulary
+        self.vocabulary_description = vocabulary_description
+        self.vocabulary_id = vocabulary_id
+        self.vocabulary_name = vocabulary_name
+        self.vocabulary_weight = vocabulary_weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_mission_chat_id is not None:
+            result['AnnotationMissionChatId'] = self.annotation_mission_chat_id
+        if self.annotation_mission_chat_vocabulary_info_id is not None:
+            result['AnnotationMissionChatVocabularyInfoId'] = self.annotation_mission_chat_vocabulary_info_id
+        if self.annotation_mission_id is not None:
+            result['AnnotationMissionId'] = self.annotation_mission_id
+        if self.annotation_mission_session_id is not None:
+            result['AnnotationMissionSessionId'] = self.annotation_mission_session_id
+        if self.create is not None:
+            result['Create'] = self.create
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.delete is not None:
+            result['Delete'] = self.delete
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.vocabulary is not None:
+            result['Vocabulary'] = self.vocabulary
+        if self.vocabulary_description is not None:
+            result['VocabularyDescription'] = self.vocabulary_description
+        if self.vocabulary_id is not None:
+            result['VocabularyId'] = self.vocabulary_id
+        if self.vocabulary_name is not None:
+            result['VocabularyName'] = self.vocabulary_name
+        if self.vocabulary_weight is not None:
+            result['VocabularyWeight'] = self.vocabulary_weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationMissionChatId') is not None:
+            self.annotation_mission_chat_id = m.get('AnnotationMissionChatId')
+        if m.get('AnnotationMissionChatVocabularyInfoId') is not None:
+            self.annotation_mission_chat_vocabulary_info_id = m.get('AnnotationMissionChatVocabularyInfoId')
+        if m.get('AnnotationMissionId') is not None:
+            self.annotation_mission_id = m.get('AnnotationMissionId')
+        if m.get('AnnotationMissionSessionId') is not None:
+            self.annotation_mission_session_id = m.get('AnnotationMissionSessionId')
+        if m.get('Create') is not None:
+            self.create = m.get('Create')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Delete') is not None:
+            self.delete = m.get('Delete')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Vocabulary') is not None:
+            self.vocabulary = m.get('Vocabulary')
+        if m.get('VocabularyDescription') is not None:
+            self.vocabulary_description = m.get('VocabularyDescription')
+        if m.get('VocabularyId') is not None:
+            self.vocabulary_id = m.get('VocabularyId')
+        if m.get('VocabularyName') is not None:
+            self.vocabulary_name = m.get('VocabularyName')
+        if m.get('VocabularyWeight') is not None:
+            self.vocabulary_weight = m.get('VocabularyWeight')
+        return self
+
+
+class ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatList(TeaModel):
+    def __init__(
+        self,
+        annotation_asr_result: str = None,
+        annotation_mission_chat_customization_data_info_list: List[ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatCustomizationDataInfoList] = None,
+        annotation_mission_chat_id: str = None,
+        annotation_mission_chat_intent_user_say_info_list: List[ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatIntentUserSayInfoList] = None,
+        annotation_mission_chat_tag_info_list: List[ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatTagInfoList] = None,
+        annotation_mission_chat_vocabulary_info_list: List[ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatVocabularyInfoList] = None,
+        annotation_mission_id: str = None,
+        annotation_mission_session_id: str = None,
+        annotation_status: int = None,
+        answer: str = None,
+        asr_annotation_status: int = None,
+        create_time: int = None,
+        instance_id: str = None,
+        intent_annotation_status: int = None,
+        modified_time: int = None,
+        occur_time: int = None,
+        original_asr_result: str = None,
+        sequence_id: str = None,
+        sub_status: int = None,
+        tag_annotation_status: int = None,
+        translation_error: int = None,
+    ):
+        self.annotation_asr_result = annotation_asr_result
+        self.annotation_mission_chat_customization_data_info_list = annotation_mission_chat_customization_data_info_list
+        # chat id
+        self.annotation_mission_chat_id = annotation_mission_chat_id
+        self.annotation_mission_chat_intent_user_say_info_list = annotation_mission_chat_intent_user_say_info_list
+        self.annotation_mission_chat_tag_info_list = annotation_mission_chat_tag_info_list
+        self.annotation_mission_chat_vocabulary_info_list = annotation_mission_chat_vocabulary_info_list
+        self.annotation_mission_id = annotation_mission_id
+        self.annotation_mission_session_id = annotation_mission_session_id
+        self.annotation_status = annotation_status
+        self.answer = answer
+        self.asr_annotation_status = asr_annotation_status
+        self.create_time = create_time
+        self.instance_id = instance_id
+        self.intent_annotation_status = intent_annotation_status
+        self.modified_time = modified_time
+        self.occur_time = occur_time
+        self.original_asr_result = original_asr_result
+        self.sequence_id = sequence_id
+        self.sub_status = sub_status
+        self.tag_annotation_status = tag_annotation_status
+        self.translation_error = translation_error
+
+    def validate(self):
+        if self.annotation_mission_chat_customization_data_info_list:
+            for k in self.annotation_mission_chat_customization_data_info_list:
+                if k:
+                    k.validate()
+        if self.annotation_mission_chat_intent_user_say_info_list:
+            for k in self.annotation_mission_chat_intent_user_say_info_list:
+                if k:
+                    k.validate()
+        if self.annotation_mission_chat_tag_info_list:
+            for k in self.annotation_mission_chat_tag_info_list:
+                if k:
+                    k.validate()
+        if self.annotation_mission_chat_vocabulary_info_list:
+            for k in self.annotation_mission_chat_vocabulary_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_asr_result is not None:
+            result['AnnotationAsrResult'] = self.annotation_asr_result
+        result['AnnotationMissionChatCustomizationDataInfoList'] = []
+        if self.annotation_mission_chat_customization_data_info_list is not None:
+            for k in self.annotation_mission_chat_customization_data_info_list:
+                result['AnnotationMissionChatCustomizationDataInfoList'].append(k.to_map() if k else None)
+        if self.annotation_mission_chat_id is not None:
+            result['AnnotationMissionChatId'] = self.annotation_mission_chat_id
+        result['AnnotationMissionChatIntentUserSayInfoList'] = []
+        if self.annotation_mission_chat_intent_user_say_info_list is not None:
+            for k in self.annotation_mission_chat_intent_user_say_info_list:
+                result['AnnotationMissionChatIntentUserSayInfoList'].append(k.to_map() if k else None)
+        result['AnnotationMissionChatTagInfoList'] = []
+        if self.annotation_mission_chat_tag_info_list is not None:
+            for k in self.annotation_mission_chat_tag_info_list:
+                result['AnnotationMissionChatTagInfoList'].append(k.to_map() if k else None)
+        result['AnnotationMissionChatVocabularyInfoList'] = []
+        if self.annotation_mission_chat_vocabulary_info_list is not None:
+            for k in self.annotation_mission_chat_vocabulary_info_list:
+                result['AnnotationMissionChatVocabularyInfoList'].append(k.to_map() if k else None)
+        if self.annotation_mission_id is not None:
+            result['AnnotationMissionId'] = self.annotation_mission_id
+        if self.annotation_mission_session_id is not None:
+            result['AnnotationMissionSessionId'] = self.annotation_mission_session_id
+        if self.annotation_status is not None:
+            result['AnnotationStatus'] = self.annotation_status
+        if self.answer is not None:
+            result['Answer'] = self.answer
+        if self.asr_annotation_status is not None:
+            result['AsrAnnotationStatus'] = self.asr_annotation_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.intent_annotation_status is not None:
+            result['IntentAnnotationStatus'] = self.intent_annotation_status
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.occur_time is not None:
+            result['OccurTime'] = self.occur_time
+        if self.original_asr_result is not None:
+            result['OriginalAsrResult'] = self.original_asr_result
+        if self.sequence_id is not None:
+            result['SequenceId'] = self.sequence_id
+        if self.sub_status is not None:
+            result['SubStatus'] = self.sub_status
+        if self.tag_annotation_status is not None:
+            result['TagAnnotationStatus'] = self.tag_annotation_status
+        if self.translation_error is not None:
+            result['TranslationError'] = self.translation_error
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationAsrResult') is not None:
+            self.annotation_asr_result = m.get('AnnotationAsrResult')
+        self.annotation_mission_chat_customization_data_info_list = []
+        if m.get('AnnotationMissionChatCustomizationDataInfoList') is not None:
+            for k in m.get('AnnotationMissionChatCustomizationDataInfoList'):
+                temp_model = ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatCustomizationDataInfoList()
+                self.annotation_mission_chat_customization_data_info_list.append(temp_model.from_map(k))
+        if m.get('AnnotationMissionChatId') is not None:
+            self.annotation_mission_chat_id = m.get('AnnotationMissionChatId')
+        self.annotation_mission_chat_intent_user_say_info_list = []
+        if m.get('AnnotationMissionChatIntentUserSayInfoList') is not None:
+            for k in m.get('AnnotationMissionChatIntentUserSayInfoList'):
+                temp_model = ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatIntentUserSayInfoList()
+                self.annotation_mission_chat_intent_user_say_info_list.append(temp_model.from_map(k))
+        self.annotation_mission_chat_tag_info_list = []
+        if m.get('AnnotationMissionChatTagInfoList') is not None:
+            for k in m.get('AnnotationMissionChatTagInfoList'):
+                temp_model = ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatTagInfoList()
+                self.annotation_mission_chat_tag_info_list.append(temp_model.from_map(k))
+        self.annotation_mission_chat_vocabulary_info_list = []
+        if m.get('AnnotationMissionChatVocabularyInfoList') is not None:
+            for k in m.get('AnnotationMissionChatVocabularyInfoList'):
+                temp_model = ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatVocabularyInfoList()
+                self.annotation_mission_chat_vocabulary_info_list.append(temp_model.from_map(k))
+        if m.get('AnnotationMissionId') is not None:
+            self.annotation_mission_id = m.get('AnnotationMissionId')
+        if m.get('AnnotationMissionSessionId') is not None:
+            self.annotation_mission_session_id = m.get('AnnotationMissionSessionId')
+        if m.get('AnnotationStatus') is not None:
+            self.annotation_status = m.get('AnnotationStatus')
+        if m.get('Answer') is not None:
+            self.answer = m.get('Answer')
+        if m.get('AsrAnnotationStatus') is not None:
+            self.asr_annotation_status = m.get('AsrAnnotationStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntentAnnotationStatus') is not None:
+            self.intent_annotation_status = m.get('IntentAnnotationStatus')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('OccurTime') is not None:
+            self.occur_time = m.get('OccurTime')
+        if m.get('OriginalAsrResult') is not None:
+            self.original_asr_result = m.get('OriginalAsrResult')
+        if m.get('SequenceId') is not None:
+            self.sequence_id = m.get('SequenceId')
+        if m.get('SubStatus') is not None:
+            self.sub_status = m.get('SubStatus')
+        if m.get('TagAnnotationStatus') is not None:
+            self.tag_annotation_status = m.get('TagAnnotationStatus')
+        if m.get('TranslationError') is not None:
+            self.translation_error = m.get('TranslationError')
+        return self
+
+
+class ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionList(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_chat_list: List[ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatList] = None,
+        annotation_mission_id: str = None,
+        annotation_mission_session_id: str = None,
+        annotation_status: int = None,
+        create_time: int = None,
+        debug_conversation: bool = None,
+        instance_id: str = None,
+        job_group_id: str = None,
+        job_id: str = None,
+        modified_time: int = None,
+        script_id: str = None,
+        session_id: str = None,
+        version: int = None,
+    ):
+        self.annotation_mission_chat_list = annotation_mission_chat_list
+        self.annotation_mission_id = annotation_mission_id
+        # ID
+        self.annotation_mission_session_id = annotation_mission_session_id
+        self.annotation_status = annotation_status
+        self.create_time = create_time
+        self.debug_conversation = debug_conversation
+        self.instance_id = instance_id
+        self.job_group_id = job_group_id
+        self.job_id = job_id
+        self.modified_time = modified_time
+        self.script_id = script_id
+        self.session_id = session_id
+        self.version = version
+
+    def validate(self):
+        if self.annotation_mission_chat_list:
+            for k in self.annotation_mission_chat_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AnnotationMissionChatList'] = []
+        if self.annotation_mission_chat_list is not None:
+            for k in self.annotation_mission_chat_list:
+                result['AnnotationMissionChatList'].append(k.to_map() if k else None)
+        if self.annotation_mission_id is not None:
+            result['AnnotationMissionId'] = self.annotation_mission_id
+        if self.annotation_mission_session_id is not None:
+            result['AnnotationMissionSessionId'] = self.annotation_mission_session_id
+        if self.annotation_status is not None:
+            result['AnnotationStatus'] = self.annotation_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.debug_conversation is not None:
+            result['DebugConversation'] = self.debug_conversation
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.job_group_id is not None:
+            result['JobGroupId'] = self.job_group_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.annotation_mission_chat_list = []
+        if m.get('AnnotationMissionChatList') is not None:
+            for k in m.get('AnnotationMissionChatList'):
+                temp_model = ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAnnotationMissionChatList()
+                self.annotation_mission_chat_list.append(temp_model.from_map(k))
+        if m.get('AnnotationMissionId') is not None:
+            self.annotation_mission_id = m.get('AnnotationMissionId')
+        if m.get('AnnotationMissionSessionId') is not None:
+            self.annotation_mission_session_id = m.get('AnnotationMissionSessionId')
+        if m.get('AnnotationStatus') is not None:
+            self.annotation_status = m.get('AnnotationStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DebugConversation') is not None:
+            self.debug_conversation = m.get('DebugConversation')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('JobGroupId') is not None:
+            self.job_group_id = m.get('JobGroupId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class ListAnnotationMissionSessionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_id: str = None,
+        annotation_mission_session_list: List[ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionList] = None,
+        message: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.annotation_mission_id = annotation_mission_id
+        self.annotation_mission_session_list = annotation_mission_session_list
+        self.message = message
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.annotation_mission_session_list:
+            for k in self.annotation_mission_session_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_mission_id is not None:
+            result['AnnotationMissionId'] = self.annotation_mission_id
+        result['AnnotationMissionSessionList'] = []
+        if self.annotation_mission_session_list is not None:
+            for k in self.annotation_mission_session_list:
+                result['AnnotationMissionSessionList'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationMissionId') is not None:
+            self.annotation_mission_id = m.get('AnnotationMissionId')
+        self.annotation_mission_session_list = []
+        if m.get('AnnotationMissionSessionList') is not None:
+            for k in m.get('AnnotationMissionSessionList'):
+                temp_model = ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionList()
+                self.annotation_mission_session_list.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListAnnotationMissionSessionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListAnnotationMissionSessionResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListAnnotationMissionSessionResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListAnnotationMissionSessionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAnnotationMissionSessionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAnnotationMissionSessionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListApiPluginsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        uuids_json: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.uuids_json = uuids_json
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.uuids_json is not None:
+            result['UuidsJson'] = self.uuids_json
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('UuidsJson') is not None:
+            self.uuids_json = m.get('UuidsJson')
+        return self
+
+
+class ListApiPluginsResponseBodyApiPlugins(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        drafted_config_json: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        instance_id: str = None,
+        name: str = None,
+        published_config_json: str = None,
+        status: str = None,
+        type: str = None,
+        uuid: str = None,
+    ):
+        self.description = description
+        self.drafted_config_json = drafted_config_json
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.instance_id = instance_id
+        self.name = name
+        self.published_config_json = published_config_json
+        self.status = status
+        self.type = type
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.drafted_config_json is not None:
+            result['DraftedConfigJson'] = self.drafted_config_json
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.published_config_json is not None:
+            result['PublishedConfigJson'] = self.published_config_json
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DraftedConfigJson') is not None:
+            self.drafted_config_json = m.get('DraftedConfigJson')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PublishedConfigJson') is not None:
+            self.published_config_json = m.get('PublishedConfigJson')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class ListApiPluginsResponseBody(TeaModel):
+    def __init__(
+        self,
+        api_plugins: List[ListApiPluginsResponseBodyApiPlugins] = None,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.api_plugins = api_plugins
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.api_plugins:
+            for k in self.api_plugins:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApiPlugins'] = []
+        if self.api_plugins is not None:
+            for k in self.api_plugins:
+                result['ApiPlugins'].append(k.to_map() if k else None)
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.api_plugins = []
+        if m.get('ApiPlugins') is not None:
+            for k in m.get('ApiPlugins'):
+                temp_model = ListApiPluginsResponseBodyApiPlugins()
+                self.api_plugins.append(temp_model.from_map(k))
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListApiPluginsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListApiPluginsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListApiPluginsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListChatbotInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.agent_key = agent_key
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -14963,6 +19582,8 @@ class ListChatbotInstancesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -15128,9 +19749,6 @@ class ListChatbotInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15166,7 +19784,9 @@ class ListDialogueFlowsRequest(TeaModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -15327,9 +19947,6 @@ class ListDialogueFlowsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15362,10 +19979,14 @@ class ListDialogueFlowsResponse(TeaModel):
 class ListDownloadTasksRequest(TeaModel):
     def __init__(
         self,
+        instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
+        self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -15377,6 +19998,8 @@ class ListDownloadTasksRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -15385,6 +20008,8 @@ class ListDownloadTasksRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -15620,9 +20245,6 @@ class ListDownloadTasksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15652,6 +20274,193 @@ class ListDownloadTasksResponse(TeaModel):
         return self
 
 
+class ListFlashSmsTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        instance_id: str = None,
+        provider_id: str = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.provider_id = provider_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.provider_id is not None:
+            result['ProviderId'] = self.provider_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ProviderId') is not None:
+            self.provider_id = m.get('ProviderId')
+        return self
+
+
+class ListFlashSmsTemplatesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        template_content: str = None,
+        template_id: str = None,
+        template_name: str = None,
+    ):
+        self.template_content = template_content
+        self.template_id = template_id
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.template_content is not None:
+            result['TemplateContent'] = self.template_content
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TemplateContent') is not None:
+            self.template_content = m.get('TemplateContent')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class ListFlashSmsTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListFlashSmsTemplatesResponseBodyData] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListFlashSmsTemplatesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListFlashSmsTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListFlashSmsTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListFlashSmsTemplatesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListGlobalQuestionsRequest(TeaModel):
     def __init__(
         self,
@@ -15660,9 +20469,13 @@ class ListGlobalQuestionsRequest(TeaModel):
         page_size: int = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -15878,9 +20691,6 @@ class ListGlobalQuestionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15946,9 +20756,15 @@ class ListInstancesRequestTag(TeaModel):
 class ListInstancesRequest(TeaModel):
     def __init__(
         self,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
         resource_group_id: str = None,
         tag: List[ListInstancesRequestTag] = None,
     ):
+        self.name = name
+        self.page_number = page_number
+        self.page_size = page_size
         self.resource_group_id = resource_group_id
         self.tag = tag
 
@@ -15964,6 +20780,12 @@ class ListInstancesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         result['Tag'] = []
@@ -15974,6 +20796,12 @@ class ListInstancesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         self.tag = []
@@ -16119,15 +20947,21 @@ class ListInstancesResponseBody(TeaModel):
         http_status_code: int = None,
         instances: List[ListInstancesResponseBodyInstances] = None,
         message: str = None,
+        page_number: int = None,
+        page_size: int = None,
         request_id: str = None,
         success: bool = None,
+        total_count: int = None,
     ):
         self.code = code
         self.http_status_code = http_status_code
         self.instances = instances
         self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
         self.request_id = request_id
         self.success = success
+        self.total_count = total_count
 
     def validate(self):
         if self.instances:
@@ -16151,10 +20985,16 @@ class ListInstancesResponseBody(TeaModel):
                 result['Instances'].append(k.to_map() if k else None)
         if self.message is not None:
             result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.success is not None:
             result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -16170,10 +21010,16 @@ class ListInstancesResponseBody(TeaModel):
                 self.instances.append(temp_model.from_map(k))
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -16189,9 +21035,6 @@ class ListInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16230,10 +21073,14 @@ class ListIntentsRequest(TeaModel):
         page_size: int = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.keyword = keyword
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -16465,9 +21312,6 @@ class ListIntentsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16504,6 +21348,7 @@ class ListJobGroupsRequest(TeaModel):
         end_time: int = None,
         instance_id: str = None,
         job_group_status_filter: str = None,
+        only_min_concurrency_enabled: bool = None,
         page_number: int = None,
         page_size: int = None,
         search_text: str = None,
@@ -16511,9 +21356,13 @@ class ListJobGroupsRequest(TeaModel):
     ):
         self.async_query = async_query
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
         self.job_group_status_filter = job_group_status_filter
+        self.only_min_concurrency_enabled = only_min_concurrency_enabled
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.search_text = search_text
         self.start_time = start_time
@@ -16535,6 +21384,8 @@ class ListJobGroupsRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.job_group_status_filter is not None:
             result['JobGroupStatusFilter'] = self.job_group_status_filter
+        if self.only_min_concurrency_enabled is not None:
+            result['OnlyMinConcurrencyEnabled'] = self.only_min_concurrency_enabled
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -16555,6 +21406,8 @@ class ListJobGroupsRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('JobGroupStatusFilter') is not None:
             self.job_group_status_filter = m.get('JobGroupStatusFilter')
+        if m.get('OnlyMinConcurrencyEnabled') is not None:
+            self.only_min_concurrency_enabled = m.get('OnlyMinConcurrencyEnabled')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -16734,6 +21587,7 @@ class ListJobGroupsResponseBodyJobGroupsList(TeaModel):
         job_group_description: str = None,
         job_group_id: str = None,
         job_group_name: str = None,
+        min_concurrency: int = None,
         modify_time: str = None,
         progress: ListJobGroupsResponseBodyJobGroupsListProgress = None,
         script_id: str = None,
@@ -16749,6 +21603,7 @@ class ListJobGroupsResponseBodyJobGroupsList(TeaModel):
         self.job_group_description = job_group_description
         self.job_group_id = job_group_id
         self.job_group_name = job_group_name
+        self.min_concurrency = min_concurrency
         self.modify_time = modify_time
         self.progress = progress
         self.script_id = script_id
@@ -16784,6 +21639,8 @@ class ListJobGroupsResponseBodyJobGroupsList(TeaModel):
             result['JobGroupId'] = self.job_group_id
         if self.job_group_name is not None:
             result['JobGroupName'] = self.job_group_name
+        if self.min_concurrency is not None:
+            result['MinConcurrency'] = self.min_concurrency
         if self.modify_time is not None:
             result['ModifyTime'] = self.modify_time
         if self.progress is not None:
@@ -16817,6 +21674,8 @@ class ListJobGroupsResponseBodyJobGroupsList(TeaModel):
             self.job_group_id = m.get('JobGroupId')
         if m.get('JobGroupName') is not None:
             self.job_group_name = m.get('JobGroupName')
+        if m.get('MinConcurrency') is not None:
+            self.min_concurrency = m.get('MinConcurrency')
         if m.get('ModifyTime') is not None:
             self.modify_time = m.get('ModifyTime')
         if m.get('Progress') is not None:
@@ -16968,9 +21827,6 @@ class ListJobGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17005,6 +21861,7 @@ class ListJobGroupsAsyncRequest(TeaModel):
         self,
         async_task_id: str = None,
     ):
+        # This parameter is required.
         self.async_task_id = async_task_id
 
     def validate(self):
@@ -17195,6 +22052,7 @@ class ListJobGroupsAsyncResponseBodyJobGroups(TeaModel):
         job_group_description: str = None,
         job_group_id: str = None,
         job_group_name: str = None,
+        min_concurrency: int = None,
         modify_time: str = None,
         progress: ListJobGroupsAsyncResponseBodyJobGroupsProgress = None,
         script_id: str = None,
@@ -17210,6 +22068,7 @@ class ListJobGroupsAsyncResponseBodyJobGroups(TeaModel):
         self.job_group_description = job_group_description
         self.job_group_id = job_group_id
         self.job_group_name = job_group_name
+        self.min_concurrency = min_concurrency
         self.modify_time = modify_time
         self.progress = progress
         self.script_id = script_id
@@ -17245,6 +22104,8 @@ class ListJobGroupsAsyncResponseBodyJobGroups(TeaModel):
             result['JobGroupId'] = self.job_group_id
         if self.job_group_name is not None:
             result['JobGroupName'] = self.job_group_name
+        if self.min_concurrency is not None:
+            result['MinConcurrency'] = self.min_concurrency
         if self.modify_time is not None:
             result['ModifyTime'] = self.modify_time
         if self.progress is not None:
@@ -17278,6 +22139,8 @@ class ListJobGroupsAsyncResponseBodyJobGroups(TeaModel):
             self.job_group_id = m.get('JobGroupId')
         if m.get('JobGroupName') is not None:
             self.job_group_name = m.get('JobGroupName')
+        if m.get('MinConcurrency') is not None:
+            self.min_concurrency = m.get('MinConcurrency')
         if m.get('ModifyTime') is not None:
             self.modify_time = m.get('ModifyTime')
         if m.get('Progress') is not None:
@@ -17406,9 +22269,6 @@ class ListJobGroupsAsyncResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17444,7 +22304,9 @@ class ListJobsRequest(TeaModel):
         instance_id: str = None,
         job_id: List[str] = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -18106,9 +22968,6 @@ class ListJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18148,11 +23007,15 @@ class ListJobsByGroupRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.job_failure_reason = job_failure_reason
+        # This parameter is required.
         self.job_group_id = job_group_id
         self.job_status = job_status
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -18615,9 +23478,6 @@ class ListJobsByGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18654,8 +23514,11 @@ class ListOutboundCallNumbersRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -18855,9 +23718,6 @@ class ListOutboundCallNumbersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18894,8 +23754,11 @@ class ListResourceTagsRequest(TeaModel):
         page_size: int = None,
         resource_type: str = None,
     ):
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -19083,9 +23946,6 @@ class ListResourceTagsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19270,9 +24130,6 @@ class ListSchedulerInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19310,9 +24167,13 @@ class ListScriptPublishHistoriesRequest(TeaModel):
         page_size: int = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -19522,9 +24383,6 @@ class ListScriptPublishHistoriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19560,14 +24418,20 @@ class ListScriptRecordingRequest(TeaModel):
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        ref_ids_json: str = None,
         script_id: str = None,
         search: str = None,
         states_json: str = None,
         uuids_json: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
+        self.ref_ids_json = ref_ids_json
+        # This parameter is required.
         self.script_id = script_id
         self.search = search
         self.states_json = states_json
@@ -19588,6 +24452,8 @@ class ListScriptRecordingRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.ref_ids_json is not None:
+            result['RefIdsJson'] = self.ref_ids_json
         if self.script_id is not None:
             result['ScriptId'] = self.script_id
         if self.search is not None:
@@ -19606,6 +24472,8 @@ class ListScriptRecordingRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RefIdsJson') is not None:
+            self.ref_ids_json = m.get('RefIdsJson')
         if m.get('ScriptId') is not None:
             self.script_id = m.get('ScriptId')
         if m.get('Search') is not None:
@@ -19628,6 +24496,7 @@ class ListScriptRecordingResponseBodyScriptRecordings(TeaModel):
         recording_content: str = None,
         recording_duration: int = None,
         recording_name: str = None,
+        ref_id: str = None,
         script_id: str = None,
         state: int = None,
         state_extend: str = None,
@@ -19642,6 +24511,7 @@ class ListScriptRecordingResponseBodyScriptRecordings(TeaModel):
         self.recording_content = recording_content
         self.recording_duration = recording_duration
         self.recording_name = recording_name
+        self.ref_id = ref_id
         self.script_id = script_id
         self.state = state
         self.state_extend = state_extend
@@ -19673,6 +24543,8 @@ class ListScriptRecordingResponseBodyScriptRecordings(TeaModel):
             result['RecordingDuration'] = self.recording_duration
         if self.recording_name is not None:
             result['RecordingName'] = self.recording_name
+        if self.ref_id is not None:
+            result['RefId'] = self.ref_id
         if self.script_id is not None:
             result['ScriptId'] = self.script_id
         if self.state is not None:
@@ -19703,6 +24575,8 @@ class ListScriptRecordingResponseBodyScriptRecordings(TeaModel):
             self.recording_duration = m.get('RecordingDuration')
         if m.get('RecordingName') is not None:
             self.recording_name = m.get('RecordingName')
+        if m.get('RefId') is not None:
+            self.ref_id = m.get('RefId')
         if m.get('ScriptId') is not None:
             self.script_id = m.get('ScriptId')
         if m.get('State') is not None:
@@ -19811,9 +24685,6 @@ class ListScriptRecordingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19851,9 +24722,13 @@ class ListScriptVoiceConfigsRequest(TeaModel):
         page_size: int = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -20075,9 +24950,6 @@ class ListScriptVoiceConfigsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20111,12 +24983,19 @@ class ListScriptsRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        nlu_engine: str = None,
         page_number: int = None,
         page_size: int = None,
+        script_name: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        self.nlu_engine = nlu_engine
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
+        self.script_name = script_name
 
     def validate(self):
         pass
@@ -20129,26 +25008,37 @@ class ListScriptsRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.nlu_engine is not None:
+            result['NluEngine'] = self.nlu_engine
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.script_name is not None:
+            result['ScriptName'] = self.script_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('NluEngine') is not None:
+            self.nlu_engine = m.get('NluEngine')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ScriptName') is not None:
+            self.script_name = m.get('ScriptName')
         return self
 
 
 class ListScriptsResponseBodyScriptsList(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
+        agent_llm: bool = None,
+        create_time: int = None,
         debug_status: str = None,
         emotion_enable: bool = None,
         industry: str = None,
@@ -20158,6 +25048,8 @@ class ListScriptsResponseBodyScriptsList(TeaModel):
         long_wait_enable: bool = None,
         mini_playback_enable: bool = None,
         new_barge_in_enable: bool = None,
+        nlu_access_type: str = None,
+        nlu_engine: str = None,
         reject_reason: str = None,
         scene: str = None,
         script_description: str = None,
@@ -20165,7 +25057,11 @@ class ListScriptsResponseBodyScriptsList(TeaModel):
         script_name: str = None,
         status: str = None,
         update_time: int = None,
+        agent_id: int = None,
     ):
+        self.agent_key = agent_key
+        self.agent_llm = agent_llm
+        self.create_time = create_time
         self.debug_status = debug_status
         self.emotion_enable = emotion_enable
         self.industry = industry
@@ -20175,6 +25071,8 @@ class ListScriptsResponseBodyScriptsList(TeaModel):
         self.long_wait_enable = long_wait_enable
         self.mini_playback_enable = mini_playback_enable
         self.new_barge_in_enable = new_barge_in_enable
+        self.nlu_access_type = nlu_access_type
+        self.nlu_engine = nlu_engine
         self.reject_reason = reject_reason
         self.scene = scene
         self.script_description = script_description
@@ -20182,6 +25080,7 @@ class ListScriptsResponseBodyScriptsList(TeaModel):
         self.script_name = script_name
         self.status = status
         self.update_time = update_time
+        self.agent_id = agent_id
 
     def validate(self):
         pass
@@ -20192,6 +25091,12 @@ class ListScriptsResponseBodyScriptsList(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.agent_llm is not None:
+            result['AgentLlm'] = self.agent_llm
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
         if self.debug_status is not None:
             result['DebugStatus'] = self.debug_status
         if self.emotion_enable is not None:
@@ -20210,6 +25115,10 @@ class ListScriptsResponseBodyScriptsList(TeaModel):
             result['MiniPlaybackEnable'] = self.mini_playback_enable
         if self.new_barge_in_enable is not None:
             result['NewBargeInEnable'] = self.new_barge_in_enable
+        if self.nlu_access_type is not None:
+            result['NluAccessType'] = self.nlu_access_type
+        if self.nlu_engine is not None:
+            result['NluEngine'] = self.nlu_engine
         if self.reject_reason is not None:
             result['RejectReason'] = self.reject_reason
         if self.scene is not None:
@@ -20224,10 +25133,18 @@ class ListScriptsResponseBodyScriptsList(TeaModel):
             result['Status'] = self.status
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
+        if self.agent_id is not None:
+            result['agentId'] = self.agent_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('AgentLlm') is not None:
+            self.agent_llm = m.get('AgentLlm')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
         if m.get('DebugStatus') is not None:
             self.debug_status = m.get('DebugStatus')
         if m.get('EmotionEnable') is not None:
@@ -20246,6 +25163,10 @@ class ListScriptsResponseBodyScriptsList(TeaModel):
             self.mini_playback_enable = m.get('MiniPlaybackEnable')
         if m.get('NewBargeInEnable') is not None:
             self.new_barge_in_enable = m.get('NewBargeInEnable')
+        if m.get('NluAccessType') is not None:
+            self.nlu_access_type = m.get('NluAccessType')
+        if m.get('NluEngine') is not None:
+            self.nlu_engine = m.get('NluEngine')
         if m.get('RejectReason') is not None:
             self.reject_reason = m.get('RejectReason')
         if m.get('Scene') is not None:
@@ -20260,6 +25181,8 @@ class ListScriptsResponseBodyScriptsList(TeaModel):
             self.status = m.get('Status')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+        if m.get('agentId') is not None:
+            self.agent_id = m.get('agentId')
         return self
 
 
@@ -20387,9 +25310,6 @@ class ListScriptsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20462,8 +25382,10 @@ class ListTagResourcesRequest(TeaModel):
         tag: List[ListTagResourcesRequestTag] = None,
     ):
         self.next_token = next_token
+        # This parameter is required.
         self.region_id = region_id
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_type = resource_type
         self.tag = tag
 
@@ -20639,9 +25561,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20677,7 +25596,9 @@ class ListTagsRequest(TeaModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -20892,9 +25813,6 @@ class ListTagsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20924,6 +25842,623 @@ class ListTagsResponse(TeaModel):
         return self
 
 
+class ModifyAgentProfileRequest(TeaModel):
+    def __init__(
+        self,
+        agent_profile_id: str = None,
+        api_plugin_json: str = None,
+        description: str = None,
+        faq_category_ids: List[int] = None,
+        instance_id: str = None,
+        instruction_json: str = None,
+        labels_json: str = None,
+        model: str = None,
+        model_config: str = None,
+        prompt: str = None,
+        prompt_json: str = None,
+        scenario: str = None,
+        variables_json: str = None,
+    ):
+        # This parameter is required.
+        self.agent_profile_id = agent_profile_id
+        self.api_plugin_json = api_plugin_json
+        self.description = description
+        self.faq_category_ids = faq_category_ids
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.instruction_json = instruction_json
+        self.labels_json = labels_json
+        self.model = model
+        self.model_config = model_config
+        self.prompt = prompt
+        self.prompt_json = prompt_json
+        self.scenario = scenario
+        self.variables_json = variables_json
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_profile_id is not None:
+            result['AgentProfileId'] = self.agent_profile_id
+        if self.api_plugin_json is not None:
+            result['ApiPluginJson'] = self.api_plugin_json
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.faq_category_ids is not None:
+            result['FaqCategoryIds'] = self.faq_category_ids
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instruction_json is not None:
+            result['InstructionJson'] = self.instruction_json
+        if self.labels_json is not None:
+            result['LabelsJson'] = self.labels_json
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.model_config is not None:
+            result['ModelConfig'] = self.model_config
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.prompt_json is not None:
+            result['PromptJson'] = self.prompt_json
+        if self.scenario is not None:
+            result['Scenario'] = self.scenario
+        if self.variables_json is not None:
+            result['VariablesJson'] = self.variables_json
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentProfileId') is not None:
+            self.agent_profile_id = m.get('AgentProfileId')
+        if m.get('ApiPluginJson') is not None:
+            self.api_plugin_json = m.get('ApiPluginJson')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FaqCategoryIds') is not None:
+            self.faq_category_ids = m.get('FaqCategoryIds')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstructionJson') is not None:
+            self.instruction_json = m.get('InstructionJson')
+        if m.get('LabelsJson') is not None:
+            self.labels_json = m.get('LabelsJson')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('ModelConfig') is not None:
+            self.model_config = m.get('ModelConfig')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('PromptJson') is not None:
+            self.prompt_json = m.get('PromptJson')
+        if m.get('Scenario') is not None:
+            self.scenario = m.get('Scenario')
+        if m.get('VariablesJson') is not None:
+            self.variables_json = m.get('VariablesJson')
+        return self
+
+
+class ModifyAgentProfileShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_profile_id: str = None,
+        api_plugin_json: str = None,
+        description: str = None,
+        faq_category_ids_shrink: str = None,
+        instance_id: str = None,
+        instruction_json: str = None,
+        labels_json: str = None,
+        model: str = None,
+        model_config: str = None,
+        prompt: str = None,
+        prompt_json: str = None,
+        scenario: str = None,
+        variables_json: str = None,
+    ):
+        # This parameter is required.
+        self.agent_profile_id = agent_profile_id
+        self.api_plugin_json = api_plugin_json
+        self.description = description
+        self.faq_category_ids_shrink = faq_category_ids_shrink
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.instruction_json = instruction_json
+        self.labels_json = labels_json
+        self.model = model
+        self.model_config = model_config
+        self.prompt = prompt
+        self.prompt_json = prompt_json
+        self.scenario = scenario
+        self.variables_json = variables_json
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_profile_id is not None:
+            result['AgentProfileId'] = self.agent_profile_id
+        if self.api_plugin_json is not None:
+            result['ApiPluginJson'] = self.api_plugin_json
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.faq_category_ids_shrink is not None:
+            result['FaqCategoryIds'] = self.faq_category_ids_shrink
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instruction_json is not None:
+            result['InstructionJson'] = self.instruction_json
+        if self.labels_json is not None:
+            result['LabelsJson'] = self.labels_json
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.model_config is not None:
+            result['ModelConfig'] = self.model_config
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.prompt_json is not None:
+            result['PromptJson'] = self.prompt_json
+        if self.scenario is not None:
+            result['Scenario'] = self.scenario
+        if self.variables_json is not None:
+            result['VariablesJson'] = self.variables_json
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentProfileId') is not None:
+            self.agent_profile_id = m.get('AgentProfileId')
+        if m.get('ApiPluginJson') is not None:
+            self.api_plugin_json = m.get('ApiPluginJson')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FaqCategoryIds') is not None:
+            self.faq_category_ids_shrink = m.get('FaqCategoryIds')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstructionJson') is not None:
+            self.instruction_json = m.get('InstructionJson')
+        if m.get('LabelsJson') is not None:
+            self.labels_json = m.get('LabelsJson')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('ModelConfig') is not None:
+            self.model_config = m.get('ModelConfig')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('PromptJson') is not None:
+            self.prompt_json = m.get('PromptJson')
+        if m.get('Scenario') is not None:
+            self.scenario = m.get('Scenario')
+        if m.get('VariablesJson') is not None:
+            self.variables_json = m.get('VariablesJson')
+        return self
+
+
+class ModifyAgentProfileResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        agent_profile_id: str = None,
+        agent_profile_template_id: str = None,
+        agent_type: str = None,
+        api_plugin_json: str = None,
+        create_time: str = None,
+        description: str = None,
+        instance_id: str = None,
+        instruction_json: str = None,
+        labels_json: str = None,
+        model: str = None,
+        model_config: str = None,
+        nlu_config_json: str = None,
+        prompt: str = None,
+        prompt_json: str = None,
+        scenario: str = None,
+        script_id: str = None,
+        system: bool = None,
+        update_time: str = None,
+        variables_json: str = None,
+    ):
+        self.agent_profile_id = agent_profile_id
+        # agent template id
+        self.agent_profile_template_id = agent_profile_template_id
+        # agent type
+        self.agent_type = agent_type
+        self.api_plugin_json = api_plugin_json
+        self.create_time = create_time
+        self.description = description
+        self.instance_id = instance_id
+        self.instruction_json = instruction_json
+        self.labels_json = labels_json
+        self.model = model
+        self.model_config = model_config
+        self.nlu_config_json = nlu_config_json
+        self.prompt = prompt
+        self.prompt_json = prompt_json
+        self.scenario = scenario
+        self.script_id = script_id
+        self.system = system
+        self.update_time = update_time
+        self.variables_json = variables_json
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_profile_id is not None:
+            result['AgentProfileId'] = self.agent_profile_id
+        if self.agent_profile_template_id is not None:
+            result['AgentProfileTemplateId'] = self.agent_profile_template_id
+        if self.agent_type is not None:
+            result['AgentType'] = self.agent_type
+        if self.api_plugin_json is not None:
+            result['ApiPluginJson'] = self.api_plugin_json
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instruction_json is not None:
+            result['InstructionJson'] = self.instruction_json
+        if self.labels_json is not None:
+            result['LabelsJson'] = self.labels_json
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.model_config is not None:
+            result['ModelConfig'] = self.model_config
+        if self.nlu_config_json is not None:
+            result['NluConfigJson'] = self.nlu_config_json
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.prompt_json is not None:
+            result['PromptJson'] = self.prompt_json
+        if self.scenario is not None:
+            result['Scenario'] = self.scenario
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        if self.system is not None:
+            result['System'] = self.system
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.variables_json is not None:
+            result['VariablesJson'] = self.variables_json
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentProfileId') is not None:
+            self.agent_profile_id = m.get('AgentProfileId')
+        if m.get('AgentProfileTemplateId') is not None:
+            self.agent_profile_template_id = m.get('AgentProfileTemplateId')
+        if m.get('AgentType') is not None:
+            self.agent_type = m.get('AgentType')
+        if m.get('ApiPluginJson') is not None:
+            self.api_plugin_json = m.get('ApiPluginJson')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstructionJson') is not None:
+            self.instruction_json = m.get('InstructionJson')
+        if m.get('LabelsJson') is not None:
+            self.labels_json = m.get('LabelsJson')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('ModelConfig') is not None:
+            self.model_config = m.get('ModelConfig')
+        if m.get('NluConfigJson') is not None:
+            self.nlu_config_json = m.get('NluConfigJson')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('PromptJson') is not None:
+            self.prompt_json = m.get('PromptJson')
+        if m.get('Scenario') is not None:
+            self.scenario = m.get('Scenario')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        if m.get('System') is not None:
+            self.system = m.get('System')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('VariablesJson') is not None:
+            self.variables_json = m.get('VariablesJson')
+        return self
+
+
+class ModifyAgentProfileResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ModifyAgentProfileResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ModifyAgentProfileResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyAgentProfileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAgentProfileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAgentProfileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyAnnotationMissionRequest(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_id: str = None,
+        annotation_mission_name: str = None,
+        annotation_status: int = None,
+        delete: bool = None,
+    ):
+        self.annotation_mission_id = annotation_mission_id
+        self.annotation_mission_name = annotation_mission_name
+        self.annotation_status = annotation_status
+        self.delete = delete
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_mission_id is not None:
+            result['AnnotationMissionId'] = self.annotation_mission_id
+        if self.annotation_mission_name is not None:
+            result['AnnotationMissionName'] = self.annotation_mission_name
+        if self.annotation_status is not None:
+            result['AnnotationStatus'] = self.annotation_status
+        if self.delete is not None:
+            result['Delete'] = self.delete
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationMissionId') is not None:
+            self.annotation_mission_id = m.get('AnnotationMissionId')
+        if m.get('AnnotationMissionName') is not None:
+            self.annotation_mission_name = m.get('AnnotationMissionName')
+        if m.get('AnnotationStatus') is not None:
+            self.annotation_status = m.get('AnnotationStatus')
+        if m.get('Delete') is not None:
+            self.delete = m.get('Delete')
+        return self
+
+
+class ModifyAnnotationMissionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        success: bool = None,
+    ):
+        self.message = message
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyAnnotationMissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ModifyAnnotationMissionResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ModifyAnnotationMissionResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyAnnotationMissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAnnotationMissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAnnotationMissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyBatchJobsRequest(TeaModel):
     def __init__(
         self,
@@ -20938,15 +26473,19 @@ class ModifyBatchJobsRequest(TeaModel):
         strategy_json: str = None,
         submitted: bool = None,
     ):
+        # This parameter is required.
         self.batch_job_name = batch_job_name
         self.calling_number = calling_number
         self.description = description
+        # This parameter is required.
         self.instance_id = instance_id
         self.job_file_path = job_file_path
+        # This parameter is required.
         self.job_group_id = job_group_id
         self.scenario_id = scenario_id
         self.script_id = script_id
         self.strategy_json = strategy_json
+        # This parameter is required.
         self.submitted = submitted
 
     def validate(self):
@@ -21299,9 +26838,6 @@ class ModifyBatchJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21340,10 +26876,14 @@ class ModifyDialogueFlowRequest(TeaModel):
         is_drafted: bool = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.dialogue_flow_definition = dialogue_flow_definition
+        # This parameter is required.
         self.dialogue_flow_id = dialogue_flow_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.is_drafted = is_drafted
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -21457,9 +26997,6 @@ class ModifyDialogueFlowResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21497,6 +27034,7 @@ class ModifyEmptyNumberNoMoreCallsInfoRequest(TeaModel):
         strategy_level: int = None,
     ):
         self.empty_number_no_more_calls = empty_number_no_more_calls
+        # This parameter is required.
         self.entry_id = entry_id
         self.strategy_level = strategy_level
 
@@ -21591,9 +27129,6 @@ class ModifyEmptyNumberNoMoreCallsInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21634,12 +27169,19 @@ class ModifyGlobalQuestionRequest(TeaModel):
         questions: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.answers = answers
+        # This parameter is required.
         self.global_question_id = global_question_id
+        # This parameter is required.
         self.global_question_name = global_question_name
+        # This parameter is required.
         self.global_question_type = global_question_type
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.questions = questions
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -21755,9 +27297,6 @@ class ModifyGlobalQuestionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21798,8 +27337,10 @@ class ModifyInstanceRequest(TeaModel):
     ):
         self.calling_number = calling_number
         self.instance_description = instance_description
+        # This parameter is required.
         self.instance_id = instance_id
         self.instance_name = instance_name
+        # This parameter is required.
         self.max_concurrent_conversation = max_concurrent_conversation
 
     def validate(self):
@@ -21978,9 +27519,6 @@ class ModifyInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22021,12 +27559,17 @@ class ModifyIntentRequest(TeaModel):
         script_id: str = None,
         utterances: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.intent_description = intent_description
+        # This parameter is required.
         self.intent_id = intent_id
+        # This parameter is required.
         self.intent_name = intent_name
         self.keywords = keywords
+        # This parameter is required.
         self.script_id = script_id
+        # This parameter is required.
         self.utterances = utterances
 
     def validate(self):
@@ -22142,9 +27685,6 @@ class ModifyIntentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22179,12 +27719,14 @@ class ModifyJobGroupRequest(TeaModel):
         self,
         calling_number: List[str] = None,
         description: str = None,
+        flash_sms_extras: str = None,
         instance_id: str = None,
         job_group_id: str = None,
         job_group_status: str = None,
         min_concurrency: int = None,
         name: str = None,
         priority: str = None,
+        recall_calling_number: List[str] = None,
         recall_strategy_json: str = None,
         ringing_duration: int = None,
         scenario_id: str = None,
@@ -22193,12 +27735,17 @@ class ModifyJobGroupRequest(TeaModel):
     ):
         self.calling_number = calling_number
         self.description = description
+        self.flash_sms_extras = flash_sms_extras
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_group_id = job_group_id
         self.job_group_status = job_group_status
         self.min_concurrency = min_concurrency
+        # This parameter is required.
         self.name = name
         self.priority = priority
+        self.recall_calling_number = recall_calling_number
         self.recall_strategy_json = recall_strategy_json
         self.ringing_duration = ringing_duration
         self.scenario_id = scenario_id
@@ -22218,6 +27765,8 @@ class ModifyJobGroupRequest(TeaModel):
             result['CallingNumber'] = self.calling_number
         if self.description is not None:
             result['Description'] = self.description
+        if self.flash_sms_extras is not None:
+            result['FlashSmsExtras'] = self.flash_sms_extras
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.job_group_id is not None:
@@ -22230,6 +27779,8 @@ class ModifyJobGroupRequest(TeaModel):
             result['Name'] = self.name
         if self.priority is not None:
             result['Priority'] = self.priority
+        if self.recall_calling_number is not None:
+            result['RecallCallingNumber'] = self.recall_calling_number
         if self.recall_strategy_json is not None:
             result['RecallStrategyJson'] = self.recall_strategy_json
         if self.ringing_duration is not None:
@@ -22248,6 +27799,8 @@ class ModifyJobGroupRequest(TeaModel):
             self.calling_number = m.get('CallingNumber')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('FlashSmsExtras') is not None:
+            self.flash_sms_extras = m.get('FlashSmsExtras')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('JobGroupId') is not None:
@@ -22260,6 +27813,8 @@ class ModifyJobGroupRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
+        if m.get('RecallCallingNumber') is not None:
+            self.recall_calling_number = m.get('RecallCallingNumber')
         if m.get('RecallStrategyJson') is not None:
             self.recall_strategy_json = m.get('RecallStrategyJson')
         if m.get('RingingDuration') is not None:
@@ -22509,6 +28064,7 @@ class ModifyJobGroupResponseBodyJobGroup(TeaModel):
         calling_numbers: List[str] = None,
         creation_time: int = None,
         export_progress: ModifyJobGroupResponseBodyJobGroupExportProgress = None,
+        flash_sms_extras: str = None,
         job_data_parsing_task_id: str = None,
         job_file_path: str = None,
         job_group_description: str = None,
@@ -22528,6 +28084,7 @@ class ModifyJobGroupResponseBodyJobGroup(TeaModel):
         self.calling_numbers = calling_numbers
         self.creation_time = creation_time
         self.export_progress = export_progress
+        self.flash_sms_extras = flash_sms_extras
         self.job_data_parsing_task_id = job_data_parsing_task_id
         self.job_file_path = job_file_path
         self.job_group_description = job_group_description
@@ -22564,6 +28121,8 @@ class ModifyJobGroupResponseBodyJobGroup(TeaModel):
             result['CreationTime'] = self.creation_time
         if self.export_progress is not None:
             result['ExportProgress'] = self.export_progress.to_map()
+        if self.flash_sms_extras is not None:
+            result['FlashSmsExtras'] = self.flash_sms_extras
         if self.job_data_parsing_task_id is not None:
             result['JobDataParsingTaskId'] = self.job_data_parsing_task_id
         if self.job_file_path is not None:
@@ -22605,6 +28164,8 @@ class ModifyJobGroupResponseBodyJobGroup(TeaModel):
         if m.get('ExportProgress') is not None:
             temp_model = ModifyJobGroupResponseBodyJobGroupExportProgress()
             self.export_progress = temp_model.from_map(m['ExportProgress'])
+        if m.get('FlashSmsExtras') is not None:
+            self.flash_sms_extras = m.get('FlashSmsExtras')
         if m.get('JobDataParsingTaskId') is not None:
             self.job_data_parsing_task_id = m.get('JobDataParsingTaskId')
         if m.get('JobFilePath') is not None:
@@ -22711,9 +28272,6 @@ class ModifyJobGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22752,10 +28310,15 @@ class ModifyOutboundCallNumberRequest(TeaModel):
         rate_limit_count: int = None,
         rate_limit_period: int = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.number = number
+        # This parameter is required.
         self.outbound_call_number_id = outbound_call_number_id
+        # This parameter is required.
         self.rate_limit_count = rate_limit_count
+        # This parameter is required.
         self.rate_limit_period = rate_limit_period
 
     def validate(self):
@@ -22910,9 +28473,6 @@ class ModifyOutboundCallNumberResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22945,7 +28505,11 @@ class ModifyOutboundCallNumberResponse(TeaModel):
 class ModifyScriptRequest(TeaModel):
     def __init__(
         self,
+        agent_id: int = None,
+        agent_key: str = None,
+        agent_llm: bool = None,
         asr_config: str = None,
+        chat_config: str = None,
         chatbot_id: str = None,
         emotion_enable: bool = None,
         industry: str = None,
@@ -22955,6 +28519,8 @@ class ModifyScriptRequest(TeaModel):
         mini_playback_enable: bool = None,
         new_barge_in_enable: bool = None,
         nls_config: str = None,
+        nlu_access_type: str = None,
+        nlu_engine: str = None,
         scene: str = None,
         script_content: List[str] = None,
         script_description: str = None,
@@ -22963,20 +28529,31 @@ class ModifyScriptRequest(TeaModel):
         script_waveform: List[str] = None,
         tts_config: str = None,
     ):
+        self.agent_id = agent_id
+        self.agent_key = agent_key
+        self.agent_llm = agent_llm
         self.asr_config = asr_config
+        self.chat_config = chat_config
         self.chatbot_id = chatbot_id
         self.emotion_enable = emotion_enable
+        # This parameter is required.
         self.industry = industry
+        # This parameter is required.
         self.instance_id = instance_id
         self.long_wait_enable = long_wait_enable
         self.mini_playback_config_list_json_string = mini_playback_config_list_json_string
         self.mini_playback_enable = mini_playback_enable
         self.new_barge_in_enable = new_barge_in_enable
         self.nls_config = nls_config
+        self.nlu_access_type = nlu_access_type
+        self.nlu_engine = nlu_engine
+        # This parameter is required.
         self.scene = scene
         self.script_content = script_content
         self.script_description = script_description
+        # This parameter is required.
         self.script_id = script_id
+        # This parameter is required.
         self.script_name = script_name
         self.script_waveform = script_waveform
         self.tts_config = tts_config
@@ -22990,8 +28567,16 @@ class ModifyScriptRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.agent_llm is not None:
+            result['AgentLlm'] = self.agent_llm
         if self.asr_config is not None:
             result['AsrConfig'] = self.asr_config
+        if self.chat_config is not None:
+            result['ChatConfig'] = self.chat_config
         if self.chatbot_id is not None:
             result['ChatbotId'] = self.chatbot_id
         if self.emotion_enable is not None:
@@ -23010,6 +28595,10 @@ class ModifyScriptRequest(TeaModel):
             result['NewBargeInEnable'] = self.new_barge_in_enable
         if self.nls_config is not None:
             result['NlsConfig'] = self.nls_config
+        if self.nlu_access_type is not None:
+            result['NluAccessType'] = self.nlu_access_type
+        if self.nlu_engine is not None:
+            result['NluEngine'] = self.nlu_engine
         if self.scene is not None:
             result['Scene'] = self.scene
         if self.script_content is not None:
@@ -23028,8 +28617,16 @@ class ModifyScriptRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('AgentLlm') is not None:
+            self.agent_llm = m.get('AgentLlm')
         if m.get('AsrConfig') is not None:
             self.asr_config = m.get('AsrConfig')
+        if m.get('ChatConfig') is not None:
+            self.chat_config = m.get('ChatConfig')
         if m.get('ChatbotId') is not None:
             self.chatbot_id = m.get('ChatbotId')
         if m.get('EmotionEnable') is not None:
@@ -23048,6 +28645,10 @@ class ModifyScriptRequest(TeaModel):
             self.new_barge_in_enable = m.get('NewBargeInEnable')
         if m.get('NlsConfig') is not None:
             self.nls_config = m.get('NlsConfig')
+        if m.get('NluAccessType') is not None:
+            self.nlu_access_type = m.get('NluAccessType')
+        if m.get('NluEngine') is not None:
+            self.nlu_engine = m.get('NluEngine')
         if m.get('Scene') is not None:
             self.scene = m.get('Scene')
         if m.get('ScriptContent') is not None:
@@ -23217,9 +28818,6 @@ class ModifyScriptResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23258,10 +28856,14 @@ class ModifyScriptVoiceConfigRequest(TeaModel):
         script_waveform_relation: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
+        # This parameter is required.
         self.script_voice_config_id = script_voice_config_id
         self.script_waveform_relation = script_waveform_relation
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -23434,9 +29036,6 @@ class ModifyScriptVoiceConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23472,14 +29071,23 @@ class ModifyTTSConfigRequest(TeaModel):
         app_key: str = None,
         instance_id: str = None,
         nls_service_type: str = None,
+        pitch_rate: str = None,
         script_id: str = None,
         speech_rate: str = None,
         voice: str = None,
         volume: str = None,
     ):
         self.app_key = app_key
+        # This parameter is required.
         self.instance_id = instance_id
         self.nls_service_type = nls_service_type
+        # 语调 [-500,500]之间整数。默认值为0。
+        # 
+        # 大于0表示升高音高。
+        # 
+        # 小于0表示降低音高。
+        self.pitch_rate = pitch_rate
+        # This parameter is required.
         self.script_id = script_id
         self.speech_rate = speech_rate
         self.voice = voice
@@ -23500,6 +29108,8 @@ class ModifyTTSConfigRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.nls_service_type is not None:
             result['NlsServiceType'] = self.nls_service_type
+        if self.pitch_rate is not None:
+            result['PitchRate'] = self.pitch_rate
         if self.script_id is not None:
             result['ScriptId'] = self.script_id
         if self.speech_rate is not None:
@@ -23518,6 +29128,8 @@ class ModifyTTSConfigRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('NlsServiceType') is not None:
             self.nls_service_type = m.get('NlsServiceType')
+        if m.get('PitchRate') is not None:
+            self.pitch_rate = m.get('PitchRate')
         if m.get('ScriptId') is not None:
             self.script_id = m.get('ScriptId')
         if m.get('SpeechRate') is not None:
@@ -23533,6 +29145,7 @@ class ModifyTTSConfigResponseBodyTTSConfig(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        pitch_rate: str = None,
         script_id: str = None,
         speech_rate: str = None,
         ttsconfig_id: str = None,
@@ -23540,6 +29153,13 @@ class ModifyTTSConfigResponseBodyTTSConfig(TeaModel):
         volume: str = None,
     ):
         self.instance_id = instance_id
+        # 语调
+        # [-500,500]之间整数。默认值为0。
+        # 
+        # 大于0表示升高音高。
+        # 
+        # 小于0表示降低音高。
+        self.pitch_rate = pitch_rate
         self.script_id = script_id
         self.speech_rate = speech_rate
         self.ttsconfig_id = ttsconfig_id
@@ -23557,6 +29177,8 @@ class ModifyTTSConfigResponseBodyTTSConfig(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.pitch_rate is not None:
+            result['PitchRate'] = self.pitch_rate
         if self.script_id is not None:
             result['ScriptId'] = self.script_id
         if self.speech_rate is not None:
@@ -23573,6 +29195,8 @@ class ModifyTTSConfigResponseBodyTTSConfig(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('PitchRate') is not None:
+            self.pitch_rate = m.get('PitchRate')
         if m.get('ScriptId') is not None:
             self.script_id = m.get('ScriptId')
         if m.get('SpeechRate') is not None:
@@ -23657,9 +29281,6 @@ class ModifyTTSConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23697,9 +29318,13 @@ class ModifyTagGroupsRequest(TeaModel):
         tag_groups: str = None,
         tags: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
+        # This parameter is required.
         self.tag_groups = tag_groups
+        # This parameter is required.
         self.tags = tags
 
     def validate(self):
@@ -23922,9 +29547,6 @@ class ModifyTagGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23961,8 +29583,11 @@ class PublishScriptRequest(TeaModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.description = description
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -24056,9 +29681,6 @@ class PublishScriptResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24094,7 +29716,9 @@ class PublishScriptForDebugRequest(TeaModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -24184,9 +29808,6 @@ class PublishScriptForDebugResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24232,9 +29853,12 @@ class QueryJobsRequest(TeaModel):
     ):
         self.contact_name = contact_name
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
         self.job_group_id = job_group_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.phone_number = phone_number
         self.scenario_id = scenario_id
@@ -24468,6 +30092,39 @@ class QueryJobsResponseBodyJobsListSummary(TeaModel):
         return self
 
 
+class QueryJobsResponseBodyJobsListTagHits(TeaModel):
+    def __init__(
+        self,
+        tag_group: str = None,
+        tag_name: str = None,
+    ):
+        self.tag_group = tag_group
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_group is not None:
+            result['TagGroup'] = self.tag_group
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagGroup') is not None:
+            self.tag_group = m.get('TagGroup')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        return self
+
+
 class QueryJobsResponseBodyJobsListTasksContact(TeaModel):
     def __init__(
         self,
@@ -24653,6 +30310,7 @@ class QueryJobsResponseBodyJobsList(TeaModel):
         status: str = None,
         strategy_id: str = None,
         summary: List[QueryJobsResponseBodyJobsListSummary] = None,
+        tag_hits: List[QueryJobsResponseBodyJobsListTagHits] = None,
         tasks: List[QueryJobsResponseBodyJobsListTasks] = None,
     ):
         self.calling_numbers = calling_numbers
@@ -24667,6 +30325,7 @@ class QueryJobsResponseBodyJobsList(TeaModel):
         self.status = status
         self.strategy_id = strategy_id
         self.summary = summary
+        self.tag_hits = tag_hits
         self.tasks = tasks
 
     def validate(self):
@@ -24680,6 +30339,10 @@ class QueryJobsResponseBodyJobsList(TeaModel):
                     k.validate()
         if self.summary:
             for k in self.summary:
+                if k:
+                    k.validate()
+        if self.tag_hits:
+            for k in self.tag_hits:
                 if k:
                     k.validate()
         if self.tasks:
@@ -24723,6 +30386,10 @@ class QueryJobsResponseBodyJobsList(TeaModel):
         if self.summary is not None:
             for k in self.summary:
                 result['Summary'].append(k.to_map() if k else None)
+        result['TagHits'] = []
+        if self.tag_hits is not None:
+            for k in self.tag_hits:
+                result['TagHits'].append(k.to_map() if k else None)
         result['Tasks'] = []
         if self.tasks is not None:
             for k in self.tasks:
@@ -24764,6 +30431,11 @@ class QueryJobsResponseBodyJobsList(TeaModel):
             for k in m.get('Summary'):
                 temp_model = QueryJobsResponseBodyJobsListSummary()
                 self.summary.append(temp_model.from_map(k))
+        self.tag_hits = []
+        if m.get('TagHits') is not None:
+            for k in m.get('TagHits'):
+                temp_model = QueryJobsResponseBodyJobsListTagHits()
+                self.tag_hits.append(temp_model.from_map(k))
         self.tasks = []
         if m.get('Tasks') is not None:
             for k in m.get('Tasks'):
@@ -24896,9 +30568,6 @@ class QueryJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24931,26 +30600,34 @@ class QueryJobsResponse(TeaModel):
 class QueryJobsWithResultRequest(TeaModel):
     def __init__(
         self,
+        end_actual_time_filter: int = None,
         has_answered_filter: bool = None,
         has_hang_up_by_rejection_filter: bool = None,
         has_reached_end_of_flow_filter: bool = None,
         instance_id: str = None,
+        job_failure_reasons_filter: str = None,
         job_group_id: str = None,
         job_status_filter: str = None,
         page_number: int = None,
         page_size: int = None,
         query_text: str = None,
+        start_actual_time_filter: int = None,
         task_status_filter: str = None,
     ):
+        self.end_actual_time_filter = end_actual_time_filter
         self.has_answered_filter = has_answered_filter
         self.has_hang_up_by_rejection_filter = has_hang_up_by_rejection_filter
         self.has_reached_end_of_flow_filter = has_reached_end_of_flow_filter
+        # This parameter is required.
         self.instance_id = instance_id
+        self.job_failure_reasons_filter = job_failure_reasons_filter
+        # This parameter is required.
         self.job_group_id = job_group_id
         self.job_status_filter = job_status_filter
         self.page_number = page_number
         self.page_size = page_size
         self.query_text = query_text
+        self.start_actual_time_filter = start_actual_time_filter
         self.task_status_filter = task_status_filter
 
     def validate(self):
@@ -24962,6 +30639,8 @@ class QueryJobsWithResultRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.end_actual_time_filter is not None:
+            result['EndActualTimeFilter'] = self.end_actual_time_filter
         if self.has_answered_filter is not None:
             result['HasAnsweredFilter'] = self.has_answered_filter
         if self.has_hang_up_by_rejection_filter is not None:
@@ -24970,6 +30649,8 @@ class QueryJobsWithResultRequest(TeaModel):
             result['HasReachedEndOfFlowFilter'] = self.has_reached_end_of_flow_filter
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.job_failure_reasons_filter is not None:
+            result['JobFailureReasonsFilter'] = self.job_failure_reasons_filter
         if self.job_group_id is not None:
             result['JobGroupId'] = self.job_group_id
         if self.job_status_filter is not None:
@@ -24980,12 +30661,16 @@ class QueryJobsWithResultRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.query_text is not None:
             result['QueryText'] = self.query_text
+        if self.start_actual_time_filter is not None:
+            result['StartActualTimeFilter'] = self.start_actual_time_filter
         if self.task_status_filter is not None:
             result['TaskStatusFilter'] = self.task_status_filter
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndActualTimeFilter') is not None:
+            self.end_actual_time_filter = m.get('EndActualTimeFilter')
         if m.get('HasAnsweredFilter') is not None:
             self.has_answered_filter = m.get('HasAnsweredFilter')
         if m.get('HasHangUpByRejectionFilter') is not None:
@@ -24994,6 +30679,8 @@ class QueryJobsWithResultRequest(TeaModel):
             self.has_reached_end_of_flow_filter = m.get('HasReachedEndOfFlowFilter')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('JobFailureReasonsFilter') is not None:
+            self.job_failure_reasons_filter = m.get('JobFailureReasonsFilter')
         if m.get('JobGroupId') is not None:
             self.job_group_id = m.get('JobGroupId')
         if m.get('JobStatusFilter') is not None:
@@ -25004,6 +30691,8 @@ class QueryJobsWithResultRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('QueryText') is not None:
             self.query_text = m.get('QueryText')
+        if m.get('StartActualTimeFilter') is not None:
+            self.start_actual_time_filter = m.get('StartActualTimeFilter')
         if m.get('TaskStatusFilter') is not None:
             self.task_status_filter = m.get('TaskStatusFilter')
         return self
@@ -25129,7 +30818,9 @@ class QueryJobsWithResultResponseBodyJobsListLatestTaskExtras(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Key
         self.key = key
+        # Value
         self.value = value
 
     def validate(self):
@@ -25446,6 +31137,7 @@ class QueryJobsWithResultResponseBody(TeaModel):
         success: bool = None,
         variable_names: List[str] = None,
     ):
+        # Code
         self.code = code
         self.http_status_code = http_status_code
         self.jobs = jobs
@@ -25512,9 +31204,6 @@ class QueryJobsWithResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25551,8 +31240,11 @@ class QueryScriptWaveformsRequest(TeaModel):
         script_content: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_content = script_content
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -25711,9 +31403,6 @@ class QueryScriptWaveformsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25751,9 +31440,13 @@ class QueryScriptsByStatusRequest(TeaModel):
         page_size: int = None,
         status_list: List[str] = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.status_list = status_list
 
     def validate(self):
@@ -26005,9 +31698,6 @@ class QueryScriptsByStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26049,13 +31739,20 @@ class RecordFailureRequest(TeaModel):
         instance_id: str = None,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.actual_time = actual_time
+        # This parameter is required.
         self.call_id = call_id
+        # This parameter is required.
         self.called_number = called_number
+        # This parameter is required.
         self.calling_number = calling_number
+        # This parameter is required.
         self.disposition_code = disposition_code
         self.exception_codes = exception_codes
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -26169,9 +31866,6 @@ class RecordFailureResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26211,7 +31905,9 @@ class ResumeJobsRequest(TeaModel):
         job_reference_id: List[str] = None,
         scenario_id: str = None,
     ):
+        # This parameter is required.
         self.all = all
+        # This parameter is required.
         self.instance_id = instance_id
         self.job_group_id = job_group_id
         self.job_id = job_id
@@ -26321,9 +32017,6 @@ class ResumeJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26360,8 +32053,11 @@ class RollbackScriptRequest(TeaModel):
         rollback_version: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.rollback_version = rollback_version
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -26455,9 +32151,6 @@ class RollbackScriptResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26495,6 +32188,7 @@ class SaveAfterAnswerDelayPlaybackRequest(TeaModel):
         strategy_level: int = None,
     ):
         self.after_answer_delay_playback = after_answer_delay_playback
+        # This parameter is required.
         self.entry_id = entry_id
         self.strategy_level = strategy_level
 
@@ -26589,9 +32283,6 @@ class SaveAfterAnswerDelayPlaybackResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26621,17 +32312,1197 @@ class SaveAfterAnswerDelayPlaybackResponse(TeaModel):
         return self
 
 
+class SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatCustomizationDataInfoList(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_chat_customization_data_info_id: str = None,
+        annotation_mission_chat_id: str = None,
+        annotation_mission_id: str = None,
+        annotation_mission_session_id: str = None,
+        content: str = None,
+        create: bool = None,
+        create_time: int = None,
+        customization_data_description: str = None,
+        customization_data_id: str = None,
+        customization_data_name: str = None,
+        customization_data_weight: int = None,
+        delete: bool = None,
+        instance_id: str = None,
+        modified_time: int = None,
+    ):
+        # id
+        self.annotation_mission_chat_customization_data_info_id = annotation_mission_chat_customization_data_info_id
+        # chat id
+        self.annotation_mission_chat_id = annotation_mission_chat_id
+        self.annotation_mission_id = annotation_mission_id
+        self.annotation_mission_session_id = annotation_mission_session_id
+        self.content = content
+        self.create = create
+        self.create_time = create_time
+        self.customization_data_description = customization_data_description
+        # id
+        self.customization_data_id = customization_data_id
+        self.customization_data_name = customization_data_name
+        self.customization_data_weight = customization_data_weight
+        self.delete = delete
+        self.instance_id = instance_id
+        self.modified_time = modified_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_mission_chat_customization_data_info_id is not None:
+            result['AnnotationMissionChatCustomizationDataInfoId'] = self.annotation_mission_chat_customization_data_info_id
+        if self.annotation_mission_chat_id is not None:
+            result['AnnotationMissionChatId'] = self.annotation_mission_chat_id
+        if self.annotation_mission_id is not None:
+            result['AnnotationMissionId'] = self.annotation_mission_id
+        if self.annotation_mission_session_id is not None:
+            result['AnnotationMissionSessionId'] = self.annotation_mission_session_id
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.create is not None:
+            result['Create'] = self.create
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.customization_data_description is not None:
+            result['CustomizationDataDescription'] = self.customization_data_description
+        if self.customization_data_id is not None:
+            result['CustomizationDataId'] = self.customization_data_id
+        if self.customization_data_name is not None:
+            result['CustomizationDataName'] = self.customization_data_name
+        if self.customization_data_weight is not None:
+            result['CustomizationDataWeight'] = self.customization_data_weight
+        if self.delete is not None:
+            result['Delete'] = self.delete
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationMissionChatCustomizationDataInfoId') is not None:
+            self.annotation_mission_chat_customization_data_info_id = m.get('AnnotationMissionChatCustomizationDataInfoId')
+        if m.get('AnnotationMissionChatId') is not None:
+            self.annotation_mission_chat_id = m.get('AnnotationMissionChatId')
+        if m.get('AnnotationMissionId') is not None:
+            self.annotation_mission_id = m.get('AnnotationMissionId')
+        if m.get('AnnotationMissionSessionId') is not None:
+            self.annotation_mission_session_id = m.get('AnnotationMissionSessionId')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Create') is not None:
+            self.create = m.get('Create')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CustomizationDataDescription') is not None:
+            self.customization_data_description = m.get('CustomizationDataDescription')
+        if m.get('CustomizationDataId') is not None:
+            self.customization_data_id = m.get('CustomizationDataId')
+        if m.get('CustomizationDataName') is not None:
+            self.customization_data_name = m.get('CustomizationDataName')
+        if m.get('CustomizationDataWeight') is not None:
+            self.customization_data_weight = m.get('CustomizationDataWeight')
+        if m.get('Delete') is not None:
+            self.delete = m.get('Delete')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        return self
+
+
+class SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatIntentUserSayInfoList(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_chat_id: str = None,
+        annotation_mission_chat_intent_user_say_info_id: str = None,
+        annotation_mission_id: str = None,
+        annotation_mission_session_id: str = None,
+        bot_id: str = None,
+        content: str = None,
+        create: bool = None,
+        create_time: int = None,
+        delete: bool = None,
+        dialog_id: int = None,
+        instance_id: str = None,
+        intent_id: int = None,
+        modified_time: int = None,
+    ):
+        self.annotation_mission_chat_id = annotation_mission_chat_id
+        self.annotation_mission_chat_intent_user_say_info_id = annotation_mission_chat_intent_user_say_info_id
+        self.annotation_mission_id = annotation_mission_id
+        self.annotation_mission_session_id = annotation_mission_session_id
+        self.bot_id = bot_id
+        self.content = content
+        self.create = create
+        self.create_time = create_time
+        self.delete = delete
+        self.dialog_id = dialog_id
+        self.instance_id = instance_id
+        self.intent_id = intent_id
+        self.modified_time = modified_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_mission_chat_id is not None:
+            result['AnnotationMissionChatId'] = self.annotation_mission_chat_id
+        if self.annotation_mission_chat_intent_user_say_info_id is not None:
+            result['AnnotationMissionChatIntentUserSayInfoId'] = self.annotation_mission_chat_intent_user_say_info_id
+        if self.annotation_mission_id is not None:
+            result['AnnotationMissionId'] = self.annotation_mission_id
+        if self.annotation_mission_session_id is not None:
+            result['AnnotationMissionSessionId'] = self.annotation_mission_session_id
+        if self.bot_id is not None:
+            result['BotId'] = self.bot_id
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.create is not None:
+            result['Create'] = self.create
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.delete is not None:
+            result['Delete'] = self.delete
+        if self.dialog_id is not None:
+            result['DialogId'] = self.dialog_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.intent_id is not None:
+            result['IntentId'] = self.intent_id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationMissionChatId') is not None:
+            self.annotation_mission_chat_id = m.get('AnnotationMissionChatId')
+        if m.get('AnnotationMissionChatIntentUserSayInfoId') is not None:
+            self.annotation_mission_chat_intent_user_say_info_id = m.get('AnnotationMissionChatIntentUserSayInfoId')
+        if m.get('AnnotationMissionId') is not None:
+            self.annotation_mission_id = m.get('AnnotationMissionId')
+        if m.get('AnnotationMissionSessionId') is not None:
+            self.annotation_mission_session_id = m.get('AnnotationMissionSessionId')
+        if m.get('BotId') is not None:
+            self.bot_id = m.get('BotId')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Create') is not None:
+            self.create = m.get('Create')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Delete') is not None:
+            self.delete = m.get('Delete')
+        if m.get('DialogId') is not None:
+            self.dialog_id = m.get('DialogId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntentId') is not None:
+            self.intent_id = m.get('IntentId')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        return self
+
+
+class SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatTagInfoList(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_chat_id: str = None,
+        annotation_mission_chat_tag_info_id: str = None,
+        annotation_mission_id: str = None,
+        annotation_mission_session_id: str = None,
+        annotation_mission_tag_info_id: str = None,
+        annotation_mission_tag_info_name: str = None,
+        create: bool = None,
+        create_time: int = None,
+        delete: bool = None,
+        instance_id: str = None,
+        modified_time: int = None,
+    ):
+        # chat id
+        self.annotation_mission_chat_id = annotation_mission_chat_id
+        # id
+        self.annotation_mission_chat_tag_info_id = annotation_mission_chat_tag_info_id
+        self.annotation_mission_id = annotation_mission_id
+        self.annotation_mission_session_id = annotation_mission_session_id
+        # tag id
+        self.annotation_mission_tag_info_id = annotation_mission_tag_info_id
+        self.annotation_mission_tag_info_name = annotation_mission_tag_info_name
+        self.create = create
+        self.create_time = create_time
+        self.delete = delete
+        self.instance_id = instance_id
+        self.modified_time = modified_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_mission_chat_id is not None:
+            result['AnnotationMissionChatId'] = self.annotation_mission_chat_id
+        if self.annotation_mission_chat_tag_info_id is not None:
+            result['AnnotationMissionChatTagInfoId'] = self.annotation_mission_chat_tag_info_id
+        if self.annotation_mission_id is not None:
+            result['AnnotationMissionId'] = self.annotation_mission_id
+        if self.annotation_mission_session_id is not None:
+            result['AnnotationMissionSessionId'] = self.annotation_mission_session_id
+        if self.annotation_mission_tag_info_id is not None:
+            result['AnnotationMissionTagInfoId'] = self.annotation_mission_tag_info_id
+        if self.annotation_mission_tag_info_name is not None:
+            result['AnnotationMissionTagInfoName'] = self.annotation_mission_tag_info_name
+        if self.create is not None:
+            result['Create'] = self.create
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.delete is not None:
+            result['Delete'] = self.delete
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationMissionChatId') is not None:
+            self.annotation_mission_chat_id = m.get('AnnotationMissionChatId')
+        if m.get('AnnotationMissionChatTagInfoId') is not None:
+            self.annotation_mission_chat_tag_info_id = m.get('AnnotationMissionChatTagInfoId')
+        if m.get('AnnotationMissionId') is not None:
+            self.annotation_mission_id = m.get('AnnotationMissionId')
+        if m.get('AnnotationMissionSessionId') is not None:
+            self.annotation_mission_session_id = m.get('AnnotationMissionSessionId')
+        if m.get('AnnotationMissionTagInfoId') is not None:
+            self.annotation_mission_tag_info_id = m.get('AnnotationMissionTagInfoId')
+        if m.get('AnnotationMissionTagInfoName') is not None:
+            self.annotation_mission_tag_info_name = m.get('AnnotationMissionTagInfoName')
+        if m.get('Create') is not None:
+            self.create = m.get('Create')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Delete') is not None:
+            self.delete = m.get('Delete')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        return self
+
+
+class SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatVocabularyInfoList(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_chat_id: str = None,
+        annotation_mission_chat_vocabulary_info_id: str = None,
+        annotation_mission_id: str = None,
+        annotation_mission_session_id: str = None,
+        create: bool = None,
+        create_time: int = None,
+        delete: bool = None,
+        instance_id: str = None,
+        modified_time: int = None,
+        vocabulary: str = None,
+        vocabulary_description: str = None,
+        vocabulary_id: str = None,
+        vocabulary_name: str = None,
+        vocabulary_weight: int = None,
+    ):
+        # chat id
+        self.annotation_mission_chat_id = annotation_mission_chat_id
+        # id
+        self.annotation_mission_chat_vocabulary_info_id = annotation_mission_chat_vocabulary_info_id
+        self.annotation_mission_id = annotation_mission_id
+        self.annotation_mission_session_id = annotation_mission_session_id
+        self.create = create
+        self.create_time = create_time
+        self.delete = delete
+        self.instance_id = instance_id
+        self.modified_time = modified_time
+        self.vocabulary = vocabulary
+        self.vocabulary_description = vocabulary_description
+        self.vocabulary_id = vocabulary_id
+        self.vocabulary_name = vocabulary_name
+        self.vocabulary_weight = vocabulary_weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_mission_chat_id is not None:
+            result['AnnotationMissionChatId'] = self.annotation_mission_chat_id
+        if self.annotation_mission_chat_vocabulary_info_id is not None:
+            result['AnnotationMissionChatVocabularyInfoId'] = self.annotation_mission_chat_vocabulary_info_id
+        if self.annotation_mission_id is not None:
+            result['AnnotationMissionId'] = self.annotation_mission_id
+        if self.annotation_mission_session_id is not None:
+            result['AnnotationMissionSessionId'] = self.annotation_mission_session_id
+        if self.create is not None:
+            result['Create'] = self.create
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.delete is not None:
+            result['Delete'] = self.delete
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.vocabulary is not None:
+            result['Vocabulary'] = self.vocabulary
+        if self.vocabulary_description is not None:
+            result['VocabularyDescription'] = self.vocabulary_description
+        if self.vocabulary_id is not None:
+            result['VocabularyId'] = self.vocabulary_id
+        if self.vocabulary_name is not None:
+            result['VocabularyName'] = self.vocabulary_name
+        if self.vocabulary_weight is not None:
+            result['VocabularyWeight'] = self.vocabulary_weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationMissionChatId') is not None:
+            self.annotation_mission_chat_id = m.get('AnnotationMissionChatId')
+        if m.get('AnnotationMissionChatVocabularyInfoId') is not None:
+            self.annotation_mission_chat_vocabulary_info_id = m.get('AnnotationMissionChatVocabularyInfoId')
+        if m.get('AnnotationMissionId') is not None:
+            self.annotation_mission_id = m.get('AnnotationMissionId')
+        if m.get('AnnotationMissionSessionId') is not None:
+            self.annotation_mission_session_id = m.get('AnnotationMissionSessionId')
+        if m.get('Create') is not None:
+            self.create = m.get('Create')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Delete') is not None:
+            self.delete = m.get('Delete')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Vocabulary') is not None:
+            self.vocabulary = m.get('Vocabulary')
+        if m.get('VocabularyDescription') is not None:
+            self.vocabulary_description = m.get('VocabularyDescription')
+        if m.get('VocabularyId') is not None:
+            self.vocabulary_id = m.get('VocabularyId')
+        if m.get('VocabularyName') is not None:
+            self.vocabulary_name = m.get('VocabularyName')
+        if m.get('VocabularyWeight') is not None:
+            self.vocabulary_weight = m.get('VocabularyWeight')
+        return self
+
+
+class SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatList(TeaModel):
+    def __init__(
+        self,
+        annotation_asr_result: str = None,
+        annotation_mission_chat_customization_data_info_list: List[SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatCustomizationDataInfoList] = None,
+        annotation_mission_chat_id: str = None,
+        annotation_mission_chat_intent_user_say_info_list: List[SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatIntentUserSayInfoList] = None,
+        annotation_mission_chat_tag_info_list: List[SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatTagInfoList] = None,
+        annotation_mission_chat_vocabulary_info_list: List[SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatVocabularyInfoList] = None,
+        annotation_mission_id: str = None,
+        annotation_mission_session_id: str = None,
+        annotation_status: int = None,
+        answer: str = None,
+        asr_annotation_status: int = None,
+        create_time: int = None,
+        instance_id: str = None,
+        intent_annotation_status: int = None,
+        modified_time: int = None,
+        occur_time: int = None,
+        original_asr_result: str = None,
+        sequence_id: str = None,
+        sub_status: int = None,
+        tag_annotation_status: int = None,
+        translation_error: int = None,
+    ):
+        self.annotation_asr_result = annotation_asr_result
+        self.annotation_mission_chat_customization_data_info_list = annotation_mission_chat_customization_data_info_list
+        # chat id
+        self.annotation_mission_chat_id = annotation_mission_chat_id
+        self.annotation_mission_chat_intent_user_say_info_list = annotation_mission_chat_intent_user_say_info_list
+        self.annotation_mission_chat_tag_info_list = annotation_mission_chat_tag_info_list
+        self.annotation_mission_chat_vocabulary_info_list = annotation_mission_chat_vocabulary_info_list
+        self.annotation_mission_id = annotation_mission_id
+        self.annotation_mission_session_id = annotation_mission_session_id
+        self.annotation_status = annotation_status
+        self.answer = answer
+        self.asr_annotation_status = asr_annotation_status
+        self.create_time = create_time
+        self.instance_id = instance_id
+        self.intent_annotation_status = intent_annotation_status
+        self.modified_time = modified_time
+        self.occur_time = occur_time
+        self.original_asr_result = original_asr_result
+        self.sequence_id = sequence_id
+        self.sub_status = sub_status
+        self.tag_annotation_status = tag_annotation_status
+        self.translation_error = translation_error
+
+    def validate(self):
+        if self.annotation_mission_chat_customization_data_info_list:
+            for k in self.annotation_mission_chat_customization_data_info_list:
+                if k:
+                    k.validate()
+        if self.annotation_mission_chat_intent_user_say_info_list:
+            for k in self.annotation_mission_chat_intent_user_say_info_list:
+                if k:
+                    k.validate()
+        if self.annotation_mission_chat_tag_info_list:
+            for k in self.annotation_mission_chat_tag_info_list:
+                if k:
+                    k.validate()
+        if self.annotation_mission_chat_vocabulary_info_list:
+            for k in self.annotation_mission_chat_vocabulary_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_asr_result is not None:
+            result['AnnotationAsrResult'] = self.annotation_asr_result
+        result['AnnotationMissionChatCustomizationDataInfoList'] = []
+        if self.annotation_mission_chat_customization_data_info_list is not None:
+            for k in self.annotation_mission_chat_customization_data_info_list:
+                result['AnnotationMissionChatCustomizationDataInfoList'].append(k.to_map() if k else None)
+        if self.annotation_mission_chat_id is not None:
+            result['AnnotationMissionChatId'] = self.annotation_mission_chat_id
+        result['AnnotationMissionChatIntentUserSayInfoList'] = []
+        if self.annotation_mission_chat_intent_user_say_info_list is not None:
+            for k in self.annotation_mission_chat_intent_user_say_info_list:
+                result['AnnotationMissionChatIntentUserSayInfoList'].append(k.to_map() if k else None)
+        result['AnnotationMissionChatTagInfoList'] = []
+        if self.annotation_mission_chat_tag_info_list is not None:
+            for k in self.annotation_mission_chat_tag_info_list:
+                result['AnnotationMissionChatTagInfoList'].append(k.to_map() if k else None)
+        result['AnnotationMissionChatVocabularyInfoList'] = []
+        if self.annotation_mission_chat_vocabulary_info_list is not None:
+            for k in self.annotation_mission_chat_vocabulary_info_list:
+                result['AnnotationMissionChatVocabularyInfoList'].append(k.to_map() if k else None)
+        if self.annotation_mission_id is not None:
+            result['AnnotationMissionId'] = self.annotation_mission_id
+        if self.annotation_mission_session_id is not None:
+            result['AnnotationMissionSessionId'] = self.annotation_mission_session_id
+        if self.annotation_status is not None:
+            result['AnnotationStatus'] = self.annotation_status
+        if self.answer is not None:
+            result['Answer'] = self.answer
+        if self.asr_annotation_status is not None:
+            result['AsrAnnotationStatus'] = self.asr_annotation_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.intent_annotation_status is not None:
+            result['IntentAnnotationStatus'] = self.intent_annotation_status
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.occur_time is not None:
+            result['OccurTime'] = self.occur_time
+        if self.original_asr_result is not None:
+            result['OriginalAsrResult'] = self.original_asr_result
+        if self.sequence_id is not None:
+            result['SequenceId'] = self.sequence_id
+        if self.sub_status is not None:
+            result['SubStatus'] = self.sub_status
+        if self.tag_annotation_status is not None:
+            result['TagAnnotationStatus'] = self.tag_annotation_status
+        if self.translation_error is not None:
+            result['TranslationError'] = self.translation_error
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationAsrResult') is not None:
+            self.annotation_asr_result = m.get('AnnotationAsrResult')
+        self.annotation_mission_chat_customization_data_info_list = []
+        if m.get('AnnotationMissionChatCustomizationDataInfoList') is not None:
+            for k in m.get('AnnotationMissionChatCustomizationDataInfoList'):
+                temp_model = SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatCustomizationDataInfoList()
+                self.annotation_mission_chat_customization_data_info_list.append(temp_model.from_map(k))
+        if m.get('AnnotationMissionChatId') is not None:
+            self.annotation_mission_chat_id = m.get('AnnotationMissionChatId')
+        self.annotation_mission_chat_intent_user_say_info_list = []
+        if m.get('AnnotationMissionChatIntentUserSayInfoList') is not None:
+            for k in m.get('AnnotationMissionChatIntentUserSayInfoList'):
+                temp_model = SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatIntentUserSayInfoList()
+                self.annotation_mission_chat_intent_user_say_info_list.append(temp_model.from_map(k))
+        self.annotation_mission_chat_tag_info_list = []
+        if m.get('AnnotationMissionChatTagInfoList') is not None:
+            for k in m.get('AnnotationMissionChatTagInfoList'):
+                temp_model = SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatTagInfoList()
+                self.annotation_mission_chat_tag_info_list.append(temp_model.from_map(k))
+        self.annotation_mission_chat_vocabulary_info_list = []
+        if m.get('AnnotationMissionChatVocabularyInfoList') is not None:
+            for k in m.get('AnnotationMissionChatVocabularyInfoList'):
+                temp_model = SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatListAnnotationMissionChatVocabularyInfoList()
+                self.annotation_mission_chat_vocabulary_info_list.append(temp_model.from_map(k))
+        if m.get('AnnotationMissionId') is not None:
+            self.annotation_mission_id = m.get('AnnotationMissionId')
+        if m.get('AnnotationMissionSessionId') is not None:
+            self.annotation_mission_session_id = m.get('AnnotationMissionSessionId')
+        if m.get('AnnotationStatus') is not None:
+            self.annotation_status = m.get('AnnotationStatus')
+        if m.get('Answer') is not None:
+            self.answer = m.get('Answer')
+        if m.get('AsrAnnotationStatus') is not None:
+            self.asr_annotation_status = m.get('AsrAnnotationStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntentAnnotationStatus') is not None:
+            self.intent_annotation_status = m.get('IntentAnnotationStatus')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('OccurTime') is not None:
+            self.occur_time = m.get('OccurTime')
+        if m.get('OriginalAsrResult') is not None:
+            self.original_asr_result = m.get('OriginalAsrResult')
+        if m.get('SequenceId') is not None:
+            self.sequence_id = m.get('SequenceId')
+        if m.get('SubStatus') is not None:
+            self.sub_status = m.get('SubStatus')
+        if m.get('TagAnnotationStatus') is not None:
+            self.tag_annotation_status = m.get('TagAnnotationStatus')
+        if m.get('TranslationError') is not None:
+            self.translation_error = m.get('TranslationError')
+        return self
+
+
+class SaveAnnotationMissionSessionListRequestAnnotationMissionSessionList(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_chat_list: List[SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatList] = None,
+        annotation_mission_id: str = None,
+        annotation_mission_session_id: str = None,
+        annotation_status: int = None,
+        create_time: int = None,
+        instance_id: str = None,
+        job_group_id: str = None,
+        job_id: str = None,
+        modified_time: int = None,
+        script_id: str = None,
+        session_id: str = None,
+    ):
+        self.annotation_mission_chat_list = annotation_mission_chat_list
+        self.annotation_mission_id = annotation_mission_id
+        self.annotation_mission_session_id = annotation_mission_session_id
+        self.annotation_status = annotation_status
+        self.create_time = create_time
+        self.instance_id = instance_id
+        self.job_group_id = job_group_id
+        self.job_id = job_id
+        self.modified_time = modified_time
+        self.script_id = script_id
+        self.session_id = session_id
+
+    def validate(self):
+        if self.annotation_mission_chat_list:
+            for k in self.annotation_mission_chat_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AnnotationMissionChatList'] = []
+        if self.annotation_mission_chat_list is not None:
+            for k in self.annotation_mission_chat_list:
+                result['AnnotationMissionChatList'].append(k.to_map() if k else None)
+        if self.annotation_mission_id is not None:
+            result['AnnotationMissionId'] = self.annotation_mission_id
+        if self.annotation_mission_session_id is not None:
+            result['AnnotationMissionSessionId'] = self.annotation_mission_session_id
+        if self.annotation_status is not None:
+            result['AnnotationStatus'] = self.annotation_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.job_group_id is not None:
+            result['JobGroupId'] = self.job_group_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.annotation_mission_chat_list = []
+        if m.get('AnnotationMissionChatList') is not None:
+            for k in m.get('AnnotationMissionChatList'):
+                temp_model = SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotationMissionChatList()
+                self.annotation_mission_chat_list.append(temp_model.from_map(k))
+        if m.get('AnnotationMissionId') is not None:
+            self.annotation_mission_id = m.get('AnnotationMissionId')
+        if m.get('AnnotationMissionSessionId') is not None:
+            self.annotation_mission_session_id = m.get('AnnotationMissionSessionId')
+        if m.get('AnnotationStatus') is not None:
+            self.annotation_status = m.get('AnnotationStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('JobGroupId') is not None:
+            self.job_group_id = m.get('JobGroupId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        return self
+
+
+class SaveAnnotationMissionSessionListRequest(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        agent_key: str = None,
+        annotation_mission_data_source_type: int = None,
+        annotation_mission_session_list: List[SaveAnnotationMissionSessionListRequestAnnotationMissionSessionList] = None,
+        annotation_mission_session_list_json_string: str = None,
+        environment: int = None,
+        user_nick: str = None,
+    ):
+        self.agent_id = agent_id
+        self.agent_key = agent_key
+        self.annotation_mission_data_source_type = annotation_mission_data_source_type
+        self.annotation_mission_session_list = annotation_mission_session_list
+        self.annotation_mission_session_list_json_string = annotation_mission_session_list_json_string
+        self.environment = environment
+        self.user_nick = user_nick
+
+    def validate(self):
+        if self.annotation_mission_session_list:
+            for k in self.annotation_mission_session_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.annotation_mission_data_source_type is not None:
+            result['AnnotationMissionDataSourceType'] = self.annotation_mission_data_source_type
+        result['AnnotationMissionSessionList'] = []
+        if self.annotation_mission_session_list is not None:
+            for k in self.annotation_mission_session_list:
+                result['AnnotationMissionSessionList'].append(k.to_map() if k else None)
+        if self.annotation_mission_session_list_json_string is not None:
+            result['AnnotationMissionSessionListJsonString'] = self.annotation_mission_session_list_json_string
+        if self.environment is not None:
+            result['Environment'] = self.environment
+        if self.user_nick is not None:
+            result['UserNick'] = self.user_nick
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('AnnotationMissionDataSourceType') is not None:
+            self.annotation_mission_data_source_type = m.get('AnnotationMissionDataSourceType')
+        self.annotation_mission_session_list = []
+        if m.get('AnnotationMissionSessionList') is not None:
+            for k in m.get('AnnotationMissionSessionList'):
+                temp_model = SaveAnnotationMissionSessionListRequestAnnotationMissionSessionList()
+                self.annotation_mission_session_list.append(temp_model.from_map(k))
+        if m.get('AnnotationMissionSessionListJsonString') is not None:
+            self.annotation_mission_session_list_json_string = m.get('AnnotationMissionSessionListJsonString')
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
+        if m.get('UserNick') is not None:
+            self.user_nick = m.get('UserNick')
+        return self
+
+
+class SaveAnnotationMissionSessionListResponseBodyDataSaveAnnotationMissionSessionListRequest(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_session_list_json_string: str = None,
+    ):
+        self.annotation_mission_session_list_json_string = annotation_mission_session_list_json_string
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_mission_session_list_json_string is not None:
+            result['AnnotationMissionSessionListJsonString'] = self.annotation_mission_session_list_json_string
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationMissionSessionListJsonString') is not None:
+            self.annotation_mission_session_list_json_string = m.get('AnnotationMissionSessionListJsonString')
+        return self
+
+
+class SaveAnnotationMissionSessionListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        message_list: List[str] = None,
+        save_annotation_mission_session_list_request: SaveAnnotationMissionSessionListResponseBodyDataSaveAnnotationMissionSessionListRequest = None,
+        success: bool = None,
+    ):
+        self.message = message
+        self.message_list = message_list
+        self.save_annotation_mission_session_list_request = save_annotation_mission_session_list_request
+        self.success = success
+
+    def validate(self):
+        if self.save_annotation_mission_session_list_request:
+            self.save_annotation_mission_session_list_request.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_list is not None:
+            result['MessageList'] = self.message_list
+        if self.save_annotation_mission_session_list_request is not None:
+            result['SaveAnnotationMissionSessionListRequest'] = self.save_annotation_mission_session_list_request.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageList') is not None:
+            self.message_list = m.get('MessageList')
+        if m.get('SaveAnnotationMissionSessionListRequest') is not None:
+            temp_model = SaveAnnotationMissionSessionListResponseBodyDataSaveAnnotationMissionSessionListRequest()
+            self.save_annotation_mission_session_list_request = temp_model.from_map(m['SaveAnnotationMissionSessionListRequest'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SaveAnnotationMissionSessionListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SaveAnnotationMissionSessionListResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SaveAnnotationMissionSessionListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SaveAnnotationMissionSessionListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SaveAnnotationMissionSessionListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SaveAnnotationMissionSessionListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SaveAnnotationMissionTagInfoListRequestAnnotationMissionTagInfoList(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_tag_info_description: str = None,
+        annotation_mission_tag_info_id: str = None,
+        annotation_mission_tag_info_name: str = None,
+        delete: bool = None,
+        instance_id: str = None,
+        tenant_id: str = None,
+    ):
+        self.annotation_mission_tag_info_description = annotation_mission_tag_info_description
+        # tag id
+        self.annotation_mission_tag_info_id = annotation_mission_tag_info_id
+        self.annotation_mission_tag_info_name = annotation_mission_tag_info_name
+        self.delete = delete
+        self.instance_id = instance_id
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotation_mission_tag_info_description is not None:
+            result['AnnotationMissionTagInfoDescription'] = self.annotation_mission_tag_info_description
+        if self.annotation_mission_tag_info_id is not None:
+            result['AnnotationMissionTagInfoId'] = self.annotation_mission_tag_info_id
+        if self.annotation_mission_tag_info_name is not None:
+            result['AnnotationMissionTagInfoName'] = self.annotation_mission_tag_info_name
+        if self.delete is not None:
+            result['Delete'] = self.delete
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnnotationMissionTagInfoDescription') is not None:
+            self.annotation_mission_tag_info_description = m.get('AnnotationMissionTagInfoDescription')
+        if m.get('AnnotationMissionTagInfoId') is not None:
+            self.annotation_mission_tag_info_id = m.get('AnnotationMissionTagInfoId')
+        if m.get('AnnotationMissionTagInfoName') is not None:
+            self.annotation_mission_tag_info_name = m.get('AnnotationMissionTagInfoName')
+        if m.get('Delete') is not None:
+            self.delete = m.get('Delete')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class SaveAnnotationMissionTagInfoListRequest(TeaModel):
+    def __init__(
+        self,
+        annotation_mission_tag_info_list: List[SaveAnnotationMissionTagInfoListRequestAnnotationMissionTagInfoList] = None,
+        annotation_mission_tag_info_list_json_string: str = None,
+        instance_id: str = None,
+        reset: bool = None,
+    ):
+        self.annotation_mission_tag_info_list = annotation_mission_tag_info_list
+        self.annotation_mission_tag_info_list_json_string = annotation_mission_tag_info_list_json_string
+        self.instance_id = instance_id
+        self.reset = reset
+
+    def validate(self):
+        if self.annotation_mission_tag_info_list:
+            for k in self.annotation_mission_tag_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AnnotationMissionTagInfoList'] = []
+        if self.annotation_mission_tag_info_list is not None:
+            for k in self.annotation_mission_tag_info_list:
+                result['AnnotationMissionTagInfoList'].append(k.to_map() if k else None)
+        if self.annotation_mission_tag_info_list_json_string is not None:
+            result['AnnotationMissionTagInfoListJsonString'] = self.annotation_mission_tag_info_list_json_string
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.reset is not None:
+            result['Reset'] = self.reset
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.annotation_mission_tag_info_list = []
+        if m.get('AnnotationMissionTagInfoList') is not None:
+            for k in m.get('AnnotationMissionTagInfoList'):
+                temp_model = SaveAnnotationMissionTagInfoListRequestAnnotationMissionTagInfoList()
+                self.annotation_mission_tag_info_list.append(temp_model.from_map(k))
+        if m.get('AnnotationMissionTagInfoListJsonString') is not None:
+            self.annotation_mission_tag_info_list_json_string = m.get('AnnotationMissionTagInfoListJsonString')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Reset') is not None:
+            self.reset = m.get('Reset')
+        return self
+
+
+class SaveAnnotationMissionTagInfoListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        exec_count: int = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        self.exec_count = exec_count
+        self.message = message
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exec_count is not None:
+            result['ExecCount'] = self.exec_count
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExecCount') is not None:
+            self.exec_count = m.get('ExecCount')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SaveAnnotationMissionTagInfoListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SaveAnnotationMissionTagInfoListResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SaveAnnotationMissionTagInfoListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SaveAnnotationMissionTagInfoListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SaveAnnotationMissionTagInfoListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SaveAnnotationMissionTagInfoListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SaveBaseStrategyPeriodRequest(TeaModel):
     def __init__(
         self,
         entry_id: str = None,
         only_weekdays: bool = None,
+        only_workdays: bool = None,
         strategy_level: int = None,
         working_time: List[str] = None,
         working_time_frames_json: str = None,
     ):
+        # This parameter is required.
         self.entry_id = entry_id
         self.only_weekdays = only_weekdays
+        self.only_workdays = only_workdays
         self.strategy_level = strategy_level
         self.working_time = working_time
         self.working_time_frames_json = working_time_frames_json
@@ -26649,6 +33520,8 @@ class SaveBaseStrategyPeriodRequest(TeaModel):
             result['EntryId'] = self.entry_id
         if self.only_weekdays is not None:
             result['OnlyWeekdays'] = self.only_weekdays
+        if self.only_workdays is not None:
+            result['OnlyWorkdays'] = self.only_workdays
         if self.strategy_level is not None:
             result['StrategyLevel'] = self.strategy_level
         if self.working_time is not None:
@@ -26663,6 +33536,8 @@ class SaveBaseStrategyPeriodRequest(TeaModel):
             self.entry_id = m.get('EntryId')
         if m.get('OnlyWeekdays') is not None:
             self.only_weekdays = m.get('OnlyWeekdays')
+        if m.get('OnlyWorkdays') is not None:
+            self.only_workdays = m.get('OnlyWorkdays')
         if m.get('StrategyLevel') is not None:
             self.strategy_level = m.get('StrategyLevel')
         if m.get('WorkingTime') is not None:
@@ -26735,9 +33610,6 @@ class SaveBaseStrategyPeriodResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26875,9 +33747,6 @@ class SaveContactBlockListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26916,6 +33785,7 @@ class SaveContactWhiteListRequest(TeaModel):
     ):
         self.contact_white_list_list = contact_white_list_list
         self.contact_white_lists_json = contact_white_lists_json
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -27015,9 +33885,6 @@ class SaveContactWhiteListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27055,6 +33922,7 @@ class SaveEffectiveDaysRequest(TeaModel):
         strategy_level: int = None,
     ):
         self.effective_days = effective_days
+        # This parameter is required.
         self.entry_id = entry_id
         self.strategy_level = strategy_level
 
@@ -27149,9 +34017,6 @@ class SaveEffectiveDaysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27188,6 +34053,7 @@ class SaveMaxAttemptsPerDayRequest(TeaModel):
         max_attempts_per_day: int = None,
         strategy_level: int = None,
     ):
+        # This parameter is required.
         self.entry_id = entry_id
         self.max_attempts_per_day = max_attempts_per_day
         self.strategy_level = strategy_level
@@ -27283,9 +34149,6 @@ class SaveMaxAttemptsPerDayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27347,6 +34210,7 @@ class SearchTaskRequest(TeaModel):
         self.call_duration_gte = call_duration_gte
         self.call_duration_lte = call_duration_lte
         self.called_number = called_number
+        # This parameter is required.
         self.instance_id = instance_id
         self.job_group_id = job_group_id
         self.job_group_name_query = job_group_name_query
@@ -27758,9 +34622,6 @@ class SearchTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27801,8 +34662,10 @@ class StartJobRequest(TeaModel):
         script_id: str = None,
     ):
         self.calling_number = calling_number
+        # This parameter is required.
         self.instance_id = instance_id
         self.job_group_id = job_group_id
+        # This parameter is required.
         self.job_json = job_json
         self.scenario_id = scenario_id
         self.script_id = script_id
@@ -28005,9 +34868,6 @@ class StartJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28043,7 +34903,9 @@ class SubmitBatchJobsRequest(TeaModel):
         instance_id: str = None,
         job_group_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_group_id = job_group_id
 
     def validate(self):
@@ -28133,9 +34995,6 @@ class SubmitBatchJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28173,9 +35032,12 @@ class SubmitRecordingRequest(TeaModel):
         resource_recording: str = None,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.merged_recording = merged_recording
         self.resource_recording = resource_recording
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -28273,9 +35135,6 @@ class SubmitRecordingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28309,11 +35168,16 @@ class SubmitScriptReviewRequest(TeaModel):
     def __init__(
         self,
         description: str = None,
+        from_: str = None,
         instance_id: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.description = description
+        self.from_ = from_
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -28327,6 +35191,8 @@ class SubmitScriptReviewRequest(TeaModel):
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
+        if self.from_ is not None:
+            result['From'] = self.from_
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.script_id is not None:
@@ -28337,6 +35203,8 @@ class SubmitScriptReviewRequest(TeaModel):
         m = m or dict()
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('ScriptId') is not None:
@@ -28407,9 +35275,6 @@ class SubmitScriptReviewResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28448,6 +35313,7 @@ class SuspendCallRequest(TeaModel):
     ):
         self.called_numbers = called_numbers
         self.group_id = group_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -28541,9 +35407,6 @@ class SuspendCallResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28675,9 +35538,6 @@ class SuspendCallWithFileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28717,7 +35577,9 @@ class SuspendJobsRequest(TeaModel):
         job_reference_id: List[str] = None,
         scenario_id: str = None,
     ):
+        # This parameter is required.
         self.all = all
+        # This parameter is required.
         self.instance_id = instance_id
         self.job_group_id = job_group_id
         self.job_id = job_id
@@ -28827,9 +35689,6 @@ class SuspendJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28900,9 +35759,13 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_type = resource_type
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -29008,9 +35871,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29047,8 +35907,10 @@ class TaskPreparingRequest(TeaModel):
         instance_owner_id: int = None,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.instance_owner_id = instance_owner_id
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -29148,9 +36010,6 @@ class TaskPreparingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29186,7 +36045,9 @@ class TerminateCallRequest(TeaModel):
         call_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.call_id = call_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -29276,9 +36137,6 @@ class TerminateCallResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29318,8 +36176,11 @@ class UntagResourcesRequest(TeaModel):
         tag_key: List[str] = None,
     ):
         self.all = all
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_type = resource_type
         self.tag_key = tag_key
 
@@ -29422,9 +36283,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29463,10 +36321,15 @@ class UploadScriptRecordingRequest(TeaModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.content = content
+        # This parameter is required.
         self.file_id = file_id
+        # This parameter is required.
         self.file_name = file_name
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -29574,9 +36437,6 @@ class UploadScriptRecordingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29612,7 +36472,9 @@ class WithdrawScriptReviewRequest(TeaModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.script_id = script_id
 
     def validate(self):
@@ -29791,9 +36653,6 @@ class WithdrawScriptReviewResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
