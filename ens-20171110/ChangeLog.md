@@ -1,3 +1,10 @@
+2025-04-10 Version: 9.0.4
+- Update API DescribeEnsEipAddresses: add response parameters Body.EipAddresses.$.Tags.
+- Update API DescribeNatGateways: add response parameters Body.NatGateways.$.Tags.
+- Update API DescribeNetworks: add response parameters Body.Networks.$.Tags.
+- Update API DescribeVSwitches: add response parameters Body.VSwitches.$.Tags.
+
+
 2025-04-08 Version: 9.0.3
 - Generated python 2017-11-10 for Ens.
 

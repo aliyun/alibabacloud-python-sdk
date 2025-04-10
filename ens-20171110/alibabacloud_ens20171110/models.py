@@ -20697,6 +20697,74 @@ class DescribeEnsEipAddressesRequest(TeaModel):
         return self
 
 
+class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
     def __init__(
         self,
@@ -20715,6 +20783,7 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
         name: str = None,
         standby: bool = None,
         status: str = None,
+        tags: DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags = None,
     ):
         # The ID of the EIP.
         self.allocation_id = allocation_id
@@ -20769,9 +20838,11 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
         # *   **InUse**\
         # *   **Available**\
         self.status = status
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            self.tags.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -20809,6 +20880,8 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
             result['Standby'] = self.standby
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -20843,6 +20916,9 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
             self.standby = m.get('Standby')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            temp_model = DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags()
+            self.tags = temp_model.from_map(m['Tags'])
         return self
 
 
@@ -36163,6 +36239,39 @@ class DescribeNatGatewaysResponseBodyNatGatewaysIpLists(TeaModel):
         return self
 
 
+class DescribeNatGatewaysResponseBodyNatGatewaysTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class DescribeNatGatewaysResponseBodyNatGateways(TeaModel):
     def __init__(
         self,
@@ -36174,6 +36283,7 @@ class DescribeNatGatewaysResponseBodyNatGateways(TeaModel):
         network_id: str = None,
         spec: str = None,
         status: str = None,
+        tags: List[DescribeNatGatewaysResponseBodyNatGatewaysTags] = None,
         v_switch_id: str = None,
     ):
         # The time when the NAT gateway was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
@@ -36196,12 +36306,17 @@ class DescribeNatGatewaysResponseBodyNatGateways(TeaModel):
         # *   Available: The SNAT entry is available.
         # *   Deleting: The SNAT entry is being deleted.
         self.status = status
+        self.tags = tags
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):
         if self.ip_lists:
             for k in self.ip_lists:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -36229,6 +36344,10 @@ class DescribeNatGatewaysResponseBodyNatGateways(TeaModel):
             result['Spec'] = self.spec
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -36254,6 +36373,11 @@ class DescribeNatGatewaysResponseBodyNatGateways(TeaModel):
             self.spec = m.get('Spec')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeNatGatewaysResponseBodyNatGatewaysTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         return self
@@ -38085,6 +38209,74 @@ class DescribeNetworksResponseBodyNetworksNetworkRouteTableIds(TeaModel):
         return self
 
 
+class DescribeNetworksResponseBodyNetworksNetworkTagsTag(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class DescribeNetworksResponseBodyNetworksNetworkTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeNetworksResponseBodyNetworksNetworkTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeNetworksResponseBodyNetworksNetworkTagsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeNetworksResponseBodyNetworksNetworkVSwitchIds(TeaModel):
     def __init__(
         self,
@@ -38127,6 +38319,7 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
         route_table_ids: DescribeNetworksResponseBodyNetworksNetworkRouteTableIds = None,
         router_table_id: str = None,
         status: str = None,
+        tags: DescribeNetworksResponseBodyNetworksNetworkTags = None,
         v_switch_ids: DescribeNetworksResponseBodyNetworksNetworkVSwitchIds = None,
     ):
         # The IPv4 CIDR block of the network.
@@ -38158,12 +38351,15 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
         # *   Pending
         # *   Available
         self.status = status
+        self.tags = tags
         # The list of vSwitches in the network.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):
         if self.route_table_ids:
             self.route_table_ids.validate()
+        if self.tags:
+            self.tags.validate()
         if self.v_switch_ids:
             self.v_switch_ids.validate()
 
@@ -38197,6 +38393,8 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
             result['RouterTableId'] = self.router_table_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         if self.v_switch_ids is not None:
             result['VSwitchIds'] = self.v_switch_ids.to_map()
         return result
@@ -38228,6 +38426,9 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
             self.router_table_id = m.get('RouterTableId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            temp_model = DescribeNetworksResponseBodyNetworksNetworkTags()
+            self.tags = temp_model.from_map(m['Tags'])
         if m.get('VSwitchIds') is not None:
             temp_model = DescribeNetworksResponseBodyNetworksNetworkVSwitchIds()
             self.v_switch_ids = temp_model.from_map(m['VSwitchIds'])
@@ -47019,6 +47220,74 @@ class DescribeVSwitchesRequest(TeaModel):
         return self
 
 
+class DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class DescribeVSwitchesResponseBodyVSwitchesVSwitchTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeVSwitchesResponseBodyVSwitchesVSwitch(TeaModel):
     def __init__(
         self,
@@ -47029,6 +47298,7 @@ class DescribeVSwitchesResponseBodyVSwitchesVSwitch(TeaModel):
         free_ip_count: int = None,
         network_id: str = None,
         status: str = None,
+        tags: DescribeVSwitchesResponseBodyVSwitchesVSwitchTags = None,
         v_switch_id: str = None,
         v_switch_name: str = None,
     ):
@@ -47049,13 +47319,15 @@ class DescribeVSwitchesResponseBodyVSwitchesVSwitch(TeaModel):
         # *   Pending
         # *   Available
         self.status = status
+        self.tags = tags
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
         # The name of the vSwitch.
         self.v_switch_name = v_switch_name
 
     def validate(self):
-        pass
+        if self.tags:
+            self.tags.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -47077,6 +47349,8 @@ class DescribeVSwitchesResponseBodyVSwitchesVSwitch(TeaModel):
             result['NetworkId'] = self.network_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.v_switch_name is not None:
@@ -47099,6 +47373,9 @@ class DescribeVSwitchesResponseBodyVSwitchesVSwitch(TeaModel):
             self.network_id = m.get('NetworkId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            temp_model = DescribeVSwitchesResponseBodyVSwitchesVSwitchTags()
+            self.tags = temp_model.from_map(m['Tags'])
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VSwitchName') is not None:
