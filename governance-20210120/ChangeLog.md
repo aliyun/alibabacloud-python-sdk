@@ -1,3 +1,9 @@
+2025-04-10 Version: 0.3.5
+- Update API ListEvaluationMetricDetails: add request parameters SnapshotId.
+- Update API ListEvaluationResults: add request parameters Filters.
+- Update API ListEvaluationResults: add request parameters SnapshotId.
+
+
 2024-11-15 Version: 0.3.4
 - Update API EnrollAccount: add param Tag.
 - Update API EnrollAccount: update param AccountNamePrefix.

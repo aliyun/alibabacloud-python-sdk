@@ -81,10 +81,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.BatchEnrollAccountsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.BatchEnrollAccountsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.BatchEnrollAccountsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def batch_enroll_accounts_with_options_async(
         self,
@@ -125,10 +131,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.BatchEnrollAccountsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.BatchEnrollAccountsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.BatchEnrollAccountsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def batch_enroll_accounts(
         self,
@@ -198,10 +210,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.CreateAccountFactoryBaselineResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.CreateAccountFactoryBaselineResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.CreateAccountFactoryBaselineResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_account_factory_baseline_with_options_async(
         self,
@@ -239,10 +257,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.CreateAccountFactoryBaselineResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.CreateAccountFactoryBaselineResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.CreateAccountFactoryBaselineResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_account_factory_baseline(
         self,
@@ -302,10 +326,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.DeleteAccountFactoryBaselineResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.DeleteAccountFactoryBaselineResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.DeleteAccountFactoryBaselineResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_account_factory_baseline_with_options_async(
         self,
@@ -339,10 +369,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.DeleteAccountFactoryBaselineResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.DeleteAccountFactoryBaselineResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.DeleteAccountFactoryBaselineResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_account_factory_baseline(
         self,
@@ -425,10 +461,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.EnrollAccountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.EnrollAccountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.EnrollAccountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def enroll_account_with_options_async(
         self,
@@ -485,10 +527,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.EnrollAccountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.EnrollAccountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.EnrollAccountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def enroll_account(
         self,
@@ -554,10 +602,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.GetAccountFactoryBaselineResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.GetAccountFactoryBaselineResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.GetAccountFactoryBaselineResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_account_factory_baseline_with_options_async(
         self,
@@ -591,10 +645,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.GetAccountFactoryBaselineResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.GetAccountFactoryBaselineResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.GetAccountFactoryBaselineResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_account_factory_baseline(
         self,
@@ -654,10 +714,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.GetEnrolledAccountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.GetEnrolledAccountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.GetEnrolledAccountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_enrolled_account_with_options_async(
         self,
@@ -691,10 +757,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.GetEnrolledAccountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.GetEnrolledAccountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.GetEnrolledAccountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_enrolled_account(
         self,
@@ -762,10 +834,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.ListAccountFactoryBaselineItemsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.ListAccountFactoryBaselineItemsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.ListAccountFactoryBaselineItemsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_account_factory_baseline_items_with_options_async(
         self,
@@ -807,10 +885,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.ListAccountFactoryBaselineItemsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.ListAccountFactoryBaselineItemsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.ListAccountFactoryBaselineItemsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_account_factory_baseline_items(
         self,
@@ -872,10 +956,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.ListAccountFactoryBaselinesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.ListAccountFactoryBaselinesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.ListAccountFactoryBaselinesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_account_factory_baselines_with_options_async(
         self,
@@ -911,10 +1001,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.ListAccountFactoryBaselinesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.ListAccountFactoryBaselinesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.ListAccountFactoryBaselinesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_account_factory_baselines(
         self,
@@ -976,10 +1072,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.ListEnrolledAccountsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.ListEnrolledAccountsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.ListEnrolledAccountsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_enrolled_accounts_with_options_async(
         self,
@@ -1015,10 +1117,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.ListEnrolledAccountsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.ListEnrolledAccountsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.ListEnrolledAccountsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_enrolled_accounts(
         self,
@@ -1078,10 +1186,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.ListEvaluationMetadataResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.ListEvaluationMetadataResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.ListEvaluationMetadataResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_evaluation_metadata_with_options_async(
         self,
@@ -1115,10 +1229,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.ListEvaluationMetadataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.ListEvaluationMetadataResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.ListEvaluationMetadataResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_evaluation_metadata(
         self,
@@ -1170,6 +1290,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1184,10 +1306,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.ListEvaluationMetricDetailsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.ListEvaluationMetricDetailsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.ListEvaluationMetricDetailsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_evaluation_metric_details_with_options_async(
         self,
@@ -1213,6 +1341,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1227,10 +1357,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.ListEvaluationMetricDetailsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.ListEvaluationMetricDetailsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.ListEvaluationMetricDetailsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_evaluation_metric_details(
         self,
@@ -1264,7 +1400,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.ListEvaluationResultsResponse:
         """
-        @summary Queries the result and status of a governance maturity check.
+        @summary Queries the result and status of a governance check.
         
         @param request: ListEvaluationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1274,8 +1410,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_id):
             query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.filters):
+            query['Filters'] = request.filters
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1290,10 +1430,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.ListEvaluationResultsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.ListEvaluationResultsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.ListEvaluationResultsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_evaluation_results_with_options_async(
         self,
@@ -1301,7 +1447,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.ListEvaluationResultsResponse:
         """
-        @summary Queries the result and status of a governance maturity check.
+        @summary Queries the result and status of a governance check.
         
         @param request: ListEvaluationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1311,8 +1457,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_id):
             query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.filters):
+            query['Filters'] = request.filters
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1327,17 +1477,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.ListEvaluationResultsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.ListEvaluationResultsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.ListEvaluationResultsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_evaluation_results(
         self,
         request: governance_20210120_models.ListEvaluationResultsRequest,
     ) -> governance_20210120_models.ListEvaluationResultsResponse:
         """
-        @summary Queries the result and status of a governance maturity check.
+        @summary Queries the result and status of a governance check.
         
         @param request: ListEvaluationResultsRequest
         @return: ListEvaluationResultsResponse
@@ -1350,7 +1506,7 @@ class Client(OpenApiClient):
         request: governance_20210120_models.ListEvaluationResultsRequest,
     ) -> governance_20210120_models.ListEvaluationResultsResponse:
         """
-        @summary Queries the result and status of a governance maturity check.
+        @summary Queries the result and status of a governance check.
         
         @param request: ListEvaluationResultsRequest
         @return: ListEvaluationResultsResponse
@@ -1394,10 +1550,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.ListEvaluationScoreHistoryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.ListEvaluationScoreHistoryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.ListEvaluationScoreHistoryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_evaluation_score_history_with_options_async(
         self,
@@ -1435,10 +1597,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.ListEvaluationScoreHistoryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.ListEvaluationScoreHistoryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.ListEvaluationScoreHistoryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_evaluation_score_history(
         self,
@@ -1506,10 +1674,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.RunEvaluationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.RunEvaluationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.RunEvaluationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def run_evaluation_with_options_async(
         self,
@@ -1551,10 +1725,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.RunEvaluationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.RunEvaluationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.RunEvaluationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def run_evaluation(
         self,
@@ -1620,10 +1800,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.UpdateAccountFactoryBaselineResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.UpdateAccountFactoryBaselineResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.UpdateAccountFactoryBaselineResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_account_factory_baseline_with_options_async(
         self,
@@ -1663,10 +1849,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            governance_20210120_models.UpdateAccountFactoryBaselineResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                governance_20210120_models.UpdateAccountFactoryBaselineResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                governance_20210120_models.UpdateAccountFactoryBaselineResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_account_factory_baseline(
         self,

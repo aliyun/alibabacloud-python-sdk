@@ -273,7 +273,7 @@ class CreateAccountFactoryBaselineRequest(TeaModel):
         description: str = None,
         region_id: str = None,
     ):
-        # The baseline items.
+        # An array that contains the baseline items.
         # 
         # You can call the [ListAccountFactoryBaselineItems](~~ListAccountFactoryBaselineItems~~) operation to query a list of baseline items supported by the account factory in Cloud Governance Center.
         self.baseline_items = baseline_items
@@ -516,7 +516,7 @@ class EnrollAccountRequestBaselineItems(TeaModel):
         self.config = config
         # The name of the baseline item.
         self.name = name
-        # Specifies whether to skip the baseline item. Valid values:
+        # Whether to skip the baseline item. Valid values:
         # 
         # *   false: The baseline item is not skipped.
         # *   true: The baseline item is skipped.
@@ -619,9 +619,9 @@ class EnrollAccountRequest(TeaModel):
         # 
         # If this parameter is left empty, the default baseline is used.
         self.baseline_id = baseline_id
-        # An array that contains baseline items.
+        # The array that contains baseline items.
         # 
-        # If this parameter is specified, the configurations of the baseline items are merged with the baseline of the specified account. The configurations of the same baseline items are subject to the configuration of this parameter. We recommend that you leave this parameter empty and configure the `BaselineId` parameter to specify an account baseline and apply the configuration of the account baseline to the account.
+        # If this parameter is specified, the configurations of the baseline items are merged with the baseline applied to the specified account. The configurations of the same baseline items are subject to the configurations of this parameter. We recommend that you leave this parameter empty and configure the `BaselineId` parameter to specify an account baseline and apply the configurations of the account baseline to the account.
         self.baseline_items = baseline_items
         # The display name of the account.
         # 
@@ -735,7 +735,7 @@ class EnrollAccountShrinkRequestBaselineItems(TeaModel):
         self.config = config
         # The name of the baseline item.
         self.name = name
-        # Specifies whether to skip the baseline item. Valid values:
+        # Whether to skip the baseline item. Valid values:
         # 
         # *   false: The baseline item is not skipped.
         # *   true: The baseline item is skipped.
@@ -803,9 +803,9 @@ class EnrollAccountShrinkRequest(TeaModel):
         # 
         # If this parameter is left empty, the default baseline is used.
         self.baseline_id = baseline_id
-        # An array that contains baseline items.
+        # The array that contains baseline items.
         # 
-        # If this parameter is specified, the configurations of the baseline items are merged with the baseline of the specified account. The configurations of the same baseline items are subject to the configuration of this parameter. We recommend that you leave this parameter empty and configure the `BaselineId` parameter to specify an account baseline and apply the configuration of the account baseline to the account.
+        # If this parameter is specified, the configurations of the baseline items are merged with the baseline applied to the specified account. The configurations of the same baseline items are subject to the configurations of this parameter. We recommend that you leave this parameter empty and configure the `BaselineId` parameter to specify an account baseline and apply the configurations of the account baseline to the account.
         self.baseline_items = baseline_items
         # The display name of the account.
         # 
@@ -1227,7 +1227,7 @@ class GetEnrolledAccountResponseBodyBaselineItems(TeaModel):
         skip: bool = None,
         version: str = None,
     ):
-        # The configurations of the baseline item.
+        # The configuration of the baseline item.
         self.config = config
         # The name of the baseline item.
         self.name = name
@@ -1378,7 +1378,9 @@ class GetEnrolledAccountResponseBodyInputsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -1428,6 +1430,7 @@ class GetEnrolledAccountResponseBodyInputs(TeaModel):
         self.folder_id = folder_id
         # The ID of the settlement account.
         self.payer_account_uid = payer_account_uid
+        # The tag.
         self.tag = tag
 
     def validate(self):
@@ -1554,7 +1557,7 @@ class GetEnrolledAccountResponseBody(TeaModel):
         self.account_uid = account_uid
         # The ID of the baseline that is implemented.
         self.baseline_id = baseline_id
-        # An array that contains baseline items.
+        # The array that contains baseline items.
         self.baseline_items = baseline_items
         # The time when the account was created.
         self.create_time = create_time
@@ -1571,7 +1574,7 @@ class GetEnrolledAccountResponseBody(TeaModel):
         # *   false
         # *   true
         self.initialized = initialized
-        # The input parameters that are used when the account was registered.
+        # Input parameters used to create an account.
         self.inputs = inputs
         # The ID of the management account of the resource directory to which the account belongs.
         self.master_account_uid = master_account_uid
@@ -1590,7 +1593,7 @@ class GetEnrolledAccountResponseBody(TeaModel):
         # *   Scheduling: The account is being scheduled.
         # *   ScheduleFailed: The account fails to be scheduled.
         self.status = status
-        # The time when the information about the account was updated.
+        # The update time.
         self.update_time = update_time
 
     def validate(self):
@@ -1743,9 +1746,9 @@ class ListAccountFactoryBaselineItemsRequest(TeaModel):
         type: str = None,
         versions: List[str] = None,
     ):
-        # The number of entries per page.
+        # The maximum number of entries per page.
         # 
-        # Valid values: 1 to 100. Default value: 10
+        # Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
         # The names of the baseline items.
         self.names = names
@@ -2205,11 +2208,13 @@ class ListEnrolledAccountsRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # The maximum number of entries to return on each page.
+        # The maximum number of entries per page.
         # 
         # Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+        # 
+        # You do not need to specify this parameter for the first request.
         self.next_token = next_token
         # The region ID.
         self.region_id = region_id
@@ -2256,26 +2261,26 @@ class ListEnrolledAccountsResponseBodyEnrolledAccounts(TeaModel):
     ):
         # The account ID.
         self.account_uid = account_uid
-        # The baseline ID.
+        # The ID of the baseline that is implemented.
         self.baseline_id = baseline_id
-        # The time at which the account was created.
+        # The creation time.
         self.create_time = create_time
         # The display name of the account.
         self.display_name = display_name
         # The ID of the parent folder.
         self.folder_id = folder_id
-        # The ID of the billing account.
+        # The ID of the settlement account.
         self.payer_account_uid = payer_account_uid
-        # The creation status of the account. Valid values:
+        # The creation status. Valid values:
         # 
-        # *   Pending: The account is waiting to be created.
+        # *   Pending: The account is pending to be created.
         # *   Running: The account is being created.
         # *   Finished: The account is created.
-        # *   Failed: The account failed to be created.
+        # *   Failed: The account fails to be created.
         # *   Scheduling: The account is being scheduled.
-        # *   ScheduleFailed: The account failed to be scheduled.
+        # *   ScheduleFailed: The account fails to be scheduled.
         self.status = status
-        # The time when the information about the account was updated.
+        # The update time.
         self.update_time = update_time
 
     def validate(self):
@@ -2333,7 +2338,7 @@ class ListEnrolledAccountsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The accounts.
+        # The enrolled accounts.
         self.enrolled_accounts = enrolled_accounts
         # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -2974,8 +2979,9 @@ class ListEvaluationMetricDetailsRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         region_id: str = None,
+        snapshot_id: str = None,
     ):
-        # The account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
+        # The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
         self.account_id = account_id
         # The ID of the check item.
         # 
@@ -2987,6 +2993,7 @@ class ListEvaluationMetricDetailsRequest(TeaModel):
         self.next_token = next_token
         # The region ID.
         self.region_id = region_id
+        self.snapshot_id = snapshot_id
 
     def validate(self):
         pass
@@ -3007,6 +3014,8 @@ class ListEvaluationMetricDetailsRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.snapshot_id is not None:
+            result['SnapshotId'] = self.snapshot_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3021,6 +3030,8 @@ class ListEvaluationMetricDetailsRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SnapshotId') is not None:
+            self.snapshot_id = m.get('SnapshotId')
         return self
 
 
@@ -3071,11 +3082,12 @@ class ListEvaluationMetricDetailsResponseBodyResources(TeaModel):
         resource_properties: List[ListEvaluationMetricDetailsResponseBodyResourcesResourceProperties] = None,
         resource_type: str = None,
     ):
-        # 合规状态。取值：
-        # - NonCompliant：不合规。
-        # - Excluded：已忽略。
-        # - PendingExclusion：已忽略未生效。
-        # - PendingInclusion：已取消忽略未生效。
+        # The compliance status of the resource. Valid values:
+        # 
+        # *   NonCompliant: non-compliant.
+        # *   Excluded: ignored.
+        # *   PendingExclusion: to be ignored.
+        # *   PendingInclusion: to be unignored.
         self.compliance_type = compliance_type
         # The region ID of the resource.
         self.region_id = region_id
@@ -3083,7 +3095,7 @@ class ListEvaluationMetricDetailsResponseBodyResources(TeaModel):
         # 
         # >  This parameter is returned only when the check item supports the auxiliary decision-making feature.
         self.resource_classification = resource_classification
-        # The resource ID.
+        # The ID of the resource.
         self.resource_id = resource_id
         # The name of the resource.
         self.resource_name = resource_name
@@ -3241,16 +3253,20 @@ class ListEvaluationMetricDetailsResponse(TeaModel):
         return self
 
 
-class ListEvaluationResultsRequest(TeaModel):
+class ListEvaluationResultsRequestFilters(TeaModel):
     def __init__(
         self,
-        account_id: int = None,
-        region_id: str = None,
+        key: str = None,
+        values: List[str] = None,
     ):
-        # The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
-        self.account_id = account_id
-        # The region ID.
-        self.region_id = region_id
+        # The key of the filter condition. Valid values:
+        # 
+        # *   ResourceId: the resource ID.
+        # *   ResourceName: the name of the resource.
+        # *   ResourceType: the resource type.
+        self.key = key
+        # The list of filter condition values.
+        self.values = values
 
     def validate(self):
         pass
@@ -3261,18 +3277,74 @@ class ListEvaluationResultsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class ListEvaluationResultsRequest(TeaModel):
+    def __init__(
+        self,
+        account_id: int = None,
+        filters: List[ListEvaluationResultsRequestFilters] = None,
+        region_id: str = None,
+        snapshot_id: str = None,
+    ):
+        # The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
+        self.account_id = account_id
+        # The filter conditions.
+        self.filters = filters
+        # The region ID.
+        self.region_id = region_id
+        self.snapshot_id = snapshot_id
+
+    def validate(self):
+        if self.filters:
+            for k in self.filters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.account_id is not None:
             result['AccountId'] = self.account_id
+        result['Filters'] = []
+        if self.filters is not None:
+            for k in self.filters:
+                result['Filters'].append(k.to_map() if k else None)
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.snapshot_id is not None:
+            result['SnapshotId'] = self.snapshot_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AccountId') is not None:
             self.account_id = m.get('AccountId')
+        self.filters = []
+        if m.get('Filters') is not None:
+            for k in m.get('Filters'):
+                temp_model = ListEvaluationResultsRequestFilters()
+                self.filters.append(temp_model.from_map(k))
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SnapshotId') is not None:
+            self.snapshot_id = m.get('SnapshotId')
         return self
 
 
@@ -3784,6 +3856,7 @@ class RunEvaluationRequest(TeaModel):
     ):
         # The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
         self.account_id = account_id
+        # The IDs of the check items to be checked.
         self.metric_ids = metric_ids
         # The region ID.
         self.region_id = region_id
@@ -3835,6 +3908,7 @@ class RunEvaluationShrinkRequest(TeaModel):
     ):
         # The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
         self.account_id = account_id
+        # The IDs of the check items to be checked.
         self.metric_ids_shrink = metric_ids_shrink
         # The region ID.
         self.region_id = region_id
