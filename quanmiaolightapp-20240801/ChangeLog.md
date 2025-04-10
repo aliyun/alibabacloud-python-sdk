@@ -1,3 +1,8 @@
+2025-04-10 Version: 2.6.5
+- Update API RunTagMiningAnalysis: add request parameters apiKey.
+- Update API SubmitTagMiningAnalysisTask: add request parameters apiKey.
+
+
 2025-03-27 Version: 2.6.4
 - Update API RunVideoAnalysis: add request parameters excludeGenerateOptions.
 - Update API SubmitVideoAnalysisTask: add request parameters deduplicationId.

@@ -6633,6 +6633,7 @@ class RunTagMiningAnalysisRequestTags(TeaModel):
 class RunTagMiningAnalysisRequest(TeaModel):
     def __init__(
         self,
+        api_key: str = None,
         business_type: str = None,
         content: str = None,
         extra_info: str = None,
@@ -6641,6 +6642,7 @@ class RunTagMiningAnalysisRequest(TeaModel):
         tags: List[RunTagMiningAnalysisRequestTags] = None,
         task_description: str = None,
     ):
+        self.api_key = api_key
         self.business_type = business_type
         # This parameter is required.
         self.content = content
@@ -6662,6 +6664,8 @@ class RunTagMiningAnalysisRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key
         if self.business_type is not None:
             result['businessType'] = self.business_type
         if self.content is not None:
@@ -6682,6 +6686,8 @@ class RunTagMiningAnalysisRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('apiKey') is not None:
+            self.api_key = m.get('apiKey')
         if m.get('businessType') is not None:
             self.business_type = m.get('businessType')
         if m.get('content') is not None:
@@ -6705,6 +6711,7 @@ class RunTagMiningAnalysisRequest(TeaModel):
 class RunTagMiningAnalysisShrinkRequest(TeaModel):
     def __init__(
         self,
+        api_key: str = None,
         business_type: str = None,
         content: str = None,
         extra_info: str = None,
@@ -6713,6 +6720,7 @@ class RunTagMiningAnalysisShrinkRequest(TeaModel):
         tags_shrink: str = None,
         task_description: str = None,
     ):
+        self.api_key = api_key
         self.business_type = business_type
         # This parameter is required.
         self.content = content
@@ -6731,6 +6739,8 @@ class RunTagMiningAnalysisShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key
         if self.business_type is not None:
             result['businessType'] = self.business_type
         if self.content is not None:
@@ -6749,6 +6759,8 @@ class RunTagMiningAnalysisShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('apiKey') is not None:
+            self.api_key = m.get('apiKey')
         if m.get('businessType') is not None:
             self.business_type = m.get('businessType')
         if m.get('content') is not None:
@@ -8639,6 +8651,7 @@ class SubmitTagMiningAnalysisTaskRequestTags(TeaModel):
 class SubmitTagMiningAnalysisTaskRequest(TeaModel):
     def __init__(
         self,
+        api_key: str = None,
         business_type: str = None,
         contents: List[str] = None,
         extra_info: str = None,
@@ -8648,6 +8661,7 @@ class SubmitTagMiningAnalysisTaskRequest(TeaModel):
         task_description: str = None,
         url: str = None,
     ):
+        self.api_key = api_key
         self.business_type = business_type
         self.contents = contents
         self.extra_info = extra_info
@@ -8669,6 +8683,8 @@ class SubmitTagMiningAnalysisTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key
         if self.business_type is not None:
             result['businessType'] = self.business_type
         if self.contents is not None:
@@ -8691,6 +8707,8 @@ class SubmitTagMiningAnalysisTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('apiKey') is not None:
+            self.api_key = m.get('apiKey')
         if m.get('businessType') is not None:
             self.business_type = m.get('businessType')
         if m.get('contents') is not None:
@@ -8716,6 +8734,7 @@ class SubmitTagMiningAnalysisTaskRequest(TeaModel):
 class SubmitTagMiningAnalysisTaskShrinkRequest(TeaModel):
     def __init__(
         self,
+        api_key: str = None,
         business_type: str = None,
         contents_shrink: str = None,
         extra_info: str = None,
@@ -8725,6 +8744,7 @@ class SubmitTagMiningAnalysisTaskShrinkRequest(TeaModel):
         task_description: str = None,
         url: str = None,
     ):
+        self.api_key = api_key
         self.business_type = business_type
         self.contents_shrink = contents_shrink
         self.extra_info = extra_info
@@ -8743,6 +8763,8 @@ class SubmitTagMiningAnalysisTaskShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key
         if self.business_type is not None:
             result['businessType'] = self.business_type
         if self.contents_shrink is not None:
@@ -8763,6 +8785,8 @@ class SubmitTagMiningAnalysisTaskShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('apiKey') is not None:
+            self.api_key = m.get('apiKey')
         if m.get('businessType') is not None:
             self.business_type = m.get('businessType')
         if m.get('contents') is not None:

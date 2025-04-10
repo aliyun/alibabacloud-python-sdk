@@ -2232,6 +2232,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         body = {}
+        if not UtilClient.is_unset(request.api_key):
+            body['apiKey'] = request.api_key
         if not UtilClient.is_unset(request.business_type):
             body['businessType'] = request.business_type
         if not UtilClient.is_unset(request.content):
@@ -2293,6 +2295,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         body = {}
+        if not UtilClient.is_unset(request.api_key):
+            body['apiKey'] = request.api_key
         if not UtilClient.is_unset(request.business_type):
             body['businessType'] = request.business_type
         if not UtilClient.is_unset(request.content):
@@ -2602,6 +2606,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         body = {}
+        if not UtilClient.is_unset(request.api_key):
+            body['apiKey'] = request.api_key
         if not UtilClient.is_unset(request.business_type):
             body['businessType'] = request.business_type
         if not UtilClient.is_unset(request.contents_shrink):
@@ -2667,6 +2673,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         body = {}
+        if not UtilClient.is_unset(request.api_key):
+            body['apiKey'] = request.api_key
         if not UtilClient.is_unset(request.business_type):
             body['businessType'] = request.business_type
         if not UtilClient.is_unset(request.contents_shrink):
