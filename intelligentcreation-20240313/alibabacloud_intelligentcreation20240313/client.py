@@ -3035,6 +3035,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.finish_aicoach_task_session_with_options_async(request, headers, runtime)
 
+    def get_aicoach_cheat_detection_with_options(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachCheatDetectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.GetAICoachCheatDetectionResponse:
+        """
+        @summary 查询作弊检测详情
+        
+        @param request: GetAICoachCheatDetectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAICoachCheatDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.session_id):
+            query['sessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAICoachCheatDetection',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/getCheatDetection',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.GetAICoachCheatDetectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.GetAICoachCheatDetectionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_aicoach_cheat_detection_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachCheatDetectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.GetAICoachCheatDetectionResponse:
+        """
+        @summary 查询作弊检测详情
+        
+        @param request: GetAICoachCheatDetectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAICoachCheatDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.session_id):
+            query['sessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAICoachCheatDetection',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/getCheatDetection',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.GetAICoachCheatDetectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.GetAICoachCheatDetectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_aicoach_cheat_detection(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachCheatDetectionRequest,
+    ) -> intelligent_creation_20240313_models.GetAICoachCheatDetectionResponse:
+        """
+        @summary 查询作弊检测详情
+        
+        @param request: GetAICoachCheatDetectionRequest
+        @return: GetAICoachCheatDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_aicoach_cheat_detection_with_options(request, headers, runtime)
+
+    async def get_aicoach_cheat_detection_async(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachCheatDetectionRequest,
+    ) -> intelligent_creation_20240313_models.GetAICoachCheatDetectionResponse:
+        """
+        @summary 查询作弊检测详情
+        
+        @param request: GetAICoachCheatDetectionRequest
+        @return: GetAICoachCheatDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_aicoach_cheat_detection_with_options_async(request, headers, runtime)
+
     def get_aicoach_script_with_options(
         self,
         request: intelligent_creation_20240313_models.GetAICoachScriptRequest,

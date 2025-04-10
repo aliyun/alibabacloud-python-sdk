@@ -1,3 +1,8 @@
+2025-04-10 Version: 2.13.0
+- Support API GetAICoachCheatDetection.
+- Update API SelectResource: add response parameters Body.aliyunUid.
+
+
 2025-04-08 Version: 2.12.2
 - Update API BatchCreateAICoachTask: add request parameters body.studentList.
 - Update API CreateAICoachTask: add request parameters body.studentAudioUrl.

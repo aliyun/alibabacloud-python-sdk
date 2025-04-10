@@ -4868,6 +4868,358 @@ class FinishAICoachTaskSessionResponse(TeaModel):
         return self
 
 
+class GetAICoachCheatDetectionRequest(TeaModel):
+    def __init__(
+        self,
+        session_id: str = None,
+    ):
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        return self
+
+
+class GetAICoachCheatDetectionResponseBodyImageCheatList(TeaModel):
+    def __init__(
+        self,
+        time: str = None,
+        url: str = None,
+    ):
+        self.time = time
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.time is not None:
+            result['time'] = self.time
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class GetAICoachCheatDetectionResponseBodyImageCheat(TeaModel):
+    def __init__(
+        self,
+        desc: str = None,
+        list: List[GetAICoachCheatDetectionResponseBodyImageCheatList] = None,
+        status: int = None,
+    ):
+        self.desc = desc
+        self.list = list
+        self.status = status
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desc is not None:
+            result['desc'] = self.desc
+        result['list'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['list'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('desc') is not None:
+            self.desc = m.get('desc')
+        self.list = []
+        if m.get('list') is not None:
+            for k in m.get('list'):
+                temp_model = GetAICoachCheatDetectionResponseBodyImageCheatList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class GetAICoachCheatDetectionResponseBodyVoiceCheatComparisonList(TeaModel):
+    def __init__(
+        self,
+        time: str = None,
+        url: str = None,
+    ):
+        self.time = time
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.time is not None:
+            result['time'] = self.time
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class GetAICoachCheatDetectionResponseBodyVoiceCheatOriginalList(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+    ):
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class GetAICoachCheatDetectionResponseBodyVoiceCheat(TeaModel):
+    def __init__(
+        self,
+        comparison_list: List[GetAICoachCheatDetectionResponseBodyVoiceCheatComparisonList] = None,
+        desc: str = None,
+        original_list: List[GetAICoachCheatDetectionResponseBodyVoiceCheatOriginalList] = None,
+        status: int = None,
+    ):
+        self.comparison_list = comparison_list
+        self.desc = desc
+        self.original_list = original_list
+        self.status = status
+
+    def validate(self):
+        if self.comparison_list:
+            for k in self.comparison_list:
+                if k:
+                    k.validate()
+        if self.original_list:
+            for k in self.original_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['comparisonList'] = []
+        if self.comparison_list is not None:
+            for k in self.comparison_list:
+                result['comparisonList'].append(k.to_map() if k else None)
+        if self.desc is not None:
+            result['desc'] = self.desc
+        result['originalList'] = []
+        if self.original_list is not None:
+            for k in self.original_list:
+                result['originalList'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.comparison_list = []
+        if m.get('comparisonList') is not None:
+            for k in m.get('comparisonList'):
+                temp_model = GetAICoachCheatDetectionResponseBodyVoiceCheatComparisonList()
+                self.comparison_list.append(temp_model.from_map(k))
+        if m.get('desc') is not None:
+            self.desc = m.get('desc')
+        self.original_list = []
+        if m.get('originalList') is not None:
+            for k in m.get('originalList'):
+                temp_model = GetAICoachCheatDetectionResponseBodyVoiceCheatOriginalList()
+                self.original_list.append(temp_model.from_map(k))
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class GetAICoachCheatDetectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        cheat_id: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        gmt_create: str = None,
+        image_cheat: GetAICoachCheatDetectionResponseBodyImageCheat = None,
+        request_id: str = None,
+        status: int = None,
+        success: bool = None,
+        voice_cheat: GetAICoachCheatDetectionResponseBodyVoiceCheat = None,
+    ):
+        self.cheat_id = cheat_id
+        self.error_code = error_code
+        self.error_message = error_message
+        self.gmt_create = gmt_create
+        self.image_cheat = image_cheat
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+        # true
+        self.success = success
+        self.voice_cheat = voice_cheat
+
+    def validate(self):
+        if self.image_cheat:
+            self.image_cheat.validate()
+        if self.voice_cheat:
+            self.voice_cheat.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cheat_id is not None:
+            result['cheatId'] = self.cheat_id
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.image_cheat is not None:
+            result['imageCheat'] = self.image_cheat.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.success is not None:
+            result['success'] = self.success
+        if self.voice_cheat is not None:
+            result['voiceCheat'] = self.voice_cheat.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cheatId') is not None:
+            self.cheat_id = m.get('cheatId')
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('imageCheat') is not None:
+            temp_model = GetAICoachCheatDetectionResponseBodyImageCheat()
+            self.image_cheat = temp_model.from_map(m['imageCheat'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('voiceCheat') is not None:
+            temp_model = GetAICoachCheatDetectionResponseBodyVoiceCheat()
+            self.voice_cheat = temp_model.from_map(m['voiceCheat'])
+        return self
+
+
+class GetAICoachCheatDetectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAICoachCheatDetectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAICoachCheatDetectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetAICoachScriptRequest(TeaModel):
     def __init__(
         self,
@@ -10313,9 +10665,11 @@ class SelectResourceResponseBodyResourceInfoList(TeaModel):
 class SelectResourceResponseBody(TeaModel):
     def __init__(
         self,
+        aliyun_uid: str = None,
         request_id: str = None,
         resource_info_list: List[SelectResourceResponseBodyResourceInfoList] = None,
     ):
+        self.aliyun_uid = aliyun_uid
         self.request_id = request_id
         self.resource_info_list = resource_info_list
 
@@ -10331,6 +10685,8 @@ class SelectResourceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.aliyun_uid is not None:
+            result['aliyunUid'] = self.aliyun_uid
         if self.request_id is not None:
             result['requestId'] = self.request_id
         result['resourceInfoList'] = []
@@ -10341,6 +10697,8 @@ class SelectResourceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('aliyunUid') is not None:
+            self.aliyun_uid = m.get('aliyunUid')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         self.resource_info_list = []
