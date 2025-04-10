@@ -4542,6 +4542,7 @@ class DescribeAndroidInstancesRequest(TeaModel):
         next_token: str = None,
         node_id: str = None,
         node_name: str = None,
+        office_site_ids: List[str] = None,
         sale_mode: str = None,
         status: str = None,
         tag: List[DescribeAndroidInstancesRequestTag] = None,
@@ -4575,6 +4576,7 @@ class DescribeAndroidInstancesRequest(TeaModel):
         self.node_id = node_id
         # The name of the node.
         self.node_name = node_name
+        self.office_site_ids = office_site_ids
         # The sales mode.
         # 
         # Valid values:
@@ -4641,6 +4643,8 @@ class DescribeAndroidInstancesRequest(TeaModel):
             result['NodeId'] = self.node_id
         if self.node_name is not None:
             result['NodeName'] = self.node_name
+        if self.office_site_ids is not None:
+            result['OfficeSiteIds'] = self.office_site_ids
         if self.sale_mode is not None:
             result['SaleMode'] = self.sale_mode
         if self.status is not None:
@@ -4677,6 +4681,8 @@ class DescribeAndroidInstancesRequest(TeaModel):
             self.node_id = m.get('NodeId')
         if m.get('NodeName') is not None:
             self.node_name = m.get('NodeName')
+        if m.get('OfficeSiteIds') is not None:
+            self.office_site_ids = m.get('OfficeSiteIds')
         if m.get('SaleMode') is not None:
             self.sale_mode = m.get('SaleMode')
         if m.get('Status') is not None:

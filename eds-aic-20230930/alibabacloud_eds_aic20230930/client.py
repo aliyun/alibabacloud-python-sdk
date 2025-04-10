@@ -2784,6 +2784,8 @@ class Client(OpenApiClient):
             query['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.node_name):
             query['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.office_site_ids):
+            query['OfficeSiteIds'] = request.office_site_ids
         if not UtilClient.is_unset(request.sale_mode):
             query['SaleMode'] = request.sale_mode
         if not UtilClient.is_unset(request.status):
@@ -2853,6 +2855,8 @@ class Client(OpenApiClient):
             query['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.node_name):
             query['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.office_site_ids):
+            query['OfficeSiteIds'] = request.office_site_ids
         if not UtilClient.is_unset(request.sale_mode):
             query['SaleMode'] = request.sale_mode
         if not UtilClient.is_unset(request.status):
