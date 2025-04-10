@@ -7212,6 +7212,39 @@ class ListPublishedAgentResponse(TeaModel):
         return self
 
 
+class RetrieveRequestQueryHistory(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        role: str = None,
+    ):
+        self.content = content
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        return self
+
+
 class RetrieveRequestRerank(TeaModel):
     def __init__(
         self,
@@ -7284,6 +7317,7 @@ class RetrieveRequest(TeaModel):
         images: List[str] = None,
         index_id: str = None,
         query: str = None,
+        query_history: List[RetrieveRequestQueryHistory] = None,
         rerank: List[RetrieveRequestRerank] = None,
         rerank_min_score: float = None,
         rerank_top_n: int = None,
@@ -7317,6 +7351,7 @@ class RetrieveRequest(TeaModel):
         self.index_id = index_id
         # The input query prompt. The length and characters of the query are not limited.
         self.query = query
+        self.query_history = query_history
         # Ranking configurations.
         self.rerank = rerank
         # Similarity Threshold The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00]. The priority of this parameter is greater than the similarity threshold configured for the knowledge base.
@@ -7342,6 +7377,10 @@ class RetrieveRequest(TeaModel):
         self.sparse_similarity_top_k = sparse_similarity_top_k
 
     def validate(self):
+        if self.query_history:
+            for k in self.query_history:
+                if k:
+                    k.validate()
         if self.rerank:
             for k in self.rerank:
                 if k:
@@ -7369,6 +7408,10 @@ class RetrieveRequest(TeaModel):
             result['IndexId'] = self.index_id
         if self.query is not None:
             result['Query'] = self.query
+        result['QueryHistory'] = []
+        if self.query_history is not None:
+            for k in self.query_history:
+                result['QueryHistory'].append(k.to_map() if k else None)
         result['Rerank'] = []
         if self.rerank is not None:
             for k in self.rerank:
@@ -7403,6 +7446,11 @@ class RetrieveRequest(TeaModel):
             self.index_id = m.get('IndexId')
         if m.get('Query') is not None:
             self.query = m.get('Query')
+        self.query_history = []
+        if m.get('QueryHistory') is not None:
+            for k in m.get('QueryHistory'):
+                temp_model = RetrieveRequestQueryHistory()
+                self.query_history.append(temp_model.from_map(k))
         self.rerank = []
         if m.get('Rerank') is not None:
             for k in m.get('Rerank'):
@@ -7435,6 +7483,7 @@ class RetrieveShrinkRequest(TeaModel):
         images_shrink: str = None,
         index_id: str = None,
         query: str = None,
+        query_history_shrink: str = None,
         rerank_shrink: str = None,
         rerank_min_score: float = None,
         rerank_top_n: int = None,
@@ -7468,6 +7517,7 @@ class RetrieveShrinkRequest(TeaModel):
         self.index_id = index_id
         # The input query prompt. The length and characters of the query are not limited.
         self.query = query
+        self.query_history_shrink = query_history_shrink
         # Ranking configurations.
         self.rerank_shrink = rerank_shrink
         # Similarity Threshold The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00]. The priority of this parameter is greater than the similarity threshold configured for the knowledge base.
@@ -7513,6 +7563,8 @@ class RetrieveShrinkRequest(TeaModel):
             result['IndexId'] = self.index_id
         if self.query is not None:
             result['Query'] = self.query
+        if self.query_history_shrink is not None:
+            result['QueryHistory'] = self.query_history_shrink
         if self.rerank_shrink is not None:
             result['Rerank'] = self.rerank_shrink
         if self.rerank_min_score is not None:
@@ -7543,6 +7595,8 @@ class RetrieveShrinkRequest(TeaModel):
             self.index_id = m.get('IndexId')
         if m.get('Query') is not None:
             self.query = m.get('Query')
+        if m.get('QueryHistory') is not None:
+            self.query_history_shrink = m.get('QueryHistory')
         if m.get('Rerank') is not None:
             self.rerank_shrink = m.get('Rerank')
         if m.get('RerankMinScore') is not None:

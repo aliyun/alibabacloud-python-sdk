@@ -1,3 +1,7 @@
+2025-04-10 Version: 2.0.3
+- Update API Retrieve: add request parameters QueryHistory.
+
+
 2025-04-07 Version: 2.0.2
 - Update API ApplyFileUploadLease: add request parameters UseInternalEndpoint.
 

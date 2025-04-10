@@ -4119,6 +4119,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.images):
             request.images_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.images, 'Images', 'simple')
+        if not UtilClient.is_unset(tmp_req.query_history):
+            request.query_history_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_history, 'QueryHistory', 'json')
         if not UtilClient.is_unset(tmp_req.rerank):
             request.rerank_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rerank, 'Rerank', 'json')
         if not UtilClient.is_unset(tmp_req.rewrite):
@@ -4138,6 +4140,8 @@ class Client(OpenApiClient):
             query['IndexId'] = request.index_id
         if not UtilClient.is_unset(request.query):
             query['Query'] = request.query
+        if not UtilClient.is_unset(request.query_history_shrink):
+            query['QueryHistory'] = request.query_history_shrink
         if not UtilClient.is_unset(request.rerank_shrink):
             query['Rerank'] = request.rerank_shrink
         if not UtilClient.is_unset(request.rerank_min_score):
@@ -4202,6 +4206,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.images):
             request.images_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.images, 'Images', 'simple')
+        if not UtilClient.is_unset(tmp_req.query_history):
+            request.query_history_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_history, 'QueryHistory', 'json')
         if not UtilClient.is_unset(tmp_req.rerank):
             request.rerank_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rerank, 'Rerank', 'json')
         if not UtilClient.is_unset(tmp_req.rewrite):
@@ -4221,6 +4227,8 @@ class Client(OpenApiClient):
             query['IndexId'] = request.index_id
         if not UtilClient.is_unset(request.query):
             query['Query'] = request.query
+        if not UtilClient.is_unset(request.query_history_shrink):
+            query['QueryHistory'] = request.query_history_shrink
         if not UtilClient.is_unset(request.rerank_shrink):
             query['Rerank'] = request.rerank_shrink
         if not UtilClient.is_unset(request.rerank_min_score):
