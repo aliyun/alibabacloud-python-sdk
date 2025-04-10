@@ -867,7 +867,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateNodeGroupResponse:
         """
-        @summary 创建集群下的节点分组
+        @summary Create Node Group under Cluster
+        
+        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status
         
         @param tmp_req: CreateNodeGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -918,7 +920,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateNodeGroupResponse:
         """
-        @summary 创建集群下的节点分组
+        @summary Create Node Group under Cluster
+        
+        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status
         
         @param tmp_req: CreateNodeGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -968,7 +972,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateNodeGroupRequest,
     ) -> eflo_controller_20221215_models.CreateNodeGroupResponse:
         """
-        @summary 创建集群下的节点分组
+        @summary Create Node Group under Cluster
+        
+        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status
         
         @param request: CreateNodeGroupRequest
         @return: CreateNodeGroupResponse
@@ -981,7 +987,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateNodeGroupRequest,
     ) -> eflo_controller_20221215_models.CreateNodeGroupResponse:
         """
-        @summary 创建集群下的节点分组
+        @summary Create Node Group under Cluster
+        
+        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status
         
         @param request: CreateNodeGroupRequest
         @return: CreateNodeGroupResponse
@@ -1227,7 +1235,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DeleteNodeGroupResponse:
         """
-        @summary 删除节点分组
+        @summary Delete Node Group
+        
+        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
         
         @param request: DeleteNodeGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1270,7 +1280,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DeleteNodeGroupResponse:
         """
-        @summary 删除节点分组
+        @summary Delete Node Group
+        
+        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
         
         @param request: DeleteNodeGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1312,7 +1324,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DeleteNodeGroupRequest,
     ) -> eflo_controller_20221215_models.DeleteNodeGroupResponse:
         """
-        @summary 删除节点分组
+        @summary Delete Node Group
+        
+        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
         
         @param request: DeleteNodeGroupRequest
         @return: DeleteNodeGroupResponse
@@ -1325,7 +1339,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DeleteNodeGroupRequest,
     ) -> eflo_controller_20221215_models.DeleteNodeGroupResponse:
         """
-        @summary 删除节点分组
+        @summary Delete Node Group
+        
+        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
         
         @param request: DeleteNodeGroupRequest
         @return: DeleteNodeGroupResponse
@@ -1447,7 +1463,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeDiagnosticResultResponse:
         """
-        @summary 诊断任务查询接口
+        @summary Diagnostic Task Query Interface
+        
+        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
         
         @param request: DescribeDiagnosticResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1488,7 +1506,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeDiagnosticResultResponse:
         """
-        @summary 诊断任务查询接口
+        @summary Diagnostic Task Query Interface
+        
+        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
         
         @param request: DescribeDiagnosticResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1528,7 +1548,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeDiagnosticResultRequest,
     ) -> eflo_controller_20221215_models.DescribeDiagnosticResultResponse:
         """
-        @summary 诊断任务查询接口
+        @summary Diagnostic Task Query Interface
+        
+        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
         
         @param request: DescribeDiagnosticResultRequest
         @return: DescribeDiagnosticResultResponse
@@ -1541,7 +1563,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeDiagnosticResultRequest,
     ) -> eflo_controller_20221215_models.DescribeDiagnosticResultResponse:
         """
-        @summary 诊断任务查询接口
+        @summary Diagnostic Task Query Interface
+        
+        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
         
         @param request: DescribeDiagnosticResultRequest
         @return: DescribeDiagnosticResultResponse
@@ -5005,7 +5029,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.UpdateNodeGroupResponse:
         """
-        @summary 更新节点分组
+        @summary Update Node Group
+        
+        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
         
         @param request: UpdateNodeGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5050,7 +5076,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.UpdateNodeGroupResponse:
         """
-        @summary 更新节点分组
+        @summary Update Node Group
+        
+        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
         
         @param request: UpdateNodeGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5094,7 +5122,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.UpdateNodeGroupRequest,
     ) -> eflo_controller_20221215_models.UpdateNodeGroupResponse:
         """
-        @summary 更新节点分组
+        @summary Update Node Group
+        
+        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
         
         @param request: UpdateNodeGroupRequest
         @return: UpdateNodeGroupResponse
@@ -5107,7 +5137,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.UpdateNodeGroupRequest,
     ) -> eflo_controller_20221215_models.UpdateNodeGroupResponse:
         """
-        @summary 更新节点分组
+        @summary Update Node Group
+        
+        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
         
         @param request: UpdateNodeGroupRequest
         @return: UpdateNodeGroupResponse

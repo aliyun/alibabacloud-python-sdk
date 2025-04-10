@@ -1027,6 +1027,45 @@ class CreateClusterRequestNodeGroupsNodes(TeaModel):
         return self
 
 
+class CreateClusterRequestNodeGroupsSystemDisk(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        performance_level: str = None,
+        size: int = None,
+    ):
+        self.category = category
+        self.performance_level = performance_level
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
 class CreateClusterRequestNodeGroups(TeaModel):
     def __init__(
         self,
@@ -1035,6 +1074,7 @@ class CreateClusterRequestNodeGroups(TeaModel):
         node_group_description: str = None,
         node_group_name: str = None,
         nodes: List[CreateClusterRequestNodeGroupsNodes] = None,
+        system_disk: CreateClusterRequestNodeGroupsSystemDisk = None,
         user_data: str = None,
         zone_id: str = None,
     ):
@@ -1048,6 +1088,7 @@ class CreateClusterRequestNodeGroups(TeaModel):
         self.node_group_name = node_group_name
         # Node list
         self.nodes = nodes
+        self.system_disk = system_disk
         # Instance custom data. It needs to be Base64 encoded, and the original data should not exceed 16 KB.
         self.user_data = user_data
         # Zone ID
@@ -1058,6 +1099,8 @@ class CreateClusterRequestNodeGroups(TeaModel):
             for k in self.nodes:
                 if k:
                     k.validate()
+        if self.system_disk:
+            self.system_disk.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1077,6 +1120,8 @@ class CreateClusterRequestNodeGroups(TeaModel):
         if self.nodes is not None:
             for k in self.nodes:
                 result['Nodes'].append(k.to_map() if k else None)
+        if self.system_disk is not None:
+            result['SystemDisk'] = self.system_disk.to_map()
         if self.user_data is not None:
             result['UserData'] = self.user_data
         if self.zone_id is not None:
@@ -1098,6 +1143,9 @@ class CreateClusterRequestNodeGroups(TeaModel):
             for k in m.get('Nodes'):
                 temp_model = CreateClusterRequestNodeGroupsNodes()
                 self.nodes.append(temp_model.from_map(k))
+        if m.get('SystemDisk') is not None:
+            temp_model = CreateClusterRequestNodeGroupsSystemDisk()
+            self.system_disk = temp_model.from_map(m['SystemDisk'])
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
         if m.get('ZoneId') is not None:
@@ -2456,6 +2504,45 @@ class CreateNetTestTaskResponse(TeaModel):
         return self
 
 
+class CreateNodeGroupRequestNodeGroupSystemDisk(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        performance_level: str = None,
+        size: int = None,
+    ):
+        self.category = category
+        self.performance_level = performance_level
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
 class CreateNodeGroupRequestNodeGroup(TeaModel):
     def __init__(
         self,
@@ -2464,21 +2551,34 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
         machine_type: str = None,
         node_group_description: str = None,
         node_group_name: str = None,
+        system_disk: CreateNodeGroupRequestNodeGroupSystemDisk = None,
         user_data: str = None,
     ):
+        # Availability Zone
+        # 
         # This parameter is required.
         self.az = az
+        # Image ID.
+        # 
         # This parameter is required.
         self.image_id = image_id
+        # Machine type
+        # 
         # This parameter is required.
         self.machine_type = machine_type
+        # Node group description
         self.node_group_description = node_group_description
+        # Node group name
+        # 
         # This parameter is required.
         self.node_group_name = node_group_name
+        self.system_disk = system_disk
+        # user data
         self.user_data = user_data
 
     def validate(self):
-        pass
+        if self.system_disk:
+            self.system_disk.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2496,6 +2596,8 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
             result['NodeGroupDescription'] = self.node_group_description
         if self.node_group_name is not None:
             result['NodeGroupName'] = self.node_group_name
+        if self.system_disk is not None:
+            result['SystemDisk'] = self.system_disk.to_map()
         if self.user_data is not None:
             result['UserData'] = self.user_data
         return result
@@ -2512,6 +2614,9 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
             self.node_group_description = m.get('NodeGroupDescription')
         if m.get('NodeGroupName') is not None:
             self.node_group_name = m.get('NodeGroupName')
+        if m.get('SystemDisk') is not None:
+            temp_model = CreateNodeGroupRequestNodeGroupSystemDisk()
+            self.system_disk = temp_model.from_map(m['SystemDisk'])
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
         return self
@@ -2524,10 +2629,15 @@ class CreateNodeGroupRequest(TeaModel):
         node_group: CreateNodeGroupRequestNodeGroup = None,
         node_unit: Dict[str, Any] = None,
     ):
+        # Cluster ID
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Node ID.
+        # 
         # This parameter is required.
         self.node_group = node_group
+        # Node information
         self.node_unit = node_unit
 
     def validate(self):
@@ -2567,10 +2677,15 @@ class CreateNodeGroupShrinkRequest(TeaModel):
         node_group_shrink: str = None,
         node_unit_shrink: str = None,
     ):
+        # Cluster ID
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Node ID.
+        # 
         # This parameter is required.
         self.node_group_shrink = node_group_shrink
+        # Node information
         self.node_unit_shrink = node_unit_shrink
 
     def validate(self):
@@ -2608,9 +2723,11 @@ class CreateNodeGroupResponseBody(TeaModel):
         node_group_name: str = None,
         request_id: str = None,
     ):
+        # Node group ID
         self.node_group_id = node_group_id
+        # Node group name
         self.node_group_name = node_group_name
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -2926,7 +3043,9 @@ class DeleteNodeGroupRequest(TeaModel):
         cluster_id: str = None,
         node_group_id: str = None,
     ):
+        # Cluster ID
         self.cluster_id = cluster_id
+        # Node Group ID
         self.node_group_id = node_group_id
 
     def validate(self):
@@ -2958,7 +3077,7 @@ class DeleteNodeGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -3325,6 +3444,7 @@ class DescribeDiagnosticResultRequest(TeaModel):
         self,
         diagnostic_id: str = None,
     ):
+        # Diagnostic ID
         self.diagnostic_id = diagnostic_id
 
     def validate(self):
@@ -3360,14 +3480,23 @@ class DescribeDiagnosticResultResponseBody(TeaModel):
         node_ids: List[str] = None,
         request_id: str = None,
     ):
+        # Cluster ID
         self.cluster_id = cluster_id
+        # Device creation time.
         self.created_time = created_time
+        # Diagnostic ID
         self.diagnostic_id = diagnostic_id
+        # Diagnostic Information
         self.diagnostic_results = diagnostic_results
+        # Diagnostic State
         self.diagnostic_state = diagnostic_state
+        # Diagnostic Type
         self.diagnostic_type = diagnostic_type
+        # End time of node anomaly issues. Represented according to the ISO8601 standard, in a timezone-aware format, formatted as yyyy-MM-ddTHH:mm:ss+0800
         self.end_time = end_time
+        # List of Node IDs
         self.node_ids = node_ids
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -4615,6 +4744,57 @@ class DescribeNodeRequest(TeaModel):
         return self
 
 
+class DescribeNodeResponseBodyDisks(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        disk_id: str = None,
+        performance_level: str = None,
+        size: int = None,
+        type: str = None,
+    ):
+        self.category = category
+        self.disk_id = disk_id
+        self.performance_level = performance_level
+        self.size = size
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
 class DescribeNodeResponseBodyNetworks(TeaModel):
     def __init__(
         self,
@@ -4670,6 +4850,7 @@ class DescribeNodeResponseBody(TeaModel):
         cluster_id: str = None,
         cluster_name: str = None,
         create_time: str = None,
+        disks: List[DescribeNodeResponseBodyDisks] = None,
         expired_time: str = None,
         hostname: str = None,
         hpn_zone: str = None,
@@ -4693,6 +4874,7 @@ class DescribeNodeResponseBody(TeaModel):
         self.cluster_name = cluster_name
         # Creation time
         self.create_time = create_time
+        self.disks = disks
         # Expiration time
         self.expired_time = expired_time
         # Hostname
@@ -4717,15 +4899,20 @@ class DescribeNodeResponseBody(TeaModel):
         self.operating_state = operating_state
         # Request ID
         self.request_id = request_id
-        # 资源组ID
+        # Resource group ID
         self.resource_group_id = resource_group_id
         # Unique machine identifier
         self.sn = sn
+        # The script by user defined
         self.user_data = user_data
         # Zone ID
         self.zone_id = zone_id
 
     def validate(self):
+        if self.disks:
+            for k in self.disks:
+                if k:
+                    k.validate()
         if self.networks:
             for k in self.networks:
                 if k:
@@ -4743,6 +4930,10 @@ class DescribeNodeResponseBody(TeaModel):
             result['ClusterName'] = self.cluster_name
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        result['Disks'] = []
+        if self.disks is not None:
+            for k in self.disks:
+                result['Disks'].append(k.to_map() if k else None)
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
         if self.hostname is not None:
@@ -4787,6 +4978,11 @@ class DescribeNodeResponseBody(TeaModel):
             self.cluster_name = m.get('ClusterName')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        self.disks = []
+        if m.get('Disks') is not None:
+            for k in m.get('Disks'):
+                temp_model = DescribeNodeResponseBodyDisks()
+                self.disks.append(temp_model.from_map(k))
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
         if m.get('Hostname') is not None:
@@ -6136,6 +6332,7 @@ class ExtendClusterRequestIpAllocationPolicyNodePolicy(TeaModel):
     ):
         # Bond information
         self.bonds = bonds
+        # Host name
         self.hostname = hostname
         # Node ID
         self.node_id = node_id
@@ -6244,7 +6441,9 @@ class ExtendClusterRequestNodeGroupsNodeTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag.
         self.key = key
+        # The value of tag.
         self.value = value
 
     def validate(self):
@@ -6344,20 +6543,48 @@ class ExtendClusterRequestNodeGroups(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # Number of nodes to purchase. Value range: 0–500.
+        # 
+        # If the Amount parameter is set to 0, no nodes will be purchased. Existing nodes will be used for scaling.
+        # If the Amount parameter is set to 1–500, the specified number of nodes will be purchased and used for scaling.
+        # Default value: 0
         self.amount = amount
+        # Whether to enable auto-renewal for purchased nodes.
+        # Conditions: This parameter takes effect only when the Amount parameter is set to a non-zero value and the ChargeType is PrePaid.
+        # Valid values:
+        # 
+        # True: Enable auto-renewal.
+        # False: Disable auto-renewal.
+        # Default value: False
         self.auto_renew = auto_renew
+        # Billing method for nodes.
+        # This parameter takes effect only when the Amount parameter is set to a value other than 0.
+        # Valid values:
+        # 
+        # PrePaid: Subscription (prepaid).
+        # PostPaid: Pay-as-you-go (postpaid).
+        # Default value: PrePaid
         self.charge_type = charge_type
+        # The hostnames of purchased nodes.
+        # This parameter takes effect only when the Amount parameter is set to a non-zero value.
         self.hostnames = hostnames
+        # The login password of node.
         self.login_password = login_password
         # Node Group ID
         self.node_group_id = node_group_id
+        # The tag of node
         self.node_tag = node_tag
         # List of Nodes
         self.nodes = nodes
+        # Purchase duration for nodes (unit: month).
+        # Valid values: 1, 6, 12, 24, 36, 48.
+        # Conditions: This parameter takes effect only when the Amount parameter is set to a non-zero value and the ChargeType is PrePaid.
         self.period = period
         # Custom Data
         self.user_data = user_data
+        # VSwitch Id
         self.v_switch_id = v_switch_id
+        # Vpc Id
         self.vpc_id = vpc_id
         # Zone ID
         self.zone_id = zone_id
@@ -6672,7 +6899,9 @@ class ListClusterNodesRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag object
         self.key = key
+        # The value of tag object
         self.value = value
 
     def validate(self):
@@ -6719,7 +6948,9 @@ class ListClusterNodesRequest(TeaModel):
         self.next_token = next_token
         # Node group ID
         self.node_group_id = node_group_id
+        # resource group id
         self.resource_group_id = resource_group_id
+        # tag information
         self.tags = tags
 
     def validate(self):
@@ -6825,7 +7056,9 @@ class ListClusterNodesResponseBodyNodesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag object
         self.key = key
+        # The value of tag object
         self.value = value
 
     def validate(self):
@@ -6875,6 +7108,7 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # product code
         self.commodity_code = commodity_code
         # Creation time
         self.create_time = create_time
@@ -6886,6 +7120,7 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
         self.hpn_zone = hpn_zone
         # System image ID
         self.image_id = image_id
+        # image name
         self.image_name = image_name
         # Machine type
         self.machine_type = machine_type
@@ -6901,11 +7136,13 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
         self.operating_state = operating_state
         # Machine SN
         self.sn = sn
+        # tag information
         self.tags = tags
+        # task id
         self.task_id = task_id
-        # 专有网络交换机ID
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # 专有网络ID
+        # VPC ID
         self.vpc_id = vpc_id
         # Zone ID
         self.zone_id = zone_id
@@ -7116,7 +7353,9 @@ class ListClustersRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag object
         self.key = key
+        # The value of tag object
         self.value = value
 
     def validate(self):
@@ -7157,6 +7396,7 @@ class ListClustersRequest(TeaModel):
         self.next_token = next_token
         # Resource group ID
         self.resource_group_id = resource_group_id
+        # tag info
         self.tags = tags
 
     def validate(self):
@@ -7205,7 +7445,9 @@ class ListClustersResponseBodyClustersTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag object
         self.key = key
+        # The value of tag object
         self.value = value
 
     def validate(self):
@@ -7276,6 +7518,7 @@ class ListClustersResponseBodyClusters(TeaModel):
         self.operating_state = operating_state
         # Resource group ID
         self.resource_group_id = resource_group_id
+        # tag information
         self.tags = tags
         # Task ID
         self.task_id = task_id
@@ -7718,7 +7961,9 @@ class ListFreeNodesRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag object
         self.key = key
+        # The value of tag object
         self.value = value
 
     def validate(self):
@@ -7765,6 +8010,7 @@ class ListFreeNodesRequest(TeaModel):
         self.next_token = next_token
         # Resource group ID
         self.resource_group_id = resource_group_id
+        # Tag information
         self.tags = tags
 
     def validate(self):
@@ -7821,7 +8067,9 @@ class ListFreeNodesResponseBodyNodesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag object
         self.key = key
+        # The value of tag object
         self.value = value
 
     def validate(self):
@@ -7863,6 +8111,7 @@ class ListFreeNodesResponseBodyNodes(TeaModel):
         tags: List[ListFreeNodesResponseBodyNodesTags] = None,
         zone_id: str = None,
     ):
+        # Product Code
         self.commodity_code = commodity_code
         # Creation time
         self.create_time = create_time
@@ -7874,11 +8123,13 @@ class ListFreeNodesResponseBodyNodes(TeaModel):
         self.machine_type = machine_type
         # Node ID
         self.node_id = node_id
+        # Node status
         self.operating_state = operating_state
         # Resource group ID
         self.resource_group_id = resource_group_id
         # Machine SN
         self.sn = sn
+        # Tags Info
         self.tags = tags
         # Availability zone ID
         self.zone_id = zone_id
@@ -12040,8 +12291,11 @@ class UpdateNodeGroupRequest(TeaModel):
         node_group_id: str = None,
         user_data: str = None,
     ):
+        # Node group name
         self.new_node_group_name = new_node_group_name
+        # Node group ID
         self.node_group_id = node_group_id
+        # user data
         self.user_data = user_data
 
     def validate(self):

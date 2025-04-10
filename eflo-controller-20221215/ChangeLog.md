@@ -1,3 +1,9 @@
+2025-04-10 Version: 2.4.4
+- Update API CreateCluster: add request parameters NodeGroups.$.SystemDisk.
+- Update API CreateNodeGroup: add request parameters NodeGroup.SystemDisk.
+- Update API DescribeNode: add response parameters Body.Disks.
+
+
 2025-04-03 Version: 2.4.3
 - Update API ExtendCluster: add request parameters IpAllocationPolicy.$.NodePolicy.$.Hostname.
 - Update API ExtendCluster: add request parameters NodeGroups.$.Amount.
