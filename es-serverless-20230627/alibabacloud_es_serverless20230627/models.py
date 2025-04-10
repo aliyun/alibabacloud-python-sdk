@@ -369,6 +369,39 @@ class CreateAppRequestQuotaInfo(TeaModel):
         return self
 
 
+class CreateAppRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
 class CreateAppRequest(TeaModel):
     def __init__(
         self,
@@ -381,7 +414,9 @@ class CreateAppRequest(TeaModel):
         quota_info: CreateAppRequestQuotaInfo = None,
         region_id: str = None,
         scenario: str = None,
+        tags: List[CreateAppRequestTags] = None,
         version: str = None,
+        client_token: str = None,
         dry_run: bool = None,
     ):
         # 应用名
@@ -399,7 +434,9 @@ class CreateAppRequest(TeaModel):
         self.quota_info = quota_info
         self.region_id = region_id
         self.scenario = scenario
+        self.tags = tags
         self.version = version
+        self.client_token = client_token
         self.dry_run = dry_run
 
     def validate(self):
@@ -415,6 +452,10 @@ class CreateAppRequest(TeaModel):
                     k.validate()
         if self.quota_info:
             self.quota_info.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -444,8 +485,14 @@ class CreateAppRequest(TeaModel):
             result['regionId'] = self.region_id
         if self.scenario is not None:
             result['scenario'] = self.scenario
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
         if self.version is not None:
             result['version'] = self.version
+        if self.client_token is not None:
+            result['clientToken'] = self.client_token
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
         return result
@@ -478,8 +525,15 @@ class CreateAppRequest(TeaModel):
             self.region_id = m.get('regionId')
         if m.get('scenario') is not None:
             self.scenario = m.get('scenario')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = CreateAppRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('version') is not None:
             self.version = m.get('version')
+        if m.get('clientToken') is not None:
+            self.client_token = m.get('clientToken')
         if m.get('dryRun') is not None:
             self.dry_run = m.get('dryRun')
         return self
@@ -1484,12 +1538,46 @@ class GetAppResponseBodyResultPrivateNetwork(TeaModel):
         return self
 
 
+class GetAppResponseBodyResultTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
 class GetAppResponseBodyResult(TeaModel):
     def __init__(
         self,
         app_id: str = None,
         app_name: str = None,
         app_type: str = None,
+        charge_type: str = None,
         create_time: str = None,
         description: str = None,
         instance_id: str = None,
@@ -1498,12 +1586,15 @@ class GetAppResponseBodyResult(TeaModel):
         owner_id: str = None,
         private_network: List[GetAppResponseBodyResultPrivateNetwork] = None,
         region_id: str = None,
+        scenario: str = None,
         status: str = None,
+        tags: List[GetAppResponseBodyResultTags] = None,
         version: str = None,
     ):
         self.app_id = app_id
         self.app_name = app_name
         self.app_type = app_type
+        self.charge_type = charge_type
         self.create_time = create_time
         self.description = description
         self.instance_id = instance_id
@@ -1512,7 +1603,9 @@ class GetAppResponseBodyResult(TeaModel):
         self.owner_id = owner_id
         self.private_network = private_network
         self.region_id = region_id
+        self.scenario = scenario
         self.status = status
+        self.tags = tags
         self.version = version
 
     def validate(self):
@@ -1522,6 +1615,10 @@ class GetAppResponseBodyResult(TeaModel):
                     k.validate()
         if self.private_network:
             for k in self.private_network:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -1537,6 +1634,8 @@ class GetAppResponseBodyResult(TeaModel):
             result['appName'] = self.app_name
         if self.app_type is not None:
             result['appType'] = self.app_type
+        if self.charge_type is not None:
+            result['chargeType'] = self.charge_type
         if self.create_time is not None:
             result['createTime'] = self.create_time
         if self.description is not None:
@@ -1557,8 +1656,14 @@ class GetAppResponseBodyResult(TeaModel):
                 result['privateNetwork'].append(k.to_map() if k else None)
         if self.region_id is not None:
             result['regionId'] = self.region_id
+        if self.scenario is not None:
+            result['scenario'] = self.scenario
         if self.status is not None:
             result['status'] = self.status
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
         if self.version is not None:
             result['version'] = self.version
         return result
@@ -1571,6 +1676,8 @@ class GetAppResponseBodyResult(TeaModel):
             self.app_name = m.get('appName')
         if m.get('appType') is not None:
             self.app_type = m.get('appType')
+        if m.get('chargeType') is not None:
+            self.charge_type = m.get('chargeType')
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
         if m.get('description') is not None:
@@ -1593,8 +1700,15 @@ class GetAppResponseBodyResult(TeaModel):
                 self.private_network.append(temp_model.from_map(k))
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
+        if m.get('scenario') is not None:
+            self.scenario = m.get('scenario')
         if m.get('status') is not None:
             self.status = m.get('status')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = GetAppResponseBodyResultTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('version') is not None:
             self.version = m.get('version')
         return self
@@ -2352,6 +2466,7 @@ class ListAppsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         status: str = None,
+        tags: str = None,
     ):
         self.app_name = app_name
         self.create_time = create_time
@@ -2360,6 +2475,7 @@ class ListAppsRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.status = status
+        self.tags = tags
 
     def validate(self):
         pass
@@ -2384,6 +2500,8 @@ class ListAppsRequest(TeaModel):
             result['pageSize'] = self.page_size
         if self.status is not None:
             result['status'] = self.status
+        if self.tags is not None:
+            result['tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -2402,6 +2520,8 @@ class ListAppsRequest(TeaModel):
             self.page_size = m.get('pageSize')
         if m.get('status') is not None:
             self.status = m.get('status')
+        if m.get('tags') is not None:
+            self.tags = m.get('tags')
         return self
 
 

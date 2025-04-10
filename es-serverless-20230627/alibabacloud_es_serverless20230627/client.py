@@ -163,6 +163,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
         body = {}
@@ -184,6 +186,8 @@ class Client(OpenApiClient):
             body['regionId'] = request.region_id
         if not UtilClient.is_unset(request.scenario):
             body['scenario'] = request.scenario
+        if not UtilClient.is_unset(request.tags):
+            body['tags'] = request.tags
         if not UtilClient.is_unset(request.version):
             body['version'] = request.version
         req = open_api_models.OpenApiRequest(
@@ -229,6 +233,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
         body = {}
@@ -250,6 +256,8 @@ class Client(OpenApiClient):
             body['regionId'] = request.region_id
         if not UtilClient.is_unset(request.scenario):
             body['scenario'] = request.scenario
+        if not UtilClient.is_unset(request.tags):
+            body['tags'] = request.tags
         if not UtilClient.is_unset(request.version):
             body['version'] = request.version
         req = open_api_models.OpenApiRequest(
@@ -1583,6 +1591,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.status):
             query['status'] = request.status
+        if not UtilClient.is_unset(request.tags):
+            query['tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1639,6 +1649,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.status):
             query['status'] = request.status
+        if not UtilClient.is_unset(request.tags):
+            query['tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)

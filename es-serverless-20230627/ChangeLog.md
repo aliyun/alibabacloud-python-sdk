@@ -1,3 +1,12 @@
+2025-04-10 Version: 2.0.4
+- Update API CreateApp: add request parameters clientToken.
+- Update API CreateApp: add request parameters body.tags.
+- Update API GetApp: add response parameters Body.result.chargeType.
+- Update API GetApp: add response parameters Body.result.scenario.
+- Update API GetApp: add response parameters Body.result.tags.
+- Update API ListApps: add request parameters tags.
+
+
 2025-04-09 Version: 2.0.3
 - Update API CreateApp: add response parameters Body.result.appId.
 
