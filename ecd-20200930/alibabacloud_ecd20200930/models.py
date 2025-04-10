@@ -31614,6 +31614,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         enable_internet_access: bool = None,
         enable_service_route: bool = None,
         file_system_ids: List[str] = None,
+        is_ldap: bool = None,
+        ldap_url: str = None,
         logs: List[DescribeOfficeSitesResponseBodyOfficeSitesLogs] = None,
         mfa_enabled: bool = None,
         name: str = None,
@@ -31717,6 +31719,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         self.enable_service_route = enable_service_route
         # An array of File Storage NAS (NAS) file system IDs.
         self.file_system_ids = file_system_ids
+        self.is_ldap = is_ldap
+        self.ldap_url = ldap_url
         # Details about registration logs.
         self.logs = logs
         # Indicates whether multi-factor authentication (MFA) is enabled.
@@ -31904,6 +31908,10 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             result['EnableServiceRoute'] = self.enable_service_route
         if self.file_system_ids is not None:
             result['FileSystemIds'] = self.file_system_ids
+        if self.is_ldap is not None:
+            result['IsLdap'] = self.is_ldap
+        if self.ldap_url is not None:
+            result['LdapUrl'] = self.ldap_url
         result['Logs'] = []
         if self.logs is not None:
             for k in self.logs:
@@ -32027,6 +32035,10 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             self.enable_service_route = m.get('EnableServiceRoute')
         if m.get('FileSystemIds') is not None:
             self.file_system_ids = m.get('FileSystemIds')
+        if m.get('IsLdap') is not None:
+            self.is_ldap = m.get('IsLdap')
+        if m.get('LdapUrl') is not None:
+            self.ldap_url = m.get('LdapUrl')
         self.logs = []
         if m.get('Logs') is not None:
             for k in m.get('Logs'):
@@ -36406,6 +36418,7 @@ class DescribeSnapshotsRequest(TeaModel):
         end_time: str = None,
         max_results: int = None,
         next_token: str = None,
+        os_type: str = None,
         region_id: str = None,
         snapshot_id: str = None,
         snapshot_name: str = None,
@@ -36428,6 +36441,7 @@ class DescribeSnapshotsRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        self.os_type = os_type
         # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
@@ -36497,6 +36511,8 @@ class DescribeSnapshotsRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.snapshot_id is not None:
@@ -36525,6 +36541,8 @@ class DescribeSnapshotsRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('SnapshotId') is not None:
@@ -36550,6 +36568,8 @@ class DescribeSnapshotsResponseBodySnapshots(TeaModel):
         desktop_id: str = None,
         desktop_name: str = None,
         desktop_status: str = None,
+        disk_status: str = None,
+        os_type: str = None,
         progress: str = None,
         protocol_type: str = None,
         remain_time: int = None,
@@ -36589,6 +36609,8 @@ class DescribeSnapshotsResponseBodySnapshots(TeaModel):
         # *   Deleted
         # *   Pending
         self.desktop_status = desktop_status
+        self.disk_status = disk_status
+        self.os_type = os_type
         # The progress of creating the snapshot. Unit: %.
         self.progress = progress
         # The protocol type.
@@ -36721,6 +36743,10 @@ class DescribeSnapshotsResponseBodySnapshots(TeaModel):
             result['DesktopName'] = self.desktop_name
         if self.desktop_status is not None:
             result['DesktopStatus'] = self.desktop_status
+        if self.disk_status is not None:
+            result['DiskStatus'] = self.disk_status
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
         if self.progress is not None:
             result['Progress'] = self.progress
         if self.protocol_type is not None:
@@ -36765,6 +36791,10 @@ class DescribeSnapshotsResponseBodySnapshots(TeaModel):
             self.desktop_name = m.get('DesktopName')
         if m.get('DesktopStatus') is not None:
             self.desktop_status = m.get('DesktopStatus')
+        if m.get('DiskStatus') is not None:
+            self.disk_status = m.get('DiskStatus')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
         if m.get('Progress') is not None:
             self.progress = m.get('Progress')
         if m.get('ProtocolType') is not None:

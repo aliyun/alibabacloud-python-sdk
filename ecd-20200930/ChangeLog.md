@@ -1,3 +1,11 @@
+2025-04-10 Version: 4.7.3
+- Update API DescribeOfficeSites: add response parameters Body.OfficeSites.$.IsLdap.
+- Update API DescribeOfficeSites: add response parameters Body.OfficeSites.$.LdapUrl.
+- Update API DescribeSnapshots: add request parameters OsType.
+- Update API DescribeSnapshots: add response parameters Body.Snapshots.$.DiskStatus.
+- Update API DescribeSnapshots: add response parameters Body.Snapshots.$.OsType.
+
+
 2025-04-09 Version: 4.7.2
 - Update API CreateImage: add request parameters DataSnapshotIds.
 - Update API DescribeDesktopGroups: add response parameters Body.DesktopGroups.$.IsLdap.
