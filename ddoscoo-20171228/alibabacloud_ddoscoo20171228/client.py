@@ -399,20 +399,26 @@ class Client(OpenApiClient):
 
     def config_layer_4rule_with_options(
         self,
-        request: ddoscoo_20171228_models.ConfigLayer4RuleRequest,
+        tmp_req: ddoscoo_20171228_models.ConfigLayer4RuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20171228_models.ConfigLayer4RuleResponse:
         """
-        @param request: ConfigLayer4RuleRequest
+        @param tmp_req: ConfigLayer4RuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ConfigLayer4RuleResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ddoscoo_20171228_models.ConfigLayer4RuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.us_timeout):
+            request.us_timeout_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.us_timeout, 'UsTimeout', 'json')
         query = {}
         if not UtilClient.is_unset(request.listeners):
             query['Listeners'] = request.listeners
         if not UtilClient.is_unset(request.proxy_enable):
             query['ProxyEnable'] = request.proxy_enable
+        if not UtilClient.is_unset(request.us_timeout_shrink):
+            query['UsTimeout'] = request.us_timeout_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -440,20 +446,26 @@ class Client(OpenApiClient):
 
     async def config_layer_4rule_with_options_async(
         self,
-        request: ddoscoo_20171228_models.ConfigLayer4RuleRequest,
+        tmp_req: ddoscoo_20171228_models.ConfigLayer4RuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20171228_models.ConfigLayer4RuleResponse:
         """
-        @param request: ConfigLayer4RuleRequest
+        @param tmp_req: ConfigLayer4RuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ConfigLayer4RuleResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ddoscoo_20171228_models.ConfigLayer4RuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.us_timeout):
+            request.us_timeout_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.us_timeout, 'UsTimeout', 'json')
         query = {}
         if not UtilClient.is_unset(request.listeners):
             query['Listeners'] = request.listeners
         if not UtilClient.is_unset(request.proxy_enable):
             query['ProxyEnable'] = request.proxy_enable
+        if not UtilClient.is_unset(request.us_timeout_shrink):
+            query['UsTimeout'] = request.us_timeout_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1327,20 +1339,26 @@ class Client(OpenApiClient):
 
     def create_layer_4rule_with_options(
         self,
-        request: ddoscoo_20171228_models.CreateLayer4RuleRequest,
+        tmp_req: ddoscoo_20171228_models.CreateLayer4RuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20171228_models.CreateLayer4RuleResponse:
         """
-        @param request: CreateLayer4RuleRequest
+        @param tmp_req: CreateLayer4RuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateLayer4RuleResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ddoscoo_20171228_models.CreateLayer4RuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.us_timeout):
+            request.us_timeout_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.us_timeout, 'UsTimeout', 'json')
         query = {}
         if not UtilClient.is_unset(request.listeners):
             query['Listeners'] = request.listeners
         if not UtilClient.is_unset(request.proxy_enable):
             query['ProxyEnable'] = request.proxy_enable
+        if not UtilClient.is_unset(request.us_timeout_shrink):
+            query['UsTimeout'] = request.us_timeout_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1368,20 +1386,26 @@ class Client(OpenApiClient):
 
     async def create_layer_4rule_with_options_async(
         self,
-        request: ddoscoo_20171228_models.CreateLayer4RuleRequest,
+        tmp_req: ddoscoo_20171228_models.CreateLayer4RuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20171228_models.CreateLayer4RuleResponse:
         """
-        @param request: CreateLayer4RuleRequest
+        @param tmp_req: CreateLayer4RuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateLayer4RuleResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ddoscoo_20171228_models.CreateLayer4RuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.us_timeout):
+            request.us_timeout_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.us_timeout, 'UsTimeout', 'json')
         query = {}
         if not UtilClient.is_unset(request.listeners):
             query['Listeners'] = request.listeners
         if not UtilClient.is_unset(request.proxy_enable):
             query['ProxyEnable'] = request.proxy_enable
+        if not UtilClient.is_unset(request.us_timeout_shrink):
+            query['UsTimeout'] = request.us_timeout_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

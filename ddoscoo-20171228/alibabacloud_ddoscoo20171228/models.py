@@ -386,15 +386,92 @@ class ConfigHealthCheckResponse(TeaModel):
         return self
 
 
+class ConfigLayer4RuleRequestUsTimeout(TeaModel):
+    def __init__(
+        self,
+        connect_timeout: int = None,
+        rs_timeout: int = None,
+    ):
+        self.connect_timeout = connect_timeout
+        self.rs_timeout = rs_timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connect_timeout is not None:
+            result['ConnectTimeout'] = self.connect_timeout
+        if self.rs_timeout is not None:
+            result['RsTimeout'] = self.rs_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectTimeout') is not None:
+            self.connect_timeout = m.get('ConnectTimeout')
+        if m.get('RsTimeout') is not None:
+            self.rs_timeout = m.get('RsTimeout')
+        return self
+
+
 class ConfigLayer4RuleRequest(TeaModel):
     def __init__(
         self,
         listeners: str = None,
         proxy_enable: int = None,
+        us_timeout: ConfigLayer4RuleRequestUsTimeout = None,
     ):
         # This parameter is required.
         self.listeners = listeners
         self.proxy_enable = proxy_enable
+        self.us_timeout = us_timeout
+
+    def validate(self):
+        if self.us_timeout:
+            self.us_timeout.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.listeners is not None:
+            result['Listeners'] = self.listeners
+        if self.proxy_enable is not None:
+            result['ProxyEnable'] = self.proxy_enable
+        if self.us_timeout is not None:
+            result['UsTimeout'] = self.us_timeout.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Listeners') is not None:
+            self.listeners = m.get('Listeners')
+        if m.get('ProxyEnable') is not None:
+            self.proxy_enable = m.get('ProxyEnable')
+        if m.get('UsTimeout') is not None:
+            temp_model = ConfigLayer4RuleRequestUsTimeout()
+            self.us_timeout = temp_model.from_map(m['UsTimeout'])
+        return self
+
+
+class ConfigLayer4RuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        listeners: str = None,
+        proxy_enable: int = None,
+        us_timeout_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.listeners = listeners
+        self.proxy_enable = proxy_enable
+        self.us_timeout_shrink = us_timeout_shrink
 
     def validate(self):
         pass
@@ -409,6 +486,8 @@ class ConfigLayer4RuleRequest(TeaModel):
             result['Listeners'] = self.listeners
         if self.proxy_enable is not None:
             result['ProxyEnable'] = self.proxy_enable
+        if self.us_timeout_shrink is not None:
+            result['UsTimeout'] = self.us_timeout_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -417,6 +496,8 @@ class ConfigLayer4RuleRequest(TeaModel):
             self.listeners = m.get('Listeners')
         if m.get('ProxyEnable') is not None:
             self.proxy_enable = m.get('ProxyEnable')
+        if m.get('UsTimeout') is not None:
+            self.us_timeout_shrink = m.get('UsTimeout')
         return self
 
 
@@ -1360,15 +1441,92 @@ class CreateAsyncTaskResponse(TeaModel):
         return self
 
 
+class CreateLayer4RuleRequestUsTimeout(TeaModel):
+    def __init__(
+        self,
+        connect_timeout: int = None,
+        rs_timeout: int = None,
+    ):
+        self.connect_timeout = connect_timeout
+        self.rs_timeout = rs_timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connect_timeout is not None:
+            result['ConnectTimeout'] = self.connect_timeout
+        if self.rs_timeout is not None:
+            result['RsTimeout'] = self.rs_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectTimeout') is not None:
+            self.connect_timeout = m.get('ConnectTimeout')
+        if m.get('RsTimeout') is not None:
+            self.rs_timeout = m.get('RsTimeout')
+        return self
+
+
 class CreateLayer4RuleRequest(TeaModel):
     def __init__(
         self,
         listeners: str = None,
         proxy_enable: int = None,
+        us_timeout: CreateLayer4RuleRequestUsTimeout = None,
     ):
         # This parameter is required.
         self.listeners = listeners
         self.proxy_enable = proxy_enable
+        self.us_timeout = us_timeout
+
+    def validate(self):
+        if self.us_timeout:
+            self.us_timeout.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.listeners is not None:
+            result['Listeners'] = self.listeners
+        if self.proxy_enable is not None:
+            result['ProxyEnable'] = self.proxy_enable
+        if self.us_timeout is not None:
+            result['UsTimeout'] = self.us_timeout.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Listeners') is not None:
+            self.listeners = m.get('Listeners')
+        if m.get('ProxyEnable') is not None:
+            self.proxy_enable = m.get('ProxyEnable')
+        if m.get('UsTimeout') is not None:
+            temp_model = CreateLayer4RuleRequestUsTimeout()
+            self.us_timeout = temp_model.from_map(m['UsTimeout'])
+        return self
+
+
+class CreateLayer4RuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        listeners: str = None,
+        proxy_enable: int = None,
+        us_timeout_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.listeners = listeners
+        self.proxy_enable = proxy_enable
+        self.us_timeout_shrink = us_timeout_shrink
 
     def validate(self):
         pass
@@ -1383,6 +1541,8 @@ class CreateLayer4RuleRequest(TeaModel):
             result['Listeners'] = self.listeners
         if self.proxy_enable is not None:
             result['ProxyEnable'] = self.proxy_enable
+        if self.us_timeout_shrink is not None:
+            result['UsTimeout'] = self.us_timeout_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -1391,6 +1551,8 @@ class CreateLayer4RuleRequest(TeaModel):
             self.listeners = m.get('Listeners')
         if m.get('ProxyEnable') is not None:
             self.proxy_enable = m.get('ProxyEnable')
+        if m.get('UsTimeout') is not None:
+            self.us_timeout_shrink = m.get('UsTimeout')
         return self
 
 
@@ -6702,6 +6864,39 @@ class DescribeLayer4RulesRequest(TeaModel):
         return self
 
 
+class DescribeLayer4RulesResponseBodyListenersUsTimeout(TeaModel):
+    def __init__(
+        self,
+        connect_timeout: int = None,
+        rs_timeout: int = None,
+    ):
+        self.connect_timeout = connect_timeout
+        self.rs_timeout = rs_timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connect_timeout is not None:
+            result['ConnectTimeout'] = self.connect_timeout
+        if self.rs_timeout is not None:
+            result['RsTimeout'] = self.rs_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectTimeout') is not None:
+            self.connect_timeout = m.get('ConnectTimeout')
+        if m.get('RsTimeout') is not None:
+            self.rs_timeout = m.get('RsTimeout')
+        return self
+
+
 class DescribeLayer4RulesResponseBodyListeners(TeaModel):
     def __init__(
         self,
@@ -6718,6 +6913,7 @@ class DescribeLayer4RulesResponseBodyListeners(TeaModel):
         proxy_status: str = None,
         real_servers: List[str] = None,
         remark: str = None,
+        us_timeout: DescribeLayer4RulesResponseBodyListenersUsTimeout = None,
     ):
         # The origin server port.
         self.backend_port = backend_port
@@ -6762,9 +6958,11 @@ class DescribeLayer4RulesResponseBodyListeners(TeaModel):
         self.real_servers = real_servers
         # The remarks for the port forwarding rule.
         self.remark = remark
+        self.us_timeout = us_timeout
 
     def validate(self):
-        pass
+        if self.us_timeout:
+            self.us_timeout.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6798,6 +6996,8 @@ class DescribeLayer4RulesResponseBodyListeners(TeaModel):
             result['RealServers'] = self.real_servers
         if self.remark is not None:
             result['Remark'] = self.remark
+        if self.us_timeout is not None:
+            result['UsTimeout'] = self.us_timeout.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -6828,6 +7028,9 @@ class DescribeLayer4RulesResponseBodyListeners(TeaModel):
             self.real_servers = m.get('RealServers')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
+        if m.get('UsTimeout') is not None:
+            temp_model = DescribeLayer4RulesResponseBodyListenersUsTimeout()
+            self.us_timeout = temp_model.from_map(m['UsTimeout'])
         return self
 
 
