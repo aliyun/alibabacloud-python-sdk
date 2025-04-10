@@ -79,10 +79,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            rai20240701_models.BatchContentAsyncDetectResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.BatchContentAsyncDetectResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.BatchContentAsyncDetectResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def batch_content_async_detect_with_options_async(
         self,
@@ -122,10 +128,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            rai20240701_models.BatchContentAsyncDetectResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.BatchContentAsyncDetectResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.BatchContentAsyncDetectResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def batch_content_async_detect(
         self,
@@ -191,10 +203,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            rai20240701_models.BatchContentSyncDetectResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.BatchContentSyncDetectResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.BatchContentSyncDetectResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def batch_content_sync_detect_with_options_async(
         self,
@@ -234,10 +252,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            rai20240701_models.BatchContentSyncDetectResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.BatchContentSyncDetectResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.BatchContentSyncDetectResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def batch_content_sync_detect(
         self,
@@ -295,10 +319,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            rai20240701_models.CheckAccountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.CheckAccountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.CheckAccountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def check_account_with_options_async(
         self,
@@ -330,10 +360,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            rai20240701_models.CheckAccountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.CheckAccountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.CheckAccountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def check_account(
         self,
@@ -399,10 +435,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            rai20240701_models.ContentAsyncDetectResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.ContentAsyncDetectResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.ContentAsyncDetectResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def content_async_detect_with_options_async(
         self,
@@ -442,10 +484,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            rai20240701_models.ContentAsyncDetectResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.ContentAsyncDetectResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.ContentAsyncDetectResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def content_async_detect(
         self,
@@ -511,10 +559,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            rai20240701_models.ContentSyncDetectResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.ContentSyncDetectResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.ContentSyncDetectResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def content_sync_detect_with_options_async(
         self,
@@ -554,10 +608,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            rai20240701_models.ContentSyncDetectResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.ContentSyncDetectResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.ContentSyncDetectResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def content_sync_detect(
         self,
@@ -617,10 +677,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            rai20240701_models.GetContentDetectResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.GetContentDetectResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.GetContentDetectResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_content_detect_result_with_options_async(
         self,
@@ -654,10 +720,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            rai20240701_models.GetContentDetectResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.GetContentDetectResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.GetContentDetectResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_content_detect_result(
         self,
@@ -684,6 +756,230 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_content_detect_result_with_options_async(request, runtime)
+
+    def get_model_input_content_detect_result_with_options(
+        self,
+        request: rai20240701_models.GetModelInputContentDetectResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rai20240701_models.GetModelInputContentDetectResultResponse:
+        """
+        @summary GetModelInputContentDetectResult
+        
+        @param request: GetModelInputContentDetectResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetModelInputContentDetectResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetModelInputContentDetectResult',
+            version='2024-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.GetModelInputContentDetectResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.GetModelInputContentDetectResultResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_model_input_content_detect_result_with_options_async(
+        self,
+        request: rai20240701_models.GetModelInputContentDetectResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rai20240701_models.GetModelInputContentDetectResultResponse:
+        """
+        @summary GetModelInputContentDetectResult
+        
+        @param request: GetModelInputContentDetectResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetModelInputContentDetectResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetModelInputContentDetectResult',
+            version='2024-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.GetModelInputContentDetectResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.GetModelInputContentDetectResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_model_input_content_detect_result(
+        self,
+        request: rai20240701_models.GetModelInputContentDetectResultRequest,
+    ) -> rai20240701_models.GetModelInputContentDetectResultResponse:
+        """
+        @summary GetModelInputContentDetectResult
+        
+        @param request: GetModelInputContentDetectResultRequest
+        @return: GetModelInputContentDetectResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_model_input_content_detect_result_with_options(request, runtime)
+
+    async def get_model_input_content_detect_result_async(
+        self,
+        request: rai20240701_models.GetModelInputContentDetectResultRequest,
+    ) -> rai20240701_models.GetModelInputContentDetectResultResponse:
+        """
+        @summary GetModelInputContentDetectResult
+        
+        @param request: GetModelInputContentDetectResultRequest
+        @return: GetModelInputContentDetectResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_model_input_content_detect_result_with_options_async(request, runtime)
+
+    def get_model_output_content_detect_result_with_options(
+        self,
+        request: rai20240701_models.GetModelOutputContentDetectResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rai20240701_models.GetModelOutputContentDetectResultResponse:
+        """
+        @summary GetModelOutputContentDetectResult
+        
+        @param request: GetModelOutputContentDetectResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetModelOutputContentDetectResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetModelOutputContentDetectResult',
+            version='2024-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.GetModelOutputContentDetectResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.GetModelOutputContentDetectResultResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_model_output_content_detect_result_with_options_async(
+        self,
+        request: rai20240701_models.GetModelOutputContentDetectResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rai20240701_models.GetModelOutputContentDetectResultResponse:
+        """
+        @summary GetModelOutputContentDetectResult
+        
+        @param request: GetModelOutputContentDetectResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetModelOutputContentDetectResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetModelOutputContentDetectResult',
+            version='2024-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.GetModelOutputContentDetectResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.GetModelOutputContentDetectResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_model_output_content_detect_result(
+        self,
+        request: rai20240701_models.GetModelOutputContentDetectResultRequest,
+    ) -> rai20240701_models.GetModelOutputContentDetectResultResponse:
+        """
+        @summary GetModelOutputContentDetectResult
+        
+        @param request: GetModelOutputContentDetectResultRequest
+        @return: GetModelOutputContentDetectResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_model_output_content_detect_result_with_options(request, runtime)
+
+    async def get_model_output_content_detect_result_async(
+        self,
+        request: rai20240701_models.GetModelOutputContentDetectResultRequest,
+    ) -> rai20240701_models.GetModelOutputContentDetectResultResponse:
+        """
+        @summary GetModelOutputContentDetectResult
+        
+        @param request: GetModelOutputContentDetectResultRequest
+        @return: GetModelOutputContentDetectResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_model_output_content_detect_result_with_options_async(request, runtime)
 
     def list_sensitive_word_with_options(
         self,
@@ -719,10 +1015,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            rai20240701_models.ListSensitiveWordResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.ListSensitiveWordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.ListSensitiveWordResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_sensitive_word_with_options_async(
         self,
@@ -758,10 +1060,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            rai20240701_models.ListSensitiveWordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.ListSensitiveWordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.ListSensitiveWordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_sensitive_word(
         self,
@@ -788,6 +1096,550 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_sensitive_word_with_options_async(request, runtime)
+
+    def model_input_content_async_detect_with_options(
+        self,
+        tmp_req: rai20240701_models.ModelInputContentAsyncDetectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rai20240701_models.ModelInputContentAsyncDetectResponse:
+        """
+        @summary ModelInputContentAsyncDetect
+        
+        @param tmp_req: ModelInputContentAsyncDetectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModelInputContentAsyncDetectResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rai20240701_models.ModelInputContentAsyncDetectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.body_data):
+            request.body_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.body_data, 'BodyData', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.policy_identifier):
+            query['PolicyIdentifier'] = request.policy_identifier
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scene_name):
+            query['SceneName'] = request.scene_name
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        body = {}
+        if not UtilClient.is_unset(request.body_data_shrink):
+            body['BodyData'] = request.body_data_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModelInputContentAsyncDetect',
+            version='2024-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.ModelInputContentAsyncDetectResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.ModelInputContentAsyncDetectResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def model_input_content_async_detect_with_options_async(
+        self,
+        tmp_req: rai20240701_models.ModelInputContentAsyncDetectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rai20240701_models.ModelInputContentAsyncDetectResponse:
+        """
+        @summary ModelInputContentAsyncDetect
+        
+        @param tmp_req: ModelInputContentAsyncDetectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModelInputContentAsyncDetectResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rai20240701_models.ModelInputContentAsyncDetectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.body_data):
+            request.body_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.body_data, 'BodyData', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.policy_identifier):
+            query['PolicyIdentifier'] = request.policy_identifier
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scene_name):
+            query['SceneName'] = request.scene_name
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        body = {}
+        if not UtilClient.is_unset(request.body_data_shrink):
+            body['BodyData'] = request.body_data_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModelInputContentAsyncDetect',
+            version='2024-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.ModelInputContentAsyncDetectResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.ModelInputContentAsyncDetectResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def model_input_content_async_detect(
+        self,
+        request: rai20240701_models.ModelInputContentAsyncDetectRequest,
+    ) -> rai20240701_models.ModelInputContentAsyncDetectResponse:
+        """
+        @summary ModelInputContentAsyncDetect
+        
+        @param request: ModelInputContentAsyncDetectRequest
+        @return: ModelInputContentAsyncDetectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.model_input_content_async_detect_with_options(request, runtime)
+
+    async def model_input_content_async_detect_async(
+        self,
+        request: rai20240701_models.ModelInputContentAsyncDetectRequest,
+    ) -> rai20240701_models.ModelInputContentAsyncDetectResponse:
+        """
+        @summary ModelInputContentAsyncDetect
+        
+        @param request: ModelInputContentAsyncDetectRequest
+        @return: ModelInputContentAsyncDetectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.model_input_content_async_detect_with_options_async(request, runtime)
+
+    def model_input_content_sync_detect_with_options(
+        self,
+        tmp_req: rai20240701_models.ModelInputContentSyncDetectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rai20240701_models.ModelInputContentSyncDetectResponse:
+        """
+        @summary ModelInputContentSyncDetect
+        
+        @param tmp_req: ModelInputContentSyncDetectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModelInputContentSyncDetectResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rai20240701_models.ModelInputContentSyncDetectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.body_data):
+            request.body_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.body_data, 'BodyData', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.policy_identifier):
+            query['PolicyIdentifier'] = request.policy_identifier
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scene_name):
+            query['SceneName'] = request.scene_name
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        body = {}
+        if not UtilClient.is_unset(request.body_data_shrink):
+            body['BodyData'] = request.body_data_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModelInputContentSyncDetect',
+            version='2024-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.ModelInputContentSyncDetectResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.ModelInputContentSyncDetectResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def model_input_content_sync_detect_with_options_async(
+        self,
+        tmp_req: rai20240701_models.ModelInputContentSyncDetectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rai20240701_models.ModelInputContentSyncDetectResponse:
+        """
+        @summary ModelInputContentSyncDetect
+        
+        @param tmp_req: ModelInputContentSyncDetectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModelInputContentSyncDetectResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rai20240701_models.ModelInputContentSyncDetectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.body_data):
+            request.body_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.body_data, 'BodyData', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.policy_identifier):
+            query['PolicyIdentifier'] = request.policy_identifier
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scene_name):
+            query['SceneName'] = request.scene_name
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        body = {}
+        if not UtilClient.is_unset(request.body_data_shrink):
+            body['BodyData'] = request.body_data_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModelInputContentSyncDetect',
+            version='2024-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.ModelInputContentSyncDetectResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.ModelInputContentSyncDetectResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def model_input_content_sync_detect(
+        self,
+        request: rai20240701_models.ModelInputContentSyncDetectRequest,
+    ) -> rai20240701_models.ModelInputContentSyncDetectResponse:
+        """
+        @summary ModelInputContentSyncDetect
+        
+        @param request: ModelInputContentSyncDetectRequest
+        @return: ModelInputContentSyncDetectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.model_input_content_sync_detect_with_options(request, runtime)
+
+    async def model_input_content_sync_detect_async(
+        self,
+        request: rai20240701_models.ModelInputContentSyncDetectRequest,
+    ) -> rai20240701_models.ModelInputContentSyncDetectResponse:
+        """
+        @summary ModelInputContentSyncDetect
+        
+        @param request: ModelInputContentSyncDetectRequest
+        @return: ModelInputContentSyncDetectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.model_input_content_sync_detect_with_options_async(request, runtime)
+
+    def model_output_content_async_detect_with_options(
+        self,
+        tmp_req: rai20240701_models.ModelOutputContentAsyncDetectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rai20240701_models.ModelOutputContentAsyncDetectResponse:
+        """
+        @summary ModelOutputContentAsyncDetect
+        
+        @param tmp_req: ModelOutputContentAsyncDetectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModelOutputContentAsyncDetectResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rai20240701_models.ModelOutputContentAsyncDetectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.body_data):
+            request.body_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.body_data, 'BodyData', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.policy_identifier):
+            query['PolicyIdentifier'] = request.policy_identifier
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scene_name):
+            query['SceneName'] = request.scene_name
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        body = {}
+        if not UtilClient.is_unset(request.body_data_shrink):
+            body['BodyData'] = request.body_data_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModelOutputContentAsyncDetect',
+            version='2024-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.ModelOutputContentAsyncDetectResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.ModelOutputContentAsyncDetectResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def model_output_content_async_detect_with_options_async(
+        self,
+        tmp_req: rai20240701_models.ModelOutputContentAsyncDetectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rai20240701_models.ModelOutputContentAsyncDetectResponse:
+        """
+        @summary ModelOutputContentAsyncDetect
+        
+        @param tmp_req: ModelOutputContentAsyncDetectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModelOutputContentAsyncDetectResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rai20240701_models.ModelOutputContentAsyncDetectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.body_data):
+            request.body_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.body_data, 'BodyData', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.policy_identifier):
+            query['PolicyIdentifier'] = request.policy_identifier
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scene_name):
+            query['SceneName'] = request.scene_name
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        body = {}
+        if not UtilClient.is_unset(request.body_data_shrink):
+            body['BodyData'] = request.body_data_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModelOutputContentAsyncDetect',
+            version='2024-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.ModelOutputContentAsyncDetectResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.ModelOutputContentAsyncDetectResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def model_output_content_async_detect(
+        self,
+        request: rai20240701_models.ModelOutputContentAsyncDetectRequest,
+    ) -> rai20240701_models.ModelOutputContentAsyncDetectResponse:
+        """
+        @summary ModelOutputContentAsyncDetect
+        
+        @param request: ModelOutputContentAsyncDetectRequest
+        @return: ModelOutputContentAsyncDetectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.model_output_content_async_detect_with_options(request, runtime)
+
+    async def model_output_content_async_detect_async(
+        self,
+        request: rai20240701_models.ModelOutputContentAsyncDetectRequest,
+    ) -> rai20240701_models.ModelOutputContentAsyncDetectResponse:
+        """
+        @summary ModelOutputContentAsyncDetect
+        
+        @param request: ModelOutputContentAsyncDetectRequest
+        @return: ModelOutputContentAsyncDetectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.model_output_content_async_detect_with_options_async(request, runtime)
+
+    def model_output_content_sync_detect_with_options(
+        self,
+        tmp_req: rai20240701_models.ModelOutputContentSyncDetectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rai20240701_models.ModelOutputContentSyncDetectResponse:
+        """
+        @summary ModelOutputContentSyncDetect
+        
+        @param tmp_req: ModelOutputContentSyncDetectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModelOutputContentSyncDetectResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rai20240701_models.ModelOutputContentSyncDetectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.body_data):
+            request.body_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.body_data, 'BodyData', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.policy_identifier):
+            query['PolicyIdentifier'] = request.policy_identifier
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scene_name):
+            query['SceneName'] = request.scene_name
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        body = {}
+        if not UtilClient.is_unset(request.body_data_shrink):
+            body['BodyData'] = request.body_data_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModelOutputContentSyncDetect',
+            version='2024-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.ModelOutputContentSyncDetectResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.ModelOutputContentSyncDetectResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def model_output_content_sync_detect_with_options_async(
+        self,
+        tmp_req: rai20240701_models.ModelOutputContentSyncDetectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rai20240701_models.ModelOutputContentSyncDetectResponse:
+        """
+        @summary ModelOutputContentSyncDetect
+        
+        @param tmp_req: ModelOutputContentSyncDetectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModelOutputContentSyncDetectResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rai20240701_models.ModelOutputContentSyncDetectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.body_data):
+            request.body_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.body_data, 'BodyData', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.policy_identifier):
+            query['PolicyIdentifier'] = request.policy_identifier
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scene_name):
+            query['SceneName'] = request.scene_name
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        body = {}
+        if not UtilClient.is_unset(request.body_data_shrink):
+            body['BodyData'] = request.body_data_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModelOutputContentSyncDetect',
+            version='2024-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.ModelOutputContentSyncDetectResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.ModelOutputContentSyncDetectResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def model_output_content_sync_detect(
+        self,
+        request: rai20240701_models.ModelOutputContentSyncDetectRequest,
+    ) -> rai20240701_models.ModelOutputContentSyncDetectResponse:
+        """
+        @summary ModelOutputContentSyncDetect
+        
+        @param request: ModelOutputContentSyncDetectRequest
+        @return: ModelOutputContentSyncDetectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.model_output_content_sync_detect_with_options(request, runtime)
+
+    async def model_output_content_sync_detect_async(
+        self,
+        request: rai20240701_models.ModelOutputContentSyncDetectRequest,
+    ) -> rai20240701_models.ModelOutputContentSyncDetectResponse:
+        """
+        @summary ModelOutputContentSyncDetect
+        
+        @param request: ModelOutputContentSyncDetectRequest
+        @return: ModelOutputContentSyncDetectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.model_output_content_sync_detect_with_options_async(request, runtime)
 
     def register_account_with_options(
         self,
@@ -821,10 +1673,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            rai20240701_models.RegisterAccountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.RegisterAccountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.RegisterAccountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def register_account_with_options_async(
         self,
@@ -858,10 +1716,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            rai20240701_models.RegisterAccountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.RegisterAccountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.RegisterAccountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def register_account(
         self,
@@ -929,10 +1793,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            rai20240701_models.SyncSensitiveWordResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.SyncSensitiveWordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.SyncSensitiveWordResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def sync_sensitive_word_with_options_async(
         self,
@@ -974,10 +1844,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            rai20240701_models.SyncSensitiveWordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rai20240701_models.SyncSensitiveWordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rai20240701_models.SyncSensitiveWordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def sync_sensitive_word(
         self,
