@@ -1,3 +1,7 @@
+2025-04-10 Version: 11.1.1
+- Update API DescribeDBProxyPerformance: add response parameters Body.PerformanceKeys.$.Node.
+
+
 2025-04-09 Version: 11.1.0
 - Support API DescribeRCInstanceTypeFamilies.
 - Support API DescribeRCInstanceTypes.

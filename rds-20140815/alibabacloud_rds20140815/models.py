@@ -37701,12 +37701,14 @@ class DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKey(TeaMod
     def __init__(
         self,
         key: str = None,
+        node: str = None,
         service: str = None,
         value_format: str = None,
         values: DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValues = None,
     ):
         # The performance parameter.
         self.key = key
+        self.node = node
         # The service dimension.
         self.service = service
         # The format in which the value of the performance metric is returned.
@@ -37726,6 +37728,8 @@ class DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKey(TeaMod
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
+        if self.node is not None:
+            result['Node'] = self.node
         if self.service is not None:
             result['Service'] = self.service
         if self.value_format is not None:
@@ -37738,6 +37742,8 @@ class DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKey(TeaMod
         m = m or dict()
         if m.get('Key') is not None:
             self.key = m.get('Key')
+        if m.get('Node') is not None:
+            self.node = m.get('Node')
         if m.get('Service') is not None:
             self.service = m.get('Service')
         if m.get('ValueFormat') is not None:
