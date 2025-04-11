@@ -1,3 +1,7 @@
+2025-04-11 Version: 4.8.2
+- Update API SetDomainCertificate: add request parameters SslOcspCacheEnable.
+
+
 2025-03-18 Version: 4.8.1
 - Update API DescribeDatasetList: add param DatasetName.
 

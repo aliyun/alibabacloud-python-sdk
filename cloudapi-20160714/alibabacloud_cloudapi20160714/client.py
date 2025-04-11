@@ -26713,6 +26713,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.ssl_ocsp_cache_enable):
+            query['SslOcspCacheEnable'] = request.ssl_ocsp_cache_enable
         if not UtilClient.is_unset(request.ssl_ocsp_enable):
             query['SslOcspEnable'] = request.ssl_ocsp_enable
         if not UtilClient.is_unset(request.ssl_verify_depth):
@@ -26776,6 +26778,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.ssl_ocsp_cache_enable):
+            query['SslOcspCacheEnable'] = request.ssl_ocsp_cache_enable
         if not UtilClient.is_unset(request.ssl_ocsp_enable):
             query['SslOcspEnable'] = request.ssl_ocsp_enable
         if not UtilClient.is_unset(request.ssl_verify_depth):

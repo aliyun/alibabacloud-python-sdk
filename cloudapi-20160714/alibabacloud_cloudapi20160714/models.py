@@ -23904,6 +23904,7 @@ class DescribeDatasetListRequest(TeaModel):
     ):
         # The IDs of the datasets.
         self.dataset_ids = dataset_ids
+        # The name of the dataset.
         self.dataset_name = dataset_name
         # The number of the page to return. Pages start from page 1. Default value: 1.
         self.page_number = page_number
@@ -49260,6 +49261,7 @@ class SetDomainCertificateRequest(TeaModel):
         domain_name: str = None,
         group_id: str = None,
         security_token: str = None,
+        ssl_ocsp_cache_enable: bool = None,
         ssl_ocsp_enable: bool = None,
         ssl_verify_depth: str = None,
     ):
@@ -49284,6 +49286,8 @@ class SetDomainCertificateRequest(TeaModel):
         # This parameter is required.
         self.group_id = group_id
         self.security_token = security_token
+        # If enable ssl OCSP cache.
+        self.ssl_ocsp_cache_enable = ssl_ocsp_cache_enable
         # If enable ssl OCSP.
         self.ssl_ocsp_enable = ssl_ocsp_enable
         # The certificate verification depth.
@@ -49314,6 +49318,8 @@ class SetDomainCertificateRequest(TeaModel):
             result['GroupId'] = self.group_id
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
+        if self.ssl_ocsp_cache_enable is not None:
+            result['SslOcspCacheEnable'] = self.ssl_ocsp_cache_enable
         if self.ssl_ocsp_enable is not None:
             result['SslOcspEnable'] = self.ssl_ocsp_enable
         if self.ssl_verify_depth is not None:
@@ -49338,6 +49344,8 @@ class SetDomainCertificateRequest(TeaModel):
             self.group_id = m.get('GroupId')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
+        if m.get('SslOcspCacheEnable') is not None:
+            self.ssl_ocsp_cache_enable = m.get('SslOcspCacheEnable')
         if m.get('SslOcspEnable') is not None:
             self.ssl_ocsp_enable = m.get('SslOcspEnable')
         if m.get('SslVerifyDepth') is not None:
