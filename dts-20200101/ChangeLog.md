@@ -1,3 +1,9 @@
+2025-04-11 Version: 5.8.1
+- Update API DescribeDtsJobDetail: add response parameters Body.DestinationEndpoint.AliyunUid.
+- Update API DescribeDtsJobDetail: add response parameters Body.DestinationEndpoint.RoleName.
+- Update API ModifyDtsJobEndpoint: add request parameters ZeroEtlJob.
+
+
 2025-03-28 Version: 5.8.0
 - Support API ConvertInstanceResourceGroup.
 - Support API DescribeFullProcessList.

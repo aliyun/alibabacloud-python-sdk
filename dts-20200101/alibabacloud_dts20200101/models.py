@@ -12312,6 +12312,7 @@ class DescribeDtsJobDetailResponseBodyDataSynchronizationStatus(TeaModel):
 class DescribeDtsJobDetailResponseBodyDestinationEndpoint(TeaModel):
     def __init__(
         self,
+        aliyun_uid: str = None,
         can_modify_password: bool = None,
         database_name: str = None,
         engine_name: str = None,
@@ -12321,9 +12322,11 @@ class DescribeDtsJobDetailResponseBodyDestinationEndpoint(TeaModel):
         oracle_sid: str = None,
         port: str = None,
         region: str = None,
+        role_name: str = None,
         ssl_solution_enum: str = None,
         user_name: str = None,
     ):
+        self.aliyun_uid = aliyun_uid
         # Indicates whether the password can be modified. Valid values:
         # 
         # *   **true**\
@@ -12347,6 +12350,7 @@ class DescribeDtsJobDetailResponseBodyDestinationEndpoint(TeaModel):
         self.port = port
         # The ID of the region in which the destination instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region = region
+        self.role_name = role_name
         # Indicates whether SSL encryption is enabled. Valid values:
         # 
         # *   **DISABLE**: SSL encryption is disabled.
@@ -12366,6 +12370,8 @@ class DescribeDtsJobDetailResponseBodyDestinationEndpoint(TeaModel):
             return _map
 
         result = dict()
+        if self.aliyun_uid is not None:
+            result['AliyunUid'] = self.aliyun_uid
         if self.can_modify_password is not None:
             result['CanModifyPassword'] = self.can_modify_password
         if self.database_name is not None:
@@ -12384,6 +12390,8 @@ class DescribeDtsJobDetailResponseBodyDestinationEndpoint(TeaModel):
             result['Port'] = self.port
         if self.region is not None:
             result['Region'] = self.region
+        if self.role_name is not None:
+            result['RoleName'] = self.role_name
         if self.ssl_solution_enum is not None:
             result['SslSolutionEnum'] = self.ssl_solution_enum
         if self.user_name is not None:
@@ -12392,6 +12400,8 @@ class DescribeDtsJobDetailResponseBodyDestinationEndpoint(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AliyunUid') is not None:
+            self.aliyun_uid = m.get('AliyunUid')
         if m.get('CanModifyPassword') is not None:
             self.can_modify_password = m.get('CanModifyPassword')
         if m.get('DatabaseName') is not None:
@@ -12410,6 +12420,8 @@ class DescribeDtsJobDetailResponseBodyDestinationEndpoint(TeaModel):
             self.port = m.get('Port')
         if m.get('Region') is not None:
             self.region = m.get('Region')
+        if m.get('RoleName') is not None:
+            self.role_name = m.get('RoleName')
         if m.get('SslSolutionEnum') is not None:
             self.ssl_solution_enum = m.get('SslSolutionEnum')
         if m.get('UserName') is not None:
@@ -39685,6 +39697,7 @@ class ModifyDtsJobEndpointRequest(TeaModel):
         shard_username: str = None,
         synchronization_direction: str = None,
         username: str = None,
+        zero_etl_job: bool = None,
     ):
         # The ID of the Alibaba Cloud account (primary account) to which the database instance belongs.
         # >  Passing this parameter indicates that cross-Alibaba Cloud account data synchronization will be performed, and you also need to pass the **RoleName** parameter.
@@ -39775,6 +39788,7 @@ class ModifyDtsJobEndpointRequest(TeaModel):
         # 
         # >  This parameter is valid only if **ModifyAccount** is set to **true**.
         self.username = username
+        self.zero_etl_job = zero_etl_job
 
     def validate(self):
         pass
@@ -39825,6 +39839,8 @@ class ModifyDtsJobEndpointRequest(TeaModel):
             result['SynchronizationDirection'] = self.synchronization_direction
         if self.username is not None:
             result['Username'] = self.username
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
         return result
 
     def from_map(self, m: dict = None):
@@ -39869,6 +39885,8 @@ class ModifyDtsJobEndpointRequest(TeaModel):
             self.synchronization_direction = m.get('SynchronizationDirection')
         if m.get('Username') is not None:
             self.username = m.get('Username')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
         return self
 
 

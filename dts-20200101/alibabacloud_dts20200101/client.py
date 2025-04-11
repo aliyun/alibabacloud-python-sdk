@@ -12308,6 +12308,8 @@ class Client(OpenApiClient):
             query['SynchronizationDirection'] = request.synchronization_direction
         if not UtilClient.is_unset(request.username):
             query['Username'] = request.username
+        if not UtilClient.is_unset(request.zero_etl_job):
+            query['ZeroEtlJob'] = request.zero_etl_job
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12389,6 +12391,8 @@ class Client(OpenApiClient):
             query['SynchronizationDirection'] = request.synchronization_direction
         if not UtilClient.is_unset(request.username):
             query['Username'] = request.username
+        if not UtilClient.is_unset(request.zero_etl_job):
+            query['ZeroEtlJob'] = request.zero_etl_job
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
