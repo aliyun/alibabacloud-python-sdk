@@ -1290,6 +1290,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
@@ -1341,6 +1343,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
@@ -1414,6 +1418,8 @@ class Client(OpenApiClient):
             query['Filters'] = request.filters
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
@@ -1461,6 +1467,8 @@ class Client(OpenApiClient):
             query['Filters'] = request.filters
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(

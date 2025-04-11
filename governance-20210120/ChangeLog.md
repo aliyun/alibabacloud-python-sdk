@@ -1,3 +1,9 @@
+2025-04-11 Version: 0.3.6
+- Update API ListEvaluationMetricDetails: add request parameters Scope.
+- Update API ListEvaluationResults: add request parameters Scope.
+- Update API ListEvaluationResults: add response parameters Body.Results.MetricResults.$.AccountSummary.
+
+
 2025-04-10 Version: 0.3.5
 - Update API ListEvaluationMetricDetails: add request parameters SnapshotId.
 - Update API ListEvaluationResults: add request parameters Filters.

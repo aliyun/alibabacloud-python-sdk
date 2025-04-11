@@ -2979,6 +2979,7 @@ class ListEvaluationMetricDetailsRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         region_id: str = None,
+        scope: str = None,
         snapshot_id: str = None,
     ):
         # The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
@@ -2993,6 +2994,7 @@ class ListEvaluationMetricDetailsRequest(TeaModel):
         self.next_token = next_token
         # The region ID.
         self.region_id = region_id
+        self.scope = scope
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -3014,6 +3016,8 @@ class ListEvaluationMetricDetailsRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.scope is not None:
+            result['Scope'] = self.scope
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
         return result
@@ -3030,6 +3034,8 @@ class ListEvaluationMetricDetailsRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
         if m.get('SnapshotId') is not None:
             self.snapshot_id = m.get('SnapshotId')
         return self
@@ -3298,6 +3304,7 @@ class ListEvaluationResultsRequest(TeaModel):
         account_id: int = None,
         filters: List[ListEvaluationResultsRequestFilters] = None,
         region_id: str = None,
+        scope: str = None,
         snapshot_id: str = None,
     ):
         # The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
@@ -3306,6 +3313,7 @@ class ListEvaluationResultsRequest(TeaModel):
         self.filters = filters
         # The region ID.
         self.region_id = region_id
+        self.scope = scope
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -3328,6 +3336,8 @@ class ListEvaluationResultsRequest(TeaModel):
                 result['Filters'].append(k.to_map() if k else None)
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.scope is not None:
+            result['Scope'] = self.scope
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
         return result
@@ -3343,8 +3353,37 @@ class ListEvaluationResultsRequest(TeaModel):
                 self.filters.append(temp_model.from_map(k))
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
         if m.get('SnapshotId') is not None:
             self.snapshot_id = m.get('SnapshotId')
+        return self
+
+
+class ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary(TeaModel):
+    def __init__(
+        self,
+        non_compliant: int = None,
+    ):
+        self.non_compliant = non_compliant
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.non_compliant is not None:
+            result['NonCompliant'] = self.non_compliant
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NonCompliant') is not None:
+            self.non_compliant = m.get('NonCompliant')
         return self
 
 
@@ -3414,6 +3453,7 @@ class ListEvaluationResultsResponseBodyResultsMetricResultsResourcesSummary(TeaM
 class ListEvaluationResultsResponseBodyResultsMetricResults(TeaModel):
     def __init__(
         self,
+        account_summary: ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary = None,
         error_info: ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo = None,
         evaluation_time: str = None,
         id: str = None,
@@ -3422,6 +3462,7 @@ class ListEvaluationResultsResponseBodyResultsMetricResults(TeaModel):
         risk: str = None,
         status: str = None,
     ):
+        self.account_summary = account_summary
         # The error information.
         # 
         # >  This parameter is returned only if the value of `Status` is `Failed`.
@@ -3448,6 +3489,8 @@ class ListEvaluationResultsResponseBodyResultsMetricResults(TeaModel):
         self.status = status
 
     def validate(self):
+        if self.account_summary:
+            self.account_summary.validate()
         if self.error_info:
             self.error_info.validate()
         if self.resources_summary:
@@ -3459,6 +3502,8 @@ class ListEvaluationResultsResponseBodyResultsMetricResults(TeaModel):
             return _map
 
         result = dict()
+        if self.account_summary is not None:
+            result['AccountSummary'] = self.account_summary.to_map()
         if self.error_info is not None:
             result['ErrorInfo'] = self.error_info.to_map()
         if self.evaluation_time is not None:
@@ -3477,6 +3522,9 @@ class ListEvaluationResultsResponseBodyResultsMetricResults(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountSummary') is not None:
+            temp_model = ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary()
+            self.account_summary = temp_model.from_map(m['AccountSummary'])
         if m.get('ErrorInfo') is not None:
             temp_model = ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo()
             self.error_info = temp_model.from_map(m['ErrorInfo'])
