@@ -1,3 +1,7 @@
+2025-04-11 Version: 4.3.0
+- Support API DescribeRegions.
+
+
 2025-04-01 Version: 4.2.0
 - Support API DisableFunctionInvocation.
 - Support API EnableFunctionInvocation.

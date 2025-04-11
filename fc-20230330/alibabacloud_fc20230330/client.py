@@ -1809,6 +1809,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_vpc_binding_with_options_async(function_name, vpc_id, headers, runtime)
 
+    def describe_regions_with_options(
+        self,
+        request: fc20230330_models.DescribeRegionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.DescribeRegionsResponse:
+        """
+        @summary 查询产品的地域信息列表
+        
+        @param request: DescribeRegionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                fc20230330_models.DescribeRegionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                fc20230330_models.DescribeRegionsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_regions_with_options_async(
+        self,
+        request: fc20230330_models.DescribeRegionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.DescribeRegionsResponse:
+        """
+        @summary 查询产品的地域信息列表
+        
+        @param request: DescribeRegionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                fc20230330_models.DescribeRegionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                fc20230330_models.DescribeRegionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_regions(
+        self,
+        request: fc20230330_models.DescribeRegionsRequest,
+    ) -> fc20230330_models.DescribeRegionsResponse:
+        """
+        @summary 查询产品的地域信息列表
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_regions_with_options(request, headers, runtime)
+
+    async def describe_regions_async(
+        self,
+        request: fc20230330_models.DescribeRegionsRequest,
+    ) -> fc20230330_models.DescribeRegionsResponse:
+        """
+        @summary 查询产品的地域信息列表
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_regions_with_options_async(request, headers, runtime)
+
     def disable_function_invocation_with_options(
         self,
         function_name: str,
@@ -1817,7 +1933,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DisableFunctionInvocationResponse:
         """
-        @summary 禁止函数调用
+        @summary The DisableFunctionInvocation operation prevents a function from being invoked and optionally terminates all requests that are being processed. Once a function\\"s invocation is disabled, no new instances can be created, and the existing provisioned instances are destroyed. This operation is currently in private preview.
+        
+        @description Exercise caution when you call this operation on a function in a production environment, as improper deactivation may lead to business disruptions.
         
         @param request: DisableFunctionInvocationRequest
         @param headers: map
@@ -1864,7 +1982,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DisableFunctionInvocationResponse:
         """
-        @summary 禁止函数调用
+        @summary The DisableFunctionInvocation operation prevents a function from being invoked and optionally terminates all requests that are being processed. Once a function\\"s invocation is disabled, no new instances can be created, and the existing provisioned instances are destroyed. This operation is currently in private preview.
+        
+        @description Exercise caution when you call this operation on a function in a production environment, as improper deactivation may lead to business disruptions.
         
         @param request: DisableFunctionInvocationRequest
         @param headers: map
@@ -1909,7 +2029,9 @@ class Client(OpenApiClient):
         request: fc20230330_models.DisableFunctionInvocationRequest,
     ) -> fc20230330_models.DisableFunctionInvocationResponse:
         """
-        @summary 禁止函数调用
+        @summary The DisableFunctionInvocation operation prevents a function from being invoked and optionally terminates all requests that are being processed. Once a function\\"s invocation is disabled, no new instances can be created, and the existing provisioned instances are destroyed. This operation is currently in private preview.
+        
+        @description Exercise caution when you call this operation on a function in a production environment, as improper deactivation may lead to business disruptions.
         
         @param request: DisableFunctionInvocationRequest
         @return: DisableFunctionInvocationResponse
@@ -1924,7 +2046,9 @@ class Client(OpenApiClient):
         request: fc20230330_models.DisableFunctionInvocationRequest,
     ) -> fc20230330_models.DisableFunctionInvocationResponse:
         """
-        @summary 禁止函数调用
+        @summary The DisableFunctionInvocation operation prevents a function from being invoked and optionally terminates all requests that are being processed. Once a function\\"s invocation is disabled, no new instances can be created, and the existing provisioned instances are destroyed. This operation is currently in private preview.
+        
+        @description Exercise caution when you call this operation on a function in a production environment, as improper deactivation may lead to business disruptions.
         
         @param request: DisableFunctionInvocationRequest
         @return: DisableFunctionInvocationResponse
@@ -4198,6 +4322,8 @@ class Client(OpenApiClient):
         """
         @summary 列出函数。
         
+        @description ListFunctions returns only a subset of a function\\"s attribute fields. To obtain the additional fields, which include state, stateReasonCode, stateReason, lastUpdateStatus, lastUpdateStatusReasonCode, and lastUpdateStatusReason, use [GetFunction](https://help.aliyun.com/document_detail/2618610.html).
+        
         @param tmp_req: ListFunctionsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4260,6 +4386,8 @@ class Client(OpenApiClient):
         """
         @summary 列出函数。
         
+        @description ListFunctions returns only a subset of a function\\"s attribute fields. To obtain the additional fields, which include state, stateReasonCode, stateReason, lastUpdateStatus, lastUpdateStatusReasonCode, and lastUpdateStatusReason, use [GetFunction](https://help.aliyun.com/document_detail/2618610.html).
+        
         @param tmp_req: ListFunctionsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4320,6 +4448,8 @@ class Client(OpenApiClient):
         """
         @summary 列出函数。
         
+        @description ListFunctions returns only a subset of a function\\"s attribute fields. To obtain the additional fields, which include state, stateReasonCode, stateReason, lastUpdateStatus, lastUpdateStatusReasonCode, and lastUpdateStatusReason, use [GetFunction](https://help.aliyun.com/document_detail/2618610.html).
+        
         @param request: ListFunctionsRequest
         @return: ListFunctionsResponse
         """
@@ -4333,6 +4463,8 @@ class Client(OpenApiClient):
     ) -> fc20230330_models.ListFunctionsResponse:
         """
         @summary 列出函数。
+        
+        @description ListFunctions returns only a subset of a function\\"s attribute fields. To obtain the additional fields, which include state, stateReasonCode, stateReason, lastUpdateStatus, lastUpdateStatusReasonCode, and lastUpdateStatusReason, use [GetFunction](https://help.aliyun.com/document_detail/2618610.html).
         
         @param request: ListFunctionsRequest
         @return: ListFunctionsResponse

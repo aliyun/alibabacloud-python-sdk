@@ -6905,13 +6905,83 @@ class DeleteVpcBindingResponse(TeaModel):
         return self
 
 
+class DescribeRegionsRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+    ):
+        self.accept_language = accept_language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        return self
+
+
+class DescribeRegionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OpenStructDescribeRegionsOutput = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OpenStructDescribeRegionsOutput()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableFunctionInvocationRequest(TeaModel):
     def __init__(
         self,
         abort_ongoing_request: bool = None,
         reason: str = None,
     ):
+        # Specifies whether to immediately terminate all ongoing requests.
         self.abort_ongoing_request = abort_ongoing_request
+        # The reason for disabling the function\\"s invocation.
         self.reason = reason
 
     def validate(self):
@@ -6943,6 +7013,7 @@ class DisableFunctionInvocationResponseBody(TeaModel):
         self,
         success: bool = None,
     ):
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -8360,9 +8431,16 @@ class ListFunctionsRequest(TeaModel):
         runtime: str = None,
         tags: List[Tag] = None,
     ):
+        # The description of the functions to retrieve.
         self.description = description
-        # The version of Function Compute to which the functions belong. Valid values: v3 and v2. v3: only lists functions of Function Compute 3.0. v2: only lists functions of Function Compute 2.0. By default, this parameter is left empty and functions in both Function Compute 3.0 and Function Compute 2.0 are listed.
+        # The version of Function Compute to which the functions belong.
+        # 
+        # *   v3: Only lists functions of Function Compute 3.0.
+        # *   v2: Only lists functions of Function Compute 2.0.
+        # 
+        # By default, this parameter is left empty and functions in both Function Compute 3.0 and Function Compute 2.0 are listed.
         self.fc_version = fc_version
+        # The GPU type of the functions to retrieve.
         self.gpu_type = gpu_type
         # The number of functions to return. The minimum value is 1 and the maximum value is 100.
         self.limit = limit
@@ -8370,7 +8448,9 @@ class ListFunctionsRequest(TeaModel):
         self.next_token = next_token
         # The prefix of the function name.
         self.prefix = prefix
+        # The runtime of the functions to retrieve.
         self.runtime = runtime
+        # The tag of the functions to retrieve.
         self.tags = tags
 
     def validate(self):
@@ -8441,9 +8521,16 @@ class ListFunctionsShrinkRequest(TeaModel):
         runtime: str = None,
         tags_shrink: str = None,
     ):
+        # The description of the functions to retrieve.
         self.description = description
-        # The version of Function Compute to which the functions belong. Valid values: v3 and v2. v3: only lists functions of Function Compute 3.0. v2: only lists functions of Function Compute 2.0. By default, this parameter is left empty and functions in both Function Compute 3.0 and Function Compute 2.0 are listed.
+        # The version of Function Compute to which the functions belong.
+        # 
+        # *   v3: Only lists functions of Function Compute 3.0.
+        # *   v2: Only lists functions of Function Compute 2.0.
+        # 
+        # By default, this parameter is left empty and functions in both Function Compute 3.0 and Function Compute 2.0 are listed.
         self.fc_version = fc_version
+        # The GPU type of the functions to retrieve.
         self.gpu_type = gpu_type
         # The number of functions to return. The minimum value is 1 and the maximum value is 100.
         self.limit = limit
@@ -8451,7 +8538,9 @@ class ListFunctionsShrinkRequest(TeaModel):
         self.next_token = next_token
         # The prefix of the function name.
         self.prefix = prefix
+        # The runtime of the functions to retrieve.
         self.runtime = runtime
+        # The tag of the functions to retrieve.
         self.tags_shrink = tags_shrink
 
     def validate(self):
