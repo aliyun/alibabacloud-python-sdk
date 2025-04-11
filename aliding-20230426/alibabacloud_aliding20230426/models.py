@@ -26067,6 +26067,560 @@ class GetAllSheetsResponse(TeaModel):
         return self
 
 
+class GetAssistantCapabilityHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_id: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class GetAssistantCapabilityRequestContentCardCallback(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        template_id: str = None,
+        user_id: str = None,
+    ):
+        self.content = content
+        self.template_id = template_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class GetAssistantCapabilityRequestContentDingCard(TeaModel):
+    def __init__(
+        self,
+        card_desc: str = None,
+        content: str = None,
+        content_type: str = None,
+        finished: bool = None,
+        template_id: str = None,
+    ):
+        self.card_desc = card_desc
+        self.content = content
+        # This parameter is required.
+        self.content_type = content_type
+        self.finished = finished
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.card_desc is not None:
+            result['cardDesc'] = self.card_desc
+        if self.content is not None:
+            result['content'] = self.content
+        if self.content_type is not None:
+            result['contentType'] = self.content_type
+        if self.finished is not None:
+            result['finished'] = self.finished
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cardDesc') is not None:
+            self.card_desc = m.get('cardDesc')
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('contentType') is not None:
+            self.content_type = m.get('contentType')
+        if m.get('finished') is not None:
+            self.finished = m.get('finished')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        return self
+
+
+class GetAssistantCapabilityRequestContentImageUrl(TeaModel):
+    def __init__(
+        self,
+        detail: str = None,
+        image_desc: str = None,
+        url: str = None,
+    ):
+        self.detail = detail
+        self.image_desc = image_desc
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.detail is not None:
+            result['detail'] = self.detail
+        if self.image_desc is not None:
+            result['imageDesc'] = self.image_desc
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('detail') is not None:
+            self.detail = m.get('detail')
+        if m.get('imageDesc') is not None:
+            self.image_desc = m.get('imageDesc')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class GetAssistantCapabilityRequestContentMarkdown(TeaModel):
+    def __init__(
+        self,
+        value: str = None,
+    ):
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetAssistantCapabilityRequestContentText(TeaModel):
+    def __init__(
+        self,
+        value: str = None,
+    ):
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetAssistantCapabilityRequestContent(TeaModel):
+    def __init__(
+        self,
+        card_callback: GetAssistantCapabilityRequestContentCardCallback = None,
+        ding_card: GetAssistantCapabilityRequestContentDingCard = None,
+        image_url: GetAssistantCapabilityRequestContentImageUrl = None,
+        markdown: GetAssistantCapabilityRequestContentMarkdown = None,
+        text: GetAssistantCapabilityRequestContentText = None,
+        type: str = None,
+    ):
+        self.card_callback = card_callback
+        self.ding_card = ding_card
+        self.image_url = image_url
+        self.markdown = markdown
+        self.text = text
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.card_callback:
+            self.card_callback.validate()
+        if self.ding_card:
+            self.ding_card.validate()
+        if self.image_url:
+            self.image_url.validate()
+        if self.markdown:
+            self.markdown.validate()
+        if self.text:
+            self.text.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.card_callback is not None:
+            result['cardCallback'] = self.card_callback.to_map()
+        if self.ding_card is not None:
+            result['dingCard'] = self.ding_card.to_map()
+        if self.image_url is not None:
+            result['imageUrl'] = self.image_url.to_map()
+        if self.markdown is not None:
+            result['markdown'] = self.markdown.to_map()
+        if self.text is not None:
+            result['text'] = self.text.to_map()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cardCallback') is not None:
+            temp_model = GetAssistantCapabilityRequestContentCardCallback()
+            self.card_callback = temp_model.from_map(m['cardCallback'])
+        if m.get('dingCard') is not None:
+            temp_model = GetAssistantCapabilityRequestContentDingCard()
+            self.ding_card = temp_model.from_map(m['dingCard'])
+        if m.get('imageUrl') is not None:
+            temp_model = GetAssistantCapabilityRequestContentImageUrl()
+            self.image_url = temp_model.from_map(m['imageUrl'])
+        if m.get('markdown') is not None:
+            temp_model = GetAssistantCapabilityRequestContentMarkdown()
+            self.markdown = temp_model.from_map(m['markdown'])
+        if m.get('text') is not None:
+            temp_model = GetAssistantCapabilityRequestContentText()
+            self.text = temp_model.from_map(m['text'])
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetAssistantCapabilityRequest(TeaModel):
+    def __init__(
+        self,
+        assistant_id: str = None,
+        content: List[GetAssistantCapabilityRequestContent] = None,
+        id: str = None,
+        metadata: Dict[str, Any] = None,
+        original_assistant_id: str = None,
+        protocol: str = None,
+        thread_id: str = None,
+        timeout: int = None,
+    ):
+        # This parameter is required.
+        self.assistant_id = assistant_id
+        # This parameter is required.
+        self.content = content
+        self.id = id
+        self.metadata = metadata
+        self.original_assistant_id = original_assistant_id
+        self.protocol = protocol
+        self.thread_id = thread_id
+        self.timeout = timeout
+
+    def validate(self):
+        if self.content:
+            for k in self.content:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant_id is not None:
+            result['assistantId'] = self.assistant_id
+        result['content'] = []
+        if self.content is not None:
+            for k in self.content:
+                result['content'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['id'] = self.id
+        if self.metadata is not None:
+            result['metadata'] = self.metadata
+        if self.original_assistant_id is not None:
+            result['originalAssistantId'] = self.original_assistant_id
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.thread_id is not None:
+            result['threadId'] = self.thread_id
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assistantId') is not None:
+            self.assistant_id = m.get('assistantId')
+        self.content = []
+        if m.get('content') is not None:
+            for k in m.get('content'):
+                temp_model = GetAssistantCapabilityRequestContent()
+                self.content.append(temp_model.from_map(k))
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('metadata') is not None:
+            self.metadata = m.get('metadata')
+        if m.get('originalAssistantId') is not None:
+            self.original_assistant_id = m.get('originalAssistantId')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('threadId') is not None:
+            self.thread_id = m.get('threadId')
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
+        return self
+
+
+class GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList(TeaModel):
+    def __init__(
+        self,
+        capability_overview: str = None,
+        description: str = None,
+        metadata: Dict[str, Any] = None,
+        name: str = None,
+    ):
+        self.capability_overview = capability_overview
+        self.description = description
+        self.metadata = metadata
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.capability_overview is not None:
+            result['capabilityOverview'] = self.capability_overview
+        if self.description is not None:
+            result['description'] = self.description
+        if self.metadata is not None:
+            result['metadata'] = self.metadata
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('capabilityOverview') is not None:
+            self.capability_overview = m.get('capabilityOverview')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('metadata') is not None:
+            self.metadata = m.get('metadata')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class GetAssistantCapabilityResponseBodyCapabilityAssessment(TeaModel):
+    def __init__(
+        self,
+        brief_capability: str = None,
+        capability_list: List[GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList] = None,
+    ):
+        self.brief_capability = brief_capability
+        self.capability_list = capability_list
+
+    def validate(self):
+        if self.capability_list:
+            for k in self.capability_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brief_capability is not None:
+            result['briefCapability'] = self.brief_capability
+        result['capabilityList'] = []
+        if self.capability_list is not None:
+            for k in self.capability_list:
+                result['capabilityList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('briefCapability') is not None:
+            self.brief_capability = m.get('briefCapability')
+        self.capability_list = []
+        if m.get('capabilityList') is not None:
+            for k in m.get('capabilityList'):
+                temp_model = GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList()
+                self.capability_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetAssistantCapabilityResponseBody(TeaModel):
+    def __init__(
+        self,
+        assistant_description: str = None,
+        can_handle: bool = None,
+        capability_assessment: GetAssistantCapabilityResponseBodyCapabilityAssessment = None,
+        id: str = None,
+        metadata: Dict[str, Any] = None,
+        request_id: str = None,
+    ):
+        self.assistant_description = assistant_description
+        self.can_handle = can_handle
+        self.capability_assessment = capability_assessment
+        self.id = id
+        self.metadata = metadata
+        self.request_id = request_id
+
+    def validate(self):
+        if self.capability_assessment:
+            self.capability_assessment.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant_description is not None:
+            result['assistantDescription'] = self.assistant_description
+        if self.can_handle is not None:
+            result['canHandle'] = self.can_handle
+        if self.capability_assessment is not None:
+            result['capabilityAssessment'] = self.capability_assessment.to_map()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.metadata is not None:
+            result['metadata'] = self.metadata
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assistantDescription') is not None:
+            self.assistant_description = m.get('assistantDescription')
+        if m.get('canHandle') is not None:
+            self.can_handle = m.get('canHandle')
+        if m.get('capabilityAssessment') is not None:
+            temp_model = GetAssistantCapabilityResponseBodyCapabilityAssessment()
+            self.capability_assessment = temp_model.from_map(m['capabilityAssessment'])
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('metadata') is not None:
+            self.metadata = m.get('metadata')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetAssistantCapabilityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAssistantCapabilityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAssistantCapabilityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetConversaionSpaceHeadersAccountContext(TeaModel):
     def __init__(
         self,

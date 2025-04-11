@@ -1,3 +1,7 @@
+2025-04-11 Version: 2.34.0
+- Support API GetAssistantCapability.
+
+
 2025-04-02 Version: 2.33.1
 - Update API CreateWorkspaceDoc: add response parameters Body.dentryUuid.
 - Update API CreateWorkspaceDoc: add response parameters Body.vendorRequestId.

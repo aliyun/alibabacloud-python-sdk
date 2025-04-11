@@ -11181,6 +11181,160 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.GetAllSheetsHeaders()
         return await self.get_all_sheets_with_options_async(request, headers, runtime)
 
+    def get_assistant_capability_with_options(
+        self,
+        request: aliding_20230426_models.GetAssistantCapabilityRequest,
+        headers: aliding_20230426_models.GetAssistantCapabilityHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetAssistantCapabilityResponse:
+        """
+        @summary 获取助理能力
+        
+        @param request: GetAssistantCapabilityRequest
+        @param headers: GetAssistantCapabilityHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAssistantCapabilityResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assistant_id):
+            body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.id):
+            body['id'] = request.id
+        if not UtilClient.is_unset(request.metadata):
+            body['metadata'] = request.metadata
+        if not UtilClient.is_unset(request.original_assistant_id):
+            body['originalAssistantId'] = request.original_assistant_id
+        if not UtilClient.is_unset(request.protocol):
+            body['protocol'] = request.protocol
+        if not UtilClient.is_unset(request.thread_id):
+            body['threadId'] = request.thread_id
+        if not UtilClient.is_unset(request.timeout):
+            body['timeout'] = request.timeout
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_id):
+            real_headers['accountId'] = UtilClient.to_jsonstring(headers.account_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAssistantCapability',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/ai/v1/assistant/getAssistantCapability',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aliding_20230426_models.GetAssistantCapabilityResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aliding_20230426_models.GetAssistantCapabilityResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_assistant_capability_with_options_async(
+        self,
+        request: aliding_20230426_models.GetAssistantCapabilityRequest,
+        headers: aliding_20230426_models.GetAssistantCapabilityHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetAssistantCapabilityResponse:
+        """
+        @summary 获取助理能力
+        
+        @param request: GetAssistantCapabilityRequest
+        @param headers: GetAssistantCapabilityHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAssistantCapabilityResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assistant_id):
+            body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.id):
+            body['id'] = request.id
+        if not UtilClient.is_unset(request.metadata):
+            body['metadata'] = request.metadata
+        if not UtilClient.is_unset(request.original_assistant_id):
+            body['originalAssistantId'] = request.original_assistant_id
+        if not UtilClient.is_unset(request.protocol):
+            body['protocol'] = request.protocol
+        if not UtilClient.is_unset(request.thread_id):
+            body['threadId'] = request.thread_id
+        if not UtilClient.is_unset(request.timeout):
+            body['timeout'] = request.timeout
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_id):
+            real_headers['accountId'] = UtilClient.to_jsonstring(headers.account_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAssistantCapability',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/ai/v1/assistant/getAssistantCapability',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aliding_20230426_models.GetAssistantCapabilityResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aliding_20230426_models.GetAssistantCapabilityResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_assistant_capability(
+        self,
+        request: aliding_20230426_models.GetAssistantCapabilityRequest,
+    ) -> aliding_20230426_models.GetAssistantCapabilityResponse:
+        """
+        @summary 获取助理能力
+        
+        @param request: GetAssistantCapabilityRequest
+        @return: GetAssistantCapabilityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetAssistantCapabilityHeaders()
+        return self.get_assistant_capability_with_options(request, headers, runtime)
+
+    async def get_assistant_capability_async(
+        self,
+        request: aliding_20230426_models.GetAssistantCapabilityRequest,
+    ) -> aliding_20230426_models.GetAssistantCapabilityResponse:
+        """
+        @summary 获取助理能力
+        
+        @param request: GetAssistantCapabilityRequest
+        @return: GetAssistantCapabilityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetAssistantCapabilityHeaders()
+        return await self.get_assistant_capability_with_options_async(request, headers, runtime)
+
     def get_conversaion_space_with_options(
         self,
         tmp_req: aliding_20230426_models.GetConversaionSpaceRequest,
