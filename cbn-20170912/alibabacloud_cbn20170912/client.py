@@ -2981,7 +2981,7 @@ class Client(OpenApiClient):
         """
         @summary Creates an aggregate route.
         
-        @description After you add an aggregate route to a route table of an Enterprise Edition transit router, the Enterprise Edition transit router advertises its routes only to route tables of virtual private clouds (VPCs) that are associated with a route table of the Enterprise Edition transit router and have route synchronization enabled.
+        @description After you add an aggregate route to a route table of an Enterprise Edition transit router, the transit router advertises its routes only to route tables of associated virtual private clouds (VPCs) and have route synchronization enabled.
         Perform the following operations before you create an aggregate route. Otherwise, the Enterprise Edition transit router does not advertise routes to VPC route tables:
         Associated forwarding is enabled between the VPCs and the Enterprise Edition transit router. For more information, see [AssociateTransitRouterAttachmentWithRouteTable](https://help.aliyun.com/document_detail/261242.html).
         Route synchronization is enabled for the VPCs. For more information, see [CreateTransitRouterVpcAttachment](https://help.aliyun.com/document_detail/261358.html).
@@ -3053,7 +3053,7 @@ class Client(OpenApiClient):
         """
         @summary Creates an aggregate route.
         
-        @description After you add an aggregate route to a route table of an Enterprise Edition transit router, the Enterprise Edition transit router advertises its routes only to route tables of virtual private clouds (VPCs) that are associated with a route table of the Enterprise Edition transit router and have route synchronization enabled.
+        @description After you add an aggregate route to a route table of an Enterprise Edition transit router, the transit router advertises its routes only to route tables of associated virtual private clouds (VPCs) and have route synchronization enabled.
         Perform the following operations before you create an aggregate route. Otherwise, the Enterprise Edition transit router does not advertise routes to VPC route tables:
         Associated forwarding is enabled between the VPCs and the Enterprise Edition transit router. For more information, see [AssociateTransitRouterAttachmentWithRouteTable](https://help.aliyun.com/document_detail/261242.html).
         Route synchronization is enabled for the VPCs. For more information, see [CreateTransitRouterVpcAttachment](https://help.aliyun.com/document_detail/261358.html).
@@ -3124,7 +3124,7 @@ class Client(OpenApiClient):
         """
         @summary Creates an aggregate route.
         
-        @description After you add an aggregate route to a route table of an Enterprise Edition transit router, the Enterprise Edition transit router advertises its routes only to route tables of virtual private clouds (VPCs) that are associated with a route table of the Enterprise Edition transit router and have route synchronization enabled.
+        @description After you add an aggregate route to a route table of an Enterprise Edition transit router, the transit router advertises its routes only to route tables of associated virtual private clouds (VPCs) and have route synchronization enabled.
         Perform the following operations before you create an aggregate route. Otherwise, the Enterprise Edition transit router does not advertise routes to VPC route tables:
         Associated forwarding is enabled between the VPCs and the Enterprise Edition transit router. For more information, see [AssociateTransitRouterAttachmentWithRouteTable](https://help.aliyun.com/document_detail/261242.html).
         Route synchronization is enabled for the VPCs. For more information, see [CreateTransitRouterVpcAttachment](https://help.aliyun.com/document_detail/261358.html).
@@ -3142,7 +3142,7 @@ class Client(OpenApiClient):
         """
         @summary Creates an aggregate route.
         
-        @description After you add an aggregate route to a route table of an Enterprise Edition transit router, the Enterprise Edition transit router advertises its routes only to route tables of virtual private clouds (VPCs) that are associated with a route table of the Enterprise Edition transit router and have route synchronization enabled.
+        @description After you add an aggregate route to a route table of an Enterprise Edition transit router, the transit router advertises its routes only to route tables of associated virtual private clouds (VPCs) and have route synchronization enabled.
         Perform the following operations before you create an aggregate route. Otherwise, the Enterprise Edition transit router does not advertise routes to VPC route tables:
         Associated forwarding is enabled between the VPCs and the Enterprise Edition transit router. For more information, see [AssociateTransitRouterAttachmentWithRouteTable](https://help.aliyun.com/document_detail/261242.html).
         Route synchronization is enabled for the VPCs. For more information, see [CreateTransitRouterVpcAttachment](https://help.aliyun.com/document_detail/261358.html).
@@ -6856,6 +6856,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -6914,6 +6916,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -12189,7 +12193,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the aggregate routes on an Enterprise Edition transit router.
         
-        @description You can set the *TransitRouteTableId** and **TransitRouteTableAggregationCidr** parameters to specify the aggregate routes that you want to query. If you set only the **TransitRouteTableId** parameter, all aggregate routes in the specified route table are queried.
+        @description You can specify the values of the *TransitRouteTableId** and **TransitRouteTableAggregationCidr** parameters to query a specified aggregate route. If you specify only the **TransitRouteTableId** parameter, all aggregated routes in the route table are queried.
         
         @param request: DescribeTransitRouteTableAggregationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12248,7 +12252,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the aggregate routes on an Enterprise Edition transit router.
         
-        @description You can set the *TransitRouteTableId** and **TransitRouteTableAggregationCidr** parameters to specify the aggregate routes that you want to query. If you set only the **TransitRouteTableId** parameter, all aggregate routes in the specified route table are queried.
+        @description You can specify the values of the *TransitRouteTableId** and **TransitRouteTableAggregationCidr** parameters to query a specified aggregate route. If you specify only the **TransitRouteTableId** parameter, all aggregated routes in the route table are queried.
         
         @param request: DescribeTransitRouteTableAggregationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12306,7 +12310,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the aggregate routes on an Enterprise Edition transit router.
         
-        @description You can set the *TransitRouteTableId** and **TransitRouteTableAggregationCidr** parameters to specify the aggregate routes that you want to query. If you set only the **TransitRouteTableId** parameter, all aggregate routes in the specified route table are queried.
+        @description You can specify the values of the *TransitRouteTableId** and **TransitRouteTableAggregationCidr** parameters to query a specified aggregate route. If you specify only the **TransitRouteTableId** parameter, all aggregated routes in the route table are queried.
         
         @param request: DescribeTransitRouteTableAggregationRequest
         @return: DescribeTransitRouteTableAggregationResponse
@@ -12321,7 +12325,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the aggregate routes on an Enterprise Edition transit router.
         
-        @description You can set the *TransitRouteTableId** and **TransitRouteTableAggregationCidr** parameters to specify the aggregate routes that you want to query. If you set only the **TransitRouteTableId** parameter, all aggregate routes in the specified route table are queried.
+        @description You can specify the values of the *TransitRouteTableId** and **TransitRouteTableAggregationCidr** parameters to query a specified aggregate route. If you specify only the **TransitRouteTableId** parameter, all aggregated routes in the route table are queried.
         
         @param request: DescribeTransitRouteTableAggregationRequest
         @return: DescribeTransitRouteTableAggregationResponse
@@ -18887,7 +18891,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ModifyTransitRouteTableAggregationResponse:
         """
-        @summary 编辑聚合路由
+        @summary Edit an aggregate route.
         
         @param tmp_req: ModifyTransitRouteTableAggregationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18954,7 +18958,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ModifyTransitRouteTableAggregationResponse:
         """
-        @summary 编辑聚合路由
+        @summary Edit an aggregate route.
         
         @param tmp_req: ModifyTransitRouteTableAggregationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19020,7 +19024,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ModifyTransitRouteTableAggregationRequest,
     ) -> cbn_20170912_models.ModifyTransitRouteTableAggregationResponse:
         """
-        @summary 编辑聚合路由
+        @summary Edit an aggregate route.
         
         @param request: ModifyTransitRouteTableAggregationRequest
         @return: ModifyTransitRouteTableAggregationResponse
@@ -19033,7 +19037,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ModifyTransitRouteTableAggregationRequest,
     ) -> cbn_20170912_models.ModifyTransitRouteTableAggregationResponse:
         """
-        @summary 编辑聚合路由
+        @summary Edit an aggregate route.
         
         @param request: ModifyTransitRouteTableAggregationRequest
         @return: ModifyTransitRouteTableAggregationResponse
@@ -21703,6 +21707,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.TempUpgradeCenBandwidthPackageSpecResponse:
         """
+        @summary 进行云企业网预付费带宽包临时升配
+        
         @param request: TempUpgradeCenBandwidthPackageSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TempUpgradeCenBandwidthPackageSpecResponse
@@ -21754,6 +21760,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.TempUpgradeCenBandwidthPackageSpecResponse:
         """
+        @summary 进行云企业网预付费带宽包临时升配
+        
         @param request: TempUpgradeCenBandwidthPackageSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TempUpgradeCenBandwidthPackageSpecResponse
@@ -21804,6 +21812,8 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.TempUpgradeCenBandwidthPackageSpecRequest,
     ) -> cbn_20170912_models.TempUpgradeCenBandwidthPackageSpecResponse:
         """
+        @summary 进行云企业网预付费带宽包临时升配
+        
         @param request: TempUpgradeCenBandwidthPackageSpecRequest
         @return: TempUpgradeCenBandwidthPackageSpecResponse
         """
@@ -21815,6 +21825,8 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.TempUpgradeCenBandwidthPackageSpecRequest,
     ) -> cbn_20170912_models.TempUpgradeCenBandwidthPackageSpecResponse:
         """
+        @summary 进行云企业网预付费带宽包临时升配
+        
         @param request: TempUpgradeCenBandwidthPackageSpecRequest
         @return: TempUpgradeCenBandwidthPackageSpecResponse
         """

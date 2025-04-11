@@ -1,3 +1,7 @@
+2025-04-11 Version: 1.3.1
+- Update API DeleteTrafficMarkingPolicy: add request parameters Force.
+
+
 2025-02-28 Version: 1.3.0
 - Support API ModifyTransitRouteTableAggregation.
 - Update API CreateTransitRouteTableAggregation: add param TransitRouteTableAggregationScopeList.

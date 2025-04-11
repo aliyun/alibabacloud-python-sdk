@@ -4014,9 +4014,9 @@ class CreateTransitRouteTableAggregationRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
         # 
@@ -4037,16 +4037,19 @@ class CreateTransitRouteTableAggregationRequest(TeaModel):
         self.transit_route_table_aggregation_cidr = transit_route_table_aggregation_cidr
         # The description of the aggregate route.
         # 
-        # The description must be 0 to 256 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ _ -.
+        # This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http:// or https://.
         self.transit_route_table_aggregation_description = transit_route_table_aggregation_description
         # The name of the aggregate route.
         # 
-        # The name must be 1 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ _ -. You can also leave the name empty.
+        # The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
         self.transit_route_table_aggregation_name = transit_route_table_aggregation_name
-        # The scope of networks that you want to advertise the aggregate route.
+        # The scope of networks to which the aggregate route is advertised.
         # 
-        # Set the value to **VPC**, which specified that the aggregate route is advertised to VPCs that are in associated forwarding relationship with a route table of the Enterprise Edition transit router and have route synchronization enabled.
+        # The valid value is **VPC**, which indicates that the aggregate route is advertised to all VPCs that are in associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
         self.transit_route_table_aggregation_scope = transit_route_table_aggregation_scope
+        # The list of propagation ranges of the aggregation route.
+        # 
+        # >  You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
         self.transit_route_table_aggregation_scope_list = transit_route_table_aggregation_scope_list
         # The ID of the route table of the Enterprise Edition transit router.
         # 
@@ -4135,9 +4138,9 @@ class CreateTransitRouteTableAggregationShrinkRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
         # 
@@ -4158,16 +4161,19 @@ class CreateTransitRouteTableAggregationShrinkRequest(TeaModel):
         self.transit_route_table_aggregation_cidr = transit_route_table_aggregation_cidr
         # The description of the aggregate route.
         # 
-        # The description must be 0 to 256 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ _ -.
+        # This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http:// or https://.
         self.transit_route_table_aggregation_description = transit_route_table_aggregation_description
         # The name of the aggregate route.
         # 
-        # The name must be 1 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ _ -. You can also leave the name empty.
+        # The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
         self.transit_route_table_aggregation_name = transit_route_table_aggregation_name
-        # The scope of networks that you want to advertise the aggregate route.
+        # The scope of networks to which the aggregate route is advertised.
         # 
-        # Set the value to **VPC**, which specified that the aggregate route is advertised to VPCs that are in associated forwarding relationship with a route table of the Enterprise Edition transit router and have route synchronization enabled.
+        # The valid value is **VPC**, which indicates that the aggregate route is advertised to all VPCs that are in associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
         self.transit_route_table_aggregation_scope = transit_route_table_aggregation_scope
+        # The list of propagation ranges of the aggregation route.
+        # 
+        # >  You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
         self.transit_route_table_aggregation_scope_list_shrink = transit_route_table_aggregation_scope_list_shrink
         # The ID of the route table of the Enterprise Edition transit router.
         # 
@@ -9290,6 +9296,7 @@ class DeleteTrafficMarkingPolicyRequest(TeaModel):
         self,
         client_token: str = None,
         dry_run: bool = None,
+        force: bool = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -9307,6 +9314,7 @@ class DeleteTrafficMarkingPolicyRequest(TeaModel):
         # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
         # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        self.force = force
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -9329,6 +9337,8 @@ class DeleteTrafficMarkingPolicyRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.force is not None:
+            result['Force'] = self.force
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -9347,6 +9357,8 @@ class DeleteTrafficMarkingPolicyRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -19796,9 +19808,9 @@ class DescribeTransitRouteTableAggregationRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can only contain ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
         # The number of entries to return on each page. Default value: **20**.
         self.max_results = max_results
@@ -19894,6 +19906,9 @@ class DescribeTransitRouteTableAggregationResponseBodyData(TeaModel):
         # 
         # The valid value is **VPC**, which indicates that the aggregate route is advertised to all virtual private clouds (VPCs) that are in associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
         self.scope = scope
+        # The list of propagation ranges of the aggregation route.
+        # 
+        # >  You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
         self.scope_list = scope_list
         # The status of the advertisement of the aggregate route. Valid values:
         # 
@@ -32185,18 +32200,43 @@ class ModifyTransitRouteTableAggregationRequest(TeaModel):
         transit_route_table_aggregation_scope_list: List[str] = None,
         transit_route_table_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # Use the client to generate the token, but make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **RequestId** as the **ClientToken**. The **RequestId** may be different.
         self.client_token = client_token
+        # Specifies whether to perform a dry run to check information such as the permissions and instance status. Valid values:
+        # 
+        # *   **false** (default): sends the request. If the request passes the check, an Enterprise Edition transit router is created.
+        # *   **true**: checks the request but does not create the Enterprise Edition transit router. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The destination CIDR block of the aggregate route.
+        # 
         # This parameter is required.
         self.transit_route_table_aggregation_cidr = transit_route_table_aggregation_cidr
+        # The description of the aggregate route.
+        # 
+        # The description can be empty or 0 to 256 characters in length and cannot start with http:// or https://.
         self.transit_route_table_aggregation_description = transit_route_table_aggregation_description
+        # The name of the aggregate route.
+        # 
+        # The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
         self.transit_route_table_aggregation_name = transit_route_table_aggregation_name
+        # The scope of networks that you want to advertise the aggregate route.
+        # 
+        # The valid value is **VPC**, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
         self.transit_route_table_aggregation_scope = transit_route_table_aggregation_scope
+        # The scope of networks to which the aggregate route is advertised.
+        # 
+        # >  You must select at least one attribute from either the Aggregate Route Propagation Range or the Aggregate Route Propagation Range List. We recommend using the latter. The elements of the two attributes cannot duplicate.
         self.transit_route_table_aggregation_scope_list = transit_route_table_aggregation_scope_list
+        # The list of route table IDs of the Enterprise Edition transit router.
+        # 
         # This parameter is required.
         self.transit_route_table_id = transit_route_table_id
 
@@ -32280,18 +32320,43 @@ class ModifyTransitRouteTableAggregationShrinkRequest(TeaModel):
         transit_route_table_aggregation_scope_list_shrink: str = None,
         transit_route_table_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # Use the client to generate the token, but make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **RequestId** as the **ClientToken**. The **RequestId** may be different.
         self.client_token = client_token
+        # Specifies whether to perform a dry run to check information such as the permissions and instance status. Valid values:
+        # 
+        # *   **false** (default): sends the request. If the request passes the check, an Enterprise Edition transit router is created.
+        # *   **true**: checks the request but does not create the Enterprise Edition transit router. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The destination CIDR block of the aggregate route.
+        # 
         # This parameter is required.
         self.transit_route_table_aggregation_cidr = transit_route_table_aggregation_cidr
+        # The description of the aggregate route.
+        # 
+        # The description can be empty or 0 to 256 characters in length and cannot start with http:// or https://.
         self.transit_route_table_aggregation_description = transit_route_table_aggregation_description
+        # The name of the aggregate route.
+        # 
+        # The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
         self.transit_route_table_aggregation_name = transit_route_table_aggregation_name
+        # The scope of networks that you want to advertise the aggregate route.
+        # 
+        # The valid value is **VPC**, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
         self.transit_route_table_aggregation_scope = transit_route_table_aggregation_scope
+        # The scope of networks to which the aggregate route is advertised.
+        # 
+        # >  You must select at least one attribute from either the Aggregate Route Propagation Range or the Aggregate Route Propagation Range List. We recommend using the latter. The elements of the two attributes cannot duplicate.
         self.transit_route_table_aggregation_scope_list_shrink = transit_route_table_aggregation_scope_list_shrink
+        # The list of route table IDs of the Enterprise Edition transit router.
+        # 
         # This parameter is required.
         self.transit_route_table_id = transit_route_table_id
 
@@ -32364,6 +32429,7 @@ class ModifyTransitRouteTableAggregationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
