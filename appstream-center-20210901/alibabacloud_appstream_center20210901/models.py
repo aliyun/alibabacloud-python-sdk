@@ -537,7 +537,14 @@ class AuthorizeInstanceGroupRequestUserMeta(TeaModel):
         ad_domain: str = None,
         type: str = None,
     ):
+        # The AD domain name.
         self.ad_domain = ad_domain
+        # The user type.
+        # 
+        # Valid values:
+        # 
+        # *   ad: Active Directory (AD) account
+        # *   simple: convenience account
         self.type = type
 
     def validate(self):
@@ -576,11 +583,15 @@ class AuthorizeInstanceGroupRequest(TeaModel):
     ):
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # 持久会话ID。
         self.app_instance_persistent_id = app_instance_persistent_id
+        # The IDs of the users that you want to add to the authorization list of the delivery group. You can specify 1 to 100 user IDs.
         self.authorize_user_ids = authorize_user_ids
         # This parameter is required.
         self.product_type = product_type
+        # The IDs of the users that you want to remove from the authorization list of the delivery group. You can specify 1 to 100 user IDs.
         self.un_authorize_user_ids = un_authorize_user_ids
+        # The user information.
         self.user_meta = user_meta
 
     def validate(self):
@@ -637,11 +648,15 @@ class AuthorizeInstanceGroupShrinkRequest(TeaModel):
     ):
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # 持久会话ID。
         self.app_instance_persistent_id = app_instance_persistent_id
+        # The IDs of the users that you want to add to the authorization list of the delivery group. You can specify 1 to 100 user IDs.
         self.authorize_user_ids = authorize_user_ids
         # This parameter is required.
         self.product_type = product_type
+        # The IDs of the users that you want to remove from the authorization list of the delivery group. You can specify 1 to 100 user IDs.
         self.un_authorize_user_ids = un_authorize_user_ids
+        # The user information.
         self.user_meta_shrink = user_meta_shrink
 
     def validate(self):

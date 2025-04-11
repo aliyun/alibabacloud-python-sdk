@@ -1,3 +1,6 @@
+2025-04-11 Version: 3.2.2
+- Generated python 2021-09-01 for appstream-center.
+
 2025-04-07 Version: 3.2.1
 - Update API GetConnectionTicket: add request parameters AccessType.
 
