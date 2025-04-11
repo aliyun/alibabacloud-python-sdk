@@ -1,3 +1,9 @@
+2025-04-11 Version: 4.5.2
+- Update API CreateApp: add request parameters SignApk.
+- Update API DescribeApps: add request parameters AppType.
+- Update API DescribeApps: add response parameters Body.Data.$.AppType.
+
+
 2025-04-10 Version: 4.5.1
 - Update API DescribeAndroidInstances: add request parameters OfficeSiteIds.
 

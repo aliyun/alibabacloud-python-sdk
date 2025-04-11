@@ -1637,6 +1637,7 @@ class CreateAppRequest(TeaModel):
         icon_url: str = None,
         install_param: str = None,
         oss_app_url: str = None,
+        sign_apk: str = None,
     ):
         # The name of the application.
         self.app_name = app_name
@@ -1680,6 +1681,7 @@ class CreateAppRequest(TeaModel):
         # 
         # *   Log on to the [EDS Enterprise](https://eds.console.aliyun.com/osshelp) console, upload the app file to the Application Center according to the on-screen instructions, and then retrieve the parameter value.
         self.oss_app_url = oss_app_url
+        self.sign_apk = sign_apk
 
     def validate(self):
         if self.custom_app_info:
@@ -1709,6 +1711,8 @@ class CreateAppRequest(TeaModel):
             result['InstallParam'] = self.install_param
         if self.oss_app_url is not None:
             result['OssAppUrl'] = self.oss_app_url
+        if self.sign_apk is not None:
+            result['SignApk'] = self.sign_apk
         return result
 
     def from_map(self, m: dict = None):
@@ -1732,6 +1736,8 @@ class CreateAppRequest(TeaModel):
             self.install_param = m.get('InstallParam')
         if m.get('OssAppUrl') is not None:
             self.oss_app_url = m.get('OssAppUrl')
+        if m.get('SignApk') is not None:
+            self.sign_apk = m.get('SignApk')
         return self
 
 
@@ -1747,6 +1753,7 @@ class CreateAppShrinkRequest(TeaModel):
         icon_url: str = None,
         install_param: str = None,
         oss_app_url: str = None,
+        sign_apk: str = None,
     ):
         # The name of the application.
         self.app_name = app_name
@@ -1790,6 +1797,7 @@ class CreateAppShrinkRequest(TeaModel):
         # 
         # *   Log on to the [EDS Enterprise](https://eds.console.aliyun.com/osshelp) console, upload the app file to the Application Center according to the on-screen instructions, and then retrieve the parameter value.
         self.oss_app_url = oss_app_url
+        self.sign_apk = sign_apk
 
     def validate(self):
         pass
@@ -1818,6 +1826,8 @@ class CreateAppShrinkRequest(TeaModel):
             result['InstallParam'] = self.install_param
         if self.oss_app_url is not None:
             result['OssAppUrl'] = self.oss_app_url
+        if self.sign_apk is not None:
+            result['SignApk'] = self.sign_apk
         return result
 
     def from_map(self, m: dict = None):
@@ -1840,6 +1850,8 @@ class CreateAppShrinkRequest(TeaModel):
             self.install_param = m.get('InstallParam')
         if m.get('OssAppUrl') is not None:
             self.oss_app_url = m.get('OssAppUrl')
+        if m.get('SignApk') is not None:
+            self.sign_apk = m.get('SignApk')
         return self
 
 
@@ -5201,6 +5213,7 @@ class DescribeAppsRequest(TeaModel):
         self,
         app_id_list: List[str] = None,
         app_name: str = None,
+        app_type: str = None,
         biz_region_id: str = None,
         installation_status: str = None,
         md5: str = None,
@@ -5212,6 +5225,7 @@ class DescribeAppsRequest(TeaModel):
         self.app_id_list = app_id_list
         # The name of the application.
         self.app_name = app_name
+        self.app_type = app_type
         # Region id.
         self.biz_region_id = biz_region_id
         # The installation/uninstallation status of the application.
@@ -5253,6 +5267,8 @@ class DescribeAppsRequest(TeaModel):
             result['AppIdList'] = self.app_id_list
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
         if self.installation_status is not None:
@@ -5273,6 +5289,8 @@ class DescribeAppsRequest(TeaModel):
             self.app_id_list = m.get('AppIdList')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
         if m.get('InstallationStatus') is not None:
@@ -5295,6 +5313,7 @@ class DescribeAppsResponseBodyData(TeaModel):
         apk_size: str = None,
         app_id: int = None,
         app_name: str = None,
+        app_type: str = None,
         biz_region_id: str = None,
         description: str = None,
         gmt_create: str = None,
@@ -5314,6 +5333,7 @@ class DescribeAppsResponseBodyData(TeaModel):
         self.app_id = app_id
         # The name of the application.
         self.app_name = app_name
+        self.app_type = app_type
         # Region id.
         self.biz_region_id = biz_region_id
         # The description of the application.
@@ -5367,6 +5387,8 @@ class DescribeAppsResponseBodyData(TeaModel):
             result['AppId'] = self.app_id
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
         if self.description is not None:
@@ -5399,6 +5421,8 @@ class DescribeAppsResponseBodyData(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
         if m.get('Description') is not None:

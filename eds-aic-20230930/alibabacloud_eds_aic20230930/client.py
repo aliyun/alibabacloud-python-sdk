@@ -1050,6 +1050,8 @@ class Client(OpenApiClient):
             query['InstallParam'] = request.install_param
         if not UtilClient.is_unset(request.oss_app_url):
             query['OssAppUrl'] = request.oss_app_url
+        if not UtilClient.is_unset(request.sign_apk):
+            query['SignApk'] = request.sign_apk
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1123,6 +1125,8 @@ class Client(OpenApiClient):
             query['InstallParam'] = request.install_param
         if not UtilClient.is_unset(request.oss_app_url):
             query['OssAppUrl'] = request.oss_app_url
+        if not UtilClient.is_unset(request.sign_apk):
+            query['SignApk'] = request.sign_apk
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2932,6 +2936,8 @@ class Client(OpenApiClient):
             query['AppIdList'] = request.app_id_list
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_type):
+            query['AppType'] = request.app_type
         if not UtilClient.is_unset(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.installation_status):
@@ -2987,6 +2993,8 @@ class Client(OpenApiClient):
             query['AppIdList'] = request.app_id_list
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_type):
+            query['AppType'] = request.app_type
         if not UtilClient.is_unset(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.installation_status):
