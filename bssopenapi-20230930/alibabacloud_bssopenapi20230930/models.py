@@ -1,7 +1,255 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Any, Dict, List
+from typing import List, Dict, Any
+
+
+class AddCouponDeductTagRequestEcIdAccountIds(TeaModel):
+    def __init__(
+        self,
+        account_ids: List[int] = None,
+        ec_id: str = None,
+    ):
+        self.account_ids = account_ids
+        # This parameter is required.
+        self.ec_id = ec_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
+        if self.ec_id is not None:
+            result['EcId'] = self.ec_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
+        if m.get('EcId') is not None:
+            self.ec_id = m.get('EcId')
+        return self
+
+
+class AddCouponDeductTagRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class AddCouponDeductTagRequest(TeaModel):
+    def __init__(
+        self,
+        coupon_id: str = None,
+        ec_id_account_ids: List[AddCouponDeductTagRequestEcIdAccountIds] = None,
+        nbid: str = None,
+        tags: List[AddCouponDeductTagRequestTags] = None,
+    ):
+        self.coupon_id = coupon_id
+        self.ec_id_account_ids = ec_id_account_ids
+        self.nbid = nbid
+        self.tags = tags
+
+    def validate(self):
+        if self.ec_id_account_ids:
+            for k in self.ec_id_account_ids:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.coupon_id is not None:
+            result['CouponId'] = self.coupon_id
+        result['EcIdAccountIds'] = []
+        if self.ec_id_account_ids is not None:
+            for k in self.ec_id_account_ids:
+                result['EcIdAccountIds'].append(k.to_map() if k else None)
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CouponId') is not None:
+            self.coupon_id = m.get('CouponId')
+        self.ec_id_account_ids = []
+        if m.get('EcIdAccountIds') is not None:
+            for k in m.get('EcIdAccountIds'):
+                temp_model = AddCouponDeductTagRequestEcIdAccountIds()
+                self.ec_id_account_ids.append(temp_model.from_map(k))
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = AddCouponDeductTagRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class AddCouponDeductTagShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        coupon_id: str = None,
+        ec_id_account_ids_shrink: str = None,
+        nbid: str = None,
+        tags_shrink: str = None,
+    ):
+        self.coupon_id = coupon_id
+        self.ec_id_account_ids_shrink = ec_id_account_ids_shrink
+        self.nbid = nbid
+        self.tags_shrink = tags_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.coupon_id is not None:
+            result['CouponId'] = self.coupon_id
+        if self.ec_id_account_ids_shrink is not None:
+            result['EcIdAccountIds'] = self.ec_id_account_ids_shrink
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CouponId') is not None:
+            self.coupon_id = m.get('CouponId')
+        if m.get('EcIdAccountIds') is not None:
+            self.ec_id_account_ids_shrink = m.get('EcIdAccountIds')
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        return self
+
+
+class AddCouponDeductTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddCouponDeductTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddCouponDeductTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddCouponDeductTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class CancelFundAccountLowAvailableAmountAlarmRequest(TeaModel):
@@ -251,6 +499,1033 @@ class CreateFundAccountTransferResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateFundAccountTransferResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCouponDeductTagRequestEcIdAccountIds(TeaModel):
+    def __init__(
+        self,
+        account_ids: List[int] = None,
+        ec_id: str = None,
+    ):
+        self.account_ids = account_ids
+        # This parameter is required.
+        self.ec_id = ec_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
+        if self.ec_id is not None:
+            result['EcId'] = self.ec_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
+        if m.get('EcId') is not None:
+            self.ec_id = m.get('EcId')
+        return self
+
+
+class DeleteCouponDeductTagRequest(TeaModel):
+    def __init__(
+        self,
+        coupon_id: str = None,
+        ec_id_account_ids: List[DeleteCouponDeductTagRequestEcIdAccountIds] = None,
+        nbid: str = None,
+        tag_keys: List[str] = None,
+    ):
+        self.coupon_id = coupon_id
+        self.ec_id_account_ids = ec_id_account_ids
+        self.nbid = nbid
+        self.tag_keys = tag_keys
+
+    def validate(self):
+        if self.ec_id_account_ids:
+            for k in self.ec_id_account_ids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.coupon_id is not None:
+            result['CouponId'] = self.coupon_id
+        result['EcIdAccountIds'] = []
+        if self.ec_id_account_ids is not None:
+            for k in self.ec_id_account_ids:
+                result['EcIdAccountIds'].append(k.to_map() if k else None)
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.tag_keys is not None:
+            result['TagKeys'] = self.tag_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CouponId') is not None:
+            self.coupon_id = m.get('CouponId')
+        self.ec_id_account_ids = []
+        if m.get('EcIdAccountIds') is not None:
+            for k in m.get('EcIdAccountIds'):
+                temp_model = DeleteCouponDeductTagRequestEcIdAccountIds()
+                self.ec_id_account_ids.append(temp_model.from_map(k))
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('TagKeys') is not None:
+            self.tag_keys = m.get('TagKeys')
+        return self
+
+
+class DeleteCouponDeductTagShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        coupon_id: str = None,
+        ec_id_account_ids_shrink: str = None,
+        nbid: str = None,
+        tag_keys_shrink: str = None,
+    ):
+        self.coupon_id = coupon_id
+        self.ec_id_account_ids_shrink = ec_id_account_ids_shrink
+        self.nbid = nbid
+        self.tag_keys_shrink = tag_keys_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.coupon_id is not None:
+            result['CouponId'] = self.coupon_id
+        if self.ec_id_account_ids_shrink is not None:
+            result['EcIdAccountIds'] = self.ec_id_account_ids_shrink
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.tag_keys_shrink is not None:
+            result['TagKeys'] = self.tag_keys_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CouponId') is not None:
+            self.coupon_id = m.get('CouponId')
+        if m.get('EcIdAccountIds') is not None:
+            self.ec_id_account_ids_shrink = m.get('EcIdAccountIds')
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('TagKeys') is not None:
+            self.tag_keys_shrink = m.get('TagKeys')
+        return self
+
+
+class DeleteCouponDeductTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteCouponDeductTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCouponDeductTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCouponDeductTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCouponRequestEcIdAccountIds(TeaModel):
+    def __init__(
+        self,
+        account_ids: List[int] = None,
+        ec_id: str = None,
+    ):
+        self.account_ids = account_ids
+        # This parameter is required.
+        self.ec_id = ec_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
+        if self.ec_id is not None:
+            result['EcId'] = self.ec_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
+        if m.get('EcId') is not None:
+            self.ec_id = m.get('EcId')
+        return self
+
+
+class DescribeCouponRequest(TeaModel):
+    def __init__(
+        self,
+        coupon_id: int = None,
+        coupon_no: str = None,
+        coupon_type: str = None,
+        current_page: int = None,
+        ec_id_account_ids: List[DescribeCouponRequestEcIdAccountIds] = None,
+        effective_end_time: int = None,
+        effective_start_time: int = None,
+        expire_end_date: int = None,
+        expire_start_date: int = None,
+        nbid: str = None,
+        page_size: int = None,
+        status: str = None,
+    ):
+        self.coupon_id = coupon_id
+        self.coupon_no = coupon_no
+        self.coupon_type = coupon_type
+        # This parameter is required.
+        self.current_page = current_page
+        self.ec_id_account_ids = ec_id_account_ids
+        self.effective_end_time = effective_end_time
+        self.effective_start_time = effective_start_time
+        self.expire_end_date = expire_end_date
+        self.expire_start_date = expire_start_date
+        self.nbid = nbid
+        # This parameter is required.
+        self.page_size = page_size
+        self.status = status
+
+    def validate(self):
+        if self.ec_id_account_ids:
+            for k in self.ec_id_account_ids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.coupon_id is not None:
+            result['CouponId'] = self.coupon_id
+        if self.coupon_no is not None:
+            result['CouponNo'] = self.coupon_no
+        if self.coupon_type is not None:
+            result['CouponType'] = self.coupon_type
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['EcIdAccountIds'] = []
+        if self.ec_id_account_ids is not None:
+            for k in self.ec_id_account_ids:
+                result['EcIdAccountIds'].append(k.to_map() if k else None)
+        if self.effective_end_time is not None:
+            result['EffectiveEndTime'] = self.effective_end_time
+        if self.effective_start_time is not None:
+            result['EffectiveStartTime'] = self.effective_start_time
+        if self.expire_end_date is not None:
+            result['ExpireEndDate'] = self.expire_end_date
+        if self.expire_start_date is not None:
+            result['ExpireStartDate'] = self.expire_start_date
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CouponId') is not None:
+            self.coupon_id = m.get('CouponId')
+        if m.get('CouponNo') is not None:
+            self.coupon_no = m.get('CouponNo')
+        if m.get('CouponType') is not None:
+            self.coupon_type = m.get('CouponType')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.ec_id_account_ids = []
+        if m.get('EcIdAccountIds') is not None:
+            for k in m.get('EcIdAccountIds'):
+                temp_model = DescribeCouponRequestEcIdAccountIds()
+                self.ec_id_account_ids.append(temp_model.from_map(k))
+        if m.get('EffectiveEndTime') is not None:
+            self.effective_end_time = m.get('EffectiveEndTime')
+        if m.get('EffectiveStartTime') is not None:
+            self.effective_start_time = m.get('EffectiveStartTime')
+        if m.get('ExpireEndDate') is not None:
+            self.expire_end_date = m.get('ExpireEndDate')
+        if m.get('ExpireStartDate') is not None:
+            self.expire_start_date = m.get('ExpireStartDate')
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeCouponShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        coupon_id: int = None,
+        coupon_no: str = None,
+        coupon_type: str = None,
+        current_page: int = None,
+        ec_id_account_ids_shrink: str = None,
+        effective_end_time: int = None,
+        effective_start_time: int = None,
+        expire_end_date: int = None,
+        expire_start_date: int = None,
+        nbid: str = None,
+        page_size: int = None,
+        status: str = None,
+    ):
+        self.coupon_id = coupon_id
+        self.coupon_no = coupon_no
+        self.coupon_type = coupon_type
+        # This parameter is required.
+        self.current_page = current_page
+        self.ec_id_account_ids_shrink = ec_id_account_ids_shrink
+        self.effective_end_time = effective_end_time
+        self.effective_start_time = effective_start_time
+        self.expire_end_date = expire_end_date
+        self.expire_start_date = expire_start_date
+        self.nbid = nbid
+        # This parameter is required.
+        self.page_size = page_size
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.coupon_id is not None:
+            result['CouponId'] = self.coupon_id
+        if self.coupon_no is not None:
+            result['CouponNo'] = self.coupon_no
+        if self.coupon_type is not None:
+            result['CouponType'] = self.coupon_type
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.ec_id_account_ids_shrink is not None:
+            result['EcIdAccountIds'] = self.ec_id_account_ids_shrink
+        if self.effective_end_time is not None:
+            result['EffectiveEndTime'] = self.effective_end_time
+        if self.effective_start_time is not None:
+            result['EffectiveStartTime'] = self.effective_start_time
+        if self.expire_end_date is not None:
+            result['ExpireEndDate'] = self.expire_end_date
+        if self.expire_start_date is not None:
+            result['ExpireStartDate'] = self.expire_start_date
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CouponId') is not None:
+            self.coupon_id = m.get('CouponId')
+        if m.get('CouponNo') is not None:
+            self.coupon_no = m.get('CouponNo')
+        if m.get('CouponType') is not None:
+            self.coupon_type = m.get('CouponType')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EcIdAccountIds') is not None:
+            self.ec_id_account_ids_shrink = m.get('EcIdAccountIds')
+        if m.get('EffectiveEndTime') is not None:
+            self.effective_end_time = m.get('EffectiveEndTime')
+        if m.get('EffectiveStartTime') is not None:
+            self.effective_start_time = m.get('EffectiveStartTime')
+        if m.get('ExpireEndDate') is not None:
+            self.expire_end_date = m.get('ExpireEndDate')
+        if m.get('ExpireStartDate') is not None:
+            self.expire_start_date = m.get('ExpireStartDate')
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeCouponResponseBodyDataShareUidList(TeaModel):
+    def __init__(
+        self,
+        uid: str = None,
+        user_nick: str = None,
+    ):
+        self.uid = uid
+        self.user_nick = user_nick
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.uid is not None:
+            result['Uid'] = self.uid
+        if self.user_nick is not None:
+            result['UserNick'] = self.user_nick
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Uid') is not None:
+            self.uid = m.get('Uid')
+        if m.get('UserNick') is not None:
+            self.user_nick = m.get('UserNick')
+        return self
+
+
+class DescribeCouponResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        amount: str = None,
+        coupon_id: int = None,
+        coupon_no: str = None,
+        coupon_type: str = None,
+        coupon_type_name: str = None,
+        currency: str = None,
+        end_time: str = None,
+        gmt_create: str = None,
+        item_names: List[str] = None,
+        money_limit: str = None,
+        order_time_rule: str = None,
+        remain_amount: str = None,
+        remark: str = None,
+        share_uid_list: List[DescribeCouponResponseBodyDataShareUidList] = None,
+        show_set_deduct_tag_button: bool = None,
+        site: str = None,
+        site_name: str = None,
+        start_time: str = None,
+        status: str = None,
+        suit_account: str = None,
+        suit_item_type: str = None,
+        universal_type: str = None,
+        yh_order_types: List[str] = None,
+    ):
+        self.amount = amount
+        self.coupon_id = coupon_id
+        self.coupon_no = coupon_no
+        self.coupon_type = coupon_type
+        self.coupon_type_name = coupon_type_name
+        self.currency = currency
+        self.end_time = end_time
+        self.gmt_create = gmt_create
+        self.item_names = item_names
+        self.money_limit = money_limit
+        self.order_time_rule = order_time_rule
+        self.remain_amount = remain_amount
+        self.remark = remark
+        self.share_uid_list = share_uid_list
+        self.show_set_deduct_tag_button = show_set_deduct_tag_button
+        self.site = site
+        self.site_name = site_name
+        self.start_time = start_time
+        self.status = status
+        self.suit_account = suit_account
+        self.suit_item_type = suit_item_type
+        self.universal_type = universal_type
+        self.yh_order_types = yh_order_types
+
+    def validate(self):
+        if self.share_uid_list:
+            for k in self.share_uid_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.coupon_id is not None:
+            result['CouponId'] = self.coupon_id
+        if self.coupon_no is not None:
+            result['CouponNo'] = self.coupon_no
+        if self.coupon_type is not None:
+            result['CouponType'] = self.coupon_type
+        if self.coupon_type_name is not None:
+            result['CouponTypeName'] = self.coupon_type_name
+        if self.currency is not None:
+            result['Currency'] = self.currency
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.item_names is not None:
+            result['ItemNames'] = self.item_names
+        if self.money_limit is not None:
+            result['MoneyLimit'] = self.money_limit
+        if self.order_time_rule is not None:
+            result['OrderTimeRule'] = self.order_time_rule
+        if self.remain_amount is not None:
+            result['RemainAmount'] = self.remain_amount
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        result['ShareUidList'] = []
+        if self.share_uid_list is not None:
+            for k in self.share_uid_list:
+                result['ShareUidList'].append(k.to_map() if k else None)
+        if self.show_set_deduct_tag_button is not None:
+            result['ShowSetDeductTagButton'] = self.show_set_deduct_tag_button
+        if self.site is not None:
+            result['Site'] = self.site
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.suit_account is not None:
+            result['SuitAccount'] = self.suit_account
+        if self.suit_item_type is not None:
+            result['SuitItemType'] = self.suit_item_type
+        if self.universal_type is not None:
+            result['UniversalType'] = self.universal_type
+        if self.yh_order_types is not None:
+            result['YhOrderTypes'] = self.yh_order_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('CouponId') is not None:
+            self.coupon_id = m.get('CouponId')
+        if m.get('CouponNo') is not None:
+            self.coupon_no = m.get('CouponNo')
+        if m.get('CouponType') is not None:
+            self.coupon_type = m.get('CouponType')
+        if m.get('CouponTypeName') is not None:
+            self.coupon_type_name = m.get('CouponTypeName')
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('ItemNames') is not None:
+            self.item_names = m.get('ItemNames')
+        if m.get('MoneyLimit') is not None:
+            self.money_limit = m.get('MoneyLimit')
+        if m.get('OrderTimeRule') is not None:
+            self.order_time_rule = m.get('OrderTimeRule')
+        if m.get('RemainAmount') is not None:
+            self.remain_amount = m.get('RemainAmount')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        self.share_uid_list = []
+        if m.get('ShareUidList') is not None:
+            for k in m.get('ShareUidList'):
+                temp_model = DescribeCouponResponseBodyDataShareUidList()
+                self.share_uid_list.append(temp_model.from_map(k))
+        if m.get('ShowSetDeductTagButton') is not None:
+            self.show_set_deduct_tag_button = m.get('ShowSetDeductTagButton')
+        if m.get('Site') is not None:
+            self.site = m.get('Site')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SuitAccount') is not None:
+            self.suit_account = m.get('SuitAccount')
+        if m.get('SuitItemType') is not None:
+            self.suit_item_type = m.get('SuitItemType')
+        if m.get('UniversalType') is not None:
+            self.universal_type = m.get('UniversalType')
+        if m.get('YhOrderTypes') is not None:
+            self.yh_order_types = m.get('YhOrderTypes')
+        return self
+
+
+class DescribeCouponResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        data: List[DescribeCouponResponseBodyData] = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.current_page = current_page
+        self.data = data
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeCouponResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeCouponResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCouponResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCouponResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCouponItemListRequestEcIdAccountIds(TeaModel):
+    def __init__(
+        self,
+        account_ids: List[int] = None,
+        ec_id: str = None,
+    ):
+        self.account_ids = account_ids
+        # This parameter is required.
+        self.ec_id = ec_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
+        if self.ec_id is not None:
+            result['EcId'] = self.ec_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
+        if m.get('EcId') is not None:
+            self.ec_id = m.get('EcId')
+        return self
+
+
+class DescribeCouponItemListRequest(TeaModel):
+    def __init__(
+        self,
+        coupon_id: int = None,
+        current_page: int = None,
+        ec_id_account_ids: List[DescribeCouponItemListRequestEcIdAccountIds] = None,
+        name: str = None,
+        nbid: str = None,
+        page_size: int = None,
+    ):
+        self.coupon_id = coupon_id
+        self.current_page = current_page
+        self.ec_id_account_ids = ec_id_account_ids
+        self.name = name
+        self.nbid = nbid
+        self.page_size = page_size
+
+    def validate(self):
+        if self.ec_id_account_ids:
+            for k in self.ec_id_account_ids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.coupon_id is not None:
+            result['CouponId'] = self.coupon_id
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['EcIdAccountIds'] = []
+        if self.ec_id_account_ids is not None:
+            for k in self.ec_id_account_ids:
+                result['EcIdAccountIds'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CouponId') is not None:
+            self.coupon_id = m.get('CouponId')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.ec_id_account_ids = []
+        if m.get('EcIdAccountIds') is not None:
+            for k in m.get('EcIdAccountIds'):
+                temp_model = DescribeCouponItemListRequestEcIdAccountIds()
+                self.ec_id_account_ids.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeCouponItemListShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        coupon_id: int = None,
+        current_page: int = None,
+        ec_id_account_ids_shrink: str = None,
+        name: str = None,
+        nbid: str = None,
+        page_size: int = None,
+    ):
+        self.coupon_id = coupon_id
+        self.current_page = current_page
+        self.ec_id_account_ids_shrink = ec_id_account_ids_shrink
+        self.name = name
+        self.nbid = nbid
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.coupon_id is not None:
+            result['CouponId'] = self.coupon_id
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.ec_id_account_ids_shrink is not None:
+            result['EcIdAccountIds'] = self.ec_id_account_ids_shrink
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CouponId') is not None:
+            self.coupon_id = m.get('CouponId')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EcIdAccountIds') is not None:
+            self.ec_id_account_ids_shrink = m.get('EcIdAccountIds')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeCouponItemListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        name: str = None,
+    ):
+        self.code = code
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DescribeCouponItemListResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        data: List[DescribeCouponItemListResponseBodyData] = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.current_page = current_page
+        self.data = data
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeCouponItemListResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeCouponItemListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCouponItemListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCouponItemListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1798,6 +3073,241 @@ class GetFundAccountTransactionDetailsResponse(TeaModel):
         return self
 
 
+class ListCouponDeductTagRequestEcIdAccountIds(TeaModel):
+    def __init__(
+        self,
+        account_ids: List[int] = None,
+        ec_id: str = None,
+    ):
+        self.account_ids = account_ids
+        # This parameter is required.
+        self.ec_id = ec_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
+        if self.ec_id is not None:
+            result['EcId'] = self.ec_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
+        if m.get('EcId') is not None:
+            self.ec_id = m.get('EcId')
+        return self
+
+
+class ListCouponDeductTagRequest(TeaModel):
+    def __init__(
+        self,
+        coupon_id: str = None,
+        ec_id_account_ids: List[ListCouponDeductTagRequestEcIdAccountIds] = None,
+        nbid: str = None,
+    ):
+        self.coupon_id = coupon_id
+        self.ec_id_account_ids = ec_id_account_ids
+        self.nbid = nbid
+
+    def validate(self):
+        if self.ec_id_account_ids:
+            for k in self.ec_id_account_ids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.coupon_id is not None:
+            result['CouponId'] = self.coupon_id
+        result['EcIdAccountIds'] = []
+        if self.ec_id_account_ids is not None:
+            for k in self.ec_id_account_ids:
+                result['EcIdAccountIds'].append(k.to_map() if k else None)
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CouponId') is not None:
+            self.coupon_id = m.get('CouponId')
+        self.ec_id_account_ids = []
+        if m.get('EcIdAccountIds') is not None:
+            for k in m.get('EcIdAccountIds'):
+                temp_model = ListCouponDeductTagRequestEcIdAccountIds()
+                self.ec_id_account_ids.append(temp_model.from_map(k))
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        return self
+
+
+class ListCouponDeductTagShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        coupon_id: str = None,
+        ec_id_account_ids_shrink: str = None,
+        nbid: str = None,
+    ):
+        self.coupon_id = coupon_id
+        self.ec_id_account_ids_shrink = ec_id_account_ids_shrink
+        self.nbid = nbid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.coupon_id is not None:
+            result['CouponId'] = self.coupon_id
+        if self.ec_id_account_ids_shrink is not None:
+            result['EcIdAccountIds'] = self.ec_id_account_ids_shrink
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CouponId') is not None:
+            self.coupon_id = m.get('CouponId')
+        if m.get('EcIdAccountIds') is not None:
+            self.ec_id_account_ids_shrink = m.get('EcIdAccountIds')
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        return self
+
+
+class ListCouponDeductTagResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListCouponDeductTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[ListCouponDeductTagResponseBodyData] = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListCouponDeductTagResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListCouponDeductTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCouponDeductTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCouponDeductTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListFundAccountRequest(TeaModel):
     def __init__(
         self,
@@ -2386,6 +3896,119 @@ class SetFundAccountCreditAmountResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetFundAccountCreditAmountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetFundAccountLowAvailableAmountAlarmRequest(TeaModel):
+    def __init__(
+        self,
+        fund_account_id: int = None,
+        threshold_amount: str = None,
+    ):
+        self.fund_account_id = fund_account_id
+        self.threshold_amount = threshold_amount
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fund_account_id is not None:
+            result['FundAccountId'] = self.fund_account_id
+        if self.threshold_amount is not None:
+            result['ThresholdAmount'] = self.threshold_amount
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FundAccountId') is not None:
+            self.fund_account_id = m.get('FundAccountId')
+        if m.get('ThresholdAmount') is not None:
+            self.threshold_amount = m.get('ThresholdAmount')
+        return self
+
+
+class SetFundAccountLowAvailableAmountAlarmResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        metadata: Any = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.metadata = metadata
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetFundAccountLowAvailableAmountAlarmResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetFundAccountLowAvailableAmountAlarmResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetFundAccountLowAvailableAmountAlarmResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

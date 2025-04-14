@@ -101,6 +101,138 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_coupon_deduct_tag_with_options(
+        self,
+        tmp_req: bss_open_api_20230930_models.AddCouponDeductTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.AddCouponDeductTagResponse:
+        """
+        @summary 添加优惠券抵扣标签
+        
+        @param tmp_req: AddCouponDeductTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddCouponDeductTagResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.AddCouponDeductTagShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.coupon_id):
+            query['CouponId'] = request.coupon_id
+        if not UtilClient.is_unset(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddCouponDeductTag',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.AddCouponDeductTagResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.AddCouponDeductTagResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def add_coupon_deduct_tag_with_options_async(
+        self,
+        tmp_req: bss_open_api_20230930_models.AddCouponDeductTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.AddCouponDeductTagResponse:
+        """
+        @summary 添加优惠券抵扣标签
+        
+        @param tmp_req: AddCouponDeductTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddCouponDeductTagResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.AddCouponDeductTagShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.coupon_id):
+            query['CouponId'] = request.coupon_id
+        if not UtilClient.is_unset(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddCouponDeductTag',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.AddCouponDeductTagResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.AddCouponDeductTagResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def add_coupon_deduct_tag(
+        self,
+        request: bss_open_api_20230930_models.AddCouponDeductTagRequest,
+    ) -> bss_open_api_20230930_models.AddCouponDeductTagResponse:
+        """
+        @summary 添加优惠券抵扣标签
+        
+        @param request: AddCouponDeductTagRequest
+        @return: AddCouponDeductTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_coupon_deduct_tag_with_options(request, runtime)
+
+    async def add_coupon_deduct_tag_async(
+        self,
+        request: bss_open_api_20230930_models.AddCouponDeductTagRequest,
+    ) -> bss_open_api_20230930_models.AddCouponDeductTagResponse:
+        """
+        @summary 添加优惠券抵扣标签
+        
+        @param request: AddCouponDeductTagRequest
+        @return: AddCouponDeductTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_coupon_deduct_tag_with_options_async(request, runtime)
+
     def cancel_fund_account_low_available_amount_alarm_with_options(
         self,
         request: bss_open_api_20230930_models.CancelFundAccountLowAvailableAmountAlarmRequest,
@@ -340,6 +472,362 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_fund_account_transfer_with_options_async(request, runtime)
+
+    def delete_coupon_deduct_tag_with_options(
+        self,
+        tmp_req: bss_open_api_20230930_models.DeleteCouponDeductTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.DeleteCouponDeductTagResponse:
+        """
+        @summary 删除优惠券的抵扣标签
+        
+        @param tmp_req: DeleteCouponDeductTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCouponDeductTagResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.DeleteCouponDeductTagShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_keys):
+            request.tag_keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_keys, 'TagKeys', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.coupon_id):
+            query['CouponId'] = request.coupon_id
+        if not UtilClient.is_unset(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.tag_keys_shrink):
+            query['TagKeys'] = request.tag_keys_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCouponDeductTag',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.DeleteCouponDeductTagResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.DeleteCouponDeductTagResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_coupon_deduct_tag_with_options_async(
+        self,
+        tmp_req: bss_open_api_20230930_models.DeleteCouponDeductTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.DeleteCouponDeductTagResponse:
+        """
+        @summary 删除优惠券的抵扣标签
+        
+        @param tmp_req: DeleteCouponDeductTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCouponDeductTagResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.DeleteCouponDeductTagShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_keys):
+            request.tag_keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_keys, 'TagKeys', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.coupon_id):
+            query['CouponId'] = request.coupon_id
+        if not UtilClient.is_unset(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.tag_keys_shrink):
+            query['TagKeys'] = request.tag_keys_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCouponDeductTag',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.DeleteCouponDeductTagResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.DeleteCouponDeductTagResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_coupon_deduct_tag(
+        self,
+        request: bss_open_api_20230930_models.DeleteCouponDeductTagRequest,
+    ) -> bss_open_api_20230930_models.DeleteCouponDeductTagResponse:
+        """
+        @summary 删除优惠券的抵扣标签
+        
+        @param request: DeleteCouponDeductTagRequest
+        @return: DeleteCouponDeductTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_coupon_deduct_tag_with_options(request, runtime)
+
+    async def delete_coupon_deduct_tag_async(
+        self,
+        request: bss_open_api_20230930_models.DeleteCouponDeductTagRequest,
+    ) -> bss_open_api_20230930_models.DeleteCouponDeductTagResponse:
+        """
+        @summary 删除优惠券的抵扣标签
+        
+        @param request: DeleteCouponDeductTagRequest
+        @return: DeleteCouponDeductTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_coupon_deduct_tag_with_options_async(request, runtime)
+
+    def describe_coupon_with_options(
+        self,
+        tmp_req: bss_open_api_20230930_models.DescribeCouponRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.DescribeCouponResponse:
+        """
+        @summary 查询优惠券列表
+        
+        @param tmp_req: DescribeCouponRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCouponResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.DescribeCouponShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCoupon',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.DescribeCouponResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.DescribeCouponResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_coupon_with_options_async(
+        self,
+        tmp_req: bss_open_api_20230930_models.DescribeCouponRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.DescribeCouponResponse:
+        """
+        @summary 查询优惠券列表
+        
+        @param tmp_req: DescribeCouponRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCouponResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.DescribeCouponShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCoupon',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.DescribeCouponResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.DescribeCouponResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_coupon(
+        self,
+        request: bss_open_api_20230930_models.DescribeCouponRequest,
+    ) -> bss_open_api_20230930_models.DescribeCouponResponse:
+        """
+        @summary 查询优惠券列表
+        
+        @param request: DescribeCouponRequest
+        @return: DescribeCouponResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_coupon_with_options(request, runtime)
+
+    async def describe_coupon_async(
+        self,
+        request: bss_open_api_20230930_models.DescribeCouponRequest,
+    ) -> bss_open_api_20230930_models.DescribeCouponResponse:
+        """
+        @summary 查询优惠券列表
+        
+        @param request: DescribeCouponRequest
+        @return: DescribeCouponResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_coupon_with_options_async(request, runtime)
+
+    def describe_coupon_item_list_with_options(
+        self,
+        tmp_req: bss_open_api_20230930_models.DescribeCouponItemListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.DescribeCouponItemListResponse:
+        """
+        @summary 查询优惠券可用商品列表
+        
+        @param tmp_req: DescribeCouponItemListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCouponItemListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.DescribeCouponItemListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCouponItemList',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.DescribeCouponItemListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.DescribeCouponItemListResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_coupon_item_list_with_options_async(
+        self,
+        tmp_req: bss_open_api_20230930_models.DescribeCouponItemListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.DescribeCouponItemListResponse:
+        """
+        @summary 查询优惠券可用商品列表
+        
+        @param tmp_req: DescribeCouponItemListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCouponItemListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.DescribeCouponItemListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCouponItemList',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.DescribeCouponItemListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.DescribeCouponItemListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_coupon_item_list(
+        self,
+        request: bss_open_api_20230930_models.DescribeCouponItemListRequest,
+    ) -> bss_open_api_20230930_models.DescribeCouponItemListResponse:
+        """
+        @summary 查询优惠券可用商品列表
+        
+        @param request: DescribeCouponItemListRequest
+        @return: DescribeCouponItemListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_coupon_item_list_with_options(request, runtime)
+
+    async def describe_coupon_item_list_async(
+        self,
+        request: bss_open_api_20230930_models.DescribeCouponItemListRequest,
+    ) -> bss_open_api_20230930_models.DescribeCouponItemListResponse:
+        """
+        @summary 查询优惠券可用商品列表
+        
+        @param request: DescribeCouponItemListRequest
+        @return: DescribeCouponItemListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_coupon_item_list_with_options_async(request, runtime)
 
     def get_fund_account_available_amount_with_options(
         self,
@@ -1165,6 +1653,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_fund_account_transaction_details_with_options_async(request, runtime)
 
+    def list_coupon_deduct_tag_with_options(
+        self,
+        tmp_req: bss_open_api_20230930_models.ListCouponDeductTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.ListCouponDeductTagResponse:
+        """
+        @summary 查询优惠券设置的抵扣标签
+        
+        @param tmp_req: ListCouponDeductTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCouponDeductTagResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.ListCouponDeductTagShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.coupon_id):
+            query['CouponId'] = request.coupon_id
+        if not UtilClient.is_unset(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCouponDeductTag',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.ListCouponDeductTagResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.ListCouponDeductTagResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_coupon_deduct_tag_with_options_async(
+        self,
+        tmp_req: bss_open_api_20230930_models.ListCouponDeductTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.ListCouponDeductTagResponse:
+        """
+        @summary 查询优惠券设置的抵扣标签
+        
+        @param tmp_req: ListCouponDeductTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCouponDeductTagResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.ListCouponDeductTagShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.coupon_id):
+            query['CouponId'] = request.coupon_id
+        if not UtilClient.is_unset(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCouponDeductTag',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.ListCouponDeductTagResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.ListCouponDeductTagResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_coupon_deduct_tag(
+        self,
+        request: bss_open_api_20230930_models.ListCouponDeductTagRequest,
+    ) -> bss_open_api_20230930_models.ListCouponDeductTagResponse:
+        """
+        @summary 查询优惠券设置的抵扣标签
+        
+        @param request: ListCouponDeductTagRequest
+        @return: ListCouponDeductTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_coupon_deduct_tag_with_options(request, runtime)
+
+    async def list_coupon_deduct_tag_async(
+        self,
+        request: bss_open_api_20230930_models.ListCouponDeductTagRequest,
+    ) -> bss_open_api_20230930_models.ListCouponDeductTagResponse:
+        """
+        @summary 查询优惠券设置的抵扣标签
+        
+        @param request: ListCouponDeductTagRequest
+        @return: ListCouponDeductTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_coupon_deduct_tag_with_options_async(request, runtime)
+
     def list_fund_account_with_options(
         self,
         request: bss_open_api_20230930_models.ListFundAccountRequest,
@@ -1528,6 +2140,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.set_fund_account_credit_amount_with_options_async(request, runtime)
+
+    def set_fund_account_low_available_amount_alarm_with_options(
+        self,
+        request: bss_open_api_20230930_models.SetFundAccountLowAvailableAmountAlarmRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.SetFundAccountLowAvailableAmountAlarmResponse:
+        """
+        @summary 设置资金账户低额预警
+        
+        @param request: SetFundAccountLowAvailableAmountAlarmRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetFundAccountLowAvailableAmountAlarmResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.fund_account_id):
+            body['FundAccountId'] = request.fund_account_id
+        if not UtilClient.is_unset(request.threshold_amount):
+            body['ThresholdAmount'] = request.threshold_amount
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetFundAccountLowAvailableAmountAlarm',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.SetFundAccountLowAvailableAmountAlarmResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.SetFundAccountLowAvailableAmountAlarmResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def set_fund_account_low_available_amount_alarm_with_options_async(
+        self,
+        request: bss_open_api_20230930_models.SetFundAccountLowAvailableAmountAlarmRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.SetFundAccountLowAvailableAmountAlarmResponse:
+        """
+        @summary 设置资金账户低额预警
+        
+        @param request: SetFundAccountLowAvailableAmountAlarmRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetFundAccountLowAvailableAmountAlarmResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.fund_account_id):
+            body['FundAccountId'] = request.fund_account_id
+        if not UtilClient.is_unset(request.threshold_amount):
+            body['ThresholdAmount'] = request.threshold_amount
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetFundAccountLowAvailableAmountAlarm',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.SetFundAccountLowAvailableAmountAlarmResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bss_open_api_20230930_models.SetFundAccountLowAvailableAmountAlarmResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def set_fund_account_low_available_amount_alarm(
+        self,
+        request: bss_open_api_20230930_models.SetFundAccountLowAvailableAmountAlarmRequest,
+    ) -> bss_open_api_20230930_models.SetFundAccountLowAvailableAmountAlarmResponse:
+        """
+        @summary 设置资金账户低额预警
+        
+        @param request: SetFundAccountLowAvailableAmountAlarmRequest
+        @return: SetFundAccountLowAvailableAmountAlarmResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_fund_account_low_available_amount_alarm_with_options(request, runtime)
+
+    async def set_fund_account_low_available_amount_alarm_async(
+        self,
+        request: bss_open_api_20230930_models.SetFundAccountLowAvailableAmountAlarmRequest,
+    ) -> bss_open_api_20230930_models.SetFundAccountLowAvailableAmountAlarmResponse:
+        """
+        @summary 设置资金账户低额预警
+        
+        @param request: SetFundAccountLowAvailableAmountAlarmRequest
+        @return: SetFundAccountLowAvailableAmountAlarmResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_fund_account_low_available_amount_alarm_with_options_async(request, runtime)
 
     def set_saving_plan_user_deduct_rule_with_options(
         self,
