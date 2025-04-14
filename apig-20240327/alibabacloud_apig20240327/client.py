@@ -5211,6 +5211,8 @@ class Client(OpenApiClient):
             query['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.source_type):
             query['sourceType'] = request.source_type
+        if not UtilClient.is_unset(request.source_types):
+            query['sourceTypes'] = request.source_types
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -5265,6 +5267,8 @@ class Client(OpenApiClient):
             query['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.source_type):
             query['sourceType'] = request.source_type
+        if not UtilClient.is_unset(request.source_types):
+            query['sourceTypes'] = request.source_types
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)

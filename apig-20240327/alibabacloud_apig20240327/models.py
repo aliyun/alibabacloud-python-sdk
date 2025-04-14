@@ -14028,6 +14028,7 @@ class ListServicesRequest(TeaModel):
         page_size: int = None,
         resource_group_id: str = None,
         source_type: str = None,
+        source_types: str = None,
     ):
         # The ID of the Cloud-native API Gateway instance.
         self.gateway_id = gateway_id
@@ -14055,6 +14056,7 @@ class ListServicesRequest(TeaModel):
         # *   VIP
         # *   MSE_NACOS
         self.source_type = source_type
+        self.source_types = source_types
 
     def validate(self):
         pass
@@ -14077,6 +14079,8 @@ class ListServicesRequest(TeaModel):
             result['resourceGroupId'] = self.resource_group_id
         if self.source_type is not None:
             result['sourceType'] = self.source_type
+        if self.source_types is not None:
+            result['sourceTypes'] = self.source_types
         return result
 
     def from_map(self, m: dict = None):
@@ -14093,6 +14097,8 @@ class ListServicesRequest(TeaModel):
             self.resource_group_id = m.get('resourceGroupId')
         if m.get('sourceType') is not None:
             self.source_type = m.get('sourceType')
+        if m.get('sourceTypes') is not None:
+            self.source_types = m.get('sourceTypes')
         return self
 
 

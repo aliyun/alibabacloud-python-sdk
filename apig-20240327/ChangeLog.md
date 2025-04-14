@@ -1,3 +1,7 @@
+2025-04-14 Version: 3.2.2
+- Update API ListServices: add request parameters sourceTypes.
+
+
 2025-03-31 Version: 3.2.1
 - Update API GetDashboard: add request parameters pluginId.
 - Update API GetDashboard: add request parameters upstreamCluster.
