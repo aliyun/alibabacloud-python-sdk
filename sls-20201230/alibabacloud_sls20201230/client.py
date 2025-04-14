@@ -5828,7 +5828,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteExternalStoreResponse:
         """
-        @summary Deletes an external store.
+        @summary Deletes an external storage configuration.
         
         @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
@@ -5866,7 +5866,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteExternalStoreResponse:
         """
-        @summary Deletes an external store.
+        @summary Deletes an external storage configuration.
         
         @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
@@ -5902,7 +5902,7 @@ class Client(OpenApiClient):
         external_store_name: str,
     ) -> sls_20201230_models.DeleteExternalStoreResponse:
         """
-        @summary Deletes an external store.
+        @summary Deletes an external storage configuration.
         
         @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
@@ -5918,7 +5918,7 @@ class Client(OpenApiClient):
         external_store_name: str,
     ) -> sls_20201230_models.DeleteExternalStoreResponse:
         """
-        @summary Deletes an external store.
+        @summary Deletes an external storage configuration.
         
         @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
@@ -23553,7 +23553,8 @@ class Client(OpenApiClient):
         """
         @summary Updates an ApsaraDB RDS external store.
         
-        @description Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        @description ### [](#)Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
         @param request: UpdateRdsExternalStoreRequest
         @param headers: map
@@ -23602,7 +23603,8 @@ class Client(OpenApiClient):
         """
         @summary Updates an ApsaraDB RDS external store.
         
-        @description Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        @description ### [](#)Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
         @param request: UpdateRdsExternalStoreRequest
         @param headers: map
@@ -23649,7 +23651,8 @@ class Client(OpenApiClient):
         """
         @summary Updates an ApsaraDB RDS external store.
         
-        @description Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        @description ### [](#)Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
         @param request: UpdateRdsExternalStoreRequest
         @return: UpdateRdsExternalStoreResponse
@@ -23667,7 +23670,8 @@ class Client(OpenApiClient):
         """
         @summary Updates an ApsaraDB RDS external store.
         
-        @description Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        @description ### [](#)Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
         @param request: UpdateRdsExternalStoreRequest
         @return: UpdateRdsExternalStoreResponse

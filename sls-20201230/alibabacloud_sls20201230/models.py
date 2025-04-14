@@ -3213,6 +3213,7 @@ class OSSIngestionConfigurationSource(TeaModel):
         restore_object_enabled: bool = None,
         role_arn: str = None,
         start_time: int = None,
+        tag_pack_id: bool = None,
         time_field: str = None,
         time_format: str = None,
         time_pattern: str = None,
@@ -3237,6 +3238,7 @@ class OSSIngestionConfigurationSource(TeaModel):
         self.restore_object_enabled = restore_object_enabled
         self.role_arn = role_arn
         self.start_time = start_time
+        self.tag_pack_id = tag_pack_id
         self.time_field = time_field
         self.time_format = time_format
         self.time_pattern = time_pattern
@@ -3277,6 +3279,8 @@ class OSSIngestionConfigurationSource(TeaModel):
             result['roleARN'] = self.role_arn
         if self.start_time is not None:
             result['startTime'] = self.start_time
+        if self.tag_pack_id is not None:
+            result['tagPackId'] = self.tag_pack_id
         if self.time_field is not None:
             result['timeField'] = self.time_field
         if self.time_format is not None:
@@ -3315,6 +3319,8 @@ class OSSIngestionConfigurationSource(TeaModel):
             self.role_arn = m.get('roleARN')
         if m.get('startTime') is not None:
             self.start_time = m.get('startTime')
+        if m.get('tagPackId') is not None:
+            self.tag_pack_id = m.get('tagPackId')
         if m.get('timeField') is not None:
             self.time_field = m.get('timeField')
         if m.get('timeFormat') is not None:
@@ -6377,10 +6383,10 @@ class CreateLogStoreRequest(TeaModel):
         telemetry_type: str = None,
         ttl: int = None,
     ):
-        # Specifies whether to record the **public IP address** and **log receiving time**. Default value: false. Valid values:
+        # Specifies whether to record the **public IP address** and the **log receiving time**. Default value: false. Valid values:
         # 
-        # *   true********\
-        # *   false********\
+        # *   true: records the public IP address and the log receiving time. If you set this parameter to true, Simple Log Service automatically adds the public IP address of the device from which the log is collected and the time when Simple Log Service receives the log to the Tag field of the collected log.
+        # *   false: does not record the public IP address or log receiving time.
         self.append_meta = append_meta
         # Specifies whether to enable automatic sharding. Valid values:
         # 
@@ -6394,18 +6400,18 @@ class CreateLogStoreRequest(TeaModel):
         self.enable_tracking = enable_tracking
         # The data structure of the encryption configuration. The following parameters are included: `enable`, `encrypt_type`, and `user_cmk_info`. For more information, see [EncryptConf](https://help.aliyun.com/document_detail/409461.html).
         self.encrypt_conf = encrypt_conf
-        # The retention period of data in the hot storage tier of the Logstore. Valid values: 7 to 3000. Unit: days.
+        # The data retention period for the hot storage tier. Unit: days. Minimum value: 7. The value of this parameter cannot exceed the value of ttl. If you set this parameter to -1, all data is stored in the hot storage tier.
         # 
         # After the retention period that is specified for the hot storage tier elapses, the data is moved to the Infrequent Access (IA) storage tier. For more information, see [Enable hot and cold-tiered storage for a Logstore](https://help.aliyun.com/document_detail/308645.html).
         self.hot_ttl = hot_ttl
-        # The retention period of data in the IA storage tier of the Logstore. You must set this parameter to at least 30 days. After the data retention period that you specify for the IA storage tier elapses, the data is moved to the Archive storage tier.
+        # The data retention period for the IA storage tier. You must set this parameter to at least 30 days. After the data retention period that you specify for the IA storage tier elapses, the data is moved to the Archive storage tier.
         self.infrequent_access_ttl = infrequent_access_ttl
         # The name of the Logstore. The name must meet the following requirements:
         # 
         # *   The name must be unique in a project.
         # *   The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
-        # *   The name must start and end with a lowercase letter or a digit.
-        # *   The name must be 2 to 63 characters in length.
+        # *   The name must start and end with a lowercase letter or digit.
+        # *   The name must be 3 to 63 characters in length.
         # 
         # This parameter is required.
         self.logstore_name = logstore_name
@@ -6415,8 +6421,8 @@ class CreateLogStoreRequest(TeaModel):
         self.max_split_shard = max_split_shard
         # The type of the Logstore. Simple Log Service provides two types of Logstores: Standard Logstores and Query Logstores. Valid values:
         # 
-        # *   **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can also use this type of Logstore to build a comprehensive observability system.
-        # *   **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the amount of data is large, the log retention period is long, or log analysis is not required. If logs are stored for weeks or months, the log retention period is considered long.
+        # *   **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can use this type of Logstore to build a comprehensive observability system.
+        # *   **query**: Query Logstore. This type of Logstore supports high-performance query operations. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the amount of data is large, the data retention period is long, or log analysis is not required. Data retention periods of weeks or months are considered long.
         self.mode = mode
         # IngestProcessor ID
         self.processor_id = processor_id
@@ -6431,7 +6437,7 @@ class CreateLogStoreRequest(TeaModel):
         # *   **None** (default): log data
         # *   **Metrics**: metric data
         self.telemetry_type = telemetry_type
-        # The retention period of data. Unit: days. Valid values: 1 to 3000. If you set this parameter to 3650, data is permanently stored.
+        # The data retention period. Unit: days. Valid values: 1 to 3650. If you set this parameter to 3650, data is permanently stored.
         # 
         # This parameter is required.
         self.ttl = ttl
@@ -7502,11 +7508,11 @@ class CreateOssExternalStoreRequestParameter(TeaModel):
         # 
         # This parameter is required.
         self.columns = columns
-        # The OSS endpoint. For more information, see [Regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
+        # The Object Storage Service (OSS) endpoint. For more information, see [Endpoints](https://help.aliyun.com/document_detail/31837.html).
         # 
         # This parameter is required.
         self.endpoint = endpoint
-        # The associated OSS objects. Valid values of n: 1 to 100.
+        # The names of the associated OSS objects. Valid values of n: 1 to 100.
         # 
         # This parameter is required.
         self.objects = objects
@@ -7570,7 +7576,7 @@ class CreateOssExternalStoreRequest(TeaModel):
         # 
         # This parameter is required.
         self.external_store_name = external_store_name
-        # The parameters of the external store.
+        # The parameters that are configured for the external store.
         # 
         # This parameter is required.
         self.parameter = parameter
@@ -7761,13 +7767,13 @@ class CreateRdsExternalStoreRequestParameter(TeaModel):
         username: str = None,
         vpc_id: str = None,
     ):
-        # The name of the database in the ApsaraDB RDS for MySQL instance.
+        # The name of the database created on the ApsaraDB RDS for MySQL instance.
         # 
         # This parameter is required.
         self.db = db
         # The internal or public endpoint of the ApsaraDB RDS for MySQL instance.
         self.host = host
-        # The ID of the ApsaraDB RDS for MySQL instance.
+        # You do not need to specify this parameter.
         self.instance_id = instance_id
         # The password that is used to log on to the ApsaraDB RDS for MySQL instance.
         # 
@@ -7781,7 +7787,7 @@ class CreateRdsExternalStoreRequestParameter(TeaModel):
         # 
         # This parameter is required.
         self.region = region
-        # The name of the database table in the ApsaraDB RDS for MySQL instance.
+        # The name of the table in the database created on the ApsaraDB RDS for MySQL instance.
         # 
         # This parameter is required.
         self.table = table
@@ -7859,7 +7865,7 @@ class CreateRdsExternalStoreRequest(TeaModel):
         # 
         # This parameter is required.
         self.parameter = parameter
-        # The storage type. Set the value to rds-vpc, which indicates an ApsaraDB RDS for MySQL database in a virtual private cloud (VPC).
+        # The storage type. Set the value to rds-vpc, which indicates a database created on an ApsaraDB RDS for MySQL instance in a virtual private cloud (VPC).
         # 
         # This parameter is required.
         self.store_type = store_type
@@ -21799,7 +21805,7 @@ class UpdateOssExternalStoreRequestParameterColumns(TeaModel):
         # 
         # This parameter is required.
         self.name = name
-        # The type of the field.
+        # The data type of the field.
         # 
         # This parameter is required.
         self.type = type
@@ -21838,11 +21844,11 @@ class UpdateOssExternalStoreRequestParameter(TeaModel):
         endpoint: str = None,
         objects: List[str] = None,
     ):
-        # The AccessKey ID of your account.
+        # The AccessKey ID.
         # 
         # This parameter is required.
         self.accessid = accessid
-        # The AccessKey secret of your account.
+        # The AccessKey secret.
         # 
         # This parameter is required.
         self.accesskey = accesskey
@@ -21850,7 +21856,7 @@ class UpdateOssExternalStoreRequestParameter(TeaModel):
         # 
         # This parameter is required.
         self.bucket = bucket
-        # The fields that are associated to the external store.
+        # The associated fields.
         # 
         # This parameter is required.
         self.columns = columns
@@ -21858,7 +21864,7 @@ class UpdateOssExternalStoreRequestParameter(TeaModel):
         # 
         # This parameter is required.
         self.endpoint = endpoint
-        # The names of the OSS objects that are associated to the external store.
+        # The names of the associated OSS objects.
         # 
         # This parameter is required.
         self.objects = objects
@@ -22166,7 +22172,7 @@ class UpdateRdsExternalStoreRequest(TeaModel):
         parameter: UpdateRdsExternalStoreRequestParameter = None,
         store_type: str = None,
     ):
-        # The name of the external store.
+        # The name of the ExternalStore.
         # 
         # This parameter is required.
         self.external_store_name = external_store_name
