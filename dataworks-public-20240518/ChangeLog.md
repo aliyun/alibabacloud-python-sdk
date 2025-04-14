@@ -1,3 +1,34 @@
+2025-04-14 Version: 6.2.0
+- Support API AddEntityIntoMetaCollection.
+- Support API CreateLineageRelationship.
+- Support API CreateMetaCollection.
+- Support API DeleteLineageRelationship.
+- Support API DeleteMetaCollection.
+- Support API GetCatalog.
+- Support API GetColumn.
+- Support API GetDatabase.
+- Support API GetLineageRelationship.
+- Support API GetMetaCollection.
+- Support API GetPartition.
+- Support API GetSchema.
+- Support API GetTable.
+- Support API ListCatalogs.
+- Support API ListColumns.
+- Support API ListCrawlerTypes.
+- Support API ListDatabases.
+- Support API ListEntitiesInMetaCollection.
+- Support API ListLineageRelationships.
+- Support API ListLineages.
+- Support API ListMetaCollections.
+- Support API ListPartitions.
+- Support API ListSchemas.
+- Support API ListTables.
+- Support API RemoveEntityFromMetaCollection.
+- Support API UpdateColumnBusinessMetadata.
+- Support API UpdateMetaCollection.
+- Support API UpdateTableBusinessMetadata.
+
+
 2025-04-02 Version: 6.1.3
 - Update API ListNodes: add response parameters Body.PagingInfo.Nodes.$.RuntimeResource.ResourceGroup.
 

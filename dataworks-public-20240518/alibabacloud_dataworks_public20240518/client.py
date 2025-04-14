@@ -185,6 +185,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.abolish_deployment_with_options_async(request, runtime)
 
+    def add_entity_into_meta_collection_with_options(
+        self,
+        request: dataworks_public_20240518_models.AddEntityIntoMetaCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.AddEntityIntoMetaCollectionResponse:
+        """
+        @summary 从集合中移除实体对象
+        
+        @param request: AddEntityIntoMetaCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddEntityIntoMetaCollectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.meta_collection_id):
+            query['MetaCollectionId'] = request.meta_collection_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddEntityIntoMetaCollection',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.AddEntityIntoMetaCollectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.AddEntityIntoMetaCollectionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def add_entity_into_meta_collection_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.AddEntityIntoMetaCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.AddEntityIntoMetaCollectionResponse:
+        """
+        @summary 从集合中移除实体对象
+        
+        @param request: AddEntityIntoMetaCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddEntityIntoMetaCollectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.meta_collection_id):
+            query['MetaCollectionId'] = request.meta_collection_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddEntityIntoMetaCollection',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.AddEntityIntoMetaCollectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.AddEntityIntoMetaCollectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def add_entity_into_meta_collection(
+        self,
+        request: dataworks_public_20240518_models.AddEntityIntoMetaCollectionRequest,
+    ) -> dataworks_public_20240518_models.AddEntityIntoMetaCollectionResponse:
+        """
+        @summary 从集合中移除实体对象
+        
+        @param request: AddEntityIntoMetaCollectionRequest
+        @return: AddEntityIntoMetaCollectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_entity_into_meta_collection_with_options(request, runtime)
+
+    async def add_entity_into_meta_collection_async(
+        self,
+        request: dataworks_public_20240518_models.AddEntityIntoMetaCollectionRequest,
+    ) -> dataworks_public_20240518_models.AddEntityIntoMetaCollectionResponse:
+        """
+        @summary 从集合中移除实体对象
+        
+        @param request: AddEntityIntoMetaCollectionRequest
+        @return: AddEntityIntoMetaCollectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_entity_into_meta_collection_with_options_async(request, runtime)
+
     def associate_project_to_resource_group_with_options(
         self,
         request: dataworks_public_20240518_models.AssociateProjectToResourceGroupRequest,
@@ -319,7 +435,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskResponse:
         """
-        @summary Associates monitoring rules with a monitor
+        @summary Associates monitoring rules with a data quality monitoring task.
         
         @param tmp_req: AttachDataQualityRulesToEvaluationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -368,7 +484,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskResponse:
         """
-        @summary Associates monitoring rules with a monitor
+        @summary Associates monitoring rules with a data quality monitoring task.
         
         @param tmp_req: AttachDataQualityRulesToEvaluationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -416,7 +532,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskRequest,
     ) -> dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskResponse:
         """
-        @summary Associates monitoring rules with a monitor
+        @summary Associates monitoring rules with a data quality monitoring task.
         
         @param request: AttachDataQualityRulesToEvaluationTaskRequest
         @return: AttachDataQualityRulesToEvaluationTaskResponse
@@ -429,7 +545,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskRequest,
     ) -> dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskResponse:
         """
-        @summary Associates monitoring rules with a monitor
+        @summary Associates monitoring rules with a data quality monitoring task.
         
         @param request: AttachDataQualityRulesToEvaluationTaskRequest
         @return: AttachDataQualityRulesToEvaluationTaskResponse
@@ -2376,6 +2492,258 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_function_with_options_async(request, runtime)
+
+    def create_lineage_relationship_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateLineageRelationshipRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateLineageRelationshipResponse:
+        """
+        @summary 注册血缘关系
+        
+        @param tmp_req: CreateLineageRelationshipRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLineageRelationshipResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateLineageRelationshipShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dst_entity):
+            request.dst_entity_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dst_entity, 'DstEntity', 'json')
+        if not UtilClient.is_unset(tmp_req.src_entity):
+            request.src_entity_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.src_entity, 'SrcEntity', 'json')
+        if not UtilClient.is_unset(tmp_req.task):
+            request.task_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task, 'Task', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dst_entity_shrink):
+            query['DstEntity'] = request.dst_entity_shrink
+        if not UtilClient.is_unset(request.src_entity_shrink):
+            query['SrcEntity'] = request.src_entity_shrink
+        if not UtilClient.is_unset(request.task_shrink):
+            query['Task'] = request.task_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLineageRelationship',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.CreateLineageRelationshipResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.CreateLineageRelationshipResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_lineage_relationship_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateLineageRelationshipRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateLineageRelationshipResponse:
+        """
+        @summary 注册血缘关系
+        
+        @param tmp_req: CreateLineageRelationshipRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLineageRelationshipResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateLineageRelationshipShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dst_entity):
+            request.dst_entity_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dst_entity, 'DstEntity', 'json')
+        if not UtilClient.is_unset(tmp_req.src_entity):
+            request.src_entity_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.src_entity, 'SrcEntity', 'json')
+        if not UtilClient.is_unset(tmp_req.task):
+            request.task_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task, 'Task', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dst_entity_shrink):
+            query['DstEntity'] = request.dst_entity_shrink
+        if not UtilClient.is_unset(request.src_entity_shrink):
+            query['SrcEntity'] = request.src_entity_shrink
+        if not UtilClient.is_unset(request.task_shrink):
+            query['Task'] = request.task_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLineageRelationship',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.CreateLineageRelationshipResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.CreateLineageRelationshipResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_lineage_relationship(
+        self,
+        request: dataworks_public_20240518_models.CreateLineageRelationshipRequest,
+    ) -> dataworks_public_20240518_models.CreateLineageRelationshipResponse:
+        """
+        @summary 注册血缘关系
+        
+        @param request: CreateLineageRelationshipRequest
+        @return: CreateLineageRelationshipResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_lineage_relationship_with_options(request, runtime)
+
+    async def create_lineage_relationship_async(
+        self,
+        request: dataworks_public_20240518_models.CreateLineageRelationshipRequest,
+    ) -> dataworks_public_20240518_models.CreateLineageRelationshipResponse:
+        """
+        @summary 注册血缘关系
+        
+        @param request: CreateLineageRelationshipRequest
+        @return: CreateLineageRelationshipResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_lineage_relationship_with_options_async(request, runtime)
+
+    def create_meta_collection_with_options(
+        self,
+        request: dataworks_public_20240518_models.CreateMetaCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateMetaCollectionResponse:
+        """
+        @summary 创建集合
+        
+        @param request: CreateMetaCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMetaCollectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.parent_id):
+            query['ParentId'] = request.parent_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMetaCollection',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.CreateMetaCollectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.CreateMetaCollectionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_meta_collection_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.CreateMetaCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateMetaCollectionResponse:
+        """
+        @summary 创建集合
+        
+        @param request: CreateMetaCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMetaCollectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.parent_id):
+            query['ParentId'] = request.parent_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMetaCollection',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.CreateMetaCollectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.CreateMetaCollectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_meta_collection(
+        self,
+        request: dataworks_public_20240518_models.CreateMetaCollectionRequest,
+    ) -> dataworks_public_20240518_models.CreateMetaCollectionResponse:
+        """
+        @summary 创建集合
+        
+        @param request: CreateMetaCollectionRequest
+        @return: CreateMetaCollectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_meta_collection_with_options(request, runtime)
+
+    async def create_meta_collection_async(
+        self,
+        request: dataworks_public_20240518_models.CreateMetaCollectionRequest,
+    ) -> dataworks_public_20240518_models.CreateMetaCollectionResponse:
+        """
+        @summary 创建集合
+        
+        @param request: CreateMetaCollectionRequest
+        @return: CreateMetaCollectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_meta_collection_with_options_async(request, runtime)
 
     def create_network_with_options(
         self,
@@ -4873,6 +5241,222 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_function_with_options_async(request, runtime)
 
+    def delete_lineage_relationship_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteLineageRelationshipRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteLineageRelationshipResponse:
+        """
+        @summary 删除血缘关系
+        
+        @param request: DeleteLineageRelationshipRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLineageRelationshipResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteLineageRelationship',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.DeleteLineageRelationshipResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.DeleteLineageRelationshipResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_lineage_relationship_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteLineageRelationshipRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteLineageRelationshipResponse:
+        """
+        @summary 删除血缘关系
+        
+        @param request: DeleteLineageRelationshipRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLineageRelationshipResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteLineageRelationship',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.DeleteLineageRelationshipResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.DeleteLineageRelationshipResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_lineage_relationship(
+        self,
+        request: dataworks_public_20240518_models.DeleteLineageRelationshipRequest,
+    ) -> dataworks_public_20240518_models.DeleteLineageRelationshipResponse:
+        """
+        @summary 删除血缘关系
+        
+        @param request: DeleteLineageRelationshipRequest
+        @return: DeleteLineageRelationshipResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_lineage_relationship_with_options(request, runtime)
+
+    async def delete_lineage_relationship_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteLineageRelationshipRequest,
+    ) -> dataworks_public_20240518_models.DeleteLineageRelationshipResponse:
+        """
+        @summary 删除血缘关系
+        
+        @param request: DeleteLineageRelationshipRequest
+        @return: DeleteLineageRelationshipResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_lineage_relationship_with_options_async(request, runtime)
+
+    def delete_meta_collection_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteMetaCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteMetaCollectionResponse:
+        """
+        @summary 删除集合
+        
+        @param request: DeleteMetaCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMetaCollectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMetaCollection',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.DeleteMetaCollectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.DeleteMetaCollectionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_meta_collection_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteMetaCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteMetaCollectionResponse:
+        """
+        @summary 删除集合
+        
+        @param request: DeleteMetaCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMetaCollectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMetaCollection',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.DeleteMetaCollectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.DeleteMetaCollectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_meta_collection(
+        self,
+        request: dataworks_public_20240518_models.DeleteMetaCollectionRequest,
+    ) -> dataworks_public_20240518_models.DeleteMetaCollectionResponse:
+        """
+        @summary 删除集合
+        
+        @param request: DeleteMetaCollectionRequest
+        @return: DeleteMetaCollectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_meta_collection_with_options(request, runtime)
+
+    async def delete_meta_collection_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteMetaCollectionRequest,
+    ) -> dataworks_public_20240518_models.DeleteMetaCollectionResponse:
+        """
+        @summary 删除集合
+        
+        @param request: DeleteMetaCollectionRequest
+        @return: DeleteMetaCollectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_meta_collection_with_options_async(request, runtime)
+
     def delete_network_with_options(
         self,
         request: dataworks_public_20240518_models.DeleteNetworkRequest,
@@ -6075,7 +6659,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskResponse:
         """
-        @summary Disassociates monitoring rules from a monitor
+        @summary Disassociates monitoring rules from a data quality monitoring task.
         
         @param tmp_req: DetachDataQualityRulesFromEvaluationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6124,7 +6708,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskResponse:
         """
-        @summary Disassociates monitoring rules from a monitor
+        @summary Disassociates monitoring rules from a data quality monitoring task.
         
         @param tmp_req: DetachDataQualityRulesFromEvaluationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6172,7 +6756,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskRequest,
     ) -> dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskResponse:
         """
-        @summary Disassociates monitoring rules from a monitor
+        @summary Disassociates monitoring rules from a data quality monitoring task.
         
         @param request: DetachDataQualityRulesFromEvaluationTaskRequest
         @return: DetachDataQualityRulesFromEvaluationTaskResponse
@@ -6185,7 +6769,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskRequest,
     ) -> dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskResponse:
         """
-        @summary Disassociates monitoring rules from a monitor
+        @summary Disassociates monitoring rules from a data quality monitoring task.
         
         @param request: DetachDataQualityRulesFromEvaluationTaskRequest
         @return: DetachDataQualityRulesFromEvaluationTaskResponse
@@ -6701,6 +7285,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_alert_rule_with_options_async(request, runtime)
 
+    def get_catalog_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetCatalogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetCatalogResponse:
+        """
+        @summary 获取数据目录详情
+        
+        @param request: GetCatalogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCatalogResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCatalog',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetCatalogResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetCatalogResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_catalog_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetCatalogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetCatalogResponse:
+        """
+        @summary 获取数据目录详情
+        
+        @param request: GetCatalogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCatalogResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCatalog',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetCatalogResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetCatalogResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_catalog(
+        self,
+        request: dataworks_public_20240518_models.GetCatalogRequest,
+    ) -> dataworks_public_20240518_models.GetCatalogResponse:
+        """
+        @summary 获取数据目录详情
+        
+        @param request: GetCatalogRequest
+        @return: GetCatalogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_catalog_with_options(request, runtime)
+
+    async def get_catalog_async(
+        self,
+        request: dataworks_public_20240518_models.GetCatalogRequest,
+    ) -> dataworks_public_20240518_models.GetCatalogResponse:
+        """
+        @summary 获取数据目录详情
+        
+        @param request: GetCatalogRequest
+        @return: GetCatalogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_catalog_with_options_async(request, runtime)
+
     def get_certificate_with_options(
         self,
         request: dataworks_public_20240518_models.GetCertificateRequest,
@@ -6816,6 +7504,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_certificate_with_options_async(request, runtime)
+
+    def get_column_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetColumnRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetColumnResponse:
+        """
+        @summary 获取字段详情
+        
+        @param request: GetColumnRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetColumnResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetColumn',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetColumnResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetColumnResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_column_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetColumnRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetColumnResponse:
+        """
+        @summary 获取字段详情
+        
+        @param request: GetColumnRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetColumnResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetColumn',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetColumnResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetColumnResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_column(
+        self,
+        request: dataworks_public_20240518_models.GetColumnRequest,
+    ) -> dataworks_public_20240518_models.GetColumnResponse:
+        """
+        @summary 获取字段详情
+        
+        @param request: GetColumnRequest
+        @return: GetColumnResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_column_with_options(request, runtime)
+
+    async def get_column_async(
+        self,
+        request: dataworks_public_20240518_models.GetColumnRequest,
+    ) -> dataworks_public_20240518_models.GetColumnResponse:
+        """
+        @summary 获取字段详情
+        
+        @param request: GetColumnRequest
+        @return: GetColumnResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_column_with_options_async(request, runtime)
 
     def get_create_workflow_instances_result_with_options(
         self,
@@ -7705,6 +8497,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_data_source_with_options_async(request, runtime)
 
+    def get_database_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDatabaseResponse:
+        """
+        @summary 获取数据库详情
+        
+        @param request: GetDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatabaseResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDatabase',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetDatabaseResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetDatabaseResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_database_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDatabaseResponse:
+        """
+        @summary 获取数据库详情
+        
+        @param request: GetDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatabaseResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDatabase',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetDatabaseResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetDatabaseResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_database(
+        self,
+        request: dataworks_public_20240518_models.GetDatabaseRequest,
+    ) -> dataworks_public_20240518_models.GetDatabaseResponse:
+        """
+        @summary 获取数据库详情
+        
+        @param request: GetDatabaseRequest
+        @return: GetDatabaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_database_with_options(request, runtime)
+
+    async def get_database_async(
+        self,
+        request: dataworks_public_20240518_models.GetDatabaseRequest,
+    ) -> dataworks_public_20240518_models.GetDatabaseResponse:
+        """
+        @summary 获取数据库详情
+        
+        @param request: GetDatabaseRequest
+        @return: GetDatabaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_database_with_options_async(request, runtime)
+
     def get_deployment_with_options(
         self,
         request: dataworks_public_20240518_models.GetDeploymentRequest,
@@ -8017,6 +8913,214 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_job_status_with_options_async(request, runtime)
 
+    def get_lineage_relationship_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetLineageRelationshipRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetLineageRelationshipResponse:
+        """
+        @summary 获取血缘关系详情
+        
+        @param request: GetLineageRelationshipRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLineageRelationshipResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLineageRelationship',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetLineageRelationshipResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetLineageRelationshipResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_lineage_relationship_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetLineageRelationshipRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetLineageRelationshipResponse:
+        """
+        @summary 获取血缘关系详情
+        
+        @param request: GetLineageRelationshipRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLineageRelationshipResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLineageRelationship',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetLineageRelationshipResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetLineageRelationshipResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_lineage_relationship(
+        self,
+        request: dataworks_public_20240518_models.GetLineageRelationshipRequest,
+    ) -> dataworks_public_20240518_models.GetLineageRelationshipResponse:
+        """
+        @summary 获取血缘关系详情
+        
+        @param request: GetLineageRelationshipRequest
+        @return: GetLineageRelationshipResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_lineage_relationship_with_options(request, runtime)
+
+    async def get_lineage_relationship_async(
+        self,
+        request: dataworks_public_20240518_models.GetLineageRelationshipRequest,
+    ) -> dataworks_public_20240518_models.GetLineageRelationshipResponse:
+        """
+        @summary 获取血缘关系详情
+        
+        @param request: GetLineageRelationshipRequest
+        @return: GetLineageRelationshipResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_lineage_relationship_with_options_async(request, runtime)
+
+    def get_meta_collection_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetMetaCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetMetaCollectionResponse:
+        """
+        @summary 请求collection详情
+        
+        @param request: GetMetaCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaCollectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMetaCollection',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetMetaCollectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetMetaCollectionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_meta_collection_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetMetaCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetMetaCollectionResponse:
+        """
+        @summary 请求collection详情
+        
+        @param request: GetMetaCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaCollectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMetaCollection',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetMetaCollectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetMetaCollectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_meta_collection(
+        self,
+        request: dataworks_public_20240518_models.GetMetaCollectionRequest,
+    ) -> dataworks_public_20240518_models.GetMetaCollectionResponse:
+        """
+        @summary 请求collection详情
+        
+        @param request: GetMetaCollectionRequest
+        @return: GetMetaCollectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_meta_collection_with_options(request, runtime)
+
+    async def get_meta_collection_async(
+        self,
+        request: dataworks_public_20240518_models.GetMetaCollectionRequest,
+    ) -> dataworks_public_20240518_models.GetMetaCollectionResponse:
+        """
+        @summary 请求collection详情
+        
+        @param request: GetMetaCollectionRequest
+        @return: GetMetaCollectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_meta_collection_with_options_async(request, runtime)
+
     def get_network_with_options(
         self,
         request: dataworks_public_20240518_models.GetNetworkRequest,
@@ -8232,6 +9336,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_node_with_options_async(request, runtime)
+
+    def get_partition_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetPartitionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetPartitionResponse:
+        """
+        @summary 获取数据表的分区详情
+        
+        @param request: GetPartitionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPartitionResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPartition',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetPartitionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetPartitionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_partition_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetPartitionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetPartitionResponse:
+        """
+        @summary 获取数据表的分区详情
+        
+        @param request: GetPartitionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPartitionResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPartition',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetPartitionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetPartitionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_partition(
+        self,
+        request: dataworks_public_20240518_models.GetPartitionRequest,
+    ) -> dataworks_public_20240518_models.GetPartitionResponse:
+        """
+        @summary 获取数据表的分区详情
+        
+        @param request: GetPartitionRequest
+        @return: GetPartitionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_partition_with_options(request, runtime)
+
+    async def get_partition_async(
+        self,
+        request: dataworks_public_20240518_models.GetPartitionRequest,
+    ) -> dataworks_public_20240518_models.GetPartitionResponse:
+        """
+        @summary 获取数据表的分区详情
+        
+        @param request: GetPartitionRequest
+        @return: GetPartitionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_partition_with_options_async(request, runtime)
 
     def get_project_with_options(
         self,
@@ -8912,6 +10120,214 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_route_with_options_async(request, runtime)
+
+    def get_schema_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetSchemaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetSchemaResponse:
+        """
+        @summary 获取模式详情
+        
+        @param request: GetSchemaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSchemaResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSchema',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetSchemaResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetSchemaResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_schema_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetSchemaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetSchemaResponse:
+        """
+        @summary 获取模式详情
+        
+        @param request: GetSchemaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSchemaResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSchema',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetSchemaResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetSchemaResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_schema(
+        self,
+        request: dataworks_public_20240518_models.GetSchemaRequest,
+    ) -> dataworks_public_20240518_models.GetSchemaResponse:
+        """
+        @summary 获取模式详情
+        
+        @param request: GetSchemaRequest
+        @return: GetSchemaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_schema_with_options(request, runtime)
+
+    async def get_schema_async(
+        self,
+        request: dataworks_public_20240518_models.GetSchemaRequest,
+    ) -> dataworks_public_20240518_models.GetSchemaResponse:
+        """
+        @summary 获取模式详情
+        
+        @param request: GetSchemaRequest
+        @return: GetSchemaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_schema_with_options_async(request, runtime)
+
+    def get_table_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetTableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetTableResponse:
+        """
+        @summary 获取表详情
+        
+        @param request: GetTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTable',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetTableResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetTableResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_table_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetTableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetTableResponse:
+        """
+        @summary 获取表详情
+        
+        @param request: GetTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTable',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetTableResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetTableResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_table(
+        self,
+        request: dataworks_public_20240518_models.GetTableRequest,
+    ) -> dataworks_public_20240518_models.GetTableResponse:
+        """
+        @summary 获取表详情
+        
+        @param request: GetTableRequest
+        @return: GetTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_table_with_options(request, runtime)
+
+    async def get_table_async(
+        self,
+        request: dataworks_public_20240518_models.GetTableRequest,
+    ) -> dataworks_public_20240518_models.GetTableResponse:
+        """
+        @summary 获取表详情
+        
+        @param request: GetTableRequest
+        @return: GetTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_table_with_options_async(request, runtime)
 
     def get_task_with_options(
         self,
@@ -10237,6 +11653,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_alert_rules_with_options_async(request, runtime)
 
+    def list_catalogs_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListCatalogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListCatalogsResponse:
+        """
+        @summary 查询数据目录列表
+        
+        @param tmp_req: ListCatalogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCatalogsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListCatalogsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.types):
+            request.types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.types, 'Types', 'simple')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCatalogs',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListCatalogsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListCatalogsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_catalogs_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListCatalogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListCatalogsResponse:
+        """
+        @summary 查询数据目录列表
+        
+        @param tmp_req: ListCatalogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCatalogsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListCatalogsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.types):
+            request.types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.types, 'Types', 'simple')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCatalogs',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListCatalogsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListCatalogsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_catalogs(
+        self,
+        request: dataworks_public_20240518_models.ListCatalogsRequest,
+    ) -> dataworks_public_20240518_models.ListCatalogsResponse:
+        """
+        @summary 查询数据目录列表
+        
+        @param request: ListCatalogsRequest
+        @return: ListCatalogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_catalogs_with_options(request, runtime)
+
+    async def list_catalogs_async(
+        self,
+        request: dataworks_public_20240518_models.ListCatalogsRequest,
+    ) -> dataworks_public_20240518_models.ListCatalogsResponse:
+        """
+        @summary 查询数据目录列表
+        
+        @param request: ListCatalogsRequest
+        @return: ListCatalogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_catalogs_with_options_async(request, runtime)
+
     def list_certificates_with_options(
         self,
         request: dataworks_public_20240518_models.ListCertificatesRequest,
@@ -10352,6 +11880,196 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_certificates_with_options_async(request, runtime)
+
+    def list_columns_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListColumnsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListColumnsResponse:
+        """
+        @summary 查询字段列表
+        
+        @param request: ListColumnsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListColumnsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListColumns',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListColumnsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListColumnsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_columns_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListColumnsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListColumnsResponse:
+        """
+        @summary 查询字段列表
+        
+        @param request: ListColumnsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListColumnsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListColumns',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListColumnsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListColumnsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_columns(
+        self,
+        request: dataworks_public_20240518_models.ListColumnsRequest,
+    ) -> dataworks_public_20240518_models.ListColumnsResponse:
+        """
+        @summary 查询字段列表
+        
+        @param request: ListColumnsRequest
+        @return: ListColumnsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_columns_with_options(request, runtime)
+
+    async def list_columns_async(
+        self,
+        request: dataworks_public_20240518_models.ListColumnsRequest,
+    ) -> dataworks_public_20240518_models.ListColumnsResponse:
+        """
+        @summary 查询字段列表
+        
+        @param request: ListColumnsRequest
+        @return: ListColumnsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_columns_with_options_async(request, runtime)
+
+    def list_crawler_types_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListCrawlerTypesResponse:
+        """
+        @summary 查询元数据采集器类型列表
+        
+        @param request: ListCrawlerTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCrawlerTypesResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListCrawlerTypes',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListCrawlerTypesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListCrawlerTypesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_crawler_types_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListCrawlerTypesResponse:
+        """
+        @summary 查询元数据采集器类型列表
+        
+        @param request: ListCrawlerTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCrawlerTypesResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListCrawlerTypes',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListCrawlerTypesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListCrawlerTypesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_crawler_types(self) -> dataworks_public_20240518_models.ListCrawlerTypesResponse:
+        """
+        @summary 查询元数据采集器类型列表
+        
+        @return: ListCrawlerTypesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_crawler_types_with_options(runtime)
+
+    async def list_crawler_types_async(self) -> dataworks_public_20240518_models.ListCrawlerTypesResponse:
+        """
+        @summary 查询元数据采集器类型列表
+        
+        @return: ListCrawlerTypesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_crawler_types_with_options_async(runtime)
 
     def list_dialarm_rules_with_options(
         self,
@@ -10807,7 +12525,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDIJobsResponse:
         """
-        @summary Queries a list of synchronization tasks.
+        @summary Queries a list of new-version synchronization tasks in Data Integration. A new-version synchronization task can be a real-time synchronization task used to synchronize full or incremental data in a database, a batch synchronization task used to synchronize full or incremental data in a database, or a real-time synchronization task used to synchronize incremental data in a single table.
         
         @description This API operation is available for all DataWorks editions.
         
@@ -10848,7 +12566,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDIJobsResponse:
         """
-        @summary Queries a list of synchronization tasks.
+        @summary Queries a list of new-version synchronization tasks in Data Integration. A new-version synchronization task can be a real-time synchronization task used to synchronize full or incremental data in a database, a batch synchronization task used to synchronize full or incremental data in a database, or a real-time synchronization task used to synchronize incremental data in a single table.
         
         @description This API operation is available for all DataWorks editions.
         
@@ -10888,7 +12606,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDIJobsRequest,
     ) -> dataworks_public_20240518_models.ListDIJobsResponse:
         """
-        @summary Queries a list of synchronization tasks.
+        @summary Queries a list of new-version synchronization tasks in Data Integration. A new-version synchronization task can be a real-time synchronization task used to synchronize full or incremental data in a database, a batch synchronization task used to synchronize full or incremental data in a database, or a real-time synchronization task used to synchronize incremental data in a single table.
         
         @description This API operation is available for all DataWorks editions.
         
@@ -10903,7 +12621,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDIJobsRequest,
     ) -> dataworks_public_20240518_models.ListDIJobsResponse:
         """
-        @summary Queries a list of synchronization tasks.
+        @summary Queries a list of new-version synchronization tasks in Data Integration. A new-version synchronization task can be a real-time synchronization task used to synchronize full or incremental data in a database, a batch synchronization task used to synchronize full or incremental data in a database, or a real-time synchronization task used to synchronize incremental data in a single table.
         
         @description This API operation is available for all DataWorks editions.
         
@@ -11941,6 +13659,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_data_sources_with_options_async(request, runtime)
 
+    def list_databases_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListDatabasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDatabasesResponse:
+        """
+        @summary 查询数据库列表
+        
+        @param request: ListDatabasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatabasesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabases',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListDatabasesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListDatabasesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_databases_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListDatabasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDatabasesResponse:
+        """
+        @summary 查询数据库列表
+        
+        @param request: ListDatabasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatabasesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabases',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListDatabasesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListDatabasesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_databases(
+        self,
+        request: dataworks_public_20240518_models.ListDatabasesRequest,
+    ) -> dataworks_public_20240518_models.ListDatabasesResponse:
+        """
+        @summary 查询数据库列表
+        
+        @param request: ListDatabasesRequest
+        @return: ListDatabasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_databases_with_options(request, runtime)
+
+    async def list_databases_async(
+        self,
+        request: dataworks_public_20240518_models.ListDatabasesRequest,
+    ) -> dataworks_public_20240518_models.ListDatabasesResponse:
+        """
+        @summary 查询数据库列表
+        
+        @param request: ListDatabasesRequest
+        @return: ListDatabasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_databases_with_options_async(request, runtime)
+
     def list_deployments_with_options(
         self,
         request: dataworks_public_20240518_models.ListDeploymentsRequest,
@@ -12261,6 +14083,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_downstream_tasks_with_options_async(request, runtime)
 
+    def list_entities_in_meta_collection_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListEntitiesInMetaCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListEntitiesInMetaCollectionResponse:
+        """
+        @summary 查询集合中的实体列表
+        
+        @param request: ListEntitiesInMetaCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEntitiesInMetaCollectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEntitiesInMetaCollection',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListEntitiesInMetaCollectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListEntitiesInMetaCollectionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_entities_in_meta_collection_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListEntitiesInMetaCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListEntitiesInMetaCollectionResponse:
+        """
+        @summary 查询集合中的实体列表
+        
+        @param request: ListEntitiesInMetaCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEntitiesInMetaCollectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEntitiesInMetaCollection',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListEntitiesInMetaCollectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListEntitiesInMetaCollectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_entities_in_meta_collection(
+        self,
+        request: dataworks_public_20240518_models.ListEntitiesInMetaCollectionRequest,
+    ) -> dataworks_public_20240518_models.ListEntitiesInMetaCollectionResponse:
+        """
+        @summary 查询集合中的实体列表
+        
+        @param request: ListEntitiesInMetaCollectionRequest
+        @return: ListEntitiesInMetaCollectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_entities_in_meta_collection_with_options(request, runtime)
+
+    async def list_entities_in_meta_collection_async(
+        self,
+        request: dataworks_public_20240518_models.ListEntitiesInMetaCollectionRequest,
+    ) -> dataworks_public_20240518_models.ListEntitiesInMetaCollectionResponse:
+        """
+        @summary 查询集合中的实体列表
+        
+        @param request: ListEntitiesInMetaCollectionRequest
+        @return: ListEntitiesInMetaCollectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_entities_in_meta_collection_with_options_async(request, runtime)
+
     def list_functions_with_options(
         self,
         request: dataworks_public_20240518_models.ListFunctionsRequest,
@@ -12364,6 +14290,318 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_functions_with_options_async(request, runtime)
+
+    def list_lineage_relationships_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListLineageRelationshipsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListLineageRelationshipsResponse:
+        """
+        @summary 查询血缘关系
+        
+        @param request: ListLineageRelationshipsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLineageRelationshipsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLineageRelationships',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListLineageRelationshipsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListLineageRelationshipsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_lineage_relationships_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListLineageRelationshipsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListLineageRelationshipsResponse:
+        """
+        @summary 查询血缘关系
+        
+        @param request: ListLineageRelationshipsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLineageRelationshipsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLineageRelationships',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListLineageRelationshipsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListLineageRelationshipsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_lineage_relationships(
+        self,
+        request: dataworks_public_20240518_models.ListLineageRelationshipsRequest,
+    ) -> dataworks_public_20240518_models.ListLineageRelationshipsResponse:
+        """
+        @summary 查询血缘关系
+        
+        @param request: ListLineageRelationshipsRequest
+        @return: ListLineageRelationshipsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_lineage_relationships_with_options(request, runtime)
+
+    async def list_lineage_relationships_async(
+        self,
+        request: dataworks_public_20240518_models.ListLineageRelationshipsRequest,
+    ) -> dataworks_public_20240518_models.ListLineageRelationshipsResponse:
+        """
+        @summary 查询血缘关系
+        
+        @param request: ListLineageRelationshipsRequest
+        @return: ListLineageRelationshipsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_lineage_relationships_with_options_async(request, runtime)
+
+    def list_lineages_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListLineagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListLineagesResponse:
+        """
+        @summary 查询实体血缘
+        
+        @param request: ListLineagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLineagesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLineages',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListLineagesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListLineagesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_lineages_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListLineagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListLineagesResponse:
+        """
+        @summary 查询实体血缘
+        
+        @param request: ListLineagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLineagesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLineages',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListLineagesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListLineagesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_lineages(
+        self,
+        request: dataworks_public_20240518_models.ListLineagesRequest,
+    ) -> dataworks_public_20240518_models.ListLineagesResponse:
+        """
+        @summary 查询实体血缘
+        
+        @param request: ListLineagesRequest
+        @return: ListLineagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_lineages_with_options(request, runtime)
+
+    async def list_lineages_async(
+        self,
+        request: dataworks_public_20240518_models.ListLineagesRequest,
+    ) -> dataworks_public_20240518_models.ListLineagesResponse:
+        """
+        @summary 查询实体血缘
+        
+        @param request: ListLineagesRequest
+        @return: ListLineagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_lineages_with_options_async(request, runtime)
+
+    def list_meta_collections_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListMetaCollectionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListMetaCollectionsResponse:
+        """
+        @summary 查询Collection列表
+        
+        @param request: ListMetaCollectionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMetaCollectionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMetaCollections',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListMetaCollectionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListMetaCollectionsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_meta_collections_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListMetaCollectionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListMetaCollectionsResponse:
+        """
+        @summary 查询Collection列表
+        
+        @param request: ListMetaCollectionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMetaCollectionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMetaCollections',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListMetaCollectionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListMetaCollectionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_meta_collections(
+        self,
+        request: dataworks_public_20240518_models.ListMetaCollectionsRequest,
+    ) -> dataworks_public_20240518_models.ListMetaCollectionsResponse:
+        """
+        @summary 查询Collection列表
+        
+        @param request: ListMetaCollectionsRequest
+        @return: ListMetaCollectionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_meta_collections_with_options(request, runtime)
+
+    async def list_meta_collections_async(
+        self,
+        request: dataworks_public_20240518_models.ListMetaCollectionsRequest,
+    ) -> dataworks_public_20240518_models.ListMetaCollectionsResponse:
+        """
+        @summary 查询Collection列表
+        
+        @param request: ListMetaCollectionsRequest
+        @return: ListMetaCollectionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_meta_collections_with_options_async(request, runtime)
 
     def list_networks_with_options(
         self,
@@ -12684,6 +14922,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_nodes_with_options_async(request, runtime)
+
+    def list_partitions_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListPartitionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListPartitionsResponse:
+        """
+        @summary 查询数据表的分区列表
+        
+        @param request: ListPartitionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPartitionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPartitions',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListPartitionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListPartitionsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_partitions_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListPartitionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListPartitionsResponse:
+        """
+        @summary 查询数据表的分区列表
+        
+        @param request: ListPartitionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPartitionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPartitions',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListPartitionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListPartitionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_partitions(
+        self,
+        request: dataworks_public_20240518_models.ListPartitionsRequest,
+    ) -> dataworks_public_20240518_models.ListPartitionsResponse:
+        """
+        @summary 查询数据表的分区列表
+        
+        @param request: ListPartitionsRequest
+        @return: ListPartitionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_partitions_with_options(request, runtime)
+
+    async def list_partitions_async(
+        self,
+        request: dataworks_public_20240518_models.ListPartitionsRequest,
+    ) -> dataworks_public_20240518_models.ListPartitionsResponse:
+        """
+        @summary 查询数据表的分区列表
+        
+        @param request: ListPartitionsRequest
+        @return: ListPartitionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_partitions_with_options_async(request, runtime)
 
     def list_project_members_with_options(
         self,
@@ -13472,6 +15814,230 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_routes_with_options_async(request, runtime)
+
+    def list_schemas_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListSchemasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListSchemasResponse:
+        """
+        @summary 查询模式列表
+        
+        @param tmp_req: ListSchemasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSchemasResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListSchemasShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.types):
+            request.types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.types, 'Types', 'simple')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSchemas',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListSchemasResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListSchemasResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_schemas_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListSchemasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListSchemasResponse:
+        """
+        @summary 查询模式列表
+        
+        @param tmp_req: ListSchemasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSchemasResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListSchemasShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.types):
+            request.types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.types, 'Types', 'simple')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSchemas',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListSchemasResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListSchemasResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_schemas(
+        self,
+        request: dataworks_public_20240518_models.ListSchemasRequest,
+    ) -> dataworks_public_20240518_models.ListSchemasResponse:
+        """
+        @summary 查询模式列表
+        
+        @param request: ListSchemasRequest
+        @return: ListSchemasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_schemas_with_options(request, runtime)
+
+    async def list_schemas_async(
+        self,
+        request: dataworks_public_20240518_models.ListSchemasRequest,
+    ) -> dataworks_public_20240518_models.ListSchemasResponse:
+        """
+        @summary 查询模式列表
+        
+        @param request: ListSchemasRequest
+        @return: ListSchemasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_schemas_with_options_async(request, runtime)
+
+    def list_tables_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListTablesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListTablesResponse:
+        """
+        @summary 查询数据表列表
+        
+        @param tmp_req: ListTablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTablesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListTablesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.table_types):
+            request.table_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_types, 'TableTypes', 'simple')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTables',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListTablesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListTablesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_tables_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListTablesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListTablesResponse:
+        """
+        @summary 查询数据表列表
+        
+        @param tmp_req: ListTablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTablesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListTablesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.table_types):
+            request.table_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_types, 'TableTypes', 'simple')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTables',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListTablesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListTablesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_tables(
+        self,
+        request: dataworks_public_20240518_models.ListTablesRequest,
+    ) -> dataworks_public_20240518_models.ListTablesResponse:
+        """
+        @summary 查询数据表列表
+        
+        @param request: ListTablesRequest
+        @return: ListTablesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_tables_with_options(request, runtime)
+
+    async def list_tables_async(
+        self,
+        request: dataworks_public_20240518_models.ListTablesRequest,
+    ) -> dataworks_public_20240518_models.ListTablesResponse:
+        """
+        @summary 查询数据表列表
+        
+        @param request: ListTablesRequest
+        @return: ListTablesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tables_with_options_async(request, runtime)
 
     def list_task_instance_operation_logs_with_options(
         self,
@@ -15168,6 +17734,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.move_workflow_definition_with_options_async(request, runtime)
+
+    def remove_entity_from_meta_collection_with_options(
+        self,
+        request: dataworks_public_20240518_models.RemoveEntityFromMetaCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.RemoveEntityFromMetaCollectionResponse:
+        """
+        @summary 从集合中移除实体对象
+        
+        @param request: RemoveEntityFromMetaCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveEntityFromMetaCollectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.meta_collection_id):
+            query['MetaCollectionId'] = request.meta_collection_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveEntityFromMetaCollection',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.RemoveEntityFromMetaCollectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.RemoveEntityFromMetaCollectionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def remove_entity_from_meta_collection_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.RemoveEntityFromMetaCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.RemoveEntityFromMetaCollectionResponse:
+        """
+        @summary 从集合中移除实体对象
+        
+        @param request: RemoveEntityFromMetaCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveEntityFromMetaCollectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.meta_collection_id):
+            query['MetaCollectionId'] = request.meta_collection_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveEntityFromMetaCollection',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.RemoveEntityFromMetaCollectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.RemoveEntityFromMetaCollectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def remove_entity_from_meta_collection(
+        self,
+        request: dataworks_public_20240518_models.RemoveEntityFromMetaCollectionRequest,
+    ) -> dataworks_public_20240518_models.RemoveEntityFromMetaCollectionResponse:
+        """
+        @summary 从集合中移除实体对象
+        
+        @param request: RemoveEntityFromMetaCollectionRequest
+        @return: RemoveEntityFromMetaCollectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.remove_entity_from_meta_collection_with_options(request, runtime)
+
+    async def remove_entity_from_meta_collection_async(
+        self,
+        request: dataworks_public_20240518_models.RemoveEntityFromMetaCollectionRequest,
+    ) -> dataworks_public_20240518_models.RemoveEntityFromMetaCollectionResponse:
+        """
+        @summary 从集合中移除实体对象
+        
+        @param request: RemoveEntityFromMetaCollectionRequest
+        @return: RemoveEntityFromMetaCollectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_entity_from_meta_collection_with_options_async(request, runtime)
 
     def remove_task_instance_dependencies_with_options(
         self,
@@ -17717,6 +20395,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_alert_rule_with_options_async(request, runtime)
 
+    def update_column_business_metadata_with_options(
+        self,
+        request: dataworks_public_20240518_models.UpdateColumnBusinessMetadataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateColumnBusinessMetadataResponse:
+        """
+        @summary 更新字段业务元数据
+        
+        @param request: UpdateColumnBusinessMetadataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateColumnBusinessMetadataResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateColumnBusinessMetadata',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.UpdateColumnBusinessMetadataResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.UpdateColumnBusinessMetadataResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_column_business_metadata_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateColumnBusinessMetadataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateColumnBusinessMetadataResponse:
+        """
+        @summary 更新字段业务元数据
+        
+        @param request: UpdateColumnBusinessMetadataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateColumnBusinessMetadataResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateColumnBusinessMetadata',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.UpdateColumnBusinessMetadataResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.UpdateColumnBusinessMetadataResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_column_business_metadata(
+        self,
+        request: dataworks_public_20240518_models.UpdateColumnBusinessMetadataRequest,
+    ) -> dataworks_public_20240518_models.UpdateColumnBusinessMetadataResponse:
+        """
+        @summary 更新字段业务元数据
+        
+        @param request: UpdateColumnBusinessMetadataRequest
+        @return: UpdateColumnBusinessMetadataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_column_business_metadata_with_options(request, runtime)
+
+    async def update_column_business_metadata_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateColumnBusinessMetadataRequest,
+    ) -> dataworks_public_20240518_models.UpdateColumnBusinessMetadataResponse:
+        """
+        @summary 更新字段业务元数据
+        
+        @param request: UpdateColumnBusinessMetadataRequest
+        @return: UpdateColumnBusinessMetadataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_column_business_metadata_with_options_async(request, runtime)
+
     def update_dialarm_rule_with_options(
         self,
         tmp_req: dataworks_public_20240518_models.UpdateDIAlarmRuleRequest,
@@ -18849,6 +21639,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_function_with_options_async(request, runtime)
 
+    def update_meta_collection_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.UpdateMetaCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateMetaCollectionResponse:
+        """
+        @summary 更新集合
+        
+        @param tmp_req: UpdateMetaCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMetaCollectionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UpdateMetaCollectionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.administrators):
+            request.administrators_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.administrators, 'Administrators', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.administrators_shrink):
+            query['Administrators'] = request.administrators_shrink
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateMetaCollection',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.UpdateMetaCollectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.UpdateMetaCollectionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_meta_collection_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.UpdateMetaCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateMetaCollectionResponse:
+        """
+        @summary 更新集合
+        
+        @param tmp_req: UpdateMetaCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMetaCollectionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UpdateMetaCollectionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.administrators):
+            request.administrators_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.administrators, 'Administrators', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.administrators_shrink):
+            query['Administrators'] = request.administrators_shrink
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateMetaCollection',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.UpdateMetaCollectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.UpdateMetaCollectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_meta_collection(
+        self,
+        request: dataworks_public_20240518_models.UpdateMetaCollectionRequest,
+    ) -> dataworks_public_20240518_models.UpdateMetaCollectionResponse:
+        """
+        @summary 更新集合
+        
+        @param request: UpdateMetaCollectionRequest
+        @return: UpdateMetaCollectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_meta_collection_with_options(request, runtime)
+
+    async def update_meta_collection_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateMetaCollectionRequest,
+    ) -> dataworks_public_20240518_models.UpdateMetaCollectionResponse:
+        """
+        @summary 更新集合
+        
+        @param request: UpdateMetaCollectionRequest
+        @return: UpdateMetaCollectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_meta_collection_with_options_async(request, runtime)
+
     def update_node_with_options(
         self,
         request: dataworks_public_20240518_models.UpdateNodeRequest,
@@ -19460,6 +22378,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_route_with_options_async(request, runtime)
+
+    def update_table_business_metadata_with_options(
+        self,
+        request: dataworks_public_20240518_models.UpdateTableBusinessMetadataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateTableBusinessMetadataResponse:
+        """
+        @summary 更新数据表业务元数据
+        
+        @param request: UpdateTableBusinessMetadataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTableBusinessMetadataResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.readme):
+            body['Readme'] = request.readme
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTableBusinessMetadata',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.UpdateTableBusinessMetadataResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.UpdateTableBusinessMetadataResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_table_business_metadata_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateTableBusinessMetadataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateTableBusinessMetadataResponse:
+        """
+        @summary 更新数据表业务元数据
+        
+        @param request: UpdateTableBusinessMetadataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTableBusinessMetadataResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.readme):
+            body['Readme'] = request.readme
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTableBusinessMetadata',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.UpdateTableBusinessMetadataResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.UpdateTableBusinessMetadataResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_table_business_metadata(
+        self,
+        request: dataworks_public_20240518_models.UpdateTableBusinessMetadataRequest,
+    ) -> dataworks_public_20240518_models.UpdateTableBusinessMetadataResponse:
+        """
+        @summary 更新数据表业务元数据
+        
+        @param request: UpdateTableBusinessMetadataRequest
+        @return: UpdateTableBusinessMetadataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_table_business_metadata_with_options(request, runtime)
+
+    async def update_table_business_metadata_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateTableBusinessMetadataRequest,
+    ) -> dataworks_public_20240518_models.UpdateTableBusinessMetadataResponse:
+        """
+        @summary 更新数据表业务元数据
+        
+        @param request: UpdateTableBusinessMetadataRequest
+        @return: UpdateTableBusinessMetadataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_table_business_metadata_with_options_async(request, runtime)
 
     def update_task_with_options(
         self,
