@@ -45360,6 +45360,7 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
         instance_charge_type: str = None,
         ipv_6gateway_id: str = None,
         name: str = None,
+        owner_id: str = None,
         region_id: str = None,
         request_id: str = None,
         resource_group_id: str = None,
@@ -45389,6 +45390,7 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
         self.ipv_6gateway_id = ipv_6gateway_id
         # The name of the IPv6 gateway.
         self.name = name
+        self.owner_id = owner_id
         # The ID of the region where the IPv6 gateway is deployed.
         self.region_id = region_id
         # The ID of the request.
@@ -45431,6 +45433,8 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
             result['Ipv6GatewayId'] = self.ipv_6gateway_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.request_id is not None:
@@ -45463,6 +45467,8 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
             self.ipv_6gateway_id = m.get('Ipv6GatewayId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('RequestId') is not None:
@@ -45752,6 +45758,7 @@ class DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway(TeaModel):
         instance_charge_type: str = None,
         ipv_6gateway_id: str = None,
         name: str = None,
+        owner_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         status: str = None,
@@ -45778,6 +45785,7 @@ class DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway(TeaModel):
         self.ipv_6gateway_id = ipv_6gateway_id
         # The name of the IPv6 gateway.
         self.name = name
+        self.owner_id = owner_id
         # The ID of the region in which the IPv6 gateway is deployed.
         self.region_id = region_id
         # The resource group ID.
@@ -45816,6 +45824,8 @@ class DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway(TeaModel):
             result['Ipv6GatewayId'] = self.ipv_6gateway_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -45844,6 +45854,8 @@ class DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway(TeaModel):
             self.ipv_6gateway_id = m.get('Ipv6GatewayId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
