@@ -2106,6 +2106,158 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_axg_group_with_options_async(request, runtime)
 
+    def create_phone_no_areport_with_options(
+        self,
+        request: dyplsapi_20170525_models.CreatePhoneNoAReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.CreatePhoneNoAReportResponse:
+        """
+        @summary 通过API收集小号a号码手机号
+        
+        @param request: CreatePhoneNoAReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePhoneNoAReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ano_white_group_id):
+            query['ANoWhiteGroupId'] = request.ano_white_group_id
+        if not UtilClient.is_unset(request.cust_name):
+            query['CustName'] = request.cust_name
+        if not UtilClient.is_unset(request.document_number):
+            query['DocumentNumber'] = request.document_number
+        if not UtilClient.is_unset(request.document_type):
+            query['DocumentType'] = request.document_type
+        if not UtilClient.is_unset(request.id_card_alive_photo):
+            query['IdCardAlivePhoto'] = request.id_card_alive_photo
+        if not UtilClient.is_unset(request.id_card_back_photo):
+            query['IdCardBackPhoto'] = request.id_card_back_photo
+        if not UtilClient.is_unset(request.id_card_front_photo):
+            query['IdCardFrontPhoto'] = request.id_card_front_photo
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_a):
+            query['PhoneNoA'] = request.phone_no_a
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePhoneNoAReport',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CreatePhoneNoAReportResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CreatePhoneNoAReportResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_phone_no_areport_with_options_async(
+        self,
+        request: dyplsapi_20170525_models.CreatePhoneNoAReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.CreatePhoneNoAReportResponse:
+        """
+        @summary 通过API收集小号a号码手机号
+        
+        @param request: CreatePhoneNoAReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePhoneNoAReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ano_white_group_id):
+            query['ANoWhiteGroupId'] = request.ano_white_group_id
+        if not UtilClient.is_unset(request.cust_name):
+            query['CustName'] = request.cust_name
+        if not UtilClient.is_unset(request.document_number):
+            query['DocumentNumber'] = request.document_number
+        if not UtilClient.is_unset(request.document_type):
+            query['DocumentType'] = request.document_type
+        if not UtilClient.is_unset(request.id_card_alive_photo):
+            query['IdCardAlivePhoto'] = request.id_card_alive_photo
+        if not UtilClient.is_unset(request.id_card_back_photo):
+            query['IdCardBackPhoto'] = request.id_card_back_photo
+        if not UtilClient.is_unset(request.id_card_front_photo):
+            query['IdCardFrontPhoto'] = request.id_card_front_photo
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_a):
+            query['PhoneNoA'] = request.phone_no_a
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePhoneNoAReport',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CreatePhoneNoAReportResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CreatePhoneNoAReportResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_phone_no_areport(
+        self,
+        request: dyplsapi_20170525_models.CreatePhoneNoAReportRequest,
+    ) -> dyplsapi_20170525_models.CreatePhoneNoAReportResponse:
+        """
+        @summary 通过API收集小号a号码手机号
+        
+        @param request: CreatePhoneNoAReportRequest
+        @return: CreatePhoneNoAReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_phone_no_areport_with_options(request, runtime)
+
+    async def create_phone_no_areport_async(
+        self,
+        request: dyplsapi_20170525_models.CreatePhoneNoAReportRequest,
+    ) -> dyplsapi_20170525_models.CreatePhoneNoAReportResponse:
+        """
+        @summary 通过API收集小号a号码手机号
+        
+        @param request: CreatePhoneNoAReportRequest
+        @return: CreatePhoneNoAReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_phone_no_areport_with_options_async(request, runtime)
+
     def create_pick_up_waybill_with_options(
         self,
         tmp_req: dyplsapi_20170525_models.CreatePickUpWaybillRequest,
@@ -2841,6 +2993,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_secret_blacklist_with_options_async(request, runtime)
+
+    def get_dypls_ossinfo_for_upload_file_with_options(
+        self,
+        request: dyplsapi_20170525_models.GetDyplsOSSInfoForUploadFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.GetDyplsOSSInfoForUploadFileResponse:
+        """
+        @summary 隐私号上传文件，获取 OSS 信息
+        
+        @param request: GetDyplsOSSInfoForUploadFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDyplsOSSInfoForUploadFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDyplsOSSInfoForUploadFile',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.GetDyplsOSSInfoForUploadFileResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.GetDyplsOSSInfoForUploadFileResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_dypls_ossinfo_for_upload_file_with_options_async(
+        self,
+        request: dyplsapi_20170525_models.GetDyplsOSSInfoForUploadFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.GetDyplsOSSInfoForUploadFileResponse:
+        """
+        @summary 隐私号上传文件，获取 OSS 信息
+        
+        @param request: GetDyplsOSSInfoForUploadFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDyplsOSSInfoForUploadFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDyplsOSSInfoForUploadFile',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.GetDyplsOSSInfoForUploadFileResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.GetDyplsOSSInfoForUploadFileResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_dypls_ossinfo_for_upload_file(
+        self,
+        request: dyplsapi_20170525_models.GetDyplsOSSInfoForUploadFileRequest,
+    ) -> dyplsapi_20170525_models.GetDyplsOSSInfoForUploadFileResponse:
+        """
+        @summary 隐私号上传文件，获取 OSS 信息
+        
+        @param request: GetDyplsOSSInfoForUploadFileRequest
+        @return: GetDyplsOSSInfoForUploadFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_dypls_ossinfo_for_upload_file_with_options(request, runtime)
+
+    async def get_dypls_ossinfo_for_upload_file_async(
+        self,
+        request: dyplsapi_20170525_models.GetDyplsOSSInfoForUploadFileRequest,
+    ) -> dyplsapi_20170525_models.GetDyplsOSSInfoForUploadFileResponse:
+        """
+        @summary 隐私号上传文件，获取 OSS 信息
+        
+        @param request: GetDyplsOSSInfoForUploadFileRequest
+        @return: GetDyplsOSSInfoForUploadFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_dypls_ossinfo_for_upload_file_with_options_async(request, runtime)
 
     def get_secret_asr_detail_with_options(
         self,

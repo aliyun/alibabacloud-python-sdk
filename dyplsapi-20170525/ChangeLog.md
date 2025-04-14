@@ -1,3 +1,8 @@
+2025-04-14 Version: 2.1.0
+- Support API CreatePhoneNoAReport.
+- Support API GetDyplsOSSInfoForUploadFile.
+
+
 2025-02-14 Version: 2.0.1
 - Update API ListXTelephones: update response param.
 
