@@ -21108,10 +21108,14 @@ class SmartqQueryAbilityResponseBodyResult(TeaModel):
     def __init__(
         self,
         chart_type: str = None,
+        conclusion_text: str = None,
+        logic_sql: str = None,
         meta_type: List[SmartqQueryAbilityResponseBodyResultMetaType] = None,
         values: List[SmartqQueryAbilityResponseBodyResultValues] = None,
     ):
         self.chart_type = chart_type
+        self.conclusion_text = conclusion_text
+        self.logic_sql = logic_sql
         self.meta_type = meta_type
         self.values = values
 
@@ -21133,6 +21137,10 @@ class SmartqQueryAbilityResponseBodyResult(TeaModel):
         result = dict()
         if self.chart_type is not None:
             result['ChartType'] = self.chart_type
+        if self.conclusion_text is not None:
+            result['ConclusionText'] = self.conclusion_text
+        if self.logic_sql is not None:
+            result['LogicSql'] = self.logic_sql
         result['MetaType'] = []
         if self.meta_type is not None:
             for k in self.meta_type:
@@ -21147,6 +21155,10 @@ class SmartqQueryAbilityResponseBodyResult(TeaModel):
         m = m or dict()
         if m.get('ChartType') is not None:
             self.chart_type = m.get('ChartType')
+        if m.get('ConclusionText') is not None:
+            self.conclusion_text = m.get('ConclusionText')
+        if m.get('LogicSql') is not None:
+            self.logic_sql = m.get('LogicSql')
         self.meta_type = []
         if m.get('MetaType') is not None:
             for k in m.get('MetaType'):

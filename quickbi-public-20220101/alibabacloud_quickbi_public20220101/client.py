@@ -1355,11 +1355,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.BatchAddFeishuUsersResponse:
         """
+        @deprecated OpenAPI BatchAddFeishuUsers is deprecated
+        
         @summary 批量添加飞书用户。
         
         @param request: BatchAddFeishuUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: BatchAddFeishuUsersResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -1404,11 +1407,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.BatchAddFeishuUsersResponse:
         """
+        @deprecated OpenAPI BatchAddFeishuUsers is deprecated
+        
         @summary 批量添加飞书用户。
         
         @param request: BatchAddFeishuUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: BatchAddFeishuUsersResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -1452,10 +1458,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.BatchAddFeishuUsersRequest,
     ) -> quickbi_public_20220101_models.BatchAddFeishuUsersResponse:
         """
+        @deprecated OpenAPI BatchAddFeishuUsers is deprecated
+        
         @summary 批量添加飞书用户。
         
         @param request: BatchAddFeishuUsersRequest
         @return: BatchAddFeishuUsersResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.batch_add_feishu_users_with_options(request, runtime)
@@ -1465,10 +1474,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.BatchAddFeishuUsersRequest,
     ) -> quickbi_public_20220101_models.BatchAddFeishuUsersResponse:
         """
+        @deprecated OpenAPI BatchAddFeishuUsers is deprecated
+        
         @summary 批量添加飞书用户。
         
         @param request: BatchAddFeishuUsersRequest
         @return: BatchAddFeishuUsersResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.batch_add_feishu_users_with_options_async(request, runtime)
@@ -7409,6 +7421,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDataServiceResponse:
         """
+        @deprecated OpenAPI QueryDataService is deprecated, please use quickbi-public::2022-01-01::QueryData instead.
+        
         @summary Invoke an already created API in the data service.
         
         @description #### Prerequisites
@@ -7421,6 +7435,7 @@ class Client(OpenApiClient):
         @param request: QueryDataServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryDataServiceResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -7461,6 +7476,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDataServiceResponse:
         """
+        @deprecated OpenAPI QueryDataService is deprecated, please use quickbi-public::2022-01-01::QueryData instead.
+        
         @summary Invoke an already created API in the data service.
         
         @description #### Prerequisites
@@ -7473,6 +7490,7 @@ class Client(OpenApiClient):
         @param request: QueryDataServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryDataServiceResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -7512,6 +7530,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDataServiceRequest,
     ) -> quickbi_public_20220101_models.QueryDataServiceResponse:
         """
+        @deprecated OpenAPI QueryDataService is deprecated, please use quickbi-public::2022-01-01::QueryData instead.
+        
         @summary Invoke an already created API in the data service.
         
         @description #### Prerequisites
@@ -7523,6 +7543,7 @@ class Client(OpenApiClient):
         
         @param request: QueryDataServiceRequest
         @return: QueryDataServiceResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.query_data_service_with_options(request, runtime)
@@ -7532,6 +7553,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDataServiceRequest,
     ) -> quickbi_public_20220101_models.QueryDataServiceResponse:
         """
+        @deprecated OpenAPI QueryDataService is deprecated, please use quickbi-public::2022-01-01::QueryData instead.
+        
         @summary Invoke an already created API in the data service.
         
         @description #### Prerequisites
@@ -7543,6 +7566,7 @@ class Client(OpenApiClient):
         
         @param request: QueryDataServiceRequest
         @return: QueryDataServiceResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_data_service_with_options_async(request, runtime)
