@@ -11,6 +11,12 @@ class AddAutoCcBlacklistRequest(TeaModel):
         expire_time: int = None,
         instance_id: str = None,
     ):
+        # The IP addresses that you want to manage. This parameter is a JSON string. The string contains the following field:
+        # 
+        # *   **src**: the IP address. This field is required and must be of the STRING type.
+        # 
+        # >  You can manually add up to 2,000 IP addresses to the IP address blacklist. Separate multiple IP addresses with spaces or line breaks.
+        # 
         # This parameter is required.
         self.blacklist = blacklist
         # This parameter is required.
@@ -625,6 +631,109 @@ class ConfigDomainSecurityProfileResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ConfigDomainSecurityProfileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ConfigL7GlobalRuleRequest(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        rule_attr: str = None,
+    ):
+        # This parameter is required.
+        self.domain = domain
+        # This parameter is required.
+        self.rule_attr = rule_attr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.rule_attr is not None:
+            result['RuleAttr'] = self.rule_attr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('RuleAttr') is not None:
+            self.rule_attr = m.get('RuleAttr')
+        return self
+
+
+class ConfigL7GlobalRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ConfigL7GlobalRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ConfigL7GlobalRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ConfigL7GlobalRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2759,8 +2868,8 @@ class CreateSceneDefensePolicyRequest(TeaModel):
         self.start_time = start_time
         # The template of the policy. Valid values:
         # 
-        # *   **promotion**: important activity
-        # *   **bypass**: all traffic forwarded
+        # *   **promotion**: important activity.
+        # *   **bypass**: all traffic forwarded.
         # 
         # This parameter is required.
         self.template = template
@@ -4142,7 +4251,7 @@ class DeletePortRequest(TeaModel):
         # 
         # This parameter is required.
         self.frontend_port = frontend_port
-        # The type of the protocol. Valid values:
+        # The type of the forwarding protocol. Valid values:
         # 
         # *   **tcp**\
         # *   **udp**\
@@ -6812,6 +6921,10 @@ class DescribeCnameReusesRequest(TeaModel):
         domains: List[str] = None,
         resource_group_id: str = None,
     ):
+        # The domain names of the websites. You can specify the domain names of up to 200 websites.
+        # 
+        # >  A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
         # This parameter is required.
         self.domains = domains
         self.resource_group_id = resource_group_id
@@ -7396,7 +7509,7 @@ class DescribeDDosAllEventListResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
-        # An array that consists of attack events.
+        # The DDoS attack events.
         self.attack_events = attack_events
         # The ID of the request.
         self.request_id = request_id
@@ -12629,6 +12742,7 @@ class DescribeDomainViewTopUrlRequest(TeaModel):
         self,
         domain: str = None,
         end_time: int = None,
+        inerval: int = None,
         resource_group_id: str = None,
         start_time: int = None,
         top: int = None,
@@ -12643,6 +12757,7 @@ class DescribeDomainViewTopUrlRequest(TeaModel):
         # 
         # This parameter is required.
         self.end_time = end_time
+        self.inerval = inerval
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
@@ -12669,6 +12784,8 @@ class DescribeDomainViewTopUrlRequest(TeaModel):
             result['Domain'] = self.domain
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.inerval is not None:
+            result['Inerval'] = self.inerval
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.start_time is not None:
@@ -12683,6 +12800,8 @@ class DescribeDomainViewTopUrlRequest(TeaModel):
             self.domain = m.get('Domain')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('Inerval') is not None:
+            self.inerval = m.get('Inerval')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('StartTime') is not None:
@@ -15755,6 +15874,179 @@ class DescribeInstancesResponse(TeaModel):
         return self
 
 
+class DescribeL7GlobalRuleRequest(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        lang: str = None,
+    ):
+        # This parameter is required.
+        self.domain = domain
+        self.lang = lang
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        return self
+
+
+class DescribeL7GlobalRuleResponseBodyGlobalRules(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        action_default: str = None,
+        description: str = None,
+        enabled: int = None,
+        rule_id: str = None,
+        rule_name: str = None,
+    ):
+        self.action = action
+        self.action_default = action_default
+        self.description = description
+        self.enabled = enabled
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.action_default is not None:
+            result['ActionDefault'] = self.action_default
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ActionDefault') is not None:
+            self.action_default = m.get('ActionDefault')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class DescribeL7GlobalRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        global_rules: List[DescribeL7GlobalRuleResponseBodyGlobalRules] = None,
+        request_id: str = None,
+    ):
+        self.global_rules = global_rules
+        self.request_id = request_id
+
+    def validate(self):
+        if self.global_rules:
+            for k in self.global_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['GlobalRules'] = []
+        if self.global_rules is not None:
+            for k in self.global_rules:
+                result['GlobalRules'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.global_rules = []
+        if m.get('GlobalRules') is not None:
+            for k in m.get('GlobalRules'):
+                temp_model = DescribeL7GlobalRuleResponseBodyGlobalRules()
+                self.global_rules.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeL7GlobalRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeL7GlobalRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeL7GlobalRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeL7RsPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -17382,13 +17674,25 @@ class DescribeNetworkRulesResponseBodyNetworkRules(TeaModel):
         # *   **true**\
         # *   **false**\
         self.is_auto_create = is_auto_create
+        # Indicates whether the payload filtering rule is enabled. Valid values:
+        # 
+        # *   1: enabled.
+        # *   0: disabled.
         self.payload_rule_enable = payload_rule_enable
         # The forwarding protocol. Valid values:
         # 
         # *   **tcp**\
         # *   **udp**\
         self.protocol = protocol
+        # Indicates whether the traffic diversion switch is on. Valid values:
+        # 
+        # *   0: on.
+        # *   1: off.
         self.proxy_enable = proxy_enable
+        # The status of traffic diversion. Valid values:
+        # 
+        # *   on: Traffic diversion takes effect.
+        # *   off: Traffic diversion does not take effect.
         self.proxy_status = proxy_status
         # The IP addresses of origin servers.
         self.real_servers = real_servers
@@ -17458,7 +17762,7 @@ class DescribeNetworkRulesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the port forwarding rule.
+        # The details of the port forwarding rules.
         self.network_rules = network_rules
         # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
@@ -18089,7 +18393,7 @@ class DescribePortAttackMaxFlowRequest(TeaModel):
         # 
         # This parameter is required.
         self.end_time = end_time
-        # An array that consists of the IDs of instances to query.
+        # The IDs of the Anti-DDoS Proxy instances to query.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
@@ -19281,9 +19585,9 @@ class DescribePortMaxConnsRequest(TeaModel):
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The ID of the instance.
+        # The IDs of the Anti-DDoS Proxy instances.
         # 
-        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # >  You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all Anti-DDoS Proxy instances.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
@@ -19376,7 +19680,7 @@ class DescribePortMaxConnsResponseBody(TeaModel):
         port_max_conns: List[DescribePortMaxConnsResponseBodyPortMaxConns] = None,
         request_id: str = None,
     ):
-        # An array consisting of the details of the maximum number of connections that are established over a port of the instance.
+        # The details of the maximum number of connections that can be established over a port of the instance.
         self.port_max_conns = port_max_conns
         # The ID of the request.
         self.request_id = request_id
@@ -19468,13 +19772,13 @@ class DescribePortViewSourceCountriesRequest(TeaModel):
         # 
         # This parameter is required.
         self.end_time = end_time
-        # An array that consists of the IDs of instances to query.
+        # The IDs of the Anti-DDoS Proxy instances to query.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
-        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Proxy instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+        # For information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
@@ -19560,7 +19864,7 @@ class DescribePortViewSourceCountriesResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # An array consisting of countries or areas from which the requests are sent.
+        # The details about the country or area from which the requests are sent.
         self.source_countrys = source_countrys
 
     def validate(self):
@@ -19650,13 +19954,13 @@ class DescribePortViewSourceIspsRequest(TeaModel):
         # 
         # This parameter is required.
         self.end_time = end_time
-        # An array that consists of the IDs of instances to query.
+        # The IDs of the Anti-DDoS Proxy instances to query.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
-        # The ID of the resource group to which the instance belongs in Resource Management.
+        # The ID of the resource group to which the Anti-DDoS Proxy instance belongs in Resource Management.
         # 
-        # If you do not configure this parameter, the instance belongs to the default resource group.
+        # If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
         # 
@@ -19830,13 +20134,13 @@ class DescribePortViewSourceProvincesRequest(TeaModel):
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
-        # The IDs of instances to query.
+        # The IDs of the Anti-DDoS Proxy instances to query.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
-        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Proxy instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+        # For information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
@@ -19924,7 +20228,7 @@ class DescribePortViewSourceProvincesResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # Details about the administrative region in China from which the requests are sent.
+        # The details of the administrative region in China from which the requests are sent.
         self.source_provinces = source_provinces
 
     def validate(self):
@@ -22302,7 +22606,7 @@ class DescribeTotalAttackMaxFlowRequest(TeaModel):
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The IDs of the instances. Separate multiple instance IDs with commas (,). Example: InstanceIds.1, InstanceIds.2, InstanceIds.3.
+        # The IDs of the Anti-DDoS Proxy instances. Separate multiple instance IDs with commas (,). Example: InstanceIds.1, InstanceIds.2, InstanceIds.3.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
@@ -22356,7 +22660,7 @@ class DescribeTotalAttackMaxFlowResponseBody(TeaModel):
     ):
         # The peak bandwidth of attack traffic. Unit: bit/s.
         self.bps = bps
-        # The peak packet rate of attack traffic . Unit: packets per second (pps).
+        # The peak packet rate of attack traffic. Unit: packets per second (pps).
         self.pps = pps
         # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
@@ -24961,9 +25265,9 @@ class DescribeWebInstanceRelationsRequest(TeaModel):
         domains: List[str] = None,
         resource_group_id: str = None,
     ):
-        # The domain names of the website. list
+        # The domain names of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # >  A forwarding rule must be configured for the domain names. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
         # 
         # This parameter is required.
         self.domains = domains
@@ -25488,7 +25792,7 @@ class DescribeWebReportTopIpRequest(TeaModel):
         # 
         # This parameter is required.
         self.interval = interval
-        # The source of the statistics. Valid value:
+        # The source of the statistics. Valid values:
         # 
         # *   **visit**: indicates all IP addresses.
         # *   **block**: indicates blocked IP addresses.
@@ -25618,7 +25922,7 @@ class DescribeWebReportTopIpResponseBody(TeaModel):
         data_list: List[DescribeWebReportTopIpResponseBodyDataList] = None,
         request_id: str = None,
     ):
-        # The response parameters.
+        # The information about the IP addresses.
         self.data_list = data_list
         # The request ID.
         self.request_id = request_id
@@ -27237,7 +27541,7 @@ class EnableWebAccessLogConfigRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/474212.html) operation to query all domain names.
         # 
         # This parameter is required.
         self.domain = domain
@@ -29133,23 +29437,64 @@ class ModifyInstanceRequest(TeaModel):
         service_bandwidth: str = None,
         service_partner: str = None,
     ):
+        # Address type. Values:
+        # - **Ipv4**: IPv4.
+        # - **Ipv6**: IPv6.
         self.address_type = address_type
+        # Elastic protection bandwidth (Mainland China). Unit: Gbps.
         self.bandwidth = bandwidth
+        # Guaranteed protection bandwidth (Mainland China). Unit: Gbps.
         self.base_bandwidth = base_bandwidth
+        # Number of protected domains.
         self.domain_count = domain_count
+        # Protection package (Mainland China). Values:
+        # 
+        # - **coop**: Indicates the DDoS High Defense (Mainland China) Professional Edition.
+        # - **advance**: Indicates the DDoS High Defense (Mainland China) Professional Edition.
         self.edition_sale = edition_sale
+        # Function version, with values:
+        # 
+        # - **0**: Standard function.
+        # - **1**: Enhanced function.
         self.function_version = function_version
+        # The ID of the DDoS High Defense instance.
+        # > You can call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the ID information of all DDoS High Defense instances.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Adjustment type, with values
+        # - UPGRADE: Upgrade.
+        # - DOWNGRADE: Downgrade.
+        # 
         # This parameter is required.
         self.modify_type = modify_type
+        # Business bandwidth (outside Mainland China). Unit: Mbps.
         self.normal_bandwidth = normal_bandwidth
+        # Business QPS. Unit: Mbps.
         self.normal_qps = normal_qps
+        # Number of protected ports.
         self.port_count = port_count
+        # Protection package (outside Mainland China). Values:
+        # 
+        # - **0**: Indicates the DDoS High Defense (outside Mainland China) Insurance Edition.
+        # - **1**: Indicates the DDoS High Defense (outside Mainland China) Worry-Free Edition.
+        # - **2**: Indicates the DDoS High Defense (outside Mainland China) Acceleration Line.
+        # - **3**: Indicates the DDoS High Defense (outside Mainland China) Secure Acceleration Line.
         self.product_plan = product_plan
+        # Product type.
+        # Values:
+        # 
+        # - **ddoscoo**: Indicates that the DDoS High Defense (Mainland China) instance is being adjusted for a China site account.
+        # - **ddoscoo_intl**: Indicates that the DDoS High Defense (Mainland China) instance is being adjusted for an international site account.
+        # - **ddosDip**: Indicates that the DDoS High Defense (outside Mainland China) instance is being adjusted for either a China or international site account.
+        # 
         # This parameter is required.
         self.product_type = product_type
+        # Business bandwidth (Mainland China). Unit: Mbps.
         self.service_bandwidth = service_bandwidth
+        # Line resources of the instance (Mainland China). Values:
+        # 
+        # - **coop-line-001**: Indicates the DDoS High Defense (Mainland China) 8-line BGP line.
         self.service_partner = service_partner
 
     def validate(self):
@@ -29234,7 +29579,9 @@ class ModifyInstanceResponseBody(TeaModel):
         order_id: int = None,
         request_id: str = None,
     ):
+        # Order ID.
         self.order_id = order_id
+        # The ID of this request, which is a unique identifier generated by Alibaba Cloud for this request and can be used for troubleshooting and problem localization.
         self.request_id = request_id
 
     def validate(self):
@@ -29586,8 +29933,8 @@ class ModifyOcspStatusRequest(TeaModel):
         self.domain = domain
         # Specifies whether to enable the OCSP feature. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # *   **1**: yes.
+        # *   **0**: no.
         # 
         # This parameter is required.
         self.enable = enable
@@ -30099,8 +30446,8 @@ class ModifySceneDefensePolicyRequest(TeaModel):
         self.start_time = start_time
         # The template of the policy. Valid values:
         # 
-        # *   **promotion**: important activity
-        # *   **bypass**: all traffic forwarded
+        # *   **promotion**: important activity.
+        # *   **bypass**: all traffic forwarded.
         # 
         # This parameter is required.
         self.template = template
@@ -30556,7 +30903,7 @@ class ModifyWebAIProtectModeRequest(TeaModel):
         self.config = config
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/474212.html) operation to query all domain names.
         # 
         # This parameter is required.
         self.domain = domain
@@ -32187,15 +32534,45 @@ class ModifyWebRuleRequest(TeaModel):
         resource_group_id: str = None,
         rs_type: int = None,
     ):
+        # The domain name of the website.
+        # 
+        # >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query the domain names for which forwarding rules are configured.
+        # 
         # This parameter is required.
         self.domain = domain
+        # The advanced HTTPS settings. This parameter takes effect only when the value of **ProxyType** includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+        # 
+        # *   **Http2https**: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+        # 
+        #     If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
+        # 
+        # *   **Https2http**: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+        # 
+        #     If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
+        # 
+        # *   **Http2**: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+        # 
+        #     After you turn on the switch, the protocol type is HTTP/2.
         self.https_ext = https_ext
         self.instance_ids = instance_ids
+        # The protocol of the forwarding rule. The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
+        # 
+        # *   **ProxyType**: the protocol type. This field is required and must be a string. Valid values: **http**, **https**, **websocket**, and **websockets**.
+        # *   **ProxyPort**: the port number. This field is required and must be an array.
+        # 
         # This parameter is required.
         self.proxy_types = proxy_types
         # This parameter is required.
         self.real_servers = real_servers
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # 
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
+        # The address type of the origin server. Valid values:
+        # 
+        # *   **0**: IP address.
+        # *   **1**: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+        # 
         # This parameter is required.
         self.rs_type = rs_type
 
@@ -32248,6 +32625,7 @@ class ModifyWebRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

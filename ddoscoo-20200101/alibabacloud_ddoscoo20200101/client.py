@@ -649,6 +649,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.config_domain_security_profile_with_options_async(request, runtime)
 
+    def config_l7global_rule_with_options(
+        self,
+        request: ddoscoo_20200101_models.ConfigL7GlobalRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ConfigL7GlobalRuleResponse:
+        """
+        @summary 配置全局模板规则
+        
+        @param request: ConfigL7GlobalRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigL7GlobalRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.rule_attr):
+            query['RuleAttr'] = request.rule_attr
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigL7GlobalRule',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ddoscoo_20200101_models.ConfigL7GlobalRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ddoscoo_20200101_models.ConfigL7GlobalRuleResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def config_l7global_rule_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.ConfigL7GlobalRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ConfigL7GlobalRuleResponse:
+        """
+        @summary 配置全局模板规则
+        
+        @param request: ConfigL7GlobalRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigL7GlobalRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.rule_attr):
+            query['RuleAttr'] = request.rule_attr
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigL7GlobalRule',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ddoscoo_20200101_models.ConfigL7GlobalRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ddoscoo_20200101_models.ConfigL7GlobalRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def config_l7global_rule(
+        self,
+        request: ddoscoo_20200101_models.ConfigL7GlobalRuleRequest,
+    ) -> ddoscoo_20200101_models.ConfigL7GlobalRuleResponse:
+        """
+        @summary 配置全局模板规则
+        
+        @param request: ConfigL7GlobalRuleRequest
+        @return: ConfigL7GlobalRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_l7global_rule_with_options(request, runtime)
+
+    async def config_l7global_rule_async(
+        self,
+        request: ddoscoo_20200101_models.ConfigL7GlobalRuleRequest,
+    ) -> ddoscoo_20200101_models.ConfigL7GlobalRuleResponse:
+        """
+        @summary 配置全局模板规则
+        
+        @param request: ConfigL7GlobalRuleRequest
+        @return: ConfigL7GlobalRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_l7global_rule_with_options_async(request, runtime)
+
     def config_l7rs_policy_with_options(
         self,
         request: ddoscoo_20200101_models.ConfigL7RsPolicyRequest,
@@ -3423,7 +3535,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DeleteAutoCcWhitelistResponse:
         """
-        @summary Removes IP addresses from the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+        @summary Removes IP addresses from the IP address whitelist of an Anti-DDoS Proxy instance.
         
         @param request: DeleteAutoCcWhitelistRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3466,7 +3578,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DeleteAutoCcWhitelistResponse:
         """
-        @summary Removes IP addresses from the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+        @summary Removes IP addresses from the IP address whitelist of an Anti-DDoS Proxy instance.
         
         @param request: DeleteAutoCcWhitelistRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3508,7 +3620,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DeleteAutoCcWhitelistRequest,
     ) -> ddoscoo_20200101_models.DeleteAutoCcWhitelistResponse:
         """
-        @summary Removes IP addresses from the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+        @summary Removes IP addresses from the IP address whitelist of an Anti-DDoS Proxy instance.
         
         @param request: DeleteAutoCcWhitelistRequest
         @return: DeleteAutoCcWhitelistResponse
@@ -3521,7 +3633,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DeleteAutoCcWhitelistRequest,
     ) -> ddoscoo_20200101_models.DeleteAutoCcWhitelistResponse:
         """
-        @summary Removes IP addresses from the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+        @summary Removes IP addresses from the IP address whitelist of an Anti-DDoS Proxy instance.
         
         @param request: DeleteAutoCcWhitelistRequest
         @return: DeleteAutoCcWhitelistResponse
@@ -5227,7 +5339,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeAutoCcListCountResponse:
         """
-        @summary Queries the numbers of IP addresses in the IP address whitelist and IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+        @summary Queries the numbers of IP addresses in the IP address whitelist and IP address blacklist of an Anti-DDoS Proxy instance.
         
         @param request: DescribeAutoCcListCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5270,7 +5382,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeAutoCcListCountResponse:
         """
-        @summary Queries the numbers of IP addresses in the IP address whitelist and IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+        @summary Queries the numbers of IP addresses in the IP address whitelist and IP address blacklist of an Anti-DDoS Proxy instance.
         
         @param request: DescribeAutoCcListCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5312,7 +5424,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeAutoCcListCountRequest,
     ) -> ddoscoo_20200101_models.DescribeAutoCcListCountResponse:
         """
-        @summary Queries the numbers of IP addresses in the IP address whitelist and IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+        @summary Queries the numbers of IP addresses in the IP address whitelist and IP address blacklist of an Anti-DDoS Proxy instance.
         
         @param request: DescribeAutoCcListCountRequest
         @return: DescribeAutoCcListCountResponse
@@ -5325,7 +5437,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeAutoCcListCountRequest,
     ) -> ddoscoo_20200101_models.DescribeAutoCcListCountResponse:
         """
-        @summary Queries the numbers of IP addresses in the IP address whitelist and IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+        @summary Queries the numbers of IP addresses in the IP address whitelist and IP address blacklist of an Anti-DDoS Proxy instance.
         
         @param request: DescribeAutoCcListCountRequest
         @return: DescribeAutoCcListCountResponse
@@ -5339,7 +5451,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeAutoCcWhitelistResponse:
         """
-        @summary Queries IP addresses in the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+        @summary Queries IP addresses in the IP address whitelist of an Anti-DDoS Proxy instance.
         
         @param request: DescribeAutoCcWhitelistRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5386,7 +5498,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeAutoCcWhitelistResponse:
         """
-        @summary Queries IP addresses in the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+        @summary Queries IP addresses in the IP address whitelist of an Anti-DDoS Proxy instance.
         
         @param request: DescribeAutoCcWhitelistRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5432,7 +5544,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeAutoCcWhitelistRequest,
     ) -> ddoscoo_20200101_models.DescribeAutoCcWhitelistResponse:
         """
-        @summary Queries IP addresses in the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+        @summary Queries IP addresses in the IP address whitelist of an Anti-DDoS Proxy instance.
         
         @param request: DescribeAutoCcWhitelistRequest
         @return: DescribeAutoCcWhitelistResponse
@@ -5445,7 +5557,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeAutoCcWhitelistRequest,
     ) -> ddoscoo_20200101_models.DescribeAutoCcWhitelistResponse:
         """
-        @summary Queries IP addresses in the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+        @summary Queries IP addresses in the IP address whitelist of an Anti-DDoS Proxy instance.
         
         @param request: DescribeAutoCcWhitelistRequest
         @return: DescribeAutoCcWhitelistResponse
@@ -5815,7 +5927,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeCertsResponse:
         """
-        @summary Queries information about all certificates that can be associated with the current domain name instead of the certificate currently in use. To query the information about the certificate that is currently in use, you can call the DescribeWebRules operation and view the values of the CertName and CertRegion response parameters.
+        @summary Queries information about all certificates that can be associated with the current domain name instead of the certificate currently in use.
+        
+        @description This operation is used to query all applicable certificates of a domain name that you want to add to Anti-DDoS Proxy. Multiple certificates may be queried for a domain name. You can use an exact domain name to query exact-domain certificates or wildcard-domain certificates.
+        >  If you want to query the certificate that is in use for the current domain name, you can call the [DescribeWebRules](https://help.aliyun.com/document_detail/473610.html) operation to obtain the values of the CertName and CertRegion parameters. Then, you can call the [ListUserCertificateOrder](https://help.aliyun.com/document_detail/411733.html) operation of Certificate Management Service to query the ID and other details of the certificate by using the value of the CertName parameter.
         
         @param request: DescribeCertsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5858,7 +5973,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeCertsResponse:
         """
-        @summary Queries information about all certificates that can be associated with the current domain name instead of the certificate currently in use. To query the information about the certificate that is currently in use, you can call the DescribeWebRules operation and view the values of the CertName and CertRegion response parameters.
+        @summary Queries information about all certificates that can be associated with the current domain name instead of the certificate currently in use.
+        
+        @description This operation is used to query all applicable certificates of a domain name that you want to add to Anti-DDoS Proxy. Multiple certificates may be queried for a domain name. You can use an exact domain name to query exact-domain certificates or wildcard-domain certificates.
+        >  If you want to query the certificate that is in use for the current domain name, you can call the [DescribeWebRules](https://help.aliyun.com/document_detail/473610.html) operation to obtain the values of the CertName and CertRegion parameters. Then, you can call the [ListUserCertificateOrder](https://help.aliyun.com/document_detail/411733.html) operation of Certificate Management Service to query the ID and other details of the certificate by using the value of the CertName parameter.
         
         @param request: DescribeCertsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5900,7 +6018,10 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeCertsRequest,
     ) -> ddoscoo_20200101_models.DescribeCertsResponse:
         """
-        @summary Queries information about all certificates that can be associated with the current domain name instead of the certificate currently in use. To query the information about the certificate that is currently in use, you can call the DescribeWebRules operation and view the values of the CertName and CertRegion response parameters.
+        @summary Queries information about all certificates that can be associated with the current domain name instead of the certificate currently in use.
+        
+        @description This operation is used to query all applicable certificates of a domain name that you want to add to Anti-DDoS Proxy. Multiple certificates may be queried for a domain name. You can use an exact domain name to query exact-domain certificates or wildcard-domain certificates.
+        >  If you want to query the certificate that is in use for the current domain name, you can call the [DescribeWebRules](https://help.aliyun.com/document_detail/473610.html) operation to obtain the values of the CertName and CertRegion parameters. Then, you can call the [ListUserCertificateOrder](https://help.aliyun.com/document_detail/411733.html) operation of Certificate Management Service to query the ID and other details of the certificate by using the value of the CertName parameter.
         
         @param request: DescribeCertsRequest
         @return: DescribeCertsResponse
@@ -5913,7 +6034,10 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeCertsRequest,
     ) -> ddoscoo_20200101_models.DescribeCertsResponse:
         """
-        @summary Queries information about all certificates that can be associated with the current domain name instead of the certificate currently in use. To query the information about the certificate that is currently in use, you can call the DescribeWebRules operation and view the values of the CertName and CertRegion response parameters.
+        @summary Queries information about all certificates that can be associated with the current domain name instead of the certificate currently in use.
+        
+        @description This operation is used to query all applicable certificates of a domain name that you want to add to Anti-DDoS Proxy. Multiple certificates may be queried for a domain name. You can use an exact domain name to query exact-domain certificates or wildcard-domain certificates.
+        >  If you want to query the certificate that is in use for the current domain name, you can call the [DescribeWebRules](https://help.aliyun.com/document_detail/473610.html) operation to obtain the values of the CertName and CertRegion parameters. Then, you can call the [ListUserCertificateOrder](https://help.aliyun.com/document_detail/411733.html) operation of Certificate Management Service to query the ID and other details of the certificate by using the value of the CertName parameter.
         
         @param request: DescribeCertsRequest
         @return: DescribeCertsResponse
@@ -6159,7 +6283,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeDDosAllEventListResponse:
         """
-        @summary Query DDoS attacks by IP address.
+        @summary Queries DDoS attack events.
         
         @description You can call the DescribeDDosAllEventList operation to query DDoS attack events within a specific time range by page. The information about a DDoS attack event includes the start time and end time of the attack, attack event type, attacked object, peak bandwidth of attack traffic, and peak packet forwarding rate.
         ### Limits
@@ -6212,7 +6336,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeDDosAllEventListResponse:
         """
-        @summary Query DDoS attacks by IP address.
+        @summary Queries DDoS attack events.
         
         @description You can call the DescribeDDosAllEventList operation to query DDoS attack events within a specific time range by page. The information about a DDoS attack event includes the start time and end time of the attack, attack event type, attacked object, peak bandwidth of attack traffic, and peak packet forwarding rate.
         ### Limits
@@ -6264,7 +6388,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeDDosAllEventListRequest,
     ) -> ddoscoo_20200101_models.DescribeDDosAllEventListResponse:
         """
-        @summary Query DDoS attacks by IP address.
+        @summary Queries DDoS attack events.
         
         @description You can call the DescribeDDosAllEventList operation to query DDoS attack events within a specific time range by page. The information about a DDoS attack event includes the start time and end time of the attack, attack event type, attacked object, peak bandwidth of attack traffic, and peak packet forwarding rate.
         ### Limits
@@ -6281,7 +6405,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeDDosAllEventListRequest,
     ) -> ddoscoo_20200101_models.DescribeDDosAllEventListResponse:
         """
-        @summary Query DDoS attacks by IP address.
+        @summary Queries DDoS attack events.
         
         @description You can call the DescribeDDosAllEventList operation to query DDoS attack events within a specific time range by page. The information about a DDoS attack event includes the start time and end time of the attack, attack event type, attacked object, peak bandwidth of attack traffic, and peak packet forwarding rate.
         ### Limits
@@ -7047,7 +7171,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeDefenseRecordsResponse:
         """
-        @summary Queries the advanced mitigation logs of Anti-DDoS Premium.
+        @summary Queries the advanced mitigation logs of an Anti-DDoS Proxy (Outside Chinese Mainland) instance.
         
         @description > This operation is suitable only for Anti-DDoS Premium.
         
@@ -7100,7 +7224,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeDefenseRecordsResponse:
         """
-        @summary Queries the advanced mitigation logs of Anti-DDoS Premium.
+        @summary Queries the advanced mitigation logs of an Anti-DDoS Proxy (Outside Chinese Mainland) instance.
         
         @description > This operation is suitable only for Anti-DDoS Premium.
         
@@ -7152,7 +7276,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeDefenseRecordsRequest,
     ) -> ddoscoo_20200101_models.DescribeDefenseRecordsResponse:
         """
-        @summary Queries the advanced mitigation logs of Anti-DDoS Premium.
+        @summary Queries the advanced mitigation logs of an Anti-DDoS Proxy (Outside Chinese Mainland) instance.
         
         @description > This operation is suitable only for Anti-DDoS Premium.
         
@@ -7167,7 +7291,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeDefenseRecordsRequest,
     ) -> ddoscoo_20200101_models.DescribeDefenseRecordsResponse:
         """
-        @summary Queries the advanced mitigation logs of Anti-DDoS Premium.
+        @summary Queries the advanced mitigation logs of an Anti-DDoS Proxy (Outside Chinese Mainland) instance.
         
         @description > This operation is suitable only for Anti-DDoS Premium.
         
@@ -9415,6 +9539,8 @@ class Client(OpenApiClient):
             query['Domain'] = request.domain
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.inerval):
+            query['Inerval'] = request.inerval
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.start_time):
@@ -9464,6 +9590,8 @@ class Client(OpenApiClient):
             query['Domain'] = request.domain
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.inerval):
+            query['Inerval'] = request.inerval
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.start_time):
@@ -11023,6 +11151,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeInstancesResponse:
         """
+        @summary 查询实例列表
+        
         @description You can call the DescribeInstances operation to query the details of Anti-DDoS Pro or Anti-DDoS Premium instances within the Alibaba Cloud account by page. The details include the ID, mitigation plan, expiration time, and forwarding status.
         
         @param request: DescribeInstancesRequest
@@ -11086,6 +11216,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeInstancesResponse:
         """
+        @summary 查询实例列表
+        
         @description You can call the DescribeInstances operation to query the details of Anti-DDoS Pro or Anti-DDoS Premium instances within the Alibaba Cloud account by page. The details include the ID, mitigation plan, expiration time, and forwarding status.
         
         @param request: DescribeInstancesRequest
@@ -11148,6 +11280,8 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeInstancesRequest,
     ) -> ddoscoo_20200101_models.DescribeInstancesResponse:
         """
+        @summary 查询实例列表
+        
         @description You can call the DescribeInstances operation to query the details of Anti-DDoS Pro or Anti-DDoS Premium instances within the Alibaba Cloud account by page. The details include the ID, mitigation plan, expiration time, and forwarding status.
         
         @param request: DescribeInstancesRequest
@@ -11161,6 +11295,8 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeInstancesRequest,
     ) -> ddoscoo_20200101_models.DescribeInstancesResponse:
         """
+        @summary 查询实例列表
+        
         @description You can call the DescribeInstances operation to query the details of Anti-DDoS Pro or Anti-DDoS Premium instances within the Alibaba Cloud account by page. The details include the ID, mitigation plan, expiration time, and forwarding status.
         
         @param request: DescribeInstancesRequest
@@ -11168,6 +11304,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instances_with_options_async(request, runtime)
+
+    def describe_l7global_rule_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeL7GlobalRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeL7GlobalRuleResponse:
+        """
+        @summary 展示全局模板规则
+        
+        @param request: DescribeL7GlobalRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeL7GlobalRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeL7GlobalRule',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ddoscoo_20200101_models.DescribeL7GlobalRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ddoscoo_20200101_models.DescribeL7GlobalRuleResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_l7global_rule_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeL7GlobalRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeL7GlobalRuleResponse:
+        """
+        @summary 展示全局模板规则
+        
+        @param request: DescribeL7GlobalRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeL7GlobalRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeL7GlobalRule',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ddoscoo_20200101_models.DescribeL7GlobalRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ddoscoo_20200101_models.DescribeL7GlobalRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_l7global_rule(
+        self,
+        request: ddoscoo_20200101_models.DescribeL7GlobalRuleRequest,
+    ) -> ddoscoo_20200101_models.DescribeL7GlobalRuleResponse:
+        """
+        @summary 展示全局模板规则
+        
+        @param request: DescribeL7GlobalRuleRequest
+        @return: DescribeL7GlobalRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_l7global_rule_with_options(request, runtime)
+
+    async def describe_l7global_rule_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeL7GlobalRuleRequest,
+    ) -> ddoscoo_20200101_models.DescribeL7GlobalRuleResponse:
+        """
+        @summary 展示全局模板规则
+        
+        @param request: DescribeL7GlobalRuleRequest
+        @return: DescribeL7GlobalRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_l7global_rule_with_options_async(request, runtime)
 
     def describe_l7rs_policy_with_options(
         self,
@@ -11507,7 +11755,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeLogStoreExistStatusResponse:
         """
-        @summary Checks whether a Logstore is created for Anti-DDoS Pro or Anti-DDoS Premium.
+        @summary Checks whether a Logstore is created for Anti-DDoS Proxy.
         
         @param request: DescribeLogStoreExistStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11548,7 +11796,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeLogStoreExistStatusResponse:
         """
-        @summary Checks whether a Logstore is created for Anti-DDoS Pro or Anti-DDoS Premium.
+        @summary Checks whether a Logstore is created for Anti-DDoS Proxy.
         
         @param request: DescribeLogStoreExistStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11588,7 +11836,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeLogStoreExistStatusRequest,
     ) -> ddoscoo_20200101_models.DescribeLogStoreExistStatusResponse:
         """
-        @summary Checks whether a Logstore is created for Anti-DDoS Pro or Anti-DDoS Premium.
+        @summary Checks whether a Logstore is created for Anti-DDoS Proxy.
         
         @param request: DescribeLogStoreExistStatusRequest
         @return: DescribeLogStoreExistStatusResponse
@@ -11601,7 +11849,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeLogStoreExistStatusRequest,
     ) -> ddoscoo_20200101_models.DescribeLogStoreExistStatusResponse:
         """
-        @summary Checks whether a Logstore is created for Anti-DDoS Pro or Anti-DDoS Premium.
+        @summary Checks whether a Logstore is created for Anti-DDoS Proxy.
         
         @param request: DescribeLogStoreExistStatusRequest
         @return: DescribeLogStoreExistStatusResponse
@@ -12971,7 +13219,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribePortMaxConnsResponse:
         """
-        @summary Queries the maximum number of connections that can be established over the ports of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+        @summary Queries the maximum number of connections that can be established over the ports of one or more Anti-DDoS Proxy instances.
         
         @param request: DescribePortMaxConnsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13018,7 +13266,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribePortMaxConnsResponse:
         """
-        @summary Queries the maximum number of connections that can be established over the ports of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+        @summary Queries the maximum number of connections that can be established over the ports of one or more Anti-DDoS Proxy instances.
         
         @param request: DescribePortMaxConnsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13064,7 +13312,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribePortMaxConnsRequest,
     ) -> ddoscoo_20200101_models.DescribePortMaxConnsResponse:
         """
-        @summary Queries the maximum number of connections that can be established over the ports of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+        @summary Queries the maximum number of connections that can be established over the ports of one or more Anti-DDoS Proxy instances.
         
         @param request: DescribePortMaxConnsRequest
         @return: DescribePortMaxConnsResponse
@@ -13077,7 +13325,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribePortMaxConnsRequest,
     ) -> ddoscoo_20200101_models.DescribePortMaxConnsResponse:
         """
-        @summary Queries the maximum number of connections that can be established over the ports of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+        @summary Queries the maximum number of connections that can be established over the ports of one or more Anti-DDoS Proxy instances.
         
         @param request: DescribePortMaxConnsRequest
         @return: DescribePortMaxConnsResponse
@@ -13975,7 +14223,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeSlsAuthStatusResponse:
         """
-        @summary Queries whether Anti-DDoS Pro or Anti-DDoS Premium is authorized to access Log Service.
+        @summary Queries whether Anti-DDoS Proxy is authorized to access Simple Log Service.
         
         @param request: DescribeSlsAuthStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14016,7 +14264,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeSlsAuthStatusResponse:
         """
-        @summary Queries whether Anti-DDoS Pro or Anti-DDoS Premium is authorized to access Log Service.
+        @summary Queries whether Anti-DDoS Proxy is authorized to access Simple Log Service.
         
         @param request: DescribeSlsAuthStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14056,7 +14304,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeSlsAuthStatusRequest,
     ) -> ddoscoo_20200101_models.DescribeSlsAuthStatusResponse:
         """
-        @summary Queries whether Anti-DDoS Pro or Anti-DDoS Premium is authorized to access Log Service.
+        @summary Queries whether Anti-DDoS Proxy is authorized to access Simple Log Service.
         
         @param request: DescribeSlsAuthStatusRequest
         @return: DescribeSlsAuthStatusResponse
@@ -14069,7 +14317,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeSlsAuthStatusRequest,
     ) -> ddoscoo_20200101_models.DescribeSlsAuthStatusResponse:
         """
-        @summary Queries whether Anti-DDoS Pro or Anti-DDoS Premium is authorized to access Log Service.
+        @summary Queries whether Anti-DDoS Proxy is authorized to access Simple Log Service.
         
         @param request: DescribeSlsAuthStatusRequest
         @return: DescribeSlsAuthStatusResponse
@@ -14083,7 +14331,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeSlsLogstoreInfoResponse:
         """
-        @summary Queries the information about the Logstore of the Anti-DDoS Pro or Anti-DDoS Premium instance, such as the log storage capacity and log storage duration.
+        @summary Queries information about the Logstore of the Anti-DDoS Proxy instance, such as the log storage capacity and log storage duration.
         
         @param request: DescribeSlsLogstoreInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14124,7 +14372,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeSlsLogstoreInfoResponse:
         """
-        @summary Queries the information about the Logstore of the Anti-DDoS Pro or Anti-DDoS Premium instance, such as the log storage capacity and log storage duration.
+        @summary Queries information about the Logstore of the Anti-DDoS Proxy instance, such as the log storage capacity and log storage duration.
         
         @param request: DescribeSlsLogstoreInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14164,7 +14412,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeSlsLogstoreInfoRequest,
     ) -> ddoscoo_20200101_models.DescribeSlsLogstoreInfoResponse:
         """
-        @summary Queries the information about the Logstore of the Anti-DDoS Pro or Anti-DDoS Premium instance, such as the log storage capacity and log storage duration.
+        @summary Queries information about the Logstore of the Anti-DDoS Proxy instance, such as the log storage capacity and log storage duration.
         
         @param request: DescribeSlsLogstoreInfoRequest
         @return: DescribeSlsLogstoreInfoResponse
@@ -14177,7 +14425,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeSlsLogstoreInfoRequest,
     ) -> ddoscoo_20200101_models.DescribeSlsLogstoreInfoResponse:
         """
-        @summary Queries the information about the Logstore of the Anti-DDoS Pro or Anti-DDoS Premium instance, such as the log storage capacity and log storage duration.
+        @summary Queries information about the Logstore of the Anti-DDoS Proxy instance, such as the log storage capacity and log storage duration.
         
         @param request: DescribeSlsLogstoreInfoRequest
         @return: DescribeSlsLogstoreInfoResponse
@@ -14191,7 +14439,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeSlsOpenStatusResponse:
         """
-        @summary Checks whether Log Service is activated.
+        @summary Checks whether Simple Log Service is activated.
         
         @param request: DescribeSlsOpenStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14232,7 +14480,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeSlsOpenStatusResponse:
         """
-        @summary Checks whether Log Service is activated.
+        @summary Checks whether Simple Log Service is activated.
         
         @param request: DescribeSlsOpenStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14272,7 +14520,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeSlsOpenStatusRequest,
     ) -> ddoscoo_20200101_models.DescribeSlsOpenStatusResponse:
         """
-        @summary Checks whether Log Service is activated.
+        @summary Checks whether Simple Log Service is activated.
         
         @param request: DescribeSlsOpenStatusRequest
         @return: DescribeSlsOpenStatusResponse
@@ -14285,7 +14533,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeSlsOpenStatusRequest,
     ) -> ddoscoo_20200101_models.DescribeSlsOpenStatusResponse:
         """
-        @summary Checks whether Log Service is activated.
+        @summary Checks whether Simple Log Service is activated.
         
         @param request: DescribeSlsOpenStatusRequest
         @return: DescribeSlsOpenStatusResponse
@@ -15099,7 +15347,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeUnBlackholeCountResponse:
         """
-        @summary Queries the total quota and remaining quota that allow you to deactivate blackhole filtering.
+        @summary Queries the total quota and remaining quota for blackhole filtering deactivation.
         
         @param request: DescribeUnBlackholeCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15140,7 +15388,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeUnBlackholeCountResponse:
         """
-        @summary Queries the total quota and remaining quota that allow you to deactivate blackhole filtering.
+        @summary Queries the total quota and remaining quota for blackhole filtering deactivation.
         
         @param request: DescribeUnBlackholeCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15180,7 +15428,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeUnBlackholeCountRequest,
     ) -> ddoscoo_20200101_models.DescribeUnBlackholeCountResponse:
         """
-        @summary Queries the total quota and remaining quota that allow you to deactivate blackhole filtering.
+        @summary Queries the total quota and remaining quota for blackhole filtering deactivation.
         
         @param request: DescribeUnBlackholeCountRequest
         @return: DescribeUnBlackholeCountResponse
@@ -15193,7 +15441,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeUnBlackholeCountRequest,
     ) -> ddoscoo_20200101_models.DescribeUnBlackholeCountResponse:
         """
-        @summary Queries the total quota and remaining quota that allow you to deactivate blackhole filtering.
+        @summary Queries the total quota and remaining quota for blackhole filtering deactivation.
         
         @param request: DescribeUnBlackholeCountRequest
         @return: DescribeUnBlackholeCountResponse
@@ -15563,7 +15811,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeWebAccessLogStatusResponse:
         """
-        @summary Queries the information about the Log Analysis feature for a website, such as the feature status and the Log Service project and Logstore that are used.
+        @summary Queries the information about the log analysis feature for a website, such as the feature status and the Simple Log Service project and Logstore that are used.
         
         @param request: DescribeWebAccessLogStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15606,7 +15854,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeWebAccessLogStatusResponse:
         """
-        @summary Queries the information about the Log Analysis feature for a website, such as the feature status and the Log Service project and Logstore that are used.
+        @summary Queries the information about the log analysis feature for a website, such as the feature status and the Simple Log Service project and Logstore that are used.
         
         @param request: DescribeWebAccessLogStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15648,7 +15896,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeWebAccessLogStatusRequest,
     ) -> ddoscoo_20200101_models.DescribeWebAccessLogStatusResponse:
         """
-        @summary Queries the information about the Log Analysis feature for a website, such as the feature status and the Log Service project and Logstore that are used.
+        @summary Queries the information about the log analysis feature for a website, such as the feature status and the Simple Log Service project and Logstore that are used.
         
         @param request: DescribeWebAccessLogStatusRequest
         @return: DescribeWebAccessLogStatusResponse
@@ -15661,7 +15909,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeWebAccessLogStatusRequest,
     ) -> ddoscoo_20200101_models.DescribeWebAccessLogStatusResponse:
         """
-        @summary Queries the information about the Log Analysis feature for a website, such as the feature status and the Log Service project and Logstore that are used.
+        @summary Queries the information about the log analysis feature for a website, such as the feature status and the Simple Log Service project and Logstore that are used.
         
         @param request: DescribeWebAccessLogStatusRequest
         @return: DescribeWebAccessLogStatusResponse
@@ -19783,7 +20031,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.ModifyInstanceResponse:
         """
-        @summary 实例变配  类似bss的变配
+        @summary Instance adjustment, similar to BSS adjustment
         
         @param request: ModifyInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19852,7 +20100,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.ModifyInstanceResponse:
         """
-        @summary 实例变配  类似bss的变配
+        @summary Instance adjustment, similar to BSS adjustment
         
         @param request: ModifyInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19920,7 +20168,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.ModifyInstanceRequest,
     ) -> ddoscoo_20200101_models.ModifyInstanceResponse:
         """
-        @summary 实例变配  类似bss的变配
+        @summary Instance adjustment, similar to BSS adjustment
         
         @param request: ModifyInstanceRequest
         @return: ModifyInstanceResponse
@@ -19933,7 +20181,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.ModifyInstanceRequest,
     ) -> ddoscoo_20200101_models.ModifyInstanceResponse:
         """
-        @summary 实例变配  类似bss的变配
+        @summary Instance adjustment, similar to BSS adjustment
         
         @param request: ModifyInstanceRequest
         @return: ModifyInstanceResponse
@@ -19947,7 +20195,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.ModifyInstanceRemarkResponse:
         """
-        @summary Modifies the description of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+        @summary Modifies the description of an Anti-DDoS Proxy instance.
         
         @param request: ModifyInstanceRemarkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19990,7 +20238,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.ModifyInstanceRemarkResponse:
         """
-        @summary Modifies the description of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+        @summary Modifies the description of an Anti-DDoS Proxy instance.
         
         @param request: ModifyInstanceRemarkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20032,7 +20280,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.ModifyInstanceRemarkRequest,
     ) -> ddoscoo_20200101_models.ModifyInstanceRemarkResponse:
         """
-        @summary Modifies the description of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+        @summary Modifies the description of an Anti-DDoS Proxy instance.
         
         @param request: ModifyInstanceRemarkRequest
         @return: ModifyInstanceRemarkResponse
@@ -20045,7 +20293,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.ModifyInstanceRemarkRequest,
     ) -> ddoscoo_20200101_models.ModifyInstanceRemarkResponse:
         """
-        @summary Modifies the description of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+        @summary Modifies the description of an Anti-DDoS Proxy instance.
         
         @param request: ModifyInstanceRemarkRequest
         @return: ModifyInstanceRemarkResponse
@@ -22599,6 +22847,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.ModifyWebRuleResponse:
         """
+        @summary Modifies the forwarding rule of a website.
+        
+        @description ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=ddoscoo\\&api=ModifyWebRule\\&type=RPC\\&version=2020-01-01)
+        
         @param request: ModifyWebRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyWebRuleResponse
@@ -22650,6 +22903,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.ModifyWebRuleResponse:
         """
+        @summary Modifies the forwarding rule of a website.
+        
+        @description ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=ddoscoo\\&api=ModifyWebRule\\&type=RPC\\&version=2020-01-01)
+        
         @param request: ModifyWebRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyWebRuleResponse
@@ -22700,6 +22958,11 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.ModifyWebRuleRequest,
     ) -> ddoscoo_20200101_models.ModifyWebRuleResponse:
         """
+        @summary Modifies the forwarding rule of a website.
+        
+        @description ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=ddoscoo\\&api=ModifyWebRule\\&type=RPC\\&version=2020-01-01)
+        
         @param request: ModifyWebRuleRequest
         @return: ModifyWebRuleResponse
         """
@@ -22711,6 +22974,11 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.ModifyWebRuleRequest,
     ) -> ddoscoo_20200101_models.ModifyWebRuleResponse:
         """
+        @summary Modifies the forwarding rule of a website.
+        
+        @description ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=ddoscoo\\&api=ModifyWebRule\\&type=RPC\\&version=2020-01-01)
+        
         @param request: ModifyWebRuleRequest
         @return: ModifyWebRuleResponse
         """

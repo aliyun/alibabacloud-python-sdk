@@ -1,3 +1,17 @@
+2025-04-14 Version: 3.0.0
+- Support API ConfigL7GlobalRule.
+- Support API DescribeL7GlobalRule.
+- Update API DescribeDDosAllEventList: add request parameters RegionId.
+- Update API DescribeDDosAllEventList: change request The number of host parameters has changed.
+- Update API DescribeDDosEventAttackType: add request parameters RegionId.
+- Update API DescribeDDosEventAttackType: change request The number of host parameters has changed.
+- Update API DescribeDDosEventMax: add request parameters RegionId.
+- Update API DescribeDDosEventMax: change request The number of host parameters has changed.
+- Update API DescribeDomainViewTopUrl: add request parameters Inerval.
+- Update API DescribeWebReportTopIp: add request parameters RegionId.
+- Update API DescribeWebReportTopIp: change request The number of host parameters has changed.
+
+
 2025-02-12 Version: 2.6.0
 - Support API ModifyInstance.
 - Update API DeleteAutoCcBlacklist: add param QueryType.

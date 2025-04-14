@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_ddoscoo20200101.
 
-Created on 12/02/2025
+Created on 14/04/2025
 
 @author: Alibaba Cloud SDK
 """
