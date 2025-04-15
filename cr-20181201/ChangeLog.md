@@ -1,3 +1,8 @@
+2025-04-15 Version: 2.0.1
+- Update API CreateRepoTagScanTask: add request parameters ScanType.
+- Update API GetRepoTagScanStatus: add request parameters ScanType.
+
+
 2025-03-31 Version: 2.0.0
 - Support API CancelRepoSyncTask.
 - Support API CreateArtifactSubscriptionRule.

@@ -3492,6 +3492,7 @@ class CreateRepoTagScanTaskRequest(TeaModel):
         instance_id: str = None,
         repo_id: str = None,
         scan_service: str = None,
+        scan_type: str = None,
         tag: str = None,
     ):
         # The digest of the image.
@@ -3509,6 +3510,7 @@ class CreateRepoTagScanTaskRequest(TeaModel):
         # *   `SAS_SCAN_SERVICE`: Security Center scan engine (paid service)
         # *   `ACR_SCAN_SERVICE`: Container Registry scan engine
         self.scan_service = scan_service
+        self.scan_type = scan_type
         # The version of the image.
         # 
         # This parameter is required.
@@ -3531,6 +3533,8 @@ class CreateRepoTagScanTaskRequest(TeaModel):
             result['RepoId'] = self.repo_id
         if self.scan_service is not None:
             result['ScanService'] = self.scan_service
+        if self.scan_type is not None:
+            result['ScanType'] = self.scan_type
         if self.tag is not None:
             result['Tag'] = self.tag
         return result
@@ -3545,6 +3549,8 @@ class CreateRepoTagScanTaskRequest(TeaModel):
             self.repo_id = m.get('RepoId')
         if m.get('ScanService') is not None:
             self.scan_service = m.get('ScanService')
+        if m.get('ScanType') is not None:
+            self.scan_type = m.get('ScanType')
         if m.get('Tag') is not None:
             self.tag = m.get('Tag')
         return self
@@ -10327,6 +10333,18 @@ class GetRepoSyncTaskResponseBody(TeaModel):
         self.sync_trans_accelerate = sync_trans_accelerate
         # The size of the image layer that is synchronized. Unit: bytes.
         self.synced_size = synced_size
+        # The error message that is returned if the synchronization task fails.
+        # 
+        # >  The system uses this parameter to return an error message if the synchronization task fails.
+        # 
+        # Valid values:
+        # 
+        # *   OSS_POLICY_UNAUTHORIZED: Container Registry is not granted permissions to use Object Storage Service (OSS).
+        # *   TAG_CONFLICT: The destination repository contains an image that has the same tag as the source image, and image tag immutability is enabled for the destination repository.
+        # *   UNSUPPORTED_FORMAT: The manifest and config formats of the image to be synchronized are not supported.
+        # *   INTERNAL_ERROR: The synchronization task failed due to internal issues on the server.
+        # *   NETWORK_ERROR: The synchronization task failed due to unstable network connection.
+        # *   DATA_LENGTH_EXCEEDED: The manifest or config of the image is oversized.
         self.task_issue = task_issue
         # The status of the task. Valid values:
         self.task_status = task_status
@@ -10657,6 +10675,7 @@ class GetRepoTagScanStatusRequest(TeaModel):
         instance_id: str = None,
         repo_id: str = None,
         scan_task_id: str = None,
+        scan_type: str = None,
         tag: str = None,
     ):
         self.digest = digest
@@ -10664,6 +10683,7 @@ class GetRepoTagScanStatusRequest(TeaModel):
         self.instance_id = instance_id
         self.repo_id = repo_id
         self.scan_task_id = scan_task_id
+        self.scan_type = scan_type
         self.tag = tag
 
     def validate(self):
@@ -10683,6 +10703,8 @@ class GetRepoTagScanStatusRequest(TeaModel):
             result['RepoId'] = self.repo_id
         if self.scan_task_id is not None:
             result['ScanTaskId'] = self.scan_task_id
+        if self.scan_type is not None:
+            result['ScanType'] = self.scan_type
         if self.tag is not None:
             result['Tag'] = self.tag
         return result
@@ -10697,6 +10719,8 @@ class GetRepoTagScanStatusRequest(TeaModel):
             self.repo_id = m.get('RepoId')
         if m.get('ScanTaskId') is not None:
             self.scan_task_id = m.get('ScanTaskId')
+        if m.get('ScanType') is not None:
+            self.scan_type = m.get('ScanType')
         if m.get('Tag') is not None:
             self.tag = m.get('Tag')
         return self
@@ -17499,12 +17523,17 @@ class ListRepositoryRequest(TeaModel):
         repo_namespace_name: str = None,
         repo_status: str = None,
     ):
+        # The ID of the Container Registry instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number.
         self.page_no = page_no
         # The number of entries per page. Maximum value: 100. If you specify a value larger than 100 for this parameter, the system reports a parameter error or uses 100 as the maximum value.
         self.page_size = page_size
+        # The name of the repository.
         self.repo_name = repo_name
+        # The name of the namespace to which the repository belongs.
         self.repo_namespace_name = repo_namespace_name
         self.repo_status = repo_status
 
