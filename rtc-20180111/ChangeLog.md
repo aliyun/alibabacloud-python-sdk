@@ -1,3 +1,22 @@
+2025-04-15 Version: 5.0.4
+- Update API StartCloudNote: add request parameters RealtimeSubtitle.
+- Update API StartCloudNote: add request parameters Transcription.
+- Update API StartCloudRecord: add request parameters ShowDefaultBackgroundOnMute.
+- Update API StartCloudRecord: add request parameters Panes.$.Backgrounds.
+- Update API StartCloudRecord: add request parameters Panes.$.Images.$.Display.
+- Update API StartCloudRecord: add request parameters Panes.$.Texts.$.Display.
+- Update API StartStreamingOut: add request parameters ShowDefaultBackgroundOnMute.
+- Update API StartStreamingOut: add request parameters Panes.$.Backgrounds.
+- Update API StartStreamingOut: add request parameters Panes.$.Images.$.Display.
+- Update API StartStreamingOut: add request parameters Panes.$.Texts.$.Display.
+- Update API UpdateCloudRecord: add request parameters Panes.$.Backgrounds.
+- Update API UpdateCloudRecord: add request parameters Panes.$.Images.$.Display.
+- Update API UpdateCloudRecord: add request parameters Panes.$.Texts.$.Display.
+- Update API UpdateStreamingOut: add request parameters Panes.$.Backgrounds.
+- Update API UpdateStreamingOut: add request parameters Panes.$.Images.$.Display.
+- Update API UpdateStreamingOut: add request parameters Panes.$.Texts.$.Display.
+
+
 2025-02-21 Version: 5.0.3
 - Update API StartCloudRecord: add param ReservePaneForNoCameraUser.
 - Update API StartCloudRecord: update param Panes.

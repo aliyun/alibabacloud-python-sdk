@@ -18394,6 +18394,68 @@ class StartCloudNoteRequestMeetingAssistance(TeaModel):
         return self
 
 
+class StartCloudNoteRequestRealtimeSubtitleTranslation(TeaModel):
+    def __init__(
+        self,
+        translate_level: int = None,
+    ):
+        self.translate_level = translate_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.translate_level is not None:
+            result['TranslateLevel'] = self.translate_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TranslateLevel') is not None:
+            self.translate_level = m.get('TranslateLevel')
+        return self
+
+
+class StartCloudNoteRequestRealtimeSubtitle(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        translation: StartCloudNoteRequestRealtimeSubtitleTranslation = None,
+    ):
+        self.enabled = enabled
+        self.translation = translation
+
+    def validate(self):
+        if self.translation:
+            self.translation.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.translation is not None:
+            result['Translation'] = self.translation.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Translation') is not None:
+            temp_model = StartCloudNoteRequestRealtimeSubtitleTranslation()
+            self.translation = temp_model.from_map(m['Translation'])
+        return self
+
+
 class StartCloudNoteRequestServiceInspectionInspectionContents(TeaModel):
     def __init__(
         self,
@@ -18606,6 +18668,45 @@ class StartCloudNoteRequestTextPolish(TeaModel):
         return self
 
 
+class StartCloudNoteRequestTranscription(TeaModel):
+    def __init__(
+        self,
+        diarization_enabled: bool = None,
+        speaker_count: int = None,
+        transcription_level: int = None,
+    ):
+        self.diarization_enabled = diarization_enabled
+        self.speaker_count = speaker_count
+        self.transcription_level = transcription_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.diarization_enabled is not None:
+            result['DiarizationEnabled'] = self.diarization_enabled
+        if self.speaker_count is not None:
+            result['SpeakerCount'] = self.speaker_count
+        if self.transcription_level is not None:
+            result['TranscriptionLevel'] = self.transcription_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiarizationEnabled') is not None:
+            self.diarization_enabled = m.get('DiarizationEnabled')
+        if m.get('SpeakerCount') is not None:
+            self.speaker_count = m.get('SpeakerCount')
+        if m.get('TranscriptionLevel') is not None:
+            self.transcription_level = m.get('TranscriptionLevel')
+        return self
+
+
 class StartCloudNoteRequest(TeaModel):
     def __init__(
         self,
@@ -18615,12 +18716,14 @@ class StartCloudNoteRequest(TeaModel):
         custom_prompt: StartCloudNoteRequestCustomPrompt = None,
         language_hints: List[str] = None,
         meeting_assistance: StartCloudNoteRequestMeetingAssistance = None,
+        realtime_subtitle: StartCloudNoteRequestRealtimeSubtitle = None,
         service_inspection: StartCloudNoteRequestServiceInspection = None,
         source_language: str = None,
         storage_config: StartCloudNoteRequestStorageConfig = None,
         summarization: StartCloudNoteRequestSummarization = None,
         task_id: str = None,
         text_polish: StartCloudNoteRequestTextPolish = None,
+        transcription: StartCloudNoteRequestTranscription = None,
     ):
         # This parameter is required.
         self.app_id = app_id
@@ -18630,6 +18733,7 @@ class StartCloudNoteRequest(TeaModel):
         self.custom_prompt = custom_prompt
         self.language_hints = language_hints
         self.meeting_assistance = meeting_assistance
+        self.realtime_subtitle = realtime_subtitle
         self.service_inspection = service_inspection
         self.source_language = source_language
         # This parameter is required.
@@ -18638,6 +18742,7 @@ class StartCloudNoteRequest(TeaModel):
         # This parameter is required.
         self.task_id = task_id
         self.text_polish = text_polish
+        self.transcription = transcription
 
     def validate(self):
         if self.auto_chapters:
@@ -18646,6 +18751,8 @@ class StartCloudNoteRequest(TeaModel):
             self.custom_prompt.validate()
         if self.meeting_assistance:
             self.meeting_assistance.validate()
+        if self.realtime_subtitle:
+            self.realtime_subtitle.validate()
         if self.service_inspection:
             self.service_inspection.validate()
         if self.storage_config:
@@ -18654,6 +18761,8 @@ class StartCloudNoteRequest(TeaModel):
             self.summarization.validate()
         if self.text_polish:
             self.text_polish.validate()
+        if self.transcription:
+            self.transcription.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -18673,6 +18782,8 @@ class StartCloudNoteRequest(TeaModel):
             result['LanguageHints'] = self.language_hints
         if self.meeting_assistance is not None:
             result['MeetingAssistance'] = self.meeting_assistance.to_map()
+        if self.realtime_subtitle is not None:
+            result['RealtimeSubtitle'] = self.realtime_subtitle.to_map()
         if self.service_inspection is not None:
             result['ServiceInspection'] = self.service_inspection.to_map()
         if self.source_language is not None:
@@ -18685,6 +18796,8 @@ class StartCloudNoteRequest(TeaModel):
             result['TaskId'] = self.task_id
         if self.text_polish is not None:
             result['TextPolish'] = self.text_polish.to_map()
+        if self.transcription is not None:
+            result['Transcription'] = self.transcription.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -18704,6 +18817,9 @@ class StartCloudNoteRequest(TeaModel):
         if m.get('MeetingAssistance') is not None:
             temp_model = StartCloudNoteRequestMeetingAssistance()
             self.meeting_assistance = temp_model.from_map(m['MeetingAssistance'])
+        if m.get('RealtimeSubtitle') is not None:
+            temp_model = StartCloudNoteRequestRealtimeSubtitle()
+            self.realtime_subtitle = temp_model.from_map(m['RealtimeSubtitle'])
         if m.get('ServiceInspection') is not None:
             temp_model = StartCloudNoteRequestServiceInspection()
             self.service_inspection = temp_model.from_map(m['ServiceInspection'])
@@ -18720,6 +18836,9 @@ class StartCloudNoteRequest(TeaModel):
         if m.get('TextPolish') is not None:
             temp_model = StartCloudNoteRequestTextPolish()
             self.text_polish = temp_model.from_map(m['TextPolish'])
+        if m.get('Transcription') is not None:
+            temp_model = StartCloudNoteRequestTranscription()
+            self.transcription = temp_model.from_map(m['Transcription'])
         return self
 
 
@@ -18792,12 +18911,14 @@ class StartCloudNoteShrinkRequest(TeaModel):
         custom_prompt_shrink: str = None,
         language_hints: List[str] = None,
         meeting_assistance_shrink: str = None,
+        realtime_subtitle_shrink: str = None,
         service_inspection_shrink: str = None,
         source_language: str = None,
         storage_config: StartCloudNoteShrinkRequestStorageConfig = None,
         summarization_shrink: str = None,
         task_id: str = None,
         text_polish_shrink: str = None,
+        transcription_shrink: str = None,
     ):
         # This parameter is required.
         self.app_id = app_id
@@ -18807,6 +18928,7 @@ class StartCloudNoteShrinkRequest(TeaModel):
         self.custom_prompt_shrink = custom_prompt_shrink
         self.language_hints = language_hints
         self.meeting_assistance_shrink = meeting_assistance_shrink
+        self.realtime_subtitle_shrink = realtime_subtitle_shrink
         self.service_inspection_shrink = service_inspection_shrink
         self.source_language = source_language
         # This parameter is required.
@@ -18815,6 +18937,7 @@ class StartCloudNoteShrinkRequest(TeaModel):
         # This parameter is required.
         self.task_id = task_id
         self.text_polish_shrink = text_polish_shrink
+        self.transcription_shrink = transcription_shrink
 
     def validate(self):
         if self.storage_config:
@@ -18838,6 +18961,8 @@ class StartCloudNoteShrinkRequest(TeaModel):
             result['LanguageHints'] = self.language_hints
         if self.meeting_assistance_shrink is not None:
             result['MeetingAssistance'] = self.meeting_assistance_shrink
+        if self.realtime_subtitle_shrink is not None:
+            result['RealtimeSubtitle'] = self.realtime_subtitle_shrink
         if self.service_inspection_shrink is not None:
             result['ServiceInspection'] = self.service_inspection_shrink
         if self.source_language is not None:
@@ -18850,6 +18975,8 @@ class StartCloudNoteShrinkRequest(TeaModel):
             result['TaskId'] = self.task_id
         if self.text_polish_shrink is not None:
             result['TextPolish'] = self.text_polish_shrink
+        if self.transcription_shrink is not None:
+            result['Transcription'] = self.transcription_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -18866,6 +18993,8 @@ class StartCloudNoteShrinkRequest(TeaModel):
             self.language_hints = m.get('LanguageHints')
         if m.get('MeetingAssistance') is not None:
             self.meeting_assistance_shrink = m.get('MeetingAssistance')
+        if m.get('RealtimeSubtitle') is not None:
+            self.realtime_subtitle_shrink = m.get('RealtimeSubtitle')
         if m.get('ServiceInspection') is not None:
             self.service_inspection_shrink = m.get('ServiceInspection')
         if m.get('SourceLanguage') is not None:
@@ -18879,6 +19008,8 @@ class StartCloudNoteShrinkRequest(TeaModel):
             self.task_id = m.get('TaskId')
         if m.get('TextPolish') is not None:
             self.text_polish_shrink = m.get('TextPolish')
+        if m.get('Transcription') is not None:
+            self.transcription_shrink = m.get('Transcription')
         return self
 
 
@@ -19317,10 +19448,91 @@ class StartCloudRecordRequestLayoutSpecifiedUsers(TeaModel):
         return self
 
 
+class StartCloudRecordRequestPanesBackgrounds(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        display: str = None,
+        height: float = None,
+        layer: int = None,
+        pane_background_crop_mode: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.display = display
+        # This parameter is required.
+        self.height = height
+        self.layer = layer
+        self.pane_background_crop_mode = pane_background_crop_mode
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.pane_background_crop_mode is not None:
+            result['PaneBackgroundCropMode'] = self.pane_background_crop_mode
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('PaneBackgroundCropMode') is not None:
+            self.pane_background_crop_mode = m.get('PaneBackgroundCropMode')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
 class StartCloudRecordRequestPanesImages(TeaModel):
     def __init__(
         self,
         alpha: float = None,
+        display: str = None,
         height: float = None,
         layer: int = None,
         pane_image_crop_mode: int = None,
@@ -19330,6 +19542,7 @@ class StartCloudRecordRequestPanesImages(TeaModel):
         y: float = None,
     ):
         self.alpha = alpha
+        self.display = display
         # This parameter is required.
         self.height = height
         self.layer = layer
@@ -19354,6 +19567,8 @@ class StartCloudRecordRequestPanesImages(TeaModel):
         result = dict()
         if self.alpha is not None:
             result['Alpha'] = self.alpha
+        if self.display is not None:
+            result['Display'] = self.display
         if self.height is not None:
             result['Height'] = self.height
         if self.layer is not None:
@@ -19374,6 +19589,8 @@ class StartCloudRecordRequestPanesImages(TeaModel):
         m = m or dict()
         if m.get('Alpha') is not None:
             self.alpha = m.get('Alpha')
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
         if m.get('Height') is not None:
             self.height = m.get('Height')
         if m.get('Layer') is not None:
@@ -19476,6 +19693,7 @@ class StartCloudRecordRequestPanesTexts(TeaModel):
         box_alpha: float = None,
         box_borderw: int = None,
         box_color: StartCloudRecordRequestPanesTextsBoxColor = None,
+        display: str = None,
         font: int = None,
         font_color: StartCloudRecordRequestPanesTextsFontColor = None,
         font_size: int = None,
@@ -19489,6 +19707,7 @@ class StartCloudRecordRequestPanesTexts(TeaModel):
         self.box_alpha = box_alpha
         self.box_borderw = box_borderw
         self.box_color = box_color
+        self.display = display
         self.font = font
         self.font_color = font_color
         self.font_size = font_size
@@ -19521,6 +19740,8 @@ class StartCloudRecordRequestPanesTexts(TeaModel):
             result['BoxBorderw'] = self.box_borderw
         if self.box_color is not None:
             result['BoxColor'] = self.box_color.to_map()
+        if self.display is not None:
+            result['Display'] = self.display
         if self.font is not None:
             result['Font'] = self.font
         if self.font_color is not None:
@@ -19550,6 +19771,8 @@ class StartCloudRecordRequestPanesTexts(TeaModel):
         if m.get('BoxColor') is not None:
             temp_model = StartCloudRecordRequestPanesTextsBoxColor()
             self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
         if m.get('Font') is not None:
             self.font = m.get('Font')
         if m.get('FontColor') is not None:
@@ -19600,6 +19823,7 @@ class StartCloudRecordRequestPanesWhiteboard(TeaModel):
 class StartCloudRecordRequestPanes(TeaModel):
     def __init__(
         self,
+        backgrounds: List[StartCloudRecordRequestPanesBackgrounds] = None,
         images: List[StartCloudRecordRequestPanesImages] = None,
         pane_crop_mode: int = None,
         pane_id: int = None,
@@ -19610,6 +19834,7 @@ class StartCloudRecordRequestPanes(TeaModel):
         video_order: str = None,
         whiteboard: StartCloudRecordRequestPanesWhiteboard = None,
     ):
+        self.backgrounds = backgrounds
         self.images = images
         self.pane_crop_mode = pane_crop_mode
         # paneId
@@ -19626,6 +19851,10 @@ class StartCloudRecordRequestPanes(TeaModel):
         self.whiteboard = whiteboard
 
     def validate(self):
+        if self.backgrounds:
+            for k in self.backgrounds:
+                if k:
+                    k.validate()
         if self.images:
             for k in self.images:
                 if k:
@@ -19643,6 +19872,10 @@ class StartCloudRecordRequestPanes(TeaModel):
             return _map
 
         result = dict()
+        result['Backgrounds'] = []
+        if self.backgrounds is not None:
+            for k in self.backgrounds:
+                result['Backgrounds'].append(k.to_map() if k else None)
         result['Images'] = []
         if self.images is not None:
             for k in self.images:
@@ -19669,6 +19902,11 @@ class StartCloudRecordRequestPanes(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.backgrounds = []
+        if m.get('Backgrounds') is not None:
+            for k in m.get('Backgrounds'):
+                temp_model = StartCloudRecordRequestPanesBackgrounds()
+                self.backgrounds.append(temp_model.from_map(k))
         self.images = []
         if m.get('Images') is not None:
             for k in m.get('Images'):
@@ -20000,6 +20238,7 @@ class StartCloudRecordRequest(TeaModel):
         panes: List[StartCloudRecordRequestPanes] = None,
         region_color: StartCloudRecordRequestRegionColor = None,
         reserve_pane_for_no_camera_user: bool = None,
+        show_default_background_on_mute: bool = None,
         storage_config: StartCloudRecordRequestStorageConfig = None,
         task_id: str = None,
         template_id: str = None,
@@ -20022,6 +20261,7 @@ class StartCloudRecordRequest(TeaModel):
         self.panes = panes
         self.region_color = region_color
         self.reserve_pane_for_no_camera_user = reserve_pane_for_no_camera_user
+        self.show_default_background_on_mute = show_default_background_on_mute
         # storageConfig
         # 
         # This parameter is required.
@@ -20096,6 +20336,8 @@ class StartCloudRecordRequest(TeaModel):
             result['RegionColor'] = self.region_color.to_map()
         if self.reserve_pane_for_no_camera_user is not None:
             result['ReservePaneForNoCameraUser'] = self.reserve_pane_for_no_camera_user
+        if self.show_default_background_on_mute is not None:
+            result['ShowDefaultBackgroundOnMute'] = self.show_default_background_on_mute
         if self.storage_config is not None:
             result['StorageConfig'] = self.storage_config.to_map()
         if self.task_id is not None:
@@ -20144,6 +20386,8 @@ class StartCloudRecordRequest(TeaModel):
             self.region_color = temp_model.from_map(m['RegionColor'])
         if m.get('ReservePaneForNoCameraUser') is not None:
             self.reserve_pane_for_no_camera_user = m.get('ReservePaneForNoCameraUser')
+        if m.get('ShowDefaultBackgroundOnMute') is not None:
+            self.show_default_background_on_mute = m.get('ShowDefaultBackgroundOnMute')
         if m.get('StorageConfig') is not None:
             temp_model = StartCloudRecordRequestStorageConfig()
             self.storage_config = temp_model.from_map(m['StorageConfig'])
@@ -20485,10 +20729,91 @@ class StartCloudRecordShrinkRequestImages(TeaModel):
         return self
 
 
+class StartCloudRecordShrinkRequestPanesBackgrounds(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        display: str = None,
+        height: float = None,
+        layer: int = None,
+        pane_background_crop_mode: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.display = display
+        # This parameter is required.
+        self.height = height
+        self.layer = layer
+        self.pane_background_crop_mode = pane_background_crop_mode
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.pane_background_crop_mode is not None:
+            result['PaneBackgroundCropMode'] = self.pane_background_crop_mode
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('PaneBackgroundCropMode') is not None:
+            self.pane_background_crop_mode = m.get('PaneBackgroundCropMode')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
 class StartCloudRecordShrinkRequestPanesImages(TeaModel):
     def __init__(
         self,
         alpha: float = None,
+        display: str = None,
         height: float = None,
         layer: int = None,
         pane_image_crop_mode: int = None,
@@ -20498,6 +20823,7 @@ class StartCloudRecordShrinkRequestPanesImages(TeaModel):
         y: float = None,
     ):
         self.alpha = alpha
+        self.display = display
         # This parameter is required.
         self.height = height
         self.layer = layer
@@ -20522,6 +20848,8 @@ class StartCloudRecordShrinkRequestPanesImages(TeaModel):
         result = dict()
         if self.alpha is not None:
             result['Alpha'] = self.alpha
+        if self.display is not None:
+            result['Display'] = self.display
         if self.height is not None:
             result['Height'] = self.height
         if self.layer is not None:
@@ -20542,6 +20870,8 @@ class StartCloudRecordShrinkRequestPanesImages(TeaModel):
         m = m or dict()
         if m.get('Alpha') is not None:
             self.alpha = m.get('Alpha')
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
         if m.get('Height') is not None:
             self.height = m.get('Height')
         if m.get('Layer') is not None:
@@ -20644,6 +20974,7 @@ class StartCloudRecordShrinkRequestPanesTexts(TeaModel):
         box_alpha: float = None,
         box_borderw: int = None,
         box_color: StartCloudRecordShrinkRequestPanesTextsBoxColor = None,
+        display: str = None,
         font: int = None,
         font_color: StartCloudRecordShrinkRequestPanesTextsFontColor = None,
         font_size: int = None,
@@ -20657,6 +20988,7 @@ class StartCloudRecordShrinkRequestPanesTexts(TeaModel):
         self.box_alpha = box_alpha
         self.box_borderw = box_borderw
         self.box_color = box_color
+        self.display = display
         self.font = font
         self.font_color = font_color
         self.font_size = font_size
@@ -20689,6 +21021,8 @@ class StartCloudRecordShrinkRequestPanesTexts(TeaModel):
             result['BoxBorderw'] = self.box_borderw
         if self.box_color is not None:
             result['BoxColor'] = self.box_color.to_map()
+        if self.display is not None:
+            result['Display'] = self.display
         if self.font is not None:
             result['Font'] = self.font
         if self.font_color is not None:
@@ -20718,6 +21052,8 @@ class StartCloudRecordShrinkRequestPanesTexts(TeaModel):
         if m.get('BoxColor') is not None:
             temp_model = StartCloudRecordShrinkRequestPanesTextsBoxColor()
             self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
         if m.get('Font') is not None:
             self.font = m.get('Font')
         if m.get('FontColor') is not None:
@@ -20768,6 +21104,7 @@ class StartCloudRecordShrinkRequestPanesWhiteboard(TeaModel):
 class StartCloudRecordShrinkRequestPanes(TeaModel):
     def __init__(
         self,
+        backgrounds: List[StartCloudRecordShrinkRequestPanesBackgrounds] = None,
         images: List[StartCloudRecordShrinkRequestPanesImages] = None,
         pane_crop_mode: int = None,
         pane_id: int = None,
@@ -20778,6 +21115,7 @@ class StartCloudRecordShrinkRequestPanes(TeaModel):
         video_order: str = None,
         whiteboard: StartCloudRecordShrinkRequestPanesWhiteboard = None,
     ):
+        self.backgrounds = backgrounds
         self.images = images
         self.pane_crop_mode = pane_crop_mode
         # paneId
@@ -20794,6 +21132,10 @@ class StartCloudRecordShrinkRequestPanes(TeaModel):
         self.whiteboard = whiteboard
 
     def validate(self):
+        if self.backgrounds:
+            for k in self.backgrounds:
+                if k:
+                    k.validate()
         if self.images:
             for k in self.images:
                 if k:
@@ -20811,6 +21153,10 @@ class StartCloudRecordShrinkRequestPanes(TeaModel):
             return _map
 
         result = dict()
+        result['Backgrounds'] = []
+        if self.backgrounds is not None:
+            for k in self.backgrounds:
+                result['Backgrounds'].append(k.to_map() if k else None)
         result['Images'] = []
         if self.images is not None:
             for k in self.images:
@@ -20837,6 +21183,11 @@ class StartCloudRecordShrinkRequestPanes(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.backgrounds = []
+        if m.get('Backgrounds') is not None:
+            for k in m.get('Backgrounds'):
+                temp_model = StartCloudRecordShrinkRequestPanesBackgrounds()
+                self.backgrounds.append(temp_model.from_map(k))
         self.images = []
         if m.get('Images') is not None:
             for k in m.get('Images'):
@@ -21168,6 +21519,7 @@ class StartCloudRecordShrinkRequest(TeaModel):
         panes: List[StartCloudRecordShrinkRequestPanes] = None,
         region_color: StartCloudRecordShrinkRequestRegionColor = None,
         reserve_pane_for_no_camera_user: bool = None,
+        show_default_background_on_mute: bool = None,
         storage_config: StartCloudRecordShrinkRequestStorageConfig = None,
         task_id: str = None,
         template_id: str = None,
@@ -21190,6 +21542,7 @@ class StartCloudRecordShrinkRequest(TeaModel):
         self.panes = panes
         self.region_color = region_color
         self.reserve_pane_for_no_camera_user = reserve_pane_for_no_camera_user
+        self.show_default_background_on_mute = show_default_background_on_mute
         # storageConfig
         # 
         # This parameter is required.
@@ -21262,6 +21615,8 @@ class StartCloudRecordShrinkRequest(TeaModel):
             result['RegionColor'] = self.region_color.to_map()
         if self.reserve_pane_for_no_camera_user is not None:
             result['ReservePaneForNoCameraUser'] = self.reserve_pane_for_no_camera_user
+        if self.show_default_background_on_mute is not None:
+            result['ShowDefaultBackgroundOnMute'] = self.show_default_background_on_mute
         if self.storage_config is not None:
             result['StorageConfig'] = self.storage_config.to_map()
         if self.task_id is not None:
@@ -21309,6 +21664,8 @@ class StartCloudRecordShrinkRequest(TeaModel):
             self.region_color = temp_model.from_map(m['RegionColor'])
         if m.get('ReservePaneForNoCameraUser') is not None:
             self.reserve_pane_for_no_camera_user = m.get('ReservePaneForNoCameraUser')
+        if m.get('ShowDefaultBackgroundOnMute') is not None:
+            self.show_default_background_on_mute = m.get('ShowDefaultBackgroundOnMute')
         if m.get('StorageConfig') is not None:
             temp_model = StartCloudRecordShrinkRequestStorageConfig()
             self.storage_config = temp_model.from_map(m['StorageConfig'])
@@ -22974,10 +23331,91 @@ class StartStreamingOutRequestLayoutSpecifiedUsers(TeaModel):
         return self
 
 
+class StartStreamingOutRequestPanesBackgrounds(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        display: str = None,
+        height: float = None,
+        layer: int = None,
+        pane_background_crop_mode: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.display = display
+        # This parameter is required.
+        self.height = height
+        self.layer = layer
+        self.pane_background_crop_mode = pane_background_crop_mode
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.pane_background_crop_mode is not None:
+            result['PaneBackgroundCropMode'] = self.pane_background_crop_mode
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('PaneBackgroundCropMode') is not None:
+            self.pane_background_crop_mode = m.get('PaneBackgroundCropMode')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
 class StartStreamingOutRequestPanesImages(TeaModel):
     def __init__(
         self,
         alpha: float = None,
+        display: str = None,
         height: float = None,
         layer: int = None,
         pane_image_crop_mode: int = None,
@@ -22987,6 +23425,7 @@ class StartStreamingOutRequestPanesImages(TeaModel):
         y: float = None,
     ):
         self.alpha = alpha
+        self.display = display
         # This parameter is required.
         self.height = height
         self.layer = layer
@@ -23011,6 +23450,8 @@ class StartStreamingOutRequestPanesImages(TeaModel):
         result = dict()
         if self.alpha is not None:
             result['Alpha'] = self.alpha
+        if self.display is not None:
+            result['Display'] = self.display
         if self.height is not None:
             result['Height'] = self.height
         if self.layer is not None:
@@ -23031,6 +23472,8 @@ class StartStreamingOutRequestPanesImages(TeaModel):
         m = m or dict()
         if m.get('Alpha') is not None:
             self.alpha = m.get('Alpha')
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
         if m.get('Height') is not None:
             self.height = m.get('Height')
         if m.get('Layer') is not None:
@@ -23133,6 +23576,7 @@ class StartStreamingOutRequestPanesTexts(TeaModel):
         box_alpha: float = None,
         box_borderw: int = None,
         box_color: StartStreamingOutRequestPanesTextsBoxColor = None,
+        display: str = None,
         font: int = None,
         font_color: StartStreamingOutRequestPanesTextsFontColor = None,
         font_size: int = None,
@@ -23146,6 +23590,7 @@ class StartStreamingOutRequestPanesTexts(TeaModel):
         self.box_alpha = box_alpha
         self.box_borderw = box_borderw
         self.box_color = box_color
+        self.display = display
         self.font = font
         self.font_color = font_color
         self.font_size = font_size
@@ -23178,6 +23623,8 @@ class StartStreamingOutRequestPanesTexts(TeaModel):
             result['BoxBorderw'] = self.box_borderw
         if self.box_color is not None:
             result['BoxColor'] = self.box_color.to_map()
+        if self.display is not None:
+            result['Display'] = self.display
         if self.font is not None:
             result['Font'] = self.font
         if self.font_color is not None:
@@ -23207,6 +23654,8 @@ class StartStreamingOutRequestPanesTexts(TeaModel):
         if m.get('BoxColor') is not None:
             temp_model = StartStreamingOutRequestPanesTextsBoxColor()
             self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
         if m.get('Font') is not None:
             self.font = m.get('Font')
         if m.get('FontColor') is not None:
@@ -23257,6 +23706,7 @@ class StartStreamingOutRequestPanesWhiteboard(TeaModel):
 class StartStreamingOutRequestPanes(TeaModel):
     def __init__(
         self,
+        backgrounds: List[StartStreamingOutRequestPanesBackgrounds] = None,
         images: List[StartStreamingOutRequestPanesImages] = None,
         pane_crop_mode: int = None,
         pane_id: str = None,
@@ -23267,6 +23717,7 @@ class StartStreamingOutRequestPanes(TeaModel):
         video_order: str = None,
         whiteboard: StartStreamingOutRequestPanesWhiteboard = None,
     ):
+        self.backgrounds = backgrounds
         self.images = images
         self.pane_crop_mode = pane_crop_mode
         # This parameter is required.
@@ -23279,6 +23730,10 @@ class StartStreamingOutRequestPanes(TeaModel):
         self.whiteboard = whiteboard
 
     def validate(self):
+        if self.backgrounds:
+            for k in self.backgrounds:
+                if k:
+                    k.validate()
         if self.images:
             for k in self.images:
                 if k:
@@ -23296,6 +23751,10 @@ class StartStreamingOutRequestPanes(TeaModel):
             return _map
 
         result = dict()
+        result['Backgrounds'] = []
+        if self.backgrounds is not None:
+            for k in self.backgrounds:
+                result['Backgrounds'].append(k.to_map() if k else None)
         result['Images'] = []
         if self.images is not None:
             for k in self.images:
@@ -23322,6 +23781,11 @@ class StartStreamingOutRequestPanes(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.backgrounds = []
+        if m.get('Backgrounds') is not None:
+            for k in m.get('Backgrounds'):
+                temp_model = StartStreamingOutRequestPanesBackgrounds()
+                self.backgrounds.append(temp_model.from_map(k))
         self.images = []
         if m.get('Images') is not None:
             for k in m.get('Images'):
@@ -23581,6 +24045,7 @@ class StartStreamingOutRequest(TeaModel):
         panes: List[StartStreamingOutRequestPanes] = None,
         region_color: StartStreamingOutRequestRegionColor = None,
         reserve_pane_for_no_camera_user: bool = None,
+        show_default_background_on_mute: bool = None,
         start_without_channel: bool = None,
         start_without_channel_wait_time: int = None,
         task_id: str = None,
@@ -23600,6 +24065,7 @@ class StartStreamingOutRequest(TeaModel):
         self.panes = panes
         self.region_color = region_color
         self.reserve_pane_for_no_camera_user = reserve_pane_for_no_camera_user
+        self.show_default_background_on_mute = show_default_background_on_mute
         self.start_without_channel = start_without_channel
         self.start_without_channel_wait_time = start_without_channel_wait_time
         self.task_id = task_id
@@ -23669,6 +24135,8 @@ class StartStreamingOutRequest(TeaModel):
             result['RegionColor'] = self.region_color.to_map()
         if self.reserve_pane_for_no_camera_user is not None:
             result['ReservePaneForNoCameraUser'] = self.reserve_pane_for_no_camera_user
+        if self.show_default_background_on_mute is not None:
+            result['ShowDefaultBackgroundOnMute'] = self.show_default_background_on_mute
         if self.start_without_channel is not None:
             result['StartWithoutChannel'] = self.start_without_channel
         if self.start_without_channel_wait_time is not None:
@@ -23721,6 +24189,8 @@ class StartStreamingOutRequest(TeaModel):
             self.region_color = temp_model.from_map(m['RegionColor'])
         if m.get('ReservePaneForNoCameraUser') is not None:
             self.reserve_pane_for_no_camera_user = m.get('ReservePaneForNoCameraUser')
+        if m.get('ShowDefaultBackgroundOnMute') is not None:
+            self.show_default_background_on_mute = m.get('ShowDefaultBackgroundOnMute')
         if m.get('StartWithoutChannel') is not None:
             self.start_without_channel = m.get('StartWithoutChannel')
         if m.get('StartWithoutChannelWaitTime') is not None:
@@ -24065,10 +24535,91 @@ class StartStreamingOutShrinkRequestImages(TeaModel):
         return self
 
 
+class StartStreamingOutShrinkRequestPanesBackgrounds(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        display: str = None,
+        height: float = None,
+        layer: int = None,
+        pane_background_crop_mode: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.display = display
+        # This parameter is required.
+        self.height = height
+        self.layer = layer
+        self.pane_background_crop_mode = pane_background_crop_mode
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.pane_background_crop_mode is not None:
+            result['PaneBackgroundCropMode'] = self.pane_background_crop_mode
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('PaneBackgroundCropMode') is not None:
+            self.pane_background_crop_mode = m.get('PaneBackgroundCropMode')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
 class StartStreamingOutShrinkRequestPanesImages(TeaModel):
     def __init__(
         self,
         alpha: float = None,
+        display: str = None,
         height: float = None,
         layer: int = None,
         pane_image_crop_mode: int = None,
@@ -24078,6 +24629,7 @@ class StartStreamingOutShrinkRequestPanesImages(TeaModel):
         y: float = None,
     ):
         self.alpha = alpha
+        self.display = display
         # This parameter is required.
         self.height = height
         self.layer = layer
@@ -24102,6 +24654,8 @@ class StartStreamingOutShrinkRequestPanesImages(TeaModel):
         result = dict()
         if self.alpha is not None:
             result['Alpha'] = self.alpha
+        if self.display is not None:
+            result['Display'] = self.display
         if self.height is not None:
             result['Height'] = self.height
         if self.layer is not None:
@@ -24122,6 +24676,8 @@ class StartStreamingOutShrinkRequestPanesImages(TeaModel):
         m = m or dict()
         if m.get('Alpha') is not None:
             self.alpha = m.get('Alpha')
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
         if m.get('Height') is not None:
             self.height = m.get('Height')
         if m.get('Layer') is not None:
@@ -24224,6 +24780,7 @@ class StartStreamingOutShrinkRequestPanesTexts(TeaModel):
         box_alpha: float = None,
         box_borderw: int = None,
         box_color: StartStreamingOutShrinkRequestPanesTextsBoxColor = None,
+        display: str = None,
         font: int = None,
         font_color: StartStreamingOutShrinkRequestPanesTextsFontColor = None,
         font_size: int = None,
@@ -24237,6 +24794,7 @@ class StartStreamingOutShrinkRequestPanesTexts(TeaModel):
         self.box_alpha = box_alpha
         self.box_borderw = box_borderw
         self.box_color = box_color
+        self.display = display
         self.font = font
         self.font_color = font_color
         self.font_size = font_size
@@ -24269,6 +24827,8 @@ class StartStreamingOutShrinkRequestPanesTexts(TeaModel):
             result['BoxBorderw'] = self.box_borderw
         if self.box_color is not None:
             result['BoxColor'] = self.box_color.to_map()
+        if self.display is not None:
+            result['Display'] = self.display
         if self.font is not None:
             result['Font'] = self.font
         if self.font_color is not None:
@@ -24298,6 +24858,8 @@ class StartStreamingOutShrinkRequestPanesTexts(TeaModel):
         if m.get('BoxColor') is not None:
             temp_model = StartStreamingOutShrinkRequestPanesTextsBoxColor()
             self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
         if m.get('Font') is not None:
             self.font = m.get('Font')
         if m.get('FontColor') is not None:
@@ -24348,6 +24910,7 @@ class StartStreamingOutShrinkRequestPanesWhiteboard(TeaModel):
 class StartStreamingOutShrinkRequestPanes(TeaModel):
     def __init__(
         self,
+        backgrounds: List[StartStreamingOutShrinkRequestPanesBackgrounds] = None,
         images: List[StartStreamingOutShrinkRequestPanesImages] = None,
         pane_crop_mode: int = None,
         pane_id: str = None,
@@ -24358,6 +24921,7 @@ class StartStreamingOutShrinkRequestPanes(TeaModel):
         video_order: str = None,
         whiteboard: StartStreamingOutShrinkRequestPanesWhiteboard = None,
     ):
+        self.backgrounds = backgrounds
         self.images = images
         self.pane_crop_mode = pane_crop_mode
         # This parameter is required.
@@ -24370,6 +24934,10 @@ class StartStreamingOutShrinkRequestPanes(TeaModel):
         self.whiteboard = whiteboard
 
     def validate(self):
+        if self.backgrounds:
+            for k in self.backgrounds:
+                if k:
+                    k.validate()
         if self.images:
             for k in self.images:
                 if k:
@@ -24387,6 +24955,10 @@ class StartStreamingOutShrinkRequestPanes(TeaModel):
             return _map
 
         result = dict()
+        result['Backgrounds'] = []
+        if self.backgrounds is not None:
+            for k in self.backgrounds:
+                result['Backgrounds'].append(k.to_map() if k else None)
         result['Images'] = []
         if self.images is not None:
             for k in self.images:
@@ -24413,6 +24985,11 @@ class StartStreamingOutShrinkRequestPanes(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.backgrounds = []
+        if m.get('Backgrounds') is not None:
+            for k in m.get('Backgrounds'):
+                temp_model = StartStreamingOutShrinkRequestPanesBackgrounds()
+                self.backgrounds.append(temp_model.from_map(k))
         self.images = []
         if m.get('Images') is not None:
             for k in m.get('Images'):
@@ -24672,6 +25249,7 @@ class StartStreamingOutShrinkRequest(TeaModel):
         panes: List[StartStreamingOutShrinkRequestPanes] = None,
         region_color: StartStreamingOutShrinkRequestRegionColor = None,
         reserve_pane_for_no_camera_user: bool = None,
+        show_default_background_on_mute: bool = None,
         start_without_channel: bool = None,
         start_without_channel_wait_time: int = None,
         task_id: str = None,
@@ -24691,6 +25269,7 @@ class StartStreamingOutShrinkRequest(TeaModel):
         self.panes = panes
         self.region_color = region_color
         self.reserve_pane_for_no_camera_user = reserve_pane_for_no_camera_user
+        self.show_default_background_on_mute = show_default_background_on_mute
         self.start_without_channel = start_without_channel
         self.start_without_channel_wait_time = start_without_channel_wait_time
         self.task_id = task_id
@@ -24758,6 +25337,8 @@ class StartStreamingOutShrinkRequest(TeaModel):
             result['RegionColor'] = self.region_color.to_map()
         if self.reserve_pane_for_no_camera_user is not None:
             result['ReservePaneForNoCameraUser'] = self.reserve_pane_for_no_camera_user
+        if self.show_default_background_on_mute is not None:
+            result['ShowDefaultBackgroundOnMute'] = self.show_default_background_on_mute
         if self.start_without_channel is not None:
             result['StartWithoutChannel'] = self.start_without_channel
         if self.start_without_channel_wait_time is not None:
@@ -24809,6 +25390,8 @@ class StartStreamingOutShrinkRequest(TeaModel):
             self.region_color = temp_model.from_map(m['RegionColor'])
         if m.get('ReservePaneForNoCameraUser') is not None:
             self.reserve_pane_for_no_camera_user = m.get('ReservePaneForNoCameraUser')
+        if m.get('ShowDefaultBackgroundOnMute') is not None:
+            self.show_default_background_on_mute = m.get('ShowDefaultBackgroundOnMute')
         if m.get('StartWithoutChannel') is not None:
             self.start_without_channel = m.get('StartWithoutChannel')
         if m.get('StartWithoutChannelWaitTime') is not None:
@@ -26252,10 +26835,91 @@ class UpdateCloudRecordRequestLayoutSpecifiedUsers(TeaModel):
         return self
 
 
+class UpdateCloudRecordRequestPanesBackgrounds(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        display: str = None,
+        height: float = None,
+        layer: int = None,
+        pane_background_crop_mode: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.display = display
+        # This parameter is required.
+        self.height = height
+        self.layer = layer
+        self.pane_background_crop_mode = pane_background_crop_mode
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.pane_background_crop_mode is not None:
+            result['PaneBackgroundCropMode'] = self.pane_background_crop_mode
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('PaneBackgroundCropMode') is not None:
+            self.pane_background_crop_mode = m.get('PaneBackgroundCropMode')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
 class UpdateCloudRecordRequestPanesImages(TeaModel):
     def __init__(
         self,
         alpha: float = None,
+        display: str = None,
         height: float = None,
         layer: int = None,
         pane_image_crop_mode: int = None,
@@ -26265,6 +26929,7 @@ class UpdateCloudRecordRequestPanesImages(TeaModel):
         y: float = None,
     ):
         self.alpha = alpha
+        self.display = display
         # This parameter is required.
         self.height = height
         self.layer = layer
@@ -26289,6 +26954,8 @@ class UpdateCloudRecordRequestPanesImages(TeaModel):
         result = dict()
         if self.alpha is not None:
             result['Alpha'] = self.alpha
+        if self.display is not None:
+            result['Display'] = self.display
         if self.height is not None:
             result['Height'] = self.height
         if self.layer is not None:
@@ -26309,6 +26976,8 @@ class UpdateCloudRecordRequestPanesImages(TeaModel):
         m = m or dict()
         if m.get('Alpha') is not None:
             self.alpha = m.get('Alpha')
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
         if m.get('Height') is not None:
             self.height = m.get('Height')
         if m.get('Layer') is not None:
@@ -26411,6 +27080,7 @@ class UpdateCloudRecordRequestPanesTexts(TeaModel):
         box_alpha: float = None,
         box_borderw: int = None,
         box_color: UpdateCloudRecordRequestPanesTextsBoxColor = None,
+        display: str = None,
         font: int = None,
         font_color: UpdateCloudRecordRequestPanesTextsFontColor = None,
         font_size: int = None,
@@ -26424,6 +27094,7 @@ class UpdateCloudRecordRequestPanesTexts(TeaModel):
         self.box_alpha = box_alpha
         self.box_borderw = box_borderw
         self.box_color = box_color
+        self.display = display
         self.font = font
         self.font_color = font_color
         self.font_size = font_size
@@ -26456,6 +27127,8 @@ class UpdateCloudRecordRequestPanesTexts(TeaModel):
             result['BoxBorderw'] = self.box_borderw
         if self.box_color is not None:
             result['BoxColor'] = self.box_color.to_map()
+        if self.display is not None:
+            result['Display'] = self.display
         if self.font is not None:
             result['Font'] = self.font
         if self.font_color is not None:
@@ -26485,6 +27158,8 @@ class UpdateCloudRecordRequestPanesTexts(TeaModel):
         if m.get('BoxColor') is not None:
             temp_model = UpdateCloudRecordRequestPanesTextsBoxColor()
             self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
         if m.get('Font') is not None:
             self.font = m.get('Font')
         if m.get('FontColor') is not None:
@@ -26535,6 +27210,7 @@ class UpdateCloudRecordRequestPanesWhiteboard(TeaModel):
 class UpdateCloudRecordRequestPanes(TeaModel):
     def __init__(
         self,
+        backgrounds: List[UpdateCloudRecordRequestPanesBackgrounds] = None,
         images: List[UpdateCloudRecordRequestPanesImages] = None,
         pane_crop_mode: int = None,
         pane_id: int = None,
@@ -26545,6 +27221,7 @@ class UpdateCloudRecordRequestPanes(TeaModel):
         video_order: str = None,
         whiteboard: UpdateCloudRecordRequestPanesWhiteboard = None,
     ):
+        self.backgrounds = backgrounds
         self.images = images
         self.pane_crop_mode = pane_crop_mode
         # This parameter is required.
@@ -26557,6 +27234,10 @@ class UpdateCloudRecordRequestPanes(TeaModel):
         self.whiteboard = whiteboard
 
     def validate(self):
+        if self.backgrounds:
+            for k in self.backgrounds:
+                if k:
+                    k.validate()
         if self.images:
             for k in self.images:
                 if k:
@@ -26574,6 +27255,10 @@ class UpdateCloudRecordRequestPanes(TeaModel):
             return _map
 
         result = dict()
+        result['Backgrounds'] = []
+        if self.backgrounds is not None:
+            for k in self.backgrounds:
+                result['Backgrounds'].append(k.to_map() if k else None)
         result['Images'] = []
         if self.images is not None:
             for k in self.images:
@@ -26600,6 +27285,11 @@ class UpdateCloudRecordRequestPanes(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.backgrounds = []
+        if m.get('Backgrounds') is not None:
+            for k in m.get('Backgrounds'):
+                temp_model = UpdateCloudRecordRequestPanesBackgrounds()
+                self.backgrounds.append(temp_model.from_map(k))
         self.images = []
         if m.get('Images') is not None:
             for k in m.get('Images'):
@@ -27265,10 +27955,91 @@ class UpdateCloudRecordShrinkRequestImages(TeaModel):
         return self
 
 
+class UpdateCloudRecordShrinkRequestPanesBackgrounds(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        display: str = None,
+        height: float = None,
+        layer: int = None,
+        pane_background_crop_mode: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.display = display
+        # This parameter is required.
+        self.height = height
+        self.layer = layer
+        self.pane_background_crop_mode = pane_background_crop_mode
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.pane_background_crop_mode is not None:
+            result['PaneBackgroundCropMode'] = self.pane_background_crop_mode
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('PaneBackgroundCropMode') is not None:
+            self.pane_background_crop_mode = m.get('PaneBackgroundCropMode')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
 class UpdateCloudRecordShrinkRequestPanesImages(TeaModel):
     def __init__(
         self,
         alpha: float = None,
+        display: str = None,
         height: float = None,
         layer: int = None,
         pane_image_crop_mode: int = None,
@@ -27278,6 +28049,7 @@ class UpdateCloudRecordShrinkRequestPanesImages(TeaModel):
         y: float = None,
     ):
         self.alpha = alpha
+        self.display = display
         # This parameter is required.
         self.height = height
         self.layer = layer
@@ -27302,6 +28074,8 @@ class UpdateCloudRecordShrinkRequestPanesImages(TeaModel):
         result = dict()
         if self.alpha is not None:
             result['Alpha'] = self.alpha
+        if self.display is not None:
+            result['Display'] = self.display
         if self.height is not None:
             result['Height'] = self.height
         if self.layer is not None:
@@ -27322,6 +28096,8 @@ class UpdateCloudRecordShrinkRequestPanesImages(TeaModel):
         m = m or dict()
         if m.get('Alpha') is not None:
             self.alpha = m.get('Alpha')
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
         if m.get('Height') is not None:
             self.height = m.get('Height')
         if m.get('Layer') is not None:
@@ -27424,6 +28200,7 @@ class UpdateCloudRecordShrinkRequestPanesTexts(TeaModel):
         box_alpha: float = None,
         box_borderw: int = None,
         box_color: UpdateCloudRecordShrinkRequestPanesTextsBoxColor = None,
+        display: str = None,
         font: int = None,
         font_color: UpdateCloudRecordShrinkRequestPanesTextsFontColor = None,
         font_size: int = None,
@@ -27437,6 +28214,7 @@ class UpdateCloudRecordShrinkRequestPanesTexts(TeaModel):
         self.box_alpha = box_alpha
         self.box_borderw = box_borderw
         self.box_color = box_color
+        self.display = display
         self.font = font
         self.font_color = font_color
         self.font_size = font_size
@@ -27469,6 +28247,8 @@ class UpdateCloudRecordShrinkRequestPanesTexts(TeaModel):
             result['BoxBorderw'] = self.box_borderw
         if self.box_color is not None:
             result['BoxColor'] = self.box_color.to_map()
+        if self.display is not None:
+            result['Display'] = self.display
         if self.font is not None:
             result['Font'] = self.font
         if self.font_color is not None:
@@ -27498,6 +28278,8 @@ class UpdateCloudRecordShrinkRequestPanesTexts(TeaModel):
         if m.get('BoxColor') is not None:
             temp_model = UpdateCloudRecordShrinkRequestPanesTextsBoxColor()
             self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
         if m.get('Font') is not None:
             self.font = m.get('Font')
         if m.get('FontColor') is not None:
@@ -27548,6 +28330,7 @@ class UpdateCloudRecordShrinkRequestPanesWhiteboard(TeaModel):
 class UpdateCloudRecordShrinkRequestPanes(TeaModel):
     def __init__(
         self,
+        backgrounds: List[UpdateCloudRecordShrinkRequestPanesBackgrounds] = None,
         images: List[UpdateCloudRecordShrinkRequestPanesImages] = None,
         pane_crop_mode: int = None,
         pane_id: int = None,
@@ -27558,6 +28341,7 @@ class UpdateCloudRecordShrinkRequestPanes(TeaModel):
         video_order: str = None,
         whiteboard: UpdateCloudRecordShrinkRequestPanesWhiteboard = None,
     ):
+        self.backgrounds = backgrounds
         self.images = images
         self.pane_crop_mode = pane_crop_mode
         # This parameter is required.
@@ -27570,6 +28354,10 @@ class UpdateCloudRecordShrinkRequestPanes(TeaModel):
         self.whiteboard = whiteboard
 
     def validate(self):
+        if self.backgrounds:
+            for k in self.backgrounds:
+                if k:
+                    k.validate()
         if self.images:
             for k in self.images:
                 if k:
@@ -27587,6 +28375,10 @@ class UpdateCloudRecordShrinkRequestPanes(TeaModel):
             return _map
 
         result = dict()
+        result['Backgrounds'] = []
+        if self.backgrounds is not None:
+            for k in self.backgrounds:
+                result['Backgrounds'].append(k.to_map() if k else None)
         result['Images'] = []
         if self.images is not None:
             for k in self.images:
@@ -27613,6 +28405,11 @@ class UpdateCloudRecordShrinkRequestPanes(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.backgrounds = []
+        if m.get('Backgrounds') is not None:
+            for k in m.get('Backgrounds'):
+                temp_model = UpdateCloudRecordShrinkRequestPanesBackgrounds()
+                self.backgrounds.append(temp_model.from_map(k))
         self.images = []
         if m.get('Images') is not None:
             for k in m.get('Images'):
@@ -29934,10 +30731,91 @@ class UpdateStreamingOutRequestLayoutSpecifiedUsers(TeaModel):
         return self
 
 
+class UpdateStreamingOutRequestPanesBackgrounds(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        display: str = None,
+        height: float = None,
+        layer: int = None,
+        pane_background_crop_mode: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.display = display
+        # This parameter is required.
+        self.height = height
+        self.layer = layer
+        self.pane_background_crop_mode = pane_background_crop_mode
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.pane_background_crop_mode is not None:
+            result['PaneBackgroundCropMode'] = self.pane_background_crop_mode
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('PaneBackgroundCropMode') is not None:
+            self.pane_background_crop_mode = m.get('PaneBackgroundCropMode')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
 class UpdateStreamingOutRequestPanesImages(TeaModel):
     def __init__(
         self,
         alpha: float = None,
+        display: str = None,
         height: float = None,
         layer: int = None,
         pane_image_crop_mode: int = None,
@@ -29947,6 +30825,7 @@ class UpdateStreamingOutRequestPanesImages(TeaModel):
         y: float = None,
     ):
         self.alpha = alpha
+        self.display = display
         # This parameter is required.
         self.height = height
         self.layer = layer
@@ -29971,6 +30850,8 @@ class UpdateStreamingOutRequestPanesImages(TeaModel):
         result = dict()
         if self.alpha is not None:
             result['Alpha'] = self.alpha
+        if self.display is not None:
+            result['Display'] = self.display
         if self.height is not None:
             result['Height'] = self.height
         if self.layer is not None:
@@ -29991,6 +30872,8 @@ class UpdateStreamingOutRequestPanesImages(TeaModel):
         m = m or dict()
         if m.get('Alpha') is not None:
             self.alpha = m.get('Alpha')
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
         if m.get('Height') is not None:
             self.height = m.get('Height')
         if m.get('Layer') is not None:
@@ -30093,6 +30976,7 @@ class UpdateStreamingOutRequestPanesTexts(TeaModel):
         box_alpha: float = None,
         box_borderw: int = None,
         box_color: UpdateStreamingOutRequestPanesTextsBoxColor = None,
+        display: str = None,
         font: int = None,
         font_color: UpdateStreamingOutRequestPanesTextsFontColor = None,
         font_size: int = None,
@@ -30106,6 +30990,7 @@ class UpdateStreamingOutRequestPanesTexts(TeaModel):
         self.box_alpha = box_alpha
         self.box_borderw = box_borderw
         self.box_color = box_color
+        self.display = display
         self.font = font
         self.font_color = font_color
         self.font_size = font_size
@@ -30138,6 +31023,8 @@ class UpdateStreamingOutRequestPanesTexts(TeaModel):
             result['BoxBorderw'] = self.box_borderw
         if self.box_color is not None:
             result['BoxColor'] = self.box_color.to_map()
+        if self.display is not None:
+            result['Display'] = self.display
         if self.font is not None:
             result['Font'] = self.font
         if self.font_color is not None:
@@ -30167,6 +31054,8 @@ class UpdateStreamingOutRequestPanesTexts(TeaModel):
         if m.get('BoxColor') is not None:
             temp_model = UpdateStreamingOutRequestPanesTextsBoxColor()
             self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
         if m.get('Font') is not None:
             self.font = m.get('Font')
         if m.get('FontColor') is not None:
@@ -30217,6 +31106,7 @@ class UpdateStreamingOutRequestPanesWhiteboard(TeaModel):
 class UpdateStreamingOutRequestPanes(TeaModel):
     def __init__(
         self,
+        backgrounds: List[UpdateStreamingOutRequestPanesBackgrounds] = None,
         images: List[UpdateStreamingOutRequestPanesImages] = None,
         pane_crop_mode: int = None,
         pane_id: int = None,
@@ -30227,6 +31117,7 @@ class UpdateStreamingOutRequestPanes(TeaModel):
         video_order: str = None,
         whiteboard: UpdateStreamingOutRequestPanesWhiteboard = None,
     ):
+        self.backgrounds = backgrounds
         self.images = images
         self.pane_crop_mode = pane_crop_mode
         self.pane_id = pane_id
@@ -30238,6 +31129,10 @@ class UpdateStreamingOutRequestPanes(TeaModel):
         self.whiteboard = whiteboard
 
     def validate(self):
+        if self.backgrounds:
+            for k in self.backgrounds:
+                if k:
+                    k.validate()
         if self.images:
             for k in self.images:
                 if k:
@@ -30255,6 +31150,10 @@ class UpdateStreamingOutRequestPanes(TeaModel):
             return _map
 
         result = dict()
+        result['Backgrounds'] = []
+        if self.backgrounds is not None:
+            for k in self.backgrounds:
+                result['Backgrounds'].append(k.to_map() if k else None)
         result['Images'] = []
         if self.images is not None:
             for k in self.images:
@@ -30281,6 +31180,11 @@ class UpdateStreamingOutRequestPanes(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.backgrounds = []
+        if m.get('Backgrounds') is not None:
+            for k in m.get('Backgrounds'):
+                temp_model = UpdateStreamingOutRequestPanesBackgrounds()
+                self.backgrounds.append(temp_model.from_map(k))
         self.images = []
         if m.get('Images') is not None:
             for k in m.get('Images'):
@@ -30946,10 +31850,91 @@ class UpdateStreamingOutShrinkRequestImages(TeaModel):
         return self
 
 
+class UpdateStreamingOutShrinkRequestPanesBackgrounds(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        display: str = None,
+        height: float = None,
+        layer: int = None,
+        pane_background_crop_mode: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.display = display
+        # This parameter is required.
+        self.height = height
+        self.layer = layer
+        self.pane_background_crop_mode = pane_background_crop_mode
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.pane_background_crop_mode is not None:
+            result['PaneBackgroundCropMode'] = self.pane_background_crop_mode
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('PaneBackgroundCropMode') is not None:
+            self.pane_background_crop_mode = m.get('PaneBackgroundCropMode')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
 class UpdateStreamingOutShrinkRequestPanesImages(TeaModel):
     def __init__(
         self,
         alpha: float = None,
+        display: str = None,
         height: float = None,
         layer: int = None,
         pane_image_crop_mode: int = None,
@@ -30959,6 +31944,7 @@ class UpdateStreamingOutShrinkRequestPanesImages(TeaModel):
         y: float = None,
     ):
         self.alpha = alpha
+        self.display = display
         # This parameter is required.
         self.height = height
         self.layer = layer
@@ -30983,6 +31969,8 @@ class UpdateStreamingOutShrinkRequestPanesImages(TeaModel):
         result = dict()
         if self.alpha is not None:
             result['Alpha'] = self.alpha
+        if self.display is not None:
+            result['Display'] = self.display
         if self.height is not None:
             result['Height'] = self.height
         if self.layer is not None:
@@ -31003,6 +31991,8 @@ class UpdateStreamingOutShrinkRequestPanesImages(TeaModel):
         m = m or dict()
         if m.get('Alpha') is not None:
             self.alpha = m.get('Alpha')
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
         if m.get('Height') is not None:
             self.height = m.get('Height')
         if m.get('Layer') is not None:
@@ -31105,6 +32095,7 @@ class UpdateStreamingOutShrinkRequestPanesTexts(TeaModel):
         box_alpha: float = None,
         box_borderw: int = None,
         box_color: UpdateStreamingOutShrinkRequestPanesTextsBoxColor = None,
+        display: str = None,
         font: int = None,
         font_color: UpdateStreamingOutShrinkRequestPanesTextsFontColor = None,
         font_size: int = None,
@@ -31118,6 +32109,7 @@ class UpdateStreamingOutShrinkRequestPanesTexts(TeaModel):
         self.box_alpha = box_alpha
         self.box_borderw = box_borderw
         self.box_color = box_color
+        self.display = display
         self.font = font
         self.font_color = font_color
         self.font_size = font_size
@@ -31150,6 +32142,8 @@ class UpdateStreamingOutShrinkRequestPanesTexts(TeaModel):
             result['BoxBorderw'] = self.box_borderw
         if self.box_color is not None:
             result['BoxColor'] = self.box_color.to_map()
+        if self.display is not None:
+            result['Display'] = self.display
         if self.font is not None:
             result['Font'] = self.font
         if self.font_color is not None:
@@ -31179,6 +32173,8 @@ class UpdateStreamingOutShrinkRequestPanesTexts(TeaModel):
         if m.get('BoxColor') is not None:
             temp_model = UpdateStreamingOutShrinkRequestPanesTextsBoxColor()
             self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
         if m.get('Font') is not None:
             self.font = m.get('Font')
         if m.get('FontColor') is not None:
@@ -31229,6 +32225,7 @@ class UpdateStreamingOutShrinkRequestPanesWhiteboard(TeaModel):
 class UpdateStreamingOutShrinkRequestPanes(TeaModel):
     def __init__(
         self,
+        backgrounds: List[UpdateStreamingOutShrinkRequestPanesBackgrounds] = None,
         images: List[UpdateStreamingOutShrinkRequestPanesImages] = None,
         pane_crop_mode: int = None,
         pane_id: int = None,
@@ -31239,6 +32236,7 @@ class UpdateStreamingOutShrinkRequestPanes(TeaModel):
         video_order: str = None,
         whiteboard: UpdateStreamingOutShrinkRequestPanesWhiteboard = None,
     ):
+        self.backgrounds = backgrounds
         self.images = images
         self.pane_crop_mode = pane_crop_mode
         self.pane_id = pane_id
@@ -31250,6 +32248,10 @@ class UpdateStreamingOutShrinkRequestPanes(TeaModel):
         self.whiteboard = whiteboard
 
     def validate(self):
+        if self.backgrounds:
+            for k in self.backgrounds:
+                if k:
+                    k.validate()
         if self.images:
             for k in self.images:
                 if k:
@@ -31267,6 +32269,10 @@ class UpdateStreamingOutShrinkRequestPanes(TeaModel):
             return _map
 
         result = dict()
+        result['Backgrounds'] = []
+        if self.backgrounds is not None:
+            for k in self.backgrounds:
+                result['Backgrounds'].append(k.to_map() if k else None)
         result['Images'] = []
         if self.images is not None:
             for k in self.images:
@@ -31293,6 +32299,11 @@ class UpdateStreamingOutShrinkRequestPanes(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.backgrounds = []
+        if m.get('Backgrounds') is not None:
+            for k in m.get('Backgrounds'):
+                temp_model = UpdateStreamingOutShrinkRequestPanesBackgrounds()
+                self.backgrounds.append(temp_model.from_map(k))
         self.images = []
         if m.get('Images') is not None:
             for k in m.get('Images'):
