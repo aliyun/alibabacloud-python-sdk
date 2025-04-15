@@ -5967,8 +5967,6 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
-        if not UtilClient.is_unset(request.spec_name):
-            body['SpecName'] = request.spec_name
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -6012,8 +6010,6 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
-        if not UtilClient.is_unset(request.spec_name):
-            body['SpecName'] = request.spec_name
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -17423,6 +17419,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_edge_container_terminal_with_options_async(request, runtime)
 
+    def get_er_service_with_options(
+        self,
+        request: esa20240910_models.GetErServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetErServiceResponse:
+        """
+        @summary Checks the status of Edge Routine.
+        
+        @param request: GetErServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetErServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetErService',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetErServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetErServiceResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_er_service_with_options_async(
+        self,
+        request: esa20240910_models.GetErServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetErServiceResponse:
+        """
+        @summary Checks the status of Edge Routine.
+        
+        @param request: GetErServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetErServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetErService',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetErServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetErServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_er_service(
+        self,
+        request: esa20240910_models.GetErServiceRequest,
+    ) -> esa20240910_models.GetErServiceResponse:
+        """
+        @summary Checks the status of Edge Routine.
+        
+        @param request: GetErServiceRequest
+        @return: GetErServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_er_service_with_options(request, runtime)
+
+    async def get_er_service_async(
+        self,
+        request: esa20240910_models.GetErServiceRequest,
+    ) -> esa20240910_models.GetErServiceResponse:
+        """
+        @summary Checks the status of Edge Routine.
+        
+        @param request: GetErServiceRequest
+        @return: GetErServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_er_service_with_options_async(request, runtime)
+
     def get_http_request_header_modification_rule_with_options(
         self,
         request: esa20240910_models.GetHttpRequestHeaderModificationRuleRequest,
@@ -23035,6 +23135,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_certificates_with_options_async(request, runtime)
 
+    def list_certificates_by_record_with_options(
+        self,
+        request: esa20240910_models.ListCertificatesByRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListCertificatesByRecordResponse:
+        """
+        @summary 查询匹配记录名的站点证书列表
+        
+        @param request: ListCertificatesByRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCertificatesByRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCertificatesByRecord',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.ListCertificatesByRecordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.ListCertificatesByRecordResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_certificates_by_record_with_options_async(
+        self,
+        request: esa20240910_models.ListCertificatesByRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListCertificatesByRecordResponse:
+        """
+        @summary 查询匹配记录名的站点证书列表
+        
+        @param request: ListCertificatesByRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCertificatesByRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCertificatesByRecord',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.ListCertificatesByRecordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.ListCertificatesByRecordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_certificates_by_record(
+        self,
+        request: esa20240910_models.ListCertificatesByRecordRequest,
+    ) -> esa20240910_models.ListCertificatesByRecordResponse:
+        """
+        @summary 查询匹配记录名的站点证书列表
+        
+        @param request: ListCertificatesByRecordRequest
+        @return: ListCertificatesByRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_certificates_by_record_with_options(request, runtime)
+
+    async def list_certificates_by_record_async(
+        self,
+        request: esa20240910_models.ListCertificatesByRecordRequest,
+    ) -> esa20240910_models.ListCertificatesByRecordResponse:
+        """
+        @summary 查询匹配记录名的站点证书列表
+        
+        @param request: ListCertificatesByRecordRequest
+        @return: ListCertificatesByRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_certificates_by_record_with_options_async(request, runtime)
+
     def list_ciphers_with_options(
         self,
         request: esa20240910_models.ListCiphersRequest,
@@ -26551,22 +26755,33 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_routine_canary_areas_with_options_async(runtime)
 
-    def list_routine_optional_specs_with_options(
+    def list_routine_related_records_with_options(
         self,
+        request: esa20240910_models.ListRoutineRelatedRecordsRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> esa20240910_models.ListRoutineOptionalSpecsResponse:
+    ) -> esa20240910_models.ListRoutineRelatedRecordsResponse:
         """
-        @summary Queries the specifications that you can select for a routine based on the plan type. The response contains all specifications that you can select for a routine. The IsAvailable parameter indicates whether a specification is available.
+        @summary 查询函数关联域名列表
         
-        @description You can call this operation to query the specifications that you can select for a routine.
-        
-        @param request: ListRoutineOptionalSpecsRequest
+        @param request: ListRoutineRelatedRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: ListRoutineOptionalSpecsResponse
+        @return: ListRoutineRelatedRecordsResponse
         """
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key_word):
+            body['SearchKeyWord'] = request.search_key_word
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
         params = open_api_models.Params(
-            action='ListRoutineOptionalSpecs',
+            action='ListRoutineRelatedRecords',
             version='2024-09-10',
             protocol='HTTPS',
             pathname='/',
@@ -26578,31 +26793,42 @@ class Client(OpenApiClient):
         )
         if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
             return TeaCore.from_map(
-                esa20240910_models.ListRoutineOptionalSpecsResponse(),
+                esa20240910_models.ListRoutineRelatedRecordsResponse(),
                 self.call_api(params, req, runtime)
             )
         else:
             return TeaCore.from_map(
-                esa20240910_models.ListRoutineOptionalSpecsResponse(),
+                esa20240910_models.ListRoutineRelatedRecordsResponse(),
                 self.execute(params, req, runtime)
             )
 
-    async def list_routine_optional_specs_with_options_async(
+    async def list_routine_related_records_with_options_async(
         self,
+        request: esa20240910_models.ListRoutineRelatedRecordsRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> esa20240910_models.ListRoutineOptionalSpecsResponse:
+    ) -> esa20240910_models.ListRoutineRelatedRecordsResponse:
         """
-        @summary Queries the specifications that you can select for a routine based on the plan type. The response contains all specifications that you can select for a routine. The IsAvailable parameter indicates whether a specification is available.
+        @summary 查询函数关联域名列表
         
-        @description You can call this operation to query the specifications that you can select for a routine.
-        
-        @param request: ListRoutineOptionalSpecsRequest
+        @param request: ListRoutineRelatedRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: ListRoutineOptionalSpecsResponse
+        @return: ListRoutineRelatedRecordsResponse
         """
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key_word):
+            body['SearchKeyWord'] = request.search_key_word
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
         params = open_api_models.Params(
-            action='ListRoutineOptionalSpecs',
+            action='ListRoutineRelatedRecords',
             version='2024-09-10',
             protocol='HTTPS',
             pathname='/',
@@ -26614,36 +26840,40 @@ class Client(OpenApiClient):
         )
         if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
             return TeaCore.from_map(
-                esa20240910_models.ListRoutineOptionalSpecsResponse(),
+                esa20240910_models.ListRoutineRelatedRecordsResponse(),
                 await self.call_api_async(params, req, runtime)
             )
         else:
             return TeaCore.from_map(
-                esa20240910_models.ListRoutineOptionalSpecsResponse(),
+                esa20240910_models.ListRoutineRelatedRecordsResponse(),
                 await self.execute_async(params, req, runtime)
             )
 
-    def list_routine_optional_specs(self) -> esa20240910_models.ListRoutineOptionalSpecsResponse:
+    def list_routine_related_records(
+        self,
+        request: esa20240910_models.ListRoutineRelatedRecordsRequest,
+    ) -> esa20240910_models.ListRoutineRelatedRecordsResponse:
         """
-        @summary Queries the specifications that you can select for a routine based on the plan type. The response contains all specifications that you can select for a routine. The IsAvailable parameter indicates whether a specification is available.
+        @summary 查询函数关联域名列表
         
-        @description You can call this operation to query the specifications that you can select for a routine.
-        
-        @return: ListRoutineOptionalSpecsResponse
+        @param request: ListRoutineRelatedRecordsRequest
+        @return: ListRoutineRelatedRecordsResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.list_routine_optional_specs_with_options(runtime)
+        return self.list_routine_related_records_with_options(request, runtime)
 
-    async def list_routine_optional_specs_async(self) -> esa20240910_models.ListRoutineOptionalSpecsResponse:
+    async def list_routine_related_records_async(
+        self,
+        request: esa20240910_models.ListRoutineRelatedRecordsRequest,
+    ) -> esa20240910_models.ListRoutineRelatedRecordsResponse:
         """
-        @summary Queries the specifications that you can select for a routine based on the plan type. The response contains all specifications that you can select for a routine. The IsAvailable parameter indicates whether a specification is available.
+        @summary 查询函数关联域名列表
         
-        @description You can call this operation to query the specifications that you can select for a routine.
-        
-        @return: ListRoutineOptionalSpecsResponse
+        @param request: ListRoutineRelatedRecordsRequest
+        @return: ListRoutineRelatedRecordsResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.list_routine_optional_specs_with_options_async(runtime)
+        return await self.list_routine_related_records_with_options_async(request, runtime)
 
     def list_routine_routes_with_options(
         self,
@@ -27760,6 +27990,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_rate_plan_instances_with_options_async(request, runtime)
+
+    def list_user_routines_with_options(
+        self,
+        request: esa20240910_models.ListUserRoutinesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListUserRoutinesResponse:
+        """
+        @summary 查询用户的Routine列表
+        
+        @param request: ListUserRoutinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserRoutinesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key_word):
+            query['SearchKeyWord'] = request.search_key_word
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserRoutines',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.ListUserRoutinesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.ListUserRoutinesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_user_routines_with_options_async(
+        self,
+        request: esa20240910_models.ListUserRoutinesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListUserRoutinesResponse:
+        """
+        @summary 查询用户的Routine列表
+        
+        @param request: ListUserRoutinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserRoutinesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key_word):
+            query['SearchKeyWord'] = request.search_key_word
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserRoutines',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.ListUserRoutinesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.ListUserRoutinesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_user_routines(
+        self,
+        request: esa20240910_models.ListUserRoutinesRequest,
+    ) -> esa20240910_models.ListUserRoutinesResponse:
+        """
+        @summary 查询用户的Routine列表
+        
+        @param request: ListUserRoutinesRequest
+        @return: ListUserRoutinesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_user_routines_with_options(request, runtime)
+
+    async def list_user_routines_async(
+        self,
+        request: esa20240910_models.ListUserRoutinesRequest,
+    ) -> esa20240910_models.ListUserRoutinesResponse:
+        """
+        @summary 查询用户的Routine列表
+        
+        @param request: ListUserRoutinesRequest
+        @return: ListUserRoutinesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_user_routines_with_options_async(request, runtime)
 
     def list_waf_managed_rules_with_options(
         self,
@@ -29147,26 +29493,18 @@ class Client(OpenApiClient):
 
     def publish_routine_code_version_with_options(
         self,
-        tmp_req: esa20240910_models.PublishRoutineCodeVersionRequest,
+        request: esa20240910_models.PublishRoutineCodeVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.PublishRoutineCodeVersionResponse:
         """
         @summary Releases a code version of a routine to the staging, canary, or production environment. You can specify the regions where the canary environment is deployed to release your code.
         
-        @param tmp_req: PublishRoutineCodeVersionRequest
+        @param request: PublishRoutineCodeVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PublishRoutineCodeVersionResponse
         """
-        UtilClient.validate_model(tmp_req)
-        request = esa20240910_models.PublishRoutineCodeVersionShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.canary_area_list):
-            request.canary_area_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.canary_area_list, 'CanaryAreaList', 'json')
+        UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.canary_area_list_shrink):
-            body['CanaryAreaList'] = request.canary_area_list_shrink
-        if not UtilClient.is_unset(request.canary_code_version):
-            body['CanaryCodeVersion'] = request.canary_code_version
         if not UtilClient.is_unset(request.code_version):
             body['CodeVersion'] = request.code_version
         if not UtilClient.is_unset(request.env):
@@ -29200,26 +29538,18 @@ class Client(OpenApiClient):
 
     async def publish_routine_code_version_with_options_async(
         self,
-        tmp_req: esa20240910_models.PublishRoutineCodeVersionRequest,
+        request: esa20240910_models.PublishRoutineCodeVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.PublishRoutineCodeVersionResponse:
         """
         @summary Releases a code version of a routine to the staging, canary, or production environment. You can specify the regions where the canary environment is deployed to release your code.
         
-        @param tmp_req: PublishRoutineCodeVersionRequest
+        @param request: PublishRoutineCodeVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PublishRoutineCodeVersionResponse
         """
-        UtilClient.validate_model(tmp_req)
-        request = esa20240910_models.PublishRoutineCodeVersionShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.canary_area_list):
-            request.canary_area_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.canary_area_list, 'CanaryAreaList', 'json')
+        UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.canary_area_list_shrink):
-            body['CanaryAreaList'] = request.canary_area_list_shrink
-        if not UtilClient.is_unset(request.canary_code_version):
-            body['CanaryCodeVersion'] = request.canary_code_version
         if not UtilClient.is_unset(request.code_version):
             body['CodeVersion'] = request.code_version
         if not UtilClient.is_unset(request.env):
@@ -30567,6 +30897,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.percentage):
+            query['Percentage'] = request.percentage
+        if not UtilClient.is_unset(request.used_percent):
+            query['UsedPercent'] = request.used_percent
         if not UtilClient.is_unset(request.version_id):
             query['VersionId'] = request.version_id
         body = {}
@@ -30614,6 +30948,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.percentage):
+            query['Percentage'] = request.percentage
+        if not UtilClient.is_unset(request.used_percent):
+            query['UsedPercent'] = request.used_percent
         if not UtilClient.is_unset(request.version_id):
             query['VersionId'] = request.version_id
         body = {}

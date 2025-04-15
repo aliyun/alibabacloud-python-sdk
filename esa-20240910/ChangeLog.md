@@ -1,3 +1,21 @@
+2025-04-15 Version: 2.23.0
+- Support API GetErService.
+- Support API ListCertificatesByRecord.
+- Support API ListRoutineRelatedRecords.
+- Support API ListUserRoutines.
+- Update API CreateHttpRequestHeaderModificationRule: add request parameters RequestHeaderModification.$.Type.
+- Update API CreateHttpResponseHeaderModificationRule: add request parameters ResponseHeaderModification.$.Type.
+- Update API GetHttpRequestHeaderModificationRule: add response parameters Body.RequestHeaderModification.$.Type.
+- Update API GetHttpResponseHeaderModificationRule: add response parameters Body.ResponseHeaderModification.$.Type.
+- Update API ListHttpRequestHeaderModificationRules: add response parameters Body.Configs.$.RequestHeaderModification.$.Type.
+- Update API ListHttpResponseHeaderModificationRules: add response parameters Body.Configs.$.ResponseHeaderModification.$.Type.
+- Update API ListWafTemplateRules: add request parameters QueryArgs.Kinds.
+- Update API RollbackEdgeContainerAppVersion: add request parameters Percentage.
+- Update API RollbackEdgeContainerAppVersion: add request parameters UsedPercent.
+- Update API UpdateHttpRequestHeaderModificationRule: add request parameters RequestHeaderModification.$.Type.
+- Update API UpdateHttpResponseHeaderModificationRule: add request parameters ResponseHeaderModification.$.Type.
+
+
 2025-04-07 Version: 2.22.0
 - Support API CreateRoutineRoute.
 - Support API DeleteRoutineRoute.

@@ -7332,6 +7332,7 @@ class CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification(Te
         self,
         name: str = None,
         operation: str = None,
+        type: str = None,
         value: str = None,
     ):
         # Request header name.
@@ -7346,6 +7347,7 @@ class CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification(Te
         # 
         # This parameter is required.
         self.operation = operation
+        self.type = type
         # Request header value.
         self.value = value
 
@@ -7362,6 +7364,8 @@ class CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification(Te
             result['Name'] = self.name
         if self.operation is not None:
             result['Operation'] = self.operation
+        if self.type is not None:
+            result['Type'] = self.type
         if self.value is not None:
             result['Value'] = self.value
         return result
@@ -7372,6 +7376,8 @@ class CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification(Te
             self.name = m.get('Name')
         if m.get('Operation') is not None:
             self.operation = m.get('Operation')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         return self
@@ -7620,6 +7626,7 @@ class CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification(
         self,
         name: str = None,
         operation: str = None,
+        type: str = None,
         value: str = None,
     ):
         # Response header name.
@@ -7634,6 +7641,7 @@ class CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification(
         # 
         # This parameter is required.
         self.operation = operation
+        self.type = type
         # Response header value.
         self.value = value
 
@@ -7650,6 +7658,8 @@ class CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification(
             result['Name'] = self.name
         if self.operation is not None:
             result['Operation'] = self.operation
+        if self.type is not None:
+            result['Type'] = self.type
         if self.value is not None:
             result['Value'] = self.value
         return result
@@ -7660,6 +7670,8 @@ class CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification(
             self.name = m.get('Name')
         if m.get('Operation') is not None:
             self.operation = m.get('Operation')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         return self
@@ -11408,7 +11420,6 @@ class CreateRoutineRequest(TeaModel):
         self,
         description: str = None,
         name: str = None,
-        spec_name: str = None,
     ):
         # The routine description.
         self.description = description
@@ -11416,8 +11427,6 @@ class CreateRoutineRequest(TeaModel):
         # 
         # This parameter is required.
         self.name = name
-        # The specification of the routine.
-        self.spec_name = spec_name
 
     def validate(self):
         pass
@@ -11432,8 +11441,6 @@ class CreateRoutineRequest(TeaModel):
             result['Description'] = self.description
         if self.name is not None:
             result['Name'] = self.name
-        if self.spec_name is not None:
-            result['SpecName'] = self.spec_name
         return result
 
     def from_map(self, m: dict = None):
@@ -11442,8 +11449,6 @@ class CreateRoutineRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('Name') is not None:
             self.name = m.get('Name')
-        if m.get('SpecName') is not None:
-            self.spec_name = m.get('SpecName')
         return self
 
 
@@ -28752,6 +28757,131 @@ class GetEdgeContainerTerminalResponse(TeaModel):
         return self
 
 
+class GetErServiceRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        security_token: str = None,
+    ):
+        self.owner_id = owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class GetErServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        plan_name: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        # The billing mode. Valid values:
+        # 
+        # *   er_paymode: billed for customers on the China site.
+        # *   er_freemode: free for customers on the China site.
+        # *   er_paymodeintl: billed for customers on the International site.
+        # *   err_freemodeintl: free for customers on the International site
+        self.plan_name = plan_name
+        # The request ID.
+        self.request_id = request_id
+        # The service status. Valid values:
+        # 
+        # *   Creating
+        # *   Running
+        # *   NotOpened
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.plan_name is not None:
+            result['PlanName'] = self.plan_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PlanName') is not None:
+            self.plan_name = m.get('PlanName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetErServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetErServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetErServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetHttpRequestHeaderModificationRuleRequest(TeaModel):
     def __init__(
         self,
@@ -28796,6 +28926,7 @@ class GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification(
         self,
         name: str = None,
         operation: str = None,
+        type: str = None,
         value: str = None,
     ):
         # Request header name.
@@ -28806,6 +28937,7 @@ class GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification(
         # - del: Delete
         # - modify: Modify.
         self.operation = operation
+        self.type = type
         # Request header value.
         self.value = value
 
@@ -28822,6 +28954,8 @@ class GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification(
             result['Name'] = self.name
         if self.operation is not None:
             result['Operation'] = self.operation
+        if self.type is not None:
+            result['Type'] = self.type
         if self.value is not None:
             result['Value'] = self.value
         return result
@@ -28832,6 +28966,8 @@ class GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification(
             self.name = m.get('Name')
         if m.get('Operation') is not None:
             self.operation = m.get('Operation')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         return self
@@ -29020,6 +29156,7 @@ class GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModificatio
         self,
         name: str = None,
         operation: str = None,
+        type: str = None,
         value: str = None,
     ):
         # Response header name.
@@ -29030,6 +29167,7 @@ class GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModificatio
         # - del: Delete
         # - modify: Modify.
         self.operation = operation
+        self.type = type
         # Response header value.
         self.value = value
 
@@ -29046,6 +29184,8 @@ class GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModificatio
             result['Name'] = self.name
         if self.operation is not None:
             result['Operation'] = self.operation
+        if self.type is not None:
+            result['Type'] = self.type
         if self.value is not None:
             result['Value'] = self.value
         return result
@@ -29056,6 +29196,8 @@ class GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModificatio
             self.name = m.get('Name')
         if m.get('Operation') is not None:
             self.operation = m.get('Operation')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         return self
@@ -34631,7 +34773,6 @@ class GetRoutineResponseBodyEnvs(TeaModel):
         canary_code_version: str = None,
         code_version: str = None,
         env: str = None,
-        spec_name: str = None,
     ):
         # The regions for canary release.
         self.canary_area_list = canary_area_list
@@ -34641,8 +34782,6 @@ class GetRoutineResponseBodyEnvs(TeaModel):
         self.code_version = code_version
         # The environment type.
         self.env = env
-        # The specification.
-        self.spec_name = spec_name
 
     def validate(self):
         pass
@@ -34661,8 +34800,6 @@ class GetRoutineResponseBodyEnvs(TeaModel):
             result['CodeVersion'] = self.code_version
         if self.env is not None:
             result['Env'] = self.env
-        if self.spec_name is not None:
-            result['SpecName'] = self.spec_name
         return result
 
     def from_map(self, m: dict = None):
@@ -34675,8 +34812,6 @@ class GetRoutineResponseBodyEnvs(TeaModel):
             self.code_version = m.get('CodeVersion')
         if m.get('Env') is not None:
             self.env = m.get('Env')
-        if m.get('SpecName') is not None:
-            self.spec_name = m.get('SpecName')
         return self
 
 
@@ -40022,6 +40157,341 @@ class ListCertificatesResponse(TeaModel):
         return self
 
 
+class ListCertificatesByRecordRequest(TeaModel):
+    def __init__(
+        self,
+        detail: bool = None,
+        record_name: str = None,
+        site_id: int = None,
+        valid_only: bool = None,
+    ):
+        self.detail = detail
+        # This parameter is required.
+        self.record_name = record_name
+        # This parameter is required.
+        self.site_id = site_id
+        self.valid_only = valid_only
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.detail is not None:
+            result['Detail'] = self.detail
+        if self.record_name is not None:
+            result['RecordName'] = self.record_name
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.valid_only is not None:
+            result['ValidOnly'] = self.valid_only
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
+        if m.get('RecordName') is not None:
+            self.record_name = m.get('RecordName')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('ValidOnly') is not None:
+            self.valid_only = m.get('ValidOnly')
+        return self
+
+
+class ListCertificatesByRecordResponseBodyResultCertificates(TeaModel):
+    def __init__(
+        self,
+        cas_id: str = None,
+        common_name: str = None,
+        create_time: str = None,
+        fingerprint_sha_256: str = None,
+        id: str = None,
+        issuer: str = None,
+        issuer_cn: str = None,
+        name: str = None,
+        not_after: str = None,
+        not_before: str = None,
+        pub_alg: str = None,
+        region: str = None,
+        san: str = None,
+        serial_number: str = None,
+        sig_alg: str = None,
+        status: str = None,
+        type: str = None,
+        update_time: str = None,
+    ):
+        self.cas_id = cas_id
+        self.common_name = common_name
+        self.create_time = create_time
+        self.fingerprint_sha_256 = fingerprint_sha_256
+        self.id = id
+        self.issuer = issuer
+        self.issuer_cn = issuer_cn
+        self.name = name
+        self.not_after = not_after
+        self.not_before = not_before
+        self.pub_alg = pub_alg
+        self.region = region
+        self.san = san
+        self.serial_number = serial_number
+        self.sig_alg = sig_alg
+        self.status = status
+        self.type = type
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cas_id is not None:
+            result['CasId'] = self.cas_id
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.fingerprint_sha_256 is not None:
+            result['FingerprintSha256'] = self.fingerprint_sha_256
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.issuer_cn is not None:
+            result['IssuerCN'] = self.issuer_cn
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        if self.pub_alg is not None:
+            result['PubAlg'] = self.pub_alg
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.san is not None:
+            result['SAN'] = self.san
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.sig_alg is not None:
+            result['SigAlg'] = self.sig_alg
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CasId') is not None:
+            self.cas_id = m.get('CasId')
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FingerprintSha256') is not None:
+            self.fingerprint_sha_256 = m.get('FingerprintSha256')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('IssuerCN') is not None:
+            self.issuer_cn = m.get('IssuerCN')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        if m.get('PubAlg') is not None:
+            self.pub_alg = m.get('PubAlg')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('SAN') is not None:
+            self.san = m.get('SAN')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('SigAlg') is not None:
+            self.sig_alg = m.get('SigAlg')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListCertificatesByRecordResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        applyling_count: int = None,
+        certificates: List[ListCertificatesByRecordResponseBodyResultCertificates] = None,
+        count: int = None,
+        record_name: str = None,
+        status: str = None,
+    ):
+        self.applyling_count = applyling_count
+        self.certificates = certificates
+        self.count = count
+        self.record_name = record_name
+        self.status = status
+
+    def validate(self):
+        if self.certificates:
+            for k in self.certificates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.applyling_count is not None:
+            result['ApplylingCount'] = self.applyling_count
+        result['Certificates'] = []
+        if self.certificates is not None:
+            for k in self.certificates:
+                result['Certificates'].append(k.to_map() if k else None)
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.record_name is not None:
+            result['RecordName'] = self.record_name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplylingCount') is not None:
+            self.applyling_count = m.get('ApplylingCount')
+        self.certificates = []
+        if m.get('Certificates') is not None:
+            for k in m.get('Certificates'):
+                temp_model = ListCertificatesByRecordResponseBodyResultCertificates()
+                self.certificates.append(temp_model.from_map(k))
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('RecordName') is not None:
+            self.record_name = m.get('RecordName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListCertificatesByRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: List[ListCertificatesByRecordResponseBodyResult] = None,
+        site_id: int = None,
+        site_name: str = None,
+        total_count: int = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.site_id = site_id
+        self.site_name = site_name
+        self.total_count = total_count
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = ListCertificatesByRecordResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListCertificatesByRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCertificatesByRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCertificatesByRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListCiphersRequest(TeaModel):
     def __init__(
         self,
@@ -42872,6 +43342,7 @@ class ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModi
         self,
         name: str = None,
         operation: str = None,
+        type: str = None,
         value: str = None,
     ):
         # The name of the request header.
@@ -42882,6 +43353,7 @@ class ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModi
         # - del: Delete.
         # - modify: Modify.
         self.operation = operation
+        self.type = type
         # The value of the request header.
         self.value = value
 
@@ -42898,6 +43370,8 @@ class ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModi
             result['Name'] = self.name
         if self.operation is not None:
             result['Operation'] = self.operation
+        if self.type is not None:
+            result['Type'] = self.type
         if self.value is not None:
             result['Value'] = self.value
         return result
@@ -42908,6 +43382,8 @@ class ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModi
             self.name = m.get('Name')
         if m.get('Operation') is not None:
             self.operation = m.get('Operation')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         return self
@@ -43197,6 +43673,7 @@ class ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderMo
         self,
         name: str = None,
         operation: str = None,
+        type: str = None,
         value: str = None,
     ):
         # Name of the response header.
@@ -43206,6 +43683,7 @@ class ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderMo
         # - del: Delete
         # - modify: Modify.
         self.operation = operation
+        self.type = type
         # Response header value.
         self.value = value
 
@@ -43222,6 +43700,8 @@ class ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderMo
             result['Name'] = self.name
         if self.operation is not None:
             result['Operation'] = self.operation
+        if self.type is not None:
+            result['Type'] = self.type
         if self.value is not None:
             result['Value'] = self.value
         return result
@@ -43232,6 +43712,8 @@ class ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderMo
             self.name = m.get('Name')
         if m.get('Operation') is not None:
             self.operation = m.get('Operation')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         return self
@@ -50094,19 +50576,19 @@ class ListRoutineCanaryAreasResponse(TeaModel):
         return self
 
 
-class ListRoutineOptionalSpecsResponseBodySpecs(TeaModel):
+class ListRoutineRelatedRecordsRequest(TeaModel):
     def __init__(
         self,
-        is_available: bool = None,
-        spec_name: str = None,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        search_key_word: str = None,
     ):
-        # Indicates whether the specification is available. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.is_available = is_available
-        # The specification name.
-        self.spec_name = spec_name
+        # This parameter is required.
+        self.name = name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.search_key_word = search_key_word
 
     def validate(self):
         pass
@@ -50117,35 +50599,92 @@ class ListRoutineOptionalSpecsResponseBodySpecs(TeaModel):
             return _map
 
         result = dict()
-        if self.is_available is not None:
-            result['IsAvailable'] = self.is_available
-        if self.spec_name is not None:
-            result['SpecName'] = self.spec_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.search_key_word is not None:
+            result['SearchKeyWord'] = self.search_key_word
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('IsAvailable') is not None:
-            self.is_available = m.get('IsAvailable')
-        if m.get('SpecName') is not None:
-            self.spec_name = m.get('SpecName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SearchKeyWord') is not None:
+            self.search_key_word = m.get('SearchKeyWord')
         return self
 
 
-class ListRoutineOptionalSpecsResponseBody(TeaModel):
+class ListRoutineRelatedRecordsResponseBodyRelatedRecords(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        specs: List[ListRoutineOptionalSpecsResponseBodySpecs] = None,
+        record_id: int = None,
+        record_name: str = None,
+        site_id: int = None,
+        site_name: str = None,
     ):
-        # The request ID.
-        self.request_id = request_id
-        # The available specifications.
-        self.specs = specs
+        self.record_id = record_id
+        self.record_name = record_name
+        self.site_id = site_id
+        self.site_name = site_name
 
     def validate(self):
-        if self.specs:
-            for k in self.specs:
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        if self.record_name is not None:
+            result['RecordName'] = self.record_name
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        if m.get('RecordName') is not None:
+            self.record_name = m.get('RecordName')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        return self
+
+
+class ListRoutineRelatedRecordsResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        related_records: List[ListRoutineRelatedRecordsResponseBodyRelatedRecords] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.related_records = related_records
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.related_records:
+            for k in self.related_records:
                 if k:
                     k.validate()
 
@@ -50155,32 +50694,44 @@ class ListRoutineOptionalSpecsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['RelatedRecords'] = []
+        if self.related_records is not None:
+            for k in self.related_records:
+                result['RelatedRecords'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        result['Specs'] = []
-        if self.specs is not None:
-            for k in self.specs:
-                result['Specs'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.related_records = []
+        if m.get('RelatedRecords') is not None:
+            for k in m.get('RelatedRecords'):
+                temp_model = ListRoutineRelatedRecordsResponseBodyRelatedRecords()
+                self.related_records.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        self.specs = []
-        if m.get('Specs') is not None:
-            for k in m.get('Specs'):
-                temp_model = ListRoutineOptionalSpecsResponseBodySpecs()
-                self.specs.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
-class ListRoutineOptionalSpecsResponse(TeaModel):
+class ListRoutineRelatedRecordsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: ListRoutineOptionalSpecsResponseBody = None,
+        body: ListRoutineRelatedRecordsResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -50211,7 +50762,7 @@ class ListRoutineOptionalSpecsResponse(TeaModel):
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
-            temp_model = ListRoutineOptionalSpecsResponseBody()
+            temp_model = ListRoutineRelatedRecordsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -50268,7 +50819,7 @@ class ListRoutineRoutesResponseBodyConfigs(TeaModel):
         routine_name: str = None,
         rule: str = None,
         sequence: int = None,
-        site_id: str = None,
+        site_id: int = None,
         site_name: str = None,
         site_version: int = None,
     ):
@@ -53123,6 +53674,197 @@ class ListUserRatePlanInstancesResponse(TeaModel):
         return self
 
 
+class ListUserRoutinesRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        search_key_word: str = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.search_key_word = search_key_word
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.search_key_word is not None:
+            result['SearchKeyWord'] = self.search_key_word
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SearchKeyWord') is not None:
+            self.search_key_word = m.get('SearchKeyWord')
+        return self
+
+
+class ListUserRoutinesResponseBodyRoutines(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        routine_name: str = None,
+    ):
+        self.create_time = create_time
+        self.description = description
+        self.routine_name = routine_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.routine_name is not None:
+            result['RoutineName'] = self.routine_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RoutineName') is not None:
+            self.routine_name = m.get('RoutineName')
+        return self
+
+
+class ListUserRoutinesResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        quota_routine_number: int = None,
+        request_id: str = None,
+        routines: List[ListUserRoutinesResponseBodyRoutines] = None,
+        total_count: int = None,
+        used_routine_number: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.quota_routine_number = quota_routine_number
+        # Id of the request
+        self.request_id = request_id
+        self.routines = routines
+        self.total_count = total_count
+        self.used_routine_number = used_routine_number
+
+    def validate(self):
+        if self.routines:
+            for k in self.routines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.quota_routine_number is not None:
+            result['QuotaRoutineNumber'] = self.quota_routine_number
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Routines'] = []
+        if self.routines is not None:
+            for k in self.routines:
+                result['Routines'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.used_routine_number is not None:
+            result['UsedRoutineNumber'] = self.used_routine_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('QuotaRoutineNumber') is not None:
+            self.quota_routine_number = m.get('QuotaRoutineNumber')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.routines = []
+        if m.get('Routines') is not None:
+            for k in m.get('Routines'):
+                temp_model = ListUserRoutinesResponseBodyRoutines()
+                self.routines.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('UsedRoutineNumber') is not None:
+            self.used_routine_number = m.get('UsedRoutineNumber')
+        return self
+
+
+class ListUserRoutinesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUserRoutinesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUserRoutinesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListWafManagedRulesRequestQueryArgs(TeaModel):
     def __init__(
         self,
@@ -54595,8 +55337,10 @@ class ListWafRulesetsResponse(TeaModel):
 class ListWafTemplateRulesRequestQueryArgs(TeaModel):
     def __init__(
         self,
+        kinds: List[str] = None,
         type: str = None,
     ):
+        self.kinds = kinds
         # Rule type.
         self.type = type
 
@@ -54609,12 +55353,16 @@ class ListWafTemplateRulesRequestQueryArgs(TeaModel):
             return _map
 
         result = dict()
+        if self.kinds is not None:
+            result['Kinds'] = self.kinds
         if self.type is not None:
             result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Kinds') is not None:
+            self.kinds = m.get('Kinds')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -56292,16 +57040,10 @@ class PublishEdgeContainerAppVersionResponse(TeaModel):
 class PublishRoutineCodeVersionRequest(TeaModel):
     def __init__(
         self,
-        canary_area_list: List[str] = None,
-        canary_code_version: str = None,
         code_version: str = None,
         env: str = None,
         name: str = None,
     ):
-        # The regions for canary release.
-        self.canary_area_list = canary_area_list
-        # The version number for canary release.
-        self.canary_code_version = canary_code_version
         # The code version to be released.
         self.code_version = code_version
         # The environment name.
@@ -56322,10 +57064,6 @@ class PublishRoutineCodeVersionRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.canary_area_list is not None:
-            result['CanaryAreaList'] = self.canary_area_list
-        if self.canary_code_version is not None:
-            result['CanaryCodeVersion'] = self.canary_code_version
         if self.code_version is not None:
             result['CodeVersion'] = self.code_version
         if self.env is not None:
@@ -56336,70 +57074,6 @@ class PublishRoutineCodeVersionRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CanaryAreaList') is not None:
-            self.canary_area_list = m.get('CanaryAreaList')
-        if m.get('CanaryCodeVersion') is not None:
-            self.canary_code_version = m.get('CanaryCodeVersion')
-        if m.get('CodeVersion') is not None:
-            self.code_version = m.get('CodeVersion')
-        if m.get('Env') is not None:
-            self.env = m.get('Env')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        return self
-
-
-class PublishRoutineCodeVersionShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        canary_area_list_shrink: str = None,
-        canary_code_version: str = None,
-        code_version: str = None,
-        env: str = None,
-        name: str = None,
-    ):
-        # The regions for canary release.
-        self.canary_area_list_shrink = canary_area_list_shrink
-        # The version number for canary release.
-        self.canary_code_version = canary_code_version
-        # The code version to be released.
-        self.code_version = code_version
-        # The environment name.
-        # 
-        # This parameter is required.
-        self.env = env
-        # The routine name.
-        # 
-        # This parameter is required.
-        self.name = name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.canary_area_list_shrink is not None:
-            result['CanaryAreaList'] = self.canary_area_list_shrink
-        if self.canary_code_version is not None:
-            result['CanaryCodeVersion'] = self.canary_code_version
-        if self.code_version is not None:
-            result['CodeVersion'] = self.code_version
-        if self.env is not None:
-            result['Env'] = self.env
-        if self.name is not None:
-            result['Name'] = self.name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CanaryAreaList') is not None:
-            self.canary_area_list_shrink = m.get('CanaryAreaList')
-        if m.get('CanaryCodeVersion') is not None:
-            self.canary_code_version = m.get('CanaryCodeVersion')
         if m.get('CodeVersion') is not None:
             self.code_version = m.get('CodeVersion')
         if m.get('Env') is not None:
@@ -57926,15 +58600,19 @@ class RollbackEdgeContainerAppVersionRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        percentage: int = None,
         remarks: str = None,
+        used_percent: bool = None,
         version_id: str = None,
     ):
         # The application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
+        self.percentage = percentage
         # The remarks.
         self.remarks = remarks
+        self.used_percent = used_percent
         # The ID of version that you want to roll back.
         # 
         # This parameter is required.
@@ -57951,8 +58629,12 @@ class RollbackEdgeContainerAppVersionRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.percentage is not None:
+            result['Percentage'] = self.percentage
         if self.remarks is not None:
             result['Remarks'] = self.remarks
+        if self.used_percent is not None:
+            result['UsedPercent'] = self.used_percent
         if self.version_id is not None:
             result['VersionId'] = self.version_id
         return result
@@ -57961,8 +58643,12 @@ class RollbackEdgeContainerAppVersionRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('Percentage') is not None:
+            self.percentage = m.get('Percentage')
         if m.get('Remarks') is not None:
             self.remarks = m.get('Remarks')
+        if m.get('UsedPercent') is not None:
+            self.used_percent = m.get('UsedPercent')
         if m.get('VersionId') is not None:
             self.version_id = m.get('VersionId')
         return self
@@ -61002,6 +61688,7 @@ class UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification(Te
         self,
         name: str = None,
         operation: str = None,
+        type: str = None,
         value: str = None,
     ):
         # Request header name.
@@ -61016,6 +61703,7 @@ class UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification(Te
         # 
         # This parameter is required.
         self.operation = operation
+        self.type = type
         # Request header value.
         self.value = value
 
@@ -61032,6 +61720,8 @@ class UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification(Te
             result['Name'] = self.name
         if self.operation is not None:
             result['Operation'] = self.operation
+        if self.type is not None:
+            result['Type'] = self.type
         if self.value is not None:
             result['Value'] = self.value
         return result
@@ -61042,6 +61732,8 @@ class UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification(Te
             self.name = m.get('Name')
         if m.get('Operation') is not None:
             self.operation = m.get('Operation')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         return self
@@ -61283,6 +61975,7 @@ class UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification(
         self,
         name: str = None,
         operation: str = None,
+        type: str = None,
         value: str = None,
     ):
         # Response header name.
@@ -61296,6 +61989,7 @@ class UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification(
         # 
         # This parameter is required.
         self.operation = operation
+        self.type = type
         # Response header value.
         self.value = value
 
@@ -61312,6 +62006,8 @@ class UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification(
             result['Name'] = self.name
         if self.operation is not None:
             result['Operation'] = self.operation
+        if self.type is not None:
+            result['Type'] = self.type
         if self.value is not None:
             result['Value'] = self.value
         return result
@@ -61322,6 +62018,8 @@ class UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification(
             self.name = m.get('Name')
         if m.get('Operation') is not None:
             self.operation = m.get('Operation')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         return self
