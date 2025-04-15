@@ -461,7 +461,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.BatchApplyAdviceByIdListResponse:
         """
-        @summary The request ID.
+        @summary Applies optimization suggestions.
         
         @param request: BatchApplyAdviceByIdListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -508,7 +508,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.BatchApplyAdviceByIdListResponse:
         """
-        @summary The request ID.
+        @summary Applies optimization suggestions.
         
         @param request: BatchApplyAdviceByIdListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -554,7 +554,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.BatchApplyAdviceByIdListRequest,
     ) -> adb_20211201_models.BatchApplyAdviceByIdListResponse:
         """
-        @summary The request ID.
+        @summary Applies optimization suggestions.
         
         @param request: BatchApplyAdviceByIdListRequest
         @return: BatchApplyAdviceByIdListResponse
@@ -567,7 +567,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.BatchApplyAdviceByIdListRequest,
     ) -> adb_20211201_models.BatchApplyAdviceByIdListResponse:
         """
-        @summary The request ID.
+        @summary Applies optimization suggestions.
         
         @param request: BatchApplyAdviceByIdListRequest
         @return: BatchApplyAdviceByIdListResponse
@@ -945,7 +945,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CancelSparkWarehouseBatchSQLResponse:
         """
-        @summary 取消一段Spark Batch SQL的状态
+        @summary Cancels the execution of a Spark SQL statement.
         
         @param request: CancelSparkWarehouseBatchSQLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -990,7 +990,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CancelSparkWarehouseBatchSQLResponse:
         """
-        @summary 取消一段Spark Batch SQL的状态
+        @summary Cancels the execution of a Spark SQL statement.
         
         @param request: CancelSparkWarehouseBatchSQLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1034,7 +1034,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CancelSparkWarehouseBatchSQLRequest,
     ) -> adb_20211201_models.CancelSparkWarehouseBatchSQLResponse:
         """
-        @summary 取消一段Spark Batch SQL的状态
+        @summary Cancels the execution of a Spark SQL statement.
         
         @param request: CancelSparkWarehouseBatchSQLRequest
         @return: CancelSparkWarehouseBatchSQLResponse
@@ -1047,7 +1047,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CancelSparkWarehouseBatchSQLRequest,
     ) -> adb_20211201_models.CancelSparkWarehouseBatchSQLResponse:
         """
-        @summary 取消一段Spark Batch SQL的状态
+        @summary Cancels the execution of a Spark SQL statement.
         
         @param request: CancelSparkWarehouseBatchSQLRequest
         @return: CancelSparkWarehouseBatchSQLResponse
@@ -4606,138 +4606,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_performance_view_with_options_async(request, runtime)
-
-    def delete_process_instance_with_options(
-        self,
-        request: adb_20211201_models.DeleteProcessInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> adb_20211201_models.DeleteProcessInstanceResponse:
-        """
-        @summary Deletes a worflow instance from an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
-        
-        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
-        
-        @param request: DeleteProcessInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteProcessInstanceResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.process_instance_id):
-            query['ProcessInstanceId'] = request.process_instance_id
-        if not UtilClient.is_unset(request.project_code):
-            query['ProjectCode'] = request.project_code
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteProcessInstance',
-            version='2021-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                adb_20211201_models.DeleteProcessInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                adb_20211201_models.DeleteProcessInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def delete_process_instance_with_options_async(
-        self,
-        request: adb_20211201_models.DeleteProcessInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> adb_20211201_models.DeleteProcessInstanceResponse:
-        """
-        @summary Deletes a worflow instance from an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
-        
-        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
-        
-        @param request: DeleteProcessInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteProcessInstanceResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.process_instance_id):
-            query['ProcessInstanceId'] = request.process_instance_id
-        if not UtilClient.is_unset(request.project_code):
-            query['ProjectCode'] = request.project_code
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteProcessInstance',
-            version='2021-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                adb_20211201_models.DeleteProcessInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                adb_20211201_models.DeleteProcessInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def delete_process_instance(
-        self,
-        request: adb_20211201_models.DeleteProcessInstanceRequest,
-    ) -> adb_20211201_models.DeleteProcessInstanceResponse:
-        """
-        @summary Deletes a worflow instance from an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
-        
-        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
-        
-        @param request: DeleteProcessInstanceRequest
-        @return: DeleteProcessInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.delete_process_instance_with_options(request, runtime)
-
-    async def delete_process_instance_async(
-        self,
-        request: adb_20211201_models.DeleteProcessInstanceRequest,
-    ) -> adb_20211201_models.DeleteProcessInstanceResponse:
-        """
-        @summary Deletes a worflow instance from an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
-        
-        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
-        
-        @param request: DeleteProcessInstanceRequest
-        @return: DeleteProcessInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_process_instance_with_options_async(request, runtime)
 
     def delete_spark_template_with_options(
         self,
@@ -11569,7 +11437,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeEssdCacheConfigResponse:
         """
-        @summary 查询EssdCache配置
+        @summary Queries the disk cache size in the query acceleration configuration of an AnalyticDB for MySQL cluster.
         
         @param request: DescribeEssdCacheConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11610,7 +11478,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeEssdCacheConfigResponse:
         """
-        @summary 查询EssdCache配置
+        @summary Queries the disk cache size in the query acceleration configuration of an AnalyticDB for MySQL cluster.
         
         @param request: DescribeEssdCacheConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11650,7 +11518,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeEssdCacheConfigRequest,
     ) -> adb_20211201_models.DescribeEssdCacheConfigResponse:
         """
-        @summary 查询EssdCache配置
+        @summary Queries the disk cache size in the query acceleration configuration of an AnalyticDB for MySQL cluster.
         
         @param request: DescribeEssdCacheConfigRequest
         @return: DescribeEssdCacheConfigResponse
@@ -11663,7 +11531,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeEssdCacheConfigRequest,
     ) -> adb_20211201_models.DescribeEssdCacheConfigResponse:
         """
-        @summary 查询EssdCache配置
+        @summary Queries the disk cache size in the query acceleration configuration of an AnalyticDB for MySQL cluster.
         
         @param request: DescribeEssdCacheConfigRequest
         @return: DescribeEssdCacheConfigResponse
@@ -12102,6 +11970,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_inclined_nodes_with_options_async(request, runtime)
+
+    def describe_inclined_tables_with_options(
+        self,
+        request: adb_20211201_models.DescribeInclinedTablesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeInclinedTablesResponse:
+        """
+        @summary 查看表倾斜诊断结果
+        
+        @param request: DescribeInclinedTablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInclinedTablesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.table_type):
+            query['TableType'] = request.table_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInclinedTables',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeInclinedTablesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeInclinedTablesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_inclined_tables_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeInclinedTablesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeInclinedTablesResponse:
+        """
+        @summary 查看表倾斜诊断结果
+        
+        @param request: DescribeInclinedTablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInclinedTablesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.table_type):
+            query['TableType'] = request.table_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInclinedTables',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeInclinedTablesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeInclinedTablesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_inclined_tables(
+        self,
+        request: adb_20211201_models.DescribeInclinedTablesRequest,
+    ) -> adb_20211201_models.DescribeInclinedTablesResponse:
+        """
+        @summary 查看表倾斜诊断结果
+        
+        @param request: DescribeInclinedTablesRequest
+        @return: DescribeInclinedTablesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_inclined_tables_with_options(request, runtime)
+
+    async def describe_inclined_tables_async(
+        self,
+        request: adb_20211201_models.DescribeInclinedTablesRequest,
+    ) -> adb_20211201_models.DescribeInclinedTablesResponse:
+        """
+        @summary 查看表倾斜诊断结果
+        
+        @param request: DescribeInclinedTablesRequest
+        @return: DescribeInclinedTablesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_inclined_tables_with_options_async(request, runtime)
 
     def describe_job_resource_usage_with_options(
         self,
@@ -13274,6 +13274,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
+
+    def describe_resource_group_spec_with_options(
+        self,
+        request: adb_20211201_models.DescribeResourceGroupSpecRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeResourceGroupSpecResponse:
+        """
+        @summary 查询资源组规格相关信息
+        
+        @param request: DescribeResourceGroupSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourceGroupSpecResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_type):
+            query['ResourceGroupType'] = request.resource_group_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResourceGroupSpec',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeResourceGroupSpecResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeResourceGroupSpecResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_resource_group_spec_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeResourceGroupSpecRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeResourceGroupSpecResponse:
+        """
+        @summary 查询资源组规格相关信息
+        
+        @param request: DescribeResourceGroupSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourceGroupSpecResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_type):
+            query['ResourceGroupType'] = request.resource_group_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResourceGroupSpec',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeResourceGroupSpecResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeResourceGroupSpecResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_resource_group_spec(
+        self,
+        request: adb_20211201_models.DescribeResourceGroupSpecRequest,
+    ) -> adb_20211201_models.DescribeResourceGroupSpecResponse:
+        """
+        @summary 查询资源组规格相关信息
+        
+        @param request: DescribeResourceGroupSpecRequest
+        @return: DescribeResourceGroupSpecResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_resource_group_spec_with_options(request, runtime)
+
+    async def describe_resource_group_spec_async(
+        self,
+        request: adb_20211201_models.DescribeResourceGroupSpecRequest,
+    ) -> adb_20211201_models.DescribeResourceGroupSpecResponse:
+        """
+        @summary 查询资源组规格相关信息
+        
+        @param request: DescribeResourceGroupSpecRequest
+        @return: DescribeResourceGroupSpecResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_resource_group_spec_with_options_async(request, runtime)
 
     def describe_sqlpatterns_with_options(
         self,
@@ -16469,7 +16585,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ExecuteSparkWarehouseBatchSQLResponse:
         """
-        @summary 执行一段Spark Batch SQL
+        @summary Executes Spark SQL statements in batches.
         
         @param request: ExecuteSparkWarehouseBatchSQLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16524,7 +16640,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ExecuteSparkWarehouseBatchSQLResponse:
         """
-        @summary 执行一段Spark Batch SQL
+        @summary Executes Spark SQL statements in batches.
         
         @param request: ExecuteSparkWarehouseBatchSQLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16578,7 +16694,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ExecuteSparkWarehouseBatchSQLRequest,
     ) -> adb_20211201_models.ExecuteSparkWarehouseBatchSQLResponse:
         """
-        @summary 执行一段Spark Batch SQL
+        @summary Executes Spark SQL statements in batches.
         
         @param request: ExecuteSparkWarehouseBatchSQLRequest
         @return: ExecuteSparkWarehouseBatchSQLResponse
@@ -16591,7 +16707,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ExecuteSparkWarehouseBatchSQLRequest,
     ) -> adb_20211201_models.ExecuteSparkWarehouseBatchSQLResponse:
         """
-        @summary 执行一段Spark Batch SQL
+        @summary Executes Spark SQL statements in batches.
         
         @param request: ExecuteSparkWarehouseBatchSQLRequest
         @return: ExecuteSparkWarehouseBatchSQLResponse
@@ -19037,7 +19153,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkWarehouseBatchSQLResponse:
         """
-        @summary 获取一段Spark Batch SQL的状态
+        @summary Queries the execution result of a Spark SQL statement.
         
         @param request: GetSparkWarehouseBatchSQLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19082,7 +19198,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkWarehouseBatchSQLResponse:
         """
-        @summary 获取一段Spark Batch SQL的状态
+        @summary Queries the execution result of a Spark SQL statement.
         
         @param request: GetSparkWarehouseBatchSQLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19126,7 +19242,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkWarehouseBatchSQLRequest,
     ) -> adb_20211201_models.GetSparkWarehouseBatchSQLResponse:
         """
-        @summary 获取一段Spark Batch SQL的状态
+        @summary Queries the execution result of a Spark SQL statement.
         
         @param request: GetSparkWarehouseBatchSQLRequest
         @return: GetSparkWarehouseBatchSQLResponse
@@ -19139,7 +19255,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkWarehouseBatchSQLRequest,
     ) -> adb_20211201_models.GetSparkWarehouseBatchSQLResponse:
         """
-        @summary 获取一段Spark Batch SQL的状态
+        @summary Queries the execution result of a Spark SQL statement.
         
         @param request: GetSparkWarehouseBatchSQLRequest
         @return: GetSparkWarehouseBatchSQLResponse
@@ -19854,6 +19970,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.schema_name):
             query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.show_mv_base_table):
+            query['ShowMvBaseTable'] = request.show_mv_base_table
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -19914,6 +20032,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.schema_name):
             query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.show_mv_base_table):
+            query['ShowMvBaseTable'] = request.show_mv_base_table
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -21753,7 +21873,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ListSparkWarehouseBatchSQLResponse:
         """
-        @summary 列出提交的的SparkBatchSQL
+        @summary Queries a list of Spark SQL statements.
         
         @param request: ListSparkWarehouseBatchSQLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21800,7 +21920,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ListSparkWarehouseBatchSQLResponse:
         """
-        @summary 列出提交的的SparkBatchSQL
+        @summary Queries a list of Spark SQL statements.
         
         @param request: ListSparkWarehouseBatchSQLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21846,7 +21966,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ListSparkWarehouseBatchSQLRequest,
     ) -> adb_20211201_models.ListSparkWarehouseBatchSQLResponse:
         """
-        @summary 列出提交的的SparkBatchSQL
+        @summary Queries a list of Spark SQL statements.
         
         @param request: ListSparkWarehouseBatchSQLRequest
         @return: ListSparkWarehouseBatchSQLResponse
@@ -21859,7 +21979,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ListSparkWarehouseBatchSQLRequest,
     ) -> adb_20211201_models.ListSparkWarehouseBatchSQLResponse:
         """
-        @summary 列出提交的的SparkBatchSQL
+        @summary Queries a list of Spark SQL statements.
         
         @param request: ListSparkWarehouseBatchSQLRequest
         @return: ListSparkWarehouseBatchSQLResponse
@@ -23293,7 +23413,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyClickhouseEngineResponse:
         """
-        @summary 开启宽表引擎
+        @summary Enables the wide table engine feature for an AnalyticDB for MySQL cluster or modifies the disk cache size of the wide table engine of an AnalyticDB for MySQL cluster for which you enabled the wide table engine feature.
         
         @param request: ModifyClickhouseEngineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23340,7 +23460,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyClickhouseEngineResponse:
         """
-        @summary 开启宽表引擎
+        @summary Enables the wide table engine feature for an AnalyticDB for MySQL cluster or modifies the disk cache size of the wide table engine of an AnalyticDB for MySQL cluster for which you enabled the wide table engine feature.
         
         @param request: ModifyClickhouseEngineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23386,7 +23506,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyClickhouseEngineRequest,
     ) -> adb_20211201_models.ModifyClickhouseEngineResponse:
         """
-        @summary 开启宽表引擎
+        @summary Enables the wide table engine feature for an AnalyticDB for MySQL cluster or modifies the disk cache size of the wide table engine of an AnalyticDB for MySQL cluster for which you enabled the wide table engine feature.
         
         @param request: ModifyClickhouseEngineRequest
         @return: ModifyClickhouseEngineResponse
@@ -23399,7 +23519,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyClickhouseEngineRequest,
     ) -> adb_20211201_models.ModifyClickhouseEngineResponse:
         """
-        @summary 开启宽表引擎
+        @summary Enables the wide table engine feature for an AnalyticDB for MySQL cluster or modifies the disk cache size of the wide table engine of an AnalyticDB for MySQL cluster for which you enabled the wide table engine feature.
         
         @param request: ModifyClickhouseEngineRequest
         @return: ModifyClickhouseEngineResponse
@@ -23807,10 +23927,6 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.enable_default_resource_pool):
             query['EnableDefaultResourcePool'] = request.enable_default_resource_pool
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.product_form):
             query['ProductForm'] = request.product_form
         if not UtilClient.is_unset(request.region_id):
@@ -23819,8 +23935,6 @@ class Client(OpenApiClient):
             query['ReservedNodeCount'] = request.reserved_node_count
         if not UtilClient.is_unset(request.reserved_node_size):
             query['ReservedNodeSize'] = request.reserved_node_size
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.storage_resource):
             query['StorageResource'] = request.storage_resource
         req = open_api_models.OpenApiRequest(
@@ -23876,10 +23990,6 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.enable_default_resource_pool):
             query['EnableDefaultResourcePool'] = request.enable_default_resource_pool
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.product_form):
             query['ProductForm'] = request.product_form
         if not UtilClient.is_unset(request.region_id):
@@ -23888,8 +23998,6 @@ class Client(OpenApiClient):
             query['ReservedNodeCount'] = request.reserved_node_count
         if not UtilClient.is_unset(request.reserved_node_size):
             query['ReservedNodeSize'] = request.reserved_node_size
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.storage_resource):
             query['StorageResource'] = request.storage_resource
         req = open_api_models.OpenApiRequest(
