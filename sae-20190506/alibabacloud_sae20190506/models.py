@@ -17517,6 +17517,7 @@ class DeployApplicationRequest(TeaModel):
         mount_host: str = None,
         nas_configs: str = None,
         nas_id: str = None,
+        new_sae_version: str = None,
         oidc_role_name: str = None,
         oss_ak_id: str = None,
         oss_ak_secret: str = None,
@@ -17720,6 +17721,7 @@ class DeployApplicationRequest(TeaModel):
         self.nas_configs = nas_configs
         # The ID of the File Storage NAS file system. After the application is created, you may want to call other operations to manage the application. If you do not want to change the NAS configurations in these subsequent operations, you can omit the **NasId** parameter in the requests. If you want to unmount the NAS file system, you must set the **NasId** values in the subsequent requests to an empty string ("").
         self.nas_id = nas_id
+        self.new_sae_version = new_sae_version
         # The name of the RAM role used to authenticate the user identity.
         # 
         # >  You need to create an OpenID Connect (OIDC) identity provider (IdP) and an identity provider (IdP) for role-based single sign-on (SSO) in advance. For more information, see [Creates an OpenID Connect (OIDC) identity provider (IdP)](https://help.aliyun.com/document_detail/2331022.html) and [Creates an identity provider (IdP) for role-based single sign-on (SSO)](https://help.aliyun.com/document_detail/2331016.html).
@@ -17927,6 +17929,8 @@ class DeployApplicationRequest(TeaModel):
             result['NasConfigs'] = self.nas_configs
         if self.nas_id is not None:
             result['NasId'] = self.nas_id
+        if self.new_sae_version is not None:
+            result['NewSaeVersion'] = self.new_sae_version
         if self.oidc_role_name is not None:
             result['OidcRoleName'] = self.oidc_role_name
         if self.oss_ak_id is not None:
@@ -18073,6 +18077,8 @@ class DeployApplicationRequest(TeaModel):
             self.nas_configs = m.get('NasConfigs')
         if m.get('NasId') is not None:
             self.nas_id = m.get('NasId')
+        if m.get('NewSaeVersion') is not None:
+            self.new_sae_version = m.get('NewSaeVersion')
         if m.get('OidcRoleName') is not None:
             self.oidc_role_name = m.get('OidcRoleName')
         if m.get('OssAkId') is not None:
@@ -18183,6 +18189,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         mount_host: str = None,
         nas_configs: str = None,
         nas_id: str = None,
+        new_sae_version: str = None,
         oidc_role_name: str = None,
         oss_ak_id: str = None,
         oss_ak_secret: str = None,
@@ -18386,6 +18393,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         self.nas_configs = nas_configs
         # The ID of the File Storage NAS file system. After the application is created, you may want to call other operations to manage the application. If you do not want to change the NAS configurations in these subsequent operations, you can omit the **NasId** parameter in the requests. If you want to unmount the NAS file system, you must set the **NasId** values in the subsequent requests to an empty string ("").
         self.nas_id = nas_id
+        self.new_sae_version = new_sae_version
         # The name of the RAM role used to authenticate the user identity.
         # 
         # >  You need to create an OpenID Connect (OIDC) identity provider (IdP) and an identity provider (IdP) for role-based single sign-on (SSO) in advance. For more information, see [Creates an OpenID Connect (OIDC) identity provider (IdP)](https://help.aliyun.com/document_detail/2331022.html) and [Creates an identity provider (IdP) for role-based single sign-on (SSO)](https://help.aliyun.com/document_detail/2331016.html).
@@ -18590,6 +18598,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             result['NasConfigs'] = self.nas_configs
         if self.nas_id is not None:
             result['NasId'] = self.nas_id
+        if self.new_sae_version is not None:
+            result['NewSaeVersion'] = self.new_sae_version
         if self.oidc_role_name is not None:
             result['OidcRoleName'] = self.oidc_role_name
         if self.oss_ak_id is not None:
@@ -18734,6 +18744,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             self.nas_configs = m.get('NasConfigs')
         if m.get('NasId') is not None:
             self.nas_id = m.get('NasId')
+        if m.get('NewSaeVersion') is not None:
+            self.new_sae_version = m.get('NewSaeVersion')
         if m.get('OidcRoleName') is not None:
             self.oidc_role_name = m.get('OidcRoleName')
         if m.get('OssAkId') is not None:

@@ -1,3 +1,7 @@
+2025-04-15 Version: 2.0.2
+- Update API DeployApplication: add request parameters NewSaeVersion.
+
+
 2025-04-07 Version: 2.0.1
 - Update API CreateApplication: add request parameters DiskSize.
 - Update API DescribeApplicationConfig: add response parameters Body.Data.DiskSize.
