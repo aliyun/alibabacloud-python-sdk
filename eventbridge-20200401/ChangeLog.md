@@ -1,3 +1,59 @@
+2025-04-15 Version: 6.0.0
+- Update API CreateEventStreaming: add request parameters Tags.
+- Update API CreateEventStreaming: add request parameters RunOptions.DeadLetterQueue.Network.
+- Update API CreateEventStreaming: add request parameters RunOptions.DeadLetterQueue.SecurityGroupId.
+- Update API CreateEventStreaming: add request parameters RunOptions.DeadLetterQueue.VSwitchIds.
+- Update API CreateEventStreaming: add request parameters RunOptions.DeadLetterQueue.VpcId.
+- Update API CreateEventStreaming: add request parameters Sink.SinkKafkaParameters.Headers.
+- Update API CreateEventStreaming: add request parameters Sink.SinkOpenSourceRabbitMQParameters.AuthType.
+- Update API CreateEventStreaming: add request parameters Source.SourceOpenSourceRabbitMQParameters.AuthType.
+- Update API CreateEventStreaming: update request parameters Sink.SinkOpenSourceRabbitMQParameters.Exchange' type has changed.
+- Update API CreateEventStreaming: delete request parameters Sink.SinkOpenSourceRabbitMQParameters.Exchange.
+- Update API CreateEventStreaming: update request parameters Sink.SinkOpenSourceRabbitMQParameters.QueueName' type has changed.
+- Update API CreateEventStreaming: delete request parameters Sink.SinkOpenSourceRabbitMQParameters.QueueName.
+- Update API GetEventStreaming: add response parameters Body.Data.RunOptions.DeadLetterQueue.Network.
+- Update API GetEventStreaming: add response parameters Body.Data.RunOptions.DeadLetterQueue.SecurityGroupId.
+- Update API GetEventStreaming: add response parameters Body.Data.RunOptions.DeadLetterQueue.VSwitchIds.
+- Update API GetEventStreaming: add response parameters Body.Data.RunOptions.DeadLetterQueue.VpcId.
+- Update API GetEventStreaming: add response parameters Body.Data.Sink.SinkKafkaParameters.Headers.
+- Update API GetEventStreaming: add response parameters Body.Data.Sink.SinkOpenSourceRabbitMQParameters.AuthType.
+- Update API GetEventStreaming: add response parameters Body.Data.Source.SourceOpenSourceRabbitMQParameters.AuthType.
+- Update API GetEventStreaming: update response parameters Body.Data.Sink.SinkOpenSourceRabbitMQParameters.NetworkType' type has changed.
+- Update API GetEventStreaming: delete response parameters Body.Data.Sink.SinkOpenSourceRabbitMQParameters.NetworkType.
+- Update API GetEventStreaming: update response parameters Body.Data.Sink.SinkOpenSourceRabbitMQParameters.SecurityGroupId' type has changed.
+- Update API GetEventStreaming: delete response parameters Body.Data.Sink.SinkOpenSourceRabbitMQParameters.SecurityGroupId.
+- Update API GetEventStreaming: update response parameters Body.Data.Sink.SinkOpenSourceRabbitMQParameters.VSwitchIds' type has changed.
+- Update API GetEventStreaming: delete response parameters Body.Data.Sink.SinkOpenSourceRabbitMQParameters.VSwitchIds.
+- Update API GetEventStreaming: update response parameters Body.Data.Sink.SinkOpenSourceRabbitMQParameters.VpcId' type has changed.
+- Update API GetEventStreaming: delete response parameters Body.Data.Sink.SinkOpenSourceRabbitMQParameters.VpcId.
+- Update API ListEventStreamings: add request parameters Tags.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.RunOptions.DeadLetterQueue.Network.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.RunOptions.DeadLetterQueue.SecurityGroupId.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.RunOptions.DeadLetterQueue.VSwitchIds.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.RunOptions.DeadLetterQueue.VpcId.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Sink.SinkOpenSourceRabbitMQParameters.AuthType.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Source.SourceOpenSourceRabbitMQParameters.AuthType.
+- Update API ListEventStreamings: update response parameters Body.Data.EventStreamings.$.Sink.SinkOpenSourceRabbitMQParameters.Exchange' type has changed.
+- Update API ListEventStreamings: delete response parameters Body.Data.EventStreamings.$.Sink.SinkOpenSourceRabbitMQParameters.Exchange.
+- Update API ListEventStreamings: update response parameters Body.Data.EventStreamings.$.Sink.SinkOpenSourceRabbitMQParameters.NetworkType' type has changed.
+- Update API ListEventStreamings: delete response parameters Body.Data.EventStreamings.$.Sink.SinkOpenSourceRabbitMQParameters.NetworkType.
+- Update API ListEventStreamings: update response parameters Body.Data.EventStreamings.$.Sink.SinkOpenSourceRabbitMQParameters.QueueName' type has changed.
+- Update API ListEventStreamings: delete response parameters Body.Data.EventStreamings.$.Sink.SinkOpenSourceRabbitMQParameters.QueueName.
+- Update API ListEventStreamings: update response parameters Body.Data.EventStreamings.$.Sink.SinkOpenSourceRabbitMQParameters.SecurityGroupId' type has changed.
+- Update API ListEventStreamings: delete response parameters Body.Data.EventStreamings.$.Sink.SinkOpenSourceRabbitMQParameters.SecurityGroupId.
+- Update API ListEventStreamings: update response parameters Body.Data.EventStreamings.$.Sink.SinkOpenSourceRabbitMQParameters.VSwitchIds' type has changed.
+- Update API ListEventStreamings: delete response parameters Body.Data.EventStreamings.$.Sink.SinkOpenSourceRabbitMQParameters.VSwitchIds.
+- Update API ListEventStreamings: update response parameters Body.Data.EventStreamings.$.Sink.SinkOpenSourceRabbitMQParameters.VpcId' type has changed.
+- Update API ListEventStreamings: delete response parameters Body.Data.EventStreamings.$.Sink.SinkOpenSourceRabbitMQParameters.VpcId.
+- Update API UpdateEventStreaming: add request parameters RunOptions.DeadLetterQueue.Network.
+- Update API UpdateEventStreaming: add request parameters RunOptions.DeadLetterQueue.SecurityGroupId.
+- Update API UpdateEventStreaming: add request parameters RunOptions.DeadLetterQueue.VSwitchIds.
+- Update API UpdateEventStreaming: add request parameters RunOptions.DeadLetterQueue.VpcId.
+- Update API UpdateEventStreaming: add request parameters Sink.SinkOpenSourceRabbitMQParameters.
+- Update API UpdateEventStreaming: add request parameters Sink.SinkKafkaParameters.Headers.
+- Update API UpdateEventStreaming: add request parameters Source.SourceOpenSourceRabbitMQParameters.
+
+
 2025-03-03 Version: 5.0.1
 - Update API CreateEventStreaming: update param Sink.
 - Update API CreateEventStreaming: update param Source.

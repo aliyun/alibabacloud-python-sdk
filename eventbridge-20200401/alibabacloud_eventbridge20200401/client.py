@@ -675,6 +675,8 @@ class Client(OpenApiClient):
             body['Sink'] = request.sink_shrink
         if not UtilClient.is_unset(request.source_shrink):
             body['Source'] = request.source_shrink
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
         if not UtilClient.is_unset(request.transforms_shrink):
             body['Transforms'] = request.transforms_shrink
         req = open_api_models.OpenApiRequest(
@@ -740,6 +742,8 @@ class Client(OpenApiClient):
             body['Sink'] = request.sink_shrink
         if not UtilClient.is_unset(request.source_shrink):
             body['Source'] = request.source_shrink
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
         if not UtilClient.is_unset(request.transforms_shrink):
             body['Transforms'] = request.transforms_shrink
         req = open_api_models.OpenApiRequest(
@@ -3345,6 +3349,8 @@ class Client(OpenApiClient):
             body['SinkArn'] = request.sink_arn
         if not UtilClient.is_unset(request.source_arn):
             body['SourceArn'] = request.source_arn
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3396,6 +3402,8 @@ class Client(OpenApiClient):
             body['SinkArn'] = request.sink_arn
         if not UtilClient.is_unset(request.source_arn):
             body['SourceArn'] = request.source_arn
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
