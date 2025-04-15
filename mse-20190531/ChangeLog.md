@@ -1,3 +1,10 @@
+2025-04-15 Version: 6.18.4
+- Update API GetGovernanceKubernetesCluster: add response parameters Body.Data.PilotVersion.
+- Update API GetGovernanceKubernetesCluster: add response parameters Body.Data.VersionLifeCycle.
+- Update API QueryGovernanceKubernetesCluster: add response parameters Body.Data.Result.$.PilotVersion.
+- Update API QueryGovernanceKubernetesCluster: add response parameters Body.Data.Result.$.VersionLifeCycle.
+
+
 2025-04-08 Version: 6.18.3
 - Update API AddGateway: add request parameters ManagedEntryNetworkType.
 - Update API GetGatewayConfig: add response parameters Body.Data.EnableGzipHardwareAccelerate.

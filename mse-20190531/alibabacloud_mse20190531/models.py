@@ -27512,8 +27512,10 @@ class GetGovernanceKubernetesClusterResponseBodyData(TeaModel):
         namespace_infos: str = None,
         namespaces: List[GetGovernanceKubernetesClusterResponseBodyDataNamespaces] = None,
         pilot_start_time: str = None,
+        pilot_version: str = None,
         region: str = None,
         update_time: str = None,
+        version_life_cycle: str = None,
     ):
         # The ID of the instance.
         self.cluster_id = cluster_id
@@ -27527,10 +27529,12 @@ class GetGovernanceKubernetesClusterResponseBodyData(TeaModel):
         self.namespaces = namespaces
         # The time when the pilot component was started.
         self.pilot_start_time = pilot_start_time
+        self.pilot_version = pilot_version
         # The ID of the region in which the instance resides. The region is supported by MSE.
         self.region = region
         # The time of the last modification.
         self.update_time = update_time
+        self.version_life_cycle = version_life_cycle
 
     def validate(self):
         if self.namespaces:
@@ -27558,10 +27562,14 @@ class GetGovernanceKubernetesClusterResponseBodyData(TeaModel):
                 result['Namespaces'].append(k.to_map() if k else None)
         if self.pilot_start_time is not None:
             result['PilotStartTime'] = self.pilot_start_time
+        if self.pilot_version is not None:
+            result['PilotVersion'] = self.pilot_version
         if self.region is not None:
             result['Region'] = self.region
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
+        if self.version_life_cycle is not None:
+            result['VersionLifeCycle'] = self.version_life_cycle
         return result
 
     def from_map(self, m: dict = None):
@@ -27581,10 +27589,14 @@ class GetGovernanceKubernetesClusterResponseBodyData(TeaModel):
                 self.namespaces.append(temp_model.from_map(k))
         if m.get('PilotStartTime') is not None:
             self.pilot_start_time = m.get('PilotStartTime')
+        if m.get('PilotVersion') is not None:
+            self.pilot_version = m.get('PilotVersion')
         if m.get('Region') is not None:
             self.region = m.get('Region')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+        if m.get('VersionLifeCycle') is not None:
+            self.version_life_cycle = m.get('VersionLifeCycle')
         return self
 
 
@@ -57203,7 +57215,9 @@ class QueryGovernanceKubernetesClusterResponseBodyDataResult(TeaModel):
         k_8s_version: str = None,
         namespace_infos: str = None,
         pilot_start_time: str = None,
+        pilot_version: str = None,
         region: str = None,
+        version_life_cycle: str = None,
     ):
         # The ID of the cluster.
         self.cluster_id = cluster_id
@@ -57215,8 +57229,10 @@ class QueryGovernanceKubernetesClusterResponseBodyDataResult(TeaModel):
         self.namespace_infos = namespace_infos
         # The time when the pilot component was started.
         self.pilot_start_time = pilot_start_time
+        self.pilot_version = pilot_version
         # The region where the cluster resides.
         self.region = region
+        self.version_life_cycle = version_life_cycle
 
     def validate(self):
         pass
@@ -57237,8 +57253,12 @@ class QueryGovernanceKubernetesClusterResponseBodyDataResult(TeaModel):
             result['NamespaceInfos'] = self.namespace_infos
         if self.pilot_start_time is not None:
             result['PilotStartTime'] = self.pilot_start_time
+        if self.pilot_version is not None:
+            result['PilotVersion'] = self.pilot_version
         if self.region is not None:
             result['Region'] = self.region
+        if self.version_life_cycle is not None:
+            result['VersionLifeCycle'] = self.version_life_cycle
         return result
 
     def from_map(self, m: dict = None):
@@ -57253,8 +57273,12 @@ class QueryGovernanceKubernetesClusterResponseBodyDataResult(TeaModel):
             self.namespace_infos = m.get('NamespaceInfos')
         if m.get('PilotStartTime') is not None:
             self.pilot_start_time = m.get('PilotStartTime')
+        if m.get('PilotVersion') is not None:
+            self.pilot_version = m.get('PilotVersion')
         if m.get('Region') is not None:
             self.region = m.get('Region')
+        if m.get('VersionLifeCycle') is not None:
+            self.version_life_cycle = m.get('VersionLifeCycle')
         return self
 
 
