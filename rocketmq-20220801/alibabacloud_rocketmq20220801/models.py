@@ -18,6 +18,7 @@ class DataTopicLagMapValue(TeaModel):
         self.inflight_count = inflight_count
         # Delivery delay time, in seconds
         self.delivery_duration = delivery_duration
+        # lastConsumeTimestamp
         self.last_consume_timestamp = last_consume_timestamp
 
     def validate(self):
@@ -62,12 +63,21 @@ class AddDisasterRecoveryItemRequestTopics(TeaModel):
         region_id: str = None,
         topic_name: str = None,
     ):
+        # Consumer group ID, required for ACTIVE_ACTIVE bidirectional backup
         self.consumer_group_id = consumer_group_id
+        # The order in which messages are delivered to the target instance. The parameter values ​​are as follows:
+        #   - Concurrently: concurrent delivery
+        #   - Orderly: sequential delivery
         self.delivery_order_type = delivery_order_type
+        # Instance ID, an instance ID will be automatically generated when `instanceType` is `EXTERNAL_ROCKETMQ`, and it can be obtained by querying the backup plan.
         self.instance_id = instance_id
+        # Instance type
+        #   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
+        #   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
         self.instance_type = instance_type
-        # regionId
+        # Region ID
         self.region_id = region_id
+        # Disaster recovery topic name, required
         self.topic_name = topic_name
 
     def validate(self):
@@ -115,6 +125,7 @@ class AddDisasterRecoveryItemRequest(TeaModel):
         self,
         topics: List[AddDisasterRecoveryItemRequestTopics] = None,
     ):
+        # Topics included in the backup mapping. Required.
         self.topics = topics
 
     def validate(self):
@@ -158,14 +169,23 @@ class AddDisasterRecoveryItemResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Access denied details, only in the scenario where the user is denied access due to RAM not having permission
         self.access_denied_detail = access_denied_detail
+        # Error code
         self.code = code
+        # Return result, mapping task ID
         self.data = data
+        # Dynamic error code
         self.dynamic_code = dynamic_code
+        # Dynamic error message
         self.dynamic_message = dynamic_message
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Whether the operation was successful
         self.success = success
 
     def validate(self):
@@ -499,21 +519,17 @@ class CreateConsumerGroupRequest(TeaModel):
         max_receive_tps: int = None,
         remark: str = None,
     ):
-        # The consumption retry policy that you want to configure for the consumer group. For more information, see [Consumption retry](https://help.aliyun.com/document_detail/440356.html).
+        # consume retry policy
         # 
         # This parameter is required.
         self.consume_retry_policy = consume_retry_policy
-        # The message delivery order of the consumer group.
-        # 
-        # Valid values:
-        # 
-        # *   Concurrently: concurrent delivery
-        # *   Orderly: ordered delivery
+        # The dynamic error message.
         # 
         # This parameter is required.
         self.delivery_order_type = delivery_order_type
+        # Maximum received message tps
         self.max_receive_tps = max_receive_tps
-        # The remarks on the consumer group.
+        # The HTTP status code.
         self.remark = remark
 
     def validate(self):
@@ -574,9 +590,9 @@ class CreateConsumerGroupResponseBody(TeaModel):
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -668,6 +684,365 @@ class CreateConsumerGroupResponse(TeaModel):
         return self
 
 
+class CreateDisasterRecoveryPlanRequestInstancesMessageProperty(TeaModel):
+    def __init__(
+        self,
+        property_key: str = None,
+        property_value: str = None,
+    ):
+        # Property key
+        self.property_key = property_key
+        # Property value
+        self.property_value = property_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.property_key is not None:
+            result['propertyKey'] = self.property_key
+        if self.property_value is not None:
+            result['propertyValue'] = self.property_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('propertyKey') is not None:
+            self.property_key = m.get('propertyKey')
+        if m.get('propertyValue') is not None:
+            self.property_value = m.get('propertyValue')
+        return self
+
+
+class CreateDisasterRecoveryPlanRequestInstances(TeaModel):
+    def __init__(
+        self,
+        auth_type: str = None,
+        endpoint_url: str = None,
+        instance_id: str = None,
+        instance_role: str = None,
+        instance_type: str = None,
+        message_property: CreateDisasterRecoveryPlanRequestInstancesMessageProperty = None,
+        network_type: str = None,
+        password: str = None,
+        region_id: str = None,
+        security_group_id: str = None,
+        username: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        # Authentication method. Not required for instanceType of ALIYUN_ROCKETMQ and version 4.0
+        #   - NO_AUTH: No authentication required
+        #   - ACL_AUTH: ACL authentication
+        self.auth_type = auth_type
+        # Endpoint URL, not required for instanceType of ALIYUN_ROCKETMQ, but required for EXTERNAL_ROCKETMQ
+        self.endpoint_url = endpoint_url
+        # Instance ID, not required for instanceType of EXTERNAL_ROCKETMQ, but required for ALIYUN_ROCKETMQ
+        self.instance_id = instance_id
+        # Instance role, either primary or secondary
+        #   - ACTIVE: Primary
+        #   - PASSIVE: Secondary
+        self.instance_role = instance_role
+        # Instance type
+        #   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
+        #   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+        self.instance_type = instance_type
+        # Message filtering properties. When messages are synchronized to the target cluster, this property will be automatically added for SQL filtering during message consumption.
+        self.message_property = message_property
+        # Network type, not required for instanceType of ALIYUN_ROCKETMQ, but required for EXTERNAL_ROCKETMQ
+        # Parameter values are as follows:
+        #   - TCP_INTERNET: TCP public network
+        #   - TCP_VPC: TCP VPC (Virtual Private Cloud)
+        self.network_type = network_type
+        # Authentication password, required when authType is ACL_AUTH. Not required for instanceType of ALIYUN_ROCKETMQ
+        self.password = password
+        # Region where the instance is located
+        self.region_id = region_id
+        # Security group ID, required only when the `instanceType` is EXTERNAL_ROCKETMQ and `networkType` is TCP_VPC.
+        self.security_group_id = security_group_id
+        # Authentication username, required when authType is ACL_AUTH
+        self.username = username
+        # The ID of the switch associated with the instance, required only when the `instanceType` is EXTERNAL_ROCKETMQ and `networkType` is TCP_VPC.
+        self.v_switch_id = v_switch_id
+        # The ID of the private network associated with the created instance. The instanceType instance type is only EXTERNAL_ROCKETMQ. It is required when the networkType is TCP_VPC.
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.message_property:
+            self.message_property.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_type is not None:
+            result['authType'] = self.auth_type
+        if self.endpoint_url is not None:
+            result['endpointUrl'] = self.endpoint_url
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.instance_role is not None:
+            result['instanceRole'] = self.instance_role
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.message_property is not None:
+            result['messageProperty'] = self.message_property.to_map()
+        if self.network_type is not None:
+            result['networkType'] = self.network_type
+        if self.password is not None:
+            result['password'] = self.password
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['securityGroupId'] = self.security_group_id
+        if self.username is not None:
+            result['username'] = self.username
+        if self.v_switch_id is not None:
+            result['vSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authType') is not None:
+            self.auth_type = m.get('authType')
+        if m.get('endpointUrl') is not None:
+            self.endpoint_url = m.get('endpointUrl')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('instanceRole') is not None:
+            self.instance_role = m.get('instanceRole')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('messageProperty') is not None:
+            temp_model = CreateDisasterRecoveryPlanRequestInstancesMessageProperty()
+            self.message_property = temp_model.from_map(m['messageProperty'])
+        if m.get('networkType') is not None:
+            self.network_type = m.get('networkType')
+        if m.get('password') is not None:
+            self.password = m.get('password')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('securityGroupId') is not None:
+            self.security_group_id = m.get('securityGroupId')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        if m.get('vSwitchId') is not None:
+            self.v_switch_id = m.get('vSwitchId')
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
+        return self
+
+
+class CreateDisasterRecoveryPlanRequest(TeaModel):
+    def __init__(
+        self,
+        auto_sync_checkpoint: bool = None,
+        instances: List[CreateDisasterRecoveryPlanRequestInstances] = None,
+        plan_desc: str = None,
+        plan_name: str = None,
+        plan_type: str = None,
+        sync_checkpoint_enabled: bool = None,
+    ):
+        # Whether to enable automatic synchronization of consumption progress.
+        # 
+        # > This is effective only when consumption progress synchronization is enabled, i.e., the value of `syncCheckpointEnabled` is true.
+        self.auto_sync_checkpoint = auto_sync_checkpoint
+        # Instances involved in the backup plan. Required
+        self.instances = instances
+        # Plan description
+        self.plan_desc = plan_desc
+        # Plan name, required
+        self.plan_name = plan_name
+        # Backup plan type, required. Please refer to the [documentation](https://help.aliyun.com/document_detail/2843187.html).
+        # Parameter values are as follows:
+        #   - ACTIVE_PASSIVE: One-way backup
+        #   - ACTIVE_ACTIVE: Two-way backup
+        self.plan_type = plan_type
+        # Switch for synchronizing consumption progress
+        self.sync_checkpoint_enabled = sync_checkpoint_enabled
+
+    def validate(self):
+        if self.instances:
+            for k in self.instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_sync_checkpoint is not None:
+            result['autoSyncCheckpoint'] = self.auto_sync_checkpoint
+        result['instances'] = []
+        if self.instances is not None:
+            for k in self.instances:
+                result['instances'].append(k.to_map() if k else None)
+        if self.plan_desc is not None:
+            result['planDesc'] = self.plan_desc
+        if self.plan_name is not None:
+            result['planName'] = self.plan_name
+        if self.plan_type is not None:
+            result['planType'] = self.plan_type
+        if self.sync_checkpoint_enabled is not None:
+            result['syncCheckpointEnabled'] = self.sync_checkpoint_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoSyncCheckpoint') is not None:
+            self.auto_sync_checkpoint = m.get('autoSyncCheckpoint')
+        self.instances = []
+        if m.get('instances') is not None:
+            for k in m.get('instances'):
+                temp_model = CreateDisasterRecoveryPlanRequestInstances()
+                self.instances.append(temp_model.from_map(k))
+        if m.get('planDesc') is not None:
+            self.plan_desc = m.get('planDesc')
+        if m.get('planName') is not None:
+            self.plan_name = m.get('planName')
+        if m.get('planType') is not None:
+            self.plan_type = m.get('planType')
+        if m.get('syncCheckpointEnabled') is not None:
+            self.sync_checkpoint_enabled = m.get('syncCheckpointEnabled')
+        return self
+
+
+class CreateDisasterRecoveryPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: int = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Access denied details, provided only in scenarios where access is denied due to lack of RAM permissions
+        self.access_denied_detail = access_denied_detail
+        # Error code
+        self.code = code
+        # The result, which is the backup plan ID
+        self.data = data
+        # Dynamic error code
+        self.dynamic_code = dynamic_code
+        # Dynamic error message
+        self.dynamic_message = dynamic_message
+        # HTTP status code
+        self.http_status_code = http_status_code
+        # Error message
+        self.message = message
+        # Request ID
+        self.request_id = request_id
+        # Indicates whether the operation was successful
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['accessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.dynamic_code is not None:
+            result['dynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['dynamicMessage'] = self.dynamic_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('accessDeniedDetail')
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('dynamicCode') is not None:
+            self.dynamic_code = m.get('dynamicCode')
+        if m.get('dynamicMessage') is not None:
+            self.dynamic_message = m.get('dynamicMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateDisasterRecoveryPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDisasterRecoveryPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDisasterRecoveryPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateInstanceRequestNetworkInfoInternetInfo(TeaModel):
     def __init__(
         self,
@@ -682,13 +1057,13 @@ class CreateInstanceRequestNetworkInfoInternetInfo(TeaModel):
         # 
         # Valid values: 1 to 1000.
         self.flow_out_bandwidth = flow_out_bandwidth
-        # The billing method of Internet usage.
+        # The metering method of Internet usage.
         # 
         # Valid values:
         # 
         # *   payByBandwidth: pay-by-bandwidth. This value is valid only if you enable Internet access.
         # *   payByTraffic: pay-by-traffic. This value is valid only if you enable Internet access.
-        # *   uninvolved: No billing method is involved. This value is valid only if you disable Internet access.
+        # *   uninvolved: No metering method is involved. This value is valid only if you disable Internet access.
         # 
         # This parameter is required.
         self.flow_out_type = flow_out_type
@@ -703,10 +1078,10 @@ class CreateInstanceRequestNetworkInfoInternetInfo(TeaModel):
         # 
         # This parameter is required.
         self.internet_spec = internet_spec
-        # The whitelist that includes the IP addresses that are allowed to access the ApsaraMQ for RocketMQ broker over the Internet. This parameter can be configured only if you use the public endpoint to access the instance.
+        # The whitelist that includes the CIDR blocks that are allowed to access the ApsaraMQ for RocketMQ broker over the Internet. This parameter can be configured only if you use the public endpoint to access the instance.
         # 
         # *   If you do not configure an IP address whitelist, all CIDR blocks are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
-        # *   If you configure an IP address whitelist, only the IP addresses in the whitelist are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
+        # *   If you configure an IP address whitelist, only the CIDR blocks in the whitelist are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
         self.ip_whitelist = ip_whitelist
 
     def validate(self):
@@ -919,9 +1294,9 @@ class CreateInstanceRequestProductInfo(TeaModel):
         # 
         # Valid values: 0 to 1. Default value: 0.5.
         self.send_receive_ratio = send_receive_ratio
-        # Indicates whether storage encryption is enabled.
+        # Specifies whether to enable the encryption at rest feature.
         self.storage_encryption = storage_encryption
-        # The storage encryption key.
+        # The key for encryption at rest.
         self.storage_secret_key = storage_secret_key
 
     def validate(self):
@@ -970,7 +1345,9 @@ class CreateInstanceRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The `key` of the tag.
         self.key = key
+        # The `value` of the tag.
         self.value = value
 
     def validate(self):
@@ -1032,6 +1409,8 @@ class CreateInstanceRequest(TeaModel):
         # 
         # *   ons_rmqpost_public_intl: pay-as-you-go
         # *   ons_rmqsub_public_intl: subscription
+        # *   ons_rmqsrvlesspost_public_intl: serverless instance
+        # serverless instance requires this parameter
         self.commodity_code = commodity_code
         # The name of the instance that you want to create.
         # 
@@ -1066,11 +1445,11 @@ class CreateInstanceRequest(TeaModel):
         # *   Month
         # *   Year
         self.period_unit = period_unit
-        # The information about the instance specifications.
+        # The information about instance specifications.
         self.product_info = product_info
         # The instance description.
         self.remark = remark
-        # The ID of the resource group.
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
         # The primary edition of the instance. For information about the differences among primary edition instances, see [Instance selection](https://help.aliyun.com/document_detail/444722.html).
         # 
@@ -1108,6 +1487,7 @@ class CreateInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.sub_series_code = sub_series_code
+        # The tags that you want to add to the instance.
         self.tags = tags
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value of this parameter, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -1860,6 +2240,7 @@ class CreateTopicRequest(TeaModel):
         message_type: str = None,
         remark: str = None,
     ):
+        # The maximum TPS for message sending.
         self.max_send_tps = max_send_tps
         # The type of messages in the topic that you want to create.
         # 
@@ -1867,10 +2248,10 @@ class CreateTopicRequest(TeaModel):
         # 
         # *   TRANSACTION: transactional messages
         # *   FIFO: ordered messages
-        # *   DELAY: scheduled messages or delayed Message
+        # *   DELAY: scheduled or delayed messages
         # *   NORMAL: normal messages
         # 
-        # > The type of messages in the topic must be the same as the type of messages that you want to send. For example, if you create a topic whose message type is ordered messages, the topic can be used to send and receive only ordered messages.
+        # >  The type of messages in the topic must be the same as the type of messages that you want to send. For example, if you create a topic whose message type is ordered messages, you can use the topic to send and receive only ordered messages.
         self.message_type = message_type
         # The description of the topic that you want to create.
         self.remark = remark
@@ -1915,21 +2296,21 @@ class CreateTopicResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code returned if the call failed.
+        # Error code.
         self.code = code
-        # The returned result.
+        # Return result.
         self.data = data
-        # The dynamic error code.
+        # Dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message.
+        # Dynamic error message.
         self.dynamic_message = dynamic_message
-        # The HTTP status code returned.
+        # HTTP status code.
         self.http_status_code = http_status_code
-        # The error message.
+        # Error message.
         self.message = message
-        # The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        # Request ID, each request\\"s ID is unique and can be used for troubleshooting and problem localization.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the execution was successful.
         self.success = success
 
     def validate(self):
@@ -2315,6 +2696,131 @@ class DeleteConsumerGroupSubscriptionResponse(TeaModel):
         return self
 
 
+class DeleteDisasterRecoveryItemResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: bool = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Access denied details, only in the scenario where the user is denied access due to RAM not having permission
+        self.access_denied_detail = access_denied_detail
+        # Error code
+        self.code = code
+        # The return data
+        self.data = data
+        # Dynamic error code
+        self.dynamic_code = dynamic_code
+        # Dynamic error message
+        self.dynamic_message = dynamic_message
+        # HTTP status code
+        self.http_status_code = http_status_code
+        # Error message
+        self.message = message
+        # Request ID
+        self.request_id = request_id
+        # Whether the operation was successful
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['accessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.dynamic_code is not None:
+            result['dynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['dynamicMessage'] = self.dynamic_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('accessDeniedDetail')
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('dynamicCode') is not None:
+            self.dynamic_code = m.get('dynamicCode')
+        if m.get('dynamicMessage') is not None:
+            self.dynamic_message = m.get('dynamicMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class DeleteDisasterRecoveryItemResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDisasterRecoveryItemResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDisasterRecoveryItemResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteDisasterRecoveryPlanResponseBody(TeaModel):
     def __init__(
         self,
@@ -2328,14 +2834,23 @@ class DeleteDisasterRecoveryPlanResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
         self.access_denied_detail = access_denied_detail
+        # The error code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
+        # The response code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2851,6 +3366,7 @@ class DeleteInstanceIpWhitelistRequest(TeaModel):
     ):
         # The IP address whitelist.
         self.ip_whitelist = ip_whitelist
+        # The IP address whitelist.
         self.ip_whitelists = ip_whitelists
 
     def validate(self):
@@ -2885,6 +3401,7 @@ class DeleteInstanceIpWhitelistShrinkRequest(TeaModel):
     ):
         # The IP address whitelist.
         self.ip_whitelist = ip_whitelist
+        # The IP address whitelist.
         self.ip_whitelists_shrink = ip_whitelists_shrink
 
     def validate(self):
@@ -3278,6 +3795,7 @@ class GetConsumerGroupResponseBodyData(TeaModel):
         self.delivery_order_type = delivery_order_type
         # The ID of the instance.
         self.instance_id = instance_id
+        # Maximum received message tps
         self.max_receive_tps = max_receive_tps
         # The ID of the region in which the instance resides.
         self.region_id = region_id
@@ -3390,7 +3908,7 @@ class GetConsumerGroupResponseBody(TeaModel):
     ):
         # The error code.
         self.code = code
-        # The result data that is returned.
+        # The returned data.
         self.data = data
         # The dynamic error code.
         self.dynamic_code = dynamic_code
@@ -3501,6 +4019,7 @@ class GetConsumerGroupLagRequest(TeaModel):
         self,
         topic_name: str = None,
     ):
+        # The topic name.
         self.topic_name = topic_name
 
     def validate(self):
@@ -3535,6 +4054,7 @@ class GetConsumerGroupLagResponseBodyDataTotalLag(TeaModel):
         self.delivery_duration = delivery_duration
         # The number of messages being consumed.
         self.inflight_count = inflight_count
+        # Last consumption time
         self.last_consume_timestamp = last_consume_timestamp
         # Ready message count
         self.ready_count = ready_count
@@ -4300,6 +4820,671 @@ class GetConsumerStackResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetConsumerStackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDisasterRecoveryItemResponseBodyDataTopics(TeaModel):
+    def __init__(
+        self,
+        consumer_group_id: str = None,
+        delivery_order_type: str = None,
+        instance_id: str = None,
+        instance_type: str = None,
+        region_id: str = None,
+        topic_name: str = None,
+    ):
+        # The consumer group ID.
+        self.consumer_group_id = consumer_group_id
+        # The order in which messages are delivered to the target instance. The parameter values ​​are as follows:
+        #   - Concurrently: concurrent delivery
+        #   - Orderly: sequential delivery
+        self.delivery_order_type = delivery_order_type
+        # The instance ID.
+        self.instance_id = instance_id
+        # Instance type
+        #   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
+        #   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+        self.instance_type = instance_type
+        # regionId
+        self.region_id = region_id
+        # The topic name.
+        self.topic_name = topic_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consumer_group_id is not None:
+            result['consumerGroupId'] = self.consumer_group_id
+        if self.delivery_order_type is not None:
+            result['deliveryOrderType'] = self.delivery_order_type
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.topic_name is not None:
+            result['topicName'] = self.topic_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('consumerGroupId') is not None:
+            self.consumer_group_id = m.get('consumerGroupId')
+        if m.get('deliveryOrderType') is not None:
+            self.delivery_order_type = m.get('deliveryOrderType')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('topicName') is not None:
+            self.topic_name = m.get('topicName')
+        return self
+
+
+class GetDisasterRecoveryItemResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        ext_info: Dict[str, str] = None,
+        item_id: int = None,
+        item_status: str = None,
+        plan_id: int = None,
+        topics: List[GetDisasterRecoveryItemResponseBodyDataTopics] = None,
+        update_time: str = None,
+    ):
+        # The time when the topic mapping task was created.
+        self.create_time = create_time
+        # Additional Information
+        self.ext_info = ext_info
+        # The ID of the topic mapping
+        self.item_id = item_id
+        # The topic mapping task status.
+        self.item_status = item_status
+        # The ID of the global message backup plan.
+        self.plan_id = plan_id
+        # Topics included in the backup mapping
+        self.topics = topics
+        # The time when the topic mapping task was last updated.
+        self.update_time = update_time
+
+    def validate(self):
+        if self.topics:
+            for k in self.topics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.ext_info is not None:
+            result['extInfo'] = self.ext_info
+        if self.item_id is not None:
+            result['itemId'] = self.item_id
+        if self.item_status is not None:
+            result['itemStatus'] = self.item_status
+        if self.plan_id is not None:
+            result['planId'] = self.plan_id
+        result['topics'] = []
+        if self.topics is not None:
+            for k in self.topics:
+                result['topics'].append(k.to_map() if k else None)
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('extInfo') is not None:
+            self.ext_info = m.get('extInfo')
+        if m.get('itemId') is not None:
+            self.item_id = m.get('itemId')
+        if m.get('itemStatus') is not None:
+            self.item_status = m.get('itemStatus')
+        if m.get('planId') is not None:
+            self.plan_id = m.get('planId')
+        self.topics = []
+        if m.get('topics') is not None:
+            for k in m.get('topics'):
+                temp_model = GetDisasterRecoveryItemResponseBodyDataTopics()
+                self.topics.append(temp_model.from_map(k))
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        return self
+
+
+class GetDisasterRecoveryItemResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: GetDisasterRecoveryItemResponseBodyData = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
+        self.access_denied_detail = access_denied_detail
+        # The error code.
+        self.code = code
+        # The data returned.
+        self.data = data
+        # The dynamic error code.
+        self.dynamic_code = dynamic_code
+        # The dynamic error message.
+        self.dynamic_message = dynamic_message
+        # The HTTP status code.
+        self.http_status_code = http_status_code
+        # The error message.
+        self.message = message
+        # Request ID
+        self.request_id = request_id
+        # Indicates whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['accessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.dynamic_code is not None:
+            result['dynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['dynamicMessage'] = self.dynamic_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('accessDeniedDetail')
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetDisasterRecoveryItemResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('dynamicCode') is not None:
+            self.dynamic_code = m.get('dynamicCode')
+        if m.get('dynamicMessage') is not None:
+            self.dynamic_message = m.get('dynamicMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetDisasterRecoveryItemResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDisasterRecoveryItemResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDisasterRecoveryItemResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty(TeaModel):
+    def __init__(
+        self,
+        property_key: str = None,
+        property_value: str = None,
+    ):
+        # Property key
+        self.property_key = property_key
+        # Property value
+        self.property_value = property_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.property_key is not None:
+            result['propertyKey'] = self.property_key
+        if self.property_value is not None:
+            result['propertyValue'] = self.property_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('propertyKey') is not None:
+            self.property_key = m.get('propertyKey')
+        if m.get('propertyValue') is not None:
+            self.property_value = m.get('propertyValue')
+        return self
+
+
+class GetDisasterRecoveryPlanResponseBodyDataInstances(TeaModel):
+    def __init__(
+        self,
+        auth_type: str = None,
+        endpoint_url: str = None,
+        instance_id: str = None,
+        instance_role: str = None,
+        instance_type: str = None,
+        message_property: GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty = None,
+        network_type: str = None,
+        password: str = None,
+        region_id: str = None,
+        security_group_id: str = None,
+        username: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        # Authentication method. Not required for instanceType of ALIYUN_ROCKETMQ and version 4.0
+        #   - NO_AUTH: No authentication required
+        #   - ACL_AUTH: ACL authentication
+        self.auth_type = auth_type
+        # Endpoint URL, not required for instanceType of ALIYUN_ROCKETMQ, but required for EXTERNAL_ROCKETMQ
+        self.endpoint_url = endpoint_url
+        # The instance ID.
+        self.instance_id = instance_id
+        # Instance role, either primary or secondary 
+        #   - ACTIVE: Primary
+        #   - PASSIVE: Secondary
+        self.instance_role = instance_role
+        # Instance type
+        #   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
+        #   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+        self.instance_type = instance_type
+        # Message filtering properties. When messages are synchronized to the target cluster, this property will be automatically added for SQL filtering during message consumption.
+        self.message_property = message_property
+        # Network type, not required for instanceType of ALIYUN_ROCKETMQ, but required for EXTERNAL_ROCKETMQ Parameter values are as follows:
+        #   - TCP_INTERNET: TCP public network
+        #   - TCP_VPC: TCP VPC (Virtual Private Cloud)
+        self.network_type = network_type
+        # Authentication password, required when authType is ACL_AUTH. Not required for instanceType of ALIYUN_ROCKETMQ
+        self.password = password
+        # Region ID.
+        self.region_id = region_id
+        # Security group ID, required only when the instanceType is EXTERNAL_ROCKETMQ and networkType is TCP_VPC.
+        self.security_group_id = security_group_id
+        # Authentication username, required when authType is ACL_AUTH
+        self.username = username
+        # The ID of the switch associated with the instance, required only when the instanceType is EXTERNAL_ROCKETMQ and networkType is TCP_VPC.
+        self.v_switch_id = v_switch_id
+        # The ID of the private network associated with the created instance. The instanceType instance type is only EXTERNAL_ROCKETMQ. It is required when the networkType is TCP_VPC.
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.message_property:
+            self.message_property.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_type is not None:
+            result['authType'] = self.auth_type
+        if self.endpoint_url is not None:
+            result['endpointUrl'] = self.endpoint_url
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.instance_role is not None:
+            result['instanceRole'] = self.instance_role
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.message_property is not None:
+            result['messageProperty'] = self.message_property.to_map()
+        if self.network_type is not None:
+            result['networkType'] = self.network_type
+        if self.password is not None:
+            result['password'] = self.password
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['securityGroupId'] = self.security_group_id
+        if self.username is not None:
+            result['username'] = self.username
+        if self.v_switch_id is not None:
+            result['vSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authType') is not None:
+            self.auth_type = m.get('authType')
+        if m.get('endpointUrl') is not None:
+            self.endpoint_url = m.get('endpointUrl')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('instanceRole') is not None:
+            self.instance_role = m.get('instanceRole')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('messageProperty') is not None:
+            temp_model = GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty()
+            self.message_property = temp_model.from_map(m['messageProperty'])
+        if m.get('networkType') is not None:
+            self.network_type = m.get('networkType')
+        if m.get('password') is not None:
+            self.password = m.get('password')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('securityGroupId') is not None:
+            self.security_group_id = m.get('securityGroupId')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        if m.get('vSwitchId') is not None:
+            self.v_switch_id = m.get('vSwitchId')
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
+        return self
+
+
+class GetDisasterRecoveryPlanResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        auto_sync_checkpoint: bool = None,
+        create_time: str = None,
+        ext_info: Dict[str, str] = None,
+        instances: List[GetDisasterRecoveryPlanResponseBodyDataInstances] = None,
+        plan_desc: str = None,
+        plan_id: int = None,
+        plan_name: str = None,
+        plan_status: str = None,
+        plan_type: str = None,
+        sync_checkpoint_enabled: bool = None,
+        update_time: str = None,
+    ):
+        # Whether to enable automatic synchronization of consumption progress.
+        self.auto_sync_checkpoint = auto_sync_checkpoint
+        # The time when the backup plan was created.
+        self.create_time = create_time
+        # Additional Information
+        self.ext_info = ext_info
+        # Instances involved in the backup plan
+        self.instances = instances
+        # The describe of the global message backup plan.
+        self.plan_desc = plan_desc
+        # The ID of the global message backup plan.
+        self.plan_id = plan_id
+        # The name of the global message backup plan.
+        self.plan_name = plan_name
+        # The status of the global message backup plan.
+        self.plan_status = plan_status
+        # The type of the global message backup plan.
+        # values are as follows:
+        #   - ACTIVE_PASSIVE: One-way backup
+        #   - ACTIVE_ACTIVE: Two-way backup
+        self.plan_type = plan_type
+        # Switch for synchronizing consumption progress
+        self.sync_checkpoint_enabled = sync_checkpoint_enabled
+        # The time when the backup plan was created.
+        self.update_time = update_time
+
+    def validate(self):
+        if self.instances:
+            for k in self.instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_sync_checkpoint is not None:
+            result['autoSyncCheckpoint'] = self.auto_sync_checkpoint
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.ext_info is not None:
+            result['extInfo'] = self.ext_info
+        result['instances'] = []
+        if self.instances is not None:
+            for k in self.instances:
+                result['instances'].append(k.to_map() if k else None)
+        if self.plan_desc is not None:
+            result['planDesc'] = self.plan_desc
+        if self.plan_id is not None:
+            result['planId'] = self.plan_id
+        if self.plan_name is not None:
+            result['planName'] = self.plan_name
+        if self.plan_status is not None:
+            result['planStatus'] = self.plan_status
+        if self.plan_type is not None:
+            result['planType'] = self.plan_type
+        if self.sync_checkpoint_enabled is not None:
+            result['syncCheckpointEnabled'] = self.sync_checkpoint_enabled
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoSyncCheckpoint') is not None:
+            self.auto_sync_checkpoint = m.get('autoSyncCheckpoint')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('extInfo') is not None:
+            self.ext_info = m.get('extInfo')
+        self.instances = []
+        if m.get('instances') is not None:
+            for k in m.get('instances'):
+                temp_model = GetDisasterRecoveryPlanResponseBodyDataInstances()
+                self.instances.append(temp_model.from_map(k))
+        if m.get('planDesc') is not None:
+            self.plan_desc = m.get('planDesc')
+        if m.get('planId') is not None:
+            self.plan_id = m.get('planId')
+        if m.get('planName') is not None:
+            self.plan_name = m.get('planName')
+        if m.get('planStatus') is not None:
+            self.plan_status = m.get('planStatus')
+        if m.get('planType') is not None:
+            self.plan_type = m.get('planType')
+        if m.get('syncCheckpointEnabled') is not None:
+            self.sync_checkpoint_enabled = m.get('syncCheckpointEnabled')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        return self
+
+
+class GetDisasterRecoveryPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: GetDisasterRecoveryPlanResponseBodyData = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
+        self.access_denied_detail = access_denied_detail
+        # The error code.
+        self.code = code
+        # The data returned.
+        self.data = data
+        # The dynamic error code.
+        self.dynamic_code = dynamic_code
+        # The dynamic error message.
+        self.dynamic_message = dynamic_message
+        # The HTTP status code.
+        self.http_status_code = http_status_code
+        # The error message.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the call was successful.
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['accessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.dynamic_code is not None:
+            result['dynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['dynamicMessage'] = self.dynamic_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('accessDeniedDetail')
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetDisasterRecoveryPlanResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('dynamicCode') is not None:
+            self.dynamic_code = m.get('dynamicCode')
+        if m.get('dynamicMessage') is not None:
+            self.dynamic_message = m.get('dynamicMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetDisasterRecoveryPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDisasterRecoveryPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDisasterRecoveryPlanResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5454,6 +6639,12 @@ class GetInstanceAccountResponseBodyData(TeaModel):
         password: str = None,
         username: str = None,
     ):
+        # The status of the account.
+        # 
+        # Valid values:
+        # 
+        # *   DISABLE
+        # *   ENABLE
         self.account_status = account_status
         # The password of the account.
         self.password = password
@@ -5502,7 +6693,7 @@ class GetInstanceAccountResponseBody(TeaModel):
     ):
         # The error code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
         # The dynamic error code.
         self.dynamic_code = dynamic_code
@@ -5614,8 +6805,17 @@ class GetInstanceAclRequest(TeaModel):
         resource_name: str = None,
         resource_type: str = None,
     ):
+        # The name of the resource on which you want to grant permissions.
+        # 
         # This parameter is required.
         self.resource_name = resource_name
+        # The type of the resource on which you want to grant permissions.
+        # 
+        # Valid values:
+        # 
+        # *   Group
+        # *   Topic
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 
@@ -5656,14 +6856,28 @@ class GetInstanceAclResponseBodyData(TeaModel):
         resource_type: str = None,
         username: str = None,
     ):
+        # The authentication type of the instance.
+        # 
+        # Valid values:
+        # 
+        # *   apache_acl: open source access control list (ACL)
+        # *   default: the default account of the instance
         self.acl_type = acl_type
+        # The type of operations that can be performed on the resource.
         self.actions = actions
+        # The decision result of the authorization.
         self.decision = decision
+        # The instance ID.
         self.instance_id = instance_id
+        # The IP address whitelists.
         self.ip_whitelists = ip_whitelists
+        # The region ID.
         self.region_id = region_id
+        # The name of the resource on which the permissions are granted.
         self.resource_name = resource_name
+        # The type of the resource on which the permissions are granted.
         self.resource_type = resource_type
+        # The username.
         self.username = username
 
     def validate(self):
@@ -5730,14 +6944,21 @@ class GetInstanceAclResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
+        # The response code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -5836,6 +7057,7 @@ class GetInstanceIpWhitelistRequest(TeaModel):
         self,
         ip_whitelists: List[str] = None,
     ):
+        # The  filter IP address whitelists.
         self.ip_whitelists = ip_whitelists
 
     def validate(self):
@@ -5863,6 +7085,7 @@ class GetInstanceIpWhitelistShrinkRequest(TeaModel):
         self,
         ip_whitelists_shrink: str = None,
     ):
+        # The  filter IP address whitelists.
         self.ip_whitelists_shrink = ip_whitelists_shrink
 
     def validate(self):
@@ -5892,8 +7115,11 @@ class GetInstanceIpWhitelistResponseBodyData(TeaModel):
         ip_whitelists: List[str] = None,
         region_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The IP address whitelists.
         self.ip_whitelists = ip_whitelists
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -5936,13 +7162,21 @@ class GetInstanceIpWhitelistResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -6302,34 +7536,42 @@ class GetTopicResponseBodyData(TeaModel):
         topic_name: str = None,
         update_time: str = None,
     ):
-        # The time when the topic was created.
+        # Creation time of the topic.
         self.create_time = create_time
-        # The ID of the instance.
+        # The ID of the instance to which the topic belongs.
         self.instance_id = instance_id
+        # The maximum TPS for message sending.
         self.max_send_tps = max_send_tps
-        # The message type of the topic.
+        # The type of messages in the topic.
         # 
         # Valid values:
         # 
-        # *   TRANSACTION: transactional message
-        # *   FIFO: ordered message
-        # *   DELAY: scheduled or delayed message
-        # *   NORMAL: normal message
+        # *   TRANSACTION: transactional messages
+        # *   FIFO: ordered messages
+        # *   DELAY: scheduled or delayed messages
+        # *   NORMAL: normal messages
+        # 
+        # Valid values:
+        # 
+        # *   TRANSACTION: transactional messages
+        # *   FIFO: ordered messages
+        # *   DELAY: scheduled or delayed messages
+        # *   NORMAL: normal messages
         self.message_type = message_type
-        # The ID of the region in which the instance resides.
+        # The region ID to which the instance belongs.
         self.region_id = region_id
-        # The remarks on the topic.
+        # Remark information of the topic.
         self.remark = remark
-        # The state of the topic.
+        # The topic status.
         # 
         # Valid values:
         # 
-        # *   RUNNING: The topic is running.
-        # *   CREATING: The topic is being created.
+        # *   RUNNING
+        # *   CREATING
         self.status = status
-        # The name of the topic.
+        # Topic name.
         self.topic_name = topic_name
-        # The time when the topic was last updated.
+        # Last modification time of the topic.
         self.update_time = update_time
 
     def validate(self):
@@ -6396,21 +7638,21 @@ class GetTopicResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # Error code.
         self.code = code
-        # The result data that is returned.
+        # The returned data.
         self.data = data
-        # The dynamic error code.
+        # Dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message.
+        # Dynamic error message.
         self.dynamic_message = dynamic_message
-        # The HTTP status code.
+        # HTTP status code.
         self.http_status_code = http_status_code
-        # The error message.
+        # Error message.
         self.message = message
-        # The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+        # Request ID, each request\\"s ID is unique and can be used for troubleshooting and problem localization.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the execution was successful.
         self.success = success
 
     def validate(self):
@@ -6553,6 +7795,7 @@ class GetTraceResponseBodyDataBrokerInfo(TeaModel):
         self.operations = operations
         # Preset delivery time.
         self.preset_delay_time = preset_delay_time
+        # Withdraw scheduled message request result
         self.recall_result = recall_result
 
     def validate(self):
@@ -6980,6 +8223,7 @@ class GetTraceResponseBodyDataProducerInfoRecords(TeaModel):
         self.produce_status = produce_status
         # Producer time.
         self.produce_time = produce_time
+        # The time when the scheduled message withdrawal request was initiated
         self.recall_time = recall_time
         # Producer name.
         self.user_name = user_name
@@ -7045,7 +8289,7 @@ class GetTraceResponseBodyDataProducerInfo(TeaModel):
         self,
         records: List[GetTraceResponseBodyDataProducerInfoRecords] = None,
     ):
-        # Producer record list.
+        # The production records.
         self.records = records
 
     def validate(self):
@@ -7087,7 +8331,7 @@ class GetTraceResponseBodyData(TeaModel):
         region_id: str = None,
         topic_name: str = None,
     ):
-        # Broker trace info.
+        # The broker trace.
         self.broker_info = broker_info
         # Consumer trace info.
         self.consumer_infos = consumer_infos
@@ -7095,7 +8339,7 @@ class GetTraceResponseBodyData(TeaModel):
         self.instance_id = instance_id
         # The message information.
         self.message_info = message_info
-        # Producer trace info.
+        # The producer trace.
         self.producer_info = producer_info
         # The region ID.
         self.region_id = region_id
@@ -7177,7 +8421,7 @@ class GetTraceResponseBody(TeaModel):
     ):
         # The error code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
         # The dynamic error code.
         self.dynamic_code = dynamic_code
@@ -7700,6 +8944,34 @@ class ListConsumerConnectionsResponse(TeaModel):
         return self
 
 
+class ListConsumerGroupSubscriptionsRequest(TeaModel):
+    def __init__(
+        self,
+        topic_name: str = None,
+    ):
+        # The topic name. If you do not specify this parameter, all subscriptions of the consumer group are queried.
+        self.topic_name = topic_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.topic_name is not None:
+            result['topicName'] = self.topic_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('topicName') is not None:
+            self.topic_name = m.get('topicName')
+        return self
+
+
 class ListConsumerGroupSubscriptionsResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -7922,11 +9194,13 @@ class ListConsumerGroupsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The condition that you want to use to filter consumer groups in the instance. If you leave this parameter empty, all consumer groups in the instance are queried.
+        # The filter condition for the query. If not provided, all consumer groups under the specified instance will be queried.
         self.filter = filter
-        # The number of the page to return.
+        # Page number, indicating which page of results to return.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # Page size, the maximum number of results to display per page.
+        # 
+        # Value range: [10, 100].
         self.page_size = page_size
 
     def validate(self):
@@ -7969,50 +9243,21 @@ class ListConsumerGroupsResponseBodyDataList(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
-        # The ID of the consumer group.
+        # Consumer group ID.
         self.consumer_group_id = consumer_group_id
-        # The time when the consumer group was created.
+        # Creation time of the consumer group.
         self.create_time = create_time
-        # The ID of the instance.
+        # Instance ID.
         self.instance_id = instance_id
+        # The maximum TPS for message sending.
         self.max_receive_tps = max_receive_tps
-        # The ID of the region in which the instance resides.
+        # The region ID to which the instance belongs.
         self.region_id = region_id
-        # The remarks on the consumer group.
+        # Remark information of the consumer group.
         self.remark = remark
-        # The state of the consumer group.
-        # 
-        # Valid values:
-        # 
-        # *   RUNNING
-        # 
-        #     <!-- -->
-        # 
-        #     : The consumer group is
-        # 
-        #     <!-- -->
-        # 
-        #     running
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   CREATING
-        # 
-        #     <!-- -->
-        # 
-        #     : The consumer group is
-        # 
-        #     <!-- -->
-        # 
-        #     being created
-        # 
-        #     <!-- -->
-        # 
-        #     .
+        # Status of the consumer group.
         self.status = status
-        # The time when the consumer group was last updated.
+        # Last update time of the consumer group.
         self.update_time = update_time
 
     def validate(self):
@@ -8071,13 +9316,13 @@ class ListConsumerGroupsResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The paginated data.
+        # The consumer groups.
         self.list = list
-        # The page number of the returned page.
+        # Current page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # Page size.
         self.page_size = page_size
-        # The total number of returned entries.
+        # Total number of returned results.
         self.total_count = total_count
 
     def validate(self):
@@ -8132,21 +9377,21 @@ class ListConsumerGroupsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # Error code.
         self.code = code
-        # The result data that is returned.
+        # The returned data.
         self.data = data
-        # The dynamic error code.
+        # Dynamic error code.
         self.dynamic_code = dynamic_code
         # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # The HTTP status code.
+        # HTTP status code.
         self.http_status_code = http_status_code
-        # The error message.
+        # Error message.
         self.message = message
-        # The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+        # Request ID, each request has a unique ID that can be used for troubleshooting and problem localization.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the execution was successful.
         self.success = success
 
     def validate(self):
@@ -8236,6 +9481,1398 @@ class ListConsumerGroupsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListConsumerGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDisasterRecoveryCheckpointsRequest(TeaModel):
+    def __init__(
+        self,
+        filter: str = None,
+        instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        # Filter Condition
+        self.filter = filter
+        # Source Instance ID
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # Current page number, starting from 1.
+        self.page_number = page_number
+        # Page size, the maximum number of results returned per page.
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter is not None:
+            result['filter'] = self.filter
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('filter') is not None:
+            self.filter = m.get('filter')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        return self
+
+
+class ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgressData(TeaModel):
+    def __init__(
+        self,
+        consume_timestamp: int = None,
+    ):
+        # Latest consumption time
+        self.consume_timestamp = consume_timestamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consume_timestamp is not None:
+            result['consumeTimestamp'] = self.consume_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('consumeTimestamp') is not None:
+            self.consume_timestamp = m.get('consumeTimestamp')
+        return self
+
+
+class ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress(TeaModel):
+    def __init__(
+        self,
+        consumer_group_id: str = None,
+        instance_id: str = None,
+        instance_type: str = None,
+        last_fetch_time: int = None,
+        progress_data: ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgressData = None,
+        region_id: str = None,
+        topic_name: str = None,
+    ):
+        # Consumer Group ID
+        self.consumer_group_id = consumer_group_id
+        # Instance ID
+        self.instance_id = instance_id
+        # Instance type
+        #   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
+        #   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+        self.instance_type = instance_type
+        # Last fetch time
+        self.last_fetch_time = last_fetch_time
+        # Consumption progress data
+        self.progress_data = progress_data
+        # Region ID
+        self.region_id = region_id
+        # The topic name.
+        self.topic_name = topic_name
+
+    def validate(self):
+        if self.progress_data:
+            self.progress_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consumer_group_id is not None:
+            result['consumerGroupId'] = self.consumer_group_id
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.last_fetch_time is not None:
+            result['lastFetchTime'] = self.last_fetch_time
+        if self.progress_data is not None:
+            result['progressData'] = self.progress_data.to_map()
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.topic_name is not None:
+            result['topicName'] = self.topic_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('consumerGroupId') is not None:
+            self.consumer_group_id = m.get('consumerGroupId')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('lastFetchTime') is not None:
+            self.last_fetch_time = m.get('lastFetchTime')
+        if m.get('progressData') is not None:
+            temp_model = ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgressData()
+            self.progress_data = temp_model.from_map(m['progressData'])
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('topicName') is not None:
+            self.topic_name = m.get('topicName')
+        return self
+
+
+class ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgressProgressData(TeaModel):
+    def __init__(
+        self,
+        consume_timestamp: int = None,
+    ):
+        # Latest consumption time
+        self.consume_timestamp = consume_timestamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consume_timestamp is not None:
+            result['consumeTimestamp'] = self.consume_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('consumeTimestamp') is not None:
+            self.consume_timestamp = m.get('consumeTimestamp')
+        return self
+
+
+class ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress(TeaModel):
+    def __init__(
+        self,
+        consumer_group_id: str = None,
+        instance_id: str = None,
+        instance_type: str = None,
+        last_fetch_time: int = None,
+        progress_data: ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgressProgressData = None,
+        region_id: str = None,
+        topic_name: str = None,
+    ):
+        # Consumer group ID
+        self.consumer_group_id = consumer_group_id
+        # Instance ID
+        self.instance_id = instance_id
+        # Instance type
+        #   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
+        #   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+        self.instance_type = instance_type
+        # Latest fetch time
+        self.last_fetch_time = last_fetch_time
+        # Consumption progress data
+        self.progress_data = progress_data
+        # Region ID
+        self.region_id = region_id
+        # Topic name
+        self.topic_name = topic_name
+
+    def validate(self):
+        if self.progress_data:
+            self.progress_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consumer_group_id is not None:
+            result['consumerGroupId'] = self.consumer_group_id
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.last_fetch_time is not None:
+            result['lastFetchTime'] = self.last_fetch_time
+        if self.progress_data is not None:
+            result['progressData'] = self.progress_data.to_map()
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.topic_name is not None:
+            result['topicName'] = self.topic_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('consumerGroupId') is not None:
+            self.consumer_group_id = m.get('consumerGroupId')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('lastFetchTime') is not None:
+            self.last_fetch_time = m.get('lastFetchTime')
+        if m.get('progressData') is not None:
+            temp_model = ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgressProgressData()
+            self.progress_data = temp_model.from_map(m['progressData'])
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('topicName') is not None:
+            self.topic_name = m.get('topicName')
+        return self
+
+
+class ListDisasterRecoveryCheckpointsResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        checkpoint_id: int = None,
+        item_id: int = None,
+        last_sync_time: int = None,
+        plan_id: int = None,
+        source_progress: ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress = None,
+        target_progress: ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress = None,
+    ):
+        # Consumption Progress ID
+        self.checkpoint_id = checkpoint_id
+        # Backup Mapping ID
+        self.item_id = item_id
+        # Last synchronization time
+        self.last_sync_time = last_sync_time
+        # Backup Plan ID
+        self.plan_id = plan_id
+        # Source consumption progress
+        self.source_progress = source_progress
+        # Target consumption progress
+        self.target_progress = target_progress
+
+    def validate(self):
+        if self.source_progress:
+            self.source_progress.validate()
+        if self.target_progress:
+            self.target_progress.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checkpoint_id is not None:
+            result['checkpointId'] = self.checkpoint_id
+        if self.item_id is not None:
+            result['itemId'] = self.item_id
+        if self.last_sync_time is not None:
+            result['lastSyncTime'] = self.last_sync_time
+        if self.plan_id is not None:
+            result['planId'] = self.plan_id
+        if self.source_progress is not None:
+            result['sourceProgress'] = self.source_progress.to_map()
+        if self.target_progress is not None:
+            result['targetProgress'] = self.target_progress.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('checkpointId') is not None:
+            self.checkpoint_id = m.get('checkpointId')
+        if m.get('itemId') is not None:
+            self.item_id = m.get('itemId')
+        if m.get('lastSyncTime') is not None:
+            self.last_sync_time = m.get('lastSyncTime')
+        if m.get('planId') is not None:
+            self.plan_id = m.get('planId')
+        if m.get('sourceProgress') is not None:
+            temp_model = ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress()
+            self.source_progress = temp_model.from_map(m['sourceProgress'])
+        if m.get('targetProgress') is not None:
+            temp_model = ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress()
+            self.target_progress = temp_model.from_map(m['targetProgress'])
+        return self
+
+
+class ListDisasterRecoveryCheckpointsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[ListDisasterRecoveryCheckpointsResponseBodyDataList] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        # Paged data
+        self.list = list
+        # Current page number
+        self.page_number = page_number
+        # Page size
+        self.page_size = page_size
+        # Total number of records
+        self.total_count = total_count
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['list'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['list'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('list') is not None:
+            for k in m.get('list'):
+                temp_model = ListDisasterRecoveryCheckpointsResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListDisasterRecoveryCheckpointsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListDisasterRecoveryCheckpointsResponseBodyData = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Error code
+        self.code = code
+        # Response Data
+        self.data = data
+        # Dynamic error code
+        self.dynamic_code = dynamic_code
+        # The dynamic error message.
+        self.dynamic_message = dynamic_message
+        # HTTP status code
+        self.http_status_code = http_status_code
+        # Error message
+        self.message = message
+        # Request ID
+        self.request_id = request_id
+        # Whether the operation was successful
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.dynamic_code is not None:
+            result['dynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['dynamicMessage'] = self.dynamic_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListDisasterRecoveryCheckpointsResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('dynamicCode') is not None:
+            self.dynamic_code = m.get('dynamicCode')
+        if m.get('dynamicMessage') is not None:
+            self.dynamic_message = m.get('dynamicMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListDisasterRecoveryCheckpointsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDisasterRecoveryCheckpointsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDisasterRecoveryCheckpointsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDisasterRecoveryItemsRequest(TeaModel):
+    def __init__(
+        self,
+        filter: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        topic_name: str = None,
+    ):
+        # Filter condition, filter by topicName
+        self.filter = filter
+        # Page number, indicating which page of the results to query.
+        self.page_number = page_number
+        # Page size, the maximum number of results displayed per page.
+        self.page_size = page_size
+        self.topic_name = topic_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter is not None:
+            result['filter'] = self.filter
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.topic_name is not None:
+            result['topicName'] = self.topic_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('filter') is not None:
+            self.filter = m.get('filter')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('topicName') is not None:
+            self.topic_name = m.get('topicName')
+        return self
+
+
+class ListDisasterRecoveryItemsResponseBodyDataListTopics(TeaModel):
+    def __init__(
+        self,
+        consumer_group_id: str = None,
+        delivery_order_type: str = None,
+        instance_id: str = None,
+        instance_type: str = None,
+        region_id: str = None,
+        topic_name: str = None,
+    ):
+        # Consumer group ID
+        self.consumer_group_id = consumer_group_id
+        # The order in which messages are delivered to the target instance.
+        # 
+        # Parameter values are as follows:
+        # - Concurrently: concurrent delivery
+        # - Orderly: sequential delivery
+        self.delivery_order_type = delivery_order_type
+        # Instance ID
+        self.instance_id = instance_id
+        # Instance type
+        self.instance_type = instance_type
+        # Region ID
+        self.region_id = region_id
+        # The topic name.
+        self.topic_name = topic_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consumer_group_id is not None:
+            result['consumerGroupId'] = self.consumer_group_id
+        if self.delivery_order_type is not None:
+            result['deliveryOrderType'] = self.delivery_order_type
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.topic_name is not None:
+            result['topicName'] = self.topic_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('consumerGroupId') is not None:
+            self.consumer_group_id = m.get('consumerGroupId')
+        if m.get('deliveryOrderType') is not None:
+            self.delivery_order_type = m.get('deliveryOrderType')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('topicName') is not None:
+            self.topic_name = m.get('topicName')
+        return self
+
+
+class ListDisasterRecoveryItemsResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        ext_info: Dict[str, str] = None,
+        item_id: int = None,
+        item_status: str = None,
+        plan_id: int = None,
+        topics: List[ListDisasterRecoveryItemsResponseBodyDataListTopics] = None,
+        update_time: str = None,
+    ):
+        # Creation time
+        self.create_time = create_time
+        # Extended information
+        self.ext_info = ext_info
+        # Backup plan ID
+        self.item_id = item_id
+        # Backup mapping status:
+        #   - CREATING (Creating)
+        #   - CHANGING (Changing)
+        #   - RUNNING (Running)
+        #   - MANUAL_STOPPED (Manually Stopped)
+        #   - OVERDUE_STOPPED (Stopped Due to Overdue)
+        self.item_status = item_status
+        # Mapping ID
+        self.plan_id = plan_id
+        # Topics included in the backup mapping
+        self.topics = topics
+        # Update time
+        self.update_time = update_time
+
+    def validate(self):
+        if self.topics:
+            for k in self.topics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.ext_info is not None:
+            result['extInfo'] = self.ext_info
+        if self.item_id is not None:
+            result['itemId'] = self.item_id
+        if self.item_status is not None:
+            result['itemStatus'] = self.item_status
+        if self.plan_id is not None:
+            result['planId'] = self.plan_id
+        result['topics'] = []
+        if self.topics is not None:
+            for k in self.topics:
+                result['topics'].append(k.to_map() if k else None)
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('extInfo') is not None:
+            self.ext_info = m.get('extInfo')
+        if m.get('itemId') is not None:
+            self.item_id = m.get('itemId')
+        if m.get('itemStatus') is not None:
+            self.item_status = m.get('itemStatus')
+        if m.get('planId') is not None:
+            self.plan_id = m.get('planId')
+        self.topics = []
+        if m.get('topics') is not None:
+            for k in m.get('topics'):
+                temp_model = ListDisasterRecoveryItemsResponseBodyDataListTopics()
+                self.topics.append(temp_model.from_map(k))
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        return self
+
+
+class ListDisasterRecoveryItemsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[ListDisasterRecoveryItemsResponseBodyDataList] = None,
+        page_number: int = None,
+        page_size: int = None,
+        scroll_id: str = None,
+        total_count: int = None,
+    ):
+        # Paged data
+        self.list = list
+        # Current page number
+        self.page_number = page_number
+        # Page size
+        self.page_size = page_size
+        # Request scroll ID.
+        # Automatically generated by the system, subsequent pagination requests need to include this return value to continue pagination.
+        self.scroll_id = scroll_id
+        # Total number of records
+        self.total_count = total_count
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['list'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['list'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.scroll_id is not None:
+            result['scrollId'] = self.scroll_id
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('list') is not None:
+            for k in m.get('list'):
+                temp_model = ListDisasterRecoveryItemsResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('scrollId') is not None:
+            self.scroll_id = m.get('scrollId')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListDisasterRecoveryItemsResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: ListDisasterRecoveryItemsResponseBodyData = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Access denied details, provided only when access is denied due to lack of RAM permissions
+        self.access_denied_detail = access_denied_detail
+        # Error code
+        self.code = code
+        # Return result
+        self.data = data
+        # Dynamic error code
+        self.dynamic_code = dynamic_code
+        # Dynamic error message
+        self.dynamic_message = dynamic_message
+        # HTTP status code
+        self.http_status_code = http_status_code
+        # Error message
+        self.message = message
+        # Request ID
+        self.request_id = request_id
+        # Whether the request was successful
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['accessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.dynamic_code is not None:
+            result['dynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['dynamicMessage'] = self.dynamic_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('accessDeniedDetail')
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListDisasterRecoveryItemsResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('dynamicCode') is not None:
+            self.dynamic_code = m.get('dynamicCode')
+        if m.get('dynamicMessage') is not None:
+            self.dynamic_message = m.get('dynamicMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListDisasterRecoveryItemsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDisasterRecoveryItemsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDisasterRecoveryItemsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDisasterRecoveryPlansRequest(TeaModel):
+    def __init__(
+        self,
+        filter: str = None,
+        instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        # Filter conditions, filter by backup name and description
+        self.filter = filter
+        self.instance_id = instance_id
+        # Page number, the page of results to be queried.
+        self.page_number = page_number
+        # Page size, the maximum number of results displayed per page.
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter is not None:
+            result['filter'] = self.filter
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('filter') is not None:
+            self.filter = m.get('filter')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        return self
+
+
+class ListDisasterRecoveryPlansResponseBodyDataListInstancesMessageProperty(TeaModel):
+    def __init__(
+        self,
+        property_key: str = None,
+        property_value: str = None,
+    ):
+        # Property key
+        self.property_key = property_key
+        # Property value
+        self.property_value = property_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.property_key is not None:
+            result['propertyKey'] = self.property_key
+        if self.property_value is not None:
+            result['propertyValue'] = self.property_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('propertyKey') is not None:
+            self.property_key = m.get('propertyKey')
+        if m.get('propertyValue') is not None:
+            self.property_value = m.get('propertyValue')
+        return self
+
+
+class ListDisasterRecoveryPlansResponseBodyDataListInstances(TeaModel):
+    def __init__(
+        self,
+        auth_type: str = None,
+        endpoint_url: str = None,
+        instance_id: str = None,
+        instance_role: str = None,
+        instance_type: str = None,
+        message_property: ListDisasterRecoveryPlansResponseBodyDataListInstancesMessageProperty = None,
+        network_type: str = None,
+        password: str = None,
+        region_id: str = None,
+        security_group_id: str = None,
+        username: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        # Authentication method
+        self.auth_type = auth_type
+        # Endpoint URL
+        self.endpoint_url = endpoint_url
+        # Instance ID
+        self.instance_id = instance_id
+        # Instance role
+        self.instance_role = instance_role
+        # Instance type
+        #   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
+        #   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+        self.instance_type = instance_type
+        # Message property
+        self.message_property = message_property
+        # Network type
+        self.network_type = network_type
+        # Authentication password
+        self.password = password
+        # The region where the instance is located
+        self.region_id = region_id
+        # Security group ID
+        self.security_group_id = security_group_id
+        # Authentication username
+        self.username = username
+        # VSwitch ID
+        self.v_switch_id = v_switch_id
+        # VPC ID
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.message_property:
+            self.message_property.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_type is not None:
+            result['authType'] = self.auth_type
+        if self.endpoint_url is not None:
+            result['endpointUrl'] = self.endpoint_url
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.instance_role is not None:
+            result['instanceRole'] = self.instance_role
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.message_property is not None:
+            result['messageProperty'] = self.message_property.to_map()
+        if self.network_type is not None:
+            result['networkType'] = self.network_type
+        if self.password is not None:
+            result['password'] = self.password
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['securityGroupId'] = self.security_group_id
+        if self.username is not None:
+            result['username'] = self.username
+        if self.v_switch_id is not None:
+            result['vSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authType') is not None:
+            self.auth_type = m.get('authType')
+        if m.get('endpointUrl') is not None:
+            self.endpoint_url = m.get('endpointUrl')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('instanceRole') is not None:
+            self.instance_role = m.get('instanceRole')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('messageProperty') is not None:
+            temp_model = ListDisasterRecoveryPlansResponseBodyDataListInstancesMessageProperty()
+            self.message_property = temp_model.from_map(m['messageProperty'])
+        if m.get('networkType') is not None:
+            self.network_type = m.get('networkType')
+        if m.get('password') is not None:
+            self.password = m.get('password')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('securityGroupId') is not None:
+            self.security_group_id = m.get('securityGroupId')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        if m.get('vSwitchId') is not None:
+            self.v_switch_id = m.get('vSwitchId')
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
+        return self
+
+
+class ListDisasterRecoveryPlansResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        auto_sync_checkpoint: bool = None,
+        create_time: str = None,
+        ext_info: Dict[str, str] = None,
+        instances: List[ListDisasterRecoveryPlansResponseBodyDataListInstances] = None,
+        plan_desc: str = None,
+        plan_id: int = None,
+        plan_name: str = None,
+        plan_status: str = None,
+        plan_type: str = None,
+        sync_checkpoint_enabled: bool = None,
+        update_time: str = None,
+    ):
+        # Whether to enable automatic synchronization of consumption progress.
+        self.auto_sync_checkpoint = auto_sync_checkpoint
+        # Creation time
+        self.create_time = create_time
+        # Extended information
+        self.ext_info = ext_info
+        # Instances involved in the backup plan
+        self.instances = instances
+        # Plan description
+        self.plan_desc = plan_desc
+        # Plan ID
+        self.plan_id = plan_id
+        # Plan name
+        self.plan_name = plan_name
+        # Plan status:
+        #   - CREATED (Created)
+        #   - RUNNING (Running)
+        #   - DELETED (Deleted)
+        self.plan_status = plan_status
+        # Plan type:
+        #   - ACTIVE_PASSIVE (One-way backup)
+        #   - ACTIVE_ACTIVE (Two-way backup)
+        self.plan_type = plan_type
+        # Sync checkpoint switch
+        self.sync_checkpoint_enabled = sync_checkpoint_enabled
+        # Update time
+        self.update_time = update_time
+
+    def validate(self):
+        if self.instances:
+            for k in self.instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_sync_checkpoint is not None:
+            result['autoSyncCheckpoint'] = self.auto_sync_checkpoint
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.ext_info is not None:
+            result['extInfo'] = self.ext_info
+        result['instances'] = []
+        if self.instances is not None:
+            for k in self.instances:
+                result['instances'].append(k.to_map() if k else None)
+        if self.plan_desc is not None:
+            result['planDesc'] = self.plan_desc
+        if self.plan_id is not None:
+            result['planId'] = self.plan_id
+        if self.plan_name is not None:
+            result['planName'] = self.plan_name
+        if self.plan_status is not None:
+            result['planStatus'] = self.plan_status
+        if self.plan_type is not None:
+            result['planType'] = self.plan_type
+        if self.sync_checkpoint_enabled is not None:
+            result['syncCheckpointEnabled'] = self.sync_checkpoint_enabled
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoSyncCheckpoint') is not None:
+            self.auto_sync_checkpoint = m.get('autoSyncCheckpoint')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('extInfo') is not None:
+            self.ext_info = m.get('extInfo')
+        self.instances = []
+        if m.get('instances') is not None:
+            for k in m.get('instances'):
+                temp_model = ListDisasterRecoveryPlansResponseBodyDataListInstances()
+                self.instances.append(temp_model.from_map(k))
+        if m.get('planDesc') is not None:
+            self.plan_desc = m.get('planDesc')
+        if m.get('planId') is not None:
+            self.plan_id = m.get('planId')
+        if m.get('planName') is not None:
+            self.plan_name = m.get('planName')
+        if m.get('planStatus') is not None:
+            self.plan_status = m.get('planStatus')
+        if m.get('planType') is not None:
+            self.plan_type = m.get('planType')
+        if m.get('syncCheckpointEnabled') is not None:
+            self.sync_checkpoint_enabled = m.get('syncCheckpointEnabled')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        return self
+
+
+class ListDisasterRecoveryPlansResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[ListDisasterRecoveryPlansResponseBodyDataList] = None,
+        page_number: int = None,
+        page_size: int = None,
+        scroll_id: str = None,
+        total_count: int = None,
+    ):
+        # Paged data
+        self.list = list
+        # Current page number
+        self.page_number = page_number
+        # Page size
+        self.page_size = page_size
+        # Scroll request ID.
+        # Automatically generated by the system, subsequent paging requests need to include this result to continue paging.
+        self.scroll_id = scroll_id
+        # Total number of records
+        self.total_count = total_count
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['list'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['list'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.scroll_id is not None:
+            result['scrollId'] = self.scroll_id
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('list') is not None:
+            for k in m.get('list'):
+                temp_model = ListDisasterRecoveryPlansResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('scrollId') is not None:
+            self.scroll_id = m.get('scrollId')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListDisasterRecoveryPlansResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: ListDisasterRecoveryPlansResponseBodyData = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The details about the access denial. This parameter is returned only if the access is denied due to the reason that the Resource Access Management (RAM) user does not have the required permissions.
+        self.access_denied_detail = access_denied_detail
+        # Error code
+        self.code = code
+        # Return result
+        self.data = data
+        # Dynamic error code
+        self.dynamic_code = dynamic_code
+        # Dynamic error message
+        self.dynamic_message = dynamic_message
+        # HTTP status code
+        self.http_status_code = http_status_code
+        # Error message
+        self.message = message
+        # Request ID
+        self.request_id = request_id
+        # Whether the operation was successful
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['accessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.dynamic_code is not None:
+            result['dynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['dynamicMessage'] = self.dynamic_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('accessDeniedDetail')
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListDisasterRecoveryPlansResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('dynamicCode') is not None:
+            self.dynamic_code = m.get('dynamicCode')
+        if m.get('dynamicMessage') is not None:
+            self.dynamic_message = m.get('dynamicMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListDisasterRecoveryPlansResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDisasterRecoveryPlansResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDisasterRecoveryPlansResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10096,8 +12733,12 @@ class ListMetricMetaRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # Page number, indicating which page of the results to return.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size, indicating the maximum number of results per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
 
@@ -10132,8 +12773,11 @@ class ListMetricMetaResponseBodyDataList(TeaModel):
         description: str = None,
         metric_name: str = None,
     ):
+        # Monitoring item tag
         self.category = category
+        # Monitoring item description
         self.description = description
+        # Monitoring item name
         self.metric_name = metric_name
 
     def validate(self):
@@ -10172,9 +12816,13 @@ class ListMetricMetaResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # Paged data
         self.list = list
+        # Current page number
         self.page_number = page_number
+        # Page size
         self.page_size = page_size
+        # Total record count
         self.total_count = total_count
 
     def validate(self):
@@ -10229,13 +12877,21 @@ class ListMetricMetaResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code
         self.code = code
+        # Return result
         self.data = data
+        # Dynamic error code
         self.dynamic_code = dynamic_code
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Whether the operation was successful
         self.success = success
 
     def validate(self):
@@ -11082,13 +13738,13 @@ class ListTopicsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The condition that you want to use to filter topics in the instance. If you leave this parameter empty, all topics in the instance are queried.
+        # The filter condition for the query. If not provided, all topics under the instance will be queried.
         self.filter = filter
-        # The message types of the topics.
+        # The message type of the topic.
         self.message_types = message_types
-        # The number of the page to return.
+        # Page number, indicating which page of results to return.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # Page size, the maximum number of results to display per page.
         self.page_size = page_size
 
     def validate(self):
@@ -11131,13 +13787,13 @@ class ListTopicsShrinkRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The condition that you want to use to filter topics in the instance. If you leave this parameter empty, all topics in the instance are queried.
+        # The filter condition for the query. If not provided, all topics under the instance will be queried.
         self.filter = filter
-        # The message types of the topics.
+        # The message type of the topic.
         self.message_types_shrink = message_types_shrink
-        # The number of the page to return.
+        # Page number, indicating which page of results to return.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # Page size, the maximum number of results to display per page.
         self.page_size = page_size
 
     def validate(self):
@@ -11185,102 +13841,35 @@ class ListTopicsResponseBodyDataList(TeaModel):
         topic_name: str = None,
         update_time: str = None,
     ):
-        # The time when the topic was created.
+        # Creation time.
         self.create_time = create_time
-        # The ID of the instance.
+        # Instance ID.
         self.instance_id = instance_id
+        # The maximum TPS for message sending.
         self.max_send_tps = max_send_tps
-        # The message type of the topic.
+        # The type of messages in the topic.
         # 
         # Valid values:
         # 
-        # *   TRANSACTION
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     transactional message
-        # 
-        #     <!-- -->
-        # 
-        # *   FIFO
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     ordered message
-        # 
-        #     <!-- -->
-        # 
-        # *   DELAY
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     scheduled or delayed message
-        # 
-        #     <!-- -->
-        # 
-        # *   NORMAL
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     normal message
-        # 
-        #     <!-- -->
+        # *   TRANSACTION: transactional messages
+        # *   FIFO: ordered messages
+        # *   DELAY: scheduled or delayed messages
+        # *   NORMAL: normal messages
         self.message_type = message_type
-        # The ID of the region in which the instance resides.
+        # The region ID to which the instance belongs.
         self.region_id = region_id
-        # The remarks on the topic.
+        # Remark information of the topic.
         self.remark = remark
-        # The state of the topic.
+        # The topic status.
         # 
         # Valid values:
         # 
         # *   RUNNING
-        # 
-        #     <!-- -->
-        # 
-        #     : The topic is
-        # 
-        #     <!-- -->
-        # 
-        #     running
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
         # *   CREATING
-        # 
-        #     <!-- -->
-        # 
-        #     : The topic is
-        # 
-        #     <!-- -->
-        # 
-        #     being created
-        # 
-        #     <!-- -->
-        # 
-        #     .
         self.status = status
-        # The name of the topic.
+        # Topic name.
         self.topic_name = topic_name
-        # The time when the topic was last updated.
+        # Last update time of the topic.
         self.update_time = update_time
 
     def validate(self):
@@ -11343,13 +13932,13 @@ class ListTopicsResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The paginated data.
+        # The topics.
         self.list = list
-        # The page number of the returned page.
+        # Current page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # Page size.
         self.page_size = page_size
-        # The total number of returned entries.
+        # Total number of results returned.
         self.total_count = total_count
 
     def validate(self):
@@ -11404,21 +13993,20 @@ class ListTopicsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # Error code.
         self.code = code
-        # The result data that is returned.
+        # The returned data.
         self.data = data
-        # The dynamic error code.
+        # Dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message.
+        # Dynamic error message.
         self.dynamic_message = dynamic_message
-        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message.
+        # Error message.
         self.message = message
-        # The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+        # Request ID, each request has a unique ID that can be used for troubleshooting and problem localization.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the execution was successful.
         self.success = success
 
     def validate(self):
@@ -12008,14 +14596,23 @@ class StartDisasterRecoveryItemResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial. This parameter is returned only if the access is denied due to the reason that the Resource Access Management (RAM) user does not have the required permissions.
         self.access_denied_detail = access_denied_detail
+        # Error code
         self.code = code
+        # Return result
         self.data = data
+        # Dynamic error code
         self.dynamic_code = dynamic_code
+        # Dynamic error message
         self.dynamic_message = dynamic_message
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Whether the operation was successful
         self.success = success
 
     def validate(self):
@@ -12124,14 +14721,23 @@ class StopDisasterRecoveryItemResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
         self.access_denied_detail = access_denied_detail
+        # Error code
         self.code = code
+        # Return result
         self.data = data
+        # Dynamic error code
         self.dynamic_code = dynamic_code
+        # Dynamic error message
         self.dynamic_message = dynamic_message
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Whether the operation was successful
         self.success = success
 
     def validate(self):
@@ -12223,6 +14829,124 @@ class StopDisasterRecoveryItemResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopDisasterRecoveryItemResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SyncDisasterRecoveryCheckpointResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Error Code
+        self.code = code
+        # Result Data
+        self.data = data
+        # Dynamic Error Code
+        self.dynamic_code = dynamic_code
+        # The dynamic error message.
+        self.dynamic_message = dynamic_message
+        # HTTP Status Code
+        self.http_status_code = http_status_code
+        # Error Message
+        self.message = message
+        # Request ID
+        self.request_id = request_id
+        # Success or Not
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.dynamic_code is not None:
+            result['dynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['dynamicMessage'] = self.dynamic_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('dynamicCode') is not None:
+            self.dynamic_code = m.get('dynamicCode')
+        if m.get('dynamicMessage') is not None:
+            self.dynamic_message = m.get('dynamicMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class SyncDisasterRecoveryCheckpointResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SyncDisasterRecoveryCheckpointResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SyncDisasterRecoveryCheckpointResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12595,7 +15319,7 @@ class UpdateConsumerGroupRequestConsumeRetryPolicy(TeaModel):
     ):
         # The dead-letter topic.
         # 
-        # If a consumer still fails to consume a message after the message is retried for a specified number of times, the message is delivered to a dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
+        # If a consumer still fails to consume a message after the maximum number of retries specified for the message is reached, the message is delivered to the dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
         self.dead_letter_target_topic = dead_letter_target_topic
         # The maximum number of retries.
         self.max_retry_times = max_retry_times
@@ -12603,8 +15327,8 @@ class UpdateConsumerGroupRequestConsumeRetryPolicy(TeaModel):
         # 
         # Valid values:
         # 
-        # *   FixedRetryPolicy: Failed messages are retried at a fixed interval.
-        # *   DefaultRetryPolicy: Failed messages are retried at incremental intervals as the number of retries increases.
+        # *   FixedRetryPolicy: fixed-interval retry. This value is valid only if you set deliveryOrderType to Orderly.
+        # *   DefaultRetryPolicy: exponential backoff retry. This value is valid only if you set deliveryOrderType to Concurrently.
         # 
         # This parameter is required.
         self.retry_policy = retry_policy
@@ -12645,11 +15369,11 @@ class UpdateConsumerGroupRequest(TeaModel):
         max_receive_tps: int = None,
         remark: str = None,
     ):
-        # The new consumption retry policy that you want to configure for the consumer group. For more information, see [Consumption retry](https://help.aliyun.com/document_detail/440356.html).
+        # The new consumption retry policy of the consumer group. For more information, see [Consumption retry](https://help.aliyun.com/document_detail/440356.html).
         # 
         # This parameter is required.
         self.consume_retry_policy = consume_retry_policy
-        # The new message delivery order of the consumer group.
+        # The new message delivery method of the consumer group.
         # 
         # Valid values:
         # 
@@ -12658,8 +15382,9 @@ class UpdateConsumerGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.delivery_order_type = delivery_order_type
+        # The maximum TPS for message sending.
         self.max_receive_tps = max_receive_tps
-        # The new remarks on the consumer group.
+        # The new description of the consumer group.
         self.remark = remark
 
     def validate(self):
@@ -12708,21 +15433,21 @@ class UpdateConsumerGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # Error code.
         self.code = code
-        # The result data that is returned.
+        # The result returned.
         self.data = data
-        # The dynamic error code.
+        # Dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message.
+        # Dynamic error message.
         self.dynamic_message = dynamic_message
-        # The HTTP status code.
+        # HTTP status code.
         self.http_status_code = http_status_code
-        # The error message.
+        # Error message.
         self.message = message
-        # The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+        # The request ID, which is unique for each request and can be used for troubleshooting and problem localization.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the execution was successful.
         self.success = success
 
     def validate(self):
@@ -12810,6 +15535,593 @@ class UpdateConsumerGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateConsumerGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDisasterRecoveryItemRequestTopics(TeaModel):
+    def __init__(
+        self,
+        consumer_group_id: str = None,
+        delivery_order_type: str = None,
+        instance_id: str = None,
+        instance_type: str = None,
+        region_id: str = None,
+        topic_name: str = None,
+    ):
+        # The ID of the consumer group. If you use the two-way backup mode, you must specify this parameter.
+        self.consumer_group_id = consumer_group_id
+        # The method used to deliver messages to the destination instance.
+        # 
+        # Valid values:
+        # 
+        # *   Concurrently: concurrent delivery
+        # *   Orderly: ordered delivery
+        self.delivery_order_type = delivery_order_type
+        # The instance ID. If you set instanceType to EXTERNAL_ROCKETMQ, the system automatically generates an ID for the instance. You can obtain the ID by querying the global message backup plan.
+        self.instance_id = instance_id
+        # The instance type. Valid values:
+        # 
+        # *   ALIYUN_ROCKETMQ: ApsaraMQ for RocketMQ instance
+        # *   EXTERNAL_ROCKETMQ: open source RocketMQ cluster
+        self.instance_type = instance_type
+        # The region ID.
+        self.region_id = region_id
+        # The topic name. You must specify this parameter.
+        self.topic_name = topic_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consumer_group_id is not None:
+            result['consumerGroupId'] = self.consumer_group_id
+        if self.delivery_order_type is not None:
+            result['deliveryOrderType'] = self.delivery_order_type
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.topic_name is not None:
+            result['topicName'] = self.topic_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('consumerGroupId') is not None:
+            self.consumer_group_id = m.get('consumerGroupId')
+        if m.get('deliveryOrderType') is not None:
+            self.delivery_order_type = m.get('deliveryOrderType')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('topicName') is not None:
+            self.topic_name = m.get('topicName')
+        return self
+
+
+class UpdateDisasterRecoveryItemRequest(TeaModel):
+    def __init__(
+        self,
+        topics: List[UpdateDisasterRecoveryItemRequestTopics] = None,
+    ):
+        # The topics involved in the topic mapping.
+        self.topics = topics
+
+    def validate(self):
+        if self.topics:
+            for k in self.topics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['topics'] = []
+        if self.topics is not None:
+            for k in self.topics:
+                result['topics'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.topics = []
+        if m.get('topics') is not None:
+            for k in m.get('topics'):
+                temp_model = UpdateDisasterRecoveryItemRequestTopics()
+                self.topics.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateDisasterRecoveryItemResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The error code.
+        self.code = code
+        # The returned data.
+        self.data = data
+        # The dynamic error code.
+        self.dynamic_code = dynamic_code
+        # The dynamic error message.
+        self.dynamic_message = dynamic_message
+        # The response code.
+        self.http_status_code = http_status_code
+        # The error message.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.dynamic_code is not None:
+            result['dynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['dynamicMessage'] = self.dynamic_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('dynamicCode') is not None:
+            self.dynamic_code = m.get('dynamicCode')
+        if m.get('dynamicMessage') is not None:
+            self.dynamic_message = m.get('dynamicMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdateDisasterRecoveryItemResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDisasterRecoveryItemResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDisasterRecoveryItemResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDisasterRecoveryPlanRequestInstancesMessageProperty(TeaModel):
+    def __init__(
+        self,
+        property_key: str = None,
+        property_value: str = None,
+    ):
+        # The attribute key.
+        self.property_key = property_key
+        # The attribute value.
+        self.property_value = property_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.property_key is not None:
+            result['propertyKey'] = self.property_key
+        if self.property_value is not None:
+            result['propertyValue'] = self.property_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('propertyKey') is not None:
+            self.property_key = m.get('propertyKey')
+        if m.get('propertyValue') is not None:
+            self.property_value = m.get('propertyValue')
+        return self
+
+
+class UpdateDisasterRecoveryPlanRequestInstances(TeaModel):
+    def __init__(
+        self,
+        auth_type: str = None,
+        endpoint_url: str = None,
+        instance_id: str = None,
+        instance_role: str = None,
+        instance_type: str = None,
+        message_property: UpdateDisasterRecoveryPlanRequestInstancesMessageProperty = None,
+        network_type: str = None,
+        password: str = None,
+        region_id: str = None,
+        security_group_id: str = None,
+        username: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        # The authentication type.
+        # 
+        # *   NO_AUTH: no authentication
+        # *   ACL_AUTH: access control list (ACL)-based authentication
+        self.auth_type = auth_type
+        # The instance endpoint. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ.
+        self.endpoint_url = endpoint_url
+        # The instance ID.
+        self.instance_id = instance_id
+        # The instance role. Valid values:
+        # 
+        # *   ACTIVE: primary instance
+        # *   Passive: secondary instance
+        self.instance_role = instance_role
+        # The instance type. Valid values:
+        # 
+        # *   ALIYUN_ROCKETMQ: ApsaraMQ for RocketMQ instance
+        # *   EXTERNAL_ROCKETMQ: open source RocketMQ cluster
+        self.instance_type = instance_type
+        # The message attribute. When you synchronize a message to the destination cluster, the system automatically adds the attribute to the message for SQL-based filtering.
+        self.message_property = message_property
+        # The network type. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ. Valid values:
+        # 
+        # *   TCP_INTERNET: Internet over TCP
+        # *   TCP_VPC: virtual private cloud (VPC) over TCP.
+        self.network_type = network_type
+        # The password that is used for authentication. This parameter is required only if you set authType to ACL_AUTH.
+        self.password = password
+        # The region in which the instance resides.
+        self.region_id = region_id
+        # The ID of the security group to which the instance belongs. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ.
+        self.security_group_id = security_group_id
+        # The username that is used for authentication. This parameter is required only if you set authType to ACL_AUTH.
+        self.username = username
+        # The ID of the vSwitch with which the instance is associated. If you want to specify multiple vSwitches, separate the vSwitches with vertical bars (|).
+        self.v_switch_id = v_switch_id
+        # The ID of the VPC with which the instance is associated. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ.
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.message_property:
+            self.message_property.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_type is not None:
+            result['authType'] = self.auth_type
+        if self.endpoint_url is not None:
+            result['endpointUrl'] = self.endpoint_url
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.instance_role is not None:
+            result['instanceRole'] = self.instance_role
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.message_property is not None:
+            result['messageProperty'] = self.message_property.to_map()
+        if self.network_type is not None:
+            result['networkType'] = self.network_type
+        if self.password is not None:
+            result['password'] = self.password
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['securityGroupId'] = self.security_group_id
+        if self.username is not None:
+            result['username'] = self.username
+        if self.v_switch_id is not None:
+            result['vSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authType') is not None:
+            self.auth_type = m.get('authType')
+        if m.get('endpointUrl') is not None:
+            self.endpoint_url = m.get('endpointUrl')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('instanceRole') is not None:
+            self.instance_role = m.get('instanceRole')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('messageProperty') is not None:
+            temp_model = UpdateDisasterRecoveryPlanRequestInstancesMessageProperty()
+            self.message_property = temp_model.from_map(m['messageProperty'])
+        if m.get('networkType') is not None:
+            self.network_type = m.get('networkType')
+        if m.get('password') is not None:
+            self.password = m.get('password')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('securityGroupId') is not None:
+            self.security_group_id = m.get('securityGroupId')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        if m.get('vSwitchId') is not None:
+            self.v_switch_id = m.get('vSwitchId')
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
+        return self
+
+
+class UpdateDisasterRecoveryPlanRequest(TeaModel):
+    def __init__(
+        self,
+        auto_sync_checkpoint: bool = None,
+        instances: List[UpdateDisasterRecoveryPlanRequestInstances] = None,
+        plan_desc: str = None,
+        plan_name: str = None,
+        plan_type: str = None,
+        sync_checkpoint_enabled: bool = None,
+    ):
+        # Whether to enable automatic synchronization of consumption progress.
+        # 
+        # > This is effective only when consumption progress synchronization is enabled, i.e., the value of `syncCheckpointEnabled` is true.
+        self.auto_sync_checkpoint = auto_sync_checkpoint
+        # The instances that are involved in the global message backup plan.
+        self.instances = instances
+        # The description of the global message backup plan.
+        self.plan_desc = plan_desc
+        # The name of the global message backup plan.
+        self.plan_name = plan_name
+        # The type of the global message backup plan. Valid values:
+        # 
+        # *   ACTIVE_PASSIVE: geo-disaster recovery
+        # *   ACTIVE_ACTIVE: active geo-redundancy
+        self.plan_type = plan_type
+        # Switch for synchronizing consumption progress
+        self.sync_checkpoint_enabled = sync_checkpoint_enabled
+
+    def validate(self):
+        if self.instances:
+            for k in self.instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_sync_checkpoint is not None:
+            result['autoSyncCheckpoint'] = self.auto_sync_checkpoint
+        result['instances'] = []
+        if self.instances is not None:
+            for k in self.instances:
+                result['instances'].append(k.to_map() if k else None)
+        if self.plan_desc is not None:
+            result['planDesc'] = self.plan_desc
+        if self.plan_name is not None:
+            result['planName'] = self.plan_name
+        if self.plan_type is not None:
+            result['planType'] = self.plan_type
+        if self.sync_checkpoint_enabled is not None:
+            result['syncCheckpointEnabled'] = self.sync_checkpoint_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoSyncCheckpoint') is not None:
+            self.auto_sync_checkpoint = m.get('autoSyncCheckpoint')
+        self.instances = []
+        if m.get('instances') is not None:
+            for k in m.get('instances'):
+                temp_model = UpdateDisasterRecoveryPlanRequestInstances()
+                self.instances.append(temp_model.from_map(k))
+        if m.get('planDesc') is not None:
+            self.plan_desc = m.get('planDesc')
+        if m.get('planName') is not None:
+            self.plan_name = m.get('planName')
+        if m.get('planType') is not None:
+            self.plan_type = m.get('planType')
+        if m.get('syncCheckpointEnabled') is not None:
+            self.sync_checkpoint_enabled = m.get('syncCheckpointEnabled')
+        return self
+
+
+class UpdateDisasterRecoveryPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: bool = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
+        self.access_denied_detail = access_denied_detail
+        # The error code.
+        self.code = code
+        # The data returned.
+        self.data = data
+        # The dynamic error code.
+        self.dynamic_code = dynamic_code
+        # The dynamic error message.
+        self.dynamic_message = dynamic_message
+        # The response code.
+        self.http_status_code = http_status_code
+        # The error message.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['accessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.dynamic_code is not None:
+            result['dynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['dynamicMessage'] = self.dynamic_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('accessDeniedDetail')
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('dynamicCode') is not None:
+            self.dynamic_code = m.get('dynamicCode')
+        if m.get('dynamicMessage') is not None:
+            self.dynamic_message = m.get('dynamicMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdateDisasterRecoveryPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDisasterRecoveryPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDisasterRecoveryPlanResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13540,8 +16852,9 @@ class UpdateTopicRequest(TeaModel):
         max_send_tps: int = None,
         remark: str = None,
     ):
+        # Maximum send message tps
         self.max_send_tps = max_send_tps
-        # The new remarks on the topic.
+        # Updated remarks for the topic.
         self.remark = remark
 
     def validate(self):
@@ -13580,21 +16893,21 @@ class UpdateTopicResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # Error code.
         self.code = code
-        # The result data that is returned.
+        # Return result.
         self.data = data
-        # The dynamic error code.
+        # Dynamic error code
         self.dynamic_code = dynamic_code
-        # The dynamic error message.
+        # 动态错误信息
         self.dynamic_message = dynamic_message
-        # The HTTP status code.
+        # HTTP status code.
         self.http_status_code = http_status_code
-        # The error message.
+        # Error message.
         self.message = message
-        # The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+        # Request ID, each request has a unique ID that can be used for troubleshooting and problem localization.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Whether the execution result is successful.
         self.success = success
 
     def validate(self):

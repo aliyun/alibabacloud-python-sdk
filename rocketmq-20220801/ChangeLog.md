@@ -1,3 +1,18 @@
+2025-04-15 Version: 3.1.0
+- Support API CreateDisasterRecoveryPlan.
+- Support API DeleteDisasterRecoveryItem.
+- Support API GetDisasterRecoveryItem.
+- Support API GetDisasterRecoveryPlan.
+- Support API ListDisasterRecoveryCheckpoints.
+- Support API ListDisasterRecoveryItems.
+- Support API ListDisasterRecoveryPlans.
+- Support API SyncDisasterRecoveryCheckpoint.
+- Support API UpdateDisasterRecoveryItem.
+- Support API UpdateDisasterRecoveryPlan.
+- Update API ListConsumerGroupSubscriptions: add request parameters topicName.
+- Update API ListConsumerGroupSubscriptions: add request The number of query or body parameters has changed from zero to many.
+
+
 2025-02-19 Version: 3.0.0
 - Support API GetInstanceAcl.
 - Support API GetInstanceIpWhitelist.

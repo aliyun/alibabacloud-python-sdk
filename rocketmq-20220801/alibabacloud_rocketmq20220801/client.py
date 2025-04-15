@@ -49,7 +49,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.AddDisasterRecoveryItemResponse:
         """
-        @summary 添加容灾计划条目
+        @summary Add Disaster Recovery Plan Entry
         
         @param request: AddDisasterRecoveryItemRequest
         @param headers: map
@@ -94,7 +94,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.AddDisasterRecoveryItemResponse:
         """
-        @summary 添加容灾计划条目
+        @summary Add Disaster Recovery Plan Entry
         
         @param request: AddDisasterRecoveryItemRequest
         @param headers: map
@@ -137,7 +137,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.AddDisasterRecoveryItemRequest,
     ) -> rocket_mq20220801_models.AddDisasterRecoveryItemResponse:
         """
-        @summary 添加容灾计划条目
+        @summary Add Disaster Recovery Plan Entry
         
         @param request: AddDisasterRecoveryItemRequest
         @return: AddDisasterRecoveryItemResponse
@@ -152,7 +152,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.AddDisasterRecoveryItemRequest,
     ) -> rocket_mq20220801_models.AddDisasterRecoveryItemResponse:
         """
-        @summary 添加容灾计划条目
+        @summary Add Disaster Recovery Plan Entry
         
         @param request: AddDisasterRecoveryItemRequest
         @return: AddDisasterRecoveryItemResponse
@@ -300,7 +300,11 @@ class Client(OpenApiClient):
         """
         @summary Creates a consumer group.
         
-        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @description The ID of the consumer group. The ID is globally unique and is used to identify a consumer group.
+        The following limits are imposed on the ID:
+        Character limit: The ID can contain letters, digits, underscores (_), hyphens (-), and percent signs (%).
+        Length limit: The ID must be 1 to 60 characters in length.
+        For more information about strings that are reserved for the system, see [Limits on parameters](https://help.aliyun.com/document_detail/440347.html).
         
         @param request: CreateConsumerGroupRequest
         @param headers: map
@@ -354,7 +358,11 @@ class Client(OpenApiClient):
         """
         @summary Creates a consumer group.
         
-        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @description The ID of the consumer group. The ID is globally unique and is used to identify a consumer group.
+        The following limits are imposed on the ID:
+        Character limit: The ID can contain letters, digits, underscores (_), hyphens (-), and percent signs (%).
+        Length limit: The ID must be 1 to 60 characters in length.
+        For more information about strings that are reserved for the system, see [Limits on parameters](https://help.aliyun.com/document_detail/440347.html).
         
         @param request: CreateConsumerGroupRequest
         @param headers: map
@@ -406,7 +414,11 @@ class Client(OpenApiClient):
         """
         @summary Creates a consumer group.
         
-        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @description The ID of the consumer group. The ID is globally unique and is used to identify a consumer group.
+        The following limits are imposed on the ID:
+        Character limit: The ID can contain letters, digits, underscores (_), hyphens (-), and percent signs (%).
+        Length limit: The ID must be 1 to 60 characters in length.
+        For more information about strings that are reserved for the system, see [Limits on parameters](https://help.aliyun.com/document_detail/440347.html).
         
         @param request: CreateConsumerGroupRequest
         @return: CreateConsumerGroupResponse
@@ -424,7 +436,11 @@ class Client(OpenApiClient):
         """
         @summary Creates a consumer group.
         
-        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @description The ID of the consumer group. The ID is globally unique and is used to identify a consumer group.
+        The following limits are imposed on the ID:
+        Character limit: The ID can contain letters, digits, underscores (_), hyphens (-), and percent signs (%).
+        Length limit: The ID must be 1 to 60 characters in length.
+        For more information about strings that are reserved for the system, see [Limits on parameters](https://help.aliyun.com/document_detail/440347.html).
         
         @param request: CreateConsumerGroupRequest
         @return: CreateConsumerGroupResponse
@@ -432,6 +448,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_consumer_group_with_options_async(instance_id, consumer_group_id, request, headers, runtime)
+
+    def create_disaster_recovery_plan_with_options(
+        self,
+        request: rocket_mq20220801_models.CreateDisasterRecoveryPlanRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.CreateDisasterRecoveryPlanResponse:
+        """
+        @summary Create Disaster Recovery Plan
+        
+        @param request: CreateDisasterRecoveryPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDisasterRecoveryPlanResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_sync_checkpoint):
+            body['autoSyncCheckpoint'] = request.auto_sync_checkpoint
+        if not UtilClient.is_unset(request.instances):
+            body['instances'] = request.instances
+        if not UtilClient.is_unset(request.plan_desc):
+            body['planDesc'] = request.plan_desc
+        if not UtilClient.is_unset(request.plan_name):
+            body['planName'] = request.plan_name
+        if not UtilClient.is_unset(request.plan_type):
+            body['planType'] = request.plan_type
+        if not UtilClient.is_unset(request.sync_checkpoint_enabled):
+            body['syncCheckpointEnabled'] = request.sync_checkpoint_enabled
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDisasterRecoveryPlan',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rocket_mq20220801_models.CreateDisasterRecoveryPlanResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rocket_mq20220801_models.CreateDisasterRecoveryPlanResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_disaster_recovery_plan_with_options_async(
+        self,
+        request: rocket_mq20220801_models.CreateDisasterRecoveryPlanRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.CreateDisasterRecoveryPlanResponse:
+        """
+        @summary Create Disaster Recovery Plan
+        
+        @param request: CreateDisasterRecoveryPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDisasterRecoveryPlanResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_sync_checkpoint):
+            body['autoSyncCheckpoint'] = request.auto_sync_checkpoint
+        if not UtilClient.is_unset(request.instances):
+            body['instances'] = request.instances
+        if not UtilClient.is_unset(request.plan_desc):
+            body['planDesc'] = request.plan_desc
+        if not UtilClient.is_unset(request.plan_name):
+            body['planName'] = request.plan_name
+        if not UtilClient.is_unset(request.plan_type):
+            body['planType'] = request.plan_type
+        if not UtilClient.is_unset(request.sync_checkpoint_enabled):
+            body['syncCheckpointEnabled'] = request.sync_checkpoint_enabled
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDisasterRecoveryPlan',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rocket_mq20220801_models.CreateDisasterRecoveryPlanResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rocket_mq20220801_models.CreateDisasterRecoveryPlanResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_disaster_recovery_plan(
+        self,
+        request: rocket_mq20220801_models.CreateDisasterRecoveryPlanRequest,
+    ) -> rocket_mq20220801_models.CreateDisasterRecoveryPlanResponse:
+        """
+        @summary Create Disaster Recovery Plan
+        
+        @param request: CreateDisasterRecoveryPlanRequest
+        @return: CreateDisasterRecoveryPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_disaster_recovery_plan_with_options(request, headers, runtime)
+
+    async def create_disaster_recovery_plan_async(
+        self,
+        request: rocket_mq20220801_models.CreateDisasterRecoveryPlanRequest,
+    ) -> rocket_mq20220801_models.CreateDisasterRecoveryPlanResponse:
+        """
+        @summary Create Disaster Recovery Plan
+        
+        @param request: CreateDisasterRecoveryPlanRequest
+        @return: CreateDisasterRecoveryPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_disaster_recovery_plan_with_options_async(request, headers, runtime)
 
     def create_instance_with_options(
         self,
@@ -1014,7 +1166,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.CreateTopicResponse:
         """
-        @summary Creates a topic.
+        @summary Create Topic
         
         @param request: CreateTopicRequest
         @param headers: map
@@ -1064,7 +1216,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.CreateTopicResponse:
         """
-        @summary Creates a topic.
+        @summary Create Topic
         
         @param request: CreateTopicRequest
         @param headers: map
@@ -1112,7 +1264,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.CreateTopicRequest,
     ) -> rocket_mq20220801_models.CreateTopicResponse:
         """
-        @summary Creates a topic.
+        @summary Create Topic
         
         @param request: CreateTopicRequest
         @return: CreateTopicResponse
@@ -1128,7 +1280,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.CreateTopicRequest,
     ) -> rocket_mq20220801_models.CreateTopicResponse:
         """
-        @summary Creates a topic.
+        @summary Create Topic
         
         @param request: CreateTopicRequest
         @return: CreateTopicResponse
@@ -1387,6 +1539,112 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_consumer_group_subscription_with_options_async(instance_id, consumer_group_id, request, headers, runtime)
 
+    def delete_disaster_recovery_item_with_options(
+        self,
+        plan_id: str,
+        item_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.DeleteDisasterRecoveryItemResponse:
+        """
+        @summary 删除容灾计划条目
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDisasterRecoveryItemResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteDisasterRecoveryItem',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}/items/{OpenApiUtilClient.get_encode_param(item_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rocket_mq20220801_models.DeleteDisasterRecoveryItemResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rocket_mq20220801_models.DeleteDisasterRecoveryItemResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_disaster_recovery_item_with_options_async(
+        self,
+        plan_id: str,
+        item_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.DeleteDisasterRecoveryItemResponse:
+        """
+        @summary 删除容灾计划条目
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDisasterRecoveryItemResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteDisasterRecoveryItem',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}/items/{OpenApiUtilClient.get_encode_param(item_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rocket_mq20220801_models.DeleteDisasterRecoveryItemResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rocket_mq20220801_models.DeleteDisasterRecoveryItemResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_disaster_recovery_item(
+        self,
+        plan_id: str,
+        item_id: str,
+    ) -> rocket_mq20220801_models.DeleteDisasterRecoveryItemResponse:
+        """
+        @summary 删除容灾计划条目
+        
+        @return: DeleteDisasterRecoveryItemResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_disaster_recovery_item_with_options(plan_id, item_id, headers, runtime)
+
+    async def delete_disaster_recovery_item_async(
+        self,
+        plan_id: str,
+        item_id: str,
+    ) -> rocket_mq20220801_models.DeleteDisasterRecoveryItemResponse:
+        """
+        @summary 删除容灾计划条目
+        
+        @return: DeleteDisasterRecoveryItemResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_disaster_recovery_item_with_options_async(plan_id, item_id, headers, runtime)
+
     def delete_disaster_recovery_plan_with_options(
         self,
         plan_id: str,
@@ -1394,7 +1652,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteDisasterRecoveryPlanResponse:
         """
-        @summary 删除容灾计划
+        @summary Deletes a global message backup plan.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1432,7 +1690,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteDisasterRecoveryPlanResponse:
         """
-        @summary 删除容灾计划
+        @summary Deletes a global message backup plan.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1468,7 +1726,7 @@ class Client(OpenApiClient):
         plan_id: str,
     ) -> rocket_mq20220801_models.DeleteDisasterRecoveryPlanResponse:
         """
-        @summary 删除容灾计划
+        @summary Deletes a global message backup plan.
         
         @return: DeleteDisasterRecoveryPlanResponse
         """
@@ -1481,7 +1739,7 @@ class Client(OpenApiClient):
         plan_id: str,
     ) -> rocket_mq20220801_models.DeleteDisasterRecoveryPlanResponse:
         """
-        @summary 删除容灾计划
+        @summary Deletes a global message backup plan.
         
         @return: DeleteDisasterRecoveryPlanResponse
         """
@@ -2559,6 +2817,214 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_consumer_stack_with_options_async(instance_id, consumer_group_id, request, headers, runtime)
 
+    def get_disaster_recovery_item_with_options(
+        self,
+        plan_id: str,
+        item_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.GetDisasterRecoveryItemResponse:
+        """
+        @summary 查询容灾计划条目详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDisasterRecoveryItemResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDisasterRecoveryItem',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}/items/{OpenApiUtilClient.get_encode_param(item_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rocket_mq20220801_models.GetDisasterRecoveryItemResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rocket_mq20220801_models.GetDisasterRecoveryItemResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_disaster_recovery_item_with_options_async(
+        self,
+        plan_id: str,
+        item_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.GetDisasterRecoveryItemResponse:
+        """
+        @summary 查询容灾计划条目详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDisasterRecoveryItemResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDisasterRecoveryItem',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}/items/{OpenApiUtilClient.get_encode_param(item_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rocket_mq20220801_models.GetDisasterRecoveryItemResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rocket_mq20220801_models.GetDisasterRecoveryItemResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_disaster_recovery_item(
+        self,
+        plan_id: str,
+        item_id: str,
+    ) -> rocket_mq20220801_models.GetDisasterRecoveryItemResponse:
+        """
+        @summary 查询容灾计划条目详情
+        
+        @return: GetDisasterRecoveryItemResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_disaster_recovery_item_with_options(plan_id, item_id, headers, runtime)
+
+    async def get_disaster_recovery_item_async(
+        self,
+        plan_id: str,
+        item_id: str,
+    ) -> rocket_mq20220801_models.GetDisasterRecoveryItemResponse:
+        """
+        @summary 查询容灾计划条目详情
+        
+        @return: GetDisasterRecoveryItemResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_disaster_recovery_item_with_options_async(plan_id, item_id, headers, runtime)
+
+    def get_disaster_recovery_plan_with_options(
+        self,
+        plan_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.GetDisasterRecoveryPlanResponse:
+        """
+        @summary 查询容灾计划详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDisasterRecoveryPlanResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDisasterRecoveryPlan',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rocket_mq20220801_models.GetDisasterRecoveryPlanResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rocket_mq20220801_models.GetDisasterRecoveryPlanResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_disaster_recovery_plan_with_options_async(
+        self,
+        plan_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.GetDisasterRecoveryPlanResponse:
+        """
+        @summary 查询容灾计划详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDisasterRecoveryPlanResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDisasterRecoveryPlan',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rocket_mq20220801_models.GetDisasterRecoveryPlanResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rocket_mq20220801_models.GetDisasterRecoveryPlanResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_disaster_recovery_plan(
+        self,
+        plan_id: str,
+    ) -> rocket_mq20220801_models.GetDisasterRecoveryPlanResponse:
+        """
+        @summary 查询容灾计划详情
+        
+        @return: GetDisasterRecoveryPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_disaster_recovery_plan_with_options(plan_id, headers, runtime)
+
+    async def get_disaster_recovery_plan_async(
+        self,
+        plan_id: str,
+    ) -> rocket_mq20220801_models.GetDisasterRecoveryPlanResponse:
+        """
+        @summary 查询容灾计划详情
+        
+        @return: GetDisasterRecoveryPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_disaster_recovery_plan_with_options_async(plan_id, headers, runtime)
+
     def get_instance_with_options(
         self,
         instance_id: str,
@@ -2798,7 +3264,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetInstanceAclResponse:
         """
-        @summary 获取访问控制acl数据
+        @summary Queries information about the access control list (ACL) of an instance.
         
         @param request: GetInstanceAclRequest
         @param headers: map
@@ -2846,7 +3312,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetInstanceAclResponse:
         """
-        @summary 获取访问控制acl数据
+        @summary Queries information about the access control list (ACL) of an instance.
         
         @param request: GetInstanceAclRequest
         @param headers: map
@@ -2892,7 +3358,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.GetInstanceAclRequest,
     ) -> rocket_mq20220801_models.GetInstanceAclResponse:
         """
-        @summary 获取访问控制acl数据
+        @summary Queries information about the access control list (ACL) of an instance.
         
         @param request: GetInstanceAclRequest
         @return: GetInstanceAclResponse
@@ -2908,7 +3374,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.GetInstanceAclRequest,
     ) -> rocket_mq20220801_models.GetInstanceAclResponse:
         """
-        @summary 获取访问控制acl数据
+        @summary Queries information about the access control list (ACL) of an instance.
         
         @param request: GetInstanceAclRequest
         @return: GetInstanceAclResponse
@@ -2925,7 +3391,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetInstanceIpWhitelistResponse:
         """
-        @summary 获取实例ip白名单
+        @summary Queries the information about the IP address whitelist of an instance.
         
         @param tmp_req: GetInstanceIpWhitelistRequest
         @param headers: map
@@ -2974,7 +3440,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetInstanceIpWhitelistResponse:
         """
-        @summary 获取实例ip白名单
+        @summary Queries the information about the IP address whitelist of an instance.
         
         @param tmp_req: GetInstanceIpWhitelistRequest
         @param headers: map
@@ -3021,7 +3487,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.GetInstanceIpWhitelistRequest,
     ) -> rocket_mq20220801_models.GetInstanceIpWhitelistResponse:
         """
-        @summary 获取实例ip白名单
+        @summary Queries the information about the IP address whitelist of an instance.
         
         @param request: GetInstanceIpWhitelistRequest
         @return: GetInstanceIpWhitelistResponse
@@ -3036,7 +3502,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.GetInstanceIpWhitelistRequest,
     ) -> rocket_mq20220801_models.GetInstanceIpWhitelistResponse:
         """
-        @summary 获取实例ip白名单
+        @summary Queries the information about the IP address whitelist of an instance.
         
         @param request: GetInstanceIpWhitelistRequest
         @return: GetInstanceIpWhitelistResponse
@@ -3163,7 +3629,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetTopicResponse:
         """
-        @summary Queries the details of a specified topic.
+        @summary Query Topic Details
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3202,7 +3668,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetTopicResponse:
         """
-        @summary Queries the details of a specified topic.
+        @summary Query Topic Details
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3239,7 +3705,7 @@ class Client(OpenApiClient):
         topic_name: str,
     ) -> rocket_mq20220801_models.GetTopicResponse:
         """
-        @summary Queries the details of a specified topic.
+        @summary Query Topic Details
         
         @return: GetTopicResponse
         """
@@ -3253,7 +3719,7 @@ class Client(OpenApiClient):
         topic_name: str,
     ) -> rocket_mq20220801_models.GetTopicResponse:
         """
-        @summary Queries the details of a specified topic.
+        @summary Query Topic Details
         
         @return: GetTopicResponse
         """
@@ -3575,18 +4041,25 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         consumer_group_id: str,
+        request: rocket_mq20220801_models.ListConsumerGroupSubscriptionsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListConsumerGroupSubscriptionsResponse:
         """
         @summary Queries the subscriptions of a specific consumer group.
         
+        @param request: ListConsumerGroupSubscriptionsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListConsumerGroupSubscriptionsResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.topic_name):
+            query['topicName'] = request.topic_name
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListConsumerGroupSubscriptions',
@@ -3614,18 +4087,25 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         consumer_group_id: str,
+        request: rocket_mq20220801_models.ListConsumerGroupSubscriptionsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListConsumerGroupSubscriptionsResponse:
         """
         @summary Queries the subscriptions of a specific consumer group.
         
+        @param request: ListConsumerGroupSubscriptionsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListConsumerGroupSubscriptionsResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.topic_name):
+            query['topicName'] = request.topic_name
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListConsumerGroupSubscriptions',
@@ -3653,29 +4133,33 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         consumer_group_id: str,
+        request: rocket_mq20220801_models.ListConsumerGroupSubscriptionsRequest,
     ) -> rocket_mq20220801_models.ListConsumerGroupSubscriptionsResponse:
         """
         @summary Queries the subscriptions of a specific consumer group.
         
+        @param request: ListConsumerGroupSubscriptionsRequest
         @return: ListConsumerGroupSubscriptionsResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_consumer_group_subscriptions_with_options(instance_id, consumer_group_id, headers, runtime)
+        return self.list_consumer_group_subscriptions_with_options(instance_id, consumer_group_id, request, headers, runtime)
 
     async def list_consumer_group_subscriptions_async(
         self,
         instance_id: str,
         consumer_group_id: str,
+        request: rocket_mq20220801_models.ListConsumerGroupSubscriptionsRequest,
     ) -> rocket_mq20220801_models.ListConsumerGroupSubscriptionsResponse:
         """
         @summary Queries the subscriptions of a specific consumer group.
         
+        @param request: ListConsumerGroupSubscriptionsRequest
         @return: ListConsumerGroupSubscriptionsResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_consumer_group_subscriptions_with_options_async(instance_id, consumer_group_id, headers, runtime)
+        return await self.list_consumer_group_subscriptions_with_options_async(instance_id, consumer_group_id, request, headers, runtime)
 
     def list_consumer_groups_with_options(
         self,
@@ -3685,9 +4169,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListConsumerGroupsResponse:
         """
-        @summary Queries the consumer groups in a specified instance.
+        @summary List Consumer Groups
         
-        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @description >Notice: The OpenAPI provided by Alibaba Cloud is a management API used for managing and querying related resources of Alibaba Cloud services. It is recommended to integrate it only in the management chain. Do not rely on OpenAPI implementation in the core data chain for message sending and receiving, as this may lead to risks in the chain.
         
         @param request: ListConsumerGroupsRequest
         @param headers: map
@@ -3736,9 +4220,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListConsumerGroupsResponse:
         """
-        @summary Queries the consumer groups in a specified instance.
+        @summary List Consumer Groups
         
-        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @description >Notice: The OpenAPI provided by Alibaba Cloud is a management API used for managing and querying related resources of Alibaba Cloud services. It is recommended to integrate it only in the management chain. Do not rely on OpenAPI implementation in the core data chain for message sending and receiving, as this may lead to risks in the chain.
         
         @param request: ListConsumerGroupsRequest
         @param headers: map
@@ -3785,9 +4269,9 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListConsumerGroupsRequest,
     ) -> rocket_mq20220801_models.ListConsumerGroupsResponse:
         """
-        @summary Queries the consumer groups in a specified instance.
+        @summary List Consumer Groups
         
-        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @description >Notice: The OpenAPI provided by Alibaba Cloud is a management API used for managing and querying related resources of Alibaba Cloud services. It is recommended to integrate it only in the management chain. Do not rely on OpenAPI implementation in the core data chain for message sending and receiving, as this may lead to risks in the chain.
         
         @param request: ListConsumerGroupsRequest
         @return: ListConsumerGroupsResponse
@@ -3802,9 +4286,9 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListConsumerGroupsRequest,
     ) -> rocket_mq20220801_models.ListConsumerGroupsResponse:
         """
-        @summary Queries the consumer groups in a specified instance.
+        @summary List Consumer Groups
         
-        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @description >Notice: The OpenAPI provided by Alibaba Cloud is a management API used for managing and querying related resources of Alibaba Cloud services. It is recommended to integrate it only in the management chain. Do not rely on OpenAPI implementation in the core data chain for message sending and receiving, as this may lead to risks in the chain.
         
         @param request: ListConsumerGroupsRequest
         @return: ListConsumerGroupsResponse
@@ -3812,6 +4296,402 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_consumer_groups_with_options_async(instance_id, request, headers, runtime)
+
+    def list_disaster_recovery_checkpoints_with_options(
+        self,
+        plan_id: str,
+        item_id: str,
+        request: rocket_mq20220801_models.ListDisasterRecoveryCheckpointsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListDisasterRecoveryCheckpointsResponse:
+        """
+        @summary Query disaster recovery plan consumption progress information
+        
+        @param request: ListDisasterRecoveryCheckpointsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDisasterRecoveryCheckpointsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['filter'] = request.filter
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDisasterRecoveryCheckpoints',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}/items/{OpenApiUtilClient.get_encode_param(item_id)}/checkpoints',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rocket_mq20220801_models.ListDisasterRecoveryCheckpointsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rocket_mq20220801_models.ListDisasterRecoveryCheckpointsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_disaster_recovery_checkpoints_with_options_async(
+        self,
+        plan_id: str,
+        item_id: str,
+        request: rocket_mq20220801_models.ListDisasterRecoveryCheckpointsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListDisasterRecoveryCheckpointsResponse:
+        """
+        @summary Query disaster recovery plan consumption progress information
+        
+        @param request: ListDisasterRecoveryCheckpointsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDisasterRecoveryCheckpointsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['filter'] = request.filter
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDisasterRecoveryCheckpoints',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}/items/{OpenApiUtilClient.get_encode_param(item_id)}/checkpoints',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rocket_mq20220801_models.ListDisasterRecoveryCheckpointsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rocket_mq20220801_models.ListDisasterRecoveryCheckpointsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_disaster_recovery_checkpoints(
+        self,
+        plan_id: str,
+        item_id: str,
+        request: rocket_mq20220801_models.ListDisasterRecoveryCheckpointsRequest,
+    ) -> rocket_mq20220801_models.ListDisasterRecoveryCheckpointsResponse:
+        """
+        @summary Query disaster recovery plan consumption progress information
+        
+        @param request: ListDisasterRecoveryCheckpointsRequest
+        @return: ListDisasterRecoveryCheckpointsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_disaster_recovery_checkpoints_with_options(plan_id, item_id, request, headers, runtime)
+
+    async def list_disaster_recovery_checkpoints_async(
+        self,
+        plan_id: str,
+        item_id: str,
+        request: rocket_mq20220801_models.ListDisasterRecoveryCheckpointsRequest,
+    ) -> rocket_mq20220801_models.ListDisasterRecoveryCheckpointsResponse:
+        """
+        @summary Query disaster recovery plan consumption progress information
+        
+        @param request: ListDisasterRecoveryCheckpointsRequest
+        @return: ListDisasterRecoveryCheckpointsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_disaster_recovery_checkpoints_with_options_async(plan_id, item_id, request, headers, runtime)
+
+    def list_disaster_recovery_items_with_options(
+        self,
+        plan_id: str,
+        request: rocket_mq20220801_models.ListDisasterRecoveryItemsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListDisasterRecoveryItemsResponse:
+        """
+        @summary Query Disaster Recovery Plan Entry List
+        
+        @param request: ListDisasterRecoveryItemsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDisasterRecoveryItemsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['filter'] = request.filter
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.topic_name):
+            query['topicName'] = request.topic_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDisasterRecoveryItems',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}/items',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rocket_mq20220801_models.ListDisasterRecoveryItemsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rocket_mq20220801_models.ListDisasterRecoveryItemsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_disaster_recovery_items_with_options_async(
+        self,
+        plan_id: str,
+        request: rocket_mq20220801_models.ListDisasterRecoveryItemsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListDisasterRecoveryItemsResponse:
+        """
+        @summary Query Disaster Recovery Plan Entry List
+        
+        @param request: ListDisasterRecoveryItemsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDisasterRecoveryItemsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['filter'] = request.filter
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.topic_name):
+            query['topicName'] = request.topic_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDisasterRecoveryItems',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}/items',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rocket_mq20220801_models.ListDisasterRecoveryItemsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rocket_mq20220801_models.ListDisasterRecoveryItemsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_disaster_recovery_items(
+        self,
+        plan_id: str,
+        request: rocket_mq20220801_models.ListDisasterRecoveryItemsRequest,
+    ) -> rocket_mq20220801_models.ListDisasterRecoveryItemsResponse:
+        """
+        @summary Query Disaster Recovery Plan Entry List
+        
+        @param request: ListDisasterRecoveryItemsRequest
+        @return: ListDisasterRecoveryItemsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_disaster_recovery_items_with_options(plan_id, request, headers, runtime)
+
+    async def list_disaster_recovery_items_async(
+        self,
+        plan_id: str,
+        request: rocket_mq20220801_models.ListDisasterRecoveryItemsRequest,
+    ) -> rocket_mq20220801_models.ListDisasterRecoveryItemsResponse:
+        """
+        @summary Query Disaster Recovery Plan Entry List
+        
+        @param request: ListDisasterRecoveryItemsRequest
+        @return: ListDisasterRecoveryItemsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_disaster_recovery_items_with_options_async(plan_id, request, headers, runtime)
+
+    def list_disaster_recovery_plans_with_options(
+        self,
+        request: rocket_mq20220801_models.ListDisasterRecoveryPlansRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListDisasterRecoveryPlansResponse:
+        """
+        @summary Query Disaster Recovery Plan List
+        
+        @param request: ListDisasterRecoveryPlansRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDisasterRecoveryPlansResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['filter'] = request.filter
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDisasterRecoveryPlans',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rocket_mq20220801_models.ListDisasterRecoveryPlansResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rocket_mq20220801_models.ListDisasterRecoveryPlansResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_disaster_recovery_plans_with_options_async(
+        self,
+        request: rocket_mq20220801_models.ListDisasterRecoveryPlansRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListDisasterRecoveryPlansResponse:
+        """
+        @summary Query Disaster Recovery Plan List
+        
+        @param request: ListDisasterRecoveryPlansRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDisasterRecoveryPlansResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['filter'] = request.filter
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDisasterRecoveryPlans',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rocket_mq20220801_models.ListDisasterRecoveryPlansResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rocket_mq20220801_models.ListDisasterRecoveryPlansResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_disaster_recovery_plans(
+        self,
+        request: rocket_mq20220801_models.ListDisasterRecoveryPlansRequest,
+    ) -> rocket_mq20220801_models.ListDisasterRecoveryPlansResponse:
+        """
+        @summary Query Disaster Recovery Plan List
+        
+        @param request: ListDisasterRecoveryPlansRequest
+        @return: ListDisasterRecoveryPlansResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_disaster_recovery_plans_with_options(request, headers, runtime)
+
+    async def list_disaster_recovery_plans_async(
+        self,
+        request: rocket_mq20220801_models.ListDisasterRecoveryPlansRequest,
+    ) -> rocket_mq20220801_models.ListDisasterRecoveryPlansResponse:
+        """
+        @summary Query Disaster Recovery Plan List
+        
+        @param request: ListDisasterRecoveryPlansRequest
+        @return: ListDisasterRecoveryPlansResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_disaster_recovery_plans_with_options_async(request, headers, runtime)
 
     def list_instance_account_with_options(
         self,
@@ -4516,7 +5396,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListMetricMetaResponse:
         """
-        @summary 查询监控项列表
+        @summary Query Monitoring Items List
         
         @param request: ListMetricMetaRequest
         @param headers: map
@@ -4562,7 +5442,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListMetricMetaResponse:
         """
-        @summary 查询监控项列表
+        @summary Query Monitoring Items List
         
         @param request: ListMetricMetaRequest
         @param headers: map
@@ -4606,7 +5486,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListMetricMetaRequest,
     ) -> rocket_mq20220801_models.ListMetricMetaResponse:
         """
-        @summary 查询监控项列表
+        @summary Query Monitoring Items List
         
         @param request: ListMetricMetaRequest
         @return: ListMetricMetaResponse
@@ -4620,7 +5500,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListMetricMetaRequest,
     ) -> rocket_mq20220801_models.ListMetricMetaResponse:
         """
-        @summary 查询监控项列表
+        @summary Query Monitoring Items List
         
         @param request: ListMetricMetaRequest
         @return: ListMetricMetaResponse
@@ -4973,7 +5853,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListTopicsResponse:
         """
-        @summary Queries the topics in a specified instance.
+        @summary Query Topic List
         
         @param tmp_req: ListTopicsRequest
         @param headers: map
@@ -5028,7 +5908,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListTopicsResponse:
         """
-        @summary Queries the topics in a specified instance.
+        @summary Query Topic List
         
         @param tmp_req: ListTopicsRequest
         @param headers: map
@@ -5081,7 +5961,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListTopicsRequest,
     ) -> rocket_mq20220801_models.ListTopicsResponse:
         """
-        @summary Queries the topics in a specified instance.
+        @summary Query Topic List
         
         @param request: ListTopicsRequest
         @return: ListTopicsResponse
@@ -5096,7 +5976,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListTopicsRequest,
     ) -> rocket_mq20220801_models.ListTopicsResponse:
         """
-        @summary Queries the topics in a specified instance.
+        @summary Query Topic List
         
         @param request: ListTopicsRequest
         @return: ListTopicsResponse
@@ -5393,7 +6273,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.StartDisasterRecoveryItemResponse:
         """
-        @summary 启用容灾计划条目
+        @summary Enable Disaster Recovery Plan Entry
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5432,7 +6312,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.StartDisasterRecoveryItemResponse:
         """
-        @summary 启用容灾计划条目
+        @summary Enable Disaster Recovery Plan Entry
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5469,7 +6349,7 @@ class Client(OpenApiClient):
         item_id: str,
     ) -> rocket_mq20220801_models.StartDisasterRecoveryItemResponse:
         """
-        @summary 启用容灾计划条目
+        @summary Enable Disaster Recovery Plan Entry
         
         @return: StartDisasterRecoveryItemResponse
         """
@@ -5483,7 +6363,7 @@ class Client(OpenApiClient):
         item_id: str,
     ) -> rocket_mq20220801_models.StartDisasterRecoveryItemResponse:
         """
-        @summary 启用容灾计划条目
+        @summary Enable Disaster Recovery Plan Entry
         
         @return: StartDisasterRecoveryItemResponse
         """
@@ -5499,7 +6379,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.StopDisasterRecoveryItemResponse:
         """
-        @summary 停用容灾计划条目
+        @summary Deactivate Disaster Recovery Plan Entry
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5538,7 +6418,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.StopDisasterRecoveryItemResponse:
         """
-        @summary 停用容灾计划条目
+        @summary Deactivate Disaster Recovery Plan Entry
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5575,7 +6455,7 @@ class Client(OpenApiClient):
         item_id: str,
     ) -> rocket_mq20220801_models.StopDisasterRecoveryItemResponse:
         """
-        @summary 停用容灾计划条目
+        @summary Deactivate Disaster Recovery Plan Entry
         
         @return: StopDisasterRecoveryItemResponse
         """
@@ -5589,13 +6469,123 @@ class Client(OpenApiClient):
         item_id: str,
     ) -> rocket_mq20220801_models.StopDisasterRecoveryItemResponse:
         """
-        @summary 停用容灾计划条目
+        @summary Deactivate Disaster Recovery Plan Entry
         
         @return: StopDisasterRecoveryItemResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_disaster_recovery_item_with_options_async(plan_id, item_id, headers, runtime)
+
+    def sync_disaster_recovery_checkpoint_with_options(
+        self,
+        plan_id: str,
+        item_id: str,
+        checkpoint_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.SyncDisasterRecoveryCheckpointResponse:
+        """
+        @summary Synchronize Disaster Recovery Plan Consumption Progress
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncDisasterRecoveryCheckpointResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='SyncDisasterRecoveryCheckpoint',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}/items/{OpenApiUtilClient.get_encode_param(item_id)}/checkpoints/{OpenApiUtilClient.get_encode_param(checkpoint_id)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rocket_mq20220801_models.SyncDisasterRecoveryCheckpointResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rocket_mq20220801_models.SyncDisasterRecoveryCheckpointResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def sync_disaster_recovery_checkpoint_with_options_async(
+        self,
+        plan_id: str,
+        item_id: str,
+        checkpoint_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.SyncDisasterRecoveryCheckpointResponse:
+        """
+        @summary Synchronize Disaster Recovery Plan Consumption Progress
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncDisasterRecoveryCheckpointResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='SyncDisasterRecoveryCheckpoint',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}/items/{OpenApiUtilClient.get_encode_param(item_id)}/checkpoints/{OpenApiUtilClient.get_encode_param(checkpoint_id)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rocket_mq20220801_models.SyncDisasterRecoveryCheckpointResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rocket_mq20220801_models.SyncDisasterRecoveryCheckpointResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def sync_disaster_recovery_checkpoint(
+        self,
+        plan_id: str,
+        item_id: str,
+        checkpoint_id: str,
+    ) -> rocket_mq20220801_models.SyncDisasterRecoveryCheckpointResponse:
+        """
+        @summary Synchronize Disaster Recovery Plan Consumption Progress
+        
+        @return: SyncDisasterRecoveryCheckpointResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.sync_disaster_recovery_checkpoint_with_options(plan_id, item_id, checkpoint_id, headers, runtime)
+
+    async def sync_disaster_recovery_checkpoint_async(
+        self,
+        plan_id: str,
+        item_id: str,
+        checkpoint_id: str,
+    ) -> rocket_mq20220801_models.SyncDisasterRecoveryCheckpointResponse:
+        """
+        @summary Synchronize Disaster Recovery Plan Consumption Progress
+        
+        @return: SyncDisasterRecoveryCheckpointResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.sync_disaster_recovery_checkpoint_with_options_async(plan_id, item_id, checkpoint_id, headers, runtime)
 
     def tag_resources_with_options(
         self,
@@ -5866,9 +6856,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UpdateConsumerGroupResponse:
         """
-        @summary Updates the basic information about and the consumption retry policy of a consumer group.
+        @summary Update ConsumerGroup
         
-        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @description >Notice: The OpenAPI provided by Alibaba Cloud is a management API used for managing and querying related resources of Alibaba Cloud services. It is recommended to integrate it only in the management chain. It is strictly prohibited to rely on OpenAPI implementation in the core data chain of message sending and receiving, otherwise it may lead to risks in the chain.
         
         @param request: UpdateConsumerGroupRequest
         @param headers: map
@@ -5920,9 +6910,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UpdateConsumerGroupResponse:
         """
-        @summary Updates the basic information about and the consumption retry policy of a consumer group.
+        @summary Update ConsumerGroup
         
-        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @description >Notice: The OpenAPI provided by Alibaba Cloud is a management API used for managing and querying related resources of Alibaba Cloud services. It is recommended to integrate it only in the management chain. It is strictly prohibited to rely on OpenAPI implementation in the core data chain of message sending and receiving, otherwise it may lead to risks in the chain.
         
         @param request: UpdateConsumerGroupRequest
         @param headers: map
@@ -5972,9 +6962,9 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.UpdateConsumerGroupRequest,
     ) -> rocket_mq20220801_models.UpdateConsumerGroupResponse:
         """
-        @summary Updates the basic information about and the consumption retry policy of a consumer group.
+        @summary Update ConsumerGroup
         
-        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @description >Notice: The OpenAPI provided by Alibaba Cloud is a management API used for managing and querying related resources of Alibaba Cloud services. It is recommended to integrate it only in the management chain. It is strictly prohibited to rely on OpenAPI implementation in the core data chain of message sending and receiving, otherwise it may lead to risks in the chain.
         
         @param request: UpdateConsumerGroupRequest
         @return: UpdateConsumerGroupResponse
@@ -5990,9 +6980,9 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.UpdateConsumerGroupRequest,
     ) -> rocket_mq20220801_models.UpdateConsumerGroupResponse:
         """
-        @summary Updates the basic information about and the consumption retry policy of a consumer group.
+        @summary Update ConsumerGroup
         
-        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @description >Notice: The OpenAPI provided by Alibaba Cloud is a management API used for managing and querying related resources of Alibaba Cloud services. It is recommended to integrate it only in the management chain. It is strictly prohibited to rely on OpenAPI implementation in the core data chain of message sending and receiving, otherwise it may lead to risks in the chain.
         
         @param request: UpdateConsumerGroupRequest
         @return: UpdateConsumerGroupResponse
@@ -6000,6 +6990,270 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_consumer_group_with_options_async(instance_id, consumer_group_id, request, headers, runtime)
+
+    def update_disaster_recovery_item_with_options(
+        self,
+        plan_id: str,
+        item_id: str,
+        request: rocket_mq20220801_models.UpdateDisasterRecoveryItemRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.UpdateDisasterRecoveryItemResponse:
+        """
+        @summary Updates a topic mapping in a global message backup plan.
+        
+        @param request: UpdateDisasterRecoveryItemRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDisasterRecoveryItemResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.topics):
+            body['topics'] = request.topics
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDisasterRecoveryItem',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}/items/{OpenApiUtilClient.get_encode_param(item_id)}',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rocket_mq20220801_models.UpdateDisasterRecoveryItemResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rocket_mq20220801_models.UpdateDisasterRecoveryItemResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_disaster_recovery_item_with_options_async(
+        self,
+        plan_id: str,
+        item_id: str,
+        request: rocket_mq20220801_models.UpdateDisasterRecoveryItemRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.UpdateDisasterRecoveryItemResponse:
+        """
+        @summary Updates a topic mapping in a global message backup plan.
+        
+        @param request: UpdateDisasterRecoveryItemRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDisasterRecoveryItemResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.topics):
+            body['topics'] = request.topics
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDisasterRecoveryItem',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}/items/{OpenApiUtilClient.get_encode_param(item_id)}',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rocket_mq20220801_models.UpdateDisasterRecoveryItemResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rocket_mq20220801_models.UpdateDisasterRecoveryItemResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_disaster_recovery_item(
+        self,
+        plan_id: str,
+        item_id: str,
+        request: rocket_mq20220801_models.UpdateDisasterRecoveryItemRequest,
+    ) -> rocket_mq20220801_models.UpdateDisasterRecoveryItemResponse:
+        """
+        @summary Updates a topic mapping in a global message backup plan.
+        
+        @param request: UpdateDisasterRecoveryItemRequest
+        @return: UpdateDisasterRecoveryItemResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_disaster_recovery_item_with_options(plan_id, item_id, request, headers, runtime)
+
+    async def update_disaster_recovery_item_async(
+        self,
+        plan_id: str,
+        item_id: str,
+        request: rocket_mq20220801_models.UpdateDisasterRecoveryItemRequest,
+    ) -> rocket_mq20220801_models.UpdateDisasterRecoveryItemResponse:
+        """
+        @summary Updates a topic mapping in a global message backup plan.
+        
+        @param request: UpdateDisasterRecoveryItemRequest
+        @return: UpdateDisasterRecoveryItemResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_disaster_recovery_item_with_options_async(plan_id, item_id, request, headers, runtime)
+
+    def update_disaster_recovery_plan_with_options(
+        self,
+        plan_id: str,
+        request: rocket_mq20220801_models.UpdateDisasterRecoveryPlanRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.UpdateDisasterRecoveryPlanResponse:
+        """
+        @summary Modifies a global message backup plan.
+        
+        @param request: UpdateDisasterRecoveryPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDisasterRecoveryPlanResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_sync_checkpoint):
+            body['autoSyncCheckpoint'] = request.auto_sync_checkpoint
+        if not UtilClient.is_unset(request.instances):
+            body['instances'] = request.instances
+        if not UtilClient.is_unset(request.plan_desc):
+            body['planDesc'] = request.plan_desc
+        if not UtilClient.is_unset(request.plan_name):
+            body['planName'] = request.plan_name
+        if not UtilClient.is_unset(request.plan_type):
+            body['planType'] = request.plan_type
+        if not UtilClient.is_unset(request.sync_checkpoint_enabled):
+            body['syncCheckpointEnabled'] = request.sync_checkpoint_enabled
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDisasterRecoveryPlan',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rocket_mq20220801_models.UpdateDisasterRecoveryPlanResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rocket_mq20220801_models.UpdateDisasterRecoveryPlanResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_disaster_recovery_plan_with_options_async(
+        self,
+        plan_id: str,
+        request: rocket_mq20220801_models.UpdateDisasterRecoveryPlanRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.UpdateDisasterRecoveryPlanResponse:
+        """
+        @summary Modifies a global message backup plan.
+        
+        @param request: UpdateDisasterRecoveryPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDisasterRecoveryPlanResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_sync_checkpoint):
+            body['autoSyncCheckpoint'] = request.auto_sync_checkpoint
+        if not UtilClient.is_unset(request.instances):
+            body['instances'] = request.instances
+        if not UtilClient.is_unset(request.plan_desc):
+            body['planDesc'] = request.plan_desc
+        if not UtilClient.is_unset(request.plan_name):
+            body['planName'] = request.plan_name
+        if not UtilClient.is_unset(request.plan_type):
+            body['planType'] = request.plan_type
+        if not UtilClient.is_unset(request.sync_checkpoint_enabled):
+            body['syncCheckpointEnabled'] = request.sync_checkpoint_enabled
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDisasterRecoveryPlan',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                rocket_mq20220801_models.UpdateDisasterRecoveryPlanResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                rocket_mq20220801_models.UpdateDisasterRecoveryPlanResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_disaster_recovery_plan(
+        self,
+        plan_id: str,
+        request: rocket_mq20220801_models.UpdateDisasterRecoveryPlanRequest,
+    ) -> rocket_mq20220801_models.UpdateDisasterRecoveryPlanResponse:
+        """
+        @summary Modifies a global message backup plan.
+        
+        @param request: UpdateDisasterRecoveryPlanRequest
+        @return: UpdateDisasterRecoveryPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_disaster_recovery_plan_with_options(plan_id, request, headers, runtime)
+
+    async def update_disaster_recovery_plan_async(
+        self,
+        plan_id: str,
+        request: rocket_mq20220801_models.UpdateDisasterRecoveryPlanRequest,
+    ) -> rocket_mq20220801_models.UpdateDisasterRecoveryPlanResponse:
+        """
+        @summary Modifies a global message backup plan.
+        
+        @param request: UpdateDisasterRecoveryPlanRequest
+        @return: UpdateDisasterRecoveryPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_disaster_recovery_plan_with_options_async(plan_id, request, headers, runtime)
 
     def update_instance_with_options(
         self,
@@ -6422,7 +7676,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UpdateTopicResponse:
         """
-        @summary Updates the basic information about a topic.
+        @summary Update Topic
         
         @param request: UpdateTopicRequest
         @param headers: map
@@ -6470,7 +7724,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UpdateTopicResponse:
         """
-        @summary Updates the basic information about a topic.
+        @summary Update Topic
         
         @param request: UpdateTopicRequest
         @param headers: map
@@ -6516,7 +7770,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.UpdateTopicRequest,
     ) -> rocket_mq20220801_models.UpdateTopicResponse:
         """
-        @summary Updates the basic information about a topic.
+        @summary Update Topic
         
         @param request: UpdateTopicRequest
         @return: UpdateTopicResponse
@@ -6532,7 +7786,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.UpdateTopicRequest,
     ) -> rocket_mq20220801_models.UpdateTopicResponse:
         """
-        @summary Updates the basic information about a topic.
+        @summary Update Topic
         
         @param request: UpdateTopicRequest
         @return: UpdateTopicResponse
