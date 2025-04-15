@@ -7997,6 +7997,7 @@ class ListFreeNodesRequest(TeaModel):
         machine_type: str = None,
         max_results: int = None,
         next_token: str = None,
+        operating_states: List[str] = None,
         resource_group_id: str = None,
         tags: List[ListFreeNodesRequestTags] = None,
     ):
@@ -8008,6 +8009,7 @@ class ListFreeNodesRequest(TeaModel):
         self.max_results = max_results
         # Query token (Token), the value should be the NextToken parameter value returned from the previous API call.
         self.next_token = next_token
+        self.operating_states = operating_states
         # Resource group ID
         self.resource_group_id = resource_group_id
         # Tag information
@@ -8033,6 +8035,8 @@ class ListFreeNodesRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.operating_states is not None:
+            result['OperatingStates'] = self.operating_states
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         result['Tags'] = []
@@ -8051,6 +8055,8 @@ class ListFreeNodesRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('OperatingStates') is not None:
+            self.operating_states = m.get('OperatingStates')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         self.tags = []

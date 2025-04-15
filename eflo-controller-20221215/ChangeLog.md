@@ -1,3 +1,7 @@
+2025-04-15 Version: 2.4.5
+- Update API ListFreeNodes: add request parameters OperatingStates.
+
+
 2025-04-10 Version: 2.4.4
 - Update API CreateCluster: add request parameters NodeGroups.$.SystemDisk.
 - Update API CreateNodeGroup: add request parameters NodeGroup.SystemDisk.
