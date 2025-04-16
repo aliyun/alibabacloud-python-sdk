@@ -2483,6 +2483,7 @@ class CreateVpcFirewallCenConfigureRequest(TeaModel):
         firewall_switch: str = None,
         firewall_vswitch_cidr_block: str = None,
         firewall_vpc_cidr_block: str = None,
+        firewall_vpc_standby_zone_id: str = None,
         firewall_vpc_zone_id: str = None,
         lang: str = None,
         member_uid: str = None,
@@ -2514,6 +2515,10 @@ class CreateVpcFirewallCenConfigureRequest(TeaModel):
         # 
         # >  This parameter takes effect only when you create a VPC firewall for the first time in the current CEN instance and region.
         self.firewall_vpc_cidr_block = firewall_vpc_cidr_block
+        # The ID of the backup availability zone to which the firewall belongs. The firewall will automatically switch to the backup availability zone to continue running only if the primary availability zone service is unavailable.
+        # If this parameter is not filled, the backup availability zone for the firewall will be automatically assigned.
+        # > This parameter is only effective when creating a VPC firewall for the first time in this CEN region.
+        self.firewall_vpc_standby_zone_id = firewall_vpc_standby_zone_id
         # The ID of the zone to which the vSwitch belongs. If your service is latency-sensitive, you can specify the same zone for the vSwitch of the firewall and the vSwitch of your business VPC to minimize latency.
         # 
         # If you do not specify a value, a zone is automatically assigned for the vSwitch.
@@ -2561,6 +2566,8 @@ class CreateVpcFirewallCenConfigureRequest(TeaModel):
             result['FirewallVSwitchCidrBlock'] = self.firewall_vswitch_cidr_block
         if self.firewall_vpc_cidr_block is not None:
             result['FirewallVpcCidrBlock'] = self.firewall_vpc_cidr_block
+        if self.firewall_vpc_standby_zone_id is not None:
+            result['FirewallVpcStandbyZoneId'] = self.firewall_vpc_standby_zone_id
         if self.firewall_vpc_zone_id is not None:
             result['FirewallVpcZoneId'] = self.firewall_vpc_zone_id
         if self.lang is not None:
@@ -2587,6 +2594,8 @@ class CreateVpcFirewallCenConfigureRequest(TeaModel):
             self.firewall_vswitch_cidr_block = m.get('FirewallVSwitchCidrBlock')
         if m.get('FirewallVpcCidrBlock') is not None:
             self.firewall_vpc_cidr_block = m.get('FirewallVpcCidrBlock')
+        if m.get('FirewallVpcStandbyZoneId') is not None:
+            self.firewall_vpc_standby_zone_id = m.get('FirewallVpcStandbyZoneId')
         if m.get('FirewallVpcZoneId') is not None:
             self.firewall_vpc_zone_id = m.get('FirewallVpcZoneId')
         if m.get('Lang') is not None:
@@ -5062,7 +5071,9 @@ class DescribeAddressBookResponseBodyAclsAddresses(TeaModel):
         address: str = None,
         note: str = None,
     ):
+        # Address information in the address book.
         self.address = address
+        # Single address description.
         self.note = note
 
     def validate(self):
@@ -5143,6 +5154,7 @@ class DescribeAddressBookResponseBodyAcls(TeaModel):
         self.address_list = address_list
         # The number of addresses in the address book.
         self.address_list_count = address_list_count
+        # A list of addresses in the address book, each with a single address description.
         self.addresses = addresses
         # Indicates whether the public IP addresses of ECS instances are automatically added to the address book if the instances match the specified tags. The setting takes effect on both newly purchased ECS instances whose tag settings are complete and ECS instances whose tag settings are modified. Valid values:
         # 
@@ -7083,7 +7095,6 @@ class DescribeDefaultIPSConfigResponseBody(TeaModel):
         self,
         basic_rules: int = None,
         cti_rules: int = None,
-        free_trail_status: str = None,
         max_sdl: int = None,
         patch_rules: int = None,
         request_id: str = None,
@@ -7100,7 +7111,7 @@ class DescribeDefaultIPSConfigResponseBody(TeaModel):
         # *   **1**: yes
         # *   **0**: no
         self.cti_rules = cti_rules
-        self.free_trail_status = free_trail_status
+        # The maximum amount of traffic that can be processed by the sensitive data leak detection feature each day.
         self.max_sdl = max_sdl
         # Indicates whether virtual patching is enabled. Valid values:
         # 
@@ -7134,8 +7145,6 @@ class DescribeDefaultIPSConfigResponseBody(TeaModel):
             result['BasicRules'] = self.basic_rules
         if self.cti_rules is not None:
             result['CtiRules'] = self.cti_rules
-        if self.free_trail_status is not None:
-            result['FreeTrailStatus'] = self.free_trail_status
         if self.max_sdl is not None:
             result['MaxSdl'] = self.max_sdl
         if self.patch_rules is not None:
@@ -7154,8 +7163,6 @@ class DescribeDefaultIPSConfigResponseBody(TeaModel):
             self.basic_rules = m.get('BasicRules')
         if m.get('CtiRules') is not None:
             self.cti_rules = m.get('CtiRules')
-        if m.get('FreeTrailStatus') is not None:
-            self.free_trail_status = m.get('FreeTrailStatus')
         if m.get('MaxSdl') is not None:
             self.max_sdl = m.get('MaxSdl')
         if m.get('PatchRules') is not None:
@@ -12665,7 +12672,9 @@ class DescribePostpayTrafficTotalResponseBody(TeaModel):
         self.total_nat_assets = total_nat_assets
         # The total traffic for NAT firewalls. If you use Cloud Firewall that uses the subscription billing method, this parameter indicates the total volume of burstable protected traffic on the NAT boundary. Unit: bytes.
         self.total_nat_traffic = total_nat_traffic
+        # Data Leak Detection Total Fee Flow.
         self.total_sdl_bill_traffic = total_sdl_bill_traffic
+        # Data Leak Detection Total free usage traffic.
         self.total_sdl_free_traffic = total_sdl_free_traffic
         # The total volume of traffic. If you use Cloud Firewall that uses the subscription billing method, this parameter indicates the total volume of burstable protected traffic. Unit: bytes.
         self.total_traffic = total_traffic
@@ -14031,6 +14040,7 @@ class DescribeSignatureLibVersionResponseBodyVersion(TeaModel):
     def __init__(
         self,
         type: str = None,
+        update_time: int = None,
         version: str = None,
     ):
         # The type.
@@ -14063,6 +14073,7 @@ class DescribeSignatureLibVersionResponseBodyVersion(TeaModel):
         # 
         #     <!-- -->
         self.type = type
+        self.update_time = update_time
         # The version number.
         self.version = version
 
@@ -14077,6 +14088,8 @@ class DescribeSignatureLibVersionResponseBodyVersion(TeaModel):
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
         if self.version is not None:
             result['Version'] = self.version
         return result
@@ -14085,6 +14098,8 @@ class DescribeSignatureLibVersionResponseBodyVersion(TeaModel):
         m = m or dict()
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
         if m.get('Version') is not None:
             self.version = m.get('Version')
         return self
@@ -14842,7 +14857,9 @@ class DescribeTrFirewallsV2DetailResponseBody(TeaModel):
         request_id: str = None,
         route_mode: str = None,
         tr_attachment_master_cidr: str = None,
+        tr_attachment_master_zone: str = None,
         tr_attachment_slave_cidr: str = None,
+        tr_attachment_slave_zone: str = None,
         transit_router_id: str = None,
     ):
         # The ID of the Cloud Enterprise Network (CEN) instance.
@@ -14892,8 +14909,10 @@ class DescribeTrFirewallsV2DetailResponseBody(TeaModel):
         self.route_mode = route_mode
         # The primary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
         self.tr_attachment_master_cidr = tr_attachment_master_cidr
+        self.tr_attachment_master_zone = tr_attachment_master_zone
         # The secondary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
         self.tr_attachment_slave_cidr = tr_attachment_slave_cidr
+        self.tr_attachment_slave_zone = tr_attachment_slave_zone
         # The ID of the transit router.
         self.transit_router_id = transit_router_id
 
@@ -14936,8 +14955,12 @@ class DescribeTrFirewallsV2DetailResponseBody(TeaModel):
             result['RouteMode'] = self.route_mode
         if self.tr_attachment_master_cidr is not None:
             result['TrAttachmentMasterCidr'] = self.tr_attachment_master_cidr
+        if self.tr_attachment_master_zone is not None:
+            result['TrAttachmentMasterZone'] = self.tr_attachment_master_zone
         if self.tr_attachment_slave_cidr is not None:
             result['TrAttachmentSlaveCidr'] = self.tr_attachment_slave_cidr
+        if self.tr_attachment_slave_zone is not None:
+            result['TrAttachmentSlaveZone'] = self.tr_attachment_slave_zone
         if self.transit_router_id is not None:
             result['TransitRouterId'] = self.transit_router_id
         return result
@@ -14974,8 +14997,12 @@ class DescribeTrFirewallsV2DetailResponseBody(TeaModel):
             self.route_mode = m.get('RouteMode')
         if m.get('TrAttachmentMasterCidr') is not None:
             self.tr_attachment_master_cidr = m.get('TrAttachmentMasterCidr')
+        if m.get('TrAttachmentMasterZone') is not None:
+            self.tr_attachment_master_zone = m.get('TrAttachmentMasterZone')
         if m.get('TrAttachmentSlaveCidr') is not None:
             self.tr_attachment_slave_cidr = m.get('TrAttachmentSlaveCidr')
+        if m.get('TrAttachmentSlaveZone') is not None:
+            self.tr_attachment_slave_zone = m.get('TrAttachmentSlaveZone')
         if m.get('TransitRouterId') is not None:
             self.transit_router_id = m.get('TransitRouterId')
         return self
@@ -15134,6 +15161,33 @@ class DescribeTrFirewallsV2ListRequest(TeaModel):
             self.route_mode = m.get('RouteMode')
         if m.get('TransitRouterId') is not None:
             self.transit_router_id = m.get('TransitRouterId')
+        return self
+
+
+class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsAclConfig(TeaModel):
+    def __init__(
+        self,
+        strict_mode: int = None,
+    ):
+        self.strict_mode = strict_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.strict_mode is not None:
+            result['StrictMode'] = self.strict_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StrictMode') is not None:
+            self.strict_mode = m.get('StrictMode')
         return self
 
 
@@ -15328,6 +15382,7 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource(Tea
 class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls(TeaModel):
     def __init__(
         self,
+        acl_config: DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsAclConfig = None,
         cen_id: str = None,
         cen_name: str = None,
         cloud_firewall_vpc_order_type: str = None,
@@ -15345,6 +15400,7 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls(TeaModel):
         unprotected_resource: DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource = None,
         vpc_firewall_name: str = None,
     ):
+        self.acl_config = acl_config
         # The ID of the CEN instance.
         self.cen_id = cen_id
         # The name of the CEN instance.
@@ -15405,6 +15461,8 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls(TeaModel):
         self.vpc_firewall_name = vpc_firewall_name
 
     def validate(self):
+        if self.acl_config:
+            self.acl_config.validate()
         if self.ips_config:
             self.ips_config.validate()
         if self.protected_resource:
@@ -15418,6 +15476,8 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls(TeaModel):
             return _map
 
         result = dict()
+        if self.acl_config is not None:
+            result['AclConfig'] = self.acl_config.to_map()
         if self.cen_id is not None:
             result['CenId'] = self.cen_id
         if self.cen_name is not None:
@@ -15454,6 +15514,9 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AclConfig') is not None:
+            temp_model = DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsAclConfig()
+            self.acl_config = temp_model.from_map(m['AclConfig'])
         if m.get('CenId') is not None:
             self.cen_id = m.get('CenId')
         if m.get('CenName') is not None:
@@ -16017,6 +16080,7 @@ class DescribeUserBuyVersionResponseBody(TeaModel):
         # *   **abnormal**: An exception occurs in Cloud Firewall.
         # *   **free**: Cloud Firewall is invalid.
         self.instance_status = instance_status
+        # The peak Internet traffic that can be protected.
         self.internet_bandwidth = internet_bandwidth
         # The number of public IP addresses that can be protected.
         # 
@@ -16038,6 +16102,7 @@ class DescribeUserBuyVersionResponseBody(TeaModel):
         # 
         # >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
         self.max_overflow = max_overflow
+        # The peak traffic of NAT private network that can be protected.
         self.nat_bandwidth = nat_bandwidth
         # The request ID.
         self.request_id = request_id
@@ -16057,6 +16122,7 @@ class DescribeUserBuyVersionResponseBody(TeaModel):
         # *   **4**: Ultimate Edition.
         # *   **10**: Cloud Firewall that uses the pay-as-you-go billing method.
         self.version = version
+        # The peak cross-VPC traffic that can be protected.
         self.vpc_bandwidth = vpc_bandwidth
         # The number of virtual private clouds (VPCs) that can be protected.
         # 
@@ -16421,6 +16487,7 @@ class DescribeVpcFirewallAclGroupListRequest(TeaModel):
         self,
         current_page: str = None,
         firewall_configure_status: str = None,
+        firewall_id: str = None,
         lang: str = None,
         page_size: str = None,
     ):
@@ -16432,6 +16499,7 @@ class DescribeVpcFirewallAclGroupListRequest(TeaModel):
         # *   **configured**: VPC firewalls are configured.
         # *   If you do not specify this parameter, the access control policies of all VPC firewalls are queried.
         self.firewall_configure_status = firewall_configure_status
+        self.firewall_id = firewall_id
         # The language of the content within the response. Valid values:
         # 
         # *   **zh**: Chinese (default)
@@ -16453,6 +16521,8 @@ class DescribeVpcFirewallAclGroupListRequest(TeaModel):
             result['CurrentPage'] = self.current_page
         if self.firewall_configure_status is not None:
             result['FirewallConfigureStatus'] = self.firewall_configure_status
+        if self.firewall_id is not None:
+            result['FirewallId'] = self.firewall_id
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.page_size is not None:
@@ -16465,6 +16535,8 @@ class DescribeVpcFirewallAclGroupListRequest(TeaModel):
             self.current_page = m.get('CurrentPage')
         if m.get('FirewallConfigureStatus') is not None:
             self.firewall_configure_status = m.get('FirewallConfigureStatus')
+        if m.get('FirewallId') is not None:
+            self.firewall_id = m.get('FirewallId')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('PageSize') is not None:
@@ -16472,15 +16544,44 @@ class DescribeVpcFirewallAclGroupListRequest(TeaModel):
         return self
 
 
+class DescribeVpcFirewallAclGroupListResponseBodyAclGroupListAclConfig(TeaModel):
+    def __init__(
+        self,
+        strict_mode: int = None,
+    ):
+        self.strict_mode = strict_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.strict_mode is not None:
+            result['StrictMode'] = self.strict_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StrictMode') is not None:
+            self.strict_mode = m.get('StrictMode')
+        return self
+
+
 class DescribeVpcFirewallAclGroupListResponseBodyAclGroupList(TeaModel):
     def __init__(
         self,
+        acl_config: DescribeVpcFirewallAclGroupListResponseBodyAclGroupListAclConfig = None,
         acl_group_id: str = None,
         acl_group_name: str = None,
         acl_rule_count: int = None,
         is_default: bool = None,
         member_uid: str = None,
     ):
+        self.acl_config = acl_config
         # The ID of the policy group.
         # 
         # Valid values:
@@ -16508,7 +16609,8 @@ class DescribeVpcFirewallAclGroupListResponseBodyAclGroupList(TeaModel):
         self.member_uid = member_uid
 
     def validate(self):
-        pass
+        if self.acl_config:
+            self.acl_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -16516,6 +16618,8 @@ class DescribeVpcFirewallAclGroupListResponseBodyAclGroupList(TeaModel):
             return _map
 
         result = dict()
+        if self.acl_config is not None:
+            result['AclConfig'] = self.acl_config.to_map()
         if self.acl_group_id is not None:
             result['AclGroupId'] = self.acl_group_id
         if self.acl_group_name is not None:
@@ -16530,6 +16634,9 @@ class DescribeVpcFirewallAclGroupListResponseBodyAclGroupList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AclConfig') is not None:
+            temp_model = DescribeVpcFirewallAclGroupListResponseBodyAclGroupListAclConfig()
+            self.acl_config = temp_model.from_map(m['AclConfig'])
         if m.get('AclGroupId') is not None:
             self.acl_group_id = m.get('AclGroupId')
         if m.get('AclGroupName') is not None:
@@ -16687,10 +16794,12 @@ class DescribeVpcFirewallCenDetailResponseBodyFirewallVpc(TeaModel):
     def __init__(
         self,
         allow_configuration: int = None,
+        standby_zone_id: str = None,
         vpc_cidr: str = None,
         vpc_id: str = None,
         vswitch_cidr: str = None,
         vswitch_id: str = None,
+        vswitch_zone_id: str = None,
         zone_id: str = None,
     ):
         # Indicates whether you can specify a CIDR block when you create a VPC firewall for a Basic Edition transit router of a CEN instance. Valid values:
@@ -16698,6 +16807,8 @@ class DescribeVpcFirewallCenDetailResponseBodyFirewallVpc(TeaModel):
         # *   **1**: yes
         # *   **0**: no
         self.allow_configuration = allow_configuration
+        # Firewall backup availability zone ID.
+        self.standby_zone_id = standby_zone_id
         # The CIDR block of the VPC.
         self.vpc_cidr = vpc_cidr
         # The VPC ID.
@@ -16706,6 +16817,8 @@ class DescribeVpcFirewallCenDetailResponseBodyFirewallVpc(TeaModel):
         self.vswitch_cidr = vswitch_cidr
         # The vSwitch ID.
         self.vswitch_id = vswitch_id
+        # The availability zone ID of the virtual switch.
+        self.vswitch_zone_id = vswitch_zone_id
         # The zone ID.
         self.zone_id = zone_id
 
@@ -16720,6 +16833,8 @@ class DescribeVpcFirewallCenDetailResponseBodyFirewallVpc(TeaModel):
         result = dict()
         if self.allow_configuration is not None:
             result['AllowConfiguration'] = self.allow_configuration
+        if self.standby_zone_id is not None:
+            result['StandbyZoneId'] = self.standby_zone_id
         if self.vpc_cidr is not None:
             result['VpcCidr'] = self.vpc_cidr
         if self.vpc_id is not None:
@@ -16728,6 +16843,8 @@ class DescribeVpcFirewallCenDetailResponseBodyFirewallVpc(TeaModel):
             result['VswitchCidr'] = self.vswitch_cidr
         if self.vswitch_id is not None:
             result['VswitchId'] = self.vswitch_id
+        if self.vswitch_zone_id is not None:
+            result['VswitchZoneId'] = self.vswitch_zone_id
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -16736,6 +16853,8 @@ class DescribeVpcFirewallCenDetailResponseBodyFirewallVpc(TeaModel):
         m = m or dict()
         if m.get('AllowConfiguration') is not None:
             self.allow_configuration = m.get('AllowConfiguration')
+        if m.get('StandbyZoneId') is not None:
+            self.standby_zone_id = m.get('StandbyZoneId')
         if m.get('VpcCidr') is not None:
             self.vpc_cidr = m.get('VpcCidr')
         if m.get('VpcId') is not None:
@@ -16744,6 +16863,8 @@ class DescribeVpcFirewallCenDetailResponseBodyFirewallVpc(TeaModel):
             self.vswitch_cidr = m.get('VswitchCidr')
         if m.get('VswitchId') is not None:
             self.vswitch_id = m.get('VswitchId')
+        if m.get('VswitchZoneId') is not None:
+            self.vswitch_zone_id = m.get('VswitchZoneId')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -17054,7 +17175,7 @@ class DescribeVpcFirewallCenDetailResponseBody(TeaModel):
         # *   **closed**: disabled
         # *   **notconfigured**: not configured
         self.firewall_switch_status = firewall_switch_status
-        # The VPC that is automatically created for the firewall.
+        # The firewall VPC.
         self.firewall_vpc = firewall_vpc
         # The details about the VPC.
         self.local_vpc = local_vpc
@@ -17287,6 +17408,33 @@ class DescribeVpcFirewallCenListRequest(TeaModel):
             self.vpc_firewall_id = m.get('VpcFirewallId')
         if m.get('VpcFirewallName') is not None:
             self.vpc_firewall_name = m.get('VpcFirewallName')
+        return self
+
+
+class DescribeVpcFirewallCenListResponseBodyVpcFirewallsAclConfig(TeaModel):
+    def __init__(
+        self,
+        strict_mode: int = None,
+    ):
+        self.strict_mode = strict_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.strict_mode is not None:
+            result['StrictMode'] = self.strict_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StrictMode') is not None:
+            self.strict_mode = m.get('StrictMode')
         return self
 
 
@@ -17573,6 +17721,7 @@ class DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpc(TeaModel):
 class DescribeVpcFirewallCenListResponseBodyVpcFirewalls(TeaModel):
     def __init__(
         self,
+        acl_config: DescribeVpcFirewallCenListResponseBodyVpcFirewallsAclConfig = None,
         cen_id: str = None,
         cen_name: str = None,
         connect_type: str = None,
@@ -17586,6 +17735,7 @@ class DescribeVpcFirewallCenListResponseBodyVpcFirewalls(TeaModel):
         vpc_firewall_id: str = None,
         vpc_firewall_name: str = None,
     ):
+        self.acl_config = acl_config
         # The ID of the CEN instance.
         self.cen_id = cen_id
         # The name of the CEN instance.
@@ -17629,6 +17779,8 @@ class DescribeVpcFirewallCenListResponseBodyVpcFirewalls(TeaModel):
         self.vpc_firewall_name = vpc_firewall_name
 
     def validate(self):
+        if self.acl_config:
+            self.acl_config.validate()
         if self.ips_config:
             self.ips_config.validate()
         if self.local_vpc:
@@ -17640,6 +17792,8 @@ class DescribeVpcFirewallCenListResponseBodyVpcFirewalls(TeaModel):
             return _map
 
         result = dict()
+        if self.acl_config is not None:
+            result['AclConfig'] = self.acl_config.to_map()
         if self.cen_id is not None:
             result['CenId'] = self.cen_id
         if self.cen_name is not None:
@@ -17668,6 +17822,9 @@ class DescribeVpcFirewallCenListResponseBodyVpcFirewalls(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AclConfig') is not None:
+            temp_model = DescribeVpcFirewallCenListResponseBodyVpcFirewallsAclConfig()
+            self.acl_config = temp_model.from_map(m['AclConfig'])
         if m.get('CenId') is not None:
             self.cen_id = m.get('CenId')
         if m.get('CenName') is not None:
@@ -19331,6 +19488,34 @@ class DescribeVpcFirewallListRequest(TeaModel):
         return self
 
 
+class DescribeVpcFirewallListResponseBodyVpcFirewallsAclConfig(TeaModel):
+    def __init__(
+        self,
+        strict_mode: int = None,
+    ):
+        # This parameter is required.
+        self.strict_mode = strict_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.strict_mode is not None:
+            result['StrictMode'] = self.strict_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StrictMode') is not None:
+            self.strict_mode = m.get('StrictMode')
+        return self
+
+
 class DescribeVpcFirewallListResponseBodyVpcFirewallsIpsConfig(TeaModel):
     def __init__(
         self,
@@ -19694,6 +19879,7 @@ class DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpc(TeaModel):
 class DescribeVpcFirewallListResponseBodyVpcFirewalls(TeaModel):
     def __init__(
         self,
+        acl_config: DescribeVpcFirewallListResponseBodyVpcFirewallsAclConfig = None,
         bandwidth: int = None,
         connect_sub_type: str = None,
         connect_type: str = None,
@@ -19707,6 +19893,7 @@ class DescribeVpcFirewallListResponseBodyVpcFirewalls(TeaModel):
         vpc_firewall_id: str = None,
         vpc_firewall_name: str = None,
     ):
+        self.acl_config = acl_config
         # The bandwidth of the Express Connect circuit. Unit: Mbit/s.
         self.bandwidth = bandwidth
         # The sub-type of the connection. Valid values:
@@ -19747,6 +19934,8 @@ class DescribeVpcFirewallListResponseBodyVpcFirewalls(TeaModel):
         self.vpc_firewall_name = vpc_firewall_name
 
     def validate(self):
+        if self.acl_config:
+            self.acl_config.validate()
         if self.ips_config:
             self.ips_config.validate()
         if self.local_vpc:
@@ -19760,6 +19949,8 @@ class DescribeVpcFirewallListResponseBodyVpcFirewalls(TeaModel):
             return _map
 
         result = dict()
+        if self.acl_config is not None:
+            result['AclConfig'] = self.acl_config.to_map()
         if self.bandwidth is not None:
             result['Bandwidth'] = self.bandwidth
         if self.connect_sub_type is not None:
@@ -19788,6 +19979,9 @@ class DescribeVpcFirewallListResponseBodyVpcFirewalls(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AclConfig') is not None:
+            temp_model = DescribeVpcFirewallListResponseBodyVpcFirewallsAclConfig()
+            self.acl_config = temp_model.from_map(m['AclConfig'])
         if m.get('Bandwidth') is not None:
             self.bandwidth = m.get('Bandwidth')
         if m.get('ConnectSubType') is not None:
@@ -21723,33 +21917,30 @@ class ModifyControlPolicyPositionResponse(TeaModel):
 class ModifyDefaultIPSConfigRequest(TeaModel):
     def __init__(
         self,
-        basic_rules: str = None,
-        cti_rules: str = None,
+        basic_rules: int = None,
+        cti_rules: int = None,
         lang: str = None,
         max_sdl: int = None,
-        patch_rules: str = None,
-        rule_class: str = None,
-        run_mode: str = None,
+        patch_rules: int = None,
+        rule_class: int = None,
+        run_mode: int = None,
     ):
         # Specifies whether to enable basic protection. Valid values:
         # 
         # *   **1**: yes
         # *   **0**: no
-        # 
-        # This parameter is required.
         self.basic_rules = basic_rules
         # Specifies whether to enable threat intelligence. Valid values:
         # 
         # *   **1**: yes
         # *   **0**: no
-        # 
-        # This parameter is required.
         self.cti_rules = cti_rules
         # The language of the content within the request and response. Valid values:
         # 
         # *   **zh** (default)
         # *   **en**\
         self.lang = lang
+        # The maximum amount of traffic that can be processed by the sensitive data leak detection feature each day.
         self.max_sdl = max_sdl
         # Specifies whether to enable virtual patching. Valid values:
         # 
@@ -22801,10 +22992,12 @@ class ModifyObjectGroupOperationResponse(TeaModel):
 class ModifyPolicyAdvancedConfigRequest(TeaModel):
     def __init__(
         self,
+        eips: List[str] = None,
         internet_switch: str = None,
         lang: str = None,
         source_ip: str = None,
     ):
+        self.eips = eips
         # Specifies whether to enable the strict mode for the access control policy. Valid values:
         # 
         # *   **on**: enables the strict mode.
@@ -22829,6 +23022,8 @@ class ModifyPolicyAdvancedConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.eips is not None:
+            result['Eips'] = self.eips
         if self.internet_switch is not None:
             result['InternetSwitch'] = self.internet_switch
         if self.lang is not None:
@@ -22839,6 +23034,8 @@ class ModifyPolicyAdvancedConfigRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Eips') is not None:
+            self.eips = m.get('Eips')
         if m.get('InternetSwitch') is not None:
             self.internet_switch = m.get('InternetSwitch')
         if m.get('Lang') is not None:

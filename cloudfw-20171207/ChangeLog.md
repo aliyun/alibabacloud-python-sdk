@@ -1,3 +1,29 @@
+2025-04-16 Version: 6.0.0
+- Update API CreateVpcFirewallCenConfigure: add request parameters FirewallVpcStandbyZoneId.
+- Update API DescribeDefaultIPSConfig: delete response parameters Body.FreeTrailStatus.
+- Update API DescribeSignatureLibVersion: add response parameters Body.Version.$.UpdateTime.
+- Update API DescribeTrFirewallsV2Detail: add response parameters Body.TrAttachmentMasterZone.
+- Update API DescribeTrFirewallsV2Detail: add response parameters Body.TrAttachmentSlaveZone.
+- Update API DescribeTrFirewallsV2List: add response parameters Body.VpcTrFirewalls.$.AclConfig.
+- Update API DescribeVpcFirewallAclGroupList: add request parameters FirewallId.
+- Update API DescribeVpcFirewallAclGroupList: add response parameters Body.AclGroupList.$.AclConfig.
+- Update API DescribeVpcFirewallCenDetail: add response parameters Body.FirewallVpc.StandbyZoneId.
+- Update API DescribeVpcFirewallCenDetail: add response parameters Body.FirewallVpc.VswitchZoneId.
+- Update API DescribeVpcFirewallCenList: add response parameters Body.VpcFirewalls.$.AclConfig.
+- Update API DescribeVpcFirewallList: add response parameters Body.VpcFirewalls.$.AclConfig.
+- Update API ModifyDefaultIPSConfig: update request parameters BasicRules' type has changed.
+- Update API ModifyDefaultIPSConfig: update request parameters BasicRules' format has changed.
+- Update API ModifyDefaultIPSConfig: update request parameters CtiRules' type has changed.
+- Update API ModifyDefaultIPSConfig: update request parameters CtiRules' format has changed.
+- Update API ModifyDefaultIPSConfig: update request parameters PatchRules' type has changed.
+- Update API ModifyDefaultIPSConfig: update request parameters PatchRules' format has changed.
+- Update API ModifyDefaultIPSConfig: update request parameters RuleClass' type has changed.
+- Update API ModifyDefaultIPSConfig: update request parameters RuleClass' format has changed.
+- Update API ModifyDefaultIPSConfig: update request parameters RunMode' type has changed.
+- Update API ModifyDefaultIPSConfig: update request parameters RunMode' format has changed.
+- Update API ModifyPolicyAdvancedConfig: add request parameters Eips.
+
+
 2025-01-16 Version: 5.0.4
 - Update API AddAddressBook: update param AddressList.
 - Update API AddAddressBook: update param Description.

@@ -1595,6 +1595,8 @@ class Client(OpenApiClient):
             query['FirewallVSwitchCidrBlock'] = request.firewall_vswitch_cidr_block
         if not UtilClient.is_unset(request.firewall_vpc_cidr_block):
             query['FirewallVpcCidrBlock'] = request.firewall_vpc_cidr_block
+        if not UtilClient.is_unset(request.firewall_vpc_standby_zone_id):
+            query['FirewallVpcStandbyZoneId'] = request.firewall_vpc_standby_zone_id
         if not UtilClient.is_unset(request.firewall_vpc_zone_id):
             query['FirewallVpcZoneId'] = request.firewall_vpc_zone_id
         if not UtilClient.is_unset(request.lang):
@@ -1654,6 +1656,8 @@ class Client(OpenApiClient):
             query['FirewallVSwitchCidrBlock'] = request.firewall_vswitch_cidr_block
         if not UtilClient.is_unset(request.firewall_vpc_cidr_block):
             query['FirewallVpcCidrBlock'] = request.firewall_vpc_cidr_block
+        if not UtilClient.is_unset(request.firewall_vpc_standby_zone_id):
+            query['FirewallVpcStandbyZoneId'] = request.firewall_vpc_standby_zone_id
         if not UtilClient.is_unset(request.firewall_vpc_zone_id):
             query['FirewallVpcZoneId'] = request.firewall_vpc_zone_id
         if not UtilClient.is_unset(request.lang):
@@ -4439,7 +4443,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeDefaultIPSConfigResponse:
         """
-        @summary Queries the default configurations of the intrusion prevention system (IPS).
+        @summary Queries the default intrusion prevention system (IPS) configurations.
         
         @param request: DescribeDefaultIPSConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4474,7 +4478,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeDefaultIPSConfigResponse:
         """
-        @summary Queries the default configurations of the intrusion prevention system (IPS).
+        @summary Queries the default intrusion prevention system (IPS) configurations.
         
         @param request: DescribeDefaultIPSConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4508,7 +4512,7 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeDefaultIPSConfigRequest,
     ) -> cloudfw_20171207_models.DescribeDefaultIPSConfigResponse:
         """
-        @summary Queries the default configurations of the intrusion prevention system (IPS).
+        @summary Queries the default intrusion prevention system (IPS) configurations.
         
         @param request: DescribeDefaultIPSConfigRequest
         @return: DescribeDefaultIPSConfigResponse
@@ -4521,7 +4525,7 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeDefaultIPSConfigRequest,
     ) -> cloudfw_20171207_models.DescribeDefaultIPSConfigResponse:
         """
-        @summary Queries the default configurations of the intrusion prevention system (IPS).
+        @summary Queries the default intrusion prevention system (IPS) configurations.
         
         @param request: DescribeDefaultIPSConfigRequest
         @return: DescribeDefaultIPSConfigResponse
@@ -8217,6 +8221,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.firewall_configure_status):
             query['FirewallConfigureStatus'] = request.firewall_configure_status
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
@@ -8262,6 +8268,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.firewall_configure_status):
             query['FirewallConfigureStatus'] = request.firewall_configure_status
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
@@ -11037,6 +11045,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.eips):
+            query['Eips'] = request.eips
         if not UtilClient.is_unset(request.internet_switch):
             query['InternetSwitch'] = request.internet_switch
         if not UtilClient.is_unset(request.lang):
@@ -11080,6 +11090,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.eips):
+            query['Eips'] = request.eips
         if not UtilClient.is_unset(request.internet_switch):
             query['InternetSwitch'] = request.internet_switch
         if not UtilClient.is_unset(request.lang):
