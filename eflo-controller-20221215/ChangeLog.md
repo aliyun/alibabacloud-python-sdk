@@ -1,3 +1,6 @@
+2025-04-16 Version: 2.4.6
+- Generated python 2022-12-15 for eflo-controller.
+
 2025-04-15 Version: 2.4.5
 - Update API ListFreeNodes: add request parameters OperatingStates.
 

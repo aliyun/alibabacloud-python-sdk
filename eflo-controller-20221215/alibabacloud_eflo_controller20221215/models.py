@@ -3211,7 +3211,6 @@ class DescribeClusterResponseBodyNetworks(TeaModel):
         self,
         vpd_id: str = None,
     ):
-        # VPC Segment ID
         self.vpd_id = vpd_id
 
     def validate(self):
@@ -3245,7 +3244,7 @@ class DescribeClusterResponseBody(TeaModel):
         computing_ip_version: str = None,
         create_time: str = None,
         hpn_zone: str = None,
-        networks: List[DescribeClusterResponseBodyNetworks] = None,
+        networks: DescribeClusterResponseBodyNetworks = None,
         node_count: int = None,
         node_group_count: int = None,
         open_eni_jumbo_frame: str = None,
@@ -3299,9 +3298,7 @@ class DescribeClusterResponseBody(TeaModel):
                 if k:
                     k.validate()
         if self.networks:
-            for k in self.networks:
-                if k:
-                    k.validate()
+            self.networks.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3327,10 +3324,8 @@ class DescribeClusterResponseBody(TeaModel):
             result['CreateTime'] = self.create_time
         if self.hpn_zone is not None:
             result['HpnZone'] = self.hpn_zone
-        result['Networks'] = []
         if self.networks is not None:
-            for k in self.networks:
-                result['Networks'].append(k.to_map() if k else None)
+            result['Networks'] = self.networks.to_map()
         if self.node_count is not None:
             result['NodeCount'] = self.node_count
         if self.node_group_count is not None:
@@ -3372,11 +3367,9 @@ class DescribeClusterResponseBody(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('HpnZone') is not None:
             self.hpn_zone = m.get('HpnZone')
-        self.networks = []
         if m.get('Networks') is not None:
-            for k in m.get('Networks'):
-                temp_model = DescribeClusterResponseBodyNetworks()
-                self.networks.append(temp_model.from_map(k))
+            temp_model = DescribeClusterResponseBodyNetworks()
+            self.networks = temp_model.from_map(m['Networks'])
         if m.get('NodeCount') is not None:
             self.node_count = m.get('NodeCount')
         if m.get('NodeGroupCount') is not None:
@@ -8352,7 +8345,7 @@ class ListImagesResponseBodyImages(TeaModel):
         node_count: int = None,
         platform: str = None,
         release_file_md_5: str = None,
-        release_file_size: int = None,
+        release_file_size: str = None,
         type: str = None,
     ):
         # Architecture
