@@ -1,3 +1,13 @@
+2025-04-16 Version: 2.35.0
+- Support API AddFolder.
+- Support API AddPermission.
+- Support API DeleteDentry.
+- Support API DeletePermission.
+- Support API DocUpdateContent.
+- Support API ListPermissions.
+- Support API UpdatePermission.
+
+
 2025-04-11 Version: 2.34.0
 - Support API GetAssistantCapability.
 
