@@ -1,7 +1,306 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import Dict, List
+
+
+class CancelAsyncTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class CancelAsyncTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CancelAsyncTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelAsyncTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelAsyncTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExportAnalysisTagDetailByTaskIdRequest(TeaModel):
+    def __init__(
+        self,
+        categories: List[str] = None,
+        category: str = None,
+        task_id: str = None,
+    ):
+        self.categories = categories
+        self.category = category
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.categories is not None:
+            result['categories'] = self.categories
+        if self.category is not None:
+            result['category'] = self.category
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('categories') is not None:
+            self.categories = m.get('categories')
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class ExportAnalysisTagDetailByTaskIdShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        categories_shrink: str = None,
+        category: str = None,
+        task_id: str = None,
+    ):
+        self.categories_shrink = categories_shrink
+        self.category = category
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.categories_shrink is not None:
+            result['categories'] = self.categories_shrink
+        if self.category is not None:
+            result['category'] = self.category
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('categories') is not None:
+            self.categories_shrink = m.get('categories')
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class ExportAnalysisTagDetailByTaskIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ExportAnalysisTagDetailByTaskIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportAnalysisTagDetailByTaskIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportAnalysisTagDetailByTaskIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class GenerateBroadcastNewsRequest(TeaModel):
@@ -600,6 +899,409 @@ class GenerateOutputFormatResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GenerateOutputFormatResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetEnterpriseVocAnalysisTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic(TeaModel):
+    def __init__(
+        self,
+        tag_name: str = None,
+        value_count: int = None,
+    ):
+        self.tag_name = tag_name
+        self.value_count = value_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_name is not None:
+            result['tagName'] = self.tag_name
+        if self.value_count is not None:
+            result['valueCount'] = self.value_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tagName') is not None:
+            self.tag_name = m.get('tagName')
+        if m.get('valueCount') is not None:
+            self.value_count = m.get('valueCount')
+        return self
+
+
+class GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics(TeaModel):
+    def __init__(
+        self,
+        tag_value_count_statistic: List[GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic] = None,
+    ):
+        self.tag_value_count_statistic = tag_value_count_statistic
+
+    def validate(self):
+        if self.tag_value_count_statistic:
+            for k in self.tag_value_count_statistic:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['tagValueCountStatistic'] = []
+        if self.tag_value_count_statistic is not None:
+            for k in self.tag_value_count_statistic:
+                result['tagValueCountStatistic'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag_value_count_statistic = []
+        if m.get('tagValueCountStatistic') is not None:
+            for k in m.get('tagValueCountStatistic'):
+                temp_model = GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic()
+                self.tag_value_count_statistic.append(temp_model.from_map(k))
+        return self
+
+
+class GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic(TeaModel):
+    def __init__(
+        self,
+        tag_name: str = None,
+        value_count: int = None,
+    ):
+        self.tag_name = tag_name
+        self.value_count = value_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_name is not None:
+            result['tagName'] = self.tag_name
+        if self.value_count is not None:
+            result['valueCount'] = self.value_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tagName') is not None:
+            self.tag_name = m.get('tagName')
+        if m.get('valueCount') is not None:
+            self.value_count = m.get('valueCount')
+        return self
+
+
+class GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics(TeaModel):
+    def __init__(
+        self,
+        tag_value_count_statistic: List[GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic] = None,
+    ):
+        self.tag_value_count_statistic = tag_value_count_statistic
+
+    def validate(self):
+        if self.tag_value_count_statistic:
+            for k in self.tag_value_count_statistic:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['tagValueCountStatistic'] = []
+        if self.tag_value_count_statistic is not None:
+            for k in self.tag_value_count_statistic:
+                result['tagValueCountStatistic'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag_value_count_statistic = []
+        if m.get('tagValueCountStatistic') is not None:
+            for k in m.get('tagValueCountStatistic'):
+                temp_model = GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic()
+                self.tag_value_count_statistic.append(temp_model.from_map(k))
+        return self
+
+
+class GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        filter_dimension_statistics: GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics = None,
+        tag_dimension_statistics: GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics = None,
+    ):
+        self.count = count
+        self.filter_dimension_statistics = filter_dimension_statistics
+        self.tag_dimension_statistics = tag_dimension_statistics
+
+    def validate(self):
+        if self.filter_dimension_statistics:
+            self.filter_dimension_statistics.validate()
+        if self.tag_dimension_statistics:
+            self.tag_dimension_statistics.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['count'] = self.count
+        if self.filter_dimension_statistics is not None:
+            result['filterDimensionStatistics'] = self.filter_dimension_statistics.to_map()
+        if self.tag_dimension_statistics is not None:
+            result['tagDimensionStatistics'] = self.tag_dimension_statistics.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        if m.get('filterDimensionStatistics') is not None:
+            temp_model = GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics()
+            self.filter_dimension_statistics = temp_model.from_map(m['filterDimensionStatistics'])
+        if m.get('tagDimensionStatistics') is not None:
+            temp_model = GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics()
+            self.tag_dimension_statistics = temp_model.from_map(m['tagDimensionStatistics'])
+        return self
+
+
+class GetEnterpriseVocAnalysisTaskResponseBodyDataUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['inputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['outputTokens'] = self.output_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('inputTokens') is not None:
+            self.input_tokens = m.get('inputTokens')
+        if m.get('outputTokens') is not None:
+            self.output_tokens = m.get('outputTokens')
+        return self
+
+
+class GetEnterpriseVocAnalysisTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        model_id: str = None,
+        model_name: str = None,
+        statistics_overview: GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview = None,
+        status: str = None,
+        usage: GetEnterpriseVocAnalysisTaskResponseBodyDataUsage = None,
+    ):
+        self.error_message = error_message
+        self.model_id = model_id
+        self.model_name = model_name
+        self.statistics_overview = statistics_overview
+        self.status = status
+        self.usage = usage
+
+    def validate(self):
+        if self.statistics_overview:
+            self.statistics_overview.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.model_name is not None:
+            result['modelName'] = self.model_name
+        if self.statistics_overview is not None:
+            result['statisticsOverview'] = self.statistics_overview.to_map()
+        if self.status is not None:
+            result['status'] = self.status
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('modelName') is not None:
+            self.model_name = m.get('modelName')
+        if m.get('statisticsOverview') is not None:
+            temp_model = GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview()
+            self.statistics_overview = temp_model.from_map(m['statisticsOverview'])
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('usage') is not None:
+            temp_model = GetEnterpriseVocAnalysisTaskResponseBodyDataUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class GetEnterpriseVocAnalysisTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetEnterpriseVocAnalysisTaskResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetEnterpriseVocAnalysisTaskResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetEnterpriseVocAnalysisTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetEnterpriseVocAnalysisTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetEnterpriseVocAnalysisTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2677,6 +3379,556 @@ class ListHotTopicSummariesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListHotTopicSummariesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RunEnterpriseVocAnalysisRequestFilterTags(TeaModel):
+    def __init__(
+        self,
+        tag_define_prompt: str = None,
+        tag_name: str = None,
+    ):
+        # 标签定义提示词
+        self.tag_define_prompt = tag_define_prompt
+        # 标签名称
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_define_prompt is not None:
+            result['tagDefinePrompt'] = self.tag_define_prompt
+        if self.tag_name is not None:
+            result['tagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tagDefinePrompt') is not None:
+            self.tag_define_prompt = m.get('tagDefinePrompt')
+        if m.get('tagName') is not None:
+            self.tag_name = m.get('tagName')
+        return self
+
+
+class RunEnterpriseVocAnalysisRequestTags(TeaModel):
+    def __init__(
+        self,
+        tag_define_prompt: str = None,
+        tag_name: str = None,
+    ):
+        # 标签定义提示词
+        self.tag_define_prompt = tag_define_prompt
+        # 标签名称
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_define_prompt is not None:
+            result['tagDefinePrompt'] = self.tag_define_prompt
+        if self.tag_name is not None:
+            result['tagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tagDefinePrompt') is not None:
+            self.tag_define_prompt = m.get('tagDefinePrompt')
+        if m.get('tagName') is not None:
+            self.tag_name = m.get('tagName')
+        return self
+
+
+class RunEnterpriseVocAnalysisRequest(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        extra_info: str = None,
+        filter_tags: List[RunEnterpriseVocAnalysisRequestFilterTags] = None,
+        model_id: str = None,
+        output_format: str = None,
+        tags: List[RunEnterpriseVocAnalysisRequestTags] = None,
+        task_description: str = None,
+    ):
+        # 需要进行VOC分析的文本内容（content、contents、url、fileKey 四选一。优先级从小到大）
+        self.content = content
+        self.extra_info = extra_info
+        # 过滤标签，用于筛选符合条件的内容。
+        self.filter_tags = filter_tags
+        self.model_id = model_id
+        # 指定返回结果的格式，支持json或text
+        self.output_format = output_format
+        # 业务标签体系，用于对文本内容进行分类和分析。
+        self.tags = tags
+        self.task_description = task_description
+
+    def validate(self):
+        if self.filter_tags:
+            for k in self.filter_tags:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.extra_info is not None:
+            result['extraInfo'] = self.extra_info
+        result['filterTags'] = []
+        if self.filter_tags is not None:
+            for k in self.filter_tags:
+                result['filterTags'].append(k.to_map() if k else None)
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.output_format is not None:
+            result['outputFormat'] = self.output_format
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        if self.task_description is not None:
+            result['taskDescription'] = self.task_description
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('extraInfo') is not None:
+            self.extra_info = m.get('extraInfo')
+        self.filter_tags = []
+        if m.get('filterTags') is not None:
+            for k in m.get('filterTags'):
+                temp_model = RunEnterpriseVocAnalysisRequestFilterTags()
+                self.filter_tags.append(temp_model.from_map(k))
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('outputFormat') is not None:
+            self.output_format = m.get('outputFormat')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = RunEnterpriseVocAnalysisRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('taskDescription') is not None:
+            self.task_description = m.get('taskDescription')
+        return self
+
+
+class RunEnterpriseVocAnalysisShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        extra_info: str = None,
+        filter_tags_shrink: str = None,
+        model_id: str = None,
+        output_format: str = None,
+        tags_shrink: str = None,
+        task_description: str = None,
+    ):
+        # 需要进行VOC分析的文本内容（content、contents、url、fileKey 四选一。优先级从小到大）
+        self.content = content
+        self.extra_info = extra_info
+        # 过滤标签，用于筛选符合条件的内容。
+        self.filter_tags_shrink = filter_tags_shrink
+        self.model_id = model_id
+        # 指定返回结果的格式，支持json或text
+        self.output_format = output_format
+        # 业务标签体系，用于对文本内容进行分类和分析。
+        self.tags_shrink = tags_shrink
+        self.task_description = task_description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.extra_info is not None:
+            result['extraInfo'] = self.extra_info
+        if self.filter_tags_shrink is not None:
+            result['filterTags'] = self.filter_tags_shrink
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.output_format is not None:
+            result['outputFormat'] = self.output_format
+        if self.tags_shrink is not None:
+            result['tags'] = self.tags_shrink
+        if self.task_description is not None:
+            result['taskDescription'] = self.task_description
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('extraInfo') is not None:
+            self.extra_info = m.get('extraInfo')
+        if m.get('filterTags') is not None:
+            self.filter_tags_shrink = m.get('filterTags')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('outputFormat') is not None:
+            self.output_format = m.get('outputFormat')
+        if m.get('tags') is not None:
+            self.tags_shrink = m.get('tags')
+        if m.get('taskDescription') is not None:
+            self.task_description = m.get('taskDescription')
+        return self
+
+
+class RunEnterpriseVocAnalysisResponseBodyHeader(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        event: str = None,
+        session_id: str = None,
+        task_id: str = None,
+        trace_id: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.event = event
+        self.session_id = session_id
+        self.task_id = task_id
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.event is not None:
+            result['event'] = self.event
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('event') is not None:
+            self.event = m.get('event')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResultFilterResults(TeaModel):
+    def __init__(
+        self,
+        hit: bool = None,
+        tag_name: str = None,
+        tag_value: str = None,
+    ):
+        self.hit = hit
+        self.tag_name = tag_name
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hit is not None:
+            result['hit'] = self.hit
+        if self.tag_name is not None:
+            result['tagName'] = self.tag_name
+        if self.tag_value is not None:
+            result['tagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('hit') is not None:
+            self.hit = m.get('hit')
+        if m.get('tagName') is not None:
+            self.tag_name = m.get('tagName')
+        if m.get('tagValue') is not None:
+            self.tag_value = m.get('tagValue')
+        return self
+
+
+class RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResult(TeaModel):
+    def __init__(
+        self,
+        filter_results: List[RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResultFilterResults] = None,
+    ):
+        self.filter_results = filter_results
+
+    def validate(self):
+        if self.filter_results:
+            for k in self.filter_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['filterResults'] = []
+        if self.filter_results is not None:
+            for k in self.filter_results:
+                result['filterResults'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.filter_results = []
+        if m.get('filterResults') is not None:
+            for k in m.get('filterResults'):
+                temp_model = RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResultFilterResults()
+                self.filter_results.append(temp_model.from_map(k))
+        return self
+
+
+class RunEnterpriseVocAnalysisResponseBodyPayloadOutput(TeaModel):
+    def __init__(
+        self,
+        filter_result: RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResult = None,
+        text: str = None,
+    ):
+        self.filter_result = filter_result
+        self.text = text
+
+    def validate(self):
+        if self.filter_result:
+            self.filter_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_result is not None:
+            result['filterResult'] = self.filter_result.to_map()
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('filterResult') is not None:
+            temp_model = RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResult()
+            self.filter_result = temp_model.from_map(m['filterResult'])
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class RunEnterpriseVocAnalysisResponseBodyPayloadUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['inputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['outputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['totalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('inputTokens') is not None:
+            self.input_tokens = m.get('inputTokens')
+        if m.get('outputTokens') is not None:
+            self.output_tokens = m.get('outputTokens')
+        if m.get('totalTokens') is not None:
+            self.total_tokens = m.get('totalTokens')
+        return self
+
+
+class RunEnterpriseVocAnalysisResponseBodyPayload(TeaModel):
+    def __init__(
+        self,
+        output: RunEnterpriseVocAnalysisResponseBodyPayloadOutput = None,
+        usage: RunEnterpriseVocAnalysisResponseBodyPayloadUsage = None,
+    ):
+        self.output = output
+        self.usage = usage
+
+    def validate(self):
+        if self.output:
+            self.output.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['output'] = self.output.to_map()
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('output') is not None:
+            temp_model = RunEnterpriseVocAnalysisResponseBodyPayloadOutput()
+            self.output = temp_model.from_map(m['output'])
+        if m.get('usage') is not None:
+            temp_model = RunEnterpriseVocAnalysisResponseBodyPayloadUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class RunEnterpriseVocAnalysisResponseBody(TeaModel):
+    def __init__(
+        self,
+        header: RunEnterpriseVocAnalysisResponseBodyHeader = None,
+        payload: RunEnterpriseVocAnalysisResponseBodyPayload = None,
+        request_id: str = None,
+    ):
+        self.header = header
+        self.payload = payload
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.payload:
+            self.payload.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.header is not None:
+            result['header'] = self.header.to_map()
+        if self.payload is not None:
+            result['payload'] = self.payload.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('header') is not None:
+            temp_model = RunEnterpriseVocAnalysisResponseBodyHeader()
+            self.header = temp_model.from_map(m['header'])
+        if m.get('payload') is not None:
+            temp_model = RunEnterpriseVocAnalysisResponseBodyPayload()
+            self.payload = temp_model.from_map(m['payload'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class RunEnterpriseVocAnalysisResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunEnterpriseVocAnalysisResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunEnterpriseVocAnalysisResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8611,6 +9863,409 @@ class RunVideoAnalysisResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RunVideoAnalysisResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitEnterpriseVocAnalysisTaskRequestContents(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        text: str = None,
+    ):
+        self.id = id
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class SubmitEnterpriseVocAnalysisTaskRequestFilterTags(TeaModel):
+    def __init__(
+        self,
+        tag_define_prompt: str = None,
+        tag_name: str = None,
+    ):
+        self.tag_define_prompt = tag_define_prompt
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_define_prompt is not None:
+            result['tagDefinePrompt'] = self.tag_define_prompt
+        if self.tag_name is not None:
+            result['tagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tagDefinePrompt') is not None:
+            self.tag_define_prompt = m.get('tagDefinePrompt')
+        if m.get('tagName') is not None:
+            self.tag_name = m.get('tagName')
+        return self
+
+
+class SubmitEnterpriseVocAnalysisTaskRequestTags(TeaModel):
+    def __init__(
+        self,
+        tag_define_prompt: str = None,
+        tag_name: str = None,
+    ):
+        self.tag_define_prompt = tag_define_prompt
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_define_prompt is not None:
+            result['tagDefinePrompt'] = self.tag_define_prompt
+        if self.tag_name is not None:
+            result['tagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tagDefinePrompt') is not None:
+            self.tag_define_prompt = m.get('tagDefinePrompt')
+        if m.get('tagName') is not None:
+            self.tag_name = m.get('tagName')
+        return self
+
+
+class SubmitEnterpriseVocAnalysisTaskRequest(TeaModel):
+    def __init__(
+        self,
+        contents: List[SubmitEnterpriseVocAnalysisTaskRequestContents] = None,
+        extra_info: str = None,
+        file_key: str = None,
+        filter_tags: List[SubmitEnterpriseVocAnalysisTaskRequestFilterTags] = None,
+        model_id: str = None,
+        output_format: str = None,
+        tags: List[SubmitEnterpriseVocAnalysisTaskRequestTags] = None,
+        task_description: str = None,
+        url: str = None,
+    ):
+        self.contents = contents
+        self.extra_info = extra_info
+        self.file_key = file_key
+        self.filter_tags = filter_tags
+        self.model_id = model_id
+        self.output_format = output_format
+        self.tags = tags
+        self.task_description = task_description
+        self.url = url
+
+    def validate(self):
+        if self.contents:
+            for k in self.contents:
+                if k:
+                    k.validate()
+        if self.filter_tags:
+            for k in self.filter_tags:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['contents'] = []
+        if self.contents is not None:
+            for k in self.contents:
+                result['contents'].append(k.to_map() if k else None)
+        if self.extra_info is not None:
+            result['extraInfo'] = self.extra_info
+        if self.file_key is not None:
+            result['fileKey'] = self.file_key
+        result['filterTags'] = []
+        if self.filter_tags is not None:
+            for k in self.filter_tags:
+                result['filterTags'].append(k.to_map() if k else None)
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.output_format is not None:
+            result['outputFormat'] = self.output_format
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        if self.task_description is not None:
+            result['taskDescription'] = self.task_description
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.contents = []
+        if m.get('contents') is not None:
+            for k in m.get('contents'):
+                temp_model = SubmitEnterpriseVocAnalysisTaskRequestContents()
+                self.contents.append(temp_model.from_map(k))
+        if m.get('extraInfo') is not None:
+            self.extra_info = m.get('extraInfo')
+        if m.get('fileKey') is not None:
+            self.file_key = m.get('fileKey')
+        self.filter_tags = []
+        if m.get('filterTags') is not None:
+            for k in m.get('filterTags'):
+                temp_model = SubmitEnterpriseVocAnalysisTaskRequestFilterTags()
+                self.filter_tags.append(temp_model.from_map(k))
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('outputFormat') is not None:
+            self.output_format = m.get('outputFormat')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = SubmitEnterpriseVocAnalysisTaskRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('taskDescription') is not None:
+            self.task_description = m.get('taskDescription')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class SubmitEnterpriseVocAnalysisTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        contents_shrink: str = None,
+        extra_info: str = None,
+        file_key: str = None,
+        filter_tags_shrink: str = None,
+        model_id: str = None,
+        output_format: str = None,
+        tags_shrink: str = None,
+        task_description: str = None,
+        url: str = None,
+    ):
+        self.contents_shrink = contents_shrink
+        self.extra_info = extra_info
+        self.file_key = file_key
+        self.filter_tags_shrink = filter_tags_shrink
+        self.model_id = model_id
+        self.output_format = output_format
+        self.tags_shrink = tags_shrink
+        self.task_description = task_description
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.contents_shrink is not None:
+            result['contents'] = self.contents_shrink
+        if self.extra_info is not None:
+            result['extraInfo'] = self.extra_info
+        if self.file_key is not None:
+            result['fileKey'] = self.file_key
+        if self.filter_tags_shrink is not None:
+            result['filterTags'] = self.filter_tags_shrink
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.output_format is not None:
+            result['outputFormat'] = self.output_format
+        if self.tags_shrink is not None:
+            result['tags'] = self.tags_shrink
+        if self.task_description is not None:
+            result['taskDescription'] = self.task_description
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('contents') is not None:
+            self.contents_shrink = m.get('contents')
+        if m.get('extraInfo') is not None:
+            self.extra_info = m.get('extraInfo')
+        if m.get('fileKey') is not None:
+            self.file_key = m.get('fileKey')
+        if m.get('filterTags') is not None:
+            self.filter_tags_shrink = m.get('filterTags')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('outputFormat') is not None:
+            self.output_format = m.get('outputFormat')
+        if m.get('tags') is not None:
+            self.tags_shrink = m.get('tags')
+        if m.get('taskDescription') is not None:
+            self.task_description = m.get('taskDescription')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class SubmitEnterpriseVocAnalysisTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class SubmitEnterpriseVocAnalysisTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SubmitEnterpriseVocAnalysisTaskResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = SubmitEnterpriseVocAnalysisTaskResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class SubmitEnterpriseVocAnalysisTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitEnterpriseVocAnalysisTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitEnterpriseVocAnalysisTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

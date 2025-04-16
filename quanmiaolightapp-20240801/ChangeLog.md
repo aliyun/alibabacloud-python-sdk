@@ -1,3 +1,11 @@
+2025-04-16 Version: 2.7.0
+- Support API CancelAsyncTask.
+- Support API ExportAnalysisTagDetailByTaskId.
+- Support API GetEnterpriseVocAnalysisTask.
+- Support API RunEnterpriseVocAnalysis.
+- Support API SubmitEnterpriseVocAnalysisTask.
+
+
 2025-04-10 Version: 2.6.5
 - Update API RunTagMiningAnalysis: add request parameters apiKey.
 - Update API SubmitTagMiningAnalysisTask: add request parameters apiKey.

@@ -41,6 +41,238 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def cancel_async_task_with_options(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.CancelAsyncTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.CancelAsyncTaskResponse:
+        """
+        @summary 取消异步任务
+        
+        @param request: CancelAsyncTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelAsyncTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CancelAsyncTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/cancelAsyncTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.CancelAsyncTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_async_task_with_options_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.CancelAsyncTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.CancelAsyncTaskResponse:
+        """
+        @summary 取消异步任务
+        
+        @param request: CancelAsyncTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelAsyncTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CancelAsyncTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/cancelAsyncTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.CancelAsyncTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_async_task(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.CancelAsyncTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.CancelAsyncTaskResponse:
+        """
+        @summary 取消异步任务
+        
+        @param request: CancelAsyncTaskRequest
+        @return: CancelAsyncTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.cancel_async_task_with_options(workspace_id, request, headers, runtime)
+
+    async def cancel_async_task_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.CancelAsyncTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.CancelAsyncTaskResponse:
+        """
+        @summary 取消异步任务
+        
+        @param request: CancelAsyncTaskRequest
+        @return: CancelAsyncTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.cancel_async_task_with_options_async(workspace_id, request, headers, runtime)
+
+    def export_analysis_tag_detail_by_task_id_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.ExportAnalysisTagDetailByTaskIdRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.ExportAnalysisTagDetailByTaskIdResponse:
+        """
+        @summary 导出挖掘任务明细
+        
+        @param tmp_req: ExportAnalysisTagDetailByTaskIdRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportAnalysisTagDetailByTaskIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.ExportAnalysisTagDetailByTaskIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.categories):
+            request.categories_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.categories, 'categories', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.categories_shrink):
+            body['categories'] = request.categories_shrink
+        if not UtilClient.is_unset(request.category):
+            body['category'] = request.category
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportAnalysisTagDetailByTaskId',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/exportAnalysisTagDetailByTaskId',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.ExportAnalysisTagDetailByTaskIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_analysis_tag_detail_by_task_id_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.ExportAnalysisTagDetailByTaskIdRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.ExportAnalysisTagDetailByTaskIdResponse:
+        """
+        @summary 导出挖掘任务明细
+        
+        @param tmp_req: ExportAnalysisTagDetailByTaskIdRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportAnalysisTagDetailByTaskIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.ExportAnalysisTagDetailByTaskIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.categories):
+            request.categories_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.categories, 'categories', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.categories_shrink):
+            body['categories'] = request.categories_shrink
+        if not UtilClient.is_unset(request.category):
+            body['category'] = request.category
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportAnalysisTagDetailByTaskId',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/exportAnalysisTagDetailByTaskId',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.ExportAnalysisTagDetailByTaskIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_analysis_tag_detail_by_task_id(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.ExportAnalysisTagDetailByTaskIdRequest,
+    ) -> quan_miao_light_app_20240801_models.ExportAnalysisTagDetailByTaskIdResponse:
+        """
+        @summary 导出挖掘任务明细
+        
+        @param request: ExportAnalysisTagDetailByTaskIdRequest
+        @return: ExportAnalysisTagDetailByTaskIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.export_analysis_tag_detail_by_task_id_with_options(workspace_id, request, headers, runtime)
+
+    async def export_analysis_tag_detail_by_task_id_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.ExportAnalysisTagDetailByTaskIdRequest,
+    ) -> quan_miao_light_app_20240801_models.ExportAnalysisTagDetailByTaskIdResponse:
+        """
+        @summary 导出挖掘任务明细
+        
+        @param request: ExportAnalysisTagDetailByTaskIdRequest
+        @return: ExportAnalysisTagDetailByTaskIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.export_analysis_tag_detail_by_task_id_with_options_async(workspace_id, request, headers, runtime)
+
     def generate_broadcast_news_with_options(
         self,
         workspace_id: str,
@@ -75,16 +307,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.GenerateBroadcastNewsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.GenerateBroadcastNewsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GenerateBroadcastNewsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def generate_broadcast_news_with_options_async(
         self,
@@ -120,16 +346,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.GenerateBroadcastNewsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.GenerateBroadcastNewsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GenerateBroadcastNewsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def generate_broadcast_news(
         self,
@@ -207,16 +427,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.GenerateOutputFormatResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.GenerateOutputFormatResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GenerateOutputFormatResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def generate_output_format_with_options_async(
         self,
@@ -264,16 +478,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.GenerateOutputFormatResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.GenerateOutputFormatResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GenerateOutputFormatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def generate_output_format(
         self,
@@ -304,6 +512,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.generate_output_format_with_options_async(workspace_id, request, headers, runtime)
+
+    def get_enterprise_voc_analysis_task_with_options(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetEnterpriseVocAnalysisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.GetEnterpriseVocAnalysisTaskResponse:
+        """
+        @summary 获取企业VOC分析任务结果
+        
+        @param request: GetEnterpriseVocAnalysisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEnterpriseVocAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEnterpriseVocAnalysisTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/getEnterpriseVocAnalysisTask',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GetEnterpriseVocAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_enterprise_voc_analysis_task_with_options_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetEnterpriseVocAnalysisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.GetEnterpriseVocAnalysisTaskResponse:
+        """
+        @summary 获取企业VOC分析任务结果
+        
+        @param request: GetEnterpriseVocAnalysisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEnterpriseVocAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEnterpriseVocAnalysisTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/getEnterpriseVocAnalysisTask',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GetEnterpriseVocAnalysisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_enterprise_voc_analysis_task(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetEnterpriseVocAnalysisTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.GetEnterpriseVocAnalysisTaskResponse:
+        """
+        @summary 获取企业VOC分析任务结果
+        
+        @param request: GetEnterpriseVocAnalysisTaskRequest
+        @return: GetEnterpriseVocAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_enterprise_voc_analysis_task_with_options(workspace_id, request, headers, runtime)
+
+    async def get_enterprise_voc_analysis_task_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetEnterpriseVocAnalysisTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.GetEnterpriseVocAnalysisTaskResponse:
+        """
+        @summary 获取企业VOC分析任务结果
+        
+        @param request: GetEnterpriseVocAnalysisTaskRequest
+        @return: GetEnterpriseVocAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_enterprise_voc_analysis_task_with_options_async(workspace_id, request, headers, runtime)
 
     def get_tag_mining_analysis_task_with_options(
         self,
@@ -339,16 +655,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.GetTagMiningAnalysisTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.GetTagMiningAnalysisTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GetTagMiningAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_tag_mining_analysis_task_with_options_async(
         self,
@@ -384,16 +694,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.GetTagMiningAnalysisTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.GetTagMiningAnalysisTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GetTagMiningAnalysisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_tag_mining_analysis_task(
         self,
@@ -452,16 +756,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.GetVideoAnalysisConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.GetVideoAnalysisConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GetVideoAnalysisConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_video_analysis_config_with_options_async(
         self,
@@ -490,16 +788,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.GetVideoAnalysisConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.GetVideoAnalysisConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GetVideoAnalysisConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_video_analysis_config(
         self,
@@ -561,16 +853,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.GetVideoAnalysisTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.GetVideoAnalysisTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GetVideoAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_video_analysis_task_with_options_async(
         self,
@@ -606,16 +892,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.GetVideoAnalysisTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.GetVideoAnalysisTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GetVideoAnalysisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_video_analysis_task(
         self,
@@ -689,16 +969,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.ListHotTopicSummariesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.ListHotTopicSummariesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.ListHotTopicSummariesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_hot_topic_summaries_with_options_async(
         self,
@@ -742,16 +1016,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.ListHotTopicSummariesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.ListHotTopicSummariesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.ListHotTopicSummariesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_hot_topic_summaries(
         self,
@@ -782,6 +1050,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_hot_topic_summaries_with_options_async(workspace_id, request, headers, runtime)
+
+    def run_enterprise_voc_analysis_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.RunEnterpriseVocAnalysisRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.RunEnterpriseVocAnalysisResponse:
+        """
+        @summary 企业VOC分析
+        
+        @param tmp_req: RunEnterpriseVocAnalysisRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunEnterpriseVocAnalysisResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.RunEnterpriseVocAnalysisShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter_tags):
+            request.filter_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_tags, 'filterTags', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.extra_info):
+            body['extraInfo'] = request.extra_info
+        if not UtilClient.is_unset(request.filter_tags_shrink):
+            body['filterTags'] = request.filter_tags_shrink
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.output_format):
+            body['outputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.task_description):
+            body['taskDescription'] = request.task_description
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunEnterpriseVocAnalysis',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/runEnterpriseVocAnalysis',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunEnterpriseVocAnalysisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_enterprise_voc_analysis_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.RunEnterpriseVocAnalysisRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.RunEnterpriseVocAnalysisResponse:
+        """
+        @summary 企业VOC分析
+        
+        @param tmp_req: RunEnterpriseVocAnalysisRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunEnterpriseVocAnalysisResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.RunEnterpriseVocAnalysisShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter_tags):
+            request.filter_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_tags, 'filterTags', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.extra_info):
+            body['extraInfo'] = request.extra_info
+        if not UtilClient.is_unset(request.filter_tags_shrink):
+            body['filterTags'] = request.filter_tags_shrink
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.output_format):
+            body['outputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.task_description):
+            body['taskDescription'] = request.task_description
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunEnterpriseVocAnalysis',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/runEnterpriseVocAnalysis',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunEnterpriseVocAnalysisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_enterprise_voc_analysis(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunEnterpriseVocAnalysisRequest,
+    ) -> quan_miao_light_app_20240801_models.RunEnterpriseVocAnalysisResponse:
+        """
+        @summary 企业VOC分析
+        
+        @param request: RunEnterpriseVocAnalysisRequest
+        @return: RunEnterpriseVocAnalysisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.run_enterprise_voc_analysis_with_options(workspace_id, request, headers, runtime)
+
+    async def run_enterprise_voc_analysis_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunEnterpriseVocAnalysisRequest,
+    ) -> quan_miao_light_app_20240801_models.RunEnterpriseVocAnalysisResponse:
+        """
+        @summary 企业VOC分析
+        
+        @param request: RunEnterpriseVocAnalysisRequest
+        @return: RunEnterpriseVocAnalysisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.run_enterprise_voc_analysis_with_options_async(workspace_id, request, headers, runtime)
 
     def run_hot_topic_chat_with_options(
         self,
@@ -849,16 +1261,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunHotTopicChatResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunHotTopicChatResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunHotTopicChatResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_hot_topic_chat_with_options_async(
         self,
@@ -926,16 +1332,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunHotTopicChatResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunHotTopicChatResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunHotTopicChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_hot_topic_chat(
         self,
@@ -1011,16 +1411,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunHotTopicSummaryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunHotTopicSummaryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunHotTopicSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_hot_topic_summary_with_options_async(
         self,
@@ -1066,16 +1460,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunHotTopicSummaryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunHotTopicSummaryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunHotTopicSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_hot_topic_summary(
         self,
@@ -1151,16 +1539,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunMarketingInformationExtractResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunMarketingInformationExtractResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunMarketingInformationExtractResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_marketing_information_extract_with_options_async(
         self,
@@ -1206,16 +1588,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunMarketingInformationExtractResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunMarketingInformationExtractResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunMarketingInformationExtractResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_marketing_information_extract(
         self,
@@ -1293,16 +1669,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunMarketingInformationWritingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunMarketingInformationWritingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunMarketingInformationWritingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_marketing_information_writing_with_options_async(
         self,
@@ -1350,16 +1720,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunMarketingInformationWritingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunMarketingInformationWritingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunMarketingInformationWritingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_marketing_information_writing(
         self,
@@ -1441,16 +1805,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunNetworkContentAuditResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunNetworkContentAuditResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunNetworkContentAuditResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_network_content_audit_with_options_async(
         self,
@@ -1502,16 +1860,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunNetworkContentAuditResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunNetworkContentAuditResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunNetworkContentAuditResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_network_content_audit(
         self,
@@ -1579,16 +1931,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunScriptChatResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunScriptChatResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunScriptChatResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_script_chat_with_options_async(
         self,
@@ -1626,16 +1972,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunScriptChatResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunScriptChatResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunScriptChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_script_chat(
         self,
@@ -1705,16 +2045,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunScriptContinueResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunScriptContinueResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunScriptContinueResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_script_continue_with_options_async(
         self,
@@ -1754,16 +2088,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunScriptContinueResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunScriptContinueResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunScriptContinueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_script_continue(
         self,
@@ -1841,16 +2169,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunScriptPlanningResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunScriptPlanningResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunScriptPlanningResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_script_planning_with_options_async(
         self,
@@ -1898,16 +2220,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunScriptPlanningResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunScriptPlanningResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunScriptPlanningResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_script_planning(
         self,
@@ -1973,16 +2289,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunScriptRefineResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunScriptRefineResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunScriptRefineResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_script_refine_with_options_async(
         self,
@@ -2018,16 +2328,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunScriptRefineResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunScriptRefineResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunScriptRefineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_script_refine(
         self,
@@ -2109,16 +2413,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunStyleWritingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunStyleWritingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunStyleWritingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_style_writing_with_options_async(
         self,
@@ -2170,16 +2468,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunStyleWritingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunStyleWritingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunStyleWritingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_style_writing(
         self,
@@ -2263,16 +2555,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunTagMiningAnalysisResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunTagMiningAnalysisResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunTagMiningAnalysisResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_tag_mining_analysis_with_options_async(
         self,
@@ -2326,16 +2612,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunTagMiningAnalysisResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunTagMiningAnalysisResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunTagMiningAnalysisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_tag_mining_analysis(
         self,
@@ -2449,16 +2729,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunVideoAnalysisResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunVideoAnalysisResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunVideoAnalysisResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_video_analysis_with_options_async(
         self,
@@ -2542,16 +2816,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunVideoAnalysisResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.RunVideoAnalysisResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunVideoAnalysisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_video_analysis(
         self,
@@ -2582,6 +2850,162 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.run_video_analysis_with_options_async(workspace_id, request, headers, runtime)
+
+    def submit_enterprise_voc_analysis_task_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.SubmitEnterpriseVocAnalysisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.SubmitEnterpriseVocAnalysisTaskResponse:
+        """
+        @summary 提交企业VOC异步任务
+        
+        @param tmp_req: SubmitEnterpriseVocAnalysisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitEnterpriseVocAnalysisTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.SubmitEnterpriseVocAnalysisTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.contents):
+            request.contents_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contents, 'contents', 'json')
+        if not UtilClient.is_unset(tmp_req.filter_tags):
+            request.filter_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_tags, 'filterTags', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.contents_shrink):
+            body['contents'] = request.contents_shrink
+        if not UtilClient.is_unset(request.extra_info):
+            body['extraInfo'] = request.extra_info
+        if not UtilClient.is_unset(request.file_key):
+            body['fileKey'] = request.file_key
+        if not UtilClient.is_unset(request.filter_tags_shrink):
+            body['filterTags'] = request.filter_tags_shrink
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.output_format):
+            body['outputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.task_description):
+            body['taskDescription'] = request.task_description
+        if not UtilClient.is_unset(request.url):
+            body['url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitEnterpriseVocAnalysisTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/submitEnterpriseVocAnalysisTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.SubmitEnterpriseVocAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_enterprise_voc_analysis_task_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.SubmitEnterpriseVocAnalysisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.SubmitEnterpriseVocAnalysisTaskResponse:
+        """
+        @summary 提交企业VOC异步任务
+        
+        @param tmp_req: SubmitEnterpriseVocAnalysisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitEnterpriseVocAnalysisTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.SubmitEnterpriseVocAnalysisTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.contents):
+            request.contents_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contents, 'contents', 'json')
+        if not UtilClient.is_unset(tmp_req.filter_tags):
+            request.filter_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_tags, 'filterTags', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.contents_shrink):
+            body['contents'] = request.contents_shrink
+        if not UtilClient.is_unset(request.extra_info):
+            body['extraInfo'] = request.extra_info
+        if not UtilClient.is_unset(request.file_key):
+            body['fileKey'] = request.file_key
+        if not UtilClient.is_unset(request.filter_tags_shrink):
+            body['filterTags'] = request.filter_tags_shrink
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.output_format):
+            body['outputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.task_description):
+            body['taskDescription'] = request.task_description
+        if not UtilClient.is_unset(request.url):
+            body['url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitEnterpriseVocAnalysisTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/submitEnterpriseVocAnalysisTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.SubmitEnterpriseVocAnalysisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_enterprise_voc_analysis_task(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.SubmitEnterpriseVocAnalysisTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.SubmitEnterpriseVocAnalysisTaskResponse:
+        """
+        @summary 提交企业VOC异步任务
+        
+        @param request: SubmitEnterpriseVocAnalysisTaskRequest
+        @return: SubmitEnterpriseVocAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.submit_enterprise_voc_analysis_task_with_options(workspace_id, request, headers, runtime)
+
+    async def submit_enterprise_voc_analysis_task_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.SubmitEnterpriseVocAnalysisTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.SubmitEnterpriseVocAnalysisTaskResponse:
+        """
+        @summary 提交企业VOC异步任务
+        
+        @param request: SubmitEnterpriseVocAnalysisTaskRequest
+        @return: SubmitEnterpriseVocAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.submit_enterprise_voc_analysis_task_with_options_async(workspace_id, request, headers, runtime)
 
     def submit_tag_mining_analysis_task_with_options(
         self,
@@ -2639,16 +3063,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.SubmitTagMiningAnalysisTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.SubmitTagMiningAnalysisTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.SubmitTagMiningAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def submit_tag_mining_analysis_task_with_options_async(
         self,
@@ -2706,16 +3124,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.SubmitTagMiningAnalysisTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.SubmitTagMiningAnalysisTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.SubmitTagMiningAnalysisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def submit_tag_mining_analysis_task(
         self,
@@ -2827,16 +3239,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def submit_video_analysis_task_with_options_async(
         self,
@@ -2918,16 +3324,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def submit_video_analysis_task(
         self,
@@ -2993,16 +3393,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_video_analysis_config_with_options_async(
         self,
@@ -3038,16 +3432,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_video_analysis_config(
         self,
