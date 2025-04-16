@@ -1,3 +1,6 @@
+2025-04-16 Version: 3.6.1
+- Generated python 2024-06-03 for ContactCenterAI.
+
 2025-04-16 Version: 3.6.0
 - Support API AnalyzeAudioSync.
 - Update API AnalyzeConversation: add request parameters body.responseFormatType.
