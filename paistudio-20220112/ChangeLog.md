@@ -1,3 +1,7 @@
+2025-04-16 Version: 2.1.4
+- Update API ListNodes: add request parameters ReasonCodes.
+
+
 2025-03-19 Version: 2.1.3
 - Update API ListNodes: add param MachineGroupIds.
 - Update API ListResourceGroupMachineGroups: add param MachineGroupIDs.

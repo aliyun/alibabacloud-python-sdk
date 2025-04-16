@@ -10986,6 +10986,7 @@ class ListNodesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         quota_id: str = None,
+        reason_codes: str = None,
         resource_group_ids: str = None,
         sort_by: str = None,
         verbose: bool = None,
@@ -11003,6 +11004,7 @@ class ListNodesRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.quota_id = quota_id
+        self.reason_codes = reason_codes
         self.resource_group_ids = resource_group_ids
         self.sort_by = sort_by
         self.verbose = verbose
@@ -11042,6 +11044,8 @@ class ListNodesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.quota_id is not None:
             result['QuotaId'] = self.quota_id
+        if self.reason_codes is not None:
+            result['ReasonCodes'] = self.reason_codes
         if self.resource_group_ids is not None:
             result['ResourceGroupIds'] = self.resource_group_ids
         if self.sort_by is not None:
@@ -11078,6 +11082,8 @@ class ListNodesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('QuotaId') is not None:
             self.quota_id = m.get('QuotaId')
+        if m.get('ReasonCodes') is not None:
+            self.reason_codes = m.get('ReasonCodes')
         if m.get('ResourceGroupIds') is not None:
             self.resource_group_ids = m.get('ResourceGroupIds')
         if m.get('SortBy') is not None:
