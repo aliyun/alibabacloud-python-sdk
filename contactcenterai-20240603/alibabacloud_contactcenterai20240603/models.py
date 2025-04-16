@@ -4,6 +4,539 @@ from Tea.model import TeaModel
 from typing import List, Dict
 
 
+class AnalyzeAudioSyncRequestCategoryTags(TeaModel):
+    def __init__(
+        self,
+        tag_desc: str = None,
+        tag_name: str = None,
+    ):
+        self.tag_desc = tag_desc
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_desc is not None:
+            result['tagDesc'] = self.tag_desc
+        if self.tag_name is not None:
+            result['tagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tagDesc') is not None:
+            self.tag_desc = m.get('tagDesc')
+        if m.get('tagName') is not None:
+            self.tag_name = m.get('tagName')
+        return self
+
+
+class AnalyzeAudioSyncRequestFieldsEnumValues(TeaModel):
+    def __init__(
+        self,
+        desc: str = None,
+        enum_value: str = None,
+    ):
+        self.desc = desc
+        self.enum_value = enum_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desc is not None:
+            result['desc'] = self.desc
+        if self.enum_value is not None:
+            result['enumValue'] = self.enum_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('desc') is not None:
+            self.desc = m.get('desc')
+        if m.get('enumValue') is not None:
+            self.enum_value = m.get('enumValue')
+        return self
+
+
+class AnalyzeAudioSyncRequestFields(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        desc: str = None,
+        enum_values: List[AnalyzeAudioSyncRequestFieldsEnumValues] = None,
+        name: str = None,
+    ):
+        self.code = code
+        self.desc = desc
+        self.enum_values = enum_values
+        self.name = name
+
+    def validate(self):
+        if self.enum_values:
+            for k in self.enum_values:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.desc is not None:
+            result['desc'] = self.desc
+        result['enumValues'] = []
+        if self.enum_values is not None:
+            for k in self.enum_values:
+                result['enumValues'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('desc') is not None:
+            self.desc = m.get('desc')
+        self.enum_values = []
+        if m.get('enumValues') is not None:
+            for k in m.get('enumValues'):
+                temp_model = AnalyzeAudioSyncRequestFieldsEnumValues()
+                self.enum_values.append(temp_model.from_map(k))
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class AnalyzeAudioSyncRequestServiceInspectionInspectionContents(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        title: str = None,
+    ):
+        self.content = content
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
+class AnalyzeAudioSyncRequestServiceInspection(TeaModel):
+    def __init__(
+        self,
+        inspection_contents: List[AnalyzeAudioSyncRequestServiceInspectionInspectionContents] = None,
+        inspection_introduction: str = None,
+        scene_introduction: str = None,
+    ):
+        self.inspection_contents = inspection_contents
+        self.inspection_introduction = inspection_introduction
+        self.scene_introduction = scene_introduction
+
+    def validate(self):
+        if self.inspection_contents:
+            for k in self.inspection_contents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['inspectionContents'] = []
+        if self.inspection_contents is not None:
+            for k in self.inspection_contents:
+                result['inspectionContents'].append(k.to_map() if k else None)
+        if self.inspection_introduction is not None:
+            result['inspectionIntroduction'] = self.inspection_introduction
+        if self.scene_introduction is not None:
+            result['sceneIntroduction'] = self.scene_introduction
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.inspection_contents = []
+        if m.get('inspectionContents') is not None:
+            for k in m.get('inspectionContents'):
+                temp_model = AnalyzeAudioSyncRequestServiceInspectionInspectionContents()
+                self.inspection_contents.append(temp_model.from_map(k))
+        if m.get('inspectionIntroduction') is not None:
+            self.inspection_introduction = m.get('inspectionIntroduction')
+        if m.get('sceneIntroduction') is not None:
+            self.scene_introduction = m.get('sceneIntroduction')
+        return self
+
+
+class AnalyzeAudioSyncRequestTranscription(TeaModel):
+    def __init__(
+        self,
+        asr_model_code: str = None,
+        auto_split: int = None,
+        client_channel: int = None,
+        file_name: str = None,
+        level: str = None,
+        service_channel: int = None,
+        service_channel_keywords: List[str] = None,
+        vocabulary_id: str = None,
+        voice_file_url: str = None,
+    ):
+        self.asr_model_code = asr_model_code
+        self.auto_split = auto_split
+        self.client_channel = client_channel
+        # This parameter is required.
+        self.file_name = file_name
+        self.level = level
+        self.service_channel = service_channel
+        self.service_channel_keywords = service_channel_keywords
+        self.vocabulary_id = vocabulary_id
+        # This parameter is required.
+        self.voice_file_url = voice_file_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asr_model_code is not None:
+            result['asrModelCode'] = self.asr_model_code
+        if self.auto_split is not None:
+            result['autoSplit'] = self.auto_split
+        if self.client_channel is not None:
+            result['clientChannel'] = self.client_channel
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.level is not None:
+            result['level'] = self.level
+        if self.service_channel is not None:
+            result['serviceChannel'] = self.service_channel
+        if self.service_channel_keywords is not None:
+            result['serviceChannelKeywords'] = self.service_channel_keywords
+        if self.vocabulary_id is not None:
+            result['vocabularyId'] = self.vocabulary_id
+        if self.voice_file_url is not None:
+            result['voiceFileUrl'] = self.voice_file_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('asrModelCode') is not None:
+            self.asr_model_code = m.get('asrModelCode')
+        if m.get('autoSplit') is not None:
+            self.auto_split = m.get('autoSplit')
+        if m.get('clientChannel') is not None:
+            self.client_channel = m.get('clientChannel')
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('level') is not None:
+            self.level = m.get('level')
+        if m.get('serviceChannel') is not None:
+            self.service_channel = m.get('serviceChannel')
+        if m.get('serviceChannelKeywords') is not None:
+            self.service_channel_keywords = m.get('serviceChannelKeywords')
+        if m.get('vocabularyId') is not None:
+            self.vocabulary_id = m.get('vocabularyId')
+        if m.get('voiceFileUrl') is not None:
+            self.voice_file_url = m.get('voiceFileUrl')
+        return self
+
+
+class AnalyzeAudioSyncRequestVariables(TeaModel):
+    def __init__(
+        self,
+        variable_code: str = None,
+        variable_value: str = None,
+    ):
+        self.variable_code = variable_code
+        self.variable_value = variable_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.variable_code is not None:
+            result['variableCode'] = self.variable_code
+        if self.variable_value is not None:
+            result['variableValue'] = self.variable_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('variableCode') is not None:
+            self.variable_code = m.get('variableCode')
+        if m.get('variableValue') is not None:
+            self.variable_value = m.get('variableValue')
+        return self
+
+
+class AnalyzeAudioSyncRequest(TeaModel):
+    def __init__(
+        self,
+        category_tags: List[AnalyzeAudioSyncRequestCategoryTags] = None,
+        custom_prompt: str = None,
+        fields: List[AnalyzeAudioSyncRequestFields] = None,
+        model_code: str = None,
+        response_format_type: str = None,
+        result_types: List[str] = None,
+        service_inspection: AnalyzeAudioSyncRequestServiceInspection = None,
+        stream: bool = None,
+        template_ids: List[str] = None,
+        transcription: AnalyzeAudioSyncRequestTranscription = None,
+        variables: List[AnalyzeAudioSyncRequestVariables] = None,
+    ):
+        self.category_tags = category_tags
+        self.custom_prompt = custom_prompt
+        self.fields = fields
+        self.model_code = model_code
+        self.response_format_type = response_format_type
+        self.result_types = result_types
+        self.service_inspection = service_inspection
+        # This parameter is required.
+        self.stream = stream
+        self.template_ids = template_ids
+        self.transcription = transcription
+        self.variables = variables
+
+    def validate(self):
+        if self.category_tags:
+            for k in self.category_tags:
+                if k:
+                    k.validate()
+        if self.fields:
+            for k in self.fields:
+                if k:
+                    k.validate()
+        if self.service_inspection:
+            self.service_inspection.validate()
+        if self.transcription:
+            self.transcription.validate()
+        if self.variables:
+            for k in self.variables:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['categoryTags'] = []
+        if self.category_tags is not None:
+            for k in self.category_tags:
+                result['categoryTags'].append(k.to_map() if k else None)
+        if self.custom_prompt is not None:
+            result['customPrompt'] = self.custom_prompt
+        result['fields'] = []
+        if self.fields is not None:
+            for k in self.fields:
+                result['fields'].append(k.to_map() if k else None)
+        if self.model_code is not None:
+            result['modelCode'] = self.model_code
+        if self.response_format_type is not None:
+            result['responseFormatType'] = self.response_format_type
+        if self.result_types is not None:
+            result['resultTypes'] = self.result_types
+        if self.service_inspection is not None:
+            result['serviceInspection'] = self.service_inspection.to_map()
+        if self.stream is not None:
+            result['stream'] = self.stream
+        if self.template_ids is not None:
+            result['templateIds'] = self.template_ids
+        if self.transcription is not None:
+            result['transcription'] = self.transcription.to_map()
+        result['variables'] = []
+        if self.variables is not None:
+            for k in self.variables:
+                result['variables'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.category_tags = []
+        if m.get('categoryTags') is not None:
+            for k in m.get('categoryTags'):
+                temp_model = AnalyzeAudioSyncRequestCategoryTags()
+                self.category_tags.append(temp_model.from_map(k))
+        if m.get('customPrompt') is not None:
+            self.custom_prompt = m.get('customPrompt')
+        self.fields = []
+        if m.get('fields') is not None:
+            for k in m.get('fields'):
+                temp_model = AnalyzeAudioSyncRequestFields()
+                self.fields.append(temp_model.from_map(k))
+        if m.get('modelCode') is not None:
+            self.model_code = m.get('modelCode')
+        if m.get('responseFormatType') is not None:
+            self.response_format_type = m.get('responseFormatType')
+        if m.get('resultTypes') is not None:
+            self.result_types = m.get('resultTypes')
+        if m.get('serviceInspection') is not None:
+            temp_model = AnalyzeAudioSyncRequestServiceInspection()
+            self.service_inspection = temp_model.from_map(m['serviceInspection'])
+        if m.get('stream') is not None:
+            self.stream = m.get('stream')
+        if m.get('templateIds') is not None:
+            self.template_ids = m.get('templateIds')
+        if m.get('transcription') is not None:
+            temp_model = AnalyzeAudioSyncRequestTranscription()
+            self.transcription = temp_model.from_map(m['transcription'])
+        self.variables = []
+        if m.get('variables') is not None:
+            for k in m.get('variables'):
+                temp_model = AnalyzeAudioSyncRequestVariables()
+                self.variables.append(temp_model.from_map(k))
+        return self
+
+
+class AnalyzeAudioSyncResponseBody(TeaModel):
+    def __init__(
+        self,
+        finish_reason: str = None,
+        input_tokens: str = None,
+        output_tokens: str = None,
+        request_id: str = None,
+        success: bool = None,
+        text: str = None,
+        total_tokens: str = None,
+    ):
+        self.finish_reason = finish_reason
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.request_id = request_id
+        self.success = success
+        self.text = text
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.finish_reason is not None:
+            result['finishReason'] = self.finish_reason
+        if self.input_tokens is not None:
+            result['inputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['outputTokens'] = self.output_tokens
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.text is not None:
+            result['text'] = self.text
+        if self.total_tokens is not None:
+            result['totalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('finishReason') is not None:
+            self.finish_reason = m.get('finishReason')
+        if m.get('inputTokens') is not None:
+            self.input_tokens = m.get('inputTokens')
+        if m.get('outputTokens') is not None:
+            self.output_tokens = m.get('outputTokens')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        if m.get('totalTokens') is not None:
+            self.total_tokens = m.get('totalTokens')
+        return self
+
+
+class AnalyzeAudioSyncResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AnalyzeAudioSyncResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AnalyzeAudioSyncResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AnalyzeConversationRequestCategoryTags(TeaModel):
     def __init__(
         self,
@@ -415,6 +948,7 @@ class AnalyzeConversationRequest(TeaModel):
         examples: List[AnalyzeConversationRequestExamples] = None,
         fields: List[AnalyzeConversationRequestFields] = None,
         model_code: str = None,
+        response_format_type: str = None,
         result_types: List[str] = None,
         scene_name: str = None,
         service_inspection: AnalyzeConversationRequestServiceInspection = None,
@@ -429,6 +963,7 @@ class AnalyzeConversationRequest(TeaModel):
         self.examples = examples
         self.fields = fields
         self.model_code = model_code
+        self.response_format_type = response_format_type
         # This parameter is required.
         self.result_types = result_types
         self.scene_name = scene_name
@@ -485,6 +1020,8 @@ class AnalyzeConversationRequest(TeaModel):
                 result['fields'].append(k.to_map() if k else None)
         if self.model_code is not None:
             result['modelCode'] = self.model_code
+        if self.response_format_type is not None:
+            result['responseFormatType'] = self.response_format_type
         if self.result_types is not None:
             result['resultTypes'] = self.result_types
         if self.scene_name is not None:
@@ -527,6 +1064,8 @@ class AnalyzeConversationRequest(TeaModel):
                 self.fields.append(temp_model.from_map(k))
         if m.get('modelCode') is not None:
             self.model_code = m.get('modelCode')
+        if m.get('responseFormatType') is not None:
+            self.response_format_type = m.get('responseFormatType')
         if m.get('resultTypes') is not None:
             self.result_types = m.get('resultTypes')
         if m.get('sceneName') is not None:
@@ -668,10 +1207,12 @@ class AnalyzeImageRequest(TeaModel):
     def __init__(
         self,
         image_urls: List[str] = None,
+        response_format_type: str = None,
         result_types: List[str] = None,
         stream: bool = None,
     ):
         self.image_urls = image_urls
+        self.response_format_type = response_format_type
         self.result_types = result_types
         # This parameter is required.
         self.stream = stream
@@ -687,6 +1228,8 @@ class AnalyzeImageRequest(TeaModel):
         result = dict()
         if self.image_urls is not None:
             result['imageUrls'] = self.image_urls
+        if self.response_format_type is not None:
+            result['responseFormatType'] = self.response_format_type
         if self.result_types is not None:
             result['resultTypes'] = self.result_types
         if self.stream is not None:
@@ -697,6 +1240,8 @@ class AnalyzeImageRequest(TeaModel):
         m = m or dict()
         if m.get('imageUrls') is not None:
             self.image_urls = m.get('imageUrls')
+        if m.get('responseFormatType') is not None:
+            self.response_format_type = m.get('responseFormatType')
         if m.get('resultTypes') is not None:
             self.result_types = m.get('resultTypes')
         if m.get('stream') is not None:
@@ -1289,6 +1834,7 @@ class CreateTaskRequest(TeaModel):
         examples: CreateTaskRequestExamples = None,
         fields: List[CreateTaskRequestFields] = None,
         model_code: str = None,
+        response_format_type: str = None,
         result_types: List[str] = None,
         service_inspection: CreateTaskRequestServiceInspection = None,
         task_type: str = None,
@@ -1303,6 +1849,7 @@ class CreateTaskRequest(TeaModel):
         self.fields = fields
         # This parameter is required.
         self.model_code = model_code
+        self.response_format_type = response_format_type
         self.result_types = result_types
         self.service_inspection = service_inspection
         # This parameter is required.
@@ -1355,6 +1902,8 @@ class CreateTaskRequest(TeaModel):
                 result['fields'].append(k.to_map() if k else None)
         if self.model_code is not None:
             result['modelCode'] = self.model_code
+        if self.response_format_type is not None:
+            result['responseFormatType'] = self.response_format_type
         if self.result_types is not None:
             result['resultTypes'] = self.result_types
         if self.service_inspection is not None:
@@ -1393,6 +1942,8 @@ class CreateTaskRequest(TeaModel):
                 self.fields.append(temp_model.from_map(k))
         if m.get('modelCode') is not None:
             self.model_code = m.get('modelCode')
+        if m.get('responseFormatType') is not None:
+            self.response_format_type = m.get('responseFormatType')
         if m.get('resultTypes') is not None:
             self.result_types = m.get('resultTypes')
         if m.get('serviceInspection') is not None:
@@ -2823,6 +3374,7 @@ class RunCompletionRequest(TeaModel):
         service_inspection: RunCompletionRequestServiceInspection = None,
         stream: bool = None,
         template_ids: List[int] = None,
+        response_format_type: str = None,
         variables: List[RunCompletionRequestVariables] = None,
     ):
         # This parameter is required.
@@ -2833,6 +3385,7 @@ class RunCompletionRequest(TeaModel):
         self.stream = stream
         # This parameter is required.
         self.template_ids = template_ids
+        self.response_format_type = response_format_type
         self.variables = variables
 
     def validate(self):
@@ -2869,6 +3422,8 @@ class RunCompletionRequest(TeaModel):
             result['Stream'] = self.stream
         if self.template_ids is not None:
             result['TemplateIds'] = self.template_ids
+        if self.response_format_type is not None:
+            result['responseFormatType'] = self.response_format_type
         result['variables'] = []
         if self.variables is not None:
             for k in self.variables:
@@ -2894,6 +3449,8 @@ class RunCompletionRequest(TeaModel):
             self.stream = m.get('Stream')
         if m.get('TemplateIds') is not None:
             self.template_ids = m.get('TemplateIds')
+        if m.get('responseFormatType') is not None:
+            self.response_format_type = m.get('responseFormatType')
         self.variables = []
         if m.get('variables') is not None:
             for k in m.get('variables'):
@@ -3041,11 +3598,13 @@ class RunCompletionMessageRequest(TeaModel):
         messages: List[RunCompletionMessageRequestMessages] = None,
         model_code: str = None,
         stream: bool = None,
+        response_format_type: str = None,
     ):
         # This parameter is required.
         self.messages = messages
         self.model_code = model_code
         self.stream = stream
+        self.response_format_type = response_format_type
 
     def validate(self):
         if self.messages:
@@ -3067,6 +3626,8 @@ class RunCompletionMessageRequest(TeaModel):
             result['ModelCode'] = self.model_code
         if self.stream is not None:
             result['Stream'] = self.stream
+        if self.response_format_type is not None:
+            result['responseFormatType'] = self.response_format_type
         return result
 
     def from_map(self, m: dict = None):
@@ -3080,6 +3641,8 @@ class RunCompletionMessageRequest(TeaModel):
             self.model_code = m.get('ModelCode')
         if m.get('Stream') is not None:
             self.stream = m.get('Stream')
+        if m.get('responseFormatType') is not None:
+            self.response_format_type = m.get('responseFormatType')
         return self
 
 

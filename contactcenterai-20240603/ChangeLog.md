@@ -1,3 +1,12 @@
+2025-04-16 Version: 3.6.0
+- Support API AnalyzeAudioSync.
+- Update API AnalyzeConversation: add request parameters body.responseFormatType.
+- Update API AnalyzeImage: add request parameters body.responseFormatType.
+- Update API CreateTask: add request parameters body.responseFormatType.
+- Update API RunCompletion: add request parameters body.responseFormatType.
+- Update API RunCompletionMessage: add request parameters body.responseFormatType.
+
+
 2025-04-01 Version: 3.5.2
 - Update API CreateTask: add request parameters body.categoryTags.
 - Update API CreateTask: add request parameters body.variables.

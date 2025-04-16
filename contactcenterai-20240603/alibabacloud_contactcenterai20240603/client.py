@@ -41,6 +41,158 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def analyze_audio_sync_with_options(
+        self,
+        workspace_id: str,
+        app_id: str,
+        request: contact_center_ai20240603_models.AnalyzeAudioSyncRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.AnalyzeAudioSyncResponse:
+        """
+        @summary 语音文件分析任务极速版
+        
+        @param request: AnalyzeAudioSyncRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AnalyzeAudioSyncResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category_tags):
+            body['categoryTags'] = request.category_tags
+        if not UtilClient.is_unset(request.custom_prompt):
+            body['customPrompt'] = request.custom_prompt
+        if not UtilClient.is_unset(request.fields):
+            body['fields'] = request.fields
+        if not UtilClient.is_unset(request.model_code):
+            body['modelCode'] = request.model_code
+        if not UtilClient.is_unset(request.response_format_type):
+            body['responseFormatType'] = request.response_format_type
+        if not UtilClient.is_unset(request.result_types):
+            body['resultTypes'] = request.result_types
+        if not UtilClient.is_unset(request.service_inspection):
+            body['serviceInspection'] = request.service_inspection
+        if not UtilClient.is_unset(request.stream):
+            body['stream'] = request.stream
+        if not UtilClient.is_unset(request.template_ids):
+            body['templateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.transcription):
+            body['transcription'] = request.transcription
+        if not UtilClient.is_unset(request.variables):
+            body['variables'] = request.variables
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AnalyzeAudioSync',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/ccai/app/{OpenApiUtilClient.get_encode_param(app_id)}/analyzeAudioSync',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.AnalyzeAudioSyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def analyze_audio_sync_with_options_async(
+        self,
+        workspace_id: str,
+        app_id: str,
+        request: contact_center_ai20240603_models.AnalyzeAudioSyncRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.AnalyzeAudioSyncResponse:
+        """
+        @summary 语音文件分析任务极速版
+        
+        @param request: AnalyzeAudioSyncRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AnalyzeAudioSyncResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category_tags):
+            body['categoryTags'] = request.category_tags
+        if not UtilClient.is_unset(request.custom_prompt):
+            body['customPrompt'] = request.custom_prompt
+        if not UtilClient.is_unset(request.fields):
+            body['fields'] = request.fields
+        if not UtilClient.is_unset(request.model_code):
+            body['modelCode'] = request.model_code
+        if not UtilClient.is_unset(request.response_format_type):
+            body['responseFormatType'] = request.response_format_type
+        if not UtilClient.is_unset(request.result_types):
+            body['resultTypes'] = request.result_types
+        if not UtilClient.is_unset(request.service_inspection):
+            body['serviceInspection'] = request.service_inspection
+        if not UtilClient.is_unset(request.stream):
+            body['stream'] = request.stream
+        if not UtilClient.is_unset(request.template_ids):
+            body['templateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.transcription):
+            body['transcription'] = request.transcription
+        if not UtilClient.is_unset(request.variables):
+            body['variables'] = request.variables
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AnalyzeAudioSync',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/ccai/app/{OpenApiUtilClient.get_encode_param(app_id)}/analyzeAudioSync',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.AnalyzeAudioSyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def analyze_audio_sync(
+        self,
+        workspace_id: str,
+        app_id: str,
+        request: contact_center_ai20240603_models.AnalyzeAudioSyncRequest,
+    ) -> contact_center_ai20240603_models.AnalyzeAudioSyncResponse:
+        """
+        @summary 语音文件分析任务极速版
+        
+        @param request: AnalyzeAudioSyncRequest
+        @return: AnalyzeAudioSyncResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.analyze_audio_sync_with_options(workspace_id, app_id, request, headers, runtime)
+
+    async def analyze_audio_sync_async(
+        self,
+        workspace_id: str,
+        app_id: str,
+        request: contact_center_ai20240603_models.AnalyzeAudioSyncRequest,
+    ) -> contact_center_ai20240603_models.AnalyzeAudioSyncResponse:
+        """
+        @summary 语音文件分析任务极速版
+        
+        @param request: AnalyzeAudioSyncRequest
+        @return: AnalyzeAudioSyncResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.analyze_audio_sync_with_options_async(workspace_id, app_id, request, headers, runtime)
+
     def analyze_conversation_with_options(
         self,
         workspace_id: str,
@@ -71,6 +223,8 @@ class Client(OpenApiClient):
             body['fields'] = request.fields
         if not UtilClient.is_unset(request.model_code):
             body['modelCode'] = request.model_code
+        if not UtilClient.is_unset(request.response_format_type):
+            body['responseFormatType'] = request.response_format_type
         if not UtilClient.is_unset(request.result_types):
             body['resultTypes'] = request.result_types
         if not UtilClient.is_unset(request.scene_name):
@@ -100,16 +254,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.AnalyzeConversationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.AnalyzeConversationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.AnalyzeConversationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def analyze_conversation_with_options_async(
         self,
@@ -141,6 +289,8 @@ class Client(OpenApiClient):
             body['fields'] = request.fields
         if not UtilClient.is_unset(request.model_code):
             body['modelCode'] = request.model_code
+        if not UtilClient.is_unset(request.response_format_type):
+            body['responseFormatType'] = request.response_format_type
         if not UtilClient.is_unset(request.result_types):
             body['resultTypes'] = request.result_types
         if not UtilClient.is_unset(request.scene_name):
@@ -170,16 +320,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.AnalyzeConversationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.AnalyzeConversationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.AnalyzeConversationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def analyze_conversation(
         self,
@@ -233,6 +377,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.image_urls):
             body['imageUrls'] = request.image_urls
+        if not UtilClient.is_unset(request.response_format_type):
+            body['responseFormatType'] = request.response_format_type
         if not UtilClient.is_unset(request.result_types):
             body['resultTypes'] = request.result_types
         if not UtilClient.is_unset(request.stream):
@@ -252,16 +398,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.AnalyzeImageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.AnalyzeImageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.AnalyzeImageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def analyze_image_with_options_async(
         self,
@@ -283,6 +423,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.image_urls):
             body['imageUrls'] = request.image_urls
+        if not UtilClient.is_unset(request.response_format_type):
+            body['responseFormatType'] = request.response_format_type
         if not UtilClient.is_unset(request.result_types):
             body['resultTypes'] = request.result_types
         if not UtilClient.is_unset(request.stream):
@@ -302,16 +444,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.AnalyzeImageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.AnalyzeImageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.AnalyzeImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def analyze_image(
         self,
@@ -375,6 +511,8 @@ class Client(OpenApiClient):
             body['fields'] = request.fields
         if not UtilClient.is_unset(request.model_code):
             body['modelCode'] = request.model_code
+        if not UtilClient.is_unset(request.response_format_type):
+            body['responseFormatType'] = request.response_format_type
         if not UtilClient.is_unset(request.result_types):
             body['resultTypes'] = request.result_types
         if not UtilClient.is_unset(request.service_inspection):
@@ -402,16 +540,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.CreateTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.CreateTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.CreateTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_task_with_options_async(
         self,
@@ -443,6 +575,8 @@ class Client(OpenApiClient):
             body['fields'] = request.fields
         if not UtilClient.is_unset(request.model_code):
             body['modelCode'] = request.model_code
+        if not UtilClient.is_unset(request.response_format_type):
+            body['responseFormatType'] = request.response_format_type
         if not UtilClient.is_unset(request.result_types):
             body['resultTypes'] = request.result_types
         if not UtilClient.is_unset(request.service_inspection):
@@ -470,16 +604,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.CreateTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.CreateTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.CreateTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_task(
         self,
@@ -554,16 +682,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.CreateVocabResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.CreateVocabResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.CreateVocabResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_vocab_with_options_async(
         self,
@@ -606,16 +728,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.CreateVocabResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.CreateVocabResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.CreateVocabResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_vocab(
         self,
@@ -680,16 +796,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.DeleteVocabResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.DeleteVocabResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.DeleteVocabResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_vocab_with_options_async(
         self,
@@ -726,16 +836,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.DeleteVocabResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.DeleteVocabResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.DeleteVocabResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_vocab(
         self,
@@ -804,16 +908,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.GetTaskResultResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.GetTaskResultResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.GetTaskResultResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_task_result_with_options_async(
         self,
@@ -854,16 +952,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.GetTaskResultResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.GetTaskResultResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.GetTaskResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_task_result(
         self,
@@ -928,16 +1020,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.GetVocabResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.GetVocabResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.GetVocabResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_vocab_with_options_async(
         self,
@@ -974,16 +1060,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.GetVocabResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.GetVocabResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.GetVocabResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_vocab(
         self,
@@ -1046,16 +1126,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.ListVocabResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.ListVocabResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.ListVocabResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_vocab_with_options_async(
         self,
@@ -1090,16 +1164,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.ListVocabResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.ListVocabResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.ListVocabResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_vocab(
         self,
@@ -1159,6 +1227,8 @@ class Client(OpenApiClient):
             body['Stream'] = request.stream
         if not UtilClient.is_unset(request.template_ids):
             body['TemplateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.response_format_type):
+            body['responseFormatType'] = request.response_format_type
         if not UtilClient.is_unset(request.variables):
             body['variables'] = request.variables
         req = open_api_models.OpenApiRequest(
@@ -1176,16 +1246,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.RunCompletionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.RunCompletionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.RunCompletionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_completion_with_options_async(
         self,
@@ -1217,6 +1281,8 @@ class Client(OpenApiClient):
             body['Stream'] = request.stream
         if not UtilClient.is_unset(request.template_ids):
             body['TemplateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.response_format_type):
+            body['responseFormatType'] = request.response_format_type
         if not UtilClient.is_unset(request.variables):
             body['variables'] = request.variables
         req = open_api_models.OpenApiRequest(
@@ -1234,16 +1300,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.RunCompletionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.RunCompletionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.RunCompletionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_completion(
         self,
@@ -1301,6 +1361,8 @@ class Client(OpenApiClient):
             body['ModelCode'] = request.model_code
         if not UtilClient.is_unset(request.stream):
             body['Stream'] = request.stream
+        if not UtilClient.is_unset(request.response_format_type):
+            body['responseFormatType'] = request.response_format_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1316,16 +1378,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.RunCompletionMessageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.RunCompletionMessageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.RunCompletionMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_completion_message_with_options_async(
         self,
@@ -1351,6 +1407,8 @@ class Client(OpenApiClient):
             body['ModelCode'] = request.model_code
         if not UtilClient.is_unset(request.stream):
             body['Stream'] = request.stream
+        if not UtilClient.is_unset(request.response_format_type):
+            body['responseFormatType'] = request.response_format_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1366,16 +1424,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.RunCompletionMessageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.RunCompletionMessageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.RunCompletionMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_completion_message(
         self,
@@ -1450,16 +1502,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.UpdateVocabResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.UpdateVocabResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.UpdateVocabResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_vocab_with_options_async(
         self,
@@ -1502,16 +1548,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.UpdateVocabResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                contact_center_ai20240603_models.UpdateVocabResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.UpdateVocabResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_vocab(
         self,
