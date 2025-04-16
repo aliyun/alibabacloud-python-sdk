@@ -1,3 +1,7 @@
+2025-04-16 Version: 1.8.4
+- Update API UpdatePrivateAccessApplication: add request parameters L7ProxyDomainPrivate.
+
+
 2024-11-13 Version: 1.9.0
 - Support API ListUserApplications.
 - Support API ListUserPrivateAccessPolicies.

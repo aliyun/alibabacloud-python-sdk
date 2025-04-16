@@ -149,6 +149,232 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.attach_application_2connector_with_options_async(request, runtime)
 
+    def attach_policy_2approval_process_with_options(
+        self,
+        request: csas_20230120_models.AttachPolicy2ApprovalProcessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.AttachPolicy2ApprovalProcessResponse:
+        """
+        @summary 挂载业务策略至指定审批流程
+        
+        @param request: AttachPolicy2ApprovalProcessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachPolicy2ApprovalProcessResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.policy_id):
+            body['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_type):
+            body['PolicyType'] = request.policy_type
+        if not UtilClient.is_unset(request.process_id):
+            body['ProcessId'] = request.process_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AttachPolicy2ApprovalProcess',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.AttachPolicy2ApprovalProcessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_policy_2approval_process_with_options_async(
+        self,
+        request: csas_20230120_models.AttachPolicy2ApprovalProcessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.AttachPolicy2ApprovalProcessResponse:
+        """
+        @summary 挂载业务策略至指定审批流程
+        
+        @param request: AttachPolicy2ApprovalProcessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachPolicy2ApprovalProcessResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.policy_id):
+            body['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_type):
+            body['PolicyType'] = request.policy_type
+        if not UtilClient.is_unset(request.process_id):
+            body['ProcessId'] = request.process_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AttachPolicy2ApprovalProcess',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.AttachPolicy2ApprovalProcessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_policy_2approval_process(
+        self,
+        request: csas_20230120_models.AttachPolicy2ApprovalProcessRequest,
+    ) -> csas_20230120_models.AttachPolicy2ApprovalProcessResponse:
+        """
+        @summary 挂载业务策略至指定审批流程
+        
+        @param request: AttachPolicy2ApprovalProcessRequest
+        @return: AttachPolicy2ApprovalProcessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.attach_policy_2approval_process_with_options(request, runtime)
+
+    async def attach_policy_2approval_process_async(
+        self,
+        request: csas_20230120_models.AttachPolicy2ApprovalProcessRequest,
+    ) -> csas_20230120_models.AttachPolicy2ApprovalProcessResponse:
+        """
+        @summary 挂载业务策略至指定审批流程
+        
+        @param request: AttachPolicy2ApprovalProcessRequest
+        @return: AttachPolicy2ApprovalProcessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.attach_policy_2approval_process_with_options_async(request, runtime)
+
+    def create_approval_process_with_options(
+        self,
+        tmp_req: csas_20230120_models.CreateApprovalProcessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.CreateApprovalProcessResponse:
+        """
+        @summary 创建审批流程
+        
+        @param tmp_req: CreateApprovalProcessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApprovalProcessResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = csas_20230120_models.CreateApprovalProcessShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.match_schemas):
+            request.match_schemas_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.match_schemas, 'MatchSchemas', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.match_schemas_shrink):
+            body['MatchSchemas'] = request.match_schemas_shrink
+        if not UtilClient.is_unset(request.process_name):
+            body['ProcessName'] = request.process_name
+        body_flat = {}
+        if not UtilClient.is_unset(request.process_nodes):
+            body_flat['ProcessNodes'] = request.process_nodes
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateApprovalProcess',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.CreateApprovalProcessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_approval_process_with_options_async(
+        self,
+        tmp_req: csas_20230120_models.CreateApprovalProcessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.CreateApprovalProcessResponse:
+        """
+        @summary 创建审批流程
+        
+        @param tmp_req: CreateApprovalProcessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApprovalProcessResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = csas_20230120_models.CreateApprovalProcessShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.match_schemas):
+            request.match_schemas_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.match_schemas, 'MatchSchemas', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.match_schemas_shrink):
+            body['MatchSchemas'] = request.match_schemas_shrink
+        if not UtilClient.is_unset(request.process_name):
+            body['ProcessName'] = request.process_name
+        body_flat = {}
+        if not UtilClient.is_unset(request.process_nodes):
+            body_flat['ProcessNodes'] = request.process_nodes
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateApprovalProcess',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.CreateApprovalProcessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_approval_process(
+        self,
+        request: csas_20230120_models.CreateApprovalProcessRequest,
+    ) -> csas_20230120_models.CreateApprovalProcessResponse:
+        """
+        @summary 创建审批流程
+        
+        @param request: CreateApprovalProcessRequest
+        @return: CreateApprovalProcessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_approval_process_with_options(request, runtime)
+
+    async def create_approval_process_async(
+        self,
+        request: csas_20230120_models.CreateApprovalProcessRequest,
+    ) -> csas_20230120_models.CreateApprovalProcessResponse:
+        """
+        @summary 创建审批流程
+        
+        @param request: CreateApprovalProcessRequest
+        @return: CreateApprovalProcessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_approval_process_with_options_async(request, runtime)
+
     def create_client_user_with_options(
         self,
         request: csas_20230120_models.CreateClientUserRequest,
@@ -509,17 +735,21 @@ class Client(OpenApiClient):
 
     def create_private_access_application_with_options(
         self,
-        request: csas_20230120_models.CreatePrivateAccessApplicationRequest,
+        tmp_req: csas_20230120_models.CreatePrivateAccessApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreatePrivateAccessApplicationResponse:
         """
         @summary 创建内网访问应用
         
-        @param request: CreatePrivateAccessApplicationRequest
+        @param tmp_req: CreatePrivateAccessApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreatePrivateAccessApplicationResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = csas_20230120_models.CreatePrivateAccessApplicationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.l_7config):
+            request.l_7config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.l_7config, 'L7Config', 'json')
         body = {}
         body_flat = {}
         if not UtilClient.is_unset(request.addresses):
@@ -528,6 +758,8 @@ class Client(OpenApiClient):
             body['BrowserAccessStatus'] = request.browser_access_status
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.l_7config_shrink):
+            body['L7Config'] = request.l_7config_shrink
         if not UtilClient.is_unset(request.l_7proxy_domain_automatic_prefix):
             body['L7ProxyDomainAutomaticPrefix'] = request.l_7proxy_domain_automatic_prefix
         if not UtilClient.is_unset(request.l_7proxy_domain_custom):
@@ -565,17 +797,21 @@ class Client(OpenApiClient):
 
     async def create_private_access_application_with_options_async(
         self,
-        request: csas_20230120_models.CreatePrivateAccessApplicationRequest,
+        tmp_req: csas_20230120_models.CreatePrivateAccessApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreatePrivateAccessApplicationResponse:
         """
         @summary 创建内网访问应用
         
-        @param request: CreatePrivateAccessApplicationRequest
+        @param tmp_req: CreatePrivateAccessApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreatePrivateAccessApplicationResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = csas_20230120_models.CreatePrivateAccessApplicationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.l_7config):
+            request.l_7config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.l_7config, 'L7Config', 'json')
         body = {}
         body_flat = {}
         if not UtilClient.is_unset(request.addresses):
@@ -584,6 +820,8 @@ class Client(OpenApiClient):
             body['BrowserAccessStatus'] = request.browser_access_status
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.l_7config_shrink):
+            body['L7Config'] = request.l_7config_shrink
         if not UtilClient.is_unset(request.l_7proxy_domain_automatic_prefix):
             body['L7ProxyDomainAutomaticPrefix'] = request.l_7proxy_domain_automatic_prefix
         if not UtilClient.is_unset(request.l_7proxy_domain_custom):
@@ -682,6 +920,8 @@ class Client(OpenApiClient):
             body['Status'] = request.status
         if not UtilClient.is_unset(request.tag_ids):
             body_flat['TagIds'] = request.tag_ids
+        if not UtilClient.is_unset(request.trigger_template_id):
+            body['TriggerTemplateId'] = request.trigger_template_id
         if not UtilClient.is_unset(request.user_group_ids):
             body_flat['UserGroupIds'] = request.user_group_ids
         if not UtilClient.is_unset(request.user_group_mode):
@@ -744,6 +984,8 @@ class Client(OpenApiClient):
             body['Status'] = request.status
         if not UtilClient.is_unset(request.tag_ids):
             body_flat['TagIds'] = request.tag_ids
+        if not UtilClient.is_unset(request.trigger_template_id):
+            body['TriggerTemplateId'] = request.trigger_template_id
         if not UtilClient.is_unset(request.user_group_ids):
             body_flat['UserGroupIds'] = request.user_group_ids
         if not UtilClient.is_unset(request.user_group_mode):
@@ -1678,6 +1920,108 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_wm_info_mapping_with_options_async(request, runtime)
+
+    def delete_approval_processes_with_options(
+        self,
+        request: csas_20230120_models.DeleteApprovalProcessesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.DeleteApprovalProcessesResponse:
+        """
+        @summary 批量删除审批流程
+        
+        @param request: DeleteApprovalProcessesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApprovalProcessesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.process_ids):
+            body_flat['ProcessIds'] = request.process_ids
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteApprovalProcesses',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.DeleteApprovalProcessesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_approval_processes_with_options_async(
+        self,
+        request: csas_20230120_models.DeleteApprovalProcessesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.DeleteApprovalProcessesResponse:
+        """
+        @summary 批量删除审批流程
+        
+        @param request: DeleteApprovalProcessesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApprovalProcessesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.process_ids):
+            body_flat['ProcessIds'] = request.process_ids
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteApprovalProcesses',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.DeleteApprovalProcessesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_approval_processes(
+        self,
+        request: csas_20230120_models.DeleteApprovalProcessesRequest,
+    ) -> csas_20230120_models.DeleteApprovalProcessesResponse:
+        """
+        @summary 批量删除审批流程
+        
+        @param request: DeleteApprovalProcessesRequest
+        @return: DeleteApprovalProcessesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_approval_processes_with_options(request, runtime)
+
+    async def delete_approval_processes_async(
+        self,
+        request: csas_20230120_models.DeleteApprovalProcessesRequest,
+    ) -> csas_20230120_models.DeleteApprovalProcessesResponse:
+        """
+        @summary 批量删除审批流程
+        
+        @param request: DeleteApprovalProcessesRequest
+        @return: DeleteApprovalProcessesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_approval_processes_with_options_async(request, runtime)
 
     def delete_client_user_with_options(
         self,
@@ -2667,6 +3011,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detach_application_2connector_with_options_async(request, runtime)
 
+    def detach_policy_2approval_process_with_options(
+        self,
+        request: csas_20230120_models.DetachPolicy2ApprovalProcessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.DetachPolicy2ApprovalProcessResponse:
+        """
+        @summary 解绑业务策略与审批流程
+        
+        @param request: DetachPolicy2ApprovalProcessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachPolicy2ApprovalProcessResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.policy_id):
+            body['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_type):
+            body['PolicyType'] = request.policy_type
+        if not UtilClient.is_unset(request.process_id):
+            body['ProcessId'] = request.process_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetachPolicy2ApprovalProcess',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.DetachPolicy2ApprovalProcessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_policy_2approval_process_with_options_async(
+        self,
+        request: csas_20230120_models.DetachPolicy2ApprovalProcessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.DetachPolicy2ApprovalProcessResponse:
+        """
+        @summary 解绑业务策略与审批流程
+        
+        @param request: DetachPolicy2ApprovalProcessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachPolicy2ApprovalProcessResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.policy_id):
+            body['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_type):
+            body['PolicyType'] = request.policy_type
+        if not UtilClient.is_unset(request.process_id):
+            body['ProcessId'] = request.process_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetachPolicy2ApprovalProcess',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.DetachPolicy2ApprovalProcessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_policy_2approval_process(
+        self,
+        request: csas_20230120_models.DetachPolicy2ApprovalProcessRequest,
+    ) -> csas_20230120_models.DetachPolicy2ApprovalProcessResponse:
+        """
+        @summary 解绑业务策略与审批流程
+        
+        @param request: DetachPolicy2ApprovalProcessRequest
+        @return: DetachPolicy2ApprovalProcessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.detach_policy_2approval_process_with_options(request, runtime)
+
+    async def detach_policy_2approval_process_async(
+        self,
+        request: csas_20230120_models.DetachPolicy2ApprovalProcessRequest,
+    ) -> csas_20230120_models.DetachPolicy2ApprovalProcessResponse:
+        """
+        @summary 解绑业务策略与审批流程
+        
+        @param request: DetachPolicy2ApprovalProcessRequest
+        @return: DetachPolicy2ApprovalProcessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.detach_policy_2approval_process_with_options_async(request, runtime)
+
     def export_user_devices_with_options(
         self,
         request: csas_20230120_models.ExportUserDevicesRequest,
@@ -2898,6 +3346,356 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_active_idp_config_with_options_async(runtime)
+
+    def get_approval_with_options(
+        self,
+        request: csas_20230120_models.GetApprovalRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.GetApprovalResponse:
+        """
+        @summary 查询审批
+        
+        @param request: GetApprovalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApprovalResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApproval',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.GetApprovalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_approval_with_options_async(
+        self,
+        request: csas_20230120_models.GetApprovalRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.GetApprovalResponse:
+        """
+        @summary 查询审批
+        
+        @param request: GetApprovalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApprovalResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApproval',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.GetApprovalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_approval(
+        self,
+        request: csas_20230120_models.GetApprovalRequest,
+    ) -> csas_20230120_models.GetApprovalResponse:
+        """
+        @summary 查询审批
+        
+        @param request: GetApprovalRequest
+        @return: GetApprovalResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_approval_with_options(request, runtime)
+
+    async def get_approval_async(
+        self,
+        request: csas_20230120_models.GetApprovalRequest,
+    ) -> csas_20230120_models.GetApprovalResponse:
+        """
+        @summary 查询审批
+        
+        @param request: GetApprovalRequest
+        @return: GetApprovalResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_approval_with_options_async(request, runtime)
+
+    def get_approval_process_with_options(
+        self,
+        request: csas_20230120_models.GetApprovalProcessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.GetApprovalProcessResponse:
+        """
+        @summary 查询审批流程
+        
+        @param request: GetApprovalProcessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApprovalProcessResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApprovalProcess',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.GetApprovalProcessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_approval_process_with_options_async(
+        self,
+        request: csas_20230120_models.GetApprovalProcessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.GetApprovalProcessResponse:
+        """
+        @summary 查询审批流程
+        
+        @param request: GetApprovalProcessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApprovalProcessResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApprovalProcess',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.GetApprovalProcessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_approval_process(
+        self,
+        request: csas_20230120_models.GetApprovalProcessRequest,
+    ) -> csas_20230120_models.GetApprovalProcessResponse:
+        """
+        @summary 查询审批流程
+        
+        @param request: GetApprovalProcessRequest
+        @return: GetApprovalProcessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_approval_process_with_options(request, runtime)
+
+    async def get_approval_process_async(
+        self,
+        request: csas_20230120_models.GetApprovalProcessRequest,
+    ) -> csas_20230120_models.GetApprovalProcessResponse:
+        """
+        @summary 查询审批流程
+        
+        @param request: GetApprovalProcessRequest
+        @return: GetApprovalProcessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_approval_process_with_options_async(request, runtime)
+
+    def get_approval_schema_with_options(
+        self,
+        request: csas_20230120_models.GetApprovalSchemaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.GetApprovalSchemaResponse:
+        """
+        @summary 查询审批动态模板
+        
+        @param request: GetApprovalSchemaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApprovalSchemaResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApprovalSchema',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.GetApprovalSchemaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_approval_schema_with_options_async(
+        self,
+        request: csas_20230120_models.GetApprovalSchemaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.GetApprovalSchemaResponse:
+        """
+        @summary 查询审批动态模板
+        
+        @param request: GetApprovalSchemaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApprovalSchemaResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApprovalSchema',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.GetApprovalSchemaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_approval_schema(
+        self,
+        request: csas_20230120_models.GetApprovalSchemaRequest,
+    ) -> csas_20230120_models.GetApprovalSchemaResponse:
+        """
+        @summary 查询审批动态模板
+        
+        @param request: GetApprovalSchemaRequest
+        @return: GetApprovalSchemaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_approval_schema_with_options(request, runtime)
+
+    async def get_approval_schema_async(
+        self,
+        request: csas_20230120_models.GetApprovalSchemaRequest,
+    ) -> csas_20230120_models.GetApprovalSchemaResponse:
+        """
+        @summary 查询审批动态模板
+        
+        @param request: GetApprovalSchemaRequest
+        @return: GetApprovalSchemaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_approval_schema_with_options_async(request, runtime)
+
+    def get_boot_and_anti_uninstall_policy_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.GetBootAndAntiUninstallPolicyResponse:
+        """
+        @summary 查询自启动与防卸载策略配置
+        
+        @param request: GetBootAndAntiUninstallPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBootAndAntiUninstallPolicyResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetBootAndAntiUninstallPolicy',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.GetBootAndAntiUninstallPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_boot_and_anti_uninstall_policy_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.GetBootAndAntiUninstallPolicyResponse:
+        """
+        @summary 查询自启动与防卸载策略配置
+        
+        @param request: GetBootAndAntiUninstallPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBootAndAntiUninstallPolicyResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetBootAndAntiUninstallPolicy',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.GetBootAndAntiUninstallPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_boot_and_anti_uninstall_policy(self) -> csas_20230120_models.GetBootAndAntiUninstallPolicyResponse:
+        """
+        @summary 查询自启动与防卸载策略配置
+        
+        @return: GetBootAndAntiUninstallPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_boot_and_anti_uninstall_policy_with_options(runtime)
+
+    async def get_boot_and_anti_uninstall_policy_async(self) -> csas_20230120_models.GetBootAndAntiUninstallPolicyResponse:
+        """
+        @summary 查询自启动与防卸载策略配置
+        
+        @return: GetBootAndAntiUninstallPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_boot_and_anti_uninstall_policy_with_options_async(runtime)
 
     def get_client_user_with_options(
         self,
@@ -4003,6 +4801,466 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_applications_for_private_access_tag_with_options_async(request, runtime)
 
+    def list_approval_processes_with_options(
+        self,
+        request: csas_20230120_models.ListApprovalProcessesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListApprovalProcessesResponse:
+        """
+        @summary 列表查询审批流程
+        
+        @param request: ListApprovalProcessesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApprovalProcessesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApprovalProcesses',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListApprovalProcessesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_approval_processes_with_options_async(
+        self,
+        request: csas_20230120_models.ListApprovalProcessesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListApprovalProcessesResponse:
+        """
+        @summary 列表查询审批流程
+        
+        @param request: ListApprovalProcessesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApprovalProcessesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApprovalProcesses',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListApprovalProcessesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_approval_processes(
+        self,
+        request: csas_20230120_models.ListApprovalProcessesRequest,
+    ) -> csas_20230120_models.ListApprovalProcessesResponse:
+        """
+        @summary 列表查询审批流程
+        
+        @param request: ListApprovalProcessesRequest
+        @return: ListApprovalProcessesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_approval_processes_with_options(request, runtime)
+
+    async def list_approval_processes_async(
+        self,
+        request: csas_20230120_models.ListApprovalProcessesRequest,
+    ) -> csas_20230120_models.ListApprovalProcessesResponse:
+        """
+        @summary 列表查询审批流程
+        
+        @param request: ListApprovalProcessesRequest
+        @return: ListApprovalProcessesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_approval_processes_with_options_async(request, runtime)
+
+    def list_approval_processes_for_approval_schemas_with_options(
+        self,
+        request: csas_20230120_models.ListApprovalProcessesForApprovalSchemasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListApprovalProcessesForApprovalSchemasResponse:
+        """
+        @summary 查询审批渲染模板关联的流程
+        
+        @param request: ListApprovalProcessesForApprovalSchemasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApprovalProcessesForApprovalSchemasResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApprovalProcessesForApprovalSchemas',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListApprovalProcessesForApprovalSchemasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_approval_processes_for_approval_schemas_with_options_async(
+        self,
+        request: csas_20230120_models.ListApprovalProcessesForApprovalSchemasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListApprovalProcessesForApprovalSchemasResponse:
+        """
+        @summary 查询审批渲染模板关联的流程
+        
+        @param request: ListApprovalProcessesForApprovalSchemasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApprovalProcessesForApprovalSchemasResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApprovalProcessesForApprovalSchemas',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListApprovalProcessesForApprovalSchemasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_approval_processes_for_approval_schemas(
+        self,
+        request: csas_20230120_models.ListApprovalProcessesForApprovalSchemasRequest,
+    ) -> csas_20230120_models.ListApprovalProcessesForApprovalSchemasResponse:
+        """
+        @summary 查询审批渲染模板关联的流程
+        
+        @param request: ListApprovalProcessesForApprovalSchemasRequest
+        @return: ListApprovalProcessesForApprovalSchemasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_approval_processes_for_approval_schemas_with_options(request, runtime)
+
+    async def list_approval_processes_for_approval_schemas_async(
+        self,
+        request: csas_20230120_models.ListApprovalProcessesForApprovalSchemasRequest,
+    ) -> csas_20230120_models.ListApprovalProcessesForApprovalSchemasResponse:
+        """
+        @summary 查询审批渲染模板关联的流程
+        
+        @param request: ListApprovalProcessesForApprovalSchemasRequest
+        @return: ListApprovalProcessesForApprovalSchemasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_approval_processes_for_approval_schemas_with_options_async(request, runtime)
+
+    def list_approval_schemas_with_options(
+        self,
+        request: csas_20230120_models.ListApprovalSchemasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListApprovalSchemasResponse:
+        """
+        @summary 列表查询审批动态模板
+        
+        @param request: ListApprovalSchemasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApprovalSchemasResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApprovalSchemas',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListApprovalSchemasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_approval_schemas_with_options_async(
+        self,
+        request: csas_20230120_models.ListApprovalSchemasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListApprovalSchemasResponse:
+        """
+        @summary 列表查询审批动态模板
+        
+        @param request: ListApprovalSchemasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApprovalSchemasResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApprovalSchemas',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListApprovalSchemasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_approval_schemas(
+        self,
+        request: csas_20230120_models.ListApprovalSchemasRequest,
+    ) -> csas_20230120_models.ListApprovalSchemasResponse:
+        """
+        @summary 列表查询审批动态模板
+        
+        @param request: ListApprovalSchemasRequest
+        @return: ListApprovalSchemasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_approval_schemas_with_options(request, runtime)
+
+    async def list_approval_schemas_async(
+        self,
+        request: csas_20230120_models.ListApprovalSchemasRequest,
+    ) -> csas_20230120_models.ListApprovalSchemasResponse:
+        """
+        @summary 列表查询审批动态模板
+        
+        @param request: ListApprovalSchemasRequest
+        @return: ListApprovalSchemasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_approval_schemas_with_options_async(request, runtime)
+
+    def list_approval_schemas_for_approval_processes_with_options(
+        self,
+        request: csas_20230120_models.ListApprovalSchemasForApprovalProcessesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListApprovalSchemasForApprovalProcessesResponse:
+        """
+        @summary 查询审批流程关联的渲染模板
+        
+        @param request: ListApprovalSchemasForApprovalProcessesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApprovalSchemasForApprovalProcessesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApprovalSchemasForApprovalProcesses',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListApprovalSchemasForApprovalProcessesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_approval_schemas_for_approval_processes_with_options_async(
+        self,
+        request: csas_20230120_models.ListApprovalSchemasForApprovalProcessesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListApprovalSchemasForApprovalProcessesResponse:
+        """
+        @summary 查询审批流程关联的渲染模板
+        
+        @param request: ListApprovalSchemasForApprovalProcessesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApprovalSchemasForApprovalProcessesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApprovalSchemasForApprovalProcesses',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListApprovalSchemasForApprovalProcessesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_approval_schemas_for_approval_processes(
+        self,
+        request: csas_20230120_models.ListApprovalSchemasForApprovalProcessesRequest,
+    ) -> csas_20230120_models.ListApprovalSchemasForApprovalProcessesResponse:
+        """
+        @summary 查询审批流程关联的渲染模板
+        
+        @param request: ListApprovalSchemasForApprovalProcessesRequest
+        @return: ListApprovalSchemasForApprovalProcessesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_approval_schemas_for_approval_processes_with_options(request, runtime)
+
+    async def list_approval_schemas_for_approval_processes_async(
+        self,
+        request: csas_20230120_models.ListApprovalSchemasForApprovalProcessesRequest,
+    ) -> csas_20230120_models.ListApprovalSchemasForApprovalProcessesResponse:
+        """
+        @summary 查询审批流程关联的渲染模板
+        
+        @param request: ListApprovalSchemasForApprovalProcessesRequest
+        @return: ListApprovalSchemasForApprovalProcessesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_approval_schemas_for_approval_processes_with_options_async(request, runtime)
+
+    def list_approvals_with_options(
+        self,
+        request: csas_20230120_models.ListApprovalsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListApprovalsResponse:
+        """
+        @summary 批量查询审批
+        
+        @param request: ListApprovalsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApprovalsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApprovals',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListApprovalsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_approvals_with_options_async(
+        self,
+        request: csas_20230120_models.ListApprovalsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListApprovalsResponse:
+        """
+        @summary 批量查询审批
+        
+        @param request: ListApprovalsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApprovalsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApprovals',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListApprovalsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_approvals(
+        self,
+        request: csas_20230120_models.ListApprovalsRequest,
+    ) -> csas_20230120_models.ListApprovalsResponse:
+        """
+        @summary 批量查询审批
+        
+        @param request: ListApprovalsRequest
+        @return: ListApprovalsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_approvals_with_options(request, runtime)
+
+    async def list_approvals_async(
+        self,
+        request: csas_20230120_models.ListApprovalsRequest,
+    ) -> csas_20230120_models.ListApprovalsResponse:
+        """
+        @summary 批量查询审批
+        
+        @param request: ListApprovalsRequest
+        @return: ListApprovalsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_approvals_with_options_async(request, runtime)
+
     def list_client_users_with_options(
         self,
         request: csas_20230120_models.ListClientUsersRequest,
@@ -4186,6 +5444,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_connectors_with_options_async(request, runtime)
+
+    def list_dynamic_disposal_processes_with_options(
+        self,
+        request: csas_20230120_models.ListDynamicDisposalProcessesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListDynamicDisposalProcessesResponse:
+        """
+        @summary 批量查询动态策略处置流程
+        
+        @param request: ListDynamicDisposalProcessesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDynamicDisposalProcessesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDynamicDisposalProcesses',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListDynamicDisposalProcessesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_dynamic_disposal_processes_with_options_async(
+        self,
+        request: csas_20230120_models.ListDynamicDisposalProcessesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListDynamicDisposalProcessesResponse:
+        """
+        @summary 批量查询动态策略处置流程
+        
+        @param request: ListDynamicDisposalProcessesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDynamicDisposalProcessesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDynamicDisposalProcesses',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListDynamicDisposalProcessesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_dynamic_disposal_processes(
+        self,
+        request: csas_20230120_models.ListDynamicDisposalProcessesRequest,
+    ) -> csas_20230120_models.ListDynamicDisposalProcessesResponse:
+        """
+        @summary 批量查询动态策略处置流程
+        
+        @param request: ListDynamicDisposalProcessesRequest
+        @return: ListDynamicDisposalProcessesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_dynamic_disposal_processes_with_options(request, runtime)
+
+    async def list_dynamic_disposal_processes_async(
+        self,
+        request: csas_20230120_models.ListDynamicDisposalProcessesRequest,
+    ) -> csas_20230120_models.ListDynamicDisposalProcessesResponse:
+        """
+        @summary 批量查询动态策略处置流程
+        
+        @param request: ListDynamicDisposalProcessesRequest
+        @return: ListDynamicDisposalProcessesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_dynamic_disposal_processes_with_options_async(request, runtime)
 
     def list_dynamic_route_regions_with_options(
         self,
@@ -5311,7 +6661,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPrivateAccessPolicesResponse:
         """
-        @summary 批量查询内网访问策略
+        @summary Queries the private access policies within the current Alibaba Cloud account.
         
         @param request: ListPrivateAccessPolicesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5344,7 +6694,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPrivateAccessPolicesResponse:
         """
-        @summary 批量查询内网访问策略
+        @summary Queries the private access policies within the current Alibaba Cloud account.
         
         @param request: ListPrivateAccessPolicesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5376,7 +6726,7 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListPrivateAccessPolicesRequest,
     ) -> csas_20230120_models.ListPrivateAccessPolicesResponse:
         """
-        @summary 批量查询内网访问策略
+        @summary Queries the private access policies within the current Alibaba Cloud account.
         
         @param request: ListPrivateAccessPolicesRequest
         @return: ListPrivateAccessPolicesResponse
@@ -5389,7 +6739,7 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListPrivateAccessPolicesRequest,
     ) -> csas_20230120_models.ListPrivateAccessPolicesResponse:
         """
-        @summary 批量查询内网访问策略
+        @summary Queries the private access policies within the current Alibaba Cloud account.
         
         @param request: ListPrivateAccessPolicesRequest
         @return: ListPrivateAccessPolicesResponse
@@ -6040,6 +7390,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_tags_for_private_access_policy_with_options_async(request, runtime)
+
+    def list_uninstall_applications_with_options(
+        self,
+        request: csas_20230120_models.ListUninstallApplicationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListUninstallApplicationsResponse:
+        """
+        @summary 列表查询卸载申请列表
+        
+        @param request: ListUninstallApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUninstallApplicationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUninstallApplications',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListUninstallApplicationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_uninstall_applications_with_options_async(
+        self,
+        request: csas_20230120_models.ListUninstallApplicationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListUninstallApplicationsResponse:
+        """
+        @summary 列表查询卸载申请列表
+        
+        @param request: ListUninstallApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUninstallApplicationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUninstallApplications',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListUninstallApplicationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_uninstall_applications(
+        self,
+        request: csas_20230120_models.ListUninstallApplicationsRequest,
+    ) -> csas_20230120_models.ListUninstallApplicationsResponse:
+        """
+        @summary 列表查询卸载申请列表
+        
+        @param request: ListUninstallApplicationsRequest
+        @return: ListUninstallApplicationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_uninstall_applications_with_options(request, runtime)
+
+    async def list_uninstall_applications_async(
+        self,
+        request: csas_20230120_models.ListUninstallApplicationsRequest,
+    ) -> csas_20230120_models.ListUninstallApplicationsResponse:
+        """
+        @summary 列表查询卸载申请列表
+        
+        @param request: ListUninstallApplicationsRequest
+        @return: ListUninstallApplicationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_uninstall_applications_with_options_async(request, runtime)
 
     def list_user_applications_with_options(
         self,
@@ -6783,11 +8225,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.RevokeUserSessionResponse:
         """
+        @deprecated OpenAPI RevokeUserSession is deprecated
+        
         @summary 吊销用户登录会话
         
         @param request: RevokeUserSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RevokeUserSessionResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -6820,11 +8265,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.RevokeUserSessionResponse:
         """
+        @deprecated OpenAPI RevokeUserSession is deprecated
+        
         @summary 吊销用户登录会话
         
         @param request: RevokeUserSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RevokeUserSessionResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -6856,10 +8304,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.RevokeUserSessionRequest,
     ) -> csas_20230120_models.RevokeUserSessionResponse:
         """
+        @deprecated OpenAPI RevokeUserSession is deprecated
+        
         @summary 吊销用户登录会话
         
         @param request: RevokeUserSessionRequest
         @return: RevokeUserSessionResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.revoke_user_session_with_options(request, runtime)
@@ -6869,13 +8320,372 @@ class Client(OpenApiClient):
         request: csas_20230120_models.RevokeUserSessionRequest,
     ) -> csas_20230120_models.RevokeUserSessionResponse:
         """
+        @deprecated OpenAPI RevokeUserSession is deprecated
+        
         @summary 吊销用户登录会话
         
         @param request: RevokeUserSessionRequest
         @return: RevokeUserSessionResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.revoke_user_session_with_options_async(request, runtime)
+
+    def update_approval_process_with_options(
+        self,
+        tmp_req: csas_20230120_models.UpdateApprovalProcessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.UpdateApprovalProcessResponse:
+        """
+        @summary 更新审批流程
+        
+        @param tmp_req: UpdateApprovalProcessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApprovalProcessResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = csas_20230120_models.UpdateApprovalProcessShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.match_schemas):
+            request.match_schemas_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.match_schemas, 'MatchSchemas', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.match_schemas_shrink):
+            body['MatchSchemas'] = request.match_schemas_shrink
+        if not UtilClient.is_unset(request.process_id):
+            body['ProcessId'] = request.process_id
+        if not UtilClient.is_unset(request.process_name):
+            body['ProcessName'] = request.process_name
+        body_flat = {}
+        if not UtilClient.is_unset(request.process_nodes):
+            body_flat['ProcessNodes'] = request.process_nodes
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateApprovalProcess',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.UpdateApprovalProcessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_approval_process_with_options_async(
+        self,
+        tmp_req: csas_20230120_models.UpdateApprovalProcessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.UpdateApprovalProcessResponse:
+        """
+        @summary 更新审批流程
+        
+        @param tmp_req: UpdateApprovalProcessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApprovalProcessResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = csas_20230120_models.UpdateApprovalProcessShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.match_schemas):
+            request.match_schemas_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.match_schemas, 'MatchSchemas', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.match_schemas_shrink):
+            body['MatchSchemas'] = request.match_schemas_shrink
+        if not UtilClient.is_unset(request.process_id):
+            body['ProcessId'] = request.process_id
+        if not UtilClient.is_unset(request.process_name):
+            body['ProcessName'] = request.process_name
+        body_flat = {}
+        if not UtilClient.is_unset(request.process_nodes):
+            body_flat['ProcessNodes'] = request.process_nodes
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateApprovalProcess',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.UpdateApprovalProcessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_approval_process(
+        self,
+        request: csas_20230120_models.UpdateApprovalProcessRequest,
+    ) -> csas_20230120_models.UpdateApprovalProcessResponse:
+        """
+        @summary 更新审批流程
+        
+        @param request: UpdateApprovalProcessRequest
+        @return: UpdateApprovalProcessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_approval_process_with_options(request, runtime)
+
+    async def update_approval_process_async(
+        self,
+        request: csas_20230120_models.UpdateApprovalProcessRequest,
+    ) -> csas_20230120_models.UpdateApprovalProcessResponse:
+        """
+        @summary 更新审批流程
+        
+        @param request: UpdateApprovalProcessRequest
+        @return: UpdateApprovalProcessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_approval_process_with_options_async(request, runtime)
+
+    def update_approval_status_with_options(
+        self,
+        request: csas_20230120_models.UpdateApprovalStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.UpdateApprovalStatusResponse:
+        """
+        @summary 修改审批状态
+        
+        @param request: UpdateApprovalStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApprovalStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.approval_id):
+            query['ApprovalId'] = request.approval_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApprovalStatus',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.UpdateApprovalStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_approval_status_with_options_async(
+        self,
+        request: csas_20230120_models.UpdateApprovalStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.UpdateApprovalStatusResponse:
+        """
+        @summary 修改审批状态
+        
+        @param request: UpdateApprovalStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApprovalStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.approval_id):
+            query['ApprovalId'] = request.approval_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApprovalStatus',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.UpdateApprovalStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_approval_status(
+        self,
+        request: csas_20230120_models.UpdateApprovalStatusRequest,
+    ) -> csas_20230120_models.UpdateApprovalStatusResponse:
+        """
+        @summary 修改审批状态
+        
+        @param request: UpdateApprovalStatusRequest
+        @return: UpdateApprovalStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_approval_status_with_options(request, runtime)
+
+    async def update_approval_status_async(
+        self,
+        request: csas_20230120_models.UpdateApprovalStatusRequest,
+    ) -> csas_20230120_models.UpdateApprovalStatusResponse:
+        """
+        @summary 修改审批状态
+        
+        @param request: UpdateApprovalStatusRequest
+        @return: UpdateApprovalStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_approval_status_with_options_async(request, runtime)
+
+    def update_boot_and_anti_uninstall_policy_with_options(
+        self,
+        tmp_req: csas_20230120_models.UpdateBootAndAntiUninstallPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.UpdateBootAndAntiUninstallPolicyResponse:
+        """
+        @summary 更新自启动与防卸载策略配置
+        
+        @param tmp_req: UpdateBootAndAntiUninstallPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBootAndAntiUninstallPolicyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = csas_20230120_models.UpdateBootAndAntiUninstallPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.block_content):
+            request.block_content_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.block_content, 'BlockContent', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.allow_report):
+            body['AllowReport'] = request.allow_report
+        if not UtilClient.is_unset(request.block_content_shrink):
+            body['BlockContent'] = request.block_content_shrink
+        if not UtilClient.is_unset(request.is_anti_uninstall):
+            body['IsAntiUninstall'] = request.is_anti_uninstall
+        if not UtilClient.is_unset(request.is_boot):
+            body['IsBoot'] = request.is_boot
+        body_flat = {}
+        if not UtilClient.is_unset(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not UtilClient.is_unset(request.whitelist_users):
+            body_flat['WhitelistUsers'] = request.whitelist_users
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateBootAndAntiUninstallPolicy',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.UpdateBootAndAntiUninstallPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_boot_and_anti_uninstall_policy_with_options_async(
+        self,
+        tmp_req: csas_20230120_models.UpdateBootAndAntiUninstallPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.UpdateBootAndAntiUninstallPolicyResponse:
+        """
+        @summary 更新自启动与防卸载策略配置
+        
+        @param tmp_req: UpdateBootAndAntiUninstallPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBootAndAntiUninstallPolicyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = csas_20230120_models.UpdateBootAndAntiUninstallPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.block_content):
+            request.block_content_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.block_content, 'BlockContent', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.allow_report):
+            body['AllowReport'] = request.allow_report
+        if not UtilClient.is_unset(request.block_content_shrink):
+            body['BlockContent'] = request.block_content_shrink
+        if not UtilClient.is_unset(request.is_anti_uninstall):
+            body['IsAntiUninstall'] = request.is_anti_uninstall
+        if not UtilClient.is_unset(request.is_boot):
+            body['IsBoot'] = request.is_boot
+        body_flat = {}
+        if not UtilClient.is_unset(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not UtilClient.is_unset(request.whitelist_users):
+            body_flat['WhitelistUsers'] = request.whitelist_users
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateBootAndAntiUninstallPolicy',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.UpdateBootAndAntiUninstallPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_boot_and_anti_uninstall_policy(
+        self,
+        request: csas_20230120_models.UpdateBootAndAntiUninstallPolicyRequest,
+    ) -> csas_20230120_models.UpdateBootAndAntiUninstallPolicyResponse:
+        """
+        @summary 更新自启动与防卸载策略配置
+        
+        @param request: UpdateBootAndAntiUninstallPolicyRequest
+        @return: UpdateBootAndAntiUninstallPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_boot_and_anti_uninstall_policy_with_options(request, runtime)
+
+    async def update_boot_and_anti_uninstall_policy_async(
+        self,
+        request: csas_20230120_models.UpdateBootAndAntiUninstallPolicyRequest,
+    ) -> csas_20230120_models.UpdateBootAndAntiUninstallPolicyResponse:
+        """
+        @summary 更新自启动与防卸载策略配置
+        
+        @param request: UpdateBootAndAntiUninstallPolicyRequest
+        @return: UpdateBootAndAntiUninstallPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_boot_and_anti_uninstall_policy_with_options_async(request, runtime)
 
     def update_client_user_with_options(
         self,
@@ -7657,17 +9467,21 @@ class Client(OpenApiClient):
 
     def update_private_access_application_with_options(
         self,
-        request: csas_20230120_models.UpdatePrivateAccessApplicationRequest,
+        tmp_req: csas_20230120_models.UpdatePrivateAccessApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdatePrivateAccessApplicationResponse:
         """
         @summary 修改内网访问应用
         
-        @param request: UpdatePrivateAccessApplicationRequest
+        @param tmp_req: UpdatePrivateAccessApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdatePrivateAccessApplicationResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = csas_20230120_models.UpdatePrivateAccessApplicationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.l_7config):
+            request.l_7config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.l_7config, 'L7Config', 'json')
         body = {}
         body_flat = {}
         if not UtilClient.is_unset(request.addresses):
@@ -7676,6 +9490,8 @@ class Client(OpenApiClient):
             body['ApplicationId'] = request.application_id
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.l_7config_shrink):
+            body['L7Config'] = request.l_7config_shrink
         if not UtilClient.is_unset(request.l_7proxy_domain_automatic_prefix):
             body['L7ProxyDomainAutomaticPrefix'] = request.l_7proxy_domain_automatic_prefix
         if not UtilClient.is_unset(request.l_7proxy_domain_custom):
@@ -7715,17 +9531,21 @@ class Client(OpenApiClient):
 
     async def update_private_access_application_with_options_async(
         self,
-        request: csas_20230120_models.UpdatePrivateAccessApplicationRequest,
+        tmp_req: csas_20230120_models.UpdatePrivateAccessApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdatePrivateAccessApplicationResponse:
         """
         @summary 修改内网访问应用
         
-        @param request: UpdatePrivateAccessApplicationRequest
+        @param tmp_req: UpdatePrivateAccessApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdatePrivateAccessApplicationResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = csas_20230120_models.UpdatePrivateAccessApplicationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.l_7config):
+            request.l_7config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.l_7config, 'L7Config', 'json')
         body = {}
         body_flat = {}
         if not UtilClient.is_unset(request.addresses):
@@ -7734,6 +9554,8 @@ class Client(OpenApiClient):
             body['ApplicationId'] = request.application_id
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.l_7config_shrink):
+            body['L7Config'] = request.l_7config_shrink
         if not UtilClient.is_unset(request.l_7proxy_domain_automatic_prefix):
             body['L7ProxyDomainAutomaticPrefix'] = request.l_7proxy_domain_automatic_prefix
         if not UtilClient.is_unset(request.l_7proxy_domain_custom):
@@ -7836,6 +9658,8 @@ class Client(OpenApiClient):
             body['Status'] = request.status
         if not UtilClient.is_unset(request.tag_ids):
             body_flat['TagIds'] = request.tag_ids
+        if not UtilClient.is_unset(request.trigger_template_id):
+            body['TriggerTemplateId'] = request.trigger_template_id
         if not UtilClient.is_unset(request.user_group_ids):
             body_flat['UserGroupIds'] = request.user_group_ids
         if not UtilClient.is_unset(request.user_group_mode):
@@ -7900,6 +9724,8 @@ class Client(OpenApiClient):
             body['Status'] = request.status
         if not UtilClient.is_unset(request.tag_ids):
             body_flat['TagIds'] = request.tag_ids
+        if not UtilClient.is_unset(request.trigger_template_id):
+            body['TriggerTemplateId'] = request.trigger_template_id
         if not UtilClient.is_unset(request.user_group_ids):
             body_flat['UserGroupIds'] = request.user_group_ids
         if not UtilClient.is_unset(request.user_group_mode):
@@ -8108,6 +9934,112 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_registration_policy_with_options_async(request, runtime)
+
+    def update_uninstall_applications_status_with_options(
+        self,
+        request: csas_20230120_models.UpdateUninstallApplicationsStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.UpdateUninstallApplicationsStatusResponse:
+        """
+        @summary 批量修改卸载申请状态
+        
+        @param request: UpdateUninstallApplicationsStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUninstallApplicationsStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.application_ids):
+            body_flat['ApplicationIds'] = request.application_ids
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateUninstallApplicationsStatus',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.UpdateUninstallApplicationsStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_uninstall_applications_status_with_options_async(
+        self,
+        request: csas_20230120_models.UpdateUninstallApplicationsStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.UpdateUninstallApplicationsStatusResponse:
+        """
+        @summary 批量修改卸载申请状态
+        
+        @param request: UpdateUninstallApplicationsStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUninstallApplicationsStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.application_ids):
+            body_flat['ApplicationIds'] = request.application_ids
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateUninstallApplicationsStatus',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.UpdateUninstallApplicationsStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_uninstall_applications_status(
+        self,
+        request: csas_20230120_models.UpdateUninstallApplicationsStatusRequest,
+    ) -> csas_20230120_models.UpdateUninstallApplicationsStatusResponse:
+        """
+        @summary 批量修改卸载申请状态
+        
+        @param request: UpdateUninstallApplicationsStatusRequest
+        @return: UpdateUninstallApplicationsStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_uninstall_applications_status_with_options(request, runtime)
+
+    async def update_uninstall_applications_status_async(
+        self,
+        request: csas_20230120_models.UpdateUninstallApplicationsStatusRequest,
+    ) -> csas_20230120_models.UpdateUninstallApplicationsStatusResponse:
+        """
+        @summary 批量修改卸载申请状态
+        
+        @param request: UpdateUninstallApplicationsStatusRequest
+        @return: UpdateUninstallApplicationsStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_uninstall_applications_status_with_options_async(request, runtime)
 
     def update_user_devices_sharing_status_with_options(
         self,
