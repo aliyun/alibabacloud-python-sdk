@@ -1,3 +1,6 @@
+2025-04-16 Version: 1.2.1
+- Generated python 2023-06-30 for dataphin-public.
+
 2025-03-07 Version: 1.2.0
 - Support API GetSparkLocalClientInfo.
 - Support API ListAuthorizedDataServiceApiDetails.

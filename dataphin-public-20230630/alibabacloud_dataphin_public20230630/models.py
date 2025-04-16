@@ -2893,7 +2893,9 @@ class CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreate(Te
         # This parameter is required.
         self.config_item_list = config_item_list
         self.description = description
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -3024,7 +3026,9 @@ class CreateDataSourceRequestCreateCommandProdDataSourceCreate(TeaModel):
         # This parameter is required.
         self.config_item_list = config_item_list
         self.description = description
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.type = type
 
     def validate(self):
