@@ -1,532 +1,1169 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-try:
-    from typing import List
-except ImportError:
-    pass
+from typing import List, Dict
 
 
-class DescribeDirectoriesRequest(TeaModel):
-    def __init__(self, directory_type=None, directory_id=None, max_results=None, next_token=None):
-        self.directory_type = directory_type  # type: str
-        self.directory_id = directory_id  # type: List[str]
-        self.max_results = max_results  # type: int
-        self.next_token = next_token    # type: str
-
-    def validate(self):
-        self.validate_required(self.directory_type, 'directory_type')
-
-    def to_map(self):
-        result = {}
-        result['DirectoryType'] = self.directory_type
-        result['DirectoryId'] = self.directory_id
-        result['MaxResults'] = self.max_results
-        result['NextToken'] = self.next_token
-        return result
-
-    def from_map(self, map={}):
-        self.directory_type = map.get('DirectoryType')
-        self.directory_id = map.get('DirectoryId')
-        self.max_results = map.get('MaxResults')
-        self.next_token = map.get('NextToken')
-        return self
-
-
-class DescribeDirectoriesResponse(TeaModel):
-    def __init__(self, next_token=None, request_id=None, directories=None):
-        self.next_token = next_token    # type: str
-        self.request_id = request_id    # type: str
-        self.directories = directories  # type: List[DescribeDirectoriesResponseDirectories]
-
-    def validate(self):
-        self.validate_required(self.next_token, 'next_token')
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.directories, 'directories')
-        if self.directories:
-            for k in self.directories:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = {}
-        result['NextToken'] = self.next_token
-        result['RequestId'] = self.request_id
-        result['Directories'] = []
-        if self.directories is not None:
-            for k in self.directories:
-                result['Directories'].append(k.to_map() if k else None)
-        else:
-            result['Directories'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.next_token = map.get('NextToken')
-        self.request_id = map.get('RequestId')
-        self.directories = []
-        if map.get('Directories') is not None:
-            for k in map.get('Directories'):
-                temp_model = DescribeDirectoriesResponseDirectories()
-                self.directories.append(temp_model.from_map(k))
-        else:
-            self.directories = None
-        return self
-
-
-class DescribeDirectoriesResponseDirectoriesADConnectors(TeaModel):
-    def __init__(self, adconnector_address=None, v_switch_id=None, connector_status=None):
-        self.adconnector_address = adconnector_address  # type: str
-        self.v_switch_id = v_switch_id  # type: str
-        self.connector_status = connector_status  # type: str
-
-    def validate(self):
-        self.validate_required(self.adconnector_address, 'adconnector_address')
-        self.validate_required(self.v_switch_id, 'v_switch_id')
-        self.validate_required(self.connector_status, 'connector_status')
-
-    def to_map(self):
-        result = {}
-        result['ADConnectorAddress'] = self.adconnector_address
-        result['VSwitchId'] = self.v_switch_id
-        result['ConnectorStatus'] = self.connector_status
-        return result
-
-    def from_map(self, map={}):
-        self.adconnector_address = map.get('ADConnectorAddress')
-        self.v_switch_id = map.get('VSwitchId')
-        self.connector_status = map.get('ConnectorStatus')
-        return self
-
-
-class DescribeDirectoriesResponseDirectories(TeaModel):
-    def __init__(self, directory_id=None, status=None, directory_type=None, creation_time=None, name=None,
-                 custom_security_group_id=None, dns_user_name=None, enable_internet_access=None, trust_password=None, domain_name=None,
-                 domain_user_name=None, domain_password=None, adconnectors=None, dns_address=None):
-        self.directory_id = directory_id  # type: str
-        self.status = status            # type: str
-        self.directory_type = directory_type  # type: str
-        self.creation_time = creation_time  # type: str
-        self.name = name                # type: str
-        self.custom_security_group_id = custom_security_group_id  # type: str
-        self.dns_user_name = dns_user_name  # type: str
-        self.enable_internet_access = enable_internet_access  # type: bool
-        self.trust_password = trust_password  # type: str
-        self.domain_name = domain_name  # type: str
-        self.domain_user_name = domain_user_name  # type: str
-        self.domain_password = domain_password  # type: str
-        self.adconnectors = adconnectors  # type: List[DescribeDirectoriesResponseDirectoriesADConnectors]
-        self.dns_address = dns_address  # type: List[str]
-
-    def validate(self):
-        self.validate_required(self.directory_id, 'directory_id')
-        self.validate_required(self.status, 'status')
-        self.validate_required(self.directory_type, 'directory_type')
-        self.validate_required(self.creation_time, 'creation_time')
-        self.validate_required(self.name, 'name')
-        self.validate_required(self.custom_security_group_id, 'custom_security_group_id')
-        self.validate_required(self.dns_user_name, 'dns_user_name')
-        self.validate_required(self.enable_internet_access, 'enable_internet_access')
-        self.validate_required(self.trust_password, 'trust_password')
-        self.validate_required(self.domain_name, 'domain_name')
-        self.validate_required(self.domain_user_name, 'domain_user_name')
-        self.validate_required(self.domain_password, 'domain_password')
-        self.validate_required(self.adconnectors, 'adconnectors')
-        if self.adconnectors:
-            for k in self.adconnectors:
-                if k:
-                    k.validate()
-        self.validate_required(self.dns_address, 'dns_address')
-
-    def to_map(self):
-        result = {}
-        result['DirectoryId'] = self.directory_id
-        result['Status'] = self.status
-        result['DirectoryType'] = self.directory_type
-        result['CreationTime'] = self.creation_time
-        result['Name'] = self.name
-        result['CustomSecurityGroupId'] = self.custom_security_group_id
-        result['DnsUserName'] = self.dns_user_name
-        result['EnableInternetAccess'] = self.enable_internet_access
-        result['TrustPassword'] = self.trust_password
-        result['DomainName'] = self.domain_name
-        result['DomainUserName'] = self.domain_user_name
-        result['DomainPassword'] = self.domain_password
-        result['ADConnectors'] = []
-        if self.adconnectors is not None:
-            for k in self.adconnectors:
-                result['ADConnectors'].append(k.to_map() if k else None)
-        else:
-            result['ADConnectors'] = None
-        result['DnsAddress'] = self.dns_address
-        return result
-
-    def from_map(self, map={}):
-        self.directory_id = map.get('DirectoryId')
-        self.status = map.get('Status')
-        self.directory_type = map.get('DirectoryType')
-        self.creation_time = map.get('CreationTime')
-        self.name = map.get('Name')
-        self.custom_security_group_id = map.get('CustomSecurityGroupId')
-        self.dns_user_name = map.get('DnsUserName')
-        self.enable_internet_access = map.get('EnableInternetAccess')
-        self.trust_password = map.get('TrustPassword')
-        self.domain_name = map.get('DomainName')
-        self.domain_user_name = map.get('DomainUserName')
-        self.domain_password = map.get('DomainPassword')
-        self.adconnectors = []
-        if map.get('ADConnectors') is not None:
-            for k in map.get('ADConnectors'):
-                temp_model = DescribeDirectoriesResponseDirectoriesADConnectors()
-                self.adconnectors.append(temp_model.from_map(k))
-        else:
-            self.adconnectors = None
-        self.dns_address = map.get('DnsAddress')
-        return self
-
-
-class DeleteDirectoriesRequest(TeaModel):
-    def __init__(self, directory_id=None):
-        self.directory_id = directory_id  # type: List[str]
+class DescribeDesktopsRequest(TeaModel):
+    def __init__(
+        self,
+        desktop_id: List[str] = None,
+        desktop_name: str = None,
+        desktop_status: str = None,
+        directory_id: str = None,
+        group_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        office_site_id: str = None,
+        region_id: str = None,
+        user_name: str = None,
+    ):
+        self.desktop_id = desktop_id
+        self.desktop_name = desktop_name
+        self.desktop_status = desktop_status
+        self.directory_id = directory_id
+        self.group_id = group_id
+        self.max_results = max_results
+        self.next_token = next_token
+        self.office_site_id = office_site_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.user_name = user_name
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
-        result['DirectoryId'] = self.directory_id
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.desktop_name is not None:
+            result['DesktopName'] = self.desktop_name
+        if self.desktop_status is not None:
+            result['DesktopStatus'] = self.desktop_status
+        if self.directory_id is not None:
+            result['DirectoryId'] = self.directory_id
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
         return result
 
-    def from_map(self, map={}):
-        self.directory_id = map.get('DirectoryId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('DesktopName') is not None:
+            self.desktop_name = m.get('DesktopName')
+        if m.get('DesktopStatus') is not None:
+            self.desktop_status = m.get('DesktopStatus')
+        if m.get('DirectoryId') is not None:
+            self.directory_id = m.get('DirectoryId')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
         return self
 
 
-class DeleteDirectoriesResponse(TeaModel):
-    def __init__(self, next_token=None, request_id=None):
-        self.next_token = next_token    # type: str
-        self.request_id = request_id    # type: str
+class DescribeDesktopsResponseBodyDesktopsDisks(TeaModel):
+    def __init__(
+        self,
+        disk_id: str = None,
+        disk_size: int = None,
+        disk_type: str = None,
+    ):
+        self.disk_id = disk_id
+        self.disk_size = disk_size
+        self.disk_type = disk_type
 
     def validate(self):
-        self.validate_required(self.next_token, 'next_token')
-        self.validate_required(self.request_id, 'request_id')
+        pass
 
     def to_map(self):
-        result = {}
-        result['NextToken'] = self.next_token
-        result['RequestId'] = self.request_id
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.disk_size is not None:
+            result['DiskSize'] = self.disk_size
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
         return result
 
-    def from_map(self, map={}):
-        self.next_token = map.get('NextToken')
-        self.request_id = map.get('RequestId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('DiskSize') is not None:
+            self.disk_size = m.get('DiskSize')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
         return self
 
 
-class DescribeDesktopsRequest(TeaModel):
-    def __init__(self, region_id=None, directory_id=None, group_id=None, desktop_status=None, max_results=None,
-                 next_token=None, user_name=None, desktop_name=None, desktop_id=None):
-        self.region_id = region_id      # type: str
-        self.directory_id = directory_id  # type: str
-        self.group_id = group_id        # type: str
-        self.desktop_status = desktop_status  # type: str
-        self.max_results = max_results  # type: int
-        self.next_token = next_token    # type: str
-        self.user_name = user_name      # type: str
-        self.desktop_name = desktop_name  # type: str
-        self.desktop_id = desktop_id    # type: List[str]
+class DescribeDesktopsResponseBodyDesktops(TeaModel):
+    def __init__(
+        self,
+        connection_status: str = None,
+        cpu: int = None,
+        creation_time: str = None,
+        data_disk_category: str = None,
+        data_disk_size: str = None,
+        desktop_id: str = None,
+        desktop_name: str = None,
+        desktop_status: str = None,
+        desktop_type: str = None,
+        directory_id: str = None,
+        disks: List[DescribeDesktopsResponseBodyDesktopsDisks] = None,
+        end_user_ids: List[str] = None,
+        image_id: str = None,
+        last_start_time: str = None,
+        memory: int = None,
+        network_interface_id: str = None,
+        office_site_id: str = None,
+        policy_group_id: str = None,
+        system_disk_category: str = None,
+        system_disk_size: int = None,
+    ):
+        self.connection_status = connection_status
+        self.cpu = cpu
+        self.creation_time = creation_time
+        self.data_disk_category = data_disk_category
+        self.data_disk_size = data_disk_size
+        self.desktop_id = desktop_id
+        self.desktop_name = desktop_name
+        self.desktop_status = desktop_status
+        self.desktop_type = desktop_type
+        self.directory_id = directory_id
+        self.disks = disks
+        self.end_user_ids = end_user_ids
+        self.image_id = image_id
+        self.last_start_time = last_start_time
+        self.memory = memory
+        self.network_interface_id = network_interface_id
+        self.office_site_id = office_site_id
+        self.policy_group_id = policy_group_id
+        self.system_disk_category = system_disk_category
+        self.system_disk_size = system_disk_size
 
     def validate(self):
-        self.validate_required(self.region_id, 'region_id')
+        if self.disks:
+            for k in self.disks:
+                if k:
+                    k.validate()
 
     def to_map(self):
-        result = {}
-        result['RegionId'] = self.region_id
-        result['DirectoryId'] = self.directory_id
-        result['GroupId'] = self.group_id
-        result['DesktopStatus'] = self.desktop_status
-        result['MaxResults'] = self.max_results
-        result['NextToken'] = self.next_token
-        result['UserName'] = self.user_name
-        result['DesktopName'] = self.desktop_name
-        result['DesktopId'] = self.desktop_id
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_status is not None:
+            result['ConnectionStatus'] = self.connection_status
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.data_disk_category is not None:
+            result['DataDiskCategory'] = self.data_disk_category
+        if self.data_disk_size is not None:
+            result['DataDiskSize'] = self.data_disk_size
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.desktop_name is not None:
+            result['DesktopName'] = self.desktop_name
+        if self.desktop_status is not None:
+            result['DesktopStatus'] = self.desktop_status
+        if self.desktop_type is not None:
+            result['DesktopType'] = self.desktop_type
+        if self.directory_id is not None:
+            result['DirectoryId'] = self.directory_id
+        result['Disks'] = []
+        if self.disks is not None:
+            for k in self.disks:
+                result['Disks'].append(k.to_map() if k else None)
+        if self.end_user_ids is not None:
+            result['EndUserIds'] = self.end_user_ids
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.last_start_time is not None:
+            result['LastStartTime'] = self.last_start_time
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.policy_group_id is not None:
+            result['PolicyGroupId'] = self.policy_group_id
+        if self.system_disk_category is not None:
+            result['SystemDiskCategory'] = self.system_disk_category
+        if self.system_disk_size is not None:
+            result['SystemDiskSize'] = self.system_disk_size
         return result
 
-    def from_map(self, map={}):
-        self.region_id = map.get('RegionId')
-        self.directory_id = map.get('DirectoryId')
-        self.group_id = map.get('GroupId')
-        self.desktop_status = map.get('DesktopStatus')
-        self.max_results = map.get('MaxResults')
-        self.next_token = map.get('NextToken')
-        self.user_name = map.get('UserName')
-        self.desktop_name = map.get('DesktopName')
-        self.desktop_id = map.get('DesktopId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionStatus') is not None:
+            self.connection_status = m.get('ConnectionStatus')
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('DataDiskCategory') is not None:
+            self.data_disk_category = m.get('DataDiskCategory')
+        if m.get('DataDiskSize') is not None:
+            self.data_disk_size = m.get('DataDiskSize')
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('DesktopName') is not None:
+            self.desktop_name = m.get('DesktopName')
+        if m.get('DesktopStatus') is not None:
+            self.desktop_status = m.get('DesktopStatus')
+        if m.get('DesktopType') is not None:
+            self.desktop_type = m.get('DesktopType')
+        if m.get('DirectoryId') is not None:
+            self.directory_id = m.get('DirectoryId')
+        self.disks = []
+        if m.get('Disks') is not None:
+            for k in m.get('Disks'):
+                temp_model = DescribeDesktopsResponseBodyDesktopsDisks()
+                self.disks.append(temp_model.from_map(k))
+        if m.get('EndUserIds') is not None:
+            self.end_user_ids = m.get('EndUserIds')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('LastStartTime') is not None:
+            self.last_start_time = m.get('LastStartTime')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('PolicyGroupId') is not None:
+            self.policy_group_id = m.get('PolicyGroupId')
+        if m.get('SystemDiskCategory') is not None:
+            self.system_disk_category = m.get('SystemDiskCategory')
+        if m.get('SystemDiskSize') is not None:
+            self.system_disk_size = m.get('SystemDiskSize')
         return self
 
 
-class DescribeDesktopsResponse(TeaModel):
-    def __init__(self, request_id=None, next_token=None, desktops=None):
-        self.request_id = request_id    # type: str
-        self.next_token = next_token    # type: str
-        self.desktops = desktops        # type: List[DescribeDesktopsResponseDesktops]
+class DescribeDesktopsResponseBody(TeaModel):
+    def __init__(
+        self,
+        desktops: List[DescribeDesktopsResponseBodyDesktops] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.desktops = desktops
+        self.next_token = next_token
+        self.request_id = request_id
 
     def validate(self):
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.next_token, 'next_token')
-        self.validate_required(self.desktops, 'desktops')
         if self.desktops:
             for k in self.desktops:
                 if k:
                     k.validate()
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['NextToken'] = self.next_token
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         result['Desktops'] = []
         if self.desktops is not None:
             for k in self.desktops:
                 result['Desktops'].append(k.to_map() if k else None)
-        else:
-            result['Desktops'] = None
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.next_token = map.get('NextToken')
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.desktops = []
-        if map.get('Desktops') is not None:
-            for k in map.get('Desktops'):
-                temp_model = DescribeDesktopsResponseDesktops()
+        if m.get('Desktops') is not None:
+            for k in m.get('Desktops'):
+                temp_model = DescribeDesktopsResponseBodyDesktops()
                 self.desktops.append(temp_model.from_map(k))
-        else:
-            self.desktops = None
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
-class DescribeDesktopsResponseDesktopsDisks(TeaModel):
-    def __init__(self, disk_id=None, disk_size=None, disk_type=None):
-        self.disk_id = disk_id          # type: str
-        self.disk_size = disk_size      # type: int
-        self.disk_type = disk_type      # type: str
+class DescribeDesktopsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDesktopsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
 
     def validate(self):
-        self.validate_required(self.disk_id, 'disk_id')
-        self.validate_required(self.disk_size, 'disk_size')
-        self.validate_required(self.disk_type, 'disk_type')
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
-        result = {}
-        result['DiskId'] = self.disk_id
-        result['DiskSize'] = self.disk_size
-        result['DiskType'] = self.disk_type
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        self.disk_id = map.get('DiskId')
-        self.disk_size = map.get('DiskSize')
-        self.disk_type = map.get('DiskType')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDesktopsResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
-class DescribeDesktopsResponseDesktops(TeaModel):
-    def __init__(self, directory_id=None, creation_time=None, desktop_id=None, desktop_status=None,
-                 desktop_name=None, image_id=None, desktop_type=None, system_disk_category=None, system_disk_size=None,
-                 data_disk_category=None, data_disk_size=None, connection_status=None, policy_group_id=None, cpu=None, memory=None,
-                 network_interface_id=None, disks=None, end_user_ids=None):
-        self.directory_id = directory_id  # type: str
-        self.creation_time = creation_time  # type: str
-        self.desktop_id = desktop_id    # type: str
-        self.desktop_status = desktop_status  # type: str
-        self.desktop_name = desktop_name  # type: str
-        self.image_id = image_id        # type: str
-        self.desktop_type = desktop_type  # type: str
-        self.system_disk_category = system_disk_category  # type: str
-        self.system_disk_size = system_disk_size  # type: int
-        self.data_disk_category = data_disk_category  # type: str
-        self.data_disk_size = data_disk_size  # type: str
-        self.connection_status = connection_status  # type: str
-        self.policy_group_id = policy_group_id  # type: str
-        self.cpu = cpu                  # type: int
-        self.memory = memory            # type: int
-        self.network_interface_id = network_interface_id  # type: int
-        self.disks = disks              # type: List[DescribeDesktopsResponseDesktopsDisks]
-        self.end_user_ids = end_user_ids  # type: List[str]
+class DescribeDirectoriesRequest(TeaModel):
+    def __init__(
+        self,
+        directory_id: List[str] = None,
+        directory_type: str = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.directory_id = directory_id
+        # This parameter is required.
+        self.directory_type = directory_type
+        self.max_results = max_results
+        self.next_token = next_token
 
     def validate(self):
-        self.validate_required(self.directory_id, 'directory_id')
-        self.validate_required(self.creation_time, 'creation_time')
-        self.validate_required(self.desktop_id, 'desktop_id')
-        self.validate_required(self.desktop_status, 'desktop_status')
-        self.validate_required(self.desktop_name, 'desktop_name')
-        self.validate_required(self.image_id, 'image_id')
-        self.validate_required(self.desktop_type, 'desktop_type')
-        self.validate_required(self.system_disk_category, 'system_disk_category')
-        self.validate_required(self.system_disk_size, 'system_disk_size')
-        self.validate_required(self.data_disk_category, 'data_disk_category')
-        self.validate_required(self.data_disk_size, 'data_disk_size')
-        self.validate_required(self.connection_status, 'connection_status')
-        self.validate_required(self.policy_group_id, 'policy_group_id')
-        self.validate_required(self.cpu, 'cpu')
-        self.validate_required(self.memory, 'memory')
-        self.validate_required(self.network_interface_id, 'network_interface_id')
-        self.validate_required(self.disks, 'disks')
-        if self.disks:
-            for k in self.disks:
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.directory_id is not None:
+            result['DirectoryId'] = self.directory_id
+        if self.directory_type is not None:
+            result['DirectoryType'] = self.directory_type
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DirectoryId') is not None:
+            self.directory_id = m.get('DirectoryId')
+        if m.get('DirectoryType') is not None:
+            self.directory_type = m.get('DirectoryType')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class DescribeDirectoriesResponseBodyDirectoriesADConnectors(TeaModel):
+    def __init__(
+        self,
+        adconnector_address: str = None,
+        connector_status: str = None,
+        v_switch_id: str = None,
+    ):
+        self.adconnector_address = adconnector_address
+        self.connector_status = connector_status
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adconnector_address is not None:
+            result['ADConnectorAddress'] = self.adconnector_address
+        if self.connector_status is not None:
+            result['ConnectorStatus'] = self.connector_status
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ADConnectorAddress') is not None:
+            self.adconnector_address = m.get('ADConnectorAddress')
+        if m.get('ConnectorStatus') is not None:
+            self.connector_status = m.get('ConnectorStatus')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class DescribeDirectoriesResponseBodyDirectories(TeaModel):
+    def __init__(
+        self,
+        adconnectors: List[DescribeDirectoriesResponseBodyDirectoriesADConnectors] = None,
+        creation_time: str = None,
+        custom_security_group_id: str = None,
+        directory_id: str = None,
+        directory_type: str = None,
+        dns_address: List[str] = None,
+        dns_user_name: str = None,
+        domain_name: str = None,
+        domain_password: str = None,
+        domain_user_name: str = None,
+        enable_internet_access: bool = None,
+        name: str = None,
+        status: str = None,
+        trust_password: str = None,
+    ):
+        self.adconnectors = adconnectors
+        self.creation_time = creation_time
+        self.custom_security_group_id = custom_security_group_id
+        self.directory_id = directory_id
+        self.directory_type = directory_type
+        self.dns_address = dns_address
+        self.dns_user_name = dns_user_name
+        self.domain_name = domain_name
+        self.domain_password = domain_password
+        self.domain_user_name = domain_user_name
+        self.enable_internet_access = enable_internet_access
+        self.name = name
+        self.status = status
+        self.trust_password = trust_password
+
+    def validate(self):
+        if self.adconnectors:
+            for k in self.adconnectors:
                 if k:
                     k.validate()
-        self.validate_required(self.end_user_ids, 'end_user_ids')
 
     def to_map(self):
-        result = {}
-        result['DirectoryId'] = self.directory_id
-        result['CreationTime'] = self.creation_time
-        result['DesktopId'] = self.desktop_id
-        result['DesktopStatus'] = self.desktop_status
-        result['DesktopName'] = self.desktop_name
-        result['ImageId'] = self.image_id
-        result['DesktopType'] = self.desktop_type
-        result['SystemDiskCategory'] = self.system_disk_category
-        result['SystemDiskSize'] = self.system_disk_size
-        result['DataDiskCategory'] = self.data_disk_category
-        result['DataDiskSize'] = self.data_disk_size
-        result['ConnectionStatus'] = self.connection_status
-        result['PolicyGroupId'] = self.policy_group_id
-        result['Cpu'] = self.cpu
-        result['Memory'] = self.memory
-        result['NetworkInterfaceId'] = self.network_interface_id
-        result['Disks'] = []
-        if self.disks is not None:
-            for k in self.disks:
-                result['Disks'].append(k.to_map() if k else None)
-        else:
-            result['Disks'] = None
-        result['EndUserIds'] = self.end_user_ids
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ADConnectors'] = []
+        if self.adconnectors is not None:
+            for k in self.adconnectors:
+                result['ADConnectors'].append(k.to_map() if k else None)
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.custom_security_group_id is not None:
+            result['CustomSecurityGroupId'] = self.custom_security_group_id
+        if self.directory_id is not None:
+            result['DirectoryId'] = self.directory_id
+        if self.directory_type is not None:
+            result['DirectoryType'] = self.directory_type
+        if self.dns_address is not None:
+            result['DnsAddress'] = self.dns_address
+        if self.dns_user_name is not None:
+            result['DnsUserName'] = self.dns_user_name
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.domain_password is not None:
+            result['DomainPassword'] = self.domain_password
+        if self.domain_user_name is not None:
+            result['DomainUserName'] = self.domain_user_name
+        if self.enable_internet_access is not None:
+            result['EnableInternetAccess'] = self.enable_internet_access
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.trust_password is not None:
+            result['TrustPassword'] = self.trust_password
         return result
 
-    def from_map(self, map={}):
-        self.directory_id = map.get('DirectoryId')
-        self.creation_time = map.get('CreationTime')
-        self.desktop_id = map.get('DesktopId')
-        self.desktop_status = map.get('DesktopStatus')
-        self.desktop_name = map.get('DesktopName')
-        self.image_id = map.get('ImageId')
-        self.desktop_type = map.get('DesktopType')
-        self.system_disk_category = map.get('SystemDiskCategory')
-        self.system_disk_size = map.get('SystemDiskSize')
-        self.data_disk_category = map.get('DataDiskCategory')
-        self.data_disk_size = map.get('DataDiskSize')
-        self.connection_status = map.get('ConnectionStatus')
-        self.policy_group_id = map.get('PolicyGroupId')
-        self.cpu = map.get('Cpu')
-        self.memory = map.get('Memory')
-        self.network_interface_id = map.get('NetworkInterfaceId')
-        self.disks = []
-        if map.get('Disks') is not None:
-            for k in map.get('Disks'):
-                temp_model = DescribeDesktopsResponseDesktopsDisks()
-                self.disks.append(temp_model.from_map(k))
-        else:
-            self.disks = None
-        self.end_user_ids = map.get('EndUserIds')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.adconnectors = []
+        if m.get('ADConnectors') is not None:
+            for k in m.get('ADConnectors'):
+                temp_model = DescribeDirectoriesResponseBodyDirectoriesADConnectors()
+                self.adconnectors.append(temp_model.from_map(k))
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('CustomSecurityGroupId') is not None:
+            self.custom_security_group_id = m.get('CustomSecurityGroupId')
+        if m.get('DirectoryId') is not None:
+            self.directory_id = m.get('DirectoryId')
+        if m.get('DirectoryType') is not None:
+            self.directory_type = m.get('DirectoryType')
+        if m.get('DnsAddress') is not None:
+            self.dns_address = m.get('DnsAddress')
+        if m.get('DnsUserName') is not None:
+            self.dns_user_name = m.get('DnsUserName')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('DomainPassword') is not None:
+            self.domain_password = m.get('DomainPassword')
+        if m.get('DomainUserName') is not None:
+            self.domain_user_name = m.get('DomainUserName')
+        if m.get('EnableInternetAccess') is not None:
+            self.enable_internet_access = m.get('EnableInternetAccess')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TrustPassword') is not None:
+            self.trust_password = m.get('TrustPassword')
         return self
 
 
-class RebootDesktopsRequest(TeaModel):
-    def __init__(self, region_id=None, desktop_id=None):
-        self.region_id = region_id      # type: str
-        self.desktop_id = desktop_id    # type: List[str]
+class DescribeDirectoriesResponseBody(TeaModel):
+    def __init__(
+        self,
+        directories: List[DescribeDirectoriesResponseBodyDirectories] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.directories = directories
+        self.next_token = next_token
+        self.request_id = request_id
 
     def validate(self):
-        self.validate_required(self.region_id, 'region_id')
-        self.validate_required(self.desktop_id, 'desktop_id')
+        if self.directories:
+            for k in self.directories:
+                if k:
+                    k.validate()
 
     def to_map(self):
-        result = {}
-        result['RegionId'] = self.region_id
-        result['DesktopId'] = self.desktop_id
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Directories'] = []
+        if self.directories is not None:
+            for k in self.directories:
+                result['Directories'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
-    def from_map(self, map={}):
-        self.region_id = map.get('RegionId')
-        self.desktop_id = map.get('DesktopId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.directories = []
+        if m.get('Directories') is not None:
+            for k in m.get('Directories'):
+                temp_model = DescribeDirectoriesResponseBodyDirectories()
+                self.directories.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
-class RebootDesktopsResponse(TeaModel):
-    def __init__(self, request_id=None):
-        self.request_id = request_id    # type: str
+class DescribeDirectoriesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDirectoriesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
 
     def validate(self):
-        self.validate_required(self.request_id, 'request_id')
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDirectoriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
 class GetConnectionTicketRequest(TeaModel):
-    def __init__(self, region_id=None, instance_id=None, user_name=None, password=None, task_id=None,
-                 desktop_id=None):
-        self.region_id = region_id      # type: str
-        self.instance_id = instance_id  # type: str
-        self.user_name = user_name      # type: str
-        self.password = password        # type: str
-        self.task_id = task_id          # type: str
-        self.desktop_id = desktop_id    # type: str
+    def __init__(
+        self,
+        client_os: str = None,
+        client_version: str = None,
+        desktop_id: str = None,
+        instance_id: str = None,
+        owner_id: int = None,
+        password: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        task_id: str = None,
+        user_name: str = None,
+    ):
+        self.client_os = client_os
+        self.client_version = client_version
+        self.desktop_id = desktop_id
+        self.instance_id = instance_id
+        self.owner_id = owner_id
+        self.password = password
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.task_id = task_id
+        self.user_name = user_name
 
     def validate(self):
-        self.validate_required(self.region_id, 'region_id')
+        pass
 
     def to_map(self):
-        result = {}
-        result['RegionId'] = self.region_id
-        result['InstanceId'] = self.instance_id
-        result['UserName'] = self.user_name
-        result['Password'] = self.password
-        result['TaskId'] = self.task_id
-        result['DesktopId'] = self.desktop_id
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_os is not None:
+            result['ClientOS'] = self.client_os
+        if self.client_version is not None:
+            result['ClientVersion'] = self.client_version
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
         return result
 
-    def from_map(self, map={}):
-        self.region_id = map.get('RegionId')
-        self.instance_id = map.get('InstanceId')
-        self.user_name = map.get('UserName')
-        self.password = map.get('Password')
-        self.task_id = map.get('TaskId')
-        self.desktop_id = map.get('DesktopId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientOS') is not None:
+            self.client_os = m.get('ClientOS')
+        if m.get('ClientVersion') is not None:
+            self.client_version = m.get('ClientVersion')
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class GetConnectionTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+        task_status: str = None,
+        ticket: str = None,
+    ):
+        self.request_id = request_id
+        self.task_id = task_id
+        self.task_status = task_status
+        self.ticket = ticket
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_status is not None:
+            result['TaskStatus'] = self.task_status
+        if self.ticket is not None:
+            result['Ticket'] = self.ticket
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskStatus') is not None:
+            self.task_status = m.get('TaskStatus')
+        if m.get('Ticket') is not None:
+            self.ticket = m.get('Ticket')
         return self
 
 
 class GetConnectionTicketResponse(TeaModel):
-    def __init__(self, request_id=None, task_id=None, task_status=None, ticket=None):
-        self.request_id = request_id    # type: str
-        self.task_id = task_id          # type: str
-        self.task_status = task_status  # type: str
-        self.ticket = ticket            # type: str
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetConnectionTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
 
     def validate(self):
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.task_id, 'task_id')
-        self.validate_required(self.task_status, 'task_status')
-        self.validate_required(self.ticket, 'ticket')
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['TaskId'] = self.task_id
-        result['TaskStatus'] = self.task_status
-        result['Ticket'] = self.ticket
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.task_id = map.get('TaskId')
-        self.task_status = map.get('TaskStatus')
-        self.ticket = map.get('Ticket')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetConnectionTicketResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
+
+
+class RebootDesktopsRequest(TeaModel):
+    def __init__(
+        self,
+        client_os: str = None,
+        client_version: str = None,
+        desktop_id: List[str] = None,
+        region_id: str = None,
+    ):
+        self.client_os = client_os
+        self.client_version = client_version
+        # This parameter is required.
+        self.desktop_id = desktop_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_os is not None:
+            result['ClientOS'] = self.client_os
+        if self.client_version is not None:
+            result['ClientVersion'] = self.client_version
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientOS') is not None:
+            self.client_os = m.get('ClientOS')
+        if m.get('ClientVersion') is not None:
+            self.client_version = m.get('ClientVersion')
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class RebootDesktopsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RebootDesktopsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RebootDesktopsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RebootDesktopsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartDesktopsRequest(TeaModel):
+    def __init__(
+        self,
+        client_os: str = None,
+        client_version: str = None,
+        desktop_id: List[str] = None,
+        region_id: str = None,
+    ):
+        self.client_os = client_os
+        self.client_version = client_version
+        # This parameter is required.
+        self.desktop_id = desktop_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_os is not None:
+            result['ClientOS'] = self.client_os
+        if self.client_version is not None:
+            result['ClientVersion'] = self.client_version
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientOS') is not None:
+            self.client_os = m.get('ClientOS')
+        if m.get('ClientVersion') is not None:
+            self.client_version = m.get('ClientVersion')
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class StartDesktopsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartDesktopsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartDesktopsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartDesktopsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopDesktopsRequest(TeaModel):
+    def __init__(
+        self,
+        client_os: str = None,
+        client_version: str = None,
+        desktop_id: List[str] = None,
+        region_id: str = None,
+    ):
+        self.client_os = client_os
+        self.client_version = client_version
+        # This parameter is required.
+        self.desktop_id = desktop_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_os is not None:
+            result['ClientOS'] = self.client_os
+        if self.client_version is not None:
+            result['ClientVersion'] = self.client_version
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientOS') is not None:
+            self.client_os = m.get('ClientOS')
+        if m.get('ClientVersion') is not None:
+            self.client_version = m.get('ClientVersion')
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class StopDesktopsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopDesktopsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopDesktopsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopDesktopsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
