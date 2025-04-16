@@ -84,7 +84,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AcceptInquiredSystemEventResponse:
         """
-        @summary in the Inquiring state and authorizes the system to perform the default operations.
+        @summary Accepts the default operation for a system event in the Inquiring state and authorizes the system to perform the operation.
         
         @param request: AcceptInquiredSystemEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -122,16 +122,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AcceptInquiredSystemEventResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AcceptInquiredSystemEventResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AcceptInquiredSystemEventResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def accept_inquired_system_event_with_options_async(
         self,
@@ -139,7 +133,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AcceptInquiredSystemEventResponse:
         """
-        @summary in the Inquiring state and authorizes the system to perform the default operations.
+        @summary Accepts the default operation for a system event in the Inquiring state and authorizes the system to perform the operation.
         
         @param request: AcceptInquiredSystemEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -177,23 +171,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AcceptInquiredSystemEventResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AcceptInquiredSystemEventResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AcceptInquiredSystemEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def accept_inquired_system_event(
         self,
         request: ecs_20140526_models.AcceptInquiredSystemEventRequest,
     ) -> ecs_20140526_models.AcceptInquiredSystemEventResponse:
         """
-        @summary in the Inquiring state and authorizes the system to perform the default operations.
+        @summary Accepts the default operation for a system event in the Inquiring state and authorizes the system to perform the operation.
         
         @param request: AcceptInquiredSystemEventRequest
         @return: AcceptInquiredSystemEventResponse
@@ -206,7 +194,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AcceptInquiredSystemEventRequest,
     ) -> ecs_20140526_models.AcceptInquiredSystemEventResponse:
         """
-        @summary in the Inquiring state and authorizes the system to perform the default operations.
+        @summary Accepts the default operation for a system event in the Inquiring state and authorizes the system to perform the operation.
         
         @param request: AcceptInquiredSystemEventRequest
         @return: AcceptInquiredSystemEventResponse
@@ -253,16 +241,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ActivateRouterInterfaceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ActivateRouterInterfaceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ActivateRouterInterfaceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def activate_router_interface_with_options_async(
         self,
@@ -303,16 +285,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ActivateRouterInterfaceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ActivateRouterInterfaceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ActivateRouterInterfaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def activate_router_interface(
         self,
@@ -387,16 +363,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AddBandwidthPackageIpsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AddBandwidthPackageIpsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AddBandwidthPackageIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_bandwidth_package_ips_with_options_async(
         self,
@@ -443,16 +413,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AddBandwidthPackageIpsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AddBandwidthPackageIpsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AddBandwidthPackageIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_bandwidth_package_ips(
         self,
@@ -532,16 +496,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AddTagsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AddTagsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AddTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_tags_with_options_async(
         self,
@@ -593,16 +551,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AddTagsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AddTagsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AddTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_tags(
         self,
@@ -731,16 +683,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AllocateDedicatedHostsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AllocateDedicatedHostsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AllocateDedicatedHostsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def allocate_dedicated_hosts_with_options_async(
         self,
@@ -827,16 +773,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AllocateDedicatedHostsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AllocateDedicatedHostsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AllocateDedicatedHostsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def allocate_dedicated_hosts(
         self,
@@ -929,16 +869,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AllocateEipAddressResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AllocateEipAddressResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AllocateEipAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def allocate_eip_address_with_options_async(
         self,
@@ -991,16 +925,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AllocateEipAddressResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AllocateEipAddressResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AllocateEipAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def allocate_eip_address(
         self,
@@ -1086,16 +1014,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AllocatePublicIpAddressResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AllocatePublicIpAddressResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AllocatePublicIpAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def allocate_public_ip_address_with_options_async(
         self,
@@ -1149,16 +1071,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AllocatePublicIpAddressResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AllocatePublicIpAddressResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AllocatePublicIpAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def allocate_public_ip_address(
         self,
@@ -1212,7 +1128,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ApplyAutoSnapshotPolicyResponse:
         """
-        @summary Applies an automatic snapshot policy to one or more disks. You can call this operation to replace the automatic snapshot policy of a disk.
+        @summary Applies an automatic snapshot policy to one or more cloud disks. You can call this operation to replace the automatic snapshot policy of a cloud disk.
         
         @description    Each disk can have only one automatic snapshot policy.
         Each automatic snapshot policy can be applied to multiple disks.
@@ -1249,16 +1165,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ApplyAutoSnapshotPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ApplyAutoSnapshotPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ApplyAutoSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def apply_auto_snapshot_policy_with_options_async(
         self,
@@ -1266,7 +1176,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ApplyAutoSnapshotPolicyResponse:
         """
-        @summary Applies an automatic snapshot policy to one or more disks. You can call this operation to replace the automatic snapshot policy of a disk.
+        @summary Applies an automatic snapshot policy to one or more cloud disks. You can call this operation to replace the automatic snapshot policy of a cloud disk.
         
         @description    Each disk can have only one automatic snapshot policy.
         Each automatic snapshot policy can be applied to multiple disks.
@@ -1303,23 +1213,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ApplyAutoSnapshotPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ApplyAutoSnapshotPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ApplyAutoSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def apply_auto_snapshot_policy(
         self,
         request: ecs_20140526_models.ApplyAutoSnapshotPolicyRequest,
     ) -> ecs_20140526_models.ApplyAutoSnapshotPolicyResponse:
         """
-        @summary Applies an automatic snapshot policy to one or more disks. You can call this operation to replace the automatic snapshot policy of a disk.
+        @summary Applies an automatic snapshot policy to one or more cloud disks. You can call this operation to replace the automatic snapshot policy of a cloud disk.
         
         @description    Each disk can have only one automatic snapshot policy.
         Each automatic snapshot policy can be applied to multiple disks.
@@ -1335,7 +1239,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ApplyAutoSnapshotPolicyRequest,
     ) -> ecs_20140526_models.ApplyAutoSnapshotPolicyResponse:
         """
-        @summary Applies an automatic snapshot policy to one or more disks. You can call this operation to replace the automatic snapshot policy of a disk.
+        @summary Applies an automatic snapshot policy to one or more cloud disks. You can call this operation to replace the automatic snapshot policy of a cloud disk.
         
         @description    Each disk can have only one automatic snapshot policy.
         Each automatic snapshot policy can be applied to multiple disks.
@@ -1408,16 +1312,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AssignIpv6AddressesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AssignIpv6AddressesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AssignIpv6AddressesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def assign_ipv_6addresses_with_options_async(
         self,
@@ -1481,16 +1379,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AssignIpv6AddressesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AssignIpv6AddressesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AssignIpv6AddressesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def assign_ipv_6addresses(
         self,
@@ -1547,7 +1439,7 @@ class Client(OpenApiClient):
         @summary Assigns secondary private IP addresses to an elastic network interface (ENI). You can specify available private IP addresses within the CIDR block of the vSwitch that is connected to the ENI. Alternatively, you can specify the number of private IP addresses that are automatically assigned from the CIDR block of the vSwitch to the ENI.
         
         @description ## [](#)Usage notes
-        The ENI to which you want to assign secondary private IP addresses must be in the Available (Available) or InUse (InUse) state.
+        The ENI to which you want to assign IP prefixes must be in the Available (Available) or InUse (InUse) state.
         When you assign private IP addresses to a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the Running (Running) or Stopped (Stopped) state.
         When an ENI is in the Available state, you can assign up to 49 secondary private IP addresses to the ENI. When an ENI is attached to an instance, the number of secondary private IP addresses that can be assigned to the ENI varies based on the instance type. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
         After the operation is called, you can obtain the assigned secondary private IP addresses from the response.
@@ -1596,16 +1488,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AssignPrivateIpAddressesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AssignPrivateIpAddressesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AssignPrivateIpAddressesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def assign_private_ip_addresses_with_options_async(
         self,
@@ -1616,7 +1502,7 @@ class Client(OpenApiClient):
         @summary Assigns secondary private IP addresses to an elastic network interface (ENI). You can specify available private IP addresses within the CIDR block of the vSwitch that is connected to the ENI. Alternatively, you can specify the number of private IP addresses that are automatically assigned from the CIDR block of the vSwitch to the ENI.
         
         @description ## [](#)Usage notes
-        The ENI to which you want to assign secondary private IP addresses must be in the Available (Available) or InUse (InUse) state.
+        The ENI to which you want to assign IP prefixes must be in the Available (Available) or InUse (InUse) state.
         When you assign private IP addresses to a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the Running (Running) or Stopped (Stopped) state.
         When an ENI is in the Available state, you can assign up to 49 secondary private IP addresses to the ENI. When an ENI is attached to an instance, the number of secondary private IP addresses that can be assigned to the ENI varies based on the instance type. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
         After the operation is called, you can obtain the assigned secondary private IP addresses from the response.
@@ -1665,16 +1551,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AssignPrivateIpAddressesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AssignPrivateIpAddressesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AssignPrivateIpAddressesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def assign_private_ip_addresses(
         self,
@@ -1684,7 +1564,7 @@ class Client(OpenApiClient):
         @summary Assigns secondary private IP addresses to an elastic network interface (ENI). You can specify available private IP addresses within the CIDR block of the vSwitch that is connected to the ENI. Alternatively, you can specify the number of private IP addresses that are automatically assigned from the CIDR block of the vSwitch to the ENI.
         
         @description ## [](#)Usage notes
-        The ENI to which you want to assign secondary private IP addresses must be in the Available (Available) or InUse (InUse) state.
+        The ENI to which you want to assign IP prefixes must be in the Available (Available) or InUse (InUse) state.
         When you assign private IP addresses to a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the Running (Running) or Stopped (Stopped) state.
         When an ENI is in the Available state, you can assign up to 49 secondary private IP addresses to the ENI. When an ENI is attached to an instance, the number of secondary private IP addresses that can be assigned to the ENI varies based on the instance type. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
         After the operation is called, you can obtain the assigned secondary private IP addresses from the response.
@@ -1703,7 +1583,7 @@ class Client(OpenApiClient):
         @summary Assigns secondary private IP addresses to an elastic network interface (ENI). You can specify available private IP addresses within the CIDR block of the vSwitch that is connected to the ENI. Alternatively, you can specify the number of private IP addresses that are automatically assigned from the CIDR block of the vSwitch to the ENI.
         
         @description ## [](#)Usage notes
-        The ENI to which you want to assign secondary private IP addresses must be in the Available (Available) or InUse (InUse) state.
+        The ENI to which you want to assign IP prefixes must be in the Available (Available) or InUse (InUse) state.
         When you assign private IP addresses to a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the Running (Running) or Stopped (Stopped) state.
         When an ENI is in the Available state, you can assign up to 49 secondary private IP addresses to the ENI. When an ENI is attached to an instance, the number of secondary private IP addresses that can be assigned to the ENI varies based on the instance type. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
         After the operation is called, you can obtain the assigned secondary private IP addresses from the response.
@@ -1759,16 +1639,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AssociateEipAddressResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AssociateEipAddressResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AssociateEipAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def associate_eip_address_with_options_async(
         self,
@@ -1815,16 +1689,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AssociateEipAddressResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AssociateEipAddressResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AssociateEipAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def associate_eip_address(
         self,
@@ -1899,16 +1767,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AssociateHaVipResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AssociateHaVipResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AssociateHaVipResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def associate_ha_vip_with_options_async(
         self,
@@ -1955,16 +1817,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AssociateHaVipResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AssociateHaVipResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AssociateHaVipResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def associate_ha_vip(
         self,
@@ -2039,16 +1895,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AttachClassicLinkVpcResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AttachClassicLinkVpcResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AttachClassicLinkVpcResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_classic_link_vpc_with_options_async(
         self,
@@ -2095,16 +1945,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AttachClassicLinkVpcResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AttachClassicLinkVpcResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AttachClassicLinkVpcResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_classic_link_vpc(
         self,
@@ -2210,16 +2054,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AttachDiskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AttachDiskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AttachDiskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_disk_with_options_async(
         self,
@@ -2289,16 +2127,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AttachDiskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AttachDiskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AttachDiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_disk(
         self,
@@ -2403,16 +2235,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AttachInstanceRamRoleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AttachInstanceRamRoleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AttachInstanceRamRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_instance_ram_role_with_options_async(
         self,
@@ -2459,16 +2285,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AttachInstanceRamRoleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AttachInstanceRamRoleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AttachInstanceRamRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_instance_ram_role(
         self,
@@ -2549,16 +2369,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AttachKeyPairResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AttachKeyPairResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AttachKeyPairResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_key_pair_with_options_async(
         self,
@@ -2607,16 +2421,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AttachKeyPairResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AttachKeyPairResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AttachKeyPairResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_key_pair(
         self,
@@ -2721,16 +2529,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AttachNetworkInterfaceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AttachNetworkInterfaceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AttachNetworkInterfaceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_network_interface_with_options_async(
         self,
@@ -2795,16 +2597,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AttachNetworkInterfaceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AttachNetworkInterfaceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AttachNetworkInterfaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_network_interface(
         self,
@@ -2866,9 +2662,8 @@ class Client(OpenApiClient):
         """
         @summary Creates inbound security group rules in a security group. You can use the created rules to allow or deny inbound traffic from other objects to Elastic Compute Service (ECS) instances in the security group for fine-grained network access control.
         
-        @description ### [](#)Limits
-        **Quantity limit**: The total number of inbound security group rules in each security group cannot exceed 200. For more information, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits" topic.
-        **Rule types**: For inbound security group rules, you can set Policy to accept or drop to specify whether to allow or deny access.
+        @description ### [](#)Precautions
+        **Quantity limit**: The maximum number of inbound and outbound rules in all security groups associated with an elastic network interface (ENI) cannot exceed 1,000. For more information, see the [Security groups](~~25412#SecurityGroupQuota1~~) section of the "Limits and quotas on ECS" topic.
         **Rule priorities**: For inbound security group rules, the valid values of Priority range from 1 to 100. A smaller value indicates a higher priority. When multiple security group rules have the same priority, drop rules take precedence.
         ### [](#)Considerations
         If the security group rule that you call the AuthorizeSecurityGroup operation to create exists in the security group, the call is successful but no security group rule is created.
@@ -2880,27 +2675,29 @@ class Client(OpenApiClient):
         Policy: specifies the action.
         >  Advanced security groups do not support security group rules that reference security groups as authorization objects. Each basic security group can contain up to 20 security group rules that reference security groups as authorization objects.
         ### [](#)Sample requests
-        Sample requests to create inbound security group rules that control access to different sources in a security group in the China (Hangzhou) region:---to different sources or from different sources?
-        Sample request to create an inbound security group rule that controls access to a specific CIDR block: to or from?
-        "RegionId":"cn-hangzhou", // The region ID.
-        "SecurityGroupId":"sg-bp67acfmxazb4p***",   // The ID of the security group."Permissions":[
+        Sample requests to create inbound security group rules that control access from different sources in a security group in the China (Hangzhou) region:
+        Sample request to create an inbound security group rule that controls access from a specific CIDR block:
+        "RegionId":"cn-hangzhou", // Specify the region.
+        "SecurityGroupId":"sg-bp67acfmxazb4p***", // Specify the security group.
+        "Permissions":[
         {
-        "SourceCidrIp":"10.0.0.0/8", // The source IPv4 CIDR block.       "PortRange":"22/22" // The port range.
-        "IpProtocol":"TCP", //The protocol.
-        "IpProtocol":"TCP", //The action.
+        "SourceCidrIp":"10.0.0.0/8", // Specify the source IPv4 CIDR block.
+        "PortRange":"22/22", // Specify the port range.
+        "IpProtocol":"TCP", // Specify the protocol.
+        "Policy":"Accept" // Specify the action.
         }
         ]
-        Sample request to create an inbound security group rule that controls access to a security group and an inbound security group rule that controls access to a prefix list:----to or from?
+        Sample request to create an inbound security group rule that controls access from a security group and an inbound security group rule that controls access from a prefix list:
         "RegionId":"cn-hangzhou",
         "SecurityGroupId":"sg-bp67acfmxazb4p***",
         "Permissions":[
         {
-        "SourceGroupId":"sg-bp17vs63txqxbd***", // The source security group.
+        "SourceGroupId":"sg-bp17vs63txqxbd***", // Specify the source security group.
         "PortRange":"22/22",
         "IpProtocol":"TCP",
         "Policy":"Drop"
         },{
-        "SourcePrefixListId":"pl-x1j1k5ykzqlixdcy***", //The ID of the source prefix list.
+        "SourcePrefixListId":"pl-x1j1k5ykzqlixdcy***", // Specify the source prefix list.
         "PortRange":"22/22",
         "IpProtocol":"TCP",
         "Policy":"Drop"
@@ -2981,16 +2778,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AuthorizeSecurityGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AuthorizeSecurityGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AuthorizeSecurityGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def authorize_security_group_with_options_async(
         self,
@@ -3000,9 +2791,8 @@ class Client(OpenApiClient):
         """
         @summary Creates inbound security group rules in a security group. You can use the created rules to allow or deny inbound traffic from other objects to Elastic Compute Service (ECS) instances in the security group for fine-grained network access control.
         
-        @description ### [](#)Limits
-        **Quantity limit**: The total number of inbound security group rules in each security group cannot exceed 200. For more information, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits" topic.
-        **Rule types**: For inbound security group rules, you can set Policy to accept or drop to specify whether to allow or deny access.
+        @description ### [](#)Precautions
+        **Quantity limit**: The maximum number of inbound and outbound rules in all security groups associated with an elastic network interface (ENI) cannot exceed 1,000. For more information, see the [Security groups](~~25412#SecurityGroupQuota1~~) section of the "Limits and quotas on ECS" topic.
         **Rule priorities**: For inbound security group rules, the valid values of Priority range from 1 to 100. A smaller value indicates a higher priority. When multiple security group rules have the same priority, drop rules take precedence.
         ### [](#)Considerations
         If the security group rule that you call the AuthorizeSecurityGroup operation to create exists in the security group, the call is successful but no security group rule is created.
@@ -3014,27 +2804,29 @@ class Client(OpenApiClient):
         Policy: specifies the action.
         >  Advanced security groups do not support security group rules that reference security groups as authorization objects. Each basic security group can contain up to 20 security group rules that reference security groups as authorization objects.
         ### [](#)Sample requests
-        Sample requests to create inbound security group rules that control access to different sources in a security group in the China (Hangzhou) region:---to different sources or from different sources?
-        Sample request to create an inbound security group rule that controls access to a specific CIDR block: to or from?
-        "RegionId":"cn-hangzhou", // The region ID.
-        "SecurityGroupId":"sg-bp67acfmxazb4p***",   // The ID of the security group."Permissions":[
+        Sample requests to create inbound security group rules that control access from different sources in a security group in the China (Hangzhou) region:
+        Sample request to create an inbound security group rule that controls access from a specific CIDR block:
+        "RegionId":"cn-hangzhou", // Specify the region.
+        "SecurityGroupId":"sg-bp67acfmxazb4p***", // Specify the security group.
+        "Permissions":[
         {
-        "SourceCidrIp":"10.0.0.0/8", // The source IPv4 CIDR block.       "PortRange":"22/22" // The port range.
-        "IpProtocol":"TCP", //The protocol.
-        "IpProtocol":"TCP", //The action.
+        "SourceCidrIp":"10.0.0.0/8", // Specify the source IPv4 CIDR block.
+        "PortRange":"22/22", // Specify the port range.
+        "IpProtocol":"TCP", // Specify the protocol.
+        "Policy":"Accept" // Specify the action.
         }
         ]
-        Sample request to create an inbound security group rule that controls access to a security group and an inbound security group rule that controls access to a prefix list:----to or from?
+        Sample request to create an inbound security group rule that controls access from a security group and an inbound security group rule that controls access from a prefix list:
         "RegionId":"cn-hangzhou",
         "SecurityGroupId":"sg-bp67acfmxazb4p***",
         "Permissions":[
         {
-        "SourceGroupId":"sg-bp17vs63txqxbd***", // The source security group.
+        "SourceGroupId":"sg-bp17vs63txqxbd***", // Specify the source security group.
         "PortRange":"22/22",
         "IpProtocol":"TCP",
         "Policy":"Drop"
         },{
-        "SourcePrefixListId":"pl-x1j1k5ykzqlixdcy***", //The ID of the source prefix list.
+        "SourcePrefixListId":"pl-x1j1k5ykzqlixdcy***", // Specify the source prefix list.
         "PortRange":"22/22",
         "IpProtocol":"TCP",
         "Policy":"Drop"
@@ -3115,16 +2907,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AuthorizeSecurityGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AuthorizeSecurityGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AuthorizeSecurityGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def authorize_security_group(
         self,
@@ -3133,9 +2919,8 @@ class Client(OpenApiClient):
         """
         @summary Creates inbound security group rules in a security group. You can use the created rules to allow or deny inbound traffic from other objects to Elastic Compute Service (ECS) instances in the security group for fine-grained network access control.
         
-        @description ### [](#)Limits
-        **Quantity limit**: The total number of inbound security group rules in each security group cannot exceed 200. For more information, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits" topic.
-        **Rule types**: For inbound security group rules, you can set Policy to accept or drop to specify whether to allow or deny access.
+        @description ### [](#)Precautions
+        **Quantity limit**: The maximum number of inbound and outbound rules in all security groups associated with an elastic network interface (ENI) cannot exceed 1,000. For more information, see the [Security groups](~~25412#SecurityGroupQuota1~~) section of the "Limits and quotas on ECS" topic.
         **Rule priorities**: For inbound security group rules, the valid values of Priority range from 1 to 100. A smaller value indicates a higher priority. When multiple security group rules have the same priority, drop rules take precedence.
         ### [](#)Considerations
         If the security group rule that you call the AuthorizeSecurityGroup operation to create exists in the security group, the call is successful but no security group rule is created.
@@ -3147,27 +2932,29 @@ class Client(OpenApiClient):
         Policy: specifies the action.
         >  Advanced security groups do not support security group rules that reference security groups as authorization objects. Each basic security group can contain up to 20 security group rules that reference security groups as authorization objects.
         ### [](#)Sample requests
-        Sample requests to create inbound security group rules that control access to different sources in a security group in the China (Hangzhou) region:---to different sources or from different sources?
-        Sample request to create an inbound security group rule that controls access to a specific CIDR block: to or from?
-        "RegionId":"cn-hangzhou", // The region ID.
-        "SecurityGroupId":"sg-bp67acfmxazb4p***",   // The ID of the security group."Permissions":[
+        Sample requests to create inbound security group rules that control access from different sources in a security group in the China (Hangzhou) region:
+        Sample request to create an inbound security group rule that controls access from a specific CIDR block:
+        "RegionId":"cn-hangzhou", // Specify the region.
+        "SecurityGroupId":"sg-bp67acfmxazb4p***", // Specify the security group.
+        "Permissions":[
         {
-        "SourceCidrIp":"10.0.0.0/8", // The source IPv4 CIDR block.       "PortRange":"22/22" // The port range.
-        "IpProtocol":"TCP", //The protocol.
-        "IpProtocol":"TCP", //The action.
+        "SourceCidrIp":"10.0.0.0/8", // Specify the source IPv4 CIDR block.
+        "PortRange":"22/22", // Specify the port range.
+        "IpProtocol":"TCP", // Specify the protocol.
+        "Policy":"Accept" // Specify the action.
         }
         ]
-        Sample request to create an inbound security group rule that controls access to a security group and an inbound security group rule that controls access to a prefix list:----to or from?
+        Sample request to create an inbound security group rule that controls access from a security group and an inbound security group rule that controls access from a prefix list:
         "RegionId":"cn-hangzhou",
         "SecurityGroupId":"sg-bp67acfmxazb4p***",
         "Permissions":[
         {
-        "SourceGroupId":"sg-bp17vs63txqxbd***", // The source security group.
+        "SourceGroupId":"sg-bp17vs63txqxbd***", // Specify the source security group.
         "PortRange":"22/22",
         "IpProtocol":"TCP",
         "Policy":"Drop"
         },{
-        "SourcePrefixListId":"pl-x1j1k5ykzqlixdcy***", //The ID of the source prefix list.
+        "SourcePrefixListId":"pl-x1j1k5ykzqlixdcy***", // Specify the source prefix list.
         "PortRange":"22/22",
         "IpProtocol":"TCP",
         "Policy":"Drop"
@@ -3187,9 +2974,8 @@ class Client(OpenApiClient):
         """
         @summary Creates inbound security group rules in a security group. You can use the created rules to allow or deny inbound traffic from other objects to Elastic Compute Service (ECS) instances in the security group for fine-grained network access control.
         
-        @description ### [](#)Limits
-        **Quantity limit**: The total number of inbound security group rules in each security group cannot exceed 200. For more information, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits" topic.
-        **Rule types**: For inbound security group rules, you can set Policy to accept or drop to specify whether to allow or deny access.
+        @description ### [](#)Precautions
+        **Quantity limit**: The maximum number of inbound and outbound rules in all security groups associated with an elastic network interface (ENI) cannot exceed 1,000. For more information, see the [Security groups](~~25412#SecurityGroupQuota1~~) section of the "Limits and quotas on ECS" topic.
         **Rule priorities**: For inbound security group rules, the valid values of Priority range from 1 to 100. A smaller value indicates a higher priority. When multiple security group rules have the same priority, drop rules take precedence.
         ### [](#)Considerations
         If the security group rule that you call the AuthorizeSecurityGroup operation to create exists in the security group, the call is successful but no security group rule is created.
@@ -3201,27 +2987,29 @@ class Client(OpenApiClient):
         Policy: specifies the action.
         >  Advanced security groups do not support security group rules that reference security groups as authorization objects. Each basic security group can contain up to 20 security group rules that reference security groups as authorization objects.
         ### [](#)Sample requests
-        Sample requests to create inbound security group rules that control access to different sources in a security group in the China (Hangzhou) region:---to different sources or from different sources?
-        Sample request to create an inbound security group rule that controls access to a specific CIDR block: to or from?
-        "RegionId":"cn-hangzhou", // The region ID.
-        "SecurityGroupId":"sg-bp67acfmxazb4p***",   // The ID of the security group."Permissions":[
+        Sample requests to create inbound security group rules that control access from different sources in a security group in the China (Hangzhou) region:
+        Sample request to create an inbound security group rule that controls access from a specific CIDR block:
+        "RegionId":"cn-hangzhou", // Specify the region.
+        "SecurityGroupId":"sg-bp67acfmxazb4p***", // Specify the security group.
+        "Permissions":[
         {
-        "SourceCidrIp":"10.0.0.0/8", // The source IPv4 CIDR block.       "PortRange":"22/22" // The port range.
-        "IpProtocol":"TCP", //The protocol.
-        "IpProtocol":"TCP", //The action.
+        "SourceCidrIp":"10.0.0.0/8", // Specify the source IPv4 CIDR block.
+        "PortRange":"22/22", // Specify the port range.
+        "IpProtocol":"TCP", // Specify the protocol.
+        "Policy":"Accept" // Specify the action.
         }
         ]
-        Sample request to create an inbound security group rule that controls access to a security group and an inbound security group rule that controls access to a prefix list:----to or from?
+        Sample request to create an inbound security group rule that controls access from a security group and an inbound security group rule that controls access from a prefix list:
         "RegionId":"cn-hangzhou",
         "SecurityGroupId":"sg-bp67acfmxazb4p***",
         "Permissions":[
         {
-        "SourceGroupId":"sg-bp17vs63txqxbd***", // The source security group.
+        "SourceGroupId":"sg-bp17vs63txqxbd***", // Specify the source security group.
         "PortRange":"22/22",
         "IpProtocol":"TCP",
         "Policy":"Drop"
         },{
-        "SourcePrefixListId":"pl-x1j1k5ykzqlixdcy***", //The ID of the source prefix list.
+        "SourcePrefixListId":"pl-x1j1k5ykzqlixdcy***", // Specify the source prefix list.
         "PortRange":"22/22",
         "IpProtocol":"TCP",
         "Policy":"Drop"
@@ -3242,9 +3030,8 @@ class Client(OpenApiClient):
         """
         @summary Creates outbound rules in a security group. You can use the created rules to allow or deny outbound traffic from Elastic Compute Service (ECS) instances in the security group to other objects for fine-grained network access control.
         
-        @description ### [](#)Limits
-        **Quantity limit**: The total number of outbound security group rules in each security group cannot exceed 200. For more information, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits" topic.
-        **Rule types**: For outbound security group rules, you can set Policy to accept or drop to specify whether to allow or deny access.
+        @description ### [](#)Precautions
+        **Quantity limit**: The maximum number of inbound and outbound rules in all security groups associated with an elastic network interface (ENI) cannot exceed 1,000. For more information, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits" topic.
         **Rule priorities**: For outbound security group rules, the valid values of Priority range from 1 to 100. A smaller value indicates a higher priority. When multiple security group rules have the same priority, drop rules take precedence.
         ### [](#)Considerations
         If the security group rule that you call the AuthorizeSecurityGroupEgress operation to create exists in the security group, the call is successful but no security group rule is created.
@@ -3258,13 +3045,13 @@ class Client(OpenApiClient):
         ### [](#)Sample requests
         Sample requests to create outbound security group rules that control access to different destinations in a security group in the China (Hangzhou) region:
         Sample request to create an outbound security group rule that controls access to a specified CIDR block:
-        "RegionId":"cn-hangzhou", //The region ID.
-        "SecurityGroupId":"sg-bp17vs63txqxbds9**", //The ID of the source security group.
+        "RegionId":"cn-hangzhou", // The region ID.
+        "SecurityGroupId":"sg-bp17vs63txqxbds9**", // The ID of the source security group.
         "Permissions":[
         {
-        "DestCidrIp":"10.0.0.0/8", //The destination IPv4 CIDR block.
-        "PortRange":"-1/-1", //The range of destination port numbers.
-        "IpProtocol":"ICMP", //The protocol.       "Policy":"Accept" //The action.
+        "DestCidrIp":"10.0.0.0/8", // The destination IPv4 CIDR block.
+        "PortRange":"-1/-1", // The range of destination port numbers.
+        "IpProtocol":"ICMP", //T he protocol.       "Policy":"Accept" // Specify the action.
         }
         ]
         Sample request to create an outbound security group rule that controls access to a security group and an outbound security group rule that controls access to a prefix list:
@@ -3272,12 +3059,12 @@ class Client(OpenApiClient):
         "SecurityGroupId":"sg-bp17vs63txqxbds9**",
         "Permissions":[
         {
-        "DestGroupId":"sg-bp67acfmxazb4pi**", //The ID of the destination security group.
+        "DestGroupId":"sg-bp67acfmxazb4pi**", // The ID of the destination security group.
         "PortRange":"22/22",
         "IpProtocol":"TCP",
         "Policy":"Drop"
         },{
-        "DestPrefixListId":"pl-x1j1k5ykzqlixdcy***", //The ID of the destination prefix list.
+        "DestPrefixListId":"pl-x1j1k5ykzqlixdcy***", // The destination prefix list.
         "PortRange":"22/22",
         "IpProtocol":"TCP",
         "Policy":"Drop"
@@ -3358,16 +3145,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AuthorizeSecurityGroupEgressResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AuthorizeSecurityGroupEgressResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AuthorizeSecurityGroupEgressResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def authorize_security_group_egress_with_options_async(
         self,
@@ -3377,9 +3158,8 @@ class Client(OpenApiClient):
         """
         @summary Creates outbound rules in a security group. You can use the created rules to allow or deny outbound traffic from Elastic Compute Service (ECS) instances in the security group to other objects for fine-grained network access control.
         
-        @description ### [](#)Limits
-        **Quantity limit**: The total number of outbound security group rules in each security group cannot exceed 200. For more information, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits" topic.
-        **Rule types**: For outbound security group rules, you can set Policy to accept or drop to specify whether to allow or deny access.
+        @description ### [](#)Precautions
+        **Quantity limit**: The maximum number of inbound and outbound rules in all security groups associated with an elastic network interface (ENI) cannot exceed 1,000. For more information, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits" topic.
         **Rule priorities**: For outbound security group rules, the valid values of Priority range from 1 to 100. A smaller value indicates a higher priority. When multiple security group rules have the same priority, drop rules take precedence.
         ### [](#)Considerations
         If the security group rule that you call the AuthorizeSecurityGroupEgress operation to create exists in the security group, the call is successful but no security group rule is created.
@@ -3393,13 +3173,13 @@ class Client(OpenApiClient):
         ### [](#)Sample requests
         Sample requests to create outbound security group rules that control access to different destinations in a security group in the China (Hangzhou) region:
         Sample request to create an outbound security group rule that controls access to a specified CIDR block:
-        "RegionId":"cn-hangzhou", //The region ID.
-        "SecurityGroupId":"sg-bp17vs63txqxbds9**", //The ID of the source security group.
+        "RegionId":"cn-hangzhou", // The region ID.
+        "SecurityGroupId":"sg-bp17vs63txqxbds9**", // The ID of the source security group.
         "Permissions":[
         {
-        "DestCidrIp":"10.0.0.0/8", //The destination IPv4 CIDR block.
-        "PortRange":"-1/-1", //The range of destination port numbers.
-        "IpProtocol":"ICMP", //The protocol.       "Policy":"Accept" //The action.
+        "DestCidrIp":"10.0.0.0/8", // The destination IPv4 CIDR block.
+        "PortRange":"-1/-1", // The range of destination port numbers.
+        "IpProtocol":"ICMP", //T he protocol.       "Policy":"Accept" // Specify the action.
         }
         ]
         Sample request to create an outbound security group rule that controls access to a security group and an outbound security group rule that controls access to a prefix list:
@@ -3407,12 +3187,12 @@ class Client(OpenApiClient):
         "SecurityGroupId":"sg-bp17vs63txqxbds9**",
         "Permissions":[
         {
-        "DestGroupId":"sg-bp67acfmxazb4pi**", //The ID of the destination security group.
+        "DestGroupId":"sg-bp67acfmxazb4pi**", // The ID of the destination security group.
         "PortRange":"22/22",
         "IpProtocol":"TCP",
         "Policy":"Drop"
         },{
-        "DestPrefixListId":"pl-x1j1k5ykzqlixdcy***", //The ID of the destination prefix list.
+        "DestPrefixListId":"pl-x1j1k5ykzqlixdcy***", // The destination prefix list.
         "PortRange":"22/22",
         "IpProtocol":"TCP",
         "Policy":"Drop"
@@ -3493,16 +3273,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.AuthorizeSecurityGroupEgressResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.AuthorizeSecurityGroupEgressResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.AuthorizeSecurityGroupEgressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def authorize_security_group_egress(
         self,
@@ -3511,9 +3285,8 @@ class Client(OpenApiClient):
         """
         @summary Creates outbound rules in a security group. You can use the created rules to allow or deny outbound traffic from Elastic Compute Service (ECS) instances in the security group to other objects for fine-grained network access control.
         
-        @description ### [](#)Limits
-        **Quantity limit**: The total number of outbound security group rules in each security group cannot exceed 200. For more information, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits" topic.
-        **Rule types**: For outbound security group rules, you can set Policy to accept or drop to specify whether to allow or deny access.
+        @description ### [](#)Precautions
+        **Quantity limit**: The maximum number of inbound and outbound rules in all security groups associated with an elastic network interface (ENI) cannot exceed 1,000. For more information, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits" topic.
         **Rule priorities**: For outbound security group rules, the valid values of Priority range from 1 to 100. A smaller value indicates a higher priority. When multiple security group rules have the same priority, drop rules take precedence.
         ### [](#)Considerations
         If the security group rule that you call the AuthorizeSecurityGroupEgress operation to create exists in the security group, the call is successful but no security group rule is created.
@@ -3527,13 +3300,13 @@ class Client(OpenApiClient):
         ### [](#)Sample requests
         Sample requests to create outbound security group rules that control access to different destinations in a security group in the China (Hangzhou) region:
         Sample request to create an outbound security group rule that controls access to a specified CIDR block:
-        "RegionId":"cn-hangzhou", //The region ID.
-        "SecurityGroupId":"sg-bp17vs63txqxbds9**", //The ID of the source security group.
+        "RegionId":"cn-hangzhou", // The region ID.
+        "SecurityGroupId":"sg-bp17vs63txqxbds9**", // The ID of the source security group.
         "Permissions":[
         {
-        "DestCidrIp":"10.0.0.0/8", //The destination IPv4 CIDR block.
-        "PortRange":"-1/-1", //The range of destination port numbers.
-        "IpProtocol":"ICMP", //The protocol.       "Policy":"Accept" //The action.
+        "DestCidrIp":"10.0.0.0/8", // The destination IPv4 CIDR block.
+        "PortRange":"-1/-1", // The range of destination port numbers.
+        "IpProtocol":"ICMP", //T he protocol.       "Policy":"Accept" // Specify the action.
         }
         ]
         Sample request to create an outbound security group rule that controls access to a security group and an outbound security group rule that controls access to a prefix list:
@@ -3541,12 +3314,12 @@ class Client(OpenApiClient):
         "SecurityGroupId":"sg-bp17vs63txqxbds9**",
         "Permissions":[
         {
-        "DestGroupId":"sg-bp67acfmxazb4pi**", //The ID of the destination security group.
+        "DestGroupId":"sg-bp67acfmxazb4pi**", // The ID of the destination security group.
         "PortRange":"22/22",
         "IpProtocol":"TCP",
         "Policy":"Drop"
         },{
-        "DestPrefixListId":"pl-x1j1k5ykzqlixdcy***", //The ID of the destination prefix list.
+        "DestPrefixListId":"pl-x1j1k5ykzqlixdcy***", // The destination prefix list.
         "PortRange":"22/22",
         "IpProtocol":"TCP",
         "Policy":"Drop"
@@ -3566,9 +3339,8 @@ class Client(OpenApiClient):
         """
         @summary Creates outbound rules in a security group. You can use the created rules to allow or deny outbound traffic from Elastic Compute Service (ECS) instances in the security group to other objects for fine-grained network access control.
         
-        @description ### [](#)Limits
-        **Quantity limit**: The total number of outbound security group rules in each security group cannot exceed 200. For more information, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits" topic.
-        **Rule types**: For outbound security group rules, you can set Policy to accept or drop to specify whether to allow or deny access.
+        @description ### [](#)Precautions
+        **Quantity limit**: The maximum number of inbound and outbound rules in all security groups associated with an elastic network interface (ENI) cannot exceed 1,000. For more information, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits" topic.
         **Rule priorities**: For outbound security group rules, the valid values of Priority range from 1 to 100. A smaller value indicates a higher priority. When multiple security group rules have the same priority, drop rules take precedence.
         ### [](#)Considerations
         If the security group rule that you call the AuthorizeSecurityGroupEgress operation to create exists in the security group, the call is successful but no security group rule is created.
@@ -3582,13 +3354,13 @@ class Client(OpenApiClient):
         ### [](#)Sample requests
         Sample requests to create outbound security group rules that control access to different destinations in a security group in the China (Hangzhou) region:
         Sample request to create an outbound security group rule that controls access to a specified CIDR block:
-        "RegionId":"cn-hangzhou", //The region ID.
-        "SecurityGroupId":"sg-bp17vs63txqxbds9**", //The ID of the source security group.
+        "RegionId":"cn-hangzhou", // The region ID.
+        "SecurityGroupId":"sg-bp17vs63txqxbds9**", // The ID of the source security group.
         "Permissions":[
         {
-        "DestCidrIp":"10.0.0.0/8", //The destination IPv4 CIDR block.
-        "PortRange":"-1/-1", //The range of destination port numbers.
-        "IpProtocol":"ICMP", //The protocol.       "Policy":"Accept" //The action.
+        "DestCidrIp":"10.0.0.0/8", // The destination IPv4 CIDR block.
+        "PortRange":"-1/-1", // The range of destination port numbers.
+        "IpProtocol":"ICMP", //T he protocol.       "Policy":"Accept" // Specify the action.
         }
         ]
         Sample request to create an outbound security group rule that controls access to a security group and an outbound security group rule that controls access to a prefix list:
@@ -3596,12 +3368,12 @@ class Client(OpenApiClient):
         "SecurityGroupId":"sg-bp17vs63txqxbds9**",
         "Permissions":[
         {
-        "DestGroupId":"sg-bp67acfmxazb4pi**", //The ID of the destination security group.
+        "DestGroupId":"sg-bp67acfmxazb4pi**", // The ID of the destination security group.
         "PortRange":"22/22",
         "IpProtocol":"TCP",
         "Policy":"Drop"
         },{
-        "DestPrefixListId":"pl-x1j1k5ykzqlixdcy***", //The ID of the destination prefix list.
+        "DestPrefixListId":"pl-x1j1k5ykzqlixdcy***", // The destination prefix list.
         "PortRange":"22/22",
         "IpProtocol":"TCP",
         "Policy":"Drop"
@@ -3652,16 +3424,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelAutoSnapshotPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelAutoSnapshotPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CancelAutoSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def cancel_auto_snapshot_policy_with_options_async(
         self,
@@ -3701,16 +3467,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelAutoSnapshotPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelAutoSnapshotPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CancelAutoSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def cancel_auto_snapshot_policy(
         self,
@@ -3782,16 +3542,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelCopyImageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelCopyImageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CancelCopyImageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def cancel_copy_image_with_options_async(
         self,
@@ -3837,16 +3591,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelCopyImageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelCopyImageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CancelCopyImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def cancel_copy_image(
         self,
@@ -3928,16 +3676,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelImagePipelineExecutionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelImagePipelineExecutionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CancelImagePipelineExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def cancel_image_pipeline_execution_with_options_async(
         self,
@@ -3985,16 +3727,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelImagePipelineExecutionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelImagePipelineExecutionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CancelImagePipelineExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def cancel_image_pipeline_execution(
         self,
@@ -4071,16 +3807,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelPhysicalConnectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelPhysicalConnectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CancelPhysicalConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def cancel_physical_connection_with_options_async(
         self,
@@ -4127,16 +3857,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelPhysicalConnectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelPhysicalConnectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CancelPhysicalConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def cancel_physical_connection(
         self,
@@ -4208,16 +3932,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelSimulatedSystemEventsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelSimulatedSystemEventsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CancelSimulatedSystemEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def cancel_simulated_system_events_with_options_async(
         self,
@@ -4261,16 +3979,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelSimulatedSystemEventsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelSimulatedSystemEventsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CancelSimulatedSystemEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def cancel_simulated_system_events(
         self,
@@ -4336,16 +4048,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CancelTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def cancel_task_with_options_async(
         self,
@@ -4385,16 +4091,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CancelTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CancelTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def cancel_task(
         self,
@@ -4461,16 +4161,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ConnectRouterInterfaceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ConnectRouterInterfaceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ConnectRouterInterfaceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def connect_router_interface_with_options_async(
         self,
@@ -4511,16 +4205,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ConnectRouterInterfaceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ConnectRouterInterfaceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ConnectRouterInterfaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def connect_router_interface(
         self,
@@ -4556,7 +4244,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ConvertNatPublicIpToEipResponse:
         """
-        @summary Converts the public IP address of an Elastic Compute Service (ECS) instance located in a virtual private cloud (VPC) into an elastic IP address (EIP).
+        @summary Converts the static public IP address of an Elastic Compute Service (ECS) instance that resides in a virtual private cloud (VPC) into an elastic IP address (EIP). Static public IP addresses are the public IP addresses that are automatically assigned to ECS instances.
         
         @description ## [](#)Usage notes
         After a public IP address is converted into an EIP, the EIP is billed separately. Make sure that you fully understand the billing methods of EIPs. For more information, see [Billing overview](https://help.aliyun.com/document_detail/122035.html).
@@ -4598,16 +4286,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ConvertNatPublicIpToEipResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ConvertNatPublicIpToEipResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ConvertNatPublicIpToEipResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def convert_nat_public_ip_to_eip_with_options_async(
         self,
@@ -4615,7 +4297,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ConvertNatPublicIpToEipResponse:
         """
-        @summary Converts the public IP address of an Elastic Compute Service (ECS) instance located in a virtual private cloud (VPC) into an elastic IP address (EIP).
+        @summary Converts the static public IP address of an Elastic Compute Service (ECS) instance that resides in a virtual private cloud (VPC) into an elastic IP address (EIP). Static public IP addresses are the public IP addresses that are automatically assigned to ECS instances.
         
         @description ## [](#)Usage notes
         After a public IP address is converted into an EIP, the EIP is billed separately. Make sure that you fully understand the billing methods of EIPs. For more information, see [Billing overview](https://help.aliyun.com/document_detail/122035.html).
@@ -4657,23 +4339,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ConvertNatPublicIpToEipResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ConvertNatPublicIpToEipResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ConvertNatPublicIpToEipResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def convert_nat_public_ip_to_eip(
         self,
         request: ecs_20140526_models.ConvertNatPublicIpToEipRequest,
     ) -> ecs_20140526_models.ConvertNatPublicIpToEipResponse:
         """
-        @summary Converts the public IP address of an Elastic Compute Service (ECS) instance located in a virtual private cloud (VPC) into an elastic IP address (EIP).
+        @summary Converts the static public IP address of an Elastic Compute Service (ECS) instance that resides in a virtual private cloud (VPC) into an elastic IP address (EIP). Static public IP addresses are the public IP addresses that are automatically assigned to ECS instances.
         
         @description ## [](#)Usage notes
         After a public IP address is converted into an EIP, the EIP is billed separately. Make sure that you fully understand the billing methods of EIPs. For more information, see [Billing overview](https://help.aliyun.com/document_detail/122035.html).
@@ -4696,7 +4372,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ConvertNatPublicIpToEipRequest,
     ) -> ecs_20140526_models.ConvertNatPublicIpToEipResponse:
         """
-        @summary Converts the public IP address of an Elastic Compute Service (ECS) instance located in a virtual private cloud (VPC) into an elastic IP address (EIP).
+        @summary Converts the static public IP address of an Elastic Compute Service (ECS) instance that resides in a virtual private cloud (VPC) into an elastic IP address (EIP). Static public IP addresses are the public IP addresses that are automatically assigned to ECS instances.
         
         @description ## [](#)Usage notes
         After a public IP address is converted into an EIP, the EIP is billed separately. Make sure that you fully understand the billing methods of EIPs. For more information, see [Billing overview](https://help.aliyun.com/document_detail/122035.html).
@@ -4779,16 +4455,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CopyImageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CopyImageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CopyImageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def copy_image_with_options_async(
         self,
@@ -4855,16 +4525,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CopyImageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CopyImageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CopyImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def copy_image(
         self,
@@ -4918,8 +4582,7 @@ class Client(OpenApiClient):
         """
         @summary Copies a standard or encrypted snapshot from one region to another.
         
-        @description ## [](#)Usage notes
-        Take note of the following items:
+        @description When you call this operation, take note of the following item:
         New snapshots (snapshot copies) cannot be used to roll back the disks for which source snapshots (copied snapshots) were created.
         Local snapshots cannot be copied.
         
@@ -4975,16 +4638,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CopySnapshotResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CopySnapshotResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CopySnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def copy_snapshot_with_options_async(
         self,
@@ -4994,8 +4651,7 @@ class Client(OpenApiClient):
         """
         @summary Copies a standard or encrypted snapshot from one region to another.
         
-        @description ## [](#)Usage notes
-        Take note of the following items:
+        @description When you call this operation, take note of the following item:
         New snapshots (snapshot copies) cannot be used to roll back the disks for which source snapshots (copied snapshots) were created.
         Local snapshots cannot be copied.
         
@@ -5051,16 +4707,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CopySnapshotResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CopySnapshotResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CopySnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def copy_snapshot(
         self,
@@ -5069,8 +4719,7 @@ class Client(OpenApiClient):
         """
         @summary Copies a standard or encrypted snapshot from one region to another.
         
-        @description ## [](#)Usage notes
-        Take note of the following items:
+        @description When you call this operation, take note of the following item:
         New snapshots (snapshot copies) cannot be used to roll back the disks for which source snapshots (copied snapshots) were created.
         Local snapshots cannot be copied.
         
@@ -5087,8 +4736,7 @@ class Client(OpenApiClient):
         """
         @summary Copies a standard or encrypted snapshot from one region to another.
         
-        @description ## [](#)Usage notes
-        Take note of the following items:
+        @description When you call this operation, take note of the following item:
         New snapshots (snapshot copies) cannot be used to roll back the disks for which source snapshots (copied snapshots) were created.
         Local snapshots cannot be copied.
         
@@ -5167,16 +4815,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateActivationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateActivationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateActivationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_activation_with_options_async(
         self,
@@ -5247,16 +4889,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateActivationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateActivationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateActivationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_activation(
         self,
@@ -5320,7 +4956,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateAutoProvisioningGroupResponse:
         """
-        @summary Creates an auto provisioning group. When you call this operation, you can specify parameters, such as ResourceGroupId, AutoProvisioningGroupType, and ValidFrom, in the request.
+        @summary Creates an auto provisioning group.
         
         @description ## [](#)Usage notes
         Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](https://help.aliyun.com/document_detail/200772.html).
@@ -5422,16 +5058,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateAutoProvisioningGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateAutoProvisioningGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateAutoProvisioningGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_auto_provisioning_group_with_options_async(
         self,
@@ -5439,7 +5069,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateAutoProvisioningGroupResponse:
         """
-        @summary Creates an auto provisioning group. When you call this operation, you can specify parameters, such as ResourceGroupId, AutoProvisioningGroupType, and ValidFrom, in the request.
+        @summary Creates an auto provisioning group.
         
         @description ## [](#)Usage notes
         Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](https://help.aliyun.com/document_detail/200772.html).
@@ -5541,23 +5171,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateAutoProvisioningGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateAutoProvisioningGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateAutoProvisioningGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_auto_provisioning_group(
         self,
         request: ecs_20140526_models.CreateAutoProvisioningGroupRequest,
     ) -> ecs_20140526_models.CreateAutoProvisioningGroupResponse:
         """
-        @summary Creates an auto provisioning group. When you call this operation, you can specify parameters, such as ResourceGroupId, AutoProvisioningGroupType, and ValidFrom, in the request.
+        @summary Creates an auto provisioning group.
         
         @description ## [](#)Usage notes
         Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](https://help.aliyun.com/document_detail/200772.html).
@@ -5576,7 +5200,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateAutoProvisioningGroupRequest,
     ) -> ecs_20140526_models.CreateAutoProvisioningGroupResponse:
         """
-        @summary Creates an auto provisioning group. When you call this operation, you can specify parameters, such as ResourceGroupId, AutoProvisioningGroupType, and ValidFrom, in the request.
+        @summary Creates an auto provisioning group.
         
         @description ## [](#)Usage notes
         Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](https://help.aliyun.com/document_detail/200772.html).
@@ -5655,16 +5279,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateAutoSnapshotPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateAutoSnapshotPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateAutoSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_auto_snapshot_policy_with_options_async(
         self,
@@ -5731,16 +5349,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateAutoSnapshotPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateAutoSnapshotPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateAutoSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_auto_snapshot_policy(
         self,
@@ -5851,16 +5463,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateCapacityReservationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateCapacityReservationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateCapacityReservationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_capacity_reservation_with_options_async(
         self,
@@ -5931,16 +5537,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateCapacityReservationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateCapacityReservationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateCapacityReservationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_capacity_reservation(
         self,
@@ -6059,16 +5659,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateCommandResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateCommandResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateCommandResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_command_with_options_async(
         self,
@@ -6147,16 +5741,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateCommandResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateCommandResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateCommandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_command(
         self,
@@ -6264,16 +5852,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDedicatedHostClusterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDedicatedHostClusterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateDedicatedHostClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_dedicated_host_cluster_with_options_async(
         self,
@@ -6325,16 +5907,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDedicatedHostClusterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDedicatedHostClusterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateDedicatedHostClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_dedicated_host_cluster(
         self,
@@ -6361,202 +5937,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_dedicated_host_cluster_with_options_async(request, runtime)
-
-    def create_demand_with_options(
-        self,
-        request: ecs_20140526_models.CreateDemandRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ecs_20140526_models.CreateDemandResponse:
-        """
-        @deprecated OpenAPI CreateDemand is deprecated, please use Ecs::2014-05-26::CreateCapacityReservation instead.
-        
-        @summary Creates a demand for Elastic Compute Service (ECS) resources.
-        
-        @description You can call this operation to file a demand for an ECS instance type. Alibaba Cloud provides the requested resources based on your demand.
-        You can file demands only for I/O optimized instance types and instances of the virtual private cloud (VPC) type.
-        > This operation is in internal preview and has not been officially released. We recommend that you do not call this operation.
-        
-        @param request: CreateDemandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateDemandResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.amount):
-            query['Amount'] = request.amount
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.demand_description):
-            query['DemandDescription'] = request.demand_description
-        if not UtilClient.is_unset(request.demand_name):
-            query['DemandName'] = request.demand_name
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.instance_charge_type):
-            query['InstanceChargeType'] = request.instance_charge_type
-        if not UtilClient.is_unset(request.instance_type):
-            query['InstanceType'] = request.instance_type
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.period):
-            query['Period'] = request.period
-        if not UtilClient.is_unset(request.period_unit):
-            query['PeriodUnit'] = request.period_unit
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateDemand',
-            version='2014-05-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDemandResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDemandResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def create_demand_with_options_async(
-        self,
-        request: ecs_20140526_models.CreateDemandRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ecs_20140526_models.CreateDemandResponse:
-        """
-        @deprecated OpenAPI CreateDemand is deprecated, please use Ecs::2014-05-26::CreateCapacityReservation instead.
-        
-        @summary Creates a demand for Elastic Compute Service (ECS) resources.
-        
-        @description You can call this operation to file a demand for an ECS instance type. Alibaba Cloud provides the requested resources based on your demand.
-        You can file demands only for I/O optimized instance types and instances of the virtual private cloud (VPC) type.
-        > This operation is in internal preview and has not been officially released. We recommend that you do not call this operation.
-        
-        @param request: CreateDemandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateDemandResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.amount):
-            query['Amount'] = request.amount
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.demand_description):
-            query['DemandDescription'] = request.demand_description
-        if not UtilClient.is_unset(request.demand_name):
-            query['DemandName'] = request.demand_name
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.instance_charge_type):
-            query['InstanceChargeType'] = request.instance_charge_type
-        if not UtilClient.is_unset(request.instance_type):
-            query['InstanceType'] = request.instance_type
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.period):
-            query['Period'] = request.period
-        if not UtilClient.is_unset(request.period_unit):
-            query['PeriodUnit'] = request.period_unit
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateDemand',
-            version='2014-05-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDemandResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDemandResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def create_demand(
-        self,
-        request: ecs_20140526_models.CreateDemandRequest,
-    ) -> ecs_20140526_models.CreateDemandResponse:
-        """
-        @deprecated OpenAPI CreateDemand is deprecated, please use Ecs::2014-05-26::CreateCapacityReservation instead.
-        
-        @summary Creates a demand for Elastic Compute Service (ECS) resources.
-        
-        @description You can call this operation to file a demand for an ECS instance type. Alibaba Cloud provides the requested resources based on your demand.
-        You can file demands only for I/O optimized instance types and instances of the virtual private cloud (VPC) type.
-        > This operation is in internal preview and has not been officially released. We recommend that you do not call this operation.
-        
-        @param request: CreateDemandRequest
-        @return: CreateDemandResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_demand_with_options(request, runtime)
-
-    async def create_demand_async(
-        self,
-        request: ecs_20140526_models.CreateDemandRequest,
-    ) -> ecs_20140526_models.CreateDemandResponse:
-        """
-        @deprecated OpenAPI CreateDemand is deprecated, please use Ecs::2014-05-26::CreateCapacityReservation instead.
-        
-        @summary Creates a demand for Elastic Compute Service (ECS) resources.
-        
-        @description You can call this operation to file a demand for an ECS instance type. Alibaba Cloud provides the requested resources based on your demand.
-        You can file demands only for I/O optimized instance types and instances of the virtual private cloud (VPC) type.
-        > This operation is in internal preview and has not been officially released. We recommend that you do not call this operation.
-        
-        @param request: CreateDemandRequest
-        @return: CreateDemandResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_demand_with_options_async(request, runtime)
 
     def create_deployment_set_with_options(
         self,
@@ -6612,16 +5992,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDeploymentSetResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDeploymentSetResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateDeploymentSetResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_deployment_set_with_options_async(
         self,
@@ -6677,16 +6051,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDeploymentSetResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDeploymentSetResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateDeploymentSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_deployment_set(
         self,
@@ -6752,16 +6120,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDiagnosticMetricSetResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDiagnosticMetricSetResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateDiagnosticMetricSetResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_diagnostic_metric_set_with_options_async(
         self,
@@ -6801,16 +6163,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDiagnosticMetricSetResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDiagnosticMetricSetResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateDiagnosticMetricSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_diagnostic_metric_set(
         self,
@@ -6876,16 +6232,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDiagnosticReportResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDiagnosticReportResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateDiagnosticReportResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_diagnostic_report_with_options_async(
         self,
@@ -6925,16 +6275,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDiagnosticReportResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDiagnosticReportResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateDiagnosticReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_diagnostic_report(
         self,
@@ -7053,16 +6397,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDiskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDiskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateDiskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_disk_with_options_async(
         self,
@@ -7155,16 +6493,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDiskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateDiskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateDiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_disk(
         self,
@@ -7285,16 +6617,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateElasticityAssuranceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateElasticityAssuranceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateElasticityAssuranceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_elasticity_assurance_with_options_async(
         self,
@@ -7371,16 +6697,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateElasticityAssuranceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateElasticityAssuranceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateElasticityAssuranceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_elasticity_assurance(
         self,
@@ -7469,16 +6789,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateForwardEntryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateForwardEntryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateForwardEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_forward_entry_with_options_async(
         self,
@@ -7531,16 +6845,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateForwardEntryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateForwardEntryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateForwardEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_forward_entry(
         self,
@@ -7617,16 +6925,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateHaVipResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateHaVipResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateHaVipResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_ha_vip_with_options_async(
         self,
@@ -7675,16 +6977,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateHaVipResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateHaVipResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateHaVipResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_ha_vip(
         self,
@@ -7760,16 +7056,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateHpcClusterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateHpcClusterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateHpcClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_hpc_cluster_with_options_async(
         self,
@@ -7817,16 +7107,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateHpcClusterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateHpcClusterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateHpcClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_hpc_cluster(
         self,
@@ -7936,16 +7220,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateImageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateImageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateImageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_image_with_options_async(
         self,
@@ -8029,16 +7307,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateImageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateImageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_image(
         self,
@@ -8100,7 +7372,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateImageComponentResponse:
         """
-        @summary Creates an image component. Image components are used to store the image template commands that are commonly used to create images.
+        @summary Creates an image component. Image components are used to store the builder template commands that are commonly used when you create images.
         
         @description ## [](#)Usage notes
         Take note of the following items:
@@ -8161,16 +7433,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateImageComponentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateImageComponentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateImageComponentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_image_component_with_options_async(
         self,
@@ -8178,7 +7444,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateImageComponentResponse:
         """
-        @summary Creates an image component. Image components are used to store the image template commands that are commonly used to create images.
+        @summary Creates an image component. Image components are used to store the builder template commands that are commonly used when you create images.
         
         @description ## [](#)Usage notes
         Take note of the following items:
@@ -8239,23 +7505,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateImageComponentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateImageComponentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateImageComponentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_image_component(
         self,
         request: ecs_20140526_models.CreateImageComponentRequest,
     ) -> ecs_20140526_models.CreateImageComponentResponse:
         """
-        @summary Creates an image component. Image components are used to store the image template commands that are commonly used to create images.
+        @summary Creates an image component. Image components are used to store the builder template commands that are commonly used when you create images.
         
         @description ## [](#)Usage notes
         Take note of the following items:
@@ -8275,7 +7535,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateImageComponentRequest,
     ) -> ecs_20140526_models.CreateImageComponentResponse:
         """
-        @summary Creates an image component. Image components are used to store the image template commands that are commonly used to create images.
+        @summary Creates an image component. Image components are used to store the builder template commands that are commonly used when you create images.
         
         @description ## [](#)Usage notes
         Take note of the following items:
@@ -8388,16 +7648,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateImagePipelineResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateImagePipelineResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateImagePipelineResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_image_pipeline_with_options_async(
         self,
@@ -8497,16 +7751,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateImagePipelineResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateImagePipelineResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateImagePipelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_image_pipeline(
         self,
@@ -8721,16 +7969,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_instance_with_options_async(
         self,
@@ -8899,16 +8141,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_instance(
         self,
@@ -9015,16 +8251,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateKeyPairResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateKeyPairResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateKeyPairResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_key_pair_with_options_async(
         self,
@@ -9071,16 +8301,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateKeyPairResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateKeyPairResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateKeyPairResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_key_pair(
         self,
@@ -9257,16 +8481,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateLaunchTemplateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateLaunchTemplateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateLaunchTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_launch_template_with_options_async(
         self,
@@ -9411,16 +8629,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateLaunchTemplateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateLaunchTemplateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateLaunchTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_launch_template(
         self,
@@ -9599,16 +8811,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateLaunchTemplateVersionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateLaunchTemplateVersionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateLaunchTemplateVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_launch_template_version_with_options_async(
         self,
@@ -9747,16 +8953,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateLaunchTemplateVersionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateLaunchTemplateVersionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateLaunchTemplateVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_launch_template_version(
         self,
@@ -9839,16 +9039,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateNatGatewayResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateNatGatewayResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateNatGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_nat_gateway_with_options_async(
         self,
@@ -9899,16 +9093,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateNatGatewayResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateNatGatewayResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateNatGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_nat_gateway(
         self,
@@ -10052,16 +9240,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateNetworkInterfaceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateNetworkInterfaceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateNetworkInterfaceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_network_interface_with_options_async(
         self,
@@ -10177,16 +9359,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateNetworkInterfaceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateNetworkInterfaceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateNetworkInterfaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_network_interface(
         self,
@@ -10290,16 +9466,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateNetworkInterfacePermissionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateNetworkInterfacePermissionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateNetworkInterfacePermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_network_interface_permission_with_options_async(
         self,
@@ -10349,16 +9519,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateNetworkInterfacePermissionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateNetworkInterfacePermissionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateNetworkInterfacePermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_network_interface_permission(
         self,
@@ -10455,16 +9619,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreatePhysicalConnectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreatePhysicalConnectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreatePhysicalConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_physical_connection_with_options_async(
         self,
@@ -10531,16 +9689,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreatePhysicalConnectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreatePhysicalConnectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreatePhysicalConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_physical_connection(
         self,
@@ -10569,6 +9721,150 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_physical_connection_with_options_async(request, runtime)
+
+    def create_port_range_list_with_options(
+        self,
+        request: ecs_20140526_models.CreatePortRangeListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.CreatePortRangeListResponse:
+        """
+        @summary 创建端口列表
+        
+        @param request: CreatePortRangeListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePortRangeListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.entry):
+            query['Entry'] = request.entry
+        if not UtilClient.is_unset(request.max_entries):
+            query['MaxEntries'] = request.max_entries
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port_range_list_name):
+            query['PortRangeListName'] = request.port_range_list_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePortRangeList',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreatePortRangeListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_port_range_list_with_options_async(
+        self,
+        request: ecs_20140526_models.CreatePortRangeListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.CreatePortRangeListResponse:
+        """
+        @summary 创建端口列表
+        
+        @param request: CreatePortRangeListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePortRangeListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.entry):
+            query['Entry'] = request.entry
+        if not UtilClient.is_unset(request.max_entries):
+            query['MaxEntries'] = request.max_entries
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port_range_list_name):
+            query['PortRangeListName'] = request.port_range_list_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePortRangeList',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreatePortRangeListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_port_range_list(
+        self,
+        request: ecs_20140526_models.CreatePortRangeListRequest,
+    ) -> ecs_20140526_models.CreatePortRangeListResponse:
+        """
+        @summary 创建端口列表
+        
+        @param request: CreatePortRangeListRequest
+        @return: CreatePortRangeListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_port_range_list_with_options(request, runtime)
+
+    async def create_port_range_list_async(
+        self,
+        request: ecs_20140526_models.CreatePortRangeListRequest,
+    ) -> ecs_20140526_models.CreatePortRangeListResponse:
+        """
+        @summary 创建端口列表
+        
+        @param request: CreatePortRangeListRequest
+        @return: CreatePortRangeListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_port_range_list_with_options_async(request, runtime)
 
     def create_prefix_list_with_options(
         self,
@@ -10630,16 +9926,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreatePrefixListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreatePrefixListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreatePrefixListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_prefix_list_with_options_async(
         self,
@@ -10701,16 +9991,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreatePrefixListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreatePrefixListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreatePrefixListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_prefix_list(
         self,
@@ -10805,16 +10089,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateRouteEntryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateRouteEntryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateRouteEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_route_entry_with_options_async(
         self,
@@ -10867,16 +10145,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateRouteEntryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateRouteEntryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateRouteEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_route_entry(
         self,
@@ -10989,16 +10261,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateRouterInterfaceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateRouterInterfaceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateRouterInterfaceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_router_interface_with_options_async(
         self,
@@ -11083,16 +10349,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateRouterInterfaceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateRouterInterfaceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateRouterInterfaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_router_interface(
         self,
@@ -11170,16 +10430,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateSavingsPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateSavingsPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateSavingsPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_savings_plan_with_options_async(
         self,
@@ -11229,16 +10483,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateSavingsPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateSavingsPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateSavingsPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_savings_plan(
         self,
@@ -11325,16 +10573,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateSecurityGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateSecurityGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateSecurityGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_security_group_with_options_async(
         self,
@@ -11395,16 +10637,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateSecurityGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateSecurityGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateSecurityGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_security_group(
         self,
@@ -11448,7 +10684,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateSimulatedSystemEventsResponse:
         """
-        @summary Schedules simulated system events for one or more Elastic Compute Service (ECS) instances. The simulated system events do not actually occur on or affect ECS instances.
+        @summary Schedules simulated system events of Elastic Compute Service (ECS) instances. The simulated system events do not actually occur on or affect ECS instances.
         
         @description You can use the ECS console, call [ECS API](https://help.aliyun.com/document_detail/63962.html) operations, or use CloudMonitor to view the scheduled simulated system events.
         The following descriptions provide the lifecycle of a simulated system event:
@@ -11495,16 +10731,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateSimulatedSystemEventsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateSimulatedSystemEventsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateSimulatedSystemEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_simulated_system_events_with_options_async(
         self,
@@ -11512,7 +10742,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateSimulatedSystemEventsResponse:
         """
-        @summary Schedules simulated system events for one or more Elastic Compute Service (ECS) instances. The simulated system events do not actually occur on or affect ECS instances.
+        @summary Schedules simulated system events of Elastic Compute Service (ECS) instances. The simulated system events do not actually occur on or affect ECS instances.
         
         @description You can use the ECS console, call [ECS API](https://help.aliyun.com/document_detail/63962.html) operations, or use CloudMonitor to view the scheduled simulated system events.
         The following descriptions provide the lifecycle of a simulated system event:
@@ -11559,23 +10789,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateSimulatedSystemEventsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateSimulatedSystemEventsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateSimulatedSystemEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_simulated_system_events(
         self,
         request: ecs_20140526_models.CreateSimulatedSystemEventsRequest,
     ) -> ecs_20140526_models.CreateSimulatedSystemEventsResponse:
         """
-        @summary Schedules simulated system events for one or more Elastic Compute Service (ECS) instances. The simulated system events do not actually occur on or affect ECS instances.
+        @summary Schedules simulated system events of Elastic Compute Service (ECS) instances. The simulated system events do not actually occur on or affect ECS instances.
         
         @description You can use the ECS console, call [ECS API](https://help.aliyun.com/document_detail/63962.html) operations, or use CloudMonitor to view the scheduled simulated system events.
         The following descriptions provide the lifecycle of a simulated system event:
@@ -11595,7 +10819,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateSimulatedSystemEventsRequest,
     ) -> ecs_20140526_models.CreateSimulatedSystemEventsResponse:
         """
-        @summary Schedules simulated system events for one or more Elastic Compute Service (ECS) instances. The simulated system events do not actually occur on or affect ECS instances.
+        @summary Schedules simulated system events of Elastic Compute Service (ECS) instances. The simulated system events do not actually occur on or affect ECS instances.
         
         @description You can use the ECS console, call [ECS API](https://help.aliyun.com/document_detail/63962.html) operations, or use CloudMonitor to view the scheduled simulated system events.
         The following descriptions provide the lifecycle of a simulated system event:
@@ -11616,8 +10840,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateSnapshotResponse:
         """
-        @summary The retention period of the snapshot. Valid values: 1 to 65536. Unit: days. The snapshot is automatically released when its retention period expires.
-        This parameter is empty by default, which indicates that the snapshot is not automatically released.
+        @summary Creates a snapshot for a cloud disk.
         
         @description The local snapshot feature is replaced by the instant access feature. Take note of the following items:
         If you have used the local snapshot feature before December 14, 2020, you can use `Category`.
@@ -11691,16 +10914,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateSnapshotResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateSnapshotResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_snapshot_with_options_async(
         self,
@@ -11708,8 +10925,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateSnapshotResponse:
         """
-        @summary The retention period of the snapshot. Valid values: 1 to 65536. Unit: days. The snapshot is automatically released when its retention period expires.
-        This parameter is empty by default, which indicates that the snapshot is not automatically released.
+        @summary Creates a snapshot for a cloud disk.
         
         @description The local snapshot feature is replaced by the instant access feature. Take note of the following items:
         If you have used the local snapshot feature before December 14, 2020, you can use `Category`.
@@ -11783,24 +10999,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateSnapshotResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateSnapshotResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_snapshot(
         self,
         request: ecs_20140526_models.CreateSnapshotRequest,
     ) -> ecs_20140526_models.CreateSnapshotResponse:
         """
-        @summary The retention period of the snapshot. Valid values: 1 to 65536. Unit: days. The snapshot is automatically released when its retention period expires.
-        This parameter is empty by default, which indicates that the snapshot is not automatically released.
+        @summary Creates a snapshot for a cloud disk.
         
         @description The local snapshot feature is replaced by the instant access feature. Take note of the following items:
         If you have used the local snapshot feature before December 14, 2020, you can use `Category`.
@@ -11835,8 +11044,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateSnapshotRequest,
     ) -> ecs_20140526_models.CreateSnapshotResponse:
         """
-        @summary The retention period of the snapshot. Valid values: 1 to 65536. Unit: days. The snapshot is automatically released when its retention period expires.
-        This parameter is empty by default, which indicates that the snapshot is not automatically released.
+        @summary Creates a snapshot for a cloud disk.
         
         @description The local snapshot feature is replaced by the instant access feature. Take note of the following items:
         If you have used the local snapshot feature before December 14, 2020, you can use `Category`.
@@ -11938,16 +11146,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateSnapshotGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateSnapshotGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateSnapshotGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_snapshot_group_with_options_async(
         self,
@@ -12021,16 +11223,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateSnapshotGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateSnapshotGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateSnapshotGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_snapshot_group(
         self,
@@ -12135,16 +11331,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateStorageSetResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateStorageSetResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateStorageSetResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_storage_set_with_options_async(
         self,
@@ -12199,16 +11389,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateStorageSetResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateStorageSetResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateStorageSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_storage_set(
         self,
@@ -12252,7 +11436,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateVSwitchResponse:
         """
-        @deprecated OpenAPI CreateVSwitch is deprecated
+        @deprecated OpenAPI CreateVSwitch is deprecated, please use Vpc::2016-04-28::CreateVSwitch instead.
         
         @param request: CreateVSwitchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12297,16 +11481,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateVSwitchResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateVSwitchResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateVSwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_vswitch_with_options_async(
         self,
@@ -12314,7 +11492,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateVSwitchResponse:
         """
-        @deprecated OpenAPI CreateVSwitch is deprecated
+        @deprecated OpenAPI CreateVSwitch is deprecated, please use Vpc::2016-04-28::CreateVSwitch instead.
         
         @param request: CreateVSwitchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12359,23 +11537,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateVSwitchResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateVSwitchResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateVSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_vswitch(
         self,
         request: ecs_20140526_models.CreateVSwitchRequest,
     ) -> ecs_20140526_models.CreateVSwitchResponse:
         """
-        @deprecated OpenAPI CreateVSwitch is deprecated
+        @deprecated OpenAPI CreateVSwitch is deprecated, please use Vpc::2016-04-28::CreateVSwitch instead.
         
         @param request: CreateVSwitchRequest
         @return: CreateVSwitchResponse
@@ -12389,7 +11561,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateVSwitchRequest,
     ) -> ecs_20140526_models.CreateVSwitchResponse:
         """
-        @deprecated OpenAPI CreateVSwitch is deprecated
+        @deprecated OpenAPI CreateVSwitch is deprecated, please use Vpc::2016-04-28::CreateVSwitch instead.
         
         @param request: CreateVSwitchRequest
         @return: CreateVSwitchResponse
@@ -12461,16 +11633,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateVirtualBorderRouterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateVirtualBorderRouterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateVirtualBorderRouterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_virtual_border_router_with_options_async(
         self,
@@ -12535,16 +11701,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateVirtualBorderRouterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateVirtualBorderRouterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateVirtualBorderRouterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_virtual_border_router(
         self,
@@ -12623,16 +11783,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateVpcResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateVpcResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateVpcResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_vpc_with_options_async(
         self,
@@ -12683,16 +11837,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateVpcResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.CreateVpcResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateVpcResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_vpc(
         self,
@@ -12761,16 +11909,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeactivateRouterInterfaceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeactivateRouterInterfaceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeactivateRouterInterfaceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def deactivate_router_interface_with_options_async(
         self,
@@ -12811,16 +11953,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeactivateRouterInterfaceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeactivateRouterInterfaceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeactivateRouterInterfaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def deactivate_router_interface(
         self,
@@ -12895,16 +12031,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteActivationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteActivationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteActivationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_activation_with_options_async(
         self,
@@ -12951,16 +12081,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteActivationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteActivationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteActivationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_activation(
         self,
@@ -13036,16 +12160,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteAutoProvisioningGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteAutoProvisioningGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteAutoProvisioningGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_auto_provisioning_group_with_options_async(
         self,
@@ -13089,16 +12207,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteAutoProvisioningGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteAutoProvisioningGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteAutoProvisioningGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_auto_provisioning_group(
         self,
@@ -13164,16 +12276,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteAutoSnapshotPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteAutoSnapshotPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteAutoSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_auto_snapshot_policy_with_options_async(
         self,
@@ -13213,16 +12319,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteAutoSnapshotPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteAutoSnapshotPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteAutoSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_auto_snapshot_policy(
         self,
@@ -13291,16 +12391,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteBandwidthPackageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteBandwidthPackageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteBandwidthPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_bandwidth_package_with_options_async(
         self,
@@ -13343,16 +12437,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteBandwidthPackageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteBandwidthPackageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteBandwidthPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_bandwidth_package(
         self,
@@ -13424,16 +12512,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteCommandResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteCommandResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteCommandResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_command_with_options_async(
         self,
@@ -13477,16 +12559,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteCommandResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteCommandResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteCommandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_command(
         self,
@@ -13554,16 +12630,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDedicatedHostClusterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDedicatedHostClusterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteDedicatedHostClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_dedicated_host_cluster_with_options_async(
         self,
@@ -13605,16 +12675,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDedicatedHostClusterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDedicatedHostClusterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteDedicatedHostClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_dedicated_host_cluster(
         self,
@@ -13641,162 +12705,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dedicated_host_cluster_with_options_async(request, runtime)
-
-    def delete_demand_with_options(
-        self,
-        request: ecs_20140526_models.DeleteDemandRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ecs_20140526_models.DeleteDemandResponse:
-        """
-        @deprecated OpenAPI DeleteDemand is deprecated, please use Ecs::2014-05-26::ReleaseCapacityReservation instead.
-        
-        @summary Deletes a demand for Elastic Compute Service (ECS) resources. You can call this operation to delete a demand that you submit for ECS resources.
-        
-        @description >  This operation is in invitational preview and is not publicly available.
-        
-        @param request: DeleteDemandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteDemandResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.demand_id):
-            query['DemandId'] = request.demand_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.reason):
-            query['Reason'] = request.reason
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteDemand',
-            version='2014-05-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDemandResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDemandResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def delete_demand_with_options_async(
-        self,
-        request: ecs_20140526_models.DeleteDemandRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ecs_20140526_models.DeleteDemandResponse:
-        """
-        @deprecated OpenAPI DeleteDemand is deprecated, please use Ecs::2014-05-26::ReleaseCapacityReservation instead.
-        
-        @summary Deletes a demand for Elastic Compute Service (ECS) resources. You can call this operation to delete a demand that you submit for ECS resources.
-        
-        @description >  This operation is in invitational preview and is not publicly available.
-        
-        @param request: DeleteDemandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteDemandResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.demand_id):
-            query['DemandId'] = request.demand_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.reason):
-            query['Reason'] = request.reason
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteDemand',
-            version='2014-05-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDemandResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDemandResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def delete_demand(
-        self,
-        request: ecs_20140526_models.DeleteDemandRequest,
-    ) -> ecs_20140526_models.DeleteDemandResponse:
-        """
-        @deprecated OpenAPI DeleteDemand is deprecated, please use Ecs::2014-05-26::ReleaseCapacityReservation instead.
-        
-        @summary Deletes a demand for Elastic Compute Service (ECS) resources. You can call this operation to delete a demand that you submit for ECS resources.
-        
-        @description >  This operation is in invitational preview and is not publicly available.
-        
-        @param request: DeleteDemandRequest
-        @return: DeleteDemandResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.delete_demand_with_options(request, runtime)
-
-    async def delete_demand_async(
-        self,
-        request: ecs_20140526_models.DeleteDemandRequest,
-    ) -> ecs_20140526_models.DeleteDemandResponse:
-        """
-        @deprecated OpenAPI DeleteDemand is deprecated, please use Ecs::2014-05-26::ReleaseCapacityReservation instead.
-        
-        @summary Deletes a demand for Elastic Compute Service (ECS) resources. You can call this operation to delete a demand that you submit for ECS resources.
-        
-        @description >  This operation is in invitational preview and is not publicly available.
-        
-        @param request: DeleteDemandRequest
-        @return: DeleteDemandResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_demand_with_options_async(request, runtime)
 
     def delete_deployment_set_with_options(
         self,
@@ -13840,16 +12748,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDeploymentSetResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDeploymentSetResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteDeploymentSetResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_deployment_set_with_options_async(
         self,
@@ -13893,16 +12795,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDeploymentSetResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDeploymentSetResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteDeploymentSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_deployment_set(
         self,
@@ -13966,16 +12862,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDiagnosticMetricSetsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDiagnosticMetricSetsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteDiagnosticMetricSetsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_diagnostic_metric_sets_with_options_async(
         self,
@@ -14009,16 +12899,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDiagnosticMetricSetsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDiagnosticMetricSetsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteDiagnosticMetricSetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_diagnostic_metric_sets(
         self,
@@ -14080,16 +12964,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDiagnosticReportsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDiagnosticReportsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteDiagnosticReportsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_diagnostic_reports_with_options_async(
         self,
@@ -14125,16 +13003,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDiagnosticReportsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDiagnosticReportsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteDiagnosticReportsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_diagnostic_reports(
         self,
@@ -14172,7 +13044,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteDiskResponse:
         """
-        @summary Releases a pay-as-you-go data disk. The data disk can be a basic disk, an ultra disk, a standard SSD, or an enhanced SSD (ESSD).
+        @summary Deletes a pay-as-you-go data disk. The data disk can be a basic disk, an ultra disk, a standard SSD, or an Enterprise SSD (ESSD).
         
         @description When you call this operation, take note of the following items:
         Manual snapshots of the disk are retained.
@@ -14210,16 +13082,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDiskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDiskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteDiskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_disk_with_options_async(
         self,
@@ -14227,7 +13093,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteDiskResponse:
         """
-        @summary Releases a pay-as-you-go data disk. The data disk can be a basic disk, an ultra disk, a standard SSD, or an enhanced SSD (ESSD).
+        @summary Deletes a pay-as-you-go data disk. The data disk can be a basic disk, an ultra disk, a standard SSD, or an Enterprise SSD (ESSD).
         
         @description When you call this operation, take note of the following items:
         Manual snapshots of the disk are retained.
@@ -14265,23 +13131,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDiskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteDiskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteDiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_disk(
         self,
         request: ecs_20140526_models.DeleteDiskRequest,
     ) -> ecs_20140526_models.DeleteDiskResponse:
         """
-        @summary Releases a pay-as-you-go data disk. The data disk can be a basic disk, an ultra disk, a standard SSD, or an enhanced SSD (ESSD).
+        @summary Deletes a pay-as-you-go data disk. The data disk can be a basic disk, an ultra disk, a standard SSD, or an Enterprise SSD (ESSD).
         
         @description When you call this operation, take note of the following items:
         Manual snapshots of the disk are retained.
@@ -14300,7 +13160,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteDiskRequest,
     ) -> ecs_20140526_models.DeleteDiskResponse:
         """
-        @summary Releases a pay-as-you-go data disk. The data disk can be a basic disk, an ultra disk, a standard SSD, or an enhanced SSD (ESSD).
+        @summary Deletes a pay-as-you-go data disk. The data disk can be a basic disk, an ultra disk, a standard SSD, or an Enterprise SSD (ESSD).
         
         @description When you call this operation, take note of the following items:
         Manual snapshots of the disk are retained.
@@ -14357,16 +13217,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteForwardEntryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteForwardEntryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteForwardEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_forward_entry_with_options_async(
         self,
@@ -14411,16 +13265,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteForwardEntryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteForwardEntryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteForwardEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_forward_entry(
         self,
@@ -14493,16 +13341,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteHaVipResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteHaVipResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteHaVipResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_ha_vip_with_options_async(
         self,
@@ -14547,16 +13389,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteHaVipResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteHaVipResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteHaVipResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_ha_vip(
         self,
@@ -14630,16 +13466,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteHpcClusterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteHpcClusterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteHpcClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_hpc_cluster_with_options_async(
         self,
@@ -14685,16 +13515,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteHpcClusterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteHpcClusterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteHpcClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_hpc_cluster(
         self,
@@ -14766,16 +13590,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteImageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteImageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteImageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_image_with_options_async(
         self,
@@ -14821,16 +13639,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteImageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteImageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_image(
         self,
@@ -14906,16 +13718,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteImageComponentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteImageComponentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteImageComponentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_image_component_with_options_async(
         self,
@@ -14961,16 +13767,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteImageComponentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteImageComponentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteImageComponentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_image_component(
         self,
@@ -15008,9 +13808,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteImagePipelineResponse:
         """
-        @summary Deletes an image template.
+        @summary Deletes an image template. You can specify RegionId and ImagePipelineId in the request.
         
-        @description If an image build task based on an image template is in the BUILDING, DISTRIBUTING, RELEASING, or CANCELLING state, you cannot delete the image template. You can delete the image template only when the image build task is in the SUCCESS, FAILED, or CANCELLED state. You can call the DescribeImagePipelineExecutions operation to query the details of an image build task.
+        @description If an ongoing image building task is associated with an image template, you cannot delete the image template. You can delete the image template only if the image building task reaches the SUCCESS, FAILED, TEST_FAILED, PARTITION_SUCCESS, or CANCELLED state. You can call the DescribeImagePipelineExecutions operation to query the details of an image building task.
         
         @param request: DeleteImagePipelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15046,16 +13846,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteImagePipelineResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteImagePipelineResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteImagePipelineResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_image_pipeline_with_options_async(
         self,
@@ -15063,9 +13857,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteImagePipelineResponse:
         """
-        @summary Deletes an image template.
+        @summary Deletes an image template. You can specify RegionId and ImagePipelineId in the request.
         
-        @description If an image build task based on an image template is in the BUILDING, DISTRIBUTING, RELEASING, or CANCELLING state, you cannot delete the image template. You can delete the image template only when the image build task is in the SUCCESS, FAILED, or CANCELLED state. You can call the DescribeImagePipelineExecutions operation to query the details of an image build task.
+        @description If an ongoing image building task is associated with an image template, you cannot delete the image template. You can delete the image template only if the image building task reaches the SUCCESS, FAILED, TEST_FAILED, PARTITION_SUCCESS, or CANCELLED state. You can call the DescribeImagePipelineExecutions operation to query the details of an image building task.
         
         @param request: DeleteImagePipelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15101,25 +13895,19 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteImagePipelineResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteImagePipelineResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteImagePipelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_image_pipeline(
         self,
         request: ecs_20140526_models.DeleteImagePipelineRequest,
     ) -> ecs_20140526_models.DeleteImagePipelineResponse:
         """
-        @summary Deletes an image template.
+        @summary Deletes an image template. You can specify RegionId and ImagePipelineId in the request.
         
-        @description If an image build task based on an image template is in the BUILDING, DISTRIBUTING, RELEASING, or CANCELLING state, you cannot delete the image template. You can delete the image template only when the image build task is in the SUCCESS, FAILED, or CANCELLED state. You can call the DescribeImagePipelineExecutions operation to query the details of an image build task.
+        @description If an ongoing image building task is associated with an image template, you cannot delete the image template. You can delete the image template only if the image building task reaches the SUCCESS, FAILED, TEST_FAILED, PARTITION_SUCCESS, or CANCELLED state. You can call the DescribeImagePipelineExecutions operation to query the details of an image building task.
         
         @param request: DeleteImagePipelineRequest
         @return: DeleteImagePipelineResponse
@@ -15132,9 +13920,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteImagePipelineRequest,
     ) -> ecs_20140526_models.DeleteImagePipelineResponse:
         """
-        @summary Deletes an image template.
+        @summary Deletes an image template. You can specify RegionId and ImagePipelineId in the request.
         
-        @description If an image build task based on an image template is in the BUILDING, DISTRIBUTING, RELEASING, or CANCELLING state, you cannot delete the image template. You can delete the image template only when the image build task is in the SUCCESS, FAILED, or CANCELLED state. You can call the DescribeImagePipelineExecutions operation to query the details of an image build task.
+        @description If an ongoing image building task is associated with an image template, you cannot delete the image template. You can delete the image template only if the image building task reaches the SUCCESS, FAILED, TEST_FAILED, PARTITION_SUCCESS, or CANCELLED state. You can call the DescribeImagePipelineExecutions operation to query the details of an image building task.
         
         @param request: DeleteImagePipelineRequest
         @return: DeleteImagePipelineResponse
@@ -15170,6 +13958,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.force):
             query['Force'] = request.force
+        if not UtilClient.is_unset(request.force_stop):
+            query['ForceStop'] = request.force_stop
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -15196,16 +13986,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_instance_with_options_async(
         self,
@@ -15235,6 +14019,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.force):
             query['Force'] = request.force
+        if not UtilClient.is_unset(request.force_stop):
+            query['ForceStop'] = request.force_stop
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -15261,16 +14047,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_instance(
         self,
@@ -15326,15 +14106,13 @@ class Client(OpenApiClient):
         """
         @summary Releases multiple pay-as-you-go Elastic Compute Service (ECS) instances or expired subscription ECS instances at a time. You can configure parameters to specify whether to release the disks attached to the instances or retain the disks as pay-as-you-go disks.
         
-        @description *\
-        *Warning** After you release an instance, the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
+        @description >Warning: After you release an instance, the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
         After you release an instance, manual snapshots of the cloud disks attached to the instance are retained and continue to be billed. You can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/2679824.html) operation to delete the snapshots.
         After you release an instance, whether the cloud disks attached to the instance and the automatic snapshots of the disks are released is determined by the disk attributes. Before you release an instance, you can call the [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) and [ModifyDiskAttribute](https://help.aliyun.com/document_detail/2679770.html) operations to query and modify disk attributes.
         If `DeleteWithInstance` is set to false for a cloud disk attached to the instance, the cloud disk is changed to a pay-as-you-go disk and retained after the instance is released. If DeleteWithInstance is set to true for the cloud disk, the disk is released together with the instance.
         If `DeleteAutoSnapshot` is set to false for a cloud disk attached to the instance, the automatic snapshots of the disk are retained when the instance is released. If DeleteAutoSnapshot is set to true for the cloud disk, the automatic snapshots of the disk are released together with the instance.
         Elastic IP addresses (EIPs) are not released together with instances. You can call the [ReleaseEipAddress](https://help.aliyun.com/document_detail/448702.html) operation to release EIPs.
-        *\
-        *Note** When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released together with the instance even if DeleteWithInstance is set to false for the disks.
+        > When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released together with the instance even if DeleteWithInstance is set to false for the disks.
         
         @param request: DeleteInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15348,6 +14126,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.force):
             query['Force'] = request.force
+        if not UtilClient.is_unset(request.force_stop):
+            query['ForceStop'] = request.force_stop
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -15376,16 +14156,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_instances_with_options_async(
         self,
@@ -15395,15 +14169,13 @@ class Client(OpenApiClient):
         """
         @summary Releases multiple pay-as-you-go Elastic Compute Service (ECS) instances or expired subscription ECS instances at a time. You can configure parameters to specify whether to release the disks attached to the instances or retain the disks as pay-as-you-go disks.
         
-        @description *\
-        *Warning** After you release an instance, the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
+        @description >Warning: After you release an instance, the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
         After you release an instance, manual snapshots of the cloud disks attached to the instance are retained and continue to be billed. You can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/2679824.html) operation to delete the snapshots.
         After you release an instance, whether the cloud disks attached to the instance and the automatic snapshots of the disks are released is determined by the disk attributes. Before you release an instance, you can call the [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) and [ModifyDiskAttribute](https://help.aliyun.com/document_detail/2679770.html) operations to query and modify disk attributes.
         If `DeleteWithInstance` is set to false for a cloud disk attached to the instance, the cloud disk is changed to a pay-as-you-go disk and retained after the instance is released. If DeleteWithInstance is set to true for the cloud disk, the disk is released together with the instance.
         If `DeleteAutoSnapshot` is set to false for a cloud disk attached to the instance, the automatic snapshots of the disk are retained when the instance is released. If DeleteAutoSnapshot is set to true for the cloud disk, the automatic snapshots of the disk are released together with the instance.
         Elastic IP addresses (EIPs) are not released together with instances. You can call the [ReleaseEipAddress](https://help.aliyun.com/document_detail/448702.html) operation to release EIPs.
-        *\
-        *Note** When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released together with the instance even if DeleteWithInstance is set to false for the disks.
+        > When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released together with the instance even if DeleteWithInstance is set to false for the disks.
         
         @param request: DeleteInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15417,6 +14189,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.force):
             query['Force'] = request.force
+        if not UtilClient.is_unset(request.force_stop):
+            query['ForceStop'] = request.force_stop
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -15445,16 +14219,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_instances(
         self,
@@ -15463,15 +14231,13 @@ class Client(OpenApiClient):
         """
         @summary Releases multiple pay-as-you-go Elastic Compute Service (ECS) instances or expired subscription ECS instances at a time. You can configure parameters to specify whether to release the disks attached to the instances or retain the disks as pay-as-you-go disks.
         
-        @description *\
-        *Warning** After you release an instance, the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
+        @description >Warning: After you release an instance, the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
         After you release an instance, manual snapshots of the cloud disks attached to the instance are retained and continue to be billed. You can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/2679824.html) operation to delete the snapshots.
         After you release an instance, whether the cloud disks attached to the instance and the automatic snapshots of the disks are released is determined by the disk attributes. Before you release an instance, you can call the [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) and [ModifyDiskAttribute](https://help.aliyun.com/document_detail/2679770.html) operations to query and modify disk attributes.
         If `DeleteWithInstance` is set to false for a cloud disk attached to the instance, the cloud disk is changed to a pay-as-you-go disk and retained after the instance is released. If DeleteWithInstance is set to true for the cloud disk, the disk is released together with the instance.
         If `DeleteAutoSnapshot` is set to false for a cloud disk attached to the instance, the automatic snapshots of the disk are retained when the instance is released. If DeleteAutoSnapshot is set to true for the cloud disk, the automatic snapshots of the disk are released together with the instance.
         Elastic IP addresses (EIPs) are not released together with instances. You can call the [ReleaseEipAddress](https://help.aliyun.com/document_detail/448702.html) operation to release EIPs.
-        *\
-        *Note** When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released together with the instance even if DeleteWithInstance is set to false for the disks.
+        > When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released together with the instance even if DeleteWithInstance is set to false for the disks.
         
         @param request: DeleteInstancesRequest
         @return: DeleteInstancesResponse
@@ -15486,15 +14252,13 @@ class Client(OpenApiClient):
         """
         @summary Releases multiple pay-as-you-go Elastic Compute Service (ECS) instances or expired subscription ECS instances at a time. You can configure parameters to specify whether to release the disks attached to the instances or retain the disks as pay-as-you-go disks.
         
-        @description *\
-        *Warning** After you release an instance, the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
+        @description >Warning: After you release an instance, the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
         After you release an instance, manual snapshots of the cloud disks attached to the instance are retained and continue to be billed. You can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/2679824.html) operation to delete the snapshots.
         After you release an instance, whether the cloud disks attached to the instance and the automatic snapshots of the disks are released is determined by the disk attributes. Before you release an instance, you can call the [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) and [ModifyDiskAttribute](https://help.aliyun.com/document_detail/2679770.html) operations to query and modify disk attributes.
         If `DeleteWithInstance` is set to false for a cloud disk attached to the instance, the cloud disk is changed to a pay-as-you-go disk and retained after the instance is released. If DeleteWithInstance is set to true for the cloud disk, the disk is released together with the instance.
         If `DeleteAutoSnapshot` is set to false for a cloud disk attached to the instance, the automatic snapshots of the disk are retained when the instance is released. If DeleteAutoSnapshot is set to true for the cloud disk, the automatic snapshots of the disk are released together with the instance.
         Elastic IP addresses (EIPs) are not released together with instances. You can call the [ReleaseEipAddress](https://help.aliyun.com/document_detail/448702.html) operation to release EIPs.
-        *\
-        *Note** When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released together with the instance even if DeleteWithInstance is set to false for the disks.
+        > When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released together with the instance even if DeleteWithInstance is set to false for the disks.
         
         @param request: DeleteInstancesRequest
         @return: DeleteInstancesResponse
@@ -15544,16 +14308,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteKeyPairsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteKeyPairsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteKeyPairsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_key_pairs_with_options_async(
         self,
@@ -15597,16 +14355,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteKeyPairsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteKeyPairsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteKeyPairsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_key_pairs(
         self,
@@ -15688,16 +14440,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteLaunchTemplateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteLaunchTemplateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteLaunchTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_launch_template_with_options_async(
         self,
@@ -15745,16 +14491,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteLaunchTemplateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteLaunchTemplateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteLaunchTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_launch_template(
         self,
@@ -15839,16 +14579,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteLaunchTemplateVersionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteLaunchTemplateVersionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteLaunchTemplateVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_launch_template_version_with_options_async(
         self,
@@ -15899,16 +14633,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteLaunchTemplateVersionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteLaunchTemplateVersionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteLaunchTemplateVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_launch_template_version(
         self,
@@ -15987,16 +14715,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteNatGatewayResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteNatGatewayResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteNatGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_nat_gateway_with_options_async(
         self,
@@ -16039,16 +14761,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteNatGatewayResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteNatGatewayResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteNatGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_nat_gateway(
         self,
@@ -16133,16 +14849,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteNetworkInterfaceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteNetworkInterfaceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteNetworkInterfaceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_network_interface_with_options_async(
         self,
@@ -16199,16 +14909,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteNetworkInterfaceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteNetworkInterfaceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteNetworkInterfaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_network_interface(
         self,
@@ -16309,16 +15013,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteNetworkInterfacePermissionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteNetworkInterfacePermissionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteNetworkInterfacePermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_network_interface_permission_with_options_async(
         self,
@@ -16367,16 +15065,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteNetworkInterfacePermissionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteNetworkInterfacePermissionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteNetworkInterfacePermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_network_interface_permission(
         self,
@@ -16453,16 +15145,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeletePhysicalConnectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeletePhysicalConnectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeletePhysicalConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_physical_connection_with_options_async(
         self,
@@ -16507,16 +15193,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeletePhysicalConnectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeletePhysicalConnectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeletePhysicalConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_physical_connection(
         self,
@@ -16545,6 +15225,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_physical_connection_with_options_async(request, runtime)
+
+    def delete_port_range_list_with_options(
+        self,
+        request: ecs_20140526_models.DeletePortRangeListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DeletePortRangeListResponse:
+        """
+        @summary 删除端口列表
+        
+        @param request: DeletePortRangeListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePortRangeListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port_range_list_id):
+            query['PortRangeListId'] = request.port_range_list_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePortRangeList',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeletePortRangeListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_port_range_list_with_options_async(
+        self,
+        request: ecs_20140526_models.DeletePortRangeListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DeletePortRangeListResponse:
+        """
+        @summary 删除端口列表
+        
+        @param request: DeletePortRangeListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePortRangeListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port_range_list_id):
+            query['PortRangeListId'] = request.port_range_list_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePortRangeList',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeletePortRangeListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_port_range_list(
+        self,
+        request: ecs_20140526_models.DeletePortRangeListRequest,
+    ) -> ecs_20140526_models.DeletePortRangeListResponse:
+        """
+        @summary 删除端口列表
+        
+        @param request: DeletePortRangeListRequest
+        @return: DeletePortRangeListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_port_range_list_with_options(request, runtime)
+
+    async def delete_port_range_list_async(
+        self,
+        request: ecs_20140526_models.DeletePortRangeListRequest,
+    ) -> ecs_20140526_models.DeletePortRangeListResponse:
+        """
+        @summary 删除端口列表
+        
+        @param request: DeletePortRangeListRequest
+        @return: DeletePortRangeListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_port_range_list_with_options_async(request, runtime)
 
     def delete_prefix_list_with_options(
         self,
@@ -16590,16 +15390,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeletePrefixListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeletePrefixListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeletePrefixListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_prefix_list_with_options_async(
         self,
@@ -16645,16 +15439,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeletePrefixListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeletePrefixListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeletePrefixListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_prefix_list(
         self,
@@ -16733,16 +15521,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteRouteEntryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteRouteEntryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteRouteEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_route_entry_with_options_async(
         self,
@@ -16791,16 +15573,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteRouteEntryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteRouteEntryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteRouteEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_route_entry(
         self,
@@ -16875,16 +15651,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteRouterInterfaceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteRouterInterfaceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteRouterInterfaceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_router_interface_with_options_async(
         self,
@@ -16931,16 +15701,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteRouterInterfaceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteRouterInterfaceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteRouterInterfaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_router_interface(
         self,
@@ -17015,16 +15779,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteSecurityGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteSecurityGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteSecurityGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_security_group_with_options_async(
         self,
@@ -17071,16 +15829,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteSecurityGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteSecurityGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteSecurityGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_security_group(
         self,
@@ -17163,16 +15915,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteSnapshotResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteSnapshotResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_snapshot_with_options_async(
         self,
@@ -17219,16 +15965,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteSnapshotResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteSnapshotResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_snapshot(
         self,
@@ -17309,16 +16049,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteSnapshotGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteSnapshotGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteSnapshotGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_snapshot_group_with_options_async(
         self,
@@ -17363,16 +16097,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteSnapshotGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteSnapshotGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteSnapshotGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_snapshot_group(
         self,
@@ -17448,16 +16176,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteStorageSetResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteStorageSetResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteStorageSetResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_storage_set_with_options_async(
         self,
@@ -17501,16 +16223,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteStorageSetResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteStorageSetResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteStorageSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_storage_set(
         self,
@@ -17579,16 +16295,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteVSwitchResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteVSwitchResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteVSwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_vswitch_with_options_async(
         self,
@@ -17631,16 +16341,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteVSwitchResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteVSwitchResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteVSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_vswitch(
         self,
@@ -17715,16 +16419,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteVirtualBorderRouterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteVirtualBorderRouterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteVirtualBorderRouterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_virtual_border_router_with_options_async(
         self,
@@ -17771,16 +16469,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteVirtualBorderRouterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteVirtualBorderRouterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteVirtualBorderRouterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_virtual_border_router(
         self,
@@ -17853,16 +16545,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteVpcResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteVpcResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteVpcResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_vpc_with_options_async(
         self,
@@ -17907,16 +16593,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteVpcResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeleteVpcResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteVpcResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_vpc(
         self,
@@ -17992,16 +16672,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeregisterManagedInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeregisterManagedInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeregisterManagedInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def deregister_managed_instance_with_options_async(
         self,
@@ -18045,16 +16719,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DeregisterManagedInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DeregisterManagedInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeregisterManagedInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def deregister_managed_instance(
         self,
@@ -18127,16 +16795,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAccessPointsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAccessPointsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeAccessPointsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_access_points_with_options_async(
         self,
@@ -18183,16 +16845,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAccessPointsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAccessPointsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeAccessPointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_access_points(
         self,
@@ -18265,16 +16921,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAccountAttributesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAccountAttributesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeAccountAttributesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_account_attributes_with_options_async(
         self,
@@ -18319,16 +16969,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAccountAttributesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAccountAttributesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeAccountAttributesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_account_attributes(
         self,
@@ -18423,16 +17067,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeActivationsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeActivationsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeActivationsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_activations_with_options_async(
         self,
@@ -18495,16 +17133,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeActivationsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeActivationsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeActivationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_activations(
         self,
@@ -18590,16 +17222,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAutoProvisioningGroupHistoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAutoProvisioningGroupHistoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeAutoProvisioningGroupHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_auto_provisioning_group_history_with_options_async(
         self,
@@ -18649,16 +17275,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAutoProvisioningGroupHistoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAutoProvisioningGroupHistoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeAutoProvisioningGroupHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_auto_provisioning_group_history(
         self,
@@ -18692,7 +17312,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeAutoProvisioningGroupInstancesResponse:
         """
-        @summary You can call this operation to query instances in an auto provisioning group.
+        @summary Queries instances in an auto provisioning group.
         
         @param request: DescribeAutoProvisioningGroupInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18730,16 +17350,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAutoProvisioningGroupInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAutoProvisioningGroupInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeAutoProvisioningGroupInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_auto_provisioning_group_instances_with_options_async(
         self,
@@ -18747,7 +17361,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeAutoProvisioningGroupInstancesResponse:
         """
-        @summary You can call this operation to query instances in an auto provisioning group.
+        @summary Queries instances in an auto provisioning group.
         
         @param request: DescribeAutoProvisioningGroupInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18785,23 +17399,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAutoProvisioningGroupInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAutoProvisioningGroupInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeAutoProvisioningGroupInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_auto_provisioning_group_instances(
         self,
         request: ecs_20140526_models.DescribeAutoProvisioningGroupInstancesRequest,
     ) -> ecs_20140526_models.DescribeAutoProvisioningGroupInstancesResponse:
         """
-        @summary You can call this operation to query instances in an auto provisioning group.
+        @summary Queries instances in an auto provisioning group.
         
         @param request: DescribeAutoProvisioningGroupInstancesRequest
         @return: DescribeAutoProvisioningGroupInstancesResponse
@@ -18814,7 +17422,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeAutoProvisioningGroupInstancesRequest,
     ) -> ecs_20140526_models.DescribeAutoProvisioningGroupInstancesResponse:
         """
-        @summary You can call this operation to query instances in an auto provisioning group.
+        @summary Queries instances in an auto provisioning group.
         
         @param request: DescribeAutoProvisioningGroupInstancesRequest
         @return: DescribeAutoProvisioningGroupInstancesResponse
@@ -18874,16 +17482,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAutoProvisioningGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAutoProvisioningGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeAutoProvisioningGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_auto_provisioning_groups_with_options_async(
         self,
@@ -18937,16 +17539,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAutoProvisioningGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAutoProvisioningGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeAutoProvisioningGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_auto_provisioning_groups(
         self,
@@ -19024,16 +17620,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAutoSnapshotPolicyExResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAutoSnapshotPolicyExResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeAutoSnapshotPolicyExResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_auto_snapshot_policy_ex_with_options_async(
         self,
@@ -19085,16 +17675,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAutoSnapshotPolicyExResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAutoSnapshotPolicyExResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeAutoSnapshotPolicyExResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_auto_snapshot_policy_ex(
         self,
@@ -19130,17 +17714,35 @@ class Client(OpenApiClient):
         """
         @summary Queries resources in a zone. You can query the resources available in a zone before you create Elastic Compute Service (ECS) instances by calling the RunInstances operation or before you change instance types by calling the ModifyInstanceSpec operation.
         
-        @description ## [](#)Usage notes
-        The value of `DestinationResource` determines whether you need to specify additional parameters. When you select a value in the following chain for DestinationResource, the more to the right the selected value is ordered, the more parameters you must specify.
+        @description The value of `DestinationResource` determines whether you need to specify additional parameters. When you select a value in the following chain for DestinationResource, the more to the right the selected value is ordered, the more parameters you must specify.
         Sequence: `Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk`
         Examples:
         If you set `DestinationResource` to `DataDisk`, take note of the following items:
-        If you set `ResourceType` to `disk` to query the categories of data disks that are not attached to ECS instances, you do not need to specify `InstanceType`.
-        If you set `ResourceType` to `instance` to query the categories of data disks that are purchased together with ECS instances, you must specify `InstanceType` and `SystemDiskCategory` due to instance type-specific limits on system disks and data disks.
+        If you set `ResourceType` to `disk` to query the categories of data disks regardless of whether the disks are attached to ECS instances, you can leave `InstanceType` empty.
+        If you set `ResourceType` to `instance` to query the categories of data disks that are attached to ECS instances, you must specify `InstanceType` and `DataDiskCategory` due to instance type-specific limits on data disks.
         If you set `DestinationResource` to `SystemDisk` and `ResourceType` to `instance`, you must specify `InstanceType` due to instance type-specific limits on system disks.
         If you set `DestinationResource` to `InstanceType`, we recommend that you specify `IoOptimized` and `InstanceType`.
-        If you want to query the available ecs.g5.large resources in all zones of the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
-        If you want to query the zones where ecs.g5.large resources are available in the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
+        To query the ecs.g5.large instance type in all zones of the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
+        To query the zones in which the ecs.g5.large instance type is available in the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
+        *To query the zones in which the ecs.g5.large instance type is available in the China (Hangzhou) region, specify parameters as follows:**\
+        "RegionId": "cn-hangzhou",
+        "DestinationResource": "Zone",
+        "InstanceType": "ecs.g5.large"
+        *To query the ecs.g5.large instance type in all zones of the China (Hangzhou) region, specify parameters as follows:**\
+        "RegionId": "cn-hangzhou",
+        "DestinationResource": "InstanceType""InstanceType": "ecs.g5.large"
+        *To query data disks of the ultra disk category in Hangzhou Zone B regardless of whether the disks are attached to ECS instances, specify parameters as follows:**\
+        "RegionId": "cn-hangzhou",
+        "ZoneId": "cn-hangzhou-b",
+        "ResourceType": "disk",
+        "DestinationResource": "DataDisk"
+        *To query data disks purchased together with ecs.g7.large instances that reside in Hangzhou Zone B and use Enterprise SSDs (ESSDs) as system disks, specify parameters as follows:**\
+        "RegionId": "cn-hangzhou",
+        "ZoneId": "cn-hangzhou-b",
+        "ResourceType": "instance",
+        "InstanceType": "ecs.g7.large",
+        "DestinationResource": "SystemDisk",
+        "SystemDiskCategory": "cloud_essd"
         
         @param request: DescribeAvailableResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19202,16 +17804,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAvailableResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAvailableResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeAvailableResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_available_resource_with_options_async(
         self,
@@ -19221,17 +17817,35 @@ class Client(OpenApiClient):
         """
         @summary Queries resources in a zone. You can query the resources available in a zone before you create Elastic Compute Service (ECS) instances by calling the RunInstances operation or before you change instance types by calling the ModifyInstanceSpec operation.
         
-        @description ## [](#)Usage notes
-        The value of `DestinationResource` determines whether you need to specify additional parameters. When you select a value in the following chain for DestinationResource, the more to the right the selected value is ordered, the more parameters you must specify.
+        @description The value of `DestinationResource` determines whether you need to specify additional parameters. When you select a value in the following chain for DestinationResource, the more to the right the selected value is ordered, the more parameters you must specify.
         Sequence: `Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk`
         Examples:
         If you set `DestinationResource` to `DataDisk`, take note of the following items:
-        If you set `ResourceType` to `disk` to query the categories of data disks that are not attached to ECS instances, you do not need to specify `InstanceType`.
-        If you set `ResourceType` to `instance` to query the categories of data disks that are purchased together with ECS instances, you must specify `InstanceType` and `SystemDiskCategory` due to instance type-specific limits on system disks and data disks.
+        If you set `ResourceType` to `disk` to query the categories of data disks regardless of whether the disks are attached to ECS instances, you can leave `InstanceType` empty.
+        If you set `ResourceType` to `instance` to query the categories of data disks that are attached to ECS instances, you must specify `InstanceType` and `DataDiskCategory` due to instance type-specific limits on data disks.
         If you set `DestinationResource` to `SystemDisk` and `ResourceType` to `instance`, you must specify `InstanceType` due to instance type-specific limits on system disks.
         If you set `DestinationResource` to `InstanceType`, we recommend that you specify `IoOptimized` and `InstanceType`.
-        If you want to query the available ecs.g5.large resources in all zones of the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
-        If you want to query the zones where ecs.g5.large resources are available in the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
+        To query the ecs.g5.large instance type in all zones of the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
+        To query the zones in which the ecs.g5.large instance type is available in the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
+        *To query the zones in which the ecs.g5.large instance type is available in the China (Hangzhou) region, specify parameters as follows:**\
+        "RegionId": "cn-hangzhou",
+        "DestinationResource": "Zone",
+        "InstanceType": "ecs.g5.large"
+        *To query the ecs.g5.large instance type in all zones of the China (Hangzhou) region, specify parameters as follows:**\
+        "RegionId": "cn-hangzhou",
+        "DestinationResource": "InstanceType""InstanceType": "ecs.g5.large"
+        *To query data disks of the ultra disk category in Hangzhou Zone B regardless of whether the disks are attached to ECS instances, specify parameters as follows:**\
+        "RegionId": "cn-hangzhou",
+        "ZoneId": "cn-hangzhou-b",
+        "ResourceType": "disk",
+        "DestinationResource": "DataDisk"
+        *To query data disks purchased together with ecs.g7.large instances that reside in Hangzhou Zone B and use Enterprise SSDs (ESSDs) as system disks, specify parameters as follows:**\
+        "RegionId": "cn-hangzhou",
+        "ZoneId": "cn-hangzhou-b",
+        "ResourceType": "instance",
+        "InstanceType": "ecs.g7.large",
+        "DestinationResource": "SystemDisk",
+        "SystemDiskCategory": "cloud_essd"
         
         @param request: DescribeAvailableResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19293,16 +17907,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAvailableResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeAvailableResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeAvailableResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_available_resource(
         self,
@@ -19311,17 +17919,35 @@ class Client(OpenApiClient):
         """
         @summary Queries resources in a zone. You can query the resources available in a zone before you create Elastic Compute Service (ECS) instances by calling the RunInstances operation or before you change instance types by calling the ModifyInstanceSpec operation.
         
-        @description ## [](#)Usage notes
-        The value of `DestinationResource` determines whether you need to specify additional parameters. When you select a value in the following chain for DestinationResource, the more to the right the selected value is ordered, the more parameters you must specify.
+        @description The value of `DestinationResource` determines whether you need to specify additional parameters. When you select a value in the following chain for DestinationResource, the more to the right the selected value is ordered, the more parameters you must specify.
         Sequence: `Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk`
         Examples:
         If you set `DestinationResource` to `DataDisk`, take note of the following items:
-        If you set `ResourceType` to `disk` to query the categories of data disks that are not attached to ECS instances, you do not need to specify `InstanceType`.
-        If you set `ResourceType` to `instance` to query the categories of data disks that are purchased together with ECS instances, you must specify `InstanceType` and `SystemDiskCategory` due to instance type-specific limits on system disks and data disks.
+        If you set `ResourceType` to `disk` to query the categories of data disks regardless of whether the disks are attached to ECS instances, you can leave `InstanceType` empty.
+        If you set `ResourceType` to `instance` to query the categories of data disks that are attached to ECS instances, you must specify `InstanceType` and `DataDiskCategory` due to instance type-specific limits on data disks.
         If you set `DestinationResource` to `SystemDisk` and `ResourceType` to `instance`, you must specify `InstanceType` due to instance type-specific limits on system disks.
         If you set `DestinationResource` to `InstanceType`, we recommend that you specify `IoOptimized` and `InstanceType`.
-        If you want to query the available ecs.g5.large resources in all zones of the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
-        If you want to query the zones where ecs.g5.large resources are available in the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
+        To query the ecs.g5.large instance type in all zones of the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
+        To query the zones in which the ecs.g5.large instance type is available in the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
+        *To query the zones in which the ecs.g5.large instance type is available in the China (Hangzhou) region, specify parameters as follows:**\
+        "RegionId": "cn-hangzhou",
+        "DestinationResource": "Zone",
+        "InstanceType": "ecs.g5.large"
+        *To query the ecs.g5.large instance type in all zones of the China (Hangzhou) region, specify parameters as follows:**\
+        "RegionId": "cn-hangzhou",
+        "DestinationResource": "InstanceType""InstanceType": "ecs.g5.large"
+        *To query data disks of the ultra disk category in Hangzhou Zone B regardless of whether the disks are attached to ECS instances, specify parameters as follows:**\
+        "RegionId": "cn-hangzhou",
+        "ZoneId": "cn-hangzhou-b",
+        "ResourceType": "disk",
+        "DestinationResource": "DataDisk"
+        *To query data disks purchased together with ecs.g7.large instances that reside in Hangzhou Zone B and use Enterprise SSDs (ESSDs) as system disks, specify parameters as follows:**\
+        "RegionId": "cn-hangzhou",
+        "ZoneId": "cn-hangzhou-b",
+        "ResourceType": "instance",
+        "InstanceType": "ecs.g7.large",
+        "DestinationResource": "SystemDisk",
+        "SystemDiskCategory": "cloud_essd"
         
         @param request: DescribeAvailableResourceRequest
         @return: DescribeAvailableResourceResponse
@@ -19336,17 +17962,35 @@ class Client(OpenApiClient):
         """
         @summary Queries resources in a zone. You can query the resources available in a zone before you create Elastic Compute Service (ECS) instances by calling the RunInstances operation or before you change instance types by calling the ModifyInstanceSpec operation.
         
-        @description ## [](#)Usage notes
-        The value of `DestinationResource` determines whether you need to specify additional parameters. When you select a value in the following chain for DestinationResource, the more to the right the selected value is ordered, the more parameters you must specify.
+        @description The value of `DestinationResource` determines whether you need to specify additional parameters. When you select a value in the following chain for DestinationResource, the more to the right the selected value is ordered, the more parameters you must specify.
         Sequence: `Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk`
         Examples:
         If you set `DestinationResource` to `DataDisk`, take note of the following items:
-        If you set `ResourceType` to `disk` to query the categories of data disks that are not attached to ECS instances, you do not need to specify `InstanceType`.
-        If you set `ResourceType` to `instance` to query the categories of data disks that are purchased together with ECS instances, you must specify `InstanceType` and `SystemDiskCategory` due to instance type-specific limits on system disks and data disks.
+        If you set `ResourceType` to `disk` to query the categories of data disks regardless of whether the disks are attached to ECS instances, you can leave `InstanceType` empty.
+        If you set `ResourceType` to `instance` to query the categories of data disks that are attached to ECS instances, you must specify `InstanceType` and `DataDiskCategory` due to instance type-specific limits on data disks.
         If you set `DestinationResource` to `SystemDisk` and `ResourceType` to `instance`, you must specify `InstanceType` due to instance type-specific limits on system disks.
         If you set `DestinationResource` to `InstanceType`, we recommend that you specify `IoOptimized` and `InstanceType`.
-        If you want to query the available ecs.g5.large resources in all zones of the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
-        If you want to query the zones where ecs.g5.large resources are available in the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
+        To query the ecs.g5.large instance type in all zones of the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
+        To query the zones in which the ecs.g5.large instance type is available in the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
+        *To query the zones in which the ecs.g5.large instance type is available in the China (Hangzhou) region, specify parameters as follows:**\
+        "RegionId": "cn-hangzhou",
+        "DestinationResource": "Zone",
+        "InstanceType": "ecs.g5.large"
+        *To query the ecs.g5.large instance type in all zones of the China (Hangzhou) region, specify parameters as follows:**\
+        "RegionId": "cn-hangzhou",
+        "DestinationResource": "InstanceType""InstanceType": "ecs.g5.large"
+        *To query data disks of the ultra disk category in Hangzhou Zone B regardless of whether the disks are attached to ECS instances, specify parameters as follows:**\
+        "RegionId": "cn-hangzhou",
+        "ZoneId": "cn-hangzhou-b",
+        "ResourceType": "disk",
+        "DestinationResource": "DataDisk"
+        *To query data disks purchased together with ecs.g7.large instances that reside in Hangzhou Zone B and use Enterprise SSDs (ESSDs) as system disks, specify parameters as follows:**\
+        "RegionId": "cn-hangzhou",
+        "ZoneId": "cn-hangzhou-b",
+        "ResourceType": "instance",
+        "InstanceType": "ecs.g7.large",
+        "DestinationResource": "SystemDisk",
+        "SystemDiskCategory": "cloud_essd"
         
         @param request: DescribeAvailableResourceRequest
         @return: DescribeAvailableResourceResponse
@@ -19402,16 +18046,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeBandwidthLimitationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeBandwidthLimitationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeBandwidthLimitationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_bandwidth_limitation_with_options_async(
         self,
@@ -19461,16 +18099,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeBandwidthLimitationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeBandwidthLimitationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeBandwidthLimitationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_bandwidth_limitation(
         self,
@@ -19545,16 +18177,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeBandwidthPackagesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeBandwidthPackagesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeBandwidthPackagesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_bandwidth_packages_with_options_async(
         self,
@@ -19603,16 +18229,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeBandwidthPackagesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeBandwidthPackagesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeBandwidthPackagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_bandwidth_packages(
         self,
@@ -19686,16 +18306,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeCapacityReservationInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeCapacityReservationInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeCapacityReservationInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_capacity_reservation_instances_with_options_async(
         self,
@@ -19741,16 +18355,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeCapacityReservationInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeCapacityReservationInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeCapacityReservationInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_capacity_reservation_instances(
         self,
@@ -19836,16 +18444,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeCapacityReservationsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeCapacityReservationsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeCapacityReservationsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_capacity_reservations_with_options_async(
         self,
@@ -19905,16 +18507,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeCapacityReservationsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeCapacityReservationsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeCapacityReservationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_capacity_reservations(
         self,
@@ -19991,16 +18587,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeClassicLinkInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeClassicLinkInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeClassicLinkInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_classic_link_instances_with_options_async(
         self,
@@ -20051,16 +18641,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeClassicLinkInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeClassicLinkInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeClassicLinkInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_classic_link_instances(
         self,
@@ -20138,16 +18722,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeCloudAssistantSettingsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeCloudAssistantSettingsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeCloudAssistantSettingsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cloud_assistant_settings_with_options_async(
         self,
@@ -20189,16 +18767,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeCloudAssistantSettingsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeCloudAssistantSettingsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeCloudAssistantSettingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cloud_assistant_settings(
         self,
@@ -20282,16 +18854,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeCloudAssistantStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeCloudAssistantStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeCloudAssistantStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cloud_assistant_status_with_options_async(
         self,
@@ -20349,16 +18915,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeCloudAssistantStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeCloudAssistantStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeCloudAssistantStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cloud_assistant_status(
         self,
@@ -20433,16 +18993,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeClustersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeClustersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeClustersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_clusters_with_options_async(
         self,
@@ -20483,16 +19037,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeClustersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeClustersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeClustersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_clusters(
         self,
@@ -20592,16 +19140,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeCommandsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeCommandsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeCommandsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_commands_with_options_async(
         self,
@@ -20673,16 +19215,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeCommandsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeCommandsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeCommandsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_commands(
         self,
@@ -20724,7 +19260,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDedicatedHostAutoRenewResponse:
         """
-        @summary Queries the auto-renewal status of subscription dedicated hosts.
+        @summary Queries the auto-renewal status of one or more subscription dedicated hosts.
         
         @param request: DescribeDedicatedHostAutoRenewRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20758,16 +19294,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDedicatedHostAutoRenewResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDedicatedHostAutoRenewResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDedicatedHostAutoRenewResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_dedicated_host_auto_renew_with_options_async(
         self,
@@ -20775,7 +19305,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDedicatedHostAutoRenewResponse:
         """
-        @summary Queries the auto-renewal status of subscription dedicated hosts.
+        @summary Queries the auto-renewal status of one or more subscription dedicated hosts.
         
         @param request: DescribeDedicatedHostAutoRenewRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20809,23 +19339,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDedicatedHostAutoRenewResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDedicatedHostAutoRenewResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDedicatedHostAutoRenewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_dedicated_host_auto_renew(
         self,
         request: ecs_20140526_models.DescribeDedicatedHostAutoRenewRequest,
     ) -> ecs_20140526_models.DescribeDedicatedHostAutoRenewResponse:
         """
-        @summary Queries the auto-renewal status of subscription dedicated hosts.
+        @summary Queries the auto-renewal status of one or more subscription dedicated hosts.
         
         @param request: DescribeDedicatedHostAutoRenewRequest
         @return: DescribeDedicatedHostAutoRenewResponse
@@ -20838,7 +19362,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDedicatedHostAutoRenewRequest,
     ) -> ecs_20140526_models.DescribeDedicatedHostAutoRenewResponse:
         """
-        @summary Queries the auto-renewal status of subscription dedicated hosts.
+        @summary Queries the auto-renewal status of one or more subscription dedicated hosts.
         
         @param request: DescribeDedicatedHostAutoRenewRequest
         @return: DescribeDedicatedHostAutoRenewResponse
@@ -20905,16 +19429,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDedicatedHostClustersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDedicatedHostClustersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDedicatedHostClustersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_dedicated_host_clusters_with_options_async(
         self,
@@ -20975,16 +19493,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDedicatedHostClustersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDedicatedHostClustersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDedicatedHostClustersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_dedicated_host_clusters(
         self,
@@ -21060,16 +19572,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDedicatedHostTypesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDedicatedHostTypesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDedicatedHostTypesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_dedicated_host_types_with_options_async(
         self,
@@ -21113,16 +19619,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDedicatedHostTypesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDedicatedHostTypesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDedicatedHostTypesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_dedicated_host_types(
         self,
@@ -21221,16 +19721,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDedicatedHostsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDedicatedHostsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDedicatedHostsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_dedicated_hosts_with_options_async(
         self,
@@ -21303,16 +19797,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDedicatedHostsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDedicatedHostsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDedicatedHostsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_dedicated_hosts(
         self,
@@ -21349,206 +19837,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dedicated_hosts_with_options_async(request, runtime)
-
-    def describe_demands_with_options(
-        self,
-        request: ecs_20140526_models.DescribeDemandsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ecs_20140526_models.DescribeDemandsResponse:
-        """
-        @deprecated OpenAPI DescribeDemands is deprecated, please use Ecs::2014-05-26::DescribeCapacityReservations instead.
-        
-        @summary Queries the delivery and usage states of filed resources.
-        
-        @description You can call this operation to query the details of resources that you filed with Alibaba Cloud, including the types, delivery status, and consumption details of the resources.
-        By default, the demands for I/O optimized instances of the Virtual Private Cloud (VPC) type are queried.
-        For information about how to create (CreateDemand), modify (ModifyDemand), and delete (DeleteDemand) demands for ECS resources, contact your account manager.
-        
-        @param request: DescribeDemandsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDemandsResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.demand_id):
-            query['DemandId'] = request.demand_id
-        if not UtilClient.is_unset(request.demand_status):
-            query['DemandStatus'] = request.demand_status
-        if not UtilClient.is_unset(request.demand_type):
-            query['DemandType'] = request.demand_type
-        if not UtilClient.is_unset(request.dry_run):
-            query['DryRun'] = request.dry_run
-        if not UtilClient.is_unset(request.instance_charge_type):
-            query['InstanceChargeType'] = request.instance_charge_type
-        if not UtilClient.is_unset(request.instance_type):
-            query['InstanceType'] = request.instance_type
-        if not UtilClient.is_unset(request.instance_type_family):
-            query['InstanceTypeFamily'] = request.instance_type_family
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.tag):
-            query['Tag'] = request.tag
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDemands',
-            version='2014-05-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDemandsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDemandsResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def describe_demands_with_options_async(
-        self,
-        request: ecs_20140526_models.DescribeDemandsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ecs_20140526_models.DescribeDemandsResponse:
-        """
-        @deprecated OpenAPI DescribeDemands is deprecated, please use Ecs::2014-05-26::DescribeCapacityReservations instead.
-        
-        @summary Queries the delivery and usage states of filed resources.
-        
-        @description You can call this operation to query the details of resources that you filed with Alibaba Cloud, including the types, delivery status, and consumption details of the resources.
-        By default, the demands for I/O optimized instances of the Virtual Private Cloud (VPC) type are queried.
-        For information about how to create (CreateDemand), modify (ModifyDemand), and delete (DeleteDemand) demands for ECS resources, contact your account manager.
-        
-        @param request: DescribeDemandsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDemandsResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.demand_id):
-            query['DemandId'] = request.demand_id
-        if not UtilClient.is_unset(request.demand_status):
-            query['DemandStatus'] = request.demand_status
-        if not UtilClient.is_unset(request.demand_type):
-            query['DemandType'] = request.demand_type
-        if not UtilClient.is_unset(request.dry_run):
-            query['DryRun'] = request.dry_run
-        if not UtilClient.is_unset(request.instance_charge_type):
-            query['InstanceChargeType'] = request.instance_charge_type
-        if not UtilClient.is_unset(request.instance_type):
-            query['InstanceType'] = request.instance_type
-        if not UtilClient.is_unset(request.instance_type_family):
-            query['InstanceTypeFamily'] = request.instance_type_family
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.tag):
-            query['Tag'] = request.tag
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDemands',
-            version='2014-05-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDemandsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDemandsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def describe_demands(
-        self,
-        request: ecs_20140526_models.DescribeDemandsRequest,
-    ) -> ecs_20140526_models.DescribeDemandsResponse:
-        """
-        @deprecated OpenAPI DescribeDemands is deprecated, please use Ecs::2014-05-26::DescribeCapacityReservations instead.
-        
-        @summary Queries the delivery and usage states of filed resources.
-        
-        @description You can call this operation to query the details of resources that you filed with Alibaba Cloud, including the types, delivery status, and consumption details of the resources.
-        By default, the demands for I/O optimized instances of the Virtual Private Cloud (VPC) type are queried.
-        For information about how to create (CreateDemand), modify (ModifyDemand), and delete (DeleteDemand) demands for ECS resources, contact your account manager.
-        
-        @param request: DescribeDemandsRequest
-        @return: DescribeDemandsResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_demands_with_options(request, runtime)
-
-    async def describe_demands_async(
-        self,
-        request: ecs_20140526_models.DescribeDemandsRequest,
-    ) -> ecs_20140526_models.DescribeDemandsResponse:
-        """
-        @deprecated OpenAPI DescribeDemands is deprecated, please use Ecs::2014-05-26::DescribeCapacityReservations instead.
-        
-        @summary Queries the delivery and usage states of filed resources.
-        
-        @description You can call this operation to query the details of resources that you filed with Alibaba Cloud, including the types, delivery status, and consumption details of the resources.
-        By default, the demands for I/O optimized instances of the Virtual Private Cloud (VPC) type are queried.
-        For information about how to create (CreateDemand), modify (ModifyDemand), and delete (DeleteDemand) demands for ECS resources, contact your account manager.
-        
-        @param request: DescribeDemandsRequest
-        @return: DescribeDemandsResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_demands_with_options_async(request, runtime)
 
     def describe_deployment_set_supported_instance_type_family_with_options(
         self,
@@ -21593,16 +19881,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDeploymentSetSupportedInstanceTypeFamilyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDeploymentSetSupportedInstanceTypeFamilyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDeploymentSetSupportedInstanceTypeFamilyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_deployment_set_supported_instance_type_family_with_options_async(
         self,
@@ -21647,16 +19929,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDeploymentSetSupportedInstanceTypeFamilyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDeploymentSetSupportedInstanceTypeFamilyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDeploymentSetSupportedInstanceTypeFamilyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_deployment_set_supported_instance_type_family(
         self,
@@ -21744,16 +20020,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDeploymentSetsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDeploymentSetsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDeploymentSetsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_deployment_sets_with_options_async(
         self,
@@ -21809,16 +20079,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDeploymentSetsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDeploymentSetsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDeploymentSetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_deployment_sets(
         self,
@@ -21886,16 +20150,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiagnosticMetricSetsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiagnosticMetricSetsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiagnosticMetricSetsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_diagnostic_metric_sets_with_options_async(
         self,
@@ -21937,16 +20195,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiagnosticMetricSetsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiagnosticMetricSetsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiagnosticMetricSetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_diagnostic_metric_sets(
         self,
@@ -22012,16 +20264,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiagnosticMetricsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiagnosticMetricsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiagnosticMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_diagnostic_metrics_with_options_async(
         self,
@@ -22061,16 +20307,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiagnosticMetricsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiagnosticMetricsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiagnosticMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_diagnostic_metrics(
         self,
@@ -22130,16 +20370,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiagnosticReportAttributesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiagnosticReportAttributesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiagnosticReportAttributesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_diagnostic_report_attributes_with_options_async(
         self,
@@ -22173,16 +20407,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiagnosticReportAttributesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiagnosticReportAttributesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiagnosticReportAttributesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_diagnostic_report_attributes(
         self,
@@ -22252,16 +20480,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiagnosticReportsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiagnosticReportsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiagnosticReportsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_diagnostic_reports_with_options_async(
         self,
@@ -22305,16 +20527,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiagnosticReportsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiagnosticReportsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiagnosticReportsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_diagnostic_reports(
         self,
@@ -22374,16 +20590,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiskDefaultKMSKeyIdResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiskDefaultKMSKeyIdResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiskDefaultKMSKeyIdResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_disk_default_kmskey_id_with_options_async(
         self,
@@ -22417,16 +20627,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiskDefaultKMSKeyIdResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiskDefaultKMSKeyIdResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiskDefaultKMSKeyIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_disk_default_kmskey_id(
         self,
@@ -22486,16 +20690,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiskEncryptionByDefaultStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiskEncryptionByDefaultStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiskEncryptionByDefaultStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_disk_encryption_by_default_status_with_options_async(
         self,
@@ -22529,16 +20727,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiskEncryptionByDefaultStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiskEncryptionByDefaultStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiskEncryptionByDefaultStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_disk_encryption_by_default_status(
         self,
@@ -22624,16 +20816,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiskMonitorDataResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiskMonitorDataResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiskMonitorDataResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_disk_monitor_data_with_options_async(
         self,
@@ -22693,16 +20879,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiskMonitorDataResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDiskMonitorDataResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiskMonitorDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_disk_monitor_data(
         self,
@@ -22860,16 +21040,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDisksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDisksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDisksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_disks_with_options_async(
         self,
@@ -22973,16 +21147,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDisksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDisksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDisksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_disks(
         self,
@@ -23085,16 +21253,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDisksFullStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDisksFullStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDisksFullStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_disks_full_status_with_options_async(
         self,
@@ -23159,16 +21321,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDisksFullStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeDisksFullStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDisksFullStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_disks_full_status(
         self,
@@ -23263,16 +21419,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeEipAddressesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeEipAddressesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeEipAddressesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_eip_addresses_with_options_async(
         self,
@@ -23335,16 +21485,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeEipAddressesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeEipAddressesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeEipAddressesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_eip_addresses(
         self,
@@ -23421,16 +21565,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeEipMonitorDataResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeEipMonitorDataResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeEipMonitorDataResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_eip_monitor_data_with_options_async(
         self,
@@ -23479,16 +21617,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeEipMonitorDataResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeEipMonitorDataResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeEipMonitorDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_eip_monitor_data(
         self,
@@ -23558,16 +21690,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeElasticityAssuranceAutoRenewAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeElasticityAssuranceAutoRenewAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeElasticityAssuranceAutoRenewAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_elasticity_assurance_auto_renew_attribute_with_options_async(
         self,
@@ -23609,16 +21735,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeElasticityAssuranceAutoRenewAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeElasticityAssuranceAutoRenewAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeElasticityAssuranceAutoRenewAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_elasticity_assurance_auto_renew_attribute(
         self,
@@ -23692,16 +21812,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeElasticityAssuranceInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeElasticityAssuranceInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeElasticityAssuranceInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_elasticity_assurance_instances_with_options_async(
         self,
@@ -23749,16 +21863,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeElasticityAssuranceInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeElasticityAssuranceInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeElasticityAssuranceInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_elasticity_assurance_instances(
         self,
@@ -23850,16 +21958,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeElasticityAssurancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeElasticityAssurancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeElasticityAssurancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_elasticity_assurances_with_options_async(
         self,
@@ -23921,16 +22023,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeElasticityAssurancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeElasticityAssurancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeElasticityAssurancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_elasticity_assurances(
         self,
@@ -24011,16 +22107,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeEniMonitorDataResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeEniMonitorDataResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeEniMonitorDataResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_eni_monitor_data_with_options_async(
         self,
@@ -24075,16 +22165,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeEniMonitorDataResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeEniMonitorDataResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeEniMonitorDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_eni_monitor_data(
         self,
@@ -24169,16 +22253,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeForwardTableEntriesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeForwardTableEntriesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeForwardTableEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_forward_table_entries_with_options_async(
         self,
@@ -24227,16 +22305,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeForwardTableEntriesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeForwardTableEntriesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeForwardTableEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_forward_table_entries(
         self,
@@ -24311,16 +22383,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeHaVipsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeHaVipsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeHaVipsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_ha_vips_with_options_async(
         self,
@@ -24367,16 +22433,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeHaVipsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeHaVipsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeHaVipsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_ha_vips(
         self,
@@ -24412,7 +22472,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeHpcClustersResponse:
         """
-        @summary The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The *token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        @summary The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The \\\\*token\\*\\* can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence]\\(~~25693~~).
         
         @param request: DescribeHpcClustersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24454,16 +22514,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeHpcClustersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeHpcClustersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeHpcClustersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_hpc_clusters_with_options_async(
         self,
@@ -24471,7 +22525,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeHpcClustersResponse:
         """
-        @summary The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The *token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        @summary The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The \\\\*token\\*\\* can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence]\\(~~25693~~).
         
         @param request: DescribeHpcClustersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24513,23 +22567,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeHpcClustersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeHpcClustersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeHpcClustersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_hpc_clusters(
         self,
         request: ecs_20140526_models.DescribeHpcClustersRequest,
     ) -> ecs_20140526_models.DescribeHpcClustersResponse:
         """
-        @summary The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The *token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        @summary The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The \\\\*token\\*\\* can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence]\\(~~25693~~).
         
         @param request: DescribeHpcClustersRequest
         @return: DescribeHpcClustersResponse
@@ -24542,7 +22590,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeHpcClustersRequest,
     ) -> ecs_20140526_models.DescribeHpcClustersResponse:
         """
-        @summary The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The *token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        @summary The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The \\\\*token\\*\\* can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence]\\(~~25693~~).
         
         @param request: DescribeHpcClustersRequest
         @return: DescribeHpcClustersResponse
@@ -24556,7 +22604,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeImageComponentsResponse:
         """
-        @summary Queries the information about one or more image components.
+        @summary Queries the details of one or more image components.
         
         @description You can use `NextToken` to configure the query token. Set the value to the `NextToken` value that is returned in the previous call to the DescribeImageComponents operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
         
@@ -24614,16 +22662,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImageComponentsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImageComponentsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeImageComponentsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_image_components_with_options_async(
         self,
@@ -24631,7 +22673,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeImageComponentsResponse:
         """
-        @summary Queries the information about one or more image components.
+        @summary Queries the details of one or more image components.
         
         @description You can use `NextToken` to configure the query token. Set the value to the `NextToken` value that is returned in the previous call to the DescribeImageComponents operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
         
@@ -24689,23 +22731,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImageComponentsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImageComponentsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeImageComponentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_image_components(
         self,
         request: ecs_20140526_models.DescribeImageComponentsRequest,
     ) -> ecs_20140526_models.DescribeImageComponentsResponse:
         """
-        @summary Queries the information about one or more image components.
+        @summary Queries the details of one or more image components.
         
         @description You can use `NextToken` to configure the query token. Set the value to the `NextToken` value that is returned in the previous call to the DescribeImageComponents operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
         
@@ -24720,7 +22756,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeImageComponentsRequest,
     ) -> ecs_20140526_models.DescribeImageComponentsResponse:
         """
-        @summary Queries the information about one or more image components.
+        @summary Queries the details of one or more image components.
         
         @description You can use `NextToken` to configure the query token. Set the value to the `NextToken` value that is returned in the previous call to the DescribeImageComponents operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
         
@@ -24773,16 +22809,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImageFromFamilyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImageFromFamilyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeImageFromFamilyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_image_from_family_with_options_async(
         self,
@@ -24827,16 +22857,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImageFromFamilyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImageFromFamilyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeImageFromFamilyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_image_from_family(
         self,
@@ -24927,16 +22951,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImagePipelineExecutionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImagePipelineExecutionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeImagePipelineExecutionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_image_pipeline_executions_with_options_async(
         self,
@@ -24995,16 +23013,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImagePipelineExecutionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImagePipelineExecutionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeImagePipelineExecutionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_image_pipeline_executions(
         self,
@@ -25098,16 +23110,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImagePipelinesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImagePipelinesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeImagePipelinesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_image_pipelines_with_options_async(
         self,
@@ -25165,16 +23171,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImagePipelinesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImagePipelinesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeImagePipelinesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_image_pipelines(
         self,
@@ -25250,16 +23250,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImageSharePermissionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImageSharePermissionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeImageSharePermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_image_share_permission_with_options_async(
         self,
@@ -25305,16 +23299,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImageSharePermissionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImageSharePermissionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeImageSharePermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_image_share_permission(
         self,
@@ -25348,7 +23336,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeImageSupportInstanceTypesResponse:
         """
-        @summary Queries the ECS instance types supported by an image.
+        @summary Queries the Elastic Compute Service (ECS) instance types supported by an image.
         
         @param request: DescribeImageSupportInstanceTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25384,16 +23372,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImageSupportInstanceTypesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImageSupportInstanceTypesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeImageSupportInstanceTypesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_image_support_instance_types_with_options_async(
         self,
@@ -25401,7 +23383,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeImageSupportInstanceTypesResponse:
         """
-        @summary Queries the ECS instance types supported by an image.
+        @summary Queries the Elastic Compute Service (ECS) instance types supported by an image.
         
         @param request: DescribeImageSupportInstanceTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25437,23 +23419,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImageSupportInstanceTypesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImageSupportInstanceTypesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeImageSupportInstanceTypesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_image_support_instance_types(
         self,
         request: ecs_20140526_models.DescribeImageSupportInstanceTypesRequest,
     ) -> ecs_20140526_models.DescribeImageSupportInstanceTypesResponse:
         """
-        @summary Queries the ECS instance types supported by an image.
+        @summary Queries the Elastic Compute Service (ECS) instance types supported by an image.
         
         @param request: DescribeImageSupportInstanceTypesRequest
         @return: DescribeImageSupportInstanceTypesResponse
@@ -25466,7 +23442,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeImageSupportInstanceTypesRequest,
     ) -> ecs_20140526_models.DescribeImageSupportInstanceTypesResponse:
         """
-        @summary Queries the ECS instance types supported by an image.
+        @summary Queries the Elastic Compute Service (ECS) instance types supported by an image.
         
         @param request: DescribeImageSupportInstanceTypesRequest
         @return: DescribeImageSupportInstanceTypesResponse
@@ -25480,7 +23456,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeImagesResponse:
         """
-        @summary Queries image resources that you can use. You can specify parameters, such as the image ID and the scenario in which the image is used in the request.
+        @summary Queries image resources that you can use. You can specify parameters, such as ImageId, ActionType, and Filter, in the request.
         
         @description ## [](#)Usage notes
         You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
@@ -25562,16 +23538,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImagesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImagesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeImagesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_images_with_options_async(
         self,
@@ -25579,7 +23549,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeImagesResponse:
         """
-        @summary Queries image resources that you can use. You can specify parameters, such as the image ID and the scenario in which the image is used in the request.
+        @summary Queries image resources that you can use. You can specify parameters, such as ImageId, ActionType, and Filter, in the request.
         
         @description ## [](#)Usage notes
         You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
@@ -25661,23 +23631,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImagesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeImagesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeImagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_images(
         self,
         request: ecs_20140526_models.DescribeImagesRequest,
     ) -> ecs_20140526_models.DescribeImagesResponse:
         """
-        @summary Queries image resources that you can use. You can specify parameters, such as the image ID and the scenario in which the image is used in the request.
+        @summary Queries image resources that you can use. You can specify parameters, such as ImageId, ActionType, and Filter, in the request.
         
         @description ## [](#)Usage notes
         You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
@@ -25696,7 +23660,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeImagesRequest,
     ) -> ecs_20140526_models.DescribeImagesResponse:
         """
-        @summary Queries image resources that you can use. You can specify parameters, such as the image ID and the scenario in which the image is used in the request.
+        @summary Queries image resources that you can use. You can specify parameters, such as ImageId, ActionType, and Filter, in the request.
         
         @description ## [](#)Usage notes
         You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
@@ -25758,16 +23722,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceAttachmentAttributesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceAttachmentAttributesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceAttachmentAttributesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_attachment_attributes_with_options_async(
         self,
@@ -25817,16 +23775,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceAttachmentAttributesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceAttachmentAttributesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceAttachmentAttributesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_attachment_attributes(
         self,
@@ -25900,16 +23852,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_attribute_with_options_async(
         self,
@@ -25949,16 +23895,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_attribute(
         self,
@@ -26035,16 +23975,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceAutoRenewAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceAutoRenewAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceAutoRenewAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_auto_renew_attribute_with_options_async(
         self,
@@ -26095,16 +24029,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceAutoRenewAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceAutoRenewAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceAutoRenewAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_auto_renew_attribute(
         self,
@@ -26215,16 +24143,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceHistoryEventsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceHistoryEventsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceHistoryEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_history_events_with_options_async(
         self,
@@ -26303,16 +24225,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceHistoryEventsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceHistoryEventsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceHistoryEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_history_events(
         self,
@@ -26394,16 +24310,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceMaintenanceAttributesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceMaintenanceAttributesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceMaintenanceAttributesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_maintenance_attributes_with_options_async(
         self,
@@ -26453,16 +24363,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceMaintenanceAttributesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceMaintenanceAttributesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceMaintenanceAttributesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_maintenance_attributes(
         self,
@@ -26548,16 +24452,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceModificationPriceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceModificationPriceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceModificationPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_modification_price_with_options_async(
         self,
@@ -26609,16 +24507,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceModificationPriceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceModificationPriceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceModificationPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_modification_price(
         self,
@@ -26705,16 +24597,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceMonitorDataResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceMonitorDataResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceMonitorDataResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_monitor_data_with_options_async(
         self,
@@ -26767,16 +24653,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceMonitorDataResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceMonitorDataResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceMonitorDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_monitor_data(
         self,
@@ -26865,16 +24745,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceRamRoleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceRamRoleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceRamRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_ram_role_with_options_async(
         self,
@@ -26923,16 +24797,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceRamRoleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceRamRoleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceRamRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_ram_role(
         self,
@@ -27028,16 +24896,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_status_with_options_async(
         self,
@@ -27101,16 +24963,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_status(
         self,
@@ -27204,16 +25060,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceTopologyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceTopologyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceTopologyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_topology_with_options_async(
         self,
@@ -27253,16 +25103,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceTopologyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceTopologyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceTopologyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_topology(
         self,
@@ -27330,16 +25174,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceTypeFamiliesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceTypeFamiliesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceTypeFamiliesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_type_families_with_options_async(
         self,
@@ -27381,16 +25219,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceTypeFamiliesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceTypeFamiliesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceTypeFamiliesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_type_families(
         self,
@@ -27424,14 +25256,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceTypesResponse:
         """
-        @summary Queries the details of all instance types or a specific instance type provided by Elastic Compute Service (ECS).
+        @summary Queries the details of all instance types or a specific instance type provided by Elastic Compute Service (ECS). You can understand the specifications and performance of instance types based on the response and select an instance type that meets your business requirements.
         
-        @description ## [](#)Usage notes
-        Take note of the following items:
-        MaxResults specifies the maximum number of entries per page. The maximum value of this parameter is changed from 1600 to 100. As of November 15, 2023, only 100 can be used as the maximum value of MaxResults. If you called the DescribeInstanceTypes operation in 2022, you can use 1600 as the maximum value before November 15, 2023. If you do not specify NextToken when you call the DescribeInstanceTypes operation, only the first page of results that contains up to 100 entries is returned. If you want to retrieve more results, specify NextToken to perform paged queries, or specify filter conditions to filter results.
-        We recommend that you specify MaxResults and NextToken to perform paged queries. The first time you call the DescribeInstanceTypes operation, set MaxResults to limit the maximum number of entries that can be returned in a single call. If the number of entries to return exceeds the specified MaxResults value, the response includes a NextToken value. You can set NextToken to the return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
+        @description    **Paged query**: You can set MaxResults to specify the maximum number of entries to return in a single call. If the number of entries to return exceeds the specified MaxResults value, the response includes a NextToken value. You can set NextToken to the return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
+        When you call this operation, if you do not set NextToken to paginate the results, only the first page of results is returned by default and includes a maximum of 100 entries. To retrieve further pages of results, set NextToken or pass filter conditions in your requests to DescribeInstanceTypes.
+        >  MaxResults specifies the maximum number of entries per page. The maximum value of this parameter is changed from 1600 to 100 for all users as of November 15, 2023. If you called the DescribeInstanceTypes operation in 2022, you can use 1600 as the maximum value before November 15, 2023.
         The DescribeInstanceTypes operation is used to query only the specifications and performance information of instance types. To query instance types that are available in a specific region, call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation.
-        To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+        To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl).
         
         @param request: DescribeInstanceTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27547,16 +25378,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceTypesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceTypesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceTypesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_types_with_options_async(
         self,
@@ -27564,14 +25389,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceTypesResponse:
         """
-        @summary Queries the details of all instance types or a specific instance type provided by Elastic Compute Service (ECS).
+        @summary Queries the details of all instance types or a specific instance type provided by Elastic Compute Service (ECS). You can understand the specifications and performance of instance types based on the response and select an instance type that meets your business requirements.
         
-        @description ## [](#)Usage notes
-        Take note of the following items:
-        MaxResults specifies the maximum number of entries per page. The maximum value of this parameter is changed from 1600 to 100. As of November 15, 2023, only 100 can be used as the maximum value of MaxResults. If you called the DescribeInstanceTypes operation in 2022, you can use 1600 as the maximum value before November 15, 2023. If you do not specify NextToken when you call the DescribeInstanceTypes operation, only the first page of results that contains up to 100 entries is returned. If you want to retrieve more results, specify NextToken to perform paged queries, or specify filter conditions to filter results.
-        We recommend that you specify MaxResults and NextToken to perform paged queries. The first time you call the DescribeInstanceTypes operation, set MaxResults to limit the maximum number of entries that can be returned in a single call. If the number of entries to return exceeds the specified MaxResults value, the response includes a NextToken value. You can set NextToken to the return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
+        @description    **Paged query**: You can set MaxResults to specify the maximum number of entries to return in a single call. If the number of entries to return exceeds the specified MaxResults value, the response includes a NextToken value. You can set NextToken to the return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
+        When you call this operation, if you do not set NextToken to paginate the results, only the first page of results is returned by default and includes a maximum of 100 entries. To retrieve further pages of results, set NextToken or pass filter conditions in your requests to DescribeInstanceTypes.
+        >  MaxResults specifies the maximum number of entries per page. The maximum value of this parameter is changed from 1600 to 100 for all users as of November 15, 2023. If you called the DescribeInstanceTypes operation in 2022, you can use 1600 as the maximum value before November 15, 2023.
         The DescribeInstanceTypes operation is used to query only the specifications and performance information of instance types. To query instance types that are available in a specific region, call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation.
-        To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+        To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl).
         
         @param request: DescribeInstanceTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27687,30 +25511,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceTypesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceTypesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceTypesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_types(
         self,
         request: ecs_20140526_models.DescribeInstanceTypesRequest,
     ) -> ecs_20140526_models.DescribeInstanceTypesResponse:
         """
-        @summary Queries the details of all instance types or a specific instance type provided by Elastic Compute Service (ECS).
+        @summary Queries the details of all instance types or a specific instance type provided by Elastic Compute Service (ECS). You can understand the specifications and performance of instance types based on the response and select an instance type that meets your business requirements.
         
-        @description ## [](#)Usage notes
-        Take note of the following items:
-        MaxResults specifies the maximum number of entries per page. The maximum value of this parameter is changed from 1600 to 100. As of November 15, 2023, only 100 can be used as the maximum value of MaxResults. If you called the DescribeInstanceTypes operation in 2022, you can use 1600 as the maximum value before November 15, 2023. If you do not specify NextToken when you call the DescribeInstanceTypes operation, only the first page of results that contains up to 100 entries is returned. If you want to retrieve more results, specify NextToken to perform paged queries, or specify filter conditions to filter results.
-        We recommend that you specify MaxResults and NextToken to perform paged queries. The first time you call the DescribeInstanceTypes operation, set MaxResults to limit the maximum number of entries that can be returned in a single call. If the number of entries to return exceeds the specified MaxResults value, the response includes a NextToken value. You can set NextToken to the return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
+        @description    **Paged query**: You can set MaxResults to specify the maximum number of entries to return in a single call. If the number of entries to return exceeds the specified MaxResults value, the response includes a NextToken value. You can set NextToken to the return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
+        When you call this operation, if you do not set NextToken to paginate the results, only the first page of results is returned by default and includes a maximum of 100 entries. To retrieve further pages of results, set NextToken or pass filter conditions in your requests to DescribeInstanceTypes.
+        >  MaxResults specifies the maximum number of entries per page. The maximum value of this parameter is changed from 1600 to 100 for all users as of November 15, 2023. If you called the DescribeInstanceTypes operation in 2022, you can use 1600 as the maximum value before November 15, 2023.
         The DescribeInstanceTypes operation is used to query only the specifications and performance information of instance types. To query instance types that are available in a specific region, call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation.
-        To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+        To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl).
         
         @param request: DescribeInstanceTypesRequest
         @return: DescribeInstanceTypesResponse
@@ -27723,14 +25540,13 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceTypesRequest,
     ) -> ecs_20140526_models.DescribeInstanceTypesResponse:
         """
-        @summary Queries the details of all instance types or a specific instance type provided by Elastic Compute Service (ECS).
+        @summary Queries the details of all instance types or a specific instance type provided by Elastic Compute Service (ECS). You can understand the specifications and performance of instance types based on the response and select an instance type that meets your business requirements.
         
-        @description ## [](#)Usage notes
-        Take note of the following items:
-        MaxResults specifies the maximum number of entries per page. The maximum value of this parameter is changed from 1600 to 100. As of November 15, 2023, only 100 can be used as the maximum value of MaxResults. If you called the DescribeInstanceTypes operation in 2022, you can use 1600 as the maximum value before November 15, 2023. If you do not specify NextToken when you call the DescribeInstanceTypes operation, only the first page of results that contains up to 100 entries is returned. If you want to retrieve more results, specify NextToken to perform paged queries, or specify filter conditions to filter results.
-        We recommend that you specify MaxResults and NextToken to perform paged queries. The first time you call the DescribeInstanceTypes operation, set MaxResults to limit the maximum number of entries that can be returned in a single call. If the number of entries to return exceeds the specified MaxResults value, the response includes a NextToken value. You can set NextToken to the return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
+        @description    **Paged query**: You can set MaxResults to specify the maximum number of entries to return in a single call. If the number of entries to return exceeds the specified MaxResults value, the response includes a NextToken value. You can set NextToken to the return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
+        When you call this operation, if you do not set NextToken to paginate the results, only the first page of results is returned by default and includes a maximum of 100 entries. To retrieve further pages of results, set NextToken or pass filter conditions in your requests to DescribeInstanceTypes.
+        >  MaxResults specifies the maximum number of entries per page. The maximum value of this parameter is changed from 1600 to 100 for all users as of November 15, 2023. If you called the DescribeInstanceTypes operation in 2022, you can use 1600 as the maximum value before November 15, 2023.
         The DescribeInstanceTypes operation is used to query only the specifications and performance information of instance types. To query instance types that are available in a specific region, call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation.
-        To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+        To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl).
         
         @param request: DescribeInstanceTypesRequest
         @return: DescribeInstanceTypesResponse
@@ -27789,16 +25605,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceVncUrlResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceVncUrlResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceVncUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_vnc_url_with_options_async(
         self,
@@ -27851,16 +25661,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceVncUrlResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstanceVncUrlResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstanceVncUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_vnc_url(
         self,
@@ -28029,16 +25833,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instances_with_options_async(
         self,
@@ -28159,16 +25957,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instances(
         self,
@@ -28274,16 +26066,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstancesFullStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstancesFullStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstancesFullStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instances_full_status_with_options_async(
         self,
@@ -28349,16 +26135,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstancesFullStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInstancesFullStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInstancesFullStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instances_full_status(
         self,
@@ -28472,16 +26252,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInvocationResultsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInvocationResultsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInvocationResultsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_invocation_results_with_options_async(
         self,
@@ -28561,16 +26335,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInvocationResultsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInvocationResultsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInvocationResultsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_invocation_results(
         self,
@@ -28711,16 +26479,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInvocationsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInvocationsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInvocationsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_invocations_with_options_async(
         self,
@@ -28807,16 +26569,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInvocationsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeInvocationsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeInvocationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_invocations(
         self,
@@ -28920,16 +26676,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeKeyPairsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeKeyPairsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeKeyPairsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_key_pairs_with_options_async(
         self,
@@ -28981,16 +26731,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeKeyPairsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeKeyPairsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeKeyPairsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_key_pairs(
         self,
@@ -29074,16 +26818,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeLaunchTemplateVersionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeLaunchTemplateVersionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeLaunchTemplateVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_launch_template_versions_with_options_async(
         self,
@@ -29141,16 +26879,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeLaunchTemplateVersionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeLaunchTemplateVersionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeLaunchTemplateVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_launch_template_versions(
         self,
@@ -29228,16 +26960,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeLaunchTemplatesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeLaunchTemplatesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeLaunchTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_launch_templates_with_options_async(
         self,
@@ -29289,16 +27015,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeLaunchTemplatesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeLaunchTemplatesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeLaunchTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_launch_templates(
         self,
@@ -29365,16 +27085,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeLimitationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeLimitationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeLimitationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_limitation_with_options_async(
         self,
@@ -29415,16 +27129,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeLimitationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeLimitationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeLimitationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_limitation(
         self,
@@ -29518,16 +27226,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeManagedInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeManagedInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeManagedInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_managed_instances_with_options_async(
         self,
@@ -29593,16 +27295,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeManagedInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeManagedInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeManagedInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_managed_instances(
         self,
@@ -29681,16 +27377,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeNatGatewaysResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeNatGatewaysResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeNatGatewaysResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_nat_gateways_with_options_async(
         self,
@@ -29739,16 +27429,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeNatGatewaysResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeNatGatewaysResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeNatGatewaysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_nat_gateways(
         self,
@@ -29827,16 +27511,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeNetworkInterfaceAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeNetworkInterfaceAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeNetworkInterfaceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_network_interface_attribute_with_options_async(
         self,
@@ -29887,16 +27565,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeNetworkInterfaceAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeNetworkInterfaceAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeNetworkInterfaceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_network_interface_attribute(
         self,
@@ -29978,16 +27650,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeNetworkInterfacePermissionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeNetworkInterfacePermissionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeNetworkInterfacePermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_network_interface_permissions_with_options_async(
         self,
@@ -30037,16 +27703,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeNetworkInterfacePermissionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeNetworkInterfacePermissionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeNetworkInterfacePermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_network_interface_permissions(
         self,
@@ -30080,7 +27740,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeNetworkInterfacesResponse:
         """
-        @summary Queries the details of one or more elastic network interfaces (ENIs). When you call this operation, you can specify parameters, such as ResourceGroupId, VSwitchId, and InstanceId, in the request.
+        @summary Queries the details of one or more Elastic Network Interface (ENIs).
         
         @description ## [](#)Usage notes
         You can call the `DescribeNetworkInterfaces` operation for paged query by specifying the `MaxResults` or `NextToken` parameter. Take note of the following items:
@@ -30157,16 +27817,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeNetworkInterfacesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeNetworkInterfacesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeNetworkInterfacesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_network_interfaces_with_options_async(
         self,
@@ -30174,7 +27828,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeNetworkInterfacesResponse:
         """
-        @summary Queries the details of one or more elastic network interfaces (ENIs). When you call this operation, you can specify parameters, such as ResourceGroupId, VSwitchId, and InstanceId, in the request.
+        @summary Queries the details of one or more Elastic Network Interface (ENIs).
         
         @description ## [](#)Usage notes
         You can call the `DescribeNetworkInterfaces` operation for paged query by specifying the `MaxResults` or `NextToken` parameter. Take note of the following items:
@@ -30251,23 +27905,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeNetworkInterfacesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeNetworkInterfacesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeNetworkInterfacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_network_interfaces(
         self,
         request: ecs_20140526_models.DescribeNetworkInterfacesRequest,
     ) -> ecs_20140526_models.DescribeNetworkInterfacesResponse:
         """
-        @summary Queries the details of one or more elastic network interfaces (ENIs). When you call this operation, you can specify parameters, such as ResourceGroupId, VSwitchId, and InstanceId, in the request.
+        @summary Queries the details of one or more Elastic Network Interface (ENIs).
         
         @description ## [](#)Usage notes
         You can call the `DescribeNetworkInterfaces` operation for paged query by specifying the `MaxResults` or `NextToken` parameter. Take note of the following items:
@@ -30285,7 +27933,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeNetworkInterfacesRequest,
     ) -> ecs_20140526_models.DescribeNetworkInterfacesResponse:
         """
-        @summary Queries the details of one or more elastic network interfaces (ENIs). When you call this operation, you can specify parameters, such as ResourceGroupId, VSwitchId, and InstanceId, in the request.
+        @summary Queries the details of one or more Elastic Network Interface (ENIs).
         
         @description ## [](#)Usage notes
         You can call the `DescribeNetworkInterfaces` operation for paged query by specifying the `MaxResults` or `NextToken` parameter. Take note of the following items:
@@ -30345,16 +27993,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeNewProjectEipMonitorDataResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeNewProjectEipMonitorDataResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeNewProjectEipMonitorDataResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_new_project_eip_monitor_data_with_options_async(
         self,
@@ -30403,16 +28045,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeNewProjectEipMonitorDataResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeNewProjectEipMonitorDataResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeNewProjectEipMonitorDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_new_project_eip_monitor_data(
         self,
@@ -30491,16 +28127,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribePhysicalConnectionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribePhysicalConnectionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribePhysicalConnectionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_physical_connections_with_options_async(
         self,
@@ -30551,16 +28181,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribePhysicalConnectionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribePhysicalConnectionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribePhysicalConnectionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_physical_connections(
         self,
@@ -30589,6 +28213,394 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_physical_connections_with_options_async(request, runtime)
+
+    def describe_port_range_list_associations_with_options(
+        self,
+        request: ecs_20140526_models.DescribePortRangeListAssociationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribePortRangeListAssociationsResponse:
+        """
+        @summary 查询指定端口列表已关联的资源信息
+        
+        @param request: DescribePortRangeListAssociationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePortRangeListAssociationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port_range_list_id):
+            query['PortRangeListId'] = request.port_range_list_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePortRangeListAssociations',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribePortRangeListAssociationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_port_range_list_associations_with_options_async(
+        self,
+        request: ecs_20140526_models.DescribePortRangeListAssociationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribePortRangeListAssociationsResponse:
+        """
+        @summary 查询指定端口列表已关联的资源信息
+        
+        @param request: DescribePortRangeListAssociationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePortRangeListAssociationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port_range_list_id):
+            query['PortRangeListId'] = request.port_range_list_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePortRangeListAssociations',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribePortRangeListAssociationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_port_range_list_associations(
+        self,
+        request: ecs_20140526_models.DescribePortRangeListAssociationsRequest,
+    ) -> ecs_20140526_models.DescribePortRangeListAssociationsResponse:
+        """
+        @summary 查询指定端口列表已关联的资源信息
+        
+        @param request: DescribePortRangeListAssociationsRequest
+        @return: DescribePortRangeListAssociationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_port_range_list_associations_with_options(request, runtime)
+
+    async def describe_port_range_list_associations_async(
+        self,
+        request: ecs_20140526_models.DescribePortRangeListAssociationsRequest,
+    ) -> ecs_20140526_models.DescribePortRangeListAssociationsResponse:
+        """
+        @summary 查询指定端口列表已关联的资源信息
+        
+        @param request: DescribePortRangeListAssociationsRequest
+        @return: DescribePortRangeListAssociationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_port_range_list_associations_with_options_async(request, runtime)
+
+    def describe_port_range_list_entries_with_options(
+        self,
+        request: ecs_20140526_models.DescribePortRangeListEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribePortRangeListEntriesResponse:
+        """
+        @summary 查询指定端口列表的条目
+        
+        @param request: DescribePortRangeListEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePortRangeListEntriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port_range_list_id):
+            query['PortRangeListId'] = request.port_range_list_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePortRangeListEntries',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribePortRangeListEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_port_range_list_entries_with_options_async(
+        self,
+        request: ecs_20140526_models.DescribePortRangeListEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribePortRangeListEntriesResponse:
+        """
+        @summary 查询指定端口列表的条目
+        
+        @param request: DescribePortRangeListEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePortRangeListEntriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port_range_list_id):
+            query['PortRangeListId'] = request.port_range_list_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePortRangeListEntries',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribePortRangeListEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_port_range_list_entries(
+        self,
+        request: ecs_20140526_models.DescribePortRangeListEntriesRequest,
+    ) -> ecs_20140526_models.DescribePortRangeListEntriesResponse:
+        """
+        @summary 查询指定端口列表的条目
+        
+        @param request: DescribePortRangeListEntriesRequest
+        @return: DescribePortRangeListEntriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_port_range_list_entries_with_options(request, runtime)
+
+    async def describe_port_range_list_entries_async(
+        self,
+        request: ecs_20140526_models.DescribePortRangeListEntriesRequest,
+    ) -> ecs_20140526_models.DescribePortRangeListEntriesResponse:
+        """
+        @summary 查询指定端口列表的条目
+        
+        @param request: DescribePortRangeListEntriesRequest
+        @return: DescribePortRangeListEntriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_port_range_list_entries_with_options_async(request, runtime)
+
+    def describe_port_range_lists_with_options(
+        self,
+        request: ecs_20140526_models.DescribePortRangeListsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribePortRangeListsResponse:
+        """
+        @summary 查询端口列表
+        
+        @param request: DescribePortRangeListsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePortRangeListsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port_range_list_id):
+            query['PortRangeListId'] = request.port_range_list_id
+        if not UtilClient.is_unset(request.port_range_list_name):
+            query['PortRangeListName'] = request.port_range_list_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePortRangeLists',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribePortRangeListsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_port_range_lists_with_options_async(
+        self,
+        request: ecs_20140526_models.DescribePortRangeListsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribePortRangeListsResponse:
+        """
+        @summary 查询端口列表
+        
+        @param request: DescribePortRangeListsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePortRangeListsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port_range_list_id):
+            query['PortRangeListId'] = request.port_range_list_id
+        if not UtilClient.is_unset(request.port_range_list_name):
+            query['PortRangeListName'] = request.port_range_list_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePortRangeLists',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribePortRangeListsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_port_range_lists(
+        self,
+        request: ecs_20140526_models.DescribePortRangeListsRequest,
+    ) -> ecs_20140526_models.DescribePortRangeListsResponse:
+        """
+        @summary 查询端口列表
+        
+        @param request: DescribePortRangeListsRequest
+        @return: DescribePortRangeListsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_port_range_lists_with_options(request, runtime)
+
+    async def describe_port_range_lists_async(
+        self,
+        request: ecs_20140526_models.DescribePortRangeListsRequest,
+    ) -> ecs_20140526_models.DescribePortRangeListsResponse:
+        """
+        @summary 查询端口列表
+        
+        @param request: DescribePortRangeListsRequest
+        @return: DescribePortRangeListsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_port_range_lists_with_options_async(request, runtime)
 
     def describe_prefix_list_associations_with_options(
         self,
@@ -30636,16 +28648,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribePrefixListAssociationsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribePrefixListAssociationsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribePrefixListAssociationsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_prefix_list_associations_with_options_async(
         self,
@@ -30693,16 +28699,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribePrefixListAssociationsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribePrefixListAssociationsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribePrefixListAssociationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_prefix_list_associations(
         self,
@@ -30772,16 +28772,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribePrefixListAttributesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribePrefixListAttributesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribePrefixListAttributesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_prefix_list_attributes_with_options_async(
         self,
@@ -30825,16 +28819,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribePrefixListAttributesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribePrefixListAttributesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribePrefixListAttributesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_prefix_list_attributes(
         self,
@@ -30914,16 +28902,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribePrefixListsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribePrefixListsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribePrefixListsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_prefix_lists_with_options_async(
         self,
@@ -30977,16 +28959,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribePrefixListsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribePrefixListsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribePrefixListsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_prefix_lists(
         self,
@@ -31121,16 +29097,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribePriceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribePriceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribePriceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_price_with_options_async(
         self,
@@ -31235,16 +29205,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribePriceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribePriceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribePriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_price(
         self,
@@ -31358,16 +29322,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeRecommendInstanceTypeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeRecommendInstanceTypeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeRecommendInstanceTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_recommend_instance_type_with_options_async(
         self,
@@ -31437,16 +29395,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeRecommendInstanceTypeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeRecommendInstanceTypeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeRecommendInstanceTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_recommend_instance_type(
         self,
@@ -31516,16 +29468,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeRegionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeRegionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_regions_with_options_async(
         self,
@@ -31569,16 +29515,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeRegionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeRegionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_regions(
         self,
@@ -31612,7 +29552,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeRenewalPriceResponse:
         """
-        @summary Queries the renewal price of a subscription Elastic Compute Service (ECS) resource. Renewal prices of only subscription resources can be queried.
+        @summary Queries the renewal prices of Elastic Compute Service (ECS) resources. Renewal prices of only subscription resources can be queried.
         
         @description    You can call this operation to query the price for renewing a subscription instance for a specific period of time or to a synchronized expiration date.
         Take note of the following items:
@@ -31659,16 +29599,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeRenewalPriceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeRenewalPriceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeRenewalPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_renewal_price_with_options_async(
         self,
@@ -31676,7 +29610,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeRenewalPriceResponse:
         """
-        @summary Queries the renewal price of a subscription Elastic Compute Service (ECS) resource. Renewal prices of only subscription resources can be queried.
+        @summary Queries the renewal prices of Elastic Compute Service (ECS) resources. Renewal prices of only subscription resources can be queried.
         
         @description    You can call this operation to query the price for renewing a subscription instance for a specific period of time or to a synchronized expiration date.
         Take note of the following items:
@@ -31723,23 +29657,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeRenewalPriceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeRenewalPriceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeRenewalPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_renewal_price(
         self,
         request: ecs_20140526_models.DescribeRenewalPriceRequest,
     ) -> ecs_20140526_models.DescribeRenewalPriceResponse:
         """
-        @summary Queries the renewal price of a subscription Elastic Compute Service (ECS) resource. Renewal prices of only subscription resources can be queried.
+        @summary Queries the renewal prices of Elastic Compute Service (ECS) resources. Renewal prices of only subscription resources can be queried.
         
         @description    You can call this operation to query the price for renewing a subscription instance for a specific period of time or to a synchronized expiration date.
         Take note of the following items:
@@ -31757,7 +29685,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeRenewalPriceRequest,
     ) -> ecs_20140526_models.DescribeRenewalPriceResponse:
         """
-        @summary Queries the renewal price of a subscription Elastic Compute Service (ECS) resource. Renewal prices of only subscription resources can be queried.
+        @summary Queries the renewal prices of Elastic Compute Service (ECS) resources. Renewal prices of only subscription resources can be queried.
         
         @description    You can call this operation to query the price for renewing a subscription instance for a specific period of time or to a synchronized expiration date.
         Take note of the following items:
@@ -31810,16 +29738,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeReservedInstanceAutoRenewAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeReservedInstanceAutoRenewAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeReservedInstanceAutoRenewAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_reserved_instance_auto_renew_attribute_with_options_async(
         self,
@@ -31861,16 +29783,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeReservedInstanceAutoRenewAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeReservedInstanceAutoRenewAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeReservedInstanceAutoRenewAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_reserved_instance_auto_renew_attribute(
         self,
@@ -31979,16 +29895,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeReservedInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeReservedInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeReservedInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_reserved_instances_with_options_async(
         self,
@@ -32071,16 +29981,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeReservedInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeReservedInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeReservedInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_reserved_instances(
         self,
@@ -32185,16 +30089,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeResourceByTagsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeResourceByTagsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeResourceByTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_resource_by_tags_with_options_async(
         self,
@@ -32243,16 +30141,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeResourceByTagsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeResourceByTagsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeResourceByTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_resource_by_tags(
         self,
@@ -32371,16 +30263,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeResourcesModificationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeResourcesModificationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeResourcesModificationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_resources_modification_with_options_async(
         self,
@@ -32467,16 +30353,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeResourcesModificationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeResourcesModificationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeResourcesModificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_resources_modification(
         self,
@@ -32615,16 +30495,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeRouteTablesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeRouteTablesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeRouteTablesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_route_tables_with_options_async(
         self,
@@ -32679,16 +30553,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeRouteTablesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeRouteTablesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeRouteTablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_route_tables(
         self,
@@ -32761,16 +30629,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeRouterInterfacesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeRouterInterfacesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeRouterInterfacesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_router_interfaces_with_options_async(
         self,
@@ -32815,16 +30677,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeRouterInterfacesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeRouterInterfacesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeRouterInterfacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_router_interfaces(
         self,
@@ -32898,16 +30754,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSavingsPlanEstimationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSavingsPlanEstimationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSavingsPlanEstimationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_savings_plan_estimation_with_options_async(
         self,
@@ -32953,16 +30803,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSavingsPlanEstimationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSavingsPlanEstimationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSavingsPlanEstimationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_savings_plan_estimation(
         self,
@@ -33036,16 +30880,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSavingsPlanPriceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSavingsPlanPriceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSavingsPlanPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_savings_plan_price_with_options_async(
         self,
@@ -33093,16 +30931,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSavingsPlanPriceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSavingsPlanPriceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSavingsPlanPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_savings_plan_price(
         self,
@@ -33178,16 +31010,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSecurityGroupAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSecurityGroupAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSecurityGroupAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_security_group_attribute_with_options_async(
         self,
@@ -33237,16 +31063,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSecurityGroupAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSecurityGroupAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSecurityGroupAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_security_group_attribute(
         self,
@@ -33316,16 +31136,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSecurityGroupReferencesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSecurityGroupReferencesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSecurityGroupReferencesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_security_group_references_with_options_async(
         self,
@@ -33369,16 +31183,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSecurityGroupReferencesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSecurityGroupReferencesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSecurityGroupReferencesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_security_group_references(
         self,
@@ -33486,16 +31294,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSecurityGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSecurityGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSecurityGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_security_groups_with_options_async(
         self,
@@ -33573,16 +31375,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSecurityGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSecurityGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSecurityGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_security_groups(
         self,
@@ -33687,16 +31483,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSendFileResultsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSendFileResultsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSendFileResultsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_send_file_results_with_options_async(
         self,
@@ -33763,16 +31553,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSendFileResultsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSendFileResultsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSendFileResultsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_send_file_results(
         self,
@@ -33868,16 +31652,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSnapshotGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_snapshot_groups_with_options_async(
         self,
@@ -33937,16 +31715,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSnapshotGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_snapshot_groups(
         self,
@@ -34031,16 +31803,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotLinksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotLinksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSnapshotLinksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_snapshot_links_with_options_async(
         self,
@@ -34095,16 +31861,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotLinksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotLinksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSnapshotLinksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_snapshot_links(
         self,
@@ -34148,7 +31908,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSnapshotMonitorDataResponse:
         """
-        @summary Queries the monitoring data of snapshot sizes in a region over the last 30 days.
+        @summary Queries the monitoring data of snapshot sizes in a region within the last 30 days.
         
         @description ## [](#)Usage notes
         Take note of the following items:
@@ -34193,16 +31953,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotMonitorDataResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotMonitorDataResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSnapshotMonitorDataResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_snapshot_monitor_data_with_options_async(
         self,
@@ -34210,7 +31964,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSnapshotMonitorDataResponse:
         """
-        @summary Queries the monitoring data of snapshot sizes in a region over the last 30 days.
+        @summary Queries the monitoring data of snapshot sizes in a region within the last 30 days.
         
         @description ## [](#)Usage notes
         Take note of the following items:
@@ -34255,23 +32009,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotMonitorDataResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotMonitorDataResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSnapshotMonitorDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_snapshot_monitor_data(
         self,
         request: ecs_20140526_models.DescribeSnapshotMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeSnapshotMonitorDataResponse:
         """
-        @summary Queries the monitoring data of snapshot sizes in a region over the last 30 days.
+        @summary Queries the monitoring data of snapshot sizes in a region within the last 30 days.
         
         @description ## [](#)Usage notes
         Take note of the following items:
@@ -34289,7 +32037,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSnapshotMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeSnapshotMonitorDataResponse:
         """
-        @summary Queries the monitoring data of snapshot sizes in a region over the last 30 days.
+        @summary Queries the monitoring data of snapshot sizes in a region within the last 30 days.
         
         @description ## [](#)Usage notes
         Take note of the following items:
@@ -34344,16 +32092,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotPackageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotPackageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSnapshotPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_snapshot_package_with_options_async(
         self,
@@ -34397,16 +32139,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotPackageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotPackageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSnapshotPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_snapshot_package(
         self,
@@ -34524,16 +32260,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSnapshotsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_snapshots_with_options_async(
         self,
@@ -34625,16 +32355,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSnapshotsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_snapshots(
         self,
@@ -34727,16 +32451,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotsUsageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotsUsageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSnapshotsUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_snapshots_usage_with_options_async(
         self,
@@ -34779,16 +32497,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotsUsageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSnapshotsUsageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSnapshotsUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_snapshots_usage(
         self,
@@ -34887,16 +32599,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSpotAdviceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSpotAdviceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSpotAdviceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_spot_advice_with_options_async(
         self,
@@ -34963,16 +32669,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSpotAdviceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSpotAdviceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSpotAdviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_spot_advice(
         self,
@@ -35075,16 +32775,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSpotPriceHistoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSpotPriceHistoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSpotPriceHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_spot_price_history_with_options_async(
         self,
@@ -35147,16 +32841,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSpotPriceHistoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeSpotPriceHistoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeSpotPriceHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_spot_price_history(
         self,
@@ -35244,16 +32932,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeStorageCapacityUnitsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeStorageCapacityUnitsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeStorageCapacityUnitsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_storage_capacity_units_with_options_async(
         self,
@@ -35309,16 +32991,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeStorageCapacityUnitsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeStorageCapacityUnitsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeStorageCapacityUnitsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_storage_capacity_units(
         self,
@@ -35396,16 +33072,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeStorageSetDetailsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeStorageSetDetailsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeStorageSetDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_storage_set_details_with_options_async(
         self,
@@ -35457,16 +33127,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeStorageSetDetailsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeStorageSetDetailsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeStorageSetDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_storage_set_details(
         self,
@@ -35544,16 +33208,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeStorageSetsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeStorageSetsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeStorageSetsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_storage_sets_with_options_async(
         self,
@@ -35605,16 +33263,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeStorageSetsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeStorageSetsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeStorageSetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_storage_sets(
         self,
@@ -35695,16 +33347,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeTagsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeTagsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_tags_with_options_async(
         self,
@@ -35759,16 +33405,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeTagsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeTagsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_tags(
         self,
@@ -35812,7 +33452,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeTaskAttributeResponse:
         """
-        @summary You can call this operation to query the details of an asynchronous task. You can query the asynchronous tasks including importing images, exporting images, and modifying disk categories. The asynchronous tasks are generated by the ImportImage, ExportImage, and ModifyDiskSpec operations.
+        @summary Queries the details of an asynchronous task. The asynchronous tasks that you can query by calling this operation are the tasks generated by the ImportImage, ExportImage, and ModifyDiskSpec operations.
         
         @param request: DescribeTaskAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35844,16 +33484,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeTaskAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeTaskAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeTaskAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_task_attribute_with_options_async(
         self,
@@ -35861,7 +33495,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeTaskAttributeResponse:
         """
-        @summary You can call this operation to query the details of an asynchronous task. You can query the asynchronous tasks including importing images, exporting images, and modifying disk categories. The asynchronous tasks are generated by the ImportImage, ExportImage, and ModifyDiskSpec operations.
+        @summary Queries the details of an asynchronous task. The asynchronous tasks that you can query by calling this operation are the tasks generated by the ImportImage, ExportImage, and ModifyDiskSpec operations.
         
         @param request: DescribeTaskAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35893,23 +33527,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeTaskAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeTaskAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeTaskAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_task_attribute(
         self,
         request: ecs_20140526_models.DescribeTaskAttributeRequest,
     ) -> ecs_20140526_models.DescribeTaskAttributeResponse:
         """
-        @summary You can call this operation to query the details of an asynchronous task. You can query the asynchronous tasks including importing images, exporting images, and modifying disk categories. The asynchronous tasks are generated by the ImportImage, ExportImage, and ModifyDiskSpec operations.
+        @summary Queries the details of an asynchronous task. The asynchronous tasks that you can query by calling this operation are the tasks generated by the ImportImage, ExportImage, and ModifyDiskSpec operations.
         
         @param request: DescribeTaskAttributeRequest
         @return: DescribeTaskAttributeResponse
@@ -35922,7 +33550,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeTaskAttributeRequest,
     ) -> ecs_20140526_models.DescribeTaskAttributeResponse:
         """
-        @summary You can call this operation to query the details of an asynchronous task. You can query the asynchronous tasks including importing images, exporting images, and modifying disk categories. The asynchronous tasks are generated by the ImportImage, ExportImage, and ModifyDiskSpec operations.
+        @summary Queries the details of an asynchronous task. The asynchronous tasks that you can query by calling this operation are the tasks generated by the ImportImage, ExportImage, and ModifyDiskSpec operations.
         
         @param request: DescribeTaskAttributeRequest
         @return: DescribeTaskAttributeResponse
@@ -35987,16 +33615,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeTasksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeTasksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_tasks_with_options_async(
         self,
@@ -36055,16 +33677,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeTasksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeTasksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_tasks(
         self,
@@ -36146,16 +33762,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeTerminalSessionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeTerminalSessionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeTerminalSessionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_terminal_sessions_with_options_async(
         self,
@@ -36205,16 +33815,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeTerminalSessionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeTerminalSessionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeTerminalSessionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_terminal_sessions(
         self,
@@ -36289,16 +33893,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeUserBusinessBehaviorResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeUserBusinessBehaviorResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeUserBusinessBehaviorResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_user_business_behavior_with_options_async(
         self,
@@ -36343,16 +33941,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeUserBusinessBehaviorResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeUserBusinessBehaviorResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeUserBusinessBehaviorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_user_business_behavior(
         self,
@@ -36426,16 +34018,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeUserDataResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeUserDataResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeUserDataResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_user_data_with_options_async(
         self,
@@ -36477,16 +34063,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeUserDataResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeUserDataResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeUserDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_user_data(
         self,
@@ -36563,16 +34143,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeVRoutersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeVRoutersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeVRoutersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_vrouters_with_options_async(
         self,
@@ -36619,16 +34193,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeVRoutersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeVRoutersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeVRoutersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_vrouters(
         self,
@@ -36709,16 +34277,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeVSwitchesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeVSwitchesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeVSwitchesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_vswitches_with_options_async(
         self,
@@ -36771,16 +34333,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeVSwitchesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeVSwitchesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeVSwitchesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_vswitches(
         self,
@@ -36853,16 +34409,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeVirtualBorderRoutersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeVirtualBorderRoutersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeVirtualBorderRoutersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_virtual_border_routers_with_options_async(
         self,
@@ -36907,16 +34457,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeVirtualBorderRoutersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeVirtualBorderRoutersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeVirtualBorderRoutersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_virtual_border_routers(
         self,
@@ -36991,16 +34535,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_virtual_border_routers_for_physical_connection_with_options_async(
         self,
@@ -37047,16 +34585,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_virtual_border_routers_for_physical_connection(
         self,
@@ -37135,16 +34667,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeVpcsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeVpcsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeVpcsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_vpcs_with_options_async(
         self,
@@ -37195,16 +34721,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeVpcsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeVpcsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeVpcsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_vpcs(
         self,
@@ -37246,7 +34766,8 @@ class Client(OpenApiClient):
         """
         @summary Queries Alibaba Cloud regions. You can specify parameters, such as InstanceChargeType and ResourceType, in the request.
         
-        @description When you call this operation, only a list of zones and some resource information of each zone are returned. If you want to query instance types and disk categories that are available for purchase in a specific zone, we recommend that you call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation.
+        @description ## [](#)Usage notes
+        When you call this operation, only a list of zones and some resource information of each zone are returned. If you want to query instance types and disk categories that are available for purchase in a specific zone, we recommend that you call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation.
         
         @param request: DescribeZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37286,16 +34807,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeZonesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeZonesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_zones_with_options_async(
         self,
@@ -37305,7 +34820,8 @@ class Client(OpenApiClient):
         """
         @summary Queries Alibaba Cloud regions. You can specify parameters, such as InstanceChargeType and ResourceType, in the request.
         
-        @description When you call this operation, only a list of zones and some resource information of each zone are returned. If you want to query instance types and disk categories that are available for purchase in a specific zone, we recommend that you call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation.
+        @description ## [](#)Usage notes
+        When you call this operation, only a list of zones and some resource information of each zone are returned. If you want to query instance types and disk categories that are available for purchase in a specific zone, we recommend that you call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation.
         
         @param request: DescribeZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37345,16 +34861,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeZonesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DescribeZonesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_zones(
         self,
@@ -37363,7 +34873,8 @@ class Client(OpenApiClient):
         """
         @summary Queries Alibaba Cloud regions. You can specify parameters, such as InstanceChargeType and ResourceType, in the request.
         
-        @description When you call this operation, only a list of zones and some resource information of each zone are returned. If you want to query instance types and disk categories that are available for purchase in a specific zone, we recommend that you call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation.
+        @description ## [](#)Usage notes
+        When you call this operation, only a list of zones and some resource information of each zone are returned. If you want to query instance types and disk categories that are available for purchase in a specific zone, we recommend that you call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation.
         
         @param request: DescribeZonesRequest
         @return: DescribeZonesResponse
@@ -37378,7 +34889,8 @@ class Client(OpenApiClient):
         """
         @summary Queries Alibaba Cloud regions. You can specify parameters, such as InstanceChargeType and ResourceType, in the request.
         
-        @description When you call this operation, only a list of zones and some resource information of each zone are returned. If you want to query instance types and disk categories that are available for purchase in a specific zone, we recommend that you call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation.
+        @description ## [](#)Usage notes
+        When you call this operation, only a list of zones and some resource information of each zone are returned. If you want to query instance types and disk categories that are available for purchase in a specific zone, we recommend that you call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation.
         
         @param request: DescribeZonesRequest
         @return: DescribeZonesResponse
@@ -37426,16 +34938,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DetachClassicLinkVpcResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DetachClassicLinkVpcResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DetachClassicLinkVpcResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_classic_link_vpc_with_options_async(
         self,
@@ -37477,16 +34983,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DetachClassicLinkVpcResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DetachClassicLinkVpcResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DetachClassicLinkVpcResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_classic_link_vpc(
         self,
@@ -37561,16 +35061,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DetachDiskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DetachDiskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DetachDiskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_disk_with_options_async(
         self,
@@ -37619,16 +35113,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DetachDiskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DetachDiskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DetachDiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_disk(
         self,
@@ -37706,16 +35194,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DetachInstanceRamRoleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DetachInstanceRamRoleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DetachInstanceRamRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_instance_ram_role_with_options_async(
         self,
@@ -37757,16 +35239,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DetachInstanceRamRoleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DetachInstanceRamRoleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DetachInstanceRamRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_instance_ram_role(
         self,
@@ -37800,7 +35276,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DetachKeyPairResponse:
         """
-        @summary Unbinds an SSH key pair from Linux instances.
+        @summary Unbinds an SSH key pair from Linux Elastic Compute Service (ECS) instances.
         
         @description When you call this operation, take note of the following items:
         After you unbind an SSH key pair from an instance, you must call the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation to restart the instance to allow the unbind operation to take effect.
@@ -37838,16 +35314,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DetachKeyPairResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DetachKeyPairResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DetachKeyPairResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_key_pair_with_options_async(
         self,
@@ -37855,7 +35325,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DetachKeyPairResponse:
         """
-        @summary Unbinds an SSH key pair from Linux instances.
+        @summary Unbinds an SSH key pair from Linux Elastic Compute Service (ECS) instances.
         
         @description When you call this operation, take note of the following items:
         After you unbind an SSH key pair from an instance, you must call the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation to restart the instance to allow the unbind operation to take effect.
@@ -37893,23 +35363,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DetachKeyPairResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DetachKeyPairResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DetachKeyPairResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_key_pair(
         self,
         request: ecs_20140526_models.DetachKeyPairRequest,
     ) -> ecs_20140526_models.DetachKeyPairResponse:
         """
-        @summary Unbinds an SSH key pair from Linux instances.
+        @summary Unbinds an SSH key pair from Linux Elastic Compute Service (ECS) instances.
         
         @description When you call this operation, take note of the following items:
         After you unbind an SSH key pair from an instance, you must call the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation to restart the instance to allow the unbind operation to take effect.
@@ -37926,7 +35390,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DetachKeyPairRequest,
     ) -> ecs_20140526_models.DetachKeyPairResponse:
         """
-        @summary Unbinds an SSH key pair from Linux instances.
+        @summary Unbinds an SSH key pair from Linux Elastic Compute Service (ECS) instances.
         
         @description When you call this operation, take note of the following items:
         After you unbind an SSH key pair from an instance, you must call the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation to restart the instance to allow the unbind operation to take effect.
@@ -37994,16 +35458,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DetachNetworkInterfaceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DetachNetworkInterfaceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DetachNetworkInterfaceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_network_interface_with_options_async(
         self,
@@ -38061,16 +35519,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DetachNetworkInterfaceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DetachNetworkInterfaceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DetachNetworkInterfaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_network_interface(
         self,
@@ -38163,16 +35615,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DisableActivationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DisableActivationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DisableActivationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_activation_with_options_async(
         self,
@@ -38219,16 +35665,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DisableActivationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DisableActivationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DisableActivationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_activation(
         self,
@@ -38300,16 +35740,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DisableDiskEncryptionByDefaultResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DisableDiskEncryptionByDefaultResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DisableDiskEncryptionByDefaultResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_disk_encryption_by_default_with_options_async(
         self,
@@ -38349,16 +35783,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.DisableDiskEncryptionByDefaultResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.DisableDiskEncryptionByDefaultResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.DisableDiskEncryptionByDefaultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_disk_encryption_by_default(
         self,
@@ -38449,16 +35877,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.EnableDiskEncryptionByDefaultResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.EnableDiskEncryptionByDefaultResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.EnableDiskEncryptionByDefaultResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_disk_encryption_by_default_with_options_async(
         self,
@@ -38511,16 +35933,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.EnableDiskEncryptionByDefaultResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.EnableDiskEncryptionByDefaultResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.EnableDiskEncryptionByDefaultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_disk_encryption_by_default(
         self,
@@ -38619,16 +36035,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.EnablePhysicalConnectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.EnablePhysicalConnectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.EnablePhysicalConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_physical_connection_with_options_async(
         self,
@@ -38675,16 +36085,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.EnablePhysicalConnectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.EnablePhysicalConnectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.EnablePhysicalConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_physical_connection(
         self,
@@ -38757,16 +36161,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.EndTerminalSessionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.EndTerminalSessionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.EndTerminalSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def end_terminal_session_with_options_async(
         self,
@@ -38811,16 +36209,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.EndTerminalSessionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.EndTerminalSessionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.EndTerminalSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def end_terminal_session(
         self,
@@ -38942,16 +36334,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ExportImageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ExportImageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ExportImageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def export_image_with_options_async(
         self,
@@ -39041,16 +36427,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ExportImageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ExportImageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ExportImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def export_image(
         self,
@@ -39207,16 +36587,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ExportSnapshotResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ExportSnapshotResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ExportSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def export_snapshot_with_options_async(
         self,
@@ -39263,16 +36637,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ExportSnapshotResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ExportSnapshotResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ExportSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def export_snapshot(
         self,
@@ -39354,16 +36722,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.GetInstanceConsoleOutputResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.GetInstanceConsoleOutputResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.GetInstanceConsoleOutputResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_console_output_with_options_async(
         self,
@@ -39413,16 +36775,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.GetInstanceConsoleOutputResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.GetInstanceConsoleOutputResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.GetInstanceConsoleOutputResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance_console_output(
         self,
@@ -39507,16 +36863,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.GetInstanceScreenshotResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.GetInstanceScreenshotResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.GetInstanceScreenshotResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_screenshot_with_options_async(
         self,
@@ -39567,16 +36917,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.GetInstanceScreenshotResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.GetInstanceScreenshotResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.GetInstanceScreenshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance_screenshot(
         self,
@@ -39769,16 +37113,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ImportImageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ImportImageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ImportImageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def import_image_with_options_async(
         self,
@@ -39935,16 +37273,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ImportImageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ImportImageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ImportImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def import_image(
         self,
@@ -40206,16 +37538,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ImportKeyPairResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ImportKeyPairResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ImportKeyPairResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def import_key_pair_with_options_async(
         self,
@@ -40277,16 +37603,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ImportKeyPairResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ImportKeyPairResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ImportKeyPairResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def import_key_pair(
         self,
@@ -40391,16 +37711,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.InstallCloudAssistantResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.InstallCloudAssistantResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.InstallCloudAssistantResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def install_cloud_assistant_with_options_async(
         self,
@@ -40447,16 +37761,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.InstallCloudAssistantResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.InstallCloudAssistantResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.InstallCloudAssistantResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def install_cloud_assistant(
         self,
@@ -40584,16 +37892,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.InvokeCommandResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.InvokeCommandResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.InvokeCommandResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def invoke_command_with_options_async(
         self,
@@ -40689,16 +37991,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.InvokeCommandResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.InvokeCommandResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.InvokeCommandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def invoke_command(
         self,
@@ -40805,16 +38101,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.JoinResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.JoinResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.JoinResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def join_resource_group_with_options_async(
         self,
@@ -40863,16 +38153,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.JoinResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.JoinResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.JoinResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def join_resource_group(
         self,
@@ -40962,16 +38246,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.JoinSecurityGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.JoinSecurityGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.JoinSecurityGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def join_security_group_with_options_async(
         self,
@@ -41029,16 +38307,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.JoinSecurityGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.JoinSecurityGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.JoinSecurityGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def join_security_group(
         self,
@@ -41141,16 +38413,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.LeaveSecurityGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.LeaveSecurityGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.LeaveSecurityGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def leave_security_group_with_options_async(
         self,
@@ -41203,16 +38469,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.LeaveSecurityGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.LeaveSecurityGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.LeaveSecurityGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def leave_security_group(
         self,
@@ -41311,16 +38571,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ListPluginStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ListPluginStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ListPluginStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_plugin_status_with_options_async(
         self,
@@ -41379,16 +38633,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ListPluginStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ListPluginStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ListPluginStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_plugin_status(
         self,
@@ -41485,16 +38733,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ListTagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ListTagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -41555,16 +38797,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ListTagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ListTagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_resources(
         self,
@@ -41672,16 +38908,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyAutoProvisioningGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyAutoProvisioningGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyAutoProvisioningGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_auto_provisioning_group_with_options_async(
         self,
@@ -41745,16 +38975,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyAutoProvisioningGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyAutoProvisioningGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyAutoProvisioningGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_auto_provisioning_group(
         self,
@@ -41849,16 +39073,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyAutoSnapshotPolicyExResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyAutoSnapshotPolicyExResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyAutoSnapshotPolicyExResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_auto_snapshot_policy_ex_with_options_async(
         self,
@@ -41919,16 +39137,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyAutoSnapshotPolicyExResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyAutoSnapshotPolicyExResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyAutoSnapshotPolicyExResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_auto_snapshot_policy_ex(
         self,
@@ -42009,16 +39221,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyBandwidthPackageSpecResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyBandwidthPackageSpecResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyBandwidthPackageSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_bandwidth_package_spec_with_options_async(
         self,
@@ -42063,16 +39269,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyBandwidthPackageSpecResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyBandwidthPackageSpecResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyBandwidthPackageSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_bandwidth_package_spec(
         self,
@@ -42154,16 +39354,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyCapacityReservationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyCapacityReservationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyCapacityReservationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_capacity_reservation_with_options_async(
         self,
@@ -42217,16 +39411,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyCapacityReservationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyCapacityReservationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyCapacityReservationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_capacity_reservation(
         self,
@@ -42308,16 +39496,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyCloudAssistantSettingsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyCloudAssistantSettingsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyCloudAssistantSettingsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_cloud_assistant_settings_with_options_async(
         self,
@@ -42373,16 +39555,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyCloudAssistantSettingsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyCloudAssistantSettingsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyCloudAssistantSettingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_cloud_assistant_settings(
         self,
@@ -42467,16 +39643,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyCommandResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyCommandResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyCommandResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_command_with_options_async(
         self,
@@ -42535,16 +39705,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyCommandResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyCommandResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyCommandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_command(
         self,
@@ -42636,16 +39800,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDedicatedHostAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDedicatedHostAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDedicatedHostAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_dedicated_host_attribute_with_options_async(
         self,
@@ -42705,16 +39863,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDedicatedHostAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDedicatedHostAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDedicatedHostAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_dedicated_host_attribute(
         self,
@@ -42756,7 +39908,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeResponse:
         """
-        @summary Sets or cancels automatic release time for a pay-as-you-go dedicated host.
+        @summary Sets the automatic release time for a pay-as-you-go dedicated host or cancels its automatic release.
         
         @description ## Usage notes
         A pay-as-you-go dedicated host can be automatically released at the specified time. Before you release a pay-as-you-go dedicated host, make sure that the host is no longer required and all necessary application data is backed up.
@@ -42795,16 +39947,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_dedicated_host_auto_release_time_with_options_async(
         self,
@@ -42812,7 +39958,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeResponse:
         """
-        @summary Sets or cancels automatic release time for a pay-as-you-go dedicated host.
+        @summary Sets the automatic release time for a pay-as-you-go dedicated host or cancels its automatic release.
         
         @description ## Usage notes
         A pay-as-you-go dedicated host can be automatically released at the specified time. Before you release a pay-as-you-go dedicated host, make sure that the host is no longer required and all necessary application data is backed up.
@@ -42851,23 +39997,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_dedicated_host_auto_release_time(
         self,
         request: ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeRequest,
     ) -> ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeResponse:
         """
-        @summary Sets or cancels automatic release time for a pay-as-you-go dedicated host.
+        @summary Sets the automatic release time for a pay-as-you-go dedicated host or cancels its automatic release.
         
         @description ## Usage notes
         A pay-as-you-go dedicated host can be automatically released at the specified time. Before you release a pay-as-you-go dedicated host, make sure that the host is no longer required and all necessary application data is backed up.
@@ -42883,7 +40023,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeRequest,
     ) -> ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeResponse:
         """
-        @summary Sets or cancels automatic release time for a pay-as-you-go dedicated host.
+        @summary Sets the automatic release time for a pay-as-you-go dedicated host or cancels its automatic release.
         
         @description ## Usage notes
         A pay-as-you-go dedicated host can be automatically released at the specified time. Before you release a pay-as-you-go dedicated host, make sure that the host is no longer required and all necessary application data is backed up.
@@ -42947,16 +40087,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDedicatedHostAutoRenewAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDedicatedHostAutoRenewAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDedicatedHostAutoRenewAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_dedicated_host_auto_renew_attribute_with_options_async(
         self,
@@ -43011,16 +40145,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDedicatedHostAutoRenewAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDedicatedHostAutoRenewAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDedicatedHostAutoRenewAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_dedicated_host_auto_renew_attribute(
         self,
@@ -43098,16 +40226,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDedicatedHostClusterAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDedicatedHostClusterAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDedicatedHostClusterAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_dedicated_host_cluster_attribute_with_options_async(
         self,
@@ -43153,16 +40275,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDedicatedHostClusterAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDedicatedHostClusterAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDedicatedHostClusterAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_dedicated_host_cluster_attribute(
         self,
@@ -43244,16 +40360,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDedicatedHostsChargeTypeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDedicatedHostsChargeTypeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDedicatedHostsChargeTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_dedicated_hosts_charge_type_with_options_async(
         self,
@@ -43309,16 +40419,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDedicatedHostsChargeTypeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDedicatedHostsChargeTypeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDedicatedHostsChargeTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_dedicated_hosts_charge_type(
         self,
@@ -43345,202 +40449,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dedicated_hosts_charge_type_with_options_async(request, runtime)
-
-    def modify_demand_with_options(
-        self,
-        request: ecs_20140526_models.ModifyDemandRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ecs_20140526_models.ModifyDemandResponse:
-        """
-        @deprecated OpenAPI ModifyDemand is deprecated, please use Ecs::2014-05-26::ModifyCapacityReservation instead.
-        
-        @summary Modifies the demand information of Elastic Compute Service (ECS) resources.
-        
-        @description You can call this operation to modify the demand information of instance types. Alibaba Cloud provides the requested resources based on your demand. You can file demands only for I/O optimized instance types and instances of the virtual private cloud (VPC) type. Parameters except `DemandName` and `DemandDescription` can be modified only for demands that are in the Rejected state.
-        > This operation is in invitational preview and is not publicly available.
-        
-        @param request: ModifyDemandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDemandResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.amount):
-            query['Amount'] = request.amount
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.demand_description):
-            query['DemandDescription'] = request.demand_description
-        if not UtilClient.is_unset(request.demand_id):
-            query['DemandId'] = request.demand_id
-        if not UtilClient.is_unset(request.demand_name):
-            query['DemandName'] = request.demand_name
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.instance_charge_type):
-            query['InstanceChargeType'] = request.instance_charge_type
-        if not UtilClient.is_unset(request.instance_type):
-            query['InstanceType'] = request.instance_type
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.period):
-            query['Period'] = request.period
-        if not UtilClient.is_unset(request.period_unit):
-            query['PeriodUnit'] = request.period_unit
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyDemand',
-            version='2014-05-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDemandResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDemandResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def modify_demand_with_options_async(
-        self,
-        request: ecs_20140526_models.ModifyDemandRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ecs_20140526_models.ModifyDemandResponse:
-        """
-        @deprecated OpenAPI ModifyDemand is deprecated, please use Ecs::2014-05-26::ModifyCapacityReservation instead.
-        
-        @summary Modifies the demand information of Elastic Compute Service (ECS) resources.
-        
-        @description You can call this operation to modify the demand information of instance types. Alibaba Cloud provides the requested resources based on your demand. You can file demands only for I/O optimized instance types and instances of the virtual private cloud (VPC) type. Parameters except `DemandName` and `DemandDescription` can be modified only for demands that are in the Rejected state.
-        > This operation is in invitational preview and is not publicly available.
-        
-        @param request: ModifyDemandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDemandResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.amount):
-            query['Amount'] = request.amount
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.demand_description):
-            query['DemandDescription'] = request.demand_description
-        if not UtilClient.is_unset(request.demand_id):
-            query['DemandId'] = request.demand_id
-        if not UtilClient.is_unset(request.demand_name):
-            query['DemandName'] = request.demand_name
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.instance_charge_type):
-            query['InstanceChargeType'] = request.instance_charge_type
-        if not UtilClient.is_unset(request.instance_type):
-            query['InstanceType'] = request.instance_type
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.period):
-            query['Period'] = request.period
-        if not UtilClient.is_unset(request.period_unit):
-            query['PeriodUnit'] = request.period_unit
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyDemand',
-            version='2014-05-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDemandResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDemandResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def modify_demand(
-        self,
-        request: ecs_20140526_models.ModifyDemandRequest,
-    ) -> ecs_20140526_models.ModifyDemandResponse:
-        """
-        @deprecated OpenAPI ModifyDemand is deprecated, please use Ecs::2014-05-26::ModifyCapacityReservation instead.
-        
-        @summary Modifies the demand information of Elastic Compute Service (ECS) resources.
-        
-        @description You can call this operation to modify the demand information of instance types. Alibaba Cloud provides the requested resources based on your demand. You can file demands only for I/O optimized instance types and instances of the virtual private cloud (VPC) type. Parameters except `DemandName` and `DemandDescription` can be modified only for demands that are in the Rejected state.
-        > This operation is in invitational preview and is not publicly available.
-        
-        @param request: ModifyDemandRequest
-        @return: ModifyDemandResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.modify_demand_with_options(request, runtime)
-
-    async def modify_demand_async(
-        self,
-        request: ecs_20140526_models.ModifyDemandRequest,
-    ) -> ecs_20140526_models.ModifyDemandResponse:
-        """
-        @deprecated OpenAPI ModifyDemand is deprecated, please use Ecs::2014-05-26::ModifyCapacityReservation instead.
-        
-        @summary Modifies the demand information of Elastic Compute Service (ECS) resources.
-        
-        @description You can call this operation to modify the demand information of instance types. Alibaba Cloud provides the requested resources based on your demand. You can file demands only for I/O optimized instance types and instances of the virtual private cloud (VPC) type. Parameters except `DemandName` and `DemandDescription` can be modified only for demands that are in the Rejected state.
-        > This operation is in invitational preview and is not publicly available.
-        
-        @param request: ModifyDemandRequest
-        @return: ModifyDemandResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_demand_with_options_async(request, runtime)
 
     def modify_deployment_set_attribute_with_options(
         self,
@@ -43586,16 +40494,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDeploymentSetAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDeploymentSetAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDeploymentSetAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_deployment_set_attribute_with_options_async(
         self,
@@ -43641,16 +40543,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDeploymentSetAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDeploymentSetAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDeploymentSetAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_deployment_set_attribute(
         self,
@@ -43718,16 +40614,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiagnosticMetricSetResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiagnosticMetricSetResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDiagnosticMetricSetResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_diagnostic_metric_set_with_options_async(
         self,
@@ -43769,16 +40659,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiagnosticMetricSetResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiagnosticMetricSetResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDiagnosticMetricSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_diagnostic_metric_set(
         self,
@@ -43812,7 +40696,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDiskAttributeResponse:
         """
-        @summary Modifies the attributes of one or more block storage devices, such as the names and descriptions of the devices and whether to release the devices together with the associated Elastic Compute Service (ECS) instances.
+        @summary Modifies the name, description, release behavior with ECS instance, snapshot deletion on disk removal, automatic snapshot policy feature, and performance burst feature for one or more block storage devices.
         
         @description You can use `DiskId` to specify a block storage device and modify the attributes of the device, such as the name and description of the device and whether to release the device together with the associated instance. You can use `DiskIds.N` to specify multiple block storage devices and batch modify the attributes of the devices.
         
@@ -43862,16 +40746,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiskAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiskAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDiskAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_disk_attribute_with_options_async(
         self,
@@ -43879,7 +40757,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDiskAttributeResponse:
         """
-        @summary Modifies the attributes of one or more block storage devices, such as the names and descriptions of the devices and whether to release the devices together with the associated Elastic Compute Service (ECS) instances.
+        @summary Modifies the name, description, release behavior with ECS instance, snapshot deletion on disk removal, automatic snapshot policy feature, and performance burst feature for one or more block storage devices.
         
         @description You can use `DiskId` to specify a block storage device and modify the attributes of the device, such as the name and description of the device and whether to release the device together with the associated instance. You can use `DiskIds.N` to specify multiple block storage devices and batch modify the attributes of the devices.
         
@@ -43929,23 +40807,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiskAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiskAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDiskAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_disk_attribute(
         self,
         request: ecs_20140526_models.ModifyDiskAttributeRequest,
     ) -> ecs_20140526_models.ModifyDiskAttributeResponse:
         """
-        @summary Modifies the attributes of one or more block storage devices, such as the names and descriptions of the devices and whether to release the devices together with the associated Elastic Compute Service (ECS) instances.
+        @summary Modifies the name, description, release behavior with ECS instance, snapshot deletion on disk removal, automatic snapshot policy feature, and performance burst feature for one or more block storage devices.
         
         @description You can use `DiskId` to specify a block storage device and modify the attributes of the device, such as the name and description of the device and whether to release the device together with the associated instance. You can use `DiskIds.N` to specify multiple block storage devices and batch modify the attributes of the devices.
         
@@ -43960,7 +40832,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDiskAttributeRequest,
     ) -> ecs_20140526_models.ModifyDiskAttributeResponse:
         """
-        @summary Modifies the attributes of one or more block storage devices, such as the names and descriptions of the devices and whether to release the devices together with the associated Elastic Compute Service (ECS) instances.
+        @summary Modifies the name, description, release behavior with ECS instance, snapshot deletion on disk removal, automatic snapshot policy feature, and performance burst feature for one or more block storage devices.
         
         @description You can use `DiskId` to specify a block storage device and modify the attributes of the device, such as the name and description of the device and whether to release the device together with the associated instance. You can use `DiskIds.N` to specify multiple block storage devices and batch modify the attributes of the devices.
         
@@ -43978,13 +40850,13 @@ class Client(OpenApiClient):
         """
         @summary Changes the billing method of data disks that are attached to a subscription Elastic Compute Service (ECS) instance.
         
-        @description # [](#)Usage notes
-        After you change the billing method, the payment (if any) is automatically completed. Maintain sufficient balance in your account. Otherwise, your order becomes invalid and must be canceled. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, log on to the *Expenses and Costs console**, go to the [Orders page](https://usercenter2-intl.aliyun.com/order/list), and pay for the order.
+        @description For information about how to change the billing method of cloud disks, see [Change the billing methods of a disk](https://help.aliyun.com/document_detail/145018.html).
         Take note of the following items:
         Only pay-as-you-go disks can be attached to pay-as-you-go instances, and the billing methods of the disks cannot be changed.
-        The instance cannot be in the Stopped state due to expiration.
+        The instance to which data disks are attached cannot be in the Stopped state due to expiration.
         The price difference is refunded to the payment account that you used. Vouchers that have been redeemed are nonrefundable.
         You cannot change the billing method again within 5 minutes of a successful change.
+        After you change the billing method, the payment (if any) is automatically completed. Maintain sufficient balance in your account. Otherwise, your order becomes invalid and must be canceled. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, log on to the *Expenses and Costs console**, go to the [Orders page](https://usercenter2-intl.aliyun.com/order/list), and pay for the order.
         
         @param request: ModifyDiskChargeTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44026,16 +40898,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiskChargeTypeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiskChargeTypeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDiskChargeTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_disk_charge_type_with_options_async(
         self,
@@ -44045,13 +40911,13 @@ class Client(OpenApiClient):
         """
         @summary Changes the billing method of data disks that are attached to a subscription Elastic Compute Service (ECS) instance.
         
-        @description # [](#)Usage notes
-        After you change the billing method, the payment (if any) is automatically completed. Maintain sufficient balance in your account. Otherwise, your order becomes invalid and must be canceled. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, log on to the *Expenses and Costs console**, go to the [Orders page](https://usercenter2-intl.aliyun.com/order/list), and pay for the order.
+        @description For information about how to change the billing method of cloud disks, see [Change the billing methods of a disk](https://help.aliyun.com/document_detail/145018.html).
         Take note of the following items:
         Only pay-as-you-go disks can be attached to pay-as-you-go instances, and the billing methods of the disks cannot be changed.
-        The instance cannot be in the Stopped state due to expiration.
+        The instance to which data disks are attached cannot be in the Stopped state due to expiration.
         The price difference is refunded to the payment account that you used. Vouchers that have been redeemed are nonrefundable.
         You cannot change the billing method again within 5 minutes of a successful change.
+        After you change the billing method, the payment (if any) is automatically completed. Maintain sufficient balance in your account. Otherwise, your order becomes invalid and must be canceled. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, log on to the *Expenses and Costs console**, go to the [Orders page](https://usercenter2-intl.aliyun.com/order/list), and pay for the order.
         
         @param request: ModifyDiskChargeTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44093,16 +40959,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiskChargeTypeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiskChargeTypeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDiskChargeTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_disk_charge_type(
         self,
@@ -44111,13 +40971,13 @@ class Client(OpenApiClient):
         """
         @summary Changes the billing method of data disks that are attached to a subscription Elastic Compute Service (ECS) instance.
         
-        @description # [](#)Usage notes
-        After you change the billing method, the payment (if any) is automatically completed. Maintain sufficient balance in your account. Otherwise, your order becomes invalid and must be canceled. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, log on to the *Expenses and Costs console**, go to the [Orders page](https://usercenter2-intl.aliyun.com/order/list), and pay for the order.
+        @description For information about how to change the billing method of cloud disks, see [Change the billing methods of a disk](https://help.aliyun.com/document_detail/145018.html).
         Take note of the following items:
         Only pay-as-you-go disks can be attached to pay-as-you-go instances, and the billing methods of the disks cannot be changed.
-        The instance cannot be in the Stopped state due to expiration.
+        The instance to which data disks are attached cannot be in the Stopped state due to expiration.
         The price difference is refunded to the payment account that you used. Vouchers that have been redeemed are nonrefundable.
         You cannot change the billing method again within 5 minutes of a successful change.
+        After you change the billing method, the payment (if any) is automatically completed. Maintain sufficient balance in your account. Otherwise, your order becomes invalid and must be canceled. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, log on to the *Expenses and Costs console**, go to the [Orders page](https://usercenter2-intl.aliyun.com/order/list), and pay for the order.
         
         @param request: ModifyDiskChargeTypeRequest
         @return: ModifyDiskChargeTypeResponse
@@ -44132,13 +40992,13 @@ class Client(OpenApiClient):
         """
         @summary Changes the billing method of data disks that are attached to a subscription Elastic Compute Service (ECS) instance.
         
-        @description # [](#)Usage notes
-        After you change the billing method, the payment (if any) is automatically completed. Maintain sufficient balance in your account. Otherwise, your order becomes invalid and must be canceled. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, log on to the *Expenses and Costs console**, go to the [Orders page](https://usercenter2-intl.aliyun.com/order/list), and pay for the order.
+        @description For information about how to change the billing method of cloud disks, see [Change the billing methods of a disk](https://help.aliyun.com/document_detail/145018.html).
         Take note of the following items:
         Only pay-as-you-go disks can be attached to pay-as-you-go instances, and the billing methods of the disks cannot be changed.
-        The instance cannot be in the Stopped state due to expiration.
+        The instance to which data disks are attached cannot be in the Stopped state due to expiration.
         The price difference is refunded to the payment account that you used. Vouchers that have been redeemed are nonrefundable.
         You cannot change the billing method again within 5 minutes of a successful change.
+        After you change the billing method, the payment (if any) is automatically completed. Maintain sufficient balance in your account. Otherwise, your order becomes invalid and must be canceled. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, log on to the *Expenses and Costs console**, go to the [Orders page](https://usercenter2-intl.aliyun.com/order/list), and pay for the order.
         
         @param request: ModifyDiskChargeTypeRequest
         @return: ModifyDiskChargeTypeResponse
@@ -44184,16 +41044,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiskDefaultKMSKeyIdResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiskDefaultKMSKeyIdResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDiskDefaultKMSKeyIdResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_disk_default_kmskey_id_with_options_async(
         self,
@@ -44233,16 +41087,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiskDefaultKMSKeyIdResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiskDefaultKMSKeyIdResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDiskDefaultKMSKeyIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_disk_default_kmskey_id(
         self,
@@ -44337,16 +41185,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiskDeploymentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiskDeploymentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDiskDeploymentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_disk_deployment_with_options_async(
         self,
@@ -44407,16 +41249,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiskDeploymentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiskDeploymentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDiskDeploymentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_disk_deployment(
         self,
@@ -44476,7 +41312,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDiskSpecResponse:
         """
-        @summary Changes the disk category of a cloud disk or the performance level of an Enterprise SSD (ESSD). You cannot change the disk categories of Regional ESSDs (in public preview), basic disks, elastic ephemeral disks, and local disks.
+        @summary Changes the disk category of a cloud disk or the performance level of an Enterprise SSD (ESSD). You cannot change the disk categories of Regional ESSDs, basic disks, elastic ephemeral disks, and local disks.
         
         @description To minimize impacts on your business, change the disk categories or performance levels of cloud disks during off-peak hours.
         Take note of the following items:
@@ -44535,16 +41371,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiskSpecResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiskSpecResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDiskSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_disk_spec_with_options_async(
         self,
@@ -44552,7 +41382,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDiskSpecResponse:
         """
-        @summary Changes the disk category of a cloud disk or the performance level of an Enterprise SSD (ESSD). You cannot change the disk categories of Regional ESSDs (in public preview), basic disks, elastic ephemeral disks, and local disks.
+        @summary Changes the disk category of a cloud disk or the performance level of an Enterprise SSD (ESSD). You cannot change the disk categories of Regional ESSDs, basic disks, elastic ephemeral disks, and local disks.
         
         @description To minimize impacts on your business, change the disk categories or performance levels of cloud disks during off-peak hours.
         Take note of the following items:
@@ -44611,23 +41441,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiskSpecResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyDiskSpecResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDiskSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_disk_spec(
         self,
         request: ecs_20140526_models.ModifyDiskSpecRequest,
     ) -> ecs_20140526_models.ModifyDiskSpecResponse:
         """
-        @summary Changes the disk category of a cloud disk or the performance level of an Enterprise SSD (ESSD). You cannot change the disk categories of Regional ESSDs (in public preview), basic disks, elastic ephemeral disks, and local disks.
+        @summary Changes the disk category of a cloud disk or the performance level of an Enterprise SSD (ESSD). You cannot change the disk categories of Regional ESSDs, basic disks, elastic ephemeral disks, and local disks.
         
         @description To minimize impacts on your business, change the disk categories or performance levels of cloud disks during off-peak hours.
         Take note of the following items:
@@ -44655,7 +41479,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDiskSpecRequest,
     ) -> ecs_20140526_models.ModifyDiskSpecResponse:
         """
-        @summary Changes the disk category of a cloud disk or the performance level of an Enterprise SSD (ESSD). You cannot change the disk categories of Regional ESSDs (in public preview), basic disks, elastic ephemeral disks, and local disks.
+        @summary Changes the disk category of a cloud disk or the performance level of an Enterprise SSD (ESSD). You cannot change the disk categories of Regional ESSDs, basic disks, elastic ephemeral disks, and local disks.
         
         @description To minimize impacts on your business, change the disk categories or performance levels of cloud disks during off-peak hours.
         Take note of the following items:
@@ -44721,16 +41545,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyEipAddressAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyEipAddressAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyEipAddressAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_eip_address_attribute_with_options_async(
         self,
@@ -44775,16 +41593,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyEipAddressAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyEipAddressAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyEipAddressAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_eip_address_attribute(
         self,
@@ -44862,16 +41674,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyElasticityAssuranceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyElasticityAssuranceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyElasticityAssuranceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_elasticity_assurance_with_options_async(
         self,
@@ -44921,16 +41727,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyElasticityAssuranceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyElasticityAssuranceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyElasticityAssuranceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_elasticity_assurance(
         self,
@@ -45004,16 +41804,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyElasticityAssuranceAutoRenewAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyElasticityAssuranceAutoRenewAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyElasticityAssuranceAutoRenewAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_elasticity_assurance_auto_renew_attribute_with_options_async(
         self,
@@ -45061,16 +41855,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyElasticityAssuranceAutoRenewAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyElasticityAssuranceAutoRenewAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyElasticityAssuranceAutoRenewAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_elasticity_assurance_auto_renew_attribute(
         self,
@@ -45151,16 +41939,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyForwardEntryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyForwardEntryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyForwardEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_forward_entry_with_options_async(
         self,
@@ -45215,16 +41997,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyForwardEntryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyForwardEntryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyForwardEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_forward_entry(
         self,
@@ -45299,16 +42075,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyHaVipAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyHaVipAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyHaVipAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_ha_vip_attribute_with_options_async(
         self,
@@ -45355,16 +42125,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyHaVipAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyHaVipAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyHaVipAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_ha_vip_attribute(
         self,
@@ -45442,16 +42206,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyHpcClusterAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyHpcClusterAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyHpcClusterAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_hpc_cluster_attribute_with_options_async(
         self,
@@ -45501,16 +42259,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyHpcClusterAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyHpcClusterAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyHpcClusterAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_hpc_cluster_attribute(
         self,
@@ -45592,16 +42344,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyImageAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyImageAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyImageAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_image_attribute_with_options_async(
         self,
@@ -45657,16 +42403,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyImageAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyImageAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyImageAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_image_attribute(
         self,
@@ -45741,16 +42481,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyImageShareGroupPermissionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyImageShareGroupPermissionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyImageShareGroupPermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_image_share_group_permission_with_options_async(
         self,
@@ -45799,16 +42533,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyImageShareGroupPermissionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyImageShareGroupPermissionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyImageShareGroupPermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_image_share_group_permission(
         self,
@@ -45850,18 +42578,18 @@ class Client(OpenApiClient):
         """
         @summary Modifies the share permissions on an image. You can share your custom images with other Alibaba Cloud accounts or publish the images as community images.
         
-        @description Before you call this operation, read [Share custom images](https://help.aliyun.com/document_detail/25463.html).
+        @description Before you call this operation, read [Share a custom image](https://help.aliyun.com/document_detail/25463.html).
         When you call this operation, take note of the following sharing rules:
-        You can share only your custom images that were created in your Alibaba Cloud to other accounts.
+        You can share only the custom images that are created in your Alibaba Cloud to other Alibaba Cloud accounts.
         You can share a custom image to up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the system processes only the previous 10 account IDs. The excess account IDs are ignored.
-        You can share a custom image with up to 50 Alibaba Cloud accounts.
+        You can share a custom image to up to 50 Alibaba Cloud accounts.
         If an Elastic Compute Service (ECS) instance was created ([RunInstances](https://help.aliyun.com/document_detail/63440.html)) from a shared image, you cannot re-initialize the instance ([ReInitDisk](https://help.aliyun.com/document_detail/25519.html)) after the image owner unshares or deletes the image ([DeleteImage](https://help.aliyun.com/document_detail/25537.html)).
         When you publish or unpublish a community image, take note of the following items:
         Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](https://help.aliyun.com/document_detail/208370.html).
         You cannot publish encrypted images as community images.
         Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
         You cannot share, export, or copy community images.
-        After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared with other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
+        After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
         
         @param request: ModifyImageSharePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45903,16 +42631,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyImageSharePermissionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyImageSharePermissionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyImageSharePermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_image_share_permission_with_options_async(
         self,
@@ -45922,18 +42644,18 @@ class Client(OpenApiClient):
         """
         @summary Modifies the share permissions on an image. You can share your custom images with other Alibaba Cloud accounts or publish the images as community images.
         
-        @description Before you call this operation, read [Share custom images](https://help.aliyun.com/document_detail/25463.html).
+        @description Before you call this operation, read [Share a custom image](https://help.aliyun.com/document_detail/25463.html).
         When you call this operation, take note of the following sharing rules:
-        You can share only your custom images that were created in your Alibaba Cloud to other accounts.
+        You can share only the custom images that are created in your Alibaba Cloud to other Alibaba Cloud accounts.
         You can share a custom image to up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the system processes only the previous 10 account IDs. The excess account IDs are ignored.
-        You can share a custom image with up to 50 Alibaba Cloud accounts.
+        You can share a custom image to up to 50 Alibaba Cloud accounts.
         If an Elastic Compute Service (ECS) instance was created ([RunInstances](https://help.aliyun.com/document_detail/63440.html)) from a shared image, you cannot re-initialize the instance ([ReInitDisk](https://help.aliyun.com/document_detail/25519.html)) after the image owner unshares or deletes the image ([DeleteImage](https://help.aliyun.com/document_detail/25537.html)).
         When you publish or unpublish a community image, take note of the following items:
         Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](https://help.aliyun.com/document_detail/208370.html).
         You cannot publish encrypted images as community images.
         Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
         You cannot share, export, or copy community images.
-        After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared with other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
+        After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
         
         @param request: ModifyImageSharePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45975,16 +42697,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyImageSharePermissionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyImageSharePermissionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyImageSharePermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_image_share_permission(
         self,
@@ -45993,18 +42709,18 @@ class Client(OpenApiClient):
         """
         @summary Modifies the share permissions on an image. You can share your custom images with other Alibaba Cloud accounts or publish the images as community images.
         
-        @description Before you call this operation, read [Share custom images](https://help.aliyun.com/document_detail/25463.html).
+        @description Before you call this operation, read [Share a custom image](https://help.aliyun.com/document_detail/25463.html).
         When you call this operation, take note of the following sharing rules:
-        You can share only your custom images that were created in your Alibaba Cloud to other accounts.
+        You can share only the custom images that are created in your Alibaba Cloud to other Alibaba Cloud accounts.
         You can share a custom image to up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the system processes only the previous 10 account IDs. The excess account IDs are ignored.
-        You can share a custom image with up to 50 Alibaba Cloud accounts.
+        You can share a custom image to up to 50 Alibaba Cloud accounts.
         If an Elastic Compute Service (ECS) instance was created ([RunInstances](https://help.aliyun.com/document_detail/63440.html)) from a shared image, you cannot re-initialize the instance ([ReInitDisk](https://help.aliyun.com/document_detail/25519.html)) after the image owner unshares or deletes the image ([DeleteImage](https://help.aliyun.com/document_detail/25537.html)).
         When you publish or unpublish a community image, take note of the following items:
         Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](https://help.aliyun.com/document_detail/208370.html).
         You cannot publish encrypted images as community images.
         Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
         You cannot share, export, or copy community images.
-        After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared with other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
+        After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
         
         @param request: ModifyImageSharePermissionRequest
         @return: ModifyImageSharePermissionResponse
@@ -46019,18 +42735,18 @@ class Client(OpenApiClient):
         """
         @summary Modifies the share permissions on an image. You can share your custom images with other Alibaba Cloud accounts or publish the images as community images.
         
-        @description Before you call this operation, read [Share custom images](https://help.aliyun.com/document_detail/25463.html).
+        @description Before you call this operation, read [Share a custom image](https://help.aliyun.com/document_detail/25463.html).
         When you call this operation, take note of the following sharing rules:
-        You can share only your custom images that were created in your Alibaba Cloud to other accounts.
+        You can share only the custom images that are created in your Alibaba Cloud to other Alibaba Cloud accounts.
         You can share a custom image to up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the system processes only the previous 10 account IDs. The excess account IDs are ignored.
-        You can share a custom image with up to 50 Alibaba Cloud accounts.
+        You can share a custom image to up to 50 Alibaba Cloud accounts.
         If an Elastic Compute Service (ECS) instance was created ([RunInstances](https://help.aliyun.com/document_detail/63440.html)) from a shared image, you cannot re-initialize the instance ([ReInitDisk](https://help.aliyun.com/document_detail/25519.html)) after the image owner unshares or deletes the image ([DeleteImage](https://help.aliyun.com/document_detail/25537.html)).
         When you publish or unpublish a community image, take note of the following items:
         Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](https://help.aliyun.com/document_detail/208370.html).
         You cannot publish encrypted images as community images.
         Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
         You cannot share, export, or copy community images.
-        After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared with other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
+        After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
         
         @param request: ModifyImageSharePermissionRequest
         @return: ModifyImageSharePermissionResponse
@@ -46089,16 +42805,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceAttachmentAttributesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceAttachmentAttributesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceAttachmentAttributesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_attachment_attributes_with_options_async(
         self,
@@ -46151,16 +42861,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceAttachmentAttributesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceAttachmentAttributesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceAttachmentAttributesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_attachment_attributes(
         self,
@@ -46230,6 +42934,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.enable_jumbo_frame):
             query['EnableJumboFrame'] = request.enable_jumbo_frame
+        if not UtilClient.is_unset(request.enable_network_encryption):
+            query['EnableNetworkEncryption'] = request.enable_network_encryption
         if not UtilClient.is_unset(request.host_name):
             query['HostName'] = request.host_name
         if not UtilClient.is_unset(request.instance_id):
@@ -46274,16 +42980,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_attribute_with_options_async(
         self,
@@ -46309,6 +43009,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.enable_jumbo_frame):
             query['EnableJumboFrame'] = request.enable_jumbo_frame
+        if not UtilClient.is_unset(request.enable_network_encryption):
+            query['EnableNetworkEncryption'] = request.enable_network_encryption
         if not UtilClient.is_unset(request.host_name):
             query['HostName'] = request.host_name
         if not UtilClient.is_unset(request.instance_id):
@@ -46353,16 +43055,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_attribute(
         self,
@@ -46436,16 +43132,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceAutoReleaseTimeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceAutoReleaseTimeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceAutoReleaseTimeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_auto_release_time_with_options_async(
         self,
@@ -46489,16 +43179,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceAutoReleaseTimeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceAutoReleaseTimeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceAutoReleaseTimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_auto_release_time(
         self,
@@ -46580,16 +43264,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceAutoRenewAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceAutoRenewAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceAutoRenewAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_auto_renew_attribute_with_options_async(
         self,
@@ -46645,16 +43323,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceAutoRenewAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceAutoRenewAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceAutoRenewAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_auto_renew_attribute(
         self,
@@ -46762,16 +43434,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceChargeTypeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceChargeTypeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceChargeTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_charge_type_with_options_async(
         self,
@@ -46841,16 +43507,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceChargeTypeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceChargeTypeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceChargeTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_charge_type(
         self,
@@ -46970,16 +43630,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceDeploymentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceDeploymentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceDeploymentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_deployment_with_options_async(
         self,
@@ -47049,16 +43703,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceDeploymentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceDeploymentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceDeploymentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_deployment(
         self,
@@ -47152,16 +43800,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceMaintenanceAttributesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceMaintenanceAttributesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceMaintenanceAttributesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_maintenance_attributes_with_options_async(
         self,
@@ -47213,16 +43855,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceMaintenanceAttributesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceMaintenanceAttributesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceMaintenanceAttributesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_maintenance_attributes(
         self,
@@ -47304,16 +43940,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceMetadataOptionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceMetadataOptionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceMetadataOptionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_metadata_options_with_options_async(
         self,
@@ -47361,16 +43991,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceMetadataOptionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceMetadataOptionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceMetadataOptionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_metadata_options(
         self,
@@ -47463,16 +44087,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceNetworkSpecResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceNetworkSpecResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceNetworkSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_network_spec_with_options_async(
         self,
@@ -47539,16 +44157,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceNetworkSpecResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceNetworkSpecResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceNetworkSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_network_spec(
         self,
@@ -47663,16 +44275,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceSpecResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceSpecResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_spec_with_options_async(
         self,
@@ -47743,16 +44349,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceSpecResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceSpecResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_spec(
         self,
@@ -47845,16 +44445,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceVncPasswdResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceVncPasswdResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceVncPasswdResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_vnc_passwd_with_options_async(
         self,
@@ -47903,16 +44497,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceVncPasswdResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceVncPasswdResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceVncPasswdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_vnc_passwd(
         self,
@@ -47956,35 +44544,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceVpcAttributeResponse:
         """
-        @summary Changes the virtual private cloud (VPC), private IP address, or vSwitch of an Elastic Compute Service (ECS) instance that resides in a VPC.
+        @summary Changes the virtual private cloud (VPC), private IP address, security groups, or vSwitch of an Elastic Compute Service (ECS) instance located in a VPC.
         
-        @description ## [](#)Usage notes
-        The instance that you want to manage must be in the *Stopped** (`Stopped`) state.
-        When you call this operation to change the private IP address or vSwitch of an instance, take note of the following items:
+        @description The ECS instance that you want to manage must be in the *Stopped** (`Stopped`) state.
+        When you call this operation to change the private IP address or vSwitch of an ECS instance, take note of the following items:
         If the instance is a new instance, you must restart the instance before you call this operation.
         After the private IP address or vSwitch of the instance is changed, you must restart the instance before you can recall this operation.
-        When you call this operation to change the VPC of an instance, take note of the following items:
-        **Instance:**\
+        When you call this operation to change the VPC of an ECS instance, take note of the following items:
+        **ECS instance:**\
+        The instance cannot be in the Locked, To Be Released, Expired, To Be Recycled, Expired and Being Recycled, or Overdue and Being Recycled state. For more information, see [Overview of instances](https://help.aliyun.com/document_detail/25380.html).
         The instance cannot be associated with Server Load Balancer (SLB) instances.
-        The instance cannot be in the Locked, To Be Released, Expired, Expired and Being Recycled, or Overdue and Being Recycled state. For more information, see [Instance lifecycle](https://help.aliyun.com/document_detail/25380.html).
         The instance cannot be used in other Alibaba Cloud services. For example, the instance cannot be in the process of being migrated or having its VPC changed, or the databases deployed on the instance cannot be managed by Data Transmission Service (DTS).
         **Network:**\
-        The cut-through mode or the multi-elastic IP address (EIP)-to-elastic network interface (ENI) mode cannot be enabled for the instance.
-        The instance cannot be associated with a high-availability virtual IP address (HAVIP).
-        The vSwitch of the instance cannot be associated with a custom route table.
-        Global Accelerator (GA) cannot be activated for the instance.
-        The instance cannot have secondary ENIs.
-        The instance cannot be assigned an IPv6 address.
-        The primary ENI of the instance cannot be associated with multiple IP addresses.
-        The new vSwitch that you specify must belong to the new VPC.
+        The cut-through mode or the multi-elastic IP address (EIP)-to-elastic network interface (ENI) mode cannot be enabled for the ECS instance.
+        The ECS instance cannot be associated with a high-availability virtual IP address (HAVIP).
+        The vSwitch of the ECS instance cannot be associated with a custom route table.
+        Global Accelerator (GA) cannot be activated for the ECS instance.
+        Secondary ENIs cannot be attached to the ECS instance.
+        The ECS instance cannot be assigned an IPv6 address.
+        The primary ENI of the ECS instance cannot be associated with multiple IP addresses.
+        The vSwitch must belong to the new VPC.
         The original and new vSwitches must reside in the same zone.
-        If you assign a private IP address to the primary ENI of the instance, the private IP address must be an idle IP address within the CIDR block of the new vSwitch. If you do not assign a private IP address to the primary ENI of the instance, a private IP address is randomly assigned to the ENI. Make sure that sufficient IP addresses are available in the CIDR block of the new vSwitch.
-        The Alibaba Cloud account that owns the new VPC cannot share the VPC with other accounts.
-        **Security group (SecurityGroupId.N):**\
-        All security groups must be of the same type.
-        The valid values of N vary based on the maximum number of security groups to which an instance can belong. For more information, see the "Security group limits" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
-        The security groups that you specify must belong to the new VPC.
-        You can switch the instance to security groups of a different type. To ensure network connectivity, we recommend that you understand the differences in rule configurations of the two security group types before you switch an instance to security groups of a different type. For more information, see [Overview](https://help.aliyun.com/document_detail/25387.html).
+        If you assign a private IP address to the primary ENI of the ECS instance, the private IP address must be an idle IP address within the CIDR block of the new vSwitch. If you do not assign a private IP address to the primary ENI of the ECS instance, a private IP address is randomly assigned to the ENI. Make sure that sufficient IP addresses are available in the CIDR block of the new vSwitch.
+        If you use a VPC that is shared by another Alibaba Cloud account with your account and want to change the security groups of the ECS instance, specify the security groups that you created in the VPC, instead of the security group created by the VPC owner, as the new security groups.
         
         @param request: ModifyInstanceVpcAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -48024,16 +44606,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceVpcAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceVpcAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceVpcAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_vpc_attribute_with_options_async(
         self,
@@ -48041,35 +44617,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceVpcAttributeResponse:
         """
-        @summary Changes the virtual private cloud (VPC), private IP address, or vSwitch of an Elastic Compute Service (ECS) instance that resides in a VPC.
+        @summary Changes the virtual private cloud (VPC), private IP address, security groups, or vSwitch of an Elastic Compute Service (ECS) instance located in a VPC.
         
-        @description ## [](#)Usage notes
-        The instance that you want to manage must be in the *Stopped** (`Stopped`) state.
-        When you call this operation to change the private IP address or vSwitch of an instance, take note of the following items:
+        @description The ECS instance that you want to manage must be in the *Stopped** (`Stopped`) state.
+        When you call this operation to change the private IP address or vSwitch of an ECS instance, take note of the following items:
         If the instance is a new instance, you must restart the instance before you call this operation.
         After the private IP address or vSwitch of the instance is changed, you must restart the instance before you can recall this operation.
-        When you call this operation to change the VPC of an instance, take note of the following items:
-        **Instance:**\
+        When you call this operation to change the VPC of an ECS instance, take note of the following items:
+        **ECS instance:**\
+        The instance cannot be in the Locked, To Be Released, Expired, To Be Recycled, Expired and Being Recycled, or Overdue and Being Recycled state. For more information, see [Overview of instances](https://help.aliyun.com/document_detail/25380.html).
         The instance cannot be associated with Server Load Balancer (SLB) instances.
-        The instance cannot be in the Locked, To Be Released, Expired, Expired and Being Recycled, or Overdue and Being Recycled state. For more information, see [Instance lifecycle](https://help.aliyun.com/document_detail/25380.html).
         The instance cannot be used in other Alibaba Cloud services. For example, the instance cannot be in the process of being migrated or having its VPC changed, or the databases deployed on the instance cannot be managed by Data Transmission Service (DTS).
         **Network:**\
-        The cut-through mode or the multi-elastic IP address (EIP)-to-elastic network interface (ENI) mode cannot be enabled for the instance.
-        The instance cannot be associated with a high-availability virtual IP address (HAVIP).
-        The vSwitch of the instance cannot be associated with a custom route table.
-        Global Accelerator (GA) cannot be activated for the instance.
-        The instance cannot have secondary ENIs.
-        The instance cannot be assigned an IPv6 address.
-        The primary ENI of the instance cannot be associated with multiple IP addresses.
-        The new vSwitch that you specify must belong to the new VPC.
+        The cut-through mode or the multi-elastic IP address (EIP)-to-elastic network interface (ENI) mode cannot be enabled for the ECS instance.
+        The ECS instance cannot be associated with a high-availability virtual IP address (HAVIP).
+        The vSwitch of the ECS instance cannot be associated with a custom route table.
+        Global Accelerator (GA) cannot be activated for the ECS instance.
+        Secondary ENIs cannot be attached to the ECS instance.
+        The ECS instance cannot be assigned an IPv6 address.
+        The primary ENI of the ECS instance cannot be associated with multiple IP addresses.
+        The vSwitch must belong to the new VPC.
         The original and new vSwitches must reside in the same zone.
-        If you assign a private IP address to the primary ENI of the instance, the private IP address must be an idle IP address within the CIDR block of the new vSwitch. If you do not assign a private IP address to the primary ENI of the instance, a private IP address is randomly assigned to the ENI. Make sure that sufficient IP addresses are available in the CIDR block of the new vSwitch.
-        The Alibaba Cloud account that owns the new VPC cannot share the VPC with other accounts.
-        **Security group (SecurityGroupId.N):**\
-        All security groups must be of the same type.
-        The valid values of N vary based on the maximum number of security groups to which an instance can belong. For more information, see the "Security group limits" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
-        The security groups that you specify must belong to the new VPC.
-        You can switch the instance to security groups of a different type. To ensure network connectivity, we recommend that you understand the differences in rule configurations of the two security group types before you switch an instance to security groups of a different type. For more information, see [Overview](https://help.aliyun.com/document_detail/25387.html).
+        If you assign a private IP address to the primary ENI of the ECS instance, the private IP address must be an idle IP address within the CIDR block of the new vSwitch. If you do not assign a private IP address to the primary ENI of the ECS instance, a private IP address is randomly assigned to the ENI. Make sure that sufficient IP addresses are available in the CIDR block of the new vSwitch.
+        If you use a VPC that is shared by another Alibaba Cloud account with your account and want to change the security groups of the ECS instance, specify the security groups that you created in the VPC, instead of the security group created by the VPC owner, as the new security groups.
         
         @param request: ModifyInstanceVpcAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -48109,51 +44679,39 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceVpcAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInstanceVpcAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceVpcAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_vpc_attribute(
         self,
         request: ecs_20140526_models.ModifyInstanceVpcAttributeRequest,
     ) -> ecs_20140526_models.ModifyInstanceVpcAttributeResponse:
         """
-        @summary Changes the virtual private cloud (VPC), private IP address, or vSwitch of an Elastic Compute Service (ECS) instance that resides in a VPC.
+        @summary Changes the virtual private cloud (VPC), private IP address, security groups, or vSwitch of an Elastic Compute Service (ECS) instance located in a VPC.
         
-        @description ## [](#)Usage notes
-        The instance that you want to manage must be in the *Stopped** (`Stopped`) state.
-        When you call this operation to change the private IP address or vSwitch of an instance, take note of the following items:
+        @description The ECS instance that you want to manage must be in the *Stopped** (`Stopped`) state.
+        When you call this operation to change the private IP address or vSwitch of an ECS instance, take note of the following items:
         If the instance is a new instance, you must restart the instance before you call this operation.
         After the private IP address or vSwitch of the instance is changed, you must restart the instance before you can recall this operation.
-        When you call this operation to change the VPC of an instance, take note of the following items:
-        **Instance:**\
+        When you call this operation to change the VPC of an ECS instance, take note of the following items:
+        **ECS instance:**\
+        The instance cannot be in the Locked, To Be Released, Expired, To Be Recycled, Expired and Being Recycled, or Overdue and Being Recycled state. For more information, see [Overview of instances](https://help.aliyun.com/document_detail/25380.html).
         The instance cannot be associated with Server Load Balancer (SLB) instances.
-        The instance cannot be in the Locked, To Be Released, Expired, Expired and Being Recycled, or Overdue and Being Recycled state. For more information, see [Instance lifecycle](https://help.aliyun.com/document_detail/25380.html).
         The instance cannot be used in other Alibaba Cloud services. For example, the instance cannot be in the process of being migrated or having its VPC changed, or the databases deployed on the instance cannot be managed by Data Transmission Service (DTS).
         **Network:**\
-        The cut-through mode or the multi-elastic IP address (EIP)-to-elastic network interface (ENI) mode cannot be enabled for the instance.
-        The instance cannot be associated with a high-availability virtual IP address (HAVIP).
-        The vSwitch of the instance cannot be associated with a custom route table.
-        Global Accelerator (GA) cannot be activated for the instance.
-        The instance cannot have secondary ENIs.
-        The instance cannot be assigned an IPv6 address.
-        The primary ENI of the instance cannot be associated with multiple IP addresses.
-        The new vSwitch that you specify must belong to the new VPC.
+        The cut-through mode or the multi-elastic IP address (EIP)-to-elastic network interface (ENI) mode cannot be enabled for the ECS instance.
+        The ECS instance cannot be associated with a high-availability virtual IP address (HAVIP).
+        The vSwitch of the ECS instance cannot be associated with a custom route table.
+        Global Accelerator (GA) cannot be activated for the ECS instance.
+        Secondary ENIs cannot be attached to the ECS instance.
+        The ECS instance cannot be assigned an IPv6 address.
+        The primary ENI of the ECS instance cannot be associated with multiple IP addresses.
+        The vSwitch must belong to the new VPC.
         The original and new vSwitches must reside in the same zone.
-        If you assign a private IP address to the primary ENI of the instance, the private IP address must be an idle IP address within the CIDR block of the new vSwitch. If you do not assign a private IP address to the primary ENI of the instance, a private IP address is randomly assigned to the ENI. Make sure that sufficient IP addresses are available in the CIDR block of the new vSwitch.
-        The Alibaba Cloud account that owns the new VPC cannot share the VPC with other accounts.
-        **Security group (SecurityGroupId.N):**\
-        All security groups must be of the same type.
-        The valid values of N vary based on the maximum number of security groups to which an instance can belong. For more information, see the "Security group limits" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
-        The security groups that you specify must belong to the new VPC.
-        You can switch the instance to security groups of a different type. To ensure network connectivity, we recommend that you understand the differences in rule configurations of the two security group types before you switch an instance to security groups of a different type. For more information, see [Overview](https://help.aliyun.com/document_detail/25387.html).
+        If you assign a private IP address to the primary ENI of the ECS instance, the private IP address must be an idle IP address within the CIDR block of the new vSwitch. If you do not assign a private IP address to the primary ENI of the ECS instance, a private IP address is randomly assigned to the ENI. Make sure that sufficient IP addresses are available in the CIDR block of the new vSwitch.
+        If you use a VPC that is shared by another Alibaba Cloud account with your account and want to change the security groups of the ECS instance, specify the security groups that you created in the VPC, instead of the security group created by the VPC owner, as the new security groups.
         
         @param request: ModifyInstanceVpcAttributeRequest
         @return: ModifyInstanceVpcAttributeResponse
@@ -48166,35 +44724,29 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceVpcAttributeRequest,
     ) -> ecs_20140526_models.ModifyInstanceVpcAttributeResponse:
         """
-        @summary Changes the virtual private cloud (VPC), private IP address, or vSwitch of an Elastic Compute Service (ECS) instance that resides in a VPC.
+        @summary Changes the virtual private cloud (VPC), private IP address, security groups, or vSwitch of an Elastic Compute Service (ECS) instance located in a VPC.
         
-        @description ## [](#)Usage notes
-        The instance that you want to manage must be in the *Stopped** (`Stopped`) state.
-        When you call this operation to change the private IP address or vSwitch of an instance, take note of the following items:
+        @description The ECS instance that you want to manage must be in the *Stopped** (`Stopped`) state.
+        When you call this operation to change the private IP address or vSwitch of an ECS instance, take note of the following items:
         If the instance is a new instance, you must restart the instance before you call this operation.
         After the private IP address or vSwitch of the instance is changed, you must restart the instance before you can recall this operation.
-        When you call this operation to change the VPC of an instance, take note of the following items:
-        **Instance:**\
+        When you call this operation to change the VPC of an ECS instance, take note of the following items:
+        **ECS instance:**\
+        The instance cannot be in the Locked, To Be Released, Expired, To Be Recycled, Expired and Being Recycled, or Overdue and Being Recycled state. For more information, see [Overview of instances](https://help.aliyun.com/document_detail/25380.html).
         The instance cannot be associated with Server Load Balancer (SLB) instances.
-        The instance cannot be in the Locked, To Be Released, Expired, Expired and Being Recycled, or Overdue and Being Recycled state. For more information, see [Instance lifecycle](https://help.aliyun.com/document_detail/25380.html).
         The instance cannot be used in other Alibaba Cloud services. For example, the instance cannot be in the process of being migrated or having its VPC changed, or the databases deployed on the instance cannot be managed by Data Transmission Service (DTS).
         **Network:**\
-        The cut-through mode or the multi-elastic IP address (EIP)-to-elastic network interface (ENI) mode cannot be enabled for the instance.
-        The instance cannot be associated with a high-availability virtual IP address (HAVIP).
-        The vSwitch of the instance cannot be associated with a custom route table.
-        Global Accelerator (GA) cannot be activated for the instance.
-        The instance cannot have secondary ENIs.
-        The instance cannot be assigned an IPv6 address.
-        The primary ENI of the instance cannot be associated with multiple IP addresses.
-        The new vSwitch that you specify must belong to the new VPC.
+        The cut-through mode or the multi-elastic IP address (EIP)-to-elastic network interface (ENI) mode cannot be enabled for the ECS instance.
+        The ECS instance cannot be associated with a high-availability virtual IP address (HAVIP).
+        The vSwitch of the ECS instance cannot be associated with a custom route table.
+        Global Accelerator (GA) cannot be activated for the ECS instance.
+        Secondary ENIs cannot be attached to the ECS instance.
+        The ECS instance cannot be assigned an IPv6 address.
+        The primary ENI of the ECS instance cannot be associated with multiple IP addresses.
+        The vSwitch must belong to the new VPC.
         The original and new vSwitches must reside in the same zone.
-        If you assign a private IP address to the primary ENI of the instance, the private IP address must be an idle IP address within the CIDR block of the new vSwitch. If you do not assign a private IP address to the primary ENI of the instance, a private IP address is randomly assigned to the ENI. Make sure that sufficient IP addresses are available in the CIDR block of the new vSwitch.
-        The Alibaba Cloud account that owns the new VPC cannot share the VPC with other accounts.
-        **Security group (SecurityGroupId.N):**\
-        All security groups must be of the same type.
-        The valid values of N vary based on the maximum number of security groups to which an instance can belong. For more information, see the "Security group limits" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
-        The security groups that you specify must belong to the new VPC.
-        You can switch the instance to security groups of a different type. To ensure network connectivity, we recommend that you understand the differences in rule configurations of the two security group types before you switch an instance to security groups of a different type. For more information, see [Overview](https://help.aliyun.com/document_detail/25387.html).
+        If you assign a private IP address to the primary ENI of the ECS instance, the private IP address must be an idle IP address within the CIDR block of the new vSwitch. If you do not assign a private IP address to the primary ENI of the ECS instance, a private IP address is randomly assigned to the ENI. Make sure that sufficient IP addresses are available in the CIDR block of the new vSwitch.
+        If you use a VPC that is shared by another Alibaba Cloud account with your account and want to change the security groups of the ECS instance, specify the security groups that you created in the VPC, instead of the security group created by the VPC owner, as the new security groups.
         
         @param request: ModifyInstanceVpcAttributeRequest
         @return: ModifyInstanceVpcAttributeResponse
@@ -48276,16 +44828,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInvocationAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInvocationAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInvocationAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_invocation_attribute_with_options_async(
         self,
@@ -48361,16 +44907,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInvocationAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyInvocationAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInvocationAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_invocation_attribute(
         self,
@@ -48477,16 +45017,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyLaunchTemplateDefaultVersionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyLaunchTemplateDefaultVersionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyLaunchTemplateDefaultVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_launch_template_default_version_with_options_async(
         self,
@@ -48535,16 +45069,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyLaunchTemplateDefaultVersionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyLaunchTemplateDefaultVersionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyLaunchTemplateDefaultVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_launch_template_default_version(
         self,
@@ -48625,16 +45153,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyManagedInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyManagedInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyManagedInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_managed_instance_with_options_async(
         self,
@@ -48683,16 +45205,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyManagedInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyManagedInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyManagedInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_managed_instance(
         self,
@@ -48790,16 +45306,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyNetworkInterfaceAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyNetworkInterfaceAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyNetworkInterfaceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_network_interface_attribute_with_options_async(
         self,
@@ -48865,16 +45375,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyNetworkInterfaceAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyNetworkInterfaceAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyNetworkInterfaceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_network_interface_attribute(
         self,
@@ -48965,16 +45469,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyPhysicalConnectionAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyPhysicalConnectionAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyPhysicalConnectionAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_physical_connection_attribute_with_options_async(
         self,
@@ -49039,16 +45537,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyPhysicalConnectionAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyPhysicalConnectionAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyPhysicalConnectionAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_physical_connection_attribute(
         self,
@@ -49077,6 +45569,146 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_physical_connection_attribute_with_options_async(request, runtime)
+
+    def modify_port_range_list_with_options(
+        self,
+        request: ecs_20140526_models.ModifyPortRangeListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyPortRangeListResponse:
+        """
+        @summary 修改指定端口列表的名称和条目等
+        
+        @param request: ModifyPortRangeListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPortRangeListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.add_entry):
+            query['AddEntry'] = request.add_entry
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port_range_list_id):
+            query['PortRangeListId'] = request.port_range_list_id
+        if not UtilClient.is_unset(request.port_range_list_name):
+            query['PortRangeListName'] = request.port_range_list_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remove_entry):
+            query['RemoveEntry'] = request.remove_entry
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyPortRangeList',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyPortRangeListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_port_range_list_with_options_async(
+        self,
+        request: ecs_20140526_models.ModifyPortRangeListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyPortRangeListResponse:
+        """
+        @summary 修改指定端口列表的名称和条目等
+        
+        @param request: ModifyPortRangeListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPortRangeListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.add_entry):
+            query['AddEntry'] = request.add_entry
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port_range_list_id):
+            query['PortRangeListId'] = request.port_range_list_id
+        if not UtilClient.is_unset(request.port_range_list_name):
+            query['PortRangeListName'] = request.port_range_list_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remove_entry):
+            query['RemoveEntry'] = request.remove_entry
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyPortRangeList',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyPortRangeListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_port_range_list(
+        self,
+        request: ecs_20140526_models.ModifyPortRangeListRequest,
+    ) -> ecs_20140526_models.ModifyPortRangeListResponse:
+        """
+        @summary 修改指定端口列表的名称和条目等
+        
+        @param request: ModifyPortRangeListRequest
+        @return: ModifyPortRangeListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_port_range_list_with_options(request, runtime)
+
+    async def modify_port_range_list_async(
+        self,
+        request: ecs_20140526_models.ModifyPortRangeListRequest,
+    ) -> ecs_20140526_models.ModifyPortRangeListResponse:
+        """
+        @summary 修改指定端口列表的名称和条目等
+        
+        @param request: ModifyPortRangeListRequest
+        @return: ModifyPortRangeListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_port_range_list_with_options_async(request, runtime)
 
     def modify_prefix_list_with_options(
         self,
@@ -49136,16 +45768,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyPrefixListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyPrefixListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyPrefixListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_prefix_list_with_options_async(
         self,
@@ -49205,16 +45831,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyPrefixListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyPrefixListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyPrefixListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_prefix_list(
         self,
@@ -49332,16 +45952,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyPrepayInstanceSpecResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyPrepayInstanceSpecResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyPrepayInstanceSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_prepay_instance_spec_with_options_async(
         self,
@@ -49417,16 +46031,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyPrepayInstanceSpecResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyPrepayInstanceSpecResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyPrepayInstanceSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_prepay_instance_spec(
         self,
@@ -49522,16 +46130,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyReservedInstanceAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyReservedInstanceAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyReservedInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_reserved_instance_attribute_with_options_async(
         self,
@@ -49577,16 +46179,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyReservedInstanceAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyReservedInstanceAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyReservedInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_reserved_instance_attribute(
         self,
@@ -49660,16 +46256,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyReservedInstanceAutoRenewAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyReservedInstanceAutoRenewAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyReservedInstanceAutoRenewAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_reserved_instance_auto_renew_attribute_with_options_async(
         self,
@@ -49717,16 +46307,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyReservedInstanceAutoRenewAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyReservedInstanceAutoRenewAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyReservedInstanceAutoRenewAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_reserved_instance_auto_renew_attribute(
         self,
@@ -49846,16 +46430,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyReservedInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyReservedInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyReservedInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_reserved_instances_with_options_async(
         self,
@@ -49949,16 +46527,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyReservedInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyReservedInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyReservedInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_reserved_instances(
         self,
@@ -50141,16 +46713,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyRouterInterfaceAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyRouterInterfaceAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyRouterInterfaceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_router_interface_attribute_with_options_async(
         self,
@@ -50207,16 +46773,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyRouterInterfaceAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyRouterInterfaceAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyRouterInterfaceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_router_interface_attribute(
         self,
@@ -50293,16 +46853,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyRouterInterfaceSpecResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyRouterInterfaceSpecResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyRouterInterfaceSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_router_interface_spec_with_options_async(
         self,
@@ -50351,16 +46905,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyRouterInterfaceSpecResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyRouterInterfaceSpecResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyRouterInterfaceSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_router_interface_spec(
         self,
@@ -50434,16 +46982,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySecurityGroupAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySecurityGroupAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifySecurityGroupAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_security_group_attribute_with_options_async(
         self,
@@ -50489,16 +47031,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySecurityGroupAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySecurityGroupAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifySecurityGroupAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_security_group_attribute(
         self,
@@ -50574,6 +47110,8 @@ class Client(OpenApiClient):
             query['Policy'] = request.policy
         if not UtilClient.is_unset(request.port_range):
             query['PortRange'] = request.port_range
+        if not UtilClient.is_unset(request.port_range_list_id):
+            query['PortRangeListId'] = request.port_range_list_id
         if not UtilClient.is_unset(request.priority):
             query['Priority'] = request.priority
         if not UtilClient.is_unset(request.region_id):
@@ -50606,16 +47144,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySecurityGroupEgressRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySecurityGroupEgressRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifySecurityGroupEgressRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_security_group_egress_rule_with_options_async(
         self,
@@ -50665,6 +47197,8 @@ class Client(OpenApiClient):
             query['Policy'] = request.policy
         if not UtilClient.is_unset(request.port_range):
             query['PortRange'] = request.port_range
+        if not UtilClient.is_unset(request.port_range_list_id):
+            query['PortRangeListId'] = request.port_range_list_id
         if not UtilClient.is_unset(request.priority):
             query['Priority'] = request.priority
         if not UtilClient.is_unset(request.region_id):
@@ -50697,16 +47231,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySecurityGroupEgressRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySecurityGroupEgressRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifySecurityGroupEgressRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_security_group_egress_rule(
         self,
@@ -50791,16 +47319,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySecurityGroupPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySecurityGroupPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifySecurityGroupPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_security_group_policy_with_options_async(
         self,
@@ -50851,16 +47373,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySecurityGroupPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySecurityGroupPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifySecurityGroupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_security_group_policy(
         self,
@@ -50938,6 +47454,8 @@ class Client(OpenApiClient):
             query['Policy'] = request.policy
         if not UtilClient.is_unset(request.port_range):
             query['PortRange'] = request.port_range
+        if not UtilClient.is_unset(request.port_range_list_id):
+            query['PortRangeListId'] = request.port_range_list_id
         if not UtilClient.is_unset(request.priority):
             query['Priority'] = request.priority
         if not UtilClient.is_unset(request.region_id):
@@ -50978,16 +47496,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySecurityGroupRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySecurityGroupRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifySecurityGroupRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_security_group_rule_with_options_async(
         self,
@@ -51029,6 +47541,8 @@ class Client(OpenApiClient):
             query['Policy'] = request.policy
         if not UtilClient.is_unset(request.port_range):
             query['PortRange'] = request.port_range
+        if not UtilClient.is_unset(request.port_range_list_id):
+            query['PortRangeListId'] = request.port_range_list_id
         if not UtilClient.is_unset(request.priority):
             query['Priority'] = request.priority
         if not UtilClient.is_unset(request.region_id):
@@ -51069,16 +47583,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySecurityGroupRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySecurityGroupRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifySecurityGroupRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_security_group_rule(
         self,
@@ -51160,16 +47668,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySnapshotAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySnapshotAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifySnapshotAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_snapshot_attribute_with_options_async(
         self,
@@ -51217,16 +47719,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySnapshotAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySnapshotAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifySnapshotAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_snapshot_attribute(
         self,
@@ -51302,16 +47798,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySnapshotCategoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySnapshotCategoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifySnapshotCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_snapshot_category_with_options_async(
         self,
@@ -51361,16 +47851,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySnapshotCategoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySnapshotCategoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifySnapshotCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_snapshot_category(
         self,
@@ -51454,16 +47938,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySnapshotGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySnapshotGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifySnapshotGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_snapshot_group_with_options_async(
         self,
@@ -51509,16 +47987,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySnapshotGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifySnapshotGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifySnapshotGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_snapshot_group(
         self,
@@ -51552,7 +48024,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyStorageCapacityUnitAttributeResponse:
         """
-        @summary Changes the name or modifies the description of a Storage Capacity Unit (SCU).
+        @summary Changes the name or modifies the description of a storage capacity unit (SCU).
         
         @param request: ModifyStorageCapacityUnitAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -51590,16 +48062,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyStorageCapacityUnitAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyStorageCapacityUnitAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyStorageCapacityUnitAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_storage_capacity_unit_attribute_with_options_async(
         self,
@@ -51607,7 +48073,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyStorageCapacityUnitAttributeResponse:
         """
-        @summary Changes the name or modifies the description of a Storage Capacity Unit (SCU).
+        @summary Changes the name or modifies the description of a storage capacity unit (SCU).
         
         @param request: ModifyStorageCapacityUnitAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -51645,23 +48111,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyStorageCapacityUnitAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyStorageCapacityUnitAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyStorageCapacityUnitAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_storage_capacity_unit_attribute(
         self,
         request: ecs_20140526_models.ModifyStorageCapacityUnitAttributeRequest,
     ) -> ecs_20140526_models.ModifyStorageCapacityUnitAttributeResponse:
         """
-        @summary Changes the name or modifies the description of a Storage Capacity Unit (SCU).
+        @summary Changes the name or modifies the description of a storage capacity unit (SCU).
         
         @param request: ModifyStorageCapacityUnitAttributeRequest
         @return: ModifyStorageCapacityUnitAttributeResponse
@@ -51674,7 +48134,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyStorageCapacityUnitAttributeRequest,
     ) -> ecs_20140526_models.ModifyStorageCapacityUnitAttributeResponse:
         """
-        @summary Changes the name or modifies the description of a Storage Capacity Unit (SCU).
+        @summary Changes the name or modifies the description of a storage capacity unit (SCU).
         
         @param request: ModifyStorageCapacityUnitAttributeRequest
         @return: ModifyStorageCapacityUnitAttributeResponse
@@ -51728,16 +48188,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyStorageSetAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyStorageSetAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyStorageSetAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_storage_set_attribute_with_options_async(
         self,
@@ -51785,16 +48239,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyStorageSetAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyStorageSetAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyStorageSetAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_storage_set_attribute(
         self,
@@ -51867,16 +48315,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyUserBusinessBehaviorResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyUserBusinessBehaviorResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyUserBusinessBehaviorResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_user_business_behavior_with_options_async(
         self,
@@ -51923,16 +48365,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyUserBusinessBehaviorResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyUserBusinessBehaviorResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyUserBusinessBehaviorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_user_business_behavior(
         self,
@@ -52011,16 +48447,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyVRouterAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyVRouterAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyVRouterAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_vrouter_attribute_with_options_async(
         self,
@@ -52067,16 +48497,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyVRouterAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyVRouterAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyVRouterAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_vrouter_attribute(
         self,
@@ -52151,16 +48575,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyVSwitchAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyVSwitchAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyVSwitchAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_vswitch_attribute_with_options_async(
         self,
@@ -52207,16 +48625,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyVSwitchAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyVSwitchAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyVSwitchAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_vswitch_attribute(
         self,
@@ -52305,16 +48717,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyVirtualBorderRouterAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyVirtualBorderRouterAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyVirtualBorderRouterAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_virtual_border_router_attribute_with_options_async(
         self,
@@ -52375,16 +48781,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyVirtualBorderRouterAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyVirtualBorderRouterAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyVirtualBorderRouterAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_virtual_border_router_attribute(
         self,
@@ -52463,16 +48863,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyVpcAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyVpcAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyVpcAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_vpc_attribute_with_options_async(
         self,
@@ -52523,16 +48917,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyVpcAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ModifyVpcAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyVpcAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_vpc_attribute(
         self,
@@ -52613,16 +49001,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.PurchaseElasticityAssuranceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.PurchaseElasticityAssuranceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.PurchaseElasticityAssuranceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def purchase_elasticity_assurance_with_options_async(
         self,
@@ -52675,16 +49057,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.PurchaseElasticityAssuranceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.PurchaseElasticityAssuranceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.PurchaseElasticityAssuranceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def purchase_elasticity_assurance(
         self,
@@ -52803,16 +49179,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.PurchaseReservedInstancesOfferingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.PurchaseReservedInstancesOfferingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.PurchaseReservedInstancesOfferingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def purchase_reserved_instances_offering_with_options_async(
         self,
@@ -52899,16 +49269,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.PurchaseReservedInstancesOfferingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.PurchaseReservedInstancesOfferingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.PurchaseReservedInstancesOfferingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def purchase_reserved_instances_offering(
         self,
@@ -52974,8 +49338,7 @@ class Client(OpenApiClient):
         """
         @summary Purchases one or more storage capacity units (SCUs).
         
-        @description ## [](#)Usage notes
-        Before you call this operation, make sure that you are familiar with the billing and pricing of SCUs. For more information, see [Storage capacity units](https://help.aliyun.com/document_detail/137897.html).
+        @description *Before you call this operation, make sure that you understand the [billing methods](https://help.aliyun.com/document_detail/137897.html) and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of SCUs.
         
         @param request: PurchaseStorageCapacityUnitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -53029,16 +49392,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.PurchaseStorageCapacityUnitResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.PurchaseStorageCapacityUnitResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.PurchaseStorageCapacityUnitResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def purchase_storage_capacity_unit_with_options_async(
         self,
@@ -53048,8 +49405,7 @@ class Client(OpenApiClient):
         """
         @summary Purchases one or more storage capacity units (SCUs).
         
-        @description ## [](#)Usage notes
-        Before you call this operation, make sure that you are familiar with the billing and pricing of SCUs. For more information, see [Storage capacity units](https://help.aliyun.com/document_detail/137897.html).
+        @description *Before you call this operation, make sure that you understand the [billing methods](https://help.aliyun.com/document_detail/137897.html) and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of SCUs.
         
         @param request: PurchaseStorageCapacityUnitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -53103,16 +49459,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.PurchaseStorageCapacityUnitResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.PurchaseStorageCapacityUnitResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.PurchaseStorageCapacityUnitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def purchase_storage_capacity_unit(
         self,
@@ -53121,8 +49471,7 @@ class Client(OpenApiClient):
         """
         @summary Purchases one or more storage capacity units (SCUs).
         
-        @description ## [](#)Usage notes
-        Before you call this operation, make sure that you are familiar with the billing and pricing of SCUs. For more information, see [Storage capacity units](https://help.aliyun.com/document_detail/137897.html).
+        @description *Before you call this operation, make sure that you understand the [billing methods](https://help.aliyun.com/document_detail/137897.html) and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of SCUs.
         
         @param request: PurchaseStorageCapacityUnitRequest
         @return: PurchaseStorageCapacityUnitResponse
@@ -53137,8 +49486,7 @@ class Client(OpenApiClient):
         """
         @summary Purchases one or more storage capacity units (SCUs).
         
-        @description ## [](#)Usage notes
-        Before you call this operation, make sure that you are familiar with the billing and pricing of SCUs. For more information, see [Storage capacity units](https://help.aliyun.com/document_detail/137897.html).
+        @description *Before you call this operation, make sure that you understand the [billing methods](https://help.aliyun.com/document_detail/137897.html) and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of SCUs.
         
         @param request: PurchaseStorageCapacityUnitRequest
         @return: PurchaseStorageCapacityUnitResponse
@@ -53191,16 +49539,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ReActivateInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ReActivateInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ReActivateInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def re_activate_instances_with_options_async(
         self,
@@ -53247,16 +49589,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ReActivateInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ReActivateInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ReActivateInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def re_activate_instances(
         self,
@@ -53347,16 +49683,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ReInitDiskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ReInitDiskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ReInitDiskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def re_init_disk_with_options_async(
         self,
@@ -53411,16 +49741,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ReInitDiskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ReInitDiskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ReInitDiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def re_init_disk(
         self,
@@ -53509,16 +49833,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RebootInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RebootInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RebootInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def reboot_instance_with_options_async(
         self,
@@ -53567,16 +49885,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RebootInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RebootInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RebootInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def reboot_instance(
         self,
@@ -53665,16 +49977,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RebootInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RebootInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RebootInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def reboot_instances_with_options_async(
         self,
@@ -53727,16 +50033,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RebootInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RebootInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RebootInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def reboot_instances(
         self,
@@ -53819,16 +50119,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RecoverVirtualBorderRouterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RecoverVirtualBorderRouterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RecoverVirtualBorderRouterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def recover_virtual_border_router_with_options_async(
         self,
@@ -53875,16 +50169,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RecoverVirtualBorderRouterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RecoverVirtualBorderRouterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RecoverVirtualBorderRouterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def recover_virtual_border_router(
         self,
@@ -53922,7 +50210,7 @@ class Client(OpenApiClient):
         """
         @summary Migrates Elastic Compute Service (ECS) instances from a failed dedicated host.
         
-        @description If a dedicated host is in the UnderAssessment state, we recommend that you call this operation to migrate ECS instances away from the dedicated host to prevent permanent failures. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query the status of a dedicated host.
+        @description If a dedicated host is in the `UnderAssessment` state, we recommend that you call this operation to migrate ECS instances away from the dedicated host to prevent permanent failures. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query the status of a dedicated host.
         
         @param request: RedeployDedicatedHostRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -53958,16 +50246,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RedeployDedicatedHostResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RedeployDedicatedHostResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RedeployDedicatedHostResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def redeploy_dedicated_host_with_options_async(
         self,
@@ -53977,7 +50259,7 @@ class Client(OpenApiClient):
         """
         @summary Migrates Elastic Compute Service (ECS) instances from a failed dedicated host.
         
-        @description If a dedicated host is in the UnderAssessment state, we recommend that you call this operation to migrate ECS instances away from the dedicated host to prevent permanent failures. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query the status of a dedicated host.
+        @description If a dedicated host is in the `UnderAssessment` state, we recommend that you call this operation to migrate ECS instances away from the dedicated host to prevent permanent failures. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query the status of a dedicated host.
         
         @param request: RedeployDedicatedHostRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -54013,16 +50295,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RedeployDedicatedHostResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RedeployDedicatedHostResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RedeployDedicatedHostResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def redeploy_dedicated_host(
         self,
@@ -54031,7 +50307,7 @@ class Client(OpenApiClient):
         """
         @summary Migrates Elastic Compute Service (ECS) instances from a failed dedicated host.
         
-        @description If a dedicated host is in the UnderAssessment state, we recommend that you call this operation to migrate ECS instances away from the dedicated host to prevent permanent failures. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query the status of a dedicated host.
+        @description If a dedicated host is in the `UnderAssessment` state, we recommend that you call this operation to migrate ECS instances away from the dedicated host to prevent permanent failures. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query the status of a dedicated host.
         
         @param request: RedeployDedicatedHostRequest
         @return: RedeployDedicatedHostResponse
@@ -54046,7 +50322,7 @@ class Client(OpenApiClient):
         """
         @summary Migrates Elastic Compute Service (ECS) instances from a failed dedicated host.
         
-        @description If a dedicated host is in the UnderAssessment state, we recommend that you call this operation to migrate ECS instances away from the dedicated host to prevent permanent failures. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query the status of a dedicated host.
+        @description If a dedicated host is in the `UnderAssessment` state, we recommend that you call this operation to migrate ECS instances away from the dedicated host to prevent permanent failures. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query the status of a dedicated host.
         
         @param request: RedeployDedicatedHostRequest
         @return: RedeployDedicatedHostResponse
@@ -54116,16 +50392,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RedeployInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RedeployInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RedeployInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def redeploy_instance_with_options_async(
         self,
@@ -54189,16 +50459,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RedeployInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RedeployInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RedeployInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def redeploy_instance(
         self,
@@ -54314,16 +50578,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ReleaseCapacityReservationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ReleaseCapacityReservationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ReleaseCapacityReservationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def release_capacity_reservation_with_options_async(
         self,
@@ -54369,16 +50627,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ReleaseCapacityReservationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ReleaseCapacityReservationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ReleaseCapacityReservationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def release_capacity_reservation(
         self,
@@ -54453,16 +50705,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ReleaseDedicatedHostResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ReleaseDedicatedHostResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ReleaseDedicatedHostResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def release_dedicated_host_with_options_async(
         self,
@@ -54507,16 +50753,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ReleaseDedicatedHostResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ReleaseDedicatedHostResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ReleaseDedicatedHostResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def release_dedicated_host(
         self,
@@ -54591,16 +50831,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ReleaseEipAddressResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ReleaseEipAddressResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ReleaseEipAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def release_eip_address_with_options_async(
         self,
@@ -54643,16 +50877,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ReleaseEipAddressResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ReleaseEipAddressResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ReleaseEipAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def release_eip_address(
         self,
@@ -54721,16 +50949,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ReleasePublicIpAddressResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ReleasePublicIpAddressResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ReleasePublicIpAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def release_public_ip_address_with_options_async(
         self,
@@ -54771,16 +50993,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ReleasePublicIpAddressResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ReleasePublicIpAddressResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ReleasePublicIpAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def release_public_ip_address(
         self,
@@ -54859,16 +51075,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RemoveBandwidthPackageIpsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RemoveBandwidthPackageIpsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RemoveBandwidthPackageIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def remove_bandwidth_package_ips_with_options_async(
         self,
@@ -54915,16 +51125,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RemoveBandwidthPackageIpsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RemoveBandwidthPackageIpsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RemoveBandwidthPackageIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def remove_bandwidth_package_ips(
         self,
@@ -54999,16 +51203,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RemoveTagsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RemoveTagsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RemoveTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def remove_tags_with_options_async(
         self,
@@ -55055,16 +51253,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RemoveTagsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RemoveTagsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RemoveTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def remove_tags(
         self,
@@ -55147,16 +51339,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RenewDedicatedHostsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RenewDedicatedHostsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RenewDedicatedHostsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def renew_dedicated_hosts_with_options_async(
         self,
@@ -55207,16 +51393,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RenewDedicatedHostsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RenewDedicatedHostsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RenewDedicatedHostsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def renew_dedicated_hosts(
         self,
@@ -55302,16 +51482,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RenewElasticityAssurancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RenewElasticityAssurancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RenewElasticityAssurancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def renew_elasticity_assurances_with_options_async(
         self,
@@ -55365,16 +51539,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RenewElasticityAssurancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RenewElasticityAssurancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RenewElasticityAssurancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def renew_elasticity_assurances(
         self,
@@ -55408,12 +51576,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RenewInstanceResponse:
         """
-        @summary Renews a subscription Elastic Compute Service (ECS) instance. When you call this operation, you can specify parameters, such as InstanceId, Period, and ExpectedRenewDay, in the request.
+        @summary Renews a subscription Elastic Compute Service (ECS) instance. You can specify a renewal period or renew the instance to a unified expiration date.
         
-        @description    Before you call this operation, make sure that you are familiar with the billing methods and pricing of ECS. For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
-        You can call this operation to renew a subscription instance for a specific period of time or to a synchronized expiration date.
-        You cannot call this operation to renew a subscription instance for a specific period of time and to a synchronized expiration date at the same time. The parameter pair (`Period` and `PeriodUnit`) that is related to the renewal period and `ExpectedRenewDay` are mutually exclusive.
-        Your account must have sufficient credits.
+        @description *Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://www.alibabacloud.com/product/ecs#pricing) of ECS**.
+        Make sure that your account balance or credit balance is sufficient.
+        Only subscription instances are supported. If you call this operation for a pay-as-you-go instance, an error is returned.
+        You must specify the renewal period-related parameter pair (`Period` and `PeriodUnit`) or `ExpectedRenewDay`, but not both.
         
         @param request: RenewInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -55453,16 +51621,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RenewInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RenewInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RenewInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def renew_instance_with_options_async(
         self,
@@ -55470,12 +51632,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RenewInstanceResponse:
         """
-        @summary Renews a subscription Elastic Compute Service (ECS) instance. When you call this operation, you can specify parameters, such as InstanceId, Period, and ExpectedRenewDay, in the request.
+        @summary Renews a subscription Elastic Compute Service (ECS) instance. You can specify a renewal period or renew the instance to a unified expiration date.
         
-        @description    Before you call this operation, make sure that you are familiar with the billing methods and pricing of ECS. For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
-        You can call this operation to renew a subscription instance for a specific period of time or to a synchronized expiration date.
-        You cannot call this operation to renew a subscription instance for a specific period of time and to a synchronized expiration date at the same time. The parameter pair (`Period` and `PeriodUnit`) that is related to the renewal period and `ExpectedRenewDay` are mutually exclusive.
-        Your account must have sufficient credits.
+        @description *Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://www.alibabacloud.com/product/ecs#pricing) of ECS**.
+        Make sure that your account balance or credit balance is sufficient.
+        Only subscription instances are supported. If you call this operation for a pay-as-you-go instance, an error is returned.
+        You must specify the renewal period-related parameter pair (`Period` and `PeriodUnit`) or `ExpectedRenewDay`, but not both.
         
         @param request: RenewInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -55515,28 +51677,22 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RenewInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RenewInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RenewInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def renew_instance(
         self,
         request: ecs_20140526_models.RenewInstanceRequest,
     ) -> ecs_20140526_models.RenewInstanceResponse:
         """
-        @summary Renews a subscription Elastic Compute Service (ECS) instance. When you call this operation, you can specify parameters, such as InstanceId, Period, and ExpectedRenewDay, in the request.
+        @summary Renews a subscription Elastic Compute Service (ECS) instance. You can specify a renewal period or renew the instance to a unified expiration date.
         
-        @description    Before you call this operation, make sure that you are familiar with the billing methods and pricing of ECS. For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
-        You can call this operation to renew a subscription instance for a specific period of time or to a synchronized expiration date.
-        You cannot call this operation to renew a subscription instance for a specific period of time and to a synchronized expiration date at the same time. The parameter pair (`Period` and `PeriodUnit`) that is related to the renewal period and `ExpectedRenewDay` are mutually exclusive.
-        Your account must have sufficient credits.
+        @description *Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://www.alibabacloud.com/product/ecs#pricing) of ECS**.
+        Make sure that your account balance or credit balance is sufficient.
+        Only subscription instances are supported. If you call this operation for a pay-as-you-go instance, an error is returned.
+        You must specify the renewal period-related parameter pair (`Period` and `PeriodUnit`) or `ExpectedRenewDay`, but not both.
         
         @param request: RenewInstanceRequest
         @return: RenewInstanceResponse
@@ -55549,12 +51705,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RenewInstanceRequest,
     ) -> ecs_20140526_models.RenewInstanceResponse:
         """
-        @summary Renews a subscription Elastic Compute Service (ECS) instance. When you call this operation, you can specify parameters, such as InstanceId, Period, and ExpectedRenewDay, in the request.
+        @summary Renews a subscription Elastic Compute Service (ECS) instance. You can specify a renewal period or renew the instance to a unified expiration date.
         
-        @description    Before you call this operation, make sure that you are familiar with the billing methods and pricing of ECS. For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
-        You can call this operation to renew a subscription instance for a specific period of time or to a synchronized expiration date.
-        You cannot call this operation to renew a subscription instance for a specific period of time and to a synchronized expiration date at the same time. The parameter pair (`Period` and `PeriodUnit`) that is related to the renewal period and `ExpectedRenewDay` are mutually exclusive.
-        Your account must have sufficient credits.
+        @description *Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://www.alibabacloud.com/product/ecs#pricing) of ECS**.
+        Make sure that your account balance or credit balance is sufficient.
+        Only subscription instances are supported. If you call this operation for a pay-as-you-go instance, an error is returned.
+        You must specify the renewal period-related parameter pair (`Period` and `PeriodUnit`) or `ExpectedRenewDay`, but not both.
         
         @param request: RenewInstanceRequest
         @return: RenewInstanceResponse
@@ -55617,16 +51773,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RenewReservedInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RenewReservedInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RenewReservedInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def renew_reserved_instances_with_options_async(
         self,
@@ -55683,16 +51833,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RenewReservedInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RenewReservedInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RenewReservedInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def renew_reserved_instances(
         self,
@@ -55812,16 +51956,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ReplaceSystemDiskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ReplaceSystemDiskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ReplaceSystemDiskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def replace_system_disk_with_options_async(
         self,
@@ -55905,16 +52043,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ReplaceSystemDiskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ReplaceSystemDiskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ReplaceSystemDiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def replace_system_disk(
         self,
@@ -56026,16 +52158,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ReportInstancesStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ReportInstancesStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ReportInstancesStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def report_instances_status_with_options_async(
         self,
@@ -56093,16 +52219,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ReportInstancesStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ReportInstancesStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ReportInstancesStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def report_instances_status(
         self,
@@ -56179,16 +52299,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ResetDiskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ResetDiskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ResetDiskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def reset_disk_with_options_async(
         self,
@@ -56239,16 +52353,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ResetDiskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ResetDiskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ResetDiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def reset_disk(
         self,
@@ -56325,16 +52433,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ResetDiskDefaultKMSKeyIdResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ResetDiskDefaultKMSKeyIdResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ResetDiskDefaultKMSKeyIdResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def reset_disk_default_kmskey_id_with_options_async(
         self,
@@ -56371,16 +52473,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ResetDiskDefaultKMSKeyIdResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ResetDiskDefaultKMSKeyIdResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ResetDiskDefaultKMSKeyIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def reset_disk_default_kmskey_id(
         self,
@@ -56420,7 +52516,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ResetDisksResponse:
         """
-        @summary Rolls back one or more disks by using an instance snapshot.
+        @summary Rolls back one or more disks by using a snapshot-consistent group.
         
         @description This operation will be removed in the future. We recommend that you call the [ResetDisk](https://help.aliyun.com/document_detail/25520.html) operation to roll back a disk.
         
@@ -56458,16 +52554,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ResetDisksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ResetDisksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ResetDisksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def reset_disks_with_options_async(
         self,
@@ -56475,7 +52565,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ResetDisksResponse:
         """
-        @summary Rolls back one or more disks by using an instance snapshot.
+        @summary Rolls back one or more disks by using a snapshot-consistent group.
         
         @description This operation will be removed in the future. We recommend that you call the [ResetDisk](https://help.aliyun.com/document_detail/25520.html) operation to roll back a disk.
         
@@ -56513,23 +52603,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ResetDisksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ResetDisksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ResetDisksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def reset_disks(
         self,
         request: ecs_20140526_models.ResetDisksRequest,
     ) -> ecs_20140526_models.ResetDisksResponse:
         """
-        @summary Rolls back one or more disks by using an instance snapshot.
+        @summary Rolls back one or more disks by using a snapshot-consistent group.
         
         @description This operation will be removed in the future. We recommend that you call the [ResetDisk](https://help.aliyun.com/document_detail/25520.html) operation to roll back a disk.
         
@@ -56544,7 +52628,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ResetDisksRequest,
     ) -> ecs_20140526_models.ResetDisksResponse:
         """
-        @summary Rolls back one or more disks by using an instance snapshot.
+        @summary Rolls back one or more disks by using a snapshot-consistent group.
         
         @description This operation will be removed in the future. We recommend that you call the [ResetDisk](https://help.aliyun.com/document_detail/25520.html) operation to roll back a disk.
         
@@ -56610,16 +52694,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ResizeDiskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ResizeDiskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ResizeDiskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def resize_disk_with_options_async(
         self,
@@ -56677,16 +52755,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.ResizeDiskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.ResizeDiskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.ResizeDiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def resize_disk(
         self,
@@ -56867,16 +52939,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RevokeSecurityGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RevokeSecurityGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RevokeSecurityGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def revoke_security_group_with_options_async(
         self,
@@ -57007,16 +53073,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RevokeSecurityGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RevokeSecurityGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RevokeSecurityGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def revoke_security_group(
         self,
@@ -57271,16 +53331,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RevokeSecurityGroupEgressResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RevokeSecurityGroupEgressResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RevokeSecurityGroupEgressResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def revoke_security_group_egress_with_options_async(
         self,
@@ -57415,16 +53469,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RevokeSecurityGroupEgressResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RevokeSecurityGroupEgressResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RevokeSecurityGroupEgressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def revoke_security_group_egress(
         self,
@@ -57662,16 +53710,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RunCommandResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RunCommandResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RunCommandResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_command_with_options_async(
         self,
@@ -57785,16 +53827,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RunCommandResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RunCommandResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RunCommandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_command(
         self,
@@ -57868,7 +53904,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RunInstancesResponse:
         """
-        @summary Creates pay-as-you-go or subscription Elastic Compute Service (ECS) instances. This operation provides a wide array of features and functions and helps simplify the procedure to create and manage ECS instances. When you call this operation, you can choose to create multiple ECS instances at a time, automatically start the instances, and assign public IP addresses to the instances based on outbound bandwidth parameters. You can also use the features provided by the operation, such as configuring an automatic release time for instances, using a launch template, and configuring custom CPU options, to customize instance configurations for better management of instances.
+        @summary Creates Elastic Compute Service (ECS) instances. This operation helps simplify the procedure to create and manage ECS instances. When you call this operation, you can choose to create multiple ECS instances at a time, automatically start the instances, and assign public IP addresses to the instances based on outbound bandwidth parameters. You can also use the features provided by the operation, such as configuring an automatic release time for instances, using a launch template, and configuring custom CPU options, to customize instance configurations for better management of instances.
         
         @description *Before you call this operation, familiarize yourself with the billing and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.**\
         This operation is an asynchronous operation. After a request to create ECS instances is sent, ECS instance IDs are returned but the creation and startup of the instances may be incomplete. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instances. When the status of an instance is `Running` in the DescribeInstanceStatus response, the instance is created and started.
@@ -58107,16 +54143,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RunInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RunInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RunInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_instances_with_options_async(
         self,
@@ -58124,7 +54154,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RunInstancesResponse:
         """
-        @summary Creates pay-as-you-go or subscription Elastic Compute Service (ECS) instances. This operation provides a wide array of features and functions and helps simplify the procedure to create and manage ECS instances. When you call this operation, you can choose to create multiple ECS instances at a time, automatically start the instances, and assign public IP addresses to the instances based on outbound bandwidth parameters. You can also use the features provided by the operation, such as configuring an automatic release time for instances, using a launch template, and configuring custom CPU options, to customize instance configurations for better management of instances.
+        @summary Creates Elastic Compute Service (ECS) instances. This operation helps simplify the procedure to create and manage ECS instances. When you call this operation, you can choose to create multiple ECS instances at a time, automatically start the instances, and assign public IP addresses to the instances based on outbound bandwidth parameters. You can also use the features provided by the operation, such as configuring an automatic release time for instances, using a launch template, and configuring custom CPU options, to customize instance configurations for better management of instances.
         
         @description *Before you call this operation, familiarize yourself with the billing and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.**\
         This operation is an asynchronous operation. After a request to create ECS instances is sent, ECS instance IDs are returned but the creation and startup of the instances may be incomplete. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instances. When the status of an instance is `Running` in the DescribeInstanceStatus response, the instance is created and started.
@@ -58363,23 +54393,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.RunInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.RunInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.RunInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_instances(
         self,
         request: ecs_20140526_models.RunInstancesRequest,
     ) -> ecs_20140526_models.RunInstancesResponse:
         """
-        @summary Creates pay-as-you-go or subscription Elastic Compute Service (ECS) instances. This operation provides a wide array of features and functions and helps simplify the procedure to create and manage ECS instances. When you call this operation, you can choose to create multiple ECS instances at a time, automatically start the instances, and assign public IP addresses to the instances based on outbound bandwidth parameters. You can also use the features provided by the operation, such as configuring an automatic release time for instances, using a launch template, and configuring custom CPU options, to customize instance configurations for better management of instances.
+        @summary Creates Elastic Compute Service (ECS) instances. This operation helps simplify the procedure to create and manage ECS instances. When you call this operation, you can choose to create multiple ECS instances at a time, automatically start the instances, and assign public IP addresses to the instances based on outbound bandwidth parameters. You can also use the features provided by the operation, such as configuring an automatic release time for instances, using a launch template, and configuring custom CPU options, to customize instance configurations for better management of instances.
         
         @description *Before you call this operation, familiarize yourself with the billing and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.**\
         This operation is an asynchronous operation. After a request to create ECS instances is sent, ECS instance IDs are returned but the creation and startup of the instances may be incomplete. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instances. When the status of an instance is `Running` in the DescribeInstanceStatus response, the instance is created and started.
@@ -58453,7 +54477,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RunInstancesRequest,
     ) -> ecs_20140526_models.RunInstancesResponse:
         """
-        @summary Creates pay-as-you-go or subscription Elastic Compute Service (ECS) instances. This operation provides a wide array of features and functions and helps simplify the procedure to create and manage ECS instances. When you call this operation, you can choose to create multiple ECS instances at a time, automatically start the instances, and assign public IP addresses to the instances based on outbound bandwidth parameters. You can also use the features provided by the operation, such as configuring an automatic release time for instances, using a launch template, and configuring custom CPU options, to customize instance configurations for better management of instances.
+        @summary Creates Elastic Compute Service (ECS) instances. This operation helps simplify the procedure to create and manage ECS instances. When you call this operation, you can choose to create multiple ECS instances at a time, automatically start the instances, and assign public IP addresses to the instances based on outbound bandwidth parameters. You can also use the features provided by the operation, such as configuring an automatic release time for instances, using a launch template, and configuring custom CPU options, to customize instance configurations for better management of instances.
         
         @description *Before you call this operation, familiarize yourself with the billing and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.**\
         This operation is an asynchronous operation. After a request to create ECS instances is sent, ECS instance IDs are returned but the creation and startup of the instances may be incomplete. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instances. When the status of an instance is `Running` in the DescribeInstanceStatus response, the instance is created and started.
@@ -58597,16 +54621,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.SendFileResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.SendFileResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.SendFileResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def send_file_with_options_async(
         self,
@@ -58683,16 +54701,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.SendFileResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.SendFileResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.SendFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def send_file(
         self,
@@ -58744,7 +54756,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.StartImagePipelineExecutionResponse:
         """
-        @summary Executes a pipeline task by using an image template.
+        @summary Executes an image creation task by using an image template.
         
         @description    After you create an image template, you can call the StartImagePipelineExecution operation to create a pipeline task. The system creates, copies, and shares images based on the parameters configured in the image template.
         You can execute only one pipeline task for each image template.
@@ -58789,16 +54801,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.StartImagePipelineExecutionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.StartImagePipelineExecutionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.StartImagePipelineExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_image_pipeline_execution_with_options_async(
         self,
@@ -58806,7 +54812,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.StartImagePipelineExecutionResponse:
         """
-        @summary Executes a pipeline task by using an image template.
+        @summary Executes an image creation task by using an image template.
         
         @description    After you create an image template, you can call the StartImagePipelineExecution operation to create a pipeline task. The system creates, copies, and shares images based on the parameters configured in the image template.
         You can execute only one pipeline task for each image template.
@@ -58851,23 +54857,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.StartImagePipelineExecutionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.StartImagePipelineExecutionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.StartImagePipelineExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_image_pipeline_execution(
         self,
         request: ecs_20140526_models.StartImagePipelineExecutionRequest,
     ) -> ecs_20140526_models.StartImagePipelineExecutionResponse:
         """
-        @summary Executes a pipeline task by using an image template.
+        @summary Executes an image creation task by using an image template.
         
         @description    After you create an image template, you can call the StartImagePipelineExecution operation to create a pipeline task. The system creates, copies, and shares images based on the parameters configured in the image template.
         You can execute only one pipeline task for each image template.
@@ -58883,7 +54883,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.StartImagePipelineExecutionRequest,
     ) -> ecs_20140526_models.StartImagePipelineExecutionResponse:
         """
-        @summary Executes a pipeline task by using an image template.
+        @summary Executes an image creation task by using an image template.
         
         @description    After you create an image template, you can call the StartImagePipelineExecution operation to create a pipeline task. The system creates, copies, and shares images based on the parameters configured in the image template.
         You can execute only one pipeline task for each image template.
@@ -58942,16 +54942,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.StartInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.StartInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.StartInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_instance_with_options_async(
         self,
@@ -59001,16 +54995,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.StartInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.StartInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.StartInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_instance(
         self,
@@ -59100,16 +55088,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.StartInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.StartInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.StartInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_instances_with_options_async(
         self,
@@ -59161,16 +55143,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.StartInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.StartInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.StartInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_instances(
         self,
@@ -59240,6 +55216,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.command_line):
             query['CommandLine'] = request.command_line
+        if not UtilClient.is_unset(request.connection_type):
+            query['ConnectionType'] = request.connection_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -59274,16 +55252,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.StartTerminalSessionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.StartTerminalSessionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.StartTerminalSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_terminal_session_with_options_async(
         self,
@@ -59315,6 +55287,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.command_line):
             query['CommandLine'] = request.command_line
+        if not UtilClient.is_unset(request.connection_type):
+            query['ConnectionType'] = request.connection_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -59349,16 +55323,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.StartTerminalSessionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.StartTerminalSessionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.StartTerminalSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_terminal_session(
         self,
@@ -59420,7 +55388,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.StopInstanceResponse:
         """
-        @summary Stops an Elastic Compute Service (ECS) instance in the Running state. After you call this operation, the state of the instance changes to Stopping and then to Stopped.
+        @summary Stops an Elastic Compute Service (ECS) instance. You can specify parameters to determine whether to forcefully stop the instance and the stop mode.
         
         @description This operation is an asynchronous operation. After you call this operation to stop an ECS instance, the operation sets the status of the ECS instance to Stopping and begins the stop process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the ECS instance. When the status of the ECS instance changes to `Stopped`, the instance is stopped.
         ### [](#)Precautions
@@ -59467,16 +55435,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.StopInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.StopInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.StopInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_instance_with_options_async(
         self,
@@ -59484,7 +55446,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.StopInstanceResponse:
         """
-        @summary Stops an Elastic Compute Service (ECS) instance in the Running state. After you call this operation, the state of the instance changes to Stopping and then to Stopped.
+        @summary Stops an Elastic Compute Service (ECS) instance. You can specify parameters to determine whether to forcefully stop the instance and the stop mode.
         
         @description This operation is an asynchronous operation. After you call this operation to stop an ECS instance, the operation sets the status of the ECS instance to Stopping and begins the stop process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the ECS instance. When the status of the ECS instance changes to `Stopped`, the instance is stopped.
         ### [](#)Precautions
@@ -59531,23 +55493,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.StopInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.StopInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.StopInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_instance(
         self,
         request: ecs_20140526_models.StopInstanceRequest,
     ) -> ecs_20140526_models.StopInstanceResponse:
         """
-        @summary Stops an Elastic Compute Service (ECS) instance in the Running state. After you call this operation, the state of the instance changes to Stopping and then to Stopped.
+        @summary Stops an Elastic Compute Service (ECS) instance. You can specify parameters to determine whether to forcefully stop the instance and the stop mode.
         
         @description This operation is an asynchronous operation. After you call this operation to stop an ECS instance, the operation sets the status of the ECS instance to Stopping and begins the stop process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the ECS instance. When the status of the ECS instance changes to `Stopped`, the instance is stopped.
         ### [](#)Precautions
@@ -59565,7 +55521,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.StopInstanceRequest,
     ) -> ecs_20140526_models.StopInstanceResponse:
         """
-        @summary Stops an Elastic Compute Service (ECS) instance in the Running state. After you call this operation, the state of the instance changes to Stopping and then to Stopped.
+        @summary Stops an Elastic Compute Service (ECS) instance. You can specify parameters to determine whether to forcefully stop the instance and the stop mode.
         
         @description This operation is an asynchronous operation. After you call this operation to stop an ECS instance, the operation sets the status of the ECS instance to Stopping and begins the stop process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the ECS instance. When the status of the ECS instance changes to `Stopped`, the instance is stopped.
         ### [](#)Precautions
@@ -59631,16 +55587,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.StopInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.StopInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.StopInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_instances_with_options_async(
         self,
@@ -59695,16 +55645,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.StopInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.StopInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.StopInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_instances(
         self,
@@ -59791,16 +55735,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.StopInvocationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.StopInvocationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.StopInvocationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_invocation_with_options_async(
         self,
@@ -59851,16 +55789,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.StopInvocationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.StopInvocationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.StopInvocationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_invocation(
         self,
@@ -59944,16 +55876,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.TagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.TagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def tag_resources_with_options_async(
         self,
@@ -60001,16 +55927,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.TagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.TagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def tag_resources(
         self,
@@ -60087,16 +56007,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.TerminatePhysicalConnectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.TerminatePhysicalConnectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.TerminatePhysicalConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def terminate_physical_connection_with_options_async(
         self,
@@ -60143,16 +56057,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.TerminatePhysicalConnectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.TerminatePhysicalConnectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.TerminatePhysicalConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def terminate_physical_connection(
         self,
@@ -60227,16 +56135,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.TerminateVirtualBorderRouterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.TerminateVirtualBorderRouterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.TerminateVirtualBorderRouterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def terminate_virtual_border_router_with_options_async(
         self,
@@ -60283,16 +56185,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.TerminateVirtualBorderRouterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.TerminateVirtualBorderRouterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.TerminateVirtualBorderRouterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def terminate_virtual_border_router(
         self,
@@ -60328,7 +56224,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.UnassignIpv6AddressesResponse:
         """
-        @summary Unassigns IPv6 addresses from an elastic network interface (ENI).
+        @summary Unassigns one or more IPv6 addresses from an elastic network interface (ENI).
         
         @description ## [](#)Usage notes
         Take note of the following items:
@@ -60373,16 +56269,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.UnassignIpv6AddressesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.UnassignIpv6AddressesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.UnassignIpv6AddressesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def unassign_ipv_6addresses_with_options_async(
         self,
@@ -60390,7 +56280,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.UnassignIpv6AddressesResponse:
         """
-        @summary Unassigns IPv6 addresses from an elastic network interface (ENI).
+        @summary Unassigns one or more IPv6 addresses from an elastic network interface (ENI).
         
         @description ## [](#)Usage notes
         Take note of the following items:
@@ -60435,23 +56325,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.UnassignIpv6AddressesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.UnassignIpv6AddressesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.UnassignIpv6AddressesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def unassign_ipv_6addresses(
         self,
         request: ecs_20140526_models.UnassignIpv6AddressesRequest,
     ) -> ecs_20140526_models.UnassignIpv6AddressesResponse:
         """
-        @summary Unassigns IPv6 addresses from an elastic network interface (ENI).
+        @summary Unassigns one or more IPv6 addresses from an elastic network interface (ENI).
         
         @description ## [](#)Usage notes
         Take note of the following items:
@@ -60469,7 +56353,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.UnassignIpv6AddressesRequest,
     ) -> ecs_20140526_models.UnassignIpv6AddressesResponse:
         """
-        @summary Unassigns IPv6 addresses from an elastic network interface (ENI).
+        @summary Unassigns one or more IPv6 addresses from an elastic network interface (ENI).
         
         @description ## [](#)Usage notes
         Take note of the following items:
@@ -60532,16 +56416,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.UnassignPrivateIpAddressesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.UnassignPrivateIpAddressesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.UnassignPrivateIpAddressesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def unassign_private_ip_addresses_with_options_async(
         self,
@@ -60593,16 +56471,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.UnassignPrivateIpAddressesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.UnassignPrivateIpAddressesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.UnassignPrivateIpAddressesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def unassign_private_ip_addresses(
         self,
@@ -60683,16 +56555,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.UnassociateEipAddressResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.UnassociateEipAddressResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.UnassociateEipAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def unassociate_eip_address_with_options_async(
         self,
@@ -60739,16 +56605,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.UnassociateEipAddressResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.UnassociateEipAddressResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.UnassociateEipAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def unassociate_eip_address(
         self,
@@ -60825,16 +56685,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.UnassociateHaVipResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.UnassociateHaVipResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.UnassociateHaVipResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def unassociate_ha_vip_with_options_async(
         self,
@@ -60883,16 +56737,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.UnassociateHaVipResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.UnassociateHaVipResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.UnassociateHaVipResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def unassociate_ha_vip(
         self,
@@ -60970,16 +56818,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.UntagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.UntagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def untag_resources_with_options_async(
         self,
@@ -61029,16 +56871,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ecs_20140526_models.UntagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ecs_20140526_models.UntagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ecs_20140526_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def untag_resources(
         self,

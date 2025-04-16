@@ -1,3 +1,40 @@
+2025-04-16 Version: 7.0.0
+- Support API CreatePortRangeList.
+- Support API DeletePortRangeList.
+- Support API DescribePortRangeListAssociations.
+- Support API DescribePortRangeListEntries.
+- Support API DescribePortRangeLists.
+- Support API ModifyPortRangeList.
+- Delete API CreateDemand.
+- Delete API DeleteDemand.
+- Delete API DescribeDemands.
+- Delete API ModifyDemand.
+- Update API AuthorizeSecurityGroup: add request parameters Permissions.$.PortRangeListId.
+- Update API AuthorizeSecurityGroupEgress: add request parameters Permissions.$.PortRangeListId.
+- Update API CreateAutoProvisioningGroup: add request parameters LaunchConfiguration.ImageOptions.
+- Update API CreateAutoProvisioningGroup: add request parameters LaunchConfiguration.SpotDuration.
+- Update API CreateAutoProvisioningGroup: add request parameters LaunchConfiguration.SpotInterruptionBehavior.
+- Update API CreateAutoProvisioningGroup: add request parameters LaunchConfiguration.DataDisk.$.AutoSnapshotPolicyId.
+- Update API CreateAutoProvisioningGroup: add request parameters LaunchConfiguration.SystemDisk.AutoSnapshotPolicyId.
+- Update API DeleteInstance: add request parameters ForceStop.
+- Update API DeleteInstances: add request parameters ForceStop.
+- Update API DescribeInstanceAttribute: add response parameters Body.EnableNetworkEncryption.
+- Update API DescribeInstanceTypes: add response parameters Body.InstanceTypes.$.Attributes.
+- Update API DescribeInstances: add response parameters Body.Instances.$.EnableNVS.
+- Update API DescribeInstances: add response parameters Body.Instances.$.CpuOptions.EnableVISST.
+- Update API DescribeInstances: add response parameters Body.Instances.$.CpuOptions.EnableVRDT.
+- Update API DescribeInstances: add response parameters Body.Instances.$.CpuOptions.TurboMode.
+- Update API DescribeSecurityGroupAttribute: add response parameters Body.Permissions.$.PortRangeListId.
+- Update API DescribeSecurityGroupAttribute: add response parameters Body.Permissions.$.PortRangeListName.
+- Update API ModifyInstanceAttribute: add request parameters EnableNetworkEncryption.
+- Update API ModifySecurityGroupEgressRule: add request parameters PortRangeListId.
+- Update API ModifySecurityGroupRule: add request parameters PortRangeListId.
+- Update API RevokeSecurityGroup: add request parameters Permissions.$.PortRangeListId.
+- Update API RevokeSecurityGroupEgress: add request parameters Permissions.$.PortRangeListId.
+- Update API RunInstances: add request parameters NetworkOptions.EnableNetworkEncryption.
+- Update API StartTerminalSession: add request parameters ConnectionType.
+
+
 2025-03-13 Version: 6.1.0
 - Support API DescribeElasticityAssuranceAutoRenewAttribute.
 - Support API ModifyElasticityAssuranceAutoRenewAttribute.
