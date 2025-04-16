@@ -1,3 +1,7 @@
+2025-04-16 Version: 4.5.3
+- Update API ModifyPolicyGroup: add request parameters NetRedirectPolicy.Rules.
+
+
 2025-04-11 Version: 4.5.2
 - Update API CreateApp: add request parameters SignApk.
 - Update API DescribeApps: add request parameters AppType.

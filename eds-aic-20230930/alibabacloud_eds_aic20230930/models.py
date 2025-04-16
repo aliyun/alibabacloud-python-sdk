@@ -1976,7 +1976,9 @@ class CreateCloudPhoneNodeRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -2026,26 +2028,73 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         tag: List[CreateCloudPhoneNodeRequestTag] = None,
         v_switch_id: str = None,
     ):
+        # Specifies whether to enable the auto-payment feature.
+        # 
+        # Valid values:
+        # 
+        # *   False (default): You must manually complete the payment in the Alibaba Cloud Expenses and Costs console.
+        # *   true: enables the auto-payment feature.
         self.auto_pay = auto_pay
+        # Specifies whether to enable the auto-renewal feature.
+        # 
+        # Valid values:
+        # 
+        # *   true: enables the auto-renewal feature. In this case, the system automatically renews instances upon expiration.
+        # *   false (default): disables the auto-renewal feature. In this case, you need to manually renew instances upon expiration.
         self.auto_renew = auto_renew
+        # The region ID.
+        # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
+        # The billing method. Only the subscription billing method is supported.
         self.charge_type = charge_type
+        # The number of cloud phone matrixes you want to purchase.
         self.count = count
         self.display_config = display_config
+        # The image ID.
         self.image_id = image_id
+        # The instance specification.
+        # 
+        # Valid values:
+        # 
+        # *   ac.max: By default, this specification allows up to 25 instances. You can adjust this number by using PhoneCount (Value range: 4 to 40).
+        # *   ac.plus: By default, this specification allows up to 40 instances. You can adjust this number by using PhoneCount (Value range: 4 to 40).
         self.instance_type = instance_type
+        # The office network ID.
         self.network_id = network_id
+        # The name of the cloud phone matrix.
         self.node_name = node_name
+        # The subscription duration. The unit is specified by `PeriodUnit`. Valid values:
+        # 
+        # *   When `PeriodUnit` is set to **year**: 1.
+        # *   When `PeriodUnit` is set to **month**: 1, 2, 3, and 6.
         self.period = period
+        # The unit of the subscription duration.
+        # 
+        # Valid values:
+        # 
+        # *   Month (default)
+        # *   Year
         self.period_unit = period_unit
+        # The number of instances per cloud phone matrix.
         self.phone_count = phone_count
+        # The resolution height. Unit: pixel.
         self.resolution_height = resolution_height
+        # The resolution width. Unit: pixel.
         self.resolution_width = resolution_width
+        # The shared storage size Unit: GiB.
         self.server_share_data_volume = server_share_data_volume
+        # The matrix specification.
+        # 
+        # Valid values:
+        # 
+        # *   cpm.gn6.gx1
+        # 
         # This parameter is required.
         self.server_type = server_type
+        # The resource tags.
         self.tag = tag
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -2157,7 +2206,9 @@ class CreateCloudPhoneNodeShrinkRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -2207,26 +2258,73 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
         tag: List[CreateCloudPhoneNodeShrinkRequestTag] = None,
         v_switch_id: str = None,
     ):
+        # Specifies whether to enable the auto-payment feature.
+        # 
+        # Valid values:
+        # 
+        # *   False (default): You must manually complete the payment in the Alibaba Cloud Expenses and Costs console.
+        # *   true: enables the auto-payment feature.
         self.auto_pay = auto_pay
+        # Specifies whether to enable the auto-renewal feature.
+        # 
+        # Valid values:
+        # 
+        # *   true: enables the auto-renewal feature. In this case, the system automatically renews instances upon expiration.
+        # *   false (default): disables the auto-renewal feature. In this case, you need to manually renew instances upon expiration.
         self.auto_renew = auto_renew
+        # The region ID.
+        # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
+        # The billing method. Only the subscription billing method is supported.
         self.charge_type = charge_type
+        # The number of cloud phone matrixes you want to purchase.
         self.count = count
         self.display_config_shrink = display_config_shrink
+        # The image ID.
         self.image_id = image_id
+        # The instance specification.
+        # 
+        # Valid values:
+        # 
+        # *   ac.max: By default, this specification allows up to 25 instances. You can adjust this number by using PhoneCount (Value range: 4 to 40).
+        # *   ac.plus: By default, this specification allows up to 40 instances. You can adjust this number by using PhoneCount (Value range: 4 to 40).
         self.instance_type = instance_type
+        # The office network ID.
         self.network_id = network_id
+        # The name of the cloud phone matrix.
         self.node_name = node_name
+        # The subscription duration. The unit is specified by `PeriodUnit`. Valid values:
+        # 
+        # *   When `PeriodUnit` is set to **year**: 1.
+        # *   When `PeriodUnit` is set to **month**: 1, 2, 3, and 6.
         self.period = period
+        # The unit of the subscription duration.
+        # 
+        # Valid values:
+        # 
+        # *   Month (default)
+        # *   Year
         self.period_unit = period_unit
+        # The number of instances per cloud phone matrix.
         self.phone_count = phone_count
+        # The resolution height. Unit: pixel.
         self.resolution_height = resolution_height
+        # The resolution width. Unit: pixel.
         self.resolution_width = resolution_width
+        # The shared storage size Unit: GiB.
         self.server_share_data_volume = server_share_data_volume
+        # The matrix specification.
+        # 
+        # Valid values:
+        # 
+        # *   cpm.gn6.gx1
+        # 
         # This parameter is required.
         self.server_type = server_type
+        # The resource tags.
         self.tag = tag
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -2335,7 +2433,9 @@ class CreateCloudPhoneNodeResponseBodyNodeInfos(TeaModel):
         instance_ids: List[str] = None,
         node_id: str = None,
     ):
+        # The IDs of the cloud phone instances.
         self.instance_ids = instance_ids
+        # The ID of the cloud phone matrix.
         self.node_id = node_id
 
     def validate(self):
@@ -2369,8 +2469,11 @@ class CreateCloudPhoneNodeResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The cloud phone matrixes.
         self.node_infos = node_infos
+        # The order ID.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5941,13 +6044,34 @@ class DescribeCloudPhoneNodesRequest(TeaModel):
         server_type: str = None,
         status: str = None,
     ):
+        # The region ID.
         self.biz_region_id = biz_region_id
+        # The billing method. Only the subscription billing method is supported.
         self.charge_type = charge_type
+        # The maximum number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If a query doesn\\"t return all results, the response includes a NextToken value for pagination. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The matrix IDs.
         self.node_ids = node_ids
+        # The matrix name.
         self.node_name = node_name
+        # The matrix specification.
+        # 
+        # Valid values:
+        # 
+        # *   cpm.gn6.gx1
         self.server_type = server_type
+        # The matrix status.
+        # 
+        # Valid values:
+        # 
+        # *   FAILED: The matrix failed to be created.
+        # *   RUNNING: The matrix is available.
+        # *   DELETING: The matrix is being deleted.
+        # *   NODE_READY: The matrix is ready, and cloud phone instances are being created.
+        # *   DELETED: The matrix is deleted.
+        # *   CREATING: The matrix is being created.
         self.status = status
 
     def validate(self):
@@ -6020,23 +6144,40 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
         status: str = None,
         v_switch_id: str = None,
     ):
+        # The billing method.
         self.charge_type = charge_type
+        # The number of CPU cores.
         self.cpu = cpu
+        # The creation time.
         self.gmt_create = gmt_create
+        # The expiration time of the subscription matrix.
         self.gmt_expired = gmt_expired
+        # The last modification time.
         self.gmt_modified = gmt_modified
         self.instance_type = instance_type
+        # The memory size. Unit: GB.
         self.memory = memory
+        # The network ID.
         self.network_id = network_id
+        # The matrix ID.
         self.node_id = node_id
+        # The matrix name.
         self.node_name = node_name
+        # The number of cloud phone instances per matrix.
         self.phone_count = phone_count
+        # The region ID.
         self.region_id = region_id
+        # The height of the resolution. Unit: pixel.
         self.resolution_height = resolution_height
+        # The width of the resolution. Unit: pixel.
         self.resolution_width = resolution_width
+        # The matrix specification.
         self.server_type = server_type
+        # The size of the shared storage. Unit: GiB.
         self.share_data_volume = share_data_volume
+        # The matrix status.
         self.status = status
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -6136,10 +6277,18 @@ class DescribeCloudPhoneNodesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The maximum number of entries per page.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   ****\
         self.next_token = next_token
+        # The matrixes.
         self.node_model = node_model
+        # The request ID.
         self.request_id = request_id
+        # The total number of cloud phone instances.
         self.total_count = total_count
 
     def validate(self):
@@ -10236,6 +10385,39 @@ class ModifyKeyPairNameResponse(TeaModel):
         return self
 
 
+class ModifyPolicyGroupRequestNetRedirectPolicyRules(TeaModel):
+    def __init__(
+        self,
+        rule_type: str = None,
+        target: str = None,
+    ):
+        self.rule_type = rule_type
+        self.target = target
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        if self.target is not None:
+            result['Target'] = self.target
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        return self
+
+
 class ModifyPolicyGroupRequestNetRedirectPolicy(TeaModel):
     def __init__(
         self,
@@ -10246,6 +10428,7 @@ class ModifyPolicyGroupRequestNetRedirectPolicy(TeaModel):
         proxy_password: str = None,
         proxy_type: str = None,
         proxy_user_name: str = None,
+        rules: List[ModifyPolicyGroupRequestNetRedirectPolicyRules] = None,
     ):
         # Specifies whether to manually configure a custom proxy.
         # 
@@ -10275,9 +10458,13 @@ class ModifyPolicyGroupRequestNetRedirectPolicy(TeaModel):
         self.proxy_type = proxy_type
         # The username of the proxy. The name must be 1 to 256 in length and cannot contain Chinese character or space characters.
         self.proxy_user_name = proxy_user_name
+        self.rules = rules
 
     def validate(self):
-        pass
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -10299,6 +10486,10 @@ class ModifyPolicyGroupRequestNetRedirectPolicy(TeaModel):
             result['ProxyType'] = self.proxy_type
         if self.proxy_user_name is not None:
             result['ProxyUserName'] = self.proxy_user_name
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -10317,6 +10508,11 @@ class ModifyPolicyGroupRequestNetRedirectPolicy(TeaModel):
             self.proxy_type = m.get('ProxyType')
         if m.get('ProxyUserName') is not None:
             self.proxy_user_name = m.get('ProxyUserName')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = ModifyPolicyGroupRequestNetRedirectPolicyRules()
+                self.rules.append(temp_model.from_map(k))
         return self
 
 
