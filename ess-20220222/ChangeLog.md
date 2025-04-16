@@ -1,3 +1,7 @@
+2025-04-16 Version: 1.10.13
+- Update API RemoveInstances: add request parameters LifecycleHookContext.
+
+
 2025-04-08 Version: 1.10.12
 - Update API ModifyInstanceAttribute: add request parameters InstanceIds.
 
