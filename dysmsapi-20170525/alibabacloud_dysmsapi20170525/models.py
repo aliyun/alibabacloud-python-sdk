@@ -1608,6 +1608,7 @@ class CreateSmsSignRequest(TeaModel):
     def __init__(
         self,
         apply_scene_content: str = None,
+        authorization_letter_id: str = None,
         more_data: List[str] = None,
         owner_id: int = None,
         qualification_id: int = None,
@@ -1628,6 +1629,7 @@ class CreateSmsSignRequest(TeaModel):
         # 
         # - For e-commerce platform store names, applicable only to enterprise users, provide a display link with HTTP or HTTPS for the store.
         self.apply_scene_content = apply_scene_content
+        self.authorization_letter_id = authorization_letter_id
         # Additional information to supplement uploaded business proof documents or screenshots, which helps reviewers understand your business details.
         # 
         # This parameter is optional; please fill it out based on your actual needs.
@@ -1695,6 +1697,8 @@ class CreateSmsSignRequest(TeaModel):
         result = dict()
         if self.apply_scene_content is not None:
             result['ApplySceneContent'] = self.apply_scene_content
+        if self.authorization_letter_id is not None:
+            result['AuthorizationLetterId'] = self.authorization_letter_id
         if self.more_data is not None:
             result['MoreData'] = self.more_data
         if self.owner_id is not None:
@@ -1721,6 +1725,8 @@ class CreateSmsSignRequest(TeaModel):
         m = m or dict()
         if m.get('ApplySceneContent') is not None:
             self.apply_scene_content = m.get('ApplySceneContent')
+        if m.get('AuthorizationLetterId') is not None:
+            self.authorization_letter_id = m.get('AuthorizationLetterId')
         if m.get('MoreData') is not None:
             self.more_data = m.get('MoreData')
         if m.get('OwnerId') is not None:
@@ -1748,6 +1754,7 @@ class CreateSmsSignShrinkRequest(TeaModel):
     def __init__(
         self,
         apply_scene_content: str = None,
+        authorization_letter_id: str = None,
         more_data_shrink: str = None,
         owner_id: int = None,
         qualification_id: int = None,
@@ -1768,6 +1775,7 @@ class CreateSmsSignShrinkRequest(TeaModel):
         # 
         # - For e-commerce platform store names, applicable only to enterprise users, provide a display link with HTTP or HTTPS for the store.
         self.apply_scene_content = apply_scene_content
+        self.authorization_letter_id = authorization_letter_id
         # Additional information to supplement uploaded business proof documents or screenshots, which helps reviewers understand your business details.
         # 
         # This parameter is optional; please fill it out based on your actual needs.
@@ -1835,6 +1843,8 @@ class CreateSmsSignShrinkRequest(TeaModel):
         result = dict()
         if self.apply_scene_content is not None:
             result['ApplySceneContent'] = self.apply_scene_content
+        if self.authorization_letter_id is not None:
+            result['AuthorizationLetterId'] = self.authorization_letter_id
         if self.more_data_shrink is not None:
             result['MoreData'] = self.more_data_shrink
         if self.owner_id is not None:
@@ -1861,6 +1871,8 @@ class CreateSmsSignShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('ApplySceneContent') is not None:
             self.apply_scene_content = m.get('ApplySceneContent')
+        if m.get('AuthorizationLetterId') is not None:
+            self.authorization_letter_id = m.get('AuthorizationLetterId')
         if m.get('MoreData') is not None:
             self.more_data_shrink = m.get('MoreData')
         if m.get('OwnerId') is not None:
@@ -4253,6 +4265,8 @@ class GetSmsSignResponseBody(TeaModel):
         self,
         apply_scene: str = None,
         audit_info: GetSmsSignResponseBodyAuditInfo = None,
+        authorization_letter_audit_pass: bool = None,
+        authorization_letter_id: str = None,
         code: str = None,
         create_date: str = None,
         file_url_list: List[str] = None,
@@ -4273,6 +4287,8 @@ class GetSmsSignResponseBody(TeaModel):
         self.apply_scene = apply_scene
         # Audit information.
         self.audit_info = audit_info
+        self.authorization_letter_audit_pass = authorization_letter_audit_pass
+        self.authorization_letter_id = authorization_letter_id
         # Request status code.
         # 
         # - OK indicates a successful request.
@@ -4336,6 +4352,10 @@ class GetSmsSignResponseBody(TeaModel):
             result['ApplyScene'] = self.apply_scene
         if self.audit_info is not None:
             result['AuditInfo'] = self.audit_info.to_map()
+        if self.authorization_letter_audit_pass is not None:
+            result['AuthorizationLetterAuditPass'] = self.authorization_letter_audit_pass
+        if self.authorization_letter_id is not None:
+            result['AuthorizationLetterId'] = self.authorization_letter_id
         if self.code is not None:
             result['Code'] = self.code
         if self.create_date is not None:
@@ -4375,6 +4395,10 @@ class GetSmsSignResponseBody(TeaModel):
         if m.get('AuditInfo') is not None:
             temp_model = GetSmsSignResponseBodyAuditInfo()
             self.audit_info = temp_model.from_map(m['AuditInfo'])
+        if m.get('AuthorizationLetterAuditPass') is not None:
+            self.authorization_letter_audit_pass = m.get('AuthorizationLetterAuditPass')
+        if m.get('AuthorizationLetterId') is not None:
+            self.authorization_letter_id = m.get('AuthorizationLetterId')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('CreateDate') is not None:
@@ -7816,11 +7840,13 @@ class QuerySmsSignListResponseBodySmsSignList(TeaModel):
     def __init__(
         self,
         audit_status: str = None,
+        authorization_letter_id: str = None,
         business_type: str = None,
         create_date: str = None,
         order_id: str = None,
         reason: QuerySmsSignListResponseBodySmsSignListReason = None,
         sign_name: str = None,
+        authorization_letter_audit_pass: bool = None,
     ):
         # The approval status of the signature. Valid values:
         # 
@@ -7829,6 +7855,7 @@ class QuerySmsSignListResponseBodySmsSignList(TeaModel):
         # *   **AUDIT_STATE_NOT_PASS**: The signature is rejected. You can view the reason in the Reason response parameter.
         # *   **AUDIT_STATE_CANCEL**: The approval is canceled.
         self.audit_status = audit_status
+        self.authorization_letter_id = authorization_letter_id
         # The type of the signature scenario. The return value ends with "type". Valid values:
         # 
         # *   Verification code type
@@ -7845,6 +7872,7 @@ class QuerySmsSignListResponseBodySmsSignList(TeaModel):
         self.reason = reason
         # The name of the signature.
         self.sign_name = sign_name
+        self.authorization_letter_audit_pass = authorization_letter_audit_pass
 
     def validate(self):
         if self.reason:
@@ -7858,6 +7886,8 @@ class QuerySmsSignListResponseBodySmsSignList(TeaModel):
         result = dict()
         if self.audit_status is not None:
             result['AuditStatus'] = self.audit_status
+        if self.authorization_letter_id is not None:
+            result['AuthorizationLetterId'] = self.authorization_letter_id
         if self.business_type is not None:
             result['BusinessType'] = self.business_type
         if self.create_date is not None:
@@ -7868,12 +7898,16 @@ class QuerySmsSignListResponseBodySmsSignList(TeaModel):
             result['Reason'] = self.reason.to_map()
         if self.sign_name is not None:
             result['SignName'] = self.sign_name
+        if self.authorization_letter_audit_pass is not None:
+            result['authorizationLetterAuditPass'] = self.authorization_letter_audit_pass
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AuditStatus') is not None:
             self.audit_status = m.get('AuditStatus')
+        if m.get('AuthorizationLetterId') is not None:
+            self.authorization_letter_id = m.get('AuthorizationLetterId')
         if m.get('BusinessType') is not None:
             self.business_type = m.get('BusinessType')
         if m.get('CreateDate') is not None:
@@ -7885,6 +7919,8 @@ class QuerySmsSignListResponseBodySmsSignList(TeaModel):
             self.reason = temp_model.from_map(m['Reason'])
         if m.get('SignName') is not None:
             self.sign_name = m.get('SignName')
+        if m.get('authorizationLetterAuditPass') is not None:
+            self.authorization_letter_audit_pass = m.get('authorizationLetterAuditPass')
         return self
 
 
@@ -10310,6 +10346,7 @@ class UpdateSmsSignRequest(TeaModel):
     def __init__(
         self,
         apply_scene_content: str = None,
+        authorization_letter_id: str = None,
         more_data: List[str] = None,
         owner_id: int = None,
         qualification_id: int = None,
@@ -10327,6 +10364,7 @@ class UpdateSmsSignRequest(TeaModel):
         # - For public accounts or mini-programs, fill in the full name, ensuring they are online.
         # - For e-commerce platform store names (for enterprise users only), provide the display link with HTTP or HTTPS.
         self.apply_scene_content = apply_scene_content
+        self.authorization_letter_id = authorization_letter_id
         # Additional materials, such as uploading business proof documents or screenshots of business operations, to help reviewers understand your business details.
         self.more_data = more_data
         self.owner_id = owner_id
@@ -10381,6 +10419,8 @@ class UpdateSmsSignRequest(TeaModel):
         result = dict()
         if self.apply_scene_content is not None:
             result['ApplySceneContent'] = self.apply_scene_content
+        if self.authorization_letter_id is not None:
+            result['AuthorizationLetterId'] = self.authorization_letter_id
         if self.more_data is not None:
             result['MoreData'] = self.more_data
         if self.owner_id is not None:
@@ -10407,6 +10447,8 @@ class UpdateSmsSignRequest(TeaModel):
         m = m or dict()
         if m.get('ApplySceneContent') is not None:
             self.apply_scene_content = m.get('ApplySceneContent')
+        if m.get('AuthorizationLetterId') is not None:
+            self.authorization_letter_id = m.get('AuthorizationLetterId')
         if m.get('MoreData') is not None:
             self.more_data = m.get('MoreData')
         if m.get('OwnerId') is not None:
@@ -10434,6 +10476,7 @@ class UpdateSmsSignShrinkRequest(TeaModel):
     def __init__(
         self,
         apply_scene_content: str = None,
+        authorization_letter_id: str = None,
         more_data_shrink: str = None,
         owner_id: int = None,
         qualification_id: int = None,
@@ -10451,6 +10494,7 @@ class UpdateSmsSignShrinkRequest(TeaModel):
         # - For public accounts or mini-programs, fill in the full name, ensuring they are online.
         # - For e-commerce platform store names (for enterprise users only), provide the display link with HTTP or HTTPS.
         self.apply_scene_content = apply_scene_content
+        self.authorization_letter_id = authorization_letter_id
         # Additional materials, such as uploading business proof documents or screenshots of business operations, to help reviewers understand your business details.
         self.more_data_shrink = more_data_shrink
         self.owner_id = owner_id
@@ -10505,6 +10549,8 @@ class UpdateSmsSignShrinkRequest(TeaModel):
         result = dict()
         if self.apply_scene_content is not None:
             result['ApplySceneContent'] = self.apply_scene_content
+        if self.authorization_letter_id is not None:
+            result['AuthorizationLetterId'] = self.authorization_letter_id
         if self.more_data_shrink is not None:
             result['MoreData'] = self.more_data_shrink
         if self.owner_id is not None:
@@ -10531,6 +10577,8 @@ class UpdateSmsSignShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('ApplySceneContent') is not None:
             self.apply_scene_content = m.get('ApplySceneContent')
+        if m.get('AuthorizationLetterId') is not None:
+            self.authorization_letter_id = m.get('AuthorizationLetterId')
         if m.get('MoreData') is not None:
             self.more_data_shrink = m.get('MoreData')
         if m.get('OwnerId') is not None:
