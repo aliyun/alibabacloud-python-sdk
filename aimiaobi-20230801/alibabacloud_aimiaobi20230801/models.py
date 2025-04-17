@@ -26282,6 +26282,7 @@ class RunDocBrainmapRequest(TeaModel):
         session_id: str = None,
         word_number: int = None,
         workspace_id: str = None,
+        reference_content: str = None,
     ):
         self.clean_cache = clean_cache
         # This parameter is required.
@@ -26293,6 +26294,7 @@ class RunDocBrainmapRequest(TeaModel):
         self.word_number = word_number
         # This parameter is required.
         self.workspace_id = workspace_id
+        self.reference_content = reference_content
 
     def validate(self):
         pass
@@ -26317,6 +26319,8 @@ class RunDocBrainmapRequest(TeaModel):
             result['WordNumber'] = self.word_number
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
+        if self.reference_content is not None:
+            result['referenceContent'] = self.reference_content
         return result
 
     def from_map(self, m: dict = None):
@@ -26335,6 +26339,8 @@ class RunDocBrainmapRequest(TeaModel):
             self.word_number = m.get('WordNumber')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
+        if m.get('referenceContent') is not None:
+            self.reference_content = m.get('referenceContent')
         return self
 
 
@@ -26600,6 +26606,7 @@ class RunDocIntroductionRequest(TeaModel):
         session_id: str = None,
         summary_prompt: str = None,
         workspace_id: str = None,
+        reference_content: str = None,
     ):
         self.clean_cache = clean_cache
         # This parameter is required.
@@ -26611,6 +26618,7 @@ class RunDocIntroductionRequest(TeaModel):
         self.summary_prompt = summary_prompt
         # This parameter is required.
         self.workspace_id = workspace_id
+        self.reference_content = reference_content
 
     def validate(self):
         pass
@@ -26635,6 +26643,8 @@ class RunDocIntroductionRequest(TeaModel):
             result['SummaryPrompt'] = self.summary_prompt
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
+        if self.reference_content is not None:
+            result['referenceContent'] = self.reference_content
         return result
 
     def from_map(self, m: dict = None):
@@ -26653,6 +26663,8 @@ class RunDocIntroductionRequest(TeaModel):
             self.summary_prompt = m.get('SummaryPrompt')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
+        if m.get('referenceContent') is not None:
+            self.reference_content = m.get('referenceContent')
         return self
 
 

@@ -1,3 +1,8 @@
+2025-04-17 Version: 1.20.5
+- Update API RunDocBrainmap: add request parameters referenceContent.
+- Update API RunDocIntroduction: add request parameters referenceContent.
+
+
 2025-04-03 Version: 1.20.4
 - Generated python 2023-08-01 for AiMiaoBi.
 
