@@ -5720,9 +5720,11 @@ class TargetImageSnapshots(TeaModel):
         format: str = None,
         height: float = None,
         interval: float = None,
+        mode: str = None,
         number: int = None,
         scale_type: str = None,
         start_time: float = None,
+        threshold: int = None,
         uri: str = None,
         width: float = None,
     ):
@@ -5730,9 +5732,11 @@ class TargetImageSnapshots(TeaModel):
         self.format = format
         self.height = height
         self.interval = interval
+        self.mode = mode
         self.number = number
         self.scale_type = scale_type
         self.start_time = start_time
+        self.threshold = threshold
         # This parameter is required.
         self.uri = uri
         self.width = width
@@ -5752,12 +5756,16 @@ class TargetImageSnapshots(TeaModel):
             result['Height'] = self.height
         if self.interval is not None:
             result['Interval'] = self.interval
+        if self.mode is not None:
+            result['Mode'] = self.mode
         if self.number is not None:
             result['Number'] = self.number
         if self.scale_type is not None:
             result['ScaleType'] = self.scale_type
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
         if self.uri is not None:
             result['URI'] = self.uri
         if self.width is not None:
@@ -5772,12 +5780,16 @@ class TargetImageSnapshots(TeaModel):
             self.height = m.get('Height')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
         if m.get('Number') is not None:
             self.number = m.get('Number')
         if m.get('ScaleType') is not None:
             self.scale_type = m.get('ScaleType')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
         if m.get('URI') is not None:
             self.uri = m.get('URI')
         if m.get('Width') is not None:
@@ -5791,12 +5803,14 @@ class TargetImageSprites(TeaModel):
         format: str = None,
         interval: float = None,
         margin: int = None,
+        mode: str = None,
         number: int = None,
         pad: int = None,
         scale_height: float = None,
         scale_type: str = None,
         scale_width: float = None,
         start_time: float = None,
+        threshold: int = None,
         tile_height: int = None,
         tile_width: int = None,
         uri: str = None,
@@ -5805,12 +5819,14 @@ class TargetImageSprites(TeaModel):
         self.format = format
         self.interval = interval
         self.margin = margin
+        self.mode = mode
         self.number = number
         self.pad = pad
         self.scale_height = scale_height
         self.scale_type = scale_type
         self.scale_width = scale_width
         self.start_time = start_time
+        self.threshold = threshold
         self.tile_height = tile_height
         self.tile_width = tile_width
         # This parameter is required.
@@ -5831,6 +5847,8 @@ class TargetImageSprites(TeaModel):
             result['Interval'] = self.interval
         if self.margin is not None:
             result['Margin'] = self.margin
+        if self.mode is not None:
+            result['Mode'] = self.mode
         if self.number is not None:
             result['Number'] = self.number
         if self.pad is not None:
@@ -5843,6 +5861,8 @@ class TargetImageSprites(TeaModel):
             result['ScaleWidth'] = self.scale_width
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
         if self.tile_height is not None:
             result['TileHeight'] = self.tile_height
         if self.tile_width is not None:
@@ -5859,6 +5879,8 @@ class TargetImageSprites(TeaModel):
             self.interval = m.get('Interval')
         if m.get('Margin') is not None:
             self.margin = m.get('Margin')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
         if m.get('Number') is not None:
             self.number = m.get('Number')
         if m.get('Pad') is not None:
@@ -5871,6 +5893,8 @@ class TargetImageSprites(TeaModel):
             self.scale_width = m.get('ScaleWidth')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
         if m.get('TileHeight') is not None:
             self.tile_height = m.get('TileHeight')
         if m.get('TileWidth') is not None:
@@ -6958,7 +6982,7 @@ class AddImageMosaicRequest(TeaModel):
     ):
         # **If you do not have special requirements, leave this parameter empty.**\
         # 
-        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
         # The encoding of the output image. By default, the output image uses the same encoding as the input image. Valid values: jpg, png, and webp.
         self.image_format = image_format
@@ -7055,7 +7079,7 @@ class AddImageMosaicShrinkRequest(TeaModel):
     ):
         # **If you do not have special requirements, leave this parameter empty.**\
         # 
-        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
         # The encoding of the output image. By default, the output image uses the same encoding as the input image. Valid values: jpg, png, and webp.
         self.image_format = image_format
@@ -8152,7 +8176,7 @@ class BatchIndexFileMetaRequest(TeaModel):
         # 
         # This parameter is required.
         self.files = files
-        # The notification settings. For more information, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
         # The name of the project.[](~~478153~~)
         # 
@@ -8224,7 +8248,7 @@ class BatchIndexFileMetaShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.files_shrink = files_shrink
-        # The notification settings. For more information, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
         # The name of the project.[](~~478153~~)
         # 
@@ -8627,7 +8651,7 @@ class CompareImageFacesRequest(TeaModel):
     ):
         # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
         # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
         # 
@@ -8678,7 +8702,7 @@ class CompareImageFacesShrinkRequest(TeaModel):
     ):
         # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
         # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
         # 
@@ -9453,7 +9477,7 @@ class CreateBatchRequestNotification(TeaModel):
         self,
         mns: MNS = None,
     ):
-        # The Simple Message Queue notification message configurations.
+        # The SMQ notification settings.
         self.mns = mns
 
     def validate(self):
@@ -9488,7 +9512,7 @@ class CreateBatchRequest(TeaModel):
         service_role: str = None,
         tags: Dict[str, Any] = None,
     ):
-        # The processing templates.
+        # The templates.
         # 
         # This parameter is required.
         self.actions = actions
@@ -9498,7 +9522,7 @@ class CreateBatchRequest(TeaModel):
         self.input = input
         # The notification settings. The operation supports multiple messaging middleware options. For more information about notification messages, see Asynchronous message examples. You can use one of the following methods to receive notification messages:
         # 
-        # Activate and connect to EventBridge in the same region as the IMM project. For more information, see IMM events. Activate Simple Message Queue in the same region as the IMM project and configure a subscription.
+        # In the region in which the IMM project is located, use EventBridge to receive task notifications. For more information, see IMM events. In the region in which the IMM project is located, configure a Simple Message Queue (SMQ) subscription to receive task notifications.
         self.notification = notification
         # The name of the project.[](~~478153~~)
         # 
@@ -9577,7 +9601,7 @@ class CreateBatchShrinkRequest(TeaModel):
         service_role: str = None,
         tags_shrink: str = None,
     ):
-        # The processing templates.
+        # The templates.
         # 
         # This parameter is required.
         self.actions_shrink = actions_shrink
@@ -9587,7 +9611,7 @@ class CreateBatchShrinkRequest(TeaModel):
         self.input_shrink = input_shrink
         # The notification settings. The operation supports multiple messaging middleware options. For more information about notification messages, see Asynchronous message examples. You can use one of the following methods to receive notification messages:
         # 
-        # Activate and connect to EventBridge in the same region as the IMM project. For more information, see IMM events. Activate Simple Message Queue in the same region as the IMM project and configure a subscription.
+        # In the region in which the IMM project is located, use EventBridge to receive task notifications. For more information, see IMM events. In the region in which the IMM project is located, configure a Simple Message Queue (SMQ) subscription to receive task notifications.
         self.notification_shrink = notification_shrink
         # The name of the project.[](~~478153~~)
         # 
@@ -11469,7 +11493,7 @@ class CreateFigureClustersMergingTaskRequest(TeaModel):
         self.from_ = from_
         # The IDs of source clustering groups. You must specify either From or Froms, but not both. You can specify up to 100 task IDs.
         self.froms = froms
-        # The notification message configurations. For more information, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
         # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
         # 
@@ -11554,7 +11578,7 @@ class CreateFigureClustersMergingTaskShrinkRequest(TeaModel):
         self.from_ = from_
         # The IDs of source clustering groups. You must specify either From or Froms, but not both. You can specify up to 100 task IDs.
         self.froms_shrink = froms_shrink
-        # The notification message configurations. For more information, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
         # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
         # 
@@ -12645,7 +12669,7 @@ class CreateImageSplicingTaskRequest(TeaModel):
         self.align = align
         # The padding color of the spaces specified by `Padding` and `Margin`. Colors encoded in the `#FFFFFF` format and colors that are related to preset keywords such as `red` and `alpha` are supported.
         self.background_color = background_color
-        # The authorization chain. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
         # The splicing method. Valid values:
         # 
@@ -12660,7 +12684,7 @@ class CreateImageSplicingTaskRequest(TeaModel):
         self.image_format = image_format
         # The empty space or border around the edges of the output image. Default value: 0. Unit: px.
         self.margin = margin
-        # The notification settings. For more information, click Notification. For information about the asynchronous notification format, see [Asynchronous notification format](https://help.aliyun.com/document_detail/2743997.html).
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
         # The space between component images in the output image. Default value: 0. Unit: px.
         self.padding = padding
@@ -12810,7 +12834,7 @@ class CreateImageSplicingTaskShrinkRequest(TeaModel):
         self.align = align
         # The padding color of the spaces specified by `Padding` and `Margin`. Colors encoded in the `#FFFFFF` format and colors that are related to preset keywords such as `red` and `alpha` are supported.
         self.background_color = background_color
-        # The authorization chain. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
         # The splicing method. Valid values:
         # 
@@ -12825,7 +12849,7 @@ class CreateImageSplicingTaskShrinkRequest(TeaModel):
         self.image_format = image_format
         # The empty space or border around the edges of the output image. Default value: 0. Unit: px.
         self.margin = margin
-        # The notification settings. For more information, click Notification. For information about the asynchronous notification format, see [Asynchronous notification format](https://help.aliyun.com/document_detail/2743997.html).
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
         # The space between component images in the output image. Default value: 0. Unit: px.
         self.padding = padding
@@ -13711,11 +13735,19 @@ class CreateMediaConvertTaskRequestSourcesSubtitles(TeaModel):
 class CreateMediaConvertTaskRequestSources(TeaModel):
     def __init__(
         self,
+        align_mode: str = None,
+        attached: bool = None,
+        disable_audio: bool = None,
+        disable_video: bool = None,
         duration: float = None,
         start_time: float = None,
         subtitles: List[CreateMediaConvertTaskRequestSourcesSubtitles] = None,
         uri: str = None,
     ):
+        self.align_mode = align_mode
+        self.attached = attached
+        self.disable_audio = disable_audio
+        self.disable_video = disable_video
         # The transcoding duration of the media. Unit: seconds. Default value: 0. A value of 0 specifies that the transcoding duration lasts until the end of the video.
         self.duration = duration
         # The start time of the media transcoding task. Unit: seconds. Valid values:
@@ -13740,6 +13772,14 @@ class CreateMediaConvertTaskRequestSources(TeaModel):
             return _map
 
         result = dict()
+        if self.align_mode is not None:
+            result['AlignMode'] = self.align_mode
+        if self.attached is not None:
+            result['Attached'] = self.attached
+        if self.disable_audio is not None:
+            result['DisableAudio'] = self.disable_audio
+        if self.disable_video is not None:
+            result['DisableVideo'] = self.disable_video
         if self.duration is not None:
             result['Duration'] = self.duration
         if self.start_time is not None:
@@ -13754,6 +13794,14 @@ class CreateMediaConvertTaskRequestSources(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlignMode') is not None:
+            self.align_mode = m.get('AlignMode')
+        if m.get('Attached') is not None:
+            self.attached = m.get('Attached')
+        if m.get('DisableAudio') is not None:
+            self.disable_audio = m.get('DisableAudio')
+        if m.get('DisableVideo') is not None:
+            self.disable_video = m.get('DisableVideo')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
         if m.get('StartTime') is not None:
@@ -15268,7 +15316,7 @@ class CreateProjectResponseBody(TeaModel):
         project: Project = None,
         request_id: str = None,
     ):
-        # The project. For more information, click Project.
+        # The project.
         self.project = project
         # The request ID.
         self.request_id = request_id
@@ -15988,7 +16036,7 @@ class CreateTriggerRequestNotification(TeaModel):
         self,
         mns: MNS = None,
     ):
-        # The Simple Message Queue notification message configurations.
+        # The SMQ notification settings.
         self.mns = mns
 
     def validate(self):
@@ -16023,7 +16071,7 @@ class CreateTriggerRequest(TeaModel):
         service_role: str = None,
         tags: Dict[str, Any] = None,
     ):
-        # The processing templates.
+        # The templates.
         # 
         # This parameter is required.
         self.actions = actions
@@ -16033,7 +16081,7 @@ class CreateTriggerRequest(TeaModel):
         self.input = input
         # The notification settings. The operation supports multiple messaging middleware options. For more information about notification messages, see Asynchronous message examples. You can use one of the following methods to receive notification messages:
         # 
-        # Activate and connect to EventBridge in the same region as the IMM project. For more information, see IMM events. Activate Simple Message Queue in the same region as the IMM project and configure a subscription.
+        # In the region in which the IMM project is located, use EventBridge to receive task notifications. For more information, see IMM events. In the region in which the IMM project is located, configure a Simple Message Queue (SMQ) subscription to receive task notifications.
         self.notification = notification
         # The name of the project.[](~~478153~~)
         # 
@@ -16112,7 +16160,7 @@ class CreateTriggerShrinkRequest(TeaModel):
         service_role: str = None,
         tags_shrink: str = None,
     ):
-        # The processing templates.
+        # The templates.
         # 
         # This parameter is required.
         self.actions_shrink = actions_shrink
@@ -16122,7 +16170,7 @@ class CreateTriggerShrinkRequest(TeaModel):
         self.input_shrink = input_shrink
         # The notification settings. The operation supports multiple messaging middleware options. For more information about notification messages, see Asynchronous message examples. You can use one of the following methods to receive notification messages:
         # 
-        # Activate and connect to EventBridge in the same region as the IMM project. For more information, see IMM events. Activate Simple Message Queue in the same region as the IMM project and configure a subscription.
+        # In the region in which the IMM project is located, use EventBridge to receive task notifications. For more information, see IMM events. In the region in which the IMM project is located, configure a Simple Message Queue (SMQ) subscription to receive task notifications.
         self.notification_shrink = notification_shrink
         # The name of the project.[](~~478153~~)
         # 
@@ -16265,7 +16313,7 @@ class CreateVideoLabelClassificationTaskRequest(TeaModel):
     ):
         # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
         # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
@@ -16341,7 +16389,7 @@ class CreateVideoLabelClassificationTaskShrinkRequest(TeaModel):
     ):
         # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
         # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
@@ -16496,13 +16544,13 @@ class CreateVideoModerationTaskRequest(TeaModel):
         tags: Dict[str, Any] = None,
         user_data: str = None,
     ):
-        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
         # The interval of capturing video frames. Unit: seconds. Valid values: 1 to 600. Default value: 1.
         self.interval = interval
         # The maximum number of frames that can be captured from the video. Valid values: 5 to 3600. Default value: 200.
         self.max_frames = max_frames
-        # The notification settings. For information about the asynchronous notification format, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
         # The name of the project.[](~~478153~~)
         # 
@@ -16591,13 +16639,13 @@ class CreateVideoModerationTaskShrinkRequest(TeaModel):
         tags_shrink: str = None,
         user_data: str = None,
     ):
-        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
         # The interval of capturing video frames. Unit: seconds. Valid values: 1 to 600. Default value: 1.
         self.interval = interval
         # The maximum number of frames that can be captured from the video. Valid values: 5 to 3600. Default value: 200.
         self.max_frames = max_frames
-        # The notification settings. For information about the asynchronous notification format, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
         # The name of the project.[](~~478153~~)
         # 
@@ -16984,11 +17032,11 @@ class DeleteDatasetRequest(TeaModel):
         dataset_name: str = None,
         project_name: str = None,
     ):
-        # The name of the dataset.[](https://help.aliyun.com/zh/imm/user-guide/create-datasets?spm=a2c4g.11186623.0.0.453e3cbf9vcZrq)
+        # The name of the dataset. For information about how to create a dataset, see [CreateDataset](https://help.aliyun.com/document_detail/478160.html).
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The name of the project.[](https://help.aliyun.com/zh/imm/getting-started/create-a-project-1?spm=a2c4g.11186623.0.i30)
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
@@ -17755,9 +17803,9 @@ class DetectImageBodiesRequest(TeaModel):
         sensitivity: float = None,
         source_uri: str = None,
     ):
-        # **If you do not have special requirements, leave this parameter empty.**\
+        # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
         # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
         # 
@@ -17812,9 +17860,9 @@ class DetectImageBodiesShrinkRequest(TeaModel):
         sensitivity: float = None,
         source_uri: str = None,
     ):
-        # **If you do not have special requirements, leave this parameter empty.**\
+        # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
         # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
         # 
@@ -18138,9 +18186,9 @@ class DetectImageCodesRequest(TeaModel):
         project_name: str = None,
         source_uri: str = None,
     ):
-        # **If you do not have special requirements, leave this parameter empty.**\
+        # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
         # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
         # 
@@ -18190,9 +18238,9 @@ class DetectImageCodesShrinkRequest(TeaModel):
         project_name: str = None,
         source_uri: str = None,
     ):
-        # **If you do not have special requirements, leave this parameter empty.**\
+        # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
         # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
         # 
@@ -18339,9 +18387,9 @@ class DetectImageCroppingRequest(TeaModel):
         # You specify a ratio that is not an integer, such as `4.1:3`.\\
         # The ratio is beyond the range of 0.5 to 2.
         self.aspect_ratios = aspect_ratios
-        # **If you do not have special requirements, leave this parameter empty.**\
+        # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
         # The name of the project.
         # 
@@ -18406,9 +18454,9 @@ class DetectImageCroppingShrinkRequest(TeaModel):
         # You specify a ratio that is not an integer, such as `4.1:3`.\\
         # The ratio is beyond the range of 0.5 to 2.
         self.aspect_ratios = aspect_ratios
-        # **If you do not have special requirements, leave this parameter empty.**\
+        # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
         # The name of the project.
         # 
@@ -18457,7 +18505,7 @@ class DetectImageCroppingResponseBody(TeaModel):
         croppings: List[CroppingSuggestion] = None,
         request_id: str = None,
     ):
-        # The image croppings.
+        # The image cropping suggestions.
         self.croppings = croppings
         # The request ID.
         self.request_id = request_id
@@ -18725,9 +18773,9 @@ class DetectImageLabelsRequest(TeaModel):
         source_uri: str = None,
         threshold: float = None,
     ):
-        # **If you do not have special requirements, leave this parameter empty.**\
+        # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
         # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
         # 
@@ -18784,9 +18832,9 @@ class DetectImageLabelsShrinkRequest(TeaModel):
         source_uri: str = None,
         threshold: float = None,
     ):
-        # **If you do not have special requirements, leave this parameter empty.**\
+        # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
         # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
         # 
@@ -18839,7 +18887,7 @@ class DetectImageLabelsResponseBody(TeaModel):
         labels: List[Label] = None,
         request_id: str = None,
     ):
-        # The labels that are detected.
+        # The list of labels detected.
         self.labels = labels
         # The request ID.
         self.request_id = request_id
@@ -18926,7 +18974,7 @@ class DetectImageScoreRequest(TeaModel):
     ):
         # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
         # The name of the project.[](~~477051~~)
         # 
@@ -18976,7 +19024,7 @@ class DetectImageScoreShrinkRequest(TeaModel):
     ):
         # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
         # The name of the project.[](~~477051~~)
         # 
@@ -19128,9 +19176,9 @@ class DetectImageTextsRequest(TeaModel):
         project_name: str = None,
         source_uri: str = None,
     ):
-        # **If you have no special requirements, leave this field empty.**\
+        # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
         # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
         # 
@@ -19180,9 +19228,9 @@ class DetectImageTextsShrinkRequest(TeaModel):
         project_name: str = None,
         source_uri: str = None,
     ):
-        # **If you have no special requirements, leave this field empty.**\
+        # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
         # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
         # 
@@ -19323,7 +19371,7 @@ class DetectMediaMetaRequest(TeaModel):
     ):
         # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
         # The name of the project.[](~~478153~~)
         self.project_name = project_name
@@ -19371,7 +19419,7 @@ class DetectMediaMetaShrinkRequest(TeaModel):
     ):
         # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
         # The name of the project.[](~~478153~~)
         self.project_name = project_name
@@ -19953,9 +20001,9 @@ class ExtractDocumentTextRequest(TeaModel):
         source_type: str = None,
         source_uri: str = None,
     ):
-        # **If you do not have special requirements, leave this parameter empty.**\
+        # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
         # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/477051.html) operation.
         # 
@@ -20017,9 +20065,9 @@ class ExtractDocumentTextShrinkRequest(TeaModel):
         source_type: str = None,
         source_uri: str = None,
     ):
-        # **If you do not have special requirements, leave this parameter empty.**\
+        # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
         # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/477051.html) operation.
         # 
@@ -20192,7 +20240,7 @@ class FuzzyQueryRequest(TeaModel):
         # 
         # This parameter is required.
         self.query = query
-        # The sort field. For more information, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
+        # The sort fields. For more information, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
         # 
         # *   Separate multiple sort fields with commas (,). Example: `Size,Filename`.
         # *   You can specify up to five sort fields.
@@ -20298,7 +20346,7 @@ class FuzzyQueryShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.query = query
-        # The sort field. For more information, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
+        # The sort fields. For more information, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
         # 
         # *   Separate multiple sort fields with commas (,). Example: `Size,Filename`.
         # *   You can specify up to five sort fields.
@@ -21221,9 +21269,7 @@ class GenerateWebofficeTokenRequest(TeaModel):
         # 
         # >  The pricing for document previews varies based on whether cache preview is enabled or disabled.
         # 
-        # >  If you specify this parameter, the Pemission.copy parameter does not take effect. >
-        # 
-        # >  Printing is not supported during cache preview.
+        # >  During a cache preview, document content search and printing are not supported.
         self.cache_preview = cache_preview
         # **If you have no special requirements, leave this parameter empty.**\
         # 
@@ -21244,7 +21290,7 @@ class GenerateWebofficeTokenRequest(TeaModel):
         # *   PDF documents: .pdf
         self.filename = filename
         self.hidecmb = hidecmb
-        # The notification settings. Only Simple Message Queue messages are supported. For more information, see [WebOffice message example](https://help.aliyun.com/document_detail/2743999.html).
+        # The notification settings. Only SMQ messages are supported. For more information, see [WebOffice message example](https://help.aliyun.com/document_detail/2743999.html).
         # 
         # >  A notification is sent after the document is saved or renamed.
         self.notification = notification
@@ -21402,9 +21448,7 @@ class GenerateWebofficeTokenShrinkRequest(TeaModel):
         # 
         # >  The pricing for document previews varies based on whether cache preview is enabled or disabled.
         # 
-        # >  If you specify this parameter, the Pemission.copy parameter does not take effect. >
-        # 
-        # >  Printing is not supported during cache preview.
+        # >  During a cache preview, document content search and printing are not supported.
         self.cache_preview = cache_preview
         # **If you have no special requirements, leave this parameter empty.**\
         # 
@@ -21425,7 +21469,7 @@ class GenerateWebofficeTokenShrinkRequest(TeaModel):
         # *   PDF documents: .pdf
         self.filename = filename
         self.hidecmb = hidecmb
-        # The notification settings. Only Simple Message Queue messages are supported. For more information, see [WebOffice message example](https://help.aliyun.com/document_detail/2743999.html).
+        # The notification settings. Only SMQ messages are supported. For more information, see [WebOffice message example](https://help.aliyun.com/document_detail/2743999.html).
         # 
         # >  A notification is sent after the document is saved or renamed.
         self.notification_shrink = notification_shrink
@@ -21813,7 +21857,7 @@ class GetBindingResponseBody(TeaModel):
         binding: Binding = None,
         request_id: str = None,
     ):
-        # The binding relationship.
+        # The details of the binding.
         self.binding = binding
         # The request ID.
         self.request_id = request_id
@@ -22399,7 +22443,7 @@ class GetFigureClusterResponseBody(TeaModel):
         figure_cluster: FigureCluster = None,
         request_id: str = None,
     ):
-        # The information about the face clustering task.
+        # The information about the face cluster.
         self.figure_cluster = figure_cluster
         # The request ID.
         self.request_id = request_id
@@ -23184,7 +23228,7 @@ class GetProjectResponseBody(TeaModel):
         project: Project = None,
         request_id: str = None,
     ):
-        # The project.
+        # The project information.
         self.project = project
         # The request ID.
         self.request_id = request_id
@@ -24240,11 +24284,11 @@ class IndexFileMetaRequest(TeaModel):
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The file for which you want to create an index. The value must be in the JSON format.
+        # The file for which you want to create a metadata index. The value must be in the JSON format.
         # 
         # This parameter is required.
         self.file = file
-        # The notification settings. For more information, click Notification. For information about the formats of asynchronous notifications, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
+        # The notification settings. For more information, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
         self.notification = notification
         # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
         # 
@@ -24306,11 +24350,11 @@ class IndexFileMetaShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The file for which you want to create an index. The value must be in the JSON format.
+        # The file for which you want to create a metadata index. The value must be in the JSON format.
         # 
         # This parameter is required.
         self.file_shrink = file_shrink
-        # The notification settings. For more information, click Notification. For information about the formats of asynchronous notifications, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
+        # The notification settings. For more information, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
         self.notification_shrink = notification_shrink
         # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
         # 
@@ -25277,7 +25321,7 @@ class ListTasksRequest(TeaModel):
         tag_selector: str = None,
         task_types: List[str] = None,
     ):
-        # The range of task end time. You can specify this parameter to filter tasks that end within the specified range.
+        # The task end time range. You can specify this parameter to filter tasks that end within the specified range.
         self.end_time_range = end_time_range
         # The maximum number of results to return. Valid value range: (0, 100]. Default value: 100.
         self.max_results = max_results
@@ -25289,8 +25333,8 @@ class ListTasksRequest(TeaModel):
         self.next_token = next_token
         # The sort order. Valid values:
         # 
-        # *   ASC: sorts the results in ascending order. This is the default sort order.
-        # *   DES: sorts the results in descending order.
+        # *   asc: in ascending order. This is the default value.
+        # *   desc: in descending order.
         self.order = order
         # The name of the project.[](~~478153~~)
         # 
@@ -25304,7 +25348,7 @@ class ListTasksRequest(TeaModel):
         # *   StartTime: sorts the results by task start time.
         # *   StartTime: sorts the results by task end time.
         self.sort = sort
-        # The range of task start time. You can specify this parameter to filter tasks that start within the specified range.
+        # The task start time range. You can specify this parameter to filter tasks that start within the specified range.
         self.start_time_range = start_time_range
         # The task status. Valid values:
         # 
@@ -25397,7 +25441,7 @@ class ListTasksShrinkRequest(TeaModel):
         tag_selector: str = None,
         task_types_shrink: str = None,
     ):
-        # The range of task end time. You can specify this parameter to filter tasks that end within the specified range.
+        # The task end time range. You can specify this parameter to filter tasks that end within the specified range.
         self.end_time_range_shrink = end_time_range_shrink
         # The maximum number of results to return. Valid value range: (0, 100]. Default value: 100.
         self.max_results = max_results
@@ -25409,8 +25453,8 @@ class ListTasksShrinkRequest(TeaModel):
         self.next_token = next_token
         # The sort order. Valid values:
         # 
-        # *   ASC: sorts the results in ascending order. This is the default sort order.
-        # *   DES: sorts the results in descending order.
+        # *   asc: in ascending order. This is the default value.
+        # *   desc: in descending order.
         self.order = order
         # The name of the project.[](~~478153~~)
         # 
@@ -25424,7 +25468,7 @@ class ListTasksShrinkRequest(TeaModel):
         # *   StartTime: sorts the results by task start time.
         # *   StartTime: sorts the results by task end time.
         self.sort = sort
-        # The range of task start time. You can specify this parameter to filter tasks that start within the specified range.
+        # The task start time range. You can specify this parameter to filter tasks that start within the specified range.
         self.start_time_range_shrink = start_time_range_shrink
         # The task status. Valid values:
         # 
@@ -25801,7 +25845,7 @@ class QueryFigureClustersRequest(TeaModel):
         update_time_range: TimeRange = None,
         with_total_count: bool = None,
     ):
-        # The time period during which the faces are grouped together.
+        # The time range within which the face group was created.
         self.create_time_range = create_time_range
         # The custom labels, which can be used as query conditions.
         self.custom_labels = custom_labels
@@ -25838,7 +25882,7 @@ class QueryFigureClustersRequest(TeaModel):
         # *   FaceCount: the number of faces.
         # *   GroupName: the name of the group.
         self.sort = sort
-        # The time period during which the faces in the group are updated.
+        # The time range within which the face group was last updated.
         self.update_time_range = update_time_range
         # Specifies whether to return the total number of face groups that match the current query conditions. Default value: false.
         self.with_total_count = with_total_count
@@ -25918,7 +25962,7 @@ class QueryFigureClustersShrinkRequest(TeaModel):
         update_time_range_shrink: str = None,
         with_total_count: bool = None,
     ):
-        # The time period during which the faces are grouped together.
+        # The time range within which the face group was created.
         self.create_time_range_shrink = create_time_range_shrink
         # The custom labels, which can be used as query conditions.
         self.custom_labels = custom_labels
@@ -25955,7 +25999,7 @@ class QueryFigureClustersShrinkRequest(TeaModel):
         # *   FaceCount: the number of faces.
         # *   GroupName: the name of the group.
         self.sort = sort
-        # The time period during which the faces in the group are updated.
+        # The time range within which the face group was last updated.
         self.update_time_range_shrink = update_time_range_shrink
         # Specifies whether to return the total number of face groups that match the current query conditions. Default value: false.
         self.with_total_count = with_total_count
@@ -26135,7 +26179,7 @@ class QueryLocationDateClustersRequest(TeaModel):
     ):
         # The address information.
         self.address = address
-        # The time range during which the spatiotemporal clustering groups are generated.
+        # The time range during which the spatiotemporal clusters were generated.
         self.create_time_range = create_time_range
         # The custom labels, which can be used as query conditions.
         self.custom_labels = custom_labels
@@ -26143,11 +26187,11 @@ class QueryLocationDateClustersRequest(TeaModel):
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The time range when the clustering groups are ended.
+        # The time range during which the latest photo in a cluster was taken.
         self.location_date_cluster_end_time_range = location_date_cluster_end_time_range
         # The administrative level of the spatiotemporal clustering groups to be queried.
         self.location_date_cluster_levels = location_date_cluster_levels
-        # The time range when the clustering groups are started.
+        # The time range during which the earliest photo in a cluster was taken.
         self.location_date_cluster_start_time_range = location_date_cluster_start_time_range
         # The number of entries per page. Valid values: [1,100]. Default value: 20.
         self.max_results = max_results
@@ -26177,7 +26221,7 @@ class QueryLocationDateClustersRequest(TeaModel):
         self.sort = sort
         # The title of spatiotemporal clustering. Fuzzy matching is performed.
         self.title = title
-        # The time range during which the spatiotemporal clustering groups are updated.
+        # The time range during which the spatiotemporal clusters were updated.
         self.update_time_range = update_time_range
 
     def validate(self):
@@ -26291,7 +26335,7 @@ class QueryLocationDateClustersShrinkRequest(TeaModel):
     ):
         # The address information.
         self.address_shrink = address_shrink
-        # The time range during which the spatiotemporal clustering groups are generated.
+        # The time range during which the spatiotemporal clusters were generated.
         self.create_time_range_shrink = create_time_range_shrink
         # The custom labels, which can be used as query conditions.
         self.custom_labels = custom_labels
@@ -26299,11 +26343,11 @@ class QueryLocationDateClustersShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The time range when the clustering groups are ended.
+        # The time range during which the latest photo in a cluster was taken.
         self.location_date_cluster_end_time_range_shrink = location_date_cluster_end_time_range_shrink
         # The administrative level of the spatiotemporal clustering groups to be queried.
         self.location_date_cluster_levels_shrink = location_date_cluster_levels_shrink
-        # The time range when the clustering groups are started.
+        # The time range during which the earliest photo in a cluster was taken.
         self.location_date_cluster_start_time_range_shrink = location_date_cluster_start_time_range_shrink
         # The number of entries per page. Valid values: [1,100]. Default value: 20.
         self.max_results = max_results
@@ -26333,7 +26377,7 @@ class QueryLocationDateClustersShrinkRequest(TeaModel):
         self.sort = sort
         # The title of spatiotemporal clustering. Fuzzy matching is performed.
         self.title = title
-        # The time range during which the spatiotemporal clustering groups are updated.
+        # The time range during which the spatiotemporal clusters were updated.
         self.update_time_range_shrink = update_time_range_shrink
 
     def validate(self):
@@ -26419,7 +26463,7 @@ class QueryLocationDateClustersResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The list of spatiotemporal groups.
+        # The list of spatiotemporal clusters.
         self.location_date_clusters = location_date_clusters
         # The pagination token.
         self.next_token = next_token
@@ -27087,7 +27131,7 @@ class RefreshWebofficeTokenRequest(TeaModel):
         self.access_token = access_token
         # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
         # This parameter is required.
         self.project_name = project_name
@@ -27140,7 +27184,7 @@ class RefreshWebofficeTokenShrinkRequest(TeaModel):
         self.access_token = access_token
         # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
         # This parameter is required.
         self.project_name = project_name
@@ -27718,7 +27762,7 @@ class SearchImageFigureClusterRequest(TeaModel):
     ):
         # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
         # The name of the dataset.[](~~478160~~)
         # 
@@ -27777,7 +27821,7 @@ class SearchImageFigureClusterShrinkRequest(TeaModel):
     ):
         # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
         # The name of the dataset.[](~~478160~~)
         # 
@@ -29248,6 +29292,7 @@ class UpdateDatasetResponseBody(TeaModel):
         dataset: Dataset = None,
         request_id: str = None,
     ):
+        # The dataset.
         self.dataset = dataset
         self.request_id = request_id
 
@@ -29496,7 +29541,7 @@ class UpdateFileMetaRequest(TeaModel):
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The file whose metadata you want to update. The value must be in the JSON format.
+        # The file and its metadata items to be updated. The value must be in the JSON format.
         # 
         # This parameter is required.
         self.file = file
@@ -29546,7 +29591,7 @@ class UpdateFileMetaShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The file whose metadata you want to update. The value must be in the JSON format.
+        # The file and its metadata items to be updated. The value must be in the JSON format.
         # 
         # This parameter is required.
         self.file_shrink = file_shrink
@@ -30120,7 +30165,7 @@ class UpdateProjectResponseBody(TeaModel):
         project: Project = None,
         request_id: str = None,
     ):
-        # The project. For more information, see "Project".
+        # The project.
         self.project = project
         # The request ID.
         self.request_id = request_id
@@ -30495,7 +30540,7 @@ class UpdateTriggerRequest(TeaModel):
         # 
         # This parameter is required.
         self.id = id
-        # The input data source.
+        # The data source configurations.
         self.input = input
         # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
         # 
@@ -30566,7 +30611,7 @@ class UpdateTriggerShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.id = id
-        # The input data source.
+        # The data source configurations.
         self.input_shrink = input_shrink
         # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
         # 

@@ -1,3 +1,10 @@
+2025-04-17 Version: 4.6.2
+- Update API CreateMediaConvertTask: add request parameters Sources.$.AlignMode.
+- Update API CreateMediaConvertTask: add request parameters Sources.$.Attached.
+- Update API CreateMediaConvertTask: add request parameters Sources.$.DisableAudio.
+- Update API CreateMediaConvertTask: add request parameters Sources.$.DisableVideo.
+
+
 2025-01-02 Version: 4.6.1
 - Update API ContextualAnswer: update response param.
 
