@@ -78,16 +78,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.AddTextFeedbackResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.AddTextFeedbackResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.AddTextFeedbackResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_text_feedback_with_options_async(
         self,
@@ -126,16 +120,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.AddTextFeedbackResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.AddTextFeedbackResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.AddTextFeedbackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_text_feedback(
         self,
@@ -199,16 +187,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchAddDocumentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchAddDocumentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.BatchAddDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def batch_add_document_with_options_async(
         self,
@@ -244,16 +226,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchAddDocumentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchAddDocumentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.BatchAddDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def batch_add_document(
         self,
@@ -324,16 +300,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchCreateAICoachTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchCreateAICoachTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.BatchCreateAICoachTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def batch_create_aicoach_task_with_options_async(
         self,
@@ -374,16 +344,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchCreateAICoachTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchCreateAICoachTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.BatchCreateAICoachTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def batch_create_aicoach_task(
         self,
@@ -450,16 +414,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchGetProjectTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchGetProjectTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.BatchGetProjectTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def batch_get_project_task_with_options_async(
         self,
@@ -498,16 +456,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchGetProjectTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchGetProjectTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.BatchGetProjectTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def batch_get_project_task(
         self,
@@ -576,16 +528,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchGetTrainTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchGetTrainTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.BatchGetTrainTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def batch_get_train_task_with_options_async(
         self,
@@ -626,16 +572,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchGetTrainTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchGetTrainTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.BatchGetTrainTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def batch_get_train_task(
         self,
@@ -702,16 +642,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchGetVideoClipTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchGetVideoClipTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.BatchGetVideoClipTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def batch_get_video_clip_task_with_options_async(
         self,
@@ -750,16 +684,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchGetVideoClipTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchGetVideoClipTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.BatchGetVideoClipTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def batch_get_video_clip_task(
         self,
@@ -826,16 +754,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchQueryIndividuationTextResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchQueryIndividuationTextResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.BatchQueryIndividuationTextResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def batch_query_individuation_text_with_options_async(
         self,
@@ -874,16 +796,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchQueryIndividuationTextResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.BatchQueryIndividuationTextResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.BatchQueryIndividuationTextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def batch_query_individuation_text(
         self,
@@ -948,16 +864,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CheckSessionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CheckSessionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CheckSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def check_session_with_options_async(
         self,
@@ -994,16 +904,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CheckSessionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CheckSessionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CheckSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def check_session(
         self,
@@ -1068,16 +972,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CloseAICoachTaskSessionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CloseAICoachTaskSessionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CloseAICoachTaskSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def close_aicoach_task_session_with_options_async(
         self,
@@ -1114,16 +1012,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CloseAICoachTaskSessionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CloseAICoachTaskSessionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CloseAICoachTaskSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def close_aicoach_task_session(
         self,
@@ -1192,16 +1084,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CountTextResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CountTextResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CountTextResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def count_text_with_options_async(
         self,
@@ -1242,16 +1128,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CountTextResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CountTextResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CountTextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def count_text(
         self,
@@ -1320,16 +1200,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateAICoachTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateAICoachTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateAICoachTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_aicoach_task_with_options_async(
         self,
@@ -1370,16 +1244,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateAICoachTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateAICoachTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateAICoachTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_aicoach_task(
         self,
@@ -1444,16 +1312,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateAICoachTaskSessionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateAICoachTaskSessionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateAICoachTaskSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_aicoach_task_session_with_options_async(
         self,
@@ -1490,16 +1352,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateAICoachTaskSessionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateAICoachTaskSessionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateAICoachTaskSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_aicoach_task_session(
         self,
@@ -1545,6 +1401,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.anchor_category):
+            body['anchorCategory'] = request.anchor_category
         if not UtilClient.is_unset(request.anchor_material_name):
             body['anchorMaterialName'] = request.anchor_material_name
         if not UtilClient.is_unset(request.cover_url):
@@ -1555,6 +1413,8 @@ class Client(OpenApiClient):
             body['gender'] = request.gender
         if not UtilClient.is_unset(request.use_scene):
             body['useScene'] = request.use_scene
+        if not UtilClient.is_unset(request.video_oss_key):
+            body['videoOssKey'] = request.video_oss_key
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1570,16 +1430,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateAnchorResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateAnchorResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateAnchorResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_anchor_with_options_async(
         self,
@@ -1597,6 +1451,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.anchor_category):
+            body['anchorCategory'] = request.anchor_category
         if not UtilClient.is_unset(request.anchor_material_name):
             body['anchorMaterialName'] = request.anchor_material_name
         if not UtilClient.is_unset(request.cover_url):
@@ -1607,6 +1463,8 @@ class Client(OpenApiClient):
             body['gender'] = request.gender
         if not UtilClient.is_unset(request.use_scene):
             body['useScene'] = request.use_scene
+        if not UtilClient.is_unset(request.video_oss_key):
+            body['videoOssKey'] = request.video_oss_key
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1622,16 +1480,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateAnchorResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateAnchorResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateAnchorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_anchor(
         self,
@@ -1692,16 +1544,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateIllustrationTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateIllustrationTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateIllustrationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_illustration_task_with_options_async(
         self,
@@ -1734,16 +1580,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateIllustrationTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateIllustrationTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateIllustrationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_illustration_task(
         self,
@@ -1814,16 +1654,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateIndividuationProjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateIndividuationProjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateIndividuationProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_individuation_project_with_options_async(
         self,
@@ -1864,16 +1698,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateIndividuationProjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateIndividuationProjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateIndividuationProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_individuation_project(
         self,
@@ -1940,16 +1768,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateIndividuationTextTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateIndividuationTextTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateIndividuationTextTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_individuation_text_task_with_options_async(
         self,
@@ -1988,16 +1810,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateIndividuationTextTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateIndividuationTextTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateIndividuationTextTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_individuation_text_task(
         self,
@@ -2026,6 +1842,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_individuation_text_task_with_options_async(request, headers, runtime)
+
+    def create_product_image_with_options(
+        self,
+        request: intelligent_creation_20240313_models.CreateProductImageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CreateProductImageResponse:
+        """
+        @summary 创建产品图
+        
+        @param request: CreateProductImageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProductImageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.background_description):
+            body['backgroundDescription'] = request.background_description
+        if not UtilClient.is_unset(request.background_priority):
+            body['backgroundPriority'] = request.background_priority
+        if not UtilClient.is_unset(request.background_url):
+            body['backgroundUrl'] = request.background_url
+        if not UtilClient.is_unset(request.highlight_text):
+            body['highlightText'] = request.highlight_text
+        if not UtilClient.is_unset(request.image_count):
+            body['imageCount'] = request.image_count
+        if not UtilClient.is_unset(request.image_url):
+            body['imageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.sub_title):
+            body['subTitle'] = request.sub_title
+        if not UtilClient.is_unset(request.title):
+            body['title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateProductImage',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/images/products',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateProductImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_product_image_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.CreateProductImageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CreateProductImageResponse:
+        """
+        @summary 创建产品图
+        
+        @param request: CreateProductImageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProductImageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.background_description):
+            body['backgroundDescription'] = request.background_description
+        if not UtilClient.is_unset(request.background_priority):
+            body['backgroundPriority'] = request.background_priority
+        if not UtilClient.is_unset(request.background_url):
+            body['backgroundUrl'] = request.background_url
+        if not UtilClient.is_unset(request.highlight_text):
+            body['highlightText'] = request.highlight_text
+        if not UtilClient.is_unset(request.image_count):
+            body['imageCount'] = request.image_count
+        if not UtilClient.is_unset(request.image_url):
+            body['imageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.sub_title):
+            body['subTitle'] = request.sub_title
+        if not UtilClient.is_unset(request.title):
+            body['title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateProductImage',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/images/products',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateProductImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_product_image(
+        self,
+        request: intelligent_creation_20240313_models.CreateProductImageRequest,
+    ) -> intelligent_creation_20240313_models.CreateProductImageResponse:
+        """
+        @summary 创建产品图
+        
+        @param request: CreateProductImageRequest
+        @return: CreateProductImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_product_image_with_options(request, headers, runtime)
+
+    async def create_product_image_async(
+        self,
+        request: intelligent_creation_20240313_models.CreateProductImageRequest,
+    ) -> intelligent_creation_20240313_models.CreateProductImageResponse:
+        """
+        @summary 创建产品图
+        
+        @param request: CreateProductImageRequest
+        @return: CreateProductImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_product_image_with_options_async(request, headers, runtime)
 
     def create_realistic_portrait_with_options(
         self,
@@ -2086,16 +2034,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateRealisticPortraitResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateRealisticPortraitResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateRealisticPortraitResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_realistic_portrait_with_options_async(
         self,
@@ -2156,16 +2098,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateRealisticPortraitResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateRealisticPortraitResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateRealisticPortraitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_realistic_portrait(
         self,
@@ -2225,16 +2161,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateTextTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateTextTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateTextTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_text_task_with_options_async(
         self,
@@ -2266,16 +2196,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateTextTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateTextTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateTextTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_text_task(
         self,
@@ -2352,16 +2276,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateTrainTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateTrainTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateTrainTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_train_task_with_options_async(
         self,
@@ -2410,16 +2328,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateTrainTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateTrainTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateTrainTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_train_task(
         self,
@@ -2488,16 +2400,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateVideoClipTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateVideoClipTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateVideoClipTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_video_clip_task_with_options_async(
         self,
@@ -2538,16 +2444,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateVideoClipTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.CreateVideoClipTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateVideoClipTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_video_clip_task(
         self,
@@ -2610,16 +2510,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.DeleteIndividuationProjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.DeleteIndividuationProjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.DeleteIndividuationProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_individuation_project_with_options_async(
         self,
@@ -2654,16 +2548,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.DeleteIndividuationProjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.DeleteIndividuationProjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.DeleteIndividuationProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_individuation_project(
         self,
@@ -2726,16 +2614,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.DeleteIndividuationTextResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.DeleteIndividuationTextResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.DeleteIndividuationTextResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_individuation_text_with_options_async(
         self,
@@ -2770,16 +2652,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.DeleteIndividuationTextResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.DeleteIndividuationTextResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.DeleteIndividuationTextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_individuation_text(
         self,
@@ -2837,16 +2713,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.DescribeDocumentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.DescribeDocumentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.DescribeDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_document_with_options_async(
         self,
@@ -2876,16 +2746,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.DescribeDocumentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.DescribeDocumentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.DescribeDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_document(
         self,
@@ -2950,16 +2814,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.FinishAICoachTaskSessionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.FinishAICoachTaskSessionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.FinishAICoachTaskSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def finish_aicoach_task_session_with_options_async(
         self,
@@ -2996,16 +2854,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.FinishAICoachTaskSessionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.FinishAICoachTaskSessionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.FinishAICoachTaskSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def finish_aicoach_task_session(
         self,
@@ -3034,6 +2886,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.finish_aicoach_task_session_with_options_async(request, headers, runtime)
+
+    def get_aicoach_assessment_point_with_options(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachAssessmentPointRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.GetAICoachAssessmentPointResponse:
+        """
+        @summary 获取考核点详情
+        
+        @param request: GetAICoachAssessmentPointRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAICoachAssessmentPointResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.point_id):
+            query['pointId'] = request.point_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAICoachAssessmentPoint',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/getAssessmentPoint',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetAICoachAssessmentPointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aicoach_assessment_point_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachAssessmentPointRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.GetAICoachAssessmentPointResponse:
+        """
+        @summary 获取考核点详情
+        
+        @param request: GetAICoachAssessmentPointRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAICoachAssessmentPointResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.point_id):
+            query['pointId'] = request.point_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAICoachAssessmentPoint',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/getAssessmentPoint',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetAICoachAssessmentPointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aicoach_assessment_point(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachAssessmentPointRequest,
+    ) -> intelligent_creation_20240313_models.GetAICoachAssessmentPointResponse:
+        """
+        @summary 获取考核点详情
+        
+        @param request: GetAICoachAssessmentPointRequest
+        @return: GetAICoachAssessmentPointResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_aicoach_assessment_point_with_options(request, headers, runtime)
+
+    async def get_aicoach_assessment_point_async(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachAssessmentPointRequest,
+    ) -> intelligent_creation_20240313_models.GetAICoachAssessmentPointResponse:
+        """
+        @summary 获取考核点详情
+        
+        @param request: GetAICoachAssessmentPointRequest
+        @return: GetAICoachAssessmentPointResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_aicoach_assessment_point_with_options_async(request, headers, runtime)
 
     def get_aicoach_cheat_detection_with_options(
         self,
@@ -3068,16 +3024,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetAICoachCheatDetectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetAICoachCheatDetectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetAICoachCheatDetectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_aicoach_cheat_detection_with_options_async(
         self,
@@ -3112,16 +3062,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetAICoachCheatDetectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetAICoachCheatDetectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetAICoachCheatDetectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_aicoach_cheat_detection(
         self,
@@ -3184,16 +3128,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetAICoachScriptResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetAICoachScriptResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetAICoachScriptResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_aicoach_script_with_options_async(
         self,
@@ -3228,16 +3166,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetAICoachScriptResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetAICoachScriptResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetAICoachScriptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_aicoach_script(
         self,
@@ -3306,16 +3238,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetAICoachTaskSessionHistoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetAICoachTaskSessionHistoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetAICoachTaskSessionHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_aicoach_task_session_history_with_options_async(
         self,
@@ -3356,16 +3282,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetAICoachTaskSessionHistoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetAICoachTaskSessionHistoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetAICoachTaskSessionHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_aicoach_task_session_history(
         self,
@@ -3430,16 +3350,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetAICoachTaskSessionReportResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetAICoachTaskSessionReportResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetAICoachTaskSessionReportResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_aicoach_task_session_report_with_options_async(
         self,
@@ -3476,16 +3390,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetAICoachTaskSessionReportResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetAICoachTaskSessionReportResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetAICoachTaskSessionReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_aicoach_task_session_report(
         self,
@@ -3543,16 +3451,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetIllustrationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetIllustrationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetIllustrationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_illustration_with_options_async(
         self,
@@ -3582,16 +3484,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetIllustrationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetIllustrationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetIllustrationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_illustration(
         self,
@@ -3649,16 +3545,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetIllustrationTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetIllustrationTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetIllustrationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_illustration_task_with_options_async(
         self,
@@ -3688,16 +3578,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetIllustrationTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetIllustrationTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetIllustrationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_illustration_task(
         self,
@@ -3764,16 +3648,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetOssUploadTokenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetOssUploadTokenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetOssUploadTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_oss_upload_token_with_options_async(
         self,
@@ -3812,16 +3690,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetOssUploadTokenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetOssUploadTokenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetOssUploadTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_oss_upload_token(
         self,
@@ -3886,16 +3758,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetProjectTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetProjectTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetProjectTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_project_task_with_options_async(
         self,
@@ -3932,16 +3798,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetProjectTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetProjectTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetProjectTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_project_task(
         self,
@@ -3998,16 +3858,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetTextResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetTextResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetTextResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_text_with_options_async(
         self,
@@ -4036,16 +3890,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetTextResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetTextResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetTextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_text(
         self,
@@ -4100,16 +3948,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetTextTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetTextTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetTextTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_text_task_with_options_async(
         self,
@@ -4138,16 +3980,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetTextTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetTextTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetTextTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_text_task(
         self,
@@ -4208,16 +4044,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetTextTemplateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetTextTemplateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetTextTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_text_template_with_options_async(
         self,
@@ -4252,16 +4082,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetTextTemplateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.GetTextTemplateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetTextTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_text_template(
         self,
@@ -4328,16 +4152,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.InteractTextResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.InteractTextResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.InteractTextResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def interact_text_with_options_async(
         self,
@@ -4376,16 +4194,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.InteractTextResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.InteractTextResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.InteractTextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def interact_text(
         self,
@@ -4456,16 +4268,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListAICoachScriptPageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListAICoachScriptPageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListAICoachScriptPageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_aicoach_script_page_with_options_async(
         self,
@@ -4508,16 +4314,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListAICoachScriptPageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListAICoachScriptPageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListAICoachScriptPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_aicoach_script_page(
         self,
@@ -4563,10 +4363,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
         if not UtilClient.is_unset(request.status):
             query['status'] = request.status
         if not UtilClient.is_unset(request.student_id):
@@ -4588,16 +4392,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListAICoachTaskPageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListAICoachTaskPageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListAICoachTaskPageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_aicoach_task_page_with_options_async(
         self,
@@ -4615,10 +4413,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
         if not UtilClient.is_unset(request.status):
             query['status'] = request.status
         if not UtilClient.is_unset(request.student_id):
@@ -4640,16 +4442,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListAICoachTaskPageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListAICoachTaskPageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListAICoachTaskPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_aicoach_task_page(
         self,
@@ -4722,16 +4518,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListAgentsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListAgentsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListAgentsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_agents_with_options_async(
         self,
@@ -4776,16 +4566,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListAgentsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListAgentsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListAgentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_agents(
         self,
@@ -4833,6 +4617,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.anchor_category):
             query['anchorCategory'] = request.anchor_category
+        if not UtilClient.is_unset(request.anchor_id):
+            query['anchorId'] = request.anchor_id
         if not UtilClient.is_unset(request.anchor_type):
             query['anchorType'] = request.anchor_type
         if not UtilClient.is_unset(request.cover_rate):
@@ -4862,16 +4648,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListAnchorResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListAnchorResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListAnchorResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_anchor_with_options_async(
         self,
@@ -4891,6 +4671,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.anchor_category):
             query['anchorCategory'] = request.anchor_category
+        if not UtilClient.is_unset(request.anchor_id):
+            query['anchorId'] = request.anchor_id
         if not UtilClient.is_unset(request.anchor_type):
             query['anchorType'] = request.anchor_type
         if not UtilClient.is_unset(request.cover_rate):
@@ -4920,16 +4702,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListAnchorResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListAnchorResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListAnchorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_anchor(
         self,
@@ -4996,16 +4772,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListAvatarProjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListAvatarProjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListAvatarProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_avatar_project_with_options_async(
         self,
@@ -5044,16 +4814,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListAvatarProjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListAvatarProjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListAvatarProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_avatar_project(
         self,
@@ -5120,16 +4884,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListKnowledgeBaseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListKnowledgeBaseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_knowledge_base_with_options_async(
         self,
@@ -5168,16 +4926,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListKnowledgeBaseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListKnowledgeBaseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_knowledge_base(
         self,
@@ -5240,16 +4992,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListTextThemesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListTextThemesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListTextThemesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_text_themes_with_options_async(
         self,
@@ -5284,16 +5030,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListTextThemesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListTextThemesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListTextThemesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_text_themes(
         self,
@@ -5370,16 +5110,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListTextsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListTextsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListTextsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_texts_with_options_async(
         self,
@@ -5428,16 +5162,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListTextsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListTextsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListTextsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_texts(
         self,
@@ -5510,16 +5238,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListVoiceModelsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListVoiceModelsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListVoiceModelsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_voice_models_with_options_async(
         self,
@@ -5564,16 +5286,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListVoiceModelsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.ListVoiceModelsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListVoiceModelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_voice_models(
         self,
@@ -5642,16 +5358,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.OperateAvatarProjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.OperateAvatarProjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.OperateAvatarProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def operate_avatar_project_with_options_async(
         self,
@@ -5692,16 +5402,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.OperateAvatarProjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.OperateAvatarProjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.OperateAvatarProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def operate_avatar_project(
         self,
@@ -5764,16 +5468,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.QueryAvatarProjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.QueryAvatarProjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.QueryAvatarProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def query_avatar_project_with_options_async(
         self,
@@ -5808,16 +5506,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.QueryAvatarProjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.QueryAvatarProjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.QueryAvatarProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def query_avatar_project(
         self,
@@ -5880,16 +5572,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.QueryAvatarResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.QueryAvatarResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.QueryAvatarResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def query_avatar_resource_with_options_async(
         self,
@@ -5924,16 +5610,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.QueryAvatarResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.QueryAvatarResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.QueryAvatarResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def query_avatar_resource(
         self,
@@ -5962,6 +5642,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.query_avatar_resource_with_options_async(request, headers, runtime)
+
+    def query_image_to_video_task_with_options(
+        self,
+        request: intelligent_creation_20240313_models.QueryImageToVideoTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.QueryImageToVideoTaskResponse:
+        """
+        @summary 查询图片转视频任务
+        
+        @param request: QueryImageToVideoTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryImageToVideoTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryImageToVideoTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/video/imageToVideo/task',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.QueryImageToVideoTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_image_to_video_task_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.QueryImageToVideoTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.QueryImageToVideoTaskResponse:
+        """
+        @summary 查询图片转视频任务
+        
+        @param request: QueryImageToVideoTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryImageToVideoTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryImageToVideoTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/video/imageToVideo/task',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.QueryImageToVideoTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_image_to_video_task(
+        self,
+        request: intelligent_creation_20240313_models.QueryImageToVideoTaskRequest,
+    ) -> intelligent_creation_20240313_models.QueryImageToVideoTaskResponse:
+        """
+        @summary 查询图片转视频任务
+        
+        @param request: QueryImageToVideoTaskRequest
+        @return: QueryImageToVideoTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_image_to_video_task_with_options(request, headers, runtime)
+
+    async def query_image_to_video_task_async(
+        self,
+        request: intelligent_creation_20240313_models.QueryImageToVideoTaskRequest,
+    ) -> intelligent_creation_20240313_models.QueryImageToVideoTaskResponse:
+        """
+        @summary 查询图片转视频任务
+        
+        @param request: QueryImageToVideoTaskRequest
+        @return: QueryImageToVideoTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_image_to_video_task_with_options_async(request, headers, runtime)
 
     def query_individuation_text_task_with_options(
         self,
@@ -5996,16 +5780,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.QueryIndividuationTextTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.QueryIndividuationTextTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.QueryIndividuationTextTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def query_individuation_text_task_with_options_async(
         self,
@@ -6040,16 +5818,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.QueryIndividuationTextTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.QueryIndividuationTextTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.QueryIndividuationTextTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def query_individuation_text_task(
         self,
@@ -6122,16 +5894,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.QuerySessionInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.QuerySessionInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.QuerySessionInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def query_session_info_with_options_async(
         self,
@@ -6176,16 +5942,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.QuerySessionInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.QuerySessionInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.QuerySessionInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def query_session_info(
         self,
@@ -6242,16 +6002,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.QueryTextStreamResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.QueryTextStreamResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.QueryTextStreamResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def query_text_stream_with_options_async(
         self,
@@ -6280,16 +6034,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.QueryTextStreamResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.QueryTextStreamResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.QueryTextStreamResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def query_text_stream(
         self,
@@ -6353,6 +6101,8 @@ class Client(OpenApiClient):
             body['resolution'] = request.resolution
         if not UtilClient.is_unset(request.scale_type):
             body['scaleType'] = request.scale_type
+        if not UtilClient.is_unset(request.script_model_tag):
+            body['scriptModelTag'] = request.script_model_tag
         if not UtilClient.is_unset(request.synchronized_display):
             body['synchronizedDisplay'] = request.synchronized_display
         req = open_api_models.OpenApiRequest(
@@ -6370,16 +6120,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SaveAvatarProjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SaveAvatarProjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.SaveAvatarProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def save_avatar_project_with_options_async(
         self,
@@ -6417,6 +6161,8 @@ class Client(OpenApiClient):
             body['resolution'] = request.resolution
         if not UtilClient.is_unset(request.scale_type):
             body['scaleType'] = request.scale_type
+        if not UtilClient.is_unset(request.script_model_tag):
+            body['scriptModelTag'] = request.script_model_tag
         if not UtilClient.is_unset(request.synchronized_display):
             body['synchronizedDisplay'] = request.synchronized_display
         req = open_api_models.OpenApiRequest(
@@ -6434,16 +6180,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SaveAvatarProjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SaveAvatarProjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.SaveAvatarProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def save_avatar_project(
         self,
@@ -6500,16 +6240,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SelectImageTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SelectImageTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.SelectImageTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def select_image_task_with_options_async(
         self,
@@ -6538,16 +6272,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SelectImageTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SelectImageTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.SelectImageTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def select_image_task(
         self,
@@ -6608,16 +6336,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SelectResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SelectResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.SelectResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def select_resource_with_options_async(
         self,
@@ -6652,16 +6374,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SelectResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SelectResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.SelectResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def select_resource(
         self,
@@ -6732,16 +6448,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SendSdkMessageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SendSdkMessageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.SendSdkMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def send_sdk_message_with_options_async(
         self,
@@ -6784,16 +6494,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SendSdkMessageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SendSdkMessageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.SendSdkMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def send_sdk_message(
         self,
@@ -6822,6 +6526,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.send_sdk_message_with_options_async(request, headers, runtime)
+
+    def send_sdk_stream_message_with_options(
+        self,
+        request: intelligent_creation_20240313_models.SendSdkStreamMessageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.SendSdkStreamMessageResponse:
+        """
+        @summary 发送sdk流式消息
+        
+        @param request: SendSdkStreamMessageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendSdkStreamMessageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data):
+            body['data'] = request.data
+        if not UtilClient.is_unset(request.header):
+            body['header'] = request.header
+        if not UtilClient.is_unset(request.module_name):
+            body['moduleName'] = request.module_name
+        if not UtilClient.is_unset(request.operation_name):
+            body['operationName'] = request.operation_name
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SendSdkStreamMessage',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/sdk/stream/sendMessage',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.SendSdkStreamMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_sdk_stream_message_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.SendSdkStreamMessageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.SendSdkStreamMessageResponse:
+        """
+        @summary 发送sdk流式消息
+        
+        @param request: SendSdkStreamMessageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendSdkStreamMessageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data):
+            body['data'] = request.data
+        if not UtilClient.is_unset(request.header):
+            body['header'] = request.header
+        if not UtilClient.is_unset(request.module_name):
+            body['moduleName'] = request.module_name
+        if not UtilClient.is_unset(request.operation_name):
+            body['operationName'] = request.operation_name
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SendSdkStreamMessage',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/sdk/stream/sendMessage',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.SendSdkStreamMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_sdk_stream_message(
+        self,
+        request: intelligent_creation_20240313_models.SendSdkStreamMessageRequest,
+    ) -> intelligent_creation_20240313_models.SendSdkStreamMessageResponse:
+        """
+        @summary 发送sdk流式消息
+        
+        @param request: SendSdkStreamMessageRequest
+        @return: SendSdkStreamMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.send_sdk_stream_message_with_options(request, headers, runtime)
+
+    async def send_sdk_stream_message_async(
+        self,
+        request: intelligent_creation_20240313_models.SendSdkStreamMessageRequest,
+    ) -> intelligent_creation_20240313_models.SendSdkStreamMessageResponse:
+        """
+        @summary 发送sdk流式消息
+        
+        @param request: SendSdkStreamMessageRequest
+        @return: SendSdkStreamMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.send_sdk_stream_message_with_options_async(request, headers, runtime)
 
     def send_text_msg_with_options(
         self,
@@ -6864,16 +6688,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SendTextMsgResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SendTextMsgResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.SendTextMsgResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def send_text_msg_with_options_async(
         self,
@@ -6916,16 +6734,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SendTextMsgResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SendTextMsgResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.SendTextMsgResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def send_text_msg(
         self,
@@ -6996,16 +6808,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.StartAvatarSessionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.StartAvatarSessionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.StartAvatarSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_avatar_session_with_options_async(
         self,
@@ -7048,16 +6854,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.StartAvatarSessionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.StartAvatarSessionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.StartAvatarSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_avatar_session(
         self,
@@ -7122,16 +6922,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.StopAvatarSessionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.StopAvatarSessionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.StopAvatarSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_avatar_session_with_options_async(
         self,
@@ -7168,16 +6962,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.StopAvatarSessionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.StopAvatarSessionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.StopAvatarSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_avatar_session(
         self,
@@ -7240,16 +7028,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.StopProjectTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.StopProjectTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.StopProjectTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_project_task_with_options_async(
         self,
@@ -7284,16 +7066,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.StopProjectTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.StopProjectTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.StopProjectTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_project_task(
         self,
@@ -7322,6 +7098,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_project_task_with_options_async(request, headers, runtime)
+
+    def submit_image_to_video_task_with_options(
+        self,
+        request: intelligent_creation_20240313_models.SubmitImageToVideoTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.SubmitImageToVideoTaskResponse:
+        """
+        @summary 提交图片转视频任务
+        
+        @param request: SubmitImageToVideoTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitImageToVideoTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['imageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.pos_prompt):
+            body['posPrompt'] = request.pos_prompt
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitImageToVideoTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/video/imageToVideo/task',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.SubmitImageToVideoTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_image_to_video_task_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.SubmitImageToVideoTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.SubmitImageToVideoTaskResponse:
+        """
+        @summary 提交图片转视频任务
+        
+        @param request: SubmitImageToVideoTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitImageToVideoTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['imageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.pos_prompt):
+            body['posPrompt'] = request.pos_prompt
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitImageToVideoTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/video/imageToVideo/task',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.SubmitImageToVideoTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_image_to_video_task(
+        self,
+        request: intelligent_creation_20240313_models.SubmitImageToVideoTaskRequest,
+    ) -> intelligent_creation_20240313_models.SubmitImageToVideoTaskResponse:
+        """
+        @summary 提交图片转视频任务
+        
+        @param request: SubmitImageToVideoTaskRequest
+        @return: SubmitImageToVideoTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.submit_image_to_video_task_with_options(request, headers, runtime)
+
+    async def submit_image_to_video_task_async(
+        self,
+        request: intelligent_creation_20240313_models.SubmitImageToVideoTaskRequest,
+    ) -> intelligent_creation_20240313_models.SubmitImageToVideoTaskResponse:
+        """
+        @summary 提交图片转视频任务
+        
+        @param request: SubmitImageToVideoTaskRequest
+        @return: SubmitImageToVideoTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.submit_image_to_video_task_with_options_async(request, headers, runtime)
 
     def submit_project_task_with_options(
         self,
@@ -7362,16 +7246,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SubmitProjectTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SubmitProjectTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.SubmitProjectTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def submit_project_task_with_options_async(
         self,
@@ -7412,16 +7290,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SubmitProjectTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.SubmitProjectTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.SubmitProjectTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def submit_project_task(
         self,
@@ -7494,16 +7366,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.TransferPortraitStyleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.TransferPortraitStyleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.TransferPortraitStyleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def transfer_portrait_style_with_options_async(
         self,
@@ -7548,16 +7414,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.TransferPortraitStyleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240313_models.TransferPortraitStyleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.TransferPortraitStyleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def transfer_portrait_style(
         self,

@@ -3547,17 +3547,21 @@ class CreateAICoachTaskSessionResponse(TeaModel):
 class CreateAnchorRequest(TeaModel):
     def __init__(
         self,
+        anchor_category: str = None,
         anchor_material_name: str = None,
         cover_url: str = None,
         digital_human_type: str = None,
         gender: str = None,
         use_scene: str = None,
+        video_oss_key: str = None,
     ):
+        self.anchor_category = anchor_category
         self.anchor_material_name = anchor_material_name
         self.cover_url = cover_url
         self.digital_human_type = digital_human_type
         self.gender = gender
         self.use_scene = use_scene
+        self.video_oss_key = video_oss_key
 
     def validate(self):
         pass
@@ -3568,6 +3572,8 @@ class CreateAnchorRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.anchor_category is not None:
+            result['anchorCategory'] = self.anchor_category
         if self.anchor_material_name is not None:
             result['anchorMaterialName'] = self.anchor_material_name
         if self.cover_url is not None:
@@ -3578,10 +3584,14 @@ class CreateAnchorRequest(TeaModel):
             result['gender'] = self.gender
         if self.use_scene is not None:
             result['useScene'] = self.use_scene
+        if self.video_oss_key is not None:
+            result['videoOssKey'] = self.video_oss_key
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('anchorCategory') is not None:
+            self.anchor_category = m.get('anchorCategory')
         if m.get('anchorMaterialName') is not None:
             self.anchor_material_name = m.get('anchorMaterialName')
         if m.get('coverUrl') is not None:
@@ -3592,6 +3602,8 @@ class CreateAnchorRequest(TeaModel):
             self.gender = m.get('gender')
         if m.get('useScene') is not None:
             self.use_scene = m.get('useScene')
+        if m.get('videoOssKey') is not None:
+            self.video_oss_key = m.get('videoOssKey')
         return self
 
 
@@ -3988,6 +4000,149 @@ class CreateIndividuationTextTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateIndividuationTextTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateProductImageRequest(TeaModel):
+    def __init__(
+        self,
+        background_description: str = None,
+        background_priority: int = None,
+        background_url: str = None,
+        highlight_text: str = None,
+        image_count: int = None,
+        image_url: str = None,
+        sub_title: str = None,
+        title: str = None,
+    ):
+        self.background_description = background_description
+        self.background_priority = background_priority
+        self.background_url = background_url
+        self.highlight_text = highlight_text
+        self.image_count = image_count
+        self.image_url = image_url
+        self.sub_title = sub_title
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.background_description is not None:
+            result['backgroundDescription'] = self.background_description
+        if self.background_priority is not None:
+            result['backgroundPriority'] = self.background_priority
+        if self.background_url is not None:
+            result['backgroundUrl'] = self.background_url
+        if self.highlight_text is not None:
+            result['highlightText'] = self.highlight_text
+        if self.image_count is not None:
+            result['imageCount'] = self.image_count
+        if self.image_url is not None:
+            result['imageUrl'] = self.image_url
+        if self.sub_title is not None:
+            result['subTitle'] = self.sub_title
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('backgroundDescription') is not None:
+            self.background_description = m.get('backgroundDescription')
+        if m.get('backgroundPriority') is not None:
+            self.background_priority = m.get('backgroundPriority')
+        if m.get('backgroundUrl') is not None:
+            self.background_url = m.get('backgroundUrl')
+        if m.get('highlightText') is not None:
+            self.highlight_text = m.get('highlightText')
+        if m.get('imageCount') is not None:
+            self.image_count = m.get('imageCount')
+        if m.get('imageUrl') is not None:
+            self.image_url = m.get('imageUrl')
+        if m.get('subTitle') is not None:
+            self.sub_title = m.get('subTitle')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
+class CreateProductImageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class CreateProductImageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateProductImageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateProductImageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4868,6 +5023,435 @@ class FinishAICoachTaskSessionResponse(TeaModel):
         return self
 
 
+class GetAICoachAssessmentPointRequest(TeaModel):
+    def __init__(
+        self,
+        point_id: str = None,
+    ):
+        self.point_id = point_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.point_id is not None:
+            result['pointId'] = self.point_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('pointId') is not None:
+            self.point_id = m.get('pointId')
+        return self
+
+
+class GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        weight: int = None,
+    ):
+        self.name = name
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
+class GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesScoringRules(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues(TeaModel):
+    def __init__(
+        self,
+        answer_name: str = None,
+        answer_weight: int = None,
+        keyword_values: List[GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues] = None,
+        keyword_weight: int = None,
+        scoring_rules: List[GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesScoringRules] = None,
+    ):
+        self.answer_name = answer_name
+        self.answer_weight = answer_weight
+        self.keyword_values = keyword_values
+        self.keyword_weight = keyword_weight
+        self.scoring_rules = scoring_rules
+
+    def validate(self):
+        if self.keyword_values:
+            for k in self.keyword_values:
+                if k:
+                    k.validate()
+        if self.scoring_rules:
+            for k in self.scoring_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.answer_name is not None:
+            result['answerName'] = self.answer_name
+        if self.answer_weight is not None:
+            result['answerWeight'] = self.answer_weight
+        result['keywordValues'] = []
+        if self.keyword_values is not None:
+            for k in self.keyword_values:
+                result['keywordValues'].append(k.to_map() if k else None)
+        if self.keyword_weight is not None:
+            result['keywordWeight'] = self.keyword_weight
+        result['scoringRules'] = []
+        if self.scoring_rules is not None:
+            for k in self.scoring_rules:
+                result['scoringRules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('answerName') is not None:
+            self.answer_name = m.get('answerName')
+        if m.get('answerWeight') is not None:
+            self.answer_weight = m.get('answerWeight')
+        self.keyword_values = []
+        if m.get('keywordValues') is not None:
+            for k in m.get('keywordValues'):
+                temp_model = GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues()
+                self.keyword_values.append(temp_model.from_map(k))
+        if m.get('keywordWeight') is not None:
+            self.keyword_weight = m.get('keywordWeight')
+        self.scoring_rules = []
+        if m.get('scoringRules') is not None:
+            for k in m.get('scoringRules'):
+                temp_model = GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesScoringRules()
+                self.scoring_rules.append(temp_model.from_map(k))
+        return self
+
+
+class GetAICoachAssessmentPointResponseBodyAnswerListParameters(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetAICoachAssessmentPointResponseBodyAnswerList(TeaModel):
+    def __init__(
+        self,
+        answer_values: List[GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues] = None,
+        enabled_keyword: bool = None,
+        name_list: List[str] = None,
+        operators: str = None,
+        parameters: List[GetAICoachAssessmentPointResponseBodyAnswerListParameters] = None,
+        type: str = None,
+        weight: int = None,
+    ):
+        self.answer_values = answer_values
+        self.enabled_keyword = enabled_keyword
+        self.name_list = name_list
+        self.operators = operators
+        self.parameters = parameters
+        self.type = type
+        self.weight = weight
+
+    def validate(self):
+        if self.answer_values:
+            for k in self.answer_values:
+                if k:
+                    k.validate()
+        if self.parameters:
+            for k in self.parameters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['answerValues'] = []
+        if self.answer_values is not None:
+            for k in self.answer_values:
+                result['answerValues'].append(k.to_map() if k else None)
+        if self.enabled_keyword is not None:
+            result['enabledKeyword'] = self.enabled_keyword
+        if self.name_list is not None:
+            result['nameList'] = self.name_list
+        if self.operators is not None:
+            result['operators'] = self.operators
+        result['parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['parameters'].append(k.to_map() if k else None)
+        if self.type is not None:
+            result['type'] = self.type
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.answer_values = []
+        if m.get('answerValues') is not None:
+            for k in m.get('answerValues'):
+                temp_model = GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues()
+                self.answer_values.append(temp_model.from_map(k))
+        if m.get('enabledKeyword') is not None:
+            self.enabled_keyword = m.get('enabledKeyword')
+        if m.get('nameList') is not None:
+            self.name_list = m.get('nameList')
+        if m.get('operators') is not None:
+            self.operators = m.get('operators')
+        self.parameters = []
+        if m.get('parameters') is not None:
+            for k in m.get('parameters'):
+                temp_model = GetAICoachAssessmentPointResponseBodyAnswerListParameters()
+                self.parameters.append(temp_model.from_map(k))
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
+class GetAICoachAssessmentPointResponseBody(TeaModel):
+    def __init__(
+        self,
+        answer_list: List[GetAICoachAssessmentPointResponseBodyAnswerList] = None,
+        citations: int = None,
+        document_id: str = None,
+        document_name: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        kb_id: str = None,
+        kb_type: str = None,
+        knowledge_list: List[str] = None,
+        name: str = None,
+        point_id: str = None,
+        question_description: str = None,
+        question_sample: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.answer_list = answer_list
+        self.citations = citations
+        self.document_id = document_id
+        self.document_name = document_name
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.kb_id = kb_id
+        self.kb_type = kb_type
+        self.knowledge_list = knowledge_list
+        self.name = name
+        self.point_id = point_id
+        self.question_description = question_description
+        self.question_sample = question_sample
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        if self.answer_list:
+            for k in self.answer_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['answerList'] = []
+        if self.answer_list is not None:
+            for k in self.answer_list:
+                result['answerList'].append(k.to_map() if k else None)
+        if self.citations is not None:
+            result['citations'] = self.citations
+        if self.document_id is not None:
+            result['documentId'] = self.document_id
+        if self.document_name is not None:
+            result['documentName'] = self.document_name
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.kb_id is not None:
+            result['kbId'] = self.kb_id
+        if self.kb_type is not None:
+            result['kbType'] = self.kb_type
+        if self.knowledge_list is not None:
+            result['knowledgeList'] = self.knowledge_list
+        if self.name is not None:
+            result['name'] = self.name
+        if self.point_id is not None:
+            result['pointId'] = self.point_id
+        if self.question_description is not None:
+            result['questionDescription'] = self.question_description
+        if self.question_sample is not None:
+            result['questionSample'] = self.question_sample
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.answer_list = []
+        if m.get('answerList') is not None:
+            for k in m.get('answerList'):
+                temp_model = GetAICoachAssessmentPointResponseBodyAnswerList()
+                self.answer_list.append(temp_model.from_map(k))
+        if m.get('citations') is not None:
+            self.citations = m.get('citations')
+        if m.get('documentId') is not None:
+            self.document_id = m.get('documentId')
+        if m.get('documentName') is not None:
+            self.document_name = m.get('documentName')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('kbId') is not None:
+            self.kb_id = m.get('kbId')
+        if m.get('kbType') is not None:
+            self.kb_type = m.get('kbType')
+        if m.get('knowledgeList') is not None:
+            self.knowledge_list = m.get('knowledgeList')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('pointId') is not None:
+            self.point_id = m.get('pointId')
+        if m.get('questionDescription') is not None:
+            self.question_description = m.get('questionDescription')
+        if m.get('questionSample') is not None:
+            self.question_sample = m.get('questionSample')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class GetAICoachAssessmentPointResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAICoachAssessmentPointResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAICoachAssessmentPointResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetAICoachCheatDetectionRequest(TeaModel):
     def __init__(
         self,
@@ -5337,6 +5921,69 @@ class GetAICoachScriptResponseBodyCompleteStrategy(TeaModel):
         return self
 
 
+class GetAICoachScriptResponseBodyExpressivenessList(TeaModel):
+    def __init__(
+        self,
+        desc: str = None,
+        enabled: bool = None,
+        expressiveness_id: str = None,
+        name: str = None,
+        rule: str = None,
+        type: str = None,
+        weight: int = None,
+    ):
+        self.desc = desc
+        self.enabled = enabled
+        self.expressiveness_id = expressiveness_id
+        self.name = name
+        self.rule = rule
+        self.type = type
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desc is not None:
+            result['desc'] = self.desc
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.expressiveness_id is not None:
+            result['expressivenessId'] = self.expressiveness_id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.rule is not None:
+            result['rule'] = self.rule
+        if self.type is not None:
+            result['type'] = self.type
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('desc') is not None:
+            self.desc = m.get('desc')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('expressivenessId') is not None:
+            self.expressiveness_id = m.get('expressivenessId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('rule') is not None:
+            self.rule = m.get('rule')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
 class GetAICoachScriptResponseBodyPointDeductionRuleList(TeaModel):
     def __init__(
         self,
@@ -5739,6 +6386,7 @@ class GetAICoachScriptResponseBodyWeights(TeaModel):
         ability_evaluation: int = None,
         ability_evaluation_enabled: bool = None,
         assessment_point: int = None,
+        assessment_point_enabled: bool = None,
         expressiveness: int = None,
         expressiveness_enabled: bool = None,
         point_deduction_rule: int = None,
@@ -5749,6 +6397,7 @@ class GetAICoachScriptResponseBodyWeights(TeaModel):
         self.ability_evaluation = ability_evaluation
         self.ability_evaluation_enabled = ability_evaluation_enabled
         self.assessment_point = assessment_point
+        self.assessment_point_enabled = assessment_point_enabled
         self.expressiveness = expressiveness
         self.expressiveness_enabled = expressiveness_enabled
         self.point_deduction_rule = point_deduction_rule
@@ -5771,6 +6420,8 @@ class GetAICoachScriptResponseBodyWeights(TeaModel):
             result['abilityEvaluationEnabled'] = self.ability_evaluation_enabled
         if self.assessment_point is not None:
             result['assessmentPoint'] = self.assessment_point
+        if self.assessment_point_enabled is not None:
+            result['assessmentPointEnabled'] = self.assessment_point_enabled
         if self.expressiveness is not None:
             result['expressiveness'] = self.expressiveness
         if self.expressiveness_enabled is not None:
@@ -5793,6 +6444,8 @@ class GetAICoachScriptResponseBodyWeights(TeaModel):
             self.ability_evaluation_enabled = m.get('abilityEvaluationEnabled')
         if m.get('assessmentPoint') is not None:
             self.assessment_point = m.get('assessmentPoint')
+        if m.get('assessmentPointEnabled') is not None:
+            self.assessment_point_enabled = m.get('assessmentPointEnabled')
         if m.get('expressiveness') is not None:
             self.expressiveness = m.get('expressiveness')
         if m.get('expressivenessEnabled') is not None:
@@ -5814,6 +6467,7 @@ class GetAICoachScriptResponseBody(TeaModel):
         append_question_flag: bool = None,
         assessment_scope: str = None,
         check_cheat_config: GetAICoachScriptResponseBodyCheckCheatConfig = None,
+        closing_remarks: str = None,
         complete_strategy: GetAICoachScriptResponseBodyCompleteStrategy = None,
         cover_url: str = None,
         dialogue_input_text_limit: int = None,
@@ -5822,6 +6476,9 @@ class GetAICoachScriptResponseBody(TeaModel):
         dialogue_voice_limit: int = None,
         evaluate_report_flag: bool = None,
         expressiveness: Dict[str, int] = None,
+        expressiveness_list: List[GetAICoachScriptResponseBodyExpressivenessList] = None,
+        gif_dynamic_url: str = None,
+        gif_static_url: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         initiator: str = None,
@@ -5829,6 +6486,7 @@ class GetAICoachScriptResponseBody(TeaModel):
         interaction_type: int = None,
         introduce: str = None,
         name: str = None,
+        opening_remarks: str = None,
         order_ack_flag: bool = None,
         point_deduction_rule_list: List[GetAICoachScriptResponseBodyPointDeductionRuleList] = None,
         points: List[GetAICoachScriptResponseBodyPoints] = None,
@@ -5846,6 +6504,7 @@ class GetAICoachScriptResponseBody(TeaModel):
         self.append_question_flag = append_question_flag
         self.assessment_scope = assessment_scope
         self.check_cheat_config = check_cheat_config
+        self.closing_remarks = closing_remarks
         self.complete_strategy = complete_strategy
         self.cover_url = cover_url
         self.dialogue_input_text_limit = dialogue_input_text_limit
@@ -5854,6 +6513,9 @@ class GetAICoachScriptResponseBody(TeaModel):
         self.dialogue_voice_limit = dialogue_voice_limit
         self.evaluate_report_flag = evaluate_report_flag
         self.expressiveness = expressiveness
+        self.expressiveness_list = expressiveness_list
+        self.gif_dynamic_url = gif_dynamic_url
+        self.gif_static_url = gif_static_url
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.initiator = initiator
@@ -5861,6 +6523,7 @@ class GetAICoachScriptResponseBody(TeaModel):
         self.interaction_type = interaction_type
         self.introduce = introduce
         self.name = name
+        self.opening_remarks = opening_remarks
         self.order_ack_flag = order_ack_flag
         self.point_deduction_rule_list = point_deduction_rule_list
         self.points = points
@@ -5880,6 +6543,10 @@ class GetAICoachScriptResponseBody(TeaModel):
             self.check_cheat_config.validate()
         if self.complete_strategy:
             self.complete_strategy.validate()
+        if self.expressiveness_list:
+            for k in self.expressiveness_list:
+                if k:
+                    k.validate()
         if self.point_deduction_rule_list:
             for k in self.point_deduction_rule_list:
                 if k:
@@ -5907,6 +6574,8 @@ class GetAICoachScriptResponseBody(TeaModel):
             result['assessmentScope'] = self.assessment_scope
         if self.check_cheat_config is not None:
             result['checkCheatConfig'] = self.check_cheat_config.to_map()
+        if self.closing_remarks is not None:
+            result['closingRemarks'] = self.closing_remarks
         if self.complete_strategy is not None:
             result['completeStrategy'] = self.complete_strategy.to_map()
         if self.cover_url is not None:
@@ -5923,6 +6592,14 @@ class GetAICoachScriptResponseBody(TeaModel):
             result['evaluateReportFlag'] = self.evaluate_report_flag
         if self.expressiveness is not None:
             result['expressiveness'] = self.expressiveness
+        result['expressivenessList'] = []
+        if self.expressiveness_list is not None:
+            for k in self.expressiveness_list:
+                result['expressivenessList'].append(k.to_map() if k else None)
+        if self.gif_dynamic_url is not None:
+            result['gifDynamicUrl'] = self.gif_dynamic_url
+        if self.gif_static_url is not None:
+            result['gifStaticUrl'] = self.gif_static_url
         if self.gmt_create is not None:
             result['gmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
@@ -5937,6 +6614,8 @@ class GetAICoachScriptResponseBody(TeaModel):
             result['introduce'] = self.introduce
         if self.name is not None:
             result['name'] = self.name
+        if self.opening_remarks is not None:
+            result['openingRemarks'] = self.opening_remarks
         if self.order_ack_flag is not None:
             result['orderAckFlag'] = self.order_ack_flag
         result['pointDeductionRuleList'] = []
@@ -5980,6 +6659,8 @@ class GetAICoachScriptResponseBody(TeaModel):
         if m.get('checkCheatConfig') is not None:
             temp_model = GetAICoachScriptResponseBodyCheckCheatConfig()
             self.check_cheat_config = temp_model.from_map(m['checkCheatConfig'])
+        if m.get('closingRemarks') is not None:
+            self.closing_remarks = m.get('closingRemarks')
         if m.get('completeStrategy') is not None:
             temp_model = GetAICoachScriptResponseBodyCompleteStrategy()
             self.complete_strategy = temp_model.from_map(m['completeStrategy'])
@@ -5997,6 +6678,15 @@ class GetAICoachScriptResponseBody(TeaModel):
             self.evaluate_report_flag = m.get('evaluateReportFlag')
         if m.get('expressiveness') is not None:
             self.expressiveness = m.get('expressiveness')
+        self.expressiveness_list = []
+        if m.get('expressivenessList') is not None:
+            for k in m.get('expressivenessList'):
+                temp_model = GetAICoachScriptResponseBodyExpressivenessList()
+                self.expressiveness_list.append(temp_model.from_map(k))
+        if m.get('gifDynamicUrl') is not None:
+            self.gif_dynamic_url = m.get('gifDynamicUrl')
+        if m.get('gifStaticUrl') is not None:
+            self.gif_static_url = m.get('gifStaticUrl')
         if m.get('gmtCreate') is not None:
             self.gmt_create = m.get('gmtCreate')
         if m.get('gmtModified') is not None:
@@ -6011,6 +6701,8 @@ class GetAICoachScriptResponseBody(TeaModel):
             self.introduce = m.get('introduce')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('openingRemarks') is not None:
+            self.opening_remarks = m.get('openingRemarks')
         if m.get('orderAckFlag') is not None:
             self.order_ack_flag = m.get('orderAckFlag')
         self.point_deduction_rule_list = []
@@ -7388,6 +8080,7 @@ class ListAICoachScriptPageResponseBodyListWeights(TeaModel):
     def __init__(
         self,
         assessment_point: int = None,
+        assessment_point_enabled: bool = None,
         expressiveness: int = None,
         expressiveness_enabled: bool = None,
         point_deduction_rule: int = None,
@@ -7396,6 +8089,7 @@ class ListAICoachScriptPageResponseBodyListWeights(TeaModel):
         standard_enabled: bool = None,
     ):
         self.assessment_point = assessment_point
+        self.assessment_point_enabled = assessment_point_enabled
         self.expressiveness = expressiveness
         self.expressiveness_enabled = expressiveness_enabled
         self.point_deduction_rule = point_deduction_rule
@@ -7414,6 +8108,8 @@ class ListAICoachScriptPageResponseBodyListWeights(TeaModel):
         result = dict()
         if self.assessment_point is not None:
             result['assessmentPoint'] = self.assessment_point
+        if self.assessment_point_enabled is not None:
+            result['assessmentPointEnabled'] = self.assessment_point_enabled
         if self.expressiveness is not None:
             result['expressiveness'] = self.expressiveness
         if self.expressiveness_enabled is not None:
@@ -7432,6 +8128,8 @@ class ListAICoachScriptPageResponseBodyListWeights(TeaModel):
         m = m or dict()
         if m.get('assessmentPoint') is not None:
             self.assessment_point = m.get('assessmentPoint')
+        if m.get('assessmentPointEnabled') is not None:
+            self.assessment_point_enabled = m.get('assessmentPointEnabled')
         if m.get('expressiveness') is not None:
             self.expressiveness = m.get('expressiveness')
         if m.get('expressivenessEnabled') is not None:
@@ -7452,18 +8150,22 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
         self,
         append_question_flag: str = None,
         assessment_scope: str = None,
+        closing_remarks: str = None,
         complete_strategy: ListAICoachScriptPageResponseBodyListCompleteStrategy = None,
         cover_url: str = None,
         dialogue_text_flag: bool = None,
         dialogue_tip_flag: bool = None,
         evaluate_report_flag: bool = None,
         expressiveness: Dict[str, str] = None,
+        gif_dynamic_url: str = None,
+        gif_static_url: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         initiator: str = None,
         interaction_type: str = None,
         introduce: str = None,
         name: str = None,
+        opening_remarks: str = None,
         order_ack_flag: bool = None,
         sample_dialogue_list: List[ListAICoachScriptPageResponseBodyListSampleDialogueList] = None,
         score_config: ListAICoachScriptPageResponseBodyListScoreConfig = None,
@@ -7477,18 +8179,22 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
     ):
         self.append_question_flag = append_question_flag
         self.assessment_scope = assessment_scope
+        self.closing_remarks = closing_remarks
         self.complete_strategy = complete_strategy
         self.cover_url = cover_url
         self.dialogue_text_flag = dialogue_text_flag
         self.dialogue_tip_flag = dialogue_tip_flag
         self.evaluate_report_flag = evaluate_report_flag
         self.expressiveness = expressiveness
+        self.gif_dynamic_url = gif_dynamic_url
+        self.gif_static_url = gif_static_url
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.initiator = initiator
         self.interaction_type = interaction_type
         self.introduce = introduce
         self.name = name
+        self.opening_remarks = opening_remarks
         self.order_ack_flag = order_ack_flag
         self.sample_dialogue_list = sample_dialogue_list
         self.score_config = score_config
@@ -7522,6 +8228,8 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
             result['appendQuestionFlag'] = self.append_question_flag
         if self.assessment_scope is not None:
             result['assessmentScope'] = self.assessment_scope
+        if self.closing_remarks is not None:
+            result['closingRemarks'] = self.closing_remarks
         if self.complete_strategy is not None:
             result['completeStrategy'] = self.complete_strategy.to_map()
         if self.cover_url is not None:
@@ -7534,6 +8242,10 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
             result['evaluateReportFlag'] = self.evaluate_report_flag
         if self.expressiveness is not None:
             result['expressiveness'] = self.expressiveness
+        if self.gif_dynamic_url is not None:
+            result['gifDynamicUrl'] = self.gif_dynamic_url
+        if self.gif_static_url is not None:
+            result['gifStaticUrl'] = self.gif_static_url
         if self.gmt_create is not None:
             result['gmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
@@ -7546,6 +8258,8 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
             result['introduce'] = self.introduce
         if self.name is not None:
             result['name'] = self.name
+        if self.opening_remarks is not None:
+            result['openingRemarks'] = self.opening_remarks
         if self.order_ack_flag is not None:
             result['orderAckFlag'] = self.order_ack_flag
         result['sampleDialogueList'] = []
@@ -7576,6 +8290,8 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
             self.append_question_flag = m.get('appendQuestionFlag')
         if m.get('assessmentScope') is not None:
             self.assessment_scope = m.get('assessmentScope')
+        if m.get('closingRemarks') is not None:
+            self.closing_remarks = m.get('closingRemarks')
         if m.get('completeStrategy') is not None:
             temp_model = ListAICoachScriptPageResponseBodyListCompleteStrategy()
             self.complete_strategy = temp_model.from_map(m['completeStrategy'])
@@ -7589,6 +8305,10 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
             self.evaluate_report_flag = m.get('evaluateReportFlag')
         if m.get('expressiveness') is not None:
             self.expressiveness = m.get('expressiveness')
+        if m.get('gifDynamicUrl') is not None:
+            self.gif_dynamic_url = m.get('gifDynamicUrl')
+        if m.get('gifStaticUrl') is not None:
+            self.gif_static_url = m.get('gifStaticUrl')
         if m.get('gmtCreate') is not None:
             self.gmt_create = m.get('gmtCreate')
         if m.get('gmtModified') is not None:
@@ -7601,6 +8321,8 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
             self.introduce = m.get('introduce')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('openingRemarks') is not None:
+            self.opening_remarks = m.get('openingRemarks')
         if m.get('orderAckFlag') is not None:
             self.order_ack_flag = m.get('orderAckFlag')
         self.sample_dialogue_list = []
@@ -7739,14 +8461,18 @@ class ListAICoachScriptPageResponse(TeaModel):
 class ListAICoachTaskPageRequest(TeaModel):
     def __init__(
         self,
+        end_time: str = None,
         page_number: int = None,
         page_size: int = None,
+        start_time: str = None,
         status: str = None,
         student_id: str = None,
         task_id: str = None,
     ):
+        self.end_time = end_time
         self.page_number = page_number
         self.page_size = page_size
+        self.start_time = start_time
         self.status = status
         self.student_id = student_id
         self.task_id = task_id
@@ -7760,10 +8486,14 @@ class ListAICoachTaskPageRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
         if self.page_size is not None:
             result['pageSize'] = self.page_size
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
         if self.status is not None:
             result['status'] = self.status
         if self.student_id is not None:
@@ -7774,10 +8504,14 @@ class ListAICoachTaskPageRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
         if m.get('pageNumber') is not None:
             self.page_number = m.get('pageNumber')
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
         if m.get('status') is not None:
             self.status = m.get('status')
         if m.get('studentId') is not None:
@@ -7791,11 +8525,13 @@ class ListAICoachTaskPageResponseBodyTaskList(TeaModel):
     def __init__(
         self,
         finish_time: str = None,
+        gmt_create: str = None,
         status: str = None,
         student_id: str = None,
         task_id: str = None,
     ):
         self.finish_time = finish_time
+        self.gmt_create = gmt_create
         self.status = status
         self.student_id = student_id
         self.task_id = task_id
@@ -7811,6 +8547,8 @@ class ListAICoachTaskPageResponseBodyTaskList(TeaModel):
         result = dict()
         if self.finish_time is not None:
             result['finishTime'] = self.finish_time
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
         if self.status is not None:
             result['status'] = self.status
         if self.student_id is not None:
@@ -7823,6 +8561,8 @@ class ListAICoachTaskPageResponseBodyTaskList(TeaModel):
         m = m or dict()
         if m.get('finishTime') is not None:
             self.finish_time = m.get('finishTime')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
         if m.get('status') is not None:
             self.status = m.get('status')
         if m.get('studentId') is not None:
@@ -8163,6 +8903,7 @@ class ListAnchorRequest(TeaModel):
     def __init__(
         self,
         anchor_category: str = None,
+        anchor_id: str = None,
         anchor_type: str = None,
         cover_rate: str = None,
         digital_human_type: str = None,
@@ -8172,6 +8913,7 @@ class ListAnchorRequest(TeaModel):
         use_scene: str = None,
     ):
         self.anchor_category = anchor_category
+        self.anchor_id = anchor_id
         self.anchor_type = anchor_type
         self.cover_rate = cover_rate
         self.digital_human_type = digital_human_type
@@ -8191,6 +8933,8 @@ class ListAnchorRequest(TeaModel):
         result = dict()
         if self.anchor_category is not None:
             result['anchorCategory'] = self.anchor_category
+        if self.anchor_id is not None:
+            result['anchorId'] = self.anchor_id
         if self.anchor_type is not None:
             result['anchorType'] = self.anchor_type
         if self.cover_rate is not None:
@@ -8211,6 +8955,8 @@ class ListAnchorRequest(TeaModel):
         m = m or dict()
         if m.get('anchorCategory') is not None:
             self.anchor_category = m.get('anchorCategory')
+        if m.get('anchorId') is not None:
+            self.anchor_id = m.get('anchorId')
         if m.get('anchorType') is not None:
             self.anchor_type = m.get('anchorType')
         if m.get('coverRate') is not None:
@@ -9147,6 +9893,7 @@ class QueryAvatarProjectResponseBodyFramesLayers(TeaModel):
     def __init__(
         self,
         height: int = None,
+        index: int = None,
         material: QueryAvatarProjectResponseBodyFramesLayersMaterial = None,
         position_x: int = None,
         position_y: int = None,
@@ -9154,6 +9901,7 @@ class QueryAvatarProjectResponseBodyFramesLayers(TeaModel):
         width: int = None,
     ):
         self.height = height
+        self.index = index
         self.material = material
         self.position_x = position_x
         self.position_y = position_y
@@ -9172,6 +9920,8 @@ class QueryAvatarProjectResponseBodyFramesLayers(TeaModel):
         result = dict()
         if self.height is not None:
             result['height'] = self.height
+        if self.index is not None:
+            result['index'] = self.index
         if self.material is not None:
             result['material'] = self.material.to_map()
         if self.position_x is not None:
@@ -9188,6 +9938,8 @@ class QueryAvatarProjectResponseBodyFramesLayers(TeaModel):
         m = m or dict()
         if m.get('height') is not None:
             self.height = m.get('height')
+        if m.get('index') is not None:
+            self.index = m.get('index')
         if m.get('material') is not None:
             temp_model = QueryAvatarProjectResponseBodyFramesLayersMaterial()
             self.material = temp_model.from_map(m['material'])
@@ -9205,11 +9957,21 @@ class QueryAvatarProjectResponseBodyFramesLayers(TeaModel):
 class QueryAvatarProjectResponseBodyFramesVideoScript(TeaModel):
     def __init__(
         self,
+        emotion: str = None,
+        pitch_rate: str = None,
         speed_rate: str = None,
+        text_content: str = None,
+        voice_language: str = None,
         voice_template_id: str = None,
+        volume: int = None,
     ):
+        self.emotion = emotion
+        self.pitch_rate = pitch_rate
         self.speed_rate = speed_rate
+        self.text_content = text_content
+        self.voice_language = voice_language
         self.voice_template_id = voice_template_id
+        self.volume = volume
 
     def validate(self):
         pass
@@ -9220,27 +9982,49 @@ class QueryAvatarProjectResponseBodyFramesVideoScript(TeaModel):
             return _map
 
         result = dict()
+        if self.emotion is not None:
+            result['emotion'] = self.emotion
+        if self.pitch_rate is not None:
+            result['pitchRate'] = self.pitch_rate
         if self.speed_rate is not None:
             result['speedRate'] = self.speed_rate
+        if self.text_content is not None:
+            result['textContent'] = self.text_content
+        if self.voice_language is not None:
+            result['voiceLanguage'] = self.voice_language
         if self.voice_template_id is not None:
             result['voiceTemplateId'] = self.voice_template_id
+        if self.volume is not None:
+            result['volume'] = self.volume
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('emotion') is not None:
+            self.emotion = m.get('emotion')
+        if m.get('pitchRate') is not None:
+            self.pitch_rate = m.get('pitchRate')
         if m.get('speedRate') is not None:
             self.speed_rate = m.get('speedRate')
+        if m.get('textContent') is not None:
+            self.text_content = m.get('textContent')
+        if m.get('voiceLanguage') is not None:
+            self.voice_language = m.get('voiceLanguage')
         if m.get('voiceTemplateId') is not None:
             self.voice_template_id = m.get('voiceTemplateId')
+        if m.get('volume') is not None:
+            self.volume = m.get('volume')
         return self
 
 
 class QueryAvatarProjectResponseBodyFrames(TeaModel):
     def __init__(
         self,
+        index: int = None,
         layers: List[QueryAvatarProjectResponseBodyFramesLayers] = None,
         video_script: QueryAvatarProjectResponseBodyFramesVideoScript = None,
     ):
+        self.index = index
         self.layers = layers
         self.video_script = video_script
 
@@ -9258,6 +10042,8 @@ class QueryAvatarProjectResponseBodyFrames(TeaModel):
             return _map
 
         result = dict()
+        if self.index is not None:
+            result['index'] = self.index
         result['layers'] = []
         if self.layers is not None:
             for k in self.layers:
@@ -9268,6 +10054,8 @@ class QueryAvatarProjectResponseBodyFrames(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('index') is not None:
+            self.index = m.get('index')
         self.layers = []
         if m.get('layers') is not None:
             for k in m.get('layers'):
@@ -9289,6 +10077,7 @@ class QueryAvatarProjectResponseBody(TeaModel):
         request_id: str = None,
         res_spec_type: str = None,
         scale_type: str = None,
+        script_model_tag: str = None,
         status: str = None,
     ):
         self.agent_id = agent_id
@@ -9298,6 +10087,7 @@ class QueryAvatarProjectResponseBody(TeaModel):
         self.request_id = request_id
         self.res_spec_type = res_spec_type
         self.scale_type = scale_type
+        self.script_model_tag = script_model_tag
         self.status = status
 
     def validate(self):
@@ -9328,6 +10118,8 @@ class QueryAvatarProjectResponseBody(TeaModel):
             result['resSpecType'] = self.res_spec_type
         if self.scale_type is not None:
             result['scaleType'] = self.scale_type
+        if self.script_model_tag is not None:
+            result['scriptModelTag'] = self.script_model_tag
         if self.status is not None:
             result['status'] = self.status
         return result
@@ -9351,6 +10143,8 @@ class QueryAvatarProjectResponseBody(TeaModel):
             self.res_spec_type = m.get('resSpecType')
         if m.get('scaleType') is not None:
             self.scale_type = m.get('scaleType')
+        if m.get('scriptModelTag') is not None:
+            self.script_model_tag = m.get('scriptModelTag')
         if m.get('status') is not None:
             self.status = m.get('status')
         return self
@@ -9541,6 +10335,131 @@ class QueryAvatarResourceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryAvatarResourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryImageToVideoTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class QueryImageToVideoTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        origin_url: str = None,
+        request_id: str = None,
+        status: int = None,
+        success: bool = None,
+        task_id: str = None,
+    ):
+        self.message = message
+        self.origin_url = origin_url
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.origin_url is not None:
+            result['originUrl'] = self.origin_url
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.success is not None:
+            result['success'] = self.success
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('originUrl') is not None:
+            self.origin_url = m.get('originUrl')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class QueryImageToVideoTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryImageToVideoTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryImageToVideoTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10053,6 +10972,7 @@ class SaveAvatarProjectRequestFramesLayers(TeaModel):
     def __init__(
         self,
         height: int = None,
+        index: int = None,
         material: SaveAvatarProjectRequestFramesLayersMaterial = None,
         position_x: int = None,
         position_y: int = None,
@@ -10060,6 +10980,7 @@ class SaveAvatarProjectRequestFramesLayers(TeaModel):
         width: int = None,
     ):
         self.height = height
+        self.index = index
         self.material = material
         self.position_x = position_x
         self.position_y = position_y
@@ -10078,6 +10999,8 @@ class SaveAvatarProjectRequestFramesLayers(TeaModel):
         result = dict()
         if self.height is not None:
             result['height'] = self.height
+        if self.index is not None:
+            result['index'] = self.index
         if self.material is not None:
             result['material'] = self.material.to_map()
         if self.position_x is not None:
@@ -10094,6 +11017,8 @@ class SaveAvatarProjectRequestFramesLayers(TeaModel):
         m = m or dict()
         if m.get('height') is not None:
             self.height = m.get('height')
+        if m.get('index') is not None:
+            self.index = m.get('index')
         if m.get('material') is not None:
             temp_model = SaveAvatarProjectRequestFramesLayersMaterial()
             self.material = temp_model.from_map(m['material'])
@@ -10111,12 +11036,18 @@ class SaveAvatarProjectRequestFramesLayers(TeaModel):
 class SaveAvatarProjectRequestFramesVideoScript(TeaModel):
     def __init__(
         self,
+        emotion: str = None,
+        pitch_rate: str = None,
         speed_rate: str = None,
+        text_content: str = None,
         voice_language: str = None,
         voice_template_id: str = None,
         volume: str = None,
     ):
+        self.emotion = emotion
+        self.pitch_rate = pitch_rate
         self.speed_rate = speed_rate
+        self.text_content = text_content
         self.voice_language = voice_language
         self.voice_template_id = voice_template_id
         self.volume = volume
@@ -10130,8 +11061,14 @@ class SaveAvatarProjectRequestFramesVideoScript(TeaModel):
             return _map
 
         result = dict()
+        if self.emotion is not None:
+            result['emotion'] = self.emotion
+        if self.pitch_rate is not None:
+            result['pitchRate'] = self.pitch_rate
         if self.speed_rate is not None:
             result['speedRate'] = self.speed_rate
+        if self.text_content is not None:
+            result['textContent'] = self.text_content
         if self.voice_language is not None:
             result['voiceLanguage'] = self.voice_language
         if self.voice_template_id is not None:
@@ -10142,8 +11079,14 @@ class SaveAvatarProjectRequestFramesVideoScript(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('emotion') is not None:
+            self.emotion = m.get('emotion')
+        if m.get('pitchRate') is not None:
+            self.pitch_rate = m.get('pitchRate')
         if m.get('speedRate') is not None:
             self.speed_rate = m.get('speedRate')
+        if m.get('textContent') is not None:
+            self.text_content = m.get('textContent')
         if m.get('voiceLanguage') is not None:
             self.voice_language = m.get('voiceLanguage')
         if m.get('voiceTemplateId') is not None:
@@ -10156,9 +11099,11 @@ class SaveAvatarProjectRequestFramesVideoScript(TeaModel):
 class SaveAvatarProjectRequestFrames(TeaModel):
     def __init__(
         self,
+        index: int = None,
         layers: List[SaveAvatarProjectRequestFramesLayers] = None,
         video_script: SaveAvatarProjectRequestFramesVideoScript = None,
     ):
+        self.index = index
         self.layers = layers
         self.video_script = video_script
 
@@ -10176,6 +11121,8 @@ class SaveAvatarProjectRequestFrames(TeaModel):
             return _map
 
         result = dict()
+        if self.index is not None:
+            result['index'] = self.index
         result['layers'] = []
         if self.layers is not None:
             for k in self.layers:
@@ -10186,6 +11133,8 @@ class SaveAvatarProjectRequestFrames(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('index') is not None:
+            self.index = m.get('index')
         self.layers = []
         if m.get('layers') is not None:
             for k in m.get('layers'):
@@ -10210,6 +11159,7 @@ class SaveAvatarProjectRequest(TeaModel):
         res_spec_type: str = None,
         resolution: str = None,
         scale_type: str = None,
+        script_model_tag: str = None,
         synchronized_display: str = None,
     ):
         self.agent_id = agent_id
@@ -10222,6 +11172,7 @@ class SaveAvatarProjectRequest(TeaModel):
         self.res_spec_type = res_spec_type
         self.resolution = resolution
         self.scale_type = scale_type
+        self.script_model_tag = script_model_tag
         self.synchronized_display = synchronized_display
 
     def validate(self):
@@ -10258,6 +11209,8 @@ class SaveAvatarProjectRequest(TeaModel):
             result['resolution'] = self.resolution
         if self.scale_type is not None:
             result['scaleType'] = self.scale_type
+        if self.script_model_tag is not None:
+            result['scriptModelTag'] = self.script_model_tag
         if self.synchronized_display is not None:
             result['synchronizedDisplay'] = self.synchronized_display
         return result
@@ -10287,6 +11240,8 @@ class SaveAvatarProjectRequest(TeaModel):
             self.resolution = m.get('resolution')
         if m.get('scaleType') is not None:
             self.scale_type = m.get('scaleType')
+        if m.get('scriptModelTag') is not None:
+            self.script_model_tag = m.get('scriptModelTag')
         if m.get('synchronizedDisplay') is not None:
             self.synchronized_display = m.get('synchronizedDisplay')
         return self
@@ -10895,6 +11850,126 @@ class SendSdkMessageResponse(TeaModel):
         return self
 
 
+class SendSdkStreamMessageRequest(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        header: str = None,
+        module_name: str = None,
+        operation_name: str = None,
+        user_id: str = None,
+    ):
+        self.data = data
+        # header
+        self.header = header
+        self.module_name = module_name
+        self.operation_name = operation_name
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.header is not None:
+            result['header'] = self.header
+        if self.module_name is not None:
+            result['moduleName'] = self.module_name
+        if self.operation_name is not None:
+            result['operationName'] = self.operation_name
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('header') is not None:
+            self.header = m.get('header')
+        if m.get('moduleName') is not None:
+            self.module_name = m.get('moduleName')
+        if m.get('operationName') is not None:
+            self.operation_name = m.get('operationName')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class SendSdkStreamMessageResponseBody(TeaModel):
+    def __init__(
+        self,
+        common_stream_message: str = None,
+    ):
+        self.common_stream_message = common_stream_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_stream_message is not None:
+            result['commonStreamMessage'] = self.common_stream_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonStreamMessage') is not None:
+            self.common_stream_message = m.get('commonStreamMessage')
+        return self
+
+
+class SendSdkStreamMessageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SendSdkStreamMessageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SendSdkStreamMessageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SendTextMsgRequest(TeaModel):
     def __init__(
         self,
@@ -11371,12 +12446,159 @@ class StopProjectTaskResponse(TeaModel):
         return self
 
 
+class SubmitImageToVideoTaskRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+        pos_prompt: str = None,
+    ):
+        self.image_url = image_url
+        self.pos_prompt = pos_prompt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['imageUrl'] = self.image_url
+        if self.pos_prompt is not None:
+            result['posPrompt'] = self.pos_prompt
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('imageUrl') is not None:
+            self.image_url = m.get('imageUrl')
+        if m.get('posPrompt') is not None:
+            self.pos_prompt = m.get('posPrompt')
+        return self
+
+
+class SubmitImageToVideoTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        task_id: str = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class SubmitImageToVideoTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitImageToVideoTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitImageToVideoTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitProjectTaskRequestFramesLayersMaterialMask(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+    ):
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
 class SubmitProjectTaskRequestFramesLayersMaterial(TeaModel):
     def __init__(
         self,
         anchor_style_level: str = None,
         format: str = None,
         id: str = None,
+        mask: SubmitProjectTaskRequestFramesLayersMaterialMask = None,
         speed: str = None,
         url: str = None,
         volume: int = None,
@@ -11384,12 +12606,14 @@ class SubmitProjectTaskRequestFramesLayersMaterial(TeaModel):
         self.anchor_style_level = anchor_style_level
         self.format = format
         self.id = id
+        self.mask = mask
         self.speed = speed
         self.url = url
         self.volume = volume
 
     def validate(self):
-        pass
+        if self.mask:
+            self.mask.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11403,6 +12627,8 @@ class SubmitProjectTaskRequestFramesLayersMaterial(TeaModel):
             result['format'] = self.format
         if self.id is not None:
             result['id'] = self.id
+        if self.mask is not None:
+            result['mask'] = self.mask.to_map()
         if self.speed is not None:
             result['speed'] = self.speed
         if self.url is not None:
@@ -11419,6 +12645,9 @@ class SubmitProjectTaskRequestFramesLayersMaterial(TeaModel):
             self.format = m.get('format')
         if m.get('id') is not None:
             self.id = m.get('id')
+        if m.get('mask') is not None:
+            temp_model = SubmitProjectTaskRequestFramesLayersMaterialMask()
+            self.mask = temp_model.from_map(m['mask'])
         if m.get('speed') is not None:
             self.speed = m.get('speed')
         if m.get('url') is not None:

@@ -1,3 +1,43 @@
+2025-04-17 Version: 2.14.0
+- Support API CreateProductImage.
+- Support API GetAICoachAssessmentPoint.
+- Support API QueryImageToVideoTask.
+- Support API SendSdkStreamMessage.
+- Support API SubmitImageToVideoTask.
+- Update API CreateAnchor: add request parameters body.anchorCategory.
+- Update API CreateAnchor: add request parameters body.videoOssKey.
+- Update API GetAICoachScript: add response parameters Body.closingRemarks.
+- Update API GetAICoachScript: add response parameters Body.expressivenessList.
+- Update API GetAICoachScript: add response parameters Body.gifDynamicUrl.
+- Update API GetAICoachScript: add response parameters Body.gifStaticUrl.
+- Update API GetAICoachScript: add response parameters Body.openingRemarks.
+- Update API GetAICoachScript: add response parameters Body.weights.assessmentPointEnabled.
+- Update API ListAICoachScriptPage: add response parameters Body.list.$.closingRemarks.
+- Update API ListAICoachScriptPage: add response parameters Body.list.$.gifDynamicUrl.
+- Update API ListAICoachScriptPage: add response parameters Body.list.$.gifStaticUrl.
+- Update API ListAICoachScriptPage: add response parameters Body.list.$.openingRemarks.
+- Update API ListAICoachScriptPage: add response parameters Body.list.$.weights.assessmentPointEnabled.
+- Update API ListAICoachTaskPage: add request parameters endTime.
+- Update API ListAICoachTaskPage: add request parameters startTime.
+- Update API ListAICoachTaskPage: add response parameters Body.taskList.$.gmtCreate.
+- Update API ListAnchor: add request parameters anchorId.
+- Update API QueryAvatarProject: add response parameters Body.scriptModelTag.
+- Update API QueryAvatarProject: add response parameters Body.frames.$.index.
+- Update API QueryAvatarProject: add response parameters Body.frames.$.layers.$.index.
+- Update API QueryAvatarProject: add response parameters Body.frames.$.videoScript.emotion.
+- Update API QueryAvatarProject: add response parameters Body.frames.$.videoScript.pitchRate.
+- Update API QueryAvatarProject: add response parameters Body.frames.$.videoScript.textContent.
+- Update API QueryAvatarProject: add response parameters Body.frames.$.videoScript.voiceLanguage.
+- Update API QueryAvatarProject: add response parameters Body.frames.$.videoScript.volume.
+- Update API SaveAvatarProject: add request parameters body.scriptModelTag.
+- Update API SaveAvatarProject: add request parameters body.frames.$.index.
+- Update API SaveAvatarProject: add request parameters body.frames.$.layers.$.index.
+- Update API SaveAvatarProject: add request parameters body.frames.$.videoScript.emotion.
+- Update API SaveAvatarProject: add request parameters body.frames.$.videoScript.pitchRate.
+- Update API SaveAvatarProject: add request parameters body.frames.$.videoScript.textContent.
+- Update API SubmitProjectTask: add request parameters body.frames.$.layers.$.material.mask.
+
+
 2025-04-10 Version: 2.13.0
 - Support API GetAICoachCheatDetection.
 - Update API SelectResource: add response parameters Body.aliyunUid.
