@@ -12,10 +12,26 @@ class AddServersToServerGroupRequestServers(TeaModel):
         server_ip: str = None,
         server_type: str = None,
     ):
+        # The backend server port. Valid values:
+        # 
+        # *   **6081**\
         self.port = port
+        # The backend server ID.
+        # 
+        # *   If the server group is of the **Instance** type, set this parameter to the IDs of servers of the **Ecs**, **Eni**, or **Eci** type.
+        # *   If the server group is of the **Ip** type, set ServerId to IP addresses.
+        # 
         # This parameter is required.
         self.server_id = server_id
+        # The IP address of the backend server.
         self.server_ip = server_ip
+        # The type of the backend server. Valid values:
+        # 
+        # *   **Ecs**: Elastic Compute Service (ECS) instance
+        # *   **Eni**: elastic network interface (ENI)
+        # *   **Eci**: elastic container instance
+        # *   **Ip**: IP address
+        # 
         # This parameter is required.
         self.server_type = server_type
 
@@ -59,10 +75,25 @@ class AddServersToServerGroupRequest(TeaModel):
         server_group_id: str = None,
         servers: List[AddServersToServerGroupRequestServers] = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The server group ID.
+        # 
         # This parameter is required.
         self.server_group_id = server_group_id
+        # The backend servers that you want to add.
+        # 
+        # > You can add at most 200 backend servers in each call.
+        # 
         # This parameter is required.
         self.servers = servers
 
@@ -111,6 +142,7 @@ class AddServersToServerGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -180,7 +212,9 @@ class CreateListenerRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. The tag key cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -217,13 +251,30 @@ class CreateListenerRequest(TeaModel):
         server_group_id: str = None,
         tag: List[CreateListenerRequestTag] = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform a dry run, without sending the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The description of the listener.
+        # 
+        # The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
         self.listener_description = listener_description
+        # The GWLB instance ID.
+        # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
+        # The server group ID.
+        # 
         # This parameter is required.
         self.server_group_id = server_group_id
+        # The tags. You can specify at most 20 tags in each call.
         self.tag = tag
 
     def validate(self):
@@ -280,7 +331,9 @@ class CreateListenerResponseBody(TeaModel):
         listener_id: str = None,
         request_id: str = None,
     ):
+        # The listener ID.
         self.listener_id = listener_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -354,7 +407,11 @@ class CreateLoadBalancerRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -387,8 +444,12 @@ class CreateLoadBalancerRequestZoneMappings(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
+        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
+        # The zone ID. You can call the DescribeZones operation to query the most recent zone list.
+        # 
         # This parameter is required.
         self.zone_id = zone_id
 
@@ -428,14 +489,35 @@ class CreateLoadBalancerRequest(TeaModel):
         vpc_id: str = None,
         zone_mappings: List[CreateLoadBalancerRequestZoneMappings] = None,
     ):
+        # The IP version. Valid values:
+        # 
+        # *   **Ipv4** (default): IPv4
         self.address_ip_version = address_ip_version
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The GWLB instance name.
+        # 
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         self.load_balancer_name = load_balancer_name
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The tag keys. You can specify at most 20 tags in each call.
         self.tag = tag
+        # The virtual private cloud (VPC) ID.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
+        # The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, specify at least two zones.
+        # 
         # This parameter is required.
         self.zone_mappings = zone_mappings
 
@@ -510,7 +592,9 @@ class CreateLoadBalancerResponseBody(TeaModel):
         load_balancer_id: str = None,
         request_id: str = None,
     ):
+        # The GWLB instance ID.
         self.load_balancer_id = load_balancer_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -584,7 +668,18 @@ class CreateServerGroupRequestConnectionDrainConfig(TeaModel):
         connection_drain_enabled: bool = None,
         connection_drain_timeout: int = None,
     ):
+        # Specifies whether to enable connection draining. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.connection_drain_enabled = connection_drain_enabled
+        # The timeout period of connection draining.
+        # 
+        # Unit: seconds
+        # 
+        # Valid values: **1** to **3600**.
+        # 
+        # Default value: **300**.
         self.connection_drain_timeout = connection_drain_timeout
 
     def validate(self):
@@ -625,15 +720,66 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
     ):
+        # The backend server port that is used for health checks.
+        # 
+        # Valid values: **1** to **65535**.
+        # 
+        # Default value: **80**.
         self.health_check_connect_port = health_check_connect_port
+        # The maximum timeout period of a health check response.
+        # 
+        # Unit: seconds
+        # 
+        # Valid values: **1** to **300**.
+        # 
+        # Default value: **5**.
         self.health_check_connect_timeout = health_check_connect_timeout
+        # The domain name that you want to use for health checks. Valid values:
+        # 
+        # *   **$SERVER_IP** (default): the private IP address of a backend server.
+        # *   **domain**: a domain name. The domain name must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), and periods (.).
+        # 
+        # > This parameter takes effect only if you set **HealthCheckProtocol** to **HTTP**.
         self.health_check_domain = health_check_domain
+        # Specifies whether to enable the health check feature. Valid values:
+        # 
+        # *   **true** (default)
+        # *   **false**\
         self.health_check_enabled = health_check_enabled
+        # The HTTP status codes that the system returns for health checks.
         self.health_check_http_code = health_check_http_code
+        # The interval at which health checks are performed.
+        # 
+        # Unit: seconds
+        # 
+        # Valid values: **1** to **50**.
+        # 
+        # Default value: **10**.
         self.health_check_interval = health_check_interval
+        # The URL that is used for health checks.
+        # 
+        # The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: _ ; ~ ! ( ) \\* [ ] @ $ ^ : \\" , + =\
+        # 
+        # The URL must start with a forward slash (/).
+        # 
+        # > This parameter takes effect only if you set **HealthCheckProtocol** to **HTTP**.
         self.health_check_path = health_check_path
+        # The protocol that is used for health checks. Valid values:
+        # 
+        # *   **TCP** (default): GWLB performs TCP health checks by sending SYN packets to a backend server to check whether the port of the backend server is available to receive requests.
+        # *   **HTTP**: GWLB performs HTTP health checks to check whether backend servers are healthy by sending HEAD or GET requests which simulate access from browsers.
         self.health_check_protocol = health_check_protocol
+        # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail** to **success**.
+        # 
+        # Valid values: **2** to **10**.
+        # 
+        # Default value: **2**.
         self.healthy_threshold = healthy_threshold
+        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success** to **fail**.
+        # 
+        # Valid values: **2** to **10**.
+        # 
+        # Default value: **2**.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -698,7 +844,9 @@ class CreateServerGroupRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. The tag key cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -735,21 +883,57 @@ class CreateServerGroupRequest(TeaModel):
         protocol: str = None,
         resource_group_id: str = None,
         scheduler: str = None,
+        server_failover_mode: str = None,
         server_group_name: str = None,
         server_group_type: str = None,
         tag: List[CreateServerGroupRequestTag] = None,
         vpc_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # The configurations of connection draining.
         self.connection_drain_config = connection_drain_config
+        # Specifies whether to perform only a dry run without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The configurations of the health check feature.
         self.health_check_config = health_check_config
+        # The backend protocol. Valid values:
+        # 
+        # *   **GENEVE**(default)
         self.protocol = protocol
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The scheduling algorithm. Valid values:
+        # 
+        # *   **5TCH** (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        # *   **3TCH**: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        # *   **2TCH**: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
         self.scheduler = scheduler
+        self.server_failover_mode = server_failover_mode
+        # The server group name.
+        # 
+        # The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         self.server_group_name = server_group_name
+        # The type of server group. Valid values:
+        # 
+        # *   **Instance** (default): allows you to specify servers of the **Ecs**, **Eni**, or **Eci** type.
+        # *   **Ip**: allows you to add servers of by specifying IP addresses.
         self.server_group_type = server_group_type
+        # The tag keys.
+        # 
+        # You can specify at most 20 tags in each call.
         self.tag = tag
+        # The VPC ID.
+        # 
+        # > If **ServerGroupType** is set to **Instance**, only servers in the specified VPC can be added to the server group.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
 
@@ -783,6 +967,8 @@ class CreateServerGroupRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.scheduler is not None:
             result['Scheduler'] = self.scheduler
+        if self.server_failover_mode is not None:
+            result['ServerFailoverMode'] = self.server_failover_mode
         if self.server_group_name is not None:
             result['ServerGroupName'] = self.server_group_name
         if self.server_group_type is not None:
@@ -813,6 +999,8 @@ class CreateServerGroupRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Scheduler') is not None:
             self.scheduler = m.get('Scheduler')
+        if m.get('ServerFailoverMode') is not None:
+            self.server_failover_mode = m.get('ServerFailoverMode')
         if m.get('ServerGroupName') is not None:
             self.server_group_name = m.get('ServerGroupName')
         if m.get('ServerGroupType') is not None:
@@ -833,7 +1021,9 @@ class CreateServerGroupResponseBody(TeaModel):
         request_id: str = None,
         server_group_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The server group ID.
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -908,8 +1098,19 @@ class DeleteListenerRequest(TeaModel):
         dry_run: bool = None,
         listener_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform a dry run, without sending the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The listener ID.
+        # 
         # This parameter is required.
         self.listener_id = listener_id
 
@@ -946,6 +1147,7 @@ class DeleteListenerResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1016,8 +1218,19 @@ class DeleteLoadBalancerRequest(TeaModel):
         dry_run: bool = None,
         load_balancer_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform a dry run, without sending the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The GWLB instance ID.
+        # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
 
@@ -1054,6 +1267,7 @@ class DeleteLoadBalancerResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1124,8 +1338,19 @@ class DeleteServerGroupRequest(TeaModel):
         dry_run: bool = None,
         server_group_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The server group ID.
+        # 
         # This parameter is required.
         self.server_group_id = server_group_id
 
@@ -1162,6 +1387,7 @@ class DeleteServerGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1230,6 +1456,11 @@ class DescribeRegionsRequest(TeaModel):
         self,
         accept_language: str = None,
     ):
+        # The supported language. Valid values:
+        # 
+        # *   **zh-CN**: Chinese
+        # *   **en-US** (default): English
+        # *   **ja**: Japanese
         self.accept_language = accept_language
 
     def validate(self):
@@ -1259,8 +1490,11 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         region_endpoint: str = None,
         region_id: str = None,
     ):
+        # The region name.
         self.local_name = local_name
+        # The region endpoint.
         self.region_endpoint = region_endpoint
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -1297,7 +1531,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: List[DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
+        # A list of regions.
         self.regions = regions
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1378,6 +1614,11 @@ class DescribeZonesRequest(TeaModel):
         self,
         accept_language: str = None,
     ):
+        # The supported language. Valid values:
+        # 
+        # *   **zh-CN**: Chinese
+        # *   **en-US** (default): English
+        # *   **ja**: Japanese
         self.accept_language = accept_language
 
     def validate(self):
@@ -1406,7 +1647,9 @@ class DescribeZonesResponseBodyZones(TeaModel):
         local_name: str = None,
         zone_id: str = None,
     ):
+        # The zone name.
         self.local_name = local_name
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1439,7 +1682,9 @@ class DescribeZonesResponseBody(TeaModel):
         request_id: str = None,
         zones: List[DescribeZonesResponseBodyZones] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # A list of zones.
         self.zones = zones
 
     def validate(self):
@@ -1520,6 +1765,8 @@ class GetListenerAttributeRequest(TeaModel):
         self,
         listener_id: str = None,
     ):
+        # The listener ID.
+        # 
         # This parameter is required.
         self.listener_id = listener_id
 
@@ -1549,7 +1796,9 @@ class GetListenerAttributeResponseBodyTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. The tag key cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with `acs: `or `aliyun`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -1588,13 +1837,28 @@ class GetListenerAttributeResponseBody(TeaModel):
         server_group_id: str = None,
         tags: List[GetListenerAttributeResponseBodyTags] = None,
     ):
+        # The listener description.
+        # 
+        # The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
         self.listener_description = listener_description
+        # The listener ID.
         self.listener_id = listener_id
+        # The listener status. Valid values:
+        # 
+        # *   **Provisioning**: The listener is being created.
+        # *   **Running**: The listener is running.
+        # *   **Configuring**: The listener is being configured.
+        # *   **Deleting**: The listener is being deleted.
         self.listener_status = listener_status
+        # The GWLB instance ID.
         self.load_balancer_id = load_balancer_id
+        # The region ID of the GWLB instance.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # The server group ID.
         self.server_group_id = server_group_id
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -1700,7 +1964,14 @@ class GetListenerHealthStatusRequestFilter(TeaModel):
         name: str = None,
         values: List[str] = None,
     ):
+        # The filter condition name. You can filter by one or more filter condition names. The URL must meet the following requirements:
+        # 
+        # *   **Status**: the health status.
+        # *   **ReasonCode**: the cause of an unhealthy server.
+        # *   **ServerId**: the ID of the backend server.
+        # *   **ServerIp**: the IP address of the backend server.
         self.name = name
+        # The filter condition values. You can specify at most 20 condition values.
         self.values = values
 
     def validate(self):
@@ -1736,11 +2007,20 @@ class GetListenerHealthStatusRequest(TeaModel):
         next_token: str = None,
         skip: int = None,
     ):
+        # The filter conditions. You can specify at most 20 filter conditions.
         self.filter = filter
+        # The listener ID.
+        # 
         # This parameter is required.
         self.listener_id = listener_id
+        # The number of entries per page. Valid values: 1 to 1000. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The number of entries to be skipped in the call.
         self.skip = skip
 
     def validate(self):
@@ -1792,6 +2072,14 @@ class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosSer
         self,
         reason_code: str = None,
     ):
+        # The reason why **Status** indicates an unhealthy status. Valid values:
+        # 
+        # *   **CONNECT_TIMEOUT**: The GWLB instance failed to connect to the backend server within the specified period of time.
+        # *   **CONNECT_FAILED**: The GWLB instance failed to connect to the backend server.
+        # *   **RECV_RESPONSE_TIMEOUT**: The GWLB instance failed to receive a response from the backend server within the specified period of time.
+        # *   **CONNECT_INTERRUPT**: The connection between the health check and the backend server was interrupted.
+        # *   **HTTP_CODE_NOT_MATCH**: The HTTP status code from the backend server is not the expected one.
+        # *   **HTTP_INVALID_HEADER**: The format of the response from the backend servers is invalid.
         self.reason_code = reason_code
 
     def validate(self):
@@ -1823,10 +2111,21 @@ class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosSer
         server_ip: str = None,
         status: str = None,
     ):
+        # The backend port.
         self.port = port
+        # The reason why **Status** indicates an unhealthy status.
         self.reason = reason
+        # The backend server ID.
         self.server_id = server_id
+        # The IP address of the server.
         self.server_ip = server_ip
+        # The health status of the backend server. Valid values:
+        # 
+        # *   **Initial**: Health checks are configured for the GWLB instance, but no data is found.
+        # *   **Unhealthy**: The backend server consecutively fails health checks.
+        # *   **Unused**: The backend server is not in use.
+        # *   **Unavailable**: Health checks are disabled.
+        # *   **Healthy**: The backend server is healthy.
         self.status = status
 
     def validate(self):
@@ -1874,8 +2173,14 @@ class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos(Te
         server_group_id: str = None,
         servers: List[GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosServers] = None,
     ):
+        # Indicates whether the health check feature is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.health_check_enabled = health_check_enabled
+        # The server group ID.
         self.server_group_id = server_group_id
+        # The backend servers.
         self.servers = servers
 
     def validate(self):
@@ -1920,7 +2225,9 @@ class GetListenerHealthStatusResponseBodyListenerHealthStatus(TeaModel):
         listener_id: str = None,
         server_group_infos: List[GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos] = None,
     ):
+        # The listener ID.
         self.listener_id = listener_id
+        # The information about the server groups.
         self.server_group_infos = server_group_infos
 
     def validate(self):
@@ -1964,10 +2271,18 @@ class GetListenerHealthStatusResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The health check status of the server groups that are associated with the listener.
         self.listener_health_status = listener_health_status
+        # The number of entries per page. Valid values: 1 to 1000. Default value: 20.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -2060,6 +2375,8 @@ class GetLoadBalancerAttributeRequest(TeaModel):
         self,
         load_balancer_id: str = None,
     ):
+        # The GWLB instance ID.
+        # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
 
@@ -2089,7 +2406,11 @@ class GetLoadBalancerAttributeResponseBodyTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -2122,7 +2443,9 @@ class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaM
         eni_id: str = None,
         private_ipv_4address: str = None,
     ):
+        # The ID of the elastic network interface (ENI) used by the GWLB instance.
         self.eni_id = eni_id
+        # The private IPv4 address.
         self.private_ipv_4address = private_ipv_4address
 
     def validate(self):
@@ -2156,8 +2479,11 @@ class GetLoadBalancerAttributeResponseBodyZoneMappings(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The GWLB instance addresses.
         self.load_balancer_addresses = load_balancer_addresses
+        # The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
         self.v_switch_id = v_switch_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -2208,19 +2534,44 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         request_id: str = None,
         resource_group_id: str = None,
         tags: List[GetLoadBalancerAttributeResponseBodyTags] = None,
+        traffic_mode: str = None,
         vpc_id: str = None,
         zone_mappings: List[GetLoadBalancerAttributeResponseBodyZoneMappings] = None,
     ):
+        # The protocol version. Valid values:
+        # 
+        # *   **Ipv4**: IPv4.
         self.address_ip_version = address_ip_version
+        # The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
         self.create_time = create_time
+        # The business status of the GWLB instance. Valid values:
+        # 
+        # *   **Normal**: running as expected
+        # *   **FinancialLocked**: locked due to overdue payments
         self.load_balancer_business_status = load_balancer_business_status
+        # The GWLB instance ID.
         self.load_balancer_id = load_balancer_id
+        # The GWLB instance name.
+        # 
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         self.load_balancer_name = load_balancer_name
+        # The GWLB instance status. Valid values:
+        # 
+        # *   **Active**: The GWLB instance is running.
+        # *   **Inactive**: The GWLB instance is disabled. Listeners of GWLB instances in the Inactive state do not forward traffic.
+        # *   **Provisioning**: The GWLB instance is being created.
+        # *   **Configuring**: The GWLB instance is being modified.
         self.load_balancer_status = load_balancer_status
+        # The request ID.
         self.request_id = request_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The tags.
         self.tags = tags
+        self.traffic_mode = traffic_mode
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, specify at least two zones.
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -2259,6 +2610,8 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.traffic_mode is not None:
+            result['TrafficMode'] = self.traffic_mode
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         result['ZoneMappings'] = []
@@ -2290,6 +2643,8 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             for k in m.get('Tags'):
                 temp_model = GetLoadBalancerAttributeResponseBodyTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('TrafficMode') is not None:
+            self.traffic_mode = m.get('TrafficMode')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         self.zone_mappings = []
@@ -2347,7 +2702,11 @@ class ListListenersRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -2384,11 +2743,20 @@ class ListListenersRequest(TeaModel):
         skip: int = None,
         tag: List[ListListenersRequestTag] = None,
     ):
+        # The listener IDs. You can specify at most 20 listener IDs.
         self.listener_ids = listener_ids
+        # The GWLB instance IDs. You can specify at most 20 instance IDs.
         self.load_balancer_ids = load_balancer_ids
+        # The maximum number of results to be returned from a single query when the NextToken parameter is used in the query. Valid values: 1 to 1000. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The number of entries to be skipped in the call.
         self.skip = skip
+        # The tags. You can specify at most 20 tags in each call.
         self.tag = tag
 
     def validate(self):
@@ -2445,7 +2813,9 @@ class ListListenersResponseBodyListenersTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -2482,11 +2852,22 @@ class ListListenersResponseBodyListeners(TeaModel):
         server_group_id: str = None,
         tags: List[ListListenersResponseBodyListenersTags] = None,
     ):
+        # The description of the listener.
         self.listener_description = listener_description
+        # The listener ID.
         self.listener_id = listener_id
+        # The status of the listener. Valid values:
+        # 
+        # *   **Provisioning**: The listener is being created.
+        # *   **Running**: The listener is running.
+        # *   **Configuring**: The listener is being configured.
+        # *   **Deleting**: The listener is being deleted.
         self.listener_status = listener_status
+        # The GWLB instance ID.
         self.load_balancer_id = load_balancer_id
+        # The server group ID.
         self.server_group_id = server_group_id
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -2546,10 +2927,18 @@ class ListListenersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The GWLB listeners.
         self.listeners = listeners
+        # The maximum number of results to be returned from a single query when the NextToken parameter is used in the query. Valid values: 1 to 1000. Default value: 20.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -2643,7 +3032,11 @@ class ListLoadBalancersRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -2683,20 +3076,52 @@ class ListLoadBalancersRequest(TeaModel):
         resource_group_id: str = None,
         skip: int = None,
         tag: List[ListLoadBalancersRequestTag] = None,
+        traffic_mode: str = None,
         vpc_ids: List[str] = None,
         zone_ids: List[str] = None,
     ):
+        # The IP version. Valid values:
+        # 
+        # *   **Ipv4**: IPv4
+        # 
+        # Enumeration values:
+        # 
+        # *   IPv4: IPv4
+        # *   DualStack: DualStack
         self.address_ip_version = address_ip_version
+        # The business status of the GWLB instance. Valid values:
+        # 
+        # *   **Normal**: running as expected
+        # *   **FinancialLocked**: locked due to overdue payments
         self.load_balancer_business_status = load_balancer_business_status
+        # The GWLB instance IDs. You can query at most 20 GWLB instances in each call.
         self.load_balancer_ids = load_balancer_ids
+        # The GWLB instance names. You can specify at most 20 GWLB instance names in each call.
         self.load_balancer_names = load_balancer_names
+        # The GWLB instance status. Valid values:
+        # 
+        # *   **Active**: The GWLB instance is running.
+        # *   **Inactive**: The GWLB instance is disabled. Listeners of GWLB instances in the Inactive state do not forward traffic.
+        # *   **Provisioning**: The GWLB instance is being created.
+        # *   **Configuring**: The GWLB instance is being modified.
         self.load_balancer_status = load_balancer_status
+        # The number of entries per page. Valid values: 1 to 1000. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The number of entries to be skipped in the call.
         self.skip = skip
+        # The tags. You can specify at most 20 tags in each call.
         self.tag = tag
+        self.traffic_mode = traffic_mode
+        # The virtual private cloud (VPC) IDs. You can query at most 20 IDs in each call.
         self.vpc_ids = vpc_ids
+        # The zone IDs. You can query at most 20 zone IDs in each call.
         self.zone_ids = zone_ids
 
     def validate(self):
@@ -2733,6 +3158,8 @@ class ListLoadBalancersRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.traffic_mode is not None:
+            result['TrafficMode'] = self.traffic_mode
         if self.vpc_ids is not None:
             result['VpcIds'] = self.vpc_ids
         if self.zone_ids is not None:
@@ -2764,6 +3191,8 @@ class ListLoadBalancersRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = ListLoadBalancersRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('TrafficMode') is not None:
+            self.traffic_mode = m.get('TrafficMode')
         if m.get('VpcIds') is not None:
             self.vpc_ids = m.get('VpcIds')
         if m.get('ZoneIds') is not None:
@@ -2777,7 +3206,13 @@ class ListLoadBalancersResponseBodyLoadBalancersTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. You can specify at most 20 tag values. The tag value cannot be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length. It must start with a letter and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -2810,7 +3245,9 @@ class ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresse
         eni_id: str = None,
         private_ipv_4address: str = None,
     ):
+        # The ID of the elastic network interface (ENI) used by the GWLB instance.
         self.eni_id = eni_id
+        # The private IPv4 address.
         self.private_ipv_4address = private_ipv_4address
 
     def validate(self):
@@ -2844,8 +3281,11 @@ class ListLoadBalancersResponseBodyLoadBalancersZoneMappings(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The GWLB instance addresses.
         self.load_balancer_addresses = load_balancer_addresses
+        # The ID of the vSwitch in the zone. By default, each zone contains one vSwitch and one subnet.
         self.v_switch_id = v_switch_id
+        # The zone ID. You can call the DescribeZones operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -2898,15 +3338,37 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         vpc_id: str = None,
         zone_mappings: List[ListLoadBalancersResponseBodyLoadBalancersZoneMappings] = None,
     ):
+        # The IP version. Valid values:
+        # 
+        # *   **IPv4**\
         self.address_ip_version = address_ip_version
+        # The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
         self.create_time = create_time
+        # The business status of the GWLB instance. Valid values:
+        # 
+        # *   **Normal**: running as expected
+        # *   **FinancialLocked**: locked due to overdue payments
         self.load_balancer_business_status = load_balancer_business_status
+        # The GWLB instance ID.
         self.load_balancer_id = load_balancer_id
+        # The GWLB instance name.
+        # 
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         self.load_balancer_name = load_balancer_name
+        # The GWLB instance status. Valid values:
+        # 
+        # *   **Active**: The GWLB instance is running.
+        # *   **Inactive**: The GWLB instance is disabled. Listeners of GWLB instances in the Inactive state do not forward traffic.
+        # *   **Provisioning**: The GWLB instance is being created.
+        # *   **Configuring**: The GWLB instance is being modified.
         self.load_balancer_status = load_balancer_status
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The tags.
         self.tags = tags
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, specify at least two zones.
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -2991,10 +3453,18 @@ class ListLoadBalancersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The GWLB instances.
         self.load_balancers = load_balancers
+        # The number of entries per page. Valid values: 1 to 1000. Default value: 20.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If NextToken is empty, no next page exists.
+        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3092,11 +3562,28 @@ class ListServerGroupServersRequest(TeaModel):
         server_ips: List[str] = None,
         skip: int = None,
     ):
+        # The number of entries per page.
+        # 
+        # Valid values: 1 to 1000.
+        # 
+        # Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The server group ID.
         self.server_group_id = server_group_id
+        # The server IDs.
+        # 
+        # You can specify at most 200 servers in each call.
         self.server_ids = server_ids
+        # The server IP addresses.
+        # 
+        # You can specify at most 200 servers in each call.
         self.server_ips = server_ips
+        # The number of entries to be skipped in the call.
         self.skip = skip
 
     def validate(self):
@@ -3149,11 +3636,30 @@ class ListServerGroupServersResponseBodyServers(TeaModel):
         server_type: str = None,
         status: str = None,
     ):
+        # The backend server port. Valid values:
+        # 
+        # *   **6081**\
         self.port = port
+        # The server group ID.
         self.server_group_id = server_group_id
+        # The backend server ID.
         self.server_id = server_id
+        # The IP address of the backend server.
         self.server_ip = server_ip
+        # The type of the backend server. Valid values:
+        # 
+        # *   **Ecs**: Elastic Compute Service (ECS) instance
+        # *   **Eni**: elastic network interface (ENI)
+        # *   **Eci**: elastic container instance
+        # *   **Ip**: IP address
         self.server_type = server_type
+        # Indicates the status of the backend server. Valid values:
+        # 
+        # *   **Adding**: The backend server is being added.
+        # *   **Available**: The backend server is available.
+        # *   **Draining**: The backend server is in connection draining.
+        # *   **Removing**: The backend server is being removed.
+        # *   **Replacing**: The backend server is being replaced.
         self.status = status
 
     def validate(self):
@@ -3205,10 +3711,20 @@ class ListServerGroupServersResponseBody(TeaModel):
         servers: List[ListServerGroupServersResponseBodyServers] = None,
         total_count: int = None,
     ):
+        # The number of entries per page.
+        # 
+        # Valid values: 1 to 1000.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If NextToken is empty, no next page exists.
+        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The backend servers.
         self.servers = servers
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3302,7 +3818,9 @@ class ListServerGroupsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. The tag key cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -3342,14 +3860,39 @@ class ListServerGroupsRequest(TeaModel):
         tag: List[ListServerGroupsRequestTag] = None,
         vpc_id: str = None,
     ):
+        # The number of entries per page.
+        # 
+        # Valid values: 1 to 1000.
+        # 
+        # Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
+        # The server group IDs.
+        # 
+        # You can specify at most 20 server group IDs in each call.
         self.server_group_ids = server_group_ids
+        # The server group names.
+        # 
+        # You can specify at most 20 server group names in each call.
         self.server_group_names = server_group_names
+        # The server group type. Valid values:
+        # 
+        # *   **Instance**: allows you to specify servers of the **Ecs**, **Eni**, or **Eci** type.
+        # *   **Ip**: allows you to add servers of by specifying IP addresses.
         self.server_group_type = server_group_type
+        # The number of entries to be skipped in the call.
         self.skip = skip
+        # The tag keys.
+        # 
+        # You can specify at most 20 tags in each call.
         self.tag = tag
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -3418,7 +3961,16 @@ class ListServerGroupsResponseBodyServerGroupsConnectionDrainConfig(TeaModel):
         connection_drain_enabled: bool = None,
         connection_drain_timeout: int = None,
     ):
+        # Indicates whether connection draining is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.connection_drain_enabled = connection_drain_enabled
+        # The timeout period of connection draining.
+        # 
+        # Unit: seconds
+        # 
+        # Valid values: 1 to 3600.
         self.connection_drain_timeout = connection_drain_timeout
 
     def validate(self):
@@ -3459,15 +4011,54 @@ class ListServerGroupsResponseBodyServerGroupsHealthCheckConfig(TeaModel):
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
     ):
+        # The backend server port that is used for health checks.
+        # 
+        # Valid values: **1** to **65535**.
         self.health_check_connect_port = health_check_connect_port
+        # The maximum timeout period of a health check.
+        # 
+        # Unit: seconds
+        # 
+        # Valid values: **1** to **300**.
         self.health_check_connect_timeout = health_check_connect_timeout
+        # The domain name that is used for health checks. Valid values:
+        # 
+        # *   **$SERVER_IP**: the internal IP address of a backend server.
+        # *   **domain**: a domain name. The domain name must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), and periods (.).
+        # 
+        # > This parameter takes effect only if you set **HealthCheckProtocol** to **HTTP**.
         self.health_check_domain = health_check_domain
+        # Indicates whether the health check feature is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.health_check_enabled = health_check_enabled
+        # The HTTP status codes that the system returns for health checks.
         self.health_check_http_code = health_check_http_code
+        # The interval at which health checks are performed.
+        # 
+        # Unit: seconds
+        # 
+        # Valid values: **1** to **50**.
         self.health_check_interval = health_check_interval
+        # The URL that is used for health checks.
+        # 
+        # The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: ` - / . % ? # &  `The URL must start with a forward slash (/).
+        # 
+        # > This parameter takes effect only if you set **HealthCheckProtocol** to **HTTP**.
         self.health_check_path = health_check_path
+        # The protocol that is used for health checks. Valid values:
+        # 
+        # *   **TCP**: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
+        # *   **HTTP**: HTTP health checks simulate a process that uses a web browser to access resources by sending HEAD or GET requests to an instance. These requests are used to check whether the instance is healthy.
         self.health_check_protocol = health_check_protocol
+        # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail** to **success**.
+        # 
+        # Valid values: **2** to **10**.
         self.healthy_threshold = healthy_threshold
+        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success** to **fail**.
+        # 
+        # Valid values: **2** to **10**.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -3532,7 +4123,9 @@ class ListServerGroupsResponseBodyServerGroupsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. The tag key cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -3570,6 +4163,7 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         resource_group_id: str = None,
         scheduler: str = None,
         server_count: int = None,
+        server_failover_mode: str = None,
         server_group_id: str = None,
         server_group_name: str = None,
         server_group_status: str = None,
@@ -3577,19 +4171,47 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         tags: List[ListServerGroupsResponseBodyServerGroupsTags] = None,
         vpc_id: str = None,
     ):
+        # The configurations of connection draining.
         self.connection_drain_config = connection_drain_config
+        # The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
         self.create_time = create_time
+        # The configuration of health checks.
         self.health_check_config = health_check_config
+        # The backend protocol. Valid values:
+        # 
+        # *   **GENEVE**.
         self.protocol = protocol
+        # The IDs of the GWLB instances that are associated with the server group.
         self.related_load_balancer_ids = related_load_balancer_ids
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The scheduling algorithm. Valid values:
+        # 
+        # *   **5TCH**: indicates consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        # *   **3TCH**: indicates consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        # *   **2TCH**: indicates consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
         self.scheduler = scheduler
+        # The number of server groups.
         self.server_count = server_count
+        self.server_failover_mode = server_failover_mode
+        # The server group ID.
         self.server_group_id = server_group_id
+        # The server group name.
         self.server_group_name = server_group_name
+        # The status of the server group. Valid values:
+        # 
+        # *   **Creating**\
+        # *   **Available**\
+        # *   **Configuring**\
         self.server_group_status = server_group_status
+        # The server group type. Valid values:
+        # 
+        # *   **Instance**: allows you to specify servers of the **Ecs**, **Eni**, or **Eci** type.
+        # *   **Ip**: allows you to add servers of by specifying IP addresses.
         self.server_group_type = server_group_type
+        # The tags.
         self.tags = tags
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -3624,6 +4246,8 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
             result['Scheduler'] = self.scheduler
         if self.server_count is not None:
             result['ServerCount'] = self.server_count
+        if self.server_failover_mode is not None:
+            result['ServerFailoverMode'] = self.server_failover_mode
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
         if self.server_group_name is not None:
@@ -3660,6 +4284,8 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
             self.scheduler = m.get('Scheduler')
         if m.get('ServerCount') is not None:
             self.server_count = m.get('ServerCount')
+        if m.get('ServerFailoverMode') is not None:
+            self.server_failover_mode = m.get('ServerFailoverMode')
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
         if m.get('ServerGroupName') is not None:
@@ -3687,10 +4313,20 @@ class ListServerGroupsResponseBody(TeaModel):
         server_groups: List[ListServerGroupsResponseBodyServerGroups] = None,
         total_count: int = None,
     ):
+        # The number of entries per page.
+        # 
+        # Valid values: 1 to 1000.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The configurations of the server group.
         self.server_groups = server_groups
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3784,7 +4420,9 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -3820,11 +4458,24 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # The maximum number of results to be returned from a single query when the NextToken parameter is used in the query. Valid values: 1 to 1000. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The resource IDs. You can specify at most 50 resource IDs in each call.
         self.resource_id = resource_id
+        # The type of resource. Valid values:
+        # 
+        # *   **loadbalancer**: Gateway Load Balancer (GWLB) instance
+        # *   **listener**: listener
+        # *   **servergroup**: server group
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tags. You can specify at most 20 tags in each call.
         self.tag = tag
 
     def validate(self):
@@ -3879,9 +4530,17 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource type. Valid values:
+        # 
+        # *   **loadbalancer**: GWLB instance
+        # *   **listener**: listener
+        # *   **servergroup**: server group
         self.resource_type = resource_type
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -3923,8 +4582,14 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
     ):
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -4013,12 +4678,30 @@ class MoveResourceGroupRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The ID of the resource group to which you want to move the resource.
+        # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
+        # The resource ID.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The type of resource. Valid values:
+        # 
+        # *   **loadbalancer**: Gateway Load Balancer (GWLB) instance
+        # *   **servergroup**: server group
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 
@@ -4063,6 +4746,7 @@ class MoveResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4134,10 +4818,26 @@ class RemoveServersFromServerGroupRequestServers(TeaModel):
         server_ip: str = None,
         server_type: str = None,
     ):
+        # The port that is used by the backend server. Valid values:
+        # 
+        # *   **6081**\
         self.port = port
+        # The backend server ID.
+        # 
+        # *   If the server group is of the **Instance** type, set this parameter to the IDs of servers of the **Ecs**, **Eni**, or **Eci** type.
+        # *   If the server group is of the **Ip** type, set ServerId to IP addresses.
+        # 
         # This parameter is required.
         self.server_id = server_id
+        # The IP address of the backend server.
         self.server_ip = server_ip
+        # The type of the backend server. Valid values:
+        # 
+        # *   **Ecs**: Elastic Compute Service (ECS) instance
+        # *   **Eni**: elastic network interface (ENI)
+        # *   **Eci**: elastic container instance
+        # *   **Ip**: IP address
+        # 
         # This parameter is required.
         self.server_type = server_type
 
@@ -4181,10 +4881,25 @@ class RemoveServersFromServerGroupRequest(TeaModel):
         server_group_id: str = None,
         servers: List[RemoveServersFromServerGroupRequestServers] = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The server group ID.
+        # 
         # This parameter is required.
         self.server_group_id = server_group_id
+        # The backend servers that you want to remove.
+        # 
+        # > You can remove at most 200 backend servers in each call.
+        # 
         # This parameter is required.
         self.servers = servers
 
@@ -4233,6 +4948,7 @@ class RemoveServersFromServerGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4302,8 +5018,12 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. The tag key cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
+        # 
         # This parameter is required.
         self.key = key
+        # The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
+        # 
         # This parameter is required.
         self.value = value
 
@@ -4340,12 +5060,27 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The resource IDs. You can specify at most 50 resource IDs in each call.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The type of resource. Valid values:
+        # 
+        # *   **loadbalancer**: Gateway Load Balancer (GWLB) instance
+        # *   **listener**: listener
+        # *   **servergroup**: server group
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tags. You can specify at most 20 tags in each call.
+        # 
         # This parameter is required.
         self.tag = tag
 
@@ -4398,6 +5133,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4471,13 +5207,31 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to remove all tags from the specified resource. This parameter is ignored if the TagKey parameter is specified. Valid values:
+        # 
+        # *   **true**: removes all tags from the specified resource.
+        # *   **false**: does not remove all tags from the specified resource. This is the default value.
         self.all = all
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The resource IDs. You can specify at most 50 resource IDs in each call.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The type of resource. Valid values:
+        # 
+        # *   **loadbalancer**: Gateway Load Balancer (GWLB) instance
+        # *   **listener**: listener
+        # *   **servergroup**: server group
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The keys of the tags that you want to remove. You can remove at most 20 tags in each call.
         self.tag_key = tag_key
 
     def validate(self):
@@ -4525,6 +5279,7 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4597,11 +5352,22 @@ class UpdateListenerAttributeRequest(TeaModel):
         listener_id: str = None,
         server_group_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The listener description.
+        # 
+        # The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
         self.listener_description = listener_description
+        # The listener ID.
+        # 
         # This parameter is required.
         self.listener_id = listener_id
+        # The server group ID.
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -4645,6 +5411,7 @@ class UpdateListenerAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4715,12 +5482,28 @@ class UpdateLoadBalancerAttributeRequest(TeaModel):
         dry_run: bool = None,
         load_balancer_id: str = None,
         load_balancer_name: str = None,
+        traffic_mode: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The GWLB instance ID.
+        # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
+        # The GWLB instance name.
+        # 
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         self.load_balancer_name = load_balancer_name
+        self.traffic_mode = traffic_mode
 
     def validate(self):
         pass
@@ -4739,6 +5522,8 @@ class UpdateLoadBalancerAttributeRequest(TeaModel):
             result['LoadBalancerId'] = self.load_balancer_id
         if self.load_balancer_name is not None:
             result['LoadBalancerName'] = self.load_balancer_name
+        if self.traffic_mode is not None:
+            result['TrafficMode'] = self.traffic_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -4751,6 +5536,8 @@ class UpdateLoadBalancerAttributeRequest(TeaModel):
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('LoadBalancerName') is not None:
             self.load_balancer_name = m.get('LoadBalancerName')
+        if m.get('TrafficMode') is not None:
+            self.traffic_mode = m.get('TrafficMode')
         return self
 
 
@@ -4759,6 +5546,7 @@ class UpdateLoadBalancerAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4828,8 +5616,12 @@ class UpdateLoadBalancerZonesRequestZoneMappings(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
+        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
+        # The zone ID. You can call the DescribeZones operation to query the most recent zone list.
+        # 
         # This parameter is required.
         self.zone_id = zone_id
 
@@ -4865,10 +5657,23 @@ class UpdateLoadBalancerZonesRequest(TeaModel):
         load_balancer_id: str = None,
         zone_mappings: List[UpdateLoadBalancerZonesRequestZoneMappings] = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The GWLB instance ID.
+        # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
+        # The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones.
+        # 
         # This parameter is required.
         self.zone_mappings = zone_mappings
 
@@ -4917,6 +5722,7 @@ class UpdateLoadBalancerZonesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4986,7 +5792,16 @@ class UpdateServerGroupAttributeRequestConnectionDrainConfig(TeaModel):
         connection_drain_enabled: bool = None,
         connection_drain_timeout: int = None,
     ):
+        # Specifies whether to enable connection draining. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.connection_drain_enabled = connection_drain_enabled
+        # The timeout period of connection draining.
+        # 
+        # Unit: seconds
+        # 
+        # Valid values: 1 to 3600.
         self.connection_drain_timeout = connection_drain_timeout
 
     def validate(self):
@@ -5027,15 +5842,54 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
     ):
+        # The backend server port that is used by health checks.
+        # 
+        # Valid values: 1 to 65535.
         self.health_check_connect_port = health_check_connect_port
+        # The maximum timeout period of a health check response.
+        # 
+        # Unit: seconds
+        # 
+        # Valid values: **1** to **300**.
         self.health_check_connect_timeout = health_check_connect_timeout
+        # The domain name that is used for health checks. Valid values:
+        # 
+        # *   **$SERVER_IP**: the internal IP address of a backend server.
+        # *   **domain**: a domain name. The domain name must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), and periods (.).
+        # 
+        # > This parameter takes effect only if you set **HealthCheckProtocol** to **HTTP**.
         self.health_check_domain = health_check_domain
+        # Specifies whether to enable the health check feature. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.health_check_enabled = health_check_enabled
+        # The HTTP status codes that the system returns for health checks.
         self.health_check_http_code = health_check_http_code
+        # The interval at which health checks are performed.
+        # 
+        # Unit: seconds
+        # 
+        # Valid values: **1** to **50**.
         self.health_check_interval = health_check_interval
+        # The URL that is used for health checks.
+        # 
+        # The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: ` - / . % ? # &  `The URL must start with a forward slash (/).
+        # 
+        # > This parameter takes effect only if you set **HealthCheckProtocol** to **HTTP**.
         self.health_check_path = health_check_path
+        # The protocol that is used for health checks. Valid values:
+        # 
+        # *   **TCP**: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
+        # *   **HTTP**: HTTP health checks simulate a process that uses a web browser to access resources by sending HEAD or GET requests to an instance. These requests are used to check whether the instance is healthy.
         self.health_check_protocol = health_check_protocol
+        # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail** to **success**.
+        # 
+        # Valid values: **2** to **10**.
         self.healthy_threshold = healthy_threshold
+        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success** to **fail**.
+        # 
+        # Valid values: **2** to **10**.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -5102,16 +5956,39 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         dry_run: bool = None,
         health_check_config: UpdateServerGroupAttributeRequestHealthCheckConfig = None,
         scheduler: str = None,
+        server_failover_mode: str = None,
         server_group_id: str = None,
         server_group_name: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # The configurations of connection draining.
         self.connection_drain_config = connection_drain_config
+        # Specifies whether to perform only a dry run without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The configurations of the health check feature.
         self.health_check_config = health_check_config
+        # The scheduling algorithm. Valid values:
+        # 
+        # *   **5TCH**: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        # *   **3TCH**: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        # *   **2TCH**: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
         self.scheduler = scheduler
+        self.server_failover_mode = server_failover_mode
+        # The server group ID.
+        # 
         # This parameter is required.
         self.server_group_id = server_group_id
+        # The server group name.
+        # 
+        # The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         self.server_group_name = server_group_name
 
     def validate(self):
@@ -5136,6 +6013,8 @@ class UpdateServerGroupAttributeRequest(TeaModel):
             result['HealthCheckConfig'] = self.health_check_config.to_map()
         if self.scheduler is not None:
             result['Scheduler'] = self.scheduler
+        if self.server_failover_mode is not None:
+            result['ServerFailoverMode'] = self.server_failover_mode
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
         if self.server_group_name is not None:
@@ -5156,6 +6035,8 @@ class UpdateServerGroupAttributeRequest(TeaModel):
             self.health_check_config = temp_model.from_map(m['HealthCheckConfig'])
         if m.get('Scheduler') is not None:
             self.scheduler = m.get('Scheduler')
+        if m.get('ServerFailoverMode') is not None:
+            self.server_failover_mode = m.get('ServerFailoverMode')
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
         if m.get('ServerGroupName') is not None:
@@ -5168,6 +6049,7 @@ class UpdateServerGroupAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
