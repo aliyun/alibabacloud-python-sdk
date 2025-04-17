@@ -1,3 +1,9 @@
+2025-04-17 Version: 7.0.6
+- Update API GetService: add response parameters Body.SupportContacts.
+- Update API GetSupplierInformation: add response parameters Body.SupportContacts.
+- Update API UpdateSupplierInformation: add request parameters SupportContacts.
+
+
 2025-04-07 Version: 7.0.5
 - Update API GetService: add response parameters Body.BuildParameters.
 

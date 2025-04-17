@@ -6135,6 +6135,39 @@ class GetServiceResponseBodyStatistic(TeaModel):
         return self
 
 
+class GetServiceResponseBodySupportContacts(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        value: str = None,
+    ):
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetServiceResponseBodyTags(TeaModel):
     def __init__(
         self,
@@ -6216,6 +6249,7 @@ class GetServiceResponseBody(TeaModel):
         status_detail: str = None,
         supplier_name: str = None,
         supplier_url: str = None,
+        support_contacts: List[GetServiceResponseBodySupportContacts] = None,
         tags: List[GetServiceResponseBodyTags] = None,
         tenant_type: str = None,
         test_status: str = None,
@@ -6362,6 +6396,7 @@ class GetServiceResponseBody(TeaModel):
         self.supplier_name = supplier_name
         # The URL of the service provider.
         self.supplier_url = supplier_url
+        self.support_contacts = support_contacts
         # The service tags.
         self.tags = tags
         # The type of the tenant. Valid values:
@@ -6413,6 +6448,10 @@ class GetServiceResponseBody(TeaModel):
                     k.validate()
         if self.statistic:
             self.statistic.validate()
+        if self.support_contacts:
+            for k in self.support_contacts:
+                if k:
+                    k.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -6514,6 +6553,10 @@ class GetServiceResponseBody(TeaModel):
             result['SupplierName'] = self.supplier_name
         if self.supplier_url is not None:
             result['SupplierUrl'] = self.supplier_url
+        result['SupportContacts'] = []
+        if self.support_contacts is not None:
+            for k in self.support_contacts:
+                result['SupportContacts'].append(k.to_map() if k else None)
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -6637,6 +6680,11 @@ class GetServiceResponseBody(TeaModel):
             self.supplier_name = m.get('SupplierName')
         if m.get('SupplierUrl') is not None:
             self.supplier_url = m.get('SupplierUrl')
+        self.support_contacts = []
+        if m.get('SupportContacts') is not None:
+            for k in m.get('SupportContacts'):
+                temp_model = GetServiceResponseBodySupportContacts()
+                self.support_contacts.append(temp_model.from_map(k))
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -9274,6 +9322,39 @@ class GetSupplierInformationResponseBodyDeliverySettings(TeaModel):
         return self
 
 
+class GetSupplierInformationResponseBodySupportContacts(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        value: str = None,
+    ):
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetSupplierInformationResponseBody(TeaModel):
     def __init__(
         self,
@@ -9287,6 +9368,7 @@ class GetSupplierInformationResponseBody(TeaModel):
         supplier_logo: str = None,
         supplier_name: str = None,
         supplier_url: str = None,
+        support_contacts: List[GetSupplierInformationResponseBodySupportContacts] = None,
     ):
         # Acr container namespace
         self.acr_namespace = acr_namespace
@@ -9308,10 +9390,15 @@ class GetSupplierInformationResponseBody(TeaModel):
         self.supplier_name = supplier_name
         # The URL of the service provider.
         self.supplier_url = supplier_url
+        self.support_contacts = support_contacts
 
     def validate(self):
         if self.delivery_settings:
             self.delivery_settings.validate()
+        if self.support_contacts:
+            for k in self.support_contacts:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9339,6 +9426,10 @@ class GetSupplierInformationResponseBody(TeaModel):
             result['SupplierName'] = self.supplier_name
         if self.supplier_url is not None:
             result['SupplierUrl'] = self.supplier_url
+        result['SupportContacts'] = []
+        if self.support_contacts is not None:
+            for k in self.support_contacts:
+                result['SupportContacts'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -9364,6 +9455,11 @@ class GetSupplierInformationResponseBody(TeaModel):
             self.supplier_name = m.get('SupplierName')
         if m.get('SupplierUrl') is not None:
             self.supplier_url = m.get('SupplierUrl')
+        self.support_contacts = []
+        if m.get('SupportContacts') is not None:
+            for k in m.get('SupportContacts'):
+                temp_model = GetSupplierInformationResponseBodySupportContacts()
+                self.support_contacts.append(temp_model.from_map(k))
         return self
 
 
@@ -21289,6 +21385,39 @@ class UpdateSupplierInformationRequestDeliverySettings(TeaModel):
         return self
 
 
+class UpdateSupplierInformationRequestSupportContacts(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        value: str = None,
+    ):
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class UpdateSupplierInformationRequest(TeaModel):
     def __init__(
         self,
@@ -21299,6 +21428,7 @@ class UpdateSupplierInformationRequest(TeaModel):
         supplier_desc: str = None,
         supplier_logo: str = None,
         supplier_url: str = None,
+        support_contacts: List[UpdateSupplierInformationRequestSupportContacts] = None,
     ):
         # The delivery settings.
         self.delivery_settings = delivery_settings
@@ -21316,10 +21446,15 @@ class UpdateSupplierInformationRequest(TeaModel):
         self.supplier_logo = supplier_logo
         # The URL of the service provider.
         self.supplier_url = supplier_url
+        self.support_contacts = support_contacts
 
     def validate(self):
         if self.delivery_settings:
             self.delivery_settings.validate()
+        if self.support_contacts:
+            for k in self.support_contacts:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -21341,6 +21476,10 @@ class UpdateSupplierInformationRequest(TeaModel):
             result['SupplierLogo'] = self.supplier_logo
         if self.supplier_url is not None:
             result['SupplierUrl'] = self.supplier_url
+        result['SupportContacts'] = []
+        if self.support_contacts is not None:
+            for k in self.support_contacts:
+                result['SupportContacts'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -21360,6 +21499,11 @@ class UpdateSupplierInformationRequest(TeaModel):
             self.supplier_logo = m.get('SupplierLogo')
         if m.get('SupplierUrl') is not None:
             self.supplier_url = m.get('SupplierUrl')
+        self.support_contacts = []
+        if m.get('SupportContacts') is not None:
+            for k in m.get('SupportContacts'):
+                temp_model = UpdateSupplierInformationRequestSupportContacts()
+                self.support_contacts.append(temp_model.from_map(k))
         return self
 
 
