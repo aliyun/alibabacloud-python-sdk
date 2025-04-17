@@ -4169,7 +4169,7 @@ class CreateJobRequest(TeaModel):
         # 
         # This parameter is required.
         self.job_specs = job_specs
-        # The job type. The value is case-sensitive. Valid values:
+        # The job type. The value is case-sensitive. The following job types are supported:
         # 
         # *   TFJob
         # *   PyTorchJob
@@ -4203,7 +4203,7 @@ class CreateJobRequest(TeaModel):
         # The ID of the resource group. This parameter is optional.
         # 
         # *   If you leave this parameter empty, the job is submitted to a public resource group.
-        # *   If a resource quota is associated with the current workspace, you can specify the resource quota ID. For more information about how to query the resource quota ID, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
+        # *   If a resource quota is bound to the current workspace, you can specify the resource quota ID. For more information about how to query the resource quota ID, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
         self.resource_id = resource_id
         # The additional parameter configurations of the job.
         self.settings = settings
@@ -6430,6 +6430,113 @@ class GetPodLogsResponse(TeaModel):
         return self
 
 
+class GetRayDashboardRequest(TeaModel):
+    def __init__(
+        self,
+        is_shared: bool = None,
+        token: str = None,
+    ):
+        self.is_shared = is_shared
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_shared is not None:
+            result['isShared'] = self.is_shared
+        if self.token is not None:
+            result['token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('isShared') is not None:
+            self.is_shared = m.get('isShared')
+        if m.get('token') is not None:
+            self.token = m.get('token')
+        return self
+
+
+class GetRayDashboardResponseBody(TeaModel):
+    def __init__(
+        self,
+        metrics_enabled: str = None,
+        url: str = None,
+    ):
+        self.metrics_enabled = metrics_enabled
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metrics_enabled is not None:
+            result['metricsEnabled'] = self.metrics_enabled
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('metricsEnabled') is not None:
+            self.metrics_enabled = m.get('metricsEnabled')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class GetRayDashboardResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRayDashboardResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRayDashboardResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTensorboardRequest(TeaModel):
     def __init__(
         self,
@@ -7237,7 +7344,7 @@ class ListJobsRequest(TeaModel):
         self.from_all_workspaces = from_all_workspaces
         # The job ID. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. The default value null indicates any job ID.
         self.job_id = job_id
-        # The job type. You can query any job type. The default value null indicates any job type. Valid values:
+        # The job type. The default value null indicates any type. Valid values:
         # 
         # *   TFJob
         # *   PyTorchJob
@@ -7259,7 +7366,7 @@ class ListJobsRequest(TeaModel):
         self.oversold_info = oversold_info
         # The number of the page to return for the current query. Minimum value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of jobs per page.
         self.page_size = page_size
         self.payment_type = payment_type
         # The specific pipeline ID used to filter jobs.
@@ -7270,7 +7377,7 @@ class ListJobsRequest(TeaModel):
         self.resource_quota_name = resource_quota_name
         # Specifies whether to query only the jobs submitted by the current user.
         self.show_own = show_own
-        # The sorting field in the returned job list. Valid values:
+        # The sorting field. Valid values:
         # 
         # *   DisplayName
         # *   JobType
@@ -7462,7 +7569,7 @@ class ListJobsShrinkRequest(TeaModel):
         self.from_all_workspaces = from_all_workspaces
         # The job ID. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. The default value null indicates any job ID.
         self.job_id = job_id
-        # The job type. You can query any job type. The default value null indicates any job type. Valid values:
+        # The job type. The default value null indicates any type. Valid values:
         # 
         # *   TFJob
         # *   PyTorchJob
@@ -7484,7 +7591,7 @@ class ListJobsShrinkRequest(TeaModel):
         self.oversold_info = oversold_info
         # The number of the page to return for the current query. Minimum value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of jobs per page.
         self.page_size = page_size
         self.payment_type = payment_type
         # The specific pipeline ID used to filter jobs.
@@ -7495,7 +7602,7 @@ class ListJobsShrinkRequest(TeaModel):
         self.resource_quota_name = resource_quota_name
         # Specifies whether to query only the jobs submitted by the current user.
         self.show_own = show_own
-        # The sorting field in the returned job list. Valid values:
+        # The sorting field. Valid values:
         # 
         # *   DisplayName
         # *   JobType
@@ -8018,8 +8125,7 @@ class StartTensorboardRequest(TeaModel):
         self,
         workspace_id: str = None,
     ):
-        # The workspace ID. 
-        # <props="china">For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
