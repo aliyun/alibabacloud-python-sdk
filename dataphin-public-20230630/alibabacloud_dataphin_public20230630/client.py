@@ -7533,6 +7533,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_alert_notifications_with_options_async(request, runtime)
 
+    def list_api_by_app_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListApiByAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListApiByAppResponse:
+        """
+        @summary 根据app查询api列表
+        
+        @param tmp_req: ListApiByAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApiByAppResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListApiByAppShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.page_query):
+            request.page_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.page_query, 'PageQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.page_query_shrink):
+            body['PageQuery'] = request.page_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListApiByApp',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListApiByAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_api_by_app_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListApiByAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListApiByAppResponse:
+        """
+        @summary 根据app查询api列表
+        
+        @param tmp_req: ListApiByAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApiByAppResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListApiByAppShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.page_query):
+            request.page_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.page_query, 'PageQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.page_query_shrink):
+            body['PageQuery'] = request.page_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListApiByApp',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListApiByAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_api_by_app(
+        self,
+        request: dataphin_public_20230630_models.ListApiByAppRequest,
+    ) -> dataphin_public_20230630_models.ListApiByAppResponse:
+        """
+        @summary 根据app查询api列表
+        
+        @param request: ListApiByAppRequest
+        @return: ListApiByAppResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_api_by_app_with_options(request, runtime)
+
+    async def list_api_by_app_async(
+        self,
+        request: dataphin_public_20230630_models.ListApiByAppRequest,
+    ) -> dataphin_public_20230630_models.ListApiByAppResponse:
+        """
+        @summary 根据app查询api列表
+        
+        @param request: ListApiByAppRequest
+        @return: ListApiByAppResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_api_by_app_with_options_async(request, runtime)
+
     def list_authorized_data_service_api_details_with_options(
         self,
         tmp_req: dataphin_public_20230630_models.ListAuthorizedDataServiceApiDetailsRequest,

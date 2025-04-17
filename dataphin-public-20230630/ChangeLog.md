@@ -1,3 +1,7 @@
+2025-04-17 Version: 1.3.0
+- Support API ListApiByApp.
+
+
 2025-04-16 Version: 1.2.1
 - Generated python 2023-06-30 for dataphin-public.
 
