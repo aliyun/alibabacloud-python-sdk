@@ -41729,6 +41729,7 @@ class SubmitEnterpriseVocAnalysisTaskRequestFilterTags(TeaModel):
 class SubmitEnterpriseVocAnalysisTaskRequest(TeaModel):
     def __init__(
         self,
+        api_key: str = None,
         content_tags: List[SubmitEnterpriseVocAnalysisTaskRequestContentTags] = None,
         contents: List[SubmitEnterpriseVocAnalysisTaskRequestContents] = None,
         file_key: str = None,
@@ -41740,6 +41741,7 @@ class SubmitEnterpriseVocAnalysisTaskRequest(TeaModel):
         task_type: str = None,
         workspace_id: str = None,
     ):
+        self.api_key = api_key
         # This parameter is required.
         self.content_tags = content_tags
         self.contents = contents
@@ -41774,6 +41776,8 @@ class SubmitEnterpriseVocAnalysisTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
         result['ContentTags'] = []
         if self.content_tags is not None:
             for k in self.content_tags:
@@ -41804,6 +41808,8 @@ class SubmitEnterpriseVocAnalysisTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
         self.content_tags = []
         if m.get('ContentTags') is not None:
             for k in m.get('ContentTags'):
@@ -41839,6 +41845,7 @@ class SubmitEnterpriseVocAnalysisTaskRequest(TeaModel):
 class SubmitEnterpriseVocAnalysisTaskShrinkRequest(TeaModel):
     def __init__(
         self,
+        api_key: str = None,
         content_tags_shrink: str = None,
         contents_shrink: str = None,
         file_key: str = None,
@@ -41850,6 +41857,7 @@ class SubmitEnterpriseVocAnalysisTaskShrinkRequest(TeaModel):
         task_type: str = None,
         workspace_id: str = None,
     ):
+        self.api_key = api_key
         # This parameter is required.
         self.content_tags_shrink = content_tags_shrink
         self.contents_shrink = contents_shrink
@@ -41873,6 +41881,8 @@ class SubmitEnterpriseVocAnalysisTaskShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
         if self.content_tags_shrink is not None:
             result['ContentTags'] = self.content_tags_shrink
         if self.contents_shrink is not None:
@@ -41897,6 +41907,8 @@ class SubmitEnterpriseVocAnalysisTaskShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
         if m.get('ContentTags') is not None:
             self.content_tags_shrink = m.get('ContentTags')
         if m.get('Contents') is not None:

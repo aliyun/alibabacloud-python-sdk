@@ -13943,6 +13943,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.filter_tags):
             request.filter_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_tags, 'FilterTags', 'json')
         body = {}
+        if not UtilClient.is_unset(request.api_key):
+            body['ApiKey'] = request.api_key
         if not UtilClient.is_unset(request.content_tags_shrink):
             body['ContentTags'] = request.content_tags_shrink
         if not UtilClient.is_unset(request.contents_shrink):
@@ -14004,6 +14006,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.filter_tags):
             request.filter_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_tags, 'FilterTags', 'json')
         body = {}
+        if not UtilClient.is_unset(request.api_key):
+            body['ApiKey'] = request.api_key
         if not UtilClient.is_unset(request.content_tags_shrink):
             body['ContentTags'] = request.content_tags_shrink
         if not UtilClient.is_unset(request.contents_shrink):
