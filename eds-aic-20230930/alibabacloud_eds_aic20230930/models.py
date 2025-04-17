@@ -4647,6 +4647,7 @@ class DescribeAndroidInstancesRequest(TeaModel):
         self,
         android_instance_ids: List[str] = None,
         android_instance_name: str = None,
+        authorized_user_id: str = None,
         biz_region_id: str = None,
         charge_type: str = None,
         instance_group_id: str = None,
@@ -4666,6 +4667,7 @@ class DescribeAndroidInstancesRequest(TeaModel):
         self.android_instance_ids = android_instance_ids
         # The name of the instance.
         self.android_instance_name = android_instance_name
+        self.authorized_user_id = authorized_user_id
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) operation to query the regions where Cloud Phone is supported.
         self.biz_region_id = biz_region_id
         # The billing method.
@@ -4738,6 +4740,8 @@ class DescribeAndroidInstancesRequest(TeaModel):
             result['AndroidInstanceIds'] = self.android_instance_ids
         if self.android_instance_name is not None:
             result['AndroidInstanceName'] = self.android_instance_name
+        if self.authorized_user_id is not None:
+            result['AuthorizedUserId'] = self.authorized_user_id
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
         if self.charge_type is not None:
@@ -4776,6 +4780,8 @@ class DescribeAndroidInstancesRequest(TeaModel):
             self.android_instance_ids = m.get('AndroidInstanceIds')
         if m.get('AndroidInstanceName') is not None:
             self.android_instance_name = m.get('AndroidInstanceName')
+        if m.get('AuthorizedUserId') is not None:
+            self.authorized_user_id = m.get('AuthorizedUserId')
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
         if m.get('ChargeType') is not None:
@@ -9452,6 +9458,39 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy(TeaModel):
         return self
 
 
+class ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources(TeaModel):
+    def __init__(
+        self,
+        android_instance_group_ids: List[str] = None,
+        cloud_phone_matrix_ids: List[str] = None,
+    ):
+        self.android_instance_group_ids = android_instance_group_ids
+        self.cloud_phone_matrix_ids = cloud_phone_matrix_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.android_instance_group_ids is not None:
+            result['AndroidInstanceGroupIds'] = self.android_instance_group_ids
+        if self.cloud_phone_matrix_ids is not None:
+            result['CloudPhoneMatrixIds'] = self.cloud_phone_matrix_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidInstanceGroupIds') is not None:
+            self.android_instance_group_ids = m.get('AndroidInstanceGroupIds')
+        if m.get('CloudPhoneMatrixIds') is not None:
+            self.cloud_phone_matrix_ids = m.get('CloudPhoneMatrixIds')
+        return self
+
+
 class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
     def __init__(
         self,
@@ -9464,6 +9503,7 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
         net_redirect_policy: ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy = None,
         policy_group_id: str = None,
         policy_group_name: str = None,
+        policy_related_resources: ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources = None,
         session_resolution_height: int = None,
         session_resolution_width: int = None,
     ):
@@ -9514,6 +9554,7 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
         self.policy_group_id = policy_group_id
         # The name of the policy.
         self.policy_group_name = policy_group_name
+        self.policy_related_resources = policy_related_resources
         # The height of the resolution.
         self.session_resolution_height = session_resolution_height
         # The width of the resolution.
@@ -9522,6 +9563,8 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
     def validate(self):
         if self.net_redirect_policy:
             self.net_redirect_policy.validate()
+        if self.policy_related_resources:
+            self.policy_related_resources.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9547,6 +9590,8 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
             result['PolicyGroupId'] = self.policy_group_id
         if self.policy_group_name is not None:
             result['PolicyGroupName'] = self.policy_group_name
+        if self.policy_related_resources is not None:
+            result['PolicyRelatedResources'] = self.policy_related_resources.to_map()
         if self.session_resolution_height is not None:
             result['SessionResolutionHeight'] = self.session_resolution_height
         if self.session_resolution_width is not None:
@@ -9574,6 +9619,9 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
             self.policy_group_id = m.get('PolicyGroupId')
         if m.get('PolicyGroupName') is not None:
             self.policy_group_name = m.get('PolicyGroupName')
+        if m.get('PolicyRelatedResources') is not None:
+            temp_model = ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources()
+            self.policy_related_resources = temp_model.from_map(m['PolicyRelatedResources'])
         if m.get('SessionResolutionHeight') is not None:
             self.session_resolution_height = m.get('SessionResolutionHeight')
         if m.get('SessionResolutionWidth') is not None:

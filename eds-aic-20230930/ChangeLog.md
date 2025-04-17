@@ -1,3 +1,8 @@
+2025-04-17 Version: 4.5.4
+- Update API DescribeAndroidInstances: add request parameters AuthorizedUserId.
+- Update API ListPolicyGroups: add response parameters Body.PolicyGroupModel.$.PolicyRelatedResources.
+
+
 2025-04-16 Version: 4.5.3
 - Update API ModifyPolicyGroup: add request parameters NetRedirectPolicy.Rules.
 
