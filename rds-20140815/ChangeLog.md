@@ -1,3 +1,16 @@
+2025-04-17 Version: 11.2.0
+- Support API SwitchOverMajorVersionUpgrade.
+- Update API DescribeUpgradeMajorVersionPrecheckTask: add response parameters Body.Items.$.UpgradeMode.
+- Update API DescribeUpgradeMajorVersionTasks: add response parameters Body.Items.$.cutOver.
+- Update API DescribeUpgradeMajorVersionTasks: add response parameters Body.Items.$.totalLogicRepDelayTime.
+- Update API DescribeUpgradeMajorVersionTasks: add response parameters Body.Items.$.totalLogicRepLatencyMB.
+- Update API DescribeUpgradeMajorVersionTasks: add response parameters Body.Items.$.zeroDownTimeConnectionString.
+- Update API DescribeUpgradeMajorVersionTasks: add response parameters Body.Items.$.zeroDownTimePort.
+- Update API ModifyRCInstance: add request parameters RebootTime.
+- Update API ModifyRCInstance: add request parameters RebootWhenFinished.
+- Update API UpgradeDBInstanceMajorVersionPrecheck: add request parameters UpgradeMode.
+
+
 2025-04-10 Version: 11.1.1
 - Update API DescribeDBProxyPerformance: add response parameters Body.PerformanceKeys.$.Node.
 

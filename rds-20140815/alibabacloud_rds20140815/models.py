@@ -5162,7 +5162,7 @@ class CreateDBInstanceRequestServerlessConfig(TeaModel):
         # The maximum number of RDS Capacity Units (RCUs). Valid values:
         # 
         # *   Serverless ApsaraDB RDS for MySQL instances: **1 to 32**\
-        # *   Serverless ApsaraDB RDS for SQL Server instances: **2 to 8**\
+        # *   Serverless ApsaraDB RDS for SQL Server instances: **2 to 16**\
         # *   Serverless ApsaraDB RDS for PostgreSQL instances: **1 to 14**\
         # 
         # >  The value of this parameter must be greater than or equal to the value of the **MinCapacity** parameter and can be set only to an **integer**.
@@ -5170,7 +5170,7 @@ class CreateDBInstanceRequestServerlessConfig(TeaModel):
         # The minimum number of RCUs. Valid values:
         # 
         # *   Serverless ApsaraDB RDS for MySQL instances: **0.5 to 32**.
-        # *   Serverless ApsaraDB RDS for SQL Server instances: **2 to 8**. Only integers are supported.
+        # *   Serverless ApsaraDB RDS for SQL Server instances: **2 to 16**. Only integers are supported.
         # *   Serverless ApsaraDB RDS for PostgreSQL instances: **0.5 to 14**\
         # 
         # >  The value of this parameter must be less than or equal to the value of the **MaxCapacity** parameter.
@@ -5355,10 +5355,12 @@ class CreateDBInstanceRequest(TeaModel):
         # > *   The auto-renewal cycle is one month for a monthly subscription.
         # > *   The auto-renewal cycle is one year for a yearly subscription.
         self.auto_renew = auto_renew
-        # Specifies whether to use a coupon. Valid values:
+        # Specifies whether to use a coupon. Default value: false. Valid values:
         # 
-        # *   **true**: uses a coupon.
-        # *   **false** (default): does not use a coupon.
+        # *   **true**\
+        # *   **false**\
+        # 
+        # >  If you downgrade the specifications of an instance after you use coupons, the used coupons cannot be refunded.
         self.auto_use_coupon = auto_use_coupon
         # The configuration of the Babelfish feature for the instance that runs PostgreSQL.
         # 
@@ -5394,15 +5396,15 @@ class CreateDBInstanceRequest(TeaModel):
         #     *   **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server
         #     *   **Finance**: RDS Basic Edition for serverless instances
         # 
-        # *   Serverless instance
+        # *   Serverless RDS instance
         # 
         #     *   **serverless_basic**: RDS Basic Edition for serverless instances. This edition is available only for instances that run MySQL and PostgreSQL.
         #     *   **serverless_standard**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run MySQL and PostgreSQL.
         #     *   **serverless_ha**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run SQL Server.
         # 
+        #     **\
         # 
-        # 
-        # > This parameter is required when you create a serverless instance.
+        #     **Note** This parameter is required if PayType is set to Serverless.
         self.category = category
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -5531,23 +5533,28 @@ class CreateDBInstanceRequest(TeaModel):
         self.engine = engine
         # The database engine version of the instance. Valid values:
         # 
-        # *   Regular instance
+        # *   Regular RDS instance
         # 
         #     *   Valid values when you set Engine to MySQL: **5.5**, **5.6**, **5.7**, and **8.0**\
         #     *   Valid values when you set Engine to SQLServer: **08r2_ent_ha** (cloud disks, discontinued), **2008r2** (local disks, discontinued), **2012** (SQL Server EE Basic), **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_ent_ha**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, and **2022_web**\
-        #     *   Valid values when you set Engine to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**, and **16.0**\
-        #     *   Valid value if you set Engine to MariaDB: **10.3**\
+        #     *   Valid values when you set Engine to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**, **16.0**, and **17.0**\
+        #     *   Valid values when you set Engine to MariaDB: **10.3** and **10.6**\
         # 
-        # *   Serverless instance
+        # *   Serverless RDS instance
         # 
         #     *   Valid values when you set Engine to MySQL: **5.7** and **8.0**\
         #     *   Valid values when you set Engine to SQLServer: **2016_std_sl**, **2017_std_sl**, and **2019_std_sl**\
-        #     *   Valid values when you set Engine to PostgreSQL: **14.0**, **15.0**, and **16.0**\
+        #     *   Valid values when you set Engine to PostgreSQL: **14.0**, **15.0**, **16.0**, and **17.0**\
         # 
-        # > *   ApsaraDB RDS for MariaDB does not support serverless instances.
-        # > *   RDS instances that run SQL Server: `_ent` specifies SQL Server EE (Always On), `_ent_ha` specifies SQL Server EE, `_std_ha` specifies SQL Server SE, and `_web` specifies SQL Server Web.
-        # > *   RDS instances that run SQL Server 2014 are not available for purchase on the international site (alibabacloud.com).
-        # > *   Babelfish is supported only for RDS instances that run PostgreSQL 15.
+        # > 
+        # 
+        # *   ApsaraDB RDS for MariaDB does not support serverless instances.
+        # 
+        # *   RDS instances that run SQL Server: `_ent` specifies SQL Server EE (Always On), `_ent_ha` specifies SQL Server EE, `_std_ha` specifies SQL Server SE, and `_web` specifies SQL Server Web.
+        # 
+        # *   RDS instances that run SQL Server 2014 are not available for purchase on the international site (alibabacloud.com).
+        # 
+        # *   Babelfish is supported only for RDS instances that run PostgreSQL 15.
         # 
         # This parameter is required.
         self.engine_version = engine_version
@@ -5573,8 +5580,8 @@ class CreateDBInstanceRequest(TeaModel):
         self.io_acceleration_enabled = io_acceleration_enabled
         # Specifies whether to enable the write optimization feature. Valid values:
         # 
-        # *   **optimized**: enables the feature.
-        # *   **none**: disables the feature.
+        # *   **optimized**\
+        # *   **none** (default)
         # 
         # >  For more information about the write optimization feature, see [Write optimization](https://help.aliyun.com/document_detail/2858761.html).
         self.optimized_writes = optimized_writes
@@ -5604,16 +5611,18 @@ class CreateDBInstanceRequest(TeaModel):
         self.private_ip_address = private_ip_address
         # The coupon code.
         self.promotion_code = promotion_code
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
-        # The Alibaba Cloud Resource Name (ARN) that is provided by your Alibaba Cloud account for RAM users. RAM users can use the ARN to connect ApsaraDB RDS to KMS. You can call the CheckCloudResourceAuthorized operation to query the ARN.
+        # The Alibaba Cloud Resource Name (ARN) that is provided by your Alibaba Cloud account for Resource Access Management (RAM) users. RAM users can use the ARN to connect to ApsaraDB RDS to Key Management Service (KMS). You can call the CheckCloudResourceAuthorized operation to query the ARN.
+        # 
+        # >  When you enable the encryption, you must specify the RoleARN.
         self.role_arn = role_arn
-        # The IP address whitelist of the instance. For more information, see [Use a database client or the CLI to connect to an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/43185.html). If the IP address whitelist contains more than one entry, separate the entries with commas (,). Each entry must be unique. The IP address whitelist can contain up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
+        # The IP address whitelist of the instance. For more information, see [Configure an IP address whitelist](https://help.aliyun.com/document_detail/43185.html). Separate multiple IP addresses or CIDR blocks with commas (,). You can add up to 1,000 IP addresses or CIDR blocks to the whitelist. The entries in the IP address whitelist must be in one of the following formats:
         # 
         # *   IP addresses, such as 10.10.XX.XX.
         # *   CIDR blocks, such as 10.10.XX.XX/24. In this example, 24 indicates that the prefix of each IP address in the IP address whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
@@ -6136,10 +6145,12 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # > *   The auto-renewal cycle is one month for a monthly subscription.
         # > *   The auto-renewal cycle is one year for a yearly subscription.
         self.auto_renew = auto_renew
-        # Specifies whether to use a coupon. Valid values:
+        # Specifies whether to use a coupon. Default value: false. Valid values:
         # 
-        # *   **true**: uses a coupon.
-        # *   **false** (default): does not use a coupon.
+        # *   **true**\
+        # *   **false**\
+        # 
+        # >  If you downgrade the specifications of an instance after you use coupons, the used coupons cannot be refunded.
         self.auto_use_coupon = auto_use_coupon
         # The configuration of the Babelfish feature for the instance that runs PostgreSQL.
         # 
@@ -6175,15 +6186,15 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         #     *   **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server
         #     *   **Finance**: RDS Basic Edition for serverless instances
         # 
-        # *   Serverless instance
+        # *   Serverless RDS instance
         # 
         #     *   **serverless_basic**: RDS Basic Edition for serverless instances. This edition is available only for instances that run MySQL and PostgreSQL.
         #     *   **serverless_standard**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run MySQL and PostgreSQL.
         #     *   **serverless_ha**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run SQL Server.
         # 
+        #     **\
         # 
-        # 
-        # > This parameter is required when you create a serverless instance.
+        #     **Note** This parameter is required if PayType is set to Serverless.
         self.category = category
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -6312,23 +6323,28 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.engine = engine
         # The database engine version of the instance. Valid values:
         # 
-        # *   Regular instance
+        # *   Regular RDS instance
         # 
         #     *   Valid values when you set Engine to MySQL: **5.5**, **5.6**, **5.7**, and **8.0**\
         #     *   Valid values when you set Engine to SQLServer: **08r2_ent_ha** (cloud disks, discontinued), **2008r2** (local disks, discontinued), **2012** (SQL Server EE Basic), **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_ent_ha**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, and **2022_web**\
-        #     *   Valid values when you set Engine to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**, and **16.0**\
-        #     *   Valid value if you set Engine to MariaDB: **10.3**\
+        #     *   Valid values when you set Engine to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**, **16.0**, and **17.0**\
+        #     *   Valid values when you set Engine to MariaDB: **10.3** and **10.6**\
         # 
-        # *   Serverless instance
+        # *   Serverless RDS instance
         # 
         #     *   Valid values when you set Engine to MySQL: **5.7** and **8.0**\
         #     *   Valid values when you set Engine to SQLServer: **2016_std_sl**, **2017_std_sl**, and **2019_std_sl**\
-        #     *   Valid values when you set Engine to PostgreSQL: **14.0**, **15.0**, and **16.0**\
+        #     *   Valid values when you set Engine to PostgreSQL: **14.0**, **15.0**, **16.0**, and **17.0**\
         # 
-        # > *   ApsaraDB RDS for MariaDB does not support serverless instances.
-        # > *   RDS instances that run SQL Server: `_ent` specifies SQL Server EE (Always On), `_ent_ha` specifies SQL Server EE, `_std_ha` specifies SQL Server SE, and `_web` specifies SQL Server Web.
-        # > *   RDS instances that run SQL Server 2014 are not available for purchase on the international site (alibabacloud.com).
-        # > *   Babelfish is supported only for RDS instances that run PostgreSQL 15.
+        # > 
+        # 
+        # *   ApsaraDB RDS for MariaDB does not support serverless instances.
+        # 
+        # *   RDS instances that run SQL Server: `_ent` specifies SQL Server EE (Always On), `_ent_ha` specifies SQL Server EE, `_std_ha` specifies SQL Server SE, and `_web` specifies SQL Server Web.
+        # 
+        # *   RDS instances that run SQL Server 2014 are not available for purchase on the international site (alibabacloud.com).
+        # 
+        # *   Babelfish is supported only for RDS instances that run PostgreSQL 15.
         # 
         # This parameter is required.
         self.engine_version = engine_version
@@ -6354,8 +6370,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.io_acceleration_enabled = io_acceleration_enabled
         # Specifies whether to enable the write optimization feature. Valid values:
         # 
-        # *   **optimized**: enables the feature.
-        # *   **none**: disables the feature.
+        # *   **optimized**\
+        # *   **none** (default)
         # 
         # >  For more information about the write optimization feature, see [Write optimization](https://help.aliyun.com/document_detail/2858761.html).
         self.optimized_writes = optimized_writes
@@ -6385,16 +6401,18 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.private_ip_address = private_ip_address
         # The coupon code.
         self.promotion_code = promotion_code
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
-        # The Alibaba Cloud Resource Name (ARN) that is provided by your Alibaba Cloud account for RAM users. RAM users can use the ARN to connect ApsaraDB RDS to KMS. You can call the CheckCloudResourceAuthorized operation to query the ARN.
+        # The Alibaba Cloud Resource Name (ARN) that is provided by your Alibaba Cloud account for Resource Access Management (RAM) users. RAM users can use the ARN to connect to ApsaraDB RDS to Key Management Service (KMS). You can call the CheckCloudResourceAuthorized operation to query the ARN.
+        # 
+        # >  When you enable the encryption, you must specify the RoleARN.
         self.role_arn = role_arn
-        # The IP address whitelist of the instance. For more information, see [Use a database client or the CLI to connect to an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/43185.html). If the IP address whitelist contains more than one entry, separate the entries with commas (,). Each entry must be unique. The IP address whitelist can contain up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
+        # The IP address whitelist of the instance. For more information, see [Configure an IP address whitelist](https://help.aliyun.com/document_detail/43185.html). Separate multiple IP addresses or CIDR blocks with commas (,). You can add up to 1,000 IP addresses or CIDR blocks to the whitelist. The entries in the IP address whitelist must be in one of the following formats:
         # 
         # *   IP addresses, such as 10.10.XX.XX.
         # *   CIDR blocks, such as 10.10.XX.XX/24. In this example, 24 indicates that the prefix of each IP address in the IP address whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
@@ -11690,7 +11708,7 @@ class CreateRCDiskRequest(TeaModel):
         # *   **cloud** (default): basic disk
         # *   **cloud_efficiency**: ultra disk.
         # *   **cloud_ssd**: standard SSD.
-        # *   **cloud_essd**: ESSD.
+        # *   **cloud_essd**: Enterprise ESSD (ESSD).
         # *   **cloud_auto**: ESSD AutoPL disk
         # *   **cloud_essd_entry**: ESSD Entry disk
         # *   **elastic_ephemeral_disk_standard**: standard elastic ephemeral disk
@@ -11702,6 +11720,7 @@ class CreateRCDiskRequest(TeaModel):
         self.disk_name = disk_name
         # The billing method. Set the value to **Postpaid**, which specifies the pay-as-you-go billing method.
         self.instance_charge_type = instance_charge_type
+        # The ID of the instance to which you want to attach the disk.
         self.instance_id = instance_id
         # The performance level (PL) of the disk if the disk is an ESSD. Valid values:
         # 
@@ -11720,7 +11739,7 @@ class CreateRCDiskRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The disk size. Unit: GiB. This parameter is required. Valid values:
+        # The disk size. Unit: GiB. This parameter is required.
         # 
         # *   Valid values if you set DiskCategory to **cloud**: 5 to 2000.
         # 
@@ -53814,10 +53833,15 @@ class DescribeRCInstanceTypesRequest(TeaModel):
         instance_type_family: str = None,
         region_id: str = None,
     ):
+        # The commodity code of the instance.
         self.commodity_code = commodity_code
+        # The database engine. Set the value to MySQL.
         self.engine = engine
+        # The instance types.
         self.instance_type = instance_type
+        # The instance family. You can call the **DescribeRCInstanceTypeFamilies** operation to query the instance families of instances.
         self.instance_type_family = instance_type_family
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -53865,10 +53889,15 @@ class DescribeRCInstanceTypesShrinkRequest(TeaModel):
         instance_type_family: str = None,
         region_id: str = None,
     ):
+        # The commodity code of the instance.
         self.commodity_code = commodity_code
+        # The database engine. Set the value to MySQL.
         self.engine = engine
+        # The instance types.
         self.instance_type_shrink = instance_type_shrink
+        # The instance family. You can call the **DescribeRCInstanceTypeFamilies** operation to query the instance families of instances.
         self.instance_type_family = instance_type_family
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -53915,9 +53944,13 @@ class DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType(TeaModel):
         instance_type_id: str = None,
         memory_size: int = None,
     ):
+        # The maximum number of CPU cores.
         self.cpu_core_count = cpu_core_count
+        # The ID of the instance family.
         self.instance_type_family = instance_type_family
+        # The instance type of the instance.
         self.instance_type_id = instance_type_id
+        # The memory size of the instance type. Unit: GiB.
         self.memory_size = memory_size
 
     def validate(self):
@@ -53957,6 +53990,7 @@ class DescribeRCInstanceTypesResponseBodyInstanceTypes(TeaModel):
         self,
         instance_type: List[DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType] = None,
     ):
+        # The instance types.
         self.instance_type = instance_type
 
     def validate(self):
@@ -53993,7 +54027,9 @@ class DescribeRCInstanceTypesResponseBody(TeaModel):
         instance_types: DescribeRCInstanceTypesResponseBodyInstanceTypes = None,
         request_id: str = None,
     ):
+        # The information about the instance types.
         self.instance_types = instance_types
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -62744,6 +62780,7 @@ class DescribeUpgradeMajorVersionPrecheckTaskResponseBodyItems(TeaModel):
         source_major_version: str = None,
         target_major_version: str = None,
         task_id: int = None,
+        upgrade_mode: str = None,
     ):
         # The time at which the upgrade check was performed.
         # 
@@ -62784,6 +62821,7 @@ class DescribeUpgradeMajorVersionPrecheckTaskResponseBodyItems(TeaModel):
         self.target_major_version = target_major_version
         # The ID of the upgrade check task.
         self.task_id = task_id
+        self.upgrade_mode = upgrade_mode
 
     def validate(self):
         pass
@@ -62814,6 +62852,8 @@ class DescribeUpgradeMajorVersionPrecheckTaskResponseBodyItems(TeaModel):
             result['TargetMajorVersion'] = self.target_major_version
         if self.task_id is not None:
             result['TaskId'] = self.task_id
+        if self.upgrade_mode is not None:
+            result['UpgradeMode'] = self.upgrade_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -62838,6 +62878,8 @@ class DescribeUpgradeMajorVersionPrecheckTaskResponseBodyItems(TeaModel):
             self.target_major_version = m.get('TargetMajorVersion')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+        if m.get('UpgradeMode') is not None:
+            self.upgrade_mode = m.get('UpgradeMode')
         return self
 
 
@@ -63059,6 +63101,11 @@ class DescribeUpgradeMajorVersionTasksResponseBodyItems(TeaModel):
         target_major_version: str = None,
         task_id: int = None,
         upgrade_mode: str = None,
+        cut_over: bool = None,
+        total_logic_rep_delay_time: int = None,
+        total_logic_rep_latency_mb: int = None,
+        zero_down_time_connection_string: str = None,
+        zero_down_time_port: int = None,
     ):
         # The time when the system collects the statistics.
         # 
@@ -63115,6 +63162,11 @@ class DescribeUpgradeMajorVersionTasksResponseBodyItems(TeaModel):
         # *   **clone**: The system does not migrate data to the new instance and does not switch your workloads over to the new instance.
         # *   **switch**: The system migrates data to the new instance and switches your workloads over to the new instance.
         self.upgrade_mode = upgrade_mode
+        self.cut_over = cut_over
+        self.total_logic_rep_delay_time = total_logic_rep_delay_time
+        self.total_logic_rep_latency_mb = total_logic_rep_latency_mb
+        self.zero_down_time_connection_string = zero_down_time_connection_string
+        self.zero_down_time_port = zero_down_time_port
 
     def validate(self):
         pass
@@ -63151,6 +63203,16 @@ class DescribeUpgradeMajorVersionTasksResponseBodyItems(TeaModel):
             result['TaskId'] = self.task_id
         if self.upgrade_mode is not None:
             result['UpgradeMode'] = self.upgrade_mode
+        if self.cut_over is not None:
+            result['cutOver'] = self.cut_over
+        if self.total_logic_rep_delay_time is not None:
+            result['totalLogicRepDelayTime'] = self.total_logic_rep_delay_time
+        if self.total_logic_rep_latency_mb is not None:
+            result['totalLogicRepLatencyMB'] = self.total_logic_rep_latency_mb
+        if self.zero_down_time_connection_string is not None:
+            result['zeroDownTimeConnectionString'] = self.zero_down_time_connection_string
+        if self.zero_down_time_port is not None:
+            result['zeroDownTimePort'] = self.zero_down_time_port
         return result
 
     def from_map(self, m: dict = None):
@@ -63181,6 +63243,16 @@ class DescribeUpgradeMajorVersionTasksResponseBodyItems(TeaModel):
             self.task_id = m.get('TaskId')
         if m.get('UpgradeMode') is not None:
             self.upgrade_mode = m.get('UpgradeMode')
+        if m.get('cutOver') is not None:
+            self.cut_over = m.get('cutOver')
+        if m.get('totalLogicRepDelayTime') is not None:
+            self.total_logic_rep_delay_time = m.get('totalLogicRepDelayTime')
+        if m.get('totalLogicRepLatencyMB') is not None:
+            self.total_logic_rep_latency_mb = m.get('totalLogicRepLatencyMB')
+        if m.get('zeroDownTimeConnectionString') is not None:
+            self.zero_down_time_connection_string = m.get('zeroDownTimeConnectionString')
+        if m.get('zeroDownTimePort') is not None:
+            self.zero_down_time_port = m.get('zeroDownTimePort')
         return self
 
 
@@ -78338,11 +78410,34 @@ class ModifyRCDiskSpecRequest(TeaModel):
         performance_level: str = None,
         region_id: str = None,
     ):
+        # Specifies whether to enable automatic payment. Valid values:
+        # 
+        # *   **true (default)**: automatically completes the payment. Make sure that your account balance is sufficient.
+        # *   **false**: does not automatically complete the payment. An unpaid order is generated.
+        # 
+        # >  If your account balance is insufficient, you can set the AutoPay parameter to false. In this case, an unpaid order is generated. You can complete the payment in the Expenses and Costs console.
         self.auto_pay = auto_pay
+        # The new disk type. Valid values:
+        # 
+        # *   **cloud_essd**: ESSD.
+        # *   **cloud_auto**: ESSD AutoPL disk
+        # 
+        # This parameter is empty by default.
         self.disk_category = disk_category
+        # The cloud disk ID.
         self.disk_id = disk_id
+        # Specifies whether to perform a dry run. Valid values: Valid values:
+        # 
+        # *   **true**: performs a dry run and does not perform the actual request. The system checks the request parameters, request syntax, limits, and available resources.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
         self.dry_run = dry_run
+        # The PL of the disk. Valid values:
+        # 
+        # *   **PL1** (default): A single ESSD can deliver up to 50,000 random read/write IOPS.
+        # *   **PL2**: A single ESSD delivers up to 100,000 random read/write IOPS.
+        # *   **PL3**: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         self.performance_level = performance_level
+        # The ID of the region in which the instance resides.
         self.region_id = region_id
 
     def validate(self):
@@ -78391,7 +78486,9 @@ class ModifyRCDiskSpecResponseBody(TeaModel):
         order_id: int = None,
         request_id: str = None,
     ):
+        # The order ID.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -78467,6 +78564,8 @@ class ModifyRCInstanceRequest(TeaModel):
         dry_run: bool = None,
         instance_id: str = None,
         instance_type: str = None,
+        reboot_time: str = None,
+        reboot_when_finished: bool = None,
         region_id: str = None,
     ):
         # Specifies whether to enable the automatic payment feature. Valid values:
@@ -78492,6 +78591,8 @@ class ModifyRCInstanceRequest(TeaModel):
         self.instance_id = instance_id
         # The new instance type. For more information about the instance types that are supported by RDS Custom instances, see [Instance types of RDS Custom instances](https://help.aliyun.com/document_detail/2844823.html).
         self.instance_type = instance_type
+        self.reboot_time = reboot_time
+        self.reboot_when_finished = reboot_when_finished
         # The region ID of the instance.
         self.region_id = region_id
 
@@ -78514,6 +78615,10 @@ class ModifyRCInstanceRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.reboot_time is not None:
+            result['RebootTime'] = self.reboot_time
+        if self.reboot_when_finished is not None:
+            result['RebootWhenFinished'] = self.reboot_when_finished
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -78530,6 +78635,10 @@ class ModifyRCInstanceRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('RebootTime') is not None:
+            self.reboot_time = m.get('RebootTime')
+        if m.get('RebootWhenFinished') is not None:
+            self.reboot_when_finished = m.get('RebootWhenFinished')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -78767,23 +78876,73 @@ class ModifyRCInstanceChargeTypeRequest(TeaModel):
         region_id: str = None,
         used_time: int = None,
     ):
+        # The reserved parameter. This parameter is not supported.
         self.auto_pay = auto_pay
+        # Specifies whether to enable the auto-renewal feature. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # > 
+        # 
+        # *   This parameter is valid only when you change the billing method from pay-as-you-go to subscription.
+        # 
+        # *   All strings except **true** are considered **false**.
         self.auto_renew = auto_renew
+        # Specifies whether to use a coupon. Valid values:
+        # 
+        # *   **true** (default)
+        # *   **false**\
         self.auto_use_coupon = auto_use_coupon
+        # The additional business information about the instance.
         self.business_info = business_info
+        # The custom client token that is used to ensure the idempotence of the request.
+        # 
+        # >  The value can contain ASCII characters and can be up to 64 characters in length.
         self.client_token = client_token
+        # The reserved parameter. This parameter is not supported.
         self.dry_run = dry_run
+        # The reserved parameter. This parameter is not supported.
         self.include_data_disks = include_data_disks
+        # The reserved parameter. This parameter is not supported.
+        # 
+        # Valid values:
+        # 
+        # *   PrePaid
+        # *   PostPaid
         self.instance_charge_type = instance_charge_type
+        # The ID of the instance or disk.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The reserved parameter. This parameter is not supported.
         self.instance_ids = instance_ids
+        # The new billing method of the instance. Valid values:
+        # 
+        # *   **Prepaid**: subscription.
+        # *   **Postpaid**: pay-as-you-go.
+        # 
         # This parameter is required.
         self.pay_type = pay_type
+        # The renewal cycle of the instance. Valid values:
+        # 
+        # *   **Year**\
+        # *   **Month**\
+        # 
+        # >  This parameter must be specified if you set the PayType parameter to **Prepaid**.
         self.period = period
+        # The coupon code.
         self.promotion_code = promotion_code
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The subscription duration of the instance.
+        # 
+        # *   **If you set the ****Period**** parameter to **Year, the value of the UsedTime parameter ranges from 1 to 5.
+        # *   If the **Period** parameter is set to **Month**, the value of the **UsedTime** parameter ranges from 1 to 11.
+        # 
+        # >  If you set the PayType parameter to **Prepaid**, you must also specify this parameter.
         self.used_time = used_time
 
     def validate(self):
@@ -78869,8 +79028,11 @@ class ModifyRCInstanceChargeTypeResponseBodyFeeOfInstances(TeaModel):
         fee: str = None,
         instance_id: str = None,
     ):
+        # The reserved parameter. This parameter is not supported.
         self.currency = currency
+        # The reserved parameter. This parameter is not supported.
         self.fee = fee
+        # The reserved parameter. This parameter is not supported.
         self.instance_id = instance_id
 
     def validate(self):
@@ -78911,11 +79073,22 @@ class ModifyRCInstanceChargeTypeResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The billing method.
+        # 
+        # *   **POSTPAY**: pay-as-you-go
+        # *   **PREPAY**: subscription
         self.charge_type = charge_type
+        # The time when the instance expires.
+        # 
+        # >  If you change the billing method from subscription to pay-as-you-go, this parameter is not returned.
         self.expired_time = expired_time
+        # The reserved parameter. This parameter is not supported.
         self.fee_of_instances = fee_of_instances
+        # The instance IDs.
         self.instance_ids = instance_ids
+        # The order ID.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -87005,8 +87178,11 @@ class StartRCInstancesRequest(TeaModel):
         instance_ids: List[str] = None,
         region_id: str = None,
     ):
+        # The batch operation mode. Set the value to **AllTogether**. In this mode, a success message is returned if all specified instances are started. If an instance fails the verification, none of the specified instances can be started and an error message is returned.
         self.batch_optimization = batch_optimization
+        # The node IDs.
         self.instance_ids = instance_ids
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -87044,8 +87220,11 @@ class StartRCInstancesShrinkRequest(TeaModel):
         instance_ids_shrink: str = None,
         region_id: str = None,
     ):
+        # The batch operation mode. Set the value to **AllTogether**. In this mode, a success message is returned if all specified instances are started. If an instance fails the verification, none of the specified instances can be started and an error message is returned.
         self.batch_optimization = batch_optimization
+        # The node IDs.
         self.instance_ids_shrink = instance_ids_shrink
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -87081,6 +87260,7 @@ class StartRCInstancesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -87394,9 +87574,16 @@ class StopRCInstancesRequest(TeaModel):
         instance_ids: List[str] = None,
         region_id: str = None,
     ):
+        # The batch operation mode. Set the value to **AllTogether**. In this mode, if all instances are stopped, a success message is returned. If an instance fails the verification, none of the instances can be stopped and an error message is returned.
         self.batch_optimization = batch_optimization
+        # Specifies whether to forcefully stop the instance. Valid values:
+        # 
+        # *   **true**: forcefully stops the instance. If an instance fails to stop due to system or network issues, a forced stop can be triggered, **though it may result in data loss.**\
+        # *   **false**: does not forcefully stop the instance. This is the default value.
         self.force_stop = force_stop
+        # The node IDs.
         self.instance_ids = instance_ids
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -87439,9 +87626,16 @@ class StopRCInstancesShrinkRequest(TeaModel):
         instance_ids_shrink: str = None,
         region_id: str = None,
     ):
+        # The batch operation mode. Set the value to **AllTogether**. In this mode, if all instances are stopped, a success message is returned. If an instance fails the verification, none of the instances can be stopped and an error message is returned.
         self.batch_optimization = batch_optimization
+        # Specifies whether to forcefully stop the instance. Valid values:
+        # 
+        # *   **true**: forcefully stops the instance. If an instance fails to stop due to system or network issues, a forced stop can be triggered, **though it may result in data loss.**\
+        # *   **false**: does not forcefully stop the instance. This is the default value.
         self.force_stop = force_stop
+        # The node IDs.
         self.instance_ids_shrink = instance_ids_shrink
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -87481,6 +87675,7 @@ class StopRCInstancesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -88004,6 +88199,126 @@ class SwitchDBInstanceVpcResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SwitchDBInstanceVpcResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SwitchOverMajorVersionUpgradeRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_name: str = None,
+        owner_id: int = None,
+        region_id: bytes = None,
+        switchover_timeout: int = None,
+        type: str = None,
+    ):
+        self.dbinstance_name = dbinstance_name
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.switchover_timeout = switchover_timeout
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.switchover_timeout is not None:
+            result['SwitchoverTimeout'] = self.switchover_timeout
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SwitchoverTimeout') is not None:
+            self.switchover_timeout = m.get('SwitchoverTimeout')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class SwitchOverMajorVersionUpgradeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SwitchOverMajorVersionUpgradeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SwitchOverMajorVersionUpgradeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SwitchOverMajorVersionUpgradeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -90350,6 +90665,7 @@ class UpgradeDBInstanceMajorVersionPrecheckRequest(TeaModel):
         dbinstance_id: str = None,
         resource_owner_id: int = None,
         target_major_version: str = None,
+        upgrade_mode: str = None,
     ):
         # The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID of the instance.
         # 
@@ -90360,6 +90676,7 @@ class UpgradeDBInstanceMajorVersionPrecheckRequest(TeaModel):
         # 
         # This parameter is required.
         self.target_major_version = target_major_version
+        self.upgrade_mode = upgrade_mode
 
     def validate(self):
         pass
@@ -90376,6 +90693,8 @@ class UpgradeDBInstanceMajorVersionPrecheckRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.target_major_version is not None:
             result['TargetMajorVersion'] = self.target_major_version
+        if self.upgrade_mode is not None:
+            result['UpgradeMode'] = self.upgrade_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -90386,6 +90705,8 @@ class UpgradeDBInstanceMajorVersionPrecheckRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('TargetMajorVersion') is not None:
             self.target_major_version = m.get('TargetMajorVersion')
+        if m.get('UpgradeMode') is not None:
+            self.upgrade_mode = m.get('UpgradeMode')
         return self
 
 
