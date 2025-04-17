@@ -3449,6 +3449,8 @@ class BatchCreateWafRulesRequest(TeaModel):
         # Shared configuration for multiple rules, specifying common attributes of multiple rules.
         self.shared = shared
         # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # 
+        # This parameter is required.
         self.site_id = site_id
         # Site version.
         self.site_version = site_version
@@ -3526,6 +3528,8 @@ class BatchCreateWafRulesShrinkRequest(TeaModel):
         # Shared configuration for multiple rules, specifying common attributes of multiple rules.
         self.shared_shrink = shared_shrink
         # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # 
+        # This parameter is required.
         self.site_id = site_id
         # Site version.
         self.site_version = site_version
@@ -4623,6 +4627,8 @@ class BatchUpdateWafRulesRequest(TeaModel):
         # The configurations shared by multiple rules.
         self.shared = shared
         # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
+        # This parameter is required.
         self.site_id = site_id
         # The version of the website.
         self.site_version = site_version
@@ -4697,6 +4703,8 @@ class BatchUpdateWafRulesShrinkRequest(TeaModel):
         # The configurations shared by multiple rules.
         self.shared_shrink = shared_shrink
         # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
+        # This parameter is required.
         self.site_id = site_id
         # The version of the website.
         self.site_version = site_version
@@ -10161,6 +10169,11 @@ class CreateOriginRuleRequest(TeaModel):
     def __init__(
         self,
         dns_record: str = None,
+        follow_302enable: str = None,
+        follow_302max_tries: str = None,
+        follow_302retain_args: str = None,
+        follow_302retain_header: str = None,
+        follow_302target_host: str = None,
         origin_host: str = None,
         origin_http_port: str = None,
         origin_https_port: str = None,
@@ -10180,6 +10193,11 @@ class CreateOriginRuleRequest(TeaModel):
     ):
         # Rewrite the DNS resolution record for the origin request.
         self.dns_record = dns_record
+        self.follow_302enable = follow_302enable
+        self.follow_302max_tries = follow_302max_tries
+        self.follow_302retain_args = follow_302retain_args
+        self.follow_302retain_header = follow_302retain_header
+        self.follow_302target_host = follow_302target_host
         # The HOST carried in the origin request.
         self.origin_host = origin_host
         # Port of the origin server when using the HTTP protocol for origin requests.
@@ -10237,6 +10255,16 @@ class CreateOriginRuleRequest(TeaModel):
         result = dict()
         if self.dns_record is not None:
             result['DnsRecord'] = self.dns_record
+        if self.follow_302enable is not None:
+            result['Follow302Enable'] = self.follow_302enable
+        if self.follow_302max_tries is not None:
+            result['Follow302MaxTries'] = self.follow_302max_tries
+        if self.follow_302retain_args is not None:
+            result['Follow302RetainArgs'] = self.follow_302retain_args
+        if self.follow_302retain_header is not None:
+            result['Follow302RetainHeader'] = self.follow_302retain_header
+        if self.follow_302target_host is not None:
+            result['Follow302TargetHost'] = self.follow_302target_host
         if self.origin_host is not None:
             result['OriginHost'] = self.origin_host
         if self.origin_http_port is not None:
@@ -10275,6 +10303,16 @@ class CreateOriginRuleRequest(TeaModel):
         m = m or dict()
         if m.get('DnsRecord') is not None:
             self.dns_record = m.get('DnsRecord')
+        if m.get('Follow302Enable') is not None:
+            self.follow_302enable = m.get('Follow302Enable')
+        if m.get('Follow302MaxTries') is not None:
+            self.follow_302max_tries = m.get('Follow302MaxTries')
+        if m.get('Follow302RetainArgs') is not None:
+            self.follow_302retain_args = m.get('Follow302RetainArgs')
+        if m.get('Follow302RetainHeader') is not None:
+            self.follow_302retain_header = m.get('Follow302RetainHeader')
+        if m.get('Follow302TargetHost') is not None:
+            self.follow_302target_host = m.get('Follow302TargetHost')
         if m.get('OriginHost') is not None:
             self.origin_host = m.get('OriginHost')
         if m.get('OriginHttpPort') is not None:
@@ -33279,6 +33317,11 @@ class GetOriginRuleResponseBody(TeaModel):
         config_id: int = None,
         config_type: str = None,
         dns_record: str = None,
+        follow_302enable: str = None,
+        follow_302max_tries: str = None,
+        follow_302retain_args: str = None,
+        follow_302retain_header: str = None,
+        follow_302target_host: str = None,
         origin_host: str = None,
         origin_http_port: str = None,
         origin_https_port: str = None,
@@ -33305,6 +33348,11 @@ class GetOriginRuleResponseBody(TeaModel):
         self.config_type = config_type
         # Rewrite the DNS resolution record for the origin request.
         self.dns_record = dns_record
+        self.follow_302enable = follow_302enable
+        self.follow_302max_tries = follow_302max_tries
+        self.follow_302retain_args = follow_302retain_args
+        self.follow_302retain_header = follow_302retain_header
+        self.follow_302target_host = follow_302target_host
         # HOST carried in the origin request.
         self.origin_host = origin_host
         # Port of the origin server accessed when using the HTTP protocol for origin.
@@ -33367,6 +33415,16 @@ class GetOriginRuleResponseBody(TeaModel):
             result['ConfigType'] = self.config_type
         if self.dns_record is not None:
             result['DnsRecord'] = self.dns_record
+        if self.follow_302enable is not None:
+            result['Follow302Enable'] = self.follow_302enable
+        if self.follow_302max_tries is not None:
+            result['Follow302MaxTries'] = self.follow_302max_tries
+        if self.follow_302retain_args is not None:
+            result['Follow302RetainArgs'] = self.follow_302retain_args
+        if self.follow_302retain_header is not None:
+            result['Follow302RetainHeader'] = self.follow_302retain_header
+        if self.follow_302target_host is not None:
+            result['Follow302TargetHost'] = self.follow_302target_host
         if self.origin_host is not None:
             result['OriginHost'] = self.origin_host
         if self.origin_http_port is not None:
@@ -33409,6 +33467,16 @@ class GetOriginRuleResponseBody(TeaModel):
             self.config_type = m.get('ConfigType')
         if m.get('DnsRecord') is not None:
             self.dns_record = m.get('DnsRecord')
+        if m.get('Follow302Enable') is not None:
+            self.follow_302enable = m.get('Follow302Enable')
+        if m.get('Follow302MaxTries') is not None:
+            self.follow_302max_tries = m.get('Follow302MaxTries')
+        if m.get('Follow302RetainArgs') is not None:
+            self.follow_302retain_args = m.get('Follow302RetainArgs')
+        if m.get('Follow302RetainHeader') is not None:
+            self.follow_302retain_header = m.get('Follow302RetainHeader')
+        if m.get('Follow302TargetHost') is not None:
+            self.follow_302target_host = m.get('Follow302TargetHost')
         if m.get('OriginHost') is not None:
             self.origin_host = m.get('OriginHost')
         if m.get('OriginHttpPort') is not None:
@@ -38748,6 +38816,7 @@ class GetWafRuleResponseBody(TeaModel):
         phase: str = None,
         position: int = None,
         request_id: str = None,
+        ruleset_id: int = None,
         status: str = None,
         update_time: str = None,
     ):
@@ -38767,6 +38836,7 @@ class GetWafRuleResponseBody(TeaModel):
         self.position = position
         # Request ID.
         self.request_id = request_id
+        self.ruleset_id = ruleset_id
         # Rule status.
         self.status = status
         # The last modified time of the rule.
@@ -38794,6 +38864,8 @@ class GetWafRuleResponseBody(TeaModel):
             result['Position'] = self.position
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.ruleset_id is not None:
+            result['RulesetId'] = self.ruleset_id
         if self.status is not None:
             result['Status'] = self.status
         if self.update_time is not None:
@@ -38815,6 +38887,8 @@ class GetWafRuleResponseBody(TeaModel):
             self.position = m.get('Position')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('RulesetId') is not None:
+            self.ruleset_id = m.get('RulesetId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('UpdateTime') is not None:
@@ -48782,6 +48856,11 @@ class ListOriginRulesResponseBodyConfigs(TeaModel):
         config_id: int = None,
         config_type: str = None,
         dns_record: str = None,
+        follow_302enable: str = None,
+        follow_302max_tries: str = None,
+        follow_302retain_args: str = None,
+        follow_302retain_header: str = None,
+        follow_302target_host: str = None,
         origin_host: str = None,
         origin_http_port: str = None,
         origin_https_port: str = None,
@@ -48806,6 +48885,11 @@ class ListOriginRulesResponseBodyConfigs(TeaModel):
         self.config_type = config_type
         # Rewrite the DNS resolution record for the origin request.
         self.dns_record = dns_record
+        self.follow_302enable = follow_302enable
+        self.follow_302max_tries = follow_302max_tries
+        self.follow_302retain_args = follow_302retain_args
+        self.follow_302retain_header = follow_302retain_header
+        self.follow_302target_host = follow_302target_host
         # HOST carried in the origin request.
         self.origin_host = origin_host
         # The port of the origin server to access when using the HTTP protocol for origin requests.
@@ -48864,6 +48948,16 @@ class ListOriginRulesResponseBodyConfigs(TeaModel):
             result['ConfigType'] = self.config_type
         if self.dns_record is not None:
             result['DnsRecord'] = self.dns_record
+        if self.follow_302enable is not None:
+            result['Follow302Enable'] = self.follow_302enable
+        if self.follow_302max_tries is not None:
+            result['Follow302MaxTries'] = self.follow_302max_tries
+        if self.follow_302retain_args is not None:
+            result['Follow302RetainArgs'] = self.follow_302retain_args
+        if self.follow_302retain_header is not None:
+            result['Follow302RetainHeader'] = self.follow_302retain_header
+        if self.follow_302target_host is not None:
+            result['Follow302TargetHost'] = self.follow_302target_host
         if self.origin_host is not None:
             result['OriginHost'] = self.origin_host
         if self.origin_http_port is not None:
@@ -48904,6 +48998,16 @@ class ListOriginRulesResponseBodyConfigs(TeaModel):
             self.config_type = m.get('ConfigType')
         if m.get('DnsRecord') is not None:
             self.dns_record = m.get('DnsRecord')
+        if m.get('Follow302Enable') is not None:
+            self.follow_302enable = m.get('Follow302Enable')
+        if m.get('Follow302MaxTries') is not None:
+            self.follow_302max_tries = m.get('Follow302MaxTries')
+        if m.get('Follow302RetainArgs') is not None:
+            self.follow_302retain_args = m.get('Follow302RetainArgs')
+        if m.get('Follow302RetainHeader') is not None:
+            self.follow_302retain_header = m.get('Follow302RetainHeader')
+        if m.get('Follow302TargetHost') is not None:
+            self.follow_302target_host = m.get('Follow302TargetHost')
         if m.get('OriginHost') is not None:
             self.origin_host = m.get('OriginHost')
         if m.get('OriginHttpPort') is not None:
@@ -64671,6 +64775,11 @@ class UpdateOriginRuleRequest(TeaModel):
         self,
         config_id: int = None,
         dns_record: str = None,
+        follow_302enable: str = None,
+        follow_302max_tries: str = None,
+        follow_302retain_args: str = None,
+        follow_302retain_header: str = None,
+        follow_302target_host: str = None,
         origin_host: str = None,
         origin_http_port: str = None,
         origin_https_port: str = None,
@@ -64693,6 +64802,11 @@ class UpdateOriginRuleRequest(TeaModel):
         self.config_id = config_id
         # Rewrite the DNS resolution record of the origin request.
         self.dns_record = dns_record
+        self.follow_302enable = follow_302enable
+        self.follow_302max_tries = follow_302max_tries
+        self.follow_302retain_args = follow_302retain_args
+        self.follow_302retain_header = follow_302retain_header
+        self.follow_302target_host = follow_302target_host
         # The HOST carried in the origin request.
         self.origin_host = origin_host
         # Port of the origin server when using HTTP protocol for origin pull.
@@ -64750,6 +64864,16 @@ class UpdateOriginRuleRequest(TeaModel):
             result['ConfigId'] = self.config_id
         if self.dns_record is not None:
             result['DnsRecord'] = self.dns_record
+        if self.follow_302enable is not None:
+            result['Follow302Enable'] = self.follow_302enable
+        if self.follow_302max_tries is not None:
+            result['Follow302MaxTries'] = self.follow_302max_tries
+        if self.follow_302retain_args is not None:
+            result['Follow302RetainArgs'] = self.follow_302retain_args
+        if self.follow_302retain_header is not None:
+            result['Follow302RetainHeader'] = self.follow_302retain_header
+        if self.follow_302target_host is not None:
+            result['Follow302TargetHost'] = self.follow_302target_host
         if self.origin_host is not None:
             result['OriginHost'] = self.origin_host
         if self.origin_http_port is not None:
@@ -64788,6 +64912,16 @@ class UpdateOriginRuleRequest(TeaModel):
             self.config_id = m.get('ConfigId')
         if m.get('DnsRecord') is not None:
             self.dns_record = m.get('DnsRecord')
+        if m.get('Follow302Enable') is not None:
+            self.follow_302enable = m.get('Follow302Enable')
+        if m.get('Follow302MaxTries') is not None:
+            self.follow_302max_tries = m.get('Follow302MaxTries')
+        if m.get('Follow302RetainArgs') is not None:
+            self.follow_302retain_args = m.get('Follow302RetainArgs')
+        if m.get('Follow302RetainHeader') is not None:
+            self.follow_302retain_header = m.get('Follow302RetainHeader')
+        if m.get('Follow302TargetHost') is not None:
+            self.follow_302target_host = m.get('Follow302TargetHost')
         if m.get('OriginHost') is not None:
             self.origin_host = m.get('OriginHost')
         if m.get('OriginHttpPort') is not None:

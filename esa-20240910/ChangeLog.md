@@ -1,3 +1,27 @@
+2025-04-17 Version: 2.23.1
+- Update API CreateOriginRule: add request parameters Follow302Enable.
+- Update API CreateOriginRule: add request parameters Follow302MaxTries.
+- Update API CreateOriginRule: add request parameters Follow302RetainArgs.
+- Update API CreateOriginRule: add request parameters Follow302RetainHeader.
+- Update API CreateOriginRule: add request parameters Follow302TargetHost.
+- Update API GetOriginRule: add response parameters Body.Follow302Enable.
+- Update API GetOriginRule: add response parameters Body.Follow302MaxTries.
+- Update API GetOriginRule: add response parameters Body.Follow302RetainArgs.
+- Update API GetOriginRule: add response parameters Body.Follow302RetainHeader.
+- Update API GetOriginRule: add response parameters Body.Follow302TargetHost.
+- Update API GetWafRule: add response parameters Body.RulesetId.
+- Update API ListOriginRules: add response parameters Body.Configs.$.Follow302Enable.
+- Update API ListOriginRules: add response parameters Body.Configs.$.Follow302MaxTries.
+- Update API ListOriginRules: add response parameters Body.Configs.$.Follow302RetainArgs.
+- Update API ListOriginRules: add response parameters Body.Configs.$.Follow302RetainHeader.
+- Update API ListOriginRules: add response parameters Body.Configs.$.Follow302TargetHost.
+- Update API UpdateOriginRule: add request parameters Follow302Enable.
+- Update API UpdateOriginRule: add request parameters Follow302MaxTries.
+- Update API UpdateOriginRule: add request parameters Follow302RetainArgs.
+- Update API UpdateOriginRule: add request parameters Follow302RetainHeader.
+- Update API UpdateOriginRule: add request parameters Follow302TargetHost.
+
+
 2025-04-15 Version: 2.23.0
 - Support API GetErService.
 - Support API ListCertificatesByRecord.
