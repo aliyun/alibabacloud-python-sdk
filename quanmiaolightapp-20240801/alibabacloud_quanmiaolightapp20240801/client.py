@@ -1074,6 +1074,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         body = {}
+        if not UtilClient.is_unset(request.ak_proxy):
+            body['akProxy'] = request.ak_proxy
+        if not UtilClient.is_unset(request.api_key):
+            body['apiKey'] = request.api_key
         if not UtilClient.is_unset(request.content):
             body['content'] = request.content
         if not UtilClient.is_unset(request.extra_info):
@@ -1131,6 +1135,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         body = {}
+        if not UtilClient.is_unset(request.ak_proxy):
+            body['akProxy'] = request.ak_proxy
+        if not UtilClient.is_unset(request.api_key):
+            body['apiKey'] = request.api_key
         if not UtilClient.is_unset(request.content):
             body['content'] = request.content
         if not UtilClient.is_unset(request.extra_info):
@@ -1640,6 +1648,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.api_key):
+            body['apiKey'] = request.api_key
         if not UtilClient.is_unset(request.custom_limitation):
             body['customLimitation'] = request.custom_limitation
         if not UtilClient.is_unset(request.custom_prompt):
@@ -1691,6 +1701,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.api_key):
+            body['apiKey'] = request.api_key
         if not UtilClient.is_unset(request.custom_limitation):
             body['customLimitation'] = request.custom_limitation
         if not UtilClient.is_unset(request.custom_prompt):
@@ -1776,6 +1788,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         body = {}
+        if not UtilClient.is_unset(request.api_key):
+            body['apiKey'] = request.api_key
         if not UtilClient.is_unset(request.business_type):
             body['businessType'] = request.business_type
         if not UtilClient.is_unset(request.content):
@@ -1831,6 +1845,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         body = {}
+        if not UtilClient.is_unset(request.api_key):
+            body['apiKey'] = request.api_key
         if not UtilClient.is_unset(request.business_type):
             body['businessType'] = request.business_type
         if not UtilClient.is_unset(request.content):
@@ -2876,6 +2892,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         body = {}
+        if not UtilClient.is_unset(request.api_key):
+            body['apiKey'] = request.api_key
         if not UtilClient.is_unset(request.contents_shrink):
             body['contents'] = request.contents_shrink
         if not UtilClient.is_unset(request.extra_info):
@@ -2939,6 +2957,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         body = {}
+        if not UtilClient.is_unset(request.api_key):
+            body['apiKey'] = request.api_key
         if not UtilClient.is_unset(request.contents_shrink):
             body['contents'] = request.contents_shrink
         if not UtilClient.is_unset(request.extra_info):

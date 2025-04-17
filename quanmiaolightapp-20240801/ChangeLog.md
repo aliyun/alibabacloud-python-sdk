@@ -1,3 +1,12 @@
+2025-04-17 Version: 2.7.1
+- Update API RunEnterpriseVocAnalysis: add request parameters akProxy.
+- Update API RunEnterpriseVocAnalysis: add request parameters apiKey.
+- Update API RunMarketingInformationWriting: add request parameters apiKey.
+- Update API RunMarketingInformationWriting: add response parameters Body.header.errorMessage.
+- Update API RunNetworkContentAudit: add request parameters apiKey.
+- Update API SubmitEnterpriseVocAnalysisTask: add request parameters apiKey.
+
+
 2025-04-16 Version: 2.7.0
 - Support API CancelAsyncTask.
 - Support API ExportAnalysisTagDetailByTaskId.

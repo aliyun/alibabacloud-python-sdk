@@ -3456,6 +3456,8 @@ class RunEnterpriseVocAnalysisRequestTags(TeaModel):
 class RunEnterpriseVocAnalysisRequest(TeaModel):
     def __init__(
         self,
+        ak_proxy: str = None,
+        api_key: str = None,
         content: str = None,
         extra_info: str = None,
         filter_tags: List[RunEnterpriseVocAnalysisRequestFilterTags] = None,
@@ -3464,6 +3466,8 @@ class RunEnterpriseVocAnalysisRequest(TeaModel):
         tags: List[RunEnterpriseVocAnalysisRequestTags] = None,
         task_description: str = None,
     ):
+        self.ak_proxy = ak_proxy
+        self.api_key = api_key
         # 需要进行VOC分析的文本内容（content、contents、url、fileKey 四选一。优先级从小到大）
         self.content = content
         self.extra_info = extra_info
@@ -3492,6 +3496,10 @@ class RunEnterpriseVocAnalysisRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ak_proxy is not None:
+            result['akProxy'] = self.ak_proxy
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key
         if self.content is not None:
             result['content'] = self.content
         if self.extra_info is not None:
@@ -3514,6 +3522,10 @@ class RunEnterpriseVocAnalysisRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('akProxy') is not None:
+            self.ak_proxy = m.get('akProxy')
+        if m.get('apiKey') is not None:
+            self.api_key = m.get('apiKey')
         if m.get('content') is not None:
             self.content = m.get('content')
         if m.get('extraInfo') is not None:
@@ -3540,6 +3552,8 @@ class RunEnterpriseVocAnalysisRequest(TeaModel):
 class RunEnterpriseVocAnalysisShrinkRequest(TeaModel):
     def __init__(
         self,
+        ak_proxy: str = None,
+        api_key: str = None,
         content: str = None,
         extra_info: str = None,
         filter_tags_shrink: str = None,
@@ -3548,6 +3562,8 @@ class RunEnterpriseVocAnalysisShrinkRequest(TeaModel):
         tags_shrink: str = None,
         task_description: str = None,
     ):
+        self.ak_proxy = ak_proxy
+        self.api_key = api_key
         # 需要进行VOC分析的文本内容（content、contents、url、fileKey 四选一。优先级从小到大）
         self.content = content
         self.extra_info = extra_info
@@ -3569,6 +3585,10 @@ class RunEnterpriseVocAnalysisShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ak_proxy is not None:
+            result['akProxy'] = self.ak_proxy
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key
         if self.content is not None:
             result['content'] = self.content
         if self.extra_info is not None:
@@ -3587,6 +3607,10 @@ class RunEnterpriseVocAnalysisShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('akProxy') is not None:
+            self.ak_proxy = m.get('akProxy')
+        if m.get('apiKey') is not None:
+            self.api_key = m.get('apiKey')
         if m.get('content') is not None:
             self.content = m.get('content')
         if m.get('extraInfo') is not None:
@@ -5528,6 +5552,7 @@ class RunMarketingInformationExtractResponse(TeaModel):
 class RunMarketingInformationWritingRequest(TeaModel):
     def __init__(
         self,
+        api_key: str = None,
         custom_limitation: str = None,
         custom_prompt: str = None,
         input_example: str = None,
@@ -5536,6 +5561,7 @@ class RunMarketingInformationWritingRequest(TeaModel):
         source_material: str = None,
         writing_type: str = None,
     ):
+        self.api_key = api_key
         self.custom_limitation = custom_limitation
         self.custom_prompt = custom_prompt
         self.input_example = input_example
@@ -5553,6 +5579,8 @@ class RunMarketingInformationWritingRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key
         if self.custom_limitation is not None:
             result['customLimitation'] = self.custom_limitation
         if self.custom_prompt is not None:
@@ -5571,6 +5599,8 @@ class RunMarketingInformationWritingRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('apiKey') is not None:
+            self.api_key = m.get('apiKey')
         if m.get('customLimitation') is not None:
             self.custom_limitation = m.get('customLimitation')
         if m.get('customPrompt') is not None:
@@ -5591,6 +5621,7 @@ class RunMarketingInformationWritingRequest(TeaModel):
 class RunMarketingInformationWritingResponseBodyHeader(TeaModel):
     def __init__(
         self,
+        error_message: str = None,
         event: str = None,
         event_info: str = None,
         request_id: str = None,
@@ -5598,6 +5629,7 @@ class RunMarketingInformationWritingResponseBodyHeader(TeaModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        self.error_message = error_message
         self.event = event
         self.event_info = event_info
         self.request_id = request_id
@@ -5614,6 +5646,8 @@ class RunMarketingInformationWritingResponseBodyHeader(TeaModel):
             return _map
 
         result = dict()
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
         if self.event is not None:
             result['event'] = self.event
         if self.event_info is not None:
@@ -5630,6 +5664,8 @@ class RunMarketingInformationWritingResponseBodyHeader(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
         if m.get('event') is not None:
             self.event = m.get('event')
         if m.get('eventInfo') is not None:
@@ -5870,6 +5906,7 @@ class RunNetworkContentAuditRequestTags(TeaModel):
 class RunNetworkContentAuditRequest(TeaModel):
     def __init__(
         self,
+        api_key: str = None,
         business_type: str = None,
         content: str = None,
         extra_info: str = None,
@@ -5878,6 +5915,7 @@ class RunNetworkContentAuditRequest(TeaModel):
         tags: List[RunNetworkContentAuditRequestTags] = None,
         task_description: str = None,
     ):
+        self.api_key = api_key
         self.business_type = business_type
         # This parameter is required.
         self.content = content
@@ -5899,6 +5937,8 @@ class RunNetworkContentAuditRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key
         if self.business_type is not None:
             result['businessType'] = self.business_type
         if self.content is not None:
@@ -5919,6 +5959,8 @@ class RunNetworkContentAuditRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('apiKey') is not None:
+            self.api_key = m.get('apiKey')
         if m.get('businessType') is not None:
             self.business_type = m.get('businessType')
         if m.get('content') is not None:
@@ -5942,6 +5984,7 @@ class RunNetworkContentAuditRequest(TeaModel):
 class RunNetworkContentAuditShrinkRequest(TeaModel):
     def __init__(
         self,
+        api_key: str = None,
         business_type: str = None,
         content: str = None,
         extra_info: str = None,
@@ -5950,6 +5993,7 @@ class RunNetworkContentAuditShrinkRequest(TeaModel):
         tags_shrink: str = None,
         task_description: str = None,
     ):
+        self.api_key = api_key
         self.business_type = business_type
         # This parameter is required.
         self.content = content
@@ -5968,6 +6012,8 @@ class RunNetworkContentAuditShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key
         if self.business_type is not None:
             result['businessType'] = self.business_type
         if self.content is not None:
@@ -5986,6 +6032,8 @@ class RunNetworkContentAuditShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('apiKey') is not None:
+            self.api_key = m.get('apiKey')
         if m.get('businessType') is not None:
             self.business_type = m.get('businessType')
         if m.get('content') is not None:
@@ -9969,6 +10017,7 @@ class SubmitEnterpriseVocAnalysisTaskRequestTags(TeaModel):
 class SubmitEnterpriseVocAnalysisTaskRequest(TeaModel):
     def __init__(
         self,
+        api_key: str = None,
         contents: List[SubmitEnterpriseVocAnalysisTaskRequestContents] = None,
         extra_info: str = None,
         file_key: str = None,
@@ -9979,6 +10028,7 @@ class SubmitEnterpriseVocAnalysisTaskRequest(TeaModel):
         task_description: str = None,
         url: str = None,
     ):
+        self.api_key = api_key
         self.contents = contents
         self.extra_info = extra_info
         self.file_key = file_key
@@ -10009,6 +10059,8 @@ class SubmitEnterpriseVocAnalysisTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key
         result['contents'] = []
         if self.contents is not None:
             for k in self.contents:
@@ -10037,6 +10089,8 @@ class SubmitEnterpriseVocAnalysisTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('apiKey') is not None:
+            self.api_key = m.get('apiKey')
         self.contents = []
         if m.get('contents') is not None:
             for k in m.get('contents'):
@@ -10070,6 +10124,7 @@ class SubmitEnterpriseVocAnalysisTaskRequest(TeaModel):
 class SubmitEnterpriseVocAnalysisTaskShrinkRequest(TeaModel):
     def __init__(
         self,
+        api_key: str = None,
         contents_shrink: str = None,
         extra_info: str = None,
         file_key: str = None,
@@ -10080,6 +10135,7 @@ class SubmitEnterpriseVocAnalysisTaskShrinkRequest(TeaModel):
         task_description: str = None,
         url: str = None,
     ):
+        self.api_key = api_key
         self.contents_shrink = contents_shrink
         self.extra_info = extra_info
         self.file_key = file_key
@@ -10099,6 +10155,8 @@ class SubmitEnterpriseVocAnalysisTaskShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key
         if self.contents_shrink is not None:
             result['contents'] = self.contents_shrink
         if self.extra_info is not None:
@@ -10121,6 +10179,8 @@ class SubmitEnterpriseVocAnalysisTaskShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('apiKey') is not None:
+            self.api_key = m.get('apiKey')
         if m.get('contents') is not None:
             self.contents_shrink = m.get('contents')
         if m.get('extraInfo') is not None:
