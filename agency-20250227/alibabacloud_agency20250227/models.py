@@ -8,9 +8,21 @@ class GetBillDetailFileListRequest(TeaModel):
     def __init__(
         self,
         bill_month: str = None,
+        oss_access_key_id: str = None,
+        oss_access_key_secret: str = None,
+        oss_bucket_name: str = None,
+        oss_endpoint: str = None,
+        oss_region: str = None,
+        oss_security_token: str = None,
     ):
         # This parameter is required.
         self.bill_month = bill_month
+        self.oss_access_key_id = oss_access_key_id
+        self.oss_access_key_secret = oss_access_key_secret
+        self.oss_bucket_name = oss_bucket_name
+        self.oss_endpoint = oss_endpoint
+        self.oss_region = oss_region
+        self.oss_security_token = oss_security_token
 
     def validate(self):
         pass
@@ -23,12 +35,36 @@ class GetBillDetailFileListRequest(TeaModel):
         result = dict()
         if self.bill_month is not None:
             result['BillMonth'] = self.bill_month
+        if self.oss_access_key_id is not None:
+            result['OssAccessKeyId'] = self.oss_access_key_id
+        if self.oss_access_key_secret is not None:
+            result['OssAccessKeySecret'] = self.oss_access_key_secret
+        if self.oss_bucket_name is not None:
+            result['OssBucketName'] = self.oss_bucket_name
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
+        if self.oss_region is not None:
+            result['OssRegion'] = self.oss_region
+        if self.oss_security_token is not None:
+            result['OssSecurityToken'] = self.oss_security_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('BillMonth') is not None:
             self.bill_month = m.get('BillMonth')
+        if m.get('OssAccessKeyId') is not None:
+            self.oss_access_key_id = m.get('OssAccessKeyId')
+        if m.get('OssAccessKeySecret') is not None:
+            self.oss_access_key_secret = m.get('OssAccessKeySecret')
+        if m.get('OssBucketName') is not None:
+            self.oss_bucket_name = m.get('OssBucketName')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
+        if m.get('OssRegion') is not None:
+            self.oss_region = m.get('OssRegion')
+        if m.get('OssSecurityToken') is not None:
+            self.oss_security_token = m.get('OssSecurityToken')
         return self
 
 
@@ -38,11 +74,13 @@ class GetBillDetailFileListResponseBodyData(TeaModel):
         bill_month: str = None,
         file_name: str = None,
         file_url: str = None,
+        status: str = None,
         type: str = None,
     ):
         self.bill_month = bill_month
         self.file_name = file_name
         self.file_url = file_url
+        self.status = status
         self.type = type
 
     def validate(self):
@@ -60,6 +98,8 @@ class GetBillDetailFileListResponseBodyData(TeaModel):
             result['FileName'] = self.file_name
         if self.file_url is not None:
             result['FileUrl'] = self.file_url
+        if self.status is not None:
+            result['Status'] = self.status
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -72,6 +112,8 @@ class GetBillDetailFileListResponseBodyData(TeaModel):
             self.file_name = m.get('FileName')
         if m.get('FileUrl') is not None:
             self.file_url = m.get('FileUrl')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
