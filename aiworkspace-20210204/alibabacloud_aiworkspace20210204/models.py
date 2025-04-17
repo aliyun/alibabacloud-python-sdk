@@ -500,22 +500,34 @@ class DatasetFileMeta(TeaModel):
         data_size: int = None,
         dataset_file_meta_id: str = None,
         download_url: str = None,
+        file_create_time: str = None,
         file_finger_print: str = None,
         file_name: str = None,
         file_update_time: str = None,
+        meta_attributes: str = None,
         score: float = None,
+        semantic_index_job_id: str = None,
+        semantic_index_update_time: str = None,
         tags: str = None,
+        thumbnail_url: str = None,
         uri: str = None,
     ):
         self.data_size = data_size
         self.dataset_file_meta_id = dataset_file_meta_id
         self.download_url = download_url
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.file_create_time = file_create_time
         self.file_finger_print = file_finger_print
         self.file_name = file_name
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.file_update_time = file_update_time
+        self.meta_attributes = meta_attributes
         self.score = score
+        self.semantic_index_job_id = semantic_index_job_id
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.semantic_index_update_time = semantic_index_update_time
         self.tags = tags
+        self.thumbnail_url = thumbnail_url
         self.uri = uri
 
     def validate(self):
@@ -533,16 +545,26 @@ class DatasetFileMeta(TeaModel):
             result['DatasetFileMetaId'] = self.dataset_file_meta_id
         if self.download_url is not None:
             result['DownloadUrl'] = self.download_url
+        if self.file_create_time is not None:
+            result['FileCreateTime'] = self.file_create_time
         if self.file_finger_print is not None:
             result['FileFingerPrint'] = self.file_finger_print
         if self.file_name is not None:
             result['FileName'] = self.file_name
         if self.file_update_time is not None:
             result['FileUpdateTime'] = self.file_update_time
+        if self.meta_attributes is not None:
+            result['MetaAttributes'] = self.meta_attributes
         if self.score is not None:
             result['Score'] = self.score
+        if self.semantic_index_job_id is not None:
+            result['SemanticIndexJobId'] = self.semantic_index_job_id
+        if self.semantic_index_update_time is not None:
+            result['SemanticIndexUpdateTime'] = self.semantic_index_update_time
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.thumbnail_url is not None:
+            result['ThumbnailUrl'] = self.thumbnail_url
         if self.uri is not None:
             result['Uri'] = self.uri
         return result
@@ -555,16 +577,26 @@ class DatasetFileMeta(TeaModel):
             self.dataset_file_meta_id = m.get('DatasetFileMetaId')
         if m.get('DownloadUrl') is not None:
             self.download_url = m.get('DownloadUrl')
+        if m.get('FileCreateTime') is not None:
+            self.file_create_time = m.get('FileCreateTime')
         if m.get('FileFingerPrint') is not None:
             self.file_finger_print = m.get('FileFingerPrint')
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
         if m.get('FileUpdateTime') is not None:
             self.file_update_time = m.get('FileUpdateTime')
+        if m.get('MetaAttributes') is not None:
+            self.meta_attributes = m.get('MetaAttributes')
         if m.get('Score') is not None:
             self.score = m.get('Score')
+        if m.get('SemanticIndexJobId') is not None:
+            self.semantic_index_job_id = m.get('SemanticIndexJobId')
+        if m.get('SemanticIndexUpdateTime') is not None:
+            self.semantic_index_update_time = m.get('SemanticIndexUpdateTime')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('ThumbnailUrl') is not None:
+            self.thumbnail_url = m.get('ThumbnailUrl')
         if m.get('Uri') is not None:
             self.uri = m.get('Uri')
         return self
@@ -582,6 +614,8 @@ class DatasetFileMetaConentUpdate(TeaModel):
         file_type: str = None,
         file_update_time: str = None,
         meta_attributes: str = None,
+        semantic_index_job_id: str = None,
+        semantic_index_update_time: str = None,
         tags: str = None,
     ):
         self.comment = comment
@@ -596,6 +630,9 @@ class DatasetFileMetaConentUpdate(TeaModel):
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.file_update_time = file_update_time
         self.meta_attributes = meta_attributes
+        self.semantic_index_job_id = semantic_index_job_id
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.semantic_index_update_time = semantic_index_update_time
         self.tags = tags
 
     def validate(self):
@@ -625,6 +662,10 @@ class DatasetFileMetaConentUpdate(TeaModel):
             result['FileUpdateTime'] = self.file_update_time
         if self.meta_attributes is not None:
             result['MetaAttributes'] = self.meta_attributes
+        if self.semantic_index_job_id is not None:
+            result['SemanticIndexJobId'] = self.semantic_index_job_id
+        if self.semantic_index_update_time is not None:
+            result['SemanticIndexUpdateTime'] = self.semantic_index_update_time
         if self.tags is not None:
             result['Tags'] = self.tags
         return result
@@ -649,6 +690,10 @@ class DatasetFileMetaConentUpdate(TeaModel):
             self.file_update_time = m.get('FileUpdateTime')
         if m.get('MetaAttributes') is not None:
             self.meta_attributes = m.get('MetaAttributes')
+        if m.get('SemanticIndexJobId') is not None:
+            self.semantic_index_job_id = m.get('SemanticIndexJobId')
+        if m.get('SemanticIndexUpdateTime') is not None:
+            self.semantic_index_update_time = m.get('SemanticIndexUpdateTime')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
         return self
@@ -757,11 +802,15 @@ class DatasetFileMetaContentGet(TeaModel):
         data_size: int = None,
         dataset_file_meta_id: str = None,
         file_create_time: str = None,
+        file_dir: str = None,
         file_finger_print: str = None,
         file_name: str = None,
         file_type: str = None,
         file_update_time: str = None,
         meta_attributes: str = None,
+        semantic_index_job_id: str = None,
+        semantic_index_update_time: str = None,
+        tag_update_time: str = None,
         tags: str = None,
         uri: str = None,
     ):
@@ -771,12 +820,18 @@ class DatasetFileMetaContentGet(TeaModel):
         self.dataset_file_meta_id = dataset_file_meta_id
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.file_create_time = file_create_time
+        self.file_dir = file_dir
         self.file_finger_print = file_finger_print
         self.file_name = file_name
         self.file_type = file_type
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.file_update_time = file_update_time
         self.meta_attributes = meta_attributes
+        self.semantic_index_job_id = semantic_index_job_id
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.semantic_index_update_time = semantic_index_update_time
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.tag_update_time = tag_update_time
         self.tags = tags
         self.uri = uri
 
@@ -799,6 +854,8 @@ class DatasetFileMetaContentGet(TeaModel):
             result['DatasetFileMetaId'] = self.dataset_file_meta_id
         if self.file_create_time is not None:
             result['FileCreateTime'] = self.file_create_time
+        if self.file_dir is not None:
+            result['FileDir'] = self.file_dir
         if self.file_finger_print is not None:
             result['FileFingerPrint'] = self.file_finger_print
         if self.file_name is not None:
@@ -809,6 +866,12 @@ class DatasetFileMetaContentGet(TeaModel):
             result['FileUpdateTime'] = self.file_update_time
         if self.meta_attributes is not None:
             result['MetaAttributes'] = self.meta_attributes
+        if self.semantic_index_job_id is not None:
+            result['SemanticIndexJobId'] = self.semantic_index_job_id
+        if self.semantic_index_update_time is not None:
+            result['SemanticIndexUpdateTime'] = self.semantic_index_update_time
+        if self.tag_update_time is not None:
+            result['TagUpdateTime'] = self.tag_update_time
         if self.tags is not None:
             result['Tags'] = self.tags
         if self.uri is not None:
@@ -827,6 +890,8 @@ class DatasetFileMetaContentGet(TeaModel):
             self.dataset_file_meta_id = m.get('DatasetFileMetaId')
         if m.get('FileCreateTime') is not None:
             self.file_create_time = m.get('FileCreateTime')
+        if m.get('FileDir') is not None:
+            self.file_dir = m.get('FileDir')
         if m.get('FileFingerPrint') is not None:
             self.file_finger_print = m.get('FileFingerPrint')
         if m.get('FileName') is not None:
@@ -837,6 +902,12 @@ class DatasetFileMetaContentGet(TeaModel):
             self.file_update_time = m.get('FileUpdateTime')
         if m.get('MetaAttributes') is not None:
             self.meta_attributes = m.get('MetaAttributes')
+        if m.get('SemanticIndexJobId') is not None:
+            self.semantic_index_job_id = m.get('SemanticIndexJobId')
+        if m.get('SemanticIndexUpdateTime') is not None:
+            self.semantic_index_update_time = m.get('SemanticIndexUpdateTime')
+        if m.get('TagUpdateTime') is not None:
+            self.tag_update_time = m.get('TagUpdateTime')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
         if m.get('Uri') is not None:
@@ -882,6 +953,39 @@ class DatasetFileMetaResponse(TeaModel):
             self.result = m.get('Result')
         if m.get('Uri') is not None:
             self.uri = m.get('Uri')
+        return self
+
+
+class DatasetFileMetasStat(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        key: str = None,
+    ):
+        self.count = count
+        self.key = key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.key is not None:
+            result['Key'] = self.key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
         return self
 
 
@@ -3698,18 +3802,98 @@ class CreateDatasetVersionRequest(TeaModel):
         source_type: str = None,
         uri: str = None,
     ):
+        # The number of dataset files.
         self.data_count = data_count
+        # The size of the dataset file. Unit: bytes.
         self.data_size = data_size
+        # The type of the data source. Separate multiple types with commas (,). Valid values:
+        # 
+        # *   NAS: File Storage NAS (NAS).
+        # *   OSS: Object Storage Service (OSS).
+        # *   CPFS
+        # 
+        # Note: The DataSourceType value of a dataset version must be the same as that of the dataset. When you create a dataset version, the system checks whether the values are the same.
+        # 
         # This parameter is required.
         self.data_source_type = data_source_type
+        # The description of the dataset. Descriptions are used to differentiate datasets.
         self.description = description
+        # The dataset storage import configurations, such as OSS, NAS, and CPFS.
+        # 
+        # **OSS**\
+        # 
+        # {\\
+        # "region": "${region}",// The region ID\\
+        # "bucket": "${bucket}",//The bucket name\\
+        # "path": "${path}" // The file path\\
+        # }\\
+        # 
+        # 
+        # **NAS**\
+        # 
+        # {\\
+        # "region": "${region}",// The region ID\\
+        # "fileSystemId": "${file_system_id}", // The file system ID\\
+        # "path": "${path}", // The file system path\\
+        # "mountTarget": "${mount_target}" // The mount point of the file system\\
+        # }\\
+        # 
+        # 
+        # **CPFS**\
+        # 
+        # {\\
+        # "region": "${region}",// The region ID\\
+        # "fileSystemId": "${file_system_id}", // The file system ID\\
+        # "protocolServiceId":"${protocol_service_id}", // The file system protocol service\\
+        # "exportId": "${export_id}", // The file system export directory\\
+        # "path": "${path}", // The file system path\\
+        # }\\
+        # 
+        # 
+        # **CPFS for Lingjun**\
+        # 
+        # {\\
+        # "region": "${region}",// The region ID\\
+        # "fileSystemId": "${file_system_id}", // The file system ID\\
+        # "path": "${path}", // The ile system path\\
+        # "mountTarget": "${mount_target}" // The mount point of the file system, CPFS for Lingjun only\\
+        # "isVpcMount": boolean, // Whether the mount point is a VPC mount point, CPFS for Lingjun only\\
+        # }\\
         self.import_info = import_info
+        # The tags of the dataset version.
         self.labels = labels
+        # The extended field, which is of the JsonString type. When you use the dataset in Deep Learning Containers (DLC), you can use the mountPath field to specify the default mount path of the dataset.
         self.options = options
+        # The property of the dataset. Valid values:
+        # 
+        # *   FILE
+        # *   DIRECTORY
+        # 
         # This parameter is required.
         self.property = property
+        # The ID of the data source.
+        # 
+        # *   If SourceType is set to USER, the value of SourceId can be a custom string.
+        # *   If SourceType is set to ITAG, the value of SourceId is the ID of the labeling job of iTAG.
+        # *   If SourceType is set to PAI_PUBLIC_DATASET, SourceId is empty by default.
         self.source_id = source_id
+        # The type of the data source. Default value: USER. Valid values:
+        # 
+        # *   PAI-PUBLIC-DATASET: a public dataset of Platform for AI (PAI).
+        # *   ITAG: a dataset generated from a labeling job of iTAG.
+        # *   USER: a dataset registered by a user.
+        # 
+        # For each job type:
+        # 
+        # *   PAI_PUBLIC_DATASET: PAI_PUBLIC_DATASET.
+        # *   ITAG: ITAG.
+        # *   USER: USER.
         self.source_type = source_type
+        # Example format:
+        # 
+        # *   Value format when DataSourceType is set to OSS: `oss://bucket.endpoint/object`.
+        # *   Value formats when DataSourceType is set to NAS: General-purpose NAS: `nas://<nasfisid>.region/subpath/to/dir/`. CPFS 1.0: `nas://<cpfs-fsid>.region/subpath/to/dir/`. CPFS 2.0: `nas://<cpfs-fsid>.region/<protocolserviceid>/`. You can distinguish CPFS 1.0 and CPFS 2.0 file systems based on the format of the file system ID: The ID for CPFS 1.0 is in the cpfs-<8-bit ASCII characters> format. The ID for CPFS 2.0 is in the cpfs-<16-bit ASCII characters> format.
+        # 
         # This parameter is required.
         self.uri = uri
 
@@ -3787,7 +3971,9 @@ class CreateDatasetVersionResponseBody(TeaModel):
         request_id: str = None,
         version_name: str = None,
     ):
+        # Id of the request
         self.request_id = request_id
+        # The dataset version name.
         self.version_name = version_name
 
     def validate(self):
@@ -3860,6 +4046,8 @@ class CreateDatasetVersionLabelsRequest(TeaModel):
         self,
         labels: List[Label] = None,
     ):
+        # The tags.
+        # 
         # This parameter is required.
         self.labels = labels
 
@@ -3896,6 +4084,7 @@ class CreateDatasetVersionLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -4315,18 +4504,34 @@ class CreateModelRequest(TeaModel):
         task: str = None,
         workspace_id: str = None,
     ):
+        # The visibility of the model in the workspace. Valid values:
+        # 
+        # *   PRIVATE (default): Visible only to you and the administrator of the workspace.
+        # *   PUBLIC: Visible to all users in the workspace.
         self.accessibility = accessibility
+        # The domain of the model. Describes the domain in which the model is for. Example: nlp (Natural Language Processing), cv (computer vision), and others.
         self.domain = domain
+        # Other information about the model.
         self.extra_info = extra_info
+        # The tags.
         self.labels = labels
+        # The model description, which is used to distinguish different models.
         self.model_description = model_description
+        # The documentation of the model.
         self.model_doc = model_doc
+        # The name of the model. The name must be 1 to 127 characters in length.
+        # 
         # This parameter is required.
         self.model_name = model_name
+        # The model type. Example: Checkpoint or LoRA.
         self.model_type = model_type
+        # The sequence number of the model. Can be used for custom sorting.
         self.order_number = order_number
+        # The source of the model. The community or organization to which the source model belongs, such as ModelScope or HuggingFace.
         self.origin = origin
+        # The task of the model. Describes the specific problem that the model solves. Example: text-classification.
         self.task = task
+        # The workspace ID. To obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -4407,7 +4612,9 @@ class CreateModelResponseBody(TeaModel):
         model_id: str = None,
         request_id: str = None,
     ):
+        # The model ID.
         self.model_id = model_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4480,6 +4687,7 @@ class CreateModelLabelsRequest(TeaModel):
         self,
         labels: List[Label] = None,
     ):
+        # The tags.
         self.labels = labels
 
     def validate(self):
@@ -4515,6 +4723,7 @@ class CreateModelLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4598,22 +4807,82 @@ class CreateModelVersionRequest(TeaModel):
         version_description: str = None,
         version_name: str = None,
     ):
+        # The approval status. Valid values:
+        # 
+        # *   Pending
+        # *   Approved
+        # *   Rejected
         self.approval_status = approval_status
+        # Compression Configuration
         self.compression_spec = compression_spec
+        # Evaluation Configuration
         self.evaluation_spec = evaluation_spec
+        # Other information.
         self.extra_info = extra_info
+        # The format of the model. Valid values:
+        # 
+        # *   OfflineModel
+        # *   SavedModel
+        # *   Keras H5
+        # *   Frozen Pb
+        # *   Caffe Prototxt
+        # *   TorchScript
+        # *   XGBoost
+        # *   PMML
+        # *   AlinkModel
+        # *   ONNX
         self.format_type = format_type
+        # The framework of the model. Valid values:
+        # 
+        # *   Pytorch -XGBoost
+        # *   Keras
+        # *   Caffe
+        # *   Alink
+        # *   Xflow
+        # *   TensorFlow
         self.framework_type = framework_type
+        # Describes how to apply to downstream inference services. For example, describes the processor and container of EAS. Example: `{ "processor": "tensorflow_gpu_1.12" }`
         self.inference_spec = inference_spec
+        # The tags.
         self.labels = labels
+        # The metrics for the model. The length after serialization is limited to 8,192.
         self.metrics = metrics
+        # The extended field. This is a JSON string.
         self.options = options
+        # The source ID.
+        # 
+        # *   If the source type is Custom, this field is not limited.
+        # *   If the source is PAIFlow or TrainingService, the format is:
+        # 
+        # <!---->
+        # 
+        #     region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
+        # 
+        # Where,
+        # 
+        # *   region is the region ID.
+        # *   workspaceId is the ID of the workspace.
+        # *   kind is the type. Valid values: PipelineRun (PAIFlow) and ServiceJob (training service).
+        # *   id: a unique identifier.
         self.source_id = source_id
+        # The type of the model source. Valid values:
+        # 
+        # *   Custom (default)
+        # *   PAIFlow
+        # *   TrainingService: PAI training service.
         self.source_type = source_type
+        # The training configurations. Used for fine-tuning and incremental training.
         self.training_spec = training_spec
+        # The URI of the model version, which is the location where the model is stored. Valid values:
+        # 
+        # *   The HTTP(S) address of the model. Example: `https://myweb.com/mymodel.tar.gz`.
+        # *   The OSS path of the model, in the format of `oss://<bucket>.<endpoint>/object`. For endpoint, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html). Example: `oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/`.
+        # 
         # This parameter is required.
         self.uri = uri
+        # The version descriptions.
         self.version_description = version_description
+        # The model version, which is unique for each model. If left empty, the first version is **0.1.0** by default. After that, the version number is increased by 1 in sequence. For example, the second version number is **0.2.0**. A version number consists of a major version number, a minor version number, and a stage version number, separated by periods (.). Among them: the major version number and minor version number are numeric. The stage version number begins with a digit and can include numbers, underscores, and letters. For example, the version number is 1.1.0 or 2.3.4_beta.
         self.version_name = version_name
 
     def validate(self):
@@ -4710,7 +4979,9 @@ class CreateModelVersionResponseBody(TeaModel):
         request_id: str = None,
         version_name: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The version of the model.
         self.version_name = version_name
 
     def validate(self):
@@ -4888,8 +5159,11 @@ class CreateProductOrdersRequestProductsInstanceProperties(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The property code.
         self.code = code
+        # The property name.
         self.name = name
+        # The property value.
         self.value = value
 
     def validate(self):
@@ -4931,12 +5205,36 @@ class CreateProductOrdersRequestProducts(TeaModel):
         pricing_cycle: str = None,
         product_code: str = None,
     ):
+        # Specifies whether to automatically renew the product.
+        # 
+        # *   true
+        # *   false
         self.auto_renew = auto_renew
+        # The billing method. Only POSTPAY is supported.
         self.charge_type = charge_type
+        # The purchase duration. You can use this parameter together with pricingCycle. Only 1 is supported.
         self.duration = duration
+        # The properties of the instance.
+        # 
+        # *   DataWorks_share: [ { "Code": "region", "Value": "cn-shanghai" } ]
+        # *   OSS_share: [ { "Code": "commodity_type", "Value": "oss", "Name": "Object Storage Service" }, { "Code": "ord_time", "Value": "1:Hour", "Name": "1 Hour" } ]
+        # *   PAI_share: None
+        # *   China bid MaxCompute_share: [ { "Code": "region", "Value": "cn-hangzhou" }, { "Code": "odps_specification_type", "Value": "OdpsStandard" }, { "Code": "ord_time", "Value": "1:Hour" } ]
+        # *   International bid MaxCompute_share: [ { "Code": "region", "Value": "cn-hangzhou" }, { "Code": "ord_time", "Value": "1:Hour" } ]
         self.instance_properties = instance_properties
+        # The type of the order. Only BUY is supported.
         self.order_type = order_type
+        # The billing cycle. Valid values:
+        # 
+        # *   Month: The price is calculated every month. DataWorks_share only supports Month.
+        # *   Hour: The price is calculated every hour. OSS_share and MaxCompute_share only support Hour.
         self.pricing_cycle = pricing_cycle
+        # The product code. Valid values:
+        # 
+        # *   DataWorks_share: pay-as-you-go DataWorks
+        # *   MaxCompute_share: pay-as-you-go MaxCompute
+        # *   PAI_share: pay-as-you-go PAI.
+        # *   OSS_share: pay-as-you-go OSS
         self.product_code = product_code
 
     def validate(self):
@@ -4997,7 +5295,12 @@ class CreateProductOrdersRequest(TeaModel):
         auto_pay: bool = None,
         products: List[CreateProductOrdersRequestProducts] = None,
     ):
+        # Specifies whether to automatically pay for the provided products.
+        # 
+        # *   true
+        # *   false
         self.auto_pay = auto_pay
+        # The list of products to be purchased. Separate them with commas (,).
         self.products = products
 
     def validate(self):
@@ -5040,9 +5343,13 @@ class CreateProductOrdersResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the product purchase request.
         self.buy_product_request_id = buy_product_request_id
+        # The returned message.
         self.message = message
+        # The purchase order ID.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5128,12 +5435,25 @@ class CreateRunRequest(TeaModel):
         source_id: str = None,
         source_type: str = None,
     ):
+        # The ID of the experiment that corresponds to the run.
+        # 
         # This parameter is required.
         self.experiment_id = experiment_id
+        # The list of tags added to the run.
         self.labels = labels
+        # The name of the run. The name must meet the following requirements:
+        # 
+        # *   The name must start with a letter.
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-).
+        # *   The name must be 1 to 63 characters in length.
+        # 
+        # If the name is left empty when you create a run, a random run ID generated by the server is used as the name.
         self.name = name
+        # The parameters of the run.
         self.params = params
+        # The ID of the workload associated with the run.
         self.source_id = source_id
+        # The type of the workload source that is associated with the run. Valid values: TrainingService and DLC. You can also leave this parameter empty. This parameter is optional and left empty by default.
         self.source_type = source_type
 
     def validate(self):
@@ -5199,6 +5519,7 @@ class CreateRunResponseBody(TeaModel):
         run_id: str = None,
         request_id: str = None,
     ):
+        # The run ID.
         self.run_id = run_id
         # Id of the request
         self.request_id = request_id
@@ -5277,12 +5598,26 @@ class CreateWorkspaceRequest(TeaModel):
         resource_group_id: str = None,
         workspace_name: str = None,
     ):
+        # The description of the workspace. The description can be up to 80 characters in length.
+        # 
         # This parameter is required.
         self.description = description
+        # The display name of the workspace. You can set it based on the purpose of the workspace. If left empty, the name of the workspace is used.
         self.display_name = display_name
+        # The environment of the workspace.
+        # 
+        # *   Workspaces in basic mode can run only in the production environment (prod).
+        # *   Workspaces in standard mode can run in both the development and production environments (dev and prod).
+        # 
         # This parameter is required.
         self.env_types = env_types
         self.resource_group_id = resource_group_id
+        # The name of the workspace. Format:
+        # 
+        # *   The name must be 3 to 23 characters in length, and can contain letters, underscores (_), and digits.
+        # *   The name must start with a letter.
+        # *   It must be unique in the current region.
+        # 
         # This parameter is required.
         self.workspace_name = workspace_name
 
@@ -5328,7 +5663,9 @@ class CreateWorkspaceResponseBody(TeaModel):
         request_id: str = None,
         workspace_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -5721,7 +6058,9 @@ class DeleteCodeSourceResponseBody(TeaModel):
         code_source_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the deleted code source.
         self.code_source_id = code_source_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6248,6 +6587,7 @@ class DeleteDatasetVersionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -6548,6 +6888,8 @@ class DeleteMembersRequest(TeaModel):
         self,
         member_ids: str = None,
     ):
+        # The list of member IDs. Separate multiple member IDs with commas (,). You can call [ListMembers](https://help.aliyun.com/document_detail/449135.html) to obtain the member ID.
+        # 
         # This parameter is required.
         self.member_ids = member_ids
 
@@ -6578,8 +6920,11 @@ class DeleteMembersResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The error code returned if the call failed.
         self.code = code
+        # The error message returned if the call failed.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6656,6 +7001,7 @@ class DeleteModelResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6887,6 +7233,7 @@ class DeleteModelVersionLabelsRequest(TeaModel):
         self,
         label_keys: str = None,
     ):
+        # The key of the tag to be deleted. Separate multiple tag keys with commas (,).
         self.label_keys = label_keys
 
     def validate(self):
@@ -6914,6 +7261,7 @@ class DeleteModelVersionLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7111,6 +7459,103 @@ class DeleteRunLabelResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteRunLabelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteUserConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config_key: str = None,
+    ):
+        # The configuration item keys. Currently, only customizePAIAssumedRole.
+        self.config_key = config_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_key is not None:
+            result['ConfigKey'] = self.config_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigKey') is not None:
+            self.config_key = m.get('ConfigKey')
+        return self
+
+
+class DeleteUserConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteUserConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteUserConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteUserConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7333,20 +7778,38 @@ class GetCodeSourceResponseBody(TeaModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # The visibility of the code source. Valid values:
+        # 
+        # *   PRIVATE: Visible only to you and the administrator of the workspace.
+        # *   PUBLIC: Visible to all members in the workspace.
         self.accessibility = accessibility
+        # The code repository branch.
         self.code_branch = code_branch
+        # The code commit ID.
         self.code_commit = code_commit
+        # The address of the code repository.
         self.code_repo = code_repo
+        # The token used to access the code repository.
         self.code_repo_access_token = code_repo_access_token
+        # The username of the code repository.
         self.code_repo_user_name = code_repo_user_name
+        # The ID of the code source.
         self.code_source_id = code_source_id
+        # The description of the code source.
         self.description = description
+        # The name of the code source.
         self.display_name = display_name
+        # The time when the code source was created, in the ISO8601 format.
         self.gmt_create_time = gmt_create_time
+        # The time when the code source was modified, in the ISO8601 format.
         self.gmt_modify_time = gmt_modify_time
+        # The local mount path of the code.
         self.mount_path = mount_path
+        # The request ID.
         self.request_id = request_id
+        # The ID of the creator.
         self.user_id = user_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -8587,6 +9050,12 @@ class GetExperimentRequest(TeaModel):
         self,
         verbose: bool = None,
     ):
+        # Specifies whether to obtain the latest run information associated with the experiment
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.verbose = verbose
 
     def validate(self):
@@ -10057,14 +10526,25 @@ class ListDatasetFileMetasRequest(TeaModel):
         self,
         dataset_version: str = None,
         end_file_update_time: str = None,
+        end_tag_update_time: str = None,
+        max_results: int = None,
         next_token: str = None,
         order: str = None,
         page_size: int = None,
+        query_file_dir: str = None,
+        query_file_name: str = None,
+        query_file_type_include_any: List[str] = None,
+        query_image: str = None,
+        query_tags_exclude: List[str] = None,
+        query_tags_include_all: List[str] = None,
+        query_tags_include_any: List[str] = None,
         query_text: str = None,
         query_type: str = None,
         score_threshold: float = None,
         sort_by: str = None,
         start_file_update_time: str = None,
+        start_tag_update_time: str = None,
+        thumbnail_mode: str = None,
         top_k: int = None,
         workspace_id: str = None,
     ):
@@ -10072,15 +10552,28 @@ class ListDatasetFileMetasRequest(TeaModel):
         self.dataset_version = dataset_version
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.end_file_update_time = end_file_update_time
+        # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+        self.end_tag_update_time = end_tag_update_time
+        self.max_results = max_results
         self.next_token = next_token
         self.order = order
         self.page_size = page_size
+        self.query_file_dir = query_file_dir
+        self.query_file_name = query_file_name
+        self.query_file_type_include_any = query_file_type_include_any
+        self.query_image = query_image
+        self.query_tags_exclude = query_tags_exclude
+        self.query_tags_include_all = query_tags_include_all
+        self.query_tags_include_any = query_tags_include_any
         self.query_text = query_text
         self.query_type = query_type
         self.score_threshold = score_threshold
         self.sort_by = sort_by
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.start_file_update_time = start_file_update_time
+        # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+        self.start_tag_update_time = start_tag_update_time
+        self.thumbnail_mode = thumbnail_mode
         self.top_k = top_k
         # This parameter is required.
         self.workspace_id = workspace_id
@@ -10098,12 +10591,30 @@ class ListDatasetFileMetasRequest(TeaModel):
             result['DatasetVersion'] = self.dataset_version
         if self.end_file_update_time is not None:
             result['EndFileUpdateTime'] = self.end_file_update_time
+        if self.end_tag_update_time is not None:
+            result['EndTagUpdateTime'] = self.end_tag_update_time
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.order is not None:
             result['Order'] = self.order
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.query_file_dir is not None:
+            result['QueryFileDir'] = self.query_file_dir
+        if self.query_file_name is not None:
+            result['QueryFileName'] = self.query_file_name
+        if self.query_file_type_include_any is not None:
+            result['QueryFileTypeIncludeAny'] = self.query_file_type_include_any
+        if self.query_image is not None:
+            result['QueryImage'] = self.query_image
+        if self.query_tags_exclude is not None:
+            result['QueryTagsExclude'] = self.query_tags_exclude
+        if self.query_tags_include_all is not None:
+            result['QueryTagsIncludeAll'] = self.query_tags_include_all
+        if self.query_tags_include_any is not None:
+            result['QueryTagsIncludeAny'] = self.query_tags_include_any
         if self.query_text is not None:
             result['QueryText'] = self.query_text
         if self.query_type is not None:
@@ -10114,6 +10625,10 @@ class ListDatasetFileMetasRequest(TeaModel):
             result['SortBy'] = self.sort_by
         if self.start_file_update_time is not None:
             result['StartFileUpdateTime'] = self.start_file_update_time
+        if self.start_tag_update_time is not None:
+            result['StartTagUpdateTime'] = self.start_tag_update_time
+        if self.thumbnail_mode is not None:
+            result['ThumbnailMode'] = self.thumbnail_mode
         if self.top_k is not None:
             result['TopK'] = self.top_k
         if self.workspace_id is not None:
@@ -10126,12 +10641,30 @@ class ListDatasetFileMetasRequest(TeaModel):
             self.dataset_version = m.get('DatasetVersion')
         if m.get('EndFileUpdateTime') is not None:
             self.end_file_update_time = m.get('EndFileUpdateTime')
+        if m.get('EndTagUpdateTime') is not None:
+            self.end_tag_update_time = m.get('EndTagUpdateTime')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('QueryFileDir') is not None:
+            self.query_file_dir = m.get('QueryFileDir')
+        if m.get('QueryFileName') is not None:
+            self.query_file_name = m.get('QueryFileName')
+        if m.get('QueryFileTypeIncludeAny') is not None:
+            self.query_file_type_include_any = m.get('QueryFileTypeIncludeAny')
+        if m.get('QueryImage') is not None:
+            self.query_image = m.get('QueryImage')
+        if m.get('QueryTagsExclude') is not None:
+            self.query_tags_exclude = m.get('QueryTagsExclude')
+        if m.get('QueryTagsIncludeAll') is not None:
+            self.query_tags_include_all = m.get('QueryTagsIncludeAll')
+        if m.get('QueryTagsIncludeAny') is not None:
+            self.query_tags_include_any = m.get('QueryTagsIncludeAny')
         if m.get('QueryText') is not None:
             self.query_text = m.get('QueryText')
         if m.get('QueryType') is not None:
@@ -10142,6 +10675,175 @@ class ListDatasetFileMetasRequest(TeaModel):
             self.sort_by = m.get('SortBy')
         if m.get('StartFileUpdateTime') is not None:
             self.start_file_update_time = m.get('StartFileUpdateTime')
+        if m.get('StartTagUpdateTime') is not None:
+            self.start_tag_update_time = m.get('StartTagUpdateTime')
+        if m.get('ThumbnailMode') is not None:
+            self.thumbnail_mode = m.get('ThumbnailMode')
+        if m.get('TopK') is not None:
+            self.top_k = m.get('TopK')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ListDatasetFileMetasShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_version: str = None,
+        end_file_update_time: str = None,
+        end_tag_update_time: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        order: str = None,
+        page_size: int = None,
+        query_file_dir: str = None,
+        query_file_name: str = None,
+        query_file_type_include_any_shrink: str = None,
+        query_image: str = None,
+        query_tags_exclude_shrink: str = None,
+        query_tags_include_all_shrink: str = None,
+        query_tags_include_any_shrink: str = None,
+        query_text: str = None,
+        query_type: str = None,
+        score_threshold: float = None,
+        sort_by: str = None,
+        start_file_update_time: str = None,
+        start_tag_update_time: str = None,
+        thumbnail_mode: str = None,
+        top_k: int = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.dataset_version = dataset_version
+        # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+        self.end_file_update_time = end_file_update_time
+        # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+        self.end_tag_update_time = end_tag_update_time
+        self.max_results = max_results
+        self.next_token = next_token
+        self.order = order
+        self.page_size = page_size
+        self.query_file_dir = query_file_dir
+        self.query_file_name = query_file_name
+        self.query_file_type_include_any_shrink = query_file_type_include_any_shrink
+        self.query_image = query_image
+        self.query_tags_exclude_shrink = query_tags_exclude_shrink
+        self.query_tags_include_all_shrink = query_tags_include_all_shrink
+        self.query_tags_include_any_shrink = query_tags_include_any_shrink
+        self.query_text = query_text
+        self.query_type = query_type
+        self.score_threshold = score_threshold
+        self.sort_by = sort_by
+        # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+        self.start_file_update_time = start_file_update_time
+        # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+        self.start_tag_update_time = start_tag_update_time
+        self.thumbnail_mode = thumbnail_mode
+        self.top_k = top_k
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_version is not None:
+            result['DatasetVersion'] = self.dataset_version
+        if self.end_file_update_time is not None:
+            result['EndFileUpdateTime'] = self.end_file_update_time
+        if self.end_tag_update_time is not None:
+            result['EndTagUpdateTime'] = self.end_tag_update_time
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.query_file_dir is not None:
+            result['QueryFileDir'] = self.query_file_dir
+        if self.query_file_name is not None:
+            result['QueryFileName'] = self.query_file_name
+        if self.query_file_type_include_any_shrink is not None:
+            result['QueryFileTypeIncludeAny'] = self.query_file_type_include_any_shrink
+        if self.query_image is not None:
+            result['QueryImage'] = self.query_image
+        if self.query_tags_exclude_shrink is not None:
+            result['QueryTagsExclude'] = self.query_tags_exclude_shrink
+        if self.query_tags_include_all_shrink is not None:
+            result['QueryTagsIncludeAll'] = self.query_tags_include_all_shrink
+        if self.query_tags_include_any_shrink is not None:
+            result['QueryTagsIncludeAny'] = self.query_tags_include_any_shrink
+        if self.query_text is not None:
+            result['QueryText'] = self.query_text
+        if self.query_type is not None:
+            result['QueryType'] = self.query_type
+        if self.score_threshold is not None:
+            result['ScoreThreshold'] = self.score_threshold
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.start_file_update_time is not None:
+            result['StartFileUpdateTime'] = self.start_file_update_time
+        if self.start_tag_update_time is not None:
+            result['StartTagUpdateTime'] = self.start_tag_update_time
+        if self.thumbnail_mode is not None:
+            result['ThumbnailMode'] = self.thumbnail_mode
+        if self.top_k is not None:
+            result['TopK'] = self.top_k
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetVersion') is not None:
+            self.dataset_version = m.get('DatasetVersion')
+        if m.get('EndFileUpdateTime') is not None:
+            self.end_file_update_time = m.get('EndFileUpdateTime')
+        if m.get('EndTagUpdateTime') is not None:
+            self.end_tag_update_time = m.get('EndTagUpdateTime')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('QueryFileDir') is not None:
+            self.query_file_dir = m.get('QueryFileDir')
+        if m.get('QueryFileName') is not None:
+            self.query_file_name = m.get('QueryFileName')
+        if m.get('QueryFileTypeIncludeAny') is not None:
+            self.query_file_type_include_any_shrink = m.get('QueryFileTypeIncludeAny')
+        if m.get('QueryImage') is not None:
+            self.query_image = m.get('QueryImage')
+        if m.get('QueryTagsExclude') is not None:
+            self.query_tags_exclude_shrink = m.get('QueryTagsExclude')
+        if m.get('QueryTagsIncludeAll') is not None:
+            self.query_tags_include_all_shrink = m.get('QueryTagsIncludeAll')
+        if m.get('QueryTagsIncludeAny') is not None:
+            self.query_tags_include_any_shrink = m.get('QueryTagsIncludeAny')
+        if m.get('QueryText') is not None:
+            self.query_text = m.get('QueryText')
+        if m.get('QueryType') is not None:
+            self.query_type = m.get('QueryType')
+        if m.get('ScoreThreshold') is not None:
+            self.score_threshold = m.get('ScoreThreshold')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('StartFileUpdateTime') is not None:
+            self.start_file_update_time = m.get('StartFileUpdateTime')
+        if m.get('StartTagUpdateTime') is not None:
+            self.start_tag_update_time = m.get('StartTagUpdateTime')
+        if m.get('ThumbnailMode') is not None:
+            self.thumbnail_mode = m.get('ThumbnailMode')
         if m.get('TopK') is not None:
             self.top_k = m.get('TopK')
         if m.get('WorkspaceId') is not None:
@@ -10155,6 +10857,7 @@ class ListDatasetFileMetasResponseBody(TeaModel):
         dataset_file_metas: List[DatasetFileMeta] = None,
         dataset_id: str = None,
         dataset_version: str = None,
+        max_results: int = None,
         next_token: str = None,
         page_size: int = None,
         total_count: int = None,
@@ -10163,6 +10866,7 @@ class ListDatasetFileMetasResponseBody(TeaModel):
         self.dataset_file_metas = dataset_file_metas
         self.dataset_id = dataset_id
         self.dataset_version = dataset_version
+        self.max_results = max_results
         self.next_token = next_token
         self.page_size = page_size
         self.total_count = total_count
@@ -10188,6 +10892,8 @@ class ListDatasetFileMetasResponseBody(TeaModel):
             result['DatasetId'] = self.dataset_id
         if self.dataset_version is not None:
             result['DatasetVersion'] = self.dataset_version
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.page_size is not None:
@@ -10209,6 +10915,8 @@ class ListDatasetFileMetasResponseBody(TeaModel):
             self.dataset_id = m.get('DatasetId')
         if m.get('DatasetVersion') is not None:
             self.dataset_version = m.get('DatasetVersion')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('PageSize') is not None:
@@ -11221,10 +11929,15 @@ class ListImageLabelsRequest(TeaModel):
         region: str = None,
         workspace_id: str = None,
     ):
+        # The image ID. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain the image ID.
         self.image_id = image_id
+        # The tag filter conditions, separated with commas (,). The format of a single condition filter is `key=value`. Takes effect independently from LabelKeys.
         self.label_filter = label_filter
+        # The tag keys, separated with commas (,). System tags start with system and take effect independently from LabelFilter.
         self.label_keys = label_keys
+        # The region where the image resides.
         self.region = region
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -11269,7 +11982,9 @@ class ListImageLabelsResponseBodyLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -11303,8 +12018,11 @@ class ListImageLabelsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The image tags.
         self.labels = labels
+        # The request ID.
         self.request_id = request_id
+        # The total number of the images that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -13735,6 +14453,181 @@ class ListRunsResponse(TeaModel):
         return self
 
 
+class ListUserConfigsRequest(TeaModel):
+    def __init__(
+        self,
+        category_names: str = None,
+        config_keys: str = None,
+    ):
+        # The category. Currently, only DataPrivacyConfig is supported.
+        self.category_names = category_names
+        # The configuration item keys. Currently, only customizePAIAssumedRole is supported.
+        self.config_keys = config_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_names is not None:
+            result['CategoryNames'] = self.category_names
+        if self.config_keys is not None:
+            result['ConfigKeys'] = self.config_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryNames') is not None:
+            self.category_names = m.get('CategoryNames')
+        if m.get('ConfigKeys') is not None:
+            self.config_keys = m.get('ConfigKeys')
+        return self
+
+
+class ListUserConfigsResponseBodyConfigs(TeaModel):
+    def __init__(
+        self,
+        category_name: str = None,
+        config_key: str = None,
+        config_value: str = None,
+        scope: str = None,
+    ):
+        # The category. Currently, only DataPrivacyConfig is supported.
+        self.category_name = category_name
+        # The key of the configuration item.
+        self.config_key = config_key
+        # The value of the configuration item.
+        self.config_value = config_value
+        # The scope. Currently, subUser and owner are supported.
+        self.scope = scope
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
+        if self.config_key is not None:
+            result['ConfigKey'] = self.config_key
+        if self.config_value is not None:
+            result['ConfigValue'] = self.config_value
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
+        if m.get('ConfigKey') is not None:
+            self.config_key = m.get('ConfigKey')
+        if m.get('ConfigValue') is not None:
+            self.config_value = m.get('ConfigValue')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        return self
+
+
+class ListUserConfigsResponseBody(TeaModel):
+    def __init__(
+        self,
+        configs: List[ListUserConfigsResponseBodyConfigs] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # The configurations list.
+        self.configs = configs
+        # The request ID.
+        self.request_id = request_id
+        # The number of items returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.configs:
+            for k in self.configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Configs'] = []
+        if self.configs is not None:
+            for k in self.configs:
+                result['Configs'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.configs = []
+        if m.get('Configs') is not None:
+            for k in m.get('Configs'):
+                temp_model = ListUserConfigsResponseBodyConfigs()
+                self.configs.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListUserConfigsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUserConfigsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUserConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListWorkspaceUsersRequest(TeaModel):
     def __init__(
         self,
@@ -13899,17 +14792,48 @@ class ListWorkspacesRequest(TeaModel):
         workspace_ids: str = None,
         workspace_name: str = None,
     ):
+        # The list of returned fields of workspace details. Used to limit the fields in the returned results. Separate multiple fields with commas (,). Currently, only Id is supported, which is the workspace ID.
         self.fields = fields
+        # The modules, separated by commas (,). Default value: PAI.
         self.module_list = module_list
+        # The query options. Valid values:
+        # 
+        # *   GetWorkspaces (default): Obtains a list of Workspaces.
+        # *   GetResourceLimits: Obtains a list of ResourceLimits.
         self.option = option
+        # The order of results (ascending or descending). Valid values:
+        # 
+        # *   ASC: ascending order. This is the default value.
+        # *   DESC: descending order.
         self.order = order
+        # The page number of the workspace list. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: 20.
         self.page_size = page_size
+        # The resource group ID. To obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/zh/resource-management/resource-group/user-guide/view-basic-information-of-a-resource-group?spm=a2c4g.11186623.help-menu-94362.d_2_0_1.86386c21FKqhTk\\&scm=20140722.H_151181._.OR_help-T_cn~zh-V_1).
         self.resource_group_id = resource_group_id
+        # Specifies how to sort the results. Default value: GmtCreateTime. Valid values:
+        # 
+        # *   GmtCreateTime: Sort by the time when created.
+        # *   GmtModifiedTime: Sort by the time when modified.
         self.sort_by = sort_by
+        # The workspace status. Valid values:
+        # 
+        # *   ENABLED
+        # *   INITIALIZING
+        # *   FAILURE
+        # *   DISABLED
+        # *   FROZEN
+        # *   UPDATING
         self.status = status
+        # Specifies whether to display workspace details. Valid values:
+        # 
+        # *   false (default)
+        # *   true
         self.verbose = verbose
+        # The workspace IDs. Separate multiple IDs by commas (,).
         self.workspace_ids = workspace_ids
+        # The name of the workspace.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -13992,17 +14916,29 @@ class ListWorkspacesResponseBodyWorkspaces(TeaModel):
         workspace_name: str = None,
         resource_group_id: str = None,
     ):
+        # The names of the administrator accounts.
         self.admin_names = admin_names
+        # The user ID of the creator.
         self.creator = creator
+        # The description of the workspace.
         self.description = description
+        # The environment types of the workspace.
         self.env_types = env_types
+        # the additional information. Only contains TenantId.
         self.extra_infos = extra_infos
+        # The time when the workspace was created. The time (UTC+0) follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ss.SSSZ format.
         self.gmt_create_time = gmt_create_time
+        # The time when the workspace was modified. The time (UTC+0) follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ss.SSSZ format.
         self.gmt_modified_time = gmt_modified_time
+        # Indicates whether the workspace is the default workspace.
         self.is_default = is_default
+        # The status of the workspace.
         self.status = status
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # The name of the workspace.
         self.workspace_name = workspace_name
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -14077,9 +15013,21 @@ class ListWorkspacesResponseBody(TeaModel):
         total_count: int = None,
         workspaces: List[ListWorkspacesResponseBodyWorkspaces] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The type and quantity of resources that can be activated in a workspace. This list is returned when the Option is set to GetResourceLimits. Valid values:
+        # 
+        # *   MaxCompute_share: pay-as-you-go MaxCompute
+        # *   MaxCompute_isolate: subscription MaxCompute
+        # *   DLC_share: pay-as-you-go DLC
+        # *   PAI_Isolate: subscription PAI
+        # *   PAI_share: pay-as-you-go PAI
+        # *   DataWorks_isolate: subscription DataWorks
+        # *   DataWorks_share: pay-as-you-go DataWorks
         self.resource_limits = resource_limits
+        # The number of workspaces that meet the query conditions.
         self.total_count = total_count
+        # The list of workspace details. This list is returned when Option is set to GetWorkspaces.
         self.workspaces = workspaces
 
     def validate(self):
@@ -14786,6 +15734,160 @@ class SetExperimentLabelsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetExperimentLabelsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetUserConfigsRequestConfigs(TeaModel):
+    def __init__(
+        self,
+        category_name: str = None,
+        config_key: str = None,
+        config_value: str = None,
+        scope: str = None,
+    ):
+        # The category. Currently, only DataPrivacyConfig is supported.
+        self.category_name = category_name
+        # The key of the configuration item.
+        self.config_key = config_key
+        # The value of the configuration item.
+        self.config_value = config_value
+        # The scope. Currently, subUser and owner are supported.
+        self.scope = scope
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
+        if self.config_key is not None:
+            result['ConfigKey'] = self.config_key
+        if self.config_value is not None:
+            result['ConfigValue'] = self.config_value
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
+        if m.get('ConfigKey') is not None:
+            self.config_key = m.get('ConfigKey')
+        if m.get('ConfigValue') is not None:
+            self.config_value = m.get('ConfigValue')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        return self
+
+
+class SetUserConfigsRequest(TeaModel):
+    def __init__(
+        self,
+        configs: List[SetUserConfigsRequestConfigs] = None,
+    ):
+        # The configurations list.
+        self.configs = configs
+
+    def validate(self):
+        if self.configs:
+            for k in self.configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Configs'] = []
+        if self.configs is not None:
+            for k in self.configs:
+                result['Configs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.configs = []
+        if m.get('Configs') is not None:
+            for k in m.get('Configs'):
+                temp_model = SetUserConfigsRequestConfigs()
+                self.configs.append(temp_model.from_map(k))
+        return self
+
+
+class SetUserConfigsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetUserConfigsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetUserConfigsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetUserConfigsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15553,6 +16655,7 @@ class UpdateDatasetVersionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -16124,8 +17227,15 @@ class UpdateRunRequest(TeaModel):
         name: str = None,
         params: List[RunParam] = None,
     ):
+        # The labels.
         self.labels = labels
+        # The run name. The name must meet the following requirements:
+        # 
+        # *   The name must start with a letter.
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-).
+        # *   The name must be 1 to 63 characters in length.
         self.name = name
+        # The parameters.
         self.params = params
 
     def validate(self):
@@ -16178,7 +17288,7 @@ class UpdateRunResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

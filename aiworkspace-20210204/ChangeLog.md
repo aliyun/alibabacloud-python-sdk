@@ -1,3 +1,21 @@
+2025-04-17 Version: 6.1.0
+- Support API DeleteUserConfig.
+- Support API ListUserConfigs.
+- Support API SetUserConfigs.
+- Update API ListDatasetFileMetas: add request parameters EndTagUpdateTime.
+- Update API ListDatasetFileMetas: add request parameters MaxResults.
+- Update API ListDatasetFileMetas: add request parameters QueryFileDir.
+- Update API ListDatasetFileMetas: add request parameters QueryFileName.
+- Update API ListDatasetFileMetas: add request parameters QueryFileTypeIncludeAny.
+- Update API ListDatasetFileMetas: add request parameters QueryImage.
+- Update API ListDatasetFileMetas: add request parameters QueryTagsExclude.
+- Update API ListDatasetFileMetas: add request parameters QueryTagsIncludeAll.
+- Update API ListDatasetFileMetas: add request parameters QueryTagsIncludeAny.
+- Update API ListDatasetFileMetas: add request parameters StartTagUpdateTime.
+- Update API ListDatasetFileMetas: add request parameters ThumbnailMode.
+- Update API ListDatasetFileMetas: add response parameters Body.MaxResults.
+
+
 2025-04-01 Version: 6.0.1
 - Update API AddImage: add request parameters body.SourceId.
 - Update API AddImage: add request parameters body.SourceType.
