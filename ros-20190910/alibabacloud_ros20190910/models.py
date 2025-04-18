@@ -13026,7 +13026,9 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalCon
         allowed_values: List[Any] = None,
         behavior: str = None,
         behavior_reason: str = None,
+        properties_data: str = None,
         property_name: str = None,
+        request_info: str = None,
         resource_name: str = None,
         resource_type: str = None,
     ):
@@ -13036,8 +13038,10 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalCon
         self.behavior = behavior
         # The reason for the parameter behavior
         self.behavior_reason = behavior_reason
+        self.properties_data = properties_data
         # The name of the resource property.
         self.property_name = property_name
+        self.request_info = request_info
         # The name of the resource that is defined in the template.
         self.resource_name = resource_name
         # The resource type.
@@ -13058,8 +13062,12 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalCon
             result['Behavior'] = self.behavior
         if self.behavior_reason is not None:
             result['BehaviorReason'] = self.behavior_reason
+        if self.properties_data is not None:
+            result['PropertiesData'] = self.properties_data
         if self.property_name is not None:
             result['PropertyName'] = self.property_name
+        if self.request_info is not None:
+            result['RequestInfo'] = self.request_info
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
         if self.resource_type is not None:
@@ -13074,8 +13082,12 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalCon
             self.behavior = m.get('Behavior')
         if m.get('BehaviorReason') is not None:
             self.behavior_reason = m.get('BehaviorReason')
+        if m.get('PropertiesData') is not None:
+            self.properties_data = m.get('PropertiesData')
         if m.get('PropertyName') is not None:
             self.property_name = m.get('PropertyName')
+        if m.get('RequestInfo') is not None:
+            self.request_info = m.get('RequestInfo')
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
         if m.get('ResourceType') is not None:

@@ -1,3 +1,8 @@
+2025-04-18 Version: 3.5.3
+- Update API GetTemplateParameterConstraints: add response parameters Body.ParameterConstraints.$.OriginalConstraints.$.PropertiesData.
+- Update API GetTemplateParameterConstraints: add response parameters Body.ParameterConstraints.$.OriginalConstraints.$.RequestInfo.
+
+
 2025-03-28 Version: 3.5.2
 - Update API CreateChangeSet: add request parameters ResourceGroupId.
 - Update API CreateChangeSet: add request parameters Tags.
