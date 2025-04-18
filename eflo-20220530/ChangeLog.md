@@ -1,3 +1,19 @@
+2025-04-18 Version: 2.0.4
+- Update API CreateElasticNetworkInterface: add request parameters ResourceGroupId.
+- Update API GetElasticNetworkInterface: add response parameters Body.Content.ResourceGroupId.
+- Update API GetLeniPrivateIpAddress: add response parameters Body.Content.ResourceGroupId.
+- Update API GetLniPrivateIpAddress: add response parameters Body.Content.ResourceGroupId.
+- Update API GetNetworkInterface: add response parameters Body.Content.ResourceGroupId.
+- Update API ListElasticNetworkInterfaces: add request parameters ResourceGroupId.
+- Update API ListElasticNetworkInterfaces: add response parameters Body.Content.Data.$.ResourceGroupId.
+- Update API ListLeniPrivateIpAddresses: add request parameters ResourceGroupId.
+- Update API ListLeniPrivateIpAddresses: add response parameters Body.Content.ResourceGroupId.
+- Update API ListLniPrivateIpAddress: add request parameters ResourceGroupId.
+- Update API ListLniPrivateIpAddress: add response parameters Body.Content.ResourceGroupId.
+- Update API ListNetworkInterfaces: add request parameters ResourceGroupId.
+- Update API ListNetworkInterfaces: add response parameters Body.Content.Data.$.ResourceGroupId.
+
+
 2025-03-26 Version: 2.0.3
 - Update API GetLniPrivateIpAddress: add response parameters Body.Content.SubnetId.
 - Update API GetVcc: add response parameters Body.Content.Bandwidth.

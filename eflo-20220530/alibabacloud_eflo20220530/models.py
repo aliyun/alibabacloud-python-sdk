@@ -747,6 +747,7 @@ class CreateElasticNetworkInterfaceRequest(TeaModel):
         enable_jumbo_frame: bool = None,
         node_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         security_group_id: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -764,6 +765,7 @@ class CreateElasticNetworkInterfaceRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the security group.
         self.security_group_id = security_group_id
         # The ID of the vSwitch.
@@ -796,6 +798,8 @@ class CreateElasticNetworkInterfaceRequest(TeaModel):
             result['NodeId'] = self.node_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
         if self.v_switch_id is not None:
@@ -818,6 +822,8 @@ class CreateElasticNetworkInterfaceRequest(TeaModel):
             self.node_id = m.get('NodeId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('VSwitchId') is not None:
@@ -5135,6 +5141,7 @@ class GetElasticNetworkInterfaceResponseBodyContent(TeaModel):
         node_id: str = None,
         private_ip_addresses: List[GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses] = None,
         region_id: str = None,
+        resource_group_id: str = None,
         security_group_id: str = None,
         status: str = None,
         type: str = None,
@@ -5170,6 +5177,7 @@ class GetElasticNetworkInterfaceResponseBodyContent(TeaModel):
         self.private_ip_addresses = private_ip_addresses
         # The region ID.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the security group.
         self.security_group_id = security_group_id
         # The state of the private gateway.
@@ -5244,6 +5252,8 @@ class GetElasticNetworkInterfaceResponseBodyContent(TeaModel):
                 result['PrivateIpAddresses'].append(k.to_map() if k else None)
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
         if self.status is not None:
@@ -5294,6 +5304,8 @@ class GetElasticNetworkInterfaceResponseBodyContent(TeaModel):
                 self.private_ip_addresses.append(temp_model.from_map(k))
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('Status') is not None:
@@ -7332,6 +7344,7 @@ class GetLeniPrivateIpAddressResponseBodyContent(TeaModel):
         message: str = None,
         private_ip_address: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         status: str = None,
     ):
         # The description.
@@ -7350,6 +7363,7 @@ class GetLeniPrivateIpAddressResponseBodyContent(TeaModel):
         self.private_ip_address = private_ip_address
         # The region ID.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The task status.
         self.status = status
 
@@ -7378,6 +7392,8 @@ class GetLeniPrivateIpAddressResponseBodyContent(TeaModel):
             result['PrivateIpAddress'] = self.private_ip_address
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -7400,6 +7416,8 @@ class GetLeniPrivateIpAddressResponseBodyContent(TeaModel):
             self.private_ip_address = m.get('PrivateIpAddress')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -7563,6 +7581,7 @@ class GetLniPrivateIpAddressResponseBodyContent(TeaModel):
         network_interface_id: str = None,
         private_ip_address: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         status: str = None,
         subnet_id: str = None,
     ):
@@ -7582,6 +7601,7 @@ class GetLniPrivateIpAddressResponseBodyContent(TeaModel):
         self.private_ip_address = private_ip_address
         # The region ID.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The state of the rule.
         self.status = status
         # The subnet instance ID.
@@ -7612,6 +7632,8 @@ class GetLniPrivateIpAddressResponseBodyContent(TeaModel):
             result['PrivateIpAddress'] = self.private_ip_address
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
         if self.subnet_id is not None:
@@ -7636,6 +7658,8 @@ class GetLniPrivateIpAddressResponseBodyContent(TeaModel):
             self.private_ip_address = m.get('PrivateIpAddress')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('SubnetId') is not None:
@@ -7972,6 +7996,7 @@ class GetNetworkInterfaceResponseBodyContent(TeaModel):
         private_ip_address_mac_group: List[GetNetworkInterfaceResponseBodyContentPrivateIpAddressMacGroup] = None,
         quota: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         service_mac: str = None,
         status: str = None,
         subnet_base_info: GetNetworkInterfaceResponseBodyContentSubnetBaseInfo = None,
@@ -8010,6 +8035,7 @@ class GetNetworkInterfaceResponseBodyContent(TeaModel):
         self.quota = quota
         # The region ID.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # Service network interface controller address
         self.service_mac = service_mac
         # The status of the intervention entry. Valid value:
@@ -8063,6 +8089,8 @@ class GetNetworkInterfaceResponseBodyContent(TeaModel):
             result['Quota'] = self.quota
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.service_mac is not None:
             result['ServiceMac'] = self.service_mac
         if self.status is not None:
@@ -8104,6 +8132,8 @@ class GetNetworkInterfaceResponseBodyContent(TeaModel):
             self.quota = m.get('Quota')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServiceMac') is not None:
             self.service_mac = m.get('ServiceMac')
         if m.get('Status') is not None:
@@ -11585,6 +11615,7 @@ class ListElasticNetworkInterfacesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         status: str = None,
         type: str = None,
         v_switch_id: str = None,
@@ -11612,6 +11643,7 @@ class ListElasticNetworkInterfacesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The status of the enterprise-level snapshot policy.
         # 
         # Valid value:
@@ -11659,6 +11691,8 @@ class ListElasticNetworkInterfacesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
         if self.type is not None:
@@ -11687,6 +11721,8 @@ class ListElasticNetworkInterfacesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Type') is not None:
@@ -11714,6 +11750,7 @@ class ListElasticNetworkInterfacesResponseBodyContentData(TeaModel):
         message: str = None,
         node_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         security_group_id: str = None,
         status: str = None,
         type: str = None,
@@ -11743,6 +11780,7 @@ class ListElasticNetworkInterfacesResponseBodyContentData(TeaModel):
         self.node_id = node_id
         # The region ID.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the security group.
         self.security_group_id = security_group_id
         # The status of the intervention entry. Valid value:
@@ -11792,6 +11830,8 @@ class ListElasticNetworkInterfacesResponseBodyContentData(TeaModel):
             result['NodeId'] = self.node_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
         if self.status is not None:
@@ -11830,6 +11870,8 @@ class ListElasticNetworkInterfacesResponseBodyContentData(TeaModel):
             self.node_id = m.get('NodeId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('Status') is not None:
@@ -13874,6 +13916,7 @@ class ListLeniPrivateIpAddressesRequest(TeaModel):
         page_size: int = None,
         private_ip_address: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         status: str = None,
     ):
         # Lingjun Elastic Network Interface ID.
@@ -13890,6 +13933,7 @@ class ListLeniPrivateIpAddressesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The status of the image build command risk.
         self.status = status
 
@@ -13914,6 +13958,8 @@ class ListLeniPrivateIpAddressesRequest(TeaModel):
             result['PrivateIpAddress'] = self.private_ip_address
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -13932,6 +13978,8 @@ class ListLeniPrivateIpAddressesRequest(TeaModel):
             self.private_ip_address = m.get('PrivateIpAddress')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -14025,10 +14073,12 @@ class ListLeniPrivateIpAddressesResponseBodyContent(TeaModel):
     def __init__(
         self,
         data: List[ListLeniPrivateIpAddressesResponseBodyContentData] = None,
+        resource_group_id: str = None,
         total: int = None,
     ):
         # The response parameters.
         self.data = data
+        self.resource_group_id = resource_group_id
         # The total number of entries.
         self.total = total
 
@@ -14048,6 +14098,8 @@ class ListLeniPrivateIpAddressesResponseBodyContent(TeaModel):
         if self.data is not None:
             for k in self.data:
                 result['Data'].append(k.to_map() if k else None)
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.total is not None:
             result['Total'] = self.total
         return result
@@ -14059,6 +14111,8 @@ class ListLeniPrivateIpAddressesResponseBodyContent(TeaModel):
             for k in m.get('Data'):
                 temp_model = ListLeniPrivateIpAddressesResponseBodyContentData()
                 self.data.append(temp_model.from_map(k))
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Total') is not None:
             self.total = m.get('Total')
         return self
@@ -14174,6 +14228,7 @@ class ListLniPrivateIpAddressRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The description of the variable.
         self.description = description
@@ -14193,6 +14248,7 @@ class ListLniPrivateIpAddressRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -14219,6 +14275,8 @@ class ListLniPrivateIpAddressRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -14239,6 +14297,8 @@ class ListLniPrivateIpAddressRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -14330,10 +14390,12 @@ class ListLniPrivateIpAddressResponseBodyContent(TeaModel):
     def __init__(
         self,
         data: List[ListLniPrivateIpAddressResponseBodyContentData] = None,
+        resource_group_id: str = None,
         total: int = None,
     ):
         # The returned result.
         self.data = data
+        self.resource_group_id = resource_group_id
         # The total number of entries returned.
         self.total = total
 
@@ -14353,6 +14415,8 @@ class ListLniPrivateIpAddressResponseBodyContent(TeaModel):
         if self.data is not None:
             for k in self.data:
                 result['Data'].append(k.to_map() if k else None)
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.total is not None:
             result['Total'] = self.total
         return result
@@ -14364,6 +14428,8 @@ class ListLniPrivateIpAddressResponseBodyContent(TeaModel):
             for k in m.get('Data'):
                 temp_model = ListLniPrivateIpAddressResponseBodyContentData()
                 self.data.append(temp_model.from_map(k))
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Total') is not None:
             self.total = m.get('Total')
         return self
@@ -14478,6 +14544,7 @@ class ListNetworkInterfacesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         subnet_id: str = None,
         vpd_id: str = None,
     ):
@@ -14497,6 +14564,7 @@ class ListNetworkInterfacesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the instance to which the Lingjun subnet belongs.
         self.subnet_id = subnet_id
         # The ID of the VPD.
@@ -14525,6 +14593,8 @@ class ListNetworkInterfacesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.subnet_id is not None:
             result['SubnetId'] = self.subnet_id
         if self.vpd_id is not None:
@@ -14547,6 +14617,8 @@ class ListNetworkInterfacesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SubnetId') is not None:
             self.subnet_id = m.get('SubnetId')
         if m.get('VpdId') is not None:
@@ -14739,6 +14811,7 @@ class ListNetworkInterfacesResponseBodyContentData(TeaModel):
         private_ip_address_mac_group: List[ListNetworkInterfacesResponseBodyContentDataPrivateIpAddressMacGroup] = None,
         quota: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         service_mac: str = None,
         status: str = None,
         subnet_base_info: ListNetworkInterfacesResponseBodyContentDataSubnetBaseInfo = None,
@@ -14777,6 +14850,7 @@ class ListNetworkInterfacesResponseBodyContentData(TeaModel):
         self.quota = quota
         # The region ID.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The address of the service network interface controller.
         self.service_mac = service_mac
         # The task status.
@@ -14830,6 +14904,8 @@ class ListNetworkInterfacesResponseBodyContentData(TeaModel):
             result['Quota'] = self.quota
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.service_mac is not None:
             result['ServiceMac'] = self.service_mac
         if self.status is not None:
@@ -14871,6 +14947,8 @@ class ListNetworkInterfacesResponseBodyContentData(TeaModel):
             self.quota = m.get('Quota')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServiceMac') is not None:
             self.service_mac = m.get('ServiceMac')
         if m.get('Status') is not None:
