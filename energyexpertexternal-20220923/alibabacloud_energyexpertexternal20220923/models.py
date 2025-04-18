@@ -3777,11 +3777,445 @@ class GetDeviceListResponse(TeaModel):
         return self
 
 
+class GetDocExtractionResultRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # - Task ID.
+        # - taskId is obtained from the SubmitDocExtractionTaskAdvance and SubmitDocExtractionTask interfaces.
+        # 
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class GetDocExtractionResultResponseBodyDataKvListInfoContextConfidence(TeaModel):
+    def __init__(
+        self,
+        key_confidence: float = None,
+        value_confidence: float = None,
+    ):
+        # Key confidence level
+        self.key_confidence = key_confidence
+        # value confidence level
+        self.value_confidence = value_confidence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_confidence is not None:
+            result['keyConfidence'] = self.key_confidence
+        if self.value_confidence is not None:
+            result['valueConfidence'] = self.value_confidence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('keyConfidence') is not None:
+            self.key_confidence = m.get('keyConfidence')
+        if m.get('valueConfidence') is not None:
+            self.value_confidence = m.get('valueConfidence')
+        return self
+
+
+class GetDocExtractionResultResponseBodyDataKvListInfoContext(TeaModel):
+    def __init__(
+        self,
+        confidence: GetDocExtractionResultResponseBodyDataKvListInfoContextConfidence = None,
+        key: List[ContentItem] = None,
+        value: List[ContentItem] = None,
+    ):
+        # Confidence level
+        self.confidence = confidence
+        # Details of key recall information
+        self.key = key
+        # Details of value recall information
+        self.value = value
+
+    def validate(self):
+        if self.confidence:
+            self.confidence.validate()
+        if self.key:
+            for k in self.key:
+                if k:
+                    k.validate()
+        if self.value:
+            for k in self.value:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['confidence'] = self.confidence.to_map()
+        result['key'] = []
+        if self.key is not None:
+            for k in self.key:
+                result['key'].append(k.to_map() if k else None)
+        result['value'] = []
+        if self.value is not None:
+            for k in self.value:
+                result['value'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('confidence') is not None:
+            temp_model = GetDocExtractionResultResponseBodyDataKvListInfoContextConfidence()
+            self.confidence = temp_model.from_map(m['confidence'])
+        self.key = []
+        if m.get('key') is not None:
+            for k in m.get('key'):
+                temp_model = ContentItem()
+                self.key.append(temp_model.from_map(k))
+        self.value = []
+        if m.get('value') is not None:
+            for k in m.get('value'):
+                temp_model = ContentItem()
+                self.value.append(temp_model.from_map(k))
+        return self
+
+
+class GetDocExtractionResultResponseBodyDataKvListInfo(TeaModel):
+    def __init__(
+        self,
+        context: GetDocExtractionResultResponseBodyDataKvListInfoContext = None,
+        key_name: str = None,
+        key_value: str = None,
+    ):
+        # Recalled content
+        self.context = context
+        # Field key name
+        self.key_name = key_name
+        # Field key value
+        self.key_value = key_value
+
+    def validate(self):
+        if self.context:
+            self.context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context is not None:
+            result['context'] = self.context.to_map()
+        if self.key_name is not None:
+            result['keyName'] = self.key_name
+        if self.key_value is not None:
+            result['keyValue'] = self.key_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('context') is not None:
+            temp_model = GetDocExtractionResultResponseBodyDataKvListInfoContext()
+            self.context = temp_model.from_map(m['context'])
+        if m.get('keyName') is not None:
+            self.key_name = m.get('keyName')
+        if m.get('keyValue') is not None:
+            self.key_value = m.get('keyValue')
+        return self
+
+
+class GetDocExtractionResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        kv_list_info: List[GetDocExtractionResultResponseBodyDataKvListInfo] = None,
+    ):
+        # Details of document parsing results
+        self.kv_list_info = kv_list_info
+
+    def validate(self):
+        if self.kv_list_info:
+            for k in self.kv_list_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['kvListInfo'] = []
+        if self.kv_list_info is not None:
+            for k in self.kv_list_info:
+                result['kvListInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.kv_list_info = []
+        if m.get('kvListInfo') is not None:
+            for k in m.get('kvListInfo'):
+                temp_model = GetDocExtractionResultResponseBodyDataKvListInfo()
+                self.kv_list_info.append(temp_model.from_map(k))
+        return self
+
+
+class GetDocExtractionResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetDocExtractionResultResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # Returned data structure.
+        self.data = data
+        # ID of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetDocExtractionResultResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetDocExtractionResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDocExtractionResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDocExtractionResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDocParsingResultRequest(TeaModel):
+    def __init__(
+        self,
+        return_format: str = None,
+        task_id: str = None,
+    ):
+        # - The document parsing result supports two formats: markdown and json.
+        # - By default, the result is returned in markdown format.
+        self.return_format = return_format
+        # - Task ID.
+        # - The taskId is obtained from the SubmitDocParsingTaskAdvance or SubmitDocParsingTask interfaces.
+        # 
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.return_format is not None:
+            result['returnFormat'] = self.return_format
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('returnFormat') is not None:
+            self.return_format = m.get('returnFormat')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class GetDocParsingResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+    ):
+        # - The parsed content of the document.
+        # - The format (markdown or json) is determined by the returnFormat parameter. For specific format details, refer to: [json return structure](https://www.alibabacloud.com/help/en/energy-expert/developer-reference/interface-attached-information#b644b6255cojj)
+        self.content = content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        return self
+
+
+class GetDocParsingResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetDocParsingResultResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # Returned result.
+        self.data = data
+        # ID of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetDocParsingResultResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetDocParsingResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDocParsingResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDocParsingResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDocumentAnalyzeResultRequest(TeaModel):
     def __init__(
         self,
         job_id: str = None,
     ):
+        # Job ID, specifying which document\\"s parsing result to query. This is a return parameter from the \\"Submit Document Parsing Job\\" interface.
+        # 
         # This parameter is required.
         self.job_id = job_id
 
@@ -3811,7 +4245,9 @@ class GetDocumentAnalyzeResultResponseBodyDataKvListInfoContextConfidence(TeaMod
         key_confidence: float = None,
         value_confidence: float = None,
     ):
+        # Confidence of Key
         self.key_confidence = key_confidence
+        # Confidence of Value
         self.value_confidence = value_confidence
 
     def validate(self):
@@ -3845,8 +4281,11 @@ class GetDocumentAnalyzeResultResponseBodyDataKvListInfoContext(TeaModel):
         key: List[ContentItem] = None,
         value: List[ContentItem] = None,
     ):
+        # Confidence
         self.confidence = confidence
+        # Key Recall Information
         self.key = key
+        # Value Recall Information
         self.value = value
 
     def validate(self):
@@ -3904,8 +4343,11 @@ class GetDocumentAnalyzeResultResponseBodyDataKvListInfo(TeaModel):
         key_name: str = None,
         key_value: str = None,
     ):
+        # Recalled Content
         self.context = context
+        # Field Key Name
         self.key_name = key_name
+        # Field Key Value
         self.key_value = key_value
 
     def validate(self):
@@ -3943,6 +4385,7 @@ class GetDocumentAnalyzeResultResponseBodyData(TeaModel):
         self,
         kv_list_info: List[GetDocumentAnalyzeResultResponseBodyDataKvListInfo] = None,
     ):
+        # Document Parsing Result
         self.kv_list_info = kv_list_info
 
     def validate(self):
@@ -3979,7 +4422,9 @@ class GetDocumentAnalyzeResultResponseBody(TeaModel):
         data: GetDocumentAnalyzeResultResponseBodyData = None,
         request_id: str = None,
     ):
+        # Returned Data
         self.data = data
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -8516,6 +8961,293 @@ class GetReductionProposalResponse(TeaModel):
         return self
 
 
+class GetVLExtractionResultRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # - taskID.
+        # 
+        # - The taskId is obtained from the interfaces SubmitVLExtractionTaskAdvance and SubmitVLExtractionTask.
+        # 
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class GetVLExtractionResultResponseBodyDataKvListInfoContextConfidence(TeaModel):
+    def __init__(
+        self,
+        key_confidence: float = None,
+        value_confidence: float = None,
+    ):
+        # Confidence of Key
+        self.key_confidence = key_confidence
+        # Confidence of Value
+        self.value_confidence = value_confidence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_confidence is not None:
+            result['keyConfidence'] = self.key_confidence
+        if self.value_confidence is not None:
+            result['valueConfidence'] = self.value_confidence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('keyConfidence') is not None:
+            self.key_confidence = m.get('keyConfidence')
+        if m.get('valueConfidence') is not None:
+            self.value_confidence = m.get('valueConfidence')
+        return self
+
+
+class GetVLExtractionResultResponseBodyDataKvListInfoContext(TeaModel):
+    def __init__(
+        self,
+        confidence: GetVLExtractionResultResponseBodyDataKvListInfoContextConfidence = None,
+        key: List[ContentItem] = None,
+        value: List[ContentItem] = None,
+    ):
+        # Confidence
+        self.confidence = confidence
+        # Key recall information details
+        self.key = key
+        # Value Recall Information
+        self.value = value
+
+    def validate(self):
+        if self.confidence:
+            self.confidence.validate()
+        if self.key:
+            for k in self.key:
+                if k:
+                    k.validate()
+        if self.value:
+            for k in self.value:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['confidence'] = self.confidence.to_map()
+        result['key'] = []
+        if self.key is not None:
+            for k in self.key:
+                result['key'].append(k.to_map() if k else None)
+        result['value'] = []
+        if self.value is not None:
+            for k in self.value:
+                result['value'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('confidence') is not None:
+            temp_model = GetVLExtractionResultResponseBodyDataKvListInfoContextConfidence()
+            self.confidence = temp_model.from_map(m['confidence'])
+        self.key = []
+        if m.get('key') is not None:
+            for k in m.get('key'):
+                temp_model = ContentItem()
+                self.key.append(temp_model.from_map(k))
+        self.value = []
+        if m.get('value') is not None:
+            for k in m.get('value'):
+                temp_model = ContentItem()
+                self.value.append(temp_model.from_map(k))
+        return self
+
+
+class GetVLExtractionResultResponseBodyDataKvListInfo(TeaModel):
+    def __init__(
+        self,
+        context: GetVLExtractionResultResponseBodyDataKvListInfoContext = None,
+        key_name: str = None,
+        key_value: str = None,
+    ):
+        # Recall content
+        self.context = context
+        # Field Key name
+        self.key_name = key_name
+        # Field key value
+        self.key_value = key_value
+
+    def validate(self):
+        if self.context:
+            self.context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context is not None:
+            result['context'] = self.context.to_map()
+        if self.key_name is not None:
+            result['keyName'] = self.key_name
+        if self.key_value is not None:
+            result['keyValue'] = self.key_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('context') is not None:
+            temp_model = GetVLExtractionResultResponseBodyDataKvListInfoContext()
+            self.context = temp_model.from_map(m['context'])
+        if m.get('keyName') is not None:
+            self.key_name = m.get('keyName')
+        if m.get('keyValue') is not None:
+            self.key_value = m.get('keyValue')
+        return self
+
+
+class GetVLExtractionResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        kv_list_info: List[GetVLExtractionResultResponseBodyDataKvListInfo] = None,
+    ):
+        # Document Parsing Result
+        self.kv_list_info = kv_list_info
+
+    def validate(self):
+        if self.kv_list_info:
+            for k in self.kv_list_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['kvListInfo'] = []
+        if self.kv_list_info is not None:
+            for k in self.kv_list_info:
+                result['kvListInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.kv_list_info = []
+        if m.get('kvListInfo') is not None:
+            for k in m.get('kvListInfo'):
+                temp_model = GetVLExtractionResultResponseBodyDataKvListInfo()
+                self.kv_list_info.append(temp_model.from_map(k))
+        return self
+
+
+class GetVLExtractionResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetVLExtractionResultResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # Returned Data
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetVLExtractionResultResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetVLExtractionResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetVLExtractionResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetVLExtractionResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class IsCompletedRequest(TeaModel):
     def __init__(
         self,
@@ -9159,9 +9891,13 @@ class SendDocumentAskQuestionRequest(TeaModel):
         prompt: str = None,
         session_id: str = None,
     ):
+        # Folder ID, used to specify the range of documents for the query. If it is empty, it indicates that all documents under the tenant will be queried.
         self.folder_id = folder_id
+        # The question queried by the user
+        # 
         # This parameter is required.
         self.prompt = prompt
+        # Q&A session ID, used to record multiple Q&A interactions of the same user. If it is empty, it indicates that sessions are not distinguished.
         self.session_id = session_id
 
     def validate(self):
@@ -9198,7 +9934,9 @@ class SendDocumentAskQuestionResponseBodyData(TeaModel):
         answer: str = None,
         document: List[str] = None,
     ):
+        # Q&A result
         self.answer = answer
+        # Documents associated with the answer returned by the query
         self.document = document
 
     def validate(self):
@@ -9231,7 +9969,9 @@ class SendDocumentAskQuestionResponseBody(TeaModel):
         data: SendDocumentAskQuestionResponseBodyData = None,
         request_id: str = None,
     ):
+        # Returned data
         self.data = data
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -9495,6 +10235,482 @@ class SetRunningPlanResponse(TeaModel):
         return self
 
 
+class SubmitDocExtractionTaskRequest(TeaModel):
+    def __init__(
+        self,
+        extract_type: str = None,
+        file_name: str = None,
+        file_url: str = None,
+        folder_id: str = None,
+        template_id: str = None,
+    ):
+        # Document parsing type:
+        # Supports rag and long text understanding types, default is rag.
+        self.extract_type = extract_type
+        # The filename must include the file type extension.
+        # 
+        # This parameter is required.
+        self.file_name = file_name
+        # Choose one of fileUrl or fileUrlObject:
+        # 
+        # - fileUrl: Use by providing the document URL, for a single document (supports up to 1000 pages, 100MB in size)
+        # 
+        # - fileUrlObject: Use when calling the interface with local file upload, for a single document (supports up to 1000 pages, 100 MB in size)
+        # 
+        # > The relationship between file parsing methods and supported document types
+        # > - Long text RAG: Supports pdf, doc/docx, up to 1000 pages
+        # > - Image processing: Supports pdf, jpg, jpeg, png, bmp
+        # > - Long text understanding: Supports pdf, doc/docx, xls/xlsx
+        self.file_url = file_url
+        # - A unique knowledge base folder ID, used when you need to categorize documents and control the scope of documents for online Q&A queries.
+        # - The folder ID needs to be obtained by logging into the intelligent document console.
+        self.folder_id = folder_id
+        # A unique parsing template ID used to specify the key-value pairs to be extracted from the document. You need to log in to the template management page to configure the template and obtain the corresponding template ID.
+        # 
+        # This parameter is required.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extract_type is not None:
+            result['extractType'] = self.extract_type
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_url is not None:
+            result['fileUrl'] = self.file_url
+        if self.folder_id is not None:
+            result['folderId'] = self.folder_id
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('extractType') is not None:
+            self.extract_type = m.get('extractType')
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('fileUrl') is not None:
+            self.file_url = m.get('fileUrl')
+        if m.get('folderId') is not None:
+            self.folder_id = m.get('folderId')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        return self
+
+
+class SubmitDocExtractionTaskAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        extract_type: str = None,
+        file_name: str = None,
+        file_url_object: BinaryIO = None,
+        folder_id: str = None,
+        template_id: str = None,
+    ):
+        # Document parsing type:
+        # Supports rag and long text understanding types, default is rag.
+        self.extract_type = extract_type
+        # The filename must include the file type extension.
+        # 
+        # This parameter is required.
+        self.file_name = file_name
+        # Choose one of fileUrl or fileUrlObject:
+        # 
+        # - fileUrl: Use by providing the document URL, for a single document (supports up to 1000 pages, 100MB in size)
+        # 
+        # - fileUrlObject: Use when calling the interface with local file upload, for a single document (supports up to 1000 pages, 100 MB in size)
+        # 
+        # > The relationship between file parsing methods and supported document types
+        # > - Long text RAG: Supports pdf, doc/docx, up to 1000 pages
+        # > - Image processing: Supports pdf, jpg, jpeg, png, bmp
+        # > - Long text understanding: Supports pdf, doc/docx, xls/xlsx
+        self.file_url_object = file_url_object
+        # - A unique knowledge base folder ID, used when you need to categorize documents and control the scope of documents for online Q&A queries.
+        # - The folder ID needs to be obtained by logging into the intelligent document console.
+        self.folder_id = folder_id
+        # A unique parsing template ID used to specify the key-value pairs to be extracted from the document. You need to log in to the template management page to configure the template and obtain the corresponding template ID.
+        # 
+        # This parameter is required.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extract_type is not None:
+            result['extractType'] = self.extract_type
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_url_object is not None:
+            result['fileUrl'] = self.file_url_object
+        if self.folder_id is not None:
+            result['folderId'] = self.folder_id
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('extractType') is not None:
+            self.extract_type = m.get('extractType')
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('fileUrl') is not None:
+            self.file_url_object = m.get('fileUrl')
+        if m.get('folderId') is not None:
+            self.folder_id = m.get('folderId')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        return self
+
+
+class SubmitDocExtractionTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # Task ID.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class SubmitDocExtractionTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: SubmitDocExtractionTaskResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # Returned data
+        self.data = data
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = SubmitDocExtractionTaskResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class SubmitDocExtractionTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitDocExtractionTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitDocExtractionTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitDocParsingTaskRequest(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        file_url: str = None,
+        folder_id: str = None,
+        need_analyze_img: bool = None,
+    ):
+        # The filename must include the file type extension.
+        # 
+        # This parameter is required.
+        self.file_name = file_name
+        # Choose one of fileUrl or fileUrlObject:
+        # 
+        # - fileUrl: Use by providing the document URL, for a single document (supports up to 1000 pages and 100MB in size)
+        # 
+        # - fileUrlObject: Use when calling the interface with local file upload, for a single document (supports up to 1000 pages and 100 MB in size)
+        # 
+        # > The relationship between file parsing methods and supported document types
+        # > - Long Text RAG: Supports pdf, doc/docx, supports up to 1000 pages
+        # > - Image Processing: Supports pdf, jpg, jpeg, png, bmp
+        # > - Long Text Understanding: Supports pdf, doc/docx, xls/xlsx
+        self.file_url = file_url
+        # - Unique knowledge base folder ID, used when categorizing documents and controlling the scope of documents for online Q&A queries.
+        # - The folder ID needs to be obtained from the Intelligent Document Console after logging in.
+        self.folder_id = folder_id
+        # Whether to parse image content within the document.
+        self.need_analyze_img = need_analyze_img
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_url is not None:
+            result['fileUrl'] = self.file_url
+        if self.folder_id is not None:
+            result['folderId'] = self.folder_id
+        if self.need_analyze_img is not None:
+            result['needAnalyzeImg'] = self.need_analyze_img
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('fileUrl') is not None:
+            self.file_url = m.get('fileUrl')
+        if m.get('folderId') is not None:
+            self.folder_id = m.get('folderId')
+        if m.get('needAnalyzeImg') is not None:
+            self.need_analyze_img = m.get('needAnalyzeImg')
+        return self
+
+
+class SubmitDocParsingTaskAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        file_url_object: BinaryIO = None,
+        folder_id: str = None,
+        need_analyze_img: bool = None,
+    ):
+        # The filename must include the file type extension.
+        # 
+        # This parameter is required.
+        self.file_name = file_name
+        # Choose one of fileUrl or fileUrlObject:
+        # 
+        # - fileUrl: Use by providing the document URL, for a single document (supports up to 1000 pages and 100MB in size)
+        # 
+        # - fileUrlObject: Use when calling the interface with local file upload, for a single document (supports up to 1000 pages and 100 MB in size)
+        # 
+        # > The relationship between file parsing methods and supported document types
+        # > - Long Text RAG: Supports pdf, doc/docx, supports up to 1000 pages
+        # > - Image Processing: Supports pdf, jpg, jpeg, png, bmp
+        # > - Long Text Understanding: Supports pdf, doc/docx, xls/xlsx
+        self.file_url_object = file_url_object
+        # - Unique knowledge base folder ID, used when categorizing documents and controlling the scope of documents for online Q&A queries.
+        # - The folder ID needs to be obtained from the Intelligent Document Console after logging in.
+        self.folder_id = folder_id
+        # Whether to parse image content within the document.
+        self.need_analyze_img = need_analyze_img
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_url_object is not None:
+            result['fileUrl'] = self.file_url_object
+        if self.folder_id is not None:
+            result['folderId'] = self.folder_id
+        if self.need_analyze_img is not None:
+            result['needAnalyzeImg'] = self.need_analyze_img
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('fileUrl') is not None:
+            self.file_url_object = m.get('fileUrl')
+        if m.get('folderId') is not None:
+            self.folder_id = m.get('folderId')
+        if m.get('needAnalyzeImg') is not None:
+            self.need_analyze_img = m.get('needAnalyzeImg')
+        return self
+
+
+class SubmitDocParsingTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # TaskID
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class SubmitDocParsingTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: SubmitDocParsingTaskResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # Return result.
+        self.data = data
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = SubmitDocParsingTaskResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class SubmitDocParsingTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitDocParsingTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitDocParsingTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SubmitDocumentAnalyzeJobRequest(TeaModel):
     def __init__(
         self,
@@ -9504,11 +10720,33 @@ class SubmitDocumentAnalyzeJobRequest(TeaModel):
         folder_id: str = None,
         template_id: str = None,
     ):
+        # The default extraction method is "doc", with the following optional values:
+        # 
+        # - vl: Image processing
+        # - doc: Long text RAG (Retrieval-Augmented Generation)
+        # - docUnderstanding: Long text comprehension
+        # - recommender: Recommendation type
         self.analysis_type = analysis_type
+        # The filename must include the file type extension.
+        # 
         # This parameter is required.
         self.file_name = file_name
+        # Choose one between fileUrl and fileUrlObject:
+        # 
+        # - fileUrl: Use the document URL method for a single document (supports documents with up to 1000 pages and within 100MB).
+        # 
+        # - fileUrlObject: Use when calling the API via local file upload, for a single document (supports documents with up to 1000 pages and 
+        # within 100MB).
+        # 
+        # > Relationship between file parsing methods and supported document types. 
+        # >- Long Text RAG: Supports pdf, doc/docx, and up to 1000 pages
+        # >- Image Processing: Supports pdf, jpg, jpeg, png, bmp
+        # >- Long Text Understanding: Supports pdf, doc/docx, xls/xlsx
         self.file_url = file_url
+        # Unique knowledge base folder ID, used for categorizing documents and controlling the scope of online Q&A queries. If empty, the document will be uploaded to the tenant\\"s root directory.
         self.folder_id = folder_id
+        # The unique extraction template ID is used to specify the key-value pairs to be extracted from the document. You need to log in to the template management page to configure the template and obtain the corresponding template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
 
@@ -9557,11 +10795,33 @@ class SubmitDocumentAnalyzeJobAdvanceRequest(TeaModel):
         folder_id: str = None,
         template_id: str = None,
     ):
+        # The default extraction method is "doc", with the following optional values:
+        # 
+        # - vl: Image processing
+        # - doc: Long text RAG (Retrieval-Augmented Generation)
+        # - docUnderstanding: Long text comprehension
+        # - recommender: Recommendation type
         self.analysis_type = analysis_type
+        # The filename must include the file type extension.
+        # 
         # This parameter is required.
         self.file_name = file_name
+        # Choose one between fileUrl and fileUrlObject:
+        # 
+        # - fileUrl: Use the document URL method for a single document (supports documents with up to 1000 pages and within 100MB).
+        # 
+        # - fileUrlObject: Use when calling the API via local file upload, for a single document (supports documents with up to 1000 pages and 
+        # within 100MB).
+        # 
+        # > Relationship between file parsing methods and supported document types. 
+        # >- Long Text RAG: Supports pdf, doc/docx, and up to 1000 pages
+        # >- Image Processing: Supports pdf, jpg, jpeg, png, bmp
+        # >- Long Text Understanding: Supports pdf, doc/docx, xls/xlsx
         self.file_url_object = file_url_object
+        # Unique knowledge base folder ID, used for categorizing documents and controlling the scope of online Q&A queries. If empty, the document will be uploaded to the tenant\\"s root directory.
         self.folder_id = folder_id
+        # The unique extraction template ID is used to specify the key-value pairs to be extracted from the document. You need to log in to the template management page to configure the template and obtain the corresponding template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
 
@@ -9606,6 +10866,7 @@ class SubmitDocumentAnalyzeJobResponseBodyData(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
 
     def validate(self):
@@ -9634,6 +10895,7 @@ class SubmitDocumentAnalyzeJobResponseBody(TeaModel):
         data: SubmitDocumentAnalyzeJobResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -9701,6 +10963,234 @@ class SubmitDocumentAnalyzeJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitDocumentAnalyzeJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitVLExtractionTaskRequest(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        file_url: str = None,
+        folder_id: str = None,
+        template_id: str = None,
+    ):
+        # The filename must include the file type suffix.
+        # 
+        # This parameter is required.
+        self.file_name = file_name
+        # Choose one of fileUrl or fileUrlObject:
+        # 
+        # - fileUrl: Use by providing the document URL, for a single document (supports up to 1000 pages and 100MB in size)
+        # 
+        # - fileUrlObject: Use when calling the interface with local file upload, for a single document (supports up to 1000 pages and 100 MB in size)
+        # 
+        # > The relationship between file parsing methods and supported document types
+        # > - Long Text RAG: Supports pdf, doc/docx, up to 1000 pages
+        # > - Image Processing: Supports pdf, jpg, jpeg, png, bmp
+        # > - Long Text Understanding: Supports pdf, doc/docx, xls/xlsx
+        self.file_url = file_url
+        # - Unique knowledge base folder ID, used when you need to categorize documents and control the scope of online Q&A queries.
+        # - The folder ID needs to be obtained from the intelligent document console after logging in.
+        self.folder_id = folder_id
+        # Unique parsing template ID, used to specify the key-value pairs to be extracted from the document. You need to configure the template on the template management page and then obtain the corresponding template ID.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_url is not None:
+            result['fileUrl'] = self.file_url
+        if self.folder_id is not None:
+            result['folderId'] = self.folder_id
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('fileUrl') is not None:
+            self.file_url = m.get('fileUrl')
+        if m.get('folderId') is not None:
+            self.folder_id = m.get('folderId')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        return self
+
+
+class SubmitVLExtractionTaskAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        file_url_object: BinaryIO = None,
+        folder_id: str = None,
+        template_id: str = None,
+    ):
+        # The filename must include the file type suffix.
+        # 
+        # This parameter is required.
+        self.file_name = file_name
+        # Choose one of fileUrl or fileUrlObject:
+        # 
+        # - fileUrl: Use by providing the document URL, for a single document (supports up to 1000 pages and 100MB in size)
+        # 
+        # - fileUrlObject: Use when calling the interface with local file upload, for a single document (supports up to 1000 pages and 100 MB in size)
+        # 
+        # > The relationship between file parsing methods and supported document types
+        # > - Long Text RAG: Supports pdf, doc/docx, up to 1000 pages
+        # > - Image Processing: Supports pdf, jpg, jpeg, png, bmp
+        # > - Long Text Understanding: Supports pdf, doc/docx, xls/xlsx
+        self.file_url_object = file_url_object
+        # - Unique knowledge base folder ID, used when you need to categorize documents and control the scope of online Q&A queries.
+        # - The folder ID needs to be obtained from the intelligent document console after logging in.
+        self.folder_id = folder_id
+        # Unique parsing template ID, used to specify the key-value pairs to be extracted from the document. You need to configure the template on the template management page and then obtain the corresponding template ID.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_url_object is not None:
+            result['fileUrl'] = self.file_url_object
+        if self.folder_id is not None:
+            result['folderId'] = self.folder_id
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('fileUrl') is not None:
+            self.file_url_object = m.get('fileUrl')
+        if m.get('folderId') is not None:
+            self.folder_id = m.get('folderId')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        return self
+
+
+class SubmitVLExtractionTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # Task ID.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class SubmitVLExtractionTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: SubmitVLExtractionTaskResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # Returned data structure.
+        self.data = data
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = SubmitVLExtractionTaskResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class SubmitVLExtractionTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitVLExtractionTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitVLExtractionTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

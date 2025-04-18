@@ -1,3 +1,12 @@
+2025-04-18 Version: 3.2.0
+- Support API GetDocExtractionResult.
+- Support API GetDocParsingResult.
+- Support API GetVLExtractionResult.
+- Support API SubmitDocExtractionTask.
+- Support API SubmitDocParsingTask.
+- Support API SubmitVLExtractionTask.
+
+
 2025-02-21 Version: 3.1.0
 - Support API AnalyzeVlRealtime.
 - Update API BatchSaveInstructionStatus: update param body.

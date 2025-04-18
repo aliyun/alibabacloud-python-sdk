@@ -86,16 +86,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.AnalyzeVlRealtimeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.AnalyzeVlRealtimeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.AnalyzeVlRealtimeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def analyze_vl_realtime_with_options_async(
         self,
@@ -136,16 +130,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.AnalyzeVlRealtimeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.AnalyzeVlRealtimeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.AnalyzeVlRealtimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def analyze_vl_realtime(
         self,
@@ -362,16 +350,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.BatchSaveInstructionStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.BatchSaveInstructionStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.BatchSaveInstructionStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def batch_save_instruction_status_with_options_async(
         self,
@@ -410,16 +392,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.BatchSaveInstructionStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.BatchSaveInstructionStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.BatchSaveInstructionStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def batch_save_instruction_status(
         self,
@@ -508,16 +484,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.BatchUpdateSystemRunningPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.BatchUpdateSystemRunningPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.BatchUpdateSystemRunningPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def batch_update_system_running_plan_with_options_async(
         self,
@@ -578,16 +548,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.BatchUpdateSystemRunningPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.BatchUpdateSystemRunningPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.BatchUpdateSystemRunningPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def batch_update_system_running_plan(
         self,
@@ -654,16 +618,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.EditProhibitedDevicesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.EditProhibitedDevicesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.EditProhibitedDevicesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def edit_prohibited_devices_with_options_async(
         self,
@@ -702,16 +660,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.EditProhibitedDevicesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.EditProhibitedDevicesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.EditProhibitedDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def edit_prohibited_devices(
         self,
@@ -778,16 +730,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.EditUnfavorableAreaDevicesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.EditUnfavorableAreaDevicesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.EditUnfavorableAreaDevicesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def edit_unfavorable_area_devices_with_options_async(
         self,
@@ -826,16 +772,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.EditUnfavorableAreaDevicesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.EditUnfavorableAreaDevicesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.EditUnfavorableAreaDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def edit_unfavorable_area_devices(
         self,
@@ -904,16 +844,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GenerateResultResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GenerateResultResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GenerateResultResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def generate_result_with_options_async(
         self,
@@ -954,16 +888,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GenerateResultResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GenerateResultResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GenerateResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def generate_result(
         self,
@@ -1032,16 +960,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetAreaElecConstituteResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetAreaElecConstituteResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetAreaElecConstituteResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_area_elec_constitute_with_options_async(
         self,
@@ -1078,16 +1000,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetAreaElecConstituteResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetAreaElecConstituteResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetAreaElecConstituteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_area_elec_constitute(
         self,
@@ -1158,16 +1074,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetCarbonEmissionTrendResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetCarbonEmissionTrendResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetCarbonEmissionTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_carbon_emission_trend_with_options_async(
         self,
@@ -1210,16 +1120,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetCarbonEmissionTrendResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetCarbonEmissionTrendResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetCarbonEmissionTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_carbon_emission_trend(
         self,
@@ -1284,16 +1188,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetDataItemListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetDataItemListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetDataItemListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_data_item_list_with_options_async(
         self,
@@ -1330,16 +1228,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetDataItemListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetDataItemListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetDataItemListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_data_item_list(
         self,
@@ -1414,16 +1306,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetDataQualityAnalysisResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetDataQualityAnalysisResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetDataQualityAnalysisResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_data_quality_analysis_with_options_async(
         self,
@@ -1466,16 +1352,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetDataQualityAnalysisResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetDataQualityAnalysisResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetDataQualityAnalysisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_data_quality_analysis(
         self,
@@ -1552,16 +1432,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetDeviceInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetDeviceInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetDeviceInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_device_info_with_options_async(
         self,
@@ -1606,16 +1480,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetDeviceInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetDeviceInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetDeviceInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_device_info(
         self,
@@ -1696,16 +1564,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetDeviceListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetDeviceListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetDeviceListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_device_list_with_options_async(
         self,
@@ -1746,16 +1608,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetDeviceListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetDeviceListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetDeviceListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_device_list(
         self,
@@ -1797,6 +1653,234 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_device_list_with_options_async(request, headers, runtime)
 
+    def get_doc_extraction_result_with_options(
+        self,
+        request: energy_expert_external_20220923_models.GetDocExtractionResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.GetDocExtractionResultResponse:
+        """
+        @summary For Querying Information Extraction Result.
+        The input parameter taskId is obtained from the taskId returned by the interfaces SubmitDocExtractionTaskAdvance or SubmitDocExtractionTask.
+        The query results can reflect one of three statuses: processing, successfully completed, or failed.
+        
+        @param request: GetDocExtractionResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocExtractionResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDocExtractionResult',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/getDocExtractionResult',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetDocExtractionResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_doc_extraction_result_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.GetDocExtractionResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.GetDocExtractionResultResponse:
+        """
+        @summary For Querying Information Extraction Result.
+        The input parameter taskId is obtained from the taskId returned by the interfaces SubmitDocExtractionTaskAdvance or SubmitDocExtractionTask.
+        The query results can reflect one of three statuses: processing, successfully completed, or failed.
+        
+        @param request: GetDocExtractionResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocExtractionResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDocExtractionResult',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/getDocExtractionResult',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetDocExtractionResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_doc_extraction_result(
+        self,
+        request: energy_expert_external_20220923_models.GetDocExtractionResultRequest,
+    ) -> energy_expert_external_20220923_models.GetDocExtractionResultResponse:
+        """
+        @summary For Querying Information Extraction Result.
+        The input parameter taskId is obtained from the taskId returned by the interfaces SubmitDocExtractionTaskAdvance or SubmitDocExtractionTask.
+        The query results can reflect one of three statuses: processing, successfully completed, or failed.
+        
+        @param request: GetDocExtractionResultRequest
+        @return: GetDocExtractionResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_doc_extraction_result_with_options(request, headers, runtime)
+
+    async def get_doc_extraction_result_async(
+        self,
+        request: energy_expert_external_20220923_models.GetDocExtractionResultRequest,
+    ) -> energy_expert_external_20220923_models.GetDocExtractionResultResponse:
+        """
+        @summary For Querying Information Extraction Result.
+        The input parameter taskId is obtained from the taskId returned by the interfaces SubmitDocExtractionTaskAdvance or SubmitDocExtractionTask.
+        The query results can reflect one of three statuses: processing, successfully completed, or failed.
+        
+        @param request: GetDocExtractionResultRequest
+        @return: GetDocExtractionResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_doc_extraction_result_with_options_async(request, headers, runtime)
+
+    def get_doc_parsing_result_with_options(
+        self,
+        request: energy_expert_external_20220923_models.GetDocParsingResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.GetDocParsingResultResponse:
+        """
+        @summary For Querying Document Parsing Results.
+        The input parameter taskId is obtained from the taskId returned by the interfaces SubmitDocParsingTaskAdvance or SubmitDocParsingTask.
+        The query results can be one of three statuses: processing, successful, or failed.
+        
+        @param request: GetDocParsingResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocParsingResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.return_format):
+            body['returnFormat'] = request.return_format
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDocParsingResult',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/getDocParsingResult',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetDocParsingResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_doc_parsing_result_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.GetDocParsingResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.GetDocParsingResultResponse:
+        """
+        @summary For Querying Document Parsing Results.
+        The input parameter taskId is obtained from the taskId returned by the interfaces SubmitDocParsingTaskAdvance or SubmitDocParsingTask.
+        The query results can be one of three statuses: processing, successful, or failed.
+        
+        @param request: GetDocParsingResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocParsingResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.return_format):
+            body['returnFormat'] = request.return_format
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDocParsingResult',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/getDocParsingResult',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetDocParsingResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_doc_parsing_result(
+        self,
+        request: energy_expert_external_20220923_models.GetDocParsingResultRequest,
+    ) -> energy_expert_external_20220923_models.GetDocParsingResultResponse:
+        """
+        @summary For Querying Document Parsing Results.
+        The input parameter taskId is obtained from the taskId returned by the interfaces SubmitDocParsingTaskAdvance or SubmitDocParsingTask.
+        The query results can be one of three statuses: processing, successful, or failed.
+        
+        @param request: GetDocParsingResultRequest
+        @return: GetDocParsingResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_doc_parsing_result_with_options(request, headers, runtime)
+
+    async def get_doc_parsing_result_async(
+        self,
+        request: energy_expert_external_20220923_models.GetDocParsingResultRequest,
+    ) -> energy_expert_external_20220923_models.GetDocParsingResultResponse:
+        """
+        @summary For Querying Document Parsing Results.
+        The input parameter taskId is obtained from the taskId returned by the interfaces SubmitDocParsingTaskAdvance or SubmitDocParsingTask.
+        The query results can be one of three statuses: processing, successful, or failed.
+        
+        @param request: GetDocParsingResultRequest
+        @return: GetDocParsingResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_doc_parsing_result_with_options_async(request, headers, runtime)
+
     def get_document_analyze_result_with_options(
         self,
         request: energy_expert_external_20220923_models.GetDocumentAnalyzeResultRequest,
@@ -1804,7 +1888,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetDocumentAnalyzeResultResponse:
         """
-        @summary 获取文档结果
+        @summary Get document parsing/extraction result
         
         @param request: GetDocumentAnalyzeResultRequest
         @param headers: map
@@ -1830,16 +1914,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetDocumentAnalyzeResultResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetDocumentAnalyzeResultResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetDocumentAnalyzeResultResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_document_analyze_result_with_options_async(
         self,
@@ -1848,7 +1926,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetDocumentAnalyzeResultResponse:
         """
-        @summary 获取文档结果
+        @summary Get document parsing/extraction result
         
         @param request: GetDocumentAnalyzeResultRequest
         @param headers: map
@@ -1874,23 +1952,17 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetDocumentAnalyzeResultResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetDocumentAnalyzeResultResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetDocumentAnalyzeResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_document_analyze_result(
         self,
         request: energy_expert_external_20220923_models.GetDocumentAnalyzeResultRequest,
     ) -> energy_expert_external_20220923_models.GetDocumentAnalyzeResultResponse:
         """
-        @summary 获取文档结果
+        @summary Get document parsing/extraction result
         
         @param request: GetDocumentAnalyzeResultRequest
         @return: GetDocumentAnalyzeResultResponse
@@ -1904,7 +1976,7 @@ class Client(OpenApiClient):
         request: energy_expert_external_20220923_models.GetDocumentAnalyzeResultRequest,
     ) -> energy_expert_external_20220923_models.GetDocumentAnalyzeResultResponse:
         """
-        @summary 获取文档结果
+        @summary Get document parsing/extraction result
         
         @param request: GetDocumentAnalyzeResultRequest
         @return: GetDocumentAnalyzeResultResponse
@@ -1948,16 +2020,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetElecConstituteResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetElecConstituteResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetElecConstituteResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_elec_constitute_with_options_async(
         self,
@@ -1994,16 +2060,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetElecConstituteResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetElecConstituteResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetElecConstituteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_elec_constitute(
         self,
@@ -2068,16 +2128,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetElecTrendResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetElecTrendResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetElecTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_elec_trend_with_options_async(
         self,
@@ -2114,16 +2168,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetElecTrendResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetElecTrendResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetElecTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_elec_trend(
         self,
@@ -2192,16 +2240,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetEmissionSourceConstituteResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetEmissionSourceConstituteResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetEmissionSourceConstituteResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_emission_source_constitute_with_options_async(
         self,
@@ -2242,16 +2284,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetEmissionSourceConstituteResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetEmissionSourceConstituteResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetEmissionSourceConstituteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_emission_source_constitute(
         self,
@@ -2320,16 +2356,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetEmissionSummaryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetEmissionSummaryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetEmissionSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_emission_summary_with_options_async(
         self,
@@ -2370,16 +2400,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetEmissionSummaryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetEmissionSummaryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetEmissionSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_emission_summary(
         self,
@@ -2448,16 +2472,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetEpdInventoryConstituteResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetEpdInventoryConstituteResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetEpdInventoryConstituteResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_epd_inventory_constitute_with_options_async(
         self,
@@ -2498,16 +2516,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetEpdInventoryConstituteResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetEpdInventoryConstituteResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetEpdInventoryConstituteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_epd_inventory_constitute(
         self,
@@ -2580,16 +2592,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetEpdSummaryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetEpdSummaryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetEpdSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_epd_summary_with_options_async(
         self,
@@ -2630,16 +2636,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetEpdSummaryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetEpdSummaryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetEpdSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_epd_summary(
         self,
@@ -2714,16 +2714,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetFootprintListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetFootprintListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetFootprintListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_footprint_list_with_options_async(
         self,
@@ -2766,16 +2760,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetFootprintListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetFootprintListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetFootprintListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_footprint_list(
         self,
@@ -2848,16 +2836,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetGasConstituteResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetGasConstituteResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetGasConstituteResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_gas_constitute_with_options_async(
         self,
@@ -2898,16 +2880,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetGasConstituteResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetGasConstituteResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetGasConstituteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_gas_constitute(
         self,
@@ -2976,16 +2952,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetGwpBenchmarkListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetGwpBenchmarkListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetGwpBenchmarkListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_gwp_benchmark_list_with_options_async(
         self,
@@ -3026,16 +2996,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetGwpBenchmarkListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetGwpBenchmarkListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetGwpBenchmarkListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_gwp_benchmark_list(
         self,
@@ -3108,16 +3072,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetGwpBenchmarkSummaryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetGwpBenchmarkSummaryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetGwpBenchmarkSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_gwp_benchmark_summary_with_options_async(
         self,
@@ -3158,16 +3116,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetGwpBenchmarkSummaryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetGwpBenchmarkSummaryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetGwpBenchmarkSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_gwp_benchmark_summary(
         self,
@@ -3240,16 +3192,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetGwpInventoryConstituteResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetGwpInventoryConstituteResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetGwpInventoryConstituteResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_gwp_inventory_constitute_with_options_async(
         self,
@@ -3290,16 +3236,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetGwpInventoryConstituteResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetGwpInventoryConstituteResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetGwpInventoryConstituteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_gwp_inventory_constitute(
         self,
@@ -3372,16 +3312,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetGwpInventorySummaryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetGwpInventorySummaryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetGwpInventorySummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_gwp_inventory_summary_with_options_async(
         self,
@@ -3422,16 +3356,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetGwpInventorySummaryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetGwpInventorySummaryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetGwpInventorySummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_gwp_inventory_summary(
         self,
@@ -3510,16 +3438,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetInventoryListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetInventoryListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetInventoryListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_inventory_list_with_options_async(
         self,
@@ -3566,16 +3488,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetInventoryListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetInventoryListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetInventoryListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_inventory_list(
         self,
@@ -3640,16 +3556,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetOrgAndFactoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetOrgAndFactoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetOrgAndFactoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_org_and_factory_with_options_async(
         self,
@@ -3682,16 +3592,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetOrgAndFactoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetOrgAndFactoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetOrgAndFactoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_org_and_factory(self) -> energy_expert_external_20220923_models.GetOrgAndFactoryResponse:
         """
@@ -3762,16 +3666,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetOrgConstituteResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetOrgConstituteResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetOrgConstituteResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_org_constitute_with_options_async(
         self,
@@ -3812,16 +3710,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetOrgConstituteResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetOrgConstituteResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetOrgConstituteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_org_constitute(
         self,
@@ -3890,16 +3782,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetPcrInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetPcrInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetPcrInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_pcr_info_with_options_async(
         self,
@@ -3940,16 +3826,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetPcrInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetPcrInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetPcrInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_pcr_info(
         self,
@@ -4024,16 +3904,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetReductionProposalResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetReductionProposalResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetReductionProposalResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_reduction_proposal_with_options_async(
         self,
@@ -4076,16 +3950,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetReductionProposalResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.GetReductionProposalResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetReductionProposalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_reduction_proposal(
         self,
@@ -4118,6 +3986,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_reduction_proposal_with_options_async(request, headers, runtime)
+
+    def get_vlextraction_result_with_options(
+        self,
+        request: energy_expert_external_20220923_models.GetVLExtractionResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.GetVLExtractionResultResponse:
+        """
+        @summary For Querying Qwen-VL Model Information Extraction Results.
+        The input parameter taskId is obtained from the taskId returned by the interfaces SubmitVLExtractionTask or SubmitVLExtractionTaskAdvance.
+        The query results can be in one of three statuses: processing, successfully completed, or failed.
+        
+        @param request: GetVLExtractionResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVLExtractionResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetVLExtractionResult',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/getVLExtractionResult',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetVLExtractionResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_vlextraction_result_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.GetVLExtractionResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.GetVLExtractionResultResponse:
+        """
+        @summary For Querying Qwen-VL Model Information Extraction Results.
+        The input parameter taskId is obtained from the taskId returned by the interfaces SubmitVLExtractionTask or SubmitVLExtractionTaskAdvance.
+        The query results can be in one of three statuses: processing, successfully completed, or failed.
+        
+        @param request: GetVLExtractionResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVLExtractionResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetVLExtractionResult',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/getVLExtractionResult',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetVLExtractionResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_vlextraction_result(
+        self,
+        request: energy_expert_external_20220923_models.GetVLExtractionResultRequest,
+    ) -> energy_expert_external_20220923_models.GetVLExtractionResultResponse:
+        """
+        @summary For Querying Qwen-VL Model Information Extraction Results.
+        The input parameter taskId is obtained from the taskId returned by the interfaces SubmitVLExtractionTask or SubmitVLExtractionTaskAdvance.
+        The query results can be in one of three statuses: processing, successfully completed, or failed.
+        
+        @param request: GetVLExtractionResultRequest
+        @return: GetVLExtractionResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_vlextraction_result_with_options(request, headers, runtime)
+
+    async def get_vlextraction_result_async(
+        self,
+        request: energy_expert_external_20220923_models.GetVLExtractionResultRequest,
+    ) -> energy_expert_external_20220923_models.GetVLExtractionResultResponse:
+        """
+        @summary For Querying Qwen-VL Model Information Extraction Results.
+        The input parameter taskId is obtained from the taskId returned by the interfaces SubmitVLExtractionTask or SubmitVLExtractionTaskAdvance.
+        The query results can be in one of three statuses: processing, successfully completed, or failed.
+        
+        @param request: GetVLExtractionResultRequest
+        @return: GetVLExtractionResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_vlextraction_result_with_options_async(request, headers, runtime)
 
     def is_completed_with_options(
         self,
@@ -4158,16 +4138,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.IsCompletedResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.IsCompletedResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.IsCompletedResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def is_completed_with_options_async(
         self,
@@ -4208,16 +4182,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.IsCompletedResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.IsCompletedResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.IsCompletedResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def is_completed(
         self,
@@ -4286,16 +4254,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.PushDeviceDataResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.PushDeviceDataResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.PushDeviceDataResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def push_device_data_with_options_async(
         self,
@@ -4332,16 +4294,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.PushDeviceDataResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.PushDeviceDataResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.PushDeviceDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def push_device_data(
         self,
@@ -4412,16 +4368,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.PushItemDataResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.PushItemDataResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.PushItemDataResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def push_item_data_with_options_async(
         self,
@@ -4464,16 +4414,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.PushItemDataResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.PushItemDataResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.PushItemDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def push_item_data(
         self,
@@ -4548,16 +4492,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.RecalculateCarbonEmissionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.RecalculateCarbonEmissionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.RecalculateCarbonEmissionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def recalculate_carbon_emission_with_options_async(
         self,
@@ -4596,16 +4534,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.RecalculateCarbonEmissionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.RecalculateCarbonEmissionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.RecalculateCarbonEmissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def recalculate_carbon_emission(
         self,
@@ -4646,7 +4578,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.SendDocumentAskQuestionResponse:
         """
-        @summary 在线文档问答
+        @summary Online Document Q\\&A
         
         @param request: SendDocumentAskQuestionRequest
         @param headers: map
@@ -4676,16 +4608,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.SendDocumentAskQuestionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.SendDocumentAskQuestionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.SendDocumentAskQuestionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def send_document_ask_question_with_options_async(
         self,
@@ -4694,7 +4620,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.SendDocumentAskQuestionResponse:
         """
-        @summary 在线文档问答
+        @summary Online Document Q\\&A
         
         @param request: SendDocumentAskQuestionRequest
         @param headers: map
@@ -4724,23 +4650,17 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.SendDocumentAskQuestionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.SendDocumentAskQuestionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.SendDocumentAskQuestionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def send_document_ask_question(
         self,
         request: energy_expert_external_20220923_models.SendDocumentAskQuestionRequest,
     ) -> energy_expert_external_20220923_models.SendDocumentAskQuestionResponse:
         """
-        @summary 在线文档问答
+        @summary Online Document Q\\&A
         
         @param request: SendDocumentAskQuestionRequest
         @return: SendDocumentAskQuestionResponse
@@ -4754,7 +4674,7 @@ class Client(OpenApiClient):
         request: energy_expert_external_20220923_models.SendDocumentAskQuestionRequest,
     ) -> energy_expert_external_20220923_models.SendDocumentAskQuestionResponse:
         """
-        @summary 在线文档问答
+        @summary Online Document Q\\&A
         
         @param request: SendDocumentAskQuestionRequest
         @return: SendDocumentAskQuestionResponse
@@ -4826,16 +4746,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.SetRunningPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.SetRunningPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.SetRunningPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_running_plan_with_options_async(
         self,
@@ -4900,16 +4814,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.SetRunningPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.SetRunningPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.SetRunningPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_running_plan(
         self,
@@ -4939,6 +4847,558 @@ class Client(OpenApiClient):
         headers = {}
         return await self.set_running_plan_with_options_async(request, headers, runtime)
 
+    def submit_doc_extraction_task_with_options(
+        self,
+        request: energy_expert_external_20220923_models.SubmitDocExtractionTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.SubmitDocExtractionTaskResponse:
+        """
+        @summary Extracts key information from documents using user-defined Key-Value or prompt templates. A taskId is returned upon successful execution for retrieving extraction results via GetDocExtractionResult.
+        Supports:
+        URL Upload: SubmitDocExtractionTask
+        Local File Upload: SubmitDocExtractionTask
+        
+        @param request: SubmitDocExtractionTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDocExtractionTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.extract_type):
+            query['extractType'] = request.extract_type
+        if not UtilClient.is_unset(request.file_name):
+            query['fileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_url):
+            query['fileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.folder_id):
+            query['folderId'] = request.folder_id
+        if not UtilClient.is_unset(request.template_id):
+            query['templateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitDocExtractionTask',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/submitDocExtractionTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.SubmitDocExtractionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_doc_extraction_task_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.SubmitDocExtractionTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.SubmitDocExtractionTaskResponse:
+        """
+        @summary Extracts key information from documents using user-defined Key-Value or prompt templates. A taskId is returned upon successful execution for retrieving extraction results via GetDocExtractionResult.
+        Supports:
+        URL Upload: SubmitDocExtractionTask
+        Local File Upload: SubmitDocExtractionTask
+        
+        @param request: SubmitDocExtractionTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDocExtractionTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.extract_type):
+            query['extractType'] = request.extract_type
+        if not UtilClient.is_unset(request.file_name):
+            query['fileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_url):
+            query['fileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.folder_id):
+            query['folderId'] = request.folder_id
+        if not UtilClient.is_unset(request.template_id):
+            query['templateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitDocExtractionTask',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/submitDocExtractionTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.SubmitDocExtractionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_doc_extraction_task(
+        self,
+        request: energy_expert_external_20220923_models.SubmitDocExtractionTaskRequest,
+    ) -> energy_expert_external_20220923_models.SubmitDocExtractionTaskResponse:
+        """
+        @summary Extracts key information from documents using user-defined Key-Value or prompt templates. A taskId is returned upon successful execution for retrieving extraction results via GetDocExtractionResult.
+        Supports:
+        URL Upload: SubmitDocExtractionTask
+        Local File Upload: SubmitDocExtractionTask
+        
+        @param request: SubmitDocExtractionTaskRequest
+        @return: SubmitDocExtractionTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.submit_doc_extraction_task_with_options(request, headers, runtime)
+
+    async def submit_doc_extraction_task_async(
+        self,
+        request: energy_expert_external_20220923_models.SubmitDocExtractionTaskRequest,
+    ) -> energy_expert_external_20220923_models.SubmitDocExtractionTaskResponse:
+        """
+        @summary Extracts key information from documents using user-defined Key-Value or prompt templates. A taskId is returned upon successful execution for retrieving extraction results via GetDocExtractionResult.
+        Supports:
+        URL Upload: SubmitDocExtractionTask
+        Local File Upload: SubmitDocExtractionTask
+        
+        @param request: SubmitDocExtractionTaskRequest
+        @return: SubmitDocExtractionTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.submit_doc_extraction_task_with_options_async(request, headers, runtime)
+
+    def submit_doc_extraction_task_advance(
+        self,
+        request: energy_expert_external_20220923_models.SubmitDocExtractionTaskAdvanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.SubmitDocExtractionTaskResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='energyExpertExternal',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        submit_doc_extraction_task_req = energy_expert_external_20220923_models.SubmitDocExtractionTaskRequest()
+        OpenApiUtilClient.convert(request, submit_doc_extraction_task_req)
+        if not UtilClient.is_unset(request.file_url_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.file_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            submit_doc_extraction_task_req.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        submit_doc_extraction_task_resp = self.submit_doc_extraction_task_with_options(submit_doc_extraction_task_req, headers, runtime)
+        return submit_doc_extraction_task_resp
+
+    async def submit_doc_extraction_task_advance_async(
+        self,
+        request: energy_expert_external_20220923_models.SubmitDocExtractionTaskAdvanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.SubmitDocExtractionTaskResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='energyExpertExternal',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        submit_doc_extraction_task_req = energy_expert_external_20220923_models.SubmitDocExtractionTaskRequest()
+        OpenApiUtilClient.convert(request, submit_doc_extraction_task_req)
+        if not UtilClient.is_unset(request.file_url_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.file_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            submit_doc_extraction_task_req.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        submit_doc_extraction_task_resp = await self.submit_doc_extraction_task_with_options_async(submit_doc_extraction_task_req, headers, runtime)
+        return submit_doc_extraction_task_resp
+
+    def submit_doc_parsing_task_with_options(
+        self,
+        request: energy_expert_external_20220923_models.SubmitDocParsingTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.SubmitDocParsingTaskResponse:
+        """
+        @summary Parses text, tables, images, and more from documents. After execution, a taskId is returned for retrieving document parsing results via GetDocParsingResult.
+        Supports:
+        URL Upload: SubmitDocParsingTask
+        Local File Upload: SubmitDocParsingTaskAdvance
+        
+        @param request: SubmitDocParsingTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDocParsingTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['fileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_url):
+            query['fileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.folder_id):
+            query['folderId'] = request.folder_id
+        if not UtilClient.is_unset(request.need_analyze_img):
+            query['needAnalyzeImg'] = request.need_analyze_img
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitDocParsingTask',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/submitDocParsingTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.SubmitDocParsingTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_doc_parsing_task_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.SubmitDocParsingTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.SubmitDocParsingTaskResponse:
+        """
+        @summary Parses text, tables, images, and more from documents. After execution, a taskId is returned for retrieving document parsing results via GetDocParsingResult.
+        Supports:
+        URL Upload: SubmitDocParsingTask
+        Local File Upload: SubmitDocParsingTaskAdvance
+        
+        @param request: SubmitDocParsingTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDocParsingTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['fileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_url):
+            query['fileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.folder_id):
+            query['folderId'] = request.folder_id
+        if not UtilClient.is_unset(request.need_analyze_img):
+            query['needAnalyzeImg'] = request.need_analyze_img
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitDocParsingTask',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/submitDocParsingTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.SubmitDocParsingTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_doc_parsing_task(
+        self,
+        request: energy_expert_external_20220923_models.SubmitDocParsingTaskRequest,
+    ) -> energy_expert_external_20220923_models.SubmitDocParsingTaskResponse:
+        """
+        @summary Parses text, tables, images, and more from documents. After execution, a taskId is returned for retrieving document parsing results via GetDocParsingResult.
+        Supports:
+        URL Upload: SubmitDocParsingTask
+        Local File Upload: SubmitDocParsingTaskAdvance
+        
+        @param request: SubmitDocParsingTaskRequest
+        @return: SubmitDocParsingTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.submit_doc_parsing_task_with_options(request, headers, runtime)
+
+    async def submit_doc_parsing_task_async(
+        self,
+        request: energy_expert_external_20220923_models.SubmitDocParsingTaskRequest,
+    ) -> energy_expert_external_20220923_models.SubmitDocParsingTaskResponse:
+        """
+        @summary Parses text, tables, images, and more from documents. After execution, a taskId is returned for retrieving document parsing results via GetDocParsingResult.
+        Supports:
+        URL Upload: SubmitDocParsingTask
+        Local File Upload: SubmitDocParsingTaskAdvance
+        
+        @param request: SubmitDocParsingTaskRequest
+        @return: SubmitDocParsingTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.submit_doc_parsing_task_with_options_async(request, headers, runtime)
+
+    def submit_doc_parsing_task_advance(
+        self,
+        request: energy_expert_external_20220923_models.SubmitDocParsingTaskAdvanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.SubmitDocParsingTaskResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='energyExpertExternal',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        submit_doc_parsing_task_req = energy_expert_external_20220923_models.SubmitDocParsingTaskRequest()
+        OpenApiUtilClient.convert(request, submit_doc_parsing_task_req)
+        if not UtilClient.is_unset(request.file_url_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.file_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            submit_doc_parsing_task_req.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        submit_doc_parsing_task_resp = self.submit_doc_parsing_task_with_options(submit_doc_parsing_task_req, headers, runtime)
+        return submit_doc_parsing_task_resp
+
+    async def submit_doc_parsing_task_advance_async(
+        self,
+        request: energy_expert_external_20220923_models.SubmitDocParsingTaskAdvanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.SubmitDocParsingTaskResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='energyExpertExternal',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        submit_doc_parsing_task_req = energy_expert_external_20220923_models.SubmitDocParsingTaskRequest()
+        OpenApiUtilClient.convert(request, submit_doc_parsing_task_req)
+        if not UtilClient.is_unset(request.file_url_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.file_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            submit_doc_parsing_task_req.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        submit_doc_parsing_task_resp = await self.submit_doc_parsing_task_with_options_async(submit_doc_parsing_task_req, headers, runtime)
+        return submit_doc_parsing_task_resp
+
     def submit_document_analyze_job_with_options(
         self,
         request: energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobRequest,
@@ -4946,7 +5406,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse:
         """
-        @summary 获取文档结果
+        @summary Get document extraction result
         
         @param request: SubmitDocumentAnalyzeJobRequest
         @param headers: map
@@ -4980,16 +5440,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def submit_document_analyze_job_with_options_async(
         self,
@@ -4998,7 +5452,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse:
         """
-        @summary 获取文档结果
+        @summary Get document extraction result
         
         @param request: SubmitDocumentAnalyzeJobRequest
         @param headers: map
@@ -5032,23 +5486,17 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def submit_document_analyze_job(
         self,
         request: energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobRequest,
     ) -> energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse:
         """
-        @summary 获取文档结果
+        @summary Get document extraction result
         
         @param request: SubmitDocumentAnalyzeJobRequest
         @return: SubmitDocumentAnalyzeJobResponse
@@ -5062,7 +5510,7 @@ class Client(OpenApiClient):
         request: energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobRequest,
     ) -> energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse:
         """
-        @summary 获取文档结果
+        @summary Get document extraction result
         
         @param request: SubmitDocumentAnalyzeJobRequest
         @return: SubmitDocumentAnalyzeJobResponse
@@ -5216,3 +5664,277 @@ class Client(OpenApiClient):
             submit_document_analyze_job_req.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         submit_document_analyze_job_resp = await self.submit_document_analyze_job_with_options_async(submit_document_analyze_job_req, headers, runtime)
         return submit_document_analyze_job_resp
+
+    def submit_vlextraction_task_with_options(
+        self,
+        request: energy_expert_external_20220923_models.SubmitVLExtractionTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.SubmitVLExtractionTaskResponse:
+        """
+        @summary Extracts key information from documents using KV templates or prompts with the Qwen-VL model, ideal for image extraction.
+        Supports:
+        URL Upload: SubmitVLExtractionTask.
+        Local File Upload: SubmitVLExtractionTaskAdvance
+        
+        @param request: SubmitVLExtractionTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitVLExtractionTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['fileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_url):
+            query['fileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.folder_id):
+            query['folderId'] = request.folder_id
+        if not UtilClient.is_unset(request.template_id):
+            query['templateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitVLExtractionTask',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/submitVLExtractionTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.SubmitVLExtractionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_vlextraction_task_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.SubmitVLExtractionTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.SubmitVLExtractionTaskResponse:
+        """
+        @summary Extracts key information from documents using KV templates or prompts with the Qwen-VL model, ideal for image extraction.
+        Supports:
+        URL Upload: SubmitVLExtractionTask.
+        Local File Upload: SubmitVLExtractionTaskAdvance
+        
+        @param request: SubmitVLExtractionTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitVLExtractionTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['fileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_url):
+            query['fileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.folder_id):
+            query['folderId'] = request.folder_id
+        if not UtilClient.is_unset(request.template_id):
+            query['templateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitVLExtractionTask',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v2/aidoc/document/submitVLExtractionTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.SubmitVLExtractionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_vlextraction_task(
+        self,
+        request: energy_expert_external_20220923_models.SubmitVLExtractionTaskRequest,
+    ) -> energy_expert_external_20220923_models.SubmitVLExtractionTaskResponse:
+        """
+        @summary Extracts key information from documents using KV templates or prompts with the Qwen-VL model, ideal for image extraction.
+        Supports:
+        URL Upload: SubmitVLExtractionTask.
+        Local File Upload: SubmitVLExtractionTaskAdvance
+        
+        @param request: SubmitVLExtractionTaskRequest
+        @return: SubmitVLExtractionTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.submit_vlextraction_task_with_options(request, headers, runtime)
+
+    async def submit_vlextraction_task_async(
+        self,
+        request: energy_expert_external_20220923_models.SubmitVLExtractionTaskRequest,
+    ) -> energy_expert_external_20220923_models.SubmitVLExtractionTaskResponse:
+        """
+        @summary Extracts key information from documents using KV templates or prompts with the Qwen-VL model, ideal for image extraction.
+        Supports:
+        URL Upload: SubmitVLExtractionTask.
+        Local File Upload: SubmitVLExtractionTaskAdvance
+        
+        @param request: SubmitVLExtractionTaskRequest
+        @return: SubmitVLExtractionTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.submit_vlextraction_task_with_options_async(request, headers, runtime)
+
+    def submit_vlextraction_task_advance(
+        self,
+        request: energy_expert_external_20220923_models.SubmitVLExtractionTaskAdvanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.SubmitVLExtractionTaskResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='energyExpertExternal',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        submit_vlextraction_task_req = energy_expert_external_20220923_models.SubmitVLExtractionTaskRequest()
+        OpenApiUtilClient.convert(request, submit_vlextraction_task_req)
+        if not UtilClient.is_unset(request.file_url_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.file_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            submit_vlextraction_task_req.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        submit_vlextraction_task_resp = self.submit_vlextraction_task_with_options(submit_vlextraction_task_req, headers, runtime)
+        return submit_vlextraction_task_resp
+
+    async def submit_vlextraction_task_advance_async(
+        self,
+        request: energy_expert_external_20220923_models.SubmitVLExtractionTaskAdvanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.SubmitVLExtractionTaskResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='energyExpertExternal',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        submit_vlextraction_task_req = energy_expert_external_20220923_models.SubmitVLExtractionTaskRequest()
+        OpenApiUtilClient.convert(request, submit_vlextraction_task_req)
+        if not UtilClient.is_unset(request.file_url_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.file_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            submit_vlextraction_task_req.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        submit_vlextraction_task_resp = await self.submit_vlextraction_task_with_options_async(submit_vlextraction_task_req, headers, runtime)
+        return submit_vlextraction_task_resp
