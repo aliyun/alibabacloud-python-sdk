@@ -1,3 +1,22 @@
+2025-04-18 Version: 1.5.11
+- Update API CreateInstance: add request parameters body.DynamicMount.
+- Update API CreateInstance: add request parameters body.Datasets.$.Dynamic.
+- Update API CreateInstance: add request parameters body.UserVpc.BandwidthLimit.
+- Update API GetInstance: add response parameters Body.DynamicMount.
+- Update API GetInstance: add response parameters Body.Datasets.$.Dynamic.
+- Update API GetInstance: add response parameters Body.UserVpc.BandwidthLimit.
+- Update API ListInstances: add request parameters OversoldInfo.
+- Update API ListInstances: add request parameters OversoldType.
+- Update API ListInstances: add response parameters Body.Instances.$.DynamicMount.
+- Update API ListInstances: add response parameters Body.Instances.$.OversoldInfo.
+- Update API ListInstances: add response parameters Body.Instances.$.OversoldType.
+- Update API ListInstances: add response parameters Body.Instances.$.Datasets.$.Dynamic.
+- Update API ListInstances: add response parameters Body.Instances.$.UserVpc.BandwidthLimit.
+- Update API UpdateInstance: add request parameters body.DynamicMount.
+- Update API UpdateInstance: add request parameters body.Datasets.$.Dynamic.
+- Update API UpdateInstance: add request parameters body.UserVpc.BandwidthLimit.
+
+
 2025-03-13 Version: 1.5.10
 - Update API CreateInstance: update param body.
 - Update API GetInstance: update response param.

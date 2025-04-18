@@ -4,6 +4,51 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any
 
 
+class BandwidthLimit(TeaModel):
+    def __init__(
+        self,
+        egress_rate: str = None,
+        egress_whitelists: List[str] = None,
+        ingress_rate: str = None,
+        ingress_whitelists: List[str] = None,
+    ):
+        self.egress_rate = egress_rate
+        self.egress_whitelists = egress_whitelists
+        self.ingress_rate = ingress_rate
+        self.ingress_whitelists = ingress_whitelists
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.egress_rate is not None:
+            result['EgressRate'] = self.egress_rate
+        if self.egress_whitelists is not None:
+            result['EgressWhitelists'] = self.egress_whitelists
+        if self.ingress_rate is not None:
+            result['IngressRate'] = self.ingress_rate
+        if self.ingress_whitelists is not None:
+            result['IngressWhitelists'] = self.ingress_whitelists
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EgressRate') is not None:
+            self.egress_rate = m.get('EgressRate')
+        if m.get('EgressWhitelists') is not None:
+            self.egress_whitelists = m.get('EgressWhitelists')
+        if m.get('IngressRate') is not None:
+            self.ingress_rate = m.get('IngressRate')
+        if m.get('IngressWhitelists') is not None:
+            self.ingress_whitelists = m.get('IngressWhitelists')
+        return self
+
+
 class CredentialConfigConfigsRolesUserInfo(TeaModel):
     def __init__(
         self,
@@ -250,6 +295,81 @@ class DemoCategory(TeaModel):
             for k in m.get('SubCategories'):
                 temp_model = DemoCategory()
                 self.sub_categories.append(temp_model.from_map(k))
+        return self
+
+
+class DynamicMountPoint(TeaModel):
+    def __init__(
+        self,
+        options: str = None,
+        root_path: str = None,
+    ):
+        self.options = options
+        # This parameter is required.
+        self.root_path = root_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.options is not None:
+            result['Options'] = self.options
+        if self.root_path is not None:
+            result['RootPath'] = self.root_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
+        if m.get('RootPath') is not None:
+            self.root_path = m.get('RootPath')
+        return self
+
+
+class DynamicMount(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        mount_points: List[DynamicMountPoint] = None,
+    ):
+        self.enable = enable
+        self.mount_points = mount_points
+
+    def validate(self):
+        if self.mount_points:
+            for k in self.mount_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        result['MountPoints'] = []
+        if self.mount_points is not None:
+            for k in self.mount_points:
+                result['MountPoints'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        self.mount_points = []
+        if m.get('MountPoints') is not None:
+            for k in m.get('MountPoints'):
+                temp_model = DynamicMountPoint()
+                self.mount_points.append(temp_model.from_map(k))
         return self
 
 
@@ -534,8 +654,11 @@ class CreateIdleInstanceCullerRequest(TeaModel):
         gpu_percent_threshold: int = None,
         max_idle_time_in_minutes: int = None,
     ):
+        # The CPU utilization threshold. Unit: percentage. Valid values: 1 to 100. If the CPU utilization of the instance is lower than this threshold, the instance is considered idle.
         self.cpu_percent_threshold = cpu_percent_threshold
+        # The GPU utilization threshold. Unit: percentage. Valid values: 1 to 100. This parameter takes effect only if the instance is of the GPU instance type. If both CPU and GPU utilization is lower than the thresholds, the instance is considered idle.
         self.gpu_percent_threshold = gpu_percent_threshold
+        # The maximum time duration for which the instance is idle. Unit: minutes. If the time duration for which the instance is idle exceeds this value, the system automatically stops the instance.
         self.max_idle_time_in_minutes = max_idle_time_in_minutes
 
     def validate(self):
@@ -575,10 +698,21 @@ class CreateIdleInstanceCullerResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. Valid values:
+        # 
+        # *   InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+        # *   ValidationError: a parameter validation error.
         self.code = code
+        # The instance ID.
         self.instance_id = instance_id
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -663,6 +797,10 @@ class CreateInstanceRequestAffinityCPU(TeaModel):
         self,
         enable: bool = None,
     ):
+        # Specifies whether to enable the CPU affinity feature.
+        # 
+        # *   false
+        # *   true
         self.enable = enable
 
     def validate(self):
@@ -690,6 +828,7 @@ class CreateInstanceRequestAffinity(TeaModel):
         self,
         cpu: CreateInstanceRequestAffinityCPU = None,
     ):
+        # The CPU affinity configuration. Only subscription instances that use general-purpose computing resources support CPU affinity configuration.
         self.cpu = cpu
 
     def validate(self):
@@ -721,8 +860,11 @@ class CreateInstanceRequestCloudDisksStatus(TeaModel):
         capacity: int = None,
         usage: int = None,
     ):
+        # The available capacity. Unit: bytes.
         self.available = available
+        # The capacity. Unit: bytes.
         self.capacity = capacity
+        # The used capacity. Unit: bytes.
         self.usage = usage
 
     def validate(self):
@@ -762,10 +904,31 @@ class CreateInstanceRequestCloudDisks(TeaModel):
         status: CreateInstanceRequestCloudDisksStatus = None,
         sub_type: str = None,
     ):
+        # If **Resource Type** is **Public Resource** or if **Resource Quota** is subscription-based general-purpose computing resources (CPU cores ≥ 2 and memory ≥ 4 GB, or configured with GPU):
+        # 
+        # Each instance has a free system disk of 100 GiB for persistent storage. **If the DSW instance is stopped and not launched for more than 15 days, the disk is cleared**. The disk can be expanded. For specific pricing, refer to the console.
+        # 
+        # **\
+        # 
+        # **Warning**\
+        # 
+        # *   After the expansion, you cannot reduce the storage space. Proceed with caution.
+        # 
+        # *   After the expansion, the disk is not cleared if the instance is stopped for more than 15 days. However, it will continue to incur fees.
+        # 
+        # *   If you delete the instance, the system disk is also released and the data stored in the disk is deleted. Make sure that you have backed up your data before you delete the instance.
+        # 
+        # If you need persistent storage, you can **mount a dataset** or add the OSS, NAS, or CPFS path to the **storage path**.
         self.capacity = capacity
+        # The mount path of the cloud disk.
         self.mount_path = mount_path
+        # The subpath of the cloud disk that is mounted to the instance.
         self.path = path
+        # The disk or snapshot usage.
         self.status = status
+        # The cloud disk type.
+        # 
+        # *   rootfs: Mounts the disk as a system disk. The system environment is stored on the disk.
         self.sub_type = sub_type
 
     def validate(self):
@@ -811,18 +974,43 @@ class CreateInstanceRequestDatasets(TeaModel):
         self,
         dataset_id: str = None,
         dataset_version: str = None,
+        dynamic: bool = None,
         mount_access: str = None,
         mount_path: str = None,
         option_type: str = None,
         options: str = None,
         uri: str = None,
     ):
+        # The dataset ID. If the dataset is read-only, you cannot change the dataset permission from read-only to read and write by using MountAccess.
+        # 
+        # You can call [ListDatasets](https://help.aliyun.com/document_detail/457222.html) to obtain the dataset ID. If you configure the dataset ID, you cannot configure the dataset URI.
         self.dataset_id = dataset_id
+        # The dataset version. You must also configure DatasetId. If you leave this parameter empty, the value v1 is used by default.
         self.dataset_version = dataset_version
+        # Specifies whether to enable dynamic mounting. Default value: false.
+        # 
+        # *   Currently, only instances using general-purpose computing resources are supported.
+        # *   Currently, only OSS datasets are supported. The mounted datasets are read-only.
+        # *   The mount path of the dynamically mounted dataset must be a subpath of the root path. Example: /mnt/dynamic/data1/\
+        # *   A dynamically mounted dataset must be after non-dynamic datasets.
+        self.dynamic = dynamic
+        # The read and write permissions of the dataset. If the dataset is read-only, it cannot be changed to read and write.
         self.mount_access = mount_access
+        # The mount path of the dataset.
         self.mount_path = mount_path
+        # The mount type. You cannot specify Options at the same time. This is deprecated, and you can use Options instead.
         self.option_type = option_type
+        # The custom dataset mount options. Only OSS is supported. You cannot specify OptionType at the same time. For more information, see [DSW mount configurations](https://help.aliyun.com/zh/pai/user-guide/read-and-write-dataset-data).
         self.options = options
+        # The URI of the storage service directory, which can be directly mounted. This parameter is mutually exclusive with DatasetId.
+        # 
+        # URI formats of different types of storage:
+        # 
+        # *   OSS: oss://bucket-name.oss-cn-shanghai-internal.aliyuncs.com/data/path/\
+        # *   NAS: nas://29\\*\\*d-b12\\*\\*\\*\\*446.cn-hangzhou.nas.aliyuncs.com/data/path/\
+        # *   Extreme NAS: nas://29\\*\\*\\*\\*123-y\\*\\*r.cn-hangzhou.extreme.nas.aliyuncs.com/data/path/\
+        # *   CPFS: cpfs://cpfs-213\\*\\*\\*\\*87.cn-wulanchabu/ptc-292\\*\\*\\*\\*\\*cbb/exp-290\\*\\*\\*\\*\\*\\*\\*\\*03e/data/path/\
+        # *   Lingjun CPFS: bmcpfs://cpfs-290\\*\\*\\*\\*\\*\\*foflh-vpc-x\\*\\*\\*\\*8r.cn-wulanchabu.cpfs.aliyuncs.com/data/path/\
         self.uri = uri
 
     def validate(self):
@@ -838,6 +1026,8 @@ class CreateInstanceRequestDatasets(TeaModel):
             result['DatasetId'] = self.dataset_id
         if self.dataset_version is not None:
             result['DatasetVersion'] = self.dataset_version
+        if self.dynamic is not None:
+            result['Dynamic'] = self.dynamic
         if self.mount_access is not None:
             result['MountAccess'] = self.mount_access
         if self.mount_path is not None:
@@ -856,6 +1046,8 @@ class CreateInstanceRequestDatasets(TeaModel):
             self.dataset_id = m.get('DatasetId')
         if m.get('DatasetVersion') is not None:
             self.dataset_version = m.get('DatasetVersion')
+        if m.get('Dynamic') is not None:
+            self.dynamic = m.get('Dynamic')
         if m.get('MountAccess') is not None:
             self.mount_access = m.get('MountAccess')
         if m.get('MountPath') is not None:
@@ -875,7 +1067,9 @@ class CreateInstanceRequestLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The custom label key.
         self.key = key
+        # The custom label value.
         self.value = value
 
     def validate(self):
@@ -911,10 +1105,21 @@ class CreateInstanceRequestRequestedResource(TeaModel):
         memory: str = None,
         shared_memory: str = None,
     ):
+        # The number of CPU cores.
         self.cpu = cpu
+        # The number of GPUs.
         self.gpu = gpu
+        # The GPU memory type. Valid values:
+        # 
+        # *   V100
+        # *   A100
+        # *   T4
+        # *   A10
+        # *   P100
         self.gputype = gputype
+        # The memory size. Unit: GB.
         self.memory = memory
+        # The size of the shared memory. Unit: GB.
         self.shared_memory = shared_memory
 
     def validate(self):
@@ -959,7 +1164,9 @@ class CreateInstanceRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -989,6 +1196,7 @@ class CreateInstanceRequestTag(TeaModel):
 class CreateInstanceRequestUserVpc(TeaModel):
     def __init__(
         self,
+        bandwidth_limit: BandwidthLimit = None,
         default_route: str = None,
         extended_cidrs: List[str] = None,
         forward_infos: List[ForwardInfo] = None,
@@ -996,14 +1204,29 @@ class CreateInstanceRequestUserVpc(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        self.bandwidth_limit = bandwidth_limit
+        # The default route. Valid values:
+        # 
+        # *   eth0: The default network interface is used to access the Internet through the public gateway.
+        # *   eth1: The user\\"s elastic network interface (ENI) is used to access the Internet through the private gateway. For more information about the configuration method, see [Enable Internet access for a DSW instance by using a private Internet NAT gateway](https://help.aliyun.com/document_detail/2525343.html).
         self.default_route = default_route
+        # The extended CIDR blocks.
+        # 
+        # *   If you leave the SwitchId and ExtendedCIDRs parameters empty, the system automatically obtains all CIDR blocks in a VPC.
+        # *   If you configure the SwitchId and ExtendedCIDRs parameters, we recommend that you specify all CIDR blocks in a VPC.
         self.extended_cidrs = extended_cidrs
+        # The forward information.
         self.forward_infos = forward_infos
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
+        if self.bandwidth_limit:
+            self.bandwidth_limit.validate()
         if self.forward_infos:
             for k in self.forward_infos:
                 if k:
@@ -1015,6 +1238,8 @@ class CreateInstanceRequestUserVpc(TeaModel):
             return _map
 
         result = dict()
+        if self.bandwidth_limit is not None:
+            result['BandwidthLimit'] = self.bandwidth_limit.to_map()
         if self.default_route is not None:
             result['DefaultRoute'] = self.default_route
         if self.extended_cidrs is not None:
@@ -1033,6 +1258,9 @@ class CreateInstanceRequestUserVpc(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BandwidthLimit') is not None:
+            temp_model = BandwidthLimit()
+            self.bandwidth_limit = temp_model.from_map(m['BandwidthLimit'])
         if m.get('DefaultRoute') is not None:
             self.default_route = m.get('DefaultRoute')
         if m.get('ExtendedCIDRs') is not None:
@@ -1060,6 +1288,7 @@ class CreateInstanceRequest(TeaModel):
         credential_config: CredentialConfig = None,
         datasets: List[CreateInstanceRequestDatasets] = None,
         driver: str = None,
+        dynamic_mount: DynamicMount = None,
         ecs_spec: str = None,
         environment_variables: Dict[str, str] = None,
         image_auth: str = None,
@@ -1076,26 +1305,72 @@ class CreateInstanceRequest(TeaModel):
         workspace_id: str = None,
         workspace_source: str = None,
     ):
+        # The instance accessibility.
+        # 
+        # Valid values:
+        # 
+        # *   PUBLIC: The instances are accessible to all members in the workspace.
+        # *   PRIVATE: The instances are accessible only to you and the administrator of the workspace.
         self.accessibility = accessibility
+        # The affinity configuration.
         self.affinity = affinity
+        # The cloud disks.
         self.cloud_disks = cloud_disks
+        # The credential configuration.
         self.credential_config = credential_config
+        # The datasets.
         self.datasets = datasets
+        # The NVIDIA driver configuration.
         self.driver = driver
+        # The dynamic mount configuration.
+        self.dynamic_mount = dynamic_mount
+        # The ECS instance type of the instance. You can call [ListEcsSpecs](https://help.aliyun.com/document_detail/470423.html) to obtain the ECS instance type.
         self.ecs_spec = ecs_spec
+        # The environment variables.
         self.environment_variables = environment_variables
+        # The Base64-encoded account and password for the user\\"s private image. The password will be hidden.
         self.image_auth = image_auth
+        # The image ID. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain the image ID.
         self.image_id = image_id
+        # The image address. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain the image address.
         self.image_url = image_url
+        # The instance name. The name must meet the following requirements:
+        # 
+        # *   The name can contain only letters, digits, and underscores (_).
+        # *   The name can be up to 27 characters in length.
         self.instance_name = instance_name
+        # The custom labels.
         self.labels = labels
+        # The priority based on which resources are allocated to instances. Valid values: 1 to 9.
+        # 
+        # *   1: the lowest priority.
+        # *   9: the highest priority.
         self.priority = priority
+        # The resource configurations.
         self.requested_resource = requested_resource
+        # The ID of the resource group. This parameter is configured during prepayment. For information about how to create a dedicated resource group, see [Create a dedicated resource group and purchase general computing resources](https://help.aliyun.com/document_detail/202827.html).
         self.resource_id = resource_id
+        # The tags.
         self.tag = tag
+        # The ID of the instance owner. Valid values: Alibaba Cloud account and RAM user.
         self.user_id = user_id
+        # The virtual private cloud (VPC) configurations.
         self.user_vpc = user_vpc
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
+        # The storage corresponding to the working directory. You can mount disks or datasets to /mnt/workspace at the same time. OSS datasets and dynamically mounted datasets are not supported.
+        # 
+        # Valid values:
+        # 
+        # *   rootfsCloudDisk: Mount the disk to the working directory.
+        # *   Mount path of the dataset, such as /mnt/data: Datasets in URI format only support this method.
+        # *   Dataset ID, such as d-vsqjvs\\*\\*\\*\\*rp5l206u: If a single dataset is mounted to multiple paths, the first path is selected. We recommend that you do not use this method, use the mount path instead.
+        # 
+        # If you leave this parameter empty:
+        # 
+        # *   If the instance uses cloud disks, cloud disks are selected by default.
+        # *   if no cloud disks are available, the first NAS or CPFS dataset is selected as the working directory.
+        # *   If no cloud disks, and NAS or CPFS datasets are available, the host space is used.
         self.workspace_source = workspace_source
 
     def validate(self):
@@ -1111,6 +1386,8 @@ class CreateInstanceRequest(TeaModel):
             for k in self.datasets:
                 if k:
                     k.validate()
+        if self.dynamic_mount:
+            self.dynamic_mount.validate()
         if self.labels:
             for k in self.labels:
                 if k:
@@ -1146,6 +1423,8 @@ class CreateInstanceRequest(TeaModel):
                 result['Datasets'].append(k.to_map() if k else None)
         if self.driver is not None:
             result['Driver'] = self.driver
+        if self.dynamic_mount is not None:
+            result['DynamicMount'] = self.dynamic_mount.to_map()
         if self.ecs_spec is not None:
             result['EcsSpec'] = self.ecs_spec
         if self.environment_variables is not None:
@@ -1204,6 +1483,9 @@ class CreateInstanceRequest(TeaModel):
                 self.datasets.append(temp_model.from_map(k))
         if m.get('Driver') is not None:
             self.driver = m.get('Driver')
+        if m.get('DynamicMount') is not None:
+            temp_model = DynamicMount()
+            self.dynamic_mount = temp_model.from_map(m['DynamicMount'])
         if m.get('EcsSpec') is not None:
             self.ecs_spec = m.get('EcsSpec')
         if m.get('EnvironmentVariables') is not None:
@@ -1255,11 +1537,27 @@ class CreateInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. Valid values:
+        # 
+        # *   InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+        # *   ValidationError: a parameter validation error.
         self.code = code
+        # The HTTP status code. Valid values:
+        # 
+        # *   400
+        # *   404
+        # *   200
         self.http_status_code = http_status_code
+        # The instance ID.
         self.instance_id = instance_id
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -1349,7 +1647,9 @@ class CreateInstanceShutdownTimerRequest(TeaModel):
         due_time: str = None,
         remaining_time_in_ms: int = None,
     ):
+        # The scheduled stop time.
         self.due_time = due_time
+        # The time duration before the instance is stopped. Unit: milliseconds.
         self.remaining_time_in_ms = remaining_time_in_ms
 
     def validate(self):
@@ -1386,11 +1686,26 @@ class CreateInstanceShutdownTimerResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. Valid values:
+        # 
+        # *   InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+        # *   ValidationError: a parameter validation error.
         self.code = code
+        # The HTTP status code. Valid values:
+        # 
+        # *   400
+        # *   404
         self.http_status_code = http_status_code
+        # The instance ID.
         self.instance_id = instance_id
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -1687,10 +2002,24 @@ class DeleteIdleInstanceCullerResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. Valid values:
+        # 
+        # *   InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+        # *   ValidationError: a parameter validation error.
         self.code = code
+        # The instance ID.
         self.instance_id = instance_id
+        # The response message.
+        # 
+        # *   If the request is successful, null is returned.
+        # *   If the request fails, the failure cause is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -1780,11 +2109,27 @@ class DeleteInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. Valid values:
+        # 
+        # *   InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+        # *   ValidationError: a parameter validation error.
         self.code = code
+        # The HTTP status code. Valid values:
+        # 
+        # *   400
+        # *   404
+        # *   200
         self.http_status_code = http_status_code
+        # The instance ID.
         self.instance_id = instance_id
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -1873,6 +2218,8 @@ class DeleteInstanceLabelsRequest(TeaModel):
         self,
         label_keys: str = None,
     ):
+        # The keys of the tags that you want to delete. Separate multiple tags with commas (,).
+        # 
         # This parameter is required.
         self.label_keys = label_keys
 
@@ -1901,6 +2248,7 @@ class DeleteInstanceLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1974,11 +2322,26 @@ class DeleteInstanceShutdownTimerResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. Valid values:
+        # 
+        # *   InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+        # *   ValidationError: a parameter validation error.
         self.code = code
+        # The HTTP status code. Valid values:
+        # 
+        # *   400
+        # *   404
         self.http_status_code = http_status_code
+        # The instance ID.
         self.instance_id = instance_id
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -2179,14 +2542,29 @@ class GetIdleInstanceCullerResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. Valid values:
+        # 
+        # *   InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+        # *   ValidationError: a parameter validation error.
         self.code = code
+        # The CPU utilization threshold. Unit: percentage. Valid values: 1 to 100. If the CPU utilization of the instance is lower than this threshold, the instance is considered idle.
         self.cpu_percent_threshold = cpu_percent_threshold
+        # The GPU utilization threshold. Unit: percentage. Valid values: 1 to 100. This parameter takes effect only if the instance is of the GPU instance type. If both CPU and GPU utilization is lower than the thresholds, the instance is considered idle.
         self.gpu_percent_threshold = gpu_percent_threshold
+        # The time duration for which the instance is idle. Unit: minutes.
         self.idle_time_in_minutes = idle_time_in_minutes
+        # The instance ID.
         self.instance_id = instance_id
+        # The maximum time duration for which the instance is idle. Unit: minutes. If the time duration for which the instance is idle exceeds this value, the system automatically stops the instance.
         self.max_idle_time_in_minutes = max_idle_time_in_minutes
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -2287,6 +2665,7 @@ class GetInstanceRequest(TeaModel):
         self,
         token: str = None,
     ):
+        # The sharing token information.
         self.token = token
 
     def validate(self):
@@ -2314,6 +2693,9 @@ class GetInstanceResponseBodyAffinityCPU(TeaModel):
         self,
         enable: bool = None,
     ):
+        # Indicates whether CPU affinity is enabled.
+        # 
+        # true false
         self.enable = enable
 
     def validate(self):
@@ -2341,6 +2723,7 @@ class GetInstanceResponseBodyAffinity(TeaModel):
         self,
         cpu: GetInstanceResponseBodyAffinityCPU = None,
     ):
+        # The CPU affinity configuration. Only subscription instances that use general-purpose computing resources support CPU affinity configuration.
         self.cpu = cpu
 
     def validate(self):
@@ -2373,9 +2756,13 @@ class GetInstanceResponseBodyCloudDisks(TeaModel):
         path: str = None,
         sub_type: str = None,
     ):
+        # Disk Capacity
         self.capacity = capacity
+        # The mount path of the cloud disk in the container.
         self.mount_path = mount_path
+        # The directory on the cloud disk that is mounted to the container.
         self.path = path
+        # The usage mode of the cloud disk. The value rootfs indicates that the cloud disk is used as the root file system.
         self.sub_type = sub_type
 
     def validate(self):
@@ -2415,18 +2802,28 @@ class GetInstanceResponseBodyDatasets(TeaModel):
         self,
         dataset_id: str = None,
         dataset_version: str = None,
+        dynamic: bool = None,
         mount_access: str = None,
         mount_path: str = None,
         option_type: str = None,
         options: str = None,
         uri: str = None,
     ):
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The dataset version.
         self.dataset_version = dataset_version
+        # Indicates whether dynamic mounting is enabled. Default value: false.
+        self.dynamic = dynamic
+        # The read and write permissions. Valid values: RW and RO.
         self.mount_access = mount_access
+        # The mount path in the container.
         self.mount_path = mount_path
+        # The mount type of the dataset (deprecated).
         self.option_type = option_type
+        # The mount type of the dataset.
         self.options = options
+        # The dataset URI.
         self.uri = uri
 
     def validate(self):
@@ -2442,6 +2839,8 @@ class GetInstanceResponseBodyDatasets(TeaModel):
             result['DatasetId'] = self.dataset_id
         if self.dataset_version is not None:
             result['DatasetVersion'] = self.dataset_version
+        if self.dynamic is not None:
+            result['Dynamic'] = self.dynamic
         if self.mount_access is not None:
             result['MountAccess'] = self.mount_access
         if self.mount_path is not None:
@@ -2460,6 +2859,8 @@ class GetInstanceResponseBodyDatasets(TeaModel):
             self.dataset_id = m.get('DatasetId')
         if m.get('DatasetVersion') is not None:
             self.dataset_version = m.get('DatasetVersion')
+        if m.get('Dynamic') is not None:
+            self.dynamic = m.get('Dynamic')
         if m.get('MountAccess') is not None:
             self.mount_access = m.get('MountAccess')
         if m.get('MountPath') is not None:
@@ -2482,10 +2883,15 @@ class GetInstanceResponseBodyIdleInstanceCuller(TeaModel):
         instance_id: str = None,
         max_idle_time_in_minutes: int = None,
     ):
+        # The CPU utilization threshold. Unit: percentage. Valid values: 1 to 100. If the CPU utilization of the instance is lower than this threshold, the instance is considered idle.
         self.cpu_percent_threshold = cpu_percent_threshold
+        # The GPU utilization threshold. Unit: percentage. Valid values: 1 to 100. This parameter takes effect only if the instance is of the GPU instance type. If both CPU and GPU utilization is lower than the thresholds, the instance is considered idle.
         self.gpu_percent_threshold = gpu_percent_threshold
+        # The current time duration for which the instance is idle. Unit: minutes.
         self.idle_time_in_minutes = idle_time_in_minutes
+        # The instance ID.
         self.instance_id = instance_id
+        # The maximum time duration for which the instance is idle. Unit: minutes. If the time duration for which the instance is idle exceeds this value, the system automatically stops the instance.
         self.max_idle_time_in_minutes = max_idle_time_in_minutes
 
     def validate(self):
@@ -2533,10 +2939,15 @@ class GetInstanceResponseBodyInstanceShutdownTimer(TeaModel):
         instance_id: str = None,
         remaining_time_in_ms: int = None,
     ):
+        # The scheduled stop time.
         self.due_time = due_time
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The modified time.
         self.gmt_modified_time = gmt_modified_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The remaining time before the instance is stopped. Unit: milliseconds.
         self.remaining_time_in_ms = remaining_time_in_ms
 
     def validate(self):
@@ -2588,23 +2999,23 @@ class GetInstanceResponseBodyInstanceSnapshotList(TeaModel):
         repository_url: str = None,
         status: str = None,
     ):
-        # 快照创建时间
+        # The time when the snapshot was created.
         self.gmt_create_time = gmt_create_time
-        # 快照修改时间
+        # The time when the snapshot was modified.
         self.gmt_modified_time = gmt_modified_time
-        # 镜像Id
+        # The image ID.
         self.image_id = image_id
-        # 镜像名称
+        # The image name.
         self.image_name = image_name
-        # 镜像Url
+        # The image URL.
         self.image_url = image_url
-        # 实例快照错误代码
+        # The error code of the instance snapshot.
         self.reason_code = reason_code
-        # 实例快照错误消息
+        # The error message of the instance snapshot.
         self.reason_message = reason_message
-        # 镜像仓库Url
+        # The image repository URL.
         self.repository_url = repository_url
-        # 实例快照状态
+        # The instance snapshot status.
         self.status = status
 
     def validate(self):
@@ -2665,7 +3076,9 @@ class GetInstanceResponseBodyLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -2705,17 +3118,30 @@ class GetInstanceResponseBodyLatestSnapshot(TeaModel):
         repository_url: str = None,
         status: str = None,
     ):
+        # The time when the snapshot was created.
         self.gmt_create_time = gmt_create_time
+        # The time when the snapshot was modified.
         self.gmt_modified_time = gmt_modified_time
+        # The image ID.
         self.image_id = image_id
+        # The image name.
         self.image_name = image_name
+        # The image URL.
         self.image_url = image_url
-        # 实例快照错误代码
+        # The error code of the instance snapshot.
         self.reason_code = reason_code
-        # 实例快照错误消息
+        # The error message of the instance snapshot.
         self.reason_message = reason_message
+        # The image repository URL.
         self.repository_url = repository_url
-        # 实例快照状态
+        # The instance snapshot status.
+        # 
+        # Valid values:
+        # 
+        # *   Committing
+        # *   Pushing
+        # *   Failed
+        # *   Saved
         self.status = status
 
     def validate(self):
@@ -2777,8 +3203,11 @@ class GetInstanceResponseBodyNodeErrorRecovery(TeaModel):
         enable_auto_switch_on_node_error: bool = None,
         has_node_error: bool = None,
     ):
+        # The number of seconds to wait before automatic switchover.
         self.auto_switch_countdown_seconds = auto_switch_countdown_seconds
+        # Indicates whether to enable automatic switchover when a node error occurs.
         self.enable_auto_switch_on_node_error = enable_auto_switch_on_node_error
+        # Indicates whether the node has an error.
         self.has_node_error = has_node_error
 
     def validate(self):
@@ -2818,10 +3247,21 @@ class GetInstanceResponseBodyRequestedResource(TeaModel):
         memory: str = None,
         shared_memory: str = None,
     ):
+        # The number of CPU cores.
         self.cpu = cpu
+        # The number of GPUs.
         self.gpu = gpu
+        # The GPU type. Valid values:
+        # 
+        # *   V100
+        # *   A100
+        # *   T4
+        # *   A10
+        # *   P100
         self.gputype = gputype
+        # The memory size. Unit: GB.
         self.memory = memory
+        # The shared memory size. Unit: GB.
         self.shared_memory = shared_memory
 
     def validate(self):
@@ -2866,7 +3306,9 @@ class GetInstanceResponseBodyTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -2896,6 +3338,7 @@ class GetInstanceResponseBodyTags(TeaModel):
 class GetInstanceResponseBodyUserVpc(TeaModel):
     def __init__(
         self,
+        bandwidth_limit: BandwidthLimit = None,
         default_route: str = None,
         extended_cidrs: List[str] = None,
         forward_infos: List[ForwardInfoResponse] = None,
@@ -2903,15 +3346,26 @@ class GetInstanceResponseBodyUserVpc(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        self.bandwidth_limit = bandwidth_limit
+        # Default Route
         self.default_route = default_route
+        # The extended CIDR block.
+        # 
+        # *   If you leave VSwitchId empty, this parameter is not required and the system automatically obtains all CIDR blocks in the VPC.
+        # *   If VSwitchId is not empty, this parameter is required. Specify all CIDR blocks in the VPC.
         self.extended_cidrs = extended_cidrs
+        # The forward information.
         self.forward_infos = forward_infos
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # Vpc Id。
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
+        if self.bandwidth_limit:
+            self.bandwidth_limit.validate()
         if self.forward_infos:
             for k in self.forward_infos:
                 if k:
@@ -2923,6 +3377,8 @@ class GetInstanceResponseBodyUserVpc(TeaModel):
             return _map
 
         result = dict()
+        if self.bandwidth_limit is not None:
+            result['BandwidthLimit'] = self.bandwidth_limit.to_map()
         if self.default_route is not None:
             result['DefaultRoute'] = self.default_route
         if self.extended_cidrs is not None:
@@ -2941,6 +3397,9 @@ class GetInstanceResponseBodyUserVpc(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BandwidthLimit') is not None:
+            temp_model = BandwidthLimit()
+            self.bandwidth_limit = temp_model.from_map(m['BandwidthLimit'])
         if m.get('DefaultRoute') is not None:
             self.default_route = m.get('DefaultRoute')
         if m.get('ExtendedCIDRs') is not None:
@@ -2971,6 +3430,7 @@ class GetInstanceResponseBody(TeaModel):
         credential_config: CredentialConfig = None,
         datasets: List[GetInstanceResponseBodyDatasets] = None,
         driver: str = None,
+        dynamic_mount: DynamicMount = None,
         ecs_spec: str = None,
         environment_variables: Dict[str, str] = None,
         gmt_create_time: str = None,
@@ -3012,56 +3472,149 @@ class GetInstanceResponseBody(TeaModel):
         workspace_name: str = None,
         workspace_source: str = None,
     ):
+        # The accelerator type of the instance.
+        # 
+        # Valid values:
+        # 
+        # *   CPU
+        # *   GPU
         self.accelerator_type = accelerator_type
+        # The accessibility. Valid values:
+        # 
+        # *   PRIVATE: Accessible only to you and the administrator of the workspace.
+        # *   PUBLIC: Accessible to all members in the workspace.
         self.accessibility = accessibility
+        # The accumulated running duration. Unit: milliseconds.
         self.accumulated_running_time_in_ms = accumulated_running_time_in_ms
+        # The affinity configuration.
         self.affinity = affinity
+        # The cloud disks of the instance.
         self.cloud_disks = cloud_disks
+        # The status code. Valid values:
+        # 
+        # *   InternalError: All errors, except for parameter validation errors, are internal errors.
+        # *   ValidationError: A parameter validation error.
         self.code = code
+        # The credential injection configuration.
         self.credential_config = credential_config
+        # The datasets.
         self.datasets = datasets
+        # The NVIDIA driver configuration.
         self.driver = driver
+        # The dynamic mount configuration.
+        self.dynamic_mount = dynamic_mount
+        # The ECS instance type of the instance.
         self.ecs_spec = ecs_spec
+        # The environment variables.
         self.environment_variables = environment_variables
+        # The creation time of the instance.
         self.gmt_create_time = gmt_create_time
+        # The last modified time of the instance.
         self.gmt_modified_time = gmt_modified_time
+        # The HTTP status code. Valid values:
+        # 
+        # *   400
+        # *   404
         self.http_status_code = http_status_code
+        # The automatic shutdown settings.
         self.idle_instance_culler = idle_instance_culler
+        # The Base64-encoded account and password for the user‘s private image. The password will be hidden.
         self.image_auth = image_auth
+        # The image ID.
         self.image_id = image_id
+        # The image name.
         self.image_name = image_name
+        # The image address.
         self.image_url = image_url
+        # The instance ID.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The scheduled stop tasks.
         self.instance_shutdown_timer = instance_shutdown_timer
+        # The instance snapshots.
         self.instance_snapshot_list = instance_snapshot_list
+        # The instance URL.
         self.instance_url = instance_url
-        # Jupyterlab Url。
+        # The JupyterLab URL.
         self.jupyterlab_url = jupyterlab_url
+        # The custom tags.
         self.labels = labels
+        # The latest user image saved.
         self.latest_snapshot = latest_snapshot
+        # The error message. Valid values:
+        # 
+        # *   If the request is successful, null is returned.
+        # *   If the request fails, the cause for the failure is returned.
         self.message = message
+        # The error recovery configuration of the node.
         self.node_error_recovery = node_error_recovery
+        # The billing method. Valid values:
+        # 
+        # *   PayAsYouGo
+        # *   Subscription
         self.payment_type = payment_type
+        # The priority based on which resources are allocated to instances.
         self.priority = priority
+        # The proxy path.
         self.proxy_path = proxy_path
+        # The error code of the instance.
         self.reason_code = reason_code
+        # The cause of the instance error.
         self.reason_message = reason_message
+        # The request ID.
         self.request_id = request_id
+        # The resource configurations in subscription scenarios.
         self.requested_resource = requested_resource
+        # The resource ID. This parameter is available if the billing method is subscription.
         self.resource_id = resource_id
+        # The specification type.
+        # 
+        # *   For subscription, this is the requested CPU and memory size.
+        # *   For pay-as-you-go, this is the selected ECS instance type.
         self.resource_name = resource_name
+        # The instance status.
+        # 
+        # Valid values:
+        # 
+        # *   Creating
+        # *   SaveFailed
+        # *   Stopped
+        # *   Failed
+        # *   ResourceAllocating
+        # *   Stopping
+        # *   Updating
+        # *   Saving
+        # *   Queuing
+        # *   Recovering
+        # *   Starting
+        # *   Running
+        # *   Saved
+        # *   Deleting
+        # *   EnvPreparing
         self.status = status
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The tags.
         self.tags = tags
+        # The terminal URL.
         self.terminal_url = terminal_url
+        # The user ID.
         self.user_id = user_id
+        # The username.
         self.user_name = user_name
+        # The virtual private cloud (VPC) configurations.
         self.user_vpc = user_vpc
-        # Web IDE url。
+        # The Web IDE URL.
         self.web_ideurl = web_ideurl
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # The workspace name.
         self.workspace_name = workspace_name
+        # The storage for the workspace. If you leave this parameter empty, the workspace uses File Storage NAS (NAS) storage, cloud disks, or local disks in sequence.
         self.workspace_source = workspace_source
 
     def validate(self):
@@ -3077,6 +3630,8 @@ class GetInstanceResponseBody(TeaModel):
             for k in self.datasets:
                 if k:
                     k.validate()
+        if self.dynamic_mount:
+            self.dynamic_mount.validate()
         if self.idle_instance_culler:
             self.idle_instance_culler.validate()
         if self.instance_shutdown_timer:
@@ -3130,6 +3685,8 @@ class GetInstanceResponseBody(TeaModel):
                 result['Datasets'].append(k.to_map() if k else None)
         if self.driver is not None:
             result['Driver'] = self.driver
+        if self.dynamic_mount is not None:
+            result['DynamicMount'] = self.dynamic_mount.to_map()
         if self.ecs_spec is not None:
             result['EcsSpec'] = self.ecs_spec
         if self.environment_variables is not None:
@@ -3246,6 +3803,9 @@ class GetInstanceResponseBody(TeaModel):
                 self.datasets.append(temp_model.from_map(k))
         if m.get('Driver') is not None:
             self.driver = m.get('Driver')
+        if m.get('DynamicMount') is not None:
+            temp_model = DynamicMount()
+            self.dynamic_mount = temp_model.from_map(m['DynamicMount'])
         if m.get('EcsSpec') is not None:
             self.ecs_spec = m.get('EcsSpec')
         if m.get('EnvironmentVariables') is not None:
@@ -3393,9 +3953,13 @@ class GetInstanceEventsRequest(TeaModel):
         start_time: str = None,
         token: str = None,
     ):
+        # The end of the time range to query.
         self.end_time = end_time
+        # The maximum number of events. Default value: 2000.
         self.max_events_num = max_events_num
+        # The beginning of the time range to query.
         self.start_time = start_time
+        # The token used to share the URL.
         self.token = token
 
     def validate(self):
@@ -3441,12 +4005,29 @@ class GetInstanceEventsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. Valid values:
+        # 
+        # *   InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+        # *   ValidationError: a parameter validation error.
         self.code = code
+        # The events.
         self.events = events
+        # The HTTP status code. Valid values:
+        # 
+        # *   400: One or more parameters are invalid.
+        # *   404: The instance does not exist.
+        # *   200: The request is normal.
         self.http_status_code = http_status_code
+        # The instance ID.
         self.instance_id = instance_id
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -3542,10 +4123,24 @@ class GetInstanceMetricsRequest(TeaModel):
         start_time: str = None,
         time_step: str = None,
     ):
+        # The end of the time range to query.
         self.end_time = end_time
+        # The metric type. Valid values:
+        # 
+        # *   GpuCoreUsage: the GPU utilization.
+        # *   GpuMemoryUsage: the GPU memory utilization.
+        # *   CpuCoreUsage: the CPU utilization.
+        # *   MemoryUsage: the memory utilization.
+        # *   NetworkInputRate: the network ingress rate.
+        # *   NetworkOutputRate: the network egress rate.
+        # *   DiskReadRate: the disk read rate.
+        # *   DiskWriteRate: the disk write rate.
+        # 
         # This parameter is required.
         self.metric_type = metric_type
+        # The beginning of the time range to query.
         self.start_time = start_time
+        # The interval at which metrics are returned. Unit: minutes.
         self.time_step = time_step
 
     def validate(self):
@@ -3586,7 +4181,9 @@ class GetInstanceMetricsResponseBodyPodMetricsMetrics(TeaModel):
         time: int = None,
         value: float = None,
     ):
+        # The timestamp corresponding to the metric.
         self.time = time
+        # The metric value.
         self.value = value
 
     def validate(self):
@@ -3619,7 +4216,9 @@ class GetInstanceMetricsResponseBodyPodMetrics(TeaModel):
         metrics: List[GetInstanceMetricsResponseBodyPodMetricsMetrics] = None,
         pod_id: str = None,
     ):
+        # The metrics of the pod that corresponds to the instance.
         self.metrics = metrics
+        # The ID of the pod that corresponds to the instance.
         self.pod_id = pod_id
 
     def validate(self):
@@ -3665,12 +4264,28 @@ class GetInstanceMetricsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. Valid values:
+        # 
+        # *   InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+        # *   ValidationError: a parameter validation error.
         self.code = code
+        # The HTTP status code. Valid values:
+        # 
+        # *   400
+        # *   404
         self.http_status_code = http_status_code
+        # The instance ID.
         self.instance_id = instance_id
+        # The response message.
         self.message = message
+        # The information about the metrics of the pod that corresponds to the instance.
         self.pod_metrics = pod_metrics
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -4103,11 +4718,20 @@ class GetLifecycleRequest(TeaModel):
         start_time: str = None,
         token: str = None,
     ):
+        # The end of the time range to query.
         self.end_time = end_time
+        # The number of sessions to query.
         self.limit = limit
+        # The sorting order of the results. Valid values:
+        # 
+        # *   ASC: sorted by time in ascending order.
+        # *   DESC: sorted by time in descending order.
         self.order = order
+        # A session refers to the process of an instance from startup to failure or shutdown. The sessionNumber indicates the offset value for the instance\\"s session sequence.
         self.session_number = session_number
+        # The beginning of the time range to query.
         self.start_time = start_time
+        # The token used to share the URL.
         self.token = token
 
     def validate(self):
@@ -4158,9 +4782,30 @@ class GetLifecycleResponseBodyLifecycle(TeaModel):
         reason_message: str = None,
         gmt_create_time: str = None,
     ):
+        # The status of the instance. Valid values:
+        # 
+        # *   Creating
+        # *   SaveFailed: The instance image failed to be saved.
+        # *   Stopped
+        # *   Failed
+        # *   ResourceAllocating
+        # *   Stopping
+        # *   Updating
+        # *   Saving
+        # *   Starting
+        # *   Running
+        # *   Saved
+        # *   EnvPreparing: Preparing environment.
+        # *   ArrearStopping: The service is being stopped due to overdue payments.
+        # *   Arrearge: The service is stopped due to overdue payments.
+        # *   Queuing
+        # *   Recovering
         self.status = status
+        # The reason code that corresponds to an event.
         self.reason_code = reason_code
+        # The reason message that corresponds to an event.
         self.reason_message = reason_message
+        # The time the status was created, specifically the time the instance transitioned to this status (in GMT).
         self.gmt_create_time = gmt_create_time
 
     def validate(self):
@@ -4205,11 +4850,23 @@ class GetLifecycleResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The status code. Valid values:
+        # 
+        # *   InternalError: All errors, except for parameter validation errors, are internal errors.
+        # *   ValidationError: A parameter validation error.
         self.code = code
+        # The lifecycle details.
         self.lifecycle = lifecycle
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The total number of queried sessions.
         self.total_count = total_count
 
     def validate(self):
@@ -4634,7 +5291,10 @@ class GetTokenRequest(TeaModel):
         expire_time: int = None,
         instance_id: str = None,
     ):
+        # The validity period. Unit: seconds.
         self.expire_time = expire_time
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 
@@ -4671,10 +5331,21 @@ class GetTokenResponseBody(TeaModel):
         success: bool = None,
         token: str = None,
     ):
+        # The status code. Valid values:
+        # 
+        # *   InternalError: All errors, except for parameter validation errors, are internal errors.
+        # *   ValidationError: A parameter validation error.
         self.code = code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The temporary authentication information of the DSW instance.
         self.token = token
 
     def validate(self):
@@ -5686,7 +6357,9 @@ class ListInstancesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -5733,6 +6406,8 @@ class ListInstancesRequest(TeaModel):
         min_gpu_memory: str = None,
         min_memory: str = None,
         order: str = None,
+        oversold_info: str = None,
+        oversold_type: str = None,
         page_number: int = None,
         page_size: int = None,
         payment_type: str = None,
@@ -5742,30 +6417,97 @@ class ListInstancesRequest(TeaModel):
         tag: List[ListInstancesRequestTag] = None,
         workspace_id: str = None,
     ):
+        # The accelerator type.
+        # 
+        # *   CPU: Only CPU computing is used.
+        # *   GPU: GPUs are used to accelerate computing.
         self.accelerator_type = accelerator_type
+        # The accessibility. Valid values:
+        # 
+        # *   PRIVATE (default): The instances are accessible only to you and the administrator of the workspace.
+        # *   PUBLIC: The instances are accessible only to all members in the workspace.
         self.accessibility = accessibility
+        # The UID of the creator.
         self.create_user_id = create_user_id
+        # The GPU type.
         self.gpu_type = gpu_type
+        # The image name.
         self.image_name = image_name
+        # The instance ID. You can call [ListInstances](https://help.aliyun.com/document_detail/470439.html) to obtain the instance ID.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The labels. A maximum of four labels are supported.
         self.labels = labels
+        # The maximum number of CPUs. Unit: 0.001 CPU. The value 1000 indicates one CPU.
         self.max_cpu = max_cpu
+        # The maximum number of GPUs. Unit: 0.001 GPU. The value 1000 indicates one GPU.
         self.max_gpu = max_gpu
+        # The maximum memory size per GPU card. Unit: GB.
         self.max_gpu_memory = max_gpu_memory
+        # The maximum memory size. Unit: GB.
         self.max_memory = max_memory
+        # The minimum number of CPUs. Unit: 0.001 CPU. The value 1000 indicates one CPU.
         self.min_cpu = min_cpu
+        # The minimum number of GPUs. Unit: 0.001 GPU. The value 1000 indicates one GPU.
         self.min_gpu = min_gpu
+        # The minimum memory size per GPU card. Unit: GB.
         self.min_gpu_memory = min_gpu_memory
+        # The minimum memory size. Unit: GB.
         self.min_memory = min_memory
+        # The order that you use to sort the query results.
+        # 
+        # Valid values:
+        # 
+        # *   ASC
+        # *   DESC
         self.order = order
+        self.oversold_info = oversold_info
+        self.oversold_type = oversold_type
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The billing method.
+        # 
+        # Valid values:
+        # 
+        # *   PayAsYouGo
+        # *   Subscription
         self.payment_type = payment_type
+        # The resource group ID. If you leave this parameter empty, the instances in the pay-as-you-go resource group are queried. If you set this parameter to ALL, all instances are queried.
         self.resource_id = resource_id
+        # The field that you use to sort the query results.
+        # 
+        # Valid values:
+        # 
+        # *   Priority
+        # *   GmtCreateTime
+        # *   GmtModifiedTime
         self.sort_by = sort_by
+        # The instance status.
+        # 
+        # Valid values:
+        # 
+        # *   Creating
+        # *   SaveFailed
+        # *   Stopped
+        # *   Failed
+        # *   ResourceAllocating
+        # *   Stopping
+        # *   Updating
+        # *   Saving
+        # *   Queuing
+        # *   Recovering
+        # *   Starting
+        # *   Running
+        # *   Saved
+        # *   Deleting
+        # *   EnvPreparing
         self.status = status
+        # The tags.
         self.tag = tag
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -5814,6 +6556,10 @@ class ListInstancesRequest(TeaModel):
             result['MinMemory'] = self.min_memory
         if self.order is not None:
             result['Order'] = self.order
+        if self.oversold_info is not None:
+            result['OversoldInfo'] = self.oversold_info
+        if self.oversold_type is not None:
+            result['OversoldType'] = self.oversold_type
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -5870,6 +6616,10 @@ class ListInstancesRequest(TeaModel):
             self.min_memory = m.get('MinMemory')
         if m.get('Order') is not None:
             self.order = m.get('Order')
+        if m.get('OversoldInfo') is not None:
+            self.oversold_info = m.get('OversoldInfo')
+        if m.get('OversoldType') is not None:
+            self.oversold_type = m.get('OversoldType')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -5912,6 +6662,8 @@ class ListInstancesShrinkRequest(TeaModel):
         min_gpu_memory: str = None,
         min_memory: str = None,
         order: str = None,
+        oversold_info: str = None,
+        oversold_type: str = None,
         page_number: int = None,
         page_size: int = None,
         payment_type: str = None,
@@ -5921,30 +6673,97 @@ class ListInstancesShrinkRequest(TeaModel):
         tag_shrink: str = None,
         workspace_id: str = None,
     ):
+        # The accelerator type.
+        # 
+        # *   CPU: Only CPU computing is used.
+        # *   GPU: GPUs are used to accelerate computing.
         self.accelerator_type = accelerator_type
+        # The accessibility. Valid values:
+        # 
+        # *   PRIVATE (default): The instances are accessible only to you and the administrator of the workspace.
+        # *   PUBLIC: The instances are accessible only to all members in the workspace.
         self.accessibility = accessibility
+        # The UID of the creator.
         self.create_user_id = create_user_id
+        # The GPU type.
         self.gpu_type = gpu_type
+        # The image name.
         self.image_name = image_name
+        # The instance ID. You can call [ListInstances](https://help.aliyun.com/document_detail/470439.html) to obtain the instance ID.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The labels. A maximum of four labels are supported.
         self.labels_shrink = labels_shrink
+        # The maximum number of CPUs. Unit: 0.001 CPU. The value 1000 indicates one CPU.
         self.max_cpu = max_cpu
+        # The maximum number of GPUs. Unit: 0.001 GPU. The value 1000 indicates one GPU.
         self.max_gpu = max_gpu
+        # The maximum memory size per GPU card. Unit: GB.
         self.max_gpu_memory = max_gpu_memory
+        # The maximum memory size. Unit: GB.
         self.max_memory = max_memory
+        # The minimum number of CPUs. Unit: 0.001 CPU. The value 1000 indicates one CPU.
         self.min_cpu = min_cpu
+        # The minimum number of GPUs. Unit: 0.001 GPU. The value 1000 indicates one GPU.
         self.min_gpu = min_gpu
+        # The minimum memory size per GPU card. Unit: GB.
         self.min_gpu_memory = min_gpu_memory
+        # The minimum memory size. Unit: GB.
         self.min_memory = min_memory
+        # The order that you use to sort the query results.
+        # 
+        # Valid values:
+        # 
+        # *   ASC
+        # *   DESC
         self.order = order
+        self.oversold_info = oversold_info
+        self.oversold_type = oversold_type
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The billing method.
+        # 
+        # Valid values:
+        # 
+        # *   PayAsYouGo
+        # *   Subscription
         self.payment_type = payment_type
+        # The resource group ID. If you leave this parameter empty, the instances in the pay-as-you-go resource group are queried. If you set this parameter to ALL, all instances are queried.
         self.resource_id = resource_id
+        # The field that you use to sort the query results.
+        # 
+        # Valid values:
+        # 
+        # *   Priority
+        # *   GmtCreateTime
+        # *   GmtModifiedTime
         self.sort_by = sort_by
+        # The instance status.
+        # 
+        # Valid values:
+        # 
+        # *   Creating
+        # *   SaveFailed
+        # *   Stopped
+        # *   Failed
+        # *   ResourceAllocating
+        # *   Stopping
+        # *   Updating
+        # *   Saving
+        # *   Queuing
+        # *   Recovering
+        # *   Starting
+        # *   Running
+        # *   Saved
+        # *   Deleting
+        # *   EnvPreparing
         self.status = status
+        # The tags.
         self.tag_shrink = tag_shrink
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -5990,6 +6809,10 @@ class ListInstancesShrinkRequest(TeaModel):
             result['MinMemory'] = self.min_memory
         if self.order is not None:
             result['Order'] = self.order
+        if self.oversold_info is not None:
+            result['OversoldInfo'] = self.oversold_info
+        if self.oversold_type is not None:
+            result['OversoldType'] = self.oversold_type
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -6044,6 +6867,10 @@ class ListInstancesShrinkRequest(TeaModel):
             self.min_memory = m.get('MinMemory')
         if m.get('Order') is not None:
             self.order = m.get('Order')
+        if m.get('OversoldInfo') is not None:
+            self.oversold_info = m.get('OversoldInfo')
+        if m.get('OversoldType') is not None:
+            self.oversold_type = m.get('OversoldType')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -6068,6 +6895,9 @@ class ListInstancesResponseBodyInstancesAffinityCPU(TeaModel):
         self,
         enable: bool = None,
     ):
+        # Indicates whether the CPU affinity feature was enabled.
+        # 
+        # true false
         self.enable = enable
 
     def validate(self):
@@ -6095,6 +6925,7 @@ class ListInstancesResponseBodyInstancesAffinity(TeaModel):
         self,
         cpu: ListInstancesResponseBodyInstancesAffinityCPU = None,
     ):
+        # The CPU affinity configuration. Only subscription instances that use general-purpose computing resources support CPU affinity configuration.
         self.cpu = cpu
 
     def validate(self):
@@ -6127,9 +6958,13 @@ class ListInstancesResponseBodyInstancesCloudDisks(TeaModel):
         path: str = None,
         sub_type: str = None,
     ):
+        # The cloud disk capacity.
         self.capacity = capacity
+        # The mount path of the cloud disk in the container.
         self.mount_path = mount_path
+        # The directory on the cloud disk that is mounted to the container.
         self.path = path
+        # The cloud disk type. The value rootfs indicates that the cloud disk is used as the root file system (rootfs).
         self.sub_type = sub_type
 
     def validate(self):
@@ -6169,18 +7004,28 @@ class ListInstancesResponseBodyInstancesDatasets(TeaModel):
         self,
         dataset_id: str = None,
         dataset_version: str = None,
+        dynamic: bool = None,
         mount_access: str = None,
         mount_path: str = None,
         option_type: str = None,
         options: str = None,
         uri: str = None,
     ):
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The dataset version.
         self.dataset_version = dataset_version
+        # Indicates whether dynamic mounting was enabled. Default value: false.
+        self.dynamic = dynamic
+        # The read and write permissions. Valid values: RW and RO.
         self.mount_access = mount_access
+        # The mount path in the container.
         self.mount_path = mount_path
+        # The type of the mount option.
         self.option_type = option_type
+        # The mount type of the dataset.
         self.options = options
+        # The dataset URI.
         self.uri = uri
 
     def validate(self):
@@ -6196,6 +7041,8 @@ class ListInstancesResponseBodyInstancesDatasets(TeaModel):
             result['DatasetId'] = self.dataset_id
         if self.dataset_version is not None:
             result['DatasetVersion'] = self.dataset_version
+        if self.dynamic is not None:
+            result['Dynamic'] = self.dynamic
         if self.mount_access is not None:
             result['MountAccess'] = self.mount_access
         if self.mount_path is not None:
@@ -6214,6 +7061,8 @@ class ListInstancesResponseBodyInstancesDatasets(TeaModel):
             self.dataset_id = m.get('DatasetId')
         if m.get('DatasetVersion') is not None:
             self.dataset_version = m.get('DatasetVersion')
+        if m.get('Dynamic') is not None:
+            self.dynamic = m.get('Dynamic')
         if m.get('MountAccess') is not None:
             self.mount_access = m.get('MountAccess')
         if m.get('MountPath') is not None:
@@ -6236,10 +7085,15 @@ class ListInstancesResponseBodyInstancesIdleInstanceCuller(TeaModel):
         instance_id: str = None,
         max_idle_time_in_minutes: int = None,
     ):
+        # The CPU utilization threshold. Unit: percentage. Valid values: 1 to 100. If the CPU utilization of the instance is lower than this threshold, the instance is considered idle.
         self.cpu_percent_threshold = cpu_percent_threshold
+        # The GPU utilization threshold. Unit: percentage. Valid values: 1 to 100. This parameter takes effect only if the instance is of the GPU instance type. If both CPU and GPU utilization is lower than the thresholds, the instance is considered idle.
         self.gpu_percent_threshold = gpu_percent_threshold
+        # The time duration for which the instance is idle. Unit: minutes.
         self.idle_time_in_minutes = idle_time_in_minutes
+        # The instance ID.
         self.instance_id = instance_id
+        # The maximum time duration for which the instance is idle. Unit: minutes. If the time duration for which the instance is idle exceeds this value, the system automatically stops the instance.
         self.max_idle_time_in_minutes = max_idle_time_in_minutes
 
     def validate(self):
@@ -6287,10 +7141,15 @@ class ListInstancesResponseBodyInstancesInstanceShutdownTimer(TeaModel):
         instance_id: str = None,
         remaining_time_in_ms: int = None,
     ):
+        # The scheduled stop time.
         self.due_time = due_time
+        # The time when the instance was created.
         self.gmt_create_time = gmt_create_time
+        # The time when the instance was modified.
         self.gmt_modified_time = gmt_modified_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The remaining time before the instance is stopped.
         self.remaining_time_in_ms = remaining_time_in_ms
 
     def validate(self):
@@ -6342,14 +7201,23 @@ class ListInstancesResponseBodyInstancesInstanceSnapshotList(TeaModel):
         repository_url: str = None,
         status: str = None,
     ):
+        # The time when the snapshot was created.
         self.gmt_create_time = gmt_create_time
+        # The time when the snapshot was modified.
         self.gmt_modified_time = gmt_modified_time
+        # The image ID.
         self.image_id = image_id
+        # The image name.
         self.image_name = image_name
+        # The image URL.
         self.image_url = image_url
+        # The error code of the instance snapshot.
         self.reason_code = reason_code
+        # The error message of the instance snapshot.
         self.reason_message = reason_message
+        # The URL of the image repository.
         self.repository_url = repository_url
+        # The status of the instance snapshot.
         self.status = status
 
     def validate(self):
@@ -6410,7 +7278,9 @@ class ListInstancesResponseBodyInstancesLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The custom label key.
         self.key = key
+        # The custom label value.
         self.value = value
 
     def validate(self):
@@ -6450,14 +7320,23 @@ class ListInstancesResponseBodyInstancesLatestSnapshot(TeaModel):
         repository_url: str = None,
         status: str = None,
     ):
+        # The time when the snapshot was created.
         self.gmt_create_time = gmt_create_time
+        # The time when the snapshot was modified.
         self.gmt_modified_time = gmt_modified_time
+        # The image ID.
         self.image_id = image_id
+        # The image name.
         self.image_name = image_name
+        # The image URL.
         self.image_url = image_url
+        # The error code of the instance snapshot.
         self.reason_code = reason_code
+        # The error message of the instance snapshot.
         self.reason_message = reason_message
+        # The URL of the image repository.
         self.repository_url = repository_url
+        # The status of the instance snapshot.
         self.status = status
 
     def validate(self):
@@ -6521,10 +7400,15 @@ class ListInstancesResponseBodyInstancesRequestedResource(TeaModel):
         memory: str = None,
         shared_memory: str = None,
     ):
+        # The number of CPU cores.
         self.cpu = cpu
+        # The number of GPUs.
         self.gpu = gpu
+        # The GPU memory type.
         self.gputype = gputype
+        # The memory size.
         self.memory = memory
+        # The size of the shared memory.
         self.shared_memory = shared_memory
 
     def validate(self):
@@ -6569,7 +7453,9 @@ class ListInstancesResponseBodyInstancesTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -6599,6 +7485,7 @@ class ListInstancesResponseBodyInstancesTags(TeaModel):
 class ListInstancesResponseBodyInstancesUserVpc(TeaModel):
     def __init__(
         self,
+        bandwidth_limit: BandwidthLimit = None,
         default_route: str = None,
         extended_cidrs: List[str] = None,
         forward_infos: List[ForwardInfoResponse] = None,
@@ -6606,14 +7493,23 @@ class ListInstancesResponseBodyInstancesUserVpc(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        self.bandwidth_limit = bandwidth_limit
+        # The default route.
         self.default_route = default_route
+        # The extended CIDR blocks.
         self.extended_cidrs = extended_cidrs
+        # The forward information.
         self.forward_infos = forward_infos
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
+        if self.bandwidth_limit:
+            self.bandwidth_limit.validate()
         if self.forward_infos:
             for k in self.forward_infos:
                 if k:
@@ -6625,6 +7521,8 @@ class ListInstancesResponseBodyInstancesUserVpc(TeaModel):
             return _map
 
         result = dict()
+        if self.bandwidth_limit is not None:
+            result['BandwidthLimit'] = self.bandwidth_limit.to_map()
         if self.default_route is not None:
             result['DefaultRoute'] = self.default_route
         if self.extended_cidrs is not None:
@@ -6643,6 +7541,9 @@ class ListInstancesResponseBodyInstancesUserVpc(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BandwidthLimit') is not None:
+            temp_model = BandwidthLimit()
+            self.bandwidth_limit = temp_model.from_map(m['BandwidthLimit'])
         if m.get('DefaultRoute') is not None:
             self.default_route = m.get('DefaultRoute')
         if m.get('ExtendedCIDRs') is not None:
@@ -6672,6 +7573,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         credential_config: CredentialConfig = None,
         datasets: List[ListInstancesResponseBodyInstancesDatasets] = None,
         driver: str = None,
+        dynamic_mount: DynamicMount = None,
         ecs_spec: str = None,
         environment_variables: Dict[str, str] = None,
         gmt_create_time: str = None,
@@ -6689,6 +7591,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
         jupyterlab_url: str = None,
         labels: List[ListInstancesResponseBodyInstancesLabels] = None,
         latest_snapshot: ListInstancesResponseBodyInstancesLatestSnapshot = None,
+        oversold_info: str = None,
+        oversold_type: str = None,
         payment_type: str = None,
         priority: int = None,
         reason_code: str = None,
@@ -6707,49 +7611,105 @@ class ListInstancesResponseBodyInstances(TeaModel):
         workspace_name: str = None,
         workspace_source: str = None,
     ):
+        # The accelerator type of the instance. Valid values:
+        # 
+        # *   CPU
+        # *   GPU
         self.accelerator_type = accelerator_type
+        # The accessibility. Valid values:
+        # 
+        # *   PRIVATE (default): The instances are accessible only to you and the administrator of the workspace.
+        # *   PUBLIC: The instances are accessible only to all members in the workspace.
         self.accessibility = accessibility
+        # The accumulated running duration. Unit: milliseconds.
         self.accumulated_running_time_in_ms = accumulated_running_time_in_ms
+        # The affinity configuration.
         self.affinity = affinity
+        # The cloud disks of the instance.
         self.cloud_disks = cloud_disks
+        # The credential configuration.
         self.credential_config = credential_config
+        # The datasets.
         self.datasets = datasets
+        # The NVIDIA driver configuration.
         self.driver = driver
+        # The dynamic mount configurations.
+        self.dynamic_mount = dynamic_mount
+        # The ECS instance type of the instance.
         self.ecs_spec = ecs_spec
+        # The environment variables.
         self.environment_variables = environment_variables
+        # The time when the instance was created.
         self.gmt_create_time = gmt_create_time
+        # The time when the instance was modified.
         self.gmt_modified_time = gmt_modified_time
+        # The rule for stopping idle instances.
         self.idle_instance_culler = idle_instance_culler
+        # The Base64-encoded account and password for the user\\"s private image. The password will be hidden.
         self.image_auth = image_auth
+        # The image ID.
         self.image_id = image_id
+        # The image name.
         self.image_name = image_name
+        # The image address.
         self.image_url = image_url
+        # The instance ID.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The scheduled stop task.
         self.instance_shutdown_timer = instance_shutdown_timer
+        # The instance snapshots.
         self.instance_snapshot_list = instance_snapshot_list
+        # The instance URL.
         self.instance_url = instance_url
-        # Jupyterlab Url。
+        # The JupyterLab URL.
         self.jupyterlab_url = jupyterlab_url
+        # The custom labels.
         self.labels = labels
+        # The user image that was latest saved.
         self.latest_snapshot = latest_snapshot
+        self.oversold_info = oversold_info
+        self.oversold_type = oversold_type
+        # The billing method. Valid values:
+        # 
+        # *   PayAsYouGo
+        # *   Subscription
         self.payment_type = payment_type
+        # The priority based on which resources are allocated to instances. Resources are preferentially allocated to instances with higher priorities.
         self.priority = priority
+        # The error code of the instance.
         self.reason_code = reason_code
+        # The cause of the instance error.
         self.reason_message = reason_message
+        # The resource configurations.
         self.requested_resource = requested_resource
+        # The resource ID. This parameter is valid only if you set PaymentType to Subscription.
         self.resource_id = resource_id
+        # The specifications.
+        # 
+        # *   In pay-as-you-go scenarios, the value is the specifications of the purchased ECS instance type.
+        # *   In subscription scenarios, the value is the requested number of CPU cores and memory size.
         self.resource_name = resource_name
+        # The instance status.
         self.status = status
+        # The tags.
         self.tags = tags
+        # The terminal URL.
         self.terminal_url = terminal_url
+        # The user ID.
         self.user_id = user_id
+        # The username.
         self.user_name = user_name
+        # The virtual private cloud (VPC) configurations.
         self.user_vpc = user_vpc
-        # Web IDE url。
+        # The Web IDE URL.
         self.web_ideurl = web_ideurl
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # The workspace name.
         self.workspace_name = workspace_name
+        # The storage for the workspace. If you leave this parameter empty, the workspace uses File Storage NAS (NAS) storage, cloud disks, or local disks in sequence.
         self.workspace_source = workspace_source
 
     def validate(self):
@@ -6765,6 +7725,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             for k in self.datasets:
                 if k:
                     k.validate()
+        if self.dynamic_mount:
+            self.dynamic_mount.validate()
         if self.idle_instance_culler:
             self.idle_instance_culler.validate()
         if self.instance_shutdown_timer:
@@ -6814,6 +7776,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
                 result['Datasets'].append(k.to_map() if k else None)
         if self.driver is not None:
             result['Driver'] = self.driver
+        if self.dynamic_mount is not None:
+            result['DynamicMount'] = self.dynamic_mount.to_map()
         if self.ecs_spec is not None:
             result['EcsSpec'] = self.ecs_spec
         if self.environment_variables is not None:
@@ -6852,6 +7816,10 @@ class ListInstancesResponseBodyInstances(TeaModel):
                 result['Labels'].append(k.to_map() if k else None)
         if self.latest_snapshot is not None:
             result['LatestSnapshot'] = self.latest_snapshot.to_map()
+        if self.oversold_info is not None:
+            result['OversoldInfo'] = self.oversold_info
+        if self.oversold_type is not None:
+            result['OversoldType'] = self.oversold_type
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
         if self.priority is not None:
@@ -6916,6 +7884,9 @@ class ListInstancesResponseBodyInstances(TeaModel):
                 self.datasets.append(temp_model.from_map(k))
         if m.get('Driver') is not None:
             self.driver = m.get('Driver')
+        if m.get('DynamicMount') is not None:
+            temp_model = DynamicMount()
+            self.dynamic_mount = temp_model.from_map(m['DynamicMount'])
         if m.get('EcsSpec') is not None:
             self.ecs_spec = m.get('EcsSpec')
         if m.get('EnvironmentVariables') is not None:
@@ -6959,6 +7930,10 @@ class ListInstancesResponseBodyInstances(TeaModel):
         if m.get('LatestSnapshot') is not None:
             temp_model = ListInstancesResponseBodyInstancesLatestSnapshot()
             self.latest_snapshot = temp_model.from_map(m['LatestSnapshot'])
+        if m.get('OversoldInfo') is not None:
+            self.oversold_info = m.get('OversoldInfo')
+        if m.get('OversoldType') is not None:
+            self.oversold_type = m.get('OversoldType')
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
         if m.get('Priority') is not None:
@@ -7012,12 +7987,28 @@ class ListInstancesResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The status code. Valid values:
+        # 
+        # *   InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+        # *   ValidationError: a parameter validation error.
         self.code = code
+        # The HTTP status code. Valid values:
+        # 
+        # *   400
+        # *   404
         self.http_status_code = http_status_code
+        # The instances returned on this page.
         self.instances = instances
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The total number of instances.
         self.total_count = total_count
 
     def validate(self):
@@ -7341,6 +8332,10 @@ class UpdateInstanceRequestAffinityCPU(TeaModel):
         self,
         enable: bool = None,
     ):
+        # Specifies whether CPU affinity is enabled.
+        # 
+        # *   true
+        # *   false
         self.enable = enable
 
     def validate(self):
@@ -7368,6 +8363,7 @@ class UpdateInstanceRequestAffinity(TeaModel):
         self,
         cpu: UpdateInstanceRequestAffinityCPU = None,
     ):
+        # The CPU affinity configuration. Only subscription instances that use general-purpose computing resources support CPU affinity configuration.
         self.cpu = cpu
 
     def validate(self):
@@ -7398,7 +8394,25 @@ class UpdateInstanceRequestCloudDisks(TeaModel):
         capacity: str = None,
         sub_type: str = None,
     ):
+        # If **Resource Type** is **Public Resource** or if **Resource Quota** is subscription-based general-purpose computing resources (CPU cores ≥ 2 and memory ≥ 4 GB, or configured with GPU):
+        # 
+        # Each instance has a free system disk quota of 100 GiB for persistent storage. **If the DSW instance is stopped and not launched for more than 15 days, the disk is cleared**. The disk can be expanded. For specific pricing, refer to the console.
+        # 
+        # **\
+        # 
+        # **Warning**\
+        # 
+        # *   After the expansion, you cannot reduce the storage space. Proceed with caution.
+        # 
+        # *   After the expansion, the disk is not cleared if the instance is stopped for more than 15 days. However, it will continue to incur fees.
+        # 
+        # *   If you delete the instance, the system disk is also released and the data stored in the disk is deleted. Make sure that you have backed up your data before you delete the instance.
+        # 
+        # If you need persistent storage, you can **mount a dataset** or add the OSS, NAS, or CPFS path to the **storage path**.
         self.capacity = capacity
+        # Disk type:
+        # 
+        # *   rootfs: Mounts the disk as a system disk. The system environment is stored on the disk.
         self.sub_type = sub_type
 
     def validate(self):
@@ -7430,18 +8444,43 @@ class UpdateInstanceRequestDatasets(TeaModel):
         self,
         dataset_id: str = None,
         dataset_version: str = None,
+        dynamic: bool = None,
         mount_access: str = None,
         mount_path: str = None,
         option_type: str = None,
         options: str = None,
         uri: str = None,
     ):
+        # The dataset ID. If the dataset is read-only, you cannot change the dataset pemission from read-only to read and write by using MountAccess.
+        # 
+        # You can call [ListDatasets](https://help.aliyun.com/document_detail/457222.html) to obtain the dataset ID. If you configure the dataset ID, you cannot configure the dataset URI.
         self.dataset_id = dataset_id
+        # The dataset version. You must also configure DatasetId. If you leave this parameter empty, the value v1 is used by default.
         self.dataset_version = dataset_version
+        # Specifies whether dynamic mounting is enabled. Default value: false.
+        # 
+        # *   Currently, only instances using general-purpose computing resources are supported.
+        # *   Currently, only OSS datasets are supported. The mounted datasets are read-only.
+        # *   The MountPath of the dynamically mounted dataset must be a subpath of the root path. Example: /mnt/dynamic/data1/\
+        # *   A dynamically mounted dataset must be after non-dynamic datasets.
+        self.dynamic = dynamic
+        # The read and write permissions of the dataset. If the dataset is read-only, it cannot be changed to read and write.
         self.mount_access = mount_access
+        # The mount path of the dataset.
         self.mount_path = mount_path
+        # The mount type. You cannot specify Options at the same time. This is deprecated, you can use Options instead.
         self.option_type = option_type
+        # The custom dataset mount options. Only OSS is supported. You cannot specify OptionType at the same time. For more information, see [DSW mount configurations](https://help.aliyun.com/zh/pai/user-guide/read-and-write-dataset-data).
         self.options = options
+        # The URI of the storage service directory, which can be directly mounted. This parameter is mutually exclusive with DatasetId.
+        # 
+        # URI formats of different types of storage:
+        # 
+        # *   OSS: oss://bucket-name.oss-cn-shanghai-internal.aliyuncs.com/data/path/\
+        # *   NAS: nas://29\\*\\*d-b12\\*\\*\\*\\*446.cn-hangzhou.nas.aliyuncs.com/data/path/\
+        # *   Extreme NAS: nas://29\\*\\*\\*\\*123-y\\*\\*r.cn-hangzhou.extreme.nas.aliyuncs.com/data/path/\
+        # *   CPFS: cpfs://cpfs-213\\*\\*\\*\\*87.cn-wulanchabu/ptc-292\\*\\*\\*\\*\\*cbb/exp-290\\*\\*\\*\\*\\*\\*\\*\\*03e/data/path/\
+        # *   Lingjun CPFS: bmcpfs://cpfs-290\\*\\*\\*\\*\\*\\*foflh-vpc-x\\*\\*\\*\\*8r.cn-wulanchabu.cpfs.aliyuncs.com/data/path/\
         self.uri = uri
 
     def validate(self):
@@ -7457,6 +8496,8 @@ class UpdateInstanceRequestDatasets(TeaModel):
             result['DatasetId'] = self.dataset_id
         if self.dataset_version is not None:
             result['DatasetVersion'] = self.dataset_version
+        if self.dynamic is not None:
+            result['Dynamic'] = self.dynamic
         if self.mount_access is not None:
             result['MountAccess'] = self.mount_access
         if self.mount_path is not None:
@@ -7475,6 +8516,8 @@ class UpdateInstanceRequestDatasets(TeaModel):
             self.dataset_id = m.get('DatasetId')
         if m.get('DatasetVersion') is not None:
             self.dataset_version = m.get('DatasetVersion')
+        if m.get('Dynamic') is not None:
+            self.dynamic = m.get('Dynamic')
         if m.get('MountAccess') is not None:
             self.mount_access = m.get('MountAccess')
         if m.get('MountPath') is not None:
@@ -7497,10 +8540,15 @@ class UpdateInstanceRequestRequestedResource(TeaModel):
         memory: str = None,
         shared_memory: str = None,
     ):
+        # The number of vCPU cores.
         self.cpu = cpu
+        # The number of GPUs.
         self.gpu = gpu
+        # The GPU type.
         self.gputype = gputype
+        # The memory size. Unit: GB.
         self.memory = memory
+        # The shared memory size. Unit: GB.
         self.shared_memory = shared_memory
 
     def validate(self):
@@ -7542,6 +8590,7 @@ class UpdateInstanceRequestRequestedResource(TeaModel):
 class UpdateInstanceRequestUserVpc(TeaModel):
     def __init__(
         self,
+        bandwidth_limit: BandwidthLimit = None,
         default_route: str = None,
         extended_cidrs: List[str] = None,
         forward_infos: List[ForwardInfo] = None,
@@ -7549,14 +8598,29 @@ class UpdateInstanceRequestUserVpc(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        self.bandwidth_limit = bandwidth_limit
+        # The default route. Valid values:
+        # 
+        # *   eth0: The default network interface is used to access the Internet through the public gateway.
+        # *   eth1: The user\\"s Elastic Network Interface is used to access the Internet through the private gateway.
         self.default_route = default_route
+        # The extended CIDR blocks.
+        # 
+        # *   If you leave VSwitchId empty, this parameter is not required and the system automatically obtains all CIDR blocks in the VPC.
+        # *   If VSwitchId is not empty, this parameter is required. Specify all CIDR blocks in the VPC.
         self.extended_cidrs = extended_cidrs
+        # The forward configuration of the instance.
         self.forward_infos = forward_infos
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
+        if self.bandwidth_limit:
+            self.bandwidth_limit.validate()
         if self.forward_infos:
             for k in self.forward_infos:
                 if k:
@@ -7568,6 +8632,8 @@ class UpdateInstanceRequestUserVpc(TeaModel):
             return _map
 
         result = dict()
+        if self.bandwidth_limit is not None:
+            result['BandwidthLimit'] = self.bandwidth_limit.to_map()
         if self.default_route is not None:
             result['DefaultRoute'] = self.default_route
         if self.extended_cidrs is not None:
@@ -7586,6 +8652,9 @@ class UpdateInstanceRequestUserVpc(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BandwidthLimit') is not None:
+            temp_model = BandwidthLimit()
+            self.bandwidth_limit = temp_model.from_map(m['BandwidthLimit'])
         if m.get('DefaultRoute') is not None:
             self.default_route = m.get('DefaultRoute')
         if m.get('ExtendedCIDRs') is not None:
@@ -7618,6 +8687,7 @@ class UpdateInstanceRequest(TeaModel):
         disassociate_forward_infos: bool = None,
         disassociate_vpc: bool = None,
         driver: str = None,
+        dynamic_mount: DynamicMount = None,
         ecs_spec: str = None,
         image_auth: str = None,
         image_id: str = None,
@@ -7629,26 +8699,75 @@ class UpdateInstanceRequest(TeaModel):
         user_vpc: UpdateInstanceRequestUserVpc = None,
         workspace_source: str = None,
     ):
+        # The visibility of the instance.
+        # 
+        # Valid values:
+        # 
+        # *   PUBLIC: Accessible to all members in the workspace.
+        # *   PRIVATE: Accessible only to you and the administrator of the workspace.
         self.accessibility = accessibility
+        # The affinity configuration.
         self.affinity = affinity
+        # The cloud disks.
         self.cloud_disks = cloud_disks
+        # The credential configuration.
         self.credential_config = credential_config
+        # The datasets.
         self.datasets = datasets
+        # Specifies whether to delete the credential injection information.
         self.disassociate_credential = disassociate_credential
+        # Specifies whether to delete the associated datasets.
+        # 
+        # *   true
+        # *   false
         self.disassociate_datasets = disassociate_datasets
+        # Specifies whether to delete the NVIDIA driver configuration.
         self.disassociate_driver = disassociate_driver
+        # Specifies whether to delete the associated forward information.
         self.disassociate_forward_infos = disassociate_forward_infos
+        # Specifies whether to delete the associated user VPC.
         self.disassociate_vpc = disassociate_vpc
+        # The NVIDIA driver configuration.
         self.driver = driver
+        # The dynamic mount configuration.
+        self.dynamic_mount = dynamic_mount
+        # The ECS instance type of the instance. You can call [ListEcsSpecs](https://help.aliyun.com/document_detail/470423.html) to obtain the ECS instance type.
         self.ecs_spec = ecs_spec
+        # The Base64-encoded account and password for the user‘s private image. The password will be hidden.
         self.image_auth = image_auth
+        # The image ID. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain the image ID.
         self.image_id = image_id
+        # The image address. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain the image address.
         self.image_url = image_url
+        # The instance name. Format requirements:
+        # 
+        # *   The name can contain only letters, digits, and underscores (_).
+        # *   The name can be up to 27 characters in length.
         self.instance_name = instance_name
+        # The priority based on which resources are allocated to instances. Valid values: 1 to 9.
+        # 
+        # *   1: the lowest priority.
+        # *   9 is the highest priority.
         self.priority = priority
+        # The resource configurations.
         self.requested_resource = requested_resource
+        # the User ID of the instance.
         self.user_id = user_id
+        # The virtual private cloud (VPC) configurations.
         self.user_vpc = user_vpc
+        # Specifies the storage corresponding to the working directory. You can mount disks or datasets to /mnt/workspace at the same time. OSS datasets and dynamically mounted datasets are not supported.
+        # 
+        # Valid values:
+        # 
+        # *   rootfsCloudDisk: Mount disk to the working directory.
+        # *   Mount path of the dataset, such as /mnt/data: Datasets in URI format only support this method.
+        # *   Dataset ID, such as d-vsqjvs\\*\\*\\*\\*rp5l206u: If a single dataset is mounted to multiple paths, the first path is selected. We recommend that you do not use this method, use the mount path instead.
+        # 
+        # If you leave this parameter empty:
+        # 
+        # *   If the instance uses cloud disks, cloud disks are selected by default.
+        # *   if no disks are available, the first NAS or CPFS dataset is selected as the working directory.
+        # *   If no disk, NAS, or CPFS datasets is available, the host space is used.
         self.workspace_source = workspace_source
 
     def validate(self):
@@ -7664,6 +8783,8 @@ class UpdateInstanceRequest(TeaModel):
             for k in self.datasets:
                 if k:
                     k.validate()
+        if self.dynamic_mount:
+            self.dynamic_mount.validate()
         if self.requested_resource:
             self.requested_resource.validate()
         if self.user_vpc:
@@ -7701,6 +8822,8 @@ class UpdateInstanceRequest(TeaModel):
             result['DisassociateVpc'] = self.disassociate_vpc
         if self.driver is not None:
             result['Driver'] = self.driver
+        if self.dynamic_mount is not None:
+            result['DynamicMount'] = self.dynamic_mount.to_map()
         if self.ecs_spec is not None:
             result['EcsSpec'] = self.ecs_spec
         if self.image_auth is not None:
@@ -7755,6 +8878,9 @@ class UpdateInstanceRequest(TeaModel):
             self.disassociate_vpc = m.get('DisassociateVpc')
         if m.get('Driver') is not None:
             self.driver = m.get('Driver')
+        if m.get('DynamicMount') is not None:
+            temp_model = DynamicMount()
+            self.dynamic_mount = temp_model.from_map(m['DynamicMount'])
         if m.get('EcsSpec') is not None:
             self.ecs_spec = m.get('EcsSpec')
         if m.get('ImageAuth') is not None:
@@ -7790,11 +8916,26 @@ class UpdateInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. Valid values:
+        # 
+        # *   InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+        # *   ValidationError: a parameter validation error.
         self.code = code
+        # The HTTP status code. Valid values:
+        # 
+        # *   400
+        # *   404
         self.http_status_code = http_status_code
+        # The instance ID.
         self.instance_id = instance_id
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -7884,8 +9025,12 @@ class UpdateInstanceLabelsRequestLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the custom tag.
+        # 
         # This parameter is required.
         self.key = key
+        # The value of the custom tag.
+        # 
         # This parameter is required.
         self.value = value
 
@@ -7918,6 +9063,8 @@ class UpdateInstanceLabelsRequest(TeaModel):
         self,
         labels: List[UpdateInstanceLabelsRequestLabels] = None,
     ):
+        # The tags that you want to update.
+        # 
         # This parameter is required.
         self.labels = labels
 
@@ -7954,6 +9101,7 @@ class UpdateInstanceLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

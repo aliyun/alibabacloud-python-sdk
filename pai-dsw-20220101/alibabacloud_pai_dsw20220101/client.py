@@ -49,6 +49,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.CreateIdleInstanceCullerResponse:
         """
+        @summary Creates an automatic stop policy for a specific Data Science Workshop (DSW) instance. When the conditions are met, the instance is automatically stopped. You can create only one automatic stop policy for an idle DSW instance. If the specific instance has an automatic stop policy, call DeleteIdleInstanceCuller to delete it first.
+        
         @param request: CreateIdleInstanceCullerRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -77,16 +79,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.CreateIdleInstanceCullerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.CreateIdleInstanceCullerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.CreateIdleInstanceCullerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_idle_instance_culler_with_options_async(
         self,
@@ -96,6 +92,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.CreateIdleInstanceCullerResponse:
         """
+        @summary Creates an automatic stop policy for a specific Data Science Workshop (DSW) instance. When the conditions are met, the instance is automatically stopped. You can create only one automatic stop policy for an idle DSW instance. If the specific instance has an automatic stop policy, call DeleteIdleInstanceCuller to delete it first.
+        
         @param request: CreateIdleInstanceCullerRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -124,16 +122,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.CreateIdleInstanceCullerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.CreateIdleInstanceCullerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.CreateIdleInstanceCullerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_idle_instance_culler(
         self,
@@ -141,6 +133,8 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.CreateIdleInstanceCullerRequest,
     ) -> pai_dsw_20220101_models.CreateIdleInstanceCullerResponse:
         """
+        @summary Creates an automatic stop policy for a specific Data Science Workshop (DSW) instance. When the conditions are met, the instance is automatically stopped. You can create only one automatic stop policy for an idle DSW instance. If the specific instance has an automatic stop policy, call DeleteIdleInstanceCuller to delete it first.
+        
         @param request: CreateIdleInstanceCullerRequest
         @return: CreateIdleInstanceCullerResponse
         """
@@ -154,6 +148,8 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.CreateIdleInstanceCullerRequest,
     ) -> pai_dsw_20220101_models.CreateIdleInstanceCullerResponse:
         """
+        @summary Creates an automatic stop policy for a specific Data Science Workshop (DSW) instance. When the conditions are met, the instance is automatically stopped. You can create only one automatic stop policy for an idle DSW instance. If the specific instance has an automatic stop policy, call DeleteIdleInstanceCuller to delete it first.
+        
         @param request: CreateIdleInstanceCullerRequest
         @return: CreateIdleInstanceCullerResponse
         """
@@ -168,7 +164,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.CreateInstanceResponse:
         """
-        @summary 创建实例
+        @summary Creates a Data Science Workshop (DSW) instance.
         
         @param request: CreateInstanceRequest
         @param headers: map
@@ -189,6 +185,8 @@ class Client(OpenApiClient):
             body['Datasets'] = request.datasets
         if not UtilClient.is_unset(request.driver):
             body['Driver'] = request.driver
+        if not UtilClient.is_unset(request.dynamic_mount):
+            body['DynamicMount'] = request.dynamic_mount
         if not UtilClient.is_unset(request.ecs_spec):
             body['EcsSpec'] = request.ecs_spec
         if not UtilClient.is_unset(request.environment_variables):
@@ -234,16 +232,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.CreateInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.CreateInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.CreateInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_instance_with_options_async(
         self,
@@ -252,7 +244,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.CreateInstanceResponse:
         """
-        @summary 创建实例
+        @summary Creates a Data Science Workshop (DSW) instance.
         
         @param request: CreateInstanceRequest
         @param headers: map
@@ -273,6 +265,8 @@ class Client(OpenApiClient):
             body['Datasets'] = request.datasets
         if not UtilClient.is_unset(request.driver):
             body['Driver'] = request.driver
+        if not UtilClient.is_unset(request.dynamic_mount):
+            body['DynamicMount'] = request.dynamic_mount
         if not UtilClient.is_unset(request.ecs_spec):
             body['EcsSpec'] = request.ecs_spec
         if not UtilClient.is_unset(request.environment_variables):
@@ -318,23 +312,17 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.CreateInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.CreateInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.CreateInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_instance(
         self,
         request: pai_dsw_20220101_models.CreateInstanceRequest,
     ) -> pai_dsw_20220101_models.CreateInstanceResponse:
         """
-        @summary 创建实例
+        @summary Creates a Data Science Workshop (DSW) instance.
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -348,7 +336,7 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.CreateInstanceRequest,
     ) -> pai_dsw_20220101_models.CreateInstanceResponse:
         """
-        @summary 创建实例
+        @summary Creates a Data Science Workshop (DSW) instance.
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -365,7 +353,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.CreateInstanceShutdownTimerResponse:
         """
-        @summary 创建定时关机任务
+        @summary Creates a scheduled stop task for an instance.
         
         @param request: CreateInstanceShutdownTimerRequest
         @param headers: map
@@ -393,16 +381,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.CreateInstanceShutdownTimerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.CreateInstanceShutdownTimerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.CreateInstanceShutdownTimerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_instance_shutdown_timer_with_options_async(
         self,
@@ -412,7 +394,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.CreateInstanceShutdownTimerResponse:
         """
-        @summary 创建定时关机任务
+        @summary Creates a scheduled stop task for an instance.
         
         @param request: CreateInstanceShutdownTimerRequest
         @param headers: map
@@ -440,16 +422,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.CreateInstanceShutdownTimerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.CreateInstanceShutdownTimerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.CreateInstanceShutdownTimerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_instance_shutdown_timer(
         self,
@@ -457,7 +433,7 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.CreateInstanceShutdownTimerRequest,
     ) -> pai_dsw_20220101_models.CreateInstanceShutdownTimerResponse:
         """
-        @summary 创建定时关机任务
+        @summary Creates a scheduled stop task for an instance.
         
         @param request: CreateInstanceShutdownTimerRequest
         @return: CreateInstanceShutdownTimerResponse
@@ -472,7 +448,7 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.CreateInstanceShutdownTimerRequest,
     ) -> pai_dsw_20220101_models.CreateInstanceShutdownTimerResponse:
         """
-        @summary 创建定时关机任务
+        @summary Creates a scheduled stop task for an instance.
         
         @param request: CreateInstanceShutdownTimerRequest
         @return: CreateInstanceShutdownTimerResponse
@@ -525,16 +501,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.CreateInstanceSnapshotResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.CreateInstanceSnapshotResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.CreateInstanceSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_instance_snapshot_with_options_async(
         self,
@@ -580,16 +550,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.CreateInstanceSnapshotResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.CreateInstanceSnapshotResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.CreateInstanceSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_instance_snapshot(
         self,
@@ -628,6 +592,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse:
         """
+        @summary Deletes the automatic stop policy of an instance.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteIdleInstanceCullerResponse
@@ -646,16 +612,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_idle_instance_culler_with_options_async(
         self,
@@ -664,6 +624,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse:
         """
+        @summary Deletes the automatic stop policy of an instance.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteIdleInstanceCullerResponse
@@ -682,22 +644,18 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_idle_instance_culler(
         self,
         instance_id: str,
     ) -> pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse:
         """
+        @summary Deletes the automatic stop policy of an instance.
+        
         @return: DeleteIdleInstanceCullerResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -709,6 +667,8 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse:
         """
+        @summary Deletes the automatic stop policy of an instance.
+        
         @return: DeleteIdleInstanceCullerResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -722,7 +682,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteInstanceResponse:
         """
-        @summary 删除实例
+        @summary Deletes a specific instance.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -742,16 +702,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.DeleteInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.DeleteInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.DeleteInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_instance_with_options_async(
         self,
@@ -760,7 +714,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteInstanceResponse:
         """
-        @summary 删除实例
+        @summary Deletes a specific instance.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -780,23 +734,17 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.DeleteInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.DeleteInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.DeleteInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_instance(
         self,
         instance_id: str,
     ) -> pai_dsw_20220101_models.DeleteInstanceResponse:
         """
-        @summary 删除实例
+        @summary Deletes a specific instance.
         
         @return: DeleteInstanceResponse
         """
@@ -809,7 +757,7 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> pai_dsw_20220101_models.DeleteInstanceResponse:
         """
-        @summary 删除实例
+        @summary Deletes a specific instance.
         
         @return: DeleteInstanceResponse
         """
@@ -825,7 +773,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteInstanceLabelsResponse:
         """
-        @summary 删除DSW实例的标签
+        @summary Delete tags from a Data Science Workshop (DSW) instance.
         
         @param request: DeleteInstanceLabelsRequest
         @param headers: map
@@ -851,16 +799,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.DeleteInstanceLabelsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.DeleteInstanceLabelsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.DeleteInstanceLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_instance_labels_with_options_async(
         self,
@@ -870,7 +812,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteInstanceLabelsResponse:
         """
-        @summary 删除DSW实例的标签
+        @summary Delete tags from a Data Science Workshop (DSW) instance.
         
         @param request: DeleteInstanceLabelsRequest
         @param headers: map
@@ -896,16 +838,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.DeleteInstanceLabelsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.DeleteInstanceLabelsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.DeleteInstanceLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_instance_labels(
         self,
@@ -913,7 +849,7 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.DeleteInstanceLabelsRequest,
     ) -> pai_dsw_20220101_models.DeleteInstanceLabelsResponse:
         """
-        @summary 删除DSW实例的标签
+        @summary Delete tags from a Data Science Workshop (DSW) instance.
         
         @param request: DeleteInstanceLabelsRequest
         @return: DeleteInstanceLabelsResponse
@@ -928,7 +864,7 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.DeleteInstanceLabelsRequest,
     ) -> pai_dsw_20220101_models.DeleteInstanceLabelsResponse:
         """
-        @summary 删除DSW实例的标签
+        @summary Delete tags from a Data Science Workshop (DSW) instance.
         
         @param request: DeleteInstanceLabelsRequest
         @return: DeleteInstanceLabelsResponse
@@ -944,7 +880,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteInstanceShutdownTimerResponse:
         """
-        @summary 删除定时关机任务
+        @summary Deletes a scheduled stop task of an instance.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -964,16 +900,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.DeleteInstanceShutdownTimerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.DeleteInstanceShutdownTimerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.DeleteInstanceShutdownTimerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_instance_shutdown_timer_with_options_async(
         self,
@@ -982,7 +912,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteInstanceShutdownTimerResponse:
         """
-        @summary 删除定时关机任务
+        @summary Deletes a scheduled stop task of an instance.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1002,23 +932,17 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.DeleteInstanceShutdownTimerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.DeleteInstanceShutdownTimerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.DeleteInstanceShutdownTimerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_instance_shutdown_timer(
         self,
         instance_id: str,
     ) -> pai_dsw_20220101_models.DeleteInstanceShutdownTimerResponse:
         """
-        @summary 删除定时关机任务
+        @summary Deletes a scheduled stop task of an instance.
         
         @return: DeleteInstanceShutdownTimerResponse
         """
@@ -1031,7 +955,7 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> pai_dsw_20220101_models.DeleteInstanceShutdownTimerResponse:
         """
-        @summary 删除定时关机任务
+        @summary Deletes a scheduled stop task of an instance.
         
         @return: DeleteInstanceShutdownTimerResponse
         """
@@ -1067,16 +991,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.DeleteInstanceSnapshotResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.DeleteInstanceSnapshotResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.DeleteInstanceSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_instance_snapshot_with_options_async(
         self,
@@ -1106,16 +1024,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.DeleteInstanceSnapshotResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.DeleteInstanceSnapshotResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.DeleteInstanceSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_instance_snapshot(
         self,
@@ -1152,6 +1064,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetIdleInstanceCullerResponse:
         """
+        @summary Queries the information about an auto stop policy for a specific idle instance.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetIdleInstanceCullerResponse
@@ -1170,16 +1084,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetIdleInstanceCullerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetIdleInstanceCullerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetIdleInstanceCullerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_idle_instance_culler_with_options_async(
         self,
@@ -1188,6 +1096,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetIdleInstanceCullerResponse:
         """
+        @summary Queries the information about an auto stop policy for a specific idle instance.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetIdleInstanceCullerResponse
@@ -1206,22 +1116,18 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetIdleInstanceCullerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetIdleInstanceCullerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetIdleInstanceCullerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_idle_instance_culler(
         self,
         instance_id: str,
     ) -> pai_dsw_20220101_models.GetIdleInstanceCullerResponse:
         """
+        @summary Queries the information about an auto stop policy for a specific idle instance.
+        
         @return: GetIdleInstanceCullerResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -1233,6 +1139,8 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> pai_dsw_20220101_models.GetIdleInstanceCullerResponse:
         """
+        @summary Queries the information about an auto stop policy for a specific idle instance.
+        
         @return: GetIdleInstanceCullerResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -1247,7 +1155,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceResponse:
         """
-        @summary 获取实例详情
+        @summary Queries the details of a DSW instance.
         
         @param request: GetInstanceRequest
         @param headers: map
@@ -1273,16 +1181,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_with_options_async(
         self,
@@ -1292,7 +1194,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceResponse:
         """
-        @summary 获取实例详情
+        @summary Queries the details of a DSW instance.
         
         @param request: GetInstanceRequest
         @param headers: map
@@ -1318,16 +1220,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance(
         self,
@@ -1335,7 +1231,7 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.GetInstanceRequest,
     ) -> pai_dsw_20220101_models.GetInstanceResponse:
         """
-        @summary 获取实例详情
+        @summary Queries the details of a DSW instance.
         
         @param request: GetInstanceRequest
         @return: GetInstanceResponse
@@ -1350,7 +1246,7 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.GetInstanceRequest,
     ) -> pai_dsw_20220101_models.GetInstanceResponse:
         """
-        @summary 获取实例详情
+        @summary Queries the details of a DSW instance.
         
         @param request: GetInstanceRequest
         @return: GetInstanceResponse
@@ -1367,6 +1263,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceEventsResponse:
         """
+        @summary Queries a list of system events for a Data Science Workshop (DSW) instance.
+        
         @param request: GetInstanceEventsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1397,16 +1295,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetInstanceEventsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetInstanceEventsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetInstanceEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_events_with_options_async(
         self,
@@ -1416,6 +1308,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceEventsResponse:
         """
+        @summary Queries a list of system events for a Data Science Workshop (DSW) instance.
+        
         @param request: GetInstanceEventsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1446,16 +1340,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetInstanceEventsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetInstanceEventsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetInstanceEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance_events(
         self,
@@ -1463,6 +1351,8 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.GetInstanceEventsRequest,
     ) -> pai_dsw_20220101_models.GetInstanceEventsResponse:
         """
+        @summary Queries a list of system events for a Data Science Workshop (DSW) instance.
+        
         @param request: GetInstanceEventsRequest
         @return: GetInstanceEventsResponse
         """
@@ -1476,6 +1366,8 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.GetInstanceEventsRequest,
     ) -> pai_dsw_20220101_models.GetInstanceEventsResponse:
         """
+        @summary Queries a list of system events for a Data Science Workshop (DSW) instance.
+        
         @param request: GetInstanceEventsRequest
         @return: GetInstanceEventsResponse
         """
@@ -1491,6 +1383,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceMetricsResponse:
         """
+        @summary Queries the resource metrics of an instance.
+        
         @param request: GetInstanceMetricsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1521,16 +1415,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetInstanceMetricsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetInstanceMetricsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetInstanceMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_metrics_with_options_async(
         self,
@@ -1540,6 +1428,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceMetricsResponse:
         """
+        @summary Queries the resource metrics of an instance.
+        
         @param request: GetInstanceMetricsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1570,16 +1460,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetInstanceMetricsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetInstanceMetricsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetInstanceMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance_metrics(
         self,
@@ -1587,6 +1471,8 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.GetInstanceMetricsRequest,
     ) -> pai_dsw_20220101_models.GetInstanceMetricsResponse:
         """
+        @summary Queries the resource metrics of an instance.
+        
         @param request: GetInstanceMetricsRequest
         @return: GetInstanceMetricsResponse
         """
@@ -1600,6 +1486,8 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.GetInstanceMetricsRequest,
     ) -> pai_dsw_20220101_models.GetInstanceMetricsResponse:
         """
+        @summary Queries the resource metrics of an instance.
+        
         @param request: GetInstanceMetricsRequest
         @return: GetInstanceMetricsResponse
         """
@@ -1634,16 +1522,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetInstanceShutdownTimerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetInstanceShutdownTimerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetInstanceShutdownTimerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_shutdown_timer_with_options_async(
         self,
@@ -1672,16 +1554,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetInstanceShutdownTimerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetInstanceShutdownTimerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetInstanceShutdownTimerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance_shutdown_timer(
         self,
@@ -1737,16 +1613,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetInstanceSnapshotResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetInstanceSnapshotResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetInstanceSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_snapshot_with_options_async(
         self,
@@ -1776,16 +1646,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetInstanceSnapshotResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetInstanceSnapshotResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetInstanceSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance_snapshot(
         self,
@@ -1823,6 +1687,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetLifecycleResponse:
         """
+        @summary Obtains the lifecycle of an instance
+        
+        @description Obtains the lifecycle transition information for an instance, including details on the status an instance transitions to at a specific point in time.
+        
         @param request: GetLifecycleRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1857,16 +1725,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetLifecycleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetLifecycleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetLifecycleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_lifecycle_with_options_async(
         self,
@@ -1876,6 +1738,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetLifecycleResponse:
         """
+        @summary Obtains the lifecycle of an instance
+        
+        @description Obtains the lifecycle transition information for an instance, including details on the status an instance transitions to at a specific point in time.
+        
         @param request: GetLifecycleRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1910,16 +1776,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetLifecycleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetLifecycleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetLifecycleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_lifecycle(
         self,
@@ -1927,6 +1787,10 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.GetLifecycleRequest,
     ) -> pai_dsw_20220101_models.GetLifecycleResponse:
         """
+        @summary Obtains the lifecycle of an instance
+        
+        @description Obtains the lifecycle transition information for an instance, including details on the status an instance transitions to at a specific point in time.
+        
         @param request: GetLifecycleRequest
         @return: GetLifecycleResponse
         """
@@ -1940,6 +1804,10 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.GetLifecycleRequest,
     ) -> pai_dsw_20220101_models.GetLifecycleResponse:
         """
+        @summary Obtains the lifecycle of an instance
+        
+        @description Obtains the lifecycle transition information for an instance, including details on the status an instance transitions to at a specific point in time.
+        
         @param request: GetLifecycleRequest
         @return: GetLifecycleResponse
         """
@@ -1995,16 +1863,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetMetricsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetMetricsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_metrics_with_options_async(
         self,
@@ -2054,16 +1916,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetMetricsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetMetricsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_metrics(
         self,
@@ -2132,16 +1988,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetResourceGroupStatisticsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetResourceGroupStatisticsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetResourceGroupStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_resource_group_statistics_with_options_async(
         self,
@@ -2180,16 +2030,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetResourceGroupStatisticsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetResourceGroupStatisticsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetResourceGroupStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_resource_group_statistics(
         self,
@@ -2222,6 +2066,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetTokenResponse:
         """
+        @summary Obtains the temporary authentication information of a DSW instance.
+        
         @param request: GetTokenRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2248,16 +2094,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetTokenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetTokenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_token_with_options_async(
         self,
@@ -2266,6 +2106,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetTokenResponse:
         """
+        @summary Obtains the temporary authentication information of a DSW instance.
+        
         @param request: GetTokenRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2292,22 +2134,18 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetTokenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetTokenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_token(
         self,
         request: pai_dsw_20220101_models.GetTokenRequest,
     ) -> pai_dsw_20220101_models.GetTokenResponse:
         """
+        @summary Obtains the temporary authentication information of a DSW instance.
+        
         @param request: GetTokenRequest
         @return: GetTokenResponse
         """
@@ -2320,6 +2158,8 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.GetTokenRequest,
     ) -> pai_dsw_20220101_models.GetTokenResponse:
         """
+        @summary Obtains the temporary authentication information of a DSW instance.
+        
         @param request: GetTokenRequest
         @return: GetTokenResponse
         """
@@ -2353,16 +2193,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetUserConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetUserConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetUserConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_user_config_with_options_async(
         self,
@@ -2390,16 +2224,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetUserConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.GetUserConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetUserConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_user_config(self) -> pai_dsw_20220101_models.GetUserConfigResponse:
         """
@@ -2462,16 +2290,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.ListEcsSpecsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.ListEcsSpecsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.ListEcsSpecsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_ecs_specs_with_options_async(
         self,
@@ -2514,16 +2336,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.ListEcsSpecsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.ListEcsSpecsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.ListEcsSpecsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_ecs_specs(
         self,
@@ -2593,16 +2409,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.ListInstanceSnapshotResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.ListInstanceSnapshotResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.ListInstanceSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_instance_snapshot_with_options_async(
         self,
@@ -2644,16 +2454,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.ListInstanceSnapshotResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.ListInstanceSnapshotResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.ListInstanceSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_instance_snapshot(
         self,
@@ -2718,16 +2522,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.ListInstanceStatisticsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.ListInstanceStatisticsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.ListInstanceStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_instance_statistics_with_options_async(
         self,
@@ -2762,16 +2560,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.ListInstanceStatisticsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.ListInstanceStatisticsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.ListInstanceStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_instance_statistics(
         self,
@@ -2808,6 +2600,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.ListInstancesResponse:
         """
+        @summary Queries a list of Data Science Workshop (DSW) instances.
+        
         @param tmp_req: ListInstancesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2855,6 +2649,10 @@ class Client(OpenApiClient):
             query['MinMemory'] = request.min_memory
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
+        if not UtilClient.is_unset(request.oversold_info):
+            query['OversoldInfo'] = request.oversold_info
+        if not UtilClient.is_unset(request.oversold_type):
+            query['OversoldType'] = request.oversold_type
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -2886,16 +2684,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.ListInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.ListInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.ListInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_instances_with_options_async(
         self,
@@ -2904,6 +2696,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.ListInstancesResponse:
         """
+        @summary Queries a list of Data Science Workshop (DSW) instances.
+        
         @param tmp_req: ListInstancesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2951,6 +2745,10 @@ class Client(OpenApiClient):
             query['MinMemory'] = request.min_memory
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
+        if not UtilClient.is_unset(request.oversold_info):
+            query['OversoldInfo'] = request.oversold_info
+        if not UtilClient.is_unset(request.oversold_type):
+            query['OversoldType'] = request.oversold_type
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -2982,22 +2780,18 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.ListInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.ListInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.ListInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_instances(
         self,
         request: pai_dsw_20220101_models.ListInstancesRequest,
     ) -> pai_dsw_20220101_models.ListInstancesResponse:
         """
+        @summary Queries a list of Data Science Workshop (DSW) instances.
+        
         @param request: ListInstancesRequest
         @return: ListInstancesResponse
         """
@@ -3010,6 +2804,8 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.ListInstancesRequest,
     ) -> pai_dsw_20220101_models.ListInstancesResponse:
         """
+        @summary Queries a list of Data Science Workshop (DSW) instances.
+        
         @param request: ListInstancesRequest
         @return: ListInstancesResponse
         """
@@ -3044,16 +2840,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.StartInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.StartInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.StartInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_instance_with_options_async(
         self,
@@ -3082,16 +2872,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.StartInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.StartInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.StartInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_instance(
         self,
@@ -3153,16 +2937,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.StopInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.StopInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.StopInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_instance_with_options_async(
         self,
@@ -3198,16 +2976,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.StopInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.StopInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.StopInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_instance(
         self,
@@ -3247,7 +3019,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.UpdateInstanceResponse:
         """
-        @summary 更新实例
+        @summary Updates the properties of a DSW instance.
         
         @param request: UpdateInstanceRequest
         @param headers: map
@@ -3278,6 +3050,8 @@ class Client(OpenApiClient):
             body['DisassociateVpc'] = request.disassociate_vpc
         if not UtilClient.is_unset(request.driver):
             body['Driver'] = request.driver
+        if not UtilClient.is_unset(request.dynamic_mount):
+            body['DynamicMount'] = request.dynamic_mount
         if not UtilClient.is_unset(request.ecs_spec):
             body['EcsSpec'] = request.ecs_spec
         if not UtilClient.is_unset(request.image_auth):
@@ -3313,16 +3087,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.UpdateInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.UpdateInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.UpdateInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_instance_with_options_async(
         self,
@@ -3332,7 +3100,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.UpdateInstanceResponse:
         """
-        @summary 更新实例
+        @summary Updates the properties of a DSW instance.
         
         @param request: UpdateInstanceRequest
         @param headers: map
@@ -3363,6 +3131,8 @@ class Client(OpenApiClient):
             body['DisassociateVpc'] = request.disassociate_vpc
         if not UtilClient.is_unset(request.driver):
             body['Driver'] = request.driver
+        if not UtilClient.is_unset(request.dynamic_mount):
+            body['DynamicMount'] = request.dynamic_mount
         if not UtilClient.is_unset(request.ecs_spec):
             body['EcsSpec'] = request.ecs_spec
         if not UtilClient.is_unset(request.image_auth):
@@ -3398,16 +3168,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.UpdateInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.UpdateInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.UpdateInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_instance(
         self,
@@ -3415,7 +3179,7 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.UpdateInstanceRequest,
     ) -> pai_dsw_20220101_models.UpdateInstanceResponse:
         """
-        @summary 更新实例
+        @summary Updates the properties of a DSW instance.
         
         @param request: UpdateInstanceRequest
         @return: UpdateInstanceResponse
@@ -3430,7 +3194,7 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.UpdateInstanceRequest,
     ) -> pai_dsw_20220101_models.UpdateInstanceResponse:
         """
-        @summary 更新实例
+        @summary Updates the properties of a DSW instance.
         
         @param request: UpdateInstanceRequest
         @return: UpdateInstanceResponse
@@ -3447,7 +3211,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.UpdateInstanceLabelsResponse:
         """
-        @summary 修改DSW实例的标签
+        @summary Updates the tags of a Data Science Workshop (DSW) instance. If the tags do not exist, the system adds tags.
         
         @param request: UpdateInstanceLabelsRequest
         @param headers: map
@@ -3473,16 +3237,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.UpdateInstanceLabelsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.UpdateInstanceLabelsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.UpdateInstanceLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_instance_labels_with_options_async(
         self,
@@ -3492,7 +3250,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.UpdateInstanceLabelsResponse:
         """
-        @summary 修改DSW实例的标签
+        @summary Updates the tags of a Data Science Workshop (DSW) instance. If the tags do not exist, the system adds tags.
         
         @param request: UpdateInstanceLabelsRequest
         @param headers: map
@@ -3518,16 +3276,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.UpdateInstanceLabelsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                pai_dsw_20220101_models.UpdateInstanceLabelsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.UpdateInstanceLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_instance_labels(
         self,
@@ -3535,7 +3287,7 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.UpdateInstanceLabelsRequest,
     ) -> pai_dsw_20220101_models.UpdateInstanceLabelsResponse:
         """
-        @summary 修改DSW实例的标签
+        @summary Updates the tags of a Data Science Workshop (DSW) instance. If the tags do not exist, the system adds tags.
         
         @param request: UpdateInstanceLabelsRequest
         @return: UpdateInstanceLabelsResponse
@@ -3550,7 +3302,7 @@ class Client(OpenApiClient):
         request: pai_dsw_20220101_models.UpdateInstanceLabelsRequest,
     ) -> pai_dsw_20220101_models.UpdateInstanceLabelsResponse:
         """
-        @summary 修改DSW实例的标签
+        @summary Updates the tags of a Data Science Workshop (DSW) instance. If the tags do not exist, the system adds tags.
         
         @param request: UpdateInstanceLabelsRequest
         @return: UpdateInstanceLabelsResponse
