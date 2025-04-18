@@ -1,3 +1,6 @@
+2025-04-18 Version: 1.5.1
+- Generated python 2020-12-03 for pai-dlc.
+
 2025-04-17 Version: 1.5.0
 - Support API GetRayDashboard.
 
