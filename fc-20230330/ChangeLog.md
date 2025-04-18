@@ -1,3 +1,7 @@
+2025-04-18 Version: 4.2.4
+- Update API ListFunctions: add request parameters functionName.
+
+
 2025-04-17 Version: 4.2.3
 - Generated python 2023-03-30 for FC.
 

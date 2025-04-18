@@ -3907,6 +3907,8 @@ class Client(OpenApiClient):
             query['description'] = request.description
         if not UtilClient.is_unset(request.fc_version):
             query['fcVersion'] = request.fc_version
+        if not UtilClient.is_unset(request.function_name):
+            query['functionName'] = request.function_name
         if not UtilClient.is_unset(request.gpu_type):
             query['gpuType'] = request.gpu_type
         if not UtilClient.is_unset(request.limit):
@@ -3965,6 +3967,8 @@ class Client(OpenApiClient):
             query['description'] = request.description
         if not UtilClient.is_unset(request.fc_version):
             query['fcVersion'] = request.fc_version
+        if not UtilClient.is_unset(request.function_name):
+            query['functionName'] = request.function_name
         if not UtilClient.is_unset(request.gpu_type):
             query['gpuType'] = request.gpu_type
         if not UtilClient.is_unset(request.limit):

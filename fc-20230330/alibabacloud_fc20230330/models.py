@@ -8424,6 +8424,7 @@ class ListFunctionsRequest(TeaModel):
         self,
         description: str = None,
         fc_version: str = None,
+        function_name: str = None,
         gpu_type: str = None,
         limit: int = None,
         next_token: str = None,
@@ -8440,6 +8441,7 @@ class ListFunctionsRequest(TeaModel):
         # 
         # By default, this parameter is left empty and functions in both Function Compute 3.0 and Function Compute 2.0 are listed.
         self.fc_version = fc_version
+        self.function_name = function_name
         # The GPU type of the functions to retrieve.
         self.gpu_type = gpu_type
         # The number of functions to return. The minimum value is 1 and the maximum value is 100.
@@ -8469,6 +8471,8 @@ class ListFunctionsRequest(TeaModel):
             result['description'] = self.description
         if self.fc_version is not None:
             result['fcVersion'] = self.fc_version
+        if self.function_name is not None:
+            result['functionName'] = self.function_name
         if self.gpu_type is not None:
             result['gpuType'] = self.gpu_type
         if self.limit is not None:
@@ -8491,6 +8495,8 @@ class ListFunctionsRequest(TeaModel):
             self.description = m.get('description')
         if m.get('fcVersion') is not None:
             self.fc_version = m.get('fcVersion')
+        if m.get('functionName') is not None:
+            self.function_name = m.get('functionName')
         if m.get('gpuType') is not None:
             self.gpu_type = m.get('gpuType')
         if m.get('limit') is not None:
@@ -8514,6 +8520,7 @@ class ListFunctionsShrinkRequest(TeaModel):
         self,
         description: str = None,
         fc_version: str = None,
+        function_name: str = None,
         gpu_type: str = None,
         limit: int = None,
         next_token: str = None,
@@ -8530,6 +8537,7 @@ class ListFunctionsShrinkRequest(TeaModel):
         # 
         # By default, this parameter is left empty and functions in both Function Compute 3.0 and Function Compute 2.0 are listed.
         self.fc_version = fc_version
+        self.function_name = function_name
         # The GPU type of the functions to retrieve.
         self.gpu_type = gpu_type
         # The number of functions to return. The minimum value is 1 and the maximum value is 100.
@@ -8556,6 +8564,8 @@ class ListFunctionsShrinkRequest(TeaModel):
             result['description'] = self.description
         if self.fc_version is not None:
             result['fcVersion'] = self.fc_version
+        if self.function_name is not None:
+            result['functionName'] = self.function_name
         if self.gpu_type is not None:
             result['gpuType'] = self.gpu_type
         if self.limit is not None:
@@ -8576,6 +8586,8 @@ class ListFunctionsShrinkRequest(TeaModel):
             self.description = m.get('description')
         if m.get('fcVersion') is not None:
             self.fc_version = m.get('fcVersion')
+        if m.get('functionName') is not None:
+            self.function_name = m.get('functionName')
         if m.get('gpuType') is not None:
             self.gpu_type = m.get('gpuType')
         if m.get('limit') is not None:
