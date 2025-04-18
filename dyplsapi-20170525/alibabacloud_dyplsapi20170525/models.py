@@ -3520,9 +3520,7 @@ class CreateFixedNoAReportRequest(TeaModel):
         # 
         # This parameter is required.
         self.cust_name = cust_name
-        # 法人/经办人手机号
-        # 
-        # This parameter is required.
+        # 经办人/法人电话
         self.cust_phone_no = cust_phone_no
         # 固话客户类型 1:法人,2:经办人
         # 
