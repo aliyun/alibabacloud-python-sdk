@@ -1,3 +1,7 @@
+2025-04-18 Version: 2.2.0
+- Support API CreateFixedNoAReport.
+
+
 2025-04-14 Version: 2.1.0
 - Support API CreatePhoneNoAReport.
 - Support API GetDyplsOSSInfoForUploadFile.
