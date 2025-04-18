@@ -1,3 +1,8 @@
+2025-04-18 Version: 2.2.1
+- Update API DescribeNisInspectionReportCheckItems: add response parameters Body.CheckItemList.$.RecommendationList.$.ReasonCode.
+- Update API DescribeNisInspectionReportCheckItems: add response parameters Body.CheckItemList.$.RecommendationList.$.SuggestionCode.
+
+
 2024-08-26 Version: 2.2.0
 - Support API DeleteNisInspectionReport.
 - Support API DeleteNisInspectionTask.

@@ -1561,16 +1561,20 @@ class DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendati
         abnormality: str = None,
         metadata: str = None,
         reason: str = None,
+        reason_code: str = None,
         recommendation_code: str = None,
         risk_level: str = None,
         suggestion: str = None,
+        suggestion_code: str = None,
     ):
         self.abnormality = abnormality
         self.metadata = metadata
         self.reason = reason
+        self.reason_code = reason_code
         self.recommendation_code = recommendation_code
         self.risk_level = risk_level
         self.suggestion = suggestion
+        self.suggestion_code = suggestion_code
 
     def validate(self):
         pass
@@ -1587,12 +1591,16 @@ class DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendati
             result['Metadata'] = self.metadata
         if self.reason is not None:
             result['Reason'] = self.reason
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
         if self.recommendation_code is not None:
             result['RecommendationCode'] = self.recommendation_code
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
+        if self.suggestion_code is not None:
+            result['SuggestionCode'] = self.suggestion_code
         return result
 
     def from_map(self, m: dict = None):
@@ -1603,12 +1611,16 @@ class DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendati
             self.metadata = m.get('Metadata')
         if m.get('Reason') is not None:
             self.reason = m.get('Reason')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
         if m.get('RecommendationCode') is not None:
             self.recommendation_code = m.get('RecommendationCode')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
         if m.get('Suggestion') is not None:
             self.suggestion = m.get('Suggestion')
+        if m.get('SuggestionCode') is not None:
+            self.suggestion_code = m.get('SuggestionCode')
         return self
 
 
