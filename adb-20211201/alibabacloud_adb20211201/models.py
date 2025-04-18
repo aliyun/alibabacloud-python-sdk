@@ -23443,6 +23443,7 @@ class DescribeDiagnosisSQLInfoRequest(TeaModel):
 class DescribeDiagnosisSQLInfoResponseBodyStageInfos(TeaModel):
     def __init__(
         self,
+        execution_type: str = None,
         input_data_size: int = None,
         input_rows: int = None,
         operator_cost: int = None,
@@ -23453,6 +23454,7 @@ class DescribeDiagnosisSQLInfoResponseBodyStageInfos(TeaModel):
         stage_id: str = None,
         state: str = None,
     ):
+        self.execution_type = execution_type
         # The total amount of input data in the stage. Unit: bytes.
         self.input_data_size = input_data_size
         # The total number of input rows in the stage.
@@ -23481,6 +23483,8 @@ class DescribeDiagnosisSQLInfoResponseBodyStageInfos(TeaModel):
             return _map
 
         result = dict()
+        if self.execution_type is not None:
+            result['ExecutionType'] = self.execution_type
         if self.input_data_size is not None:
             result['InputDataSize'] = self.input_data_size
         if self.input_rows is not None:
@@ -23503,6 +23507,8 @@ class DescribeDiagnosisSQLInfoResponseBodyStageInfos(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExecutionType') is not None:
+            self.execution_type = m.get('ExecutionType')
         if m.get('InputDataSize') is not None:
             self.input_data_size = m.get('InputDataSize')
         if m.get('InputRows') is not None:

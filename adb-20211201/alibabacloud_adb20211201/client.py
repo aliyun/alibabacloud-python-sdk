@@ -9658,7 +9658,21 @@ class Client(OpenApiClient):
         @return: DescribeDiagnosisSQLInfoResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.process_id):
+            query['ProcessId'] = request.process_id
+        if not UtilClient.is_unset(request.process_rc_host):
+            query['ProcessRcHost'] = request.process_rc_host
+        if not UtilClient.is_unset(request.process_start_time):
+            query['ProcessStartTime'] = request.process_start_time
+        if not UtilClient.is_unset(request.process_state):
+            query['ProcessState'] = request.process_state
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9667,7 +9681,7 @@ class Client(OpenApiClient):
             version='2021-12-01',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -9693,7 +9707,21 @@ class Client(OpenApiClient):
         @return: DescribeDiagnosisSQLInfoResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.process_id):
+            query['ProcessId'] = request.process_id
+        if not UtilClient.is_unset(request.process_rc_host):
+            query['ProcessRcHost'] = request.process_rc_host
+        if not UtilClient.is_unset(request.process_start_time):
+            query['ProcessStartTime'] = request.process_start_time
+        if not UtilClient.is_unset(request.process_state):
+            query['ProcessState'] = request.process_state
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9702,7 +9730,7 @@ class Client(OpenApiClient):
             version='2021-12-01',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',

@@ -1,3 +1,7 @@
+2025-04-18 Version: 3.0.3
+- Update API DescribeDiagnosisSQLInfo: add response parameters Body.StageInfos.$.ExecutionType.
+
+
 2025-04-17 Version: 3.0.2
 - Generated python 2021-12-01 for adb.
 
