@@ -214,20 +214,35 @@ class ChangePasswordRequest(TeaModel):
         region_id: str = None,
         session_id: str = None,
     ):
+        # The client ID. The system generates a unique ID for each client.
+        # 
         # This parameter is required.
         self.client_id = client_id
+        # The user ID.
+        # 
         # This parameter is required.
         self.end_user_id = end_user_id
+        # The logon token.
+        # 
         # This parameter is required.
         self.login_token = login_token
+        # The new password.
+        # 
         # This parameter is required.
         self.new_password = new_password
+        # The office network ID.
+        # 
         # This parameter is required.
         self.office_site_id = office_site_id
+        # The current password.
+        # 
         # This parameter is required.
         self.old_password = old_password
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The session ID.
         self.session_id = session_id
 
     def validate(self):
@@ -284,7 +299,9 @@ class ChangePasswordResponseBody(TeaModel):
         login_token: str = None,
         request_id: str = None,
     ):
+        # The logon token.
         self.login_token = login_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -489,9 +506,14 @@ class DescribeDirectoriesRequest(TeaModel):
         directory_id: List[str] = None,
         region_id: str = None,
     ):
+        # The client ID. The system generates a unique ID for each client.
+        # 
         # This parameter is required.
         self.client_id = client_id
+        # The directory IDs.
         self.directory_id = directory_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -532,10 +554,21 @@ class DescribeDirectoriesResponseBodyDirectories(TeaModel):
         provider_id: str = None,
         sso_service_url: str = None,
     ):
+        # The connection method.
+        # 
+        # Valid values:
+        # 
+        # *   VPC: End users connect to cloud computers over an enterprise virtual private cloud (VPC).
+        # *   INTERNET: End users connect to cloud computers over the Internet.
+        # *   ANY: End users connect to cloud computers over the Internet or an enterprise VPC.
         self.desktop_access_type = desktop_access_type
+        # The directory ID.
         self.directory_id = directory_id
+        # The directory type.
         self.directory_type = directory_type
+        # The provider ID.
         self.provider_id = provider_id
+        # The URL of the SSO service.
         self.sso_service_url = sso_service_url
 
     def validate(self):
@@ -580,7 +613,9 @@ class DescribeDirectoriesResponseBody(TeaModel):
         directories: List[DescribeDirectoriesResponseBodyDirectories] = None,
         request_id: str = None,
     ):
+        # The directories.
         self.directories = directories
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -664,12 +699,20 @@ class DescribeFingerPrintTemplatesRequest(TeaModel):
         region_id: str = None,
         session_id: str = None,
     ):
+        # The client ID. The system generates a unique ID for each client.
+        # 
         # This parameter is required.
         self.client_id = client_id
+        # The logon token.
+        # 
         # This parameter is required.
         self.login_token = login_token
+        # The region ID
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The session ID.
+        # 
         # This parameter is required.
         self.session_id = session_id
 
@@ -716,12 +759,19 @@ class DescribeFingerPrintTemplatesResponseBodyFingerPrintTemplates(TeaModel):
         login_time: str = None,
         office_site_id: str = None,
     ):
+        # The client ID. The system generates a unique ID for each client.
         self.client_id = client_id
+        # The time when the template was created.
         self.creation_time = creation_time
+        # The description of the template.
         self.description = description
+        # The user ID.
         self.end_user_id = end_user_id
+        # The index.
         self.index = index
+        # The logon time.
         self.login_time = login_time
+        # The office network ID.
         self.office_site_id = office_site_id
 
     def validate(self):
@@ -774,7 +824,9 @@ class DescribeFingerPrintTemplatesResponseBody(TeaModel):
         finger_print_templates: List[DescribeFingerPrintTemplatesResponseBodyFingerPrintTemplates] = None,
         request_id: str = None,
     ):
+        # The fingerprint templates.
         self.finger_print_templates = finger_print_templates
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1835,8 +1887,11 @@ class DescribeRegionsRequest(TeaModel):
         client_id: str = None,
         region_id: str = None,
     ):
+        # The client ID. The system generates a unique ID for each client.
+        # 
         # This parameter is required.
         self.client_id = client_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -1869,7 +1924,9 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         region_endpoint: str = None,
         region_id: str = None,
     ):
+        # The region endpoint.
         self.region_endpoint = region_endpoint
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -1902,7 +1959,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: List[DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
+        # The regions.
         self.regions = regions
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3308,16 +3367,28 @@ class EncryptPasswordRequest(TeaModel):
         region_id: str = None,
         session_id: str = None,
     ):
+        # The ID of the client. The system generates a unique ID for each client.
+        # 
         # This parameter is required.
         self.client_id = client_id
+        # The directory ID.
         self.directory_id = directory_id
+        # The logon token.
+        # 
         # This parameter is required.
         self.login_token = login_token
+        # The office network ID.
         self.office_site_id = office_site_id
+        # The password that you want to encrypt.
+        # 
         # This parameter is required.
         self.password = password
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The session ID.
+        # 
         # This parameter is required.
         self.session_id = session_id
 
@@ -3371,7 +3442,9 @@ class EncryptPasswordResponseBody(TeaModel):
         encrypted_password: str = None,
         request_id: str = None,
     ):
+        # The encrypted password.
         self.encrypted_password = encrypted_password
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5176,16 +5249,27 @@ class ResetPasswordRequest(TeaModel):
         region_id: str = None,
         phone: str = None,
     ):
+        # The client ID. The system generates a unique ID for each client.
+        # 
         # This parameter is required.
         self.client_id = client_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
+        # The email address of the user.
         self.email = email
+        # The user ID.
+        # 
         # This parameter is required.
         self.end_user_id = end_user_id
+        # The office network ID.
+        # 
         # This parameter is required.
         self.office_site_id = office_site_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The phone number of the user.
         self.phone = phone
 
     def validate(self):
@@ -5237,6 +5321,7 @@ class ResetPasswordResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5311,16 +5396,27 @@ class ResetSnapshotRequest(TeaModel):
         snapshot_id: str = None,
         stop_desktop: bool = None,
     ):
+        # The client ID. The system generates a unique ID for each client.
+        # 
         # This parameter is required.
         self.client_id = client_id
+        # The cloud computer ID.
         self.desktop_id = desktop_id
+        # The logon token.
+        # 
         # This parameter is required.
         self.login_token = login_token
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The session ID.
         self.session_id = session_id
+        # The snapshot ID.
+        # 
         # This parameter is required.
         self.snapshot_id = snapshot_id
+        # Specifies whether to stop the cloud computer.
         self.stop_desktop = stop_desktop
 
     def validate(self):
@@ -5372,6 +5468,7 @@ class ResetSnapshotResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5447,14 +5544,23 @@ class SendTokenCodeRequest(TeaModel):
         session_id: str = None,
         token_code: str = None,
     ):
+        # The client ID. The system generates a unique ID for each client.
+        # 
         # This parameter is required.
         self.client_id = client_id
+        # The operating system on which the client runs.
         self.client_os = client_os
+        # The client version. If you use an Alibaba Cloud Workspace client, you can view the client version in the "About" dialog box on the client logon page.
         self.client_version = client_version
+        # The username of the account.
         self.end_user_id = end_user_id
+        # The logon token.
         self.login_token = login_token
+        # The office network ID.
         self.office_site_id = office_site_id
+        # The session ID.
         self.session_id = session_id
+        # If two-factor authentication is enabled for clients in the Elastic Desktop Service (EDS) Enterprise console, the system will send a verification code to the user\\"s email address if it detects that the current logged-on user is at risk. This parameter is required if you set `CurrentStage` to `TokenVerify`.
         self.token_code = token_code
 
     def validate(self):
@@ -5510,6 +5616,7 @@ class SendTokenCodeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6192,6 +6299,7 @@ class StopDesktopsRequest(TeaModel):
         region_id: str = None,
         session_id: str = None,
         session_token: str = None,
+        uuid: str = None,
     ):
         # The client ID. The system generates a unique ID for each client.
         # 
@@ -6218,6 +6326,7 @@ class StopDesktopsRequest(TeaModel):
         self.session_id = session_id
         # The logon token.
         self.session_token = session_token
+        self.uuid = uuid
 
     def validate(self):
         pass
@@ -6248,6 +6357,8 @@ class StopDesktopsRequest(TeaModel):
             result['SessionId'] = self.session_id
         if self.session_token is not None:
             result['SessionToken'] = self.session_token
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
         return result
 
     def from_map(self, m: dict = None):
@@ -6272,6 +6383,8 @@ class StopDesktopsRequest(TeaModel):
             self.session_id = m.get('SessionId')
         if m.get('SessionToken') is not None:
             self.session_token = m.get('SessionToken')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
         return self
 
 
@@ -6491,16 +6604,33 @@ class UnbindUserDesktopRequest(TeaModel):
         session_id: str = None,
         user_desktop_id: str = None,
     ):
+        # The client ID.
+        # 
         # This parameter is required.
         self.client_id = client_id
+        # The client type.
         self.client_type = client_type
+        # Specifies whether to enable forced unbinding.
+        # 
+        # Valid values:
+        # 
+        # *   true: Even when end users connect to cloud computers, the forced unbinding is still enforced.
+        # *   false: Forced unbinding is only enforced when end users are disconnected from cloud computers.
         self.force = force
+        # The logon token.
+        # 
         # This parameter is required.
         self.login_token = login_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The session ID.
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # The cloud computer ID.
+        # 
         # This parameter is required.
         self.user_desktop_id = user_desktop_id
 
@@ -6553,6 +6683,7 @@ class UnbindUserDesktopResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

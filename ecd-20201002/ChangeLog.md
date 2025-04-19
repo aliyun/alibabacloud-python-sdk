@@ -1,3 +1,7 @@
+2025-04-19 Version: 1.2.3
+- Update API StopDesktops: add request parameters Uuid.
+
+
 2025-03-18 Version: 1.2.2
 - Update API ApproveFotaUpdate: add param TargetStatus.
 - Update API RebootDesktops: add param OsUpdate.
