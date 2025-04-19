@@ -1,3 +1,9 @@
+2025-04-19 Version: 4.7.4
+- Update API DescribeClientEvents: add request parameters FillHardwareInfo.
+- Update API DescribeClientEvents: add request parameters Language.
+- Update API DescribeClientEvents: add response parameters Body.Events.$.TerminalInfo.
+
+
 2025-04-10 Version: 4.7.3
 - Update API DescribeOfficeSites: add response parameters Body.OfficeSites.$.IsLdap.
 - Update API DescribeOfficeSites: add response parameters Body.OfficeSites.$.LdapUrl.
