@@ -1,3 +1,7 @@
+2025-04-21 Version: 3.5.0
+- Support API CredentialVerifyV2.
+
+
 2025-01-20 Version: 3.4.2
 - Update API InitFaceVerify: add param CameraSelection.
 
