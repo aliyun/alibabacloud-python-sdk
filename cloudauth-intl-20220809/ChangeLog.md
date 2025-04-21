@@ -1,3 +1,9 @@
+2025-04-21 Version: 3.4.0
+- Support API CheckVerifyLog.
+- Support API DeepfakeDetectIntl.
+- Update API FaceGuardRisk: add response parameters Body.Result.GuardRiskScore.
+
+
 2025-01-09 Version: 3.2.0
 - Support API Id2MetaPeriodVerifyIntl.
 

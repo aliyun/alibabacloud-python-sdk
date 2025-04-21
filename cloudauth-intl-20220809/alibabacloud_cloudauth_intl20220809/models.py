@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict
+from typing import Dict, List
 
 
 class CardOcrRequest(TeaModel):
@@ -424,6 +424,383 @@ class CheckResultResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CheckResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CheckVerifyLogRequest(TeaModel):
+    def __init__(
+        self,
+        merchant_biz_id: str = None,
+        transaction_id: str = None,
+    ):
+        self.merchant_biz_id = merchant_biz_id
+        self.transaction_id = transaction_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.merchant_biz_id is not None:
+            result['MerchantBizId'] = self.merchant_biz_id
+        if self.transaction_id is not None:
+            result['TransactionId'] = self.transaction_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MerchantBizId') is not None:
+            self.merchant_biz_id = m.get('MerchantBizId')
+        if m.get('TransactionId') is not None:
+            self.transaction_id = m.get('TransactionId')
+        return self
+
+
+class CheckVerifyLogResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        ext_info: str = None,
+        interrupt_page: str = None,
+        log_info: List[str] = None,
+        log_statistics_info: str = None,
+        passed: str = None,
+        sub_code: str = None,
+        verify_error_code: str = None,
+        verify_status: str = None,
+    ):
+        self.ext_info = ext_info
+        self.interrupt_page = interrupt_page
+        self.log_info = log_info
+        self.log_statistics_info = log_statistics_info
+        self.passed = passed
+        self.sub_code = sub_code
+        self.verify_error_code = verify_error_code
+        self.verify_status = verify_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext_info is not None:
+            result['ExtInfo'] = self.ext_info
+        if self.interrupt_page is not None:
+            result['InterruptPage'] = self.interrupt_page
+        if self.log_info is not None:
+            result['LogInfo'] = self.log_info
+        if self.log_statistics_info is not None:
+            result['LogStatisticsInfo'] = self.log_statistics_info
+        if self.passed is not None:
+            result['Passed'] = self.passed
+        if self.sub_code is not None:
+            result['SubCode'] = self.sub_code
+        if self.verify_error_code is not None:
+            result['VerifyErrorCode'] = self.verify_error_code
+        if self.verify_status is not None:
+            result['VerifyStatus'] = self.verify_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExtInfo') is not None:
+            self.ext_info = m.get('ExtInfo')
+        if m.get('InterruptPage') is not None:
+            self.interrupt_page = m.get('InterruptPage')
+        if m.get('LogInfo') is not None:
+            self.log_info = m.get('LogInfo')
+        if m.get('LogStatisticsInfo') is not None:
+            self.log_statistics_info = m.get('LogStatisticsInfo')
+        if m.get('Passed') is not None:
+            self.passed = m.get('Passed')
+        if m.get('SubCode') is not None:
+            self.sub_code = m.get('SubCode')
+        if m.get('VerifyErrorCode') is not None:
+            self.verify_error_code = m.get('VerifyErrorCode')
+        if m.get('VerifyStatus') is not None:
+            self.verify_status = m.get('VerifyStatus')
+        return self
+
+
+class CheckVerifyLogResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: CheckVerifyLogResponseBodyResult = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = CheckVerifyLogResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class CheckVerifyLogResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckVerifyLogResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckVerifyLogResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeepfakeDetectIntlRequest(TeaModel):
+    def __init__(
+        self,
+        face_base_64: str = None,
+        face_input_type: str = None,
+        face_url: str = None,
+        merchant_biz_id: str = None,
+        product_code: str = None,
+        scene_code: str = None,
+    ):
+        self.face_base_64 = face_base_64
+        self.face_input_type = face_input_type
+        self.face_url = face_url
+        # This parameter is required.
+        self.merchant_biz_id = merchant_biz_id
+        # This parameter is required.
+        self.product_code = product_code
+        self.scene_code = scene_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.face_base_64 is not None:
+            result['FaceBase64'] = self.face_base_64
+        if self.face_input_type is not None:
+            result['FaceInputType'] = self.face_input_type
+        if self.face_url is not None:
+            result['FaceUrl'] = self.face_url
+        if self.merchant_biz_id is not None:
+            result['MerchantBizId'] = self.merchant_biz_id
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.scene_code is not None:
+            result['SceneCode'] = self.scene_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FaceBase64') is not None:
+            self.face_base_64 = m.get('FaceBase64')
+        if m.get('FaceInputType') is not None:
+            self.face_input_type = m.get('FaceInputType')
+        if m.get('FaceUrl') is not None:
+            self.face_url = m.get('FaceUrl')
+        if m.get('MerchantBizId') is not None:
+            self.merchant_biz_id = m.get('MerchantBizId')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('SceneCode') is not None:
+            self.scene_code = m.get('SceneCode')
+        return self
+
+
+class DeepfakeDetectIntlResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        result: str = None,
+        risk_score: Dict[str, str] = None,
+        risk_tag: str = None,
+    ):
+        self.result = result
+        self.risk_score = risk_score
+        self.risk_tag = risk_tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.risk_score is not None:
+            result['RiskScore'] = self.risk_score
+        if self.risk_tag is not None:
+            result['RiskTag'] = self.risk_tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('RiskScore') is not None:
+            self.risk_score = m.get('RiskScore')
+        if m.get('RiskTag') is not None:
+            self.risk_tag = m.get('RiskTag')
+        return self
+
+
+class DeepfakeDetectIntlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: DeepfakeDetectIntlResponseBodyResultObject = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = DeepfakeDetectIntlResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class DeepfakeDetectIntlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeepfakeDetectIntlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeepfakeDetectIntlResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1275,10 +1652,12 @@ class FaceGuardRiskRequest(TeaModel):
 class FaceGuardRiskResponseBodyResult(TeaModel):
     def __init__(
         self,
+        guard_risk_score: float = None,
         risk_extends: str = None,
         risk_tags: str = None,
         transaction_id: str = None,
     ):
+        self.guard_risk_score = guard_risk_score
         self.risk_extends = risk_extends
         self.risk_tags = risk_tags
         self.transaction_id = transaction_id
@@ -1292,6 +1671,8 @@ class FaceGuardRiskResponseBodyResult(TeaModel):
             return _map
 
         result = dict()
+        if self.guard_risk_score is not None:
+            result['GuardRiskScore'] = self.guard_risk_score
         if self.risk_extends is not None:
             result['RiskExtends'] = self.risk_extends
         if self.risk_tags is not None:
@@ -1302,6 +1683,8 @@ class FaceGuardRiskResponseBodyResult(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('GuardRiskScore') is not None:
+            self.guard_risk_score = m.get('GuardRiskScore')
         if m.get('RiskExtends') is not None:
             self.risk_extends = m.get('RiskExtends')
         if m.get('RiskTags') is not None:

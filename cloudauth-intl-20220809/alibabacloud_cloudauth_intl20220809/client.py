@@ -297,6 +297,226 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.check_result_with_options_async(request, runtime)
 
+    def check_verify_log_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.CheckVerifyLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.CheckVerifyLogResponse:
+        """
+        @summary 认证日志查询接口
+        
+        @param request: CheckVerifyLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckVerifyLogResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            body['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.transaction_id):
+            body['TransactionId'] = request.transaction_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CheckVerifyLog',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.CheckVerifyLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_verify_log_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.CheckVerifyLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.CheckVerifyLogResponse:
+        """
+        @summary 认证日志查询接口
+        
+        @param request: CheckVerifyLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckVerifyLogResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            body['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.transaction_id):
+            body['TransactionId'] = request.transaction_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CheckVerifyLog',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.CheckVerifyLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_verify_log(
+        self,
+        request: cloudauth_intl_20220809_models.CheckVerifyLogRequest,
+    ) -> cloudauth_intl_20220809_models.CheckVerifyLogResponse:
+        """
+        @summary 认证日志查询接口
+        
+        @param request: CheckVerifyLogRequest
+        @return: CheckVerifyLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_verify_log_with_options(request, runtime)
+
+    async def check_verify_log_async(
+        self,
+        request: cloudauth_intl_20220809_models.CheckVerifyLogRequest,
+    ) -> cloudauth_intl_20220809_models.CheckVerifyLogResponse:
+        """
+        @summary 认证日志查询接口
+        
+        @param request: CheckVerifyLogRequest
+        @return: CheckVerifyLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_verify_log_with_options_async(request, runtime)
+
+    def deepfake_detect_intl_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.DeepfakeDetectIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DeepfakeDetectIntlResponse:
+        """
+        @summary 人脸凭证核验
+        
+        @param request: DeepfakeDetectIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeepfakeDetectIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.face_input_type):
+            query['FaceInputType'] = request.face_input_type
+        if not UtilClient.is_unset(request.face_url):
+            query['FaceUrl'] = request.face_url
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        body = {}
+        if not UtilClient.is_unset(request.face_base_64):
+            body['FaceBase64'] = request.face_base_64
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeepfakeDetectIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DeepfakeDetectIntlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def deepfake_detect_intl_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.DeepfakeDetectIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DeepfakeDetectIntlResponse:
+        """
+        @summary 人脸凭证核验
+        
+        @param request: DeepfakeDetectIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeepfakeDetectIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.face_input_type):
+            query['FaceInputType'] = request.face_input_type
+        if not UtilClient.is_unset(request.face_url):
+            query['FaceUrl'] = request.face_url
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        body = {}
+        if not UtilClient.is_unset(request.face_base_64):
+            body['FaceBase64'] = request.face_base_64
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeepfakeDetectIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DeepfakeDetectIntlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def deepfake_detect_intl(
+        self,
+        request: cloudauth_intl_20220809_models.DeepfakeDetectIntlRequest,
+    ) -> cloudauth_intl_20220809_models.DeepfakeDetectIntlResponse:
+        """
+        @summary 人脸凭证核验
+        
+        @param request: DeepfakeDetectIntlRequest
+        @return: DeepfakeDetectIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.deepfake_detect_intl_with_options(request, runtime)
+
+    async def deepfake_detect_intl_async(
+        self,
+        request: cloudauth_intl_20220809_models.DeepfakeDetectIntlRequest,
+    ) -> cloudauth_intl_20220809_models.DeepfakeDetectIntlResponse:
+        """
+        @summary 人脸凭证核验
+        
+        @param request: DeepfakeDetectIntlRequest
+        @return: DeepfakeDetectIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.deepfake_detect_intl_with_options_async(request, runtime)
+
     def delete_verify_result_with_options(
         self,
         request: cloudauth_intl_20220809_models.DeleteVerifyResultRequest,
