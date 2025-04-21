@@ -1527,9 +1527,11 @@ class GPUConfig(TeaModel):
 class LifecycleHook(TeaModel):
     def __init__(
         self,
+        command: List[str] = None,
         handler: str = None,
         timeout: int = None,
     ):
+        self.command = command
         self.handler = handler
         self.timeout = timeout
 
@@ -1542,6 +1544,8 @@ class LifecycleHook(TeaModel):
             return _map
 
         result = dict()
+        if self.command is not None:
+            result['command'] = self.command
         if self.handler is not None:
             result['handler'] = self.handler
         if self.timeout is not None:
@@ -1550,6 +1554,8 @@ class LifecycleHook(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('command') is not None:
+            self.command = m.get('command')
         if m.get('handler') is not None:
             self.handler = m.get('handler')
         if m.get('timeout') is not None:
@@ -1954,6 +1960,7 @@ class CreateFunctionInput(TeaModel):
         oss_mount_config: OSSMountConfig = None,
         role: str = None,
         runtime: str = None,
+        session_affinity: str = None,
         tags: List[Tag] = None,
         timeout: int = None,
         tracing_config: TracingConfig = None,
@@ -1984,6 +1991,7 @@ class CreateFunctionInput(TeaModel):
         self.role = role
         # This parameter is required.
         self.runtime = runtime
+        self.session_affinity = session_affinity
         self.tags = tags
         self.timeout = timeout
         self.tracing_config = tracing_config
@@ -2067,6 +2075,8 @@ class CreateFunctionInput(TeaModel):
             result['role'] = self.role
         if self.runtime is not None:
             result['runtime'] = self.runtime
+        if self.session_affinity is not None:
+            result['sessionAffinity'] = self.session_affinity
         result['tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -2134,6 +2144,8 @@ class CreateFunctionInput(TeaModel):
             self.role = m.get('role')
         if m.get('runtime') is not None:
             self.runtime = m.get('runtime')
+        if m.get('sessionAffinity') is not None:
+            self.session_affinity = m.get('sessionAffinity')
         self.tags = []
         if m.get('tags') is not None:
             for k in m.get('tags'):
@@ -3441,6 +3453,7 @@ class Function(TeaModel):
         oss_mount_config: OSSMountConfig = None,
         role: str = None,
         runtime: str = None,
+        session_affinity: str = None,
         state: str = None,
         state_reason: str = None,
         state_reason_code: str = None,
@@ -3480,6 +3493,7 @@ class Function(TeaModel):
         self.oss_mount_config = oss_mount_config
         self.role = role
         self.runtime = runtime
+        self.session_affinity = session_affinity
         self.state = state
         self.state_reason = state_reason
         self.state_reason_code = state_reason_code
@@ -3590,6 +3604,8 @@ class Function(TeaModel):
             result['role'] = self.role
         if self.runtime is not None:
             result['runtime'] = self.runtime
+        if self.session_affinity is not None:
+            result['sessionAffinity'] = self.session_affinity
         if self.state is not None:
             result['state'] = self.state
         if self.state_reason is not None:
@@ -3684,6 +3700,8 @@ class Function(TeaModel):
             self.role = m.get('role')
         if m.get('runtime') is not None:
             self.runtime = m.get('runtime')
+        if m.get('sessionAffinity') is not None:
+            self.session_affinity = m.get('sessionAffinity')
         if m.get('state') is not None:
             self.state = m.get('state')
         if m.get('stateReason') is not None:
@@ -5871,6 +5889,7 @@ class UpdateFunctionInput(TeaModel):
         oss_mount_config: OSSMountConfig = None,
         role: str = None,
         runtime: str = None,
+        session_affinity: str = None,
         timeout: int = None,
         tracing_config: TracingConfig = None,
         vpc_config: VPCConfig = None,
@@ -5896,6 +5915,7 @@ class UpdateFunctionInput(TeaModel):
         self.oss_mount_config = oss_mount_config
         self.role = role
         self.runtime = runtime
+        self.session_affinity = session_affinity
         self.timeout = timeout
         self.tracing_config = tracing_config
         self.vpc_config = vpc_config
@@ -5972,6 +5992,8 @@ class UpdateFunctionInput(TeaModel):
             result['role'] = self.role
         if self.runtime is not None:
             result['runtime'] = self.runtime
+        if self.session_affinity is not None:
+            result['sessionAffinity'] = self.session_affinity
         if self.timeout is not None:
             result['timeout'] = self.timeout
         if self.tracing_config is not None:
@@ -6033,6 +6055,8 @@ class UpdateFunctionInput(TeaModel):
             self.role = m.get('role')
         if m.get('runtime') is not None:
             self.runtime = m.get('runtime')
+        if m.get('sessionAffinity') is not None:
+            self.session_affinity = m.get('sessionAffinity')
         if m.get('timeout') is not None:
             self.timeout = m.get('timeout')
         if m.get('tracingConfig') is not None:
