@@ -1870,20 +1870,26 @@ class LiveManifestConfig(TeaModel):
         self,
         ad_markers: str = None,
         date_time_interval: int = None,
+        manifest_duration: int = None,
         max_video_bitrate: int = None,
         min_buffer_time: int = None,
         min_update_period: int = None,
         min_video_bitrate: int = None,
+        presentation_delay: int = None,
         segment_count: int = None,
+        segment_template_format: str = None,
         stream_order: str = None,
     ):
         self.ad_markers = ad_markers
         self.date_time_interval = date_time_interval
+        self.manifest_duration = manifest_duration
         self.max_video_bitrate = max_video_bitrate
         self.min_buffer_time = min_buffer_time
         self.min_update_period = min_update_period
         self.min_video_bitrate = min_video_bitrate
+        self.presentation_delay = presentation_delay
         self.segment_count = segment_count
+        self.segment_template_format = segment_template_format
         self.stream_order = stream_order
 
     def validate(self):
@@ -1899,6 +1905,8 @@ class LiveManifestConfig(TeaModel):
             result['AdMarkers'] = self.ad_markers
         if self.date_time_interval is not None:
             result['DateTimeInterval'] = self.date_time_interval
+        if self.manifest_duration is not None:
+            result['ManifestDuration'] = self.manifest_duration
         if self.max_video_bitrate is not None:
             result['MaxVideoBitrate'] = self.max_video_bitrate
         if self.min_buffer_time is not None:
@@ -1907,8 +1915,12 @@ class LiveManifestConfig(TeaModel):
             result['MinUpdatePeriod'] = self.min_update_period
         if self.min_video_bitrate is not None:
             result['MinVideoBitrate'] = self.min_video_bitrate
+        if self.presentation_delay is not None:
+            result['PresentationDelay'] = self.presentation_delay
         if self.segment_count is not None:
             result['SegmentCount'] = self.segment_count
+        if self.segment_template_format is not None:
+            result['SegmentTemplateFormat'] = self.segment_template_format
         if self.stream_order is not None:
             result['StreamOrder'] = self.stream_order
         return result
@@ -1919,6 +1931,8 @@ class LiveManifestConfig(TeaModel):
             self.ad_markers = m.get('AdMarkers')
         if m.get('DateTimeInterval') is not None:
             self.date_time_interval = m.get('DateTimeInterval')
+        if m.get('ManifestDuration') is not None:
+            self.manifest_duration = m.get('ManifestDuration')
         if m.get('MaxVideoBitrate') is not None:
             self.max_video_bitrate = m.get('MaxVideoBitrate')
         if m.get('MinBufferTime') is not None:
@@ -1927,8 +1941,12 @@ class LiveManifestConfig(TeaModel):
             self.min_update_period = m.get('MinUpdatePeriod')
         if m.get('MinVideoBitrate') is not None:
             self.min_video_bitrate = m.get('MinVideoBitrate')
+        if m.get('PresentationDelay') is not None:
+            self.presentation_delay = m.get('PresentationDelay')
         if m.get('SegmentCount') is not None:
             self.segment_count = m.get('SegmentCount')
+        if m.get('SegmentTemplateFormat') is not None:
+            self.segment_template_format = m.get('SegmentTemplateFormat')
         if m.get('StreamOrder') is not None:
             self.stream_order = m.get('StreamOrder')
         return self
@@ -1937,12 +1955,14 @@ class LiveManifestConfig(TeaModel):
 class LivePackagingConfigDrmConfig(TeaModel):
     def __init__(
         self,
+        content_id: str = None,
         encryption_method: str = None,
         iv: str = None,
         rotate_period: int = None,
         system_ids: List[str] = None,
         url: str = None,
     ):
+        self.content_id = content_id
         self.encryption_method = encryption_method
         self.iv = iv
         self.rotate_period = rotate_period
@@ -1958,6 +1978,8 @@ class LivePackagingConfigDrmConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.content_id is not None:
+            result['ContentId'] = self.content_id
         if self.encryption_method is not None:
             result['EncryptionMethod'] = self.encryption_method
         if self.iv is not None:
@@ -1972,6 +1994,8 @@ class LivePackagingConfigDrmConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ContentId') is not None:
+            self.content_id = m.get('ContentId')
         if m.get('EncryptionMethod') is not None:
             self.encryption_method = m.get('EncryptionMethod')
         if m.get('IV') is not None:
@@ -21492,6 +21516,7 @@ class GetBatchMediaProducingJobRequest(TeaModel):
 class GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList(TeaModel):
     def __init__(
         self,
+        duration: float = None,
         error_code: str = None,
         error_message: str = None,
         job_id: str = None,
@@ -21500,6 +21525,7 @@ class GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList(TeaModel):
         project_id: str = None,
         status: str = None,
     ):
+        self.duration = duration
         # The error code that is returned if the subjob failed. This parameter is not returned if the subjob is successful.
         self.error_code = error_code
         # The error message that is returned if the subjob failed. This parameter is not returned if the subjob is successful.
@@ -21532,6 +21558,8 @@ class GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList(TeaModel):
             return _map
 
         result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
         if self.error_message is not None:
@@ -21550,6 +21578,8 @@ class GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
         if m.get('ErrorMessage') is not None:

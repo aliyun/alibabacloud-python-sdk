@@ -1,3 +1,7 @@
+2025-04-21 Version: 5.0.4
+- Update API GetBatchMediaProducingJob: add response parameters Body.EditingBatchJob.SubJobList.$.Duration.
+
+
 2025-04-08 Version: 5.0.3
 - Update API DescribeNotifyConfig: add response parameters Body.AudioOssPath.
 - Update API DescribeNotifyConfig: add response parameters Body.EnableAudioRecording.
