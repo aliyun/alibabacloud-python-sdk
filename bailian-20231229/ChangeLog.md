@@ -1,3 +1,7 @@
+2025-04-21 Version: 2.0.4
+- Update API CreateIndex: add request parameters chunkMode.
+
+
 2025-04-10 Version: 2.0.3
 - Update API Retrieve: add request parameters QueryHistory.
 

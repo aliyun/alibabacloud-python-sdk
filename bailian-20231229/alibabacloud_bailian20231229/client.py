@@ -79,16 +79,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.AddCategoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.AddCategoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.AddCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_category_with_options_async(
         self,
@@ -128,16 +122,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.AddCategoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.AddCategoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.AddCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_category(
         self,
@@ -221,16 +209,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.AddFileResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.AddFileResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.AddFileResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_file_with_options_async(
         self,
@@ -284,16 +266,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.AddFileResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.AddFileResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.AddFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_file(
         self,
@@ -385,16 +361,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.ApplyFileUploadLeaseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.ApplyFileUploadLeaseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.ApplyFileUploadLeaseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def apply_file_upload_lease_with_options_async(
         self,
@@ -444,16 +414,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.ApplyFileUploadLeaseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.ApplyFileUploadLeaseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.ApplyFileUploadLeaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def apply_file_upload_lease(
         self,
@@ -545,16 +509,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.CreateAndPulishAgentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.CreateAndPulishAgentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.CreateAndPulishAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_and_pulish_agent_with_options_async(
         self,
@@ -604,16 +562,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.CreateAndPulishAgentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.CreateAndPulishAgentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.CreateAndPulishAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_and_pulish_agent(
         self,
@@ -712,6 +664,8 @@ class Client(OpenApiClient):
             query['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.structure_type):
             query['StructureType'] = request.structure_type
+        if not UtilClient.is_unset(request.chunk_mode):
+            query['chunkMode'] = request.chunk_mode
         if not UtilClient.is_unset(request.enable_headers):
             query['enableHeaders'] = request.enable_headers
         if not UtilClient.is_unset(request.meta_extract_columns_shrink):
@@ -731,16 +685,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.CreateIndexResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.CreateIndexResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.CreateIndexResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_index_with_options_async(
         self,
@@ -809,6 +757,8 @@ class Client(OpenApiClient):
             query['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.structure_type):
             query['StructureType'] = request.structure_type
+        if not UtilClient.is_unset(request.chunk_mode):
+            query['chunkMode'] = request.chunk_mode
         if not UtilClient.is_unset(request.enable_headers):
             query['enableHeaders'] = request.enable_headers
         if not UtilClient.is_unset(request.meta_extract_columns_shrink):
@@ -828,16 +778,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.CreateIndexResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.CreateIndexResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.CreateIndexResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_index(
         self,
@@ -911,16 +855,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.CreateMemoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.CreateMemoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.CreateMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_memory_with_options_async(
         self,
@@ -956,16 +894,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.CreateMemoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.CreateMemoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.CreateMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_memory(
         self,
@@ -1032,16 +964,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.CreateMemoryNodeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.CreateMemoryNodeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.CreateMemoryNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_memory_node_with_options_async(
         self,
@@ -1078,16 +1004,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.CreateMemoryNodeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.CreateMemoryNodeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.CreateMemoryNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_memory_node(
         self,
@@ -1157,16 +1077,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.CreatePromptTemplateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.CreatePromptTemplateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.CreatePromptTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_prompt_template_with_options_async(
         self,
@@ -1204,16 +1118,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.CreatePromptTemplateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.CreatePromptTemplateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.CreatePromptTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_prompt_template(
         self,
@@ -1273,16 +1181,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteAgentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteAgentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_agent_with_options_async(
         self,
@@ -1312,16 +1214,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteAgentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteAgentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_agent(
         self,
@@ -1379,16 +1275,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteCategoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteCategoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_category_with_options_async(
         self,
@@ -1418,16 +1308,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteCategoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteCategoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_category(
         self,
@@ -1485,16 +1369,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteFileResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteFileResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteFileResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_file_with_options_async(
         self,
@@ -1524,16 +1402,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteFileResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteFileResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_file(
         self,
@@ -1603,16 +1475,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteIndexResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteIndexResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteIndexResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_index_with_options_async(
         self,
@@ -1654,16 +1520,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteIndexResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteIndexResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteIndexResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_index(
         self,
@@ -1753,16 +1613,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteIndexDocumentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteIndexDocumentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteIndexDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_index_document_with_options_async(
         self,
@@ -1810,16 +1664,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteIndexDocumentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteIndexDocumentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteIndexDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_index_document(
         self,
@@ -1891,16 +1739,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteMemoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteMemoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_memory_with_options_async(
         self,
@@ -1930,16 +1772,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteMemoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteMemoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_memory(
         self,
@@ -1998,16 +1834,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteMemoryNodeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteMemoryNodeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteMemoryNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_memory_node_with_options_async(
         self,
@@ -2038,16 +1868,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteMemoryNodeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.DeleteMemoryNodeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteMemoryNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_memory_node(
         self,
@@ -2107,16 +1931,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.DeletePromptTemplateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.DeletePromptTemplateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeletePromptTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_prompt_template_with_options_async(
         self,
@@ -2146,16 +1964,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.DeletePromptTemplateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.DeletePromptTemplateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeletePromptTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_prompt_template(
         self,
@@ -2218,16 +2030,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.DescribeFileResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.DescribeFileResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.DescribeFileResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_file_with_options_async(
         self,
@@ -2262,16 +2068,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.DescribeFileResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.DescribeFileResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.DescribeFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_file(
         self,
@@ -2355,16 +2155,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.GetIndexJobStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.GetIndexJobStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetIndexJobStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_index_job_status_with_options_async(
         self,
@@ -2410,16 +2204,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.GetIndexJobStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.GetIndexJobStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetIndexJobStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_index_job_status(
         self,
@@ -2487,16 +2275,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.GetMemoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.GetMemoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_memory_with_options_async(
         self,
@@ -2526,16 +2308,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.GetMemoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.GetMemoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_memory(
         self,
@@ -2594,16 +2370,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.GetMemoryNodeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.GetMemoryNodeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetMemoryNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_memory_node_with_options_async(
         self,
@@ -2634,16 +2404,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.GetMemoryNodeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.GetMemoryNodeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetMemoryNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_memory_node(
         self,
@@ -2703,16 +2467,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.GetPromptTemplateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.GetPromptTemplateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetPromptTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_prompt_template_with_options_async(
         self,
@@ -2742,16 +2500,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.GetPromptTemplateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.GetPromptTemplateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetPromptTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_prompt_template(
         self,
@@ -2809,16 +2561,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.GetPublishedAgentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.GetPublishedAgentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetPublishedAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_published_agent_with_options_async(
         self,
@@ -2848,16 +2594,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.GetPublishedAgentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.GetPublishedAgentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetPublishedAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_published_agent(
         self,
@@ -2927,16 +2667,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.ListCategoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.ListCategoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_category_with_options_async(
         self,
@@ -2978,16 +2712,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.ListCategoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.ListCategoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_category(
         self,
@@ -3066,16 +2794,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.ListChunksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.ListChunksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListChunksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_chunks_with_options_async(
         self,
@@ -3124,16 +2846,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.ListChunksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.ListChunksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListChunksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_chunks(
         self,
@@ -3211,16 +2927,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.ListFileResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.ListFileResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListFileResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_file_with_options_async(
         self,
@@ -3262,16 +2972,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.ListFileResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.ListFileResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_file(
         self,
@@ -3348,16 +3052,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.ListIndexDocumentsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.ListIndexDocumentsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListIndexDocumentsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_index_documents_with_options_async(
         self,
@@ -3404,16 +3102,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.ListIndexDocumentsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.ListIndexDocumentsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListIndexDocumentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_index_documents(
         self,
@@ -3491,16 +3183,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.ListIndicesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.ListIndicesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListIndicesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_indices_with_options_async(
         self,
@@ -3542,16 +3228,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.ListIndicesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.ListIndicesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListIndicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_indices(
         self,
@@ -3623,16 +3303,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.ListMemoriesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.ListMemoriesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListMemoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_memories_with_options_async(
         self,
@@ -3670,16 +3344,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.ListMemoriesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.ListMemoriesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListMemoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_memories(
         self,
@@ -3748,16 +3416,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.ListMemoryNodesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.ListMemoryNodesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListMemoryNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_memory_nodes_with_options_async(
         self,
@@ -3796,16 +3458,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.ListMemoryNodesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.ListMemoryNodesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListMemoryNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_memory_nodes(
         self,
@@ -3879,16 +3535,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.ListPromptTemplatesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.ListPromptTemplatesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListPromptTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_prompt_templates_with_options_async(
         self,
@@ -3930,16 +3580,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.ListPromptTemplatesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.ListPromptTemplatesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListPromptTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_prompt_templates(
         self,
@@ -4007,16 +3651,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.ListPublishedAgentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.ListPublishedAgentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListPublishedAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_published_agent_with_options_async(
         self,
@@ -4054,16 +3692,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.ListPublishedAgentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.ListPublishedAgentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListPublishedAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_published_agent(
         self,
@@ -4171,16 +3803,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.RetrieveResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.RetrieveResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.RetrieveResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def retrieve_with_options_async(
         self,
@@ -4258,16 +3884,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.RetrieveResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.RetrieveResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.RetrieveResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def retrieve(
         self,
@@ -4358,16 +3978,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.SubmitIndexAddDocumentsJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.SubmitIndexAddDocumentsJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.SubmitIndexAddDocumentsJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def submit_index_add_documents_job_with_options_async(
         self,
@@ -4420,16 +4034,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.SubmitIndexAddDocumentsJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.SubmitIndexAddDocumentsJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.SubmitIndexAddDocumentsJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def submit_index_add_documents_job(
         self,
@@ -4510,16 +4118,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.SubmitIndexJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.SubmitIndexJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.SubmitIndexJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def submit_index_job_with_options_async(
         self,
@@ -4560,16 +4162,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.SubmitIndexJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.SubmitIndexJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.SubmitIndexJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def submit_index_job(
         self,
@@ -4660,16 +4256,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdateAndPublishAgentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdateAndPublishAgentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateAndPublishAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_and_publish_agent_with_options_async(
         self,
@@ -4720,16 +4310,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdateAndPublishAgentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdateAndPublishAgentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateAndPublishAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_and_publish_agent(
         self,
@@ -4812,16 +4396,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdateAndPublishAgentSelectiveResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdateAndPublishAgentSelectiveResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateAndPublishAgentSelectiveResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_and_publish_agent_selective_with_options_async(
         self,
@@ -4872,16 +4450,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdateAndPublishAgentSelectiveResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdateAndPublishAgentSelectiveResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateAndPublishAgentSelectiveResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_and_publish_agent_selective(
         self,
@@ -4954,16 +4526,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdateFileTagResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdateFileTagResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateFileTagResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_file_tag_with_options_async(
         self,
@@ -5004,16 +4570,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdateFileTagResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdateFileTagResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateFileTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_file_tag(
         self,
@@ -5082,16 +4642,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdateMemoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdateMemoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_memory_with_options_async(
         self,
@@ -5128,16 +4682,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdateMemoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdateMemoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_memory(
         self,
@@ -5207,16 +4755,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdateMemoryNodeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdateMemoryNodeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateMemoryNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_memory_node_with_options_async(
         self,
@@ -5254,16 +4796,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdateMemoryNodeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdateMemoryNodeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateMemoryNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_memory_node(
         self,
@@ -5336,16 +4872,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdatePromptTemplateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdatePromptTemplateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdatePromptTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_prompt_template_with_options_async(
         self,
@@ -5384,16 +4914,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdatePromptTemplateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                bailian_20231229_models.UpdatePromptTemplateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdatePromptTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_prompt_template(
         self,

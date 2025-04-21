@@ -1561,6 +1561,7 @@ class CreateIndexRequest(TeaModel):
         sink_type: str = None,
         source_type: str = None,
         structure_type: str = None,
+        chunk_mode: str = None,
         enable_headers: bool = None,
         meta_extract_columns: List[CreateIndexRequestMetaExtractColumns] = None,
     ):
@@ -1654,6 +1655,7 @@ class CreateIndexRequest(TeaModel):
         # 
         # This parameter is required.
         self.structure_type = structure_type
+        self.chunk_mode = chunk_mode
         self.enable_headers = enable_headers
         self.meta_extract_columns = meta_extract_columns
 
@@ -1711,6 +1713,8 @@ class CreateIndexRequest(TeaModel):
             result['SourceType'] = self.source_type
         if self.structure_type is not None:
             result['StructureType'] = self.structure_type
+        if self.chunk_mode is not None:
+            result['chunkMode'] = self.chunk_mode
         if self.enable_headers is not None:
             result['enableHeaders'] = self.enable_headers
         result['metaExtractColumns'] = []
@@ -1759,6 +1763,8 @@ class CreateIndexRequest(TeaModel):
             self.source_type = m.get('SourceType')
         if m.get('StructureType') is not None:
             self.structure_type = m.get('StructureType')
+        if m.get('chunkMode') is not None:
+            self.chunk_mode = m.get('chunkMode')
         if m.get('enableHeaders') is not None:
             self.enable_headers = m.get('enableHeaders')
         self.meta_extract_columns = []
@@ -1789,6 +1795,7 @@ class CreateIndexShrinkRequest(TeaModel):
         sink_type: str = None,
         source_type: str = None,
         structure_type: str = None,
+        chunk_mode: str = None,
         enable_headers: bool = None,
         meta_extract_columns_shrink: str = None,
     ):
@@ -1882,6 +1889,7 @@ class CreateIndexShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.structure_type = structure_type
+        self.chunk_mode = chunk_mode
         self.enable_headers = enable_headers
         self.meta_extract_columns_shrink = meta_extract_columns_shrink
 
@@ -1928,6 +1936,8 @@ class CreateIndexShrinkRequest(TeaModel):
             result['SourceType'] = self.source_type
         if self.structure_type is not None:
             result['StructureType'] = self.structure_type
+        if self.chunk_mode is not None:
+            result['chunkMode'] = self.chunk_mode
         if self.enable_headers is not None:
             result['enableHeaders'] = self.enable_headers
         if self.meta_extract_columns_shrink is not None:
@@ -1970,6 +1980,8 @@ class CreateIndexShrinkRequest(TeaModel):
             self.source_type = m.get('SourceType')
         if m.get('StructureType') is not None:
             self.structure_type = m.get('StructureType')
+        if m.get('chunkMode') is not None:
+            self.chunk_mode = m.get('chunkMode')
         if m.get('enableHeaders') is not None:
             self.enable_headers = m.get('enableHeaders')
         if m.get('metaExtractColumns') is not None:
