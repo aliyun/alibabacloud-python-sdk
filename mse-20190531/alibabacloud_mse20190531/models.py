@@ -13606,7 +13606,6 @@ class CreatePluginConfigRequest(TeaModel):
     ):
         # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
         self.accept_language = accept_language
-        # The plug-in configuration. The configuration content of the WebAssembly (Wasm) plug-in is in the YAML format. The configuration content of the Lua plug-in is Lua code.
         self.config = config
         # The application scope of the plug-in. Valid values:
         # 
@@ -13688,7 +13687,6 @@ class CreatePluginConfigShrinkRequest(TeaModel):
     ):
         # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
         self.accept_language = accept_language
-        # The plug-in configuration. The configuration content of the WebAssembly (Wasm) plug-in is in the YAML format. The configuration content of the Lua plug-in is Lua code.
         self.config = config
         # The application scope of the plug-in. Valid values:
         # 
@@ -71990,7 +71988,6 @@ class UpdatePluginConfigRequest(TeaModel):
         # 
         # zh: Chinese en: English
         self.accept_language = accept_language
-        # The plug-in configuration. Configurations of WebAssembly plug-ins are in the YAML format, and configurations of Lua plug-ins are in the Lua code.
         self.config = config
         # The application scope of the plug-in.
         # 
@@ -72093,7 +72090,6 @@ class UpdatePluginConfigShrinkRequest(TeaModel):
         # 
         # zh: Chinese en: English
         self.accept_language = accept_language
-        # The plug-in configuration. Configurations of WebAssembly plug-ins are in the YAML format, and configurations of Lua plug-ins are in the Lua code.
         self.config = config
         # The application scope of the plug-in.
         # 

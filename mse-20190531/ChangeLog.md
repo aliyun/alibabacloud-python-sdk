@@ -1,3 +1,6 @@
+2025-04-21 Version: 6.18.5
+- Generated python 2019-05-31 for mse.
+
 2025-04-15 Version: 6.18.4
 - Update API GetGovernanceKubernetesCluster: add response parameters Body.Data.PilotVersion.
 - Update API GetGovernanceKubernetesCluster: add response parameters Body.Data.VersionLifeCycle.

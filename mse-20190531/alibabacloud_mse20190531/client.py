@@ -5242,8 +5242,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.config):
-            query['Config'] = request.config
         if not UtilClient.is_unset(request.config_level):
             query['ConfigLevel'] = request.config_level
         if not UtilClient.is_unset(request.enable):
@@ -5254,8 +5252,12 @@ class Client(OpenApiClient):
             query['PluginId'] = request.plugin_id
         if not UtilClient.is_unset(request.resource_id_list_shrink):
             query['ResourceIdList'] = request.resource_id_list_shrink
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['Config'] = request.config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreatePluginConfig',
@@ -5293,8 +5295,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.config):
-            query['Config'] = request.config
         if not UtilClient.is_unset(request.config_level):
             query['ConfigLevel'] = request.config_level
         if not UtilClient.is_unset(request.enable):
@@ -5305,8 +5305,12 @@ class Client(OpenApiClient):
             query['PluginId'] = request.plugin_id
         if not UtilClient.is_unset(request.resource_id_list_shrink):
             query['ResourceIdList'] = request.resource_id_list_shrink
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['Config'] = request.config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreatePluginConfig',
@@ -27942,8 +27946,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.config):
-            query['Config'] = request.config
         if not UtilClient.is_unset(request.config_level):
             query['ConfigLevel'] = request.config_level
         if not UtilClient.is_unset(request.enable):
@@ -27962,8 +27964,12 @@ class Client(OpenApiClient):
             query['PluginId'] = request.plugin_id
         if not UtilClient.is_unset(request.resource_id_list_shrink):
             query['ResourceIdList'] = request.resource_id_list_shrink
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['Config'] = request.config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdatePluginConfig',
@@ -28001,8 +28007,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.config):
-            query['Config'] = request.config
         if not UtilClient.is_unset(request.config_level):
             query['ConfigLevel'] = request.config_level
         if not UtilClient.is_unset(request.enable):
@@ -28021,8 +28025,12 @@ class Client(OpenApiClient):
             query['PluginId'] = request.plugin_id
         if not UtilClient.is_unset(request.resource_id_list_shrink):
             query['ResourceIdList'] = request.resource_id_list_shrink
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['Config'] = request.config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdatePluginConfig',
