@@ -1,3 +1,6 @@
+2025-04-21 Version: 1.0.3
+- Generated python 2025-02-27 for Agency.
+
 2025-04-17 Version: 1.0.2
 - Update API GetBillDetailFileList: add request parameters OssAccessKeyId.
 - Update API GetBillDetailFileList: add request parameters OssAccessKeySecret.
