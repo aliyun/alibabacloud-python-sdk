@@ -1,3 +1,6 @@
+2025-04-21 Version: 3.0.8
+- Generated python 2020-03-20 for videorecog.
+
 2023-03-14 Version: 3.0.7
 - Update SplitVideoParts.
 

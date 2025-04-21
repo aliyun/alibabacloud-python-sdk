@@ -9,6 +9,7 @@ class DetectVideoShotRequest(TeaModel):
         self,
         video_url: str = None,
     ):
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -36,6 +37,7 @@ class DetectVideoShotAdvanceRequest(TeaModel):
         self,
         video_url_object: BinaryIO = None,
     ):
+        # This parameter is required.
         self.video_url_object = video_url_object
 
     def validate(self):
@@ -139,9 +141,6 @@ class DetectVideoShotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -178,6 +177,7 @@ class EvaluateVideoQualityRequest(TeaModel):
         video_url: str = None,
     ):
         self.mode = mode
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -211,6 +211,7 @@ class EvaluateVideoQualityAdvanceRequest(TeaModel):
         video_url_object: BinaryIO = None,
     ):
         self.mode = mode
+        # This parameter is required.
         self.video_url_object = video_url_object
 
     def validate(self):
@@ -400,9 +401,6 @@ class EvaluateVideoQualityResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -438,7 +436,9 @@ class GenerateVideoCoverRequest(TeaModel):
         is_gif: bool = None,
         video_url: str = None,
     ):
+        # This parameter is required.
         self.is_gif = is_gif
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -471,7 +471,9 @@ class GenerateVideoCoverAdvanceRequest(TeaModel):
         is_gif: bool = None,
         video_url_object: BinaryIO = None,
     ):
+        # This parameter is required.
         self.is_gif = is_gif
+        # This parameter is required.
         self.video_url_object = video_url_object
 
     def validate(self):
@@ -619,9 +621,6 @@ class GenerateVideoCoverResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -656,6 +655,7 @@ class GetAsyncJobResultRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -776,9 +776,6 @@ class GetAsyncJobResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -842,6 +839,7 @@ class RecognizeVideoCastCrewListRequest(TeaModel):
         video_url: str = None,
     ):
         self.params = params
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -910,6 +908,7 @@ class RecognizeVideoCastCrewListAdvanceRequest(TeaModel):
         video_url_object: BinaryIO = None,
     ):
         self.params = params
+        # This parameter is required.
         self.video_url_object = video_url_object
 
     def validate(self):
@@ -951,6 +950,7 @@ class RecognizeVideoCastCrewListShrinkRequest(TeaModel):
         video_url: str = None,
     ):
         self.params_shrink = params_shrink
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -1520,9 +1520,6 @@ class RecognizeVideoCastCrewListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1563,6 +1560,7 @@ class SplitVideoPartsRequest(TeaModel):
         self.max_time = max_time
         self.min_time = min_time
         self.template = template
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -1608,6 +1606,7 @@ class SplitVideoPartsAdvanceRequest(TeaModel):
         self.max_time = max_time
         self.min_time = min_time
         self.template = template
+        # This parameter is required.
         self.video_url_object = video_url_object
 
     def validate(self):
@@ -1835,9 +1834,6 @@ class SplitVideoPartsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1872,6 +1868,7 @@ class UnderstandVideoContentRequest(TeaModel):
         self,
         video_url: str = None,
     ):
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -1899,6 +1896,7 @@ class UnderstandVideoContentAdvanceRequest(TeaModel):
         self,
         video_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.video_urlobject = video_urlobject
 
     def validate(self):
@@ -2054,9 +2052,6 @@ class UnderstandVideoContentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
