@@ -9466,13 +9466,17 @@ class ListChatappTemplateRequest(TeaModel):
     def __init__(
         self,
         audit_status: str = None,
+        category: str = None,
         code: str = None,
         cust_space_id: str = None,
         cust_waba_id: str = None,
         isv_code: str = None,
         language: str = None,
         name: str = None,
+        owner_id: int = None,
         page: ListChatappTemplateRequestPage = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
         template_type: str = None,
     ):
         # The review status of the message template. Valid values:
@@ -9482,6 +9486,7 @@ class ListChatappTemplateRequest(TeaModel):
         # *   **auditing**: The message template is being reviewed.
         # *   **unaudit**: The review is suspended.
         self.audit_status = audit_status
+        self.category = category
         # Template encoding.
         self.code = code
         # The space ID of the user under the ISV account.
@@ -9496,8 +9501,11 @@ class ListChatappTemplateRequest(TeaModel):
         self.language = language
         # The name of the message template.
         self.name = name
+        self.owner_id = owner_id
         # The pagination settings.
         self.page = page
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
         # The type of the message template.
         # 
         # *   **WHATSAPP**\
@@ -9517,6 +9525,8 @@ class ListChatappTemplateRequest(TeaModel):
         result = dict()
         if self.audit_status is not None:
             result['AuditStatus'] = self.audit_status
+        if self.category is not None:
+            result['Category'] = self.category
         if self.code is not None:
             result['Code'] = self.code
         if self.cust_space_id is not None:
@@ -9529,8 +9539,14 @@ class ListChatappTemplateRequest(TeaModel):
             result['Language'] = self.language
         if self.name is not None:
             result['Name'] = self.name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.page is not None:
             result['Page'] = self.page.to_map()
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         if self.template_type is not None:
             result['TemplateType'] = self.template_type
         return result
@@ -9539,6 +9555,8 @@ class ListChatappTemplateRequest(TeaModel):
         m = m or dict()
         if m.get('AuditStatus') is not None:
             self.audit_status = m.get('AuditStatus')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('CustSpaceId') is not None:
@@ -9551,9 +9569,15 @@ class ListChatappTemplateRequest(TeaModel):
             self.language = m.get('Language')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('Page') is not None:
             temp_model = ListChatappTemplateRequestPage()
             self.page = temp_model.from_map(m['Page'])
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('TemplateType') is not None:
             self.template_type = m.get('TemplateType')
         return self
@@ -9563,13 +9587,17 @@ class ListChatappTemplateShrinkRequest(TeaModel):
     def __init__(
         self,
         audit_status: str = None,
+        category: str = None,
         code: str = None,
         cust_space_id: str = None,
         cust_waba_id: str = None,
         isv_code: str = None,
         language: str = None,
         name: str = None,
+        owner_id: int = None,
         page_shrink: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
         template_type: str = None,
     ):
         # The review status of the message template. Valid values:
@@ -9579,6 +9607,7 @@ class ListChatappTemplateShrinkRequest(TeaModel):
         # *   **auditing**: The message template is being reviewed.
         # *   **unaudit**: The review is suspended.
         self.audit_status = audit_status
+        self.category = category
         # Template encoding.
         self.code = code
         # The space ID of the user under the ISV account.
@@ -9593,8 +9622,11 @@ class ListChatappTemplateShrinkRequest(TeaModel):
         self.language = language
         # The name of the message template.
         self.name = name
+        self.owner_id = owner_id
         # The pagination settings.
         self.page_shrink = page_shrink
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
         # The type of the message template.
         # 
         # *   **WHATSAPP**\
@@ -9613,6 +9645,8 @@ class ListChatappTemplateShrinkRequest(TeaModel):
         result = dict()
         if self.audit_status is not None:
             result['AuditStatus'] = self.audit_status
+        if self.category is not None:
+            result['Category'] = self.category
         if self.code is not None:
             result['Code'] = self.code
         if self.cust_space_id is not None:
@@ -9625,8 +9659,14 @@ class ListChatappTemplateShrinkRequest(TeaModel):
             result['Language'] = self.language
         if self.name is not None:
             result['Name'] = self.name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.page_shrink is not None:
             result['Page'] = self.page_shrink
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         if self.template_type is not None:
             result['TemplateType'] = self.template_type
         return result
@@ -9635,6 +9675,8 @@ class ListChatappTemplateShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AuditStatus') is not None:
             self.audit_status = m.get('AuditStatus')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('CustSpaceId') is not None:
@@ -9647,8 +9689,14 @@ class ListChatappTemplateShrinkRequest(TeaModel):
             self.language = m.get('Language')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('Page') is not None:
             self.page_shrink = m.get('Page')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('TemplateType') is not None:
             self.template_type = m.get('TemplateType')
         return self
@@ -9760,6 +9808,7 @@ class ListChatappTemplateResponseBody(TeaModel):
         list_template: List[ListChatappTemplateResponseBodyListTemplate] = None,
         message: str = None,
         request_id: str = None,
+        success: bool = None,
         total: int = None,
     ):
         # The details about the access denial.
@@ -9775,6 +9824,7 @@ class ListChatappTemplateResponseBody(TeaModel):
         self.message = message
         # The ID of the request.
         self.request_id = request_id
+        self.success = success
         # The total number of entries returned.
         self.total = total
 
@@ -9802,6 +9852,8 @@ class ListChatappTemplateResponseBody(TeaModel):
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         if self.total is not None:
             result['Total'] = self.total
         return result
@@ -9821,6 +9873,8 @@ class ListChatappTemplateResponseBody(TeaModel):
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('Total') is not None:
             self.total = m.get('Total')
         return self
@@ -13569,7 +13623,7 @@ class QueryWabaBusinessInfoResponse(TeaModel):
 class SendChatappMassMessageRequestSenderListFlowAction(TeaModel):
     def __init__(
         self,
-        flow_action_data: Dict[str, str] = None,
+        flow_action_data: Dict[str, Any] = None,
         flow_token: str = None,
     ):
         # The default parameter of the Flow.
@@ -14209,7 +14263,7 @@ class SendChatappMassMessageResponse(TeaModel):
 class SendChatappMessageRequestFlowAction(TeaModel):
     def __init__(
         self,
-        flow_action_data: Dict[str, str] = None,
+        flow_action_data: Dict[str, Any] = None,
         flow_token: str = None,
     ):
         # The default parameter of the Flow.

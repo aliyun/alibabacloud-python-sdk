@@ -1,3 +1,13 @@
+2025-04-21 Version: 2.0.0
+- Update API ListChatappTemplate: add request parameters Category.
+- Update API ListChatappTemplate: add request parameters OwnerId.
+- Update API ListChatappTemplate: add request parameters ResourceOwnerAccount.
+- Update API ListChatappTemplate: add request parameters ResourceOwnerId.
+- Update API ListChatappTemplate: add response parameters Body.Success.
+- Update API SendChatappMassMessage: update request parameters SenderList.$.FlowAction.FlowActionData' type has changed.
+- Update API SendChatappMessage: update request parameters FlowAction.FlowActionData' type has changed.
+
+
 2025-04-07 Version: 1.6.1
 - Update API ChatappSyncPhoneNumber: add response parameters Body.PhoneNumbers.$.IsOfficial.
 - Update API QueryChatappPhoneNumbers: add request parameters OwnerId.
