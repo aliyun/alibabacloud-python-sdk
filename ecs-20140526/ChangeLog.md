@@ -1,3 +1,12 @@
+2025-04-21 Version: 7.0.1
+- Update API CreatePrefixList: add request parameters ResourceGroupId.
+- Update API CreatePrefixList: add request parameters Tag.
+- Update API DescribePrefixLists: add request parameters ResourceGroupId.
+- Update API DescribePrefixLists: add request parameters Tag.
+- Update API DescribePrefixLists: add response parameters Body.PrefixLists.$.ResourceGroupId.
+- Update API DescribePrefixLists: add response parameters Body.PrefixLists.$.Tags.
+
+
 2025-04-16 Version: 7.0.0
 - Support API CreatePortRangeList.
 - Support API DeletePortRangeList.

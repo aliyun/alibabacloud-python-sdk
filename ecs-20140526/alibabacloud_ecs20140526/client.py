@@ -9908,10 +9908,14 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9973,10 +9977,14 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -28884,10 +28892,14 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -28941,10 +28953,14 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -39020,7 +39036,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyAutoSnapshotPolicyExResponse:
         """
-        @summary Modifies an automatic snapshot policy.
+        @summary Modifies an automatic snapshot policy. For example, you can change the points in time of the day at which to create automatic snapshots, days of the week on which to create automatic snapshots, and retention period of automatic snapshots for the automatic snapshot policy.
         
         @description Before you call this operation, take note of the following items:
         You cannot modify system policies.
@@ -39084,7 +39100,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyAutoSnapshotPolicyExResponse:
         """
-        @summary Modifies an automatic snapshot policy.
+        @summary Modifies an automatic snapshot policy. For example, you can change the points in time of the day at which to create automatic snapshots, days of the week on which to create automatic snapshots, and retention period of automatic snapshots for the automatic snapshot policy.
         
         @description Before you call this operation, take note of the following items:
         You cannot modify system policies.
@@ -39147,7 +39163,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyAutoSnapshotPolicyExRequest,
     ) -> ecs_20140526_models.ModifyAutoSnapshotPolicyExResponse:
         """
-        @summary Modifies an automatic snapshot policy.
+        @summary Modifies an automatic snapshot policy. For example, you can change the points in time of the day at which to create automatic snapshots, days of the week on which to create automatic snapshots, and retention period of automatic snapshots for the automatic snapshot policy.
         
         @description Before you call this operation, take note of the following items:
         You cannot modify system policies.
@@ -39165,7 +39181,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyAutoSnapshotPolicyExRequest,
     ) -> ecs_20140526_models.ModifyAutoSnapshotPolicyExResponse:
         """
-        @summary Modifies an automatic snapshot policy.
+        @summary Modifies an automatic snapshot policy. For example, you can change the points in time of the day at which to create automatic snapshots, days of the week on which to create automatic snapshots, and retention period of automatic snapshots for the automatic snapshot policy.
         
         @description Before you call this operation, take note of the following items:
         You cannot modify system policies.
@@ -42580,16 +42596,15 @@ class Client(OpenApiClient):
         
         @description Before you call this operation, read [Share a custom image](https://help.aliyun.com/document_detail/25463.html).
         When you call this operation, take note of the following sharing rules:
-        You can share only the custom images that are created in your Alibaba Cloud to other Alibaba Cloud accounts.
-        You can share a custom image to up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the system processes only the previous 10 account IDs. The excess account IDs are ignored.
-        You can share a custom image to up to 50 Alibaba Cloud accounts.
-        If an Elastic Compute Service (ECS) instance was created ([RunInstances](https://help.aliyun.com/document_detail/63440.html)) from a shared image, you cannot re-initialize the instance ([ReInitDisk](https://help.aliyun.com/document_detail/25519.html)) after the image owner unshares or deletes the image ([DeleteImage](https://help.aliyun.com/document_detail/25537.html)).
+        **Sharing limits**: You can share only the custom images created in your Alibaba Cloud account to other Alibaba Cloud accounts. A custom image can be shared to up to 50 Alibaba Cloud accounts. You can share a custom image to up to 10 Alibaba Cloud accounts at a time.
+        **Impacts on an instance**: If an instance was created ([RunInstances](https://help.aliyun.com/document_detail/63440.html)) from a shared image, you cannot re-initialize the system disk of the instance ([ReInitDisk](https://help.aliyun.com/document_detail/25519.html)) after the image owner unshares or deletes the image ([DeleteImage](https://help.aliyun.com/document_detail/25537.html)).
+        >  You can share images encrypted by using customer master keys (CMKs) but cannot share images encrypted by using service keys. When you share an image encrypted by using a service key, an error is reported. If you want to share an image encrypted by using a service key, call the CopyImage operation to copy the image and change the encryption key of the image copy to a CMK.
         When you publish or unpublish a community image, take note of the following items:
-        Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](https://help.aliyun.com/document_detail/208370.html).
-        You cannot publish encrypted images as community images.
-        Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
-        You cannot share, export, or copy community images.
-        After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
+        **Responsibilities and agreement**: Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](https://help.aliyun.com/document_detail/208370.html).
+        **Encryption limits**: You cannot publish encrypted images as community images.
+        **Openness**: Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
+        **Feature limits**: You cannot share, export, or copy community images.
+        **Unpublication impacts**: After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
         
         @param request: ModifyImageSharePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -42646,16 +42661,15 @@ class Client(OpenApiClient):
         
         @description Before you call this operation, read [Share a custom image](https://help.aliyun.com/document_detail/25463.html).
         When you call this operation, take note of the following sharing rules:
-        You can share only the custom images that are created in your Alibaba Cloud to other Alibaba Cloud accounts.
-        You can share a custom image to up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the system processes only the previous 10 account IDs. The excess account IDs are ignored.
-        You can share a custom image to up to 50 Alibaba Cloud accounts.
-        If an Elastic Compute Service (ECS) instance was created ([RunInstances](https://help.aliyun.com/document_detail/63440.html)) from a shared image, you cannot re-initialize the instance ([ReInitDisk](https://help.aliyun.com/document_detail/25519.html)) after the image owner unshares or deletes the image ([DeleteImage](https://help.aliyun.com/document_detail/25537.html)).
+        **Sharing limits**: You can share only the custom images created in your Alibaba Cloud account to other Alibaba Cloud accounts. A custom image can be shared to up to 50 Alibaba Cloud accounts. You can share a custom image to up to 10 Alibaba Cloud accounts at a time.
+        **Impacts on an instance**: If an instance was created ([RunInstances](https://help.aliyun.com/document_detail/63440.html)) from a shared image, you cannot re-initialize the system disk of the instance ([ReInitDisk](https://help.aliyun.com/document_detail/25519.html)) after the image owner unshares or deletes the image ([DeleteImage](https://help.aliyun.com/document_detail/25537.html)).
+        >  You can share images encrypted by using customer master keys (CMKs) but cannot share images encrypted by using service keys. When you share an image encrypted by using a service key, an error is reported. If you want to share an image encrypted by using a service key, call the CopyImage operation to copy the image and change the encryption key of the image copy to a CMK.
         When you publish or unpublish a community image, take note of the following items:
-        Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](https://help.aliyun.com/document_detail/208370.html).
-        You cannot publish encrypted images as community images.
-        Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
-        You cannot share, export, or copy community images.
-        After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
+        **Responsibilities and agreement**: Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](https://help.aliyun.com/document_detail/208370.html).
+        **Encryption limits**: You cannot publish encrypted images as community images.
+        **Openness**: Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
+        **Feature limits**: You cannot share, export, or copy community images.
+        **Unpublication impacts**: After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
         
         @param request: ModifyImageSharePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -42711,16 +42725,15 @@ class Client(OpenApiClient):
         
         @description Before you call this operation, read [Share a custom image](https://help.aliyun.com/document_detail/25463.html).
         When you call this operation, take note of the following sharing rules:
-        You can share only the custom images that are created in your Alibaba Cloud to other Alibaba Cloud accounts.
-        You can share a custom image to up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the system processes only the previous 10 account IDs. The excess account IDs are ignored.
-        You can share a custom image to up to 50 Alibaba Cloud accounts.
-        If an Elastic Compute Service (ECS) instance was created ([RunInstances](https://help.aliyun.com/document_detail/63440.html)) from a shared image, you cannot re-initialize the instance ([ReInitDisk](https://help.aliyun.com/document_detail/25519.html)) after the image owner unshares or deletes the image ([DeleteImage](https://help.aliyun.com/document_detail/25537.html)).
+        **Sharing limits**: You can share only the custom images created in your Alibaba Cloud account to other Alibaba Cloud accounts. A custom image can be shared to up to 50 Alibaba Cloud accounts. You can share a custom image to up to 10 Alibaba Cloud accounts at a time.
+        **Impacts on an instance**: If an instance was created ([RunInstances](https://help.aliyun.com/document_detail/63440.html)) from a shared image, you cannot re-initialize the system disk of the instance ([ReInitDisk](https://help.aliyun.com/document_detail/25519.html)) after the image owner unshares or deletes the image ([DeleteImage](https://help.aliyun.com/document_detail/25537.html)).
+        >  You can share images encrypted by using customer master keys (CMKs) but cannot share images encrypted by using service keys. When you share an image encrypted by using a service key, an error is reported. If you want to share an image encrypted by using a service key, call the CopyImage operation to copy the image and change the encryption key of the image copy to a CMK.
         When you publish or unpublish a community image, take note of the following items:
-        Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](https://help.aliyun.com/document_detail/208370.html).
-        You cannot publish encrypted images as community images.
-        Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
-        You cannot share, export, or copy community images.
-        After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
+        **Responsibilities and agreement**: Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](https://help.aliyun.com/document_detail/208370.html).
+        **Encryption limits**: You cannot publish encrypted images as community images.
+        **Openness**: Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
+        **Feature limits**: You cannot share, export, or copy community images.
+        **Unpublication impacts**: After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
         
         @param request: ModifyImageSharePermissionRequest
         @return: ModifyImageSharePermissionResponse
@@ -42737,16 +42750,15 @@ class Client(OpenApiClient):
         
         @description Before you call this operation, read [Share a custom image](https://help.aliyun.com/document_detail/25463.html).
         When you call this operation, take note of the following sharing rules:
-        You can share only the custom images that are created in your Alibaba Cloud to other Alibaba Cloud accounts.
-        You can share a custom image to up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the system processes only the previous 10 account IDs. The excess account IDs are ignored.
-        You can share a custom image to up to 50 Alibaba Cloud accounts.
-        If an Elastic Compute Service (ECS) instance was created ([RunInstances](https://help.aliyun.com/document_detail/63440.html)) from a shared image, you cannot re-initialize the instance ([ReInitDisk](https://help.aliyun.com/document_detail/25519.html)) after the image owner unshares or deletes the image ([DeleteImage](https://help.aliyun.com/document_detail/25537.html)).
+        **Sharing limits**: You can share only the custom images created in your Alibaba Cloud account to other Alibaba Cloud accounts. A custom image can be shared to up to 50 Alibaba Cloud accounts. You can share a custom image to up to 10 Alibaba Cloud accounts at a time.
+        **Impacts on an instance**: If an instance was created ([RunInstances](https://help.aliyun.com/document_detail/63440.html)) from a shared image, you cannot re-initialize the system disk of the instance ([ReInitDisk](https://help.aliyun.com/document_detail/25519.html)) after the image owner unshares or deletes the image ([DeleteImage](https://help.aliyun.com/document_detail/25537.html)).
+        >  You can share images encrypted by using customer master keys (CMKs) but cannot share images encrypted by using service keys. When you share an image encrypted by using a service key, an error is reported. If you want to share an image encrypted by using a service key, call the CopyImage operation to copy the image and change the encryption key of the image copy to a CMK.
         When you publish or unpublish a community image, take note of the following items:
-        Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](https://help.aliyun.com/document_detail/208370.html).
-        You cannot publish encrypted images as community images.
-        Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
-        You cannot share, export, or copy community images.
-        After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
+        **Responsibilities and agreement**: Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](https://help.aliyun.com/document_detail/208370.html).
+        **Encryption limits**: You cannot publish encrypted images as community images.
+        **Openness**: Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
+        **Feature limits**: You cannot share, export, or copy community images.
+        **Unpublication impacts**: After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
         
         @param request: ModifyImageSharePermissionRequest
         @return: ModifyImageSharePermissionResponse
@@ -50338,27 +50350,28 @@ class Client(OpenApiClient):
         """
         @summary Redeploys an Elastic Compute Service (ECS) instance. You can call this operation to redeploy an ECS instance when the instance receives a system event notification.
         
-        @description RedeployInstance is an asynchronous operation. This operation migrates data before it restarts the instance. After the instance is redeployed, the instance enters the `Running` state. If the instance fails to be redeployed, the instance returns to the original physical server and the state before redeployment.
-        Take note of the following items:
-        The instance must be in the Running or Stopped state. After the instance is redeployed, the following changes occur to the status of the instance:
-        If the instance is in the `Running` state before redeployment, the instance enters the `Stopping` state.
-        If the instance is in the `Stopped` state before redeployment, the instance enters the `Starting` state.
+        @description ## Usage notes
+        RedeployInstance is an asynchronous operation. The operation migrates the instance to a healthy physical server and then restarts the instance. After the instance is redeployed, it enters the Running (`Running`) state. If the instance fails to be redeployed, it returns to the original physical server and the state before the redeployment.
+        When you call this operation, take note of the following item:
+        The instance must be in the Running (Running) or Stopped (Stopped) state. After the instance is redeployed, the following changes occur to the status of the instance:
+        If the instance is in the Running (`Running`) state, the instance enters the Stopping (`Stopping`) state.
+        If the instance is in the Stopped (`Stopped`) state, the instance enters the Starting (`Starting`) state.
         If an instance is deployed on a dedicated host, you cannot redeploy the instance.
-        If the `OperationLocks` parameter in the response of the DescribeInstances operation contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons and cannot be redeployed.
-        If you receive notifications about simulated events that are created by calling the CreateSimulatedSystemEvent operation for an instance, you cannot redeploy the instance.
-        If the damaged local disk is isolated but the **SystemMaintenance.RebootAndReInitErrorDisk** event is not sent when you handle a local disk-related system event for an instance, you can still call the RedeployInstance operation to redeploy the instance. The SystemMaintenance.RebootAndReInitErrorDisk event indicates that the instance is restarted and the damaged disks are reinitialized due to system maintenance. For more information, see [System events for ECS instances equipped with local disks](https://help.aliyun.com/document_detail/107693.html).
-        The following table describes the system events that you can handle by calling the RedeployInstance operation. The table also provides possible event status.
+        If `OperationLocks` in the response of the DescribeInstances operation contains `"LockReason": "security"` for an instance, the instance is locked for security reasons and cannot be redeployed.
+        If an instance receives notifications about simulated events that are created by calling the CreateSimulatedSystemEvent operation for the instance, you cannot call this operation to redeploy the instance.
+        When you handle a local disk-related system event for an instance, if the damaged local disk is isolated but the SystemMaintenance.RebootAndReInitErrorDisk (**instance restart and re-initialization of damaged disks due to system maintenance**) event is not sent, you can still call the RedeployInstance operation to redeploy the instance. For more information, see [O&#x26;M scenarios and system events for instances equipped with local disks](https://help.aliyun.com/document_detail/107693.html).
+        The following table describes the types and states of events that you can handle by calling the RedeployInstance operation.
         |System event|Event status|
         |---|---|
         |Instance restart due to system maintenance (SystemMaintenance.Reboot)|Inquiring and Scheduled|
         |Instance redeployment due to system maintenance (SystemMaintenance.Redeploy)|Inquiring and Scheduled|
         |Instance restart and replacement of damaged disks due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk)|Inquiring|
         |Instance restart and re-initialization of damaged disks due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk)|Inquiring|
-        |Instance redeployment due to system errors (SystemFailure.Redeploy)|Inquiring and Scheduled|
-        |For ECS instances that use only local disks: instance restart due to a system error (SystemFailure.Reboot)|Executing|
+        |Instance redeployment due to system errors (SystemFailure.Redeploy)|Inquiring|
+        |For ECS instances that use only local disks: instance restart due to system errors (SystemFailure.Reboot)|Executing|
         |Isolation of damaged disks due to system maintenance (SystemMaintenance.IsolateErrorDisk)|Inquiring|
         |Re-initialization of damaged disks due to system maintenance (SystemMaintenance.ReInitErrorDisk)|Inquiring|
-        *Note**When instances that use local disks are redeployed, the local disks are re-initialized and data on the local disks is cleared.
+        *Note** When the system redeploys instances equipped with local disks, the local disks are re-initialized and data on the local disks is cleared.
         
         @param request: RedeployInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -50405,27 +50418,28 @@ class Client(OpenApiClient):
         """
         @summary Redeploys an Elastic Compute Service (ECS) instance. You can call this operation to redeploy an ECS instance when the instance receives a system event notification.
         
-        @description RedeployInstance is an asynchronous operation. This operation migrates data before it restarts the instance. After the instance is redeployed, the instance enters the `Running` state. If the instance fails to be redeployed, the instance returns to the original physical server and the state before redeployment.
-        Take note of the following items:
-        The instance must be in the Running or Stopped state. After the instance is redeployed, the following changes occur to the status of the instance:
-        If the instance is in the `Running` state before redeployment, the instance enters the `Stopping` state.
-        If the instance is in the `Stopped` state before redeployment, the instance enters the `Starting` state.
+        @description ## Usage notes
+        RedeployInstance is an asynchronous operation. The operation migrates the instance to a healthy physical server and then restarts the instance. After the instance is redeployed, it enters the Running (`Running`) state. If the instance fails to be redeployed, it returns to the original physical server and the state before the redeployment.
+        When you call this operation, take note of the following item:
+        The instance must be in the Running (Running) or Stopped (Stopped) state. After the instance is redeployed, the following changes occur to the status of the instance:
+        If the instance is in the Running (`Running`) state, the instance enters the Stopping (`Stopping`) state.
+        If the instance is in the Stopped (`Stopped`) state, the instance enters the Starting (`Starting`) state.
         If an instance is deployed on a dedicated host, you cannot redeploy the instance.
-        If the `OperationLocks` parameter in the response of the DescribeInstances operation contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons and cannot be redeployed.
-        If you receive notifications about simulated events that are created by calling the CreateSimulatedSystemEvent operation for an instance, you cannot redeploy the instance.
-        If the damaged local disk is isolated but the **SystemMaintenance.RebootAndReInitErrorDisk** event is not sent when you handle a local disk-related system event for an instance, you can still call the RedeployInstance operation to redeploy the instance. The SystemMaintenance.RebootAndReInitErrorDisk event indicates that the instance is restarted and the damaged disks are reinitialized due to system maintenance. For more information, see [System events for ECS instances equipped with local disks](https://help.aliyun.com/document_detail/107693.html).
-        The following table describes the system events that you can handle by calling the RedeployInstance operation. The table also provides possible event status.
+        If `OperationLocks` in the response of the DescribeInstances operation contains `"LockReason": "security"` for an instance, the instance is locked for security reasons and cannot be redeployed.
+        If an instance receives notifications about simulated events that are created by calling the CreateSimulatedSystemEvent operation for the instance, you cannot call this operation to redeploy the instance.
+        When you handle a local disk-related system event for an instance, if the damaged local disk is isolated but the SystemMaintenance.RebootAndReInitErrorDisk (**instance restart and re-initialization of damaged disks due to system maintenance**) event is not sent, you can still call the RedeployInstance operation to redeploy the instance. For more information, see [O&#x26;M scenarios and system events for instances equipped with local disks](https://help.aliyun.com/document_detail/107693.html).
+        The following table describes the types and states of events that you can handle by calling the RedeployInstance operation.
         |System event|Event status|
         |---|---|
         |Instance restart due to system maintenance (SystemMaintenance.Reboot)|Inquiring and Scheduled|
         |Instance redeployment due to system maintenance (SystemMaintenance.Redeploy)|Inquiring and Scheduled|
         |Instance restart and replacement of damaged disks due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk)|Inquiring|
         |Instance restart and re-initialization of damaged disks due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk)|Inquiring|
-        |Instance redeployment due to system errors (SystemFailure.Redeploy)|Inquiring and Scheduled|
-        |For ECS instances that use only local disks: instance restart due to a system error (SystemFailure.Reboot)|Executing|
+        |Instance redeployment due to system errors (SystemFailure.Redeploy)|Inquiring|
+        |For ECS instances that use only local disks: instance restart due to system errors (SystemFailure.Reboot)|Executing|
         |Isolation of damaged disks due to system maintenance (SystemMaintenance.IsolateErrorDisk)|Inquiring|
         |Re-initialization of damaged disks due to system maintenance (SystemMaintenance.ReInitErrorDisk)|Inquiring|
-        *Note**When instances that use local disks are redeployed, the local disks are re-initialized and data on the local disks is cleared.
+        *Note** When the system redeploys instances equipped with local disks, the local disks are re-initialized and data on the local disks is cleared.
         
         @param request: RedeployInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -50471,27 +50485,28 @@ class Client(OpenApiClient):
         """
         @summary Redeploys an Elastic Compute Service (ECS) instance. You can call this operation to redeploy an ECS instance when the instance receives a system event notification.
         
-        @description RedeployInstance is an asynchronous operation. This operation migrates data before it restarts the instance. After the instance is redeployed, the instance enters the `Running` state. If the instance fails to be redeployed, the instance returns to the original physical server and the state before redeployment.
-        Take note of the following items:
-        The instance must be in the Running or Stopped state. After the instance is redeployed, the following changes occur to the status of the instance:
-        If the instance is in the `Running` state before redeployment, the instance enters the `Stopping` state.
-        If the instance is in the `Stopped` state before redeployment, the instance enters the `Starting` state.
+        @description ## Usage notes
+        RedeployInstance is an asynchronous operation. The operation migrates the instance to a healthy physical server and then restarts the instance. After the instance is redeployed, it enters the Running (`Running`) state. If the instance fails to be redeployed, it returns to the original physical server and the state before the redeployment.
+        When you call this operation, take note of the following item:
+        The instance must be in the Running (Running) or Stopped (Stopped) state. After the instance is redeployed, the following changes occur to the status of the instance:
+        If the instance is in the Running (`Running`) state, the instance enters the Stopping (`Stopping`) state.
+        If the instance is in the Stopped (`Stopped`) state, the instance enters the Starting (`Starting`) state.
         If an instance is deployed on a dedicated host, you cannot redeploy the instance.
-        If the `OperationLocks` parameter in the response of the DescribeInstances operation contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons and cannot be redeployed.
-        If you receive notifications about simulated events that are created by calling the CreateSimulatedSystemEvent operation for an instance, you cannot redeploy the instance.
-        If the damaged local disk is isolated but the **SystemMaintenance.RebootAndReInitErrorDisk** event is not sent when you handle a local disk-related system event for an instance, you can still call the RedeployInstance operation to redeploy the instance. The SystemMaintenance.RebootAndReInitErrorDisk event indicates that the instance is restarted and the damaged disks are reinitialized due to system maintenance. For more information, see [System events for ECS instances equipped with local disks](https://help.aliyun.com/document_detail/107693.html).
-        The following table describes the system events that you can handle by calling the RedeployInstance operation. The table also provides possible event status.
+        If `OperationLocks` in the response of the DescribeInstances operation contains `"LockReason": "security"` for an instance, the instance is locked for security reasons and cannot be redeployed.
+        If an instance receives notifications about simulated events that are created by calling the CreateSimulatedSystemEvent operation for the instance, you cannot call this operation to redeploy the instance.
+        When you handle a local disk-related system event for an instance, if the damaged local disk is isolated but the SystemMaintenance.RebootAndReInitErrorDisk (**instance restart and re-initialization of damaged disks due to system maintenance**) event is not sent, you can still call the RedeployInstance operation to redeploy the instance. For more information, see [O&#x26;M scenarios and system events for instances equipped with local disks](https://help.aliyun.com/document_detail/107693.html).
+        The following table describes the types and states of events that you can handle by calling the RedeployInstance operation.
         |System event|Event status|
         |---|---|
         |Instance restart due to system maintenance (SystemMaintenance.Reboot)|Inquiring and Scheduled|
         |Instance redeployment due to system maintenance (SystemMaintenance.Redeploy)|Inquiring and Scheduled|
         |Instance restart and replacement of damaged disks due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk)|Inquiring|
         |Instance restart and re-initialization of damaged disks due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk)|Inquiring|
-        |Instance redeployment due to system errors (SystemFailure.Redeploy)|Inquiring and Scheduled|
-        |For ECS instances that use only local disks: instance restart due to a system error (SystemFailure.Reboot)|Executing|
+        |Instance redeployment due to system errors (SystemFailure.Redeploy)|Inquiring|
+        |For ECS instances that use only local disks: instance restart due to system errors (SystemFailure.Reboot)|Executing|
         |Isolation of damaged disks due to system maintenance (SystemMaintenance.IsolateErrorDisk)|Inquiring|
         |Re-initialization of damaged disks due to system maintenance (SystemMaintenance.ReInitErrorDisk)|Inquiring|
-        *Note**When instances that use local disks are redeployed, the local disks are re-initialized and data on the local disks is cleared.
+        *Note** When the system redeploys instances equipped with local disks, the local disks are re-initialized and data on the local disks is cleared.
         
         @param request: RedeployInstanceRequest
         @return: RedeployInstanceResponse
@@ -50506,27 +50521,28 @@ class Client(OpenApiClient):
         """
         @summary Redeploys an Elastic Compute Service (ECS) instance. You can call this operation to redeploy an ECS instance when the instance receives a system event notification.
         
-        @description RedeployInstance is an asynchronous operation. This operation migrates data before it restarts the instance. After the instance is redeployed, the instance enters the `Running` state. If the instance fails to be redeployed, the instance returns to the original physical server and the state before redeployment.
-        Take note of the following items:
-        The instance must be in the Running or Stopped state. After the instance is redeployed, the following changes occur to the status of the instance:
-        If the instance is in the `Running` state before redeployment, the instance enters the `Stopping` state.
-        If the instance is in the `Stopped` state before redeployment, the instance enters the `Starting` state.
+        @description ## Usage notes
+        RedeployInstance is an asynchronous operation. The operation migrates the instance to a healthy physical server and then restarts the instance. After the instance is redeployed, it enters the Running (`Running`) state. If the instance fails to be redeployed, it returns to the original physical server and the state before the redeployment.
+        When you call this operation, take note of the following item:
+        The instance must be in the Running (Running) or Stopped (Stopped) state. After the instance is redeployed, the following changes occur to the status of the instance:
+        If the instance is in the Running (`Running`) state, the instance enters the Stopping (`Stopping`) state.
+        If the instance is in the Stopped (`Stopped`) state, the instance enters the Starting (`Starting`) state.
         If an instance is deployed on a dedicated host, you cannot redeploy the instance.
-        If the `OperationLocks` parameter in the response of the DescribeInstances operation contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons and cannot be redeployed.
-        If you receive notifications about simulated events that are created by calling the CreateSimulatedSystemEvent operation for an instance, you cannot redeploy the instance.
-        If the damaged local disk is isolated but the **SystemMaintenance.RebootAndReInitErrorDisk** event is not sent when you handle a local disk-related system event for an instance, you can still call the RedeployInstance operation to redeploy the instance. The SystemMaintenance.RebootAndReInitErrorDisk event indicates that the instance is restarted and the damaged disks are reinitialized due to system maintenance. For more information, see [System events for ECS instances equipped with local disks](https://help.aliyun.com/document_detail/107693.html).
-        The following table describes the system events that you can handle by calling the RedeployInstance operation. The table also provides possible event status.
+        If `OperationLocks` in the response of the DescribeInstances operation contains `"LockReason": "security"` for an instance, the instance is locked for security reasons and cannot be redeployed.
+        If an instance receives notifications about simulated events that are created by calling the CreateSimulatedSystemEvent operation for the instance, you cannot call this operation to redeploy the instance.
+        When you handle a local disk-related system event for an instance, if the damaged local disk is isolated but the SystemMaintenance.RebootAndReInitErrorDisk (**instance restart and re-initialization of damaged disks due to system maintenance**) event is not sent, you can still call the RedeployInstance operation to redeploy the instance. For more information, see [O&#x26;M scenarios and system events for instances equipped with local disks](https://help.aliyun.com/document_detail/107693.html).
+        The following table describes the types and states of events that you can handle by calling the RedeployInstance operation.
         |System event|Event status|
         |---|---|
         |Instance restart due to system maintenance (SystemMaintenance.Reboot)|Inquiring and Scheduled|
         |Instance redeployment due to system maintenance (SystemMaintenance.Redeploy)|Inquiring and Scheduled|
         |Instance restart and replacement of damaged disks due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk)|Inquiring|
         |Instance restart and re-initialization of damaged disks due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk)|Inquiring|
-        |Instance redeployment due to system errors (SystemFailure.Redeploy)|Inquiring and Scheduled|
-        |For ECS instances that use only local disks: instance restart due to a system error (SystemFailure.Reboot)|Executing|
+        |Instance redeployment due to system errors (SystemFailure.Redeploy)|Inquiring|
+        |For ECS instances that use only local disks: instance restart due to system errors (SystemFailure.Reboot)|Executing|
         |Isolation of damaged disks due to system maintenance (SystemMaintenance.IsolateErrorDisk)|Inquiring|
         |Re-initialization of damaged disks due to system maintenance (SystemMaintenance.ReInitErrorDisk)|Inquiring|
-        *Note**When instances that use local disks are redeployed, the local disks are re-initialized and data on the local disks is cleared.
+        *Note** When the system redeploys instances equipped with local disks, the local disks are re-initialized and data on the local disks is cleared.
         
         @param request: RedeployInstanceRequest
         @return: RedeployInstanceResponse
@@ -53906,23 +53922,25 @@ class Client(OpenApiClient):
         """
         @summary Creates Elastic Compute Service (ECS) instances. This operation helps simplify the procedure to create and manage ECS instances. When you call this operation, you can choose to create multiple ECS instances at a time, automatically start the instances, and assign public IP addresses to the instances based on outbound bandwidth parameters. You can also use the features provided by the operation, such as configuring an automatic release time for instances, using a launch template, and configuring custom CPU options, to customize instance configurations for better management of instances.
         
-        @description *Before you call this operation, familiarize yourself with the billing and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.**\
+        @description \\\\* When you create an ECS instance, you are charged for ECS resources, including the [instance type](https://help.aliyun.com/document_detail/25398.html), [image](https://help.aliyun.com/document_detail/179021.html), [block storage](https://help.aliyun.com/document_detail/179022.html), and [public bandwidth](https://help.aliyun.com/document_detail/25411.html). Before you call this operation, familiarize yourself with the billing rules and
+        [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources. \\\\*\
         This operation is an asynchronous operation. After a request to create ECS instances is sent, ECS instance IDs are returned but the creation and startup of the instances may be incomplete. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instances. When the status of an instance is `Running` in the DescribeInstanceStatus response, the instance is created and started.
         ### [](#)Considerations
-        Make sure that the number of ECS instances you created or the number of vCPUs on ECS instances of all instance types you created does not exceed the corresponding quota. Go to the [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to view the quotas.
-        Before you create ECS instances of the Virtual Private Cloud (VPC) type in a region, create a VPC in the region. For more information, see [Create a VPC](https://help.aliyun.com/document_detail/65430.html).
+        If the resource inventory is insufficient to complete instance creation, Alibaba Cloud immediately sends an instance creation failure event (SystemFailure.Delete). You can call the [DescribeInstanceHistoryEvents](https://help.aliyun.com/document_detail/2679897.html) operation to check whether an instance creation failure event exists. For more information, see [System events related to instance creation failures](https://help.aliyun.com/document_detail/2545990.html).
+        Make sure that the number of ECS instances you create or the number of vCPUs on ECS instances of all instance types you create does not exceed the corresponding quota. Go to the [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to view the quotas.
+        Before you create ECS instances of the Virtual Private Cloud (VPC) type in a region, [create a VPC](https://help.aliyun.com/document_detail/65430.html) in the region.
         ### [](#)Precautions
-        If you create a subscription instance (`PrePaid`), available coupons in your account are used by default.
-        You can call the RunInstances operation to create up to 100 ECS instances at a time. To create more than 100 ECS instances, we recommend that you initiate multiple requests in batches or concurrently.
+        If you create a subscription instance (`PrePaid`), available coupons in your account are automatically used.
+        You can call the RunInstances operation to create up to 100 ECS instances in a single request. To create more than 100 ECS instances, we recommend that you initiate multiple requests in batches or concurrently.
         If you set `InternetMaxBandwidthOut` to a value greater than 0, public IP addresses are automatically assigned to the ECS instances to be created.
-        >  For the limits on the sum of maximum public bandwidths of ECS instances that use the pay-by-bandwidth billing method for network usage per region per Alibaba Cloud account, see the [Public bandwidth limits](~~25412#BandwidthQuota~~) section of the "Limits" topic.
+        >  For the limits on the sum of maximum public bandwidths of ECS instances that use the pay-by-bandwidth billing method for network usage per region per Alibaba Cloud account, see the [Public bandwidth](~~25412#BandwidthQuota~~) section of the "Limits and quotas on ECS" topic.
         ### [](#)Suggestions
         **Test scenarios**: Set `DryRun` to true to perform a dry run without performing the actual request.
         **Release of ECS instances**: Use `AutoReleaseTime` to configure an automatic release time for ECS instances in the request to RunInstances or call the [DeleteInstances](https://help.aliyun.com/document_detail/2679710.html) operation to release the instances.
         **Management and search of ECS instances**: Add tags to the ECS instances by specifying `Tag.N.Key` and `Tag.N.Value` and append incremental suffixes by specifying `UniqueSuffix` to the hostname specified by `HostName` and the instance name specified by `InstanceName`. For more information, see [Batch configure sequential names or hostnames for multiple instances](https://help.aliyun.com/document_detail/196048.html).
         **Launch template**: A launch template contains the parameters required to create an ECS instance so that you do not have to specify the parameters every time you create ECS instances. You can call the [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) operation to create a launch template. Then, in the request to `RunInstances`, you can specify `LaunchTemplateId` and `LaunchTemplateVersion` to use the launch template.
         **Disabling of Hyper-Threading (HT)**: In memory-intensive scenarios, set `CpuOptions.ThreadsPerCore` to 1 to disable HT and increase the memory-to-vCPU ratio.
-        **Enabling of Jumbo Frames**: Set `NetworkOptions.EnableJumboFrame` to true to enable the `Jumbo Frames` feature when you create ECS instances. For more information, see [MTUs](https://help.aliyun.com/document_detail/200512.html).
+        **Enabling of Jumbo Frames**: Set `NetworkOptions.EnableJumboFrame` to true to enable the `Jumbo Frames` feature when you create ECS instances. For more information, see [Jumbo Frames](https://help.aliyun.com/document_detail/200512.html).
         ## [](#)Sample requests
         Use a specific image to create ECS instances of a specific instance type in the China (Hangzhou) region. The instances use disks with a specific capacity as the system disk and data disks and are automatically assigned public IP addresses. The instances have user-defined names and logon passwords. The instances are assigned to a specific security group and connected to a specific vSwitch. Request parameters:
         RegionId:"cn-hangzhou", //Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
@@ -53955,7 +53973,7 @@ class Client(OpenApiClient):
         Amount:10, //Set the number of ECS instances that you want to create to 10.
         InstanceChargeType:"PostPaid", //Set the billing method to PostPaid, which specifies the pay-as-you-go billing method.
         SpotStrategy:"NoSpot" //Set this parameter to NoSpot, which is the default value and specifies that the instances are created as pay-as-you-go instances.
-        *Example: Create 20 preemptible instances that use a specified bidding policy and a protection period**\
+        *Example: Create 20 preemptible instances that use a specific bidding policy and a protection period**\
         Amount:20, //Set the number of ECS instances that you want to create to 20.
         InstanceChargeType:"PostPaid",
         SpotStrategy:"SpotAsPriceGo", //Set the bidding policy to SpotAsPriceGo, which specifies that the instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bid price.
@@ -54156,23 +54174,25 @@ class Client(OpenApiClient):
         """
         @summary Creates Elastic Compute Service (ECS) instances. This operation helps simplify the procedure to create and manage ECS instances. When you call this operation, you can choose to create multiple ECS instances at a time, automatically start the instances, and assign public IP addresses to the instances based on outbound bandwidth parameters. You can also use the features provided by the operation, such as configuring an automatic release time for instances, using a launch template, and configuring custom CPU options, to customize instance configurations for better management of instances.
         
-        @description *Before you call this operation, familiarize yourself with the billing and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.**\
+        @description \\\\* When you create an ECS instance, you are charged for ECS resources, including the [instance type](https://help.aliyun.com/document_detail/25398.html), [image](https://help.aliyun.com/document_detail/179021.html), [block storage](https://help.aliyun.com/document_detail/179022.html), and [public bandwidth](https://help.aliyun.com/document_detail/25411.html). Before you call this operation, familiarize yourself with the billing rules and
+        [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources. \\\\*\
         This operation is an asynchronous operation. After a request to create ECS instances is sent, ECS instance IDs are returned but the creation and startup of the instances may be incomplete. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instances. When the status of an instance is `Running` in the DescribeInstanceStatus response, the instance is created and started.
         ### [](#)Considerations
-        Make sure that the number of ECS instances you created or the number of vCPUs on ECS instances of all instance types you created does not exceed the corresponding quota. Go to the [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to view the quotas.
-        Before you create ECS instances of the Virtual Private Cloud (VPC) type in a region, create a VPC in the region. For more information, see [Create a VPC](https://help.aliyun.com/document_detail/65430.html).
+        If the resource inventory is insufficient to complete instance creation, Alibaba Cloud immediately sends an instance creation failure event (SystemFailure.Delete). You can call the [DescribeInstanceHistoryEvents](https://help.aliyun.com/document_detail/2679897.html) operation to check whether an instance creation failure event exists. For more information, see [System events related to instance creation failures](https://help.aliyun.com/document_detail/2545990.html).
+        Make sure that the number of ECS instances you create or the number of vCPUs on ECS instances of all instance types you create does not exceed the corresponding quota. Go to the [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to view the quotas.
+        Before you create ECS instances of the Virtual Private Cloud (VPC) type in a region, [create a VPC](https://help.aliyun.com/document_detail/65430.html) in the region.
         ### [](#)Precautions
-        If you create a subscription instance (`PrePaid`), available coupons in your account are used by default.
-        You can call the RunInstances operation to create up to 100 ECS instances at a time. To create more than 100 ECS instances, we recommend that you initiate multiple requests in batches or concurrently.
+        If you create a subscription instance (`PrePaid`), available coupons in your account are automatically used.
+        You can call the RunInstances operation to create up to 100 ECS instances in a single request. To create more than 100 ECS instances, we recommend that you initiate multiple requests in batches or concurrently.
         If you set `InternetMaxBandwidthOut` to a value greater than 0, public IP addresses are automatically assigned to the ECS instances to be created.
-        >  For the limits on the sum of maximum public bandwidths of ECS instances that use the pay-by-bandwidth billing method for network usage per region per Alibaba Cloud account, see the [Public bandwidth limits](~~25412#BandwidthQuota~~) section of the "Limits" topic.
+        >  For the limits on the sum of maximum public bandwidths of ECS instances that use the pay-by-bandwidth billing method for network usage per region per Alibaba Cloud account, see the [Public bandwidth](~~25412#BandwidthQuota~~) section of the "Limits and quotas on ECS" topic.
         ### [](#)Suggestions
         **Test scenarios**: Set `DryRun` to true to perform a dry run without performing the actual request.
         **Release of ECS instances**: Use `AutoReleaseTime` to configure an automatic release time for ECS instances in the request to RunInstances or call the [DeleteInstances](https://help.aliyun.com/document_detail/2679710.html) operation to release the instances.
         **Management and search of ECS instances**: Add tags to the ECS instances by specifying `Tag.N.Key` and `Tag.N.Value` and append incremental suffixes by specifying `UniqueSuffix` to the hostname specified by `HostName` and the instance name specified by `InstanceName`. For more information, see [Batch configure sequential names or hostnames for multiple instances](https://help.aliyun.com/document_detail/196048.html).
         **Launch template**: A launch template contains the parameters required to create an ECS instance so that you do not have to specify the parameters every time you create ECS instances. You can call the [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) operation to create a launch template. Then, in the request to `RunInstances`, you can specify `LaunchTemplateId` and `LaunchTemplateVersion` to use the launch template.
         **Disabling of Hyper-Threading (HT)**: In memory-intensive scenarios, set `CpuOptions.ThreadsPerCore` to 1 to disable HT and increase the memory-to-vCPU ratio.
-        **Enabling of Jumbo Frames**: Set `NetworkOptions.EnableJumboFrame` to true to enable the `Jumbo Frames` feature when you create ECS instances. For more information, see [MTUs](https://help.aliyun.com/document_detail/200512.html).
+        **Enabling of Jumbo Frames**: Set `NetworkOptions.EnableJumboFrame` to true to enable the `Jumbo Frames` feature when you create ECS instances. For more information, see [Jumbo Frames](https://help.aliyun.com/document_detail/200512.html).
         ## [](#)Sample requests
         Use a specific image to create ECS instances of a specific instance type in the China (Hangzhou) region. The instances use disks with a specific capacity as the system disk and data disks and are automatically assigned public IP addresses. The instances have user-defined names and logon passwords. The instances are assigned to a specific security group and connected to a specific vSwitch. Request parameters:
         RegionId:"cn-hangzhou", //Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
@@ -54205,7 +54225,7 @@ class Client(OpenApiClient):
         Amount:10, //Set the number of ECS instances that you want to create to 10.
         InstanceChargeType:"PostPaid", //Set the billing method to PostPaid, which specifies the pay-as-you-go billing method.
         SpotStrategy:"NoSpot" //Set this parameter to NoSpot, which is the default value and specifies that the instances are created as pay-as-you-go instances.
-        *Example: Create 20 preemptible instances that use a specified bidding policy and a protection period**\
+        *Example: Create 20 preemptible instances that use a specific bidding policy and a protection period**\
         Amount:20, //Set the number of ECS instances that you want to create to 20.
         InstanceChargeType:"PostPaid",
         SpotStrategy:"SpotAsPriceGo", //Set the bidding policy to SpotAsPriceGo, which specifies that the instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bid price.
@@ -54405,23 +54425,25 @@ class Client(OpenApiClient):
         """
         @summary Creates Elastic Compute Service (ECS) instances. This operation helps simplify the procedure to create and manage ECS instances. When you call this operation, you can choose to create multiple ECS instances at a time, automatically start the instances, and assign public IP addresses to the instances based on outbound bandwidth parameters. You can also use the features provided by the operation, such as configuring an automatic release time for instances, using a launch template, and configuring custom CPU options, to customize instance configurations for better management of instances.
         
-        @description *Before you call this operation, familiarize yourself with the billing and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.**\
+        @description \\\\* When you create an ECS instance, you are charged for ECS resources, including the [instance type](https://help.aliyun.com/document_detail/25398.html), [image](https://help.aliyun.com/document_detail/179021.html), [block storage](https://help.aliyun.com/document_detail/179022.html), and [public bandwidth](https://help.aliyun.com/document_detail/25411.html). Before you call this operation, familiarize yourself with the billing rules and
+        [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources. \\\\*\
         This operation is an asynchronous operation. After a request to create ECS instances is sent, ECS instance IDs are returned but the creation and startup of the instances may be incomplete. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instances. When the status of an instance is `Running` in the DescribeInstanceStatus response, the instance is created and started.
         ### [](#)Considerations
-        Make sure that the number of ECS instances you created or the number of vCPUs on ECS instances of all instance types you created does not exceed the corresponding quota. Go to the [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to view the quotas.
-        Before you create ECS instances of the Virtual Private Cloud (VPC) type in a region, create a VPC in the region. For more information, see [Create a VPC](https://help.aliyun.com/document_detail/65430.html).
+        If the resource inventory is insufficient to complete instance creation, Alibaba Cloud immediately sends an instance creation failure event (SystemFailure.Delete). You can call the [DescribeInstanceHistoryEvents](https://help.aliyun.com/document_detail/2679897.html) operation to check whether an instance creation failure event exists. For more information, see [System events related to instance creation failures](https://help.aliyun.com/document_detail/2545990.html).
+        Make sure that the number of ECS instances you create or the number of vCPUs on ECS instances of all instance types you create does not exceed the corresponding quota. Go to the [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to view the quotas.
+        Before you create ECS instances of the Virtual Private Cloud (VPC) type in a region, [create a VPC](https://help.aliyun.com/document_detail/65430.html) in the region.
         ### [](#)Precautions
-        If you create a subscription instance (`PrePaid`), available coupons in your account are used by default.
-        You can call the RunInstances operation to create up to 100 ECS instances at a time. To create more than 100 ECS instances, we recommend that you initiate multiple requests in batches or concurrently.
+        If you create a subscription instance (`PrePaid`), available coupons in your account are automatically used.
+        You can call the RunInstances operation to create up to 100 ECS instances in a single request. To create more than 100 ECS instances, we recommend that you initiate multiple requests in batches or concurrently.
         If you set `InternetMaxBandwidthOut` to a value greater than 0, public IP addresses are automatically assigned to the ECS instances to be created.
-        >  For the limits on the sum of maximum public bandwidths of ECS instances that use the pay-by-bandwidth billing method for network usage per region per Alibaba Cloud account, see the [Public bandwidth limits](~~25412#BandwidthQuota~~) section of the "Limits" topic.
+        >  For the limits on the sum of maximum public bandwidths of ECS instances that use the pay-by-bandwidth billing method for network usage per region per Alibaba Cloud account, see the [Public bandwidth](~~25412#BandwidthQuota~~) section of the "Limits and quotas on ECS" topic.
         ### [](#)Suggestions
         **Test scenarios**: Set `DryRun` to true to perform a dry run without performing the actual request.
         **Release of ECS instances**: Use `AutoReleaseTime` to configure an automatic release time for ECS instances in the request to RunInstances or call the [DeleteInstances](https://help.aliyun.com/document_detail/2679710.html) operation to release the instances.
         **Management and search of ECS instances**: Add tags to the ECS instances by specifying `Tag.N.Key` and `Tag.N.Value` and append incremental suffixes by specifying `UniqueSuffix` to the hostname specified by `HostName` and the instance name specified by `InstanceName`. For more information, see [Batch configure sequential names or hostnames for multiple instances](https://help.aliyun.com/document_detail/196048.html).
         **Launch template**: A launch template contains the parameters required to create an ECS instance so that you do not have to specify the parameters every time you create ECS instances. You can call the [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) operation to create a launch template. Then, in the request to `RunInstances`, you can specify `LaunchTemplateId` and `LaunchTemplateVersion` to use the launch template.
         **Disabling of Hyper-Threading (HT)**: In memory-intensive scenarios, set `CpuOptions.ThreadsPerCore` to 1 to disable HT and increase the memory-to-vCPU ratio.
-        **Enabling of Jumbo Frames**: Set `NetworkOptions.EnableJumboFrame` to true to enable the `Jumbo Frames` feature when you create ECS instances. For more information, see [MTUs](https://help.aliyun.com/document_detail/200512.html).
+        **Enabling of Jumbo Frames**: Set `NetworkOptions.EnableJumboFrame` to true to enable the `Jumbo Frames` feature when you create ECS instances. For more information, see [Jumbo Frames](https://help.aliyun.com/document_detail/200512.html).
         ## [](#)Sample requests
         Use a specific image to create ECS instances of a specific instance type in the China (Hangzhou) region. The instances use disks with a specific capacity as the system disk and data disks and are automatically assigned public IP addresses. The instances have user-defined names and logon passwords. The instances are assigned to a specific security group and connected to a specific vSwitch. Request parameters:
         RegionId:"cn-hangzhou", //Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
@@ -54454,7 +54476,7 @@ class Client(OpenApiClient):
         Amount:10, //Set the number of ECS instances that you want to create to 10.
         InstanceChargeType:"PostPaid", //Set the billing method to PostPaid, which specifies the pay-as-you-go billing method.
         SpotStrategy:"NoSpot" //Set this parameter to NoSpot, which is the default value and specifies that the instances are created as pay-as-you-go instances.
-        *Example: Create 20 preemptible instances that use a specified bidding policy and a protection period**\
+        *Example: Create 20 preemptible instances that use a specific bidding policy and a protection period**\
         Amount:20, //Set the number of ECS instances that you want to create to 20.
         InstanceChargeType:"PostPaid",
         SpotStrategy:"SpotAsPriceGo", //Set the bidding policy to SpotAsPriceGo, which specifies that the instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bid price.
@@ -54479,23 +54501,25 @@ class Client(OpenApiClient):
         """
         @summary Creates Elastic Compute Service (ECS) instances. This operation helps simplify the procedure to create and manage ECS instances. When you call this operation, you can choose to create multiple ECS instances at a time, automatically start the instances, and assign public IP addresses to the instances based on outbound bandwidth parameters. You can also use the features provided by the operation, such as configuring an automatic release time for instances, using a launch template, and configuring custom CPU options, to customize instance configurations for better management of instances.
         
-        @description *Before you call this operation, familiarize yourself with the billing and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.**\
+        @description \\\\* When you create an ECS instance, you are charged for ECS resources, including the [instance type](https://help.aliyun.com/document_detail/25398.html), [image](https://help.aliyun.com/document_detail/179021.html), [block storage](https://help.aliyun.com/document_detail/179022.html), and [public bandwidth](https://help.aliyun.com/document_detail/25411.html). Before you call this operation, familiarize yourself with the billing rules and
+        [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources. \\\\*\
         This operation is an asynchronous operation. After a request to create ECS instances is sent, ECS instance IDs are returned but the creation and startup of the instances may be incomplete. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instances. When the status of an instance is `Running` in the DescribeInstanceStatus response, the instance is created and started.
         ### [](#)Considerations
-        Make sure that the number of ECS instances you created or the number of vCPUs on ECS instances of all instance types you created does not exceed the corresponding quota. Go to the [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to view the quotas.
-        Before you create ECS instances of the Virtual Private Cloud (VPC) type in a region, create a VPC in the region. For more information, see [Create a VPC](https://help.aliyun.com/document_detail/65430.html).
+        If the resource inventory is insufficient to complete instance creation, Alibaba Cloud immediately sends an instance creation failure event (SystemFailure.Delete). You can call the [DescribeInstanceHistoryEvents](https://help.aliyun.com/document_detail/2679897.html) operation to check whether an instance creation failure event exists. For more information, see [System events related to instance creation failures](https://help.aliyun.com/document_detail/2545990.html).
+        Make sure that the number of ECS instances you create or the number of vCPUs on ECS instances of all instance types you create does not exceed the corresponding quota. Go to the [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to view the quotas.
+        Before you create ECS instances of the Virtual Private Cloud (VPC) type in a region, [create a VPC](https://help.aliyun.com/document_detail/65430.html) in the region.
         ### [](#)Precautions
-        If you create a subscription instance (`PrePaid`), available coupons in your account are used by default.
-        You can call the RunInstances operation to create up to 100 ECS instances at a time. To create more than 100 ECS instances, we recommend that you initiate multiple requests in batches or concurrently.
+        If you create a subscription instance (`PrePaid`), available coupons in your account are automatically used.
+        You can call the RunInstances operation to create up to 100 ECS instances in a single request. To create more than 100 ECS instances, we recommend that you initiate multiple requests in batches or concurrently.
         If you set `InternetMaxBandwidthOut` to a value greater than 0, public IP addresses are automatically assigned to the ECS instances to be created.
-        >  For the limits on the sum of maximum public bandwidths of ECS instances that use the pay-by-bandwidth billing method for network usage per region per Alibaba Cloud account, see the [Public bandwidth limits](~~25412#BandwidthQuota~~) section of the "Limits" topic.
+        >  For the limits on the sum of maximum public bandwidths of ECS instances that use the pay-by-bandwidth billing method for network usage per region per Alibaba Cloud account, see the [Public bandwidth](~~25412#BandwidthQuota~~) section of the "Limits and quotas on ECS" topic.
         ### [](#)Suggestions
         **Test scenarios**: Set `DryRun` to true to perform a dry run without performing the actual request.
         **Release of ECS instances**: Use `AutoReleaseTime` to configure an automatic release time for ECS instances in the request to RunInstances or call the [DeleteInstances](https://help.aliyun.com/document_detail/2679710.html) operation to release the instances.
         **Management and search of ECS instances**: Add tags to the ECS instances by specifying `Tag.N.Key` and `Tag.N.Value` and append incremental suffixes by specifying `UniqueSuffix` to the hostname specified by `HostName` and the instance name specified by `InstanceName`. For more information, see [Batch configure sequential names or hostnames for multiple instances](https://help.aliyun.com/document_detail/196048.html).
         **Launch template**: A launch template contains the parameters required to create an ECS instance so that you do not have to specify the parameters every time you create ECS instances. You can call the [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) operation to create a launch template. Then, in the request to `RunInstances`, you can specify `LaunchTemplateId` and `LaunchTemplateVersion` to use the launch template.
         **Disabling of Hyper-Threading (HT)**: In memory-intensive scenarios, set `CpuOptions.ThreadsPerCore` to 1 to disable HT and increase the memory-to-vCPU ratio.
-        **Enabling of Jumbo Frames**: Set `NetworkOptions.EnableJumboFrame` to true to enable the `Jumbo Frames` feature when you create ECS instances. For more information, see [MTUs](https://help.aliyun.com/document_detail/200512.html).
+        **Enabling of Jumbo Frames**: Set `NetworkOptions.EnableJumboFrame` to true to enable the `Jumbo Frames` feature when you create ECS instances. For more information, see [Jumbo Frames](https://help.aliyun.com/document_detail/200512.html).
         ## [](#)Sample requests
         Use a specific image to create ECS instances of a specific instance type in the China (Hangzhou) region. The instances use disks with a specific capacity as the system disk and data disks and are automatically assigned public IP addresses. The instances have user-defined names and logon passwords. The instances are assigned to a specific security group and connected to a specific vSwitch. Request parameters:
         RegionId:"cn-hangzhou", //Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
@@ -54528,7 +54552,7 @@ class Client(OpenApiClient):
         Amount:10, //Set the number of ECS instances that you want to create to 10.
         InstanceChargeType:"PostPaid", //Set the billing method to PostPaid, which specifies the pay-as-you-go billing method.
         SpotStrategy:"NoSpot" //Set this parameter to NoSpot, which is the default value and specifies that the instances are created as pay-as-you-go instances.
-        *Example: Create 20 preemptible instances that use a specified bidding policy and a protection period**\
+        *Example: Create 20 preemptible instances that use a specific bidding policy and a protection period**\
         Amount:20, //Set the number of ECS instances that you want to create to 20.
         InstanceChargeType:"PostPaid",
         SpotStrategy:"SpotAsPriceGo", //Set the bidding policy to SpotAsPriceGo, which specifies that the instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bid price.
