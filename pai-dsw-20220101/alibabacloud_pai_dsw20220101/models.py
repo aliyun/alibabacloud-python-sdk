@@ -5728,6 +5728,7 @@ class ListEcsSpecsResponseBodyEcsSpecs(TeaModel):
         cpu: int = None,
         currency: str = None,
         gpu: int = None,
+        gpumemory_size: float = None,
         gputype: str = None,
         instance_bandwidth_rx: int = None,
         instance_type: str = None,
@@ -5735,12 +5736,14 @@ class ListEcsSpecsResponseBodyEcsSpecs(TeaModel):
         labels: List[ListEcsSpecsResponseBodyEcsSpecsLabels] = None,
         memory: float = None,
         price: float = None,
+        spot_stock_status: str = None,
         system_disk_capacity: int = None,
     ):
         self.accelerator_type = accelerator_type
         self.cpu = cpu
         self.currency = currency
         self.gpu = gpu
+        self.gpumemory_size = gpumemory_size
         self.gputype = gputype
         self.instance_bandwidth_rx = instance_bandwidth_rx
         self.instance_type = instance_type
@@ -5748,6 +5751,7 @@ class ListEcsSpecsResponseBodyEcsSpecs(TeaModel):
         self.labels = labels
         self.memory = memory
         self.price = price
+        self.spot_stock_status = spot_stock_status
         self.system_disk_capacity = system_disk_capacity
 
     def validate(self):
@@ -5770,6 +5774,8 @@ class ListEcsSpecsResponseBodyEcsSpecs(TeaModel):
             result['Currency'] = self.currency
         if self.gpu is not None:
             result['GPU'] = self.gpu
+        if self.gpumemory_size is not None:
+            result['GPUMemorySize'] = self.gpumemory_size
         if self.gputype is not None:
             result['GPUType'] = self.gputype
         if self.instance_bandwidth_rx is not None:
@@ -5786,6 +5792,8 @@ class ListEcsSpecsResponseBodyEcsSpecs(TeaModel):
             result['Memory'] = self.memory
         if self.price is not None:
             result['Price'] = self.price
+        if self.spot_stock_status is not None:
+            result['SpotStockStatus'] = self.spot_stock_status
         if self.system_disk_capacity is not None:
             result['SystemDiskCapacity'] = self.system_disk_capacity
         return result
@@ -5800,6 +5808,8 @@ class ListEcsSpecsResponseBodyEcsSpecs(TeaModel):
             self.currency = m.get('Currency')
         if m.get('GPU') is not None:
             self.gpu = m.get('GPU')
+        if m.get('GPUMemorySize') is not None:
+            self.gpumemory_size = m.get('GPUMemorySize')
         if m.get('GPUType') is not None:
             self.gputype = m.get('GPUType')
         if m.get('InstanceBandwidthRx') is not None:
@@ -5817,6 +5827,8 @@ class ListEcsSpecsResponseBodyEcsSpecs(TeaModel):
             self.memory = m.get('Memory')
         if m.get('Price') is not None:
             self.price = m.get('Price')
+        if m.get('SpotStockStatus') is not None:
+            self.spot_stock_status = m.get('SpotStockStatus')
         if m.get('SystemDiskCapacity') is not None:
             self.system_disk_capacity = m.get('SystemDiskCapacity')
         return self

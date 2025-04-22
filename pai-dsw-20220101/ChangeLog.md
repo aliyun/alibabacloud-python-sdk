@@ -1,3 +1,8 @@
+2025-04-22 Version: 1.5.12
+- Update API ListEcsSpecs: add response parameters Body.EcsSpecs.$.GPUMemorySize.
+- Update API ListEcsSpecs: add response parameters Body.EcsSpecs.$.SpotStockStatus.
+
+
 2025-04-18 Version: 1.5.11
 - Update API CreateInstance: add request parameters body.DynamicMount.
 - Update API CreateInstance: add request parameters body.Datasets.$.Dynamic.
