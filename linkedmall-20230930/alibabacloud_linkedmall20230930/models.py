@@ -2631,6 +2631,7 @@ class Product(TeaModel):
         properties: List[ProductProperty] = None,
         quantity: int = None,
         request_id: str = None,
+        service_promises: List[str] = None,
         shop_id: str = None,
         skus: List[Sku] = None,
         sold_quantity: str = None,
@@ -2658,6 +2659,7 @@ class Product(TeaModel):
         self.properties = properties
         self.quantity = quantity
         self.request_id = request_id
+        self.service_promises = service_promises
         self.shop_id = shop_id
         self.skus = skus
         self.sold_quantity = sold_quantity
@@ -2747,6 +2749,8 @@ class Product(TeaModel):
             result['quantity'] = self.quantity
         if self.request_id is not None:
             result['requestId'] = self.request_id
+        if self.service_promises is not None:
+            result['servicePromises'] = self.service_promises
         if self.shop_id is not None:
             result['shopId'] = self.shop_id
         result['skus'] = []
@@ -2820,6 +2824,8 @@ class Product(TeaModel):
             self.quantity = m.get('quantity')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        if m.get('servicePromises') is not None:
+            self.service_promises = m.get('servicePromises')
         if m.get('shopId') is not None:
             self.shop_id = m.get('shopId')
         self.skus = []

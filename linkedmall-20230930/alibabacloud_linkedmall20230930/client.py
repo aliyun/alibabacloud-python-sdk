@@ -124,16 +124,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.CancelRefundOrderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.CancelRefundOrderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.CancelRefundOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def cancel_refund_order_with_options_async(
         self,
@@ -162,16 +156,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.CancelRefundOrderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.CancelRefundOrderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.CancelRefundOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def cancel_refund_order(
         self,
@@ -229,16 +217,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ConfirmDisburseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ConfirmDisburseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ConfirmDisburseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def confirm_disburse_with_options_async(
         self,
@@ -270,16 +252,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ConfirmDisburseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ConfirmDisburseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ConfirmDisburseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def confirm_disburse(
         self,
@@ -339,16 +315,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.CreateGoodsShippingNoticeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.CreateGoodsShippingNoticeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.CreateGoodsShippingNoticeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_goods_shipping_notice_with_options_async(
         self,
@@ -380,16 +350,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.CreateGoodsShippingNoticeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.CreateGoodsShippingNoticeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.CreateGoodsShippingNoticeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_goods_shipping_notice(
         self,
@@ -449,16 +413,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.CreatePurchaseOrderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.CreatePurchaseOrderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.CreatePurchaseOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_purchase_order_with_options_async(
         self,
@@ -490,16 +448,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.CreatePurchaseOrderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.CreatePurchaseOrderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.CreatePurchaseOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_purchase_order(
         self,
@@ -559,16 +511,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.CreateRefundOrderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.CreateRefundOrderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.CreateRefundOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_refund_order_with_options_async(
         self,
@@ -600,16 +546,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.CreateRefundOrderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.CreateRefundOrderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.CreateRefundOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_refund_order(
         self,
@@ -666,16 +606,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetOrderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetOrderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_order_with_options_async(
         self,
@@ -704,16 +638,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetOrderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetOrderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_order(
         self,
@@ -768,16 +696,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetPurchaseOrderStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetPurchaseOrderStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetPurchaseOrderStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_purchase_order_status_with_options_async(
         self,
@@ -806,16 +728,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetPurchaseOrderStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetPurchaseOrderStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetPurchaseOrderStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_purchase_order_status(
         self,
@@ -870,16 +786,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetPurchaserShopResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetPurchaserShopResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetPurchaserShopResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_purchaser_shop_with_options_async(
         self,
@@ -908,16 +818,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetPurchaserShopResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetPurchaserShopResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetPurchaserShopResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_purchaser_shop(
         self,
@@ -972,16 +876,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetRefundOrderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetRefundOrderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetRefundOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_refund_order_with_options_async(
         self,
@@ -1010,16 +908,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetRefundOrderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetRefundOrderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetRefundOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_refund_order(
         self,
@@ -1083,16 +975,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetSelectionProductResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetSelectionProductResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetSelectionProductResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_selection_product_with_options_async(
         self,
@@ -1130,16 +1016,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetSelectionProductResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetSelectionProductResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetSelectionProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_selection_product(
         self,
@@ -1207,16 +1087,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetSelectionProductSaleInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetSelectionProductSaleInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetSelectionProductSaleInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_selection_product_sale_info_with_options_async(
         self,
@@ -1254,16 +1128,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetSelectionProductSaleInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.GetSelectionProductSaleInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetSelectionProductSaleInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_selection_product_sale_info(
         self,
@@ -1325,16 +1193,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListCategoriesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListCategoriesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListCategoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_categories_with_options_async(
         self,
@@ -1366,16 +1228,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListCategoriesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListCategoriesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListCategoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_categories(
         self,
@@ -1432,16 +1288,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListLogisticsOrdersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListLogisticsOrdersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListLogisticsOrdersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_logistics_orders_with_options_async(
         self,
@@ -1470,16 +1320,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListLogisticsOrdersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListLogisticsOrdersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListLogisticsOrdersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_logistics_orders(
         self,
@@ -1542,16 +1386,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListPurchaserShopsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListPurchaserShopsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListPurchaserShopsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_purchaser_shops_with_options_async(
         self,
@@ -1588,16 +1426,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListPurchaserShopsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListPurchaserShopsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListPurchaserShopsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_purchaser_shops(
         self,
@@ -1657,16 +1489,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListSelectionProductSaleInfosResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListSelectionProductSaleInfosResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListSelectionProductSaleInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_selection_product_sale_infos_with_options_async(
         self,
@@ -1698,16 +1524,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListSelectionProductSaleInfosResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListSelectionProductSaleInfosResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListSelectionProductSaleInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_selection_product_sale_infos(
         self,
@@ -1774,16 +1594,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListSelectionProductsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListSelectionProductsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListSelectionProductsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_selection_products_with_options_async(
         self,
@@ -1822,16 +1636,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListSelectionProductsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListSelectionProductsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListSelectionProductsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_selection_products(
         self,
@@ -1891,16 +1699,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListSelectionSkuSaleInfosResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListSelectionSkuSaleInfosResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListSelectionSkuSaleInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_selection_sku_sale_infos_with_options_async(
         self,
@@ -1932,16 +1734,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListSelectionSkuSaleInfosResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.ListSelectionSkuSaleInfosResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListSelectionSkuSaleInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_selection_sku_sale_infos(
         self,
@@ -2001,16 +1797,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.QueryChildDivisionCodeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.QueryChildDivisionCodeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.QueryChildDivisionCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def query_child_division_code_with_options_async(
         self,
@@ -2042,16 +1832,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.QueryChildDivisionCodeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.QueryChildDivisionCodeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.QueryChildDivisionCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def query_child_division_code(
         self,
@@ -2111,16 +1895,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.QueryOrdersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.QueryOrdersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.QueryOrdersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def query_orders_with_options_async(
         self,
@@ -2152,16 +1930,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.QueryOrdersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.QueryOrdersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.QueryOrdersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def query_orders(
         self,
@@ -2221,16 +1993,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.RenderPurchaseOrderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.RenderPurchaseOrderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.RenderPurchaseOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def render_purchase_order_with_options_async(
         self,
@@ -2262,16 +2028,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.RenderPurchaseOrderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.RenderPurchaseOrderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.RenderPurchaseOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def render_purchase_order(
         self,
@@ -2331,16 +2091,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.RenderRefundOrderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.RenderRefundOrderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.RenderRefundOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def render_refund_order_with_options_async(
         self,
@@ -2372,16 +2126,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.RenderRefundOrderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.RenderRefundOrderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.RenderRefundOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def render_refund_order(
         self,
@@ -2502,16 +2250,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.SearchProductsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.SearchProductsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.SearchProductsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def search_products_with_options_async(
         self,
@@ -2604,16 +2346,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.SearchProductsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.SearchProductsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.SearchProductsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def search_products(
         self,
@@ -2678,16 +2414,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.SelectionGroupAddProductResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.SelectionGroupAddProductResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.SelectionGroupAddProductResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def selection_group_add_product_with_options_async(
         self,
@@ -2724,16 +2454,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.SelectionGroupAddProductResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.SelectionGroupAddProductResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.SelectionGroupAddProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def selection_group_add_product(
         self,
@@ -2798,16 +2522,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.SelectionGroupRemoveProductResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.SelectionGroupRemoveProductResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.SelectionGroupRemoveProductResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def selection_group_remove_product_with_options_async(
         self,
@@ -2844,16 +2562,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.SelectionGroupRemoveProductResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.SelectionGroupRemoveProductResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.SelectionGroupRemoveProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def selection_group_remove_product(
         self,
@@ -2913,16 +2625,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.SplitPurchaseOrderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.SplitPurchaseOrderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.SplitPurchaseOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def split_purchase_order_with_options_async(
         self,
@@ -2954,16 +2660,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                linkedmall_20230930_models.SplitPurchaseOrderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                linkedmall_20230930_models.SplitPurchaseOrderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.SplitPurchaseOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def split_purchase_order(
         self,
