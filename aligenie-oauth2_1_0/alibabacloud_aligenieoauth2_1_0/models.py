@@ -1,7 +1,313 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import List, Dict, Any
+
+
+class CreatePlayingListRequestDeviceInfo(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        id: str = None,
+        id_type: str = None,
+        organization_id: str = None,
+    ):
+        # This parameter is required.
+        self.encode_key = encode_key
+        # This parameter is required.
+        self.encode_type = encode_type
+        # This parameter is required.
+        self.id = id
+        # This parameter is required.
+        self.id_type = id_type
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.id_type is not None:
+            result['IdType'] = self.id_type
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdType') is not None:
+            self.id_type = m.get('IdType')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        return self
+
+
+class CreatePlayingListRequestOpenCreatePlayingListRequestContentList(TeaModel):
+    def __init__(
+        self,
+        raw_id: str = None,
+        source: str = None,
+    ):
+        # This parameter is required.
+        self.raw_id = raw_id
+        # This parameter is required.
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.raw_id is not None:
+            result['RawId'] = self.raw_id
+        if self.source is not None:
+            result['Source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RawId') is not None:
+            self.raw_id = m.get('RawId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        return self
+
+
+class CreatePlayingListRequestOpenCreatePlayingListRequest(TeaModel):
+    def __init__(
+        self,
+        content_list: List[CreatePlayingListRequestOpenCreatePlayingListRequestContentList] = None,
+        content_type: str = None,
+        extend_info: Dict[str, Any] = None,
+        index: int = None,
+        need_album_continued: bool = None,
+        play_from: str = None,
+        play_mode: str = None,
+    ):
+        # This parameter is required.
+        self.content_list = content_list
+        # This parameter is required.
+        self.content_type = content_type
+        self.extend_info = extend_info
+        self.index = index
+        self.need_album_continued = need_album_continued
+        self.play_from = play_from
+        self.play_mode = play_mode
+
+    def validate(self):
+        if self.content_list:
+            for k in self.content_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ContentList'] = []
+        if self.content_list is not None:
+            for k in self.content_list:
+                result['ContentList'].append(k.to_map() if k else None)
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
+        if self.extend_info is not None:
+            result['ExtendInfo'] = self.extend_info
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.need_album_continued is not None:
+            result['NeedAlbumContinued'] = self.need_album_continued
+        if self.play_from is not None:
+            result['PlayFrom'] = self.play_from
+        if self.play_mode is not None:
+            result['PlayMode'] = self.play_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.content_list = []
+        if m.get('ContentList') is not None:
+            for k in m.get('ContentList'):
+                temp_model = CreatePlayingListRequestOpenCreatePlayingListRequestContentList()
+                self.content_list.append(temp_model.from_map(k))
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
+        if m.get('ExtendInfo') is not None:
+            self.extend_info = m.get('ExtendInfo')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('NeedAlbumContinued') is not None:
+            self.need_album_continued = m.get('NeedAlbumContinued')
+        if m.get('PlayFrom') is not None:
+            self.play_from = m.get('PlayFrom')
+        if m.get('PlayMode') is not None:
+            self.play_mode = m.get('PlayMode')
+        return self
+
+
+class CreatePlayingListRequest(TeaModel):
+    def __init__(
+        self,
+        device_info: CreatePlayingListRequestDeviceInfo = None,
+        open_create_playing_list_request: CreatePlayingListRequestOpenCreatePlayingListRequest = None,
+    ):
+        # This parameter is required.
+        self.device_info = device_info
+        # This parameter is required.
+        self.open_create_playing_list_request = open_create_playing_list_request
+
+    def validate(self):
+        if self.device_info:
+            self.device_info.validate()
+        if self.open_create_playing_list_request:
+            self.open_create_playing_list_request.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_info is not None:
+            result['DeviceInfo'] = self.device_info.to_map()
+        if self.open_create_playing_list_request is not None:
+            result['OpenCreatePlayingListRequest'] = self.open_create_playing_list_request.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceInfo') is not None:
+            temp_model = CreatePlayingListRequestDeviceInfo()
+            self.device_info = temp_model.from_map(m['DeviceInfo'])
+        if m.get('OpenCreatePlayingListRequest') is not None:
+            temp_model = CreatePlayingListRequestOpenCreatePlayingListRequest()
+            self.open_create_playing_list_request = temp_model.from_map(m['OpenCreatePlayingListRequest'])
+        return self
+
+
+class CreatePlayingListShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        device_info_shrink: str = None,
+        open_create_playing_list_request_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.device_info_shrink = device_info_shrink
+        # This parameter is required.
+        self.open_create_playing_list_request_shrink = open_create_playing_list_request_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_info_shrink is not None:
+            result['DeviceInfo'] = self.device_info_shrink
+        if self.open_create_playing_list_request_shrink is not None:
+            result['OpenCreatePlayingListRequest'] = self.open_create_playing_list_request_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceInfo') is not None:
+            self.device_info_shrink = m.get('DeviceInfo')
+        if m.get('OpenCreatePlayingListRequest') is not None:
+            self.open_create_playing_list_request_shrink = m.get('OpenCreatePlayingListRequest')
+        return self
+
+
+class CreatePlayingListResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreatePlayingListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePlayingListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePlayingListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class ExecuteSceneRequest(TeaModel):

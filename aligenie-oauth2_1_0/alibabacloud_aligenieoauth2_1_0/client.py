@@ -41,6 +41,130 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def create_playing_list_with_options(
+        self,
+        tmp_req: ali_genieoauth_2__1__0_models.CreatePlayingListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieoauth_2__1__0_models.CreatePlayingListResponse:
+        """
+        @summary 创建播放列表
+        
+        @param tmp_req: CreatePlayingListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePlayingListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieoauth_2__1__0_models.CreatePlayingListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.device_info):
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.open_create_playing_list_request):
+            request.open_create_playing_list_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_create_playing_list_request, 'OpenCreatePlayingListRequest', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.device_info_shrink):
+            query['DeviceInfo'] = request.device_info_shrink
+        body = {}
+        if not UtilClient.is_unset(request.open_create_playing_list_request_shrink):
+            body['OpenCreatePlayingListRequest'] = request.open_create_playing_list_request_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreatePlayingList',
+            version='oauth2_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/oauth2/content/playing/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.CreatePlayingListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_playing_list_with_options_async(
+        self,
+        tmp_req: ali_genieoauth_2__1__0_models.CreatePlayingListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieoauth_2__1__0_models.CreatePlayingListResponse:
+        """
+        @summary 创建播放列表
+        
+        @param tmp_req: CreatePlayingListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePlayingListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieoauth_2__1__0_models.CreatePlayingListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.device_info):
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.open_create_playing_list_request):
+            request.open_create_playing_list_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_create_playing_list_request, 'OpenCreatePlayingListRequest', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.device_info_shrink):
+            query['DeviceInfo'] = request.device_info_shrink
+        body = {}
+        if not UtilClient.is_unset(request.open_create_playing_list_request_shrink):
+            body['OpenCreatePlayingListRequest'] = request.open_create_playing_list_request_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreatePlayingList',
+            version='oauth2_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/oauth2/content/playing/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.CreatePlayingListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_playing_list(
+        self,
+        request: ali_genieoauth_2__1__0_models.CreatePlayingListRequest,
+    ) -> ali_genieoauth_2__1__0_models.CreatePlayingListResponse:
+        """
+        @summary 创建播放列表
+        
+        @param request: CreatePlayingListRequest
+        @return: CreatePlayingListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_playing_list_with_options(request, headers, runtime)
+
+    async def create_playing_list_async(
+        self,
+        request: ali_genieoauth_2__1__0_models.CreatePlayingListRequest,
+    ) -> ali_genieoauth_2__1__0_models.CreatePlayingListResponse:
+        """
+        @summary 创建播放列表
+        
+        @param request: CreatePlayingListRequest
+        @return: CreatePlayingListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_playing_list_with_options_async(request, headers, runtime)
+
     def execute_scene_with_options(
         self,
         request: ali_genieoauth_2__1__0_models.ExecuteSceneRequest,
@@ -74,16 +198,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.ExecuteSceneResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.ExecuteSceneResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.ExecuteSceneResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def execute_scene_with_options_async(
         self,
@@ -118,16 +236,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.ExecuteSceneResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.ExecuteSceneResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.ExecuteSceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def execute_scene(
         self,
@@ -183,16 +295,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.GetSceneListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.GetSceneListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.GetSceneListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_scene_list_with_options_async(
         self,
@@ -220,16 +326,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.GetSceneListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.GetSceneListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.GetSceneListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_scene_list(self) -> ali_genieoauth_2__1__0_models.GetSceneListResponse:
         """
@@ -277,16 +377,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.GetUserBasicInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.GetUserBasicInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.GetUserBasicInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_user_basic_info_with_options_async(
         self,
@@ -314,16 +408,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.GetUserBasicInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.GetUserBasicInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.GetUserBasicInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_user_basic_info(self) -> ali_genieoauth_2__1__0_models.GetUserBasicInfoResponse:
         """
@@ -371,16 +459,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.GetUserPhoneResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.GetUserPhoneResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.GetUserPhoneResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_user_phone_with_options_async(
         self,
@@ -408,16 +490,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.GetUserPhoneResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.GetUserPhoneResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.GetUserPhoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_user_phone(self) -> ali_genieoauth_2__1__0_models.GetUserPhoneResponse:
         """
@@ -481,16 +557,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.OAuth2RevocationEndpointResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.OAuth2RevocationEndpointResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.OAuth2RevocationEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def o_auth_2revocation_endpoint_with_options_async(
         self,
@@ -534,16 +604,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.OAuth2RevocationEndpointResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.OAuth2RevocationEndpointResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.OAuth2RevocationEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def o_auth_2revocation_endpoint(
         self,
@@ -619,16 +683,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.OAuth2TokenEndpointResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.OAuth2TokenEndpointResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.OAuth2TokenEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def o_auth_2token_endpoint_with_options_async(
         self,
@@ -676,16 +734,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.OAuth2TokenEndpointResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.OAuth2TokenEndpointResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.OAuth2TokenEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def o_auth_2token_endpoint(
         self,
@@ -756,16 +808,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.PushDeviceNotificationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.PushDeviceNotificationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.PushDeviceNotificationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def push_device_notification_with_options_async(
         self,
@@ -808,16 +854,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.PushDeviceNotificationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.PushDeviceNotificationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.PushDeviceNotificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def push_device_notification(
         self,
@@ -873,16 +913,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.QueryDeviceListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.QueryDeviceListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.QueryDeviceListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def query_device_list_with_options_async(
         self,
@@ -910,16 +944,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.QueryDeviceListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieoauth_2__1__0_models.QueryDeviceListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.QueryDeviceListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def query_device_list(self) -> ali_genieoauth_2__1__0_models.QueryDeviceListResponse:
         """
