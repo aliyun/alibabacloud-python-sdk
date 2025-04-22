@@ -781,6 +781,215 @@ class AddSmsTemplateResponse(TeaModel):
         return self
 
 
+class ChangeSignatureQualificationRequest(TeaModel):
+    def __init__(
+        self,
+        authorization_letter_id: int = None,
+        owner_id: int = None,
+        qualification_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        signature_name: str = None,
+    ):
+        # 授权委托书id
+        self.authorization_letter_id = authorization_letter_id
+        self.owner_id = owner_id
+        # 资质id
+        # 
+        # This parameter is required.
+        self.qualification_id = qualification_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 签名
+        # 
+        # This parameter is required.
+        self.signature_name = signature_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization_letter_id is not None:
+            result['AuthorizationLetterId'] = self.authorization_letter_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.qualification_id is not None:
+            result['QualificationId'] = self.qualification_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.signature_name is not None:
+            result['SignatureName'] = self.signature_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthorizationLetterId') is not None:
+            self.authorization_letter_id = m.get('AuthorizationLetterId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('QualificationId') is not None:
+            self.qualification_id = m.get('QualificationId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SignatureName') is not None:
+            self.signature_name = m.get('SignatureName')
+        return self
+
+
+class ChangeSignatureQualificationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        data: Dict[str, Any] = None,
+        err_code: str = None,
+        err_message: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ChangeSignatureQualificationResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: ChangeSignatureQualificationResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ChangeSignatureQualificationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ChangeSignatureQualificationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChangeSignatureQualificationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChangeSignatureQualificationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckMobilesCardSupportRequest(TeaModel):
     def __init__(
         self,
@@ -1604,11 +1813,313 @@ class CreateSmartShortUrlResponse(TeaModel):
         return self
 
 
+class CreateSmsAuthorizationLetterRequest(TeaModel):
+    def __init__(
+        self,
+        authorization: str = None,
+        authorization_letter_exp_date: str = None,
+        authorization_letter_name: str = None,
+        authorization_letter_pic: str = None,
+        organization_code: str = None,
+        owner_id: int = None,
+        proxy_authorization: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sign_list: List[str] = None,
+    ):
+        # 授权方，授权方命名长度不超过1000个字符，暂不支持包含除中点（·）、空格、中文括号【】、英文括号()外的任何符号或纯数字输入
+        # 
+        # This parameter is required.
+        self.authorization = authorization
+        # 委托授权书有效期
+        # 
+        # This parameter is required.
+        self.authorization_letter_exp_date = authorization_letter_exp_date
+        # 委托授权书命名非空，不超过100个字符，支持中文、英文或与数字组合进行命名，暂不支持任何符号或纯数字输入
+        # 
+        # This parameter is required.
+        self.authorization_letter_name = authorization_letter_name
+        # 上传oss的委托授权书图片标识
+        # 
+        # This parameter is required.
+        self.authorization_letter_pic = authorization_letter_pic
+        # 授权方社会统一信用代码，长度不超过150个字符
+        # 
+        # This parameter is required.
+        self.organization_code = organization_code
+        self.owner_id = owner_id
+        # 被授权方，被授权方命名长度不超过1000个字符，暂不支持包含除中点（·）、空格、中文括号【】、英文括号()外的任何符号或纯数字输入
+        # 
+        # This parameter is required.
+        self.proxy_authorization = proxy_authorization
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 委托授权签名列表，签名数量限制100个以内
+        # 
+        # This parameter is required.
+        self.sign_list = sign_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        if self.authorization_letter_exp_date is not None:
+            result['AuthorizationLetterExpDate'] = self.authorization_letter_exp_date
+        if self.authorization_letter_name is not None:
+            result['AuthorizationLetterName'] = self.authorization_letter_name
+        if self.authorization_letter_pic is not None:
+            result['AuthorizationLetterPic'] = self.authorization_letter_pic
+        if self.organization_code is not None:
+            result['OrganizationCode'] = self.organization_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.proxy_authorization is not None:
+            result['ProxyAuthorization'] = self.proxy_authorization
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sign_list is not None:
+            result['SignList'] = self.sign_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        if m.get('AuthorizationLetterExpDate') is not None:
+            self.authorization_letter_exp_date = m.get('AuthorizationLetterExpDate')
+        if m.get('AuthorizationLetterName') is not None:
+            self.authorization_letter_name = m.get('AuthorizationLetterName')
+        if m.get('AuthorizationLetterPic') is not None:
+            self.authorization_letter_pic = m.get('AuthorizationLetterPic')
+        if m.get('OrganizationCode') is not None:
+            self.organization_code = m.get('OrganizationCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ProxyAuthorization') is not None:
+            self.proxy_authorization = m.get('ProxyAuthorization')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SignList') is not None:
+            self.sign_list = m.get('SignList')
+        return self
+
+
+class CreateSmsAuthorizationLetterShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        authorization: str = None,
+        authorization_letter_exp_date: str = None,
+        authorization_letter_name: str = None,
+        authorization_letter_pic: str = None,
+        organization_code: str = None,
+        owner_id: int = None,
+        proxy_authorization: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sign_list_shrink: str = None,
+    ):
+        # 授权方，授权方命名长度不超过1000个字符，暂不支持包含除中点（·）、空格、中文括号【】、英文括号()外的任何符号或纯数字输入
+        # 
+        # This parameter is required.
+        self.authorization = authorization
+        # 委托授权书有效期
+        # 
+        # This parameter is required.
+        self.authorization_letter_exp_date = authorization_letter_exp_date
+        # 委托授权书命名非空，不超过100个字符，支持中文、英文或与数字组合进行命名，暂不支持任何符号或纯数字输入
+        # 
+        # This parameter is required.
+        self.authorization_letter_name = authorization_letter_name
+        # 上传oss的委托授权书图片标识
+        # 
+        # This parameter is required.
+        self.authorization_letter_pic = authorization_letter_pic
+        # 授权方社会统一信用代码，长度不超过150个字符
+        # 
+        # This parameter is required.
+        self.organization_code = organization_code
+        self.owner_id = owner_id
+        # 被授权方，被授权方命名长度不超过1000个字符，暂不支持包含除中点（·）、空格、中文括号【】、英文括号()外的任何符号或纯数字输入
+        # 
+        # This parameter is required.
+        self.proxy_authorization = proxy_authorization
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 委托授权签名列表，签名数量限制100个以内
+        # 
+        # This parameter is required.
+        self.sign_list_shrink = sign_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        if self.authorization_letter_exp_date is not None:
+            result['AuthorizationLetterExpDate'] = self.authorization_letter_exp_date
+        if self.authorization_letter_name is not None:
+            result['AuthorizationLetterName'] = self.authorization_letter_name
+        if self.authorization_letter_pic is not None:
+            result['AuthorizationLetterPic'] = self.authorization_letter_pic
+        if self.organization_code is not None:
+            result['OrganizationCode'] = self.organization_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.proxy_authorization is not None:
+            result['ProxyAuthorization'] = self.proxy_authorization
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sign_list_shrink is not None:
+            result['SignList'] = self.sign_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        if m.get('AuthorizationLetterExpDate') is not None:
+            self.authorization_letter_exp_date = m.get('AuthorizationLetterExpDate')
+        if m.get('AuthorizationLetterName') is not None:
+            self.authorization_letter_name = m.get('AuthorizationLetterName')
+        if m.get('AuthorizationLetterPic') is not None:
+            self.authorization_letter_pic = m.get('AuthorizationLetterPic')
+        if m.get('OrganizationCode') is not None:
+            self.organization_code = m.get('OrganizationCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ProxyAuthorization') is not None:
+            self.proxy_authorization = m.get('ProxyAuthorization')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SignList') is not None:
+            self.sign_list_shrink = m.get('SignList')
+        return self
+
+
+class CreateSmsAuthorizationLetterResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateSmsAuthorizationLetterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSmsAuthorizationLetterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSmsAuthorizationLetterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateSmsSignRequest(TeaModel):
     def __init__(
         self,
         apply_scene_content: str = None,
-        authorization_letter_id: str = None,
+        authorization_letter_id: int = None,
         more_data: List[str] = None,
         owner_id: int = None,
         qualification_id: int = None,
@@ -1754,7 +2265,7 @@ class CreateSmsSignShrinkRequest(TeaModel):
     def __init__(
         self,
         apply_scene_content: str = None,
-        authorization_letter_id: str = None,
+        authorization_letter_id: int = None,
         more_data_shrink: str = None,
         owner_id: int = None,
         qualification_id: int = None,
@@ -4174,6 +4685,217 @@ class GetOSSInfoForUploadFileResponse(TeaModel):
         return self
 
 
+class GetQualificationOssInfoRequest(TeaModel):
+    def __init__(
+        self,
+        biz_type: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # 业务，非空
+        # 
+        # This parameter is required.
+        self.biz_type = biz_type
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class GetQualificationOssInfoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        access_key_id: str = None,
+        expire: int = None,
+        host: str = None,
+        policy: str = None,
+        signature: str = None,
+        start_path: str = None,
+    ):
+        # ak
+        self.access_key_id = access_key_id
+        # 过期时间
+        self.expire = expire
+        # 域名
+        self.host = host
+        # 策略
+        self.policy = policy
+        # 签名
+        self.signature = signature
+        # 前缀
+        self.start_path = start_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key_id is not None:
+            result['AccessKeyId'] = self.access_key_id
+        if self.expire is not None:
+            result['Expire'] = self.expire
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        if self.start_path is not None:
+            result['StartPath'] = self.start_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKeyId') is not None:
+            self.access_key_id = m.get('AccessKeyId')
+        if m.get('Expire') is not None:
+            self.expire = m.get('Expire')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        if m.get('StartPath') is not None:
+            self.start_path = m.get('StartPath')
+        return self
+
+
+class GetQualificationOssInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: GetQualificationOssInfoResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetQualificationOssInfoResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetQualificationOssInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetQualificationOssInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetQualificationOssInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetSmsSignRequest(TeaModel):
     def __init__(
         self,
@@ -4266,7 +4988,7 @@ class GetSmsSignResponseBody(TeaModel):
         apply_scene: str = None,
         audit_info: GetSmsSignResponseBodyAuditInfo = None,
         authorization_letter_audit_pass: bool = None,
-        authorization_letter_id: str = None,
+        authorization_letter_id: int = None,
         code: str = None,
         create_date: str = None,
         file_url_list: List[str] = None,
@@ -7571,6 +8293,351 @@ class QueryShortUrlResponse(TeaModel):
         return self
 
 
+class QuerySmsAuthorizationLetterRequest(TeaModel):
+    def __init__(
+        self,
+        authorization_letter_id_list: List[int] = None,
+        organization_code: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sign_name: str = None,
+        state: str = None,
+        status: str = None,
+    ):
+        # 委托授权书id列表
+        self.authorization_letter_id_list = authorization_letter_id_list
+        # 授权方社会统一信用代码
+        self.organization_code = organization_code
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 签名名称（支持命中签名范围查询）
+        self.sign_name = sign_name
+        # 授权书审核状态，INT:审核中，PASSED:审核通过
+        self.state = state
+        # 授权书可用状态，VALID可用，INVALID不可用
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization_letter_id_list is not None:
+            result['AuthorizationLetterIdList'] = self.authorization_letter_id_list
+        if self.organization_code is not None:
+            result['OrganizationCode'] = self.organization_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sign_name is not None:
+            result['SignName'] = self.sign_name
+        if self.state is not None:
+            result['State'] = self.state
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthorizationLetterIdList') is not None:
+            self.authorization_letter_id_list = m.get('AuthorizationLetterIdList')
+        if m.get('OrganizationCode') is not None:
+            self.organization_code = m.get('OrganizationCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SignName') is not None:
+            self.sign_name = m.get('SignName')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class QuerySmsAuthorizationLetterShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        authorization_letter_id_list_shrink: str = None,
+        organization_code: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sign_name: str = None,
+        state: str = None,
+        status: str = None,
+    ):
+        # 委托授权书id列表
+        self.authorization_letter_id_list_shrink = authorization_letter_id_list_shrink
+        # 授权方社会统一信用代码
+        self.organization_code = organization_code
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 签名名称（支持命中签名范围查询）
+        self.sign_name = sign_name
+        # 授权书审核状态，INT:审核中，PASSED:审核通过
+        self.state = state
+        # 授权书可用状态，VALID可用，INVALID不可用
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization_letter_id_list_shrink is not None:
+            result['AuthorizationLetterIdList'] = self.authorization_letter_id_list_shrink
+        if self.organization_code is not None:
+            result['OrganizationCode'] = self.organization_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sign_name is not None:
+            result['SignName'] = self.sign_name
+        if self.state is not None:
+            result['State'] = self.state
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthorizationLetterIdList') is not None:
+            self.authorization_letter_id_list_shrink = m.get('AuthorizationLetterIdList')
+        if m.get('OrganizationCode') is not None:
+            self.organization_code = m.get('OrganizationCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SignName') is not None:
+            self.sign_name = m.get('SignName')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class QuerySmsAuthorizationLetterResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        authorization: str = None,
+        authorization_letter_exp_date: str = None,
+        authorization_letter_id: int = None,
+        authorization_letter_name: str = None,
+        authorization_letter_pic: str = None,
+        organization_code: str = None,
+        proxy_authorization: str = None,
+        sign_scope: str = None,
+        state: str = None,
+        status: str = None,
+    ):
+        # 委托授权方
+        self.authorization = authorization
+        # 委托授权书有效期
+        self.authorization_letter_exp_date = authorization_letter_exp_date
+        # 委托授权书id
+        self.authorization_letter_id = authorization_letter_id
+        # 委托授权书命名
+        self.authorization_letter_name = authorization_letter_name
+        # 委托授权书图片地址
+        self.authorization_letter_pic = authorization_letter_pic
+        # 授权方统一社会信用代码
+        self.organization_code = organization_code
+        # 被委托授权方
+        self.proxy_authorization = proxy_authorization
+        # 委托授权签名范围
+        self.sign_scope = sign_scope
+        # 委托授权书审核状态（初始化INT/审核通过PASSED）
+        self.state = state
+        # 委托授权书可用状态（可用VALID/不可用INVALID）
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        if self.authorization_letter_exp_date is not None:
+            result['AuthorizationLetterExpDate'] = self.authorization_letter_exp_date
+        if self.authorization_letter_id is not None:
+            result['AuthorizationLetterId'] = self.authorization_letter_id
+        if self.authorization_letter_name is not None:
+            result['AuthorizationLetterName'] = self.authorization_letter_name
+        if self.authorization_letter_pic is not None:
+            result['AuthorizationLetterPic'] = self.authorization_letter_pic
+        if self.organization_code is not None:
+            result['OrganizationCode'] = self.organization_code
+        if self.proxy_authorization is not None:
+            result['ProxyAuthorization'] = self.proxy_authorization
+        if self.sign_scope is not None:
+            result['SignScope'] = self.sign_scope
+        if self.state is not None:
+            result['State'] = self.state
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        if m.get('AuthorizationLetterExpDate') is not None:
+            self.authorization_letter_exp_date = m.get('AuthorizationLetterExpDate')
+        if m.get('AuthorizationLetterId') is not None:
+            self.authorization_letter_id = m.get('AuthorizationLetterId')
+        if m.get('AuthorizationLetterName') is not None:
+            self.authorization_letter_name = m.get('AuthorizationLetterName')
+        if m.get('AuthorizationLetterPic') is not None:
+            self.authorization_letter_pic = m.get('AuthorizationLetterPic')
+        if m.get('OrganizationCode') is not None:
+            self.organization_code = m.get('OrganizationCode')
+        if m.get('ProxyAuthorization') is not None:
+            self.proxy_authorization = m.get('ProxyAuthorization')
+        if m.get('SignScope') is not None:
+            self.sign_scope = m.get('SignScope')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class QuerySmsAuthorizationLetterResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: List[QuerySmsAuthorizationLetterResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = QuerySmsAuthorizationLetterResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QuerySmsAuthorizationLetterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QuerySmsAuthorizationLetterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QuerySmsAuthorizationLetterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QuerySmsSignRequest(TeaModel):
     def __init__(
         self,
@@ -7840,7 +8907,7 @@ class QuerySmsSignListResponseBodySmsSignList(TeaModel):
     def __init__(
         self,
         audit_status: str = None,
-        authorization_letter_id: str = None,
+        authorization_letter_id: int = None,
         business_type: str = None,
         create_date: str = None,
         order_id: str = None,
@@ -10346,7 +11413,7 @@ class UpdateSmsSignRequest(TeaModel):
     def __init__(
         self,
         apply_scene_content: str = None,
-        authorization_letter_id: str = None,
+        authorization_letter_id: int = None,
         more_data: List[str] = None,
         owner_id: int = None,
         qualification_id: int = None,
@@ -10476,7 +11543,7 @@ class UpdateSmsSignShrinkRequest(TeaModel):
     def __init__(
         self,
         apply_scene_content: str = None,
-        authorization_letter_id: str = None,
+        authorization_letter_id: int = None,
         more_data_shrink: str = None,
         owner_id: int = None,
         qualification_id: int = None,

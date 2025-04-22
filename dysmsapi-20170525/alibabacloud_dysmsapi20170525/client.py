@@ -645,6 +645,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_sms_template_with_options_async(request, runtime)
 
+    def change_signature_qualification_with_options(
+        self,
+        request: dysmsapi_20170525_models.ChangeSignatureQualificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.ChangeSignatureQualificationResponse:
+        """
+        @summary 更换签名的资质和授权书
+        
+        @param request: ChangeSignatureQualificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeSignatureQualificationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authorization_letter_id):
+            query['AuthorizationLetterId'] = request.authorization_letter_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qualification_id):
+            query['QualificationId'] = request.qualification_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.signature_name):
+            query['SignatureName'] = request.signature_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeSignatureQualification',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.ChangeSignatureQualificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_signature_qualification_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.ChangeSignatureQualificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.ChangeSignatureQualificationResponse:
+        """
+        @summary 更换签名的资质和授权书
+        
+        @param request: ChangeSignatureQualificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeSignatureQualificationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authorization_letter_id):
+            query['AuthorizationLetterId'] = request.authorization_letter_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qualification_id):
+            query['QualificationId'] = request.qualification_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.signature_name):
+            query['SignatureName'] = request.signature_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeSignatureQualification',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.ChangeSignatureQualificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_signature_qualification(
+        self,
+        request: dysmsapi_20170525_models.ChangeSignatureQualificationRequest,
+    ) -> dysmsapi_20170525_models.ChangeSignatureQualificationResponse:
+        """
+        @summary 更换签名的资质和授权书
+        
+        @param request: ChangeSignatureQualificationRequest
+        @return: ChangeSignatureQualificationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.change_signature_qualification_with_options(request, runtime)
+
+    async def change_signature_qualification_async(
+        self,
+        request: dysmsapi_20170525_models.ChangeSignatureQualificationRequest,
+    ) -> dysmsapi_20170525_models.ChangeSignatureQualificationResponse:
+        """
+        @summary 更换签名的资质和授权书
+        
+        @param request: ChangeSignatureQualificationRequest
+        @return: ChangeSignatureQualificationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.change_signature_qualification_with_options_async(request, runtime)
+
     def check_mobiles_card_support_with_options(
         self,
         request: dysmsapi_20170525_models.CheckMobilesCardSupportRequest,
@@ -1124,6 +1240,146 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_smart_short_url_with_options_async(request, runtime)
+
+    def create_sms_authorization_letter_with_options(
+        self,
+        tmp_req: dysmsapi_20170525_models.CreateSmsAuthorizationLetterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.CreateSmsAuthorizationLetterResponse:
+        """
+        @summary 创建委托授权书
+        
+        @param tmp_req: CreateSmsAuthorizationLetterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSmsAuthorizationLetterResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.CreateSmsAuthorizationLetterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sign_list):
+            request.sign_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sign_list, 'SignList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.authorization):
+            query['Authorization'] = request.authorization
+        if not UtilClient.is_unset(request.authorization_letter_exp_date):
+            query['AuthorizationLetterExpDate'] = request.authorization_letter_exp_date
+        if not UtilClient.is_unset(request.authorization_letter_name):
+            query['AuthorizationLetterName'] = request.authorization_letter_name
+        if not UtilClient.is_unset(request.authorization_letter_pic):
+            query['AuthorizationLetterPic'] = request.authorization_letter_pic
+        if not UtilClient.is_unset(request.organization_code):
+            query['OrganizationCode'] = request.organization_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.proxy_authorization):
+            query['ProxyAuthorization'] = request.proxy_authorization
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_list_shrink):
+            query['SignList'] = request.sign_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSmsAuthorizationLetter',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.CreateSmsAuthorizationLetterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sms_authorization_letter_with_options_async(
+        self,
+        tmp_req: dysmsapi_20170525_models.CreateSmsAuthorizationLetterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.CreateSmsAuthorizationLetterResponse:
+        """
+        @summary 创建委托授权书
+        
+        @param tmp_req: CreateSmsAuthorizationLetterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSmsAuthorizationLetterResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.CreateSmsAuthorizationLetterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sign_list):
+            request.sign_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sign_list, 'SignList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.authorization):
+            query['Authorization'] = request.authorization
+        if not UtilClient.is_unset(request.authorization_letter_exp_date):
+            query['AuthorizationLetterExpDate'] = request.authorization_letter_exp_date
+        if not UtilClient.is_unset(request.authorization_letter_name):
+            query['AuthorizationLetterName'] = request.authorization_letter_name
+        if not UtilClient.is_unset(request.authorization_letter_pic):
+            query['AuthorizationLetterPic'] = request.authorization_letter_pic
+        if not UtilClient.is_unset(request.organization_code):
+            query['OrganizationCode'] = request.organization_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.proxy_authorization):
+            query['ProxyAuthorization'] = request.proxy_authorization
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_list_shrink):
+            query['SignList'] = request.sign_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSmsAuthorizationLetter',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.CreateSmsAuthorizationLetterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sms_authorization_letter(
+        self,
+        request: dysmsapi_20170525_models.CreateSmsAuthorizationLetterRequest,
+    ) -> dysmsapi_20170525_models.CreateSmsAuthorizationLetterResponse:
+        """
+        @summary 创建委托授权书
+        
+        @param request: CreateSmsAuthorizationLetterRequest
+        @return: CreateSmsAuthorizationLetterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_sms_authorization_letter_with_options(request, runtime)
+
+    async def create_sms_authorization_letter_async(
+        self,
+        request: dysmsapi_20170525_models.CreateSmsAuthorizationLetterRequest,
+    ) -> dysmsapi_20170525_models.CreateSmsAuthorizationLetterResponse:
+        """
+        @summary 创建委托授权书
+        
+        @param request: CreateSmsAuthorizationLetterRequest
+        @return: CreateSmsAuthorizationLetterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_sms_authorization_letter_with_options_async(request, runtime)
 
     def create_sms_sign_with_options(
         self,
@@ -2570,6 +2826,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_ossinfo_for_upload_file_with_options_async(request, runtime)
+
+    def get_qualification_oss_info_with_options(
+        self,
+        request: dysmsapi_20170525_models.GetQualificationOssInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.GetQualificationOssInfoResponse:
+        """
+        @summary 上传文件获取oss配置
+        
+        @param request: GetQualificationOssInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQualificationOssInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetQualificationOssInfo',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.GetQualificationOssInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_qualification_oss_info_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.GetQualificationOssInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.GetQualificationOssInfoResponse:
+        """
+        @summary 上传文件获取oss配置
+        
+        @param request: GetQualificationOssInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQualificationOssInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetQualificationOssInfo',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.GetQualificationOssInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_qualification_oss_info(
+        self,
+        request: dysmsapi_20170525_models.GetQualificationOssInfoRequest,
+    ) -> dysmsapi_20170525_models.GetQualificationOssInfoResponse:
+        """
+        @summary 上传文件获取oss配置
+        
+        @param request: GetQualificationOssInfoRequest
+        @return: GetQualificationOssInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_qualification_oss_info_with_options(request, runtime)
+
+    async def get_qualification_oss_info_async(
+        self,
+        request: dysmsapi_20170525_models.GetQualificationOssInfoRequest,
+    ) -> dysmsapi_20170525_models.GetQualificationOssInfoResponse:
+        """
+        @summary 上传文件获取oss配置
+        
+        @param request: GetQualificationOssInfoRequest
+        @return: GetQualificationOssInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_qualification_oss_info_with_options_async(request, runtime)
 
     def get_sms_sign_with_options(
         self,
@@ -4266,6 +4630,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_short_url_with_options_async(request, runtime)
+
+    def query_sms_authorization_letter_with_options(
+        self,
+        tmp_req: dysmsapi_20170525_models.QuerySmsAuthorizationLetterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QuerySmsAuthorizationLetterResponse:
+        """
+        @summary 查询委托授权书
+        
+        @param tmp_req: QuerySmsAuthorizationLetterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySmsAuthorizationLetterResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.QuerySmsAuthorizationLetterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.authorization_letter_id_list):
+            request.authorization_letter_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.authorization_letter_id_list, 'AuthorizationLetterIdList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.authorization_letter_id_list_shrink):
+            query['AuthorizationLetterIdList'] = request.authorization_letter_id_list_shrink
+        if not UtilClient.is_unset(request.organization_code):
+            query['OrganizationCode'] = request.organization_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySmsAuthorizationLetter',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QuerySmsAuthorizationLetterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_sms_authorization_letter_with_options_async(
+        self,
+        tmp_req: dysmsapi_20170525_models.QuerySmsAuthorizationLetterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QuerySmsAuthorizationLetterResponse:
+        """
+        @summary 查询委托授权书
+        
+        @param tmp_req: QuerySmsAuthorizationLetterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySmsAuthorizationLetterResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.QuerySmsAuthorizationLetterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.authorization_letter_id_list):
+            request.authorization_letter_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.authorization_letter_id_list, 'AuthorizationLetterIdList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.authorization_letter_id_list_shrink):
+            query['AuthorizationLetterIdList'] = request.authorization_letter_id_list_shrink
+        if not UtilClient.is_unset(request.organization_code):
+            query['OrganizationCode'] = request.organization_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySmsAuthorizationLetter',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QuerySmsAuthorizationLetterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_sms_authorization_letter(
+        self,
+        request: dysmsapi_20170525_models.QuerySmsAuthorizationLetterRequest,
+    ) -> dysmsapi_20170525_models.QuerySmsAuthorizationLetterResponse:
+        """
+        @summary 查询委托授权书
+        
+        @param request: QuerySmsAuthorizationLetterRequest
+        @return: QuerySmsAuthorizationLetterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_sms_authorization_letter_with_options(request, runtime)
+
+    async def query_sms_authorization_letter_async(
+        self,
+        request: dysmsapi_20170525_models.QuerySmsAuthorizationLetterRequest,
+    ) -> dysmsapi_20170525_models.QuerySmsAuthorizationLetterResponse:
+        """
+        @summary 查询委托授权书
+        
+        @param request: QuerySmsAuthorizationLetterRequest
+        @return: QuerySmsAuthorizationLetterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_sms_authorization_letter_with_options_async(request, runtime)
 
     def query_sms_sign_with_options(
         self,

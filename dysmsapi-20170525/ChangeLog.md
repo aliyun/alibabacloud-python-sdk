@@ -1,3 +1,18 @@
+2025-04-22 Version: 4.0.0
+- Support API ChangeSignatureQualification.
+- Support API CreateSmsAuthorizationLetter.
+- Support API GetQualificationOssInfo.
+- Support API QuerySmsAuthorizationLetter.
+- Update API CreateSmsSign: update request parameters AuthorizationLetterId' type has changed.
+- Update API CreateSmsSign: update request parameters AuthorizationLetterId' format has changed.
+- Update API GetSmsSign: update response parameters Body.AuthorizationLetterId' type has changed.
+- Update API GetSmsSign: update response parameters Body.AuthorizationLetterId' format has changed.
+- Update API QuerySmsSignList: update response parameters Body.SmsSignList.$.AuthorizationLetterId' type has changed.
+- Update API QuerySmsSignList: update response parameters Body.SmsSignList.$.AuthorizationLetterId' format has changed.
+- Update API UpdateSmsSign: update request parameters AuthorizationLetterId' type has changed.
+- Update API UpdateSmsSign: update request parameters AuthorizationLetterId' format has changed.
+
+
 2025-04-16 Version: 3.1.3
 - Update API CreateSmsSign: add request parameters AuthorizationLetterId.
 - Update API GetSmsSign: add response parameters Body.AuthorizationLetterAuditPass.
