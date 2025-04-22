@@ -1,3 +1,7 @@
+2025-04-22 Version: 2.36.0
+- Support API SwitchMainOrg.
+
+
 2025-04-16 Version: 2.35.0
 - Support API AddFolder.
 - Support API AddPermission.

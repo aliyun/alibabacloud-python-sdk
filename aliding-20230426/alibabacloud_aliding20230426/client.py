@@ -31343,6 +31343,132 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.SubscribeEventHeaders()
         return await self.subscribe_event_with_options_async(request, headers, runtime)
 
+    def switch_main_org_with_options(
+        self,
+        tmp_req: aliding_20230426_models.SwitchMainOrgRequest,
+        tmp_header: aliding_20230426_models.SwitchMainOrgHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.SwitchMainOrgResponse:
+        """
+        @param tmp_req: SwitchMainOrgRequest
+        @param tmp_header: SwitchMainOrgHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchMainOrgResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.SwitchMainOrgShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.SwitchMainOrgShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.target_org_id):
+            body['TargetOrgId'] = request.target_org_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SwitchMainOrg',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/aliding/v1/user/switchMainOrg',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.SwitchMainOrgResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def switch_main_org_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.SwitchMainOrgRequest,
+        tmp_header: aliding_20230426_models.SwitchMainOrgHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.SwitchMainOrgResponse:
+        """
+        @param tmp_req: SwitchMainOrgRequest
+        @param tmp_header: SwitchMainOrgHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchMainOrgResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.SwitchMainOrgShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.SwitchMainOrgShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.target_org_id):
+            body['TargetOrgId'] = request.target_org_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SwitchMainOrg',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/aliding/v1/user/switchMainOrg',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.SwitchMainOrgResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def switch_main_org(
+        self,
+        request: aliding_20230426_models.SwitchMainOrgRequest,
+    ) -> aliding_20230426_models.SwitchMainOrgResponse:
+        """
+        @param request: SwitchMainOrgRequest
+        @return: SwitchMainOrgResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.SwitchMainOrgHeaders()
+        return self.switch_main_org_with_options(request, headers, runtime)
+
+    async def switch_main_org_async(
+        self,
+        request: aliding_20230426_models.SwitchMainOrgRequest,
+    ) -> aliding_20230426_models.SwitchMainOrgResponse:
+        """
+        @param request: SwitchMainOrgRequest
+        @return: SwitchMainOrgResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.SwitchMainOrgHeaders()
+        return await self.switch_main_org_with_options_async(request, headers, runtime)
+
     def sync_ding_type_with_options(
         self,
         tmp_req: aliding_20230426_models.SyncDingTypeRequest,
