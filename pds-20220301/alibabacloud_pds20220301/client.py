@@ -382,7 +382,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.AuditLogExportResponse:
         """
-        @summary 导出审计日志
+        @summary Exports audit logs.
+        
+        @description Log audit is a value-added feature that is provided by Drive and Photo Service (PDS) Developer Edition. Before you call this operation, make sure that you learn about the [value-added billable items](https://www.alibabacloud.com/help/document_detail/425220.html).
         
         @param request: AuditLogExportRequest
         @param headers: map
@@ -426,7 +428,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.AuditLogExportResponse:
         """
-        @summary 导出审计日志
+        @summary Exports audit logs.
+        
+        @description Log audit is a value-added feature that is provided by Drive and Photo Service (PDS) Developer Edition. Before you call this operation, make sure that you learn about the [value-added billable items](https://www.alibabacloud.com/help/document_detail/425220.html).
         
         @param request: AuditLogExportRequest
         @param headers: map
@@ -468,7 +472,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.AuditLogExportRequest,
     ) -> pds_20220301_models.AuditLogExportResponse:
         """
-        @summary 导出审计日志
+        @summary Exports audit logs.
+        
+        @description Log audit is a value-added feature that is provided by Drive and Photo Service (PDS) Developer Edition. Before you call this operation, make sure that you learn about the [value-added billable items](https://www.alibabacloud.com/help/document_detail/425220.html).
         
         @param request: AuditLogExportRequest
         @return: AuditLogExportResponse
@@ -482,7 +488,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.AuditLogExportRequest,
     ) -> pds_20220301_models.AuditLogExportResponse:
         """
-        @summary 导出审计日志
+        @summary Exports audit logs.
+        
+        @description Log audit is a value-added feature that is provided by Drive and Photo Service (PDS) Developer Edition. Before you call this operation, make sure that you learn about the [value-added billable items](https://www.alibabacloud.com/help/document_detail/425220.html).
         
         @param request: AuditLogExportRequest
         @return: AuditLogExportResponse
@@ -10996,7 +11004,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.SearchFileResponse:
         """
-        @summary Queries files. For more information about best practices, visit https://help.aliyun.com/document_detail/175890.html.
+        @summary Searches for files.
         
         @param request: SearchFileRequest
         @param headers: map
@@ -11050,7 +11058,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.SearchFileResponse:
         """
-        @summary Queries files. For more information about best practices, visit https://help.aliyun.com/document_detail/175890.html.
+        @summary Searches for files.
         
         @param request: SearchFileRequest
         @param headers: map
@@ -11102,7 +11110,7 @@ class Client(OpenApiClient):
         request: pds_20220301_models.SearchFileRequest,
     ) -> pds_20220301_models.SearchFileResponse:
         """
-        @summary Queries files. For more information about best practices, visit https://help.aliyun.com/document_detail/175890.html.
+        @summary Searches for files.
         
         @param request: SearchFileRequest
         @return: SearchFileResponse
@@ -11116,7 +11124,7 @@ class Client(OpenApiClient):
         request: pds_20220301_models.SearchFileRequest,
     ) -> pds_20220301_models.SearchFileResponse:
         """
-        @summary Queries files. For more information about best practices, visit https://help.aliyun.com/document_detail/175890.html.
+        @summary Searches for files.
         
         @param request: SearchFileRequest
         @return: SearchFileResponse

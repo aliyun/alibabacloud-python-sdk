@@ -4733,6 +4733,7 @@ class Domain(TeaModel):
         size_quota: int = None,
         size_quota_used: int = None,
         status: int = None,
+        store_redundancy_type: str = None,
         updated_at: str = None,
         used_size: int = None,
         user_count_quota: int = None,
@@ -4750,6 +4751,7 @@ class Domain(TeaModel):
         self.size_quota = size_quota
         self.size_quota_used = size_quota_used
         self.status = status
+        self.store_redundancy_type = store_redundancy_type
         self.updated_at = updated_at
         self.used_size = used_size
         self.user_count_quota = user_count_quota
@@ -4790,6 +4792,8 @@ class Domain(TeaModel):
             result['size_quota_used'] = self.size_quota_used
         if self.status is not None:
             result['status'] = self.status
+        if self.store_redundancy_type is not None:
+            result['store_redundancy_type'] = self.store_redundancy_type
         if self.updated_at is not None:
             result['updated_at'] = self.updated_at
         if self.used_size is not None:
@@ -4827,6 +4831,8 @@ class Domain(TeaModel):
             self.size_quota_used = m.get('size_quota_used')
         if m.get('status') is not None:
             self.status = m.get('status')
+        if m.get('store_redundancy_type') is not None:
+            self.store_redundancy_type = m.get('store_redundancy_type')
         if m.get('updated_at') is not None:
             self.updated_at = m.get('updated_at')
         if m.get('used_size') is not None:
@@ -7045,6 +7051,203 @@ class PersonalSpaceInfo(TeaModel):
             self.total_size = m.get('total_size')
         if m.get('used_size') is not None:
             self.used_size = m.get('used_size')
+        return self
+
+
+class ReceivedMsgMsgContent(TeaModel):
+    def __init__(
+        self,
+        msg_data: Dict[str, Any] = None,
+    ):
+        self.msg_data = msg_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.msg_data is not None:
+            result['msg_data'] = self.msg_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('msg_data') is not None:
+            self.msg_data = m.get('msg_data')
+        return self
+
+
+class ReceivedMsg(TeaModel):
+    def __init__(
+        self,
+        has_read: bool = None,
+        msg_category: str = None,
+        msg_content: ReceivedMsgMsgContent = None,
+        msg_id: str = None,
+        msg_sub_category: str = None,
+        msg_type: str = None,
+        publish_at: int = None,
+        read_at: int = None,
+    ):
+        self.has_read = has_read
+        self.msg_category = msg_category
+        self.msg_content = msg_content
+        self.msg_id = msg_id
+        self.msg_sub_category = msg_sub_category
+        self.msg_type = msg_type
+        self.publish_at = publish_at
+        self.read_at = read_at
+
+    def validate(self):
+        if self.msg_content:
+            self.msg_content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.has_read is not None:
+            result['has_read'] = self.has_read
+        if self.msg_category is not None:
+            result['msg_category'] = self.msg_category
+        if self.msg_content is not None:
+            result['msg_content'] = self.msg_content.to_map()
+        if self.msg_id is not None:
+            result['msg_id'] = self.msg_id
+        if self.msg_sub_category is not None:
+            result['msg_sub_category'] = self.msg_sub_category
+        if self.msg_type is not None:
+            result['msg_type'] = self.msg_type
+        if self.publish_at is not None:
+            result['publish_at'] = self.publish_at
+        if self.read_at is not None:
+            result['read_at'] = self.read_at
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('has_read') is not None:
+            self.has_read = m.get('has_read')
+        if m.get('msg_category') is not None:
+            self.msg_category = m.get('msg_category')
+        if m.get('msg_content') is not None:
+            temp_model = ReceivedMsgMsgContent()
+            self.msg_content = temp_model.from_map(m['msg_content'])
+        if m.get('msg_id') is not None:
+            self.msg_id = m.get('msg_id')
+        if m.get('msg_sub_category') is not None:
+            self.msg_sub_category = m.get('msg_sub_category')
+        if m.get('msg_type') is not None:
+            self.msg_type = m.get('msg_type')
+        if m.get('publish_at') is not None:
+            self.publish_at = m.get('publish_at')
+        if m.get('read_at') is not None:
+            self.read_at = m.get('read_at')
+        return self
+
+
+class RecentActedFile(TeaModel):
+    def __init__(
+        self,
+        action_list: List[str] = None,
+        category: str = None,
+        deleted: bool = None,
+        drive_id: str = None,
+        drive_is_handover: bool = None,
+        drive_name: str = None,
+        drive_owner_id: str = None,
+        drive_owner_type: str = None,
+        file_id: str = None,
+        file_name: str = None,
+        size: int = None,
+        thumbnail: str = None,
+        trashed: bool = None,
+    ):
+        self.action_list = action_list
+        self.category = category
+        self.deleted = deleted
+        self.drive_id = drive_id
+        self.drive_is_handover = drive_is_handover
+        self.drive_name = drive_name
+        self.drive_owner_id = drive_owner_id
+        self.drive_owner_type = drive_owner_type
+        self.file_id = file_id
+        self.file_name = file_name
+        self.size = size
+        self.thumbnail = thumbnail
+        self.trashed = trashed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_list is not None:
+            result['action_list'] = self.action_list
+        if self.category is not None:
+            result['category'] = self.category
+        if self.deleted is not None:
+            result['deleted'] = self.deleted
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.drive_is_handover is not None:
+            result['drive_is_handover'] = self.drive_is_handover
+        if self.drive_name is not None:
+            result['drive_name'] = self.drive_name
+        if self.drive_owner_id is not None:
+            result['drive_owner_id'] = self.drive_owner_id
+        if self.drive_owner_type is not None:
+            result['drive_owner_type'] = self.drive_owner_type
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.file_name is not None:
+            result['file_name'] = self.file_name
+        if self.size is not None:
+            result['size'] = self.size
+        if self.thumbnail is not None:
+            result['thumbnail'] = self.thumbnail
+        if self.trashed is not None:
+            result['trashed'] = self.trashed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('action_list') is not None:
+            self.action_list = m.get('action_list')
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('deleted') is not None:
+            self.deleted = m.get('deleted')
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('drive_is_handover') is not None:
+            self.drive_is_handover = m.get('drive_is_handover')
+        if m.get('drive_name') is not None:
+            self.drive_name = m.get('drive_name')
+        if m.get('drive_owner_id') is not None:
+            self.drive_owner_id = m.get('drive_owner_id')
+        if m.get('drive_owner_type') is not None:
+            self.drive_owner_type = m.get('drive_owner_type')
+        if m.get('file_id') is not None:
+            self.file_id = m.get('file_id')
+        if m.get('file_name') is not None:
+            self.file_name = m.get('file_name')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        if m.get('thumbnail') is not None:
+            self.thumbnail = m.get('thumbnail')
+        if m.get('trashed') is not None:
+            self.trashed = m.get('trashed')
         return self
 
 
@@ -9932,9 +10135,24 @@ class AuditLogExportRequest(TeaModel):
         order_by: str = None,
         query: str = None,
     ):
+        # The name of the exported file. The name can be up to 1,024 characters in length. The default name suffix is log.csv.
         self.file_name = file_name
+        # The export language. Default value: zh-CN. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en_US: English
         self.language = language
+        # The sort order based on the operation time. If you leave this parameter empty, the value acted_at DESC is used. Valid values:
+        # 
+        # *   acted_at DESC: sorts the entries by operation time in descending order
+        # *   acted_at ASC: sorts the entries by operation time in ascending order
         self.order_by = order_by
+        # The fields used for query. You can specify one or more of the following fields:
+        # 
+        # *   drive_id (space ID, in the form of a string)
+        # *   actor_id (operator ID, in the form of a string)
+        # *   acted_at (operation time, in the yyyy-MM-ddTHH:mm:ssZ format in UTC, for example, 2006-01-02T00:00:00)
+        # *   action_type (operation type, in the form of a string)
         self.query = query
 
     def validate(self):
@@ -9974,6 +10192,7 @@ class AuditLogExportResponseBody(TeaModel):
         self,
         async_task_id: str = None,
     ):
+        # The ID of the asynchronous task used to export audit logs.
         self.async_task_id = async_task_id
 
     def validate(self):
@@ -16075,6 +16294,7 @@ class GetShareLinkByAnonymousResponseBody(TeaModel):
         download_count: int = None,
         download_limit: int = None,
         expiration: str = None,
+        has_pwd: bool = None,
         preview_count: int = None,
         preview_limit: int = None,
         report_count: int = None,
@@ -16107,6 +16327,7 @@ class GetShareLinkByAnonymousResponseBody(TeaModel):
         self.download_limit = download_limit
         # The time when the share link expires.
         self.expiration = expiration
+        self.has_pwd = has_pwd
         # The number of times that the shared files are previewed.
         self.preview_count = preview_count
         # The maximum number of times that the shared files can be previewed.
@@ -16157,6 +16378,8 @@ class GetShareLinkByAnonymousResponseBody(TeaModel):
             result['download_limit'] = self.download_limit
         if self.expiration is not None:
             result['expiration'] = self.expiration
+        if self.has_pwd is not None:
+            result['has_pwd'] = self.has_pwd
         if self.preview_count is not None:
             result['preview_count'] = self.preview_count
         if self.preview_limit is not None:
@@ -16201,6 +16424,8 @@ class GetShareLinkByAnonymousResponseBody(TeaModel):
             self.download_limit = m.get('download_limit')
         if m.get('expiration') is not None:
             self.expiration = m.get('expiration')
+        if m.get('has_pwd') is not None:
+            self.has_pwd = m.get('has_pwd')
         if m.get('preview_count') is not None:
             self.preview_count = m.get('preview_count')
         if m.get('preview_limit') is not None:
@@ -18764,94 +18989,51 @@ class ListFileRequest(TeaModel):
         thumbnail_processes: Dict[str, ImageProcess] = None,
         type: str = None,
     ):
-        # The category of the file. Valid values:
+        # The file category. Valid values:
         # 
-        # app: installation package. zip: compressed package. image: image. doc: document. video: video. audio: audio. others: other files.
+        # app: installation package zip: compressed package image doc: document video audio others
         # 
         # By default, files of all categories are returned.
         self.category = category
         # The drive ID.
         self.drive_id = drive_id
-        # The fields to return.
+        # The field that is used to return additional information about a child subject. Valid values:
         # 
-        # 1.  If this parameter is set to \\*, all fields of the file except the fields that must be specified are returned.
-        # 2.  If only specific fields are required, you can specify the following fields: url, exif, cropping_suggestion, characteristic_hash, video_metadata, and video_preview_metadata. If multiple fields are required, separate them with commas (,). Example: url,exif.
-        # 3.  The investigation_info field is returned only if you specify this field.
+        # *   url: returns the URL of the thumbnail of a file in the response.
+        # *   exif: returns the Exchangeable Image File Format (EXIF) data of a file in the response.
+        # *   cropping_suggestion: returns the cropping suggestion on a file in the response.
+        # *   characteristic_hash: returns the characteristic hash value of a file in the response.
+        # *   video_metadata: returns the metadata of a video file, such as the video duration, bitrate, height, and width, in the response.
+        # *   video_preview_metadata: returns the transcoding information of a video file, such as the transcoding specification for each definition, in the response.
+        # *   investigation_info: returns the investigation information in the response.
+        # *   dir_size: returns the statistics on each subfolder in the response.
+        # *   user_tags: returns the user tags of each child subject in the response.
         # 
-        # By default, all fields except the fields that must be specified are returned.
+        # You can specify multiple fields by separating them with commas (,). Example: "url,dir_size,user_tags".
         self.fields = fields
         # The maximum number of results to return. Valid values: 1 to 100.
         # 
-        # The number of returned results must be less than or equal to the specified number.
+        # The number of returned entries must be less than or equal to the value of this parameter.
         self.limit = limit
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\\
-        # By default, this parameter is empty.
+        # The name of the entry after which the list begins. Entries whose names are alphabetically after the value of this parameter are returned. If you do not specify this parameter, all entries are returned.\\
+        # This parameter is left empty by default.
         self.marker = marker
-        # The sorting field.
+        # The sorting field. Valid values:
+        # 
+        # created_at: sorts the entries by creation time. updated_at: sorts the entries by update time. size: sorts the entries by file size. name: sorts the entries by file name.
         # 
         # Default value: created_at.
         # 
-        # Valid values:
+        # Enumeration:
         # 
-        # *   updated_at
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     sorts the results based on the time when the file was last modified
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   size
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     sorts the results based on the size of the file
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   name
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     sorts the results based on the name of the file
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   created_at
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     sorts the results based on the time when the file was created
-        # 
-        #     <!-- -->
-        # 
-        #     .
+        # *   updated_at: update time
+        # *   size: file size
+        # *   name: file name
+        # *   created_at: creation time
         self.order_by = order_by
         # The sorting direction. Valid values:
         # 
-        # ASC: ascending order. DESC: descending order.
+        # ASC: ascending order DESC: descending order
         # 
         # Default value: ASC.
         self.order_direction = order_direction
@@ -18859,19 +19041,19 @@ class ListFileRequest(TeaModel):
         # 
         # This parameter is required.
         self.parent_file_id = parent_file_id
-        # The share ID. If you want to manage a file by using a share link, carry the `x-share-token` header for authentication in the request and specify share_id. In this case, `drive_id` is invalid. Otherwise, use an `AccessKey pair` or `access token` for authentication and specify `drive_id`. You must specify one of `share_id` and `drive_id`.
+        # The share ID. If you want to share a file, carry the `x-share-token` header for authentication in the request and specify share_id. In this case, `drive_id` is invalid. Otherwise, use an `AccessKey pair` or `access token` for authentication and specify `drive_id`. You must specify one of `share_id` and `drive_id`.
         self.share_id = share_id
-        # The state of the file. Valid values:
+        # The state of the files to return. Valid values:
         # 
-        # available: Only normal files are returned. uploading: Only files that are being uploaded are returned.
+        # available: returns only normal files. uploading: returns only files that are being uploaded.
         # 
         # By default, only files in the available state are returned.
         self.status = status
         # The thumbnail configurations. Up to five thumbnails can be returned at a time. The value contains key-value pairs. You can customize the keys. The URL of a thumbnail is returned based on the key.
         self.thumbnail_processes = thumbnail_processes
-        # The type of the file. Valid values:
+        # The file type. Valid values:
         # 
-        # file: Only files are returned. folder: Only folders are returned.
+        # file: returns only files. folder: returns only folders.
         # 
         # By default, files of all types are returned.
         self.type = type
@@ -22244,38 +22426,40 @@ class SearchFileRequest(TeaModel):
         # The drive ID.
         self.drive_id = drive_id
         self.fields = fields
-        # The maximum number of results to return. Valid values: 1 to 100.
+        # The maximum number of entries to return. Valid values: 1 to 100.
         # 
-        # The number of returned results must be less than or equal to the specified number.
+        # The number of returned entries must be less than or equal to the value of this parameter.
         self.limit = limit
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\\
-        # By default, this parameter is left empty.
+        # The name of the entry after which the list begins. Entries whose names are alphabetically after the value of this parameter are returned. If you do not specify this parameter, all entries are returned.\\
+        # This parameter is left empty by default.
         self.marker = marker
-        # The field by which to sort the returned results. Default value: created_at. Valid values:
+        # The field by which to sort the returned entries. Default value: created_at. Valid values:
         # 
-        # *   created_at: sorts the results by the time when the file was created.
-        # *   updated_at: sorts the results by the time when the file was modified.
-        # *   size: sorts the results by the size of the file.
-        # *   name: sorts the results by the name of the file.
+        # *   created_at: sorts the entries by creation time.
+        # *   updated_at: sorts the entries by update time.
+        # *   size: sorts the entries by file size.
+        # *   name: sorts the entries by file name.
         # 
-        # The order in which you want to sort the returned results. Valid values:
+        # The order in which you want to sort the returned entries. Valid values:
         # 
-        # *   ASC: sorts the results in ascending order.
-        # *   DESC: sorts the results in descending order.
+        # *   ASC: ascending order
+        # *   DESC: descending order
         # 
-        # You must specify this parameter in the \\<field name> \\<ASC or DESC> format. Separate multiple field names with commas (,). A preceding field has a higher priority than a following field. Examples:
+        # You must specify this parameter in the \\<field> \\<ASC or DESC> format. Separate multiple fields with commas (,). A preceding field has a higher priority than a following field. Examples:
         # 
-        # *   If you want to sort the results based on the file name in ascending order, set this parameter to "name ASC".
-        # *   If you want to sort the results based on the creation time in descending order, set this parameter to "created_at DESC".
-        # *   If you want to sort the results based on the creation time in descending order first, and then sort the results based on the file name in ascending order if the creation time is the same, set this parameter to "created_at DESC,name ASC".
+        # *   If you want to sort the entries by file name in ascending order, set this parameter to "name ASC".
+        # *   If you want to sort the entries by creation time in descending order, set this parameter to "created_at DESC".
+        # *   If you want to sort the entries by creation time in descending order and sort the entries by file name in ascending order in case of the same creation time, set this parameter to "created_at DESC,name ASC".
         self.order_by = order_by
-        # The search condition. Fuzzy searches based on the file name or directory name are supported. The search condition can be up to 4,096 characters in length.
+        # The search conditions. Fuzzy searches based on the file name or directory name are supported. The value of this parameter can be up to 4,096 characters in length.
         # 
         # This parameter is required.
         self.query = query
+        # Specifies whether to perform recursive search on a folder that is specified by setting parent_file_id in the query parameter.
         self.recursive = recursive
         # Specifies whether to return the total number of retrieved files.
         self.return_total_count = return_total_count
+        # The thumbnail configurations. Up to five thumbnails can be returned at a time. The value contains key-value pairs. You can customize the keys. The URL of a thumbnail is returned based on the key.
         self.thumbnail_processes = thumbnail_processes
 
     def validate(self):

@@ -1,3 +1,7 @@
+2025-04-22 Version: 4.2.4
+- Update API GetShareLinkByAnonymous: add response parameters Body.has_pwd.
+
+
 2025-03-24 Version: 4.2.3
 - Generated python 2022-03-01 for pds.
 
