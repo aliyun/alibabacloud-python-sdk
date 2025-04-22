@@ -5735,6 +5735,166 @@ class DeleteAxgGroupResponse(TeaModel):
         return self
 
 
+class DeleteSecretAPhoneNoToCustRequest(TeaModel):
+    def __init__(
+        self,
+        ano_white_group_id: int = None,
+        owner_id: int = None,
+        phone_no_a: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # A号码组ID
+        # 
+        # This parameter is required.
+        self.ano_white_group_id = ano_white_group_id
+        self.owner_id = owner_id
+        # A号码
+        # 
+        # This parameter is required.
+        self.phone_no_a = phone_no_a
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ano_white_group_id is not None:
+            result['ANoWhiteGroupId'] = self.ano_white_group_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone_no_a is not None:
+            result['PhoneNoA'] = self.phone_no_a
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ANoWhiteGroupId') is not None:
+            self.ano_white_group_id = m.get('ANoWhiteGroupId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PhoneNoA') is not None:
+            self.phone_no_a = m.get('PhoneNoA')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DeleteSecretAPhoneNoToCustResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 请求状态码
+        self.code = code
+        # 删除是否成功
+        self.data = data
+        # 失败错误提示
+        self.message = message
+        # 返回id
+        self.request_id = request_id
+        # 请求是否成功
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteSecretAPhoneNoToCustResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSecretAPhoneNoToCustResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSecretAPhoneNoToCustResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteSecretBlacklistRequest(TeaModel):
     def __init__(
         self,
@@ -8547,6 +8707,238 @@ class QueryRecordFileDownloadUrlResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryRecordFileDownloadUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QuerySecretAPhoneNoToCustRequest(TeaModel):
+    def __init__(
+        self,
+        ano_white_group_id: int = None,
+        owner_id: int = None,
+        phone_no_a: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # 号码组ID
+        # 
+        # This parameter is required.
+        self.ano_white_group_id = ano_white_group_id
+        self.owner_id = owner_id
+        # A号码
+        # 
+        # This parameter is required.
+        self.phone_no_a = phone_no_a
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ano_white_group_id is not None:
+            result['ANoWhiteGroupId'] = self.ano_white_group_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone_no_a is not None:
+            result['PhoneNoA'] = self.phone_no_a
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ANoWhiteGroupId') is not None:
+            self.ano_white_group_id = m.get('ANoWhiteGroupId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PhoneNoA') is not None:
+            self.phone_no_a = m.get('PhoneNoA')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class QuerySecretAPhoneNoToCustResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        ano_white_group_id: str = None,
+        cust_phone_no: str = None,
+        no_type: str = None,
+        phone_no_a: str = None,
+        remark: str = None,
+        report_result: str = None,
+        report_status: str = None,
+    ):
+        # 所属a号码组id
+        self.ano_white_group_id = ano_white_group_id
+        # 固话报备的经办人/法人电话
+        self.cust_phone_no = cust_phone_no
+        # 号码类型
+        self.no_type = no_type
+        # A号码
+        self.phone_no_a = phone_no_a
+        # 备注（客户自己的业务备注，可编辑）
+        self.remark = remark
+        # 报备失败原因
+        self.report_result = report_result
+        # 报备结果
+        self.report_status = report_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ano_white_group_id is not None:
+            result['ANoWhiteGroupId'] = self.ano_white_group_id
+        if self.cust_phone_no is not None:
+            result['CustPhoneNo'] = self.cust_phone_no
+        if self.no_type is not None:
+            result['NoType'] = self.no_type
+        if self.phone_no_a is not None:
+            result['PhoneNoA'] = self.phone_no_a
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.report_result is not None:
+            result['ReportResult'] = self.report_result
+        if self.report_status is not None:
+            result['ReportStatus'] = self.report_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ANoWhiteGroupId') is not None:
+            self.ano_white_group_id = m.get('ANoWhiteGroupId')
+        if m.get('CustPhoneNo') is not None:
+            self.cust_phone_no = m.get('CustPhoneNo')
+        if m.get('NoType') is not None:
+            self.no_type = m.get('NoType')
+        if m.get('PhoneNoA') is not None:
+            self.phone_no_a = m.get('PhoneNoA')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ReportResult') is not None:
+            self.report_result = m.get('ReportResult')
+        if m.get('ReportStatus') is not None:
+            self.report_status = m.get('ReportStatus')
+        return self
+
+
+class QuerySecretAPhoneNoToCustResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: QuerySecretAPhoneNoToCustResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 请求状态码
+        self.code = code
+        # A号码报备状态查询结构体
+        self.data = data
+        # 失败错误提示
+        self.message = message
+        # 返回id
+        self.request_id = request_id
+        # 请求是否成功
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QuerySecretAPhoneNoToCustResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QuerySecretAPhoneNoToCustResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QuerySecretAPhoneNoToCustResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QuerySecretAPhoneNoToCustResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

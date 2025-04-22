@@ -2794,6 +2794,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_axg_group_with_options_async(request, runtime)
 
+    def delete_secret_aphone_no_to_cust_with_options(
+        self,
+        request: dyplsapi_20170525_models.DeleteSecretAPhoneNoToCustRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.DeleteSecretAPhoneNoToCustResponse:
+        """
+        @summary A号码报备数据删除
+        
+        @param request: DeleteSecretAPhoneNoToCustRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecretAPhoneNoToCustResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ano_white_group_id):
+            query['ANoWhiteGroupId'] = request.ano_white_group_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_a):
+            query['PhoneNoA'] = request.phone_no_a
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSecretAPhoneNoToCust',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.DeleteSecretAPhoneNoToCustResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_secret_aphone_no_to_cust_with_options_async(
+        self,
+        request: dyplsapi_20170525_models.DeleteSecretAPhoneNoToCustRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.DeleteSecretAPhoneNoToCustResponse:
+        """
+        @summary A号码报备数据删除
+        
+        @param request: DeleteSecretAPhoneNoToCustRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecretAPhoneNoToCustResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ano_white_group_id):
+            query['ANoWhiteGroupId'] = request.ano_white_group_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_a):
+            query['PhoneNoA'] = request.phone_no_a
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSecretAPhoneNoToCust',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.DeleteSecretAPhoneNoToCustResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_secret_aphone_no_to_cust(
+        self,
+        request: dyplsapi_20170525_models.DeleteSecretAPhoneNoToCustRequest,
+    ) -> dyplsapi_20170525_models.DeleteSecretAPhoneNoToCustResponse:
+        """
+        @summary A号码报备数据删除
+        
+        @param request: DeleteSecretAPhoneNoToCustRequest
+        @return: DeleteSecretAPhoneNoToCustResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_secret_aphone_no_to_cust_with_options(request, runtime)
+
+    async def delete_secret_aphone_no_to_cust_async(
+        self,
+        request: dyplsapi_20170525_models.DeleteSecretAPhoneNoToCustRequest,
+    ) -> dyplsapi_20170525_models.DeleteSecretAPhoneNoToCustResponse:
+        """
+        @summary A号码报备数据删除
+        
+        @param request: DeleteSecretAPhoneNoToCustRequest
+        @return: DeleteSecretAPhoneNoToCustResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_secret_aphone_no_to_cust_with_options_async(request, runtime)
+
     def delete_secret_blacklist_with_options(
         self,
         request: dyplsapi_20170525_models.DeleteSecretBlacklistRequest,
@@ -4329,6 +4441,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_record_file_download_url_with_options_async(request, runtime)
+
+    def query_secret_aphone_no_to_cust_with_options(
+        self,
+        request: dyplsapi_20170525_models.QuerySecretAPhoneNoToCustRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.QuerySecretAPhoneNoToCustResponse:
+        """
+        @summary A号码报备状态查询
+        
+        @param request: QuerySecretAPhoneNoToCustRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySecretAPhoneNoToCustResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ano_white_group_id):
+            query['ANoWhiteGroupId'] = request.ano_white_group_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_a):
+            query['PhoneNoA'] = request.phone_no_a
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySecretAPhoneNoToCust',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.QuerySecretAPhoneNoToCustResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_secret_aphone_no_to_cust_with_options_async(
+        self,
+        request: dyplsapi_20170525_models.QuerySecretAPhoneNoToCustRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.QuerySecretAPhoneNoToCustResponse:
+        """
+        @summary A号码报备状态查询
+        
+        @param request: QuerySecretAPhoneNoToCustRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySecretAPhoneNoToCustResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ano_white_group_id):
+            query['ANoWhiteGroupId'] = request.ano_white_group_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_a):
+            query['PhoneNoA'] = request.phone_no_a
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySecretAPhoneNoToCust',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.QuerySecretAPhoneNoToCustResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_secret_aphone_no_to_cust(
+        self,
+        request: dyplsapi_20170525_models.QuerySecretAPhoneNoToCustRequest,
+    ) -> dyplsapi_20170525_models.QuerySecretAPhoneNoToCustResponse:
+        """
+        @summary A号码报备状态查询
+        
+        @param request: QuerySecretAPhoneNoToCustRequest
+        @return: QuerySecretAPhoneNoToCustResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_secret_aphone_no_to_cust_with_options(request, runtime)
+
+    async def query_secret_aphone_no_to_cust_async(
+        self,
+        request: dyplsapi_20170525_models.QuerySecretAPhoneNoToCustRequest,
+    ) -> dyplsapi_20170525_models.QuerySecretAPhoneNoToCustResponse:
+        """
+        @summary A号码报备状态查询
+        
+        @param request: QuerySecretAPhoneNoToCustRequest
+        @return: QuerySecretAPhoneNoToCustResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_secret_aphone_no_to_cust_with_options_async(request, runtime)
 
     def query_secret_no_detail_with_options(
         self,

@@ -1,3 +1,8 @@
+2025-04-22 Version: 2.3.0
+- Support API DeleteSecretAPhoneNoToCust.
+- Support API QuerySecretAPhoneNoToCust.
+
+
 2025-04-18 Version: 2.2.1
 - Generated python 2017-05-25 for Dyplsapi.
 
