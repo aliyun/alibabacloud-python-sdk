@@ -7424,6 +7424,7 @@ class GetConsumerProgressResponseBodyConsumerProgress(TeaModel):
         rebalance_info_list: GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoList = None,
         topic_list: GetConsumerProgressResponseBodyConsumerProgressTopicList = None,
         total_diff: int = None,
+        state: str = None,
     ):
         # The time when the last message consumed by the consumer group was generated.
         self.last_timestamp = last_timestamp
@@ -7433,6 +7434,7 @@ class GetConsumerProgressResponseBodyConsumerProgress(TeaModel):
         self.topic_list = topic_list
         # The total number of unconsumed messages in all topics to which the consumer group subscribes.
         self.total_diff = total_diff
+        self.state = state
 
     def validate(self):
         if self.rebalance_info_list:
@@ -7454,6 +7456,8 @@ class GetConsumerProgressResponseBodyConsumerProgress(TeaModel):
             result['TopicList'] = self.topic_list.to_map()
         if self.total_diff is not None:
             result['TotalDiff'] = self.total_diff
+        if self.state is not None:
+            result['state'] = self.state
         return result
 
     def from_map(self, m: dict = None):
@@ -7468,6 +7472,8 @@ class GetConsumerProgressResponseBodyConsumerProgress(TeaModel):
             self.topic_list = temp_model.from_map(m['TopicList'])
         if m.get('TotalDiff') is not None:
             self.total_diff = m.get('TotalDiff')
+        if m.get('state') is not None:
+            self.state = m.get('state')
         return self
 
 

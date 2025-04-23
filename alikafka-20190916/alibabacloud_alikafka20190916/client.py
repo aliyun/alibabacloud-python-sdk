@@ -75,16 +75,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.ChangeResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.ChangeResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def change_resource_group_with_options_async(
         self,
@@ -120,16 +114,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.ChangeResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.ChangeResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def change_resource_group(
         self,
@@ -193,16 +181,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.ConvertPostPayOrderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.ConvertPostPayOrderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ConvertPostPayOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def convert_post_pay_order_with_options_async(
         self,
@@ -240,16 +222,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.ConvertPostPayOrderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.ConvertPostPayOrderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ConvertPostPayOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def convert_post_pay_order(
         self,
@@ -325,16 +301,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreateAclResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreateAclResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreateAclResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_acl_with_options_async(
         self,
@@ -384,16 +354,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreateAclResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreateAclResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreateAclResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_acl(
         self,
@@ -459,16 +423,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreateConsumerGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreateConsumerGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreateConsumerGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_consumer_group_with_options_async(
         self,
@@ -508,16 +466,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreateConsumerGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreateConsumerGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreateConsumerGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_consumer_group(
         self,
@@ -601,16 +553,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreatePostPayInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreatePostPayInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreatePostPayInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_post_pay_instance_with_options_async(
         self,
@@ -668,16 +614,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreatePostPayInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreatePostPayInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreatePostPayInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_post_pay_instance(
         self,
@@ -767,16 +707,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreatePostPayOrderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreatePostPayOrderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreatePostPayOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_post_pay_order_with_options_async(
         self,
@@ -840,16 +774,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreatePostPayOrderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreatePostPayOrderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreatePostPayOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_post_pay_order(
         self,
@@ -939,16 +867,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreatePrePayInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreatePrePayInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreatePrePayInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_pre_pay_instance_with_options_async(
         self,
@@ -1008,16 +930,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreatePrePayInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreatePrePayInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreatePrePayInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_pre_pay_instance(
         self,
@@ -1110,16 +1026,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreatePrePayOrderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreatePrePayOrderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreatePrePayOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_pre_pay_order_with_options_async(
         self,
@@ -1186,16 +1096,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreatePrePayOrderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreatePrePayOrderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreatePrePayOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_pre_pay_order(
         self,
@@ -1269,16 +1173,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreateSaslUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreateSaslUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreateSaslUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_sasl_user_with_options_async(
         self,
@@ -1320,16 +1218,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreateSaslUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreateSaslUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreateSaslUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_sasl_user(
         self,
@@ -1415,16 +1307,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreateScheduledScalingRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreateScheduledScalingRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreateScheduledScalingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_scheduled_scaling_rule_with_options_async(
         self,
@@ -1484,16 +1370,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreateScheduledScalingRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreateScheduledScalingRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreateScheduledScalingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_scheduled_scaling_rule(
         self,
@@ -1578,16 +1458,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreateTopicResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreateTopicResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreateTopicResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_topic_with_options_async(
         self,
@@ -1642,16 +1516,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreateTopicResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.CreateTopicResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreateTopicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_topic(
         self,
@@ -1733,16 +1601,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteAclResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteAclResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteAclResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_acl_with_options_async(
         self,
@@ -1792,16 +1654,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteAclResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteAclResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteAclResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_acl(
         self,
@@ -1863,16 +1719,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteConsumerGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteConsumerGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteConsumerGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_consumer_group_with_options_async(
         self,
@@ -1908,16 +1758,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteConsumerGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteConsumerGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteConsumerGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_consumer_group(
         self,
@@ -1977,16 +1821,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_instance_with_options_async(
         self,
@@ -2020,16 +1858,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_instance(
         self,
@@ -2095,16 +1927,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteSaslUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteSaslUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteSaslUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_sasl_user_with_options_async(
         self,
@@ -2144,16 +1970,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteSaslUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteSaslUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteSaslUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_sasl_user(
         self,
@@ -2217,16 +2037,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteScheduledScalingRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteScheduledScalingRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteScheduledScalingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_scheduled_scaling_rule_with_options_async(
         self,
@@ -2264,16 +2078,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteScheduledScalingRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteScheduledScalingRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteScheduledScalingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_scheduled_scaling_rule(
         self,
@@ -2339,16 +2147,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteTopicResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteTopicResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteTopicResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_topic_with_options_async(
         self,
@@ -2384,16 +2186,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteTopicResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.DeleteTopicResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteTopicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_topic(
         self,
@@ -2457,16 +2253,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.DescribeAclResourceNameResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.DescribeAclResourceNameResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DescribeAclResourceNameResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_acl_resource_name_with_options_async(
         self,
@@ -2504,16 +2294,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.DescribeAclResourceNameResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.DescribeAclResourceNameResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DescribeAclResourceNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_acl_resource_name(
         self,
@@ -2587,16 +2371,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.DescribeAclsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.DescribeAclsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DescribeAclsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_acls_with_options_async(
         self,
@@ -2644,16 +2422,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.DescribeAclsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.DescribeAclsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DescribeAclsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_acls(
         self,
@@ -2713,16 +2485,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.DescribeSaslUsersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.DescribeSaslUsersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DescribeSaslUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sasl_users_with_options_async(
         self,
@@ -2756,16 +2522,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.DescribeSaslUsersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.DescribeSaslUsersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DescribeSaslUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sasl_users(
         self,
@@ -2827,16 +2587,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.EnableAutoGroupCreationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.EnableAutoGroupCreationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.EnableAutoGroupCreationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_auto_group_creation_with_options_async(
         self,
@@ -2872,16 +2626,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.EnableAutoGroupCreationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.EnableAutoGroupCreationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.EnableAutoGroupCreationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_auto_group_creation(
         self,
@@ -2947,16 +2695,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.EnableAutoTopicCreationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.EnableAutoTopicCreationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.EnableAutoTopicCreationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_auto_topic_creation_with_options_async(
         self,
@@ -2996,16 +2738,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.EnableAutoTopicCreationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.EnableAutoTopicCreationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.EnableAutoTopicCreationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_auto_topic_creation(
         self,
@@ -3063,16 +2799,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetAllInstanceIdListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetAllInstanceIdListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetAllInstanceIdListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_all_instance_id_list_with_options_async(
         self,
@@ -3104,16 +2834,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetAllInstanceIdListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetAllInstanceIdListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetAllInstanceIdListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_all_instance_id_list(
         self,
@@ -3173,16 +2897,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetAllowedIpListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetAllowedIpListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetAllowedIpListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_allowed_ip_list_with_options_async(
         self,
@@ -3216,16 +2934,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetAllowedIpListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetAllowedIpListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetAllowedIpListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_allowed_ip_list(
         self,
@@ -3287,16 +2999,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetAutoScalingConfigurationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetAutoScalingConfigurationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetAutoScalingConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_auto_scaling_configuration_with_options_async(
         self,
@@ -3332,16 +3038,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetAutoScalingConfigurationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetAutoScalingConfigurationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetAutoScalingConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_auto_scaling_configuration(
         self,
@@ -3411,16 +3111,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetConsumerListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetConsumerListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetConsumerListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_consumer_list_with_options_async(
         self,
@@ -3460,16 +3154,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetConsumerListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetConsumerListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetConsumerListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_consumer_list(
         self,
@@ -3533,16 +3221,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetConsumerProgressResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetConsumerProgressResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetConsumerProgressResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_consumer_progress_with_options_async(
         self,
@@ -3580,16 +3262,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetConsumerProgressResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetConsumerProgressResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetConsumerProgressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_consumer_progress(
         self,
@@ -3657,16 +3333,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetInstanceListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetInstanceListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetInstanceListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_list_with_options_async(
         self,
@@ -3708,16 +3378,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetInstanceListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetInstanceListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetInstanceListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance_list(
         self,
@@ -3791,16 +3455,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetKafkaClientIpResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetKafkaClientIpResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetKafkaClientIpResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_kafka_client_ip_with_options_async(
         self,
@@ -3848,16 +3506,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetKafkaClientIpResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetKafkaClientIpResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetKafkaClientIpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_kafka_client_ip(
         self,
@@ -3925,16 +3577,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetQuotaTipResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetQuotaTipResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetQuotaTipResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_quota_tip_with_options_async(
         self,
@@ -3968,16 +3614,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetQuotaTipResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetQuotaTipResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetQuotaTipResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_quota_tip(
         self,
@@ -4043,16 +3683,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetTopicListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetTopicListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetTopicListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_topic_list_with_options_async(
         self,
@@ -4092,16 +3726,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetTopicListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetTopicListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetTopicListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_topic_list(
         self,
@@ -4163,16 +3791,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetTopicStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetTopicStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetTopicStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_topic_status_with_options_async(
         self,
@@ -4208,16 +3830,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetTopicStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetTopicStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetTopicStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_topic_status(
         self,
@@ -4279,16 +3895,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetTopicSubscribeStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetTopicSubscribeStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetTopicSubscribeStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_topic_subscribe_status_with_options_async(
         self,
@@ -4324,16 +3934,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetTopicSubscribeStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.GetTopicSubscribeStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetTopicSubscribeStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_topic_subscribe_status(
         self,
@@ -4399,16 +4003,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.ListTagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.ListTagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -4448,16 +4046,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.ListTagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.ListTagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_resources(
         self,
@@ -4519,16 +4111,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.ModifyInstanceNameResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.ModifyInstanceNameResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ModifyInstanceNameResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_name_with_options_async(
         self,
@@ -4564,16 +4150,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.ModifyInstanceNameResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.ModifyInstanceNameResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ModifyInstanceNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_name(
         self,
@@ -4637,16 +4217,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.ModifyPartitionNumResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.ModifyPartitionNumResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ModifyPartitionNumResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_partition_num_with_options_async(
         self,
@@ -4684,16 +4258,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.ModifyPartitionNumResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.ModifyPartitionNumResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ModifyPartitionNumResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_partition_num(
         self,
@@ -4759,16 +4327,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.ModifyScheduledScalingRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.ModifyScheduledScalingRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ModifyScheduledScalingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_scheduled_scaling_rule_with_options_async(
         self,
@@ -4808,16 +4370,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.ModifyScheduledScalingRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.ModifyScheduledScalingRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ModifyScheduledScalingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_scheduled_scaling_rule(
         self,
@@ -4885,16 +4441,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.ModifyTopicRemarkResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.ModifyTopicRemarkResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ModifyTopicRemarkResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_topic_remark_with_options_async(
         self,
@@ -4932,16 +4482,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.ModifyTopicRemarkResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.ModifyTopicRemarkResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ModifyTopicRemarkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_topic_remark(
         self,
@@ -4997,16 +4541,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.QueryMessageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.QueryMessageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.QueryMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def query_message_with_options_async(
         self,
@@ -5036,16 +4574,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.QueryMessageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.QueryMessageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.QueryMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def query_message(
         self,
@@ -5109,16 +4641,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.ReleaseInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.ReleaseInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ReleaseInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def release_instance_with_options_async(
         self,
@@ -5156,16 +4682,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.ReleaseInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.ReleaseInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ReleaseInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def release_instance(
         self,
@@ -5231,16 +4751,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.ReopenInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.ReopenInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ReopenInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def reopen_instance_with_options_async(
         self,
@@ -5276,16 +4790,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.ReopenInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.ReopenInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ReopenInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def reopen_instance(
         self,
@@ -5389,16 +4897,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.StartInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.StartInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.StartInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_instance_with_options_async(
         self,
@@ -5472,16 +4974,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.StartInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.StartInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.StartInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_instance(
         self,
@@ -5547,16 +5043,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.StopInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.StopInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.StopInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_instance_with_options_async(
         self,
@@ -5592,16 +5082,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.StopInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.StopInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.StopInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_instance(
         self,
@@ -5671,16 +5155,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.TagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.TagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def tag_resources_with_options_async(
         self,
@@ -5720,16 +5198,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.TagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.TagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def tag_resources(
         self,
@@ -5795,16 +5267,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.UntagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.UntagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def untag_resources_with_options_async(
         self,
@@ -5844,16 +5310,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.UntagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.UntagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def untag_resources(
         self,
@@ -5923,16 +5383,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpdateAllowedIpResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpdateAllowedIpResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpdateAllowedIpResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_allowed_ip_with_options_async(
         self,
@@ -5976,16 +5430,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpdateAllowedIpResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpdateAllowedIpResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpdateAllowedIpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_allowed_ip(
         self,
@@ -6064,16 +5512,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpdateConsumerOffsetResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpdateConsumerOffsetResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpdateConsumerOffsetResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_consumer_offset_with_options_async(
         self,
@@ -6126,16 +5568,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpdateConsumerOffsetResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpdateConsumerOffsetResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpdateConsumerOffsetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_consumer_offset(
         self,
@@ -6213,16 +5649,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpdateInstanceConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpdateInstanceConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpdateInstanceConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_instance_config_with_options_async(
         self,
@@ -6264,16 +5694,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpdateInstanceConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpdateInstanceConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpdateInstanceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_instance_config(
         self,
@@ -6351,16 +5775,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpdateTopicConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpdateTopicConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpdateTopicConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_topic_config_with_options_async(
         self,
@@ -6400,16 +5818,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpdateTopicConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpdateTopicConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpdateTopicConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_topic_config(
         self,
@@ -6479,16 +5891,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpgradeInstanceVersionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpgradeInstanceVersionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpgradeInstanceVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def upgrade_instance_version_with_options_async(
         self,
@@ -6532,16 +5938,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpgradeInstanceVersionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpgradeInstanceVersionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpgradeInstanceVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def upgrade_instance_version(
         self,
@@ -6641,16 +6041,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpgradePostPayOrderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpgradePostPayOrderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpgradePostPayOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def upgrade_post_pay_order_with_options_async(
         self,
@@ -6708,16 +6102,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpgradePostPayOrderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpgradePostPayOrderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpgradePostPayOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def upgrade_post_pay_order(
         self,
@@ -6807,16 +6195,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpgradePrePayOrderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpgradePrePayOrderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpgradePrePayOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def upgrade_pre_pay_order_with_options_async(
         self,
@@ -6876,16 +6258,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpgradePrePayOrderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                alikafka_20190916_models.UpgradePrePayOrderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpgradePrePayOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def upgrade_pre_pay_order(
         self,

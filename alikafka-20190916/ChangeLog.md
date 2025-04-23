@@ -1,3 +1,7 @@
+2025-04-23 Version: 2.10.2
+- Update API GetConsumerProgress: add response parameters Body.ConsumerProgress.state.
+
+
 2025-04-09 Version: 2.10.1
 - Update API GetAllowedIpList: add response parameters Body.AllowedList.InternetList.$.BlackIPList.
 - Update API GetAllowedIpList: add response parameters Body.AllowedList.InternetList.$.BlackIPMap.
