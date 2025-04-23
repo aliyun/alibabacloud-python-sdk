@@ -230,8 +230,20 @@ class GetCommissionDetailFileListRequest(TeaModel):
     def __init__(
         self,
         bill_month: str = None,
+        oss_access_key_id: str = None,
+        oss_access_key_secret: str = None,
+        oss_bucket_name: str = None,
+        oss_endpoint: str = None,
+        oss_region: str = None,
+        oss_security_token: str = None,
     ):
         self.bill_month = bill_month
+        self.oss_access_key_id = oss_access_key_id
+        self.oss_access_key_secret = oss_access_key_secret
+        self.oss_bucket_name = oss_bucket_name
+        self.oss_endpoint = oss_endpoint
+        self.oss_region = oss_region
+        self.oss_security_token = oss_security_token
 
     def validate(self):
         pass
@@ -244,23 +256,51 @@ class GetCommissionDetailFileListRequest(TeaModel):
         result = dict()
         if self.bill_month is not None:
             result['BillMonth'] = self.bill_month
+        if self.oss_access_key_id is not None:
+            result['OssAccessKeyId'] = self.oss_access_key_id
+        if self.oss_access_key_secret is not None:
+            result['OssAccessKeySecret'] = self.oss_access_key_secret
+        if self.oss_bucket_name is not None:
+            result['OssBucketName'] = self.oss_bucket_name
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
+        if self.oss_region is not None:
+            result['OssRegion'] = self.oss_region
+        if self.oss_security_token is not None:
+            result['OssSecurityToken'] = self.oss_security_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('BillMonth') is not None:
             self.bill_month = m.get('BillMonth')
+        if m.get('OssAccessKeyId') is not None:
+            self.oss_access_key_id = m.get('OssAccessKeyId')
+        if m.get('OssAccessKeySecret') is not None:
+            self.oss_access_key_secret = m.get('OssAccessKeySecret')
+        if m.get('OssBucketName') is not None:
+            self.oss_bucket_name = m.get('OssBucketName')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
+        if m.get('OssRegion') is not None:
+            self.oss_region = m.get('OssRegion')
+        if m.get('OssSecurityToken') is not None:
+            self.oss_security_token = m.get('OssSecurityToken')
         return self
 
 
 class GetCommissionDetailFileListResponseBodyDataFileList(TeaModel):
     def __init__(
         self,
+        bucket_sync_status: str = None,
         commission_policy_name: str = None,
+        file_name: str = None,
         file_type: str = None,
         file_url: str = None,
     ):
+        self.bucket_sync_status = bucket_sync_status
         self.commission_policy_name = commission_policy_name
+        self.file_name = file_name
         self.file_type = file_type
         self.file_url = file_url
 
@@ -273,8 +313,12 @@ class GetCommissionDetailFileListResponseBodyDataFileList(TeaModel):
             return _map
 
         result = dict()
+        if self.bucket_sync_status is not None:
+            result['BucketSyncStatus'] = self.bucket_sync_status
         if self.commission_policy_name is not None:
             result['CommissionPolicyName'] = self.commission_policy_name
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
         if self.file_type is not None:
             result['FileType'] = self.file_type
         if self.file_url is not None:
@@ -283,8 +327,12 @@ class GetCommissionDetailFileListResponseBodyDataFileList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BucketSyncStatus') is not None:
+            self.bucket_sync_status = m.get('BucketSyncStatus')
         if m.get('CommissionPolicyName') is not None:
             self.commission_policy_name = m.get('CommissionPolicyName')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
         if m.get('FileType') is not None:
             self.file_type = m.get('FileType')
         if m.get('FileUrl') is not None:

@@ -1,3 +1,14 @@
+2025-04-23 Version: 1.0.4
+- Update API GetCommissionDetailFileList: add request parameters OssAccessKeyId.
+- Update API GetCommissionDetailFileList: add request parameters OssAccessKeySecret.
+- Update API GetCommissionDetailFileList: add request parameters OssBucketName.
+- Update API GetCommissionDetailFileList: add request parameters OssEndpoint.
+- Update API GetCommissionDetailFileList: add request parameters OssRegion.
+- Update API GetCommissionDetailFileList: add request parameters OssSecurityToken.
+- Update API GetCommissionDetailFileList: add response parameters Body.Data.FileList.$.BucketSyncStatus.
+- Update API GetCommissionDetailFileList: add response parameters Body.Data.FileList.$.FileName.
+
+
 2025-04-21 Version: 1.0.3
 - Generated python 2025-02-27 for Agency.
 

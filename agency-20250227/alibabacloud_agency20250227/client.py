@@ -235,6 +235,18 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.bill_month):
             query['BillMonth'] = request.bill_month
+        if not UtilClient.is_unset(request.oss_access_key_id):
+            query['OssAccessKeyId'] = request.oss_access_key_id
+        if not UtilClient.is_unset(request.oss_access_key_secret):
+            query['OssAccessKeySecret'] = request.oss_access_key_secret
+        if not UtilClient.is_unset(request.oss_bucket_name):
+            query['OssBucketName'] = request.oss_bucket_name
+        if not UtilClient.is_unset(request.oss_endpoint):
+            query['OssEndpoint'] = request.oss_endpoint
+        if not UtilClient.is_unset(request.oss_region):
+            query['OssRegion'] = request.oss_region
+        if not UtilClient.is_unset(request.oss_security_token):
+            query['OssSecurityToken'] = request.oss_security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -270,6 +282,18 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.bill_month):
             query['BillMonth'] = request.bill_month
+        if not UtilClient.is_unset(request.oss_access_key_id):
+            query['OssAccessKeyId'] = request.oss_access_key_id
+        if not UtilClient.is_unset(request.oss_access_key_secret):
+            query['OssAccessKeySecret'] = request.oss_access_key_secret
+        if not UtilClient.is_unset(request.oss_bucket_name):
+            query['OssBucketName'] = request.oss_bucket_name
+        if not UtilClient.is_unset(request.oss_endpoint):
+            query['OssEndpoint'] = request.oss_endpoint
+        if not UtilClient.is_unset(request.oss_region):
+            query['OssRegion'] = request.oss_region
+        if not UtilClient.is_unset(request.oss_security_token):
+            query['OssSecurityToken'] = request.oss_security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
