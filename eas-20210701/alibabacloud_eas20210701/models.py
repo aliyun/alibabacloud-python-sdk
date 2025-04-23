@@ -2715,6 +2715,7 @@ class CreateResourceRequest(TeaModel):
         ecs_instance_count: int = None,
         ecs_instance_type: str = None,
         labels: Dict[str, str] = None,
+        resource_name: str = None,
         resource_type: str = None,
         self_managed_resource_options: CreateResourceRequestSelfManagedResourceOptions = None,
         system_disk_size: int = None,
@@ -2742,6 +2743,7 @@ class CreateResourceRequest(TeaModel):
         self.ecs_instance_type = ecs_instance_type
         # The custom tag.
         self.labels = labels
+        self.resource_name = resource_name
         # The type of the resource group. Valid values:
         # 
         # *   Dedicated: the dedicated resource group.
@@ -2776,6 +2778,8 @@ class CreateResourceRequest(TeaModel):
             result['EcsInstanceType'] = self.ecs_instance_type
         if self.labels is not None:
             result['Labels'] = self.labels
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         if self.self_managed_resource_options is not None:
@@ -2798,6 +2802,8 @@ class CreateResourceRequest(TeaModel):
             self.ecs_instance_type = m.get('EcsInstanceType')
         if m.get('Labels') is not None:
             self.labels = m.get('Labels')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         if m.get('SelfManagedResourceOptions') is not None:

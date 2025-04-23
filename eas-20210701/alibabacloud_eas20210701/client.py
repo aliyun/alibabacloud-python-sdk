@@ -1164,6 +1164,8 @@ class Client(OpenApiClient):
             body['EcsInstanceType'] = request.ecs_instance_type
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.resource_name):
+            body['ResourceName'] = request.resource_name
         if not UtilClient.is_unset(request.resource_type):
             body['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.self_managed_resource_options):
@@ -1220,6 +1222,8 @@ class Client(OpenApiClient):
             body['EcsInstanceType'] = request.ecs_instance_type
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.resource_name):
+            body['ResourceName'] = request.resource_name
         if not UtilClient.is_unset(request.resource_type):
             body['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.self_managed_resource_options):
