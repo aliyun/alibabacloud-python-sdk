@@ -2627,6 +2627,7 @@ class CreateAggregateConfigRuleRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # The IDs of the resources included from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
+        # The names of the resource to which the rule applies.
         self.resource_name_scope = resource_name_scope
         # The type of the resource evaluated by the rule. Separate multiple resource types with commas (,).
         # 
@@ -2658,12 +2659,15 @@ class CreateAggregateConfigRuleRequest(TeaModel):
         self.source_owner = source_owner
         # The tags.
         self.tag = tag
-        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # The logical relationship when parameter `TagsScope` takes multiple values, for example: When the parameter `TagsScope` is `"TagsScope.1.TagKey":"a", "TagsScope.1.TagValue":"a", "TagsScope.2.TagKey":"b", "TagsScope.2.TagValue":"b"`, if this parameter is set to` AND`, it means that the rule only applies to resources bound with both tags `a:a` and `b:b`. If not specified, the default logic is `OR`.
         # 
-        # The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+        # It can also be used for the deprecated field `TagKeyScope` (not recommended), for example: When the parameter `TagKeyScope` has a value of `ECS`,`OSS`, if this parameter is set to `AND`, it means that the rule only applies to resources bound with both labels `ECS` and `OSS`.
         # 
-        # *   AND
-        # *   OR
+        # Values:
+        # 
+        #  - AND: And.
+        # 
+        #  - OR: Or.
         self.tag_key_logic_scope = tag_key_logic_scope
         # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
         # 
@@ -3018,6 +3022,7 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # The IDs of the resources included from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
+        # The names of the resource to which the rule applies.
         self.resource_name_scope = resource_name_scope
         # The type of the resource evaluated by the rule. Separate multiple resource types with commas (,).
         # 
@@ -3049,12 +3054,15 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
         self.source_owner = source_owner
         # The tags.
         self.tag_shrink = tag_shrink
-        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # The logical relationship when parameter `TagsScope` takes multiple values, for example: When the parameter `TagsScope` is `"TagsScope.1.TagKey":"a", "TagsScope.1.TagValue":"a", "TagsScope.2.TagKey":"b", "TagsScope.2.TagValue":"b"`, if this parameter is set to` AND`, it means that the rule only applies to resources bound with both tags `a:a` and `b:b`. If not specified, the default logic is `OR`.
         # 
-        # The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+        # It can also be used for the deprecated field `TagKeyScope` (not recommended), for example: When the parameter `TagKeyScope` has a value of `ECS`,`OSS`, if this parameter is set to `AND`, it means that the rule only applies to resources bound with both labels `ECS` and `OSS`.
         # 
-        # *   AND
-        # *   OR
+        # Values:
+        # 
+        #  - AND: And.
+        # 
+        #  - OR: Or.
         self.tag_key_logic_scope = tag_key_logic_scope
         # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
         # 
@@ -5047,6 +5055,7 @@ class CreateConfigRuleRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # ResourceIdsScope
         self.resource_ids_scope = resource_ids_scope
+        # The names of the resource to which the rule applies.
         self.resource_name_scope = resource_name_scope
         # The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
         # 
@@ -5078,10 +5087,15 @@ class CreateConfigRuleRequest(TeaModel):
         self.source_owner = source_owner
         # rule attached tags
         self.tag = tag
-        # The logical relationship among the tag keys if you specify multiple tag keys for `TagKeyScope`. For example, if you set `TagKeyScope` to `ECS,OSS` and set TagKeyLogicScope to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+        # The logical relationship when parameter `TagsScope` takes multiple values, for example: When the parameter `TagsScope` is `"TagsScope.1.TagKey":"a", "TagsScope.1.TagValue":"a", "TagsScope.2.TagKey":"b", "TagsScope.2.TagValue":"b"`, if this parameter is set to` AND`, it means that the rule only applies to resources bound with both tags `a:a` and `b:b`. If not specified, the default logic is `OR`.
         # 
-        # *   AND
-        # *   OR
+        # It can also be used for the deprecated field `TagKeyScope` (not recommended), for example: When the parameter `TagKeyScope` has a value of `ECS`,`OSS`, if this parameter is set to `AND`, it means that the rule only applies to resources bound with both labels `ECS` and `OSS`.
+        # 
+        # Values:
+        # 
+        #  - AND: And.
+        # 
+        #  - OR: Or.
         self.tag_key_logic_scope = tag_key_logic_scope
         # The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
         # 
@@ -5381,6 +5395,7 @@ class CreateConfigRuleShrinkRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # ResourceIdsScope
         self.resource_ids_scope = resource_ids_scope
+        # The names of the resource to which the rule applies.
         self.resource_name_scope = resource_name_scope
         # The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
         # 
@@ -5412,10 +5427,15 @@ class CreateConfigRuleShrinkRequest(TeaModel):
         self.source_owner = source_owner
         # rule attached tags
         self.tag_shrink = tag_shrink
-        # The logical relationship among the tag keys if you specify multiple tag keys for `TagKeyScope`. For example, if you set `TagKeyScope` to `ECS,OSS` and set TagKeyLogicScope to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+        # The logical relationship when parameter `TagsScope` takes multiple values, for example: When the parameter `TagsScope` is `"TagsScope.1.TagKey":"a", "TagsScope.1.TagValue":"a", "TagsScope.2.TagKey":"b", "TagsScope.2.TagValue":"b"`, if this parameter is set to` AND`, it means that the rule only applies to resources bound with both tags `a:a` and `b:b`. If not specified, the default logic is `OR`.
         # 
-        # *   AND
-        # *   OR
+        # It can also be used for the deprecated field `TagKeyScope` (not recommended), for example: When the parameter `TagKeyScope` has a value of `ECS`,`OSS`, if this parameter is set to `AND`, it means that the rule only applies to resources bound with both labels `ECS` and `OSS`.
+        # 
+        # Values:
+        # 
+        #  - AND: And.
+        # 
+        #  - OR: Or.
         self.tag_key_logic_scope = tag_key_logic_scope
         # The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
         # 
@@ -12552,7 +12572,7 @@ class GetAggregateConfigRuleResponseBodyConfigRule(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # The IDs of the resources to which the rule applies. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
-        # The names of the resource groups to which the rule applies.
+        # The names of the resource to which the rule applies.
         self.resource_name_scope = resource_name_scope
         # The type of the resource evaluated by the rule.
         self.resource_types_scope = resource_types_scope
@@ -12564,12 +12584,15 @@ class GetAggregateConfigRuleResponseBodyConfigRule(TeaModel):
         self.risk_level = risk_level
         # The information about how the rule was created.
         self.source = source
-        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # When retrieving details of rules created using the parameter `TagsScope`, this field will not be returned.
         # 
-        # The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+        # To retrieve rules created using the deprecated field `TagKeyScope` (not recommended): for example, when the parameter `TagKeyScope` has a value of ECS,OSS, if this parameter is set to `AND`, it means that the rule only applies to resources bound with both labels ECS and OSS.
         # 
-        # *   AND
-        # *   OR
+        # Values:
+        # 
+        #  - AND: And.
+        # 
+        #  - OR: Or.
         self.tag_key_logic_scope = tag_key_logic_scope
         # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
         # 
@@ -13462,7 +13485,7 @@ class GetAggregateDiscoveredResourceRequest(TeaModel):
         # 
         # This parameter is required.
         self.region = region
-        # The ID of the Alibaba Cloud account to which the specified resource belongs in the account group.
+        # Required. The ID of the Alibaba Cloud account to which the specified resource belongs in the account group.
         self.resource_account_id = resource_account_id
         # The resource ID.
         # 
@@ -14958,7 +14981,7 @@ class GetAggregateResourceConfigurationTimelineRequest(TeaModel):
         # 
         # This parameter is required.
         self.region = region
-        # The ID of the Alibaba Cloud account to which the resource in the account group belongs.
+        # Required. The ID of the Alibaba Cloud account to which the specified resource belongs in the account group.
         self.resource_account_id = resource_account_id
         # The resource ID.
         # 
@@ -18347,6 +18370,7 @@ class GetConfigRuleResponseBodyConfigRule(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # ResourceIdsScope
         self.resource_ids_scope = resource_ids_scope
+        # The names of the resource to which the rule applies.
         self.resource_name_scope = resource_name_scope
         # The type of the resource to be evaluated by the rule.
         self.resource_types_scope = resource_types_scope
@@ -18360,17 +18384,27 @@ class GetConfigRuleResponseBodyConfigRule(TeaModel):
         self.scope = scope
         # The information about how the rule was created.
         self.source = source
-        # The ID of the member account to which the rule does not apply, which means that the resources within the member account are not evaluated based on the rule.
+        # When retrieving details of rules created using the parameter `TagsScope`, this field will not be returned.
         # 
-        # > This parameter applies only to a managed rule.
+        # To retrieve rules created using the deprecated field `TagKeyScope` (not recommended): for example, when the parameter `TagKeyScope` has a value of ECS,OSS, if this parameter is set to `AND`, it means that the rule only applies to resources bound with both labels ECS and OSS.
+        # 
+        # Values:
+        # 
+        #  - AND: And.
+        # 
+        #  - OR: Or.
         self.tag_key_logic_scope = tag_key_logic_scope
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # 
         # The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
         # 
-        # > The `TagKeyScope` and `TagValueScope` parameters are returned at the same time.
+        # >  The TagKeyScope and `TagValueScope` parameters are returned at the same time.``
         self.tag_key_scope = tag_key_scope
-        # The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
         # 
-        # > The `TagKeyScope` and `TagValueScope` parameters are returned at the same time.
+        # The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
+        # 
+        # >  The TagKeyScope and `TagValueScope` parameters are returned at the same time.``
         self.tag_value_scope = tag_value_scope
         # The tag list.
         self.tags = tags
@@ -23715,8 +23749,10 @@ class ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvalu
         annotation: str = None,
         compliance_type: str = None,
         config_rule_invoked_timestamp: int = None,
+        evaluation_id: str = None,
         evaluation_result_identifier: ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier = None,
         invoking_event_message_type: str = None,
+        last_non_compliant_record_timestamp: int = None,
         remediation_enabled: bool = None,
         result_recorded_timestamp: int = None,
         risk_level: int = None,
@@ -23739,6 +23775,7 @@ class ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvalu
         self.compliance_type = compliance_type
         # The timestamp when the rule was triggered for the compliance evaluation. Unit: milliseconds.
         self.config_rule_invoked_timestamp = config_rule_invoked_timestamp
+        self.evaluation_id = evaluation_id
         # The identifying information about the compliance evaluation result.
         self.evaluation_result_identifier = evaluation_result_identifier
         # The trigger type of the rule. Valid values:
@@ -23746,6 +23783,7 @@ class ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvalu
         # *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
         # *   ScheduledNotification: The rule is periodically triggered.
         self.invoking_event_message_type = invoking_event_message_type
+        self.last_non_compliant_record_timestamp = last_non_compliant_record_timestamp
         # Indicates whether the remediation template is enabled. Valid values:
         # 
         # *   true
@@ -23776,10 +23814,14 @@ class ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvalu
             result['ComplianceType'] = self.compliance_type
         if self.config_rule_invoked_timestamp is not None:
             result['ConfigRuleInvokedTimestamp'] = self.config_rule_invoked_timestamp
+        if self.evaluation_id is not None:
+            result['EvaluationId'] = self.evaluation_id
         if self.evaluation_result_identifier is not None:
             result['EvaluationResultIdentifier'] = self.evaluation_result_identifier.to_map()
         if self.invoking_event_message_type is not None:
             result['InvokingEventMessageType'] = self.invoking_event_message_type
+        if self.last_non_compliant_record_timestamp is not None:
+            result['LastNonCompliantRecordTimestamp'] = self.last_non_compliant_record_timestamp
         if self.remediation_enabled is not None:
             result['RemediationEnabled'] = self.remediation_enabled
         if self.result_recorded_timestamp is not None:
@@ -23796,11 +23838,15 @@ class ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvalu
             self.compliance_type = m.get('ComplianceType')
         if m.get('ConfigRuleInvokedTimestamp') is not None:
             self.config_rule_invoked_timestamp = m.get('ConfigRuleInvokedTimestamp')
+        if m.get('EvaluationId') is not None:
+            self.evaluation_id = m.get('EvaluationId')
         if m.get('EvaluationResultIdentifier') is not None:
             temp_model = ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier()
             self.evaluation_result_identifier = temp_model.from_map(m['EvaluationResultIdentifier'])
         if m.get('InvokingEventMessageType') is not None:
             self.invoking_event_message_type = m.get('InvokingEventMessageType')
+        if m.get('LastNonCompliantRecordTimestamp') is not None:
+            self.last_non_compliant_record_timestamp = m.get('LastNonCompliantRecordTimestamp')
         if m.get('RemediationEnabled') is not None:
             self.remediation_enabled = m.get('RemediationEnabled')
         if m.get('ResultRecordedTimestamp') is not None:
@@ -24864,7 +24910,13 @@ class ListAggregateDiscoveredResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
+        # The end time of the time range for querying resources. The value is a timestamp in the UTC format. When you specify this parameter, take note of the following limits:
+        # 
+        # *   The value must be a timestamp in milliseconds.
+        # *   The value cannot be less than the value of the StartUpdateTimestamp parameter. The interval between the value and the value of the StartUpdateTimestamp parameter must be less than or equal to 30 days.
+        # *   The StartUpdateTimestamp and EndUpdateTimestamp parameters must be specified at the same time or left empty at the same time.
         self.end_update_timestamp = end_update_timestamp
+        # The types of resources that are excluded. Separate multiple values with commas (,). If this parameter conflicts with the ResourceTypes parameter, this parameter prevails.
         self.exclude_resource_types = exclude_resource_types
         # The maximum number of entries to return for a single request. Valid values: 1 to 100.
         # 
@@ -24886,6 +24938,11 @@ class ListAggregateDiscoveredResourcesRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The type of the resource. Separate multiple resource types with commas (,).
         self.resource_types = resource_types
+        # The start time of the time range for querying resources. The value is a timestamp in the Coordinated Universal Time (UTC) format. When you specify this parameter, take note of the following limits:
+        # 
+        # *   The value must be a timestamp in milliseconds.
+        # *   The value cannot be greater than the value of the EndUpdateTimestamp parameter. The interval between the value and the value of the EndUpdateTimestamp parameter must be less than or equal to 30 days.
+        # *   The StartUpdateTimestamp and EndUpdateTimestamp parameters must be specified at the same time or left empty at the same time.
         self.start_update_timestamp = start_update_timestamp
 
     def validate(self):
@@ -24997,6 +25054,7 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDisc
         self.resource_type = resource_type
         # The tags of the resource.
         self.tags = tags
+        # The time when the resource was last updated. The value must be a timestamp in milliseconds.
         self.update_time = update_time
         # The build version of the resource.
         self.version = version
@@ -25077,7 +25135,7 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles(Tea
         next_token: str = None,
         total_count: int = None,
     ):
-        # The queried resource.
+        # The details of the resources.
         self.discovered_resource_profile_list = discovered_resource_profile_list
         # The maximum number of entries returned on each page.
         self.max_results = max_results
@@ -25132,7 +25190,7 @@ class ListAggregateDiscoveredResourcesResponseBody(TeaModel):
         discovered_resource_profiles: ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles = None,
         request_id: str = None,
     ):
-        # The queried resources.
+        # The information about the resources.
         self.discovered_resource_profiles = discovered_resource_profiles
         # The request ID.
         self.request_id = request_id
@@ -25929,8 +25987,10 @@ class ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluat
         annotation: str = None,
         compliance_type: str = None,
         config_rule_invoked_timestamp: int = None,
+        evaluation_id: str = None,
         evaluation_result_identifier: ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier = None,
         invoking_event_message_type: str = None,
+        last_non_compliant_record_timestamp: int = None,
         remediation_enabled: bool = None,
         result_recorded_timestamp: int = None,
         risk_level: int = None,
@@ -25947,6 +26007,7 @@ class ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluat
         self.compliance_type = compliance_type
         # The timestamp when the rule was triggered. Unit: milliseconds.
         self.config_rule_invoked_timestamp = config_rule_invoked_timestamp
+        self.evaluation_id = evaluation_id
         # The identifying information about the compliance evaluation result.
         self.evaluation_result_identifier = evaluation_result_identifier
         # The trigger type of the managed rule. Valid values:
@@ -25954,6 +26015,7 @@ class ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluat
         # *   ConfigurationItemChangeNotification: The managed rule is triggered by configuration changes.
         # *   ScheduledNotification: The managed rule is periodically triggered.
         self.invoking_event_message_type = invoking_event_message_type
+        self.last_non_compliant_record_timestamp = last_non_compliant_record_timestamp
         # Indicates whether the remediation template is enabled. Valid values:
         # 
         # - true: The remediation template is enabled.
@@ -25984,10 +26046,14 @@ class ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluat
             result['ComplianceType'] = self.compliance_type
         if self.config_rule_invoked_timestamp is not None:
             result['ConfigRuleInvokedTimestamp'] = self.config_rule_invoked_timestamp
+        if self.evaluation_id is not None:
+            result['EvaluationId'] = self.evaluation_id
         if self.evaluation_result_identifier is not None:
             result['EvaluationResultIdentifier'] = self.evaluation_result_identifier.to_map()
         if self.invoking_event_message_type is not None:
             result['InvokingEventMessageType'] = self.invoking_event_message_type
+        if self.last_non_compliant_record_timestamp is not None:
+            result['LastNonCompliantRecordTimestamp'] = self.last_non_compliant_record_timestamp
         if self.remediation_enabled is not None:
             result['RemediationEnabled'] = self.remediation_enabled
         if self.result_recorded_timestamp is not None:
@@ -26004,11 +26070,15 @@ class ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluat
             self.compliance_type = m.get('ComplianceType')
         if m.get('ConfigRuleInvokedTimestamp') is not None:
             self.config_rule_invoked_timestamp = m.get('ConfigRuleInvokedTimestamp')
+        if m.get('EvaluationId') is not None:
+            self.evaluation_id = m.get('EvaluationId')
         if m.get('EvaluationResultIdentifier') is not None:
             temp_model = ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier()
             self.evaluation_result_identifier = temp_model.from_map(m['EvaluationResultIdentifier'])
         if m.get('InvokingEventMessageType') is not None:
             self.invoking_event_message_type = m.get('InvokingEventMessageType')
+        if m.get('LastNonCompliantRecordTimestamp') is not None:
+            self.last_non_compliant_record_timestamp = m.get('LastNonCompliantRecordTimestamp')
         if m.get('RemediationEnabled') is not None:
             self.remediation_enabled = m.get('RemediationEnabled')
         if m.get('ResultRecordedTimestamp') is not None:
@@ -28398,8 +28468,10 @@ class ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResu
         annotation: str = None,
         compliance_type: str = None,
         config_rule_invoked_timestamp: int = None,
+        evaluation_id: str = None,
         evaluation_result_identifier: ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier = None,
         invoking_event_message_type: str = None,
+        last_non_compliant_record_timestamp: int = None,
         remediation_enabled: bool = None,
         result_recorded_timestamp: int = None,
         risk_level: int = None,
@@ -28422,6 +28494,7 @@ class ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResu
         self.compliance_type = compliance_type
         # The timestamp when the rule was triggered for the compliance evaluation. Unit: milliseconds.
         self.config_rule_invoked_timestamp = config_rule_invoked_timestamp
+        self.evaluation_id = evaluation_id
         # The identifying information about the compliance evaluation result.
         self.evaluation_result_identifier = evaluation_result_identifier
         # The trigger type of the rule. Valid values:
@@ -28430,6 +28503,7 @@ class ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResu
         # *   ScheduledNotification: The rule is periodically triggered.
         # *   Manual: The rule is manually triggered.
         self.invoking_event_message_type = invoking_event_message_type
+        self.last_non_compliant_record_timestamp = last_non_compliant_record_timestamp
         # Indicates whether the remediation template is enabled. Valid values:
         # 
         # *   true: The remediation template is enabled.
@@ -28460,10 +28534,14 @@ class ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResu
             result['ComplianceType'] = self.compliance_type
         if self.config_rule_invoked_timestamp is not None:
             result['ConfigRuleInvokedTimestamp'] = self.config_rule_invoked_timestamp
+        if self.evaluation_id is not None:
+            result['EvaluationId'] = self.evaluation_id
         if self.evaluation_result_identifier is not None:
             result['EvaluationResultIdentifier'] = self.evaluation_result_identifier.to_map()
         if self.invoking_event_message_type is not None:
             result['InvokingEventMessageType'] = self.invoking_event_message_type
+        if self.last_non_compliant_record_timestamp is not None:
+            result['LastNonCompliantRecordTimestamp'] = self.last_non_compliant_record_timestamp
         if self.remediation_enabled is not None:
             result['RemediationEnabled'] = self.remediation_enabled
         if self.result_recorded_timestamp is not None:
@@ -28480,11 +28558,15 @@ class ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResu
             self.compliance_type = m.get('ComplianceType')
         if m.get('ConfigRuleInvokedTimestamp') is not None:
             self.config_rule_invoked_timestamp = m.get('ConfigRuleInvokedTimestamp')
+        if m.get('EvaluationId') is not None:
+            self.evaluation_id = m.get('EvaluationId')
         if m.get('EvaluationResultIdentifier') is not None:
             temp_model = ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier()
             self.evaluation_result_identifier = temp_model.from_map(m['EvaluationResultIdentifier'])
         if m.get('InvokingEventMessageType') is not None:
             self.invoking_event_message_type = m.get('InvokingEventMessageType')
+        if m.get('LastNonCompliantRecordTimestamp') is not None:
+            self.last_non_compliant_record_timestamp = m.get('LastNonCompliantRecordTimestamp')
         if m.get('RemediationEnabled') is not None:
             self.remediation_enabled = m.get('RemediationEnabled')
         if m.get('ResultRecordedTimestamp') is not None:
@@ -29451,7 +29533,13 @@ class ListDiscoveredResourcesRequest(TeaModel):
         resource_types: str = None,
         start_update_timestamp: int = None,
     ):
+        # The end time of the time range for querying resources. The value is a timestamp in the UTC format. When you specify this parameter, take note of the following limits:
+        # 
+        # *   The value must be a timestamp in milliseconds.
+        # *   The value cannot be less than the value of the StartUpdateTimestamp parameter. The interval between the value and the value of the StartUpdateTimestamp parameter must be less than or equal to 30 days.
+        # *   The StartUpdateTimestamp and EndUpdateTimestamp parameters must be specified at the same time or left empty at the same time.
         self.end_update_timestamp = end_update_timestamp
+        # The types of resources that are excluded. Separate multiple values with commas (,). If this parameter conflicts with the ResourceTypes parameter, this parameter prevails.
         self.exclude_resource_types = exclude_resource_types
         # The maximum number of entries returned for a single request. Valid values: 1 to 100.
         # 
@@ -29470,6 +29558,11 @@ class ListDiscoveredResourcesRequest(TeaModel):
         self.resource_id = resource_id
         # The type of the resource. Separate multiple resource types with commas (,).
         self.resource_types = resource_types
+        # The start time of the time range for querying resources. The value is a timestamp in the UTC format. When you specify this parameter, take note of the following limits:
+        # 
+        # *   The value must be a timestamp in milliseconds.
+        # *   The value cannot be greater than the value of the EndUpdateTimestamp parameter. The interval between the value and the value of the EndUpdateTimestamp parameter must be less than or equal to 30 days.
+        # *   The StartUpdateTimestamp and EndUpdateTimestamp parameters must be specified at the same time or left blank at the same time.
         self.start_update_timestamp = start_update_timestamp
 
     def validate(self):
@@ -29566,6 +29659,7 @@ class ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredRes
         self.resource_type = resource_type
         # The tags of the resource.
         self.tags = tags
+        # The time when the resource was last updated. The value must be a timestamp in milliseconds.
         self.update_time = update_time
         # The version of the resource change.
         self.version = version
@@ -29931,6 +30025,11 @@ class ListManagedRulesRequest(TeaModel):
         resource_types: str = None,
         risk_level: int = None,
     ):
+        # The scope for filtering managed rules allows you to filter out managed rules without resource coverage. The possible values are:
+        # 
+        #  - ALL: All rules.
+        # 
+        #  - UNCOVERED_RESOURCE: Filters managed rules where some resources are not covered.
         self.filter_type = filter_type
         # The keyword of the managed rule.
         self.keyword = keyword
@@ -31443,8 +31542,10 @@ class ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResult
         annotation: str = None,
         compliance_type: str = None,
         config_rule_invoked_timestamp: int = None,
+        evaluation_id: str = None,
         evaluation_result_identifier: ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier = None,
         invoking_event_message_type: str = None,
+        last_non_compliant_record_timestamp: int = None,
         remediation_enabled: bool = None,
         result_recorded_timestamp: int = None,
         risk_level: int = None,
@@ -31467,6 +31568,7 @@ class ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResult
         self.compliance_type = compliance_type
         # The timestamp when the rule was triggered for the compliance evaluation. Unit: milliseconds.
         self.config_rule_invoked_timestamp = config_rule_invoked_timestamp
+        self.evaluation_id = evaluation_id
         # The identifying information about the compliance evaluation result.
         self.evaluation_result_identifier = evaluation_result_identifier
         # The trigger type of the managed rule. Valid values:
@@ -31475,6 +31577,7 @@ class ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResult
         # *   ScheduledNotification: The managed rule is periodically triggered.
         # *   Manual: The rule is manually triggered.
         self.invoking_event_message_type = invoking_event_message_type
+        self.last_non_compliant_record_timestamp = last_non_compliant_record_timestamp
         # Indicates whether the remediation template is enabled. Valid values:
         # 
         # - true: The remediation template is enabled.
@@ -31505,10 +31608,14 @@ class ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResult
             result['ComplianceType'] = self.compliance_type
         if self.config_rule_invoked_timestamp is not None:
             result['ConfigRuleInvokedTimestamp'] = self.config_rule_invoked_timestamp
+        if self.evaluation_id is not None:
+            result['EvaluationId'] = self.evaluation_id
         if self.evaluation_result_identifier is not None:
             result['EvaluationResultIdentifier'] = self.evaluation_result_identifier.to_map()
         if self.invoking_event_message_type is not None:
             result['InvokingEventMessageType'] = self.invoking_event_message_type
+        if self.last_non_compliant_record_timestamp is not None:
+            result['LastNonCompliantRecordTimestamp'] = self.last_non_compliant_record_timestamp
         if self.remediation_enabled is not None:
             result['RemediationEnabled'] = self.remediation_enabled
         if self.result_recorded_timestamp is not None:
@@ -31525,11 +31632,15 @@ class ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResult
             self.compliance_type = m.get('ComplianceType')
         if m.get('ConfigRuleInvokedTimestamp') is not None:
             self.config_rule_invoked_timestamp = m.get('ConfigRuleInvokedTimestamp')
+        if m.get('EvaluationId') is not None:
+            self.evaluation_id = m.get('EvaluationId')
         if m.get('EvaluationResultIdentifier') is not None:
             temp_model = ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier()
             self.evaluation_result_identifier = temp_model.from_map(m['EvaluationResultIdentifier'])
         if m.get('InvokingEventMessageType') is not None:
             self.invoking_event_message_type = m.get('InvokingEventMessageType')
+        if m.get('LastNonCompliantRecordTimestamp') is not None:
+            self.last_non_compliant_record_timestamp = m.get('LastNonCompliantRecordTimestamp')
         if m.get('RemediationEnabled') is not None:
             self.remediation_enabled = m.get('RemediationEnabled')
         if m.get('ResultRecordedTimestamp') is not None:
@@ -35659,7 +35770,7 @@ class UpdateAggregateConfigRuleRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # The IDs of the resources included from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
-        # The names of the resource groups to which the rule applies.
+        # The names of the resource to which the rule applies.
         self.resource_name_scope = resource_name_scope
         # The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
         self.resource_types_scope = resource_types_scope
@@ -35673,12 +35784,15 @@ class UpdateAggregateConfigRuleRequest(TeaModel):
         # 
         # You can add up to 20 tags to a resource.
         self.tag = tag
-        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # The logical relationship when parameter `TagsScope` takes multiple values, for example: When the parameter `TagsScope` is `"TagsScope.1.TagKey":"a", "TagsScope.1.TagValue":"a", "TagsScope.2.TagKey":"b", "TagsScope.2.TagValue":"b"`, if this parameter is set to` AND`, it means that the rule only applies to resources bound with both tags `a:a` and `b:b`. If not specified, the default logic is `OR`.
         # 
-        # The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+        # It can also be used for the deprecated field `TagKeyScope` (not recommended), for example: When the parameter `TagKeyScope` has a value of `ECS`,`OSS`, if this parameter is set to `AND`, it means that the rule only applies to resources bound with both labels `ECS` and `OSS`.
         # 
-        # *   AND
-        # *   OR
+        # Values:
+        # 
+        #  - AND: And.
+        # 
+        #  - OR: Or.
         self.tag_key_logic_scope = tag_key_logic_scope
         # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
         # 
@@ -36027,7 +36141,7 @@ class UpdateAggregateConfigRuleShrinkRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # The IDs of the resources included from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
-        # The names of the resource groups to which the rule applies.
+        # The names of the resource to which the rule applies.
         self.resource_name_scope = resource_name_scope
         # The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
         self.resource_types_scope_shrink = resource_types_scope_shrink
@@ -36041,12 +36155,15 @@ class UpdateAggregateConfigRuleShrinkRequest(TeaModel):
         # 
         # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
-        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # The logical relationship when parameter `TagsScope` takes multiple values, for example: When the parameter `TagsScope` is `"TagsScope.1.TagKey":"a", "TagsScope.1.TagValue":"a", "TagsScope.2.TagKey":"b", "TagsScope.2.TagValue":"b"`, if this parameter is set to` AND`, it means that the rule only applies to resources bound with both tags `a:a` and `b:b`. If not specified, the default logic is `OR`.
         # 
-        # The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+        # It can also be used for the deprecated field `TagKeyScope` (not recommended), for example: When the parameter `TagKeyScope` has a value of `ECS`,`OSS`, if this parameter is set to `AND`, it means that the rule only applies to resources bound with both labels `ECS` and `OSS`.
         # 
-        # *   AND
-        # *   OR
+        # Values:
+        # 
+        #  - AND: And.
+        # 
+        #  - OR: Or.
         self.tag_key_logic_scope = tag_key_logic_scope
         # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
         # 
@@ -36572,6 +36689,7 @@ class UpdateAggregatorRequest(TeaModel):
         # 
         # For more information about how to obtain the description of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
         self.description = description
+        # The folder ID. Separate multiple folder IDs with commas (,).
         self.folder_id = folder_id
         # The tags of the resource.
         # 
@@ -36670,6 +36788,7 @@ class UpdateAggregatorShrinkRequest(TeaModel):
         # 
         # For more information about how to obtain the description of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
         self.description = description
+        # The folder ID. Separate multiple folder IDs with commas (,).
         self.folder_id = folder_id
         # The tags of the resource.
         # 
@@ -37967,6 +38086,7 @@ class UpdateConfigRuleRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # The IDs of the resources to which the rule applies. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
+        # The names of the resource to which the rule applies.
         self.resource_name_scope = resource_name_scope
         # The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
         self.resource_types_scope = resource_types_scope
@@ -37980,15 +38100,24 @@ class UpdateConfigRuleRequest(TeaModel):
         # 
         # You can add up to 20 tags to a resource.
         self.tag = tag
-        # The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+        # The logical relationship when parameter `TagsScope` takes multiple values, for example: When the parameter `TagsScope` is `"TagsScope.1.TagKey":"a", "TagsScope.1.TagValue":"a", "TagsScope.2.TagKey":"b", "TagsScope.2.TagValue":"b"`, if this parameter is set to` AND`, it means that the rule only applies to resources bound with both tags `a:a` and `b:b`. If not specified, the default logic is `OR`.
         # 
-        # *   AND
-        # *   OR
+        # It can also be used for the deprecated field `TagKeyScope` (not recommended), for example: When the parameter `TagKeyScope` has a value of `ECS`,`OSS`, if this parameter is set to `AND`, it means that the rule only applies to resources bound with both labels `ECS` and `OSS`.
+        # 
+        # Values:
+        # 
+        #  - AND: And.
+        # 
+        #  - OR: Or.
         self.tag_key_logic_scope = tag_key_logic_scope
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # 
         # The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
         # 
         # >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
         self.tag_key_scope = tag_key_scope
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # 
         # The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
         # 
         # >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
@@ -38282,6 +38411,7 @@ class UpdateConfigRuleShrinkRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # The IDs of the resources to which the rule applies. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
+        # The names of the resource to which the rule applies.
         self.resource_name_scope = resource_name_scope
         # The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
         self.resource_types_scope_shrink = resource_types_scope_shrink
@@ -38295,15 +38425,24 @@ class UpdateConfigRuleShrinkRequest(TeaModel):
         # 
         # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
-        # The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+        # The logical relationship when parameter `TagsScope` takes multiple values, for example: When the parameter `TagsScope` is `"TagsScope.1.TagKey":"a", "TagsScope.1.TagValue":"a", "TagsScope.2.TagKey":"b", "TagsScope.2.TagValue":"b"`, if this parameter is set to` AND`, it means that the rule only applies to resources bound with both tags `a:a` and `b:b`. If not specified, the default logic is `OR`.
         # 
-        # *   AND
-        # *   OR
+        # It can also be used for the deprecated field `TagKeyScope` (not recommended), for example: When the parameter `TagKeyScope` has a value of `ECS`,`OSS`, if this parameter is set to `AND`, it means that the rule only applies to resources bound with both labels `ECS` and `OSS`.
+        # 
+        # Values:
+        # 
+        #  - AND: And.
+        # 
+        #  - OR: Or.
         self.tag_key_logic_scope = tag_key_logic_scope
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # 
         # The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
         # 
         # >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
         self.tag_key_scope = tag_key_scope
+        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # 
         # The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
         # 
         # >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
