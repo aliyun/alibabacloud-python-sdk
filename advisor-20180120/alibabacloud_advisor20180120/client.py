@@ -83,16 +83,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvicesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvicesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeAdvicesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_advices_with_options_async(
         self,
@@ -136,16 +130,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvicesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvicesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeAdvicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_advices(
         self,
@@ -215,16 +203,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvicesFlatPageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvicesFlatPageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeAdvicesFlatPageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_advices_flat_page_with_options_async(
         self,
@@ -268,16 +250,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvicesFlatPageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvicesFlatPageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeAdvicesFlatPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_advices_flat_page(
         self,
@@ -349,16 +325,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvicesPageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvicesPageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeAdvicesPageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_advices_page_with_options_async(
         self,
@@ -404,16 +374,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvicesPageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvicesPageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeAdvicesPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_advices_page(
         self,
@@ -471,16 +435,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvisorChecksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvisorChecksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeAdvisorChecksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_advisor_checks_with_options_async(
         self,
@@ -512,16 +470,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvisorChecksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvisorChecksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeAdvisorChecksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_advisor_checks(
         self,
@@ -599,16 +551,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvisorChecksFoPagesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvisorChecksFoPagesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeAdvisorChecksFoPagesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_advisor_checks_fo_pages_with_options_async(
         self,
@@ -664,16 +610,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvisorChecksFoPagesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvisorChecksFoPagesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeAdvisorChecksFoPagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_advisor_checks_fo_pages(
         self,
@@ -739,16 +679,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvisorResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvisorResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeAdvisorResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_advisor_resources_with_options_async(
         self,
@@ -788,16 +722,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvisorResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeAdvisorResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeAdvisorResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_advisor_resources(
         self,
@@ -840,6 +768,8 @@ class Client(OpenApiClient):
             request.assume_aliyun_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.assume_aliyun_id_list, 'AssumeAliyunIdList', 'json')
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
+        if not UtilClient.is_unset(tmp_req.resource_group_id_list):
+            request.resource_group_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_group_id_list, 'ResourceGroupIdList', 'json')
         if not UtilClient.is_unset(tmp_req.resource_ids):
             request.resource_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_ids, 'ResourceIds', 'json')
         if not UtilClient.is_unset(tmp_req.tag_keys):
@@ -853,6 +783,8 @@ class Client(OpenApiClient):
             query['AssumeAliyunIdList'] = request.assume_aliyun_id_list_shrink
         if not UtilClient.is_unset(request.check_id):
             query['CheckId'] = request.check_id
+        if not UtilClient.is_unset(request.check_plan_id):
+            query['CheckPlanId'] = request.check_plan_id
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
         if not UtilClient.is_unset(request.page_number):
@@ -861,6 +793,10 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_ids_shrink):
             query['RegionIds'] = request.region_ids_shrink
+        if not UtilClient.is_unset(request.resource_group_id_list_shrink):
+            query['ResourceGroupIdList'] = request.resource_group_id_list_shrink
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_ids_shrink):
             query['ResourceIds'] = request.resource_ids_shrink
         if not UtilClient.is_unset(request.resource_name):
@@ -887,16 +823,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeCostCheckAdvicesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeCostCheckAdvicesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeCostCheckAdvicesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cost_check_advices_with_options_async(
         self,
@@ -917,6 +847,8 @@ class Client(OpenApiClient):
             request.assume_aliyun_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.assume_aliyun_id_list, 'AssumeAliyunIdList', 'json')
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
+        if not UtilClient.is_unset(tmp_req.resource_group_id_list):
+            request.resource_group_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_group_id_list, 'ResourceGroupIdList', 'json')
         if not UtilClient.is_unset(tmp_req.resource_ids):
             request.resource_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_ids, 'ResourceIds', 'json')
         if not UtilClient.is_unset(tmp_req.tag_keys):
@@ -930,6 +862,8 @@ class Client(OpenApiClient):
             query['AssumeAliyunIdList'] = request.assume_aliyun_id_list_shrink
         if not UtilClient.is_unset(request.check_id):
             query['CheckId'] = request.check_id
+        if not UtilClient.is_unset(request.check_plan_id):
+            query['CheckPlanId'] = request.check_plan_id
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
         if not UtilClient.is_unset(request.page_number):
@@ -938,6 +872,10 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_ids_shrink):
             query['RegionIds'] = request.region_ids_shrink
+        if not UtilClient.is_unset(request.resource_group_id_list_shrink):
+            query['ResourceGroupIdList'] = request.resource_group_id_list_shrink
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_ids_shrink):
             query['ResourceIds'] = request.resource_ids_shrink
         if not UtilClient.is_unset(request.resource_name):
@@ -964,16 +902,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeCostCheckAdvicesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeCostCheckAdvicesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeCostCheckAdvicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cost_check_advices(
         self,
@@ -1037,6 +969,8 @@ class Client(OpenApiClient):
             query['AssumeAliyunIdList'] = request.assume_aliyun_id_list_shrink
         if not UtilClient.is_unset(request.check_ids_shrink):
             query['CheckIds'] = request.check_ids_shrink
+        if not UtilClient.is_unset(request.check_plan_id):
+            query['CheckPlanId'] = request.check_plan_id
         if not UtilClient.is_unset(request.group_by):
             query['GroupBy'] = request.group_by
         if not UtilClient.is_unset(request.product):
@@ -1045,6 +979,8 @@ class Client(OpenApiClient):
             query['RegionIds'] = request.region_ids_shrink
         if not UtilClient.is_unset(request.resource_group_id_list_shrink):
             query['ResourceGroupIdList'] = request.resource_group_id_list_shrink
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_ids_shrink):
             query['ResourceIds'] = request.resource_ids_shrink
         if not UtilClient.is_unset(request.resource_name):
@@ -1071,16 +1007,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeCostCheckResultsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeCostCheckResultsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeCostCheckResultsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cost_check_results_with_options_async(
         self,
@@ -1118,6 +1048,8 @@ class Client(OpenApiClient):
             query['AssumeAliyunIdList'] = request.assume_aliyun_id_list_shrink
         if not UtilClient.is_unset(request.check_ids_shrink):
             query['CheckIds'] = request.check_ids_shrink
+        if not UtilClient.is_unset(request.check_plan_id):
+            query['CheckPlanId'] = request.check_plan_id
         if not UtilClient.is_unset(request.group_by):
             query['GroupBy'] = request.group_by
         if not UtilClient.is_unset(request.product):
@@ -1126,6 +1058,8 @@ class Client(OpenApiClient):
             query['RegionIds'] = request.region_ids_shrink
         if not UtilClient.is_unset(request.resource_group_id_list_shrink):
             query['ResourceGroupIdList'] = request.resource_group_id_list_shrink
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_ids_shrink):
             query['ResourceIds'] = request.resource_ids_shrink
         if not UtilClient.is_unset(request.resource_name):
@@ -1152,16 +1086,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeCostCheckResultsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeCostCheckResultsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeCostCheckResultsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cost_check_results(
         self,
@@ -1211,6 +1139,8 @@ class Client(OpenApiClient):
             query['AssumeAliyunId'] = request.assume_aliyun_id
         if not UtilClient.is_unset(request.assume_aliyun_id_list_shrink):
             query['AssumeAliyunIdList'] = request.assume_aliyun_id_list_shrink
+        if not UtilClient.is_unset(request.check_plan_id):
+            query['CheckPlanId'] = request.check_plan_id
         if not UtilClient.is_unset(request.token):
             query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
@@ -1227,16 +1157,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeCostOptimizationOverviewResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeCostOptimizationOverviewResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeCostOptimizationOverviewResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cost_optimization_overview_with_options_async(
         self,
@@ -1260,6 +1184,8 @@ class Client(OpenApiClient):
             query['AssumeAliyunId'] = request.assume_aliyun_id
         if not UtilClient.is_unset(request.assume_aliyun_id_list_shrink):
             query['AssumeAliyunIdList'] = request.assume_aliyun_id_list_shrink
+        if not UtilClient.is_unset(request.check_plan_id):
+            query['CheckPlanId'] = request.check_plan_id
         if not UtilClient.is_unset(request.token):
             query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
@@ -1276,16 +1202,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeCostOptimizationOverviewResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.DescribeCostOptimizationOverviewResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeCostOptimizationOverviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cost_optimization_overview(
         self,
@@ -1355,16 +1275,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.GetHistoryAdvicesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.GetHistoryAdvicesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.GetHistoryAdvicesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_history_advices_with_options_async(
         self,
@@ -1408,16 +1322,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.GetHistoryAdvicesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.GetHistoryAdvicesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.GetHistoryAdvicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_history_advices(
         self,
@@ -1475,16 +1383,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.GetInspectProgressResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.GetInspectProgressResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.GetInspectProgressResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_inspect_progress_with_options_async(
         self,
@@ -1520,16 +1422,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.GetInspectProgressResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.GetInspectProgressResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.GetInspectProgressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_inspect_progress(
         self,
@@ -1587,16 +1483,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.GetProductListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.GetProductListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.GetProductListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_product_list_with_options_async(
         self,
@@ -1628,16 +1518,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.GetProductListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.GetProductListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.GetProductListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_product_list(
         self,
@@ -1693,16 +1577,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.GetTaskStatusByIdResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.GetTaskStatusByIdResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.GetTaskStatusByIdResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_task_status_by_id_with_options_async(
         self,
@@ -1732,16 +1610,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.GetTaskStatusByIdResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.GetTaskStatusByIdResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.GetTaskStatusByIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_task_status_by_id(
         self,
@@ -1819,16 +1691,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.RefreshAdvisorCheckResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.RefreshAdvisorCheckResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.RefreshAdvisorCheckResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def refresh_advisor_check_with_options_async(
         self,
@@ -1880,16 +1746,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.RefreshAdvisorCheckResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.RefreshAdvisorCheckResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.RefreshAdvisorCheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def refresh_advisor_check(
         self,
@@ -1943,6 +1803,8 @@ class Client(OpenApiClient):
             query['AssumeAliyunIdList'] = request.assume_aliyun_id_list_shrink
         if not UtilClient.is_unset(request.check_ids_shrink):
             query['CheckIds'] = request.check_ids_shrink
+        if not UtilClient.is_unset(request.check_plan_id):
+            query['CheckPlanId'] = request.check_plan_id
         if not UtilClient.is_unset(request.product):
             query['Product'] = request.product
         if not UtilClient.is_unset(request.refresh_resource):
@@ -1963,16 +1825,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.RefreshAdvisorCostCheckResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.RefreshAdvisorCostCheckResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.RefreshAdvisorCostCheckResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def refresh_advisor_cost_check_with_options_async(
         self,
@@ -2000,6 +1856,8 @@ class Client(OpenApiClient):
             query['AssumeAliyunIdList'] = request.assume_aliyun_id_list_shrink
         if not UtilClient.is_unset(request.check_ids_shrink):
             query['CheckIds'] = request.check_ids_shrink
+        if not UtilClient.is_unset(request.check_plan_id):
+            query['CheckPlanId'] = request.check_plan_id
         if not UtilClient.is_unset(request.product):
             query['Product'] = request.product
         if not UtilClient.is_unset(request.refresh_resource):
@@ -2020,16 +1878,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.RefreshAdvisorCostCheckResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.RefreshAdvisorCostCheckResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.RefreshAdvisorCostCheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def refresh_advisor_cost_check(
         self,
@@ -2063,6 +1915,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.RefreshAdvisorResourceResponse:
         """
+        @summary RefreshAdvisorResource
+        
         @param request: RefreshAdvisorResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RefreshAdvisorResourceResponse
@@ -2087,16 +1941,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.RefreshAdvisorResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.RefreshAdvisorResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.RefreshAdvisorResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def refresh_advisor_resource_with_options_async(
         self,
@@ -2104,6 +1952,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.RefreshAdvisorResourceResponse:
         """
+        @summary RefreshAdvisorResource
+        
         @param request: RefreshAdvisorResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RefreshAdvisorResourceResponse
@@ -2128,22 +1978,18 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.RefreshAdvisorResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.RefreshAdvisorResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.RefreshAdvisorResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def refresh_advisor_resource(
         self,
         request: advisor_20180120_models.RefreshAdvisorResourceRequest,
     ) -> advisor_20180120_models.RefreshAdvisorResourceResponse:
         """
+        @summary RefreshAdvisorResource
+        
         @param request: RefreshAdvisorResourceRequest
         @return: RefreshAdvisorResourceResponse
         """
@@ -2155,6 +2001,8 @@ class Client(OpenApiClient):
         request: advisor_20180120_models.RefreshAdvisorResourceRequest,
     ) -> advisor_20180120_models.RefreshAdvisorResourceResponse:
         """
+        @summary RefreshAdvisorResource
+        
         @param request: RefreshAdvisorResourceRequest
         @return: RefreshAdvisorResourceResponse
         """
@@ -2209,16 +2057,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.ReportBizAlertInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.ReportBizAlertInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.ReportBizAlertInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def report_biz_alert_info_with_options_async(
         self,
@@ -2268,16 +2110,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                advisor_20180120_models.ReportBizAlertInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                advisor_20180120_models.ReportBizAlertInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            advisor_20180120_models.ReportBizAlertInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def report_biz_alert_info(
         self,

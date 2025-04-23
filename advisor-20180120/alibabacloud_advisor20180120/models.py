@@ -2037,10 +2037,13 @@ class DescribeCostCheckAdvicesRequest(TeaModel):
         self,
         assume_aliyun_id_list: List[int] = None,
         check_id: str = None,
+        check_plan_id: int = None,
         language: str = None,
         page_number: int = None,
         page_size: int = None,
         region_ids: List[str] = None,
+        resource_group_id_list: List[str] = None,
+        resource_id: str = None,
         resource_ids: List[str] = None,
         resource_name: str = None,
         severity: str = None,
@@ -2050,10 +2053,13 @@ class DescribeCostCheckAdvicesRequest(TeaModel):
     ):
         self.assume_aliyun_id_list = assume_aliyun_id_list
         self.check_id = check_id
+        self.check_plan_id = check_plan_id
         self.language = language
         self.page_number = page_number
         self.page_size = page_size
         self.region_ids = region_ids
+        self.resource_group_id_list = resource_group_id_list
+        self.resource_id = resource_id
         self.resource_ids = resource_ids
         self.resource_name = resource_name
         self.severity = severity
@@ -2077,6 +2083,8 @@ class DescribeCostCheckAdvicesRequest(TeaModel):
             result['AssumeAliyunIdList'] = self.assume_aliyun_id_list
         if self.check_id is not None:
             result['CheckId'] = self.check_id
+        if self.check_plan_id is not None:
+            result['CheckPlanId'] = self.check_plan_id
         if self.language is not None:
             result['Language'] = self.language
         if self.page_number is not None:
@@ -2085,6 +2093,10 @@ class DescribeCostCheckAdvicesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_ids is not None:
             result['RegionIds'] = self.region_ids
+        if self.resource_group_id_list is not None:
+            result['ResourceGroupIdList'] = self.resource_group_id_list
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         if self.resource_ids is not None:
             result['ResourceIds'] = self.resource_ids
         if self.resource_name is not None:
@@ -2107,6 +2119,8 @@ class DescribeCostCheckAdvicesRequest(TeaModel):
             self.assume_aliyun_id_list = m.get('AssumeAliyunIdList')
         if m.get('CheckId') is not None:
             self.check_id = m.get('CheckId')
+        if m.get('CheckPlanId') is not None:
+            self.check_plan_id = m.get('CheckPlanId')
         if m.get('Language') is not None:
             self.language = m.get('Language')
         if m.get('PageNumber') is not None:
@@ -2115,6 +2129,10 @@ class DescribeCostCheckAdvicesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionIds') is not None:
             self.region_ids = m.get('RegionIds')
+        if m.get('ResourceGroupIdList') is not None:
+            self.resource_group_id_list = m.get('ResourceGroupIdList')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         if m.get('ResourceIds') is not None:
             self.resource_ids = m.get('ResourceIds')
         if m.get('ResourceName') is not None:
@@ -2138,10 +2156,13 @@ class DescribeCostCheckAdvicesShrinkRequest(TeaModel):
         self,
         assume_aliyun_id_list_shrink: str = None,
         check_id: str = None,
+        check_plan_id: int = None,
         language: str = None,
         page_number: int = None,
         page_size: int = None,
         region_ids_shrink: str = None,
+        resource_group_id_list_shrink: str = None,
+        resource_id: str = None,
         resource_ids_shrink: str = None,
         resource_name: str = None,
         severity: str = None,
@@ -2151,10 +2172,13 @@ class DescribeCostCheckAdvicesShrinkRequest(TeaModel):
     ):
         self.assume_aliyun_id_list_shrink = assume_aliyun_id_list_shrink
         self.check_id = check_id
+        self.check_plan_id = check_plan_id
         self.language = language
         self.page_number = page_number
         self.page_size = page_size
         self.region_ids_shrink = region_ids_shrink
+        self.resource_group_id_list_shrink = resource_group_id_list_shrink
+        self.resource_id = resource_id
         self.resource_ids_shrink = resource_ids_shrink
         self.resource_name = resource_name
         self.severity = severity
@@ -2175,6 +2199,8 @@ class DescribeCostCheckAdvicesShrinkRequest(TeaModel):
             result['AssumeAliyunIdList'] = self.assume_aliyun_id_list_shrink
         if self.check_id is not None:
             result['CheckId'] = self.check_id
+        if self.check_plan_id is not None:
+            result['CheckPlanId'] = self.check_plan_id
         if self.language is not None:
             result['Language'] = self.language
         if self.page_number is not None:
@@ -2183,6 +2209,10 @@ class DescribeCostCheckAdvicesShrinkRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_ids_shrink is not None:
             result['RegionIds'] = self.region_ids_shrink
+        if self.resource_group_id_list_shrink is not None:
+            result['ResourceGroupIdList'] = self.resource_group_id_list_shrink
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         if self.resource_ids_shrink is not None:
             result['ResourceIds'] = self.resource_ids_shrink
         if self.resource_name is not None:
@@ -2203,6 +2233,8 @@ class DescribeCostCheckAdvicesShrinkRequest(TeaModel):
             self.assume_aliyun_id_list_shrink = m.get('AssumeAliyunIdList')
         if m.get('CheckId') is not None:
             self.check_id = m.get('CheckId')
+        if m.get('CheckPlanId') is not None:
+            self.check_plan_id = m.get('CheckPlanId')
         if m.get('Language') is not None:
             self.language = m.get('Language')
         if m.get('PageNumber') is not None:
@@ -2211,6 +2243,10 @@ class DescribeCostCheckAdvicesShrinkRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionIds') is not None:
             self.region_ids_shrink = m.get('RegionIds')
+        if m.get('ResourceGroupIdList') is not None:
+            self.resource_group_id_list_shrink = m.get('ResourceGroupIdList')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         if m.get('ResourceIds') is not None:
             self.resource_ids_shrink = m.get('ResourceIds')
         if m.get('ResourceName') is not None:
@@ -2583,10 +2619,12 @@ class DescribeCostCheckResultsRequest(TeaModel):
         self,
         assume_aliyun_id_list: List[int] = None,
         check_ids: List[str] = None,
+        check_plan_id: int = None,
         group_by: str = None,
         product: str = None,
         region_ids: List[str] = None,
         resource_group_id_list: List[str] = None,
+        resource_id: str = None,
         resource_ids: List[str] = None,
         resource_name: str = None,
         severity: int = None,
@@ -2596,10 +2634,12 @@ class DescribeCostCheckResultsRequest(TeaModel):
     ):
         self.assume_aliyun_id_list = assume_aliyun_id_list
         self.check_ids = check_ids
+        self.check_plan_id = check_plan_id
         self.group_by = group_by
         self.product = product
         self.region_ids = region_ids
         self.resource_group_id_list = resource_group_id_list
+        self.resource_id = resource_id
         self.resource_ids = resource_ids
         self.resource_name = resource_name
         self.severity = severity
@@ -2623,6 +2663,8 @@ class DescribeCostCheckResultsRequest(TeaModel):
             result['AssumeAliyunIdList'] = self.assume_aliyun_id_list
         if self.check_ids is not None:
             result['CheckIds'] = self.check_ids
+        if self.check_plan_id is not None:
+            result['CheckPlanId'] = self.check_plan_id
         if self.group_by is not None:
             result['GroupBy'] = self.group_by
         if self.product is not None:
@@ -2631,6 +2673,8 @@ class DescribeCostCheckResultsRequest(TeaModel):
             result['RegionIds'] = self.region_ids
         if self.resource_group_id_list is not None:
             result['ResourceGroupIdList'] = self.resource_group_id_list
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         if self.resource_ids is not None:
             result['ResourceIds'] = self.resource_ids
         if self.resource_name is not None:
@@ -2653,6 +2697,8 @@ class DescribeCostCheckResultsRequest(TeaModel):
             self.assume_aliyun_id_list = m.get('AssumeAliyunIdList')
         if m.get('CheckIds') is not None:
             self.check_ids = m.get('CheckIds')
+        if m.get('CheckPlanId') is not None:
+            self.check_plan_id = m.get('CheckPlanId')
         if m.get('GroupBy') is not None:
             self.group_by = m.get('GroupBy')
         if m.get('Product') is not None:
@@ -2661,6 +2707,8 @@ class DescribeCostCheckResultsRequest(TeaModel):
             self.region_ids = m.get('RegionIds')
         if m.get('ResourceGroupIdList') is not None:
             self.resource_group_id_list = m.get('ResourceGroupIdList')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         if m.get('ResourceIds') is not None:
             self.resource_ids = m.get('ResourceIds')
         if m.get('ResourceName') is not None:
@@ -2684,10 +2732,12 @@ class DescribeCostCheckResultsShrinkRequest(TeaModel):
         self,
         assume_aliyun_id_list_shrink: str = None,
         check_ids_shrink: str = None,
+        check_plan_id: int = None,
         group_by: str = None,
         product: str = None,
         region_ids_shrink: str = None,
         resource_group_id_list_shrink: str = None,
+        resource_id: str = None,
         resource_ids_shrink: str = None,
         resource_name: str = None,
         severity: int = None,
@@ -2697,10 +2747,12 @@ class DescribeCostCheckResultsShrinkRequest(TeaModel):
     ):
         self.assume_aliyun_id_list_shrink = assume_aliyun_id_list_shrink
         self.check_ids_shrink = check_ids_shrink
+        self.check_plan_id = check_plan_id
         self.group_by = group_by
         self.product = product
         self.region_ids_shrink = region_ids_shrink
         self.resource_group_id_list_shrink = resource_group_id_list_shrink
+        self.resource_id = resource_id
         self.resource_ids_shrink = resource_ids_shrink
         self.resource_name = resource_name
         self.severity = severity
@@ -2721,6 +2773,8 @@ class DescribeCostCheckResultsShrinkRequest(TeaModel):
             result['AssumeAliyunIdList'] = self.assume_aliyun_id_list_shrink
         if self.check_ids_shrink is not None:
             result['CheckIds'] = self.check_ids_shrink
+        if self.check_plan_id is not None:
+            result['CheckPlanId'] = self.check_plan_id
         if self.group_by is not None:
             result['GroupBy'] = self.group_by
         if self.product is not None:
@@ -2729,6 +2783,8 @@ class DescribeCostCheckResultsShrinkRequest(TeaModel):
             result['RegionIds'] = self.region_ids_shrink
         if self.resource_group_id_list_shrink is not None:
             result['ResourceGroupIdList'] = self.resource_group_id_list_shrink
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         if self.resource_ids_shrink is not None:
             result['ResourceIds'] = self.resource_ids_shrink
         if self.resource_name is not None:
@@ -2749,6 +2805,8 @@ class DescribeCostCheckResultsShrinkRequest(TeaModel):
             self.assume_aliyun_id_list_shrink = m.get('AssumeAliyunIdList')
         if m.get('CheckIds') is not None:
             self.check_ids_shrink = m.get('CheckIds')
+        if m.get('CheckPlanId') is not None:
+            self.check_plan_id = m.get('CheckPlanId')
         if m.get('GroupBy') is not None:
             self.group_by = m.get('GroupBy')
         if m.get('Product') is not None:
@@ -2757,6 +2815,8 @@ class DescribeCostCheckResultsShrinkRequest(TeaModel):
             self.region_ids_shrink = m.get('RegionIds')
         if m.get('ResourceGroupIdList') is not None:
             self.resource_group_id_list_shrink = m.get('ResourceGroupIdList')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         if m.get('ResourceIds') is not None:
             self.resource_ids_shrink = m.get('ResourceIds')
         if m.get('ResourceName') is not None:
@@ -3101,10 +3161,12 @@ class DescribeCostOptimizationOverviewRequest(TeaModel):
         self,
         assume_aliyun_id: int = None,
         assume_aliyun_id_list: List[int] = None,
+        check_plan_id: int = None,
         token: str = None,
     ):
         self.assume_aliyun_id = assume_aliyun_id
         self.assume_aliyun_id_list = assume_aliyun_id_list
+        self.check_plan_id = check_plan_id
         self.token = token
 
     def validate(self):
@@ -3120,6 +3182,8 @@ class DescribeCostOptimizationOverviewRequest(TeaModel):
             result['AssumeAliyunId'] = self.assume_aliyun_id
         if self.assume_aliyun_id_list is not None:
             result['AssumeAliyunIdList'] = self.assume_aliyun_id_list
+        if self.check_plan_id is not None:
+            result['CheckPlanId'] = self.check_plan_id
         if self.token is not None:
             result['Token'] = self.token
         return result
@@ -3130,6 +3194,8 @@ class DescribeCostOptimizationOverviewRequest(TeaModel):
             self.assume_aliyun_id = m.get('AssumeAliyunId')
         if m.get('AssumeAliyunIdList') is not None:
             self.assume_aliyun_id_list = m.get('AssumeAliyunIdList')
+        if m.get('CheckPlanId') is not None:
+            self.check_plan_id = m.get('CheckPlanId')
         if m.get('Token') is not None:
             self.token = m.get('Token')
         return self
@@ -3140,10 +3206,12 @@ class DescribeCostOptimizationOverviewShrinkRequest(TeaModel):
         self,
         assume_aliyun_id: int = None,
         assume_aliyun_id_list_shrink: str = None,
+        check_plan_id: int = None,
         token: str = None,
     ):
         self.assume_aliyun_id = assume_aliyun_id
         self.assume_aliyun_id_list_shrink = assume_aliyun_id_list_shrink
+        self.check_plan_id = check_plan_id
         self.token = token
 
     def validate(self):
@@ -3159,6 +3227,8 @@ class DescribeCostOptimizationOverviewShrinkRequest(TeaModel):
             result['AssumeAliyunId'] = self.assume_aliyun_id
         if self.assume_aliyun_id_list_shrink is not None:
             result['AssumeAliyunIdList'] = self.assume_aliyun_id_list_shrink
+        if self.check_plan_id is not None:
+            result['CheckPlanId'] = self.check_plan_id
         if self.token is not None:
             result['Token'] = self.token
         return result
@@ -3169,6 +3239,8 @@ class DescribeCostOptimizationOverviewShrinkRequest(TeaModel):
             self.assume_aliyun_id = m.get('AssumeAliyunId')
         if m.get('AssumeAliyunIdList') is not None:
             self.assume_aliyun_id_list_shrink = m.get('AssumeAliyunIdList')
+        if m.get('CheckPlanId') is not None:
+            self.check_plan_id = m.get('CheckPlanId')
         if m.get('Token') is not None:
             self.token = m.get('Token')
         return self
@@ -3247,7 +3319,10 @@ class DescribeCostOptimizationOverviewResponseBodyData(TeaModel):
         gmt_modified: int = None,
         opt_check_item_num: str = None,
         opt_resource_num: str = None,
+        processed_resource_count: str = None,
+        processed_save_amount: str = None,
         task_id: int = None,
+        wait_process_resource_count: str = None,
     ):
         self.billing_cycle_date = billing_cycle_date
         self.current_billing_cost = current_billing_cost
@@ -3255,7 +3330,10 @@ class DescribeCostOptimizationOverviewResponseBodyData(TeaModel):
         self.gmt_modified = gmt_modified
         self.opt_check_item_num = opt_check_item_num
         self.opt_resource_num = opt_resource_num
+        self.processed_resource_count = processed_resource_count
+        self.processed_save_amount = processed_save_amount
         self.task_id = task_id
+        self.wait_process_resource_count = wait_process_resource_count
 
     def validate(self):
         pass
@@ -3278,8 +3356,14 @@ class DescribeCostOptimizationOverviewResponseBodyData(TeaModel):
             result['OptCheckItemNum'] = self.opt_check_item_num
         if self.opt_resource_num is not None:
             result['OptResourceNum'] = self.opt_resource_num
+        if self.processed_resource_count is not None:
+            result['ProcessedResourceCount'] = self.processed_resource_count
+        if self.processed_save_amount is not None:
+            result['ProcessedSaveAmount'] = self.processed_save_amount
         if self.task_id is not None:
             result['TaskId'] = self.task_id
+        if self.wait_process_resource_count is not None:
+            result['WaitProcessResourceCount'] = self.wait_process_resource_count
         return result
 
     def from_map(self, m: dict = None):
@@ -3296,8 +3380,14 @@ class DescribeCostOptimizationOverviewResponseBodyData(TeaModel):
             self.opt_check_item_num = m.get('OptCheckItemNum')
         if m.get('OptResourceNum') is not None:
             self.opt_resource_num = m.get('OptResourceNum')
+        if m.get('ProcessedResourceCount') is not None:
+            self.processed_resource_count = m.get('ProcessedResourceCount')
+        if m.get('ProcessedSaveAmount') is not None:
+            self.processed_save_amount = m.get('ProcessedSaveAmount')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+        if m.get('WaitProcessResourceCount') is not None:
+            self.wait_process_resource_count = m.get('WaitProcessResourceCount')
         return self
 
 
@@ -4614,12 +4704,14 @@ class RefreshAdvisorCostCheckRequest(TeaModel):
         self,
         assume_aliyun_id_list: List[int] = None,
         check_ids: List[str] = None,
+        check_plan_id: int = None,
         product: str = None,
         refresh_resource: bool = None,
         resource_ids: List[str] = None,
     ):
         self.assume_aliyun_id_list = assume_aliyun_id_list
         self.check_ids = check_ids
+        self.check_plan_id = check_plan_id
         self.product = product
         self.refresh_resource = refresh_resource
         self.resource_ids = resource_ids
@@ -4637,6 +4729,8 @@ class RefreshAdvisorCostCheckRequest(TeaModel):
             result['AssumeAliyunIdList'] = self.assume_aliyun_id_list
         if self.check_ids is not None:
             result['CheckIds'] = self.check_ids
+        if self.check_plan_id is not None:
+            result['CheckPlanId'] = self.check_plan_id
         if self.product is not None:
             result['Product'] = self.product
         if self.refresh_resource is not None:
@@ -4651,6 +4745,8 @@ class RefreshAdvisorCostCheckRequest(TeaModel):
             self.assume_aliyun_id_list = m.get('AssumeAliyunIdList')
         if m.get('CheckIds') is not None:
             self.check_ids = m.get('CheckIds')
+        if m.get('CheckPlanId') is not None:
+            self.check_plan_id = m.get('CheckPlanId')
         if m.get('Product') is not None:
             self.product = m.get('Product')
         if m.get('RefreshResource') is not None:
@@ -4665,12 +4761,14 @@ class RefreshAdvisorCostCheckShrinkRequest(TeaModel):
         self,
         assume_aliyun_id_list_shrink: str = None,
         check_ids_shrink: str = None,
+        check_plan_id: int = None,
         product: str = None,
         refresh_resource: bool = None,
         resource_ids_shrink: str = None,
     ):
         self.assume_aliyun_id_list_shrink = assume_aliyun_id_list_shrink
         self.check_ids_shrink = check_ids_shrink
+        self.check_plan_id = check_plan_id
         self.product = product
         self.refresh_resource = refresh_resource
         self.resource_ids_shrink = resource_ids_shrink
@@ -4688,6 +4786,8 @@ class RefreshAdvisorCostCheckShrinkRequest(TeaModel):
             result['AssumeAliyunIdList'] = self.assume_aliyun_id_list_shrink
         if self.check_ids_shrink is not None:
             result['CheckIds'] = self.check_ids_shrink
+        if self.check_plan_id is not None:
+            result['CheckPlanId'] = self.check_plan_id
         if self.product is not None:
             result['Product'] = self.product
         if self.refresh_resource is not None:
@@ -4702,6 +4802,8 @@ class RefreshAdvisorCostCheckShrinkRequest(TeaModel):
             self.assume_aliyun_id_list_shrink = m.get('AssumeAliyunIdList')
         if m.get('CheckIds') is not None:
             self.check_ids_shrink = m.get('CheckIds')
+        if m.get('CheckPlanId') is not None:
+            self.check_plan_id = m.get('CheckPlanId')
         if m.get('Product') is not None:
             self.product = m.get('Product')
         if m.get('RefreshResource') is not None:
