@@ -1,3 +1,12 @@
+2025-04-23 Version: 1.4.0
+- Support API CreateOrg.
+- Support API DescribeOrgByLayer.
+- Support API InitTenantAlias.
+- Support API ModifyOrg.
+- Support API MoveOrg.
+- Support API RemoveOrg.
+
+
 2025-03-25 Version: 1.3.3
 - Update API DescribeUsers: add param FilterWithAssignedResource.
 - Update API DescribeUsers: add param IsQueryAllSubOrgs.

@@ -705,7 +705,7 @@ class CheckUsedPropertyValueResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The number of convenience users that are associated with the property value.
+        # The number of convenience accounts that are associated with the specified custom property value.
         self.use_count = use_count
 
     def validate(self):
@@ -769,6 +769,115 @@ class CheckUsedPropertyValueResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CheckUsedPropertyValueResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateOrgRequest(TeaModel):
+    def __init__(
+        self,
+        org_name: str = None,
+        parent_org_id: str = None,
+    ):
+        # This parameter is required.
+        self.org_name = org_name
+        # This parameter is required.
+        self.parent_org_id = parent_org_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        if self.parent_org_id is not None:
+            result['ParentOrgId'] = self.parent_org_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        if m.get('ParentOrgId') is not None:
+            self.parent_org_id = m.get('ParentOrgId')
+        return self
+
+
+class CreateOrgResponseBody(TeaModel):
+    def __init__(
+        self,
+        org_id: str = None,
+        request_id: str = None,
+    ):
+        self.org_id = org_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateOrgResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateOrgResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateOrgResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1467,15 +1576,15 @@ class DeleteUserPropertyValueRequest(TeaModel):
         property_value_id: int = None,
         user_id: int = None,
     ):
-        # The property ID.
+        # The property ID. You can call the [ListProperty](~~ListProperty~~) operation to query the property ID.
         # 
         # This parameter is required.
         self.property_id = property_id
-        # The ID of the property value.
+        # The property value ID. You can call the [ListProperty](~~ListProperty~~) operation to query the property value ID.
         # 
         # This parameter is required.
         self.property_value_id = property_value_id
-        # The ID of the convenience user.
+        # The user ID. You can call the [DescribeUsers](~~DescribeUsers~~) operation to query the user ID, which is the return value of the `Id` parameter.
         # 
         # This parameter is required.
         self.user_id = user_id
@@ -1835,6 +1944,160 @@ class DescribeMfaDevicesResponse(TeaModel):
         return self
 
 
+class DescribeOrgByLayerRequest(TeaModel):
+    def __init__(
+        self,
+        org_name: str = None,
+        parent_org_id: str = None,
+    ):
+        self.org_name = org_name
+        self.parent_org_id = parent_org_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        if self.parent_org_id is not None:
+            result['ParentOrgId'] = self.parent_org_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        if m.get('ParentOrgId') is not None:
+            self.parent_org_id = m.get('ParentOrgId')
+        return self
+
+
+class DescribeOrgByLayerResponseBodyOrgs(TeaModel):
+    def __init__(
+        self,
+        org_id: str = None,
+        org_name: str = None,
+        parent_org_id: str = None,
+    ):
+        self.org_id = org_id
+        self.org_name = org_name
+        self.parent_org_id = parent_org_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        if self.parent_org_id is not None:
+            result['ParentOrgId'] = self.parent_org_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        if m.get('ParentOrgId') is not None:
+            self.parent_org_id = m.get('ParentOrgId')
+        return self
+
+
+class DescribeOrgByLayerResponseBody(TeaModel):
+    def __init__(
+        self,
+        orgs: List[DescribeOrgByLayerResponseBodyOrgs] = None,
+        request_id: str = None,
+    ):
+        self.orgs = orgs
+        self.request_id = request_id
+
+    def validate(self):
+        if self.orgs:
+            for k in self.orgs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Orgs'] = []
+        if self.orgs is not None:
+            for k in self.orgs:
+                result['Orgs'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.orgs = []
+        if m.get('Orgs') is not None:
+            for k in m.get('Orgs'):
+                temp_model = DescribeOrgByLayerResponseBodyOrgs()
+                self.orgs.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeOrgByLayerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeOrgByLayerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeOrgByLayerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeOrgsRequest(TeaModel):
     def __init__(
         self,
@@ -2036,9 +2299,9 @@ class DescribeUsersRequest(TeaModel):
         solution_id: str = None,
     ):
         self.biz_type = biz_type
-        # The list of usernames that must be exactly matched.
+        # The usernames that must be exactly matched.
         self.end_user_ids = end_user_ids
-        # The list of usernames to be exactly excluded.
+        # The usernames that must be exactly excluded.
         self.exclude_end_user_ids = exclude_end_user_ids
         # The string that is used for fuzzy search. You perform fuzzy search by username (EndUserId) and email address (Email). Wildcard characters (\\*) are supported. For example, if you set this parameter to `a*m`, usernames or email addresses that start with `a` and end with `m` are returned.
         self.filter = filter
@@ -2047,10 +2310,10 @@ class DescribeUsersRequest(TeaModel):
         # The ID of the organization in which you want to query convenience users.
         self.group_id = group_id
         self.is_query_all_sub_orgs = is_query_all_sub_orgs
-        # The number of entries per page.
+        # The maximum number of entries per page.
         # 
-        # *   Valid values: 1 to 500
-        # *   Default value: 500
+        # *   Valid values: 1 to 500.
+        # *   Default value: 500.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.\\
         # If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the return value of NextToken to perform the next query.
@@ -2146,9 +2409,9 @@ class DescribeUsersShrinkRequest(TeaModel):
         solution_id: str = None,
     ):
         self.biz_type = biz_type
-        # The list of usernames that must be exactly matched.
+        # The usernames that must be exactly matched.
         self.end_user_ids = end_user_ids
-        # The list of usernames to be exactly excluded.
+        # The usernames that must be exactly excluded.
         self.exclude_end_user_ids = exclude_end_user_ids
         # The string that is used for fuzzy search. You perform fuzzy search by username (EndUserId) and email address (Email). Wildcard characters (\\*) are supported. For example, if you set this parameter to `a*m`, usernames or email addresses that start with `a` and end with `m` are returned.
         self.filter = filter
@@ -2157,10 +2420,10 @@ class DescribeUsersShrinkRequest(TeaModel):
         # The ID of the organization in which you want to query convenience users.
         self.group_id = group_id
         self.is_query_all_sub_orgs = is_query_all_sub_orgs
-        # The number of entries per page.
+        # The maximum number of entries per page.
         # 
-        # *   Valid values: 1 to 500
-        # *   Default value: 500
+        # *   Valid values: 1 to 500.
+        # *   Default value: 500.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.\\
         # If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the return value of NextToken to perform the next query.
@@ -2614,7 +2877,7 @@ class DescribeUsersResponseBody(TeaModel):
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
-        # The information about the convenience users.
+        # The convenience accounts.
         self.users = users
 
     def validate(self):
@@ -2700,33 +2963,20 @@ class FilterUsersRequestOrderParam(TeaModel):
         order_field: str = None,
         order_type: str = None,
     ):
-        # The parameter based on which to sort query results.
+        # The field that you want to sort by.
         # 
         # Valid values:
         # 
         # *   EndUserId: the username.
-        # *   id: the ID of the user primary key.
-        # *   gmt_created: the time when the convenience user was created.
+        # *   id: the ID of the primary key.
+        # *   gmt_created: the creation time.
         self.order_field = order_field
-        # Specifies whether to sort query results in ascending or descending order.
+        # The direction of the sort.
         # 
         # Valid values:
         # 
-        # *   ASC: ascending
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   DESC (default): descending
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # *   ASC: the ascending order.
+        # *   DESC (default): the descending order.
         self.order_type = order_type
 
     def validate(self):
@@ -2893,11 +3143,16 @@ class FilterUsersRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the returned NextToken value to start the next query.
         self.next_token = next_token
-        # The parameters that are used to sort query results.
+        # The parameter that might affect the sorting logic.
         self.order_param = order_param
         # The ID of the organization.
         self.org_id = org_id
-        # The type of the account ownership.
+        # The activation type of the convenience account.
+        # 
+        # Valid values:
+        # 
+        # *   CreateFromManager: administrator-activated.
+        # *   Normal: user-activated.
         self.owner_type = owner_type
         # The list of properties for fuzzy search.
         self.property_filter_param = property_filter_param
@@ -3141,11 +3396,16 @@ class FilterUsersShrinkRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the returned NextToken value to start the next query.
         self.next_token = next_token
-        # The parameters that are used to sort query results.
+        # The parameter that might affect the sorting logic.
         self.order_param_shrink = order_param_shrink
         # The ID of the organization.
         self.org_id = org_id
-        # The type of the account ownership.
+        # The activation type of the convenience account.
+        # 
+        # Valid values:
+        # 
+        # *   CreateFromManager: administrator-activated.
+        # *   Normal: user-activated.
         self.owner_type = owner_type
         # The list of properties for fuzzy search.
         self.property_filter_param = property_filter_param
@@ -3476,6 +3736,7 @@ class FilterUsersResponseBodyUsers(TeaModel):
         support_login_idps: List[FilterUsersResponseBodyUsersSupportLoginIdps] = None,
         user_set_properties_models: List[FilterUsersResponseBodyUsersUserSetPropertiesModels] = None,
     ):
+        # The date when a convenience account is automatically locked.
         self.auto_lock_time = auto_lock_time
         # The number of cloud desktops that are assigned to the convenience user.
         self.desktop_count = desktop_count
@@ -3537,7 +3798,11 @@ class FilterUsersResponseBodyUsers(TeaModel):
         # *   CreateFromManager: administrator-activated
         # *   Normal: user-activated
         self.owner_type = owner_type
+        # By default, user account passwords do not expire. However, you can set a validity period between 30 and 365 days. Once the period expires, end users must change their password before they can log on to terminals.
+        # 
+        # >  The feature is in invitational preview. If you want to use this feature, submit a ticket.
         self.password_expire_days = password_expire_days
+        # The number of days remaining until the account password expires.
         self.password_expire_rest_days = password_expire_rest_days
         # The mobile number of the convenience user.
         self.phone = phone
@@ -3545,25 +3810,12 @@ class FilterUsersResponseBodyUsers(TeaModel):
         self.real_nick_name = real_nick_name
         # The remarks on the convenience user.
         self.remark = remark
-        # The status of the convenience user.
+        # The remarks on the convenience account.
         # 
         # Valid values:
         # 
-        # *   0: The convenience user is normal.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   9: The convenience user is locked.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # *   0: The convenience account is normal.
+        # *   9: The convenience account is locked.
         self.status = status
         self.support_login_idps = support_login_idps
         # The information about the properties.
@@ -3701,7 +3953,7 @@ class FilterUsersResponseBody(TeaModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The information about the convenience user.
+        # The convenience accounts.
         self.users = users
 
     def validate(self):
@@ -3911,6 +4163,133 @@ class GetManagerInfoByAuthCodeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetManagerInfoByAuthCodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class InitTenantAliasResponseBodyAliasInfo(TeaModel):
+    def __init__(
+        self,
+        alias_edit_disabled_reason: str = None,
+        alias_editable: bool = None,
+        alias_source_type: str = None,
+        next_modify_time: str = None,
+    ):
+        self.alias_edit_disabled_reason = alias_edit_disabled_reason
+        self.alias_editable = alias_editable
+        self.alias_source_type = alias_source_type
+        self.next_modify_time = next_modify_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias_edit_disabled_reason is not None:
+            result['AliasEditDisabledReason'] = self.alias_edit_disabled_reason
+        if self.alias_editable is not None:
+            result['AliasEditable'] = self.alias_editable
+        if self.alias_source_type is not None:
+            result['AliasSourceType'] = self.alias_source_type
+        if self.next_modify_time is not None:
+            result['NextModifyTime'] = self.next_modify_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliasEditDisabledReason') is not None:
+            self.alias_edit_disabled_reason = m.get('AliasEditDisabledReason')
+        if m.get('AliasEditable') is not None:
+            self.alias_editable = m.get('AliasEditable')
+        if m.get('AliasSourceType') is not None:
+            self.alias_source_type = m.get('AliasSourceType')
+        if m.get('NextModifyTime') is not None:
+            self.next_modify_time = m.get('NextModifyTime')
+        return self
+
+
+class InitTenantAliasResponseBody(TeaModel):
+    def __init__(
+        self,
+        alias_info: InitTenantAliasResponseBodyAliasInfo = None,
+        data: str = None,
+        request_id: str = None,
+    ):
+        self.alias_info = alias_info
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.alias_info:
+            self.alias_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias_info is not None:
+            result['AliasInfo'] = self.alias_info.to_map()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliasInfo') is not None:
+            temp_model = InitTenantAliasResponseBodyAliasInfo()
+            self.alias_info = temp_model.from_map(m['AliasInfo'])
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class InitTenantAliasResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: InitTenantAliasResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = InitTenantAliasResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4543,6 +4922,109 @@ class LockUsersResponse(TeaModel):
         return self
 
 
+class ModifyOrgRequest(TeaModel):
+    def __init__(
+        self,
+        org_id: str = None,
+        org_name: str = None,
+    ):
+        # This parameter is required.
+        self.org_id = org_id
+        # This parameter is required.
+        self.org_name = org_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        return self
+
+
+class ModifyOrgResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyOrgResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyOrgResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyOrgResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyUserRequest(TeaModel):
     def __init__(
         self,
@@ -4654,6 +5136,109 @@ class ModifyUserResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class MoveOrgRequest(TeaModel):
+    def __init__(
+        self,
+        new_parent_org_id: str = None,
+        org_id: str = None,
+    ):
+        # This parameter is required.
+        self.new_parent_org_id = new_parent_org_id
+        # This parameter is required.
+        self.org_id = org_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.new_parent_org_id is not None:
+            result['NewParentOrgId'] = self.new_parent_org_id
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NewParentOrgId') is not None:
+            self.new_parent_org_id = m.get('NewParentOrgId')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        return self
+
+
+class MoveOrgResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class MoveOrgResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: MoveOrgResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = MoveOrgResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4935,6 +5520,102 @@ class RemoveMfaDeviceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RemoveMfaDeviceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RemoveOrgRequest(TeaModel):
+    def __init__(
+        self,
+        org_id: str = None,
+    ):
+        # This parameter is required.
+        self.org_id = org_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        return self
+
+
+class RemoveOrgResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RemoveOrgResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RemoveOrgResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RemoveOrgResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
