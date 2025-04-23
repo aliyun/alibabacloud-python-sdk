@@ -1,3 +1,40 @@
+2025-04-23 Version: 4.0.0
+- Delete API AddContainerApp.
+- Delete API CreateGWSCluster.
+- Delete API CreateGWSImage.
+- Delete API CreateGWSInstance.
+- Delete API DeleteContainerApps.
+- Delete API DeleteGWSCluster.
+- Delete API DeleteGWSInstance.
+- Delete API DeleteImage.
+- Delete API DeleteLocalImage.
+- Delete API DescribeContainerApp.
+- Delete API DescribeGWSClusterPolicy.
+- Delete API DescribeGWSClusters.
+- Delete API DescribeGWSImages.
+- Delete API DescribeGWSInstances.
+- Delete API DescribeImage.
+- Delete API DescribeImageGatewayConfig.
+- Delete API DescribeNFSClientStatus.
+- Delete API GetCommonImage.
+- Delete API GetGWSConnectTicket.
+- Delete API GetUserImage.
+- Delete API InspectImage.
+- Delete API ListContainerApps.
+- Delete API ListContainerImages.
+- Delete API ModifyContainerAppAttributes.
+- Delete API ModifyImageGatewayConfig.
+- Delete API MountNFS.
+- Delete API SetGWSClusterPolicy.
+- Delete API SetGWSInstanceName.
+- Delete API SetGWSInstanceUser.
+- Delete API StartGWSInstance.
+- Delete API StopGWSInstance.
+- Delete API SummaryImages.
+- Delete API SummaryImagesInfo.
+- Update API SubmitJob: delete request parameters ContainerId.
+
+
 2024-03-05 Version: 3.0.2
 - Update API ApplyNodes: add param UserData.
 

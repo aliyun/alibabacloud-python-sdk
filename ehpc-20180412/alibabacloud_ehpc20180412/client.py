@@ -41,107 +41,17 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def add_container_app_with_options(
-        self,
-        request: ehpc20180412_models.AddContainerAppRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.AddContainerAppResponse:
-        """
-        If you select an image for a new containerized application, the image is pulled from Docker Hub by default. However, the version of the image may not be up to date. You can call the [PullImage](~~159052~~) operation to pull the latest image.
-        
-        @param request: AddContainerAppRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddContainerAppResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AddContainerApp',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.AddContainerAppResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def add_container_app_with_options_async(
-        self,
-        request: ehpc20180412_models.AddContainerAppRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.AddContainerAppResponse:
-        """
-        If you select an image for a new containerized application, the image is pulled from Docker Hub by default. However, the version of the image may not be up to date. You can call the [PullImage](~~159052~~) operation to pull the latest image.
-        
-        @param request: AddContainerAppRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddContainerAppResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AddContainerApp',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.AddContainerAppResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def add_container_app(
-        self,
-        request: ehpc20180412_models.AddContainerAppRequest,
-    ) -> ehpc20180412_models.AddContainerAppResponse:
-        """
-        If you select an image for a new containerized application, the image is pulled from Docker Hub by default. However, the version of the image may not be up to date. You can call the [PullImage](~~159052~~) operation to pull the latest image.
-        
-        @param request: AddContainerAppRequest
-        @return: AddContainerAppResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.add_container_app_with_options(request, runtime)
-
-    async def add_container_app_async(
-        self,
-        request: ehpc20180412_models.AddContainerAppRequest,
-    ) -> ehpc20180412_models.AddContainerAppResponse:
-        """
-        If you select an image for a new containerized application, the image is pulled from Docker Hub by default. However, the version of the image may not be up to date. You can call the [PullImage](~~159052~~) operation to pull the latest image.
-        
-        @param request: AddContainerAppRequest
-        @return: AddContainerAppResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.add_container_app_with_options_async(request, runtime)
-
     def add_existed_nodes_with_options(
         self,
         request: ehpc20180412_models.AddExistedNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.AddExistedNodesResponse:
         """
-        The compute nodes to be added are in the Stopped state.
-        *   After the compute nodes are added to the cluster, the operating systems of the nodes are replaced with the operating system specified by the ImageId parameter.
-        *   The hosts of the compute nodes must be different from those of the existing compute nodes in the cluster. Otherwise, the add operation fails.
+        @summary Adds one or more existing ECS instances as compute nodes to a specified cluster.
+        
+        @description    The compute nodes to be added are in the Stopped state.
+        After the compute nodes are added to the cluster, the operating systems of the nodes are replaced with the operating system specified by the ImageId parameter.
+        The hosts of the compute nodes must be different from those of the existing compute nodes in the cluster. Otherwise, the add operation fails.
         
         @param request: AddExistedNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -174,9 +84,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.AddExistedNodesResponse:
         """
-        The compute nodes to be added are in the Stopped state.
-        *   After the compute nodes are added to the cluster, the operating systems of the nodes are replaced with the operating system specified by the ImageId parameter.
-        *   The hosts of the compute nodes must be different from those of the existing compute nodes in the cluster. Otherwise, the add operation fails.
+        @summary Adds one or more existing ECS instances as compute nodes to a specified cluster.
+        
+        @description    The compute nodes to be added are in the Stopped state.
+        After the compute nodes are added to the cluster, the operating systems of the nodes are replaced with the operating system specified by the ImageId parameter.
+        The hosts of the compute nodes must be different from those of the existing compute nodes in the cluster. Otherwise, the add operation fails.
         
         @param request: AddExistedNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -208,9 +120,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.AddExistedNodesRequest,
     ) -> ehpc20180412_models.AddExistedNodesResponse:
         """
-        The compute nodes to be added are in the Stopped state.
-        *   After the compute nodes are added to the cluster, the operating systems of the nodes are replaced with the operating system specified by the ImageId parameter.
-        *   The hosts of the compute nodes must be different from those of the existing compute nodes in the cluster. Otherwise, the add operation fails.
+        @summary Adds one or more existing ECS instances as compute nodes to a specified cluster.
+        
+        @description    The compute nodes to be added are in the Stopped state.
+        After the compute nodes are added to the cluster, the operating systems of the nodes are replaced with the operating system specified by the ImageId parameter.
+        The hosts of the compute nodes must be different from those of the existing compute nodes in the cluster. Otherwise, the add operation fails.
         
         @param request: AddExistedNodesRequest
         @return: AddExistedNodesResponse
@@ -223,9 +137,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.AddExistedNodesRequest,
     ) -> ehpc20180412_models.AddExistedNodesResponse:
         """
-        The compute nodes to be added are in the Stopped state.
-        *   After the compute nodes are added to the cluster, the operating systems of the nodes are replaced with the operating system specified by the ImageId parameter.
-        *   The hosts of the compute nodes must be different from those of the existing compute nodes in the cluster. Otherwise, the add operation fails.
+        @summary Adds one or more existing ECS instances as compute nodes to a specified cluster.
+        
+        @description    The compute nodes to be added are in the Stopped state.
+        After the compute nodes are added to the cluster, the operating systems of the nodes are replaced with the operating system specified by the ImageId parameter.
+        The hosts of the compute nodes must be different from those of the existing compute nodes in the cluster. Otherwise, the add operation fails.
         
         @param request: AddExistedNodesRequest
         @return: AddExistedNodesResponse
@@ -238,6 +154,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.AddLocalNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.AddLocalNodesResponse:
+        """
+        @param request: AddLocalNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddLocalNodesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -264,6 +185,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.AddLocalNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.AddLocalNodesResponse:
+        """
+        @param request: AddLocalNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddLocalNodesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -289,6 +215,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.AddLocalNodesRequest,
     ) -> ehpc20180412_models.AddLocalNodesResponse:
+        """
+        @param request: AddLocalNodesRequest
+        @return: AddLocalNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_local_nodes_with_options(request, runtime)
 
@@ -296,6 +226,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.AddLocalNodesRequest,
     ) -> ehpc20180412_models.AddLocalNodesResponse:
+        """
+        @param request: AddLocalNodesRequest
+        @return: AddLocalNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_local_nodes_with_options_async(request, runtime)
 
@@ -304,6 +238,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.AddNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.AddNodesResponse:
+        """
+        @summary Adds one or more compute nodes to an E-HPC cluster.
+        
+        @param request: AddNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddNodesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -330,6 +271,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.AddNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.AddNodesResponse:
+        """
+        @summary Adds one or more compute nodes to an E-HPC cluster.
+        
+        @param request: AddNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddNodesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -355,6 +303,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.AddNodesRequest,
     ) -> ehpc20180412_models.AddNodesResponse:
+        """
+        @summary Adds one or more compute nodes to an E-HPC cluster.
+        
+        @param request: AddNodesRequest
+        @return: AddNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_nodes_with_options(request, runtime)
 
@@ -362,6 +316,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.AddNodesRequest,
     ) -> ehpc20180412_models.AddNodesResponse:
+        """
+        @summary Adds one or more compute nodes to an E-HPC cluster.
+        
+        @param request: AddNodesRequest
+        @return: AddNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_nodes_with_options_async(request, runtime)
 
@@ -370,6 +330,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.AddQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.AddQueueResponse:
+        """
+        @summary Creates a queue for a cluster.
+        
+        @param request: AddQueueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddQueueResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -396,6 +363,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.AddQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.AddQueueResponse:
+        """
+        @summary Creates a queue for a cluster.
+        
+        @param request: AddQueueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddQueueResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -421,6 +395,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.AddQueueRequest,
     ) -> ehpc20180412_models.AddQueueResponse:
+        """
+        @summary Creates a queue for a cluster.
+        
+        @param request: AddQueueRequest
+        @return: AddQueueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_queue_with_options(request, runtime)
 
@@ -428,6 +408,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.AddQueueRequest,
     ) -> ehpc20180412_models.AddQueueResponse:
+        """
+        @summary Creates a queue for a cluster.
+        
+        @param request: AddQueueRequest
+        @return: AddQueueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_queue_with_options_async(request, runtime)
 
@@ -436,6 +422,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.AddSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.AddSecurityGroupResponse:
+        """
+        @summary Adds a cluster to a security group.
+        
+        @param request: AddSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -462,6 +455,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.AddSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.AddSecurityGroupResponse:
+        """
+        @summary Adds a cluster to a security group.
+        
+        @param request: AddSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -487,6 +487,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.AddSecurityGroupRequest,
     ) -> ehpc20180412_models.AddSecurityGroupResponse:
+        """
+        @summary Adds a cluster to a security group.
+        
+        @param request: AddSecurityGroupRequest
+        @return: AddSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_security_group_with_options(request, runtime)
 
@@ -494,6 +500,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.AddSecurityGroupRequest,
     ) -> ehpc20180412_models.AddSecurityGroupResponse:
+        """
+        @summary Adds a cluster to a security group.
+        
+        @param request: AddSecurityGroupRequest
+        @return: AddSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_security_group_with_options_async(request, runtime)
 
@@ -502,6 +514,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.AddUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.AddUsersResponse:
+        """
+        @summary Adds users to a cluster.
+        
+        @param request: AddUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUsersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -528,6 +547,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.AddUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.AddUsersResponse:
+        """
+        @summary Adds users to a cluster.
+        
+        @param request: AddUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUsersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -553,6 +579,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.AddUsersRequest,
     ) -> ehpc20180412_models.AddUsersResponse:
+        """
+        @summary Adds users to a cluster.
+        
+        @param request: AddUsersRequest
+        @return: AddUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_users_with_options(request, runtime)
 
@@ -560,6 +592,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.AddUsersRequest,
     ) -> ehpc20180412_models.AddUsersResponse:
+        """
+        @summary Adds users to a cluster.
+        
+        @param request: AddUsersRequest
+        @return: AddUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_users_with_options_async(request, runtime)
 
@@ -569,7 +607,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ApplyNodesResponse:
         """
-        ## [](#)Description
+        @summary Adds pay-as-you-go or preemptible compute nodes to a cluster.
+        
+        @description ## [](#)Description
         You can call the ApplyNodes operation to specify the number of compute nodes, the number of vCPUs, and the memory size when you add nodes to a cluster.
         
         @param request: ApplyNodesRequest
@@ -603,7 +643,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ApplyNodesResponse:
         """
-        ## [](#)Description
+        @summary Adds pay-as-you-go or preemptible compute nodes to a cluster.
+        
+        @description ## [](#)Description
         You can call the ApplyNodes operation to specify the number of compute nodes, the number of vCPUs, and the memory size when you add nodes to a cluster.
         
         @param request: ApplyNodesRequest
@@ -636,7 +678,9 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ApplyNodesRequest,
     ) -> ehpc20180412_models.ApplyNodesResponse:
         """
-        ## [](#)Description
+        @summary Adds pay-as-you-go or preemptible compute nodes to a cluster.
+        
+        @description ## [](#)Description
         You can call the ApplyNodes operation to specify the number of compute nodes, the number of vCPUs, and the memory size when you add nodes to a cluster.
         
         @param request: ApplyNodesRequest
@@ -650,7 +694,9 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ApplyNodesRequest,
     ) -> ehpc20180412_models.ApplyNodesResponse:
         """
-        ## [](#)Description
+        @summary Adds pay-as-you-go or preemptible compute nodes to a cluster.
+        
+        @description ## [](#)Description
         You can call the ApplyNodes operation to specify the number of compute nodes, the number of vCPUs, and the memory size when you add nodes to a cluster.
         
         @param request: ApplyNodesRequest
@@ -665,7 +711,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.CreateClusterResponse:
         """
-        After you create an Elastic High Performance Computing (E-HPC) cluster, you are charged for the cluster resources that you use. We recommend that you learn about the billing methods of E-HPC in advance. For more information, see [Billing overview](~~57844~~).
+        @summary Creates a pay-as-you-go or subscription E-HPC cluster.
+        
+        @description After you create an Elastic High Performance Computing (E-HPC) cluster, you are charged for the cluster resources that you use. We recommend that you learn about the billing methods of E-HPC in advance. For more information, see [Billing overview](https://help.aliyun.com/document_detail/57844.html).
         
         @param request: CreateClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -698,7 +746,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.CreateClusterResponse:
         """
-        After you create an Elastic High Performance Computing (E-HPC) cluster, you are charged for the cluster resources that you use. We recommend that you learn about the billing methods of E-HPC in advance. For more information, see [Billing overview](~~57844~~).
+        @summary Creates a pay-as-you-go or subscription E-HPC cluster.
+        
+        @description After you create an Elastic High Performance Computing (E-HPC) cluster, you are charged for the cluster resources that you use. We recommend that you learn about the billing methods of E-HPC in advance. For more information, see [Billing overview](https://help.aliyun.com/document_detail/57844.html).
         
         @param request: CreateClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -730,7 +780,9 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.CreateClusterRequest,
     ) -> ehpc20180412_models.CreateClusterResponse:
         """
-        After you create an Elastic High Performance Computing (E-HPC) cluster, you are charged for the cluster resources that you use. We recommend that you learn about the billing methods of E-HPC in advance. For more information, see [Billing overview](~~57844~~).
+        @summary Creates a pay-as-you-go or subscription E-HPC cluster.
+        
+        @description After you create an Elastic High Performance Computing (E-HPC) cluster, you are charged for the cluster resources that you use. We recommend that you learn about the billing methods of E-HPC in advance. For more information, see [Billing overview](https://help.aliyun.com/document_detail/57844.html).
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -743,7 +795,9 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.CreateClusterRequest,
     ) -> ehpc20180412_models.CreateClusterResponse:
         """
-        After you create an Elastic High Performance Computing (E-HPC) cluster, you are charged for the cluster resources that you use. We recommend that you learn about the billing methods of E-HPC in advance. For more information, see [Billing overview](~~57844~~).
+        @summary Creates a pay-as-you-go or subscription E-HPC cluster.
+        
+        @description After you create an Elastic High Performance Computing (E-HPC) cluster, you are charged for the cluster resources that you use. We recommend that you learn about the billing methods of E-HPC in advance. For more information, see [Billing overview](https://help.aliyun.com/document_detail/57844.html).
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -751,209 +805,18 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_cluster_with_options_async(request, runtime)
 
-    def create_gwscluster_with_options(
-        self,
-        request: ehpc20180412_models.CreateGWSClusterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.CreateGWSClusterResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateGWSCluster',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.CreateGWSClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_gwscluster_with_options_async(
-        self,
-        request: ehpc20180412_models.CreateGWSClusterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.CreateGWSClusterResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateGWSCluster',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.CreateGWSClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_gwscluster(
-        self,
-        request: ehpc20180412_models.CreateGWSClusterRequest,
-    ) -> ehpc20180412_models.CreateGWSClusterResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_gwscluster_with_options(request, runtime)
-
-    async def create_gwscluster_async(
-        self,
-        request: ehpc20180412_models.CreateGWSClusterRequest,
-    ) -> ehpc20180412_models.CreateGWSClusterResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_gwscluster_with_options_async(request, runtime)
-
-    def create_gwsimage_with_options(
-        self,
-        request: ehpc20180412_models.CreateGWSImageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.CreateGWSImageResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateGWSImage',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.CreateGWSImageResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_gwsimage_with_options_async(
-        self,
-        request: ehpc20180412_models.CreateGWSImageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.CreateGWSImageResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateGWSImage',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.CreateGWSImageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_gwsimage(
-        self,
-        request: ehpc20180412_models.CreateGWSImageRequest,
-    ) -> ehpc20180412_models.CreateGWSImageResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_gwsimage_with_options(request, runtime)
-
-    async def create_gwsimage_async(
-        self,
-        request: ehpc20180412_models.CreateGWSImageRequest,
-    ) -> ehpc20180412_models.CreateGWSImageResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_gwsimage_with_options_async(request, runtime)
-
-    def create_gwsinstance_with_options(
-        self,
-        request: ehpc20180412_models.CreateGWSInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.CreateGWSInstanceResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateGWSInstance',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.CreateGWSInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_gwsinstance_with_options_async(
-        self,
-        request: ehpc20180412_models.CreateGWSInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.CreateGWSInstanceResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateGWSInstance',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.CreateGWSInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_gwsinstance(
-        self,
-        request: ehpc20180412_models.CreateGWSInstanceRequest,
-    ) -> ehpc20180412_models.CreateGWSInstanceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_gwsinstance_with_options(request, runtime)
-
-    async def create_gwsinstance_async(
-        self,
-        request: ehpc20180412_models.CreateGWSInstanceRequest,
-    ) -> ehpc20180412_models.CreateGWSInstanceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_gwsinstance_with_options_async(request, runtime)
-
     def create_hybrid_cluster_with_options(
         self,
         request: ehpc20180412_models.CreateHybridClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.CreateHybridClusterResponse:
+        """
+        @summary Creates a hybrid cloud cluster.
+        
+        @param request: CreateHybridClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHybridClusterResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -980,6 +843,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.CreateHybridClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.CreateHybridClusterResponse:
+        """
+        @summary Creates a hybrid cloud cluster.
+        
+        @param request: CreateHybridClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHybridClusterResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1005,6 +875,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.CreateHybridClusterRequest,
     ) -> ehpc20180412_models.CreateHybridClusterResponse:
+        """
+        @summary Creates a hybrid cloud cluster.
+        
+        @param request: CreateHybridClusterRequest
+        @return: CreateHybridClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_hybrid_cluster_with_options(request, runtime)
 
@@ -1012,6 +888,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.CreateHybridClusterRequest,
     ) -> ehpc20180412_models.CreateHybridClusterResponse:
+        """
+        @summary Creates a hybrid cloud cluster.
+        
+        @param request: CreateHybridClusterRequest
+        @return: CreateHybridClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_hybrid_cluster_with_options_async(request, runtime)
 
@@ -1020,6 +902,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.CreateJobFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.CreateJobFileResponse:
+        """
+        @summary Creates a job file.
+        
+        @param request: CreateJobFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateJobFileResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1046,6 +935,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.CreateJobFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.CreateJobFileResponse:
+        """
+        @summary Creates a job file.
+        
+        @param request: CreateJobFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateJobFileResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1071,6 +967,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.CreateJobFileRequest,
     ) -> ehpc20180412_models.CreateJobFileResponse:
+        """
+        @summary Creates a job file.
+        
+        @param request: CreateJobFileRequest
+        @return: CreateJobFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_job_file_with_options(request, runtime)
 
@@ -1078,6 +980,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.CreateJobFileRequest,
     ) -> ehpc20180412_models.CreateJobFileResponse:
+        """
+        @summary Creates a job file.
+        
+        @param request: CreateJobFileRequest
+        @return: CreateJobFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_job_file_with_options_async(request, runtime)
 
@@ -1086,6 +994,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.CreateJobTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.CreateJobTemplateResponse:
+        """
+        @summary Creates a job template.
+        
+        @param request: CreateJobTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateJobTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1112,6 +1027,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.CreateJobTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.CreateJobTemplateResponse:
+        """
+        @summary Creates a job template.
+        
+        @param request: CreateJobTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateJobTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1137,6 +1059,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.CreateJobTemplateRequest,
     ) -> ehpc20180412_models.CreateJobTemplateResponse:
+        """
+        @summary Creates a job template.
+        
+        @param request: CreateJobTemplateRequest
+        @return: CreateJobTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_job_template_with_options(request, runtime)
 
@@ -1144,6 +1072,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.CreateJobTemplateRequest,
     ) -> ehpc20180412_models.CreateJobTemplateResponse:
+        """
+        @summary Creates a job template.
+        
+        @param request: CreateJobTemplateRequest
+        @return: CreateJobTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_job_template_with_options_async(request, runtime)
 
@@ -1153,7 +1087,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DeleteClusterResponse:
         """
-        After a cluster is released, the pay-as-you-go nodes and the subscription nodes that are expired are automatically released. The subscription nodes that are expired are retained. If you need to release subscription nodes that are not expired, change the billing method to pay-as-you-go. Before you release a cluster, make sure that you no longer use the cluster.
+        @summary Releases a cluster.
+        
+        @description After a cluster is released, the pay-as-you-go nodes and the subscription nodes that are expired are automatically released. The subscription nodes that are expired are retained. If you need to release subscription nodes that are not expired, change the billing method to pay-as-you-go. Before you release a cluster, make sure that you no longer use the cluster.
         
         @param request: DeleteClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1186,7 +1122,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DeleteClusterResponse:
         """
-        After a cluster is released, the pay-as-you-go nodes and the subscription nodes that are expired are automatically released. The subscription nodes that are expired are retained. If you need to release subscription nodes that are not expired, change the billing method to pay-as-you-go. Before you release a cluster, make sure that you no longer use the cluster.
+        @summary Releases a cluster.
+        
+        @description After a cluster is released, the pay-as-you-go nodes and the subscription nodes that are expired are automatically released. The subscription nodes that are expired are retained. If you need to release subscription nodes that are not expired, change the billing method to pay-as-you-go. Before you release a cluster, make sure that you no longer use the cluster.
         
         @param request: DeleteClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1218,7 +1156,9 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DeleteClusterRequest,
     ) -> ehpc20180412_models.DeleteClusterResponse:
         """
-        After a cluster is released, the pay-as-you-go nodes and the subscription nodes that are expired are automatically released. The subscription nodes that are expired are retained. If you need to release subscription nodes that are not expired, change the billing method to pay-as-you-go. Before you release a cluster, make sure that you no longer use the cluster.
+        @summary Releases a cluster.
+        
+        @description After a cluster is released, the pay-as-you-go nodes and the subscription nodes that are expired are automatically released. The subscription nodes that are expired are retained. If you need to release subscription nodes that are not expired, change the billing method to pay-as-you-go. Before you release a cluster, make sure that you no longer use the cluster.
         
         @param request: DeleteClusterRequest
         @return: DeleteClusterResponse
@@ -1231,7 +1171,9 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DeleteClusterRequest,
     ) -> ehpc20180412_models.DeleteClusterResponse:
         """
-        After a cluster is released, the pay-as-you-go nodes and the subscription nodes that are expired are automatically released. The subscription nodes that are expired are retained. If you need to release subscription nodes that are not expired, change the billing method to pay-as-you-go. Before you release a cluster, make sure that you no longer use the cluster.
+        @summary Releases a cluster.
+        
+        @description After a cluster is released, the pay-as-you-go nodes and the subscription nodes that are expired are automatically released. The subscription nodes that are expired are retained. If you need to release subscription nodes that are not expired, change the billing method to pay-as-you-go. Before you release a cluster, make sure that you no longer use the cluster.
         
         @param request: DeleteClusterRequest
         @return: DeleteClusterResponse
@@ -1239,301 +1181,18 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_cluster_with_options_async(request, runtime)
 
-    def delete_container_apps_with_options(
-        self,
-        request: ehpc20180412_models.DeleteContainerAppsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DeleteContainerAppsResponse:
-        """
-        Before you delete container applications, you can call the [ListContainerApps](~~87333~~) operation to query the container applications.
-        
-        @param request: DeleteContainerAppsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteContainerAppsResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteContainerApps',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DeleteContainerAppsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_container_apps_with_options_async(
-        self,
-        request: ehpc20180412_models.DeleteContainerAppsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DeleteContainerAppsResponse:
-        """
-        Before you delete container applications, you can call the [ListContainerApps](~~87333~~) operation to query the container applications.
-        
-        @param request: DeleteContainerAppsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteContainerAppsResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteContainerApps',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DeleteContainerAppsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_container_apps(
-        self,
-        request: ehpc20180412_models.DeleteContainerAppsRequest,
-    ) -> ehpc20180412_models.DeleteContainerAppsResponse:
-        """
-        Before you delete container applications, you can call the [ListContainerApps](~~87333~~) operation to query the container applications.
-        
-        @param request: DeleteContainerAppsRequest
-        @return: DeleteContainerAppsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.delete_container_apps_with_options(request, runtime)
-
-    async def delete_container_apps_async(
-        self,
-        request: ehpc20180412_models.DeleteContainerAppsRequest,
-    ) -> ehpc20180412_models.DeleteContainerAppsResponse:
-        """
-        Before you delete container applications, you can call the [ListContainerApps](~~87333~~) operation to query the container applications.
-        
-        @param request: DeleteContainerAppsRequest
-        @return: DeleteContainerAppsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_container_apps_with_options_async(request, runtime)
-
-    def delete_gwscluster_with_options(
-        self,
-        request: ehpc20180412_models.DeleteGWSClusterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DeleteGWSClusterResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteGWSCluster',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DeleteGWSClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_gwscluster_with_options_async(
-        self,
-        request: ehpc20180412_models.DeleteGWSClusterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DeleteGWSClusterResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteGWSCluster',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DeleteGWSClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_gwscluster(
-        self,
-        request: ehpc20180412_models.DeleteGWSClusterRequest,
-    ) -> ehpc20180412_models.DeleteGWSClusterResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_gwscluster_with_options(request, runtime)
-
-    async def delete_gwscluster_async(
-        self,
-        request: ehpc20180412_models.DeleteGWSClusterRequest,
-    ) -> ehpc20180412_models.DeleteGWSClusterResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_gwscluster_with_options_async(request, runtime)
-
-    def delete_gwsinstance_with_options(
-        self,
-        request: ehpc20180412_models.DeleteGWSInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DeleteGWSInstanceResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteGWSInstance',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DeleteGWSInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_gwsinstance_with_options_async(
-        self,
-        request: ehpc20180412_models.DeleteGWSInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DeleteGWSInstanceResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteGWSInstance',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DeleteGWSInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_gwsinstance(
-        self,
-        request: ehpc20180412_models.DeleteGWSInstanceRequest,
-    ) -> ehpc20180412_models.DeleteGWSInstanceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_gwsinstance_with_options(request, runtime)
-
-    async def delete_gwsinstance_async(
-        self,
-        request: ehpc20180412_models.DeleteGWSInstanceRequest,
-    ) -> ehpc20180412_models.DeleteGWSInstanceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_gwsinstance_with_options_async(request, runtime)
-
-    def delete_image_with_options(
-        self,
-        request: ehpc20180412_models.DeleteImageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DeleteImageResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteImage',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DeleteImageResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_image_with_options_async(
-        self,
-        request: ehpc20180412_models.DeleteImageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DeleteImageResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteImage',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DeleteImageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_image(
-        self,
-        request: ehpc20180412_models.DeleteImageRequest,
-    ) -> ehpc20180412_models.DeleteImageResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_image_with_options(request, runtime)
-
-    async def delete_image_async(
-        self,
-        request: ehpc20180412_models.DeleteImageRequest,
-    ) -> ehpc20180412_models.DeleteImageResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_image_with_options_async(request, runtime)
-
     def delete_job_templates_with_options(
         self,
         request: ehpc20180412_models.DeleteJobTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DeleteJobTemplatesResponse:
+        """
+        @summary Deletes job templates.
+        
+        @param request: DeleteJobTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteJobTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1560,6 +1219,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DeleteJobTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DeleteJobTemplatesResponse:
+        """
+        @summary Deletes job templates.
+        
+        @param request: DeleteJobTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteJobTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1585,6 +1251,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DeleteJobTemplatesRequest,
     ) -> ehpc20180412_models.DeleteJobTemplatesResponse:
+        """
+        @summary Deletes job templates.
+        
+        @param request: DeleteJobTemplatesRequest
+        @return: DeleteJobTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_job_templates_with_options(request, runtime)
 
@@ -1592,6 +1264,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DeleteJobTemplatesRequest,
     ) -> ehpc20180412_models.DeleteJobTemplatesResponse:
+        """
+        @summary Deletes job templates.
+        
+        @param request: DeleteJobTemplatesRequest
+        @return: DeleteJobTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_job_templates_with_options_async(request, runtime)
 
@@ -1600,6 +1278,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DeleteJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DeleteJobsResponse:
+        """
+        @summary Deletes jobs from a cluster.
+        
+        @param request: DeleteJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteJobsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1626,6 +1311,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DeleteJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DeleteJobsResponse:
+        """
+        @summary Deletes jobs from a cluster.
+        
+        @param request: DeleteJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteJobsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1651,6 +1343,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DeleteJobsRequest,
     ) -> ehpc20180412_models.DeleteJobsResponse:
+        """
+        @summary Deletes jobs from a cluster.
+        
+        @param request: DeleteJobsRequest
+        @return: DeleteJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_jobs_with_options(request, runtime)
 
@@ -1658,74 +1356,14 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DeleteJobsRequest,
     ) -> ehpc20180412_models.DeleteJobsResponse:
+        """
+        @summary Deletes jobs from a cluster.
+        
+        @param request: DeleteJobsRequest
+        @return: DeleteJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_jobs_with_options_async(request, runtime)
-
-    def delete_local_image_with_options(
-        self,
-        request: ehpc20180412_models.DeleteLocalImageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DeleteLocalImageResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteLocalImage',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DeleteLocalImageResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_local_image_with_options_async(
-        self,
-        request: ehpc20180412_models.DeleteLocalImageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DeleteLocalImageResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteLocalImage',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DeleteLocalImageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_local_image(
-        self,
-        request: ehpc20180412_models.DeleteLocalImageRequest,
-    ) -> ehpc20180412_models.DeleteLocalImageResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_local_image_with_options(request, runtime)
-
-    async def delete_local_image_async(
-        self,
-        request: ehpc20180412_models.DeleteLocalImageRequest,
-    ) -> ehpc20180412_models.DeleteLocalImageResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_local_image_with_options_async(request, runtime)
 
     def delete_nodes_with_options(
         self,
@@ -1733,7 +1371,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DeleteNodesResponse:
         """
-        Before you delete a compute node, we recommend that you export all job data from the node to prevent data loss.
+        @description Before you delete a compute node, we recommend that you export all job data from the node to prevent data loss.
         
         @param request: DeleteNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1766,7 +1404,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DeleteNodesResponse:
         """
-        Before you delete a compute node, we recommend that you export all job data from the node to prevent data loss.
+        @description Before you delete a compute node, we recommend that you export all job data from the node to prevent data loss.
         
         @param request: DeleteNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1798,7 +1436,7 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DeleteNodesRequest,
     ) -> ehpc20180412_models.DeleteNodesResponse:
         """
-        Before you delete a compute node, we recommend that you export all job data from the node to prevent data loss.
+        @description Before you delete a compute node, we recommend that you export all job data from the node to prevent data loss.
         
         @param request: DeleteNodesRequest
         @return: DeleteNodesResponse
@@ -1811,7 +1449,7 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DeleteNodesRequest,
     ) -> ehpc20180412_models.DeleteNodesResponse:
         """
-        Before you delete a compute node, we recommend that you export all job data from the node to prevent data loss.
+        @description Before you delete a compute node, we recommend that you export all job data from the node to prevent data loss.
         
         @param request: DeleteNodesRequest
         @return: DeleteNodesResponse
@@ -1824,6 +1462,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DeleteQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DeleteQueueResponse:
+        """
+        @param request: DeleteQueueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteQueueResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1850,6 +1493,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DeleteQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DeleteQueueResponse:
+        """
+        @param request: DeleteQueueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteQueueResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1875,6 +1523,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DeleteQueueRequest,
     ) -> ehpc20180412_models.DeleteQueueResponse:
+        """
+        @param request: DeleteQueueRequest
+        @return: DeleteQueueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_queue_with_options(request, runtime)
 
@@ -1882,6 +1534,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DeleteQueueRequest,
     ) -> ehpc20180412_models.DeleteQueueResponse:
+        """
+        @param request: DeleteQueueRequest
+        @return: DeleteQueueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_queue_with_options_async(request, runtime)
 
@@ -1890,6 +1546,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DeleteSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DeleteSecurityGroupResponse:
+        """
+        @summary Removes a cluster from a specified security group.
+        
+        @param request: DeleteSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1916,6 +1579,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DeleteSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DeleteSecurityGroupResponse:
+        """
+        @summary Removes a cluster from a specified security group.
+        
+        @param request: DeleteSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1941,6 +1611,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DeleteSecurityGroupRequest,
     ) -> ehpc20180412_models.DeleteSecurityGroupResponse:
+        """
+        @summary Removes a cluster from a specified security group.
+        
+        @param request: DeleteSecurityGroupRequest
+        @return: DeleteSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_security_group_with_options(request, runtime)
 
@@ -1948,6 +1624,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DeleteSecurityGroupRequest,
     ) -> ehpc20180412_models.DeleteSecurityGroupResponse:
+        """
+        @summary Removes a cluster from a specified security group.
+        
+        @param request: DeleteSecurityGroupRequest
+        @return: DeleteSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_security_group_with_options_async(request, runtime)
 
@@ -1957,7 +1639,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DeleteUsersResponse:
         """
-        If you delete a user, only its information is deleted. The files stored in the /home directory for the user are retained. For example, if you delete a user named user1, the files in the `/home/user1/` directory of the cluster are not deleted. However, a deleted user cannot be recovered. Even if you create another user that has the same name, the data retained for the deleted user is not reused.
+        @summary Deletes users from a cluster.
+        
+        @description If you delete a user, only its information is deleted. The files stored in the /home directory for the user are retained. For example, if you delete a user named user1, the files in the `/home/user1/` directory of the cluster are not deleted. However, a deleted user cannot be recovered. Even if you create another user that has the same name, the data retained for the deleted user is not reused.
         
         @param request: DeleteUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1990,7 +1674,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DeleteUsersResponse:
         """
-        If you delete a user, only its information is deleted. The files stored in the /home directory for the user are retained. For example, if you delete a user named user1, the files in the `/home/user1/` directory of the cluster are not deleted. However, a deleted user cannot be recovered. Even if you create another user that has the same name, the data retained for the deleted user is not reused.
+        @summary Deletes users from a cluster.
+        
+        @description If you delete a user, only its information is deleted. The files stored in the /home directory for the user are retained. For example, if you delete a user named user1, the files in the `/home/user1/` directory of the cluster are not deleted. However, a deleted user cannot be recovered. Even if you create another user that has the same name, the data retained for the deleted user is not reused.
         
         @param request: DeleteUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2022,7 +1708,9 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DeleteUsersRequest,
     ) -> ehpc20180412_models.DeleteUsersResponse:
         """
-        If you delete a user, only its information is deleted. The files stored in the /home directory for the user are retained. For example, if you delete a user named user1, the files in the `/home/user1/` directory of the cluster are not deleted. However, a deleted user cannot be recovered. Even if you create another user that has the same name, the data retained for the deleted user is not reused.
+        @summary Deletes users from a cluster.
+        
+        @description If you delete a user, only its information is deleted. The files stored in the /home directory for the user are retained. For example, if you delete a user named user1, the files in the `/home/user1/` directory of the cluster are not deleted. However, a deleted user cannot be recovered. Even if you create another user that has the same name, the data retained for the deleted user is not reused.
         
         @param request: DeleteUsersRequest
         @return: DeleteUsersResponse
@@ -2035,7 +1723,9 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DeleteUsersRequest,
     ) -> ehpc20180412_models.DeleteUsersResponse:
         """
-        If you delete a user, only its information is deleted. The files stored in the /home directory for the user are retained. For example, if you delete a user named user1, the files in the `/home/user1/` directory of the cluster are not deleted. However, a deleted user cannot be recovered. Even if you create another user that has the same name, the data retained for the deleted user is not reused.
+        @summary Deletes users from a cluster.
+        
+        @description If you delete a user, only its information is deleted. The files stored in the /home directory for the user are retained. For example, if you delete a user named user1, the files in the `/home/user1/` directory of the cluster are not deleted. However, a deleted user cannot be recovered. Even if you create another user that has the same name, the data retained for the deleted user is not reused.
         
         @param request: DeleteUsersRequest
         @return: DeleteUsersResponse
@@ -2048,6 +1738,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DescribeAutoScaleConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DescribeAutoScaleConfigResponse:
+        """
+        @summary Queries the auto scaling settings of a cluster.
+        
+        @param request: DescribeAutoScaleConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAutoScaleConfigResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2074,6 +1771,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DescribeAutoScaleConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DescribeAutoScaleConfigResponse:
+        """
+        @summary Queries the auto scaling settings of a cluster.
+        
+        @param request: DescribeAutoScaleConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAutoScaleConfigResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2099,6 +1803,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DescribeAutoScaleConfigRequest,
     ) -> ehpc20180412_models.DescribeAutoScaleConfigResponse:
+        """
+        @summary Queries the auto scaling settings of a cluster.
+        
+        @param request: DescribeAutoScaleConfigRequest
+        @return: DescribeAutoScaleConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_auto_scale_config_with_options(request, runtime)
 
@@ -2106,6 +1816,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DescribeAutoScaleConfigRequest,
     ) -> ehpc20180412_models.DescribeAutoScaleConfigResponse:
+        """
+        @summary Queries the auto scaling settings of a cluster.
+        
+        @param request: DescribeAutoScaleConfigRequest
+        @return: DescribeAutoScaleConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_auto_scale_config_with_options_async(request, runtime)
 
@@ -2114,6 +1830,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DescribeClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DescribeClusterResponse:
+        """
+        @summary Queries the details of a cluster.
+        
+        @param request: DescribeClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2140,6 +1863,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DescribeClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DescribeClusterResponse:
+        """
+        @summary Queries the details of a cluster.
+        
+        @param request: DescribeClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2165,6 +1895,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DescribeClusterRequest,
     ) -> ehpc20180412_models.DescribeClusterResponse:
+        """
+        @summary Queries the details of a cluster.
+        
+        @param request: DescribeClusterRequest
+        @return: DescribeClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cluster_with_options(request, runtime)
 
@@ -2172,80 +1908,27 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DescribeClusterRequest,
     ) -> ehpc20180412_models.DescribeClusterResponse:
+        """
+        @summary Queries the details of a cluster.
+        
+        @param request: DescribeClusterRequest
+        @return: DescribeClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cluster_with_options_async(request, runtime)
-
-    def describe_container_app_with_options(
-        self,
-        request: ehpc20180412_models.DescribeContainerAppRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DescribeContainerAppResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeContainerApp',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DescribeContainerAppResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_container_app_with_options_async(
-        self,
-        request: ehpc20180412_models.DescribeContainerAppRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DescribeContainerAppResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeContainerApp',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DescribeContainerAppResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_container_app(
-        self,
-        request: ehpc20180412_models.DescribeContainerAppRequest,
-    ) -> ehpc20180412_models.DescribeContainerAppResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_container_app_with_options(request, runtime)
-
-    async def describe_container_app_async(
-        self,
-        request: ehpc20180412_models.DescribeContainerAppRequest,
-    ) -> ehpc20180412_models.DescribeContainerAppResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_container_app_with_options_async(request, runtime)
 
     def describe_estack_image_with_options(
         self,
         request: ehpc20180412_models.DescribeEstackImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DescribeEstackImageResponse:
+        """
+        @summary Queries the base images of Elastic High Performance Computing (E-HPC).
+        
+        @param request: DescribeEstackImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEstackImageResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2272,6 +1955,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DescribeEstackImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DescribeEstackImageResponse:
+        """
+        @summary Queries the base images of Elastic High Performance Computing (E-HPC).
+        
+        @param request: DescribeEstackImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEstackImageResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2297,6 +1987,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DescribeEstackImageRequest,
     ) -> ehpc20180412_models.DescribeEstackImageResponse:
+        """
+        @summary Queries the base images of Elastic High Performance Computing (E-HPC).
+        
+        @param request: DescribeEstackImageRequest
+        @return: DescribeEstackImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_estack_image_with_options(request, runtime)
 
@@ -2304,422 +2000,27 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DescribeEstackImageRequest,
     ) -> ehpc20180412_models.DescribeEstackImageResponse:
+        """
+        @summary Queries the base images of Elastic High Performance Computing (E-HPC).
+        
+        @param request: DescribeEstackImageRequest
+        @return: DescribeEstackImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_estack_image_with_options_async(request, runtime)
-
-    def describe_gwscluster_policy_with_options(
-        self,
-        request: ehpc20180412_models.DescribeGWSClusterPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DescribeGWSClusterPolicyResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.async_mode):
-            query['AsyncMode'] = request.async_mode
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.task_id):
-            query['TaskId'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeGWSClusterPolicy',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DescribeGWSClusterPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_gwscluster_policy_with_options_async(
-        self,
-        request: ehpc20180412_models.DescribeGWSClusterPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DescribeGWSClusterPolicyResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.async_mode):
-            query['AsyncMode'] = request.async_mode
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.task_id):
-            query['TaskId'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeGWSClusterPolicy',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DescribeGWSClusterPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_gwscluster_policy(
-        self,
-        request: ehpc20180412_models.DescribeGWSClusterPolicyRequest,
-    ) -> ehpc20180412_models.DescribeGWSClusterPolicyResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_gwscluster_policy_with_options(request, runtime)
-
-    async def describe_gwscluster_policy_async(
-        self,
-        request: ehpc20180412_models.DescribeGWSClusterPolicyRequest,
-    ) -> ehpc20180412_models.DescribeGWSClusterPolicyResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_gwscluster_policy_with_options_async(request, runtime)
-
-    def describe_gwsclusters_with_options(
-        self,
-        request: ehpc20180412_models.DescribeGWSClustersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DescribeGWSClustersResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeGWSClusters',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DescribeGWSClustersResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_gwsclusters_with_options_async(
-        self,
-        request: ehpc20180412_models.DescribeGWSClustersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DescribeGWSClustersResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeGWSClusters',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DescribeGWSClustersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_gwsclusters(
-        self,
-        request: ehpc20180412_models.DescribeGWSClustersRequest,
-    ) -> ehpc20180412_models.DescribeGWSClustersResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_gwsclusters_with_options(request, runtime)
-
-    async def describe_gwsclusters_async(
-        self,
-        request: ehpc20180412_models.DescribeGWSClustersRequest,
-    ) -> ehpc20180412_models.DescribeGWSClustersResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_gwsclusters_with_options_async(request, runtime)
-
-    def describe_gwsimages_with_options(
-        self,
-        request: ehpc20180412_models.DescribeGWSImagesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DescribeGWSImagesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeGWSImages',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DescribeGWSImagesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_gwsimages_with_options_async(
-        self,
-        request: ehpc20180412_models.DescribeGWSImagesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DescribeGWSImagesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeGWSImages',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DescribeGWSImagesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_gwsimages(
-        self,
-        request: ehpc20180412_models.DescribeGWSImagesRequest,
-    ) -> ehpc20180412_models.DescribeGWSImagesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_gwsimages_with_options(request, runtime)
-
-    async def describe_gwsimages_async(
-        self,
-        request: ehpc20180412_models.DescribeGWSImagesRequest,
-    ) -> ehpc20180412_models.DescribeGWSImagesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_gwsimages_with_options_async(request, runtime)
-
-    def describe_gwsinstances_with_options(
-        self,
-        request: ehpc20180412_models.DescribeGWSInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DescribeGWSInstancesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeGWSInstances',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DescribeGWSInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_gwsinstances_with_options_async(
-        self,
-        request: ehpc20180412_models.DescribeGWSInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DescribeGWSInstancesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeGWSInstances',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DescribeGWSInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_gwsinstances(
-        self,
-        request: ehpc20180412_models.DescribeGWSInstancesRequest,
-    ) -> ehpc20180412_models.DescribeGWSInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_gwsinstances_with_options(request, runtime)
-
-    async def describe_gwsinstances_async(
-        self,
-        request: ehpc20180412_models.DescribeGWSInstancesRequest,
-    ) -> ehpc20180412_models.DescribeGWSInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_gwsinstances_with_options_async(request, runtime)
-
-    def describe_image_with_options(
-        self,
-        request: ehpc20180412_models.DescribeImageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DescribeImageResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeImage',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DescribeImageResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_image_with_options_async(
-        self,
-        request: ehpc20180412_models.DescribeImageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DescribeImageResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeImage',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DescribeImageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_image(
-        self,
-        request: ehpc20180412_models.DescribeImageRequest,
-    ) -> ehpc20180412_models.DescribeImageResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_image_with_options(request, runtime)
-
-    async def describe_image_async(
-        self,
-        request: ehpc20180412_models.DescribeImageRequest,
-    ) -> ehpc20180412_models.DescribeImageResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_image_with_options_async(request, runtime)
-
-    def describe_image_gateway_config_with_options(
-        self,
-        request: ehpc20180412_models.DescribeImageGatewayConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DescribeImageGatewayConfigResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeImageGatewayConfig',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DescribeImageGatewayConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_image_gateway_config_with_options_async(
-        self,
-        request: ehpc20180412_models.DescribeImageGatewayConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DescribeImageGatewayConfigResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeImageGatewayConfig',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DescribeImageGatewayConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_image_gateway_config(
-        self,
-        request: ehpc20180412_models.DescribeImageGatewayConfigRequest,
-    ) -> ehpc20180412_models.DescribeImageGatewayConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_image_gateway_config_with_options(request, runtime)
-
-    async def describe_image_gateway_config_async(
-        self,
-        request: ehpc20180412_models.DescribeImageGatewayConfigRequest,
-    ) -> ehpc20180412_models.DescribeImageGatewayConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_image_gateway_config_with_options_async(request, runtime)
 
     def describe_image_price_with_options(
         self,
         request: ehpc20180412_models.DescribeImagePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DescribeImagePriceResponse:
+        """
+        @summary Queries the price of an Alibaba Cloud Marketplace image.
+        
+        @param request: DescribeImagePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImagePriceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2746,6 +2047,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DescribeImagePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DescribeImagePriceResponse:
+        """
+        @summary Queries the price of an Alibaba Cloud Marketplace image.
+        
+        @param request: DescribeImagePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImagePriceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2771,6 +2079,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DescribeImagePriceRequest,
     ) -> ehpc20180412_models.DescribeImagePriceResponse:
+        """
+        @summary Queries the price of an Alibaba Cloud Marketplace image.
+        
+        @param request: DescribeImagePriceRequest
+        @return: DescribeImagePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_image_price_with_options(request, runtime)
 
@@ -2778,6 +2092,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DescribeImagePriceRequest,
     ) -> ehpc20180412_models.DescribeImagePriceResponse:
+        """
+        @summary Queries the price of an Alibaba Cloud Marketplace image.
+        
+        @param request: DescribeImagePriceRequest
+        @return: DescribeImagePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_image_price_with_options_async(request, runtime)
 
@@ -2786,6 +2106,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DescribeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DescribeJobResponse:
+        """
+        @summary Queries the information about a job in an E-HPC cluster.
+        
+        @param request: DescribeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeJobResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2812,6 +2139,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DescribeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DescribeJobResponse:
+        """
+        @summary Queries the information about a job in an E-HPC cluster.
+        
+        @param request: DescribeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeJobResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2837,6 +2171,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DescribeJobRequest,
     ) -> ehpc20180412_models.DescribeJobResponse:
+        """
+        @summary Queries the information about a job in an E-HPC cluster.
+        
+        @param request: DescribeJobRequest
+        @return: DescribeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_job_with_options(request, runtime)
 
@@ -2844,80 +2184,27 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DescribeJobRequest,
     ) -> ehpc20180412_models.DescribeJobResponse:
+        """
+        @summary Queries the information about a job in an E-HPC cluster.
+        
+        @param request: DescribeJobRequest
+        @return: DescribeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_job_with_options_async(request, runtime)
-
-    def describe_nfsclient_status_with_options(
-        self,
-        request: ehpc20180412_models.DescribeNFSClientStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DescribeNFSClientStatusResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeNFSClientStatus',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DescribeNFSClientStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_nfsclient_status_with_options_async(
-        self,
-        request: ehpc20180412_models.DescribeNFSClientStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.DescribeNFSClientStatusResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeNFSClientStatus',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.DescribeNFSClientStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_nfsclient_status(
-        self,
-        request: ehpc20180412_models.DescribeNFSClientStatusRequest,
-    ) -> ehpc20180412_models.DescribeNFSClientStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_nfsclient_status_with_options(request, runtime)
-
-    async def describe_nfsclient_status_async(
-        self,
-        request: ehpc20180412_models.DescribeNFSClientStatusRequest,
-    ) -> ehpc20180412_models.DescribeNFSClientStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_nfsclient_status_with_options_async(request, runtime)
 
     def describe_price_with_options(
         self,
         request: ehpc20180412_models.DescribePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DescribePriceResponse:
+        """
+        @summary Queries the pricing information of a cluster.
+        
+        @param request: DescribePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePriceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2944,6 +2231,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DescribePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DescribePriceResponse:
+        """
+        @summary Queries the pricing information of a cluster.
+        
+        @param request: DescribePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePriceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2969,6 +2263,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DescribePriceRequest,
     ) -> ehpc20180412_models.DescribePriceResponse:
+        """
+        @summary Queries the pricing information of a cluster.
+        
+        @param request: DescribePriceRequest
+        @return: DescribePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_price_with_options(request, runtime)
 
@@ -2976,6 +2276,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DescribePriceRequest,
     ) -> ehpc20180412_models.DescribePriceResponse:
+        """
+        @summary Queries the pricing information of a cluster.
+        
+        @param request: DescribePriceRequest
+        @return: DescribePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_price_with_options_async(request, runtime)
 
@@ -2984,6 +2290,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DescribeServerlessJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DescribeServerlessJobsResponse:
+        """
+        @summary Queries the details of a serverless job by job ID or subtask ID (array job). You can specify only a single job ID or a single subtask ID at a time.
+        
+        @param request: DescribeServerlessJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServerlessJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3014,6 +2327,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DescribeServerlessJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DescribeServerlessJobsResponse:
+        """
+        @summary Queries the details of a serverless job by job ID or subtask ID (array job). You can specify only a single job ID or a single subtask ID at a time.
+        
+        @param request: DescribeServerlessJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServerlessJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3043,6 +2363,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DescribeServerlessJobsRequest,
     ) -> ehpc20180412_models.DescribeServerlessJobsResponse:
+        """
+        @summary Queries the details of a serverless job by job ID or subtask ID (array job). You can specify only a single job ID or a single subtask ID at a time.
+        
+        @param request: DescribeServerlessJobsRequest
+        @return: DescribeServerlessJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_serverless_jobs_with_options(request, runtime)
 
@@ -3050,6 +2376,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DescribeServerlessJobsRequest,
     ) -> ehpc20180412_models.DescribeServerlessJobsResponse:
+        """
+        @summary Queries the details of a serverless job by job ID or subtask ID (array job). You can specify only a single job ID or a single subtask ID at a time.
+        
+        @param request: DescribeServerlessJobsRequest
+        @return: DescribeServerlessJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_serverless_jobs_with_options_async(request, runtime)
 
@@ -3058,6 +2390,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.EditJobTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.EditJobTemplateResponse:
+        """
+        @param request: EditJobTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditJobTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3084,6 +2421,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.EditJobTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.EditJobTemplateResponse:
+        """
+        @param request: EditJobTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditJobTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3109,6 +2451,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.EditJobTemplateRequest,
     ) -> ehpc20180412_models.EditJobTemplateResponse:
+        """
+        @param request: EditJobTemplateRequest
+        @return: EditJobTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.edit_job_template_with_options(request, runtime)
 
@@ -3116,6 +2462,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.EditJobTemplateRequest,
     ) -> ehpc20180412_models.EditJobTemplateResponse:
+        """
+        @param request: EditJobTemplateRequest
+        @return: EditJobTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.edit_job_template_with_options_async(request, runtime)
 
@@ -3124,6 +2474,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetAccountingReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetAccountingReportResponse:
+        """
+        @param request: GetAccountingReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountingReportResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3150,6 +2505,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetAccountingReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetAccountingReportResponse:
+        """
+        @param request: GetAccountingReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountingReportResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3175,6 +2535,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetAccountingReportRequest,
     ) -> ehpc20180412_models.GetAccountingReportResponse:
+        """
+        @param request: GetAccountingReportRequest
+        @return: GetAccountingReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_accounting_report_with_options(request, runtime)
 
@@ -3182,6 +2546,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetAccountingReportRequest,
     ) -> ehpc20180412_models.GetAccountingReportResponse:
+        """
+        @param request: GetAccountingReportRequest
+        @return: GetAccountingReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_accounting_report_with_options_async(request, runtime)
 
@@ -3190,6 +2558,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetAutoScaleConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetAutoScaleConfigResponse:
+        """
+        @summary Obtains the auto scaling settings of a cluster.
+        
+        @param request: GetAutoScaleConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAutoScaleConfigResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3216,6 +2591,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetAutoScaleConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetAutoScaleConfigResponse:
+        """
+        @summary Obtains the auto scaling settings of a cluster.
+        
+        @param request: GetAutoScaleConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAutoScaleConfigResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3241,6 +2623,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetAutoScaleConfigRequest,
     ) -> ehpc20180412_models.GetAutoScaleConfigResponse:
+        """
+        @summary Obtains the auto scaling settings of a cluster.
+        
+        @param request: GetAutoScaleConfigRequest
+        @return: GetAutoScaleConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_auto_scale_config_with_options(request, runtime)
 
@@ -3248,6 +2636,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetAutoScaleConfigRequest,
     ) -> ehpc20180412_models.GetAutoScaleConfigResponse:
+        """
+        @summary Obtains the auto scaling settings of a cluster.
+        
+        @param request: GetAutoScaleConfigRequest
+        @return: GetAutoScaleConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_auto_scale_config_with_options_async(request, runtime)
 
@@ -3256,6 +2650,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetCloudMetricLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetCloudMetricLogsResponse:
+        """
+        @summary Reads performance metrics (CloudMetrics) logs of E-HPC.
+        
+        @param request: GetCloudMetricLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCloudMetricLogsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3282,6 +2683,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetCloudMetricLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetCloudMetricLogsResponse:
+        """
+        @summary Reads performance metrics (CloudMetrics) logs of E-HPC.
+        
+        @param request: GetCloudMetricLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCloudMetricLogsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3307,6 +2715,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetCloudMetricLogsRequest,
     ) -> ehpc20180412_models.GetCloudMetricLogsResponse:
+        """
+        @summary Reads performance metrics (CloudMetrics) logs of E-HPC.
+        
+        @param request: GetCloudMetricLogsRequest
+        @return: GetCloudMetricLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_cloud_metric_logs_with_options(request, runtime)
 
@@ -3314,6 +2728,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetCloudMetricLogsRequest,
     ) -> ehpc20180412_models.GetCloudMetricLogsResponse:
+        """
+        @summary Reads performance metrics (CloudMetrics) logs of E-HPC.
+        
+        @param request: GetCloudMetricLogsRequest
+        @return: GetCloudMetricLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_cloud_metric_logs_with_options_async(request, runtime)
 
@@ -3322,6 +2742,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetCloudMetricProfilingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetCloudMetricProfilingResponse:
+        """
+        @param request: GetCloudMetricProfilingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCloudMetricProfilingResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3348,6 +2773,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetCloudMetricProfilingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetCloudMetricProfilingResponse:
+        """
+        @param request: GetCloudMetricProfilingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCloudMetricProfilingResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3373,6 +2803,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetCloudMetricProfilingRequest,
     ) -> ehpc20180412_models.GetCloudMetricProfilingResponse:
+        """
+        @param request: GetCloudMetricProfilingRequest
+        @return: GetCloudMetricProfilingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_cloud_metric_profiling_with_options(request, runtime)
 
@@ -3380,6 +2814,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetCloudMetricProfilingRequest,
     ) -> ehpc20180412_models.GetCloudMetricProfilingResponse:
+        """
+        @param request: GetCloudMetricProfilingRequest
+        @return: GetCloudMetricProfilingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_cloud_metric_profiling_with_options_async(request, runtime)
 
@@ -3388,6 +2826,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetClusterVolumesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetClusterVolumesResponse:
+        """
+        @summary Queries the information of the NAS file system mounted to a specified cluster.
+        
+        @param request: GetClusterVolumesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClusterVolumesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3414,6 +2859,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetClusterVolumesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetClusterVolumesResponse:
+        """
+        @summary Queries the information of the NAS file system mounted to a specified cluster.
+        
+        @param request: GetClusterVolumesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClusterVolumesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3439,6 +2891,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetClusterVolumesRequest,
     ) -> ehpc20180412_models.GetClusterVolumesResponse:
+        """
+        @summary Queries the information of the NAS file system mounted to a specified cluster.
+        
+        @param request: GetClusterVolumesRequest
+        @return: GetClusterVolumesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_cluster_volumes_with_options(request, runtime)
 
@@ -3446,146 +2904,25 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetClusterVolumesRequest,
     ) -> ehpc20180412_models.GetClusterVolumesResponse:
+        """
+        @summary Queries the information of the NAS file system mounted to a specified cluster.
+        
+        @param request: GetClusterVolumesRequest
+        @return: GetClusterVolumesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_cluster_volumes_with_options_async(request, runtime)
-
-    def get_common_image_with_options(
-        self,
-        request: ehpc20180412_models.GetCommonImageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.GetCommonImageResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetCommonImage',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.GetCommonImageResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_common_image_with_options_async(
-        self,
-        request: ehpc20180412_models.GetCommonImageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.GetCommonImageResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetCommonImage',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.GetCommonImageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_common_image(
-        self,
-        request: ehpc20180412_models.GetCommonImageRequest,
-    ) -> ehpc20180412_models.GetCommonImageResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_common_image_with_options(request, runtime)
-
-    async def get_common_image_async(
-        self,
-        request: ehpc20180412_models.GetCommonImageRequest,
-    ) -> ehpc20180412_models.GetCommonImageResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_common_image_with_options_async(request, runtime)
-
-    def get_gwsconnect_ticket_with_options(
-        self,
-        request: ehpc20180412_models.GetGWSConnectTicketRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.GetGWSConnectTicketResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetGWSConnectTicket',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.GetGWSConnectTicketResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_gwsconnect_ticket_with_options_async(
-        self,
-        request: ehpc20180412_models.GetGWSConnectTicketRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.GetGWSConnectTicketResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetGWSConnectTicket',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.GetGWSConnectTicketResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_gwsconnect_ticket(
-        self,
-        request: ehpc20180412_models.GetGWSConnectTicketRequest,
-    ) -> ehpc20180412_models.GetGWSConnectTicketResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_gwsconnect_ticket_with_options(request, runtime)
-
-    async def get_gwsconnect_ticket_async(
-        self,
-        request: ehpc20180412_models.GetGWSConnectTicketRequest,
-    ) -> ehpc20180412_models.GetGWSConnectTicketResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_gwsconnect_ticket_with_options_async(request, runtime)
 
     def get_hybrid_cluster_config_with_options(
         self,
         request: ehpc20180412_models.GetHybridClusterConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetHybridClusterConfigResponse:
+        """
+        @param request: GetHybridClusterConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHybridClusterConfigResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3612,6 +2949,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetHybridClusterConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetHybridClusterConfigResponse:
+        """
+        @param request: GetHybridClusterConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHybridClusterConfigResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3637,6 +2979,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetHybridClusterConfigRequest,
     ) -> ehpc20180412_models.GetHybridClusterConfigResponse:
+        """
+        @param request: GetHybridClusterConfigRequest
+        @return: GetHybridClusterConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_hybrid_cluster_config_with_options(request, runtime)
 
@@ -3644,6 +2990,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetHybridClusterConfigRequest,
     ) -> ehpc20180412_models.GetHybridClusterConfigResponse:
+        """
+        @param request: GetHybridClusterConfigRequest
+        @return: GetHybridClusterConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_hybrid_cluster_config_with_options_async(request, runtime)
 
@@ -3652,6 +3002,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetIfEcsTypeSupportHtConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetIfEcsTypeSupportHtConfigResponse:
+        """
+        @summary Queries whether hyper-threading can be enabled or disabled for an instance type.
+        
+        @param request: GetIfEcsTypeSupportHtConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIfEcsTypeSupportHtConfigResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3678,6 +3035,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetIfEcsTypeSupportHtConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetIfEcsTypeSupportHtConfigResponse:
+        """
+        @summary Queries whether hyper-threading can be enabled or disabled for an instance type.
+        
+        @param request: GetIfEcsTypeSupportHtConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIfEcsTypeSupportHtConfigResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3703,6 +3067,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetIfEcsTypeSupportHtConfigRequest,
     ) -> ehpc20180412_models.GetIfEcsTypeSupportHtConfigResponse:
+        """
+        @summary Queries whether hyper-threading can be enabled or disabled for an instance type.
+        
+        @param request: GetIfEcsTypeSupportHtConfigRequest
+        @return: GetIfEcsTypeSupportHtConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_if_ecs_type_support_ht_config_with_options(request, runtime)
 
@@ -3710,6 +3080,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetIfEcsTypeSupportHtConfigRequest,
     ) -> ehpc20180412_models.GetIfEcsTypeSupportHtConfigResponse:
+        """
+        @summary Queries whether hyper-threading can be enabled or disabled for an instance type.
+        
+        @param request: GetIfEcsTypeSupportHtConfigRequest
+        @return: GetIfEcsTypeSupportHtConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_if_ecs_type_support_ht_config_with_options_async(request, runtime)
 
@@ -3718,6 +3094,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetJobLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetJobLogResponse:
+        """
+        @summary 实时查询任务的输出日志
+        
+        @param request: GetJobLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobLogResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3744,6 +3127,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetJobLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetJobLogResponse:
+        """
+        @summary 实时查询任务的输出日志
+        
+        @param request: GetJobLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobLogResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3769,6 +3159,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetJobLogRequest,
     ) -> ehpc20180412_models.GetJobLogResponse:
+        """
+        @summary 实时查询任务的输出日志
+        
+        @param request: GetJobLogRequest
+        @return: GetJobLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_job_log_with_options(request, runtime)
 
@@ -3776,6 +3172,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetJobLogRequest,
     ) -> ehpc20180412_models.GetJobLogResponse:
+        """
+        @summary 实时查询任务的输出日志
+        
+        @param request: GetJobLogRequest
+        @return: GetJobLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_job_log_with_options_async(request, runtime)
 
@@ -3784,6 +3186,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetPostScriptsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetPostScriptsResponse:
+        """
+        @summary Queries the post-processing scripts of a cluster.
+        
+        @param request: GetPostScriptsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPostScriptsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3810,6 +3219,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetPostScriptsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetPostScriptsResponse:
+        """
+        @summary Queries the post-processing scripts of a cluster.
+        
+        @param request: GetPostScriptsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPostScriptsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3835,6 +3251,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetPostScriptsRequest,
     ) -> ehpc20180412_models.GetPostScriptsResponse:
+        """
+        @summary Queries the post-processing scripts of a cluster.
+        
+        @param request: GetPostScriptsRequest
+        @return: GetPostScriptsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_post_scripts_with_options(request, runtime)
 
@@ -3842,6 +3264,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetPostScriptsRequest,
     ) -> ehpc20180412_models.GetPostScriptsResponse:
+        """
+        @summary Queries the post-processing scripts of a cluster.
+        
+        @param request: GetPostScriptsRequest
+        @return: GetPostScriptsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_post_scripts_with_options_async(request, runtime)
 
@@ -3850,6 +3278,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetSchedulerInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetSchedulerInfoResponse:
+        """
+        @summary Queries the scheduler settings of a cluster.
+        
+        @param request: GetSchedulerInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSchedulerInfoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3876,6 +3311,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetSchedulerInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetSchedulerInfoResponse:
+        """
+        @summary Queries the scheduler settings of a cluster.
+        
+        @param request: GetSchedulerInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSchedulerInfoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3901,6 +3343,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetSchedulerInfoRequest,
     ) -> ehpc20180412_models.GetSchedulerInfoResponse:
+        """
+        @summary Queries the scheduler settings of a cluster.
+        
+        @param request: GetSchedulerInfoRequest
+        @return: GetSchedulerInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_scheduler_info_with_options(request, runtime)
 
@@ -3908,80 +3356,27 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetSchedulerInfoRequest,
     ) -> ehpc20180412_models.GetSchedulerInfoResponse:
+        """
+        @summary Queries the scheduler settings of a cluster.
+        
+        @param request: GetSchedulerInfoRequest
+        @return: GetSchedulerInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_scheduler_info_with_options_async(request, runtime)
-
-    def get_user_image_with_options(
-        self,
-        request: ehpc20180412_models.GetUserImageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.GetUserImageResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetUserImage',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.GetUserImageResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_user_image_with_options_async(
-        self,
-        request: ehpc20180412_models.GetUserImageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.GetUserImageResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetUserImage',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.GetUserImageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_user_image(
-        self,
-        request: ehpc20180412_models.GetUserImageRequest,
-    ) -> ehpc20180412_models.GetUserImageResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_user_image_with_options(request, runtime)
-
-    async def get_user_image_async(
-        self,
-        request: ehpc20180412_models.GetUserImageRequest,
-    ) -> ehpc20180412_models.GetUserImageResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_user_image_with_options_async(request, runtime)
 
     def get_visual_service_status_with_options(
         self,
         request: ehpc20180412_models.GetVisualServiceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetVisualServiceStatusResponse:
+        """
+        @summary Queries the status of the VNC service in a cluster.
+        
+        @param request: GetVisualServiceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVisualServiceStatusResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4008,6 +3403,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetVisualServiceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetVisualServiceStatusResponse:
+        """
+        @summary Queries the status of the VNC service in a cluster.
+        
+        @param request: GetVisualServiceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVisualServiceStatusResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4033,6 +3435,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetVisualServiceStatusRequest,
     ) -> ehpc20180412_models.GetVisualServiceStatusResponse:
+        """
+        @summary Queries the status of the VNC service in a cluster.
+        
+        @param request: GetVisualServiceStatusRequest
+        @return: GetVisualServiceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_visual_service_status_with_options(request, runtime)
 
@@ -4040,6 +3448,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetVisualServiceStatusRequest,
     ) -> ehpc20180412_models.GetVisualServiceStatusResponse:
+        """
+        @summary Queries the status of the VNC service in a cluster.
+        
+        @param request: GetVisualServiceStatusRequest
+        @return: GetVisualServiceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_visual_service_status_with_options_async(request, runtime)
 
@@ -4048,6 +3462,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.InitializeEHPCRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.InitializeEHPCResponse:
+        """
+        @summary Creates a service-linked role for Elastic High Performance Computing (E-HPC). A service-linked role is required for you to use E-HPC.
+        
+        @param request: InitializeEHPCRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitializeEHPCResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4074,6 +3495,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.InitializeEHPCRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.InitializeEHPCResponse:
+        """
+        @summary Creates a service-linked role for Elastic High Performance Computing (E-HPC). A service-linked role is required for you to use E-HPC.
+        
+        @param request: InitializeEHPCRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitializeEHPCResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4099,6 +3527,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.InitializeEHPCRequest,
     ) -> ehpc20180412_models.InitializeEHPCResponse:
+        """
+        @summary Creates a service-linked role for Elastic High Performance Computing (E-HPC). A service-linked role is required for you to use E-HPC.
+        
+        @param request: InitializeEHPCRequest
+        @return: InitializeEHPCResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.initialize_ehpcwith_options(request, runtime)
 
@@ -4106,80 +3540,27 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.InitializeEHPCRequest,
     ) -> ehpc20180412_models.InitializeEHPCResponse:
+        """
+        @summary Creates a service-linked role for Elastic High Performance Computing (E-HPC). A service-linked role is required for you to use E-HPC.
+        
+        @param request: InitializeEHPCRequest
+        @return: InitializeEHPCResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.initialize_ehpcwith_options_async(request, runtime)
-
-    def inspect_image_with_options(
-        self,
-        request: ehpc20180412_models.InspectImageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.InspectImageResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='InspectImage',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.InspectImageResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def inspect_image_with_options_async(
-        self,
-        request: ehpc20180412_models.InspectImageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.InspectImageResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='InspectImage',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.InspectImageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def inspect_image(
-        self,
-        request: ehpc20180412_models.InspectImageRequest,
-    ) -> ehpc20180412_models.InspectImageResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.inspect_image_with_options(request, runtime)
-
-    async def inspect_image_async(
-        self,
-        request: ehpc20180412_models.InspectImageRequest,
-    ) -> ehpc20180412_models.InspectImageResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.inspect_image_with_options_async(request, runtime)
 
     def install_software_with_options(
         self,
         request: ehpc20180412_models.InstallSoftwareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.InstallSoftwareResponse:
+        """
+        @summary Installs software in a cluster.
+        
+        @param request: InstallSoftwareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallSoftwareResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4206,6 +3587,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.InstallSoftwareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.InstallSoftwareResponse:
+        """
+        @summary Installs software in a cluster.
+        
+        @param request: InstallSoftwareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallSoftwareResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4231,6 +3619,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.InstallSoftwareRequest,
     ) -> ehpc20180412_models.InstallSoftwareResponse:
+        """
+        @summary Installs software in a cluster.
+        
+        @param request: InstallSoftwareRequest
+        @return: InstallSoftwareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.install_software_with_options(request, runtime)
 
@@ -4238,6 +3632,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.InstallSoftwareRequest,
     ) -> ehpc20180412_models.InstallSoftwareResponse:
+        """
+        @summary Installs software in a cluster.
+        
+        @param request: InstallSoftwareRequest
+        @return: InstallSoftwareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.install_software_with_options_async(request, runtime)
 
@@ -4246,6 +3646,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.InvokeShellCommandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.InvokeShellCommandResponse:
+        """
+        @summary Runs interactive commands in a cluster node.
+        
+        @param request: InvokeShellCommandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvokeShellCommandResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4272,6 +3679,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.InvokeShellCommandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.InvokeShellCommandResponse:
+        """
+        @summary Runs interactive commands in a cluster node.
+        
+        @param request: InvokeShellCommandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvokeShellCommandResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4297,6 +3711,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.InvokeShellCommandRequest,
     ) -> ehpc20180412_models.InvokeShellCommandResponse:
+        """
+        @summary Runs interactive commands in a cluster node.
+        
+        @param request: InvokeShellCommandRequest
+        @return: InvokeShellCommandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.invoke_shell_command_with_options(request, runtime)
 
@@ -4304,6 +3724,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.InvokeShellCommandRequest,
     ) -> ehpc20180412_models.InvokeShellCommandResponse:
+        """
+        @summary Runs interactive commands in a cluster node.
+        
+        @param request: InvokeShellCommandRequest
+        @return: InvokeShellCommandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.invoke_shell_command_with_options_async(request, runtime)
 
@@ -4312,6 +3738,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListAvailableEcsTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListAvailableEcsTypesResponse:
+        """
+        @summary Queries available Elastic Compute Service (ECS) instance types.
+        
+        @param request: ListAvailableEcsTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAvailableEcsTypesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4338,6 +3771,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListAvailableEcsTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListAvailableEcsTypesResponse:
+        """
+        @summary Queries available Elastic Compute Service (ECS) instance types.
+        
+        @param request: ListAvailableEcsTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAvailableEcsTypesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4363,6 +3803,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListAvailableEcsTypesRequest,
     ) -> ehpc20180412_models.ListAvailableEcsTypesResponse:
+        """
+        @summary Queries available Elastic Compute Service (ECS) instance types.
+        
+        @param request: ListAvailableEcsTypesRequest
+        @return: ListAvailableEcsTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_available_ecs_types_with_options(request, runtime)
 
@@ -4370,6 +3816,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListAvailableEcsTypesRequest,
     ) -> ehpc20180412_models.ListAvailableEcsTypesResponse:
+        """
+        @summary Queries available Elastic Compute Service (ECS) instance types.
+        
+        @param request: ListAvailableEcsTypesRequest
+        @return: ListAvailableEcsTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_available_ecs_types_with_options_async(request, runtime)
 
@@ -4378,6 +3830,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListCloudMetricProfilingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListCloudMetricProfilingsResponse:
+        """
+        @summary Queries the profiling history of a cluster.
+        
+        @param request: ListCloudMetricProfilingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudMetricProfilingsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4404,6 +3863,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListCloudMetricProfilingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListCloudMetricProfilingsResponse:
+        """
+        @summary Queries the profiling history of a cluster.
+        
+        @param request: ListCloudMetricProfilingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudMetricProfilingsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4429,6 +3895,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListCloudMetricProfilingsRequest,
     ) -> ehpc20180412_models.ListCloudMetricProfilingsResponse:
+        """
+        @summary Queries the profiling history of a cluster.
+        
+        @param request: ListCloudMetricProfilingsRequest
+        @return: ListCloudMetricProfilingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_cloud_metric_profilings_with_options(request, runtime)
 
@@ -4436,6 +3908,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListCloudMetricProfilingsRequest,
     ) -> ehpc20180412_models.ListCloudMetricProfilingsResponse:
+        """
+        @summary Queries the profiling history of a cluster.
+        
+        @param request: ListCloudMetricProfilingsRequest
+        @return: ListCloudMetricProfilingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_cloud_metric_profilings_with_options_async(request, runtime)
 
@@ -4444,6 +3922,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListClusterLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListClusterLogsResponse:
+        """
+        @summary Queries the operation logs of a cluster within the last three days.
+        
+        @param request: ListClusterLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterLogsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4470,6 +3955,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListClusterLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListClusterLogsResponse:
+        """
+        @summary Queries the operation logs of a cluster within the last three days.
+        
+        @param request: ListClusterLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterLogsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4495,6 +3987,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListClusterLogsRequest,
     ) -> ehpc20180412_models.ListClusterLogsResponse:
+        """
+        @summary Queries the operation logs of a cluster within the last three days.
+        
+        @param request: ListClusterLogsRequest
+        @return: ListClusterLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_cluster_logs_with_options(request, runtime)
 
@@ -4502,6 +4000,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListClusterLogsRequest,
     ) -> ehpc20180412_models.ListClusterLogsResponse:
+        """
+        @summary Queries the operation logs of a cluster within the last three days.
+        
+        @param request: ListClusterLogsRequest
+        @return: ListClusterLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_cluster_logs_with_options_async(request, runtime)
 
@@ -4510,6 +4014,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListClustersResponse:
+        """
+        @summary Queries the list of clusters in all regions within an account.
+        
+        @param request: ListClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClustersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4536,6 +4047,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListClustersResponse:
+        """
+        @summary Queries the list of clusters in all regions within an account.
+        
+        @param request: ListClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClustersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4561,6 +4079,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListClustersRequest,
     ) -> ehpc20180412_models.ListClustersResponse:
+        """
+        @summary Queries the list of clusters in all regions within an account.
+        
+        @param request: ListClustersRequest
+        @return: ListClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_clusters_with_options(request, runtime)
 
@@ -4568,6 +4092,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListClustersRequest,
     ) -> ehpc20180412_models.ListClustersResponse:
+        """
+        @summary Queries the list of clusters in all regions within an account.
+        
+        @param request: ListClustersRequest
+        @return: ListClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_clusters_with_options_async(request, runtime)
 
@@ -4576,6 +4106,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListClustersMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListClustersMetaResponse:
+        """
+        @summary Queries the list of cluster metadata.
+        
+        @param request: ListClustersMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClustersMetaResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4602,6 +4139,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListClustersMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListClustersMetaResponse:
+        """
+        @summary Queries the list of cluster metadata.
+        
+        @param request: ListClustersMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClustersMetaResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4627,6 +4171,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListClustersMetaRequest,
     ) -> ehpc20180412_models.ListClustersMetaResponse:
+        """
+        @summary Queries the list of cluster metadata.
+        
+        @param request: ListClustersMetaRequest
+        @return: ListClustersMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_clusters_meta_with_options(request, runtime)
 
@@ -4634,6 +4184,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListClustersMetaRequest,
     ) -> ehpc20180412_models.ListClustersMetaResponse:
+        """
+        @summary Queries the list of cluster metadata.
+        
+        @param request: ListClustersMetaRequest
+        @return: ListClustersMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_clusters_meta_with_options_async(request, runtime)
 
@@ -4642,6 +4198,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListCommandsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListCommandsResponse:
+        """
+        @summary Queries the interactive commands in a specified cluster.
+        
+        @param request: ListCommandsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCommandsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4668,6 +4231,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListCommandsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListCommandsResponse:
+        """
+        @summary Queries the interactive commands in a specified cluster.
+        
+        @param request: ListCommandsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCommandsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4693,6 +4263,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListCommandsRequest,
     ) -> ehpc20180412_models.ListCommandsResponse:
+        """
+        @summary Queries the interactive commands in a specified cluster.
+        
+        @param request: ListCommandsRequest
+        @return: ListCommandsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_commands_with_options(request, runtime)
 
@@ -4700,6 +4276,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListCommandsRequest,
     ) -> ehpc20180412_models.ListCommandsResponse:
+        """
+        @summary Queries the interactive commands in a specified cluster.
+        
+        @param request: ListCommandsRequest
+        @return: ListCommandsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_commands_with_options_async(request, runtime)
 
@@ -4708,6 +4290,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListCommunityImagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListCommunityImagesResponse:
+        """
+        @summary Queries a list of community images.
+        
+        @param request: ListCommunityImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCommunityImagesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4734,6 +4323,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListCommunityImagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListCommunityImagesResponse:
+        """
+        @summary Queries a list of community images.
+        
+        @param request: ListCommunityImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCommunityImagesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4759,6 +4355,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListCommunityImagesRequest,
     ) -> ehpc20180412_models.ListCommunityImagesResponse:
+        """
+        @summary Queries a list of community images.
+        
+        @param request: ListCommunityImagesRequest
+        @return: ListCommunityImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_community_images_with_options(request, runtime)
 
@@ -4766,146 +4368,27 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListCommunityImagesRequest,
     ) -> ehpc20180412_models.ListCommunityImagesResponse:
+        """
+        @summary Queries a list of community images.
+        
+        @param request: ListCommunityImagesRequest
+        @return: ListCommunityImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_community_images_with_options_async(request, runtime)
-
-    def list_container_apps_with_options(
-        self,
-        request: ehpc20180412_models.ListContainerAppsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.ListContainerAppsResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListContainerApps',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.ListContainerAppsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_container_apps_with_options_async(
-        self,
-        request: ehpc20180412_models.ListContainerAppsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.ListContainerAppsResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListContainerApps',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.ListContainerAppsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_container_apps(
-        self,
-        request: ehpc20180412_models.ListContainerAppsRequest,
-    ) -> ehpc20180412_models.ListContainerAppsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_container_apps_with_options(request, runtime)
-
-    async def list_container_apps_async(
-        self,
-        request: ehpc20180412_models.ListContainerAppsRequest,
-    ) -> ehpc20180412_models.ListContainerAppsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_container_apps_with_options_async(request, runtime)
-
-    def list_container_images_with_options(
-        self,
-        request: ehpc20180412_models.ListContainerImagesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.ListContainerImagesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListContainerImages',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.ListContainerImagesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_container_images_with_options_async(
-        self,
-        request: ehpc20180412_models.ListContainerImagesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.ListContainerImagesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListContainerImages',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.ListContainerImagesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_container_images(
-        self,
-        request: ehpc20180412_models.ListContainerImagesRequest,
-    ) -> ehpc20180412_models.ListContainerImagesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_container_images_with_options(request, runtime)
-
-    async def list_container_images_async(
-        self,
-        request: ehpc20180412_models.ListContainerImagesRequest,
-    ) -> ehpc20180412_models.ListContainerImagesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_container_images_with_options_async(request, runtime)
 
     def list_cpfs_file_systems_with_options(
         self,
         request: ehpc20180412_models.ListCpfsFileSystemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListCpfsFileSystemsResponse:
+        """
+        @summary Queries the information about Cloud Paralleled File System (CPFS) and its mount targets.
+        
+        @param request: ListCpfsFileSystemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCpfsFileSystemsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4932,6 +4415,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListCpfsFileSystemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListCpfsFileSystemsResponse:
+        """
+        @summary Queries the information about Cloud Paralleled File System (CPFS) and its mount targets.
+        
+        @param request: ListCpfsFileSystemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCpfsFileSystemsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4957,6 +4447,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListCpfsFileSystemsRequest,
     ) -> ehpc20180412_models.ListCpfsFileSystemsResponse:
+        """
+        @summary Queries the information about Cloud Paralleled File System (CPFS) and its mount targets.
+        
+        @param request: ListCpfsFileSystemsRequest
+        @return: ListCpfsFileSystemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_cpfs_file_systems_with_options(request, runtime)
 
@@ -4964,6 +4460,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListCpfsFileSystemsRequest,
     ) -> ehpc20180412_models.ListCpfsFileSystemsResponse:
+        """
+        @summary Queries the information about Cloud Paralleled File System (CPFS) and its mount targets.
+        
+        @param request: ListCpfsFileSystemsRequest
+        @return: ListCpfsFileSystemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_cpfs_file_systems_with_options_async(request, runtime)
 
@@ -4971,6 +4473,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListCurrentClientVersionResponse:
+        """
+        @summary Query the latest version number of the cluster client (ehpcutil).
+        
+        @param request: ListCurrentClientVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCurrentClientVersionResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListCurrentClientVersion',
@@ -4992,6 +4501,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListCurrentClientVersionResponse:
+        """
+        @summary Query the latest version number of the cluster client (ehpcutil).
+        
+        @param request: ListCurrentClientVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCurrentClientVersionResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListCurrentClientVersion',
@@ -5010,10 +4526,20 @@ class Client(OpenApiClient):
         )
 
     def list_current_client_version(self) -> ehpc20180412_models.ListCurrentClientVersionResponse:
+        """
+        @summary Query the latest version number of the cluster client (ehpcutil).
+        
+        @return: ListCurrentClientVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_current_client_version_with_options(runtime)
 
     async def list_current_client_version_async(self) -> ehpc20180412_models.ListCurrentClientVersionResponse:
+        """
+        @summary Query the latest version number of the cluster client (ehpcutil).
+        
+        @return: ListCurrentClientVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_current_client_version_with_options_async(runtime)
 
@@ -5022,6 +4548,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListCustomImagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListCustomImagesResponse:
+        """
+        @summary Queries custom images and shared images supported by Elastic High Performance Computing (E-HPC).
+        
+        @param request: ListCustomImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomImagesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5048,6 +4581,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListCustomImagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListCustomImagesResponse:
+        """
+        @summary Queries custom images and shared images supported by Elastic High Performance Computing (E-HPC).
+        
+        @param request: ListCustomImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomImagesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5073,6 +4613,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListCustomImagesRequest,
     ) -> ehpc20180412_models.ListCustomImagesResponse:
+        """
+        @summary Queries custom images and shared images supported by Elastic High Performance Computing (E-HPC).
+        
+        @param request: ListCustomImagesRequest
+        @return: ListCustomImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_custom_images_with_options(request, runtime)
 
@@ -5080,6 +4626,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListCustomImagesRequest,
     ) -> ehpc20180412_models.ListCustomImagesResponse:
+        """
+        @summary Queries custom images and shared images supported by Elastic High Performance Computing (E-HPC).
+        
+        @param request: ListCustomImagesRequest
+        @return: ListCustomImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_custom_images_with_options_async(request, runtime)
 
@@ -5088,6 +4640,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListFileSystemWithMountTargetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListFileSystemWithMountTargetsResponse:
+        """
+        @summary Queries file systems and mount targets.
+        
+        @param request: ListFileSystemWithMountTargetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFileSystemWithMountTargetsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5114,6 +4673,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListFileSystemWithMountTargetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListFileSystemWithMountTargetsResponse:
+        """
+        @summary Queries file systems and mount targets.
+        
+        @param request: ListFileSystemWithMountTargetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFileSystemWithMountTargetsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5139,6 +4705,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListFileSystemWithMountTargetsRequest,
     ) -> ehpc20180412_models.ListFileSystemWithMountTargetsResponse:
+        """
+        @summary Queries file systems and mount targets.
+        
+        @param request: ListFileSystemWithMountTargetsRequest
+        @return: ListFileSystemWithMountTargetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_file_system_with_mount_targets_with_options(request, runtime)
 
@@ -5146,6 +4718,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListFileSystemWithMountTargetsRequest,
     ) -> ehpc20180412_models.ListFileSystemWithMountTargetsResponse:
+        """
+        @summary Queries file systems and mount targets.
+        
+        @param request: ListFileSystemWithMountTargetsRequest
+        @return: ListFileSystemWithMountTargetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_file_system_with_mount_targets_with_options_async(request, runtime)
 
@@ -5154,6 +4732,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListImagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListImagesResponse:
+        """
+        @summary Queries the list of images that can be installed in a cluster.
+        
+        @param request: ListImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListImagesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5180,6 +4765,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListImagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListImagesResponse:
+        """
+        @summary Queries the list of images that can be installed in a cluster.
+        
+        @param request: ListImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListImagesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5205,6 +4797,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListImagesRequest,
     ) -> ehpc20180412_models.ListImagesResponse:
+        """
+        @summary Queries the list of images that can be installed in a cluster.
+        
+        @param request: ListImagesRequest
+        @return: ListImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_images_with_options(request, runtime)
 
@@ -5212,6 +4810,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListImagesRequest,
     ) -> ehpc20180412_models.ListImagesResponse:
+        """
+        @summary Queries the list of images that can be installed in a cluster.
+        
+        @param request: ListImagesRequest
+        @return: ListImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_images_with_options_async(request, runtime)
 
@@ -5220,6 +4824,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListInstalledSoftwareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListInstalledSoftwareResponse:
+        """
+        @summary Queries the software that is installed in a cluster.
+        
+        @param request: ListInstalledSoftwareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstalledSoftwareResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5246,6 +4857,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListInstalledSoftwareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListInstalledSoftwareResponse:
+        """
+        @summary Queries the software that is installed in a cluster.
+        
+        @param request: ListInstalledSoftwareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstalledSoftwareResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5271,6 +4889,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListInstalledSoftwareRequest,
     ) -> ehpc20180412_models.ListInstalledSoftwareResponse:
+        """
+        @summary Queries the software that is installed in a cluster.
+        
+        @param request: ListInstalledSoftwareRequest
+        @return: ListInstalledSoftwareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_installed_software_with_options(request, runtime)
 
@@ -5278,6 +4902,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListInstalledSoftwareRequest,
     ) -> ehpc20180412_models.ListInstalledSoftwareResponse:
+        """
+        @summary Queries the software that is installed in a cluster.
+        
+        @param request: ListInstalledSoftwareRequest
+        @return: ListInstalledSoftwareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_installed_software_with_options_async(request, runtime)
 
@@ -5286,6 +4916,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListInvocationResultsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListInvocationResultsResponse:
+        """
+        @summary Queries the result of an interactive command in a cluster.
+        
+        @param request: ListInvocationResultsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInvocationResultsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5312,6 +4949,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListInvocationResultsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListInvocationResultsResponse:
+        """
+        @summary Queries the result of an interactive command in a cluster.
+        
+        @param request: ListInvocationResultsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInvocationResultsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5337,6 +4981,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListInvocationResultsRequest,
     ) -> ehpc20180412_models.ListInvocationResultsResponse:
+        """
+        @summary Queries the result of an interactive command in a cluster.
+        
+        @param request: ListInvocationResultsRequest
+        @return: ListInvocationResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_invocation_results_with_options(request, runtime)
 
@@ -5344,6 +4994,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListInvocationResultsRequest,
     ) -> ehpc20180412_models.ListInvocationResultsResponse:
+        """
+        @summary Queries the result of an interactive command in a cluster.
+        
+        @param request: ListInvocationResultsRequest
+        @return: ListInvocationResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_invocation_results_with_options_async(request, runtime)
 
@@ -5352,6 +5008,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListInvocationStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListInvocationStatusResponse:
+        """
+        @summary Queries the status of an interactive command.
+        
+        @param request: ListInvocationStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInvocationStatusResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5378,6 +5041,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListInvocationStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListInvocationStatusResponse:
+        """
+        @summary Queries the status of an interactive command.
+        
+        @param request: ListInvocationStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInvocationStatusResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5403,6 +5073,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListInvocationStatusRequest,
     ) -> ehpc20180412_models.ListInvocationStatusResponse:
+        """
+        @summary Queries the status of an interactive command.
+        
+        @param request: ListInvocationStatusRequest
+        @return: ListInvocationStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_invocation_status_with_options(request, runtime)
 
@@ -5410,6 +5086,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListInvocationStatusRequest,
     ) -> ehpc20180412_models.ListInvocationStatusResponse:
+        """
+        @summary Queries the status of an interactive command.
+        
+        @param request: ListInvocationStatusRequest
+        @return: ListInvocationStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_invocation_status_with_options_async(request, runtime)
 
@@ -5418,6 +5100,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListJobTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListJobTemplatesResponse:
+        """
+        @summary Queries the list of job templates.
+        
+        @param request: ListJobTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5444,6 +5133,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListJobTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListJobTemplatesResponse:
+        """
+        @summary Queries the list of job templates.
+        
+        @param request: ListJobTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5469,6 +5165,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListJobTemplatesRequest,
     ) -> ehpc20180412_models.ListJobTemplatesResponse:
+        """
+        @summary Queries the list of job templates.
+        
+        @param request: ListJobTemplatesRequest
+        @return: ListJobTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_job_templates_with_options(request, runtime)
 
@@ -5476,6 +5178,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListJobTemplatesRequest,
     ) -> ehpc20180412_models.ListJobTemplatesResponse:
+        """
+        @summary Queries the list of job templates.
+        
+        @param request: ListJobTemplatesRequest
+        @return: ListJobTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_job_templates_with_options_async(request, runtime)
 
@@ -5484,6 +5192,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListJobsResponse:
+        """
+        @summary Queries the list of jobs in a cluster.
+        
+        @param request: ListJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5510,6 +5225,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListJobsResponse:
+        """
+        @summary Queries the list of jobs in a cluster.
+        
+        @param request: ListJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5535,6 +5257,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListJobsRequest,
     ) -> ehpc20180412_models.ListJobsResponse:
+        """
+        @summary Queries the list of jobs in a cluster.
+        
+        @param request: ListJobsRequest
+        @return: ListJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_jobs_with_options(request, runtime)
 
@@ -5542,6 +5270,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListJobsRequest,
     ) -> ehpc20180412_models.ListJobsResponse:
+        """
+        @summary Queries the list of jobs in a cluster.
+        
+        @param request: ListJobsRequest
+        @return: ListJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_jobs_with_options_async(request, runtime)
 
@@ -5550,6 +5284,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListJobsWithFiltersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListJobsWithFiltersResponse:
+        """
+        @summary Queries the details of a specified job.
+        
+        @param request: ListJobsWithFiltersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobsWithFiltersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5576,6 +5317,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListJobsWithFiltersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListJobsWithFiltersResponse:
+        """
+        @summary Queries the details of a specified job.
+        
+        @param request: ListJobsWithFiltersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobsWithFiltersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5601,6 +5349,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListJobsWithFiltersRequest,
     ) -> ehpc20180412_models.ListJobsWithFiltersResponse:
+        """
+        @summary Queries the details of a specified job.
+        
+        @param request: ListJobsWithFiltersRequest
+        @return: ListJobsWithFiltersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_jobs_with_filters_with_options(request, runtime)
 
@@ -5608,6 +5362,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListJobsWithFiltersRequest,
     ) -> ehpc20180412_models.ListJobsWithFiltersResponse:
+        """
+        @summary Queries the details of a specified job.
+        
+        @param request: ListJobsWithFiltersRequest
+        @return: ListJobsWithFiltersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_jobs_with_filters_with_options_async(request, runtime)
 
@@ -5616,6 +5376,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListNodesResponse:
+        """
+        @summary Queries the list of nodes in a cluster.
+        
+        @param request: ListNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5642,6 +5409,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListNodesResponse:
+        """
+        @summary Queries the list of nodes in a cluster.
+        
+        @param request: ListNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5667,6 +5441,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListNodesRequest,
     ) -> ehpc20180412_models.ListNodesResponse:
+        """
+        @summary Queries the list of nodes in a cluster.
+        
+        @param request: ListNodesRequest
+        @return: ListNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_nodes_with_options(request, runtime)
 
@@ -5674,6 +5454,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListNodesRequest,
     ) -> ehpc20180412_models.ListNodesResponse:
+        """
+        @summary Queries the list of nodes in a cluster.
+        
+        @param request: ListNodesRequest
+        @return: ListNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_nodes_with_options_async(request, runtime)
 
@@ -5682,6 +5468,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListNodesByQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListNodesByQueueResponse:
+        """
+        @summary Queries the node information of a single cluster within an Alibaba Cloud account by queue.
+        
+        @param request: ListNodesByQueueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesByQueueResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5708,6 +5501,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListNodesByQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListNodesByQueueResponse:
+        """
+        @summary Queries the node information of a single cluster within an Alibaba Cloud account by queue.
+        
+        @param request: ListNodesByQueueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesByQueueResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5733,6 +5533,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListNodesByQueueRequest,
     ) -> ehpc20180412_models.ListNodesByQueueResponse:
+        """
+        @summary Queries the node information of a single cluster within an Alibaba Cloud account by queue.
+        
+        @param request: ListNodesByQueueRequest
+        @return: ListNodesByQueueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_nodes_by_queue_with_options(request, runtime)
 
@@ -5740,6 +5546,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListNodesByQueueRequest,
     ) -> ehpc20180412_models.ListNodesByQueueResponse:
+        """
+        @summary Queries the node information of a single cluster within an Alibaba Cloud account by queue.
+        
+        @param request: ListNodesByQueueRequest
+        @return: ListNodesByQueueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_nodes_by_queue_with_options_async(request, runtime)
 
@@ -5748,6 +5560,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListNodesNoPagingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListNodesNoPagingResponse:
+        """
+        @summary Queries the information of all nodes in a specified cluster on one page.
+        
+        @param request: ListNodesNoPagingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesNoPagingResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5774,6 +5593,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListNodesNoPagingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListNodesNoPagingResponse:
+        """
+        @summary Queries the information of all nodes in a specified cluster on one page.
+        
+        @param request: ListNodesNoPagingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesNoPagingResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5799,6 +5625,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListNodesNoPagingRequest,
     ) -> ehpc20180412_models.ListNodesNoPagingResponse:
+        """
+        @summary Queries the information of all nodes in a specified cluster on one page.
+        
+        @param request: ListNodesNoPagingRequest
+        @return: ListNodesNoPagingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_nodes_no_paging_with_options(request, runtime)
 
@@ -5806,6 +5638,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListNodesNoPagingRequest,
     ) -> ehpc20180412_models.ListNodesNoPagingResponse:
+        """
+        @summary Queries the information of all nodes in a specified cluster on one page.
+        
+        @param request: ListNodesNoPagingRequest
+        @return: ListNodesNoPagingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_nodes_no_paging_with_options_async(request, runtime)
 
@@ -5814,6 +5652,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListPreferredEcsTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListPreferredEcsTypesResponse:
+        """
+        @summary Queries the Elastic Compute Service (ECS) instance types recommended by Elastic High Performance Computing (E-HPC).
+        
+        @param request: ListPreferredEcsTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPreferredEcsTypesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5840,6 +5685,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListPreferredEcsTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListPreferredEcsTypesResponse:
+        """
+        @summary Queries the Elastic Compute Service (ECS) instance types recommended by Elastic High Performance Computing (E-HPC).
+        
+        @param request: ListPreferredEcsTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPreferredEcsTypesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5865,6 +5717,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListPreferredEcsTypesRequest,
     ) -> ehpc20180412_models.ListPreferredEcsTypesResponse:
+        """
+        @summary Queries the Elastic Compute Service (ECS) instance types recommended by Elastic High Performance Computing (E-HPC).
+        
+        @param request: ListPreferredEcsTypesRequest
+        @return: ListPreferredEcsTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_preferred_ecs_types_with_options(request, runtime)
 
@@ -5872,6 +5730,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListPreferredEcsTypesRequest,
     ) -> ehpc20180412_models.ListPreferredEcsTypesResponse:
+        """
+        @summary Queries the Elastic Compute Service (ECS) instance types recommended by Elastic High Performance Computing (E-HPC).
+        
+        @param request: ListPreferredEcsTypesRequest
+        @return: ListPreferredEcsTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_preferred_ecs_types_with_options_async(request, runtime)
 
@@ -5880,6 +5744,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListQueuesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListQueuesResponse:
+        """
+        @summary Queries the queues of a specified cluster.
+        
+        @param request: ListQueuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQueuesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5906,6 +5777,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListQueuesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListQueuesResponse:
+        """
+        @summary Queries the queues of a specified cluster.
+        
+        @param request: ListQueuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQueuesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5931,6 +5809,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListQueuesRequest,
     ) -> ehpc20180412_models.ListQueuesResponse:
+        """
+        @summary Queries the queues of a specified cluster.
+        
+        @param request: ListQueuesRequest
+        @return: ListQueuesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_queues_with_options(request, runtime)
 
@@ -5938,6 +5822,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListQueuesRequest,
     ) -> ehpc20180412_models.ListQueuesResponse:
+        """
+        @summary Queries the queues of a specified cluster.
+        
+        @param request: ListQueuesRequest
+        @return: ListQueuesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_queues_with_options_async(request, runtime)
 
@@ -5945,6 +5835,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListRegionsResponse:
+        """
+        @summary Queries a list of regions where Elastic High Performance Computing (E-HPC) is supported.
+        
+        @param request: ListRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRegionsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListRegions',
@@ -5966,6 +5863,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListRegionsResponse:
+        """
+        @summary Queries a list of regions where Elastic High Performance Computing (E-HPC) is supported.
+        
+        @param request: ListRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRegionsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListRegions',
@@ -5984,10 +5888,20 @@ class Client(OpenApiClient):
         )
 
     def list_regions(self) -> ehpc20180412_models.ListRegionsResponse:
+        """
+        @summary Queries a list of regions where Elastic High Performance Computing (E-HPC) is supported.
+        
+        @return: ListRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_regions_with_options(runtime)
 
     async def list_regions_async(self) -> ehpc20180412_models.ListRegionsResponse:
+        """
+        @summary Queries a list of regions where Elastic High Performance Computing (E-HPC) is supported.
+        
+        @return: ListRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_regions_with_options_async(runtime)
 
@@ -5996,6 +5910,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListSecurityGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListSecurityGroupsResponse:
+        """
+        @summary Queries the security groups that are assigned to an E-HPC cluster.
+        
+        @param request: ListSecurityGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecurityGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6022,6 +5943,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListSecurityGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListSecurityGroupsResponse:
+        """
+        @summary Queries the security groups that are assigned to an E-HPC cluster.
+        
+        @param request: ListSecurityGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecurityGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6047,6 +5975,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListSecurityGroupsRequest,
     ) -> ehpc20180412_models.ListSecurityGroupsResponse:
+        """
+        @summary Queries the security groups that are assigned to an E-HPC cluster.
+        
+        @param request: ListSecurityGroupsRequest
+        @return: ListSecurityGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_security_groups_with_options(request, runtime)
 
@@ -6054,6 +5988,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListSecurityGroupsRequest,
     ) -> ehpc20180412_models.ListSecurityGroupsResponse:
+        """
+        @summary Queries the security groups that are assigned to an E-HPC cluster.
+        
+        @param request: ListSecurityGroupsRequest
+        @return: ListSecurityGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_security_groups_with_options_async(request, runtime)
 
@@ -6062,6 +6002,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListServerlessJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListServerlessJobsResponse:
+        """
+        @summary Queries the list of serverless jobs based on filter conditions.
+        
+        @param request: ListServerlessJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServerlessJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6110,6 +6057,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListServerlessJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListServerlessJobsResponse:
+        """
+        @summary Queries the list of serverless jobs based on filter conditions.
+        
+        @param request: ListServerlessJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServerlessJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6157,6 +6111,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListServerlessJobsRequest,
     ) -> ehpc20180412_models.ListServerlessJobsResponse:
+        """
+        @summary Queries the list of serverless jobs based on filter conditions.
+        
+        @param request: ListServerlessJobsRequest
+        @return: ListServerlessJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_serverless_jobs_with_options(request, runtime)
 
@@ -6164,6 +6124,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListServerlessJobsRequest,
     ) -> ehpc20180412_models.ListServerlessJobsResponse:
+        """
+        @summary Queries the list of serverless jobs based on filter conditions.
+        
+        @param request: ListServerlessJobsRequest
+        @return: ListServerlessJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_serverless_jobs_with_options_async(request, runtime)
 
@@ -6172,6 +6138,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListSoftwaresRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListSoftwaresResponse:
+        """
+        @summary Queries the list of software that can be installed in a cluster.
+        
+        @param request: ListSoftwaresRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSoftwaresResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6198,6 +6171,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListSoftwaresRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListSoftwaresResponse:
+        """
+        @summary Queries the list of software that can be installed in a cluster.
+        
+        @param request: ListSoftwaresRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSoftwaresResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6223,6 +6203,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListSoftwaresRequest,
     ) -> ehpc20180412_models.ListSoftwaresResponse:
+        """
+        @summary Queries the list of software that can be installed in a cluster.
+        
+        @param request: ListSoftwaresRequest
+        @return: ListSoftwaresResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_softwares_with_options(request, runtime)
 
@@ -6230,6 +6216,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListSoftwaresRequest,
     ) -> ehpc20180412_models.ListSoftwaresResponse:
+        """
+        @summary Queries the list of software that can be installed in a cluster.
+        
+        @param request: ListSoftwaresRequest
+        @return: ListSoftwaresResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_softwares_with_options_async(request, runtime)
 
@@ -6238,6 +6230,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are attached to a specified resource.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -6274,6 +6273,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are attached to a specified resource.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -6309,6 +6315,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListTagResourcesRequest,
     ) -> ehpc20180412_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are attached to a specified resource.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -6316,6 +6328,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListTagResourcesRequest,
     ) -> ehpc20180412_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are attached to a specified resource.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -6325,7 +6343,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListTasksResponse:
         """
-        If you succeed in calling an asynchronous API operation, a response is generated before a resulting task is completed. Therefore, to query the result of the task, you can use the TaskId parameter returned by the API operation.
+        @summary Queries the response of an asynchronous API operation for a cluster.
+        
+        @description For some asynchronous API operations such as AddNodes, the system immediately returns a result without waiting for the node to be created if the request succeeds. In this case, you can use the TaskId returned by the asynchronous API operation to query the result of the task.
         
         @param request: ListTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6358,7 +6378,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListTasksResponse:
         """
-        If you succeed in calling an asynchronous API operation, a response is generated before a resulting task is completed. Therefore, to query the result of the task, you can use the TaskId parameter returned by the API operation.
+        @summary Queries the response of an asynchronous API operation for a cluster.
+        
+        @description For some asynchronous API operations such as AddNodes, the system immediately returns a result without waiting for the node to be created if the request succeeds. In this case, you can use the TaskId returned by the asynchronous API operation to query the result of the task.
         
         @param request: ListTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6390,7 +6412,9 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListTasksRequest,
     ) -> ehpc20180412_models.ListTasksResponse:
         """
-        If you succeed in calling an asynchronous API operation, a response is generated before a resulting task is completed. Therefore, to query the result of the task, you can use the TaskId parameter returned by the API operation.
+        @summary Queries the response of an asynchronous API operation for a cluster.
+        
+        @description For some asynchronous API operations such as AddNodes, the system immediately returns a result without waiting for the node to be created if the request succeeds. In this case, you can use the TaskId returned by the asynchronous API operation to query the result of the task.
         
         @param request: ListTasksRequest
         @return: ListTasksResponse
@@ -6403,7 +6427,9 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListTasksRequest,
     ) -> ehpc20180412_models.ListTasksResponse:
         """
-        If you succeed in calling an asynchronous API operation, a response is generated before a resulting task is completed. Therefore, to query the result of the task, you can use the TaskId parameter returned by the API operation.
+        @summary Queries the response of an asynchronous API operation for a cluster.
+        
+        @description For some asynchronous API operations such as AddNodes, the system immediately returns a result without waiting for the node to be created if the request succeeds. In this case, you can use the TaskId returned by the asynchronous API operation to query the result of the task.
         
         @param request: ListTasksRequest
         @return: ListTasksResponse
@@ -6416,6 +6442,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListUpgradeClientsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListUpgradeClientsResponse:
+        """
+        @summary Queries the latest version to which the client (ehpcutil) in a cluster can be updated and historical update records of the client.
+        
+        @param request: ListUpgradeClientsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUpgradeClientsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6442,6 +6475,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListUpgradeClientsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListUpgradeClientsResponse:
+        """
+        @summary Queries the latest version to which the client (ehpcutil) in a cluster can be updated and historical update records of the client.
+        
+        @param request: ListUpgradeClientsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUpgradeClientsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6467,6 +6507,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListUpgradeClientsRequest,
     ) -> ehpc20180412_models.ListUpgradeClientsResponse:
+        """
+        @summary Queries the latest version to which the client (ehpcutil) in a cluster can be updated and historical update records of the client.
+        
+        @param request: ListUpgradeClientsRequest
+        @return: ListUpgradeClientsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_upgrade_clients_with_options(request, runtime)
 
@@ -6474,6 +6520,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListUpgradeClientsRequest,
     ) -> ehpc20180412_models.ListUpgradeClientsResponse:
+        """
+        @summary Queries the latest version to which the client (ehpcutil) in a cluster can be updated and historical update records of the client.
+        
+        @param request: ListUpgradeClientsRequest
+        @return: ListUpgradeClientsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_upgrade_clients_with_options_async(request, runtime)
 
@@ -6482,6 +6534,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListUsersResponse:
+        """
+        @summary Queries all users of a cluster.
+        
+        @param request: ListUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6508,6 +6567,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListUsersResponse:
+        """
+        @summary Queries all users of a cluster.
+        
+        @param request: ListUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6533,6 +6599,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListUsersRequest,
     ) -> ehpc20180412_models.ListUsersResponse:
+        """
+        @summary Queries all users of a cluster.
+        
+        @param request: ListUsersRequest
+        @return: ListUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_users_with_options(request, runtime)
 
@@ -6540,6 +6612,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListUsersRequest,
     ) -> ehpc20180412_models.ListUsersResponse:
+        """
+        @summary Queries all users of a cluster.
+        
+        @param request: ListUsersRequest
+        @return: ListUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_users_with_options_async(request, runtime)
 
@@ -6548,6 +6626,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListUsersAsyncRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListUsersAsyncResponse:
+        """
+        @summary Queries the users in a cluster.
+        
+        @param request: ListUsersAsyncRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersAsyncResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6574,6 +6659,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListUsersAsyncRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListUsersAsyncResponse:
+        """
+        @summary Queries the users in a cluster.
+        
+        @param request: ListUsersAsyncRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersAsyncResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6599,6 +6691,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListUsersAsyncRequest,
     ) -> ehpc20180412_models.ListUsersAsyncResponse:
+        """
+        @summary Queries the users in a cluster.
+        
+        @param request: ListUsersAsyncRequest
+        @return: ListUsersAsyncResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_users_async_with_options(request, runtime)
 
@@ -6606,6 +6704,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListUsersAsyncRequest,
     ) -> ehpc20180412_models.ListUsersAsyncResponse:
+        """
+        @summary Queries the users in a cluster.
+        
+        @param request: ListUsersAsyncRequest
+        @return: ListUsersAsyncResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_users_async_with_options_async(request, runtime)
 
@@ -6614,6 +6718,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListVolumesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListVolumesResponse:
+        """
+        @summary Queries the file systems mounted on Elastic High Performance Computing (E-HPC) clusters.
+        
+        @param request: ListVolumesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVolumesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6640,6 +6751,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ListVolumesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListVolumesResponse:
+        """
+        @summary Queries the file systems mounted on Elastic High Performance Computing (E-HPC) clusters.
+        
+        @param request: ListVolumesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVolumesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6665,6 +6783,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListVolumesRequest,
     ) -> ehpc20180412_models.ListVolumesResponse:
+        """
+        @summary Queries the file systems mounted on Elastic High Performance Computing (E-HPC) clusters.
+        
+        @param request: ListVolumesRequest
+        @return: ListVolumesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_volumes_with_options(request, runtime)
 
@@ -6672,6 +6796,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ListVolumesRequest,
     ) -> ehpc20180412_models.ListVolumesResponse:
+        """
+        @summary Queries the file systems mounted on Elastic High Performance Computing (E-HPC) clusters.
+        
+        @param request: ListVolumesRequest
+        @return: ListVolumesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_volumes_with_options_async(request, runtime)
 
@@ -6681,8 +6811,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ModifyClusterAttributesResponse:
         """
-        ## Usage notes
-        Before you call this operation, you can call the [DescribeCluster](~~87126~~) operation to query details of the selected cluster.
+        @summary Modifies the basic information of a cluster, including the name, description, and image.
+        
+        @description ## Usage notes
+        Before you call this operation, you can call the [DescribeCluster](https://help.aliyun.com/document_detail/87126.html) operation to query details of the selected cluster.
         
         @param request: ModifyClusterAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6715,8 +6847,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ModifyClusterAttributesResponse:
         """
-        ## Usage notes
-        Before you call this operation, you can call the [DescribeCluster](~~87126~~) operation to query details of the selected cluster.
+        @summary Modifies the basic information of a cluster, including the name, description, and image.
+        
+        @description ## Usage notes
+        Before you call this operation, you can call the [DescribeCluster](https://help.aliyun.com/document_detail/87126.html) operation to query details of the selected cluster.
         
         @param request: ModifyClusterAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6748,8 +6882,10 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ModifyClusterAttributesRequest,
     ) -> ehpc20180412_models.ModifyClusterAttributesResponse:
         """
-        ## Usage notes
-        Before you call this operation, you can call the [DescribeCluster](~~87126~~) operation to query details of the selected cluster.
+        @summary Modifies the basic information of a cluster, including the name, description, and image.
+        
+        @description ## Usage notes
+        Before you call this operation, you can call the [DescribeCluster](https://help.aliyun.com/document_detail/87126.html) operation to query details of the selected cluster.
         
         @param request: ModifyClusterAttributesRequest
         @return: ModifyClusterAttributesResponse
@@ -6762,8 +6898,10 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ModifyClusterAttributesRequest,
     ) -> ehpc20180412_models.ModifyClusterAttributesResponse:
         """
-        ## Usage notes
-        Before you call this operation, you can call the [DescribeCluster](~~87126~~) operation to query details of the selected cluster.
+        @summary Modifies the basic information of a cluster, including the name, description, and image.
+        
+        @description ## Usage notes
+        Before you call this operation, you can call the [DescribeCluster](https://help.aliyun.com/document_detail/87126.html) operation to query details of the selected cluster.
         
         @param request: ModifyClusterAttributesRequest
         @return: ModifyClusterAttributesResponse
@@ -6771,143 +6909,18 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_cluster_attributes_with_options_async(request, runtime)
 
-    def modify_container_app_attributes_with_options(
-        self,
-        request: ehpc20180412_models.ModifyContainerAppAttributesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.ModifyContainerAppAttributesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyContainerAppAttributes',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.ModifyContainerAppAttributesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_container_app_attributes_with_options_async(
-        self,
-        request: ehpc20180412_models.ModifyContainerAppAttributesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.ModifyContainerAppAttributesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyContainerAppAttributes',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.ModifyContainerAppAttributesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_container_app_attributes(
-        self,
-        request: ehpc20180412_models.ModifyContainerAppAttributesRequest,
-    ) -> ehpc20180412_models.ModifyContainerAppAttributesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_container_app_attributes_with_options(request, runtime)
-
-    async def modify_container_app_attributes_async(
-        self,
-        request: ehpc20180412_models.ModifyContainerAppAttributesRequest,
-    ) -> ehpc20180412_models.ModifyContainerAppAttributesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_container_app_attributes_with_options_async(request, runtime)
-
-    def modify_image_gateway_config_with_options(
-        self,
-        request: ehpc20180412_models.ModifyImageGatewayConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.ModifyImageGatewayConfigResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyImageGatewayConfig',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.ModifyImageGatewayConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_image_gateway_config_with_options_async(
-        self,
-        request: ehpc20180412_models.ModifyImageGatewayConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.ModifyImageGatewayConfigResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyImageGatewayConfig',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.ModifyImageGatewayConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_image_gateway_config(
-        self,
-        request: ehpc20180412_models.ModifyImageGatewayConfigRequest,
-    ) -> ehpc20180412_models.ModifyImageGatewayConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_image_gateway_config_with_options(request, runtime)
-
-    async def modify_image_gateway_config_async(
-        self,
-        request: ehpc20180412_models.ModifyImageGatewayConfigRequest,
-    ) -> ehpc20180412_models.ModifyImageGatewayConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_image_gateway_config_with_options_async(request, runtime)
-
     def modify_user_groups_with_options(
         self,
         request: ehpc20180412_models.ModifyUserGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ModifyUserGroupsResponse:
+        """
+        @summary Changes the user group to which users belong.
+        
+        @param request: ModifyUserGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6934,6 +6947,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ModifyUserGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ModifyUserGroupsResponse:
+        """
+        @summary Changes the user group to which users belong.
+        
+        @param request: ModifyUserGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6959,6 +6979,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ModifyUserGroupsRequest,
     ) -> ehpc20180412_models.ModifyUserGroupsResponse:
+        """
+        @summary Changes the user group to which users belong.
+        
+        @param request: ModifyUserGroupsRequest
+        @return: ModifyUserGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_user_groups_with_options(request, runtime)
 
@@ -6966,6 +6992,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ModifyUserGroupsRequest,
     ) -> ehpc20180412_models.ModifyUserGroupsResponse:
+        """
+        @summary Changes the user group to which users belong.
+        
+        @param request: ModifyUserGroupsRequest
+        @return: ModifyUserGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_user_groups_with_options_async(request, runtime)
 
@@ -6974,6 +7006,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ModifyUserPasswordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ModifyUserPasswordsResponse:
+        """
+        @summary Changes the passwords of users.
+        
+        @param request: ModifyUserPasswordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserPasswordsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7000,6 +7039,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ModifyUserPasswordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ModifyUserPasswordsResponse:
+        """
+        @summary Changes the passwords of users.
+        
+        @param request: ModifyUserPasswordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserPasswordsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7025,6 +7071,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ModifyUserPasswordsRequest,
     ) -> ehpc20180412_models.ModifyUserPasswordsResponse:
+        """
+        @summary Changes the passwords of users.
+        
+        @param request: ModifyUserPasswordsRequest
+        @return: ModifyUserPasswordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_user_passwords_with_options(request, runtime)
 
@@ -7032,6 +7084,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ModifyUserPasswordsRequest,
     ) -> ehpc20180412_models.ModifyUserPasswordsResponse:
+        """
+        @summary Changes the passwords of users.
+        
+        @param request: ModifyUserPasswordsRequest
+        @return: ModifyUserPasswordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_user_passwords_with_options_async(request, runtime)
 
@@ -7040,6 +7098,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ModifyVisualServicePasswdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ModifyVisualServicePasswdResponse:
+        """
+        @summary Sets a password that you can use to remotely connect to a visualization service in a cluster over the virtual network console (VNC).
+        
+        @param request: ModifyVisualServicePasswdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyVisualServicePasswdResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7066,6 +7131,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ModifyVisualServicePasswdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ModifyVisualServicePasswdResponse:
+        """
+        @summary Sets a password that you can use to remotely connect to a visualization service in a cluster over the virtual network console (VNC).
+        
+        @param request: ModifyVisualServicePasswdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyVisualServicePasswdResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7091,6 +7163,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ModifyVisualServicePasswdRequest,
     ) -> ehpc20180412_models.ModifyVisualServicePasswdResponse:
+        """
+        @summary Sets a password that you can use to remotely connect to a visualization service in a cluster over the virtual network console (VNC).
+        
+        @param request: ModifyVisualServicePasswdRequest
+        @return: ModifyVisualServicePasswdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_visual_service_passwd_with_options(request, runtime)
 
@@ -7098,80 +7176,25 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.ModifyVisualServicePasswdRequest,
     ) -> ehpc20180412_models.ModifyVisualServicePasswdResponse:
+        """
+        @summary Sets a password that you can use to remotely connect to a visualization service in a cluster over the virtual network console (VNC).
+        
+        @param request: ModifyVisualServicePasswdRequest
+        @return: ModifyVisualServicePasswdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_visual_service_passwd_with_options_async(request, runtime)
-
-    def mount_nfswith_options(
-        self,
-        request: ehpc20180412_models.MountNFSRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.MountNFSResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='MountNFS',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.MountNFSResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def mount_nfswith_options_async(
-        self,
-        request: ehpc20180412_models.MountNFSRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.MountNFSResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='MountNFS',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.MountNFSResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def mount_nfs(
-        self,
-        request: ehpc20180412_models.MountNFSRequest,
-    ) -> ehpc20180412_models.MountNFSResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.mount_nfswith_options(request, runtime)
-
-    async def mount_nfs_async(
-        self,
-        request: ehpc20180412_models.MountNFSRequest,
-    ) -> ehpc20180412_models.MountNFSResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.mount_nfswith_options_async(request, runtime)
 
     def pull_image_with_options(
         self,
         request: ehpc20180412_models.PullImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.PullImageResponse:
+        """
+        @param request: PullImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PullImageResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7198,6 +7221,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.PullImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.PullImageResponse:
+        """
+        @param request: PullImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PullImageResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7223,6 +7251,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.PullImageRequest,
     ) -> ehpc20180412_models.PullImageResponse:
+        """
+        @param request: PullImageRequest
+        @return: PullImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.pull_image_with_options(request, runtime)
 
@@ -7230,6 +7262,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.PullImageRequest,
     ) -> ehpc20180412_models.PullImageResponse:
+        """
+        @param request: PullImageRequest
+        @return: PullImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.pull_image_with_options_async(request, runtime)
 
@@ -7237,6 +7273,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.QueryServicePackAndPriceResponse:
+        """
+        @param request: QueryServicePackAndPriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryServicePackAndPriceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='QueryServicePackAndPrice',
@@ -7258,6 +7299,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.QueryServicePackAndPriceResponse:
+        """
+        @param request: QueryServicePackAndPriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryServicePackAndPriceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='QueryServicePackAndPrice',
@@ -7276,10 +7322,16 @@ class Client(OpenApiClient):
         )
 
     def query_service_pack_and_price(self) -> ehpc20180412_models.QueryServicePackAndPriceResponse:
+        """
+        @return: QueryServicePackAndPriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_service_pack_and_price_with_options(runtime)
 
     async def query_service_pack_and_price_async(self) -> ehpc20180412_models.QueryServicePackAndPriceResponse:
+        """
+        @return: QueryServicePackAndPriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_service_pack_and_price_with_options_async(runtime)
 
@@ -7289,11 +7341,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.RecoverClusterResponse:
         """
-        You can call the operation to reset and restore a cluster only when the cluster is in the Exception state. You can call the [ListClusters](~~87116~~) operation to query the ID and status of a cluster.
-        We recommend that you export all job data before you restore a cluster. When you reset and restore a cluster, take note of the following impacts:
-        *   The system disks of all nodes are changed. By default, new system disks are configured based on the settings that you specified when the cluster was created.
-        *   The data on the system disks and data disks of all cluster nodes is lost. The data includes user information, job information, scheduler queue information, and configuration data of auto-scaling queues. However, the data on Apsara File Storage NAS file systems is retained.
-        *   The self-managed queues in the cluster are deleted. All nodes are retained and migrated to the default queue of the cluster.
+        @summary Resets and restores a cluster.
+        
+        @description You can call the operation to reset and restore a cluster only when the cluster is in the Exception state. You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the ID and status of a cluster. We recommend that you export all job data before you restore a cluster. When you reset and restore a cluster, take note of the following impacts:
+        The system disks of all nodes are changed. By default, new system disks are configured based on the settings that you specified when the cluster was created.
+        The data on the system disks and data disks of all cluster nodes is lost. The data includes user information, job information, scheduler queue information, and configuration data of auto-scaling queues. However, the data on File Storage NAS file systems is retained.
+        The self-managed queues in the cluster are deleted. All nodes are retained and migrated to the default queue of the cluster.
         
         @param request: RecoverClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7326,11 +7379,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.RecoverClusterResponse:
         """
-        You can call the operation to reset and restore a cluster only when the cluster is in the Exception state. You can call the [ListClusters](~~87116~~) operation to query the ID and status of a cluster.
-        We recommend that you export all job data before you restore a cluster. When you reset and restore a cluster, take note of the following impacts:
-        *   The system disks of all nodes are changed. By default, new system disks are configured based on the settings that you specified when the cluster was created.
-        *   The data on the system disks and data disks of all cluster nodes is lost. The data includes user information, job information, scheduler queue information, and configuration data of auto-scaling queues. However, the data on Apsara File Storage NAS file systems is retained.
-        *   The self-managed queues in the cluster are deleted. All nodes are retained and migrated to the default queue of the cluster.
+        @summary Resets and restores a cluster.
+        
+        @description You can call the operation to reset and restore a cluster only when the cluster is in the Exception state. You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the ID and status of a cluster. We recommend that you export all job data before you restore a cluster. When you reset and restore a cluster, take note of the following impacts:
+        The system disks of all nodes are changed. By default, new system disks are configured based on the settings that you specified when the cluster was created.
+        The data on the system disks and data disks of all cluster nodes is lost. The data includes user information, job information, scheduler queue information, and configuration data of auto-scaling queues. However, the data on File Storage NAS file systems is retained.
+        The self-managed queues in the cluster are deleted. All nodes are retained and migrated to the default queue of the cluster.
         
         @param request: RecoverClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7362,11 +7416,12 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.RecoverClusterRequest,
     ) -> ehpc20180412_models.RecoverClusterResponse:
         """
-        You can call the operation to reset and restore a cluster only when the cluster is in the Exception state. You can call the [ListClusters](~~87116~~) operation to query the ID and status of a cluster.
-        We recommend that you export all job data before you restore a cluster. When you reset and restore a cluster, take note of the following impacts:
-        *   The system disks of all nodes are changed. By default, new system disks are configured based on the settings that you specified when the cluster was created.
-        *   The data on the system disks and data disks of all cluster nodes is lost. The data includes user information, job information, scheduler queue information, and configuration data of auto-scaling queues. However, the data on Apsara File Storage NAS file systems is retained.
-        *   The self-managed queues in the cluster are deleted. All nodes are retained and migrated to the default queue of the cluster.
+        @summary Resets and restores a cluster.
+        
+        @description You can call the operation to reset and restore a cluster only when the cluster is in the Exception state. You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the ID and status of a cluster. We recommend that you export all job data before you restore a cluster. When you reset and restore a cluster, take note of the following impacts:
+        The system disks of all nodes are changed. By default, new system disks are configured based on the settings that you specified when the cluster was created.
+        The data on the system disks and data disks of all cluster nodes is lost. The data includes user information, job information, scheduler queue information, and configuration data of auto-scaling queues. However, the data on File Storage NAS file systems is retained.
+        The self-managed queues in the cluster are deleted. All nodes are retained and migrated to the default queue of the cluster.
         
         @param request: RecoverClusterRequest
         @return: RecoverClusterResponse
@@ -7379,11 +7434,12 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.RecoverClusterRequest,
     ) -> ehpc20180412_models.RecoverClusterResponse:
         """
-        You can call the operation to reset and restore a cluster only when the cluster is in the Exception state. You can call the [ListClusters](~~87116~~) operation to query the ID and status of a cluster.
-        We recommend that you export all job data before you restore a cluster. When you reset and restore a cluster, take note of the following impacts:
-        *   The system disks of all nodes are changed. By default, new system disks are configured based on the settings that you specified when the cluster was created.
-        *   The data on the system disks and data disks of all cluster nodes is lost. The data includes user information, job information, scheduler queue information, and configuration data of auto-scaling queues. However, the data on Apsara File Storage NAS file systems is retained.
-        *   The self-managed queues in the cluster are deleted. All nodes are retained and migrated to the default queue of the cluster.
+        @summary Resets and restores a cluster.
+        
+        @description You can call the operation to reset and restore a cluster only when the cluster is in the Exception state. You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the ID and status of a cluster. We recommend that you export all job data before you restore a cluster. When you reset and restore a cluster, take note of the following impacts:
+        The system disks of all nodes are changed. By default, new system disks are configured based on the settings that you specified when the cluster was created.
+        The data on the system disks and data disks of all cluster nodes is lost. The data includes user information, job information, scheduler queue information, and configuration data of auto-scaling queues. However, the data on File Storage NAS file systems is retained.
+        The self-managed queues in the cluster are deleted. All nodes are retained and migrated to the default queue of the cluster.
         
         @param request: RecoverClusterRequest
         @return: RecoverClusterResponse
@@ -7396,6 +7452,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.RerunJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.RerunJobsResponse:
+        """
+        @param request: RerunJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RerunJobsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7422,6 +7483,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.RerunJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.RerunJobsResponse:
+        """
+        @param request: RerunJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RerunJobsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7447,6 +7513,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.RerunJobsRequest,
     ) -> ehpc20180412_models.RerunJobsResponse:
+        """
+        @param request: RerunJobsRequest
+        @return: RerunJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.rerun_jobs_with_options(request, runtime)
 
@@ -7454,6 +7524,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.RerunJobsRequest,
     ) -> ehpc20180412_models.RerunJobsResponse:
+        """
+        @param request: RerunJobsRequest
+        @return: RerunJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.rerun_jobs_with_options_async(request, runtime)
 
@@ -7463,7 +7537,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ResetNodesResponse:
         """
-        After a node is reset, the operating system and software return to their initial states. To ensure that jobs run as expected, we recommend that you do not reset running nodes unless you need to perform crash recovery.
+        @description After a node is reset, the operating system and software return to their initial states. To ensure that jobs run as expected, we recommend that you do not reset running nodes unless you need to perform crash recovery.
         
         @param request: ResetNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7496,7 +7570,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ResetNodesResponse:
         """
-        After a node is reset, the operating system and software return to their initial states. To ensure that jobs run as expected, we recommend that you do not reset running nodes unless you need to perform crash recovery.
+        @description After a node is reset, the operating system and software return to their initial states. To ensure that jobs run as expected, we recommend that you do not reset running nodes unless you need to perform crash recovery.
         
         @param request: ResetNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7528,7 +7602,7 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ResetNodesRequest,
     ) -> ehpc20180412_models.ResetNodesResponse:
         """
-        After a node is reset, the operating system and software return to their initial states. To ensure that jobs run as expected, we recommend that you do not reset running nodes unless you need to perform crash recovery.
+        @description After a node is reset, the operating system and software return to their initial states. To ensure that jobs run as expected, we recommend that you do not reset running nodes unless you need to perform crash recovery.
         
         @param request: ResetNodesRequest
         @return: ResetNodesResponse
@@ -7541,7 +7615,7 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ResetNodesRequest,
     ) -> ehpc20180412_models.ResetNodesResponse:
         """
-        After a node is reset, the operating system and software return to their initial states. To ensure that jobs run as expected, we recommend that you do not reset running nodes unless you need to perform crash recovery.
+        @description After a node is reset, the operating system and software return to their initial states. To ensure that jobs run as expected, we recommend that you do not reset running nodes unless you need to perform crash recovery.
         
         @param request: ResetNodesRequest
         @return: ResetNodesResponse
@@ -7554,6 +7628,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.RunCloudMetricProfilingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.RunCloudMetricProfilingResponse:
+        """
+        @summary Starts the profiling process of a cluster.
+        
+        @param request: RunCloudMetricProfilingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunCloudMetricProfilingResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7580,6 +7661,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.RunCloudMetricProfilingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.RunCloudMetricProfilingResponse:
+        """
+        @summary Starts the profiling process of a cluster.
+        
+        @param request: RunCloudMetricProfilingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunCloudMetricProfilingResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7605,6 +7693,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.RunCloudMetricProfilingRequest,
     ) -> ehpc20180412_models.RunCloudMetricProfilingResponse:
+        """
+        @summary Starts the profiling process of a cluster.
+        
+        @param request: RunCloudMetricProfilingRequest
+        @return: RunCloudMetricProfilingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.run_cloud_metric_profiling_with_options(request, runtime)
 
@@ -7612,6 +7706,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.RunCloudMetricProfilingRequest,
     ) -> ehpc20180412_models.RunCloudMetricProfilingResponse:
+        """
+        @summary Starts the profiling process of a cluster.
+        
+        @param request: RunCloudMetricProfilingRequest
+        @return: RunCloudMetricProfilingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.run_cloud_metric_profiling_with_options_async(request, runtime)
 
@@ -7621,7 +7721,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.SetAutoScaleConfigResponse:
         """
-        ## Usage notes
+        @summary Configures the auto scaling settings of a cluster.
+        
+        @description ## Usage notes
         If the settings in the Queue Configuration section are different from the settings in the Global Configurations section, the former prevails.
         
         @param request: SetAutoScaleConfigRequest
@@ -7655,7 +7757,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.SetAutoScaleConfigResponse:
         """
-        ## Usage notes
+        @summary Configures the auto scaling settings of a cluster.
+        
+        @description ## Usage notes
         If the settings in the Queue Configuration section are different from the settings in the Global Configurations section, the former prevails.
         
         @param request: SetAutoScaleConfigRequest
@@ -7688,7 +7792,9 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.SetAutoScaleConfigRequest,
     ) -> ehpc20180412_models.SetAutoScaleConfigResponse:
         """
-        ## Usage notes
+        @summary Configures the auto scaling settings of a cluster.
+        
+        @description ## Usage notes
         If the settings in the Queue Configuration section are different from the settings in the Global Configurations section, the former prevails.
         
         @param request: SetAutoScaleConfigRequest
@@ -7702,7 +7808,9 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.SetAutoScaleConfigRequest,
     ) -> ehpc20180412_models.SetAutoScaleConfigResponse:
         """
-        ## Usage notes
+        @summary Configures the auto scaling settings of a cluster.
+        
+        @description ## Usage notes
         If the settings in the Queue Configuration section are different from the settings in the Global Configurations section, the former prevails.
         
         @param request: SetAutoScaleConfigRequest
@@ -7711,237 +7819,18 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_auto_scale_config_with_options_async(request, runtime)
 
-    def set_gwscluster_policy_with_options(
-        self,
-        request: ehpc20180412_models.SetGWSClusterPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.SetGWSClusterPolicyResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.async_mode):
-            query['AsyncMode'] = request.async_mode
-        if not UtilClient.is_unset(request.clipboard):
-            query['Clipboard'] = request.clipboard
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.local_drive):
-            query['LocalDrive'] = request.local_drive
-        if not UtilClient.is_unset(request.udp_port):
-            query['UdpPort'] = request.udp_port
-        if not UtilClient.is_unset(request.usb_redirect):
-            query['UsbRedirect'] = request.usb_redirect
-        if not UtilClient.is_unset(request.watermark):
-            query['Watermark'] = request.watermark
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SetGWSClusterPolicy',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.SetGWSClusterPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def set_gwscluster_policy_with_options_async(
-        self,
-        request: ehpc20180412_models.SetGWSClusterPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.SetGWSClusterPolicyResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.async_mode):
-            query['AsyncMode'] = request.async_mode
-        if not UtilClient.is_unset(request.clipboard):
-            query['Clipboard'] = request.clipboard
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.local_drive):
-            query['LocalDrive'] = request.local_drive
-        if not UtilClient.is_unset(request.udp_port):
-            query['UdpPort'] = request.udp_port
-        if not UtilClient.is_unset(request.usb_redirect):
-            query['UsbRedirect'] = request.usb_redirect
-        if not UtilClient.is_unset(request.watermark):
-            query['Watermark'] = request.watermark
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SetGWSClusterPolicy',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.SetGWSClusterPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def set_gwscluster_policy(
-        self,
-        request: ehpc20180412_models.SetGWSClusterPolicyRequest,
-    ) -> ehpc20180412_models.SetGWSClusterPolicyResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.set_gwscluster_policy_with_options(request, runtime)
-
-    async def set_gwscluster_policy_async(
-        self,
-        request: ehpc20180412_models.SetGWSClusterPolicyRequest,
-    ) -> ehpc20180412_models.SetGWSClusterPolicyResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.set_gwscluster_policy_with_options_async(request, runtime)
-
-    def set_gwsinstance_name_with_options(
-        self,
-        request: ehpc20180412_models.SetGWSInstanceNameRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.SetGWSInstanceNameResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SetGWSInstanceName',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.SetGWSInstanceNameResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def set_gwsinstance_name_with_options_async(
-        self,
-        request: ehpc20180412_models.SetGWSInstanceNameRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.SetGWSInstanceNameResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SetGWSInstanceName',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.SetGWSInstanceNameResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def set_gwsinstance_name(
-        self,
-        request: ehpc20180412_models.SetGWSInstanceNameRequest,
-    ) -> ehpc20180412_models.SetGWSInstanceNameResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.set_gwsinstance_name_with_options(request, runtime)
-
-    async def set_gwsinstance_name_async(
-        self,
-        request: ehpc20180412_models.SetGWSInstanceNameRequest,
-    ) -> ehpc20180412_models.SetGWSInstanceNameResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.set_gwsinstance_name_with_options_async(request, runtime)
-
-    def set_gwsinstance_user_with_options(
-        self,
-        request: ehpc20180412_models.SetGWSInstanceUserRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.SetGWSInstanceUserResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SetGWSInstanceUser',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.SetGWSInstanceUserResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def set_gwsinstance_user_with_options_async(
-        self,
-        request: ehpc20180412_models.SetGWSInstanceUserRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.SetGWSInstanceUserResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SetGWSInstanceUser',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.SetGWSInstanceUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def set_gwsinstance_user(
-        self,
-        request: ehpc20180412_models.SetGWSInstanceUserRequest,
-    ) -> ehpc20180412_models.SetGWSInstanceUserResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.set_gwsinstance_user_with_options(request, runtime)
-
-    async def set_gwsinstance_user_async(
-        self,
-        request: ehpc20180412_models.SetGWSInstanceUserRequest,
-    ) -> ehpc20180412_models.SetGWSInstanceUserResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.set_gwsinstance_user_with_options_async(request, runtime)
-
     def set_post_scripts_with_options(
         self,
         request: ehpc20180412_models.SetPostScriptsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.SetPostScriptsResponse:
+        """
+        @summary Configures the post-processing scripts of a cluster.
+        
+        @param request: SetPostScriptsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetPostScriptsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7968,6 +7857,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.SetPostScriptsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.SetPostScriptsResponse:
+        """
+        @summary Configures the post-processing scripts of a cluster.
+        
+        @param request: SetPostScriptsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetPostScriptsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7993,6 +7889,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.SetPostScriptsRequest,
     ) -> ehpc20180412_models.SetPostScriptsResponse:
+        """
+        @summary Configures the post-processing scripts of a cluster.
+        
+        @param request: SetPostScriptsRequest
+        @return: SetPostScriptsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_post_scripts_with_options(request, runtime)
 
@@ -8000,6 +7902,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.SetPostScriptsRequest,
     ) -> ehpc20180412_models.SetPostScriptsResponse:
+        """
+        @summary Configures the post-processing scripts of a cluster.
+        
+        @param request: SetPostScriptsRequest
+        @return: SetPostScriptsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_post_scripts_with_options_async(request, runtime)
 
@@ -8008,6 +7916,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.SetQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.SetQueueResponse:
+        """
+        @param request: SetQueueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetQueueResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8034,6 +7947,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.SetQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.SetQueueResponse:
+        """
+        @param request: SetQueueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetQueueResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8059,6 +7977,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.SetQueueRequest,
     ) -> ehpc20180412_models.SetQueueResponse:
+        """
+        @param request: SetQueueRequest
+        @return: SetQueueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_queue_with_options(request, runtime)
 
@@ -8066,6 +7988,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.SetQueueRequest,
     ) -> ehpc20180412_models.SetQueueResponse:
+        """
+        @param request: SetQueueRequest
+        @return: SetQueueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_queue_with_options_async(request, runtime)
 
@@ -8074,6 +8000,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.SetSchedulerInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.SetSchedulerInfoResponse:
+        """
+        @summary Configures the scheduler settings of a cluster.
+        
+        @param request: SetSchedulerInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetSchedulerInfoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8100,6 +8033,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.SetSchedulerInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.SetSchedulerInfoResponse:
+        """
+        @summary Configures the scheduler settings of a cluster.
+        
+        @param request: SetSchedulerInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetSchedulerInfoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8125,6 +8065,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.SetSchedulerInfoRequest,
     ) -> ehpc20180412_models.SetSchedulerInfoResponse:
+        """
+        @summary Configures the scheduler settings of a cluster.
+        
+        @param request: SetSchedulerInfoRequest
+        @return: SetSchedulerInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_scheduler_info_with_options(request, runtime)
 
@@ -8132,6 +8078,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.SetSchedulerInfoRequest,
     ) -> ehpc20180412_models.SetSchedulerInfoResponse:
+        """
+        @summary Configures the scheduler settings of a cluster.
+        
+        @param request: SetSchedulerInfoRequest
+        @return: SetSchedulerInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_scheduler_info_with_options_async(request, runtime)
 
@@ -8140,6 +8092,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.StartClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.StartClusterResponse:
+        """
+        @param request: StartClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartClusterResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8166,6 +8123,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.StartClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.StartClusterResponse:
+        """
+        @param request: StartClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartClusterResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8191,6 +8153,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.StartClusterRequest,
     ) -> ehpc20180412_models.StartClusterResponse:
+        """
+        @param request: StartClusterRequest
+        @return: StartClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_cluster_with_options(request, runtime)
 
@@ -8198,80 +8164,23 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.StartClusterRequest,
     ) -> ehpc20180412_models.StartClusterResponse:
+        """
+        @param request: StartClusterRequest
+        @return: StartClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_cluster_with_options_async(request, runtime)
-
-    def start_gwsinstance_with_options(
-        self,
-        request: ehpc20180412_models.StartGWSInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.StartGWSInstanceResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='StartGWSInstance',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.StartGWSInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def start_gwsinstance_with_options_async(
-        self,
-        request: ehpc20180412_models.StartGWSInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.StartGWSInstanceResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='StartGWSInstance',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.StartGWSInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def start_gwsinstance(
-        self,
-        request: ehpc20180412_models.StartGWSInstanceRequest,
-    ) -> ehpc20180412_models.StartGWSInstanceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.start_gwsinstance_with_options(request, runtime)
-
-    async def start_gwsinstance_async(
-        self,
-        request: ehpc20180412_models.StartGWSInstanceRequest,
-    ) -> ehpc20180412_models.StartGWSInstanceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.start_gwsinstance_with_options_async(request, runtime)
 
     def start_nodes_with_options(
         self,
         request: ehpc20180412_models.StartNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.StartNodesResponse:
+        """
+        @param request: StartNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartNodesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8298,6 +8207,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.StartNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.StartNodesResponse:
+        """
+        @param request: StartNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartNodesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8323,6 +8237,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.StartNodesRequest,
     ) -> ehpc20180412_models.StartNodesResponse:
+        """
+        @param request: StartNodesRequest
+        @return: StartNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_nodes_with_options(request, runtime)
 
@@ -8330,6 +8248,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.StartNodesRequest,
     ) -> ehpc20180412_models.StartNodesResponse:
+        """
+        @param request: StartNodesRequest
+        @return: StartNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_nodes_with_options_async(request, runtime)
 
@@ -8338,6 +8260,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.StartVisualServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.StartVisualServiceResponse:
+        """
+        @summary Starts the Virtual Network Console (VNC) Remote visualization service in a specified cluster.
+        
+        @param request: StartVisualServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartVisualServiceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8364,6 +8293,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.StartVisualServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.StartVisualServiceResponse:
+        """
+        @summary Starts the Virtual Network Console (VNC) Remote visualization service in a specified cluster.
+        
+        @param request: StartVisualServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartVisualServiceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8389,6 +8325,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.StartVisualServiceRequest,
     ) -> ehpc20180412_models.StartVisualServiceResponse:
+        """
+        @summary Starts the Virtual Network Console (VNC) Remote visualization service in a specified cluster.
+        
+        @param request: StartVisualServiceRequest
+        @return: StartVisualServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_visual_service_with_options(request, runtime)
 
@@ -8396,6 +8338,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.StartVisualServiceRequest,
     ) -> ehpc20180412_models.StartVisualServiceResponse:
+        """
+        @summary Starts the Virtual Network Console (VNC) Remote visualization service in a specified cluster.
+        
+        @param request: StartVisualServiceRequest
+        @return: StartVisualServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_visual_service_with_options_async(request, runtime)
 
@@ -8405,7 +8353,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.StopClusterResponse:
         """
-        If you stop a subscription compute node, its billing is not affected. If you stop a pay-as-you-go compute node for which you have enabled the economical mode*, you are no longer charged for its computing resources. For more information, see [Economical mode](~~63353~~).
+        @summary Stops a cluster.
+        
+        @description If you stop a subscription compute node, its billing is not affected. If you stop a pay-as-you-go compute node for which you have enabled the economical mode*, you are no longer charged for its computing resources. For more information, see [Economical mode](https://help.aliyun.com/document_detail/63353.html).
         
         @param request: StopClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8438,7 +8388,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.StopClusterResponse:
         """
-        If you stop a subscription compute node, its billing is not affected. If you stop a pay-as-you-go compute node for which you have enabled the economical mode*, you are no longer charged for its computing resources. For more information, see [Economical mode](~~63353~~).
+        @summary Stops a cluster.
+        
+        @description If you stop a subscription compute node, its billing is not affected. If you stop a pay-as-you-go compute node for which you have enabled the economical mode*, you are no longer charged for its computing resources. For more information, see [Economical mode](https://help.aliyun.com/document_detail/63353.html).
         
         @param request: StopClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8470,7 +8422,9 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.StopClusterRequest,
     ) -> ehpc20180412_models.StopClusterResponse:
         """
-        If you stop a subscription compute node, its billing is not affected. If you stop a pay-as-you-go compute node for which you have enabled the economical mode*, you are no longer charged for its computing resources. For more information, see [Economical mode](~~63353~~).
+        @summary Stops a cluster.
+        
+        @description If you stop a subscription compute node, its billing is not affected. If you stop a pay-as-you-go compute node for which you have enabled the economical mode*, you are no longer charged for its computing resources. For more information, see [Economical mode](https://help.aliyun.com/document_detail/63353.html).
         
         @param request: StopClusterRequest
         @return: StopClusterResponse
@@ -8483,7 +8437,9 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.StopClusterRequest,
     ) -> ehpc20180412_models.StopClusterResponse:
         """
-        If you stop a subscription compute node, its billing is not affected. If you stop a pay-as-you-go compute node for which you have enabled the economical mode*, you are no longer charged for its computing resources. For more information, see [Economical mode](~~63353~~).
+        @summary Stops a cluster.
+        
+        @description If you stop a subscription compute node, its billing is not affected. If you stop a pay-as-you-go compute node for which you have enabled the economical mode*, you are no longer charged for its computing resources. For more information, see [Economical mode](https://help.aliyun.com/document_detail/63353.html).
         
         @param request: StopClusterRequest
         @return: StopClusterResponse
@@ -8491,77 +8447,16 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.stop_cluster_with_options_async(request, runtime)
 
-    def stop_gwsinstance_with_options(
-        self,
-        request: ehpc20180412_models.StopGWSInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.StopGWSInstanceResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='StopGWSInstance',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.StopGWSInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def stop_gwsinstance_with_options_async(
-        self,
-        request: ehpc20180412_models.StopGWSInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.StopGWSInstanceResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='StopGWSInstance',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.StopGWSInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def stop_gwsinstance(
-        self,
-        request: ehpc20180412_models.StopGWSInstanceRequest,
-    ) -> ehpc20180412_models.StopGWSInstanceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.stop_gwsinstance_with_options(request, runtime)
-
-    async def stop_gwsinstance_async(
-        self,
-        request: ehpc20180412_models.StopGWSInstanceRequest,
-    ) -> ehpc20180412_models.StopGWSInstanceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.stop_gwsinstance_with_options_async(request, runtime)
-
     def stop_jobs_with_options(
         self,
         request: ehpc20180412_models.StopJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.StopJobsResponse:
+        """
+        @param request: StopJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopJobsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8588,6 +8483,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.StopJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.StopJobsResponse:
+        """
+        @param request: StopJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopJobsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8613,6 +8513,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.StopJobsRequest,
     ) -> ehpc20180412_models.StopJobsResponse:
+        """
+        @param request: StopJobsRequest
+        @return: StopJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_jobs_with_options(request, runtime)
 
@@ -8620,6 +8524,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.StopJobsRequest,
     ) -> ehpc20180412_models.StopJobsResponse:
+        """
+        @param request: StopJobsRequest
+        @return: StopJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_jobs_with_options_async(request, runtime)
 
@@ -8628,6 +8536,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.StopNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.StopNodesResponse:
+        """
+        @param request: StopNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopNodesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8654,6 +8567,11 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.StopNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.StopNodesResponse:
+        """
+        @param request: StopNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopNodesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8679,6 +8597,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.StopNodesRequest,
     ) -> ehpc20180412_models.StopNodesResponse:
+        """
+        @param request: StopNodesRequest
+        @return: StopNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_nodes_with_options(request, runtime)
 
@@ -8686,6 +8608,10 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.StopNodesRequest,
     ) -> ehpc20180412_models.StopNodesResponse:
+        """
+        @param request: StopNodesRequest
+        @return: StopNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_nodes_with_options_async(request, runtime)
 
@@ -8694,6 +8620,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.StopServerlessJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.StopServerlessJobsResponse:
+        """
+        @summary Stops Serverless jobs in a cluster based on job IDs or subtask IDs (array jobs). If you specify the job ID of an array job, all subtasks in the job are stopped.
+        
+        @param request: StopServerlessJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopServerlessJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -8724,6 +8657,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.StopServerlessJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.StopServerlessJobsResponse:
+        """
+        @summary Stops Serverless jobs in a cluster based on job IDs or subtask IDs (array jobs). If you specify the job ID of an array job, all subtasks in the job are stopped.
+        
+        @param request: StopServerlessJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopServerlessJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -8753,6 +8693,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.StopServerlessJobsRequest,
     ) -> ehpc20180412_models.StopServerlessJobsResponse:
+        """
+        @summary Stops Serverless jobs in a cluster based on job IDs or subtask IDs (array jobs). If you specify the job ID of an array job, all subtasks in the job are stopped.
+        
+        @param request: StopServerlessJobsRequest
+        @return: StopServerlessJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_serverless_jobs_with_options(request, runtime)
 
@@ -8760,6 +8706,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.StopServerlessJobsRequest,
     ) -> ehpc20180412_models.StopServerlessJobsResponse:
+        """
+        @summary Stops Serverless jobs in a cluster based on job IDs or subtask IDs (array jobs). If you specify the job ID of an array job, all subtasks in the job are stopped.
+        
+        @param request: StopServerlessJobsRequest
+        @return: StopServerlessJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_serverless_jobs_with_options_async(request, runtime)
 
@@ -8768,6 +8720,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.StopVisualServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.StopVisualServiceResponse:
+        """
+        @summary Stops the remote visualization service of Virtual Network Console (VNC) in a cluster.
+        
+        @param request: StopVisualServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopVisualServiceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8794,6 +8753,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.StopVisualServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.StopVisualServiceResponse:
+        """
+        @summary Stops the remote visualization service of Virtual Network Console (VNC) in a cluster.
+        
+        @param request: StopVisualServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopVisualServiceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8819,6 +8785,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.StopVisualServiceRequest,
     ) -> ehpc20180412_models.StopVisualServiceResponse:
+        """
+        @summary Stops the remote visualization service of Virtual Network Console (VNC) in a cluster.
+        
+        @param request: StopVisualServiceRequest
+        @return: StopVisualServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_visual_service_with_options(request, runtime)
 
@@ -8826,6 +8798,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.StopVisualServiceRequest,
     ) -> ehpc20180412_models.StopVisualServiceResponse:
+        """
+        @summary Stops the remote visualization service of Virtual Network Console (VNC) in a cluster.
+        
+        @param request: StopVisualServiceRequest
+        @return: StopVisualServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_visual_service_with_options_async(request, runtime)
 
@@ -8835,8 +8813,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.SubmitJobResponse:
         """
-        ## Description
-        Before you submit a job in a cluster, you must upload a job file to the cluster, for example, job.sh. For more information, see [CreateJobFile](~~159049~~).
+        @summary Submits a job in a cluster.
+        
+        @description The ID of the request.
         
         @param request: SubmitJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8869,8 +8848,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.SubmitJobResponse:
         """
-        ## Description
-        Before you submit a job in a cluster, you must upload a job file to the cluster, for example, job.sh. For more information, see [CreateJobFile](~~159049~~).
+        @summary Submits a job in a cluster.
+        
+        @description The ID of the request.
         
         @param request: SubmitJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8902,8 +8882,9 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.SubmitJobRequest,
     ) -> ehpc20180412_models.SubmitJobResponse:
         """
-        ## Description
-        Before you submit a job in a cluster, you must upload a job file to the cluster, for example, job.sh. For more information, see [CreateJobFile](~~159049~~).
+        @summary Submits a job in a cluster.
+        
+        @description The ID of the request.
         
         @param request: SubmitJobRequest
         @return: SubmitJobResponse
@@ -8916,8 +8897,9 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.SubmitJobRequest,
     ) -> ehpc20180412_models.SubmitJobResponse:
         """
-        ## Description
-        Before you submit a job in a cluster, you must upload a job file to the cluster, for example, job.sh. For more information, see [CreateJobFile](~~159049~~).
+        @summary Submits a job in a cluster.
+        
+        @description The ID of the request.
         
         @param request: SubmitJobRequest
         @return: SubmitJobResponse
@@ -8930,6 +8912,13 @@ class Client(OpenApiClient):
         tmp_req: ehpc20180412_models.SubmitServerlessJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.SubmitServerlessJobResponse:
+        """
+        @summary Submits a serverless job to an Elastic High Performance Computing (E-HPC) cluster.
+        
+        @param tmp_req: SubmitServerlessJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitServerlessJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ehpc20180412_models.SubmitServerlessJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9002,6 +8991,13 @@ class Client(OpenApiClient):
         tmp_req: ehpc20180412_models.SubmitServerlessJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.SubmitServerlessJobResponse:
+        """
+        @summary Submits a serverless job to an Elastic High Performance Computing (E-HPC) cluster.
+        
+        @param tmp_req: SubmitServerlessJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitServerlessJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ehpc20180412_models.SubmitServerlessJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9073,6 +9069,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.SubmitServerlessJobRequest,
     ) -> ehpc20180412_models.SubmitServerlessJobResponse:
+        """
+        @summary Submits a serverless job to an Elastic High Performance Computing (E-HPC) cluster.
+        
+        @param request: SubmitServerlessJobRequest
+        @return: SubmitServerlessJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_serverless_job_with_options(request, runtime)
 
@@ -9080,146 +9082,27 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.SubmitServerlessJobRequest,
     ) -> ehpc20180412_models.SubmitServerlessJobResponse:
+        """
+        @summary Submits a serverless job to an Elastic High Performance Computing (E-HPC) cluster.
+        
+        @param request: SubmitServerlessJobRequest
+        @return: SubmitServerlessJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_serverless_job_with_options_async(request, runtime)
-
-    def summary_images_with_options(
-        self,
-        request: ehpc20180412_models.SummaryImagesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.SummaryImagesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SummaryImages',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.SummaryImagesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def summary_images_with_options_async(
-        self,
-        request: ehpc20180412_models.SummaryImagesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.SummaryImagesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SummaryImages',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.SummaryImagesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def summary_images(
-        self,
-        request: ehpc20180412_models.SummaryImagesRequest,
-    ) -> ehpc20180412_models.SummaryImagesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.summary_images_with_options(request, runtime)
-
-    async def summary_images_async(
-        self,
-        request: ehpc20180412_models.SummaryImagesRequest,
-    ) -> ehpc20180412_models.SummaryImagesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.summary_images_with_options_async(request, runtime)
-
-    def summary_images_info_with_options(
-        self,
-        request: ehpc20180412_models.SummaryImagesInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.SummaryImagesInfoResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SummaryImagesInfo',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.SummaryImagesInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def summary_images_info_with_options_async(
-        self,
-        request: ehpc20180412_models.SummaryImagesInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20180412_models.SummaryImagesInfoResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SummaryImagesInfo',
-            version='2018-04-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20180412_models.SummaryImagesInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def summary_images_info(
-        self,
-        request: ehpc20180412_models.SummaryImagesInfoRequest,
-    ) -> ehpc20180412_models.SummaryImagesInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.summary_images_info_with_options(request, runtime)
-
-    async def summary_images_info_async(
-        self,
-        request: ehpc20180412_models.SummaryImagesInfoRequest,
-    ) -> ehpc20180412_models.SummaryImagesInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.summary_images_info_with_options_async(request, runtime)
 
     def sync_users_with_options(
         self,
         request: ehpc20180412_models.SyncUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.SyncUsersResponse:
+        """
+        @summary Synchronizes local cluster users to a hybrid cloud cluster in hybrid-cloud proxy mode.
+        
+        @param request: SyncUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncUsersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9246,6 +9129,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.SyncUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.SyncUsersResponse:
+        """
+        @summary Synchronizes local cluster users to a hybrid cloud cluster in hybrid-cloud proxy mode.
+        
+        @param request: SyncUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncUsersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9271,6 +9161,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.SyncUsersRequest,
     ) -> ehpc20180412_models.SyncUsersResponse:
+        """
+        @summary Synchronizes local cluster users to a hybrid cloud cluster in hybrid-cloud proxy mode.
+        
+        @param request: SyncUsersRequest
+        @return: SyncUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.sync_users_with_options(request, runtime)
 
@@ -9278,6 +9174,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.SyncUsersRequest,
     ) -> ehpc20180412_models.SyncUsersResponse:
+        """
+        @summary Synchronizes local cluster users to a hybrid cloud cluster in hybrid-cloud proxy mode.
+        
+        @param request: SyncUsersRequest
+        @return: SyncUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.sync_users_with_options_async(request, runtime)
 
@@ -9286,6 +9188,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.TagResourcesResponse:
+        """
+        @summary Creates tags and attach the tags to a specified resource.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -9320,6 +9229,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.TagResourcesResponse:
+        """
+        @summary Creates tags and attach the tags to a specified resource.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -9353,6 +9269,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.TagResourcesRequest,
     ) -> ehpc20180412_models.TagResourcesResponse:
+        """
+        @summary Creates tags and attach the tags to a specified resource.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -9360,6 +9282,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.TagResourcesRequest,
     ) -> ehpc20180412_models.TagResourcesResponse:
+        """
+        @summary Creates tags and attach the tags to a specified resource.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -9368,6 +9296,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.UnTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.UnTagResourcesResponse:
+        """
+        @summary Removes tags from a specified resource.
+        
+        @param request: UnTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -9404,6 +9339,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.UnTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.UnTagResourcesResponse:
+        """
+        @summary Removes tags from a specified resource.
+        
+        @param request: UnTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -9439,6 +9381,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.UnTagResourcesRequest,
     ) -> ehpc20180412_models.UnTagResourcesResponse:
+        """
+        @summary Removes tags from a specified resource.
+        
+        @param request: UnTagResourcesRequest
+        @return: UnTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.un_tag_resources_with_options(request, runtime)
 
@@ -9446,6 +9394,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.UnTagResourcesRequest,
     ) -> ehpc20180412_models.UnTagResourcesResponse:
+        """
+        @summary Removes tags from a specified resource.
+        
+        @param request: UnTagResourcesRequest
+        @return: UnTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.un_tag_resources_with_options_async(request, runtime)
 
@@ -9454,6 +9408,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.UninstallSoftwareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.UninstallSoftwareResponse:
+        """
+        @summary Uninstalls software from a cluster.
+        
+        @param request: UninstallSoftwareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UninstallSoftwareResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9480,6 +9441,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.UninstallSoftwareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.UninstallSoftwareResponse:
+        """
+        @summary Uninstalls software from a cluster.
+        
+        @param request: UninstallSoftwareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UninstallSoftwareResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9505,6 +9473,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.UninstallSoftwareRequest,
     ) -> ehpc20180412_models.UninstallSoftwareResponse:
+        """
+        @summary Uninstalls software from a cluster.
+        
+        @param request: UninstallSoftwareRequest
+        @return: UninstallSoftwareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.uninstall_software_with_options(request, runtime)
 
@@ -9512,6 +9486,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.UninstallSoftwareRequest,
     ) -> ehpc20180412_models.UninstallSoftwareResponse:
+        """
+        @summary Uninstalls software from a cluster.
+        
+        @param request: UninstallSoftwareRequest
+        @return: UninstallSoftwareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.uninstall_software_with_options_async(request, runtime)
 
@@ -9520,6 +9500,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.UpdateClusterVolumesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.UpdateClusterVolumesResponse:
+        """
+        @summary Mount new storage resources to a cluster.
+        
+        @param request: UpdateClusterVolumesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClusterVolumesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9546,6 +9533,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.UpdateClusterVolumesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.UpdateClusterVolumesResponse:
+        """
+        @summary Mount new storage resources to a cluster.
+        
+        @param request: UpdateClusterVolumesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClusterVolumesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9571,6 +9565,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.UpdateClusterVolumesRequest,
     ) -> ehpc20180412_models.UpdateClusterVolumesResponse:
+        """
+        @summary Mount new storage resources to a cluster.
+        
+        @param request: UpdateClusterVolumesRequest
+        @return: UpdateClusterVolumesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_cluster_volumes_with_options(request, runtime)
 
@@ -9578,6 +9578,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.UpdateClusterVolumesRequest,
     ) -> ehpc20180412_models.UpdateClusterVolumesResponse:
+        """
+        @summary Mount new storage resources to a cluster.
+        
+        @param request: UpdateClusterVolumesRequest
+        @return: UpdateClusterVolumesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_cluster_volumes_with_options_async(request, runtime)
 
@@ -9587,7 +9593,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.UpdateQueueConfigResponse:
         """
-        After you update the resource group, the nodes that you add by scaling out the cluster are automatically included in the resource group.
+        @summary Updates the resource group information and the instance types of compute nodes for a queue of a cluster.
+        
+        @description After you update the resource group, the nodes that you add by scaling out the cluster are automatically included in the resource group.
         
         @param request: UpdateQueueConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9620,7 +9628,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.UpdateQueueConfigResponse:
         """
-        After you update the resource group, the nodes that you add by scaling out the cluster are automatically included in the resource group.
+        @summary Updates the resource group information and the instance types of compute nodes for a queue of a cluster.
+        
+        @description After you update the resource group, the nodes that you add by scaling out the cluster are automatically included in the resource group.
         
         @param request: UpdateQueueConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9652,7 +9662,9 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.UpdateQueueConfigRequest,
     ) -> ehpc20180412_models.UpdateQueueConfigResponse:
         """
-        After you update the resource group, the nodes that you add by scaling out the cluster are automatically included in the resource group.
+        @summary Updates the resource group information and the instance types of compute nodes for a queue of a cluster.
+        
+        @description After you update the resource group, the nodes that you add by scaling out the cluster are automatically included in the resource group.
         
         @param request: UpdateQueueConfigRequest
         @return: UpdateQueueConfigResponse
@@ -9665,7 +9677,9 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.UpdateQueueConfigRequest,
     ) -> ehpc20180412_models.UpdateQueueConfigResponse:
         """
-        After you update the resource group, the nodes that you add by scaling out the cluster are automatically included in the resource group.
+        @summary Updates the resource group information and the instance types of compute nodes for a queue of a cluster.
+        
+        @description After you update the resource group, the nodes that you add by scaling out the cluster are automatically included in the resource group.
         
         @param request: UpdateQueueConfigRequest
         @return: UpdateQueueConfigResponse
@@ -9678,6 +9692,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.UpgradeClientRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.UpgradeClientResponse:
+        """
+        @summary Updates the client (ehpcutil) in a cluster to a new version.
+        
+        @param request: UpgradeClientRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeClientResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9704,6 +9725,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.UpgradeClientRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.UpgradeClientResponse:
+        """
+        @summary Updates the client (ehpcutil) in a cluster to a new version.
+        
+        @param request: UpgradeClientRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeClientResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9729,6 +9757,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.UpgradeClientRequest,
     ) -> ehpc20180412_models.UpgradeClientResponse:
+        """
+        @summary Updates the client (ehpcutil) in a cluster to a new version.
+        
+        @param request: UpgradeClientRequest
+        @return: UpgradeClientResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_client_with_options(request, runtime)
 
@@ -9736,5 +9770,11 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.UpgradeClientRequest,
     ) -> ehpc20180412_models.UpgradeClientResponse:
+        """
+        @summary Updates the client (ehpcutil) in a cluster to a new version.
+        
+        @param request: UpgradeClientRequest
+        @return: UpgradeClientResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_client_with_options_async(request, runtime)
