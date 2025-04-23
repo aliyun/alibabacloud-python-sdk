@@ -1,3 +1,12 @@
+2025-04-23 Version: 3.4.2
+- Update API Initialize: add request parameters DateOfBirth.
+- Update API Initialize: add request parameters DateOfExpiry.
+- Update API Initialize: add request parameters DocPageConfig.
+- Update API Initialize: add request parameters DocumentNumber.
+- Update API Initialize: add request parameters MRTDInput.
+- Update API Initialize: add request parameters UseNFC.
+
+
 2025-04-21 Version: 3.4.1
 - Generated python 2022-08-09 for Cloudauth-intl.
 

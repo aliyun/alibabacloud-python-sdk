@@ -1607,17 +1607,21 @@ class Client(OpenApiClient):
 
     def initialize_with_options(
         self,
-        request: cloudauth_intl_20220809_models.InitializeRequest,
+        tmp_req: cloudauth_intl_20220809_models.InitializeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.InitializeResponse:
         """
         @summary 认证初始化
         
-        @param request: InitializeRequest
+        @param tmp_req: InitializeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: InitializeResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cloudauth_intl_20220809_models.InitializeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.doc_page_config):
+            request.doc_page_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.doc_page_config, 'DocPageConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_quality_check):
             query['AppQualityCheck'] = request.app_quality_check
@@ -1629,12 +1633,20 @@ class Client(OpenApiClient):
             query['CallbackUrl'] = request.callback_url
         if not UtilClient.is_unset(request.crop):
             query['Crop'] = request.crop
+        if not UtilClient.is_unset(request.date_of_birth):
+            query['DateOfBirth'] = request.date_of_birth
+        if not UtilClient.is_unset(request.date_of_expiry):
+            query['DateOfExpiry'] = request.date_of_expiry
+        if not UtilClient.is_unset(request.doc_page_config_shrink):
+            query['DocPageConfig'] = request.doc_page_config_shrink
         if not UtilClient.is_unset(request.doc_scan_mode):
             query['DocScanMode'] = request.doc_scan_mode
         if not UtilClient.is_unset(request.doc_type):
             query['DocType'] = request.doc_type
         if not UtilClient.is_unset(request.doc_video):
             query['DocVideo'] = request.doc_video
+        if not UtilClient.is_unset(request.document_number):
+            query['DocumentNumber'] = request.document_number
         if not UtilClient.is_unset(request.experience_code):
             query['ExperienceCode'] = request.experience_code
         if not UtilClient.is_unset(request.face_picture_url):
@@ -1647,6 +1659,8 @@ class Client(OpenApiClient):
             query['IdThreshold'] = request.id_threshold
         if not UtilClient.is_unset(request.language_config):
             query['LanguageConfig'] = request.language_config
+        if not UtilClient.is_unset(request.mrtdinput):
+            query['MRTDInput'] = request.mrtdinput
         if not UtilClient.is_unset(request.merchant_biz_id):
             query['MerchantBizId'] = request.merchant_biz_id
         if not UtilClient.is_unset(request.merchant_user_id):
@@ -1677,6 +1691,8 @@ class Client(OpenApiClient):
             query['ShowOcrResult'] = request.show_ocr_result
         if not UtilClient.is_unset(request.style_config):
             query['StyleConfig'] = request.style_config
+        if not UtilClient.is_unset(request.use_nfc):
+            query['UseNFC'] = request.use_nfc
         body = {}
         if not UtilClient.is_unset(request.face_picture_base_64):
             body['FacePictureBase64'] = request.face_picture_base_64
@@ -1702,17 +1718,21 @@ class Client(OpenApiClient):
 
     async def initialize_with_options_async(
         self,
-        request: cloudauth_intl_20220809_models.InitializeRequest,
+        tmp_req: cloudauth_intl_20220809_models.InitializeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.InitializeResponse:
         """
         @summary 认证初始化
         
-        @param request: InitializeRequest
+        @param tmp_req: InitializeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: InitializeResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cloudauth_intl_20220809_models.InitializeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.doc_page_config):
+            request.doc_page_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.doc_page_config, 'DocPageConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_quality_check):
             query['AppQualityCheck'] = request.app_quality_check
@@ -1724,12 +1744,20 @@ class Client(OpenApiClient):
             query['CallbackUrl'] = request.callback_url
         if not UtilClient.is_unset(request.crop):
             query['Crop'] = request.crop
+        if not UtilClient.is_unset(request.date_of_birth):
+            query['DateOfBirth'] = request.date_of_birth
+        if not UtilClient.is_unset(request.date_of_expiry):
+            query['DateOfExpiry'] = request.date_of_expiry
+        if not UtilClient.is_unset(request.doc_page_config_shrink):
+            query['DocPageConfig'] = request.doc_page_config_shrink
         if not UtilClient.is_unset(request.doc_scan_mode):
             query['DocScanMode'] = request.doc_scan_mode
         if not UtilClient.is_unset(request.doc_type):
             query['DocType'] = request.doc_type
         if not UtilClient.is_unset(request.doc_video):
             query['DocVideo'] = request.doc_video
+        if not UtilClient.is_unset(request.document_number):
+            query['DocumentNumber'] = request.document_number
         if not UtilClient.is_unset(request.experience_code):
             query['ExperienceCode'] = request.experience_code
         if not UtilClient.is_unset(request.face_picture_url):
@@ -1742,6 +1770,8 @@ class Client(OpenApiClient):
             query['IdThreshold'] = request.id_threshold
         if not UtilClient.is_unset(request.language_config):
             query['LanguageConfig'] = request.language_config
+        if not UtilClient.is_unset(request.mrtdinput):
+            query['MRTDInput'] = request.mrtdinput
         if not UtilClient.is_unset(request.merchant_biz_id):
             query['MerchantBizId'] = request.merchant_biz_id
         if not UtilClient.is_unset(request.merchant_user_id):
@@ -1772,6 +1802,8 @@ class Client(OpenApiClient):
             query['ShowOcrResult'] = request.show_ocr_result
         if not UtilClient.is_unset(request.style_config):
             query['StyleConfig'] = request.style_config
+        if not UtilClient.is_unset(request.use_nfc):
+            query['UseNFC'] = request.use_nfc
         body = {}
         if not UtilClient.is_unset(request.face_picture_base_64):
             body['FacePictureBase64'] = request.face_picture_base_64
