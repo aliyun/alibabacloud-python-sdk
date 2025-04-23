@@ -128,16 +128,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ApplyComputeQuotaPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ApplyComputeQuotaPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ApplyComputeQuotaPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def apply_compute_quota_plan_with_options_async(
         self,
@@ -170,16 +164,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ApplyComputeQuotaPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ApplyComputeQuotaPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ApplyComputeQuotaPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def apply_compute_quota_plan(
         self,
@@ -254,16 +242,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateComputeQuotaPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateComputeQuotaPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateComputeQuotaPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_compute_quota_plan_with_options_async(
         self,
@@ -304,16 +286,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateComputeQuotaPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateComputeQuotaPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateComputeQuotaPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_compute_quota_plan(
         self,
@@ -388,16 +364,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateMmsDataSourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateMmsDataSourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateMmsDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_mms_data_source_with_options_async(
         self,
@@ -436,16 +406,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateMmsDataSourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateMmsDataSourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateMmsDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_mms_data_source(
         self,
@@ -498,16 +462,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateMmsFetchMetadataJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateMmsFetchMetadataJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateMmsFetchMetadataJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_mms_fetch_metadata_job_with_options_async(
         self,
@@ -536,16 +494,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateMmsFetchMetadataJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateMmsFetchMetadataJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateMmsFetchMetadataJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_mms_fetch_metadata_job(
         self,
@@ -645,16 +597,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateMmsJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateMmsJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateMmsJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_mms_job_with_options_async(
         self,
@@ -728,16 +674,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateMmsJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateMmsJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateMmsJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_mms_job(
         self,
@@ -804,16 +744,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreatePackageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreatePackageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreatePackageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_package_with_options_async(
         self,
@@ -850,16 +784,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreatePackageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreatePackageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreatePackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_package(
         self,
@@ -921,16 +849,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateProjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateProjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_project_with_options_async(
         self,
@@ -962,16 +884,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateProjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateProjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_project(
         self,
@@ -1038,16 +954,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateQuotaPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateQuotaPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateQuotaPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_quota_plan_with_options_async(
         self,
@@ -1086,16 +996,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateQuotaPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateQuotaPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateQuotaPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_quota_plan(
         self,
@@ -1158,16 +1062,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateRoleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateRoleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_role_with_options_async(
         self,
@@ -1200,16 +1098,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateRoleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.CreateRoleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_role(
         self,
@@ -1269,16 +1161,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.DeleteComputeQuotaPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.DeleteComputeQuotaPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.DeleteComputeQuotaPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_compute_quota_plan_with_options_async(
         self,
@@ -1308,16 +1194,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.DeleteComputeQuotaPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.DeleteComputeQuotaPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.DeleteComputeQuotaPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_compute_quota_plan(
         self,
@@ -1374,16 +1254,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.DeleteMmsDataSourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.DeleteMmsDataSourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.DeleteMmsDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_mms_data_source_with_options_async(
         self,
@@ -1412,16 +1286,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.DeleteMmsDataSourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.DeleteMmsDataSourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.DeleteMmsDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_mms_data_source(
         self,
@@ -1475,16 +1343,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.DeleteMmsJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.DeleteMmsJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.DeleteMmsJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_mms_job_with_options_async(
         self,
@@ -1512,16 +1374,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.DeleteMmsJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.DeleteMmsJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.DeleteMmsJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_mms_job(
         self,
@@ -1584,16 +1440,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.DeleteQuotaPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.DeleteQuotaPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.DeleteQuotaPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_quota_plan_with_options_async(
         self,
@@ -1632,16 +1482,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.DeleteQuotaPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.DeleteQuotaPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.DeleteQuotaPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_quota_plan(
         self,
@@ -1702,16 +1546,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetComputeEffectivePlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetComputeEffectivePlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetComputeEffectivePlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_compute_effective_plan_with_options_async(
         self,
@@ -1740,16 +1578,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetComputeEffectivePlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetComputeEffectivePlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetComputeEffectivePlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_compute_effective_plan(
         self,
@@ -1805,16 +1637,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetComputeQuotaPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetComputeQuotaPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetComputeQuotaPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_compute_quota_plan_with_options_async(
         self,
@@ -1844,16 +1670,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetComputeQuotaPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetComputeQuotaPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetComputeQuotaPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_compute_quota_plan(
         self,
@@ -1917,16 +1737,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetComputeQuotaScheduleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetComputeQuotaScheduleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetComputeQuotaScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_compute_quota_schedule_with_options_async(
         self,
@@ -1962,16 +1776,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetComputeQuotaScheduleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetComputeQuotaScheduleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetComputeQuotaScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_compute_quota_schedule(
         self,
@@ -2030,16 +1838,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetJobInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetJobInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetJobInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_job_info_with_options_async(
         self,
@@ -2068,16 +1870,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetJobInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetJobInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetJobInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_job_info(
         self,
@@ -2152,16 +1948,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetJobResourceUsageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetJobResourceUsageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetJobResourceUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_job_resource_usage_with_options_async(
         self,
@@ -2210,16 +2000,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetJobResourceUsageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetJobResourceUsageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetJobResourceUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_job_resource_usage(
         self,
@@ -2275,16 +2059,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsAsyncTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsAsyncTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsAsyncTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_mms_async_task_with_options_async(
         self,
@@ -2312,16 +2090,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsAsyncTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsAsyncTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsAsyncTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_mms_async_task(
         self,
@@ -2381,16 +2153,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsDataSourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsDataSourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_mms_data_source_with_options_async(
         self,
@@ -2426,16 +2192,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsDataSourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsDataSourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_mms_data_source(
         self,
@@ -2489,16 +2249,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsDbResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsDbResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsDbResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_mms_db_with_options_async(
         self,
@@ -2526,16 +2280,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsDbResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsDbResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsDbResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_mms_db(
         self,
@@ -2587,16 +2335,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsFetchMetadataJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsFetchMetadataJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsFetchMetadataJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_mms_fetch_metadata_job_with_options_async(
         self,
@@ -2624,16 +2366,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsFetchMetadataJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsFetchMetadataJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsFetchMetadataJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_mms_fetch_metadata_job(
         self,
@@ -2685,16 +2421,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_mms_job_with_options_async(
         self,
@@ -2722,16 +2452,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_mms_job(
         self,
@@ -2783,16 +2507,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsPartitionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsPartitionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsPartitionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_mms_partition_with_options_async(
         self,
@@ -2820,16 +2538,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsPartitionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsPartitionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsPartitionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_mms_partition(
         self,
@@ -2881,16 +2593,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsTableResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsTableResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsTableResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_mms_table_with_options_async(
         self,
@@ -2918,16 +2624,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsTableResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsTableResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_mms_table(
         self,
@@ -2979,16 +2679,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_mms_task_with_options_async(
         self,
@@ -3016,16 +2710,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetMmsTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_mms_task(
         self,
@@ -3086,16 +2774,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetPackageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetPackageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_package_with_options_async(
         self,
@@ -3132,16 +2814,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetPackageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetPackageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_package(
         self,
@@ -3209,16 +2885,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetProjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetProjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_project_with_options_async(
         self,
@@ -3254,16 +2924,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetProjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetProjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_project(
         self,
@@ -3335,16 +2999,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetQuotaResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetQuotaResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_quota_with_options_async(
         self,
@@ -3386,16 +3044,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetQuotaResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetQuotaResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_quota(
         self,
@@ -3464,16 +3116,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetQuotaPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetQuotaPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetQuotaPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_quota_plan_with_options_async(
         self,
@@ -3512,16 +3158,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetQuotaPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetQuotaPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetQuotaPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_quota_plan(
         self,
@@ -3593,16 +3233,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetQuotaScheduleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetQuotaScheduleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetQuotaScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_quota_schedule_with_options_async(
         self,
@@ -3642,16 +3276,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetQuotaScheduleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetQuotaScheduleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetQuotaScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_quota_schedule(
         self,
@@ -3739,16 +3367,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetQuotaUsageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetQuotaUsageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetQuotaUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_quota_usage_with_options_async(
         self,
@@ -3806,16 +3428,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetQuotaUsageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetQuotaUsageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetQuotaUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_quota_usage(
         self,
@@ -3875,16 +3491,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetRoleAclResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetRoleAclResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetRoleAclResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_role_acl_with_options_async(
         self,
@@ -3914,16 +3524,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetRoleAclResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetRoleAclResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetRoleAclResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_role_acl(
         self,
@@ -3990,16 +3594,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetRoleAclOnObjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetRoleAclOnObjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetRoleAclOnObjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_role_acl_on_object_with_options_async(
         self,
@@ -4038,16 +3636,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetRoleAclOnObjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetRoleAclOnObjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetRoleAclOnObjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_role_acl_on_object(
         self,
@@ -4109,16 +3701,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetRolePolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetRolePolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetRolePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_role_policy_with_options_async(
         self,
@@ -4148,16 +3734,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetRolePolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetRolePolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetRolePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_role_policy(
         self,
@@ -4236,16 +3816,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetRunningJobsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetRunningJobsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetRunningJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_running_jobs_with_options_async(
         self,
@@ -4296,16 +3870,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetRunningJobsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetRunningJobsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetRunningJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_running_jobs(
         self,
@@ -4372,16 +3940,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetTableInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetTableInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetTableInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_table_info_with_options_async(
         self,
@@ -4420,16 +3982,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetTableInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetTableInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetTableInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_table_info(
         self,
@@ -4490,16 +4046,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetTrustedProjectsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetTrustedProjectsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetTrustedProjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_trusted_projects_with_options_async(
         self,
@@ -4528,16 +4078,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetTrustedProjectsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.GetTrustedProjectsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetTrustedProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_trusted_projects(
         self,
@@ -4601,16 +4145,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.KillJobsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.KillJobsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.KillJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def kill_jobs_with_options_async(
         self,
@@ -4648,16 +4186,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.KillJobsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.KillJobsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.KillJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def kill_jobs(
         self,
@@ -4740,16 +4272,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListComputeMetricsByInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListComputeMetricsByInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListComputeMetricsByInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_compute_metrics_by_instance_with_options_async(
         self,
@@ -4804,16 +4330,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListComputeMetricsByInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListComputeMetricsByInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListComputeMetricsByInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_compute_metrics_by_instance(
         self,
@@ -4870,16 +4390,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListComputeQuotaPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListComputeQuotaPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListComputeQuotaPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_compute_quota_plan_with_options_async(
         self,
@@ -4908,16 +4422,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListComputeQuotaPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListComputeQuotaPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListComputeQuotaPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_compute_quota_plan(
         self,
@@ -4985,16 +4493,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListFunctionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListFunctionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListFunctionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_functions_with_options_async(
         self,
@@ -5036,16 +4538,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListFunctionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListFunctionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListFunctionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_functions(
         self,
@@ -5150,16 +4646,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListJobInfosResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListJobInfosResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListJobInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_job_infos_with_options_async(
         self,
@@ -5234,16 +4724,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListJobInfosResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListJobInfosResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListJobInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_job_infos(
         self,
@@ -5322,16 +4806,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListJobMetricResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListJobMetricResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListJobMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_job_metric_with_options_async(
         self,
@@ -5382,16 +4860,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListJobMetricResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListJobMetricResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListJobMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_job_metric(
         self,
@@ -5492,16 +4964,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListJobSnapshotInfosResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListJobSnapshotInfosResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListJobSnapshotInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_job_snapshot_infos_with_options_async(
         self,
@@ -5574,16 +5040,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListJobSnapshotInfosResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListJobSnapshotInfosResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListJobSnapshotInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_job_snapshot_infos(
         self,
@@ -5652,16 +5112,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsDataSourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsDataSourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsDataSourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_mms_data_sources_with_options_async(
         self,
@@ -5702,16 +5156,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsDataSourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsDataSourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsDataSourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_mms_data_sources(
         self,
@@ -5783,16 +5231,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsDbsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsDbsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsDbsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_mms_dbs_with_options_async(
         self,
@@ -5840,16 +5282,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsDbsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsDbsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsDbsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_mms_dbs(
         self,
@@ -5931,16 +5367,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsJobsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsJobsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_mms_jobs_with_options_async(
         self,
@@ -5992,16 +5422,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsJobsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsJobsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_mms_jobs(
         self,
@@ -6085,16 +5509,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsPartitionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsPartitionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsPartitionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_mms_partitions_with_options_async(
         self,
@@ -6152,16 +5570,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsPartitionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsPartitionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsPartitionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_mms_partitions(
         self,
@@ -6247,16 +5659,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsTablesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsTablesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsTablesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_mms_tables_with_options_async(
         self,
@@ -6316,16 +5722,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsTablesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsTablesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsTablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_mms_tables(
         self,
@@ -6379,16 +5779,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsTaskLogsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsTaskLogsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsTaskLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_mms_task_logs_with_options_async(
         self,
@@ -6416,16 +5810,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsTaskLogsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsTaskLogsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsTaskLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_mms_task_logs(
         self,
@@ -6503,16 +5891,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsTasksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsTasksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_mms_tasks_with_options_async(
         self,
@@ -6566,16 +5948,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsTasksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListMmsTasksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_mms_tasks(
         self,
@@ -6630,16 +6006,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListPackagesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListPackagesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListPackagesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_packages_with_options_async(
         self,
@@ -6668,16 +6038,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListPackagesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListPackagesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListPackagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_packages(
         self,
@@ -6732,16 +6096,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListProjectUsersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListProjectUsersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListProjectUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_project_users_with_options_async(
         self,
@@ -6770,16 +6128,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListProjectUsersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListProjectUsersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListProjectUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_project_users(
         self,
@@ -6858,16 +6210,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListProjectsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListProjectsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListProjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_projects_with_options_async(
         self,
@@ -6920,16 +6266,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListProjectsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListProjectsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_projects(
         self,
@@ -7004,16 +6344,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListQuotasResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListQuotasResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListQuotasResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_quotas_with_options_async(
         self,
@@ -7060,16 +6394,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListQuotasResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListQuotasResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListQuotasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_quotas(
         self,
@@ -7135,16 +6463,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListQuotasPlansResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListQuotasPlansResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListQuotasPlansResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_quotas_plans_with_options_async(
         self,
@@ -7182,16 +6504,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListQuotasPlansResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListQuotasPlansResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListQuotasPlansResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_quotas_plans(
         self,
@@ -7263,16 +6579,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_resources_with_options_async(
         self,
@@ -7314,16 +6624,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_resources(
         self,
@@ -7382,16 +6686,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListRolesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListRolesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListRolesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_roles_with_options_async(
         self,
@@ -7420,16 +6718,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListRolesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListRolesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListRolesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_roles(
         self,
@@ -7514,16 +6806,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListStoragePartitionsInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListStoragePartitionsInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListStoragePartitionsInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_storage_partitions_info_with_options_async(
         self,
@@ -7582,16 +6868,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListStoragePartitionsInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListStoragePartitionsInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListStoragePartitionsInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_storage_partitions_info(
         self,
@@ -7683,16 +6963,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListStorageTablesInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListStorageTablesInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListStorageTablesInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_storage_tables_info_with_options_async(
         self,
@@ -7752,16 +7026,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListStorageTablesInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListStorageTablesInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListStorageTablesInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_storage_tables_info(
         self,
@@ -7835,16 +7103,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListTablesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListTablesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListTablesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tables_with_options_async(
         self,
@@ -7888,16 +7150,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListTablesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListTablesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListTablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tables(
         self,
@@ -7956,16 +7212,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListTunnelQuotaTimerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListTunnelQuotaTimerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListTunnelQuotaTimerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tunnel_quota_timer_with_options_async(
         self,
@@ -7994,16 +7244,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListTunnelQuotaTimerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListTunnelQuotaTimerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListTunnelQuotaTimerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tunnel_quota_timer(
         self,
@@ -8066,16 +7310,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListUsersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListUsersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_users_with_options_async(
         self,
@@ -8112,16 +7350,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListUsersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListUsersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_users(
         self,
@@ -8179,16 +7411,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListUsersByRoleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListUsersByRoleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListUsersByRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_users_by_role_with_options_async(
         self,
@@ -8218,16 +7444,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListUsersByRoleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.ListUsersByRoleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListUsersByRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_users_by_role(
         self,
@@ -8265,6 +7485,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.QueryQuotaResponse:
         """
+        @summary Queries the information about a specified level-1 quota group.
+        
         @param request: QueryQuotaRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -8295,16 +7517,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.QueryQuotaResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.QueryQuotaResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.QueryQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def query_quota_with_options_async(
         self,
@@ -8314,6 +7530,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.QueryQuotaResponse:
         """
+        @summary Queries the information about a specified level-1 quota group.
+        
         @param request: QueryQuotaRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -8344,16 +7562,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.QueryQuotaResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.QueryQuotaResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.QueryQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def query_quota(
         self,
@@ -8361,6 +7573,8 @@ class Client(OpenApiClient):
         request: max_compute_20220104_models.QueryQuotaRequest,
     ) -> max_compute_20220104_models.QueryQuotaResponse:
         """
+        @summary Queries the information about a specified level-1 quota group.
+        
         @param request: QueryQuotaRequest
         @return: QueryQuotaResponse
         """
@@ -8374,12 +7588,310 @@ class Client(OpenApiClient):
         request: max_compute_20220104_models.QueryQuotaRequest,
     ) -> max_compute_20220104_models.QueryQuotaResponse:
         """
+        @summary Queries the information about a specified level-1 quota group.
+        
         @param request: QueryQuotaRequest
         @return: QueryQuotaResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.query_quota_with_options_async(nickname, request, headers, runtime)
+
+    def query_tunnel_metric_with_options(
+        self,
+        metric: str,
+        request: max_compute_20220104_models.QueryTunnelMetricRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.QueryTunnelMetricResponse:
+        """
+        @summary 查询tunnel资源使用信息
+        
+        @param request: QueryTunnelMetricRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTunnelMetricResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.strategy):
+            query['strategy'] = request.strategy
+        body = {}
+        if not UtilClient.is_unset(request.code_list):
+            body['codeList'] = request.code_list
+        if not UtilClient.is_unset(request.group_list):
+            body['groupList'] = request.group_list
+        if not UtilClient.is_unset(request.operation_list):
+            body['operationList'] = request.operation_list
+        if not UtilClient.is_unset(request.project):
+            body['project'] = request.project
+        if not UtilClient.is_unset(request.quota_nickname):
+            body['quotaNickname'] = request.quota_nickname
+        if not UtilClient.is_unset(request.table_list):
+            body['tableList'] = request.table_list
+        if not UtilClient.is_unset(request.top_n):
+            body['topN'] = request.top_n
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryTunnelMetric',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/observations/tunnel/{OpenApiUtilClient.get_encode_param(metric)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.QueryTunnelMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_tunnel_metric_with_options_async(
+        self,
+        metric: str,
+        request: max_compute_20220104_models.QueryTunnelMetricRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.QueryTunnelMetricResponse:
+        """
+        @summary 查询tunnel资源使用信息
+        
+        @param request: QueryTunnelMetricRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTunnelMetricResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.strategy):
+            query['strategy'] = request.strategy
+        body = {}
+        if not UtilClient.is_unset(request.code_list):
+            body['codeList'] = request.code_list
+        if not UtilClient.is_unset(request.group_list):
+            body['groupList'] = request.group_list
+        if not UtilClient.is_unset(request.operation_list):
+            body['operationList'] = request.operation_list
+        if not UtilClient.is_unset(request.project):
+            body['project'] = request.project
+        if not UtilClient.is_unset(request.quota_nickname):
+            body['quotaNickname'] = request.quota_nickname
+        if not UtilClient.is_unset(request.table_list):
+            body['tableList'] = request.table_list
+        if not UtilClient.is_unset(request.top_n):
+            body['topN'] = request.top_n
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryTunnelMetric',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/observations/tunnel/{OpenApiUtilClient.get_encode_param(metric)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.QueryTunnelMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_tunnel_metric(
+        self,
+        metric: str,
+        request: max_compute_20220104_models.QueryTunnelMetricRequest,
+    ) -> max_compute_20220104_models.QueryTunnelMetricResponse:
+        """
+        @summary 查询tunnel资源使用信息
+        
+        @param request: QueryTunnelMetricRequest
+        @return: QueryTunnelMetricResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_tunnel_metric_with_options(metric, request, headers, runtime)
+
+    async def query_tunnel_metric_async(
+        self,
+        metric: str,
+        request: max_compute_20220104_models.QueryTunnelMetricRequest,
+    ) -> max_compute_20220104_models.QueryTunnelMetricResponse:
+        """
+        @summary 查询tunnel资源使用信息
+        
+        @param request: QueryTunnelMetricRequest
+        @return: QueryTunnelMetricResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_tunnel_metric_with_options_async(metric, request, headers, runtime)
+
+    def query_tunnel_metric_detail_with_options(
+        self,
+        metric: str,
+        request: max_compute_20220104_models.QueryTunnelMetricDetailRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.QueryTunnelMetricDetailResponse:
+        """
+        @summary 查询tunnel资源使用详情
+        
+        @param request: QueryTunnelMetricDetailRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTunnelMetricDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        body = {}
+        if not UtilClient.is_unset(request.asc_order):
+            body['ascOrder'] = request.asc_order
+        if not UtilClient.is_unset(request.group_list):
+            body['groupList'] = request.group_list
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.operation_list):
+            body['operationList'] = request.operation_list
+        if not UtilClient.is_unset(request.order_column):
+            body['orderColumn'] = request.order_column
+        if not UtilClient.is_unset(request.project):
+            body['project'] = request.project
+        if not UtilClient.is_unset(request.quota_nickname):
+            body['quotaNickname'] = request.quota_nickname
+        if not UtilClient.is_unset(request.table_list):
+            body['tableList'] = request.table_list
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryTunnelMetricDetail',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/observations/tunnel/{OpenApiUtilClient.get_encode_param(metric)}/detail',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.QueryTunnelMetricDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_tunnel_metric_detail_with_options_async(
+        self,
+        metric: str,
+        request: max_compute_20220104_models.QueryTunnelMetricDetailRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.QueryTunnelMetricDetailResponse:
+        """
+        @summary 查询tunnel资源使用详情
+        
+        @param request: QueryTunnelMetricDetailRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTunnelMetricDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        body = {}
+        if not UtilClient.is_unset(request.asc_order):
+            body['ascOrder'] = request.asc_order
+        if not UtilClient.is_unset(request.group_list):
+            body['groupList'] = request.group_list
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.operation_list):
+            body['operationList'] = request.operation_list
+        if not UtilClient.is_unset(request.order_column):
+            body['orderColumn'] = request.order_column
+        if not UtilClient.is_unset(request.project):
+            body['project'] = request.project
+        if not UtilClient.is_unset(request.quota_nickname):
+            body['quotaNickname'] = request.quota_nickname
+        if not UtilClient.is_unset(request.table_list):
+            body['tableList'] = request.table_list
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryTunnelMetricDetail',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/observations/tunnel/{OpenApiUtilClient.get_encode_param(metric)}/detail',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.QueryTunnelMetricDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_tunnel_metric_detail(
+        self,
+        metric: str,
+        request: max_compute_20220104_models.QueryTunnelMetricDetailRequest,
+    ) -> max_compute_20220104_models.QueryTunnelMetricDetailResponse:
+        """
+        @summary 查询tunnel资源使用详情
+        
+        @param request: QueryTunnelMetricDetailRequest
+        @return: QueryTunnelMetricDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_tunnel_metric_detail_with_options(metric, request, headers, runtime)
+
+    async def query_tunnel_metric_detail_async(
+        self,
+        metric: str,
+        request: max_compute_20220104_models.QueryTunnelMetricDetailRequest,
+    ) -> max_compute_20220104_models.QueryTunnelMetricDetailResponse:
+        """
+        @summary 查询tunnel资源使用详情
+        
+        @param request: QueryTunnelMetricDetailRequest
+        @return: QueryTunnelMetricDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_tunnel_metric_detail_with_options_async(metric, request, headers, runtime)
 
     def retry_mms_job_with_options(
         self,
@@ -8407,16 +7919,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.RetryMmsJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.RetryMmsJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.RetryMmsJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def retry_mms_job_with_options_async(
         self,
@@ -8444,16 +7950,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.RetryMmsJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.RetryMmsJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.RetryMmsJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def retry_mms_job(
         self,
@@ -8505,16 +8005,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.StartMmsJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.StartMmsJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.StartMmsJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_mms_job_with_options_async(
         self,
@@ -8542,16 +8036,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.StartMmsJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.StartMmsJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.StartMmsJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_mms_job(
         self,
@@ -8603,16 +8091,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.StopMmsJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.StopMmsJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.StopMmsJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_mms_job_with_options_async(
         self,
@@ -8640,16 +8122,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.StopMmsJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.StopMmsJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.StopMmsJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_mms_job(
         self,
@@ -8714,16 +8190,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateComputeQuotaPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateComputeQuotaPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateComputeQuotaPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_compute_quota_plan_with_options_async(
         self,
@@ -8764,16 +8234,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateComputeQuotaPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateComputeQuotaPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateComputeQuotaPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_compute_quota_plan(
         self,
@@ -8849,16 +8313,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateComputeQuotaScheduleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateComputeQuotaScheduleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateComputeQuotaScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_compute_quota_schedule_with_options_async(
         self,
@@ -8898,16 +8356,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateComputeQuotaScheduleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateComputeQuotaScheduleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateComputeQuotaScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_compute_quota_schedule(
         self,
@@ -8979,16 +8431,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateComputeSubQuotaResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateComputeSubQuotaResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateComputeSubQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_compute_sub_quota_with_options_async(
         self,
@@ -9024,16 +8470,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateComputeSubQuotaResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateComputeSubQuotaResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateComputeSubQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_compute_sub_quota(
         self,
@@ -9105,16 +8545,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateMmsDataSourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateMmsDataSourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateMmsDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_mms_data_source_with_options_async(
         self,
@@ -9156,16 +8590,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateMmsDataSourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateMmsDataSourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateMmsDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_mms_data_source(
         self,
@@ -9229,16 +8657,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdatePackageResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdatePackageResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdatePackageResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_package_with_options_async(
         self,
@@ -9272,16 +8694,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdatePackageResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdatePackageResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdatePackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_package(
         self,
@@ -9351,16 +8767,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateProjectBasicMetaResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateProjectBasicMetaResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateProjectBasicMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_project_basic_meta_with_options_async(
         self,
@@ -9398,16 +8808,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateProjectBasicMetaResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateProjectBasicMetaResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateProjectBasicMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_project_basic_meta(
         self,
@@ -9473,16 +8877,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateProjectDefaultQuotaResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateProjectDefaultQuotaResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateProjectDefaultQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_project_default_quota_with_options_async(
         self,
@@ -9518,16 +8916,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateProjectDefaultQuotaResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateProjectDefaultQuotaResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateProjectDefaultQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_project_default_quota(
         self,
@@ -9590,16 +8982,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateProjectIpWhiteListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateProjectIpWhiteListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateProjectIpWhiteListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_project_ip_white_list_with_options_async(
         self,
@@ -9632,16 +9018,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateProjectIpWhiteListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateProjectIpWhiteListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateProjectIpWhiteListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_project_ip_white_list(
         self,
@@ -9711,16 +9091,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateQuotaPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateQuotaPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateQuotaPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_quota_plan_with_options_async(
         self,
@@ -9760,16 +9134,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateQuotaPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateQuotaPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateQuotaPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_quota_plan(
         self,
@@ -9840,16 +9208,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateQuotaScheduleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateQuotaScheduleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateQuotaScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_quota_schedule_with_options_async(
         self,
@@ -9888,16 +9250,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateQuotaScheduleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateQuotaScheduleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateQuotaScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_quota_schedule(
         self,
@@ -9966,16 +9322,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateTunnelQuotaTimerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateTunnelQuotaTimerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateTunnelQuotaTimerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_tunnel_quota_timer_with_options_async(
         self,
@@ -10014,16 +9364,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateTunnelQuotaTimerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                max_compute_20220104_models.UpdateTunnelQuotaTimerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateTunnelQuotaTimerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_tunnel_quota_timer(
         self,

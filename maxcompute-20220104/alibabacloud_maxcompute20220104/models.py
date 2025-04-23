@@ -7259,6 +7259,71 @@ class GetQuotaResponseBodyDataSubQuotaInfoListBillingPolicy(TeaModel):
         return self
 
 
+class GetQuotaResponseBodyDataSubQuotaInfoListParameter(TeaModel):
+    def __init__(
+        self,
+        elastic_reserved_cu: int = None,
+        enable_priority: bool = None,
+        force_reserved_min: bool = None,
+        max_cu: int = None,
+        min_cu: int = None,
+        scheduler_type: str = None,
+        single_job_culimit: int = None,
+    ):
+        self.elastic_reserved_cu = elastic_reserved_cu
+        self.enable_priority = enable_priority
+        self.force_reserved_min = force_reserved_min
+        # This parameter is required.
+        self.max_cu = max_cu
+        # This parameter is required.
+        self.min_cu = min_cu
+        self.scheduler_type = scheduler_type
+        self.single_job_culimit = single_job_culimit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.elastic_reserved_cu is not None:
+            result['elasticReservedCU'] = self.elastic_reserved_cu
+        if self.enable_priority is not None:
+            result['enablePriority'] = self.enable_priority
+        if self.force_reserved_min is not None:
+            result['forceReservedMin'] = self.force_reserved_min
+        if self.max_cu is not None:
+            result['maxCU'] = self.max_cu
+        if self.min_cu is not None:
+            result['minCU'] = self.min_cu
+        if self.scheduler_type is not None:
+            result['schedulerType'] = self.scheduler_type
+        if self.single_job_culimit is not None:
+            result['singleJobCULimit'] = self.single_job_culimit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('elasticReservedCU') is not None:
+            self.elastic_reserved_cu = m.get('elasticReservedCU')
+        if m.get('enablePriority') is not None:
+            self.enable_priority = m.get('enablePriority')
+        if m.get('forceReservedMin') is not None:
+            self.force_reserved_min = m.get('forceReservedMin')
+        if m.get('maxCU') is not None:
+            self.max_cu = m.get('maxCU')
+        if m.get('minCU') is not None:
+            self.min_cu = m.get('minCU')
+        if m.get('schedulerType') is not None:
+            self.scheduler_type = m.get('schedulerType')
+        if m.get('singleJobCULimit') is not None:
+            self.single_job_culimit = m.get('singleJobCULimit')
+        return self
+
+
 class GetQuotaResponseBodyDataSubQuotaInfoListSaleTag(TeaModel):
     def __init__(
         self,
@@ -7381,7 +7446,7 @@ class GetQuotaResponseBodyDataSubQuotaInfoList(TeaModel):
         id: str = None,
         name: str = None,
         nick_name: str = None,
-        parameter: Dict[str, Any] = None,
+        parameter: GetQuotaResponseBodyDataSubQuotaInfoListParameter = None,
         parent_id: str = None,
         region_id: str = None,
         sale_tag: GetQuotaResponseBodyDataSubQuotaInfoListSaleTag = None,
@@ -7430,6 +7495,8 @@ class GetQuotaResponseBodyDataSubQuotaInfoList(TeaModel):
     def validate(self):
         if self.billing_policy:
             self.billing_policy.validate()
+        if self.parameter:
+            self.parameter.validate()
         if self.sale_tag:
             self.sale_tag.validate()
         if self.schedule_info:
@@ -7456,7 +7523,7 @@ class GetQuotaResponseBodyDataSubQuotaInfoList(TeaModel):
         if self.nick_name is not None:
             result['nickName'] = self.nick_name
         if self.parameter is not None:
-            result['parameter'] = self.parameter
+            result['parameter'] = self.parameter.to_map()
         if self.parent_id is not None:
             result['parentId'] = self.parent_id
         if self.region_id is not None:
@@ -7495,7 +7562,8 @@ class GetQuotaResponseBodyDataSubQuotaInfoList(TeaModel):
         if m.get('nickName') is not None:
             self.nick_name = m.get('nickName')
         if m.get('parameter') is not None:
-            self.parameter = m.get('parameter')
+            temp_model = GetQuotaResponseBodyDataSubQuotaInfoListParameter()
+            self.parameter = temp_model.from_map(m['parameter'])
         if m.get('parentId') is not None:
             self.parent_id = m.get('parentId')
         if m.get('regionId') is not None:
@@ -7840,6 +7908,71 @@ class GetQuotaResponseBodySubQuotaInfoListBillingPolicy(TeaModel):
         return self
 
 
+class GetQuotaResponseBodySubQuotaInfoListParameter(TeaModel):
+    def __init__(
+        self,
+        elastic_reserved_cu: int = None,
+        enable_priority: bool = None,
+        force_reserved_min: bool = None,
+        max_cu: int = None,
+        min_cu: int = None,
+        scheduler_type: str = None,
+        single_job_culimit: int = None,
+    ):
+        self.elastic_reserved_cu = elastic_reserved_cu
+        self.enable_priority = enable_priority
+        self.force_reserved_min = force_reserved_min
+        # This parameter is required.
+        self.max_cu = max_cu
+        # This parameter is required.
+        self.min_cu = min_cu
+        self.scheduler_type = scheduler_type
+        self.single_job_culimit = single_job_culimit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.elastic_reserved_cu is not None:
+            result['elasticReservedCU'] = self.elastic_reserved_cu
+        if self.enable_priority is not None:
+            result['enablePriority'] = self.enable_priority
+        if self.force_reserved_min is not None:
+            result['forceReservedMin'] = self.force_reserved_min
+        if self.max_cu is not None:
+            result['maxCU'] = self.max_cu
+        if self.min_cu is not None:
+            result['minCU'] = self.min_cu
+        if self.scheduler_type is not None:
+            result['schedulerType'] = self.scheduler_type
+        if self.single_job_culimit is not None:
+            result['singleJobCULimit'] = self.single_job_culimit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('elasticReservedCU') is not None:
+            self.elastic_reserved_cu = m.get('elasticReservedCU')
+        if m.get('enablePriority') is not None:
+            self.enable_priority = m.get('enablePriority')
+        if m.get('forceReservedMin') is not None:
+            self.force_reserved_min = m.get('forceReservedMin')
+        if m.get('maxCU') is not None:
+            self.max_cu = m.get('maxCU')
+        if m.get('minCU') is not None:
+            self.min_cu = m.get('minCU')
+        if m.get('schedulerType') is not None:
+            self.scheduler_type = m.get('schedulerType')
+        if m.get('singleJobCULimit') is not None:
+            self.single_job_culimit = m.get('singleJobCULimit')
+        return self
+
+
 class GetQuotaResponseBodySubQuotaInfoListSaleTag(TeaModel):
     def __init__(
         self,
@@ -7962,7 +8095,7 @@ class GetQuotaResponseBodySubQuotaInfoList(TeaModel):
         id: str = None,
         name: str = None,
         nick_name: str = None,
-        parameter: Dict[str, Any] = None,
+        parameter: GetQuotaResponseBodySubQuotaInfoListParameter = None,
         parent_id: str = None,
         region_id: str = None,
         sale_tag: GetQuotaResponseBodySubQuotaInfoListSaleTag = None,
@@ -8011,6 +8144,8 @@ class GetQuotaResponseBodySubQuotaInfoList(TeaModel):
     def validate(self):
         if self.billing_policy:
             self.billing_policy.validate()
+        if self.parameter:
+            self.parameter.validate()
         if self.sale_tag:
             self.sale_tag.validate()
         if self.schedule_info:
@@ -8037,7 +8172,7 @@ class GetQuotaResponseBodySubQuotaInfoList(TeaModel):
         if self.nick_name is not None:
             result['nickName'] = self.nick_name
         if self.parameter is not None:
-            result['parameter'] = self.parameter
+            result['parameter'] = self.parameter.to_map()
         if self.parent_id is not None:
             result['parentId'] = self.parent_id
         if self.region_id is not None:
@@ -8076,7 +8211,8 @@ class GetQuotaResponseBodySubQuotaInfoList(TeaModel):
         if m.get('nickName') is not None:
             self.nick_name = m.get('nickName')
         if m.get('parameter') is not None:
-            self.parameter = m.get('parameter')
+            temp_model = GetQuotaResponseBodySubQuotaInfoListParameter()
+            self.parameter = temp_model.from_map(m['parameter'])
         if m.get('parentId') is not None:
             self.parent_id = m.get('parentId')
         if m.get('regionId') is not None:
@@ -18583,6 +18719,71 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListBillingPolicy(TeaMo
         return self
 
 
+class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter(TeaModel):
+    def __init__(
+        self,
+        elastic_reserved_cu: int = None,
+        enable_priority: bool = None,
+        force_reserved_min: bool = None,
+        max_cu: int = None,
+        min_cu: int = None,
+        scheduler_type: str = None,
+        single_job_culimit: int = None,
+    ):
+        self.elastic_reserved_cu = elastic_reserved_cu
+        self.enable_priority = enable_priority
+        self.force_reserved_min = force_reserved_min
+        # This parameter is required.
+        self.max_cu = max_cu
+        # This parameter is required.
+        self.min_cu = min_cu
+        self.scheduler_type = scheduler_type
+        self.single_job_culimit = single_job_culimit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.elastic_reserved_cu is not None:
+            result['elasticReservedCU'] = self.elastic_reserved_cu
+        if self.enable_priority is not None:
+            result['enablePriority'] = self.enable_priority
+        if self.force_reserved_min is not None:
+            result['forceReservedMin'] = self.force_reserved_min
+        if self.max_cu is not None:
+            result['maxCU'] = self.max_cu
+        if self.min_cu is not None:
+            result['minCU'] = self.min_cu
+        if self.scheduler_type is not None:
+            result['schedulerType'] = self.scheduler_type
+        if self.single_job_culimit is not None:
+            result['singleJobCULimit'] = self.single_job_culimit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('elasticReservedCU') is not None:
+            self.elastic_reserved_cu = m.get('elasticReservedCU')
+        if m.get('enablePriority') is not None:
+            self.enable_priority = m.get('enablePriority')
+        if m.get('forceReservedMin') is not None:
+            self.force_reserved_min = m.get('forceReservedMin')
+        if m.get('maxCU') is not None:
+            self.max_cu = m.get('maxCU')
+        if m.get('minCU') is not None:
+            self.min_cu = m.get('minCU')
+        if m.get('schedulerType') is not None:
+            self.scheduler_type = m.get('schedulerType')
+        if m.get('singleJobCULimit') is not None:
+            self.single_job_culimit = m.get('singleJobCULimit')
+        return self
+
+
 class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListSaleTag(TeaModel):
     def __init__(
         self,
@@ -18705,7 +18906,7 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList(TeaModel):
         id: str = None,
         name: str = None,
         nick_name: str = None,
-        parameter: Dict[str, Any] = None,
+        parameter: ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter = None,
         parent_id: str = None,
         region_id: str = None,
         sale_tag: ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListSaleTag = None,
@@ -18754,6 +18955,8 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList(TeaModel):
     def validate(self):
         if self.billing_policy:
             self.billing_policy.validate()
+        if self.parameter:
+            self.parameter.validate()
         if self.sale_tag:
             self.sale_tag.validate()
         if self.schedule_info:
@@ -18780,7 +18983,7 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList(TeaModel):
         if self.nick_name is not None:
             result['nickName'] = self.nick_name
         if self.parameter is not None:
-            result['parameter'] = self.parameter
+            result['parameter'] = self.parameter.to_map()
         if self.parent_id is not None:
             result['parentId'] = self.parent_id
         if self.region_id is not None:
@@ -18819,7 +19022,8 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList(TeaModel):
         if m.get('nickName') is not None:
             self.nick_name = m.get('nickName')
         if m.get('parameter') is not None:
-            self.parameter = m.get('parameter')
+            temp_model = ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter()
+            self.parameter = temp_model.from_map(m['parameter'])
         if m.get('parentId') is not None:
             self.parent_id = m.get('parentId')
         if m.get('regionId') is not None:
@@ -19317,6 +19521,71 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListBillingPolicy(TeaModel)
         return self
 
 
+class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter(TeaModel):
+    def __init__(
+        self,
+        elastic_reserved_cu: int = None,
+        enable_priority: bool = None,
+        force_reserved_min: bool = None,
+        max_cu: int = None,
+        min_cu: int = None,
+        scheduler_type: str = None,
+        single_job_culimit: int = None,
+    ):
+        self.elastic_reserved_cu = elastic_reserved_cu
+        self.enable_priority = enable_priority
+        self.force_reserved_min = force_reserved_min
+        # This parameter is required.
+        self.max_cu = max_cu
+        # This parameter is required.
+        self.min_cu = min_cu
+        self.scheduler_type = scheduler_type
+        self.single_job_culimit = single_job_culimit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.elastic_reserved_cu is not None:
+            result['elasticReservedCU'] = self.elastic_reserved_cu
+        if self.enable_priority is not None:
+            result['enablePriority'] = self.enable_priority
+        if self.force_reserved_min is not None:
+            result['forceReservedMin'] = self.force_reserved_min
+        if self.max_cu is not None:
+            result['maxCU'] = self.max_cu
+        if self.min_cu is not None:
+            result['minCU'] = self.min_cu
+        if self.scheduler_type is not None:
+            result['schedulerType'] = self.scheduler_type
+        if self.single_job_culimit is not None:
+            result['singleJobCULimit'] = self.single_job_culimit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('elasticReservedCU') is not None:
+            self.elastic_reserved_cu = m.get('elasticReservedCU')
+        if m.get('enablePriority') is not None:
+            self.enable_priority = m.get('enablePriority')
+        if m.get('forceReservedMin') is not None:
+            self.force_reserved_min = m.get('forceReservedMin')
+        if m.get('maxCU') is not None:
+            self.max_cu = m.get('maxCU')
+        if m.get('minCU') is not None:
+            self.min_cu = m.get('minCU')
+        if m.get('schedulerType') is not None:
+            self.scheduler_type = m.get('schedulerType')
+        if m.get('singleJobCULimit') is not None:
+            self.single_job_culimit = m.get('singleJobCULimit')
+        return self
+
+
 class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListSaleTag(TeaModel):
     def __init__(
         self,
@@ -19439,7 +19708,7 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList(TeaModel):
         id: str = None,
         name: str = None,
         nick_name: str = None,
-        parameter: Dict[str, Any] = None,
+        parameter: ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter = None,
         parent_id: str = None,
         region_id: str = None,
         sale_tag: ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListSaleTag = None,
@@ -19488,6 +19757,8 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList(TeaModel):
     def validate(self):
         if self.billing_policy:
             self.billing_policy.validate()
+        if self.parameter:
+            self.parameter.validate()
         if self.sale_tag:
             self.sale_tag.validate()
         if self.schedule_info:
@@ -19514,7 +19785,7 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList(TeaModel):
         if self.nick_name is not None:
             result['nickName'] = self.nick_name
         if self.parameter is not None:
-            result['parameter'] = self.parameter
+            result['parameter'] = self.parameter.to_map()
         if self.parent_id is not None:
             result['parentId'] = self.parent_id
         if self.region_id is not None:
@@ -19553,7 +19824,8 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList(TeaModel):
         if m.get('nickName') is not None:
             self.nick_name = m.get('nickName')
         if m.get('parameter') is not None:
-            self.parameter = m.get('parameter')
+            temp_model = ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter()
+            self.parameter = temp_model.from_map(m['parameter'])
         if m.get('parentId') is not None:
             self.parent_id = m.get('parentId')
         if m.get('regionId') is not None:
@@ -23284,9 +23556,13 @@ class QueryQuotaRequest(TeaModel):
         region: str = None,
         tenant_id: str = None,
     ):
+        # The trusted AccessKey pairs.
         self.ak_proven = ak_proven
+        # Specifies whether to include submodules. Valid values: true and false. -true: The request includes submodules. -false (default): The request does not include submodules.
         self.mock = mock
+        # The region ID.
         self.region = region
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -23329,9 +23605,16 @@ class QueryQuotaResponseBodyDataBillingPolicy(TeaModel):
         odps_spec_code: str = None,
         order_id: str = None,
     ):
+        # The billing method. Valid values:
+        # 
+        # *   subscription: the subscription quota.
+        # *   payasyougo: the pay-as-you-go quota.
         self.billing_method = billing_method
+        # In MaxCompute, instanceId and orderId are considered the same.
         self.instance_id = instance_id
+        # The order specifications.
         self.odps_spec_code = odps_spec_code
+        # The order ID.
         self.order_id = order_id
 
     def validate(self):
@@ -23372,7 +23655,9 @@ class QueryQuotaResponseBodyDataSaleTag(TeaModel):
         resource_ids: List[str] = None,
         resource_type: str = None,
     ):
+        # The identifier of a MaxCompute quota object. This identifier exists in the Alibaba Cloud sales bill. You can use this identifier to associate the cost of a quota object with a tag.
         self.resource_ids = resource_ids
+        # The object type. Valid values: quota and project.
         self.resource_type = resource_type
 
     def validate(self):
@@ -23411,13 +23696,21 @@ class QueryQuotaResponseBodyDataScheduleInfo(TeaModel):
         operator_name: str = None,
         timezone: str = None,
     ):
+        # The current quota plan that has taken effect based on the scheduling plan.
         self.curr_plan = curr_plan
+        # The time when the plan specified by currPlan is scheduled.
         self.curr_time = curr_time
+        # The quota plan that will take effect based on the scheduling plan.
         self.next_plan = next_plan
+        # The time when the plan specified by nextPlan is scheduled.
         self.next_time = next_time
+        # The quota plan that immediately takes effect. If the quota plan specified by this parameter is triggered and the plan is different from the plan specified by currPlan, this parameter is not empty.
         self.once_plan = once_plan
+        # The time when the quota plan specified by oncePlan is scheduled.
         self.once_time = once_time
+        # The operator name.
         self.operator_name = operator_name
+        # The time zone of the project.
         self.timezone = timezone
 
     def validate(self):
@@ -23476,9 +23769,16 @@ class QueryQuotaResponseBodyDataSubQuotaInfoListBillingPolicy(TeaModel):
         odps_spec_code: str = None,
         order_id: str = None,
     ):
+        # The billing method. Valid values:
+        # 
+        # *   subscription: the subscription quota.
+        # *   payasyougo: the pay-as-you-go quota.
         self.billing_method = billing_method
+        # In MaxCompute, instanceId and orderId are considered the same.
         self.instance_id = instance_id
+        # The order specifications.
         self.odps_spec_code = odps_spec_code
+        # The order ID.
         self.order_id = order_id
 
     def validate(self):
@@ -23519,7 +23819,9 @@ class QueryQuotaResponseBodyDataSubQuotaInfoListSaleTag(TeaModel):
         resource_ids: List[str] = None,
         resource_type: str = None,
     ):
+        # The identifier of a MaxCompute quota object. This identifier exists in the Alibaba Cloud sales bill. You can use this identifier to associate the cost of a quota object with a tag.
         self.resource_ids = resource_ids
+        # The object type. Valid values: quota and project.
         self.resource_type = resource_type
 
     def validate(self):
@@ -23558,13 +23860,21 @@ class QueryQuotaResponseBodyDataSubQuotaInfoListScheduleInfo(TeaModel):
         operator_name: str = None,
         timezone: str = None,
     ):
+        # The current quota plan that has taken effect based on the scheduling plan.
         self.curr_plan = curr_plan
+        # The time when the plan specified by currPlan is scheduled.
         self.curr_time = curr_time
+        # The quota plan that will take effect based on the scheduling plan.
         self.next_plan = next_plan
+        # The time when the plan specified by nextPlan is scheduled.
         self.next_time = next_time
+        # The quota plan that immediately takes effect. If the quota plan specified by this parameter is triggered and the plan is different from the plan specified by currPlan, this parameter is not empty.
         self.once_plan = once_plan
+        # The time when the quota plan specified by oncePlan is scheduled.
         self.once_time = once_time
+        # The operator name.
         self.operator_name = operator_name
+        # The time zone of the project.
         self.timezone = timezone
 
     def validate(self):
@@ -23637,23 +23947,41 @@ class QueryQuotaResponseBodyDataSubQuotaInfoList(TeaModel):
         type: str = None,
         version: str = None,
     ):
+        # The order information.
         self.billing_policy = billing_policy
+        # The cluster ID.
         self.cluster = cluster
+        # The time when the resource was created.
         self.create_time = create_time
+        # The ID of the Alibaba Cloud account that is used to create the quota plan.
         self.creator_id = creator_id
+        # The role group name.
         self.group_name = group_name
+        # The ID of the level-2 quota.
         self.id = id
+        # The name of the level-2 quota.
         self.name = name
+        # The nickname of the level-2 quota.
         self.nick_name = nick_name
+        # The quota description.
         self.parameter = parameter
+        # The parent resource ID.
         self.parent_id = parent_id
+        # The region ID.
         self.region_id = region_id
+        # The identifiers of MaxCompute quota objects. The identifiers are the same as those in the Alibaba Cloud sales bill. This parameter is used for tags.
         self.sale_tag = sale_tag
+        # The information about the scheduling plan.
         self.schedule_info = schedule_info
+        # The status of the resource.
         self.status = status
+        # The resource tag of a quota.
         self.tag = tag
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # This parameter corresponds to the resourceSystemType field.
         self.type = type
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -23775,25 +24103,43 @@ class QueryQuotaResponseBodyData(TeaModel):
         type: str = None,
         version: str = None,
     ):
+        # The order information.
         self.billing_policy = billing_policy
+        # The ID of the Managed Service for Prometheus cluster.
         self.cluster = cluster
+        # The time when the resource was created.
         self.create_time = create_time
+        # The ID of the Alibaba Cloud account that is used to create the quota plan.
         self.creator_id = creator_id
+        # The group name.
         self.group_name = group_name
-        # quota ID
+        # The quota ID.
         self.id = id
+        # The quota name.
         self.name = name
+        # The quota alias.
         self.nick_name = nick_name
+        # The quota description.
         self.parameter = parameter
+        # The parent resource ID.
         self.parent_id = parent_id
+        # The region ID.
         self.region_id = region_id
+        # The identifiers of MaxCompute quota objects. The identifiers are the same as those in the Alibaba Cloud sales bill. This parameter is used for tags.
         self.sale_tag = sale_tag
+        # The information about the scheduling plan.
         self.schedule_info = schedule_info
+        # The status of the resource.
         self.status = status
+        # The level-2 quotas.
         self.sub_quota_info_list = sub_quota_info_list
+        # The resource tag of a quota.
         self.tag = tag
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # This parameter corresponds to the resourceSystemType field.
         self.type = type
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -23914,10 +24260,15 @@ class QueryQuotaResponseBody(TeaModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The HTTP status code.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23995,6 +24346,520 @@ class QueryQuotaResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryQuotaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryTunnelMetricRequest(TeaModel):
+    def __init__(
+        self,
+        code_list: List[int] = None,
+        group_list: List[str] = None,
+        operation_list: List[str] = None,
+        project: str = None,
+        quota_nickname: str = None,
+        table_list: List[str] = None,
+        top_n: int = None,
+        end_time: int = None,
+        start_time: int = None,
+        strategy: str = None,
+    ):
+        self.code_list = code_list
+        self.group_list = group_list
+        self.operation_list = operation_list
+        self.project = project
+        self.quota_nickname = quota_nickname
+        self.table_list = table_list
+        self.top_n = top_n
+        # This parameter is required.
+        self.end_time = end_time
+        # This parameter is required.
+        self.start_time = start_time
+        self.strategy = strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code_list is not None:
+            result['codeList'] = self.code_list
+        if self.group_list is not None:
+            result['groupList'] = self.group_list
+        if self.operation_list is not None:
+            result['operationList'] = self.operation_list
+        if self.project is not None:
+            result['project'] = self.project
+        if self.quota_nickname is not None:
+            result['quotaNickname'] = self.quota_nickname
+        if self.table_list is not None:
+            result['tableList'] = self.table_list
+        if self.top_n is not None:
+            result['topN'] = self.top_n
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.strategy is not None:
+            result['strategy'] = self.strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('codeList') is not None:
+            self.code_list = m.get('codeList')
+        if m.get('groupList') is not None:
+            self.group_list = m.get('groupList')
+        if m.get('operationList') is not None:
+            self.operation_list = m.get('operationList')
+        if m.get('project') is not None:
+            self.project = m.get('project')
+        if m.get('quotaNickname') is not None:
+            self.quota_nickname = m.get('quotaNickname')
+        if m.get('tableList') is not None:
+            self.table_list = m.get('tableList')
+        if m.get('topN') is not None:
+            self.top_n = m.get('topN')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('strategy') is not None:
+            self.strategy = m.get('strategy')
+        return self
+
+
+class QueryTunnelMetricResponseBodyDataMetrics(TeaModel):
+    def __init__(
+        self,
+        metric: Dict[str, str] = None,
+        values: List[List[float]] = None,
+    ):
+        self.metric = metric
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric is not None:
+            result['metric'] = self.metric
+        if self.values is not None:
+            result['values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('metric') is not None:
+            self.metric = m.get('metric')
+        if m.get('values') is not None:
+            self.values = m.get('values')
+        return self
+
+
+class QueryTunnelMetricResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        metrics: List[QueryTunnelMetricResponseBodyDataMetrics] = None,
+        name: str = None,
+        period: int = None,
+    ):
+        self.category = category
+        self.metrics = metrics
+        self.name = name
+        self.period = period
+
+    def validate(self):
+        if self.metrics:
+            for k in self.metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['category'] = self.category
+        result['metrics'] = []
+        if self.metrics is not None:
+            for k in self.metrics:
+                result['metrics'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['name'] = self.name
+        if self.period is not None:
+            result['period'] = self.period
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        self.metrics = []
+        if m.get('metrics') is not None:
+            for k in m.get('metrics'):
+                temp_model = QueryTunnelMetricResponseBodyDataMetrics()
+                self.metrics.append(temp_model.from_map(k))
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('period') is not None:
+            self.period = m.get('period')
+        return self
+
+
+class QueryTunnelMetricResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: QueryTunnelMetricResponseBodyData = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_code: int = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.http_code = http_code
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = QueryTunnelMetricResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class QueryTunnelMetricResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryTunnelMetricResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryTunnelMetricResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryTunnelMetricDetailRequest(TeaModel):
+    def __init__(
+        self,
+        asc_order: bool = None,
+        group_list: List[str] = None,
+        limit: int = None,
+        operation_list: List[str] = None,
+        order_column: str = None,
+        project: str = None,
+        quota_nickname: str = None,
+        table_list: List[str] = None,
+        end_time: int = None,
+        start_time: int = None,
+    ):
+        self.asc_order = asc_order
+        self.group_list = group_list
+        self.limit = limit
+        self.operation_list = operation_list
+        self.order_column = order_column
+        self.project = project
+        self.quota_nickname = quota_nickname
+        self.table_list = table_list
+        # This parameter is required.
+        self.end_time = end_time
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asc_order is not None:
+            result['ascOrder'] = self.asc_order
+        if self.group_list is not None:
+            result['groupList'] = self.group_list
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.operation_list is not None:
+            result['operationList'] = self.operation_list
+        if self.order_column is not None:
+            result['orderColumn'] = self.order_column
+        if self.project is not None:
+            result['project'] = self.project
+        if self.quota_nickname is not None:
+            result['quotaNickname'] = self.quota_nickname
+        if self.table_list is not None:
+            result['tableList'] = self.table_list
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ascOrder') is not None:
+            self.asc_order = m.get('ascOrder')
+        if m.get('groupList') is not None:
+            self.group_list = m.get('groupList')
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('operationList') is not None:
+            self.operation_list = m.get('operationList')
+        if m.get('orderColumn') is not None:
+            self.order_column = m.get('orderColumn')
+        if m.get('project') is not None:
+            self.project = m.get('project')
+        if m.get('quotaNickname') is not None:
+            self.quota_nickname = m.get('quotaNickname')
+        if m.get('tableList') is not None:
+            self.table_list = m.get('tableList')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class QueryTunnelMetricDetailResponseBodyDataMetrics(TeaModel):
+    def __init__(
+        self,
+        metric: Dict[str, str] = None,
+        value: Dict[str, Any] = None,
+    ):
+        self.metric = metric
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric is not None:
+            result['metric'] = self.metric
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('metric') is not None:
+            self.metric = m.get('metric')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class QueryTunnelMetricDetailResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        metrics: List[QueryTunnelMetricDetailResponseBodyDataMetrics] = None,
+        name: str = None,
+    ):
+        self.metrics = metrics
+        self.name = name
+
+    def validate(self):
+        if self.metrics:
+            for k in self.metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['metrics'] = []
+        if self.metrics is not None:
+            for k in self.metrics:
+                result['metrics'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.metrics = []
+        if m.get('metrics') is not None:
+            for k in m.get('metrics'):
+                temp_model = QueryTunnelMetricDetailResponseBodyDataMetrics()
+                self.metrics.append(temp_model.from_map(k))
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class QueryTunnelMetricDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: QueryTunnelMetricDetailResponseBodyData = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_code: int = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.http_code = http_code
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = QueryTunnelMetricDetailResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class QueryTunnelMetricDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryTunnelMetricDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryTunnelMetricDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
