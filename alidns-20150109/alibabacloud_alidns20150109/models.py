@@ -47,7 +47,7 @@ class AddCustomLineRequest(TeaModel):
         lang: str = None,
         line_name: str = None,
     ):
-        # The domain name.
+        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
@@ -55,7 +55,10 @@ class AddCustomLineRequest(TeaModel):
         # 
         # This parameter is required.
         self.ip_segment = ip_segment
-        # The language.
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
         # The name of the custom line.
         # 
@@ -245,15 +248,18 @@ class AddDnsCacheDomainRequest(TeaModel):
         # 
         # This parameter is required.
         self.cache_ttl_min = cache_ttl_min
-        # The domain name.
+        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The instance ID of the cache-accelerated domain name.
+        # The instance ID of the cache-accelerated domain name. You can call the [ListCloudGtmInstances](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-listcloudgtminstances?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The language.
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English Default: **zh**\
         self.lang = lang
         # The remarks.
         self.remark = remark
@@ -1865,11 +1871,14 @@ class AddDomainRecordRequest(TeaModel):
         user_client_ip: str = None,
         value: str = None,
     ):
-        # The domain name.
+        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The language.
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English Default: **zh**\
         self.lang = lang
         # The resolution line. Default value: **default**. For more information, see
         # 
@@ -1881,7 +1890,7 @@ class AddDomainRecordRequest(TeaModel):
         self.priority = priority
         # The hostname.
         # 
-        # For example, if you want to resolve @.example.com, you must set RR to an at sign (@) instead of leaving it empty.
+        # For example, to resolve @.example.com, you must set this parameter to an at sign (@). You cannot leave this parameter empty.
         # 
         # This parameter is required.
         self.rr = rr
@@ -1897,7 +1906,7 @@ class AddDomainRecordRequest(TeaModel):
         self.type = type
         # The IP address of the client.
         self.user_client_ip = user_client_ip
-        # The record value.
+        # The value of the DNS record.
         # 
         # This parameter is required.
         self.value = value
@@ -3022,7 +3031,7 @@ class ChangeDomainGroupRequest(TeaModel):
         group_id: str = None,
         lang: str = None,
     ):
-        # The domain name.
+        # The domain name. You can call the [DescribeDomains ](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0)operation to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
@@ -3161,13 +3170,25 @@ class ChangeDomainOfDnsProductRequest(TeaModel):
         new_domain: str = None,
         user_client_ip: str = None,
     ):
-        # Specifies whether to force bind a domain name to the instance.
+        # Specifies whether to forcibly bind a domain name to the instance. Valid values:
+        # 
+        # *   **false****: no**\
+        # *   **true**: **yes**\
+        # 
+        # Default value: **false**.
         self.force = force
-        # The ID of the Alibaba Cloud DNS instance.
+        # The ID of the Alibaba Cloud Domain Name System (DNS) instance.
+        # 
+        # You can call the [ListCloudGtmInstances ](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-listcloudgtminstances?spm=a2c63.p38356.help-menu-search-29697.d_0)operation to obtain the ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
+        # 
+        # Default value: **zh**.
         self.lang = lang
         # The domain name that you want to bind to the instance. If you leave this parameter empty, the domain name that is bound to the instance is unbound from the instance.
         self.new_domain = new_domain
@@ -5302,9 +5323,12 @@ class DeleteCustomLinesRequest(TeaModel):
         lang: str = None,
         line_ids: str = None,
     ):
-        # The language.
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
-        # The unique IDs of the custom lines that you want to delete. Separate the unique IDs with commas (,).
+        # The unique IDs of the custom lines that you want to delete. Separate the unique IDs with commas (,). You can call the [DescribeCustomLines](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describecustomlines?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
         # 
         # This parameter is required.
         self.line_ids = line_ids
@@ -5408,11 +5432,14 @@ class DeleteDnsCacheDomainRequest(TeaModel):
         domain_name: str = None,
         lang: str = None,
     ):
-        # The domain name.
+        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The language.
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English Default: **zh**\
         self.lang = lang
 
     def validate(self):
@@ -5726,7 +5753,7 @@ class DeleteDomainRequest(TeaModel):
         domain_name: str = None,
         lang: str = None,
     ):
-        # The domain name.
+        # The domain name that already exists in Alibaba Cloud DNS. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
@@ -5844,7 +5871,7 @@ class DeleteDomainGroupRequest(TeaModel):
         group_id: str = None,
         lang: str = None,
     ):
-        # The ID of the domain name group.
+        # The ID of the domain name group. You can call the [DescribeDomainGroups](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomaingroups?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
         # 
         # This parameter is required.
         self.group_id = group_id
@@ -5963,11 +5990,12 @@ class DeleteDomainRecordRequest(TeaModel):
         record_id: str = None,
         user_client_ip: str = None,
     ):
-        # The language.
-        self.lang = lang
-        # The ID of the DNS record.
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
-        # This parameter is returned when you add a DNS record or when you query a list of DNS records.
+        # *   **zh**: Chinese
+        # *   **en**: English
+        self.lang = lang
+        # The ID of the DNS record. You can call the [DescribeDomainRecords](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomainrecords?spm=a2c63.p38356.help-menu-search-29697.d_0) to obtain the ID.
         # 
         # This parameter is required.
         self.record_id = record_id
@@ -6403,21 +6431,24 @@ class DeleteSubDomainRecordsRequest(TeaModel):
         type: str = None,
         user_client_ip: str = None,
     ):
-        # The domain name.
+        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The language type.
-        self.lang = lang
-        # The host record.
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
-        # For example, to resolve @.example.com, you must set RR to an at sign (@) instead of leaving it blank.
+        # *   **zh**: Chinese
+        # *   **en**: English
+        self.lang = lang
+        # The hostname field in the DNS record.
+        # 
+        # For example, if you want to resolve @.example.com, you must set this parameter to an at sign (@) instead of leaving it empty.
         # 
         # This parameter is required.
         self.rr = rr
-        # The type of the DNS record. If you do not specify this parameter, all DNS record types corresponding to the subdomain name are returned.
+        # The type of DNS records. If you do not specify this parameter, all types of DNS records corresponding to the subdomain are returned.
         # 
-        # DNS record types include **A, MX, CNAME, TXT, REDIRECT_URL, FORWORD_URL, NS, AAAA, and SRV**. The value is not case-sensitive.
+        # Valid values: **A, MX, CNAME, TXT, REDIRECT_URL, FORWORD_URL, NS, AAAA, and SRV**. The value is not case-sensitive.
         self.type = type
         # The IP address of the client.
         self.user_client_ip = user_client_ip
@@ -6465,11 +6496,11 @@ class DeleteSubDomainRecordsResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The host record.
+        # The hostname.
         self.rr = rr
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of deleted DNS records.
+        # The total number of the DNS records to be deleted.
         self.total_count = total_count
 
     def validate(self):
@@ -6554,12 +6585,17 @@ class DescribeBatchResultCountRequest(TeaModel):
         # *   **DOMAIN_DEL**: deletes domain names in batches.
         # *   **RR_ADD**: adds Domain Name System (DNS) records in batches.
         # *   **RR_DEL**: deletes DNS records in batches.
+        # 
+        # >  If you do not specify this parameter, filtering is not required.
         self.batch_type = batch_type
-        # The language.
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
         # The task ID.
         # 
-        # If you specify TaskId, the execution result of the specified task is returned. If you do not specify TaskId, the execution result of the last task is returned.
+        # >  If you specify TaskId, the execution result of the specified task is returned. If you do not specify TaskId, the execution result of the last task is returned.
         self.task_id = task_id
 
     def validate(self):
@@ -6729,8 +6765,13 @@ class DescribeBatchResultDetailRequest(TeaModel):
         # *   **DOMAIN_DEL**: deletes domain names in batches.
         # *   **RR_ADD**: adds Domain Name System (DNS) records in batches.
         # *   **RR_DEL**: deletes DNS records in batches.
+        # 
+        # >  Do not perform filtering when this field is empty.
         self.batch_type = batch_type
-        # The language.
+        # The language of the content within the request and response. Default: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
         # The page number. Default value: **1**.
         self.page_number = page_number
@@ -6738,7 +6779,7 @@ class DescribeBatchResultDetailRequest(TeaModel):
         self.page_size = page_size
         # The execution result. If you do not specify this parameter, all results are returned.
         self.status = status
-        # The ID of the batch operation task.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -6831,7 +6872,7 @@ class DescribeBatchResultDetailResponseBodyBatchResultDetailsBatchResultDetail(T
         self.ttl = ttl
         # The type of the DNS record.
         self.type = type
-        # The record value.
+        # The value of the DNS record.
         self.value = value
 
     def validate(self):
@@ -10829,9 +10870,12 @@ class DescribeCustomLineRequest(TeaModel):
         lang: str = None,
         line_id: int = None,
     ):
-        # The language.
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
-        # The unique ID of the custom line.
+        # The unique ID of the custom line. You can call [DescribeCustomLines](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describecustomlines?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID
         self.line_id = line_id
 
     def validate(self):
@@ -10907,7 +10951,7 @@ class DescribeCustomLineResponseBody(TeaModel):
         self.code = code
         # The domain name.
         self.domain_name = domain_name
-        # The ID of the custom line.
+        # The ID/Name of the custom line.
         self.id = id
         # The CIDR blocks. Separate IP addresses with a hyphen (-). Enter a CIDR block in each row. You can enter 1 to 50 CIDR blocks at a time. If a CIDR block contains only one IP address, enter the IP address in the format of IP1-IP1. Different CIDR blocks cannot be overlapped.
         self.ip_segment_list = ip_segment_list
@@ -11013,11 +11057,16 @@ class DescribeCustomLinesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The domain name.
+        # The domain name that already exists in Alibaba Cloud Domain Name System (DNS). You can call the [DescribeDomains ](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0)operation to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The language.
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        # 
+        # Default value: en
         self.lang = lang
         # The page number.
         self.page_number = page_number
@@ -11056,22 +11105,60 @@ class DescribeCustomLinesRequest(TeaModel):
         return self
 
 
+class DescribeCustomLinesResponseBodyCustomLinesIpSegmentList(TeaModel):
+    def __init__(
+        self,
+        end_ip: str = None,
+        start_ip: str = None,
+    ):
+        self.end_ip = end_ip
+        self.start_ip = start_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_ip is not None:
+            result['EndIp'] = self.end_ip
+        if self.start_ip is not None:
+            result['StartIp'] = self.start_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndIp') is not None:
+            self.end_ip = m.get('EndIp')
+        if m.get('StartIp') is not None:
+            self.start_ip = m.get('StartIp')
+        return self
+
+
 class DescribeCustomLinesResponseBodyCustomLines(TeaModel):
     def __init__(
         self,
         code: str = None,
         id: int = None,
+        ip_segment_list: List[DescribeCustomLinesResponseBodyCustomLinesIpSegmentList] = None,
         name: str = None,
     ):
         # The code of the custom line.
         self.code = code
         # The unique ID of the custom line.
         self.id = id
+        self.ip_segment_list = ip_segment_list
         # The name of the custom line.
         self.name = name
 
     def validate(self):
-        pass
+        if self.ip_segment_list:
+            for k in self.ip_segment_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11083,6 +11170,10 @@ class DescribeCustomLinesResponseBodyCustomLines(TeaModel):
             result['Code'] = self.code
         if self.id is not None:
             result['Id'] = self.id
+        result['IpSegmentList'] = []
+        if self.ip_segment_list is not None:
+            for k in self.ip_segment_list:
+                result['IpSegmentList'].append(k.to_map() if k else None)
         if self.name is not None:
             result['Name'] = self.name
         return result
@@ -11093,6 +11184,11 @@ class DescribeCustomLinesResponseBodyCustomLines(TeaModel):
             self.code = m.get('Code')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        self.ip_segment_list = []
+        if m.get('IpSegmentList') is not None:
+            for k in m.get('IpSegmentList'):
+                temp_model = DescribeCustomLinesResponseBodyCustomLinesIpSegmentList()
+                self.ip_segment_list.append(temp_model.from_map(k))
         if m.get('Name') is not None:
             self.name = m.get('Name')
         return self
@@ -11118,7 +11214,7 @@ class DescribeCustomLinesResponseBody(TeaModel):
         self.request_id = request_id
         # The total number of custom lines.
         self.total_items = total_items
-        # The total number of returned pages.
+        # The total number of pages returned.
         self.total_pages = total_pages
 
     def validate(self):
@@ -11220,11 +11316,14 @@ class DescribeDNSSLBSubDomainsRequest(TeaModel):
         rr: str = None,
         user_client_ip: str = None,
     ):
-        # The domain name.
+        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The language.
+        # The language of the response. Valid values:
+        # 
+        # *   **zh** (default): Chinese
+        # *   **en**: English
         self.lang = lang
         # The page number. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
@@ -11232,7 +11331,7 @@ class DescribeDNSSLBSubDomainsRequest(TeaModel):
         self.page_size = page_size
         # The hostname.
         self.rr = rr
-        # The IP address of the client.
+        # The IP address of the user account.
         self.user_client_ip = user_client_ip
 
     def validate(self):
@@ -11363,7 +11462,7 @@ class DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain(TeaModel):
         self.open = open
         # The number of DNS records added for the subdomain.
         self.record_count = record_count
-        # The subdomain name.
+        # The name of the subdomain.
         self.sub_domain = sub_domain
         # The type of the Domain Name System (DNS) record that supports weighted round-robin. Valid values: A, AAAA, and CNAME.
         self.type = type
@@ -17262,7 +17361,7 @@ class DescribeDnsProductInstanceRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
-        # The instance ID. You can call the **DescribeDomainInfo** operation to obtain the instance ID.
+        # The ID of the DNS instance. . You can call the [DescribeDomainInfo](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomaininfo?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -19480,11 +19579,16 @@ class DescribeDomainDnssecInfoRequest(TeaModel):
         domain_name: str = None,
         lang: str = None,
     ):
-        # The domain name.
+        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The language.
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
+        # 
+        # Default value: **zh**\
         self.lang = lang
 
     def validate(self):
@@ -20596,11 +20700,18 @@ class DescribeDomainNsRequest(TeaModel):
         domain_name: str = None,
         lang: str = None,
     ):
-        # The domain name.
+        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The language.
+        # The language of the content in the request and response.
+        # 
+        # Valid values:
+        # 
+        # zh: Chinese\\
+        # en: English
+        # 
+        # Default value: **zh**\
         self.lang = lang
 
     def validate(self):
@@ -20797,11 +20908,12 @@ class DescribeDomainRecordInfoRequest(TeaModel):
         record_id: str = None,
         user_client_ip: str = None,
     ):
-        # The language.
-        self.lang = lang
-        # The ID of the DNS record.
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
-        # This parameter is returned when you add a DNS record or when you query a list of DNS records.
+        # *   **zh**: Chinese
+        # *   **en**: English
+        self.lang = lang
+        # The ID of the DNS record. You can call the [DescribeDomainRecords](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomainrecords?spm=a2c63.p38356.help-menu-search-29697.d_0) to obtain the ID.
         # 
         # This parameter is required.
         self.record_id = record_id
@@ -20880,9 +20992,13 @@ class DescribeDomainRecordInfoResponseBody(TeaModel):
         self.remark = remark
         # The request ID.
         self.request_id = request_id
-        # The state of the DNS records. Valid values: **Enable and Disable**.
+        # The status of the DNS record. Valid values:
+        # 
+        # Enable: enabled
+        # 
+        # Disable: disabled
         self.status = status
-        # The time-to-live (TTL) of the DNS record.
+        # The time for which the DNS record is cached in a local DNS system.
         self.ttl = ttl
         # The type of the DNS record.
         self.type = type
@@ -21031,7 +21147,7 @@ class DescribeDomainRecordsRequest(TeaModel):
     ):
         # The order in which you want to sort the returned DNS records. Valid values: DESC and ASC. Default value: DESC.
         self.direction = direction
-        # The domain name.
+        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
@@ -21042,6 +21158,8 @@ class DescribeDomainRecordsRequest(TeaModel):
         # *   If you set GroupId to 1, the domain names in the default group are queried.
         # *   If you set GroupId to -2, all domain names are queried.
         # *   You can also specify GroupId based on the actual group ID.
+        # 
+        # You can call the [DescribeDomainGroups ](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomaingroups?spm=a2c63.p38356.help-menu-search-29697.d_0)operation to obtain the ID of the domain name group.
         self.group_id = group_id
         # The keyword.
         self.key_word = key_word
@@ -21678,7 +21796,7 @@ class DescribeDomainStatisticsRequest(TeaModel):
         lang: str = None,
         start_date: str = None,
     ):
-        # The domain name.
+        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
         self.domain_name = domain_name
         # The type of the domain name. Valid values:
         # 
@@ -21689,7 +21807,10 @@ class DescribeDomainStatisticsRequest(TeaModel):
         # 
         # The default value is the day when you query the data.
         self.end_date = end_date
-        # The language.
+        # The language of the content within the request and response.
+        # 
+        # *   **zh**: Chinese (default)
+        # *   **en**: English
         self.lang = lang
         # The start date of the query. Specify the start date in the **YYYY-MM-DD** format.
         # 
@@ -27044,11 +27165,16 @@ class DescribeInstanceDomainsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The instance ID.
+        # The ID of the Alibaba Cloud Domain Name System (DNS) instance. You can call the [DescribeDomainInfo](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomaininfo?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The language.
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        # 
+        # Default value: English.
         self.lang = lang
         # The number of the page to return. Pages start from page 1. Default value: 1.
         self.page_number = page_number
@@ -27139,7 +27265,7 @@ class DescribeInstanceDomainsResponseBody(TeaModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The domain names that are bound to the Alibaba Cloud DNS instance.
+        # The domain names that are bound to the DNS instance.
         self.instance_domains = instance_domains
         # The page number. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
@@ -27258,12 +27384,31 @@ class DescribeInternetDnsLogsRequest(TeaModel):
         self.account_id = account_id
         # The domain name.
         self.domain_name = domain_name
+        # The end time of the query (timestamp, unit: milliseconds). >Warning: If the query time span is too large and the amount of resolution logs for the queried domain is excessive, it may lead to a query timeout or inaccurate query results.
         self.end_timestamp = end_timestamp
+        # Return value language, options: 
+        # - zh: Chinese 
+        # - en: English
+        # 
+        # Default: en
         self.lang = lang
+        # Module type 
+        # - AUTHORITY (default): Public Authoritative DNS 
+        # - RECURSION: Public Recursive DNS
         self.module = module
+        # Page number, default value is 1.
         self.page_number = page_number
+        # Page size for query.
         self.page_size = page_size
+        # Query parameters 
+        # - sourceIp: Source IP address 
+        # - queryNameFuzzy: Domain name (fuzzy value) 
+        # - queryType: Record type 
+        # - value: Resolution result 
+        # - status: Status 
+        # - serverIp: Resolution server IP
         self.query_condition = query_condition
+        # The start time of the query (timestamp, unit: milliseconds).
         self.start_timestamp = start_timestamp
 
     def validate(self):
@@ -27361,17 +27506,32 @@ class DescribeInternetDnsLogsResponseBodyLogsLog(TeaModel):
         value: DescribeInternetDnsLogsResponseBodyLogsLogValue = None,
         zone_name: str = None,
     ):
+        # Parse log ID (can be duplicated).
         self.dns_msg_id = dns_msg_id
+        # Parse timestamp.
         self.log_time = log_time
+        # The protocol type of the domain name resolution query request:
+        # - UDP
+        # - TCP
+        # - HTTP
+        # - HTTPS
+        # - DOH
         self.protocol = protocol
         # The domain name for which you want to query Domain Name System (DNS) records.
         self.query_name = query_name
+        # Record type.
         self.query_type = query_type
+        # Parse response time.
         self.rt = rt
+        # Parse server IP.
         self.server_ip = server_ip
+        # Source IP address.
         self.source_ip = source_ip
+        # Response status.
         self.status = status
+        # The value set for the edns-client-subnet option.
         self.subnet_ip = subnet_ip
+        # Array of parsing results.
         self.value = value
         # The zone name.
         self.zone_name = zone_name
@@ -27488,13 +27648,19 @@ class DescribeInternetDnsLogsResponseBody(TeaModel):
         total_page: int = None,
         total_size: int = None,
     ):
+        # Indicates whether the log query is precise.
         self.complete = complete
+        # Current page number.
         self.cur_page = cur_page
-        # The logs.
+        # The queried logs.
         self.logs = logs
+        # Page size for query.
         self.page_size = page_size
+        # Unique request identifier.
         self.request_id = request_id
+        # Total number of pages.
         self.total_page = total_page
+        # Total quantity.
         self.total_size = total_size
 
     def validate(self):
@@ -30974,7 +31140,7 @@ class DescribeRecordLogsRequest(TeaModel):
         user_client_ip: str = None,
         end_date: str = None,
     ):
-        # The domain name.
+        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
@@ -32037,7 +32203,10 @@ class DescribeSubDomainRecordsRequest(TeaModel):
     ):
         # The domain name.
         self.domain_name = domain_name
-        # The language.
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
         # The DNS resolution line.
         self.line = line
@@ -32255,7 +32424,7 @@ class DescribeSubDomainRecordsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The returned DNS records.
+        # The returned Domain Name System (DNS) records.
         self.domain_records = domain_records
         # The page number. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
@@ -32353,6 +32522,10 @@ class DescribeSupportLinesRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.domain_name = domain_name
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
         self.user_client_ip = user_client_ip
 
@@ -32559,7 +32732,9 @@ class DescribeTagsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return per page. Default value: 200.
         self.page_size = page_size
-        # The type of the resources from which you want to query tags. Set the value to DOMAIN.
+        # The type of the resource. Valid values:
+        # 
+        # *   **DOMAIN**: domain name
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -37059,9 +37234,9 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The key value.
         self.value = value
 
     def validate(self):
@@ -37097,17 +37272,22 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
-        # The language in which you want some response parameters to be returned.
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
-        # The token that determines the start point of the query.
+        # The pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # The ID of the resource.
         self.resource_id = resource_id
-        # The resource type.
+        # The type of the resource. Valid values:
+        # 
+        # *   **DOMAIN**: domain name
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # An array of tag key-value pairs.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -37166,7 +37346,7 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         self.resource_id = resource_id
         # The type of the resource. Only DOMAIN is returned.
         self.resource_type = resource_type
-        # The key of the tag.
+        # The tag key.
         self.tag_key = tag_key
         # The tag value.
         self.tag_value = tag_value
@@ -37210,11 +37390,11 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
     ):
-        # The token used to start the next query. If no value is returned for NextToken, no next queries are sent.
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Details of the resource and tags, including the resource ID, the resource type, tag keys, and tag values.
+        # An array that consists of the resource and the tags that are added to the resource, including information such as the resource ID, resource type, tag keys, and tag values.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -37496,11 +37676,11 @@ class MoveDomainResourceGroupRequest(TeaModel):
         self.lang = lang
         # The ID of the new resource group.
         # 
-        # You can view the ID of the resource group in the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?) or call the ListResourceGroups operation.
+        # You can view the resource group ID in the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?).
         # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
-        # The resource ID. If Tag is left empty, ResourceId is required.
+        # The domain name.
         # 
         # This parameter is required.
         self.resource_id = resource_id
@@ -37733,8 +37913,11 @@ class OperateBatchDomainRequestDomainRecordInfo(TeaModel):
         self.domain = domain
         # The DNS request source. Default value: default.
         self.line = line
+        # The new hostname (used only for modification operations, not for external users).
         self.new_rr = new_rr
+        # The new type of the DNS record (used only for modification operations, not for external users).
         self.new_type = new_type
+        # The new value of the DNS record (used only for modification operations, not for external users).
         self.new_value = new_value
         # The priority of the mail exchanger (MX) record.
         # 
@@ -37750,7 +37933,7 @@ class OperateBatchDomainRequestDomainRecordInfo(TeaModel):
         # 
         # >  This parameter is required if you set Type to **RR_ADD** or **RR_DEL**.
         self.type = type
-        # The record value.
+        # The value of the DNS record.
         # 
         # >  This parameter is required if you set Type to **RR_ADD** or **RR_DEL**.
         self.value = value
@@ -37818,11 +38001,16 @@ class OperateBatchDomainRequest(TeaModel):
         lang: str = None,
         type: str = None,
     ):
-        # The Domain Name System (DNS) records. You can submit up to 1,000 DNS records.
+        # The DNS records. You can submit up to 1,000 DNS records.
         # 
         # This parameter is required.
         self.domain_record_info = domain_record_info
-        # The language.
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        # 
+        # Default value: zh
         self.lang = lang
         # The type of the batch operation. Valid values:
         # 
@@ -42120,7 +42308,10 @@ class SetDNSSLBStatusRequest(TeaModel):
     ):
         # The domain name.
         self.domain_name = domain_name
-        # The language.
+        # The language of the content within the request and response. Default: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
         # The DNS resolution line. The line can be the default line, China Telecom, and China Mobile.
         self.line = line
@@ -42633,9 +42824,12 @@ class SetDomainRecordStatusRequest(TeaModel):
         status: str = None,
         user_client_ip: str = None,
     ):
-        # The language.
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
-        # The ID of the DNS record.
+        # The ID of the DNS record. You can call the [DescribeDomainRecords](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomainrecords?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
         # 
         # This parameter is required.
         self.record_id = record_id
@@ -43241,9 +43435,9 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the resource. The tag key can be up to 20 characters in length and cannot start with acs: or aliyun.
+        # The tag key. The tag key can be up to 20 characters in length and cannot start with `acs:` or`aliyun`.
         self.key = key
-        # The value of tag N to add to the resource. The tag value can be up to 20 characters in length.
+        # The tag value. The tag value can be up to 20 bytes in length.
         self.value = value
 
     def validate(self):
@@ -43278,17 +43472,22 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
-        # The language.
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
-        # The resource ID.
+        # The ID of the resource.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The resource type.
+        # The type of the resource. Valid values:
+        # 
+        # *   **DOMAIN**: domain name
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag to add to the resource.
+        # The tags.
         # 
         # This parameter is required.
         self.tag = tag
@@ -43676,13 +43875,18 @@ class UntagResourcesRequest(TeaModel):
     ):
         # Specifies whether to remove all tags. Default value: false. This parameter is valid only when TagKey is left empty. Valid values: true and false.
         self.all = all
-        # The language.
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
-        # The resource ID.
+        # The ID of the resource.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The resource type.
+        # The type of the resource. Valid value: Valid values:
+        # 
+        # *   **DOMAIN**: domain name
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -45779,7 +45983,7 @@ class UpdateCloudGtmInstanceConfigBasicRequest(TeaModel):
         self.client_token = client_token
         # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
         # 
-        # You can call the [ListCloudGtmInstanceConfigs](~~ListCloudGtmInstanceConfigs~~) operation to query the value of ConfigId for the access domain name.
+        # You can call the [ListCloudGtmInstanceConfigs](https://help.aliyun.com/document_detail/2797349.html) operation to query the value of ConfigId for the access domain name.
         self.config_id = config_id
         # The ID of the GTM 3.0 instance for which you want to modify the TTL configuration.
         self.instance_id = instance_id
@@ -46567,7 +46771,7 @@ class UpdateCloudGtmMonitorTemplateRequest(TeaModel):
         self.failure_rate = failure_rate
         # The time interval (in seconds) for each health check probe. By default, it probes every 60 seconds. The minimum supported interval for health checks is 15 seconds, available for flagship edition instances.
         self.interval = interval
-        # The health check nodes. You can call the [ListCloudGtmMonitorNodes](~~ListCloudGtmMonitorNodes~~) operation to obtain the health check nodes.
+        # The health check nodes. You can call the [ListCloudGtmMonitorNodes](https://help.aliyun.com/document_detail/2797327.html) operation to obtain the health check nodes.
         self.isp_city_nodes = isp_city_nodes
         # The name of the health check probe template, which is generally recommended to be distinguishable and memorable for configuration personnel, ideally indicating the health check protocol for easier identification.
         self.name = name
@@ -46709,7 +46913,7 @@ class UpdateCloudGtmMonitorTemplateShrinkRequest(TeaModel):
         self.failure_rate = failure_rate
         # The time interval (in seconds) for each health check probe. By default, it probes every 60 seconds. The minimum supported interval for health checks is 15 seconds, available for flagship edition instances.
         self.interval = interval
-        # The health check nodes. You can call the [ListCloudGtmMonitorNodes](~~ListCloudGtmMonitorNodes~~) operation to obtain the health check nodes.
+        # The health check nodes. You can call the [ListCloudGtmMonitorNodes](https://help.aliyun.com/document_detail/2797327.html) operation to obtain the health check nodes.
         self.isp_city_nodes_shrink = isp_city_nodes_shrink
         # The name of the health check probe template, which is generally recommended to be distinguishable and memorable for configuration personnel, ideally indicating the health check protocol for easier identification.
         self.name = name
@@ -47035,9 +47239,12 @@ class UpdateCustomLineRequest(TeaModel):
     ):
         # The CIDR blocks. Separate IP addresses with a hyphen (-). Enter a CIDR block in each row. You can enter 1 to 50 CIDR blocks at a time. If a CIDR block contains only one IP address, enter the IP address in the format of IP1-IP1. Different CIDR blocks cannot be overlapped.
         self.ip_segment = ip_segment
-        # The language.
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
-        # The unique ID of the custom line.
+        # The unique ID of the custom line. You can call the [DescribeCustomLines](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describecustomlines?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the unique ID.
         # 
         # This parameter is required.
         self.line_id = line_id
@@ -47161,9 +47368,12 @@ class UpdateDNSSLBWeightRequest(TeaModel):
         user_client_ip: str = None,
         weight: int = None,
     ):
-        # The language.
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
-        # The ID of the DNS record.
+        # The ID of the DNS record. You can call the [DescribeDomainRecords](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describedomainrecords?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
         # 
         # This parameter is required.
         self.record_id = record_id
@@ -47340,13 +47550,16 @@ class UpdateDnsCacheDomainRequest(TeaModel):
         self.cache_ttl_max = cache_ttl_max
         # The minimum time-to-live (TTL) period of the cached data retrieved from the origin Domain Name System (DNS) server. Unit: seconds. Valid values: 30 to 86400.
         self.cache_ttl_min = cache_ttl_min
-        # The domain name.
+        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtian the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The instance ID of the cache-accelerated domain name.
+        # The instance ID of the cache-accelerated domain name. You can call the [ListCloudGtmInstances](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-listcloudgtminstances?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
         self.instance_id = instance_id
-        # The language.
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English Default: **zh**\
         self.lang = lang
         # The origin DNS servers. A maximum of 10 origin DNS servers are supported.
         self.source_dns_server = source_dns_server
@@ -47487,13 +47700,20 @@ class UpdateDnsCacheDomainRemarkRequest(TeaModel):
         lang: str = None,
         remark: str = None,
     ):
-        # The domain name.
+        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The language.
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
+        # 
+        # Default: **zh**\
         self.lang = lang
         # The remarks. The remarks can be up to 50 characters in length and can contain only letters, digits, periods (.), underscores (_), and hyphens (-).
+        # 
+        # Delete the original remarks when it is empty.
         self.remark = remark
 
     def validate(self):
@@ -48639,7 +48859,7 @@ class UpdateDomainGroupRequest(TeaModel):
         group_name: str = None,
         lang: str = None,
     ):
-        # The ID of the domain name group whose name you want to modify.
+        # The ID of the domain name group whose name you want to modify. You can call the [DescribeDomainGroups ](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomaingroups?spm=a2c63.p38356.help-menu-search-29697.d_0)operation to obtain the ID.
         # 
         # This parameter is required.
         self.group_id = group_id
@@ -48779,7 +48999,10 @@ class UpdateDomainRecordRequest(TeaModel):
         user_client_ip: str = None,
         value: str = None,
     ):
-        # The language.
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
         # The resolution line. Default value: **default**.
         # 
@@ -48797,7 +49020,9 @@ class UpdateDomainRecordRequest(TeaModel):
         # 
         # This parameter is required.
         self.rr = rr
-        # The ID of the DNS record.
+        # The ID of the Domain Name System (DNS) record.
+        # 
+        # You can call the [DescribeDomainRecords](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomainrecords?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
         # 
         # This parameter is required.
         self.record_id = record_id
@@ -48815,7 +49040,7 @@ class UpdateDomainRecordRequest(TeaModel):
         self.type = type
         # The IP address of the client.
         self.user_client_ip = user_client_ip
-        # The record value.
+        # The value of the DNS record.
         # 
         # This parameter is required.
         self.value = value
@@ -48956,13 +49181,16 @@ class UpdateDomainRecordRemarkRequest(TeaModel):
         remark: str = None,
         user_client_ip: str = None,
     ):
-        # The language.
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
-        # The ID of the DNS record.
+        # The ID of the DNS record. You can call the [DescribeDomainRecords](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomainrecords?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
         # 
         # This parameter is required.
         self.record_id = record_id
-        # The description of the DNS record.
+        # The description of the DNS record. This parameter is empty by default. If this parameter is empty, the original remarks are deleted.
         self.remark = remark
         # The IP address of the client.
         self.user_client_ip = user_client_ip
@@ -49075,7 +49303,7 @@ class UpdateDomainRemarkRequest(TeaModel):
         lang: str = None,
         remark: str = None,
     ):
-        # The domain name that already exists in Alibaba Cloud DNS.
+        # The domain name that already exists in Alibaba Cloud Domain Name System (DNS). You can call the [DescribeDomains ](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0)operation to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
@@ -49086,7 +49314,7 @@ class UpdateDomainRemarkRequest(TeaModel):
         # 
         # Default value: en
         self.lang = lang
-        # The description of your domain name.
+        # The description of the domain name.
         # 
         # It can be up to 50 characters in length and can contain digits, letters, and the following special characters: _ - , .
         self.remark = remark

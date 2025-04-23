@@ -1,3 +1,7 @@
+2025-04-23 Version: 3.5.8
+- Update API DescribeCustomLines: add response parameters Body.CustomLines.$.IpSegmentList.
+
+
 2025-02-10 Version: 3.5.7
 - Update API DescribeIspFlushCacheTask: update param TaskId.
 - Update API DescribePdnsUserInfo: update response param.
