@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: alikafka_20181015_models.CreateConsumerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20181015_models.CreateConsumerGroupResponse:
+        """
+        @summary 创建 Group
+        
+        @param request: CreateConsumerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConsumerGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consumer_id):
@@ -78,6 +85,13 @@ class Client(OpenApiClient):
         request: alikafka_20181015_models.CreateConsumerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20181015_models.CreateConsumerGroupResponse:
+        """
+        @summary 创建 Group
+        
+        @param request: CreateConsumerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConsumerGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consumer_id):
@@ -109,6 +123,12 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20181015_models.CreateConsumerGroupRequest,
     ) -> alikafka_20181015_models.CreateConsumerGroupResponse:
+        """
+        @summary 创建 Group
+        
+        @param request: CreateConsumerGroupRequest
+        @return: CreateConsumerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_consumer_group_with_options(request, runtime)
 
@@ -116,6 +136,12 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20181015_models.CreateConsumerGroupRequest,
     ) -> alikafka_20181015_models.CreateConsumerGroupResponse:
+        """
+        @summary 创建 Group
+        
+        @param request: CreateConsumerGroupRequest
+        @return: CreateConsumerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_consumer_group_with_options_async(request, runtime)
 
@@ -124,6 +150,11 @@ class Client(OpenApiClient):
         request: alikafka_20181015_models.CreateTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20181015_models.CreateTopicResponse:
+        """
+        @param request: CreateTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -158,6 +189,11 @@ class Client(OpenApiClient):
         request: alikafka_20181015_models.CreateTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20181015_models.CreateTopicResponse:
+        """
+        @param request: CreateTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -191,6 +227,10 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20181015_models.CreateTopicRequest,
     ) -> alikafka_20181015_models.CreateTopicResponse:
+        """
+        @param request: CreateTopicRequest
+        @return: CreateTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_topic_with_options(request, runtime)
 
@@ -198,6 +238,10 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20181015_models.CreateTopicRequest,
     ) -> alikafka_20181015_models.CreateTopicResponse:
+        """
+        @param request: CreateTopicRequest
+        @return: CreateTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_topic_with_options_async(request, runtime)
 
@@ -206,6 +250,11 @@ class Client(OpenApiClient):
         request: alikafka_20181015_models.DeleteConsumerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20181015_models.DeleteConsumerGroupResponse:
+        """
+        @param request: DeleteConsumerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConsumerGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consumer_id):
@@ -238,6 +287,11 @@ class Client(OpenApiClient):
         request: alikafka_20181015_models.DeleteConsumerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20181015_models.DeleteConsumerGroupResponse:
+        """
+        @param request: DeleteConsumerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConsumerGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consumer_id):
@@ -269,6 +323,10 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20181015_models.DeleteConsumerGroupRequest,
     ) -> alikafka_20181015_models.DeleteConsumerGroupResponse:
+        """
+        @param request: DeleteConsumerGroupRequest
+        @return: DeleteConsumerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_consumer_group_with_options(request, runtime)
 
@@ -276,6 +334,10 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20181015_models.DeleteConsumerGroupRequest,
     ) -> alikafka_20181015_models.DeleteConsumerGroupResponse:
+        """
+        @param request: DeleteConsumerGroupRequest
+        @return: DeleteConsumerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_consumer_group_with_options_async(request, runtime)
 
@@ -284,6 +346,11 @@ class Client(OpenApiClient):
         request: alikafka_20181015_models.DeleteTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20181015_models.DeleteTopicResponse:
+        """
+        @param request: DeleteTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -316,6 +383,11 @@ class Client(OpenApiClient):
         request: alikafka_20181015_models.DeleteTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20181015_models.DeleteTopicResponse:
+        """
+        @param request: DeleteTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -347,6 +419,10 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20181015_models.DeleteTopicRequest,
     ) -> alikafka_20181015_models.DeleteTopicResponse:
+        """
+        @param request: DeleteTopicRequest
+        @return: DeleteTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_topic_with_options(request, runtime)
 
@@ -354,6 +430,10 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20181015_models.DeleteTopicRequest,
     ) -> alikafka_20181015_models.DeleteTopicResponse:
+        """
+        @param request: DeleteTopicRequest
+        @return: DeleteTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_topic_with_options_async(request, runtime)
 
@@ -362,6 +442,11 @@ class Client(OpenApiClient):
         request: alikafka_20181015_models.GetConsumerListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20181015_models.GetConsumerListResponse:
+        """
+        @param request: GetConsumerListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConsumerListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -392,6 +477,11 @@ class Client(OpenApiClient):
         request: alikafka_20181015_models.GetConsumerListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20181015_models.GetConsumerListResponse:
+        """
+        @param request: GetConsumerListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConsumerListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -421,6 +511,10 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20181015_models.GetConsumerListRequest,
     ) -> alikafka_20181015_models.GetConsumerListResponse:
+        """
+        @param request: GetConsumerListRequest
+        @return: GetConsumerListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_consumer_list_with_options(request, runtime)
 
@@ -428,6 +522,10 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20181015_models.GetConsumerListRequest,
     ) -> alikafka_20181015_models.GetConsumerListResponse:
+        """
+        @param request: GetConsumerListRequest
+        @return: GetConsumerListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_consumer_list_with_options_async(request, runtime)
 
@@ -436,6 +534,11 @@ class Client(OpenApiClient):
         request: alikafka_20181015_models.GetConsumerProgressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20181015_models.GetConsumerProgressResponse:
+        """
+        @param request: GetConsumerProgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConsumerProgressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consumer_id):
@@ -468,6 +571,11 @@ class Client(OpenApiClient):
         request: alikafka_20181015_models.GetConsumerProgressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20181015_models.GetConsumerProgressResponse:
+        """
+        @param request: GetConsumerProgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConsumerProgressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consumer_id):
@@ -499,6 +607,10 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20181015_models.GetConsumerProgressRequest,
     ) -> alikafka_20181015_models.GetConsumerProgressResponse:
+        """
+        @param request: GetConsumerProgressRequest
+        @return: GetConsumerProgressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_consumer_progress_with_options(request, runtime)
 
@@ -506,6 +618,10 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20181015_models.GetConsumerProgressRequest,
     ) -> alikafka_20181015_models.GetConsumerProgressResponse:
+        """
+        @param request: GetConsumerProgressRequest
+        @return: GetConsumerProgressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_consumer_progress_with_options_async(request, runtime)
 
@@ -514,6 +630,11 @@ class Client(OpenApiClient):
         request: alikafka_20181015_models.GetInstanceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20181015_models.GetInstanceListResponse:
+        """
+        @param request: GetInstanceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -542,6 +663,11 @@ class Client(OpenApiClient):
         request: alikafka_20181015_models.GetInstanceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20181015_models.GetInstanceListResponse:
+        """
+        @param request: GetInstanceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -569,6 +695,10 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20181015_models.GetInstanceListRequest,
     ) -> alikafka_20181015_models.GetInstanceListResponse:
+        """
+        @param request: GetInstanceListRequest
+        @return: GetInstanceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_instance_list_with_options(request, runtime)
 
@@ -576,6 +706,10 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20181015_models.GetInstanceListRequest,
     ) -> alikafka_20181015_models.GetInstanceListResponse:
+        """
+        @param request: GetInstanceListRequest
+        @return: GetInstanceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_list_with_options_async(request, runtime)
 
@@ -584,6 +718,11 @@ class Client(OpenApiClient):
         request: alikafka_20181015_models.GetTopicListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20181015_models.GetTopicListResponse:
+        """
+        @param request: GetTopicListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTopicListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -618,6 +757,11 @@ class Client(OpenApiClient):
         request: alikafka_20181015_models.GetTopicListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20181015_models.GetTopicListResponse:
+        """
+        @param request: GetTopicListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTopicListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -651,6 +795,10 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20181015_models.GetTopicListRequest,
     ) -> alikafka_20181015_models.GetTopicListResponse:
+        """
+        @param request: GetTopicListRequest
+        @return: GetTopicListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_topic_list_with_options(request, runtime)
 
@@ -658,6 +806,10 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20181015_models.GetTopicListRequest,
     ) -> alikafka_20181015_models.GetTopicListResponse:
+        """
+        @param request: GetTopicListRequest
+        @return: GetTopicListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_topic_list_with_options_async(request, runtime)
 
@@ -666,6 +818,11 @@ class Client(OpenApiClient):
         request: alikafka_20181015_models.GetTopicStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20181015_models.GetTopicStatusResponse:
+        """
+        @param request: GetTopicStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTopicStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -698,6 +855,11 @@ class Client(OpenApiClient):
         request: alikafka_20181015_models.GetTopicStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20181015_models.GetTopicStatusResponse:
+        """
+        @param request: GetTopicStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTopicStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -729,6 +891,10 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20181015_models.GetTopicStatusRequest,
     ) -> alikafka_20181015_models.GetTopicStatusResponse:
+        """
+        @param request: GetTopicStatusRequest
+        @return: GetTopicStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_topic_status_with_options(request, runtime)
 
@@ -736,5 +902,9 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20181015_models.GetTopicStatusRequest,
     ) -> alikafka_20181015_models.GetTopicStatusResponse:
+        """
+        @param request: GetTopicStatusRequest
+        @return: GetTopicStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_topic_status_with_options_async(request, runtime)

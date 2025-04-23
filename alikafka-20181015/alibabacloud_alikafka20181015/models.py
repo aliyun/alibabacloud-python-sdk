@@ -11,8 +11,11 @@ class CreateConsumerGroupRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.consumer_id = consumer_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -137,9 +140,13 @@ class CreateTopicRequest(TeaModel):
         remark: str = None,
         topic: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.remark = remark
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -267,8 +274,11 @@ class DeleteConsumerGroupRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.consumer_id = consumer_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -392,8 +402,11 @@ class DeleteTopicRequest(TeaModel):
         region_id: str = None,
         topic: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -516,7 +529,9 @@ class GetConsumerListRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -719,8 +734,12 @@ class GetConsumerProgressRequest(TeaModel):
         region_id: str = None,
     ):
         # Consumer Group ID。
+        # 
+        # This parameter is required.
         self.consumer_id = consumer_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -919,10 +938,12 @@ class GetConsumerProgressResponseBodyConsumerProgress(TeaModel):
         last_timestamp: int = None,
         topic_list: GetConsumerProgressResponseBodyConsumerProgressTopicList = None,
         total_diff: int = None,
+        state: str = None,
     ):
         self.last_timestamp = last_timestamp
         self.topic_list = topic_list
         self.total_diff = total_diff
+        self.state = state
 
     def validate(self):
         if self.topic_list:
@@ -940,6 +961,8 @@ class GetConsumerProgressResponseBodyConsumerProgress(TeaModel):
             result['TopicList'] = self.topic_list.to_map()
         if self.total_diff is not None:
             result['TotalDiff'] = self.total_diff
+        if self.state is not None:
+            result['state'] = self.state
         return result
 
     def from_map(self, m: dict = None):
@@ -951,6 +974,8 @@ class GetConsumerProgressResponseBodyConsumerProgress(TeaModel):
             self.topic_list = temp_model.from_map(m['TopicList'])
         if m.get('TotalDiff') is not None:
             self.total_diff = m.get('TotalDiff')
+        if m.get('state') is not None:
+            self.state = m.get('state')
         return self
 
 
@@ -1053,6 +1078,7 @@ class GetInstanceListRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1372,6 +1398,7 @@ class GetTopicListRequest(TeaModel):
         region_id: str = None,
     ):
         self.current_page = current_page
+        # This parameter is required.
         self.instance_id = instance_id
         self.page_size = page_size
         self.region_id = region_id
@@ -1625,8 +1652,10 @@ class GetTopicStatusRequest(TeaModel):
         region_id: str = None,
         topic: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.region_id = region_id
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
