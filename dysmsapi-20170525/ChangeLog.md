@@ -1,3 +1,13 @@
+2025-04-23 Version: 4.1.0
+- Support API DeleteSmsQualification.
+- Support API QuerySingleSmsQualification.
+- Support API QuerySmsQualificationRecord.
+- Support API RequiredPhoneCode.
+- Support API SubmitSmsQualification.
+- Support API UpdateSmsQualification.
+- Support API ValidPhoneCode.
+
+
 2025-04-22 Version: 4.0.0
 - Support API ChangeSignatureQualification.
 - Support API CreateSmsAuthorizationLetter.

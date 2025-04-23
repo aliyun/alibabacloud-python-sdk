@@ -1961,6 +1961,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_short_url_with_options_async(request, runtime)
 
+    def delete_sms_qualification_with_options(
+        self,
+        request: dysmsapi_20170525_models.DeleteSmsQualificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.DeleteSmsQualificationResponse:
+        """
+        @summary 删除资质对客openAPI
+        
+        @param request: DeleteSmsQualificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSmsQualificationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qualification_group_id):
+            query['QualificationGroupId'] = request.qualification_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSmsQualification',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.DeleteSmsQualificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_sms_qualification_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.DeleteSmsQualificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.DeleteSmsQualificationResponse:
+        """
+        @summary 删除资质对客openAPI
+        
+        @param request: DeleteSmsQualificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSmsQualificationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qualification_group_id):
+            query['QualificationGroupId'] = request.qualification_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSmsQualification',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.DeleteSmsQualificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_sms_qualification(
+        self,
+        request: dysmsapi_20170525_models.DeleteSmsQualificationRequest,
+    ) -> dysmsapi_20170525_models.DeleteSmsQualificationResponse:
+        """
+        @summary 删除资质对客openAPI
+        
+        @param request: DeleteSmsQualificationRequest
+        @return: DeleteSmsQualificationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_sms_qualification_with_options(request, runtime)
+
+    async def delete_sms_qualification_async(
+        self,
+        request: dysmsapi_20170525_models.DeleteSmsQualificationRequest,
+    ) -> dysmsapi_20170525_models.DeleteSmsQualificationResponse:
+        """
+        @summary 删除资质对客openAPI
+        
+        @param request: DeleteSmsQualificationRequest
+        @return: DeleteSmsQualificationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_sms_qualification_with_options_async(request, runtime)
+
     def delete_sms_sign_with_options(
         self,
         request: dysmsapi_20170525_models.DeleteSmsSignRequest,
@@ -4631,6 +4743,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_short_url_with_options_async(request, runtime)
 
+    def query_single_sms_qualification_with_options(
+        self,
+        request: dysmsapi_20170525_models.QuerySingleSmsQualificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QuerySingleSmsQualificationResponse:
+        """
+        @summary 查询单个资质详情
+        
+        @param request: QuerySingleSmsQualificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySingleSmsQualificationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qualification_group_id):
+            query['QualificationGroupId'] = request.qualification_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySingleSmsQualification',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QuerySingleSmsQualificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_single_sms_qualification_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.QuerySingleSmsQualificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QuerySingleSmsQualificationResponse:
+        """
+        @summary 查询单个资质详情
+        
+        @param request: QuerySingleSmsQualificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySingleSmsQualificationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qualification_group_id):
+            query['QualificationGroupId'] = request.qualification_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySingleSmsQualification',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QuerySingleSmsQualificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_single_sms_qualification(
+        self,
+        request: dysmsapi_20170525_models.QuerySingleSmsQualificationRequest,
+    ) -> dysmsapi_20170525_models.QuerySingleSmsQualificationResponse:
+        """
+        @summary 查询单个资质详情
+        
+        @param request: QuerySingleSmsQualificationRequest
+        @return: QuerySingleSmsQualificationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_single_sms_qualification_with_options(request, runtime)
+
+    async def query_single_sms_qualification_async(
+        self,
+        request: dysmsapi_20170525_models.QuerySingleSmsQualificationRequest,
+    ) -> dysmsapi_20170525_models.QuerySingleSmsQualificationResponse:
+        """
+        @summary 查询单个资质详情
+        
+        @param request: QuerySingleSmsQualificationRequest
+        @return: QuerySingleSmsQualificationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_single_sms_qualification_with_options_async(request, runtime)
+
     def query_sms_authorization_letter_with_options(
         self,
         tmp_req: dysmsapi_20170525_models.QuerySmsAuthorizationLetterRequest,
@@ -4762,6 +4986,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_sms_authorization_letter_with_options_async(request, runtime)
+
+    def query_sms_qualification_record_with_options(
+        self,
+        request: dysmsapi_20170525_models.QuerySmsQualificationRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QuerySmsQualificationRecordResponse:
+        """
+        @summary 查询资质审核列表页
+        
+        @param request: QuerySmsQualificationRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySmsQualificationRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.company_name):
+            query['CompanyName'] = request.company_name
+        if not UtilClient.is_unset(request.legal_person_name):
+            query['LegalPersonName'] = request.legal_person_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.qualification_group_name):
+            query['QualificationGroupName'] = request.qualification_group_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.use_by_self):
+            query['UseBySelf'] = request.use_by_self
+        if not UtilClient.is_unset(request.work_order_id):
+            query['WorkOrderId'] = request.work_order_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySmsQualificationRecord',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QuerySmsQualificationRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_sms_qualification_record_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.QuerySmsQualificationRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QuerySmsQualificationRecordResponse:
+        """
+        @summary 查询资质审核列表页
+        
+        @param request: QuerySmsQualificationRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySmsQualificationRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.company_name):
+            query['CompanyName'] = request.company_name
+        if not UtilClient.is_unset(request.legal_person_name):
+            query['LegalPersonName'] = request.legal_person_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.qualification_group_name):
+            query['QualificationGroupName'] = request.qualification_group_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.use_by_self):
+            query['UseBySelf'] = request.use_by_self
+        if not UtilClient.is_unset(request.work_order_id):
+            query['WorkOrderId'] = request.work_order_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySmsQualificationRecord',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QuerySmsQualificationRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_sms_qualification_record(
+        self,
+        request: dysmsapi_20170525_models.QuerySmsQualificationRecordRequest,
+    ) -> dysmsapi_20170525_models.QuerySmsQualificationRecordResponse:
+        """
+        @summary 查询资质审核列表页
+        
+        @param request: QuerySmsQualificationRecordRequest
+        @return: QuerySmsQualificationRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_sms_qualification_record_with_options(request, runtime)
+
+    async def query_sms_qualification_record_async(
+        self,
+        request: dysmsapi_20170525_models.QuerySmsQualificationRecordRequest,
+    ) -> dysmsapi_20170525_models.QuerySmsQualificationRecordResponse:
+        """
+        @summary 查询资质审核列表页
+        
+        @param request: QuerySmsQualificationRecordRequest
+        @return: QuerySmsQualificationRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_sms_qualification_record_with_options_async(request, runtime)
 
     def query_sms_sign_with_options(
         self,
@@ -5278,6 +5638,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_sms_template_list_with_options_async(request, runtime)
+
+    def required_phone_code_with_options(
+        self,
+        request: dysmsapi_20170525_models.RequiredPhoneCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.RequiredPhoneCodeResponse:
+        """
+        @summary 验证手机验证码
+        
+        @param request: RequiredPhoneCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RequiredPhoneCodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no):
+            query['PhoneNo'] = request.phone_no
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RequiredPhoneCode',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.RequiredPhoneCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def required_phone_code_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.RequiredPhoneCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.RequiredPhoneCodeResponse:
+        """
+        @summary 验证手机验证码
+        
+        @param request: RequiredPhoneCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RequiredPhoneCodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no):
+            query['PhoneNo'] = request.phone_no
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RequiredPhoneCode',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.RequiredPhoneCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def required_phone_code(
+        self,
+        request: dysmsapi_20170525_models.RequiredPhoneCodeRequest,
+    ) -> dysmsapi_20170525_models.RequiredPhoneCodeResponse:
+        """
+        @summary 验证手机验证码
+        
+        @param request: RequiredPhoneCodeRequest
+        @return: RequiredPhoneCodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.required_phone_code_with_options(request, runtime)
+
+    async def required_phone_code_async(
+        self,
+        request: dysmsapi_20170525_models.RequiredPhoneCodeRequest,
+    ) -> dysmsapi_20170525_models.RequiredPhoneCodeResponse:
+        """
+        @summary 验证手机验证码
+        
+        @param request: RequiredPhoneCodeRequest
+        @return: RequiredPhoneCodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.required_phone_code_with_options_async(request, runtime)
 
     def send_batch_card_sms_with_options(
         self,
@@ -6027,6 +6495,218 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.sms_conversion_intl_with_options_async(request, runtime)
 
+    def submit_sms_qualification_with_options(
+        self,
+        tmp_req: dysmsapi_20170525_models.SubmitSmsQualificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.SubmitSmsQualificationResponse:
+        """
+        @summary 创建资质对客openAPI
+        
+        @param tmp_req: SubmitSmsQualificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSmsQualificationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.SubmitSmsQualificationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.business_license_pics):
+            request.business_license_pics_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.business_license_pics, 'BusinessLicensePics', 'json')
+        if not UtilClient.is_unset(tmp_req.other_files):
+            request.other_files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.other_files, 'OtherFiles', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.admin_idcard_exp_date):
+            query['AdminIDCardExpDate'] = request.admin_idcard_exp_date
+        if not UtilClient.is_unset(request.admin_idcard_front_face):
+            query['AdminIDCardFrontFace'] = request.admin_idcard_front_face
+        if not UtilClient.is_unset(request.admin_idcard_no):
+            query['AdminIDCardNo'] = request.admin_idcard_no
+        if not UtilClient.is_unset(request.admin_idcard_pic):
+            query['AdminIDCardPic'] = request.admin_idcard_pic
+        if not UtilClient.is_unset(request.admin_idcard_type):
+            query['AdminIDCardType'] = request.admin_idcard_type
+        if not UtilClient.is_unset(request.admin_name):
+            query['AdminName'] = request.admin_name
+        if not UtilClient.is_unset(request.admin_phone_no):
+            query['AdminPhoneNo'] = request.admin_phone_no
+        if not UtilClient.is_unset(request.business_license_pics_shrink):
+            query['BusinessLicensePics'] = request.business_license_pics_shrink
+        if not UtilClient.is_unset(request.bussiness_license_exp_date):
+            query['BussinessLicenseExpDate'] = request.bussiness_license_exp_date
+        if not UtilClient.is_unset(request.certify_code):
+            query['CertifyCode'] = request.certify_code
+        if not UtilClient.is_unset(request.company_name):
+            query['CompanyName'] = request.company_name
+        if not UtilClient.is_unset(request.company_type):
+            query['CompanyType'] = request.company_type
+        if not UtilClient.is_unset(request.legal_person_idcard_no):
+            query['LegalPersonIDCardNo'] = request.legal_person_idcard_no
+        if not UtilClient.is_unset(request.legal_person_idcard_type):
+            query['LegalPersonIDCardType'] = request.legal_person_idcard_type
+        if not UtilClient.is_unset(request.legal_person_id_card_back_side):
+            query['LegalPersonIdCardBackSide'] = request.legal_person_id_card_back_side
+        if not UtilClient.is_unset(request.legal_person_id_card_eff_time):
+            query['LegalPersonIdCardEffTime'] = request.legal_person_id_card_eff_time
+        if not UtilClient.is_unset(request.legal_person_id_card_front_side):
+            query['LegalPersonIdCardFrontSide'] = request.legal_person_id_card_front_side
+        if not UtilClient.is_unset(request.legal_person_name):
+            query['LegalPersonName'] = request.legal_person_name
+        if not UtilClient.is_unset(request.organization_code):
+            query['OrganizationCode'] = request.organization_code
+        if not UtilClient.is_unset(request.other_files_shrink):
+            query['OtherFiles'] = request.other_files_shrink
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qualification_name):
+            query['QualificationName'] = request.qualification_name
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.use_by_self):
+            query['UseBySelf'] = request.use_by_self
+        if not UtilClient.is_unset(request.whether_share):
+            query['WhetherShare'] = request.whether_share
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitSmsQualification',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.SubmitSmsQualificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_sms_qualification_with_options_async(
+        self,
+        tmp_req: dysmsapi_20170525_models.SubmitSmsQualificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.SubmitSmsQualificationResponse:
+        """
+        @summary 创建资质对客openAPI
+        
+        @param tmp_req: SubmitSmsQualificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSmsQualificationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.SubmitSmsQualificationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.business_license_pics):
+            request.business_license_pics_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.business_license_pics, 'BusinessLicensePics', 'json')
+        if not UtilClient.is_unset(tmp_req.other_files):
+            request.other_files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.other_files, 'OtherFiles', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.admin_idcard_exp_date):
+            query['AdminIDCardExpDate'] = request.admin_idcard_exp_date
+        if not UtilClient.is_unset(request.admin_idcard_front_face):
+            query['AdminIDCardFrontFace'] = request.admin_idcard_front_face
+        if not UtilClient.is_unset(request.admin_idcard_no):
+            query['AdminIDCardNo'] = request.admin_idcard_no
+        if not UtilClient.is_unset(request.admin_idcard_pic):
+            query['AdminIDCardPic'] = request.admin_idcard_pic
+        if not UtilClient.is_unset(request.admin_idcard_type):
+            query['AdminIDCardType'] = request.admin_idcard_type
+        if not UtilClient.is_unset(request.admin_name):
+            query['AdminName'] = request.admin_name
+        if not UtilClient.is_unset(request.admin_phone_no):
+            query['AdminPhoneNo'] = request.admin_phone_no
+        if not UtilClient.is_unset(request.business_license_pics_shrink):
+            query['BusinessLicensePics'] = request.business_license_pics_shrink
+        if not UtilClient.is_unset(request.bussiness_license_exp_date):
+            query['BussinessLicenseExpDate'] = request.bussiness_license_exp_date
+        if not UtilClient.is_unset(request.certify_code):
+            query['CertifyCode'] = request.certify_code
+        if not UtilClient.is_unset(request.company_name):
+            query['CompanyName'] = request.company_name
+        if not UtilClient.is_unset(request.company_type):
+            query['CompanyType'] = request.company_type
+        if not UtilClient.is_unset(request.legal_person_idcard_no):
+            query['LegalPersonIDCardNo'] = request.legal_person_idcard_no
+        if not UtilClient.is_unset(request.legal_person_idcard_type):
+            query['LegalPersonIDCardType'] = request.legal_person_idcard_type
+        if not UtilClient.is_unset(request.legal_person_id_card_back_side):
+            query['LegalPersonIdCardBackSide'] = request.legal_person_id_card_back_side
+        if not UtilClient.is_unset(request.legal_person_id_card_eff_time):
+            query['LegalPersonIdCardEffTime'] = request.legal_person_id_card_eff_time
+        if not UtilClient.is_unset(request.legal_person_id_card_front_side):
+            query['LegalPersonIdCardFrontSide'] = request.legal_person_id_card_front_side
+        if not UtilClient.is_unset(request.legal_person_name):
+            query['LegalPersonName'] = request.legal_person_name
+        if not UtilClient.is_unset(request.organization_code):
+            query['OrganizationCode'] = request.organization_code
+        if not UtilClient.is_unset(request.other_files_shrink):
+            query['OtherFiles'] = request.other_files_shrink
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qualification_name):
+            query['QualificationName'] = request.qualification_name
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.use_by_self):
+            query['UseBySelf'] = request.use_by_self
+        if not UtilClient.is_unset(request.whether_share):
+            query['WhetherShare'] = request.whether_share
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitSmsQualification',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.SubmitSmsQualificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_sms_qualification(
+        self,
+        request: dysmsapi_20170525_models.SubmitSmsQualificationRequest,
+    ) -> dysmsapi_20170525_models.SubmitSmsQualificationResponse:
+        """
+        @summary 创建资质对客openAPI
+        
+        @param request: SubmitSmsQualificationRequest
+        @return: SubmitSmsQualificationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_sms_qualification_with_options(request, runtime)
+
+    async def submit_sms_qualification_async(
+        self,
+        request: dysmsapi_20170525_models.SubmitSmsQualificationRequest,
+    ) -> dysmsapi_20170525_models.SubmitSmsQualificationResponse:
+        """
+        @summary 创建资质对客openAPI
+        
+        @param request: SubmitSmsQualificationRequest
+        @return: SubmitSmsQualificationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_sms_qualification_with_options_async(request, runtime)
+
     def tag_resources_with_options(
         self,
         request: dysmsapi_20170525_models.TagResourcesRequest,
@@ -6419,6 +7099,202 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_ext_code_sign_with_options_async(request, runtime)
 
+    def update_sms_qualification_with_options(
+        self,
+        tmp_req: dysmsapi_20170525_models.UpdateSmsQualificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.UpdateSmsQualificationResponse:
+        """
+        @summary 修改资质对客openAPI
+        
+        @param tmp_req: UpdateSmsQualificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSmsQualificationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.UpdateSmsQualificationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.business_license_pics):
+            request.business_license_pics_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.business_license_pics, 'BusinessLicensePics', 'json')
+        if not UtilClient.is_unset(tmp_req.other_files):
+            request.other_files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.other_files, 'OtherFiles', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.admin_idcard_exp_date):
+            query['AdminIDCardExpDate'] = request.admin_idcard_exp_date
+        if not UtilClient.is_unset(request.admin_idcard_front_face):
+            query['AdminIDCardFrontFace'] = request.admin_idcard_front_face
+        if not UtilClient.is_unset(request.admin_idcard_no):
+            query['AdminIDCardNo'] = request.admin_idcard_no
+        if not UtilClient.is_unset(request.admin_idcard_pic):
+            query['AdminIDCardPic'] = request.admin_idcard_pic
+        if not UtilClient.is_unset(request.admin_idcard_type):
+            query['AdminIDCardType'] = request.admin_idcard_type
+        if not UtilClient.is_unset(request.admin_name):
+            query['AdminName'] = request.admin_name
+        if not UtilClient.is_unset(request.admin_phone_no):
+            query['AdminPhoneNo'] = request.admin_phone_no
+        if not UtilClient.is_unset(request.business_license_pics_shrink):
+            query['BusinessLicensePics'] = request.business_license_pics_shrink
+        if not UtilClient.is_unset(request.bussiness_license_exp_date):
+            query['BussinessLicenseExpDate'] = request.bussiness_license_exp_date
+        if not UtilClient.is_unset(request.certify_code):
+            query['CertifyCode'] = request.certify_code
+        if not UtilClient.is_unset(request.company_name):
+            query['CompanyName'] = request.company_name
+        if not UtilClient.is_unset(request.legal_person_idcard_no):
+            query['LegalPersonIDCardNo'] = request.legal_person_idcard_no
+        if not UtilClient.is_unset(request.legal_person_idcard_type):
+            query['LegalPersonIDCardType'] = request.legal_person_idcard_type
+        if not UtilClient.is_unset(request.legal_person_id_card_back_side):
+            query['LegalPersonIdCardBackSide'] = request.legal_person_id_card_back_side
+        if not UtilClient.is_unset(request.legal_person_id_card_eff_time):
+            query['LegalPersonIdCardEffTime'] = request.legal_person_id_card_eff_time
+        if not UtilClient.is_unset(request.legal_person_id_card_front_side):
+            query['LegalPersonIdCardFrontSide'] = request.legal_person_id_card_front_side
+        if not UtilClient.is_unset(request.legal_person_name):
+            query['LegalPersonName'] = request.legal_person_name
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.other_files_shrink):
+            query['OtherFiles'] = request.other_files_shrink
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qualification_group_id):
+            query['QualificationGroupId'] = request.qualification_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmsQualification',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.UpdateSmsQualificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_sms_qualification_with_options_async(
+        self,
+        tmp_req: dysmsapi_20170525_models.UpdateSmsQualificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.UpdateSmsQualificationResponse:
+        """
+        @summary 修改资质对客openAPI
+        
+        @param tmp_req: UpdateSmsQualificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSmsQualificationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.UpdateSmsQualificationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.business_license_pics):
+            request.business_license_pics_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.business_license_pics, 'BusinessLicensePics', 'json')
+        if not UtilClient.is_unset(tmp_req.other_files):
+            request.other_files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.other_files, 'OtherFiles', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.admin_idcard_exp_date):
+            query['AdminIDCardExpDate'] = request.admin_idcard_exp_date
+        if not UtilClient.is_unset(request.admin_idcard_front_face):
+            query['AdminIDCardFrontFace'] = request.admin_idcard_front_face
+        if not UtilClient.is_unset(request.admin_idcard_no):
+            query['AdminIDCardNo'] = request.admin_idcard_no
+        if not UtilClient.is_unset(request.admin_idcard_pic):
+            query['AdminIDCardPic'] = request.admin_idcard_pic
+        if not UtilClient.is_unset(request.admin_idcard_type):
+            query['AdminIDCardType'] = request.admin_idcard_type
+        if not UtilClient.is_unset(request.admin_name):
+            query['AdminName'] = request.admin_name
+        if not UtilClient.is_unset(request.admin_phone_no):
+            query['AdminPhoneNo'] = request.admin_phone_no
+        if not UtilClient.is_unset(request.business_license_pics_shrink):
+            query['BusinessLicensePics'] = request.business_license_pics_shrink
+        if not UtilClient.is_unset(request.bussiness_license_exp_date):
+            query['BussinessLicenseExpDate'] = request.bussiness_license_exp_date
+        if not UtilClient.is_unset(request.certify_code):
+            query['CertifyCode'] = request.certify_code
+        if not UtilClient.is_unset(request.company_name):
+            query['CompanyName'] = request.company_name
+        if not UtilClient.is_unset(request.legal_person_idcard_no):
+            query['LegalPersonIDCardNo'] = request.legal_person_idcard_no
+        if not UtilClient.is_unset(request.legal_person_idcard_type):
+            query['LegalPersonIDCardType'] = request.legal_person_idcard_type
+        if not UtilClient.is_unset(request.legal_person_id_card_back_side):
+            query['LegalPersonIdCardBackSide'] = request.legal_person_id_card_back_side
+        if not UtilClient.is_unset(request.legal_person_id_card_eff_time):
+            query['LegalPersonIdCardEffTime'] = request.legal_person_id_card_eff_time
+        if not UtilClient.is_unset(request.legal_person_id_card_front_side):
+            query['LegalPersonIdCardFrontSide'] = request.legal_person_id_card_front_side
+        if not UtilClient.is_unset(request.legal_person_name):
+            query['LegalPersonName'] = request.legal_person_name
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.other_files_shrink):
+            query['OtherFiles'] = request.other_files_shrink
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qualification_group_id):
+            query['QualificationGroupId'] = request.qualification_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmsQualification',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.UpdateSmsQualificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_sms_qualification(
+        self,
+        request: dysmsapi_20170525_models.UpdateSmsQualificationRequest,
+    ) -> dysmsapi_20170525_models.UpdateSmsQualificationResponse:
+        """
+        @summary 修改资质对客openAPI
+        
+        @param request: UpdateSmsQualificationRequest
+        @return: UpdateSmsQualificationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_sms_qualification_with_options(request, runtime)
+
+    async def update_sms_qualification_async(
+        self,
+        request: dysmsapi_20170525_models.UpdateSmsQualificationRequest,
+    ) -> dysmsapi_20170525_models.UpdateSmsQualificationResponse:
+        """
+        @summary 修改资质对客openAPI
+        
+        @param request: UpdateSmsQualificationRequest
+        @return: UpdateSmsQualificationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_sms_qualification_with_options_async(request, runtime)
+
     def update_sms_sign_with_options(
         self,
         tmp_req: dysmsapi_20170525_models.UpdateSmsSignRequest,
@@ -6758,3 +7634,115 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_sms_template_with_options_async(request, runtime)
+
+    def valid_phone_code_with_options(
+        self,
+        request: dysmsapi_20170525_models.ValidPhoneCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.ValidPhoneCodeResponse:
+        """
+        @summary 发送手机验证码
+        
+        @param request: ValidPhoneCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidPhoneCodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certify_code):
+            query['CertifyCode'] = request.certify_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no):
+            query['PhoneNo'] = request.phone_no
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ValidPhoneCode',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.ValidPhoneCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def valid_phone_code_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.ValidPhoneCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.ValidPhoneCodeResponse:
+        """
+        @summary 发送手机验证码
+        
+        @param request: ValidPhoneCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidPhoneCodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certify_code):
+            query['CertifyCode'] = request.certify_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no):
+            query['PhoneNo'] = request.phone_no
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ValidPhoneCode',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.ValidPhoneCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def valid_phone_code(
+        self,
+        request: dysmsapi_20170525_models.ValidPhoneCodeRequest,
+    ) -> dysmsapi_20170525_models.ValidPhoneCodeResponse:
+        """
+        @summary 发送手机验证码
+        
+        @param request: ValidPhoneCodeRequest
+        @return: ValidPhoneCodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.valid_phone_code_with_options(request, runtime)
+
+    async def valid_phone_code_async(
+        self,
+        request: dysmsapi_20170525_models.ValidPhoneCodeRequest,
+    ) -> dysmsapi_20170525_models.ValidPhoneCodeResponse:
+        """
+        @summary 发送手机验证码
+        
+        @param request: ValidPhoneCodeRequest
+        @return: ValidPhoneCodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.valid_phone_code_with_options_async(request, runtime)
