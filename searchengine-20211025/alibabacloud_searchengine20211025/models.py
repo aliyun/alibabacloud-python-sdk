@@ -9663,6 +9663,7 @@ class GetInstanceResponseBodyResult(TeaModel):
         update_time: str = None,
         user_name: str = None,
         version: str = None,
+        zone_count: int = None,
     ):
         self.bs_version = bs_version
         # The billing method.
@@ -9708,6 +9709,7 @@ class GetInstanceResponseBodyResult(TeaModel):
         self.user_name = user_name
         # The version of the engine.
         self.version = version
+        self.zone_count = zone_count
 
     def validate(self):
         if self.network:
@@ -9767,6 +9769,8 @@ class GetInstanceResponseBodyResult(TeaModel):
             result['userName'] = self.user_name
         if self.version is not None:
             result['version'] = self.version
+        if self.zone_count is not None:
+            result['zoneCount'] = self.zone_count
         return result
 
     def from_map(self, m: dict = None):
@@ -9816,6 +9820,8 @@ class GetInstanceResponseBodyResult(TeaModel):
             self.user_name = m.get('userName')
         if m.get('version') is not None:
             self.version = m.get('version')
+        if m.get('zoneCount') is not None:
+            self.zone_count = m.get('zoneCount')
         return self
 
 
@@ -21211,6 +21217,113 @@ class ModifyPublicUrlIpListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyPublicUrlIpListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifySearcherReplicaRequest(TeaModel):
+    def __init__(
+        self,
+        partition: int = None,
+        replica: int = None,
+    ):
+        self.partition = partition
+        self.replica = replica
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.partition is not None:
+            result['partition'] = self.partition
+        if self.replica is not None:
+            result['replica'] = self.replica
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('partition') is not None:
+            self.partition = m.get('partition')
+        if m.get('replica') is not None:
+            self.replica = m.get('replica')
+        return self
+
+
+class ModifySearcherReplicaResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: Dict[str, Any] = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class ModifySearcherReplicaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifySearcherReplicaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifySearcherReplicaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

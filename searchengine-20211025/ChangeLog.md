@@ -1,3 +1,8 @@
+2025-04-23 Version: 5.2.0
+- Support API ModifySearcherReplica.
+- Update API GetInstance: add response parameters Body.result.zoneCount.
+
+
 2025-03-19 Version: 5.1.0
 - Support API CreateModel.
 - Support API DebugModel.
