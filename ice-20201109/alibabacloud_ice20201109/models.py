@@ -6268,6 +6268,7 @@ class BatchGetMediaInfosResponseBodyMediaInfosFileInfoList(TeaModel):
 class BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo(TeaModel):
     def __init__(
         self,
+        biz: str = None,
         business_type: str = None,
         category: str = None,
         cover_url: str = None,
@@ -6287,6 +6288,7 @@ class BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo(TeaModel):
         transcode_status: str = None,
         user_data: str = None,
     ):
+        self.biz = biz
         # The business type of the media asset.
         self.business_type = business_type
         # The category of the media asset.
@@ -6345,6 +6347,8 @@ class BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.biz is not None:
+            result['Biz'] = self.biz
         if self.business_type is not None:
             result['BusinessType'] = self.business_type
         if self.category is not None:
@@ -6385,6 +6389,8 @@ class BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Biz') is not None:
+            self.biz = m.get('Biz')
         if m.get('BusinessType') is not None:
             self.business_type = m.get('BusinessType')
         if m.get('Category') is not None:

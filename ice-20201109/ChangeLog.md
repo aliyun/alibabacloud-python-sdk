@@ -1,3 +1,7 @@
+2025-04-23 Version: 5.0.5
+- Update API BatchGetMediaInfos: add response parameters Body.MediaInfos.$.MediaBasicInfo.Biz.
+
+
 2025-04-21 Version: 5.0.4
 - Update API GetBatchMediaProducingJob: add response parameters Body.EditingBatchJob.SubJobList.$.Duration.
 
