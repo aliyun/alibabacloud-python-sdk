@@ -1,3 +1,9 @@
+2025-04-23 Version: 1.8.5
+- Update API GetUserDevice: add response parameters Body.Device.Workshop.
+- Update API ListUserDevices: add request parameters Workshop.
+- Update API ListUserDevices: add response parameters Body.Devices.$.Workshop.
+
+
 2025-04-16 Version: 1.8.4
 - Update API UpdatePrivateAccessApplication: add request parameters L7ProxyDomainPrivate.
 

@@ -9021,6 +9021,7 @@ class GetUserDeviceResponseBodyDevice(TeaModel):
         src_ip: str = None,
         update_time: str = None,
         username: str = None,
+        workshop: str = None,
     ):
         self.app_status = app_status
         self.app_version = app_version
@@ -9050,6 +9051,7 @@ class GetUserDeviceResponseBodyDevice(TeaModel):
         self.src_ip = src_ip
         self.update_time = update_time
         self.username = username
+        self.workshop = workshop
 
     def validate(self):
         if self.history_users:
@@ -9127,6 +9129,8 @@ class GetUserDeviceResponseBodyDevice(TeaModel):
             result['UpdateTime'] = self.update_time
         if self.username is not None:
             result['Username'] = self.username
+        if self.workshop is not None:
+            result['Workshop'] = self.workshop
         return result
 
     def from_map(self, m: dict = None):
@@ -9193,6 +9197,8 @@ class GetUserDeviceResponseBodyDevice(TeaModel):
             self.update_time = m.get('UpdateTime')
         if m.get('Username') is not None:
             self.username = m.get('Username')
+        if m.get('Workshop') is not None:
+            self.workshop = m.get('Workshop')
         return self
 
 
@@ -18526,6 +18532,7 @@ class ListUserDevicesRequest(TeaModel):
         sharing_status: bool = None,
         sort_by: str = None,
         username: str = None,
+        workshop: str = None,
     ):
         self.app_statuses = app_statuses
         self.app_versions = app_versions
@@ -18549,6 +18556,7 @@ class ListUserDevicesRequest(TeaModel):
         self.sharing_status = sharing_status
         self.sort_by = sort_by
         self.username = username
+        self.workshop = workshop
 
     def validate(self):
         pass
@@ -18599,6 +18607,8 @@ class ListUserDevicesRequest(TeaModel):
             result['SortBy'] = self.sort_by
         if self.username is not None:
             result['Username'] = self.username
+        if self.workshop is not None:
+            result['Workshop'] = self.workshop
         return result
 
     def from_map(self, m: dict = None):
@@ -18643,6 +18653,8 @@ class ListUserDevicesRequest(TeaModel):
             self.sort_by = m.get('SortBy')
         if m.get('Username') is not None:
             self.username = m.get('Username')
+        if m.get('Workshop') is not None:
+            self.workshop = m.get('Workshop')
         return self
 
 
@@ -18709,6 +18721,7 @@ class ListUserDevicesResponseBodyDevices(TeaModel):
         src_ip: str = None,
         update_time: str = None,
         username: str = None,
+        workshop: str = None,
     ):
         self.app_status = app_status
         self.app_version = app_version
@@ -18737,6 +18750,7 @@ class ListUserDevicesResponseBodyDevices(TeaModel):
         self.src_ip = src_ip
         self.update_time = update_time
         self.username = username
+        self.workshop = workshop
 
     def validate(self):
         if self.net_interface_info:
@@ -18806,6 +18820,8 @@ class ListUserDevicesResponseBodyDevices(TeaModel):
             result['UpdateTime'] = self.update_time
         if self.username is not None:
             result['Username'] = self.username
+        if self.workshop is not None:
+            result['Workshop'] = self.workshop
         return result
 
     def from_map(self, m: dict = None):
@@ -18867,6 +18883,8 @@ class ListUserDevicesResponseBodyDevices(TeaModel):
             self.update_time = m.get('UpdateTime')
         if m.get('Username') is not None:
             self.username = m.get('Username')
+        if m.get('Workshop') is not None:
+            self.workshop = m.get('Workshop')
         return self
 
 
