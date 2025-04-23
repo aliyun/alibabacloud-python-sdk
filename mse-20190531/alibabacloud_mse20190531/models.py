@@ -56446,9 +56446,11 @@ class QueryConfigResponseBodyDataNacosRunningEnv(TeaModel):
     def __init__(
         self,
         empty_protect: bool = None,
+        gray_auth: str = None,
     ):
         # Indicates whether empty list protection is enabled.
         self.empty_protect = empty_protect
+        self.gray_auth = gray_auth
 
     def validate(self):
         pass
@@ -56461,12 +56463,16 @@ class QueryConfigResponseBodyDataNacosRunningEnv(TeaModel):
         result = dict()
         if self.empty_protect is not None:
             result['emptyProtect'] = self.empty_protect
+        if self.gray_auth is not None:
+            result['grayAuth'] = self.gray_auth
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('emptyProtect') is not None:
             self.empty_protect = m.get('emptyProtect')
+        if m.get('grayAuth') is not None:
+            self.gray_auth = m.get('grayAuth')
         return self
 
 

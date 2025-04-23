@@ -1,3 +1,7 @@
+2025-04-23 Version: 6.18.6
+- Update API QueryConfig: add response parameters Body.Data.NacosRunningEnv.grayAuth.
+
+
 2025-04-21 Version: 6.18.5
 - Generated python 2019-05-31 for mse.
 
