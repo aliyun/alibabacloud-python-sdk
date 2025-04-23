@@ -1,3 +1,9 @@
+2025-04-23 Version: 6.2.0
+- Support API GetDatasetFileMetasStatistics.
+- Update API CreateModel: add request parameters body.Tag.
+- Update API ListModels: add request parameters Tag.
+
+
 2025-04-17 Version: 6.1.0
 - Support API DeleteUserConfig.
 - Support API ListUserConfigs.

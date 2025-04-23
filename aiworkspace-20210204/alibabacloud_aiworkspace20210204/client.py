@@ -48,7 +48,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.AcceptDataworksEventResponse:
         """
-        @summary 接受并处理Dataworks发送的事件
+        @summary Receives and processes system event messages sent by DataWorks.
+        
+        @description This operation can be called only by the internal system and cannot be called by external users.
         
         @param request: AcceptDataworksEventRequest
         @param headers: map
@@ -88,7 +90,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.AcceptDataworksEventResponse:
         """
-        @summary 接受并处理Dataworks发送的事件
+        @summary Receives and processes system event messages sent by DataWorks.
+        
+        @description This operation can be called only by the internal system and cannot be called by external users.
         
         @param request: AcceptDataworksEventRequest
         @param headers: map
@@ -126,7 +130,9 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.AcceptDataworksEventRequest,
     ) -> aiwork_space_20210204_models.AcceptDataworksEventResponse:
         """
-        @summary 接受并处理Dataworks发送的事件
+        @summary Receives and processes system event messages sent by DataWorks.
+        
+        @description This operation can be called only by the internal system and cannot be called by external users.
         
         @param request: AcceptDataworksEventRequest
         @return: AcceptDataworksEventResponse
@@ -140,7 +146,9 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.AcceptDataworksEventRequest,
     ) -> aiwork_space_20210204_models.AcceptDataworksEventResponse:
         """
-        @summary 接受并处理Dataworks发送的事件
+        @summary Receives and processes system event messages sent by DataWorks.
+        
+        @description This operation can be called only by the internal system and cannot be called by external users.
         
         @param request: AcceptDataworksEventRequest
         @return: AcceptDataworksEventResponse
@@ -156,7 +164,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.AddImageResponse:
         """
-        @summary 增加 Image
+        @summary Adds a custom image to a workspace.
         
         @param request: AddImageRequest
         @param headers: map
@@ -212,7 +220,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.AddImageResponse:
         """
-        @summary 增加 Image
+        @summary Adds a custom image to a workspace.
         
         @param request: AddImageRequest
         @param headers: map
@@ -266,7 +274,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.AddImageRequest,
     ) -> aiwork_space_20210204_models.AddImageResponse:
         """
-        @summary 增加 Image
+        @summary Adds a custom image to a workspace.
         
         @param request: AddImageRequest
         @return: AddImageResponse
@@ -280,7 +288,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.AddImageRequest,
     ) -> aiwork_space_20210204_models.AddImageResponse:
         """
-        @summary 增加 Image
+        @summary Adds a custom image to a workspace.
         
         @param request: AddImageRequest
         @return: AddImageResponse
@@ -297,7 +305,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.AddImageLabelsResponse:
         """
-        @summary 增加 Image 的标签
+        @summary Adds tags to an image.
         
         @param request: AddImageLabelsRequest
         @param headers: map
@@ -336,7 +344,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.AddImageLabelsResponse:
         """
-        @summary 增加 Image 的标签
+        @summary Adds tags to an image.
         
         @param request: AddImageLabelsRequest
         @param headers: map
@@ -373,7 +381,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.AddImageLabelsRequest,
     ) -> aiwork_space_20210204_models.AddImageLabelsResponse:
         """
-        @summary 增加 Image 的标签
+        @summary Adds tags to an image.
         
         @param request: AddImageLabelsRequest
         @return: AddImageLabelsResponse
@@ -388,7 +396,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.AddImageLabelsRequest,
     ) -> aiwork_space_20210204_models.AddImageLabelsResponse:
         """
-        @summary 增加 Image 的标签
+        @summary Adds tags to an image.
         
         @param request: AddImageLabelsRequest
         @return: AddImageLabelsResponse
@@ -406,7 +414,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.AddMemberRoleResponse:
         """
-        @summary 增加成员角色
+        @summary Adds a role to a member in a workspace. After you add a role to a member, the member is granted the permissions of the role.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -440,7 +448,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.AddMemberRoleResponse:
         """
-        @summary 增加成员角色
+        @summary Adds a role to a member in a workspace. After you add a role to a member, the member is granted the permissions of the role.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -472,7 +480,7 @@ class Client(OpenApiClient):
         role_name: str,
     ) -> aiwork_space_20210204_models.AddMemberRoleResponse:
         """
-        @summary 增加成员角色
+        @summary Adds a role to a member in a workspace. After you add a role to a member, the member is granted the permissions of the role.
         
         @return: AddMemberRoleResponse
         """
@@ -487,7 +495,7 @@ class Client(OpenApiClient):
         role_name: str,
     ) -> aiwork_space_20210204_models.AddMemberRoleResponse:
         """
-        @summary 增加成员角色
+        @summary Adds a role to a member in a workspace. After you add a role to a member, the member is granted the permissions of the role.
         
         @return: AddMemberRoleResponse
         """
@@ -502,7 +510,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ChangeResourceGroupResponse:
         """
-        @summary 更改资源组
+        @summary Changes the resource group to which a resource belongs based on the ID.
         
         @param request: ChangeResourceGroupRequest
         @param headers: map
@@ -544,7 +552,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ChangeResourceGroupResponse:
         """
-        @summary 更改资源组
+        @summary Changes the resource group to which a resource belongs based on the ID.
         
         @param request: ChangeResourceGroupRequest
         @param headers: map
@@ -584,7 +592,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ChangeResourceGroupRequest,
     ) -> aiwork_space_20210204_models.ChangeResourceGroupResponse:
         """
-        @summary 更改资源组
+        @summary Changes the resource group to which a resource belongs based on the ID.
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -598,7 +606,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ChangeResourceGroupRequest,
     ) -> aiwork_space_20210204_models.ChangeResourceGroupResponse:
         """
-        @summary 更改资源组
+        @summary Changes the resource group to which a resource belongs based on the ID.
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -614,7 +622,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateCodeSourceResponse:
         """
-        @summary 创建一个代码源配置
+        @summary Creates a code build in Platform for AI (PAI). You can configure Git branches and commit IDs. After the code build is created, you can reference the code build in a Deep Learning Containers (DLC) job.
         
         @param request: CreateCodeSourceRequest
         @param headers: map
@@ -670,7 +678,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateCodeSourceResponse:
         """
-        @summary 创建一个代码源配置
+        @summary Creates a code build in Platform for AI (PAI). You can configure Git branches and commit IDs. After the code build is created, you can reference the code build in a Deep Learning Containers (DLC) job.
         
         @param request: CreateCodeSourceRequest
         @param headers: map
@@ -724,7 +732,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateCodeSourceRequest,
     ) -> aiwork_space_20210204_models.CreateCodeSourceResponse:
         """
-        @summary 创建一个代码源配置
+        @summary Creates a code build in Platform for AI (PAI). You can configure Git branches and commit IDs. After the code build is created, you can reference the code build in a Deep Learning Containers (DLC) job.
         
         @param request: CreateCodeSourceRequest
         @return: CreateCodeSourceResponse
@@ -738,7 +746,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateCodeSourceRequest,
     ) -> aiwork_space_20210204_models.CreateCodeSourceResponse:
         """
-        @summary 创建一个代码源配置
+        @summary Creates a code build in Platform for AI (PAI). You can configure Git branches and commit IDs. After the code build is created, you can reference the code build in a Deep Learning Containers (DLC) job.
         
         @param request: CreateCodeSourceRequest
         @return: CreateCodeSourceResponse
@@ -754,7 +762,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateDatasetResponse:
         """
-        @summary 创建数据集
+        @summary Creates a dataset.
         
         @param request: CreateDatasetRequest
         @param headers: map
@@ -836,7 +844,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateDatasetResponse:
         """
-        @summary 创建数据集
+        @summary Creates a dataset.
         
         @param request: CreateDatasetRequest
         @param headers: map
@@ -916,7 +924,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateDatasetRequest,
     ) -> aiwork_space_20210204_models.CreateDatasetResponse:
         """
-        @summary 创建数据集
+        @summary Creates a dataset.
         
         @param request: CreateDatasetRequest
         @return: CreateDatasetResponse
@@ -930,7 +938,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateDatasetRequest,
     ) -> aiwork_space_20210204_models.CreateDatasetResponse:
         """
-        @summary 创建数据集
+        @summary Creates a dataset.
         
         @param request: CreateDatasetRequest
         @return: CreateDatasetResponse
@@ -947,7 +955,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateDatasetFileMetasResponse:
         """
-        @summary 批量创建数据集下的文件元数据记录
+        @summary Creates the metadata records of multiple files in a dataset at a time.
         
         @param request: CreateDatasetFileMetasRequest
         @param headers: map
@@ -990,7 +998,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateDatasetFileMetasResponse:
         """
-        @summary 批量创建数据集下的文件元数据记录
+        @summary Creates the metadata records of multiple files in a dataset at a time.
         
         @param request: CreateDatasetFileMetasRequest
         @param headers: map
@@ -1031,7 +1039,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateDatasetFileMetasRequest,
     ) -> aiwork_space_20210204_models.CreateDatasetFileMetasResponse:
         """
-        @summary 批量创建数据集下的文件元数据记录
+        @summary Creates the metadata records of multiple files in a dataset at a time.
         
         @param request: CreateDatasetFileMetasRequest
         @return: CreateDatasetFileMetasResponse
@@ -1046,7 +1054,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateDatasetFileMetasRequest,
     ) -> aiwork_space_20210204_models.CreateDatasetFileMetasResponse:
         """
-        @summary 批量创建数据集下的文件元数据记录
+        @summary Creates the metadata records of multiple files in a dataset at a time.
         
         @param request: CreateDatasetFileMetasRequest
         @return: CreateDatasetFileMetasResponse
@@ -1063,7 +1071,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateDatasetJobResponse:
         """
-        @summary 创建数据集任务
+        @summary Creates a dataset job.
         
         @param request: CreateDatasetJobRequest
         @param headers: map
@@ -1112,7 +1120,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateDatasetJobResponse:
         """
-        @summary 创建数据集任务
+        @summary Creates a dataset job.
         
         @param request: CreateDatasetJobRequest
         @param headers: map
@@ -1159,7 +1167,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateDatasetJobRequest,
     ) -> aiwork_space_20210204_models.CreateDatasetJobResponse:
         """
-        @summary 创建数据集任务
+        @summary Creates a dataset job.
         
         @param request: CreateDatasetJobRequest
         @return: CreateDatasetJobResponse
@@ -1174,7 +1182,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateDatasetJobRequest,
     ) -> aiwork_space_20210204_models.CreateDatasetJobResponse:
         """
-        @summary 创建数据集任务
+        @summary Creates a dataset job.
         
         @param request: CreateDatasetJobRequest
         @return: CreateDatasetJobResponse
@@ -1191,7 +1199,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateDatasetJobConfigResponse:
         """
-        @summary 创建数据集任务配置
+        @summary Creates a job configuration for a dataset.
         
         @param request: CreateDatasetJobConfigRequest
         @param headers: map
@@ -1234,7 +1242,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateDatasetJobConfigResponse:
         """
-        @summary 创建数据集任务配置
+        @summary Creates a job configuration for a dataset.
         
         @param request: CreateDatasetJobConfigRequest
         @param headers: map
@@ -1275,7 +1283,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateDatasetJobConfigRequest,
     ) -> aiwork_space_20210204_models.CreateDatasetJobConfigResponse:
         """
-        @summary 创建数据集任务配置
+        @summary Creates a job configuration for a dataset.
         
         @param request: CreateDatasetJobConfigRequest
         @return: CreateDatasetJobConfigResponse
@@ -1290,7 +1298,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateDatasetJobConfigRequest,
     ) -> aiwork_space_20210204_models.CreateDatasetJobConfigResponse:
         """
-        @summary 创建数据集任务配置
+        @summary Creates a job configuration for a dataset.
         
         @param request: CreateDatasetJobConfigRequest
         @return: CreateDatasetJobConfigResponse
@@ -1307,7 +1315,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateDatasetLabelsResponse:
         """
-        @summary 创建或更新 Dataset 的标签
+        @summary Creates tags for a dataset.
+        
+        @description Before you call this operation, take note of the following items:
+        The tag key and value are not empty strings and cannot exceed 128 characters in length.
+        The tag key cannot start with any of the following strings: "aliyun", "acs", "http://", and "https://".
         
         @param request: CreateDatasetLabelsRequest
         @param headers: map
@@ -1346,7 +1358,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateDatasetLabelsResponse:
         """
-        @summary 创建或更新 Dataset 的标签
+        @summary Creates tags for a dataset.
+        
+        @description Before you call this operation, take note of the following items:
+        The tag key and value are not empty strings and cannot exceed 128 characters in length.
+        The tag key cannot start with any of the following strings: "aliyun", "acs", "http://", and "https://".
         
         @param request: CreateDatasetLabelsRequest
         @param headers: map
@@ -1383,7 +1399,11 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateDatasetLabelsRequest,
     ) -> aiwork_space_20210204_models.CreateDatasetLabelsResponse:
         """
-        @summary 创建或更新 Dataset 的标签
+        @summary Creates tags for a dataset.
+        
+        @description Before you call this operation, take note of the following items:
+        The tag key and value are not empty strings and cannot exceed 128 characters in length.
+        The tag key cannot start with any of the following strings: "aliyun", "acs", "http://", and "https://".
         
         @param request: CreateDatasetLabelsRequest
         @return: CreateDatasetLabelsResponse
@@ -1398,7 +1418,11 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateDatasetLabelsRequest,
     ) -> aiwork_space_20210204_models.CreateDatasetLabelsResponse:
         """
-        @summary 创建或更新 Dataset 的标签
+        @summary Creates tags for a dataset.
+        
+        @description Before you call this operation, take note of the following items:
+        The tag key and value are not empty strings and cannot exceed 128 characters in length.
+        The tag key cannot start with any of the following strings: "aliyun", "acs", "http://", and "https://".
         
         @param request: CreateDatasetLabelsRequest
         @return: CreateDatasetLabelsResponse
@@ -1674,7 +1698,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateExperimentResponse:
         """
-        @summary 创建实验
+        @summary Creates an experiment.
         
         @param request: CreateExperimentRequest
         @param headers: map
@@ -1720,7 +1744,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateExperimentResponse:
         """
-        @summary 创建实验
+        @summary Creates an experiment.
         
         @param request: CreateExperimentRequest
         @param headers: map
@@ -1764,7 +1788,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateExperimentRequest,
     ) -> aiwork_space_20210204_models.CreateExperimentResponse:
         """
-        @summary 创建实验
+        @summary Creates an experiment.
         
         @param request: CreateExperimentRequest
         @return: CreateExperimentResponse
@@ -1778,7 +1802,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateExperimentRequest,
     ) -> aiwork_space_20210204_models.CreateExperimentResponse:
         """
-        @summary 创建实验
+        @summary Creates an experiment.
         
         @param request: CreateExperimentRequest
         @return: CreateExperimentResponse
@@ -1795,7 +1819,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateMemberResponse:
         """
-        @summary 创建成员
+        @summary Adds a user to a workspace as a member. You can add multiple users as members.
         
         @param request: CreateMemberRequest
         @param headers: map
@@ -1834,7 +1858,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateMemberResponse:
         """
-        @summary 创建成员
+        @summary Adds a user to a workspace as a member. You can add multiple users as members.
         
         @param request: CreateMemberRequest
         @param headers: map
@@ -1871,7 +1895,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateMemberRequest,
     ) -> aiwork_space_20210204_models.CreateMemberResponse:
         """
-        @summary 创建成员
+        @summary Adds a user to a workspace as a member. You can add multiple users as members.
         
         @param request: CreateMemberRequest
         @return: CreateMemberResponse
@@ -1886,7 +1910,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateMemberRequest,
     ) -> aiwork_space_20210204_models.CreateMemberResponse:
         """
-        @summary 创建成员
+        @summary Adds a user to a workspace as a member. You can add multiple users as members.
         
         @param request: CreateMemberRequest
         @return: CreateMemberResponse
@@ -1931,6 +1955,8 @@ class Client(OpenApiClient):
             body['OrderNumber'] = request.order_number
         if not UtilClient.is_unset(request.origin):
             body['Origin'] = request.origin
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         if not UtilClient.is_unset(request.task):
             body['Task'] = request.task
         if not UtilClient.is_unset(request.workspace_id):
@@ -1991,6 +2017,8 @@ class Client(OpenApiClient):
             body['OrderNumber'] = request.order_number
         if not UtilClient.is_unset(request.origin):
             body['Origin'] = request.origin
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         if not UtilClient.is_unset(request.task):
             body['Task'] = request.task
         if not UtilClient.is_unset(request.workspace_id):
@@ -2328,7 +2356,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateModelVersionLabelsResponse:
         """
-        @summary 创建或更新模型版本的标签
+        @summary Creates a tag for a model version.
         
         @param request: CreateModelVersionLabelsRequest
         @param headers: map
@@ -2368,7 +2396,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateModelVersionLabelsResponse:
         """
-        @summary 创建或更新模型版本的标签
+        @summary Creates a tag for a model version.
         
         @param request: CreateModelVersionLabelsRequest
         @param headers: map
@@ -2406,7 +2434,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateModelVersionLabelsRequest,
     ) -> aiwork_space_20210204_models.CreateModelVersionLabelsResponse:
         """
-        @summary 创建或更新模型版本的标签
+        @summary Creates a tag for a model version.
         
         @param request: CreateModelVersionLabelsRequest
         @return: CreateModelVersionLabelsResponse
@@ -2422,7 +2450,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateModelVersionLabelsRequest,
     ) -> aiwork_space_20210204_models.CreateModelVersionLabelsResponse:
         """
-        @summary 创建或更新模型版本的标签
+        @summary Creates a tag for a model version.
         
         @param request: CreateModelVersionLabelsRequest
         @return: CreateModelVersionLabelsResponse
@@ -2791,7 +2819,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateWorkspaceResourceResponse:
         """
-        @summary 创建资源
+        @summary Associates resources with a workspace.
         
         @param request: CreateWorkspaceResourceRequest
         @param headers: map
@@ -2832,7 +2860,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateWorkspaceResourceResponse:
         """
-        @summary 创建资源
+        @summary Associates resources with a workspace.
         
         @param request: CreateWorkspaceResourceRequest
         @param headers: map
@@ -2871,7 +2899,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateWorkspaceResourceRequest,
     ) -> aiwork_space_20210204_models.CreateWorkspaceResourceResponse:
         """
-        @summary 创建资源
+        @summary Associates resources with a workspace.
         
         @param request: CreateWorkspaceResourceRequest
         @return: CreateWorkspaceResourceResponse
@@ -2886,7 +2914,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.CreateWorkspaceResourceRequest,
     ) -> aiwork_space_20210204_models.CreateWorkspaceResourceResponse:
         """
-        @summary 创建资源
+        @summary Associates resources with a workspace.
         
         @param request: CreateWorkspaceResourceRequest
         @return: CreateWorkspaceResourceResponse
@@ -2992,7 +3020,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteDatasetResponse:
         """
-        @summary 删除数据集
+        @summary Deletes a dataset.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3024,7 +3052,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteDatasetResponse:
         """
-        @summary 删除数据集
+        @summary Deletes a dataset.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3054,7 +3082,7 @@ class Client(OpenApiClient):
         dataset_id: str,
     ) -> aiwork_space_20210204_models.DeleteDatasetResponse:
         """
-        @summary 删除数据集
+        @summary Deletes a dataset.
         
         @return: DeleteDatasetResponse
         """
@@ -3067,7 +3095,7 @@ class Client(OpenApiClient):
         dataset_id: str,
     ) -> aiwork_space_20210204_models.DeleteDatasetResponse:
         """
-        @summary 删除数据集
+        @summary Deletes a dataset.
         
         @return: DeleteDatasetResponse
         """
@@ -3083,7 +3111,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteDatasetFileMetasResponse:
         """
-        @summary 批量删除数据集下的文件元数据记录
+        @summary Deletes the metadata records of multiple files in a dataset at a time.
         
         @param request: DeleteDatasetFileMetasRequest
         @param headers: map
@@ -3126,7 +3154,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteDatasetFileMetasResponse:
         """
-        @summary 批量删除数据集下的文件元数据记录
+        @summary Deletes the metadata records of multiple files in a dataset at a time.
         
         @param request: DeleteDatasetFileMetasRequest
         @param headers: map
@@ -3167,7 +3195,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.DeleteDatasetFileMetasRequest,
     ) -> aiwork_space_20210204_models.DeleteDatasetFileMetasResponse:
         """
-        @summary 批量删除数据集下的文件元数据记录
+        @summary Deletes the metadata records of multiple files in a dataset at a time.
         
         @param request: DeleteDatasetFileMetasRequest
         @return: DeleteDatasetFileMetasResponse
@@ -3182,7 +3210,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.DeleteDatasetFileMetasRequest,
     ) -> aiwork_space_20210204_models.DeleteDatasetFileMetasResponse:
         """
-        @summary 批量删除数据集下的文件元数据记录
+        @summary Deletes the metadata records of multiple files in a dataset at a time.
         
         @param request: DeleteDatasetFileMetasRequest
         @return: DeleteDatasetFileMetasResponse
@@ -3199,7 +3227,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteDatasetJobResponse:
         """
-        @summary 删除数据集任务
+        @summary Deletes a dataset job.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3232,7 +3260,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteDatasetJobResponse:
         """
-        @summary 删除数据集任务
+        @summary Deletes a dataset job.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3263,7 +3291,7 @@ class Client(OpenApiClient):
         dataset_job_id: str,
     ) -> aiwork_space_20210204_models.DeleteDatasetJobResponse:
         """
-        @summary 删除数据集任务
+        @summary Deletes a dataset job.
         
         @return: DeleteDatasetJobResponse
         """
@@ -3277,7 +3305,7 @@ class Client(OpenApiClient):
         dataset_job_id: str,
     ) -> aiwork_space_20210204_models.DeleteDatasetJobResponse:
         """
-        @summary 删除数据集任务
+        @summary Deletes a dataset job.
         
         @return: DeleteDatasetJobResponse
         """
@@ -3294,7 +3322,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteDatasetJobConfigResponse:
         """
-        @summary 删除数据集任务配置
+        @summary Deletes a job configuration for a dataset.
         
         @param request: DeleteDatasetJobConfigRequest
         @param headers: map
@@ -3334,7 +3362,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteDatasetJobConfigResponse:
         """
-        @summary 删除数据集任务配置
+        @summary Deletes a job configuration for a dataset.
         
         @param request: DeleteDatasetJobConfigRequest
         @param headers: map
@@ -3372,7 +3400,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.DeleteDatasetJobConfigRequest,
     ) -> aiwork_space_20210204_models.DeleteDatasetJobConfigResponse:
         """
-        @summary 删除数据集任务配置
+        @summary Deletes a job configuration for a dataset.
         
         @param request: DeleteDatasetJobConfigRequest
         @return: DeleteDatasetJobConfigResponse
@@ -3388,7 +3416,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.DeleteDatasetJobConfigRequest,
     ) -> aiwork_space_20210204_models.DeleteDatasetJobConfigResponse:
         """
-        @summary 删除数据集任务配置
+        @summary Deletes a job configuration for a dataset.
         
         @param request: DeleteDatasetJobConfigRequest
         @return: DeleteDatasetJobConfigResponse
@@ -3405,7 +3433,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteDatasetLabelsResponse:
         """
-        @summary 删除 Dataset 的标签
+        @summary Deletes a dataset tag.
         
         @param request: DeleteDatasetLabelsRequest
         @param headers: map
@@ -3444,7 +3472,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteDatasetLabelsResponse:
         """
-        @summary 删除 Dataset 的标签
+        @summary Deletes a dataset tag.
         
         @param request: DeleteDatasetLabelsRequest
         @param headers: map
@@ -3481,7 +3509,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.DeleteDatasetLabelsRequest,
     ) -> aiwork_space_20210204_models.DeleteDatasetLabelsResponse:
         """
-        @summary 删除 Dataset 的标签
+        @summary Deletes a dataset tag.
         
         @param request: DeleteDatasetLabelsRequest
         @return: DeleteDatasetLabelsResponse
@@ -3496,7 +3524,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.DeleteDatasetLabelsRequest,
     ) -> aiwork_space_20210204_models.DeleteDatasetLabelsResponse:
         """
-        @summary 删除 Dataset 的标签
+        @summary Deletes a dataset tag.
         
         @param request: DeleteDatasetLabelsRequest
         @return: DeleteDatasetLabelsResponse
@@ -3608,7 +3636,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteDatasetVersionLabelsResponse:
         """
-        @summary 删除数据集版本的标签。
+        @summary Deletes tags for a dataset version.
         
         @param request: DeleteDatasetVersionLabelsRequest
         @param headers: map
@@ -3648,7 +3676,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteDatasetVersionLabelsResponse:
         """
-        @summary 删除数据集版本的标签。
+        @summary Deletes tags for a dataset version.
         
         @param request: DeleteDatasetVersionLabelsRequest
         @param headers: map
@@ -3686,7 +3714,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.DeleteDatasetVersionLabelsRequest,
     ) -> aiwork_space_20210204_models.DeleteDatasetVersionLabelsResponse:
         """
-        @summary 删除数据集版本的标签。
+        @summary Deletes tags for a dataset version.
         
         @param request: DeleteDatasetVersionLabelsRequest
         @return: DeleteDatasetVersionLabelsResponse
@@ -3702,7 +3730,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.DeleteDatasetVersionLabelsRequest,
     ) -> aiwork_space_20210204_models.DeleteDatasetVersionLabelsResponse:
         """
-        @summary 删除数据集版本的标签。
+        @summary Deletes tags for a dataset version.
         
         @param request: DeleteDatasetVersionLabelsRequest
         @return: DeleteDatasetVersionLabelsResponse
@@ -3718,7 +3746,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteExperimentResponse:
         """
-        @summary 删除实验
+        @summary Deletes an experiment.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3750,7 +3778,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteExperimentResponse:
         """
-        @summary 删除实验
+        @summary Deletes an experiment.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3780,7 +3808,7 @@ class Client(OpenApiClient):
         experiment_id: str,
     ) -> aiwork_space_20210204_models.DeleteExperimentResponse:
         """
-        @summary 删除实验
+        @summary Deletes an experiment.
         
         @return: DeleteExperimentResponse
         """
@@ -3793,7 +3821,7 @@ class Client(OpenApiClient):
         experiment_id: str,
     ) -> aiwork_space_20210204_models.DeleteExperimentResponse:
         """
-        @summary 删除实验
+        @summary Deletes an experiment.
         
         @return: DeleteExperimentResponse
         """
@@ -3809,7 +3837,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteExperimentLabelResponse:
         """
-        @summary 删除实验标签
+        @summary Deletes an experiment tag.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3842,7 +3870,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteExperimentLabelResponse:
         """
-        @summary 删除实验标签
+        @summary Deletes an experiment tag.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3873,7 +3901,7 @@ class Client(OpenApiClient):
         key: str,
     ) -> aiwork_space_20210204_models.DeleteExperimentLabelResponse:
         """
-        @summary 删除实验标签
+        @summary Deletes an experiment tag.
         
         @return: DeleteExperimentLabelResponse
         """
@@ -3887,7 +3915,7 @@ class Client(OpenApiClient):
         key: str,
     ) -> aiwork_space_20210204_models.DeleteExperimentLabelResponse:
         """
-        @summary 删除实验标签
+        @summary Deletes an experiment tag.
         
         @return: DeleteExperimentLabelResponse
         """
@@ -4101,7 +4129,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteModelLabelsResponse:
         """
-        @summary 删除模型的标签
+        @summary Deletes the labels of a model.
         
         @param request: DeleteModelLabelsRequest
         @param headers: map
@@ -4140,7 +4168,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteModelLabelsResponse:
         """
-        @summary 删除模型的标签
+        @summary Deletes the labels of a model.
         
         @param request: DeleteModelLabelsRequest
         @param headers: map
@@ -4177,7 +4205,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.DeleteModelLabelsRequest,
     ) -> aiwork_space_20210204_models.DeleteModelLabelsResponse:
         """
-        @summary 删除模型的标签
+        @summary Deletes the labels of a model.
         
         @param request: DeleteModelLabelsRequest
         @return: DeleteModelLabelsResponse
@@ -4192,7 +4220,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.DeleteModelLabelsRequest,
     ) -> aiwork_space_20210204_models.DeleteModelLabelsResponse:
         """
-        @summary 删除模型的标签
+        @summary Deletes the labels of a model.
         
         @param request: DeleteModelLabelsRequest
         @return: DeleteModelLabelsResponse
@@ -4209,7 +4237,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteModelVersionResponse:
         """
-        @summary 删除模型版本
+        @summary Deletes a model version.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4242,7 +4270,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteModelVersionResponse:
         """
-        @summary 删除模型版本
+        @summary Deletes a model version.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4273,7 +4301,7 @@ class Client(OpenApiClient):
         version_name: str,
     ) -> aiwork_space_20210204_models.DeleteModelVersionResponse:
         """
-        @summary 删除模型版本
+        @summary Deletes a model version.
         
         @return: DeleteModelVersionResponse
         """
@@ -4287,7 +4315,7 @@ class Client(OpenApiClient):
         version_name: str,
     ) -> aiwork_space_20210204_models.DeleteModelVersionResponse:
         """
-        @summary 删除模型版本
+        @summary Deletes a model version.
         
         @return: DeleteModelVersionResponse
         """
@@ -4505,7 +4533,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteRunLabelResponse:
         """
-        @summary 删除Run标签
+        @summary Deletes a tag that is added to a run.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4538,7 +4566,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteRunLabelResponse:
         """
-        @summary 删除Run标签
+        @summary Deletes a tag that is added to a run.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4569,7 +4597,7 @@ class Client(OpenApiClient):
         key: str,
     ) -> aiwork_space_20210204_models.DeleteRunLabelResponse:
         """
-        @summary 删除Run标签
+        @summary Deletes a tag that is added to a run.
         
         @return: DeleteRunLabelResponse
         """
@@ -4583,7 +4611,7 @@ class Client(OpenApiClient):
         key: str,
     ) -> aiwork_space_20210204_models.DeleteRunLabelResponse:
         """
-        @summary 删除Run标签
+        @summary Deletes a tag that is added to a run.
         
         @return: DeleteRunLabelResponse
         """
@@ -4706,7 +4734,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteWorkspaceResponse:
         """
-        @summary 删除工作空间
+        @summary Deletes a workspace. After you delete a workspace, the associated resources are not automatically released. You must manually release the resources.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4738,7 +4766,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteWorkspaceResponse:
         """
-        @summary 删除工作空间
+        @summary Deletes a workspace. After you delete a workspace, the associated resources are not automatically released. You must manually release the resources.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4768,7 +4796,7 @@ class Client(OpenApiClient):
         workspace_id: str,
     ) -> aiwork_space_20210204_models.DeleteWorkspaceResponse:
         """
-        @summary 删除工作空间
+        @summary Deletes a workspace. After you delete a workspace, the associated resources are not automatically released. You must manually release the resources.
         
         @return: DeleteWorkspaceResponse
         """
@@ -4781,7 +4809,7 @@ class Client(OpenApiClient):
         workspace_id: str,
     ) -> aiwork_space_20210204_models.DeleteWorkspaceResponse:
         """
-        @summary 删除工作空间
+        @summary Deletes a workspace. After you delete a workspace, the associated resources are not automatically released. You must manually release the resources.
         
         @return: DeleteWorkspaceResponse
         """
@@ -4797,7 +4825,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteWorkspaceResourceResponse:
         """
-        @summary 删除工作空间资源
+        @summary Deletes a resource from a workspace. The resource is not deleted at the underlying layer.
         
         @param request: DeleteWorkspaceResourceRequest
         @param headers: map
@@ -4846,7 +4874,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteWorkspaceResourceResponse:
         """
-        @summary 删除工作空间资源
+        @summary Deletes a resource from a workspace. The resource is not deleted at the underlying layer.
         
         @param request: DeleteWorkspaceResourceRequest
         @param headers: map
@@ -4893,7 +4921,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.DeleteWorkspaceResourceRequest,
     ) -> aiwork_space_20210204_models.DeleteWorkspaceResourceResponse:
         """
-        @summary 删除工作空间资源
+        @summary Deletes a resource from a workspace. The resource is not deleted at the underlying layer.
         
         @param request: DeleteWorkspaceResourceRequest
         @return: DeleteWorkspaceResourceResponse
@@ -4908,7 +4936,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.DeleteWorkspaceResourceRequest,
     ) -> aiwork_space_20210204_models.DeleteWorkspaceResourceResponse:
         """
-        @summary 删除工作空间资源
+        @summary Deletes a resource from a workspace. The resource is not deleted at the underlying layer.
         
         @param request: DeleteWorkspaceResourceRequest
         @return: DeleteWorkspaceResourceResponse
@@ -5014,7 +5042,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetDatasetResponse:
         """
-        @summary 获取数据集
+        @summary Obtains a dataset.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5046,7 +5074,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetDatasetResponse:
         """
-        @summary 获取数据集
+        @summary Obtains a dataset.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5076,7 +5104,7 @@ class Client(OpenApiClient):
         dataset_id: str,
     ) -> aiwork_space_20210204_models.GetDatasetResponse:
         """
-        @summary 获取数据集
+        @summary Obtains a dataset.
         
         @return: GetDatasetResponse
         """
@@ -5089,7 +5117,7 @@ class Client(OpenApiClient):
         dataset_id: str,
     ) -> aiwork_space_20210204_models.GetDatasetResponse:
         """
-        @summary 获取数据集
+        @summary Obtains a dataset.
         
         @return: GetDatasetResponse
         """
@@ -5106,7 +5134,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetDatasetFileMetaResponse:
         """
-        @summary 获取数据集下的指定文件元数据记录
+        @summary Queries the metadata records of specific files in a dataset.
         
         @param request: GetDatasetFileMetaRequest
         @param headers: map
@@ -5148,7 +5176,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetDatasetFileMetaResponse:
         """
-        @summary 获取数据集下的指定文件元数据记录
+        @summary Queries the metadata records of specific files in a dataset.
         
         @param request: GetDatasetFileMetaRequest
         @param headers: map
@@ -5188,7 +5216,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetDatasetFileMetaRequest,
     ) -> aiwork_space_20210204_models.GetDatasetFileMetaResponse:
         """
-        @summary 获取数据集下的指定文件元数据记录
+        @summary Queries the metadata records of specific files in a dataset.
         
         @param request: GetDatasetFileMetaRequest
         @return: GetDatasetFileMetaResponse
@@ -5204,7 +5232,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetDatasetFileMetaRequest,
     ) -> aiwork_space_20210204_models.GetDatasetFileMetaResponse:
         """
-        @summary 获取数据集下的指定文件元数据记录
+        @summary Queries the metadata records of specific files in a dataset.
         
         @param request: GetDatasetFileMetaRequest
         @return: GetDatasetFileMetaResponse
@@ -5212,6 +5240,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_dataset_file_meta_with_options_async(dataset_id, dataset_file_meta_id, request, headers, runtime)
+
+    def get_dataset_file_metas_statistics_with_options(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.GetDatasetFileMetasStatisticsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.GetDatasetFileMetasStatisticsResponse:
+        """
+        @summary 获取数据集下元数据的统计信息。
+        
+        @param request: GetDatasetFileMetasStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasetFileMetasStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregate_by):
+            query['AggregateBy'] = request.aggregate_by
+        if not UtilClient.is_unset(request.dataset_version):
+            query['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDatasetFileMetasStatistics',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/statistics/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetfilemetas',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.GetDatasetFileMetasStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dataset_file_metas_statistics_with_options_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.GetDatasetFileMetasStatisticsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.GetDatasetFileMetasStatisticsResponse:
+        """
+        @summary 获取数据集下元数据的统计信息。
+        
+        @param request: GetDatasetFileMetasStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasetFileMetasStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregate_by):
+            query['AggregateBy'] = request.aggregate_by
+        if not UtilClient.is_unset(request.dataset_version):
+            query['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDatasetFileMetasStatistics',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/statistics/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetfilemetas',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.GetDatasetFileMetasStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dataset_file_metas_statistics(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.GetDatasetFileMetasStatisticsRequest,
+    ) -> aiwork_space_20210204_models.GetDatasetFileMetasStatisticsResponse:
+        """
+        @summary 获取数据集下元数据的统计信息。
+        
+        @param request: GetDatasetFileMetasStatisticsRequest
+        @return: GetDatasetFileMetasStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_dataset_file_metas_statistics_with_options(dataset_id, request, headers, runtime)
+
+    async def get_dataset_file_metas_statistics_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.GetDatasetFileMetasStatisticsRequest,
+    ) -> aiwork_space_20210204_models.GetDatasetFileMetasStatisticsResponse:
+        """
+        @summary 获取数据集下元数据的统计信息。
+        
+        @param request: GetDatasetFileMetasStatisticsRequest
+        @return: GetDatasetFileMetasStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_dataset_file_metas_statistics_with_options_async(dataset_id, request, headers, runtime)
 
     def get_dataset_job_with_options(
         self,
@@ -5222,7 +5370,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetDatasetJobResponse:
         """
-        @summary 获取数据集任务
+        @summary Obtains a dataset job.
         
         @param request: GetDatasetJobRequest
         @param headers: map
@@ -5264,7 +5412,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetDatasetJobResponse:
         """
-        @summary 获取数据集任务
+        @summary Obtains a dataset job.
         
         @param request: GetDatasetJobRequest
         @param headers: map
@@ -5304,7 +5452,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetDatasetJobRequest,
     ) -> aiwork_space_20210204_models.GetDatasetJobResponse:
         """
-        @summary 获取数据集任务
+        @summary Obtains a dataset job.
         
         @param request: GetDatasetJobRequest
         @return: GetDatasetJobResponse
@@ -5320,7 +5468,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetDatasetJobRequest,
     ) -> aiwork_space_20210204_models.GetDatasetJobResponse:
         """
-        @summary 获取数据集任务
+        @summary Obtains a dataset job.
         
         @param request: GetDatasetJobRequest
         @return: GetDatasetJobResponse
@@ -5338,7 +5486,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetDatasetJobConfigResponse:
         """
-        @summary 获取数据集任务配置
+        @summary Obtains a job configuration for a dataset.
         
         @param request: GetDatasetJobConfigRequest
         @param headers: map
@@ -5378,7 +5526,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetDatasetJobConfigResponse:
         """
-        @summary 获取数据集任务配置
+        @summary Obtains a job configuration for a dataset.
         
         @param request: GetDatasetJobConfigRequest
         @param headers: map
@@ -5416,7 +5564,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetDatasetJobConfigRequest,
     ) -> aiwork_space_20210204_models.GetDatasetJobConfigResponse:
         """
-        @summary 获取数据集任务配置
+        @summary Obtains a job configuration for a dataset.
         
         @param request: GetDatasetJobConfigRequest
         @return: GetDatasetJobConfigResponse
@@ -5432,7 +5580,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetDatasetJobConfigRequest,
     ) -> aiwork_space_20210204_models.GetDatasetJobConfigResponse:
         """
-        @summary 获取数据集任务配置
+        @summary Obtains a job configuration for a dataset.
         
         @param request: GetDatasetJobConfigRequest
         @return: GetDatasetJobConfigResponse
@@ -5449,7 +5597,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetDatasetVersionResponse:
         """
-        @summary 获取指定版本的数据集信息
+        @summary Obtains the information about a specified version of a dataset.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5482,7 +5630,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetDatasetVersionResponse:
         """
-        @summary 获取指定版本的数据集信息
+        @summary Obtains the information about a specified version of a dataset.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5513,7 +5661,7 @@ class Client(OpenApiClient):
         version_name: str,
     ) -> aiwork_space_20210204_models.GetDatasetVersionResponse:
         """
-        @summary 获取指定版本的数据集信息
+        @summary Obtains the information about a specified version of a dataset.
         
         @return: GetDatasetVersionResponse
         """
@@ -5527,7 +5675,7 @@ class Client(OpenApiClient):
         version_name: str,
     ) -> aiwork_space_20210204_models.GetDatasetVersionResponse:
         """
-        @summary 获取指定版本的数据集信息
+        @summary Obtains the information about a specified version of a dataset.
         
         @return: GetDatasetVersionResponse
         """
@@ -5542,7 +5690,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetDefaultWorkspaceResponse:
         """
-        @summary 获取默认工作空间
+        @summary Queries information about the default workspace.
         
         @param request: GetDefaultWorkspaceRequest
         @param headers: map
@@ -5580,7 +5728,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetDefaultWorkspaceResponse:
         """
-        @summary 获取默认工作空间
+        @summary Queries information about the default workspace.
         
         @param request: GetDefaultWorkspaceRequest
         @param headers: map
@@ -5616,7 +5764,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetDefaultWorkspaceRequest,
     ) -> aiwork_space_20210204_models.GetDefaultWorkspaceResponse:
         """
-        @summary 获取默认工作空间
+        @summary Queries information about the default workspace.
         
         @param request: GetDefaultWorkspaceRequest
         @return: GetDefaultWorkspaceResponse
@@ -5630,7 +5778,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetDefaultWorkspaceRequest,
     ) -> aiwork_space_20210204_models.GetDefaultWorkspaceResponse:
         """
-        @summary 获取默认工作空间
+        @summary Queries information about the default workspace.
         
         @param request: GetDefaultWorkspaceRequest
         @return: GetDefaultWorkspaceResponse
@@ -5755,7 +5903,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetImageResponse:
         """
-        @summary 获取镜像
+        @summary Obtains the information about an image.
         
         @param request: GetImageRequest
         @param headers: map
@@ -5794,7 +5942,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetImageResponse:
         """
-        @summary 获取镜像
+        @summary Obtains the information about an image.
         
         @param request: GetImageRequest
         @param headers: map
@@ -5831,7 +5979,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetImageRequest,
     ) -> aiwork_space_20210204_models.GetImageResponse:
         """
-        @summary 获取镜像
+        @summary Obtains the information about an image.
         
         @param request: GetImageRequest
         @return: GetImageResponse
@@ -5846,7 +5994,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetImageRequest,
     ) -> aiwork_space_20210204_models.GetImageResponse:
         """
-        @summary 获取镜像
+        @summary Obtains the information about an image.
         
         @param request: GetImageRequest
         @return: GetImageResponse
@@ -5863,7 +6011,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetMemberResponse:
         """
-        @summary 获取成员
+        @summary Obtains a member in a workspace.
         
         @param request: GetMemberRequest
         @param headers: map
@@ -5904,7 +6052,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetMemberResponse:
         """
-        @summary 获取成员
+        @summary Obtains a member in a workspace.
         
         @param request: GetMemberRequest
         @param headers: map
@@ -5943,7 +6091,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetMemberRequest,
     ) -> aiwork_space_20210204_models.GetMemberResponse:
         """
-        @summary 获取成员
+        @summary Obtains a member in a workspace.
         
         @param request: GetMemberRequest
         @return: GetMemberResponse
@@ -5958,7 +6106,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetMemberRequest,
     ) -> aiwork_space_20210204_models.GetMemberResponse:
         """
-        @summary 获取成员
+        @summary Obtains a member in a workspace.
         
         @param request: GetMemberRequest
         @return: GetMemberResponse
@@ -5974,7 +6122,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetModelResponse:
         """
-        @summary 获取模型
+        @summary Obtains the details of a specified model.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6006,7 +6154,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetModelResponse:
         """
-        @summary 获取模型
+        @summary Obtains the details of a specified model.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6036,7 +6184,7 @@ class Client(OpenApiClient):
         model_id: str,
     ) -> aiwork_space_20210204_models.GetModelResponse:
         """
-        @summary 获取模型
+        @summary Obtains the details of a specified model.
         
         @return: GetModelResponse
         """
@@ -6049,7 +6197,7 @@ class Client(OpenApiClient):
         model_id: str,
     ) -> aiwork_space_20210204_models.GetModelResponse:
         """
-        @summary 获取模型
+        @summary Obtains the details of a specified model.
         
         @return: GetModelResponse
         """
@@ -6065,7 +6213,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetModelVersionResponse:
         """
-        @summary 获取模型版本
+        @summary Queries a model version.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6098,7 +6246,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetModelVersionResponse:
         """
-        @summary 获取模型版本
+        @summary Queries a model version.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6129,7 +6277,7 @@ class Client(OpenApiClient):
         version_name: str,
     ) -> aiwork_space_20210204_models.GetModelVersionResponse:
         """
-        @summary 获取模型版本
+        @summary Queries a model version.
         
         @return: GetModelVersionResponse
         """
@@ -6143,7 +6291,7 @@ class Client(OpenApiClient):
         version_name: str,
     ) -> aiwork_space_20210204_models.GetModelVersionResponse:
         """
-        @summary 获取模型版本
+        @summary Queries a model version.
         
         @return: GetModelVersionResponse
         """
@@ -6160,7 +6308,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetPermissionResponse:
         """
-        @summary 获取权限，若无权限则返回错误
+        @summary Obtains permissions on a workspace.
         
         @param tmp_req: GetPermissionRequest
         @param headers: map
@@ -6212,7 +6360,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetPermissionResponse:
         """
-        @summary 获取权限，若无权限则返回错误
+        @summary Obtains permissions on a workspace.
         
         @param tmp_req: GetPermissionRequest
         @param headers: map
@@ -6262,7 +6410,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetPermissionRequest,
     ) -> aiwork_space_20210204_models.GetPermissionResponse:
         """
-        @summary 获取权限，若无权限则返回错误
+        @summary Obtains permissions on a workspace.
         
         @param request: GetPermissionRequest
         @return: GetPermissionResponse
@@ -6278,7 +6426,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetPermissionRequest,
     ) -> aiwork_space_20210204_models.GetPermissionResponse:
         """
-        @summary 获取权限，若无权限则返回错误
+        @summary Obtains permissions on a workspace.
         
         @param request: GetPermissionRequest
         @return: GetPermissionResponse
@@ -6295,7 +6443,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetRunResponse:
         """
-        @summary 获取Run详情
+        @summary Queries the run information.
         
         @param request: GetRunRequest
         @param headers: map
@@ -6334,7 +6482,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetRunResponse:
         """
-        @summary 获取Run详情
+        @summary Queries the run information.
         
         @param request: GetRunRequest
         @param headers: map
@@ -6371,7 +6519,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetRunRequest,
     ) -> aiwork_space_20210204_models.GetRunResponse:
         """
-        @summary 获取Run详情
+        @summary Queries the run information.
         
         @param request: GetRunRequest
         @return: GetRunResponse
@@ -6386,7 +6534,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetRunRequest,
     ) -> aiwork_space_20210204_models.GetRunResponse:
         """
-        @summary 获取Run详情
+        @summary Queries the run information.
         
         @param request: GetRunRequest
         @return: GetRunResponse
@@ -6403,7 +6551,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetWorkspaceResponse:
         """
-        @summary 获取工作空间
+        @summary Queries the details about a workspace.
         
         @param request: GetWorkspaceRequest
         @param headers: map
@@ -6442,7 +6590,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetWorkspaceResponse:
         """
-        @summary 获取工作空间
+        @summary Queries the details about a workspace.
         
         @param request: GetWorkspaceRequest
         @param headers: map
@@ -6479,7 +6627,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetWorkspaceRequest,
     ) -> aiwork_space_20210204_models.GetWorkspaceResponse:
         """
-        @summary 获取工作空间
+        @summary Queries the details about a workspace.
         
         @param request: GetWorkspaceRequest
         @return: GetWorkspaceResponse
@@ -6494,7 +6642,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.GetWorkspaceRequest,
     ) -> aiwork_space_20210204_models.GetWorkspaceResponse:
         """
-        @summary 获取工作空间
+        @summary Queries the details about a workspace.
         
         @param request: GetWorkspaceRequest
         @return: GetWorkspaceResponse
@@ -6510,7 +6658,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListCodeSourcesResponse:
         """
-        @summary 获取代码源配置列表
+        @summary Lists code sources. Pagination, sorting, and filtering by condition are supported.
         
         @param request: ListCodeSourcesRequest
         @param headers: map
@@ -6558,7 +6706,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListCodeSourcesResponse:
         """
-        @summary 获取代码源配置列表
+        @summary Lists code sources. Pagination, sorting, and filtering by condition are supported.
         
         @param request: ListCodeSourcesRequest
         @param headers: map
@@ -6604,7 +6752,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListCodeSourcesRequest,
     ) -> aiwork_space_20210204_models.ListCodeSourcesResponse:
         """
-        @summary 获取代码源配置列表
+        @summary Lists code sources. Pagination, sorting, and filtering by condition are supported.
         
         @param request: ListCodeSourcesRequest
         @return: ListCodeSourcesResponse
@@ -6618,7 +6766,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListCodeSourcesRequest,
     ) -> aiwork_space_20210204_models.ListCodeSourcesResponse:
         """
-        @summary 获取代码源配置列表
+        @summary Lists code sources. Pagination, sorting, and filtering by condition are supported.
         
         @param request: ListCodeSourcesRequest
         @return: ListCodeSourcesResponse
@@ -6635,7 +6783,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListDatasetFileMetasResponse:
         """
-        @summary 查询数据集文件列表
+        @summary Queries a list of dataset files.
         
         @param tmp_req: ListDatasetFileMetasRequest
         @param headers: map
@@ -6728,7 +6876,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListDatasetFileMetasResponse:
         """
-        @summary 查询数据集文件列表
+        @summary Queries a list of dataset files.
         
         @param tmp_req: ListDatasetFileMetasRequest
         @param headers: map
@@ -6819,7 +6967,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListDatasetFileMetasRequest,
     ) -> aiwork_space_20210204_models.ListDatasetFileMetasResponse:
         """
-        @summary 查询数据集文件列表
+        @summary Queries a list of dataset files.
         
         @param request: ListDatasetFileMetasRequest
         @return: ListDatasetFileMetasResponse
@@ -6834,7 +6982,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListDatasetFileMetasRequest,
     ) -> aiwork_space_20210204_models.ListDatasetFileMetasResponse:
         """
-        @summary 查询数据集文件列表
+        @summary Queries a list of dataset files.
         
         @param request: ListDatasetFileMetasRequest
         @return: ListDatasetFileMetasResponse
@@ -6851,7 +6999,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListDatasetJobConfigsResponse:
         """
-        @summary 批量查询数据集任务配置
+        @summary Queries the dataset job configurations at a time.
         
         @param request: ListDatasetJobConfigsRequest
         @param headers: map
@@ -6896,7 +7044,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListDatasetJobConfigsResponse:
         """
-        @summary 批量查询数据集任务配置
+        @summary Queries the dataset job configurations at a time.
         
         @param request: ListDatasetJobConfigsRequest
         @param headers: map
@@ -6939,7 +7087,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListDatasetJobConfigsRequest,
     ) -> aiwork_space_20210204_models.ListDatasetJobConfigsResponse:
         """
-        @summary 批量查询数据集任务配置
+        @summary Queries the dataset job configurations at a time.
         
         @param request: ListDatasetJobConfigsRequest
         @return: ListDatasetJobConfigsResponse
@@ -6954,7 +7102,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListDatasetJobConfigsRequest,
     ) -> aiwork_space_20210204_models.ListDatasetJobConfigsResponse:
         """
-        @summary 批量查询数据集任务配置
+        @summary Queries the dataset job configurations at a time.
         
         @param request: ListDatasetJobConfigsRequest
         @return: ListDatasetJobConfigsResponse
@@ -6971,7 +7119,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListDatasetJobsResponse:
         """
-        @summary 获取数据集任务
+        @summary Lists jobs in a dataset.
         
         @param request: ListDatasetJobsRequest
         @param headers: map
@@ -7018,7 +7166,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListDatasetJobsResponse:
         """
-        @summary 获取数据集任务
+        @summary Lists jobs in a dataset.
         
         @param request: ListDatasetJobsRequest
         @param headers: map
@@ -7063,7 +7211,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListDatasetJobsRequest,
     ) -> aiwork_space_20210204_models.ListDatasetJobsResponse:
         """
-        @summary 获取数据集任务
+        @summary Lists jobs in a dataset.
         
         @param request: ListDatasetJobsRequest
         @return: ListDatasetJobsResponse
@@ -7078,7 +7226,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListDatasetJobsRequest,
     ) -> aiwork_space_20210204_models.ListDatasetJobsResponse:
         """
-        @summary 获取数据集任务
+        @summary Lists jobs in a dataset.
         
         @param request: ListDatasetJobsRequest
         @return: ListDatasetJobsResponse
@@ -7095,7 +7243,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListDatasetVersionsResponse:
         """
-        @summary 获取数据集版本列表
+        @summary Lists dataset versions.
         
         @param request: ListDatasetVersionsRequest
         @param headers: map
@@ -7150,7 +7298,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListDatasetVersionsResponse:
         """
-        @summary 获取数据集版本列表
+        @summary Lists dataset versions.
         
         @param request: ListDatasetVersionsRequest
         @param headers: map
@@ -7203,7 +7351,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListDatasetVersionsRequest,
     ) -> aiwork_space_20210204_models.ListDatasetVersionsResponse:
         """
-        @summary 获取数据集版本列表
+        @summary Lists dataset versions.
         
         @param request: ListDatasetVersionsRequest
         @return: ListDatasetVersionsResponse
@@ -7218,7 +7366,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListDatasetVersionsRequest,
     ) -> aiwork_space_20210204_models.ListDatasetVersionsResponse:
         """
-        @summary 获取数据集版本列表
+        @summary Lists dataset versions.
         
         @param request: ListDatasetVersionsRequest
         @return: ListDatasetVersionsResponse
@@ -7234,7 +7382,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListDatasetsResponse:
         """
-        @summary 获取数据集列表
+        @summary Lists the datasets in a workspace.
         
         @param request: ListDatasetsRequest
         @param headers: map
@@ -7298,7 +7446,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListDatasetsResponse:
         """
-        @summary 获取数据集列表
+        @summary Lists the datasets in a workspace.
         
         @param request: ListDatasetsRequest
         @param headers: map
@@ -7360,7 +7508,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListDatasetsRequest,
     ) -> aiwork_space_20210204_models.ListDatasetsResponse:
         """
-        @summary 获取数据集列表
+        @summary Lists the datasets in a workspace.
         
         @param request: ListDatasetsRequest
         @return: ListDatasetsResponse
@@ -7374,7 +7522,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListDatasetsRequest,
     ) -> aiwork_space_20210204_models.ListDatasetsResponse:
         """
-        @summary 获取数据集列表
+        @summary Lists the datasets in a workspace.
         
         @param request: ListDatasetsRequest
         @return: ListDatasetsResponse
@@ -7390,7 +7538,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListExperimentResponse:
         """
-        @summary 获取实验列表
+        @summary Lists experiments.
         
         @param tmp_req: ListExperimentRequest
         @param headers: map
@@ -7454,7 +7602,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListExperimentResponse:
         """
-        @summary 获取实验列表
+        @summary Lists experiments.
         
         @param tmp_req: ListExperimentRequest
         @param headers: map
@@ -7516,7 +7664,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListExperimentRequest,
     ) -> aiwork_space_20210204_models.ListExperimentResponse:
         """
-        @summary 获取实验列表
+        @summary Lists experiments.
         
         @param request: ListExperimentRequest
         @return: ListExperimentResponse
@@ -7530,7 +7678,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListExperimentRequest,
     ) -> aiwork_space_20210204_models.ListExperimentResponse:
         """
-        @summary 获取实验列表
+        @summary Lists experiments.
         
         @param request: ListExperimentRequest
         @return: ListExperimentResponse
@@ -7666,7 +7814,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListImagesResponse:
         """
-        @summary 列举已注册镜像
+        @summary Queries a list of images.
         
         @param request: ListImagesRequest
         @param headers: map
@@ -7724,7 +7872,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListImagesResponse:
         """
-        @summary 列举已注册镜像
+        @summary Queries a list of images.
         
         @param request: ListImagesRequest
         @param headers: map
@@ -7780,7 +7928,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListImagesRequest,
     ) -> aiwork_space_20210204_models.ListImagesResponse:
         """
-        @summary 列举已注册镜像
+        @summary Queries a list of images.
         
         @param request: ListImagesRequest
         @return: ListImagesResponse
@@ -7794,7 +7942,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListImagesRequest,
     ) -> aiwork_space_20210204_models.ListImagesResponse:
         """
-        @summary 列举已注册镜像
+        @summary Queries a list of images.
         
         @param request: ListImagesRequest
         @return: ListImagesResponse
@@ -7811,7 +7959,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListMembersResponse:
         """
-        @summary 列举工作空间成员
+        @summary Obtains the members in a workspace.
         
         @param request: ListMembersRequest
         @param headers: map
@@ -7856,7 +8004,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListMembersResponse:
         """
-        @summary 列举工作空间成员
+        @summary Obtains the members in a workspace.
         
         @param request: ListMembersRequest
         @param headers: map
@@ -7899,7 +8047,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListMembersRequest,
     ) -> aiwork_space_20210204_models.ListMembersResponse:
         """
-        @summary 列举工作空间成员
+        @summary Obtains the members in a workspace.
         
         @param request: ListMembersRequest
         @return: ListMembersResponse
@@ -7914,7 +8062,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListMembersRequest,
     ) -> aiwork_space_20210204_models.ListMembersResponse:
         """
-        @summary 列举工作空间成员
+        @summary Obtains the members in a workspace.
         
         @param request: ListMembersRequest
         @return: ListMembersResponse
@@ -7931,7 +8079,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListModelVersionsResponse:
         """
-        @summary 获取模型版本列表
+        @summary Queries a list of model versions.
         
         @param request: ListModelVersionsRequest
         @param headers: map
@@ -7990,7 +8138,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListModelVersionsResponse:
         """
-        @summary 获取模型版本列表
+        @summary Queries a list of model versions.
         
         @param request: ListModelVersionsRequest
         @param headers: map
@@ -8047,7 +8195,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListModelVersionsRequest,
     ) -> aiwork_space_20210204_models.ListModelVersionsResponse:
         """
-        @summary 获取模型版本列表
+        @summary Queries a list of model versions.
         
         @param request: ListModelVersionsRequest
         @return: ListModelVersionsResponse
@@ -8062,7 +8210,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListModelVersionsRequest,
     ) -> aiwork_space_20210204_models.ListModelVersionsResponse:
         """
-        @summary 获取模型版本列表
+        @summary Queries a list of model versions.
         
         @param request: ListModelVersionsRequest
         @return: ListModelVersionsResponse
@@ -8073,19 +8221,23 @@ class Client(OpenApiClient):
 
     def list_models_with_options(
         self,
-        request: aiwork_space_20210204_models.ListModelsRequest,
+        tmp_req: aiwork_space_20210204_models.ListModelsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListModelsResponse:
         """
-        @summary 获取模型列表
+        @summary Queries a list of models.
         
-        @param request: ListModelsRequest
+        @param tmp_req: ListModelsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListModelsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = aiwork_space_20210204_models.ListModelsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.collections):
             query['Collections'] = request.collections
@@ -8111,6 +8263,8 @@ class Client(OpenApiClient):
             query['Query'] = request.query
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         if not UtilClient.is_unset(request.task):
             query['Task'] = request.task
         if not UtilClient.is_unset(request.workspace_id):
@@ -8137,19 +8291,23 @@ class Client(OpenApiClient):
 
     async def list_models_with_options_async(
         self,
-        request: aiwork_space_20210204_models.ListModelsRequest,
+        tmp_req: aiwork_space_20210204_models.ListModelsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListModelsResponse:
         """
-        @summary 获取模型列表
+        @summary Queries a list of models.
         
-        @param request: ListModelsRequest
+        @param tmp_req: ListModelsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListModelsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = aiwork_space_20210204_models.ListModelsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.collections):
             query['Collections'] = request.collections
@@ -8175,6 +8333,8 @@ class Client(OpenApiClient):
             query['Query'] = request.query
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         if not UtilClient.is_unset(request.task):
             query['Task'] = request.task
         if not UtilClient.is_unset(request.workspace_id):
@@ -8204,7 +8364,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListModelsRequest,
     ) -> aiwork_space_20210204_models.ListModelsResponse:
         """
-        @summary 获取模型列表
+        @summary Queries a list of models.
         
         @param request: ListModelsRequest
         @return: ListModelsResponse
@@ -8218,7 +8378,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListModelsRequest,
     ) -> aiwork_space_20210204_models.ListModelsResponse:
         """
-        @summary 获取模型列表
+        @summary Queries a list of models.
         
         @param request: ListModelsRequest
         @return: ListModelsResponse
@@ -8234,7 +8394,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListPermissionsResponse:
         """
-        @summary 列举权限
+        @summary Lists the permissions that a user has in a workspace.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -8266,7 +8426,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListPermissionsResponse:
         """
-        @summary 列举权限
+        @summary Lists the permissions that a user has in a workspace.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -8296,7 +8456,7 @@ class Client(OpenApiClient):
         workspace_id: str,
     ) -> aiwork_space_20210204_models.ListPermissionsResponse:
         """
-        @summary 列举权限
+        @summary Lists the permissions that a user has in a workspace.
         
         @return: ListPermissionsResponse
         """
@@ -8309,7 +8469,7 @@ class Client(OpenApiClient):
         workspace_id: str,
     ) -> aiwork_space_20210204_models.ListPermissionsResponse:
         """
-        @summary 列举权限
+        @summary Lists the permissions that a user has in a workspace.
         
         @return: ListPermissionsResponse
         """
@@ -8436,7 +8596,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListQuotasResponse:
         """
-        @summary 获取已有配额列表
+        @summary Obtains the list of quotas.
         
         @param request: ListQuotasRequest
         @param headers: map
@@ -8474,7 +8634,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListQuotasResponse:
         """
-        @summary 获取已有配额列表
+        @summary Obtains the list of quotas.
         
         @param request: ListQuotasRequest
         @param headers: map
@@ -8510,7 +8670,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListQuotasRequest,
     ) -> aiwork_space_20210204_models.ListQuotasResponse:
         """
-        @summary 获取已有配额列表
+        @summary Obtains the list of quotas.
         
         @param request: ListQuotasRequest
         @return: ListQuotasResponse
@@ -8524,7 +8684,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListQuotasRequest,
     ) -> aiwork_space_20210204_models.ListQuotasResponse:
         """
-        @summary 获取已有配额列表
+        @summary Obtains the list of quotas.
         
         @param request: ListQuotasRequest
         @return: ListQuotasResponse
@@ -8540,7 +8700,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListResourcesResponse:
         """
-        @summary 列举工作空间资源
+        @summary Queries the resources that are associated with a workspace.
         
         @param request: ListResourcesRequest
         @param headers: map
@@ -8600,7 +8760,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListResourcesResponse:
         """
-        @summary 列举工作空间资源
+        @summary Queries the resources that are associated with a workspace.
         
         @param request: ListResourcesRequest
         @param headers: map
@@ -8658,7 +8818,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListResourcesRequest,
     ) -> aiwork_space_20210204_models.ListResourcesResponse:
         """
-        @summary 列举工作空间资源
+        @summary Queries the resources that are associated with a workspace.
         
         @param request: ListResourcesRequest
         @return: ListResourcesResponse
@@ -8672,7 +8832,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListResourcesRequest,
     ) -> aiwork_space_20210204_models.ListResourcesResponse:
         """
-        @summary 列举工作空间资源
+        @summary Queries the resources that are associated with a workspace.
         
         @param request: ListResourcesRequest
         @return: ListResourcesResponse
@@ -8689,7 +8849,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListRunMetricsResponse:
         """
-        @summary 获取Run的指标记录列表
+        @summary Lists the metrics for a run.
         
         @param request: ListRunMetricsRequest
         @param headers: map
@@ -8732,7 +8892,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListRunMetricsResponse:
         """
-        @summary 获取Run的指标记录列表
+        @summary Lists the metrics for a run.
         
         @param request: ListRunMetricsRequest
         @param headers: map
@@ -8773,7 +8933,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListRunMetricsRequest,
     ) -> aiwork_space_20210204_models.ListRunMetricsResponse:
         """
-        @summary 获取Run的指标记录列表
+        @summary Lists the metrics for a run.
         
         @param request: ListRunMetricsRequest
         @return: ListRunMetricsResponse
@@ -8788,7 +8948,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListRunMetricsRequest,
     ) -> aiwork_space_20210204_models.ListRunMetricsResponse:
         """
-        @summary 获取Run的指标记录列表
+        @summary Lists the metrics for a run.
         
         @param request: ListRunMetricsRequest
         @return: ListRunMetricsResponse
@@ -8804,7 +8964,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListRunsResponse:
         """
-        @summary 获取Run列表
+        @summary Queries a list of runs.
         
         @param request: ListRunsRequest
         @param headers: map
@@ -8870,7 +9030,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListRunsResponse:
         """
-        @summary 获取Run列表
+        @summary Queries a list of runs.
         
         @param request: ListRunsRequest
         @param headers: map
@@ -8934,7 +9094,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListRunsRequest,
     ) -> aiwork_space_20210204_models.ListRunsResponse:
         """
-        @summary 获取Run列表
+        @summary Queries a list of runs.
         
         @param request: ListRunsRequest
         @return: ListRunsResponse
@@ -8948,7 +9108,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListRunsRequest,
     ) -> aiwork_space_20210204_models.ListRunsResponse:
         """
-        @summary 获取Run列表
+        @summary Queries a list of runs.
         
         @param request: ListRunsRequest
         @return: ListRunsResponse
@@ -9073,7 +9233,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListWorkspaceUsersResponse:
         """
-        @summary 列出工作空间的可变为成员的用户
+        @summary Lists the users who do not belong to a workspace. These users can be added to the workspace as members.
         
         @param request: ListWorkspaceUsersRequest
         @param headers: map
@@ -9112,7 +9272,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListWorkspaceUsersResponse:
         """
-        @summary 列出工作空间的可变为成员的用户
+        @summary Lists the users who do not belong to a workspace. These users can be added to the workspace as members.
         
         @param request: ListWorkspaceUsersRequest
         @param headers: map
@@ -9149,7 +9309,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListWorkspaceUsersRequest,
     ) -> aiwork_space_20210204_models.ListWorkspaceUsersResponse:
         """
-        @summary 列出工作空间的可变为成员的用户
+        @summary Lists the users who do not belong to a workspace. These users can be added to the workspace as members.
         
         @param request: ListWorkspaceUsersRequest
         @return: ListWorkspaceUsersResponse
@@ -9164,7 +9324,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.ListWorkspaceUsersRequest,
     ) -> aiwork_space_20210204_models.ListWorkspaceUsersResponse:
         """
-        @summary 列出工作空间的可变为成员的用户
+        @summary Lists the users who do not belong to a workspace. These users can be added to the workspace as members.
         
         @param request: ListWorkspaceUsersRequest
         @return: ListWorkspaceUsersResponse
@@ -9337,7 +9497,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.LogRunMetricsResponse:
         """
-        @summary 批量记录Run的指标
+        @summary Logs multiple metrics for a run at a time.
         
         @param request: LogRunMetricsRequest
         @param headers: map
@@ -9376,7 +9536,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.LogRunMetricsResponse:
         """
-        @summary 批量记录Run的指标
+        @summary Logs multiple metrics for a run at a time.
         
         @param request: LogRunMetricsRequest
         @param headers: map
@@ -9413,7 +9573,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.LogRunMetricsRequest,
     ) -> aiwork_space_20210204_models.LogRunMetricsResponse:
         """
-        @summary 批量记录Run的指标
+        @summary Logs multiple metrics for a run at a time.
         
         @param request: LogRunMetricsRequest
         @return: LogRunMetricsResponse
@@ -9428,7 +9588,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.LogRunMetricsRequest,
     ) -> aiwork_space_20210204_models.LogRunMetricsResponse:
         """
-        @summary 批量记录Run的指标
+        @summary Logs multiple metrics for a run at a time.
         
         @param request: LogRunMetricsRequest
         @return: LogRunMetricsResponse
@@ -9444,7 +9604,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.PublishCodeSourceResponse:
         """
-        @summary 发布一个代码源配置为本工作空间下所有人可见
+        @summary Publishes a private code source to a workspace to make the code source publicly accessible.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9476,7 +9636,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.PublishCodeSourceResponse:
         """
-        @summary 发布一个代码源配置为本工作空间下所有人可见
+        @summary Publishes a private code source to a workspace to make the code source publicly accessible.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9506,7 +9666,7 @@ class Client(OpenApiClient):
         code_source_id: str,
     ) -> aiwork_space_20210204_models.PublishCodeSourceResponse:
         """
-        @summary 发布一个代码源配置为本工作空间下所有人可见
+        @summary Publishes a private code source to a workspace to make the code source publicly accessible.
         
         @return: PublishCodeSourceResponse
         """
@@ -9519,7 +9679,7 @@ class Client(OpenApiClient):
         code_source_id: str,
     ) -> aiwork_space_20210204_models.PublishCodeSourceResponse:
         """
-        @summary 发布一个代码源配置为本工作空间下所有人可见
+        @summary Publishes a private code source to a workspace to make the code source publicly accessible.
         
         @return: PublishCodeSourceResponse
         """
@@ -9534,7 +9694,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.PublishDatasetResponse:
         """
-        @summary 更新数据集
+        @summary Publishes a private dataset in a workspace.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9566,7 +9726,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.PublishDatasetResponse:
         """
-        @summary 更新数据集
+        @summary Publishes a private dataset in a workspace.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9596,7 +9756,7 @@ class Client(OpenApiClient):
         dataset_id: str,
     ) -> aiwork_space_20210204_models.PublishDatasetResponse:
         """
-        @summary 更新数据集
+        @summary Publishes a private dataset in a workspace.
         
         @return: PublishDatasetResponse
         """
@@ -9609,7 +9769,7 @@ class Client(OpenApiClient):
         dataset_id: str,
     ) -> aiwork_space_20210204_models.PublishDatasetResponse:
         """
-        @summary 更新数据集
+        @summary Publishes a private dataset in a workspace.
         
         @return: PublishDatasetResponse
         """
@@ -9624,7 +9784,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.PublishImageResponse:
         """
-        @summary 发布 Image
+        @summary Publishes an image. After the image is published, the visibility of the image is changed from PRIVATE to PUBLIC.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9656,7 +9816,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.PublishImageResponse:
         """
-        @summary 发布 Image
+        @summary Publishes an image. After the image is published, the visibility of the image is changed from PRIVATE to PUBLIC.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9686,7 +9846,7 @@ class Client(OpenApiClient):
         image_id: str,
     ) -> aiwork_space_20210204_models.PublishImageResponse:
         """
-        @summary 发布 Image
+        @summary Publishes an image. After the image is published, the visibility of the image is changed from PRIVATE to PUBLIC.
         
         @return: PublishImageResponse
         """
@@ -9699,7 +9859,7 @@ class Client(OpenApiClient):
         image_id: str,
     ) -> aiwork_space_20210204_models.PublishImageResponse:
         """
-        @summary 发布 Image
+        @summary Publishes an image. After the image is published, the visibility of the image is changed from PRIVATE to PUBLIC.
         
         @return: PublishImageResponse
         """
@@ -9714,7 +9874,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.RemoveImageResponse:
         """
-        @summary 删除 Image
+        @summary Removes an image.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9746,7 +9906,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.RemoveImageResponse:
         """
-        @summary 删除 Image
+        @summary Removes an image.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9776,7 +9936,7 @@ class Client(OpenApiClient):
         image_id: str,
     ) -> aiwork_space_20210204_models.RemoveImageResponse:
         """
-        @summary 删除 Image
+        @summary Removes an image.
         
         @return: RemoveImageResponse
         """
@@ -9789,7 +9949,7 @@ class Client(OpenApiClient):
         image_id: str,
     ) -> aiwork_space_20210204_models.RemoveImageResponse:
         """
-        @summary 删除 Image
+        @summary Removes an image.
         
         @return: RemoveImageResponse
         """
@@ -9805,7 +9965,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.RemoveImageLabelsResponse:
         """
-        @summary 删除 Image 的标签
+        @summary Removes an image tag.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9838,7 +9998,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.RemoveImageLabelsResponse:
         """
-        @summary 删除 Image 的标签
+        @summary Removes an image tag.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9869,7 +10029,7 @@ class Client(OpenApiClient):
         label_key: str,
     ) -> aiwork_space_20210204_models.RemoveImageLabelsResponse:
         """
-        @summary 删除 Image 的标签
+        @summary Removes an image tag.
         
         @return: RemoveImageLabelsResponse
         """
@@ -9883,7 +10043,7 @@ class Client(OpenApiClient):
         label_key: str,
     ) -> aiwork_space_20210204_models.RemoveImageLabelsResponse:
         """
-        @summary 删除 Image 的标签
+        @summary Removes an image tag.
         
         @return: RemoveImageLabelsResponse
         """
@@ -9900,7 +10060,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.RemoveMemberRoleResponse:
         """
-        @summary 删除成员角色
+        @summary Removes a member role.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9934,7 +10094,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.RemoveMemberRoleResponse:
         """
-        @summary 删除成员角色
+        @summary Removes a member role.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9966,7 +10126,7 @@ class Client(OpenApiClient):
         role_name: str,
     ) -> aiwork_space_20210204_models.RemoveMemberRoleResponse:
         """
-        @summary 删除成员角色
+        @summary Removes a member role.
         
         @return: RemoveMemberRoleResponse
         """
@@ -9981,7 +10141,7 @@ class Client(OpenApiClient):
         role_name: str,
     ) -> aiwork_space_20210204_models.RemoveMemberRoleResponse:
         """
-        @summary 删除成员角色
+        @summary Removes a member role.
         
         @return: RemoveMemberRoleResponse
         """
@@ -9997,7 +10157,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.SetExperimentLabelsResponse:
         """
-        @summary 更新实验标签
+        @summary Updates a experiment tag.
         
         @param request: SetExperimentLabelsRequest
         @param headers: map
@@ -10036,7 +10196,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.SetExperimentLabelsResponse:
         """
-        @summary 更新实验标签
+        @summary Updates a experiment tag.
         
         @param request: SetExperimentLabelsRequest
         @param headers: map
@@ -10073,7 +10233,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.SetExperimentLabelsRequest,
     ) -> aiwork_space_20210204_models.SetExperimentLabelsResponse:
         """
-        @summary 更新实验标签
+        @summary Updates a experiment tag.
         
         @param request: SetExperimentLabelsRequest
         @return: SetExperimentLabelsResponse
@@ -10088,7 +10248,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.SetExperimentLabelsRequest,
     ) -> aiwork_space_20210204_models.SetExperimentLabelsResponse:
         """
-        @summary 更新实验标签
+        @summary Updates a experiment tag.
         
         @param request: SetExperimentLabelsRequest
         @return: SetExperimentLabelsResponse
@@ -10210,7 +10370,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.StopDatasetJobResponse:
         """
-        @summary 停止数据集任务
+        @summary Stops a dataset job.
         
         @param request: StopDatasetJobRequest
         @param headers: map
@@ -10252,7 +10412,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.StopDatasetJobResponse:
         """
-        @summary 停止数据集任务
+        @summary Stops a dataset job.
         
         @param request: StopDatasetJobRequest
         @param headers: map
@@ -10292,7 +10452,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.StopDatasetJobRequest,
     ) -> aiwork_space_20210204_models.StopDatasetJobResponse:
         """
-        @summary 停止数据集任务
+        @summary Stops a dataset job.
         
         @param request: StopDatasetJobRequest
         @return: StopDatasetJobResponse
@@ -10308,7 +10468,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.StopDatasetJobRequest,
     ) -> aiwork_space_20210204_models.StopDatasetJobResponse:
         """
-        @summary 停止数据集任务
+        @summary Stops a dataset job.
         
         @param request: StopDatasetJobRequest
         @return: StopDatasetJobResponse
@@ -10325,7 +10485,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateCodeSourceResponse:
         """
-        @summary 更新代码配置
+        @summary Updates a code build.
         
         @param request: UpdateCodeSourceRequest
         @param headers: map
@@ -10378,7 +10538,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateCodeSourceResponse:
         """
-        @summary 更新代码配置
+        @summary Updates a code build.
         
         @param request: UpdateCodeSourceRequest
         @param headers: map
@@ -10429,7 +10589,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateCodeSourceRequest,
     ) -> aiwork_space_20210204_models.UpdateCodeSourceResponse:
         """
-        @summary 更新代码配置
+        @summary Updates a code build.
         
         @param request: UpdateCodeSourceRequest
         @return: UpdateCodeSourceResponse
@@ -10444,7 +10604,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateCodeSourceRequest,
     ) -> aiwork_space_20210204_models.UpdateCodeSourceResponse:
         """
-        @summary 更新代码配置
+        @summary Updates a code build.
         
         @param request: UpdateCodeSourceRequest
         @return: UpdateCodeSourceResponse
@@ -10461,7 +10621,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateDatasetResponse:
         """
-        @summary 更新数据集
+        @summary Updates the name, description, and other information about a dataset.
         
         @param request: UpdateDatasetRequest
         @param headers: map
@@ -10506,7 +10666,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateDatasetResponse:
         """
-        @summary 更新数据集
+        @summary Updates the name, description, and other information about a dataset.
         
         @param request: UpdateDatasetRequest
         @param headers: map
@@ -10549,7 +10709,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateDatasetRequest,
     ) -> aiwork_space_20210204_models.UpdateDatasetResponse:
         """
-        @summary 更新数据集
+        @summary Updates the name, description, and other information about a dataset.
         
         @param request: UpdateDatasetRequest
         @return: UpdateDatasetResponse
@@ -10564,7 +10724,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateDatasetRequest,
     ) -> aiwork_space_20210204_models.UpdateDatasetResponse:
         """
-        @summary 更新数据集
+        @summary Updates the name, description, and other information about a dataset.
         
         @param request: UpdateDatasetRequest
         @return: UpdateDatasetResponse
@@ -10581,7 +10741,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateDatasetFileMetasResponse:
         """
-        @summary 批量更新数据集下的文件元数据记录
+        @summary Updates the metadata records of multiple files in a dataset at a time.
         
         @param request: UpdateDatasetFileMetasRequest
         @param headers: map
@@ -10626,7 +10786,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateDatasetFileMetasResponse:
         """
-        @summary 批量更新数据集下的文件元数据记录
+        @summary Updates the metadata records of multiple files in a dataset at a time.
         
         @param request: UpdateDatasetFileMetasRequest
         @param headers: map
@@ -10669,7 +10829,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateDatasetFileMetasRequest,
     ) -> aiwork_space_20210204_models.UpdateDatasetFileMetasResponse:
         """
-        @summary 批量更新数据集下的文件元数据记录
+        @summary Updates the metadata records of multiple files in a dataset at a time.
         
         @param request: UpdateDatasetFileMetasRequest
         @return: UpdateDatasetFileMetasResponse
@@ -10684,7 +10844,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateDatasetFileMetasRequest,
     ) -> aiwork_space_20210204_models.UpdateDatasetFileMetasResponse:
         """
-        @summary 批量更新数据集下的文件元数据记录
+        @summary Updates the metadata records of multiple files in a dataset at a time.
         
         @param request: UpdateDatasetFileMetasRequest
         @return: UpdateDatasetFileMetasResponse
@@ -10702,7 +10862,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateDatasetJobResponse:
         """
-        @summary 更新数据集任务
+        @summary Updates a dataset job.
         
         @param request: UpdateDatasetJobRequest
         @param headers: map
@@ -10746,7 +10906,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateDatasetJobResponse:
         """
-        @summary 更新数据集任务
+        @summary Updates a dataset job.
         
         @param request: UpdateDatasetJobRequest
         @param headers: map
@@ -10788,7 +10948,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateDatasetJobRequest,
     ) -> aiwork_space_20210204_models.UpdateDatasetJobResponse:
         """
-        @summary 更新数据集任务
+        @summary Updates a dataset job.
         
         @param request: UpdateDatasetJobRequest
         @return: UpdateDatasetJobResponse
@@ -10804,7 +10964,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateDatasetJobRequest,
     ) -> aiwork_space_20210204_models.UpdateDatasetJobResponse:
         """
-        @summary 更新数据集任务
+        @summary Updates a dataset job.
         
         @param request: UpdateDatasetJobRequest
         @return: UpdateDatasetJobResponse
@@ -10822,7 +10982,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateDatasetJobConfigResponse:
         """
-        @summary 更新数据集任务配置
+        @summary Updates a job configuration for a dataset.
         
         @param request: UpdateDatasetJobConfigRequest
         @param headers: map
@@ -10866,7 +11026,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateDatasetJobConfigResponse:
         """
-        @summary 更新数据集任务配置
+        @summary Updates a job configuration for a dataset.
         
         @param request: UpdateDatasetJobConfigRequest
         @param headers: map
@@ -10908,7 +11068,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateDatasetJobConfigRequest,
     ) -> aiwork_space_20210204_models.UpdateDatasetJobConfigResponse:
         """
-        @summary 更新数据集任务配置
+        @summary Updates a job configuration for a dataset.
         
         @param request: UpdateDatasetJobConfigRequest
         @return: UpdateDatasetJobConfigResponse
@@ -10924,7 +11084,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateDatasetJobConfigRequest,
     ) -> aiwork_space_20210204_models.UpdateDatasetJobConfigResponse:
         """
-        @summary 更新数据集任务配置
+        @summary Updates a job configuration for a dataset.
         
         @param request: UpdateDatasetJobConfigRequest
         @return: UpdateDatasetJobConfigResponse
@@ -11064,7 +11224,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse:
         """
-        @summary 更新默认工作空间
+        @summary Specifies a workspace as the default workspace.
         
         @param request: UpdateDefaultWorkspaceRequest
         @param headers: map
@@ -11102,7 +11262,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse:
         """
-        @summary 更新默认工作空间
+        @summary Specifies a workspace as the default workspace.
         
         @param request: UpdateDefaultWorkspaceRequest
         @param headers: map
@@ -11138,7 +11298,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateDefaultWorkspaceRequest,
     ) -> aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse:
         """
-        @summary 更新默认工作空间
+        @summary Specifies a workspace as the default workspace.
         
         @param request: UpdateDefaultWorkspaceRequest
         @return: UpdateDefaultWorkspaceResponse
@@ -11152,7 +11312,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateDefaultWorkspaceRequest,
     ) -> aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse:
         """
-        @summary 更新默认工作空间
+        @summary Specifies a workspace as the default workspace.
         
         @param request: UpdateDefaultWorkspaceRequest
         @return: UpdateDefaultWorkspaceResponse
@@ -11169,7 +11329,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateExperimentResponse:
         """
-        @summary 更新实验
+        @summary Updates an experiment.
         
         @param request: UpdateExperimentRequest
         @param headers: map
@@ -11210,7 +11370,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateExperimentResponse:
         """
-        @summary 更新实验
+        @summary Updates an experiment.
         
         @param request: UpdateExperimentRequest
         @param headers: map
@@ -11249,7 +11409,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateExperimentRequest,
     ) -> aiwork_space_20210204_models.UpdateExperimentResponse:
         """
-        @summary 更新实验
+        @summary Updates an experiment.
         
         @param request: UpdateExperimentRequest
         @return: UpdateExperimentResponse
@@ -11264,7 +11424,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateExperimentRequest,
     ) -> aiwork_space_20210204_models.UpdateExperimentResponse:
         """
-        @summary 更新实验
+        @summary Updates an experiment.
         
         @param request: UpdateExperimentRequest
         @return: UpdateExperimentResponse
@@ -11281,7 +11441,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateModelResponse:
         """
-        @summary 更新模型
+        @summary Updates the basic configuration information about a model.
         
         @param request: UpdateModelRequest
         @param headers: map
@@ -11338,7 +11498,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateModelResponse:
         """
-        @summary 更新模型
+        @summary Updates the basic configuration information about a model.
         
         @param request: UpdateModelRequest
         @param headers: map
@@ -11393,7 +11553,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateModelRequest,
     ) -> aiwork_space_20210204_models.UpdateModelResponse:
         """
-        @summary 更新模型
+        @summary Updates the basic configuration information about a model.
         
         @param request: UpdateModelRequest
         @return: UpdateModelResponse
@@ -11408,7 +11568,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateModelRequest,
     ) -> aiwork_space_20210204_models.UpdateModelResponse:
         """
-        @summary 更新模型
+        @summary Updates the basic configuration information about a model.
         
         @param request: UpdateModelRequest
         @return: UpdateModelResponse
@@ -11426,7 +11586,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateModelVersionResponse:
         """
-        @summary 更新模型版本
+        @summary Updates a model version.
         
         @param request: UpdateModelVersionRequest
         @param headers: map
@@ -11486,7 +11646,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateModelVersionResponse:
         """
-        @summary 更新模型版本
+        @summary Updates a model version.
         
         @param request: UpdateModelVersionRequest
         @param headers: map
@@ -11544,7 +11704,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateModelVersionRequest,
     ) -> aiwork_space_20210204_models.UpdateModelVersionResponse:
         """
-        @summary 更新模型版本
+        @summary Updates a model version.
         
         @param request: UpdateModelVersionRequest
         @return: UpdateModelVersionResponse
@@ -11560,7 +11720,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateModelVersionRequest,
     ) -> aiwork_space_20210204_models.UpdateModelVersionResponse:
         """
-        @summary 更新模型版本
+        @summary Updates a model version.
         
         @param request: UpdateModelVersionRequest
         @return: UpdateModelVersionResponse
@@ -11693,7 +11853,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateWorkspaceResponse:
         """
-        @summary 更新工作空间
+        @summary Updates the name and description of a workspace.
         
         @param request: UpdateWorkspaceRequest
         @param headers: map
@@ -11734,7 +11894,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateWorkspaceResponse:
         """
-        @summary 更新工作空间
+        @summary Updates the name and description of a workspace.
         
         @param request: UpdateWorkspaceRequest
         @param headers: map
@@ -11773,7 +11933,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateWorkspaceRequest,
     ) -> aiwork_space_20210204_models.UpdateWorkspaceResponse:
         """
-        @summary 更新工作空间
+        @summary Updates the name and description of a workspace.
         
         @param request: UpdateWorkspaceRequest
         @return: UpdateWorkspaceResponse
@@ -11788,7 +11948,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateWorkspaceRequest,
     ) -> aiwork_space_20210204_models.UpdateWorkspaceResponse:
         """
-        @summary 更新工作空间
+        @summary Updates the name and description of a workspace.
         
         @param request: UpdateWorkspaceRequest
         @return: UpdateWorkspaceResponse
@@ -11805,7 +11965,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateWorkspaceResourceResponse:
         """
-        @summary 更新工作空间资源
+        @summary Updates the resources of a workspace.
         
         @param request: UpdateWorkspaceResourceRequest
         @param headers: map
@@ -11856,7 +12016,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateWorkspaceResourceResponse:
         """
-        @summary 更新工作空间资源
+        @summary Updates the resources of a workspace.
         
         @param request: UpdateWorkspaceResourceRequest
         @param headers: map
@@ -11905,7 +12065,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateWorkspaceResourceRequest,
     ) -> aiwork_space_20210204_models.UpdateWorkspaceResourceResponse:
         """
-        @summary 更新工作空间资源
+        @summary Updates the resources of a workspace.
         
         @param request: UpdateWorkspaceResourceRequest
         @return: UpdateWorkspaceResourceResponse
@@ -11920,7 +12080,7 @@ class Client(OpenApiClient):
         request: aiwork_space_20210204_models.UpdateWorkspaceResourceRequest,
     ) -> aiwork_space_20210204_models.UpdateWorkspaceResourceResponse:
         """
-        @summary 更新工作空间资源
+        @summary Updates the resources of a workspace.
         
         @param request: UpdateWorkspaceResourceRequest
         @return: UpdateWorkspaceResourceResponse

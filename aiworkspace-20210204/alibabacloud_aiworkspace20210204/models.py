@@ -1902,6 +1902,7 @@ class Model(TeaModel):
         origin: str = None,
         owner_id: str = None,
         provider: str = None,
+        tags: List[Label] = None,
         task: str = None,
         user_id: str = None,
         workspace_id: str = None,
@@ -1922,6 +1923,7 @@ class Model(TeaModel):
         self.origin = origin
         self.owner_id = owner_id
         self.provider = provider
+        self.tags = tags
         self.task = task
         self.user_id = user_id
         self.workspace_id = workspace_id
@@ -1933,6 +1935,10 @@ class Model(TeaModel):
                     k.validate()
         if self.latest_version:
             self.latest_version.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1974,6 +1980,10 @@ class Model(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.provider is not None:
             result['Provider'] = self.provider
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.task is not None:
             result['Task'] = self.task
         if self.user_id is not None:
@@ -2020,6 +2030,11 @@ class Model(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('Provider') is not None:
             self.provider = m.get('Provider')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = Label()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Task') is not None:
             self.task = m.get('Task')
         if m.get('UserId') is not None:
@@ -2265,7 +2280,9 @@ class AcceptDataworksEventRequest(TeaModel):
         data: Dict[str, Any] = None,
         message_id: str = None,
     ):
+        # The event content in the message.
         self.data = data
+        # The message ID. You can obtain the ID from the message received when an extension point event is triggered. For more information about the message format, see [Message formats](https://help.aliyun.com/document_detail/436911.html).
         self.message_id = message_id
 
     def validate(self):
@@ -2297,6 +2314,7 @@ class AcceptDataworksEventResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2366,7 +2384,9 @@ class AddImageRequestLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -2407,17 +2427,53 @@ class AddImageRequest(TeaModel):
         source_type: str = None,
         workspace_id: str = None,
     ):
+        # The accessibility of the image. Valid values:
+        # 
+        # *   PUBLIC: The image is accessible to all members in the workspace.
+        # *   PRIVATE: The image is accessible only to the image creator.
         self.accessibility = accessibility
+        # The image description.
         self.description = description
+        # The image ID. If you do not specify this parameter, the system automatically generates an image ID. The image ID must start with image- followed by 18 characters in letters or digits.
         self.image_id = image_id
+        # The URL of the image, which can be repeated. You can call [ListImage](https://help.aliyun.com/document_detail/449118.html) to view the image URL.
+        # 
         # This parameter is required.
         self.image_uri = image_uri
+        # The image tag, which is an array. Each element in the array contains a key-value pair. Alibaba Cloud images have the system.official=true tag. You can add the following keys to an image:
+        # 
+        # *   system.chipType
+        # *   system.dsw.cudaVersion
+        # *   system.dsw.fromImageId
+        # *   system.dsw.fromInstanceId
+        # *   system.dsw.id
+        # *   system.dsw.os
+        # *   system.dsw.osVersion
+        # *   system.dsw.resourceType
+        # *   system.dsw.rootImageId
+        # *   system.dsw.stage
+        # *   system.dsw.tag
+        # *   system.dsw.type
+        # *   system.framework
+        # *   system.origin
+        # *   system.pythonVersion
+        # *   system.source
+        # *   system.supported.dlc
+        # *   system.supported.dsw
         self.labels = labels
+        # The image name. The name must meet the following requirements:
+        # 
+        # *   The name must be 1 to 50 characters in length.
+        # *   The name can contain lowercase letters, digits, and hyphens (-). The name must start with a lowercase letter.
+        # *   The name must be unique in a workspace.
+        # 
         # This parameter is required.
         self.name = name
+        # The size of the image. Unit: GB.
         self.size = size
         self.source_id = source_id
         self.source_type = source_type
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -2490,7 +2546,9 @@ class AddImageResponseBody(TeaModel):
         image_id: str = None,
         request_id: str = None,
     ):
+        # The image ID.
         self.image_id = image_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2564,7 +2622,28 @@ class AddImageLabelsRequestLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. The following keys can be added:
+        # 
+        # *   system.chipType
+        # *   system.dsw.cudaVersion
+        # *   system.dsw.fromImageId
+        # *   system.dsw.fromInstanceId
+        # *   system.dsw.id
+        # *   system.dsw.os
+        # *   system.dsw.osVersion
+        # *   system.dsw.resourceType
+        # *   system.dsw.rootImageId
+        # *   system.dsw.stage
+        # *   system.dsw.tag
+        # *   system.dsw.type
+        # *   system.framework
+        # *   system.origin
+        # *   system.pythonVersion
+        # *   system.source
+        # *   system.supported.dlc
+        # *   system.supported.dsw
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -2596,6 +2675,8 @@ class AddImageLabelsRequest(TeaModel):
         self,
         labels: List[AddImageLabelsRequestLabels] = None,
     ):
+        # The list of image tags.
+        # 
         # This parameter is required.
         self.labels = labels
 
@@ -2632,6 +2713,7 @@ class AddImageLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2700,6 +2782,7 @@ class AddMemberRoleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2770,8 +2853,11 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The ID of the target resource group. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.new_resource_group_id = new_resource_group_id
+        # The resource ID, which is the workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.resource_id = resource_id
+        # The resource group type, which must be set to workspace.
         self.resource_type = resource_type
 
     def validate(self):
@@ -2807,6 +2893,7 @@ class ChangeResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2884,16 +2971,30 @@ class CreateCodeSourceRequest(TeaModel):
         mount_path: str = None,
         workspace_id: str = None,
     ):
+        # The visibility of the code build. Valid values:
+        # 
+        # *   PUBLIC: The code build is visible to all members in the workspace.
+        # *   PRIVATE: The code build is visible only to you and the administrator of the workspace.
         self.accessibility = accessibility
+        # The code branch.
         self.code_branch = code_branch
         self.code_commit = code_commit
+        # The URL of the code repository.
         self.code_repo = code_repo
+        # The token used to access the code repository.
         self.code_repo_access_token = code_repo_access_token
+        # The username of the code repository.
         self.code_repo_user_name = code_repo_user_name
+        # The description of the code build, which helps you distinguish between code builds.
         self.description = description
+        # The name of the code build.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The local mount path of the code. By default, the code is mounted to the /root/code/ path.
         self.mount_path = mount_path
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -2959,7 +3060,9 @@ class CreateCodeSourceResponseBody(TeaModel):
         code_source_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the created code build.
         self.code_source_id = code_source_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3054,32 +3157,136 @@ class CreateDatasetRequest(TeaModel):
         version_labels: List[Label] = None,
         workspace_id: str = None,
     ):
+        # The visibility of the workspace. Valid values:
+        # 
+        # *   PRIVATE (default): The workspace is visible only to you and the administrator of the workspace.
+        # *   PUBLIC: The workspace is visible to all users.
         self.accessibility = accessibility
+        # The number of dataset files.
         self.data_count = data_count
+        # The size of the dataset file. Unit: bytes.
         self.data_size = data_size
+        # The type of the data source. Valid values:
+        # 
+        # *   OSS: Object Storage Service (OSS).
+        # *   NAS: File Storage NAS (NAS).
+        # 
         # This parameter is required.
         self.data_source_type = data_source_type
+        # The type of the dataset. Default value: COMMON. Valid values:
+        # 
+        # *   COMMON: common
+        # *   PIC: picture
+        # *   TEXT: text
+        # *   Video: video
+        # *   AUDIO: audio
         self.data_type = data_type
+        # The description of the dataset. Descriptions are used to differentiate datasets.
         self.description = description
+        # The dataset configurations to be imported to a storage, such as OSS, NAS, or Cloud Parallel File Storage (CPFS).
+        # 
+        # **OSS**\
+        # 
+        # {\\
+        # "region": "${region}",// The region ID\\
+        # "bucket": "${bucket}",//The bucket name\\
+        # "path": "${path}" // The file path\\
+        # }\\
+        # 
+        # 
+        # **NAS**\
+        # 
+        # {\\
+        # "region": "${region}",// The region ID\\
+        # "fileSystemId": "${file_system_id}", // The file system ID\\
+        # "path": "${path}", // The file system path\\
+        # "mountTarget": "${mount_target}" // The mount point of the file system\\
+        # }\\
+        # 
+        # 
+        # **CPFS**\
+        # 
+        # {\\
+        # "region": "${region}",// The region ID\\
+        # "fileSystemId": "${file_system_id}", // The file system ID\\
+        # "protocolServiceId":"${protocol_service_id}", // The file system protocol service\\
+        # "exportId": "${export_id}", // The file system export directory\\
+        # "path": "${path}", // The file system path\\
+        # }\\
+        # 
+        # 
+        # **CPFS for Lingjun**\
+        # 
+        # {\\
+        # "region": "${region}",// The region ID\\
+        # "fileSystemId": "${file_system_id}", // The file system ID\\
+        # "path": "${path}", // The file system path\\
+        # "mountTarget": "${mount_target}" // The mount point of the file system, CPFS for Lingjun only\\
+        # "isVpcMount": boolean, // Whether the mount point is a virtual private cloud (VPC) mount point, CPFS for Lingjun only\\
+        # }\\
         self.import_info = import_info
+        # The tags.
         self.labels = labels
+        # The list of role names in the workspace that have read and write permissions on the mounted database. The names start with PAI are basic role names and the names start with role- are custom role names. If the list contains asterisks (\\*), all roles have read and write permissions.
+        # 
+        # *   If you set the value to ["PAI.AlgoOperator", "role-hiuwpd01ncrokkgp21"], the account of the specified role is granted the read and write permissions.
+        # *   If you set the value to ["\\*"], all accounts are granted the read and write permissions.
+        # *   If you set the value to [], only the creator of the dataset has the read and write permissions.
         self.mount_access_read_write_role_id_list = mount_access_read_write_role_id_list
+        # The dataset name. The name must meet the following requirements:
+        # 
+        # *   The name must start with a letter, digit, or Chinese character.
+        # *   The name can contain underscores (_) and hyphens (-).
+        # *   The name must be 1 to 127 characters in length.
+        # 
         # This parameter is required.
         self.name = name
+        # The extended field, which is a JSON string. When you use the dataset in Deep Learning Containers (DLC), you can configure the mountPath field to specify the default mount path of the dataset.
         self.options = options
+        # The property of the dataset. Valid values:
+        # 
+        # *   FILE
+        # *   DIRECTORY
+        # 
         # This parameter is required.
         self.property = property
+        # The dataset provider. The value cannot be set to pai.
         self.provider = provider
+        # The source type of the dataset. Valid values:
+        # 
+        # *   Ecs (default)
+        # *   Lingjun
         self.provider_type = provider_type
+        # The ID of the source dataset of the labeled dataset.
         self.source_dataset_id = source_dataset_id
+        # The version of the source dataset of the labeled dataset.
         self.source_dataset_version = source_dataset_version
+        # The ID of the data source.
+        # 
+        # *   If SourceType is set to USER, the value of SourceId can be a custom string.
+        # *   If SourceType is set to ITAG, the value of SourceId is the ID of the labeling job of iTAG.
+        # *   If SourceType is set to PAI_PUBLIC_DATASET, the value of SourceId is empty by default.
         self.source_id = source_id
+        # The type of the data source. Default value: USER. Valid values:
+        # 
+        # *   PAI-PUBLIC-DATASET: a public dataset of Platform for AI (PAI).
+        # *   ITAG: a dataset generated from a labeling job of iTAG.
+        # *   USER: a dataset registered by a user.
         self.source_type = source_type
+        # The URI of the data source.
+        # 
+        # *   Value format when DataSourceType is set to OSS: `oss://bucket.endpoint/object`.
+        # *   Value formats when DataSourceType is set to NAS: General-purpose NAS: `nas://<nasfisid>.region/subpath/to/dir/`. CPFS 1.0: `nas://<cpfs-fsid>.region/subpath/to/dir/`. CPFS 2.0: `nas://<cpfs-fsid>.region/<protocolserviceid>/`. You can distinguish CPFS 1.0 and CPFS 2.0 file systems based on the format of the file system ID: The ID for CPFS 1.0 is in the cpfs-<8-bit ASCII characters> format. The ID for CPFS 2.0 is in the cpfs-<16-bit ASCII characters> format.
+        # 
         # This parameter is required.
         self.uri = uri
+        # The ID of the Alibaba Cloud account to which the dataset belongs. The workspace owner and administrator have permissions to create datasets for specified members in the workspace.
         self.user_id = user_id
+        # The description of the dataset of the initial version.
         self.version_description = version_description
+        # The list of tags to be added to the dataset of the initial version.
         self.version_labels = version_labels
+        # The ID of the workspace to which the dataset belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID. If you do not specify this parameter, the default workspace is used. If the default workspace does not exist, an error is reported.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -3213,7 +3420,9 @@ class CreateDatasetResponseBody(TeaModel):
         dataset_id: str = None,
         request_id: str = None,
     ):
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3288,10 +3497,16 @@ class CreateDatasetFileMetasRequest(TeaModel):
         dataset_version: str = None,
         workspace_id: str = None,
     ):
+        # The metadata of the file.
+        # 
         # This parameter is required.
         self.dataset_file_metas = dataset_file_metas
+        # The dataset version name.
+        # 
         # This parameter is required.
         self.dataset_version = dataset_version
+        # The ID of the workspace to which the dataset belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -3339,9 +3554,18 @@ class CreateDatasetFileMetasResponseBody(TeaModel):
         status: bool = None,
         succeed_details: List[DatasetFileMetaResponse] = None,
     ):
+        # The metadata that failed to be created.
         self.failed_details = failed_details
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the metadata records of all dataset files were created. The value true indicates that the metadata records of all dataset files are created. If the value is false, view the failure details specified by FailedDetails.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.status = status
+        # The metadata that is created.
         self.succeed_details = succeed_details
 
     def validate(self):
@@ -3444,13 +3668,32 @@ class CreateDatasetJobRequest(TeaModel):
         job_spec: str = None,
         workspace_id: str = None,
     ):
+        # The dataset version.
         self.dataset_version = dataset_version
+        # The job description.
         self.description = description
+        # The job action.
+        # 
+        # Valid values:
+        # 
+        # *   SemanticIndex
+        # *   IntelligentTag
+        # *   FileMetaExport
+        # 
         # This parameter is required.
         self.job_action = job_action
+        # The job mode.
+        # 
+        # Valid values:
+        # 
+        # *   Full: full mode.
         self.job_mode = job_mode
+        # The job configuration.
+        # 
         # This parameter is required.
         self.job_spec = job_spec
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -3500,7 +3743,9 @@ class CreateDatasetJobResponseBody(TeaModel):
         dataset_job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the dataset job.
         self.dataset_job_id = dataset_job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3575,10 +3820,29 @@ class CreateDatasetJobConfigRequest(TeaModel):
         config_type: str = None,
         workspace_id: str = None,
     ):
+        # The configuration content. Format:
+        # 
+        # *   MultimodalIntelligentTag
+        # 
+        # { "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx" }
+        # 
+        # *   MultimodalSemanticIndex
+        # 
+        # { "defaultModelId": "xxx" "defaultModelVersion":"1.0.0" }
+        # 
         # This parameter is required.
         self.config = config
+        # The configuration type.
+        # 
+        # Valid values:
+        # 
+        # *   MultimodalIntelligentTag
+        # *   MultimodalSemanticIndex
+        # 
         # This parameter is required.
         self.config_type = config_type
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -3616,7 +3880,9 @@ class CreateDatasetJobConfigResponseBody(TeaModel):
         dataset_job_config_id: str = None,
         request_id: str = None,
     ):
+        # The configuration ID.
         self.dataset_job_config_id = dataset_job_config_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3689,6 +3955,7 @@ class CreateDatasetLabelsRequest(TeaModel):
         self,
         labels: List[Label] = None,
     ):
+        # The tags.
         self.labels = labels
 
     def validate(self):
@@ -3724,6 +3991,7 @@ class CreateDatasetLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4157,16 +4425,21 @@ class CreateExperimentRequest(TeaModel):
         name: str = None,
         workspace_id: str = None,
     ):
+        # The visibility of the experiment. Valid values: PRIVATE (the experiment is visible only to the creator and the Alibaba Cloud account) and PUBLIC (the experiment is visible to all users). This parameter is optional and the default value is PRIVATE.
         self.accessibility = accessibility
-        # Artifact的OSS存储路径
+        # The default artifact output path of all jobs that are associated with the experiment. Only Object Storage Service (OSS) paths are supported.
         self.artifact_uri = artifact_uri
-        # 标签
+        # The tags.
         self.labels = labels
-        # 名称
+        # The experiment name. The name must meet the following requirements:
+        # 
+        # *   The name must start with a letter.
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-).
+        # *   The name must be 1 to 63 characters in length.
         # 
         # This parameter is required.
         self.name = name
-        # 工作空间ID
+        # The workspace ID.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id
@@ -4221,8 +4494,9 @@ class CreateExperimentResponseBody(TeaModel):
         experiment_id: str = None,
         request_id: str = None,
     ):
+        # The returned data. If the operation is asynchronously implemented, the job ID is returned.
         self.experiment_id = experiment_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4296,8 +4570,12 @@ class CreateMemberRequestMembers(TeaModel):
         roles: List[str] = None,
         user_id: str = None,
     ):
+        # The list of roles.
+        # 
         # This parameter is required.
         self.roles = roles
+        # The member IDs. Multiple member IDs are separated by commas (,). You can call [ListMembers](https://help.aliyun.com/document_detail/449135.html) to obtain the member IDs.
+        # 
         # This parameter is required.
         self.user_id = user_id
 
@@ -4330,6 +4608,8 @@ class CreateMemberRequest(TeaModel):
         self,
         members: List[CreateMemberRequestMembers] = None,
     ):
+        # The members.
+        # 
         # This parameter is required.
         self.members = members
 
@@ -4369,9 +4649,13 @@ class CreateMemberResponseBodyMembers(TeaModel):
         roles: List[str] = None,
         user_id: str = None,
     ):
+        # The display name.
         self.display_name = display_name
+        # The member ID.
         self.member_id = member_id
+        # The list of roles.
         self.roles = roles
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -4412,7 +4696,9 @@ class CreateMemberResponseBody(TeaModel):
         members: List[CreateMemberResponseBodyMembers] = None,
         request_id: str = None,
     ):
+        # The returned members.
         self.members = members
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4501,6 +4787,7 @@ class CreateModelRequest(TeaModel):
         model_type: str = None,
         order_number: int = None,
         origin: str = None,
+        tag: List[Label] = None,
         task: str = None,
         workspace_id: str = None,
     ):
@@ -4529,6 +4816,7 @@ class CreateModelRequest(TeaModel):
         self.order_number = order_number
         # The source of the model. The community or organization to which the source model belongs, such as ModelScope or HuggingFace.
         self.origin = origin
+        self.tag = tag
         # The task of the model. Describes the specific problem that the model solves. Example: text-classification.
         self.task = task
         # The workspace ID. To obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
@@ -4537,6 +4825,10 @@ class CreateModelRequest(TeaModel):
     def validate(self):
         if self.labels:
             for k in self.labels:
+                if k:
+                    k.validate()
+        if self.tag:
+            for k in self.tag:
                 if k:
                     k.validate()
 
@@ -4568,6 +4860,10 @@ class CreateModelRequest(TeaModel):
             result['OrderNumber'] = self.order_number
         if self.origin is not None:
             result['Origin'] = self.origin
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.task is not None:
             result['Task'] = self.task
         if self.workspace_id is not None:
@@ -4599,6 +4895,11 @@ class CreateModelRequest(TeaModel):
             self.order_number = m.get('OrderNumber')
         if m.get('Origin') is not None:
             self.origin = m.get('Origin')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = Label()
+                self.tag.append(temp_model.from_map(k))
         if m.get('Task') is not None:
             self.task = m.get('Task')
         if m.get('WorkspaceId') is not None:
@@ -5054,6 +5355,7 @@ class CreateModelVersionLabelsRequest(TeaModel):
         self,
         labels: List[Label] = None,
     ):
+        # The tags.
         self.labels = labels
 
     def validate(self):
@@ -5089,6 +5391,7 @@ class CreateModelVersionLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5739,7 +6042,9 @@ class CreateWorkspaceResourceRequestResourcesLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -5771,6 +6076,8 @@ class CreateWorkspaceResourceRequestResourcesQuotas(TeaModel):
         self,
         id: str = None,
     ):
+        # The quota ID. You can call [ListQuotas](https://help.aliyun.com/document_detail/449144.html) to obtain the quota ID.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -5808,17 +6115,45 @@ class CreateWorkspaceResourceRequestResources(TeaModel):
         spec: Dict[str, Any] = None,
         workspace_id: str = None,
     ):
+        # The environment type. Valid values:
+        # 
+        # *   dev: development environment
+        # *   prod: production environment
+        # 
         # This parameter is required.
         self.env_type = env_type
+        # The name of the resource group, which is unique within your Alibaba Cloud account.
         self.group_name = group_name
+        # Specifies whether the resource is the default resource. Each type of resources has a default resource. Valid values:
+        # 
+        # *   false (default)
+        # *   true
         self.is_default = is_default
+        # The tags added to the resource.
         self.labels = labels
+        # The resource name. Format:
+        # 
+        # *   The name must be 3 to 28 characters in length, and can contain only letters, digits, and underscores (_). The name must start with a letter.
+        # *   The name is unique in the region.
+        # 
         # This parameter is required.
         self.name = name
+        # **This field is no longer used and will be removed. Use the ResourceType field instead.
         self.product_type = product_type
+        # The list of quotas. Only MaxCompute quotas are available.
         self.quotas = quotas
+        # The resource type. Valid values:
+        # 
+        # *   MaxCompute
+        # *   ECS
+        # *   Lingjun
+        # *   ACS
+        # *   FLINK
         self.resource_type = resource_type
+        # The resource specifications in the JSON format.
         self.spec = spec
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -5901,7 +6236,15 @@ class CreateWorkspaceResourceRequest(TeaModel):
         option: str = None,
         resources: List[CreateWorkspaceResourceRequestResources] = None,
     ):
+        # The operation to perform. Valid values:
+        # 
+        # *   CreateAndAttach: creates resources and associates the resources with a workspace.
+        # *   Attach: associates resources with a workspace.
+        # 
+        # >  MaxCompute supports only the Attach operation.
         self.option = option
+        # The resources.
+        # 
         # This parameter is required.
         self.resources = resources
 
@@ -5942,6 +6285,7 @@ class CreateWorkspaceResourceResponseBodyResources(TeaModel):
         self,
         id: str = None,
     ):
+        # The resource ID.
         self.id = id
 
     def validate(self):
@@ -5971,8 +6315,11 @@ class CreateWorkspaceResourceResponseBody(TeaModel):
         resources: List[CreateWorkspaceResourceResponseBodyResources] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The resources.
         self.resources = resources
+        # The total number of resources.
         self.total_count = total_count
 
     def validate(self):
@@ -6133,6 +6480,7 @@ class DeleteDatasetResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6203,9 +6551,13 @@ class DeleteDatasetFileMetasRequest(TeaModel):
         dataset_version: str = None,
         workspace_id: str = None,
     ):
+        # The metadata ID of the dataset file.
+        # 
         # This parameter is required.
         self.dataset_file_meta_ids = dataset_file_meta_ids
+        # The dataset version.
         self.dataset_version = dataset_version
+        # The ID of the workspace to which the dataset belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -6243,8 +6595,11 @@ class DeleteDatasetFileMetasResponseBody(TeaModel):
         request_id: str = None,
         status: bool = None,
     ):
+        # The metadata records that fail to be deleted for the dataset files.
         self.failed_details = failed_details
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the metadata records of all dataset files were deleted. The value true indicates that the metadata records of all dataset files are deleted. If the value is false, view the failure details specified by FailedDetails.
         self.status = status
 
     def validate(self):
@@ -6329,6 +6684,7 @@ class DeleteDatasetJobResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6397,6 +6753,7 @@ class DeleteDatasetJobConfigRequest(TeaModel):
         self,
         workspace_id: str = None,
     ):
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -6424,6 +6781,7 @@ class DeleteDatasetJobConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6492,6 +6850,7 @@ class DeleteDatasetLabelsRequest(TeaModel):
         self,
         label_keys: str = None,
     ):
+        # The tag key. You can call [GetDataset](https://help.aliyun.com/document_detail/457218.html) to obtain the tag key. Multiple tag keys are separated by commas (,).
         self.label_keys = label_keys
 
     def validate(self):
@@ -6519,6 +6878,7 @@ class DeleteDatasetLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6656,6 +7016,8 @@ class DeleteDatasetVersionLabelsRequest(TeaModel):
         self,
         keys: str = None,
     ):
+        # The tag keys. Multiple tags are separated by commas (,).
+        # 
         # This parameter is required.
         self.keys = keys
 
@@ -6684,6 +7046,7 @@ class DeleteDatasetVersionLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -6752,6 +7115,7 @@ class DeleteExperimentResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6820,6 +7184,7 @@ class DeleteExperimentLabelResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7070,6 +7435,7 @@ class DeleteModelLabelsRequest(TeaModel):
         self,
         label_keys: str = None,
     ):
+        # The label key to be deleted. To delete multiple label keys, separate them with commas (,).
         self.label_keys = label_keys
 
     def validate(self):
@@ -7097,6 +7463,7 @@ class DeleteModelLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7165,6 +7532,7 @@ class DeleteModelVersionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7399,7 +7767,7 @@ class DeleteRunLabelResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7565,6 +7933,7 @@ class DeleteWorkspaceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7638,11 +8007,26 @@ class DeleteWorkspaceResourceRequest(TeaModel):
         resource_ids: str = None,
         resource_type: str = None,
     ):
+        # The name of the resource group. You can call [ListResources](https://help.aliyun.com/document_detail/449143.html) to obtain the name of the resource group.
         self.group_name = group_name
+        # The tags. Multiple tags are separated by commas (,).
         self.labels = labels
+        # The operation to perform. Valid values:
+        # 
+        # *   DetachAndDelete: disassociates a resource from a workspace and deletes the resource in the workspace. This is the default value.
+        # *   Detach: disassociates a resource group from a workspace.
         self.option = option
+        # **This field is no longer used and will be removed. Use the ResourceType field instead.
         self.product_type = product_type
+        # The resource IDs. Multiple resource IDs are separated by commas (,). The GroupName values for the specified resources must be the same. You cannot leave both GroupName and ResourceIds empty. You can specify both parameters.
         self.resource_ids = resource_ids
+        # The resource type. Valid values:
+        # 
+        # *   ECS
+        # *   Lingjun
+        # *   ACS
+        # *   FLINK
+        # *   MaxCompute (This resource type is valid only if Option is set to Detach.)
         self.resource_type = resource_type
 
     def validate(self):
@@ -7691,7 +8075,9 @@ class DeleteWorkspaceResourceResponseBody(TeaModel):
         request_id: str = None,
         resource_ids: List[str] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The resource IDs.
         self.resource_ids = resource_ids
 
     def validate(self):
@@ -7960,32 +8346,131 @@ class GetDatasetResponseBody(TeaModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # The visibility of the workspace. Valid values:
+        # 
+        # *   PRIVATE: The workspace is visible only to you and the administrator of the workspace.
+        # *   PUBLIC: The workspace is visible to all users.
         self.accessibility = accessibility
+        # The type of the data source. Valid values:
+        # 
+        # *   OSS: Object Storage Service (OSS)
+        # *   NAS: File Storage NAS (NAS)
         self.data_source_type = data_source_type
+        # The data type. Valid values:
+        # 
+        # *   COMMON: common
+        # *   PIC: picture
+        # *   TEXT: text
+        # *   VIDEO: video
+        # *   AUDIO: audio
         self.data_type = data_type
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The description.
         self.description = description
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The update time.
         self.gmt_modified_time = gmt_modified_time
+        # The dataset configurations to be imported to a storage, such as OSS, NAS, or CPFS.
+        # 
+        # **OSS**\
+        # 
+        # {\\
+        # "region": "${region}",// The region ID\\
+        # "bucket": "${bucket}",// The bucket name\\
+        # "path": "${path}" // The file path\\
+        # }\\
+        # 
+        # 
+        # **NAS**\
+        # 
+        # {\\
+        # "region": "${region}",// The region ID\\
+        # "fileSystemId": "${file_system_id}", // The file system ID\\
+        # "path": "${path}", // The file system path\\
+        # "mountTarget": "${mount_target}" // The mount point of the file system\\
+        # }\\
+        # 
+        # 
+        # **CPFS**\
+        # 
+        # {\\
+        # "region": "${region}",// The region ID\\
+        # "fileSystemId": "${file_system_id}", // The file system ID\\
+        # "protocolServiceId":"${protocol_service_id}", // The file system protocol service\\
+        # "exportId": "${export_id}", // The file system export directory\\
+        # "path": "${path}", // The file system path\\
+        # }\\
+        # 
+        # 
+        # **CPFS for Lingjun**\
+        # 
+        # {\\
+        # "region": "${region}",// The region ID\\
+        # "fileSystemId": "${file_system_id}", // The file system ID\\
+        # "path": "${path}", // The file system path\\
+        # "mountTarget": "${mount_target}" // The mount point of the file system, CPFS for Lingjun only\\
+        # "isVpcMount": boolean, // Whether the mount point is a VPC mount point, CPFS for Lingjun only\\
+        # }\\
         self.import_info = import_info
+        # The tags.
         self.labels = labels
+        # The latest version of the dataset.
         self.latest_version = latest_version
+        # The access permission on the dataset when the dataset is mounted. Valid values:
+        # 
+        # *   RO: read-only permissions
+        # *   RW: read and write permissions
         self.mount_access = mount_access
+        # The list of role names in the workspace that have read and write permissions on the mounted database. The names start with PAI are basic role names and the names start with role- are custom role names. If the list contains asterisks (\\*), all roles have read and write permissions.
         self.mount_access_read_write_role_id_list = mount_access_read_write_role_id_list
+        # The dataset name.
         self.name = name
+        # The extended fields of the dataset v1 (initial version). The value is a JSON string. When you use the dataset in Deep Learning Containers (DLC), you can use the mountPath field to specify the default mount path of the dataset.
         self.options = options
+        # The ID of the Alibaba Could account.
         self.owner_id = owner_id
+        # The property of the dataset of the initial version v1. Valid values:
+        # 
+        # *   FILE
+        # *   DIRECTORY
         self.property = property
+        # The dataset provider. If the value pai is returned, the dataset is a public dataset in PAI.
         self.provider = provider
+        # The type of the data source for the dataset. Valid values:
+        # 
+        # *   Ecs (default)
+        # *   Lingjun
         self.provider_type = provider_type
+        # The request ID.
         self.request_id = request_id
+        # The ID of the source dataset generated from a labeling job of iTAG.
         self.source_dataset_id = source_dataset_id
+        # The version of the source dataset generated from a labeling job of iTAG.
         self.source_dataset_version = source_dataset_version
+        # The ID of the source for the dataset v1 (initial version). Valid values:
+        # 
+        # *   If SourceType is set to USER, the value of SourceId can be a custom string.
+        # *   If SourceType is set to ITAG, the value of SourceId is the ID of the labeling job of iTAG.
+        # *   If SourceType is set to PAI_PUBLIC_DATASET, SourceId is empty by default.
         self.source_id = source_id
+        # The type of the source for the dataset v1 (initial version). Valid values:
+        # 
+        # *   PAI-PUBLIC-DATASET: a public dataset of Platform for AI (PAI).
+        # *   ITAG: a dataset generated from a labeling job of iTAG.
+        # *   USER: a dataset registered by a user.
         self.source_type = source_type
+        # The labeling template for the source dataset generated from a labeling job of iTAG.
         self.tag_template_type = tag_template_type
+        # The URI of the initial version v1.
+        # 
+        # *   Sample format for the OSS data source: `oss://bucket.endpoint/object`
+        # *   Sample formats for the NAS data source: `nas://<nasfisid>.region/subpath/to/dir/`: General-purpose NAS. `nas://<cpfs-fsid>.region/subpath/to/dir/`: Cloud Parallel File Storage (CPFS) 1.0. `nas://<cpfs-fsid>.region/<protocolserviceid>/`: CPFS 2.0. You can distinguish CPFS 1.0 and CPFS 2.0 file systems based on the format of the file system ID. The ID for CPFS 1.0 is in the cpfs-<8-bit ASCII characters> format. The ID for CPFS 2.0 is in the cpfs-<16-bit ASCII characters> format.
         self.uri = uri
+        # The ID of the user to which the dataset belongs.
         self.user_id = user_id
+        # The ID of the workspace to which the dataset belongs.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -8170,7 +8655,9 @@ class GetDatasetFileMetaRequest(TeaModel):
         dataset_version: str = None,
         workspace_id: str = None,
     ):
+        # The dataset version.
         self.dataset_version = dataset_version
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -8206,10 +8693,15 @@ class GetDatasetFileMetaResponseBody(TeaModel):
         request_id: str = None,
         workspace_id: str = None,
     ):
+        # The queried metadata records of dataset files.
         self.dataset_file_meta = dataset_file_meta
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The dataset version.
         self.dataset_version = dataset_version
+        # The request ID.
         self.request_id = request_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -8291,13 +8783,150 @@ class GetDatasetFileMetaResponse(TeaModel):
         return self
 
 
+class GetDatasetFileMetasStatisticsRequest(TeaModel):
+    def __init__(
+        self,
+        aggregate_by: str = None,
+        dataset_version: str = None,
+        max_results: int = None,
+        workspace_id: str = None,
+    ):
+        self.aggregate_by = aggregate_by
+        # This parameter is required.
+        self.dataset_version = dataset_version
+        self.max_results = max_results
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregate_by is not None:
+            result['AggregateBy'] = self.aggregate_by
+        if self.dataset_version is not None:
+            result['DatasetVersion'] = self.dataset_version
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregateBy') is not None:
+            self.aggregate_by = m.get('AggregateBy')
+        if m.get('DatasetVersion') is not None:
+            self.dataset_version = m.get('DatasetVersion')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetDatasetFileMetasStatisticsResponseBody(TeaModel):
+    def __init__(
+        self,
+        dataset_file_metas_stats: List[DatasetFileMetasStat] = None,
+        total_count: int = None,
+        request_id: str = None,
+    ):
+        self.dataset_file_metas_stats = dataset_file_metas_stats
+        self.total_count = total_count
+        self.request_id = request_id
+
+    def validate(self):
+        if self.dataset_file_metas_stats:
+            for k in self.dataset_file_metas_stats:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DatasetFileMetasStats'] = []
+        if self.dataset_file_metas_stats is not None:
+            for k in self.dataset_file_metas_stats:
+                result['DatasetFileMetasStats'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dataset_file_metas_stats = []
+        if m.get('DatasetFileMetasStats') is not None:
+            for k in m.get('DatasetFileMetasStats'):
+                temp_model = DatasetFileMetasStat()
+                self.dataset_file_metas_stats.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetDatasetFileMetasStatisticsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDatasetFileMetasStatisticsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDatasetFileMetasStatisticsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDatasetJobRequest(TeaModel):
     def __init__(
         self,
         dataset_version: str = None,
         workspace_id: str = None,
     ):
+        # The dataset version name.
         self.dataset_version = dataset_version
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -8340,17 +8969,49 @@ class GetDatasetJobResponseBody(TeaModel):
         status: str = None,
         total_file_count: int = None,
     ):
+        # The total number of completed files.
         self.completed_file_count = completed_file_count
+        # The time when the job is started.
         self.create_time = create_time
+        # The job description.
         self.description = description
+        # The total number of failed files.
         self.failed_file_count = failed_file_count
+        # The time when the job ends.
         self.finish_time = finish_time
+        # The action that is performed on the job.
+        # 
+        # Valid values:
+        # 
+        # *   SemanticIndex: semantic indexing
+        # *   IntelligentTag: smart labeling
+        # *   FileMetaExport: metadata export
         self.job_action = job_action
+        # The job mode.
+        # 
+        # Valid value:
+        # 
+        # *   Full: full data mode.
         self.job_mode = job_mode
+        # The job details.
         self.job_spec = job_spec
+        # The job logs.
         self.logs = logs
+        # The request ID.
         self.request_id = request_id
+        # The job state.
+        # 
+        # Valid values:
+        # 
+        # *   Succeeded
+        # *   Failed
+        # *   Running
+        # *   Pending
+        # *   PartialFailed
+        # *   Deleting
+        # *   ManuallyStop
         self.status = status
+        # The total number of job files.
         self.total_file_count = total_file_count
 
     def validate(self):
@@ -8463,6 +9124,7 @@ class GetDatasetJobConfigRequest(TeaModel):
         self,
         workspace_id: str = None,
     ):
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -8496,13 +9158,28 @@ class GetDatasetJobConfigResponseBody(TeaModel):
         request_id: str = None,
         workspace_id: str = None,
     ):
+        # The configuration content. Configuration format for MultimodalIntelligentTag:
+        # 
+        # { "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx" }
+        # 
+        # MultimodalSemanticIndex
+        # 
+        # { "defaultModelId": "xxx" "defaultModelVersion":"1.0.0" }
         self.config = config
+        # The configuration type. Valid values:
+        # 
+        # *   MultimodalIntelligentTag
+        # *   MultimodalSemanticIndex
         self.config_type = config_type
+        # The time when the configuration is created.
         self.create_time = create_time
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The time when the configuration is modified.
         self.modify_time = modify_time
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -8611,55 +9288,58 @@ class GetDatasetVersionResponseBody(TeaModel):
         uri: str = None,
         version_name: str = None,
     ):
-        # 数据集的数据量
+        # The number of data records.
         self.data_count = data_count
-        # 数据集版本的数据大小。
+        # The size of the dataset.
         self.data_size = data_size
-        # 数据源类型。支持以下取值：
-        # - OSS：阿里云对象存储（OSS）。
-        # - NAS：阿里云文件存储（NAS）。
+        # The type of the data source.
         # 
         # This parameter is required.
         self.data_source_type = data_source_type
-        # 代表资源一级ID的资源属性字段
+        # The request ID.
         self.dataset_id = dataset_id
-        # 数据集版本的描述信息。
+        # The version description.
         self.description = description
+        # The creation time.
         self.gmt_create_time = gmt_create_time
-        # 创建时间。
+        # The last modification time.
         self.gmt_modified_time = gmt_modified_time
+        # The dataset configurations to be imported to a storage, such as Object Storage Service (OSS), File Storage NAS (NAS), or Cloud Parallel File Storage (CPFS).
+        # 
+        # **OSS**\
+        # 
+        # { "region": "${region}",// The region ID. $bucket = $options["bucket"]; // The bucket name. "path": "${path}" // The file path. }
+        # 
+        # **NAS**\
+        # 
+        # **CPFS**\
+        # 
+        # **CPFS for Lingjun**\
         self.import_info = import_info
-        # 代表资源标签的资源属性字段
+        # The resource tags.
         self.labels = labels
+        # The access permission on the dataset when the dataset is mounted. Valid values:
+        # 
+        # *   RO: read-only permissions
+        # *   RW: read and write permissions
         self.mount_access = mount_access
-        # 扩展字段，JsonString类型。
-        # 当DLC使用数据集时，可通过配置mountPath字段指定数据集默认挂载路径。
+        # The extended fields.
         self.options = options
-        # 数据集的属性。支持以下取值：
-        # - FILE：文件。
-        # - DIRECTORY：文件夹。
+        # The property of the dataset.
         # 
         # This parameter is required.
         self.property = property
+        # Id of the request
         self.request_id = request_id
-        # 数据来源ID。
+        # The ID of the source dataset.
         self.source_id = source_id
-        # 数据来源类型，默认为USER。支持以下取值：
-        # - PAI-PUBLIC-DATASET：PAI公共数据集。
-        # - ITAG：iTAG模块标注结果生成的数据集。
-        # - USER：用户注册的数据集。
+        # The type of the data source.
         self.source_type = source_type
-        # Uri配置样例如下：
-        # - 数据源类型为OSS：`oss://bucket.endpoint/object`
-        # - 数据源类型为NAS：
-        # 通用型NAS格式为：`nas://<nasfisid>.region/subpath/to/dir/`；
-        # CPFS1.0：`nas://<cpfs-fsid>.region/subpath/to/dir/`；
-        # CPFS2.0：`nas://<cpfs-fsid>.region/<protocolserviceid>/`。
-        # CPFS1.0和CPFS2.0根据fsid的格式来区分：CPFS1.0 格式为cpfs-<8位ascii字符>；CPFS2.0 格式为cpfs-<16为ascii字符>。
+        # The sample URI of the dataset.
         # 
         # This parameter is required.
         self.uri = uri
-        # 代表资源名称的资源属性字段
+        # The version name of the dataset.
         self.version_name = version_name
 
     def validate(self):
@@ -8800,6 +9480,10 @@ class GetDefaultWorkspaceRequest(TeaModel):
         self,
         verbose: bool = None,
     ):
+        # Specifies whether to show the details of the default workspace. The details include the conditions of the workspace in different phases. Valid values:
+        # 
+        # *   false (default)
+        # *   true
         self.verbose = verbose
 
     def validate(self):
@@ -8829,8 +9513,16 @@ class GetDefaultWorkspaceResponseBodyConditions(TeaModel):
         message: str = None,
         type: str = None,
     ):
+        # The returned status code. HTTP status code 200 indicates that the request was successful. Other HTTP status codes indicate that the request failed.
         self.code = code
+        # The error message. If the returned status code is 200, this parameter is empty.
         self.message = message
+        # The task type. Valid values:
+        # 
+        # *   CREATING: The workspace is being created.
+        # *   WORKSPACE_CREATED: The workspace is created.
+        # *   MEMBERS_ADDED: The member is added.
+        # *   ENABLED: The workspace is created and the member is added.
         self.type = type
 
     def validate(self):
@@ -8868,8 +9560,11 @@ class GetDefaultWorkspaceResponseBodyOwner(TeaModel):
         user_kp: str = None,
         user_name: str = None,
     ):
+        # The user ID.
         self.user_id = user_id
+        # The user ID.
         self.user_kp = user_kp
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -8916,17 +9611,39 @@ class GetDefaultWorkspaceResponseBody(TeaModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # The conditions of the default workspace in the creation process.
         self.conditions = conditions
+        # The UID of the Alibaba Cloud account.
         self.creator = creator
+        # The workspace description.
         self.description = description
+        # The display name of the workspace.
         self.display_name = display_name
+        # The environments of the workspace. Valid values:
+        # 
+        # *   Workspaces in basic mode can run only in the production environment.
+        # *   Workspaces in standard mode can run in both the development and production environments.
         self.env_types = env_types
+        # The time when the workspace was created, in UTC. The time follows the ISO 8601 standard.
         self.gmt_create_time = gmt_create_time
+        # The time when the workspace was modified, in UTC. The time follows the ISO 8601 standard.
         self.gmt_modified_time = gmt_modified_time
+        # The UID of the Alibaba Cloud account.
         self.owner = owner
+        # The request ID.
         self.request_id = request_id
+        # The workspace status. Valid values:
+        # 
+        # *   ENABLED
+        # *   INITIALIZING
+        # *   FAILURE
+        # *   DISABLED
+        # *   FROZEN
+        # *   UPDATING
         self.status = status
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # The workspace name, which is unique in a region.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -9124,6 +9841,10 @@ class GetImageRequest(TeaModel):
         self,
         verbose: bool = None,
     ):
+        # Specifies whether to display non-essential information, which contains tags. Valid values:
+        # 
+        # *   false (default)
+        # *   true
         self.verbose = verbose
 
     def validate(self):
@@ -9152,7 +9873,9 @@ class GetImageResponseBodyLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -9197,19 +9920,36 @@ class GetImageResponseBody(TeaModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # The accessibility of the image. Valid values:
+        # 
+        # *   PUBLIC: All members can access the workspace.
+        # *   PRIVATE: Only the creator can access the workspace.
         self.accessibility = accessibility
+        # The image description.
         self.description = description
+        # The time when the image is created, in UTC. The time follows the ISO 8601 standard.
         self.gmt_create_time = gmt_create_time
+        # The time when the image is modified, in UTC. The time follows the ISO 8601 standard.
         self.gmt_modified_time = gmt_modified_time
+        # The image address, which contains the version number.
         self.image_uri = image_uri
+        # The image tags, which are of the array data type. Each element in the array contains a key-value pair. The key of official tags is system.official and the tag value is true.
         self.labels = labels
+        # The image name.
         self.name = name
+        # The Alibaba Cloud account of the creator.
         self.parent_user_id = parent_user_id
+        # The request ID.
         self.request_id = request_id
+        # The size of the image. Unit: GB.
         self.size = size
+        # 镜像来源 ID
         self.source_id = source_id
+        # 镜像来源类型
         self.source_type = source_type
+        # The user ID of the image.
         self.user_id = user_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -9339,7 +10079,9 @@ class GetMemberRequest(TeaModel):
         member_id: str = None,
         user_id: str = None,
     ):
+        # The member ID. You must specify only one of the following parameters: UserId and MemberId.
         self.member_id = member_id
+        # The ID of the Alibaba Cloud account. You can call [ListWorkspaceUsers](https://help.aliyun.com/document_detail/449133.html) to obtain the ID of the Alibaba Cloud account. You must specify only one of the following parameters: UserId and MemberId.
         self.user_id = user_id
 
     def validate(self):
@@ -9377,12 +10119,19 @@ class GetMemberResponseBody(TeaModel):
         roles: List[str] = None,
         user_id: str = None,
     ):
+        # The display name of the member.
         self.display_name = display_name
+        # The time when the workspace is created, in UTC. The time follows the ISO 8601 standard.
         self.gmt_create_time = gmt_create_time
+        # The member ID.
         self.member_id = member_id
+        # The username.
         self.member_name = member_name
+        # The request ID.
         self.request_id = request_id
+        # The list of roles.
         self.roles = roles
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -9494,25 +10243,48 @@ class GetModelResponseBody(TeaModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # The visibility of the workspace.
+        # 
+        # *   PRIVATE: The workspace is visible only to you and the administrator of the workspace.
+        # *   PUBLIC: The workspace is visible to all users.
         self.accessibility = accessibility
+        # The domain. This parameter specifies the domain for which the model is developed. Valid values: nlp and cv. nlp indicates natural language processing and cv indicates computer vision.
         self.domain = domain
+        # Other information about the model.
         self.extra_info = extra_info
+        # The time when the model is created, in UTC. The time follows the ISO 8601 standard.
         self.gmt_create_time = gmt_create_time
+        # The time when the model is last modified, in UTC. The time follows the ISO 8601 standard.
         self.gmt_modified_time = gmt_modified_time
+        # The model tags.
         self.labels = labels
+        # The latest version of the model.
         self.latest_version = latest_version
+        # The model description.
         self.model_description = model_description
+        # The documentation of the model.
         self.model_doc = model_doc
+        # The model ID.
         self.model_id = model_id
+        # The model name.
         self.model_name = model_name
+        # The model type.
         self.model_type = model_type
+        # The sequence number of the model.
         self.order_number = order_number
+        # The source of the model. The community or organization to which the model belongs, such as ModelScope or HuggingFace.
         self.origin = origin
+        # The ID of the Alibaba Cloud account.
         self.owner_id = owner_id
+        # The provider.
         self.provider = provider
+        # The request ID.
         self.request_id = request_id
+        # The task of the model. This parameter describes specific issues that the model solves, such as text-classification.
         self.task = task
+        # The user ID.
         self.user_id = user_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -9688,26 +10460,90 @@ class GetModelVersionResponseBody(TeaModel):
         version_description: str = None,
         version_name: str = None,
     ):
+        # The approval status. Valid values:
+        # 
+        # *   Pending
+        # *   Approved
+        # *   Rejected
         self.approval_status = approval_status
+        # The compression configuration.
         self.compression_spec = compression_spec
+        # The evaluation configuration.
         self.evaluation_spec = evaluation_spec
+        # The additional information.
         self.extra_info = extra_info
+        # The model format. Valid values:
+        # 
+        # *   OfflineModel
+        # *   SavedModel
+        # *   Keras H5
+        # *   Frozen Pb
+        # *   Caffe Prototxt
+        # *   TorchScript
+        # *   XGBoost
+        # *   PMML
+        # *   AlinkModel
+        # *   ONNX
         self.format_type = format_type
+        # The model framework. Valid values:
+        # 
+        # *   Pytorch -XGBoost
+        # *   Keras
+        # *   Caffe
+        # *   Alink
+        # *   Xflow
+        # *   TensorFlow
         self.framework_type = framework_type
+        # The time when the model was created, in UTC. The time follows the ISO 8601 standard.
         self.gmt_create_time = gmt_create_time
+        # The time when the model was last modified, in UTC. The time follows the ISO 8601 standard.
         self.gmt_modified_time = gmt_modified_time
+        # Describes how to apply to downstream inference services. For example, describes the processor and container of Elastic Algorithm Service (EAS).
         self.inference_spec = inference_spec
+        # The labels.
         self.labels = labels
+        # The metrics.
         self.metrics = metrics
+        # The extended field. The value of this parameter is a JSON string.
         self.options = options
+        # The ID of the Alibaba Cloud account.
         self.owner_id = owner_id
+        # The request ID.
         self.request_id = request_id
+        # The source ID.
+        # 
+        # *   If the source type is Custom, this field is not limited.
+        # *   If the source type is PAIFlow or TrainingService, the format is:
+        # 
+        # <!---->
+        # 
+        #     region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
+        # 
+        # Take note of the following parameters:
+        # 
+        # *   region is the region ID.
+        # *   workspaceId is the ID of the workspace.
+        # *   kind is the type. Valid values: PipelineRun (PAIFlow) and ServiceJob (training service).
+        # *   id is a unique identifier.
         self.source_id = source_id
+        # The source type of the model. Valid values:
+        # 
+        # *   Custom
+        # *   PAIFlow
+        # *   TrainingService
         self.source_type = source_type
+        # The training configurations used for fine-tuning and incremental training.
         self.training_spec = training_spec
+        # The URI of the model version, which is the location where the model is stored. Valid values:
+        # 
+        # *   The HTTP(S) address of the model. Example: `https://myweb.com/mymodel.tar.gz`.
+        # *   The Object Storage Service (OSS) path of the model, in the format of `oss://<bucket>.<endpoint>/object`. For endpoint, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html). Example: `oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/`.
         self.uri = uri
+        # The user ID.
         self.user_id = user_id
+        # The version description.
         self.version_description = version_description
+        # The model version.
         self.version_name = version_name
 
     def validate(self):
@@ -9868,10 +10704,20 @@ class GetPermissionRequest(TeaModel):
         option: str = None,
         resource: str = None,
     ):
+        # The accessibility. Valid values:
+        # 
+        # *   PUBLIC: All members in the workspace can access the workspace.
+        # *   PRIVATE: Only the creator can access the workspace.
         self.accessibility = accessibility
+        # The UID of the Alibaba Cloud account that is used to create the workspace.
         self.creator = creator
         self.labels = labels
+        # The configuration. Separate multiple configurations with commas (,). Valid values:
+        # 
+        # *   ResourceEmpty: The Resource parameter is not configured.
+        # *   DisableRam: The RAM check is not performed.
         self.option = option
+        # The resource.
         self.resource = resource
 
     def validate(self):
@@ -9919,10 +10765,20 @@ class GetPermissionShrinkRequest(TeaModel):
         option: str = None,
         resource: str = None,
     ):
+        # The accessibility. Valid values:
+        # 
+        # *   PUBLIC: All members in the workspace can access the workspace.
+        # *   PRIVATE: Only the creator can access the workspace.
         self.accessibility = accessibility
+        # The UID of the Alibaba Cloud account that is used to create the workspace.
         self.creator = creator
         self.labels_shrink = labels_shrink
+        # The configuration. Separate multiple configurations with commas (,). Valid values:
+        # 
+        # *   ResourceEmpty: The Resource parameter is not configured.
+        # *   DisableRam: The RAM check is not performed.
         self.option = option
+        # The resource.
         self.resource = resource
 
     def validate(self):
@@ -9967,7 +10823,16 @@ class GetPermissionResponseBodyPermissionRules(TeaModel):
         accessibility: str = None,
         entity_access_type: str = None,
     ):
+        # The accessibility. Valid values:
+        # 
+        # *   PUBLIC: All members can access the workspace.
+        # *   PRIVATE: Only the creator can access the workspace.
+        # *   ANY: All users can access the workspace.
         self.accessibility = accessibility
+        # The access type. If you set Accessibility to PUBLIC, all users can access the workspace. This parameter is invalid. If you set Accessibility to PRIVATE, the value of this parameter can be:
+        # 
+        # *   PRIVATE: Only the creator can access the workspace.
+        # *   ANY: All users can access the workspace.
         self.entity_access_type = entity_access_type
 
     def validate(self):
@@ -10001,8 +10866,11 @@ class GetPermissionResponseBody(TeaModel):
         permission_rules: List[GetPermissionResponseBodyPermissionRules] = None,
         request_id: str = None,
     ):
+        # The permission name, which is unique in a region. For more information about permissions, see [Appendix: Roles and permissions](https://help.aliyun.com/document_detail/2840449.html).
         self.permission_code = permission_code
+        # The permission rules.
         self.permission_rules = permission_rules
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10087,6 +10955,7 @@ class GetRunRequest(TeaModel):
         self,
         verbose: bool = None,
     ):
+        # Specifies whether to obtain the Metrics, Params, and Labels information. Default value: false.
         self.verbose = verbose
 
     def validate(self):
@@ -10155,6 +11024,10 @@ class GetWorkspaceRequest(TeaModel):
         self,
         verbose: bool = None,
     ):
+        # Specifies whether to display supplementary information such as the workspace owner. Valid values:
+        # 
+        # *   false (default)
+        # *   true
         self.verbose = verbose
 
     def validate(self):
@@ -10185,9 +11058,13 @@ class GetWorkspaceResponseBodyOwner(TeaModel):
         user_kp: str = None,
         user_name: str = None,
     ):
+        # The display name.
         self.display_name = display_name
+        # The user ID.
         self.user_id = user_id
+        # The user ID.
         self.user_kp = user_kp
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -10241,20 +11118,48 @@ class GetWorkspaceResponseBody(TeaModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # The names of the administrator accounts.
         self.admin_names = admin_names
+        # The ID of the user who creates the workspace.
         self.creator = creator
+        # The description of the workspace.
         self.description = description
+        # The display name of the workspace.
         self.display_name = display_name
+        # The environment information of the workspace.
+        # 
+        # *   Workspaces in basic mode can run only in the production environment.
+        # *   Workspaces in standard mode can run in both the development and production environments.
         self.env_types = env_types
+        # The additional information, which only contains the TenantId field.
         self.extra_infos = extra_infos
+        # The time when the workspace is created, in UTC. The time follows the ISO 8601 standard.
         self.gmt_create_time = gmt_create_time
+        # The time when the workspace is modified, in UTC. The time follows the ISO 8601 standard.
         self.gmt_modified_time = gmt_modified_time
+        # Indicates whether the workspace is the default workspace. Valid values:
+        # 
+        # *   false
+        # *   true
         self.is_default = is_default
+        # The information about the workspace owner. This parameter is valid only when Verbose is set to true.
         self.owner = owner
+        # The request ID.
         self.request_id = request_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The workspace state. Valid values:
+        # 
+        # *   ENABLED
+        # *   INITIALIZING
+        # *   FAILURE:
+        # *   DISABLED
+        # *   FROZEN
+        # *   UPDATING
         self.status = status
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # The name of the workspace.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -10386,11 +11291,27 @@ class ListCodeSourcesRequest(TeaModel):
         sort_by: str = None,
         workspace_id: str = None,
     ):
+        # The display name of the code source. Fuzzy match is supported.
         self.display_name = display_name
+        # The order in which the entries are sorted by the specific field on the returned page.
+        # 
+        # Valid values:
+        # 
+        # *   asc: ascending order. This is the default value.
+        # *   desc: descending order.
         self.order = order
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
+        # The field used for sorting. Valid values:
+        # 
+        # *   GmtModifyTime: the time when the source code is modified.
+        # *   DisplayName: the display name.
+        # *   CodeSourceId: the ID of the code source.
+        # *   GmtCreateTime: the time when the code source is created. This is the default value.
         self.sort_by = sort_by
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -10440,8 +11361,11 @@ class ListCodeSourcesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The code sources.
         self.code_sources = code_sources
+        # The request ID.
         self.request_id = request_id
+        # The total number of code sources that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -10548,15 +11472,27 @@ class ListDatasetFileMetasRequest(TeaModel):
         top_k: int = None,
         workspace_id: str = None,
     ):
+        # The dataset version.
+        # 
         # This parameter is required.
         self.dataset_version = dataset_version
+        # The end time when the file is updated. This parameter is used when you want to query file metadata during a period of time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.end_file_update_time = end_file_update_time
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.end_tag_update_time = end_tag_update_time
         self.max_results = max_results
+        # The pagination token.
+        # 
+        # >  If you do not configure this parameter, the data on the first page is returned. A return value other than Null of this parameter indicates that not all entries have been returned. You can use this value as an input parameter to obtain entries on the next page. The value Null indicates that all query results have been returned.
         self.next_token = next_token
+        # The order in which the entries are sorted by the specific field on the returned page. This parameter must be used together with SortBy. Default value: ASC.
+        # 
+        # *   ASC
+        # *   DESC
         self.order = order
+        # The number of entries per page. Default value: 10. Maximum value: 1000.
         self.page_size = page_size
         self.query_file_dir = query_file_dir
         self.query_file_name = query_file_name
@@ -10565,16 +11501,31 @@ class ListDatasetFileMetasRequest(TeaModel):
         self.query_tags_exclude = query_tags_exclude
         self.query_tags_include_all = query_tags_include_all
         self.query_tags_include_any = query_tags_include_any
+        # The text content to be queried.
         self.query_text = query_text
+        # The retrieval type.
+        # 
+        # *   TAG (default)
+        # *   VECTOR
         self.query_type = query_type
+        # The similarity score. Only dataset files whose similarity score is greater than the value of ScoreThreshold are returned. This parameter is valid only when QueryType is set to VECTOR.
         self.score_threshold = score_threshold
+        # The field used to sort the results. Default value: GmtCreateTime. Valid values:
+        # 
+        # *   FileCreateTime (default): The results are sorted by the time when the file is created.
+        # *   FileUpdateTime: The results are sorted by the time when the file is last modified.
         self.sort_by = sort_by
+        # The start time when the file is updated. This parameter is used when you want to query file metadata during a period of time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.start_file_update_time = start_file_update_time
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.start_tag_update_time = start_tag_update_time
         self.thumbnail_mode = thumbnail_mode
+        # The number of search results to return. A maximum of Top K search results can be returned. This parameter is valid only when QueryType is set to VECTOR.
         self.top_k = top_k
+        # The ID of the workspace to which the dataset belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -10713,15 +11664,27 @@ class ListDatasetFileMetasShrinkRequest(TeaModel):
         top_k: int = None,
         workspace_id: str = None,
     ):
+        # The dataset version.
+        # 
         # This parameter is required.
         self.dataset_version = dataset_version
+        # The end time when the file is updated. This parameter is used when you want to query file metadata during a period of time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.end_file_update_time = end_file_update_time
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.end_tag_update_time = end_tag_update_time
         self.max_results = max_results
+        # The pagination token.
+        # 
+        # >  If you do not configure this parameter, the data on the first page is returned. A return value other than Null of this parameter indicates that not all entries have been returned. You can use this value as an input parameter to obtain entries on the next page. The value Null indicates that all query results have been returned.
         self.next_token = next_token
+        # The order in which the entries are sorted by the specific field on the returned page. This parameter must be used together with SortBy. Default value: ASC.
+        # 
+        # *   ASC
+        # *   DESC
         self.order = order
+        # The number of entries per page. Default value: 10. Maximum value: 1000.
         self.page_size = page_size
         self.query_file_dir = query_file_dir
         self.query_file_name = query_file_name
@@ -10730,16 +11693,31 @@ class ListDatasetFileMetasShrinkRequest(TeaModel):
         self.query_tags_exclude_shrink = query_tags_exclude_shrink
         self.query_tags_include_all_shrink = query_tags_include_all_shrink
         self.query_tags_include_any_shrink = query_tags_include_any_shrink
+        # The text content to be queried.
         self.query_text = query_text
+        # The retrieval type.
+        # 
+        # *   TAG (default)
+        # *   VECTOR
         self.query_type = query_type
+        # The similarity score. Only dataset files whose similarity score is greater than the value of ScoreThreshold are returned. This parameter is valid only when QueryType is set to VECTOR.
         self.score_threshold = score_threshold
+        # The field used to sort the results. Default value: GmtCreateTime. Valid values:
+        # 
+        # *   FileCreateTime (default): The results are sorted by the time when the file is created.
+        # *   FileUpdateTime: The results are sorted by the time when the file is last modified.
         self.sort_by = sort_by
+        # The start time when the file is updated. This parameter is used when you want to query file metadata during a period of time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.start_file_update_time = start_file_update_time
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.start_tag_update_time = start_tag_update_time
         self.thumbnail_mode = thumbnail_mode
+        # The number of search results to return. A maximum of Top K search results can be returned. This parameter is valid only when QueryType is set to VECTOR.
         self.top_k = top_k
+        # The ID of the workspace to which the dataset belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -10863,13 +11841,20 @@ class ListDatasetFileMetasResponseBody(TeaModel):
         total_count: int = None,
         workspace_id: str = None,
     ):
+        # The metadata records of the dataset files.
         self.dataset_file_metas = dataset_file_metas
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The dataset version.
         self.dataset_version = dataset_version
         self.max_results = max_results
+        # The pagination token. If the number of results exceeds the maximum number of entries allowed per page, a pagination token is returned. This token can be used as an input parameter to obtain the next page of results. If all results are obtained, no token is returned.
         self.next_token = next_token
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -10977,9 +11962,16 @@ class ListDatasetJobConfigsRequest(TeaModel):
         page_size: str = None,
         workspace_id: str = None,
     ):
+        # The configuration type.
+        # 
+        # *   MultimodalIntelligentTag
+        # *   MultimodalSemanticIndex
         self.config_type = config_type
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -11021,8 +12013,11 @@ class ListDatasetJobConfigsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The dataset job configurations.
         self.dataset_job_configs = dataset_job_configs
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -11111,10 +12106,15 @@ class ListDatasetJobsRequest(TeaModel):
         page_size: int = None,
         workspace_id: str = None,
     ):
+        # The dataset version name.
         self.dataset_version = dataset_version
+        # The action to be performed on the job.
         self.job_action = job_action
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -11160,8 +12160,11 @@ class ListDatasetJobsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The jobs in the dataset.
         self.dataset_jobs = dataset_jobs
+        # The request ID.
         self.request_id = request_id
+        # The total number of jobs.
         self.total_count = total_count
 
     def validate(self):
@@ -11254,16 +12257,66 @@ class ListDatasetVersionsRequest(TeaModel):
         source_id: str = None,
         source_types: str = None,
     ):
+        # The dataset tag keys, which are used to filter datasets. Datasets whose tag keys or tag values contain a specified string are filtered.
         self.label_keys = label_keys
+        # The dataset tag values, which are used to filter datasets. Datasets whose tag keys or tag values contain a specified string are filtered.
         self.label_values = label_values
+        # The order in which the entries are sorted by the specific field on the returned page. Default value: ASC. Valid values:
+        # 
+        # *   ASC: ascending order
+        # *   DESC: descending order.
         self.order = order
+        # The page number. Pages start from page 1. Default value: 1.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The dataset properties. Valid values:
+        # 
+        # *   DIRECTORY
+        # *   FILE
         self.properties = properties
+        # The field used to sort the results in queries by page. Default value: GmtCreateTime.
+        # 
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
+        # 
+        # Valid values:
+        # 
+        # *   SourceType
+        # *   DataSourceType
+        # *   DataSize
+        # *   DataCount
+        # *   Property
+        # *   GmtCreateTime: The results are sorted by creation time. This is the default value.
+        # *   GmtModifiedTime: The results are sorted by modification time.
+        # *   DatasetId
         self.sort_by = sort_by
+        # The data source ID.
+        # 
+        # *   If SourceType is set to USER, the value of SourceId is a custom string.
+        # *   If SourceType is set to ITAG, the value of SourceId is the ID of the labeling job of iTAG.
+        # *   If SourceType is set to PAI_PUBLIC_DATASET, SourceId is empty by default.
         self.source_id = source_id
+        # The source type. Valid values:
+        # 
+        # *   PAI-PUBLIC-DATASET: a public dataset of Platform for AI (PAI).
+        # *   ITAG: a dataset generated from a labeling job of iTAG.
+        # *   USER: a dataset registered by a user.
+        # 
+        # <!---->
+        # 
+        # *\
+        # *\
+        # *\
         self.source_types = source_types
 
     def validate(self):
@@ -11327,10 +12380,15 @@ class ListDatasetVersionsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The dataset versions.
         self.dataset_versions = dataset_versions
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The number of dataset versions that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -11436,19 +12494,62 @@ class ListDatasetsRequest(TeaModel):
         source_types: str = None,
         workspace_id: str = None,
     ):
+        # The storage types of the data source. Multiple data source types are separated by commas (,). Valid values:
+        # 
+        # *   NAS: File Storage NAS (NAS).
+        # *   OSS: Object Storage Service (OSS).
         self.data_source_types = data_source_types
+        # The dataset types. Multiple dataset types are separated by commas (,). Valid values:
+        # 
+        # *   Video: video
+        # *   COMMON: common
+        # *   TEXT: text
+        # *   PIC: picture
+        # *   AUDIO: audio
         self.data_types = data_types
+        # The dataset tag, which is used to filter datasets. Datasets whose tag key or tag value contains a specified string are filtered.
         self.label = label
+        # The dataset name. Fuzzy search based on the dataset name is supported.
         self.name = name
+        # The order of specific fields of the entries on the returned page. Valid values: ASC and DESC. Default value: ASC.
+        # 
+        # *   ASC: The entries are sorted in ascending order.
+        # *   DESC: The entries are sorted in descending order.
         self.order = order
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The dataset properties. Multiple properties are separated by commas (,). Valid values:
+        # 
+        # *   DIRECTORY
+        # *   FILE
         self.properties = properties
+        # The dataset provider. If the value pai is returned, the dataset is a public dataset provided by PAI.
         self.provider = provider
+        # The field used for sorting.
         self.sort_by = sort_by
+        # The ID of the iTAG labeled dataset that is used as the source dataset.
         self.source_dataset_id = source_dataset_id
+        # The data source ID.
+        # 
+        # *   If SourceType is set to USER, the value of SourceId is a custom string.
+        # *   If SourceType is set to ITAG, the value of SourceId is the ID of the labeling job of iTAG.
+        # *   If SourceType is set to PAI_PUBLIC_DATASET, SourceId is empty by default.
         self.source_id = source_id
+        # The source types. Multiple source types are separated by commas (,). Valid values:
+        # 
+        # *   PAI-PUBLIC-DATASET: a public dataset of Platform for AI (PAI).
+        # *   ITAG: a dataset generated from a labeling job of iTAG.
+        # *   USER: a dataset registered by a user.
+        # 
+        # <!---->
+        # 
+        # *\
+        # *\
+        # *\
         self.source_types = source_types
+        # The ID of the workspace to which the dataset belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID. If you do not specify this parameter, the default workspace is used. If the default workspace does not exist, an error is reported.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -11530,8 +12631,11 @@ class ListDatasetsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The datasets.
         self.datasets = datasets
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -11616,6 +12720,7 @@ class ListExperimentRequestOptions(TeaModel):
         self,
         match_name_exactly: str = None,
     ):
+        # Specifies whether to exactly match the experiment by name. Valid values: true and false.
         self.match_name_exactly = match_name_exactly
 
     def validate(self):
@@ -11654,17 +12759,34 @@ class ListExperimentRequest(TeaModel):
         verbose: bool = None,
         workspace_id: str = None,
     ):
+        # The tag filter conditions. Multiple conditions are separated by commas (,). The format of a single condition filter is `key=value`.
         self.labels = labels
+        # The maximum number of entries in the request. Default value: 10.
         self.max_results = max_results
+        # The experiment name.
         self.name = name
+        # The optional parameters.
         self.options = options
+        # The order of specific fields of results in a paged query (ascending or descending).
+        # 
+        # *   ASC: ascending order
+        # *   DESC: descending order. This is the default value.
         self.order = order
+        # The strings used for sorting. The following fields can be used for sorting: GmtCreateTime, Name, GmtModifiedTime, and ExperimentId. The sorting order can be ASC (default) and DESC.
         self.order_by = order_by
+        # The page number. The value starts from 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The pagination token, which starts from 0. Default value: 0.
         self.page_token = page_token
+        # The field used for sorting. The GmtCreateTime field is used.
         self.sort_by = sort_by
+        # Specifies whether to obtain the LatestRun value that is related to the experiment.
         self.verbose = verbose
+        # The ID of the workspace to which the experiment belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # 
+        # >  If you do not specify a workspace ID, the system returns the experiments in the default workspace.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -11749,17 +12871,34 @@ class ListExperimentShrinkRequest(TeaModel):
         verbose: bool = None,
         workspace_id: str = None,
     ):
+        # The tag filter conditions. Multiple conditions are separated by commas (,). The format of a single condition filter is `key=value`.
         self.labels = labels
+        # The maximum number of entries in the request. Default value: 10.
         self.max_results = max_results
+        # The experiment name.
         self.name = name
+        # The optional parameters.
         self.options_shrink = options_shrink
+        # The order of specific fields of results in a paged query (ascending or descending).
+        # 
+        # *   ASC: ascending order
+        # *   DESC: descending order. This is the default value.
         self.order = order
+        # The strings used for sorting. The following fields can be used for sorting: GmtCreateTime, Name, GmtModifiedTime, and ExperimentId. The sorting order can be ASC (default) and DESC.
         self.order_by = order_by
+        # The page number. The value starts from 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The pagination token, which starts from 0. Default value: 0.
         self.page_token = page_token
+        # The field used for sorting. The GmtCreateTime field is used.
         self.sort_by = sort_by
+        # Specifies whether to obtain the LatestRun value that is related to the experiment.
         self.verbose = verbose
+        # The ID of the workspace to which the experiment belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # 
+        # >  If you do not specify a workspace ID, the system returns the experiments in the default workspace.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -11834,9 +12973,13 @@ class ListExperimentResponseBody(TeaModel):
         total_count: int = None,
         request_id: str = None,
     ):
+        # The list of experiments.
         self.experiments = experiments
+        # The pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_page_token = next_page_token
+        # The total number of entries.
         self.total_count = total_count
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12117,16 +13260,54 @@ class ListImagesRequest(TeaModel):
         verbose: bool = None,
         workspace_id: str = None,
     ):
+        # The visibility of the image. This parameter is valid only for custom images.
+        # 
+        # *   PUBLIC: The image is visible to all users.
+        # *   PRIVATE: The image is visible only to you and the administrator of the workspace.
         self.accessibility = accessibility
         self.image_uri = image_uri
+        # The tag filter conditions. Multiple conditions are separated by commas (,). The format of a single condition filter is `key=value`. The following keys are supported:
+        # 
+        # *   system.chipType
+        # *   system.dsw.cudaVersion
+        # *   system.dsw.fromImageId
+        # *   system.dsw.fromInstanceId
+        # *   system.dsw.id
+        # *   system.dsw.os
+        # *   system.dsw.osVersion
+        # *   system.dsw.resourceType
+        # *   system.dsw.rootImageId
+        # *   system.dsw.stage
+        # *   system.dsw.tag
+        # *   system.dsw.type
+        # *   system.framework
+        # *   system.origin
+        # *   system.pythonVersion
+        # *   system.source
+        # *   system.supported.dlc
+        # *   system.supported.dsw
         self.labels = labels
+        # The image name. Fuzzy match is supported.
         self.name = name
+        # The order in which the entries are sorted by the specific field on the returned page. This parameter must be used together with SortBy. Default value: ASC. Valid values:
+        # 
+        # *   ASC: ascending order
+        # *   DESC: descending order.
         self.order = order
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
+        # The image name and description that are used for fuzzy search.
         self.query = query
+        # The field used for sorting. The GmtCreateTime field is used.
         self.sort_by = sort_by
+        # Specifies whether to display non-essential information, which contains tags. Valid values:
+        # 
+        # *   true
+        # *   false
         self.verbose = verbose
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -12195,7 +13376,9 @@ class ListImagesResponseBodyImagesLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -12240,19 +13423,36 @@ class ListImagesResponseBodyImages(TeaModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # The accessibility of the image. Valid values:
+        # 
+        # *   PUBLIC: All members can access the image.
+        # *   PRIVATE: Only the creator can access the image.
         self.accessibility = accessibility
+        # The image description.
         self.description = description
+        # The time when the image is created, in UTC. The time follows the ISO 8601 standard.
         self.gmt_create_time = gmt_create_time
+        # The time when the image is modified, in UTC. The time follows the ISO 8601 standard.
         self.gmt_modified_time = gmt_modified_time
+        # The image ID.
         self.image_id = image_id
+        # The image address, which includes the version number.
         self.image_uri = image_uri
+        # The image tags.
         self.labels = labels
+        # The image name.
         self.name = name
+        # The ID of the Alibaba Cloud account.
         self.parent_user_id = parent_user_id
+        # The image size. Unit: GB.
         self.size = size
+        # 镜像来源 ID
         self.source_id = source_id
+        # 镜像来源类型
         self.source_type = source_type
+        # The user ID.
         self.user_id = user_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -12342,8 +13542,11 @@ class ListImagesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The images.
         self.images = images
+        # The request ID.
         self.request_id = request_id
+        # The total number of returned images.
         self.total_count = total_count
 
     def validate(self):
@@ -12431,9 +13634,21 @@ class ListMembersRequest(TeaModel):
         page_size: int = None,
         roles: str = None,
     ):
+        # The member name. Fuzzy match is supported.
         self.member_name = member_name
+        # The page number of the workspace list. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
+        # The roles that are used to filter members. Multiple roles are separated by commas (,). Valid values:
+        # 
+        # *   PAI.AlgoDeveloper: algorithm developer
+        # *   PAI.AlgoOperator: algorithm O\\&M engineer
+        # *   PAI.LabelManager: labeling administrator
+        # *   PAI.MaxComputeDeveloper: MaxCompute developer
+        # *   PAI.WorkspaceAdmin: administrator
+        # *   PAI.WorkspaceGuest: guest
+        # *   PAI.WorkspaceOwner: owner
         self.roles = roles
 
     def validate(self):
@@ -12480,11 +13695,17 @@ class ListMembersResponseBodyMembers(TeaModel):
         user_id: str = None,
     ):
         self.account_name = account_name
+        # The display name of the member.
         self.display_name = display_name
+        # The time when the user is created, in UTC. The time follows the ISO 8601 standard.
         self.gmt_create_time = gmt_create_time
+        # The member ID.
         self.member_id = member_id
+        # The username.
         self.member_name = member_name
+        # The list of roles.
         self.roles = roles
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -12538,8 +13759,11 @@ class ListMembersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The members.
         self.members = members
+        # The request ID.
         self.request_id = request_id
+        # The number of members that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -12634,16 +13858,70 @@ class ListModelVersionsRequest(TeaModel):
         source_type: str = None,
         version_name: str = None,
     ):
+        # The approval status based on which the model versions are queried. Valid values:
+        # 
+        # *   Pending
+        # *   Approved
+        # *   Rejected
         self.approval_status = approval_status
+        # The model format used to filter model versions. Valid values:
+        # 
+        # *   OfflineModel
+        # *   SavedModel
+        # *   Keras H5
+        # *   Frozen Pb
+        # *   Caffe Prototxt
+        # *   TorchScript
+        # *   XGBoost
+        # *   PMML
+        # *   AlinkModel
+        # *   ONNX
         self.format_type = format_type
+        # The framework used to filter model versions.
+        # 
+        # *   Pytorch -XGBoost
+        # *   Keras
+        # *   Caffe
+        # *   Alink
+        # *   Xflow
+        # *   TensorFlow
         self.framework_type = framework_type
+        # The label. Model versions whose label key or label value contains a specific label are filtered.
         self.label = label
+        # The order in which the entries are sorted by the specific field on the returned page. Default value: ASC.
+        # 
+        # *   ASC
+        # *   DESC
         self.order = order
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The field used to sort the results. The GmtCreateTime field is used for sorting.
         self.sort_by = sort_by
+        # The source ID.
+        # 
+        # *   If the source type is Custom, this field is not limited.
+        # *   If the source type is PAIFlow or TrainingService, the format is:
+        # 
+        # <!---->
+        # 
+        #     region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
+        # 
+        # Take note of the following parameters:
+        # 
+        # *   region is the region ID.
+        # *   workspaceId is the ID of the workspace.
+        # *   kind is the type. Valid values: PipelineRun (PAIFlow) and ServiceJob (training service).
+        # *   id is a unique identifier.
         self.source_id = source_id
+        # The source type used to filter model versions. Valid values:
+        # 
+        # *   Custom (default)
+        # *   PAIFlow
+        # *   TrainingService
         self.source_type = source_type
+        # The model version used to filter model versions.
         self.version_name = version_name
 
     def validate(self):
@@ -12713,8 +13991,11 @@ class ListModelVersionsResponseBody(TeaModel):
         total_count: int = None,
         versions: List[ModelVersion] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The total number of model versions.
         self.total_count = total_count
+        # The model versions.
         self.versions = versions
 
     def validate(self):
@@ -12794,6 +14075,39 @@ class ListModelVersionsResponse(TeaModel):
         return self
 
 
+class ListModelsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListModelsRequest(TeaModel):
     def __init__(
         self,
@@ -12809,22 +14123,177 @@ class ListModelsRequest(TeaModel):
         provider: str = None,
         query: str = None,
         sort_by: str = None,
+        tag: List[ListModelsRequestTag] = None,
         task: str = None,
         workspace_id: str = None,
     ):
+        # The collection where the model is located. You can specify multiple collections and separate them with commas (,).
         self.collections = collections
+        # The domain. Only models in the domain are returned. Valid values: nlp (Natural Language Processing) and cv (Computer Vision).
         self.domain = domain
+        # The label. Models whose label key or label value contains a specific label are filtered.
         self.label = label
+        # The model name used to filter the returned models.
         self.model_name = model_name
+        # The model type.
         self.model_type = model_type
+        # The order in which the entries are sorted by the specific field on the returned page. Default value: ASC.
+        # 
+        # *   ASC
+        # *   DESC
         self.order = order
+        # The model source used to filter the models that belong to a community or organization, such as ModelScope and Hugging Face.
         self.origin = origin
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The provider. If you configure this parameter, only the models exposed by the provider are returned. If you leave this parameter empty, only models owned by the user are returned.
         self.provider = provider
+        # The query condition. For example, if you set the value to nlp, all models that match ModelName, Domain, Task, LabelKey, and LabelValue are returned.
         self.query = query
+        # The field used to sort the results. The GmtCreateTime field is used for sorting.
         self.sort_by = sort_by
+        self.tag = tag
+        # The task used to filter the models that belong to the task type. Example: text-classification.
         self.task = task
+        # The workspace ID. Only models in this workspace are queried. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collections is not None:
+            result['Collections'] = self.collections
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.label is not None:
+            result['Label'] = self.label
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
+        if self.model_type is not None:
+            result['ModelType'] = self.model_type
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.origin is not None:
+            result['Origin'] = self.origin
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.provider is not None:
+            result['Provider'] = self.provider
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        if self.task is not None:
+            result['Task'] = self.task
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collections') is not None:
+            self.collections = m.get('Collections')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
+        if m.get('ModelType') is not None:
+            self.model_type = m.get('ModelType')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('Origin') is not None:
+            self.origin = m.get('Origin')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Provider') is not None:
+            self.provider = m.get('Provider')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListModelsRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('Task') is not None:
+            self.task = m.get('Task')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ListModelsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        collections: str = None,
+        domain: str = None,
+        label: str = None,
+        model_name: str = None,
+        model_type: str = None,
+        order: str = None,
+        origin: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        provider: str = None,
+        query: str = None,
+        sort_by: str = None,
+        tag_shrink: str = None,
+        task: str = None,
+        workspace_id: str = None,
+    ):
+        # The collection where the model is located. You can specify multiple collections and separate them with commas (,).
+        self.collections = collections
+        # The domain. Only models in the domain are returned. Valid values: nlp (Natural Language Processing) and cv (Computer Vision).
+        self.domain = domain
+        # The label. Models whose label key or label value contains a specific label are filtered.
+        self.label = label
+        # The model name used to filter the returned models.
+        self.model_name = model_name
+        # The model type.
+        self.model_type = model_type
+        # The order in which the entries are sorted by the specific field on the returned page. Default value: ASC.
+        # 
+        # *   ASC
+        # *   DESC
+        self.order = order
+        # The model source used to filter the models that belong to a community or organization, such as ModelScope and Hugging Face.
+        self.origin = origin
+        # The page number. Pages start from page 1. Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page. Default value: 10.
+        self.page_size = page_size
+        # The provider. If you configure this parameter, only the models exposed by the provider are returned. If you leave this parameter empty, only models owned by the user are returned.
+        self.provider = provider
+        # The query condition. For example, if you set the value to nlp, all models that match ModelName, Domain, Task, LabelKey, and LabelValue are returned.
+        self.query = query
+        # The field used to sort the results. The GmtCreateTime field is used for sorting.
+        self.sort_by = sort_by
+        self.tag_shrink = tag_shrink
+        # The task used to filter the models that belong to the task type. Example: text-classification.
+        self.task = task
+        # The workspace ID. Only models in this workspace are queried. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -12860,6 +14329,8 @@ class ListModelsRequest(TeaModel):
             result['Query'] = self.query
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         if self.task is not None:
             result['Task'] = self.task
         if self.workspace_id is not None:
@@ -12892,6 +14363,8 @@ class ListModelsRequest(TeaModel):
             self.query = m.get('Query')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         if m.get('Task') is not None:
             self.task = m.get('Task')
         if m.get('WorkspaceId') is not None:
@@ -12906,8 +14379,11 @@ class ListModelsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The models.
         self.models = models
+        # The request ID.
         self.request_id = request_id
+        # The total number of models.
         self.total_count = total_count
 
     def validate(self):
@@ -12993,7 +14469,16 @@ class ListPermissionsResponseBodyPermissionsPermissionRules(TeaModel):
         accessibility: str = None,
         entity_access_type: str = None,
     ):
+        # The accessibility of the permission rule. Valid values:
+        # 
+        # *   PUBLIC: All members in the workspace can access the permission rule.
+        # *   PRIVATE: Only the creator can access the permission rule.
+        # *   ANY: All users can access the permission rule.
         self.accessibility = accessibility
+        # The type of access. If you set Accessibility to PUBLIC, all users can access the workspace. This parameter is invalid. If you set Accessibility to PRIVATE, the permissions are determined based on the value of EntityAccessType. The value of EntityAccessType can be:
+        # 
+        # *   CREATOR: Only the creator can access the workspace.
+        # *   ANY: All users can access the workspace.
         self.entity_access_type = entity_access_type
 
     def validate(self):
@@ -13026,7 +14511,9 @@ class ListPermissionsResponseBodyPermissions(TeaModel):
         permission_code: str = None,
         permission_rules: List[ListPermissionsResponseBodyPermissionsPermissionRules] = None,
     ):
+        # The permission name, which is unique in a region. For more information about permissions, see [Appendix: Roles and permissions](https://help.aliyun.com/document_detail/2840449.html). The example value PaiDLC:GetTensorboard indicates the permission to view details about a TensorBoard job on the Deep Learning Containers (DLC) page.
         self.permission_code = permission_code
+        # The permission rules.
         self.permission_rules = permission_rules
 
     def validate(self):
@@ -13068,8 +14555,11 @@ class ListPermissionsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The permissions.
         self.permissions = permissions
+        # The request ID.
         self.request_id = request_id
+        # The number of permissions that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -13380,6 +14870,7 @@ class ListQuotasRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # The quota name. Fuzzy search is supported.
         self.name = name
 
     def validate(self):
@@ -13409,8 +14900,11 @@ class ListQuotasResponseBodyQuotasSpecs(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # The specification name.
         self.name = name
+        # The specification type. The parameter can be left empty.
         self.type = type
+        # The specification value.
         self.value = value
 
     def validate(self):
@@ -13452,12 +14946,27 @@ class ListQuotasResponseBodyQuotas(TeaModel):
         quota_type: str = None,
         specs: List[ListQuotasResponseBodyQuotasSpecs] = None,
     ):
+        # The alias of the quota.
         self.display_name = display_name
+        # The quota ID.
         self.id = id
+        # The billing method. Valid values:
+        # 
+        # *   isolate: subscription
+        # *   share: pay-as-you-go
         self.mode = mode
+        # The quota name.
         self.name = name
+        # The product code. Valid values:
+        # 
+        # *   PAI_isolate: CPU subscription resource groups of PAI
+        # *   PAI_share: GPU pay-as-you-go resource groups of PAI
         self.product_code = product_code
+        # The quota type. Valid value:
+        # 
+        # PAI: indicates GPU resource groups of MaxCompute.
         self.quota_type = quota_type
+        # The quota specifications.
         self.specs = specs
 
     def validate(self):
@@ -13519,8 +15028,11 @@ class ListQuotasResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The returned quotas.
         self.quotas = quotas
+        # The request ID.
         self.request_id = request_id
+        # The number of quotas that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -13616,17 +15128,55 @@ class ListResourcesRequest(TeaModel):
         verbose_fields: str = None,
         workspace_id: str = None,
     ):
+        # The name of the resource group. You can call [ListResources](https://help.aliyun.com/document_detail/449143.html) to obtain the name of the resource group.
         self.group_name = group_name
+        # Tag-based filter conditions. Multiple conditions are separated by commas (,). Only resources that meet all the specified tag-based filter conditions are returned.
+        # 
+        # This parameter is available only for resources whose ProductType is ACS.
         self.labels = labels
+        # The operation to perform. Valid values:
+        # 
+        # *   ListResourceByWorkspace: obtains the resources in the workspace. This is the default value.
+        # *   ListResource: obtains the resources of the user.
         self.option = option
+        # The page number. The pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
+        # **This field is no longer used and will be removed. Use the ResourceType field instead.
         self.product_types = product_types
+        # The quota IDs, which are separated by commas (,). Only resources that contain all the specified quotas are returned.
+        # 
+        # >  This parameter is available only for resources whose ResourceTypes is ACS.
         self.quota_ids = quota_ids
+        # The resource name. The value must meet the following requirements:
+        # 
+        # *   The name must be 3 to 28 characters in length.
+        # *   The name is unique in the region.
         self.resource_name = resource_name
+        # The resource types. Valid values:
+        # 
+        # *   MaxCompute
+        # *   ECS
+        # *   Lingjun
+        # *   ACS
+        # *   FLINK
         self.resource_types = resource_types
+        # Specifies whether to show detailed information, which includes the Quotas field. Valid values:
+        # 
+        # *   true (default)
+        # *   false
         self.verbose = verbose
+        # The fields to return. Multiple fields are separated by commas (,). Valid values:
+        # 
+        # *   Quota
+        # *   Label
+        # *   IsDefault
         self.verbose_fields = verbose_fields
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # 
+        # *   This parameter is required when the Option parameter is set to ListResourceByWorkspace.
+        # *   You do not need to configure this parameter when the Option parameter is set to ListResource.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -13700,8 +15250,11 @@ class ListResourcesResponseBodyResourcesEncryption(TeaModel):
         enabled: bool = None,
         key: str = None,
     ):
+        # The encryption algorithm.
         self.algorithm = algorithm
+        # Indicates whether the resources are encrypted.
         self.enabled = enabled
+        # The primary key for the encryption.
         self.key = key
 
     def validate(self):
@@ -13737,6 +15290,7 @@ class ListResourcesResponseBodyResourcesExecutor(TeaModel):
         self,
         owner_id: str = None,
     ):
+        # This parameter is invalid and deprecated.
         self.owner_id = owner_id
 
     def validate(self):
@@ -13765,7 +15319,9 @@ class ListResourcesResponseBodyResourcesLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -13798,7 +15354,9 @@ class ListResourcesResponseBodyResourcesQuotasSpecs(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The specification name.
         self.name = name
+        # The specification description.
         self.value = value
 
     def validate(self):
@@ -13837,13 +15395,39 @@ class ListResourcesResponseBodyResourcesQuotas(TeaModel):
         quota_type: str = None,
         specs: List[ListResourcesResponseBodyResourcesQuotasSpecs] = None,
     ):
+        # The resource group type. Valid values:
+        # 
+        # *   CPU
+        # *   GPU
         self.card_type = card_type
+        # The alias of the quota.
         self.display_name = display_name
+        # The quota ID.
         self.id = id
+        # The billing method. Valid values:
+        # 
+        # *   isolate: subscription
+        # *   share: pay-as-you-go
         self.mode = mode
+        # The quota name.
         self.name = name
+        # The product code. Valid values:
+        # 
+        # *   PAI_isolate: CPU subscription resource groups of PAI
+        # *   PAI_share: GPU pay-as-you-go resource groups of PAI
+        # *   MaxCompute_share: pay-as-you-go resource groups of MaxCompute
+        # *   MaxCompute_isolate: subscription resource groups of MaxCompute
+        # *   DataWorks_isolate: subscription resource groups of DataWorks
+        # *   DataWorks_share: pay-as-you-go resource groups of DataWorks
+        # *   DLC_share: pay-as-you-go resource groups of Deep Learning Containers (DLC)
         self.product_code = product_code
+        # The quota type. Valid values:
+        # 
+        # *   PAI
+        # *   MaxCompute
+        # *   DLC
         self.quota_type = quota_type
+        # The quota specifications.
         self.specs = specs
 
     def validate(self):
@@ -13920,19 +15504,43 @@ class ListResourcesResponseBodyResources(TeaModel):
         spec: Dict[str, Any] = None,
         workspace_id: str = None,
     ):
+        # The encryption information, which is valid only for MaxCompute resources.
         self.encryption = encryption
+        # The environment type. Valid values:
+        # 
+        # *   dev: development environment
+        # *   prod: production environment
         self.env_type = env_type
+        # This parameter is invalid and deprecated.
         self.executor = executor
+        # The time when the resource group is created, in UTC. The time follows the ISO 8601 standard.
         self.gmt_create_time = gmt_create_time
+        # The name of the resource group, which is unique within the Alibaba Cloud account.
         self.group_name = group_name
+        # The resource ID.
         self.id = id
+        # Indicates whether the resource is the default resource. Each type of resources has a default resource. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_default = is_default
+        # The tags.
         self.labels = labels
+        # The resource name.
         self.name = name
+        # **This field is no longer used and will be removed. Use the ResourceType field.
         self.product_type = product_type
+        # The quotas.
         self.quotas = quotas
+        # The resource type. Valid values:
+        # 
+        # *   MaxCompute
+        # *   DLC
+        # *   FLINK
         self.resource_type = resource_type
+        # The resource specification.
         self.spec = spec
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -14037,8 +15645,11 @@ class ListResourcesResponseBody(TeaModel):
         resources: List[ListResourcesResponseBodyResources] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The resources.
         self.resources = resources
+        # The number of resources that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -14125,9 +15736,13 @@ class ListRunMetricsRequest(TeaModel):
         max_results: int = None,
         page_token: int = None,
     ):
+        # The metric key of the run.
+        # 
         # This parameter is required.
         self.key = key
+        # The maximum number of entries in the request. Default value: 10.
         self.max_results = max_results
+        # The pagination token, which starts from 0. Default value: 0.
         self.page_token = page_token
 
     def validate(self):
@@ -14165,7 +15780,9 @@ class ListRunMetricsResponseBody(TeaModel):
         next_page_token: int = None,
         request_id: str = None,
     ):
+        # The metrics.
         self.metrics = metrics
+        # The pagination token that is used to retrieve the next page. You do not need to specify this parameter for the first request. You must specify the pagination token in the result of the previous query. If the pagination token is 0, no next page exists. You can obtain the pagination token that is used to retrieve the next page in the value of the **NextPageToken** field.
         self.next_page_token = next_page_token
         # Id of the request
         self.request_id = request_id
@@ -14266,20 +15883,49 @@ class ListRunsRequest(TeaModel):
         verbose: bool = None,
         workspace_id: str = None,
     ):
+        # The ID of the experiment that the run belongs.
         self.experiment_id = experiment_id
+        # The time when the instance was created.
         self.gmt_create_time = gmt_create_time
+        # The label. Exact match is supported. Valid values:
+        # 
+        # *   Single-label query: Set the value to is_evaluation.
+        # *   Multi-label query (not recommended in non-special scenarios and may have performance issues): Set the value to is_evaluation:true,LLM_evaluation:true. Multiple labels are separated with commas (,), indicating that the key-value pairs of multiple labels must be matched at the same time.
         self.labels = labels
+        # The maximum number of entries in the request. Default value: 10.
         self.max_results = max_results
+        # The run name.
         self.name = name
+        # The order in which the entries are sorted by the specific field on the returned page. This parameter must be used together with SortBy.
+        # 
+        # *   ASC
+        # *   DESC (default)
         self.order = order
+        # The strings by which the results are sorted. The following parameters can be used to sort the results: GmtCreateTime and Name. The sorting order can be ASC (default) and DESC. Separate multiple strings with commas (,).
         self.order_by = order_by
+        # The page number. The value must be greater than 0. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The pagination token, which starts from 0. Default value: 0.
         self.page_token = page_token
+        # The field used for sorting. Valid values:
+        # 
+        # *   Name: the name of the run.
+        # *   GmtCreateTime: the time when the run is created.
         self.sort_by = sort_by
+        # The ID of the workload associated with the run.
         self.source_id = source_id
+        # The type of the workload associated with the run.
         self.source_type = source_type
+        # Specifies whether to show detailed information, including Metrics, Params, and Labels. Valid values:
+        # 
+        # *   true
+        # *   false (default)
         self.verbose = verbose
+        # The ID of the workspace to which the experiment belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # 
+        # >  If you do not specify a workspace ID, the system returns the runs of the default workspace.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -14366,10 +16012,13 @@ class ListRunsResponseBody(TeaModel):
         total_count: int = None,
         request_id: str = None,
     ):
+        # The pagination token that is used to retrieve the next page. You do not need to specify this parameter for the first request. You must specify the pagination token in the result of the previous query. If the pagination token is 0, no next page exists. You can obtain the pagination token that is used to retrieve the next page in the value of the **NextPageToken** field.
         self.next_page_token = next_page_token
+        # The runs.
         self.runs = runs
+        # The total number of entries returned. By default, this parameter is not returned.
         self.total_count = total_count
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14633,6 +16282,7 @@ class ListWorkspaceUsersRequest(TeaModel):
         self,
         user_name: str = None,
     ):
+        # The display names of users who can be added to the workspace as members.
         self.user_name = user_name
 
     def validate(self):
@@ -14661,7 +16311,9 @@ class ListWorkspaceUsersResponseBodyUsers(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The user ID.
         self.user_id = user_id
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -14695,8 +16347,11 @@ class ListWorkspaceUsersResponseBody(TeaModel):
         total_count: int = None,
         users: List[ListWorkspaceUsersResponseBodyUsers] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The number of users who meet the filter conditions.
         self.total_count = total_count
+        # The users.
         self.users = users
 
     def validate(self):
@@ -14810,7 +16465,7 @@ class ListWorkspacesRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page. Default value: 20.
         self.page_size = page_size
-        # The resource group ID. To obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/zh/resource-management/resource-group/user-guide/view-basic-information-of-a-resource-group?spm=a2c4g.11186623.help-menu-94362.d_2_0_1.86386c21FKqhTk\\&scm=20140722.H_151181._.OR_help-T_cn~zh-V_1).
+        # The resource group ID. To obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         # Specifies how to sort the results. Default value: GmtCreateTime. Valid values:
         # 
@@ -15116,6 +16771,7 @@ class LogRunMetricsRequest(TeaModel):
         self,
         metrics: List[RunMetric] = None,
     ):
+        # The metrics.
         self.metrics = metrics
 
     def validate(self):
@@ -15151,7 +16807,7 @@ class LogRunMetricsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -15221,7 +16877,9 @@ class PublishCodeSourceResponseBody(TeaModel):
         code_source_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the code source that is successfully published.
         self.code_source_id = code_source_id
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -15294,6 +16952,7 @@ class PublishDatasetResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15363,7 +17022,9 @@ class PublishImageResponseBody(TeaModel):
         image_id: str = None,
         request_id: str = None,
     ):
+        # The image ID.
         self.image_id = image_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15436,6 +17097,7 @@ class RemoveImageResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15504,6 +17166,7 @@ class RemoveImageLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15572,6 +17235,7 @@ class RemoveMemberRoleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15640,6 +17304,7 @@ class SetExperimentLabelsRequest(TeaModel):
         self,
         labels: List[LabelInfo] = None,
     ):
+        # The tags.
         self.labels = labels
 
     def validate(self):
@@ -15675,6 +17340,7 @@ class SetExperimentLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15898,7 +17564,9 @@ class StopDatasetJobRequest(TeaModel):
         dataset_version: str = None,
         workspace_id: str = None,
     ):
+        # The dataset version.
         self.dataset_version = dataset_version
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -15930,6 +17598,7 @@ class StopDatasetJobResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16005,13 +17674,21 @@ class UpdateCodeSourceRequest(TeaModel):
         display_name: str = None,
         mount_path: str = None,
     ):
+        # The name of the code branch.
         self.code_branch = code_branch
+        # The code commit ID.
         self.code_commit = code_commit
+        # The address of the code repository.
         self.code_repo = code_repo
+        # The access token corresponding to the username.
         self.code_repo_access_token = code_repo_access_token
+        # The username used to access the code repository.
         self.code_repo_user_name = code_repo_user_name
+        # The description of the code build.
         self.description = description
+        # The name of the code build.
         self.display_name = display_name
+        # The default mount path.
         self.mount_path = mount_path
 
     def validate(self):
@@ -16068,7 +17745,9 @@ class UpdateCodeSourceResponseBody(TeaModel):
         code_source_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the code build.
         self.code_source_id = code_source_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16144,9 +17823,17 @@ class UpdateDatasetRequest(TeaModel):
         name: str = None,
         options: str = None,
     ):
+        # The description of the dataset.
         self.description = description
+        # The list of role names in the workspace that have read and write permissions on the mounted database. The names start with PAI are basic role names and the names start with role- are custom role names. If the list contains asterisks (\\*), all roles have read and write permissions.
+        # 
+        # *   If you set the value to ["PAI.AlgoOperator", "role-hiuwpd01ncrokkgp21"], the account of the specified role is granted the read and write permissions.
+        # *   If you set the value to ["\\*"], all accounts are granted the read and write permissions.
+        # *   If you set the value to [], only the creator of the dataset has the read and write permissions.
         self.mount_access_read_write_role_id_list = mount_access_read_write_role_id_list
+        # The dataset name. You can call [ListDatasets](https://help.aliyun.com/document_detail/457222.html) to obtain the dataset name.
         self.name = name
+        # The extended field, which is a JSON string. When you use the dataset in Deep Learning Containers (DLC), you can configure the mountPath field to specify the default mount path of the dataset.
         self.options = options
 
     def validate(self):
@@ -16186,6 +17873,7 @@ class UpdateDatasetResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16257,10 +17945,15 @@ class UpdateDatasetFileMetasRequest(TeaModel):
         tag_job_id: str = None,
         workspace_id: str = None,
     ):
+        # The metadata records to be updated for the dataset files.
+        # 
         # This parameter is required.
         self.dataset_file_metas = dataset_file_metas
+        # The dataset version.
         self.dataset_version = dataset_version
+        # The ID of the tagging job that is associated with the metadata tag of the dataset file.
         self.tag_job_id = tag_job_id
+        # The ID of the workspace to which the dataset belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -16310,8 +18003,11 @@ class UpdateDatasetFileMetasResponseBody(TeaModel):
         request_id: str = None,
         status: bool = None,
     ):
+        # The metadata records that fail to be updated for the dataset files.
         self.failed_details = failed_details
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the metadata records of all dataset files were updated. Valid values: true and false. If the value is false, view the failure details specified by FailedDetails.
         self.status = status
 
     def validate(self):
@@ -16398,8 +18094,11 @@ class UpdateDatasetJobRequest(TeaModel):
         description: str = None,
         workspace_id: str = None,
     ):
+        # The dataset version name.
         self.dataset_version = dataset_version
+        # The dataset job description.
         self.description = description
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -16435,6 +18134,7 @@ class UpdateDatasetJobResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16505,8 +18205,22 @@ class UpdateDatasetJobConfigRequest(TeaModel):
         config_type: str = None,
         workspace_id: str = None,
     ):
+        # The configuration content. Formats:
+        # 
+        # *   MultimodalIntelligentTag
+        # 
+        # { "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx" }
+        # 
+        # *   MultimodalSemanticIndex
+        # 
+        # { "defaultModelId": "xxx" "defaultModelVersion":"1.0.0" }
         self.config = config
+        # The configuration type.
+        # 
+        # *   MultimodalIntelligentTag
+        # *   MultimodalSemanticIndex
         self.config_type = config_type
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -16542,6 +18256,7 @@ class UpdateDatasetJobConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16724,6 +18439,7 @@ class UpdateDefaultWorkspaceRequest(TeaModel):
         self,
         workspace_id: str = None,
     ):
+        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -16751,6 +18467,7 @@ class UpdateDefaultWorkspaceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16820,8 +18537,16 @@ class UpdateExperimentRequest(TeaModel):
         accessibility: str = None,
         name: str = None,
     ):
+        # The accessibility of the experiment in the workspace. Valid values:
+        # 
+        # *   PRIVATE: The experiment is accessible only to you and the administrator of the workspace.
+        # *   PUBLIC: The experiment is accessible to all users in the workspace.
         self.accessibility = accessibility
-        # 名称
+        # The experiment name. The name must meet the following requirements:
+        # 
+        # *   The name must start with a letter.
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-).
+        # *   The name must be 1 to 63 characters in length.
         self.name = name
 
     def validate(self):
@@ -16853,6 +18578,7 @@ class UpdateExperimentResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16930,15 +18656,28 @@ class UpdateModelRequest(TeaModel):
         origin: str = None,
         task: str = None,
     ):
+        # The visibility of the model in the workspace. Valid values:
+        # 
+        # *   PRIVATE: The model is visible only to you and the administrator of the workspace.
+        # *   PUBLIC: The model is visible to all users in the workspace.
         self.accessibility = accessibility
+        # The domain. This parameter describes the domain in which the model is applied. Valid values: nlp (natural language processing) and cv (computer vision).
         self.domain = domain
+        # Other information about the model.
         self.extra_info = extra_info
+        # The model description.
         self.model_description = model_description
+        # The documentation of the model.
         self.model_doc = model_doc
+        # The model name, which must be 1 to 127 characters in length.
         self.model_name = model_name
+        # The model type. Valid values: Checkpoint and LoRA.
         self.model_type = model_type
+        # The sequence number of the model. This parameter can be used for custom sorting.
         self.order_number = order_number
+        # The source of the model. This parameter describes the community or organization to which the source model belongs. Valid values: ModelScope and HuggingFace.
         self.origin = origin
+        # The task. This parameter specifies the specific issue that the model resolves. Example: text-classification.
         self.task = task
 
     def validate(self):
@@ -17002,6 +18741,7 @@ class UpdateModelResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17080,16 +18820,49 @@ class UpdateModelVersionRequest(TeaModel):
         training_spec: Dict[str, Any] = None,
         version_description: str = None,
     ):
+        # The approval status. Valid values:
+        # 
+        # *   Pending
+        # *   Approved
+        # *   Rejected
         self.approval_status = approval_status
+        # The compression configuration.
         self.compression_spec = compression_spec
+        # The evaluation configuration.
         self.evaluation_spec = evaluation_spec
+        # The additional information.
         self.extra_info = extra_info
+        # Describes how to apply to downstream inference services. For example, describes the processor and container of Elastic Algorithm Service (EAS). Example: `{ "processor": "tensorflow_gpu_1.12" }`.
         self.inference_spec = inference_spec
+        # The model metrics. The length after serialization is limited to 8,192.
         self.metrics = metrics
+        # The extended field, which is of the JsonString type.
         self.options = options
+        # The source ID.
+        # 
+        # *   If the source type is Custom, this field is not limited.
+        # *   If the source type is PAIFlow or TrainingService, the format is:
+        # 
+        # <!---->
+        # 
+        #     region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
+        # 
+        # Take note of the following parameters:
+        # 
+        # *   region is the region ID.
+        # *   workspaceId is the ID of the workspace.
+        # *   kind is the type. Valid values: PipelineRun (PAIFlow) and ServiceJob (training service).
+        # *   id is a unique identifier.
         self.source_id = source_id
+        # The type of the model source. Valid values:
+        # 
+        # *   Custom (default)
+        # *   PAIFlow
+        # *   TrainingService
         self.source_type = source_type
+        # The training configurations used for fine-tuning and incremental training.
         self.training_spec = training_spec
+        # The model version description.
         self.version_description = version_description
 
     def validate(self):
@@ -17157,6 +18930,7 @@ class UpdateModelVersionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17358,7 +19132,13 @@ class UpdateWorkspaceRequest(TeaModel):
         description: str = None,
         display_name: str = None,
     ):
+        # The workspace description.
         self.description = description
+        # The display name of the workspace.
+        # 
+        # *   The name must be 3 to 23 characters in length, and can contain letters, underscores (_), and digits.
+        # *   The name must start with a letter.
+        # *   The name must be unique in the current region.
         self.display_name = display_name
 
     def validate(self):
@@ -17390,6 +19170,7 @@ class UpdateWorkspaceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17459,7 +19240,9 @@ class UpdateWorkspaceResourceRequestLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -17497,12 +19280,27 @@ class UpdateWorkspaceResourceRequest(TeaModel):
         resource_type: str = None,
         spec: Dict[str, Any] = None,
     ):
+        # The group name.
         self.group_name = group_name
+        # Specifies whether the resource is the default resource. This parameter can only be set to true and cannot be set to false.
         self.is_default = is_default
+        # The resource tags. If you specify multiple tags, only resources that meet all the specified tag-based filter conditions are returned.
         self.labels = labels
+        # **This field is no longer used and will be removed. Use the ResourceType field.
         self.product_type = product_type
+        # The resource IDs.
+        # 
+        # You cannot leave both GroupName and ResourceIds empty. If you specify both the parameters, the value of GroupName of each resource ID in the dataset must be the same.
         self.resource_ids = resource_ids
+        # The resource type. Valid values:
+        # 
+        # *   MaxCompute
+        # *   ECS
+        # *   Lingjun
+        # *   ACS
+        # *   FLINK
         self.resource_type = resource_type
+        # The specification of the resource.
         self.spec = spec
 
     def validate(self):
@@ -17563,7 +19361,9 @@ class UpdateWorkspaceResourceResponseBody(TeaModel):
         request_id: str = None,
         resource_ids: List[str] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The updated resource IDs.
         self.resource_ids = resource_ids
 
     def validate(self):
