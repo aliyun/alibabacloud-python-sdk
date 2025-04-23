@@ -25132,6 +25132,7 @@ class DescribeConfigurationPriceRequest(TeaModel):
         self,
         cpu: int = None,
         memory: int = None,
+        new_sae_version: str = None,
         resource_type: str = None,
         workload: str = None,
     ):
@@ -25163,6 +25164,7 @@ class DescribeConfigurationPriceRequest(TeaModel):
         # 
         # This parameter is required.
         self.memory = memory
+        self.new_sae_version = new_sae_version
         self.resource_type = resource_type
         # Scenarios:
         # 
@@ -25183,6 +25185,8 @@ class DescribeConfigurationPriceRequest(TeaModel):
             result['Cpu'] = self.cpu
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.new_sae_version is not None:
+            result['NewSaeVersion'] = self.new_sae_version
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         if self.workload is not None:
@@ -25195,6 +25199,8 @@ class DescribeConfigurationPriceRequest(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('NewSaeVersion') is not None:
+            self.new_sae_version = m.get('NewSaeVersion')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         if m.get('Workload') is not None:
@@ -41185,10 +41191,12 @@ class QueryResourceStaticsResponseBodyDataRealTimeRes(TeaModel):
     def __init__(
         self,
         cpu: float = None,
+        ephemeral_storage: float = None,
         memory: float = None,
     ):
         # The CPU usage. Unit: core per minute.
         self.cpu = cpu
+        self.ephemeral_storage = ephemeral_storage
         # The memory usage. Unit: GiB per minute.
         self.memory = memory
 
@@ -41203,6 +41211,8 @@ class QueryResourceStaticsResponseBodyDataRealTimeRes(TeaModel):
         result = dict()
         if self.cpu is not None:
             result['Cpu'] = self.cpu
+        if self.ephemeral_storage is not None:
+            result['EphemeralStorage'] = self.ephemeral_storage
         if self.memory is not None:
             result['Memory'] = self.memory
         return result
@@ -41211,6 +41221,8 @@ class QueryResourceStaticsResponseBodyDataRealTimeRes(TeaModel):
         m = m or dict()
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
+        if m.get('EphemeralStorage') is not None:
+            self.ephemeral_storage = m.get('EphemeralStorage')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         return self
@@ -41221,12 +41233,16 @@ class QueryResourceStaticsResponseBodyDataSummary(TeaModel):
         self,
         active_cpu: float = None,
         cpu: float = None,
+        cu: float = None,
+        ephemeral_storage: float = None,
         idle_cpu: float = None,
         memory: float = None,
     ):
         self.active_cpu = active_cpu
         # The CPU usage. Unit: core per minute.
         self.cpu = cpu
+        self.cu = cu
+        self.ephemeral_storage = ephemeral_storage
         self.idle_cpu = idle_cpu
         # The memory usage. Unit: GiB per minute.
         self.memory = memory
@@ -41244,6 +41260,10 @@ class QueryResourceStaticsResponseBodyDataSummary(TeaModel):
             result['ActiveCpu'] = self.active_cpu
         if self.cpu is not None:
             result['Cpu'] = self.cpu
+        if self.cu is not None:
+            result['Cu'] = self.cu
+        if self.ephemeral_storage is not None:
+            result['EphemeralStorage'] = self.ephemeral_storage
         if self.idle_cpu is not None:
             result['IdleCpu'] = self.idle_cpu
         if self.memory is not None:
@@ -41256,6 +41276,10 @@ class QueryResourceStaticsResponseBodyDataSummary(TeaModel):
             self.active_cpu = m.get('ActiveCpu')
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
+        if m.get('Cu') is not None:
+            self.cu = m.get('Cu')
+        if m.get('EphemeralStorage') is not None:
+            self.ephemeral_storage = m.get('EphemeralStorage')
         if m.get('IdleCpu') is not None:
             self.idle_cpu = m.get('IdleCpu')
         if m.get('Memory') is not None:

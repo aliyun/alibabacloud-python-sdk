@@ -1,3 +1,10 @@
+2025-04-23 Version: 2.0.3
+- Update API DescribeConfigurationPrice: add request parameters NewSaeVersion.
+- Update API QueryResourceStatics: add response parameters Body.Data.RealTimeRes.EphemeralStorage.
+- Update API QueryResourceStatics: add response parameters Body.Data.Summary.Cu.
+- Update API QueryResourceStatics: add response parameters Body.Data.Summary.EphemeralStorage.
+
+
 2025-04-15 Version: 2.0.2
 - Update API DeployApplication: add request parameters NewSaeVersion.
 
